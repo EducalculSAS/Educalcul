@@ -129,9 +129,9 @@ export async function GET(req: Request) {
       subscription: {
         ...subscription,
         current_period_end: stripeSubscription
-          ? new Date(stripeSubscription.current_period_end * 1000).toISOString()
+          ? new Date((stripeSubscription as any).current_period_end * 1000).toISOString()
           : subscription.current_period_end,
-        cancel_at_period_end: stripeSubscription?.cancel_at_period_end || false,
+        cancel_at_period_end: (stripeSubscription as any)?.cancel_at_period_end || false,
       },
       invoices: formattedInvoices,
     });
