@@ -77,7 +77,7 @@ export async function GET(req: Request) {
                 status: 'active',
                 stripe_customer_id: customer.id,
                 stripe_subscription_id: activeSub.id,
-                current_period_end: new Date(activeSub.current_period_end * 1000).toISOString(),
+                current_period_end: new Date((activeSub as any).current_period_end * 1000).toISOString(),
                 cancel_at_period_end: activeSub.cancel_at_period_end,
               };
             }
