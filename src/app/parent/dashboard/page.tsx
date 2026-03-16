@@ -227,28 +227,28 @@ export default function ParentDashboard() {
     const date7DaysAgoIso = date7DaysAgo.toISOString();
 
     // 1. Activity Count (7d)
-    const { data: views } = await supabase
+    const { data: views } = await (supabase as any)
       .from("user_course_views")
       .select("id")
       .eq("user_id", childId)
-      .returns<UserCourseView[]>();
+      .returns();
 
-    const viewIds = views?.map((v) => v.id) || [];
+    const viewIds = views?.map((v: any) => v.id) || [];
     let sessionsCount = 0;
     let sessionsDuration = 0;
 
     if (viewIds.length > 0) {
-      const { data: sessions } = await supabase
+      const { data: sessions } = await (supabase as any)
         .from("user_course_sessions")
         .select("duration_seconds")
         .in("user_course_view_id", viewIds)
         .gte("session_ended_at", date7DaysAgoIso)
-        .returns<UserCourseSession[]>();
+        .returns();
 
       sessionsCount = sessions?.length || 0;
       sessionsDuration =
         sessions?.reduce(
-          (acc, curr) => acc + (curr.duration_seconds || 0),
+          (acc: any, curr: any) => acc + (curr.duration_seconds || 0),
           0
         ) || 0;
     }
@@ -298,31 +298,31 @@ export default function ParentDashboard() {
     // 4. Last Activity
     let lastActivity = null;
 
-    const { data: lastQuiz } = await supabase
+    const { data: lastQuiz } = await (supabase as any)
       .from("user_quiz_attempts")
       .select("completed_at, score, total_questions, quizzes(title)")
       .eq("user_id", childId)
       .order("completed_at", { ascending: false })
       .limit(1)
-      .maybeSingle<QuizAttempt>();
+      .maybeSingle();
 
-    const { data: lastExercise } = await supabase
+    const { data: lastExercise } = await (supabase as any)
       .from("user_exercise_attempts")
       .select("attempted_at, is_correct, exercises(title)")
       .eq("user_id", childId)
       .order("attempted_at", { ascending: false })
       .limit(1)
-      .maybeSingle<ExerciseAttempt>();
+      .maybeSingle();
 
     let lastCourse = null;
     if (viewIds.length > 0) {
-      const { data: lastSession } = await supabase
+      const { data: lastSession } = await (supabase as any)
         .from("user_course_sessions")
         .select("session_ended_at, user_course_views(courses(title))")
         .in("user_course_view_id", viewIds)
         .order("session_ended_at", { ascending: false })
         .limit(1)
-        .maybeSingle<SessionData>();
+        .maybeSingle();
 
       if (lastSession) {
         const title = lastSession.user_course_views?.courses?.title || "Cours";

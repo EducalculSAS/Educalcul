@@ -43,7 +43,7 @@ export default function Navbar() {
 
       const {
         data: { subscription },
-      } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      } = supabase.auth.onAuthStateChange(async (_event: any, session: any) => {
         setUser(session?.user || null);
         if (session?.user) {
           const { data: userData } = await supabase
@@ -113,11 +113,10 @@ export default function Navbar() {
 
         {/* Right-aligned Dropdown Menu */}
         <div
-          className={`absolute top-[64px] right-0 w-full sm:w-80 bg-[var(--greek-blue)] border-b sm:border-l sm:border-b border-[var(--greek-gold)] shadow-xl flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top ${
-            isOpen
+          className={`absolute top-[64px] right-0 w-full sm:w-80 bg-[var(--greek-blue)] border-b sm:border-l sm:border-b border-[var(--greek-gold)] shadow-xl flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top ${isOpen
               ? "scale-y-100 opacity-100"
               : "scale-y-0 opacity-0 pointer-events-none"
-          }`}
+            }`}
         >
           {/* Navigation Links */}
           {!user && (
