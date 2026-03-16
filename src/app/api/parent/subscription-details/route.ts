@@ -26,7 +26,7 @@ export async function GET(req: Request) {
     if (!subscription || !subscription.stripe_customer_id) {
       // Get user email
       const { data: userData, error: userError } = await supabaseAdmin.auth.admin.getUserById(userId);
-      
+
       if (userData?.user?.email) {
         const customers = await stripe.customers.list({
           email: userData.user.email,
@@ -58,29 +58,29 @@ export async function GET(req: Request) {
                 user_id: userId,
                 plan_id: planId,
                 status: 'active',
-                current_period_start: new Date(activeSub.current_period_start * 1000).toISOString(),
-                current_period_end: new Date(activeSub.current_period_end * 1000).toISOString(),
+                current_period_start: new Date((activeSub as any).current_period_start * 1000).toISOString(),
+                current_period_end: new Date((activeSub as any).current_period_end * 1000).toISOString(),
                 stripe_customer_id: customer.id,
                 stripe_subscription_id: activeSub.id,
               }, { onConflict: 'user_id' })
               .select()
               .single();
 
-             if (newSub) {
-               subscription = newSub;
-             } else if (insertError) {
-               console.error('Auto-healing failed:', insertError);
-               // Even if insert fails, use the stripe data for display
-               subscription = {
-                 user_id: userId,
-                 plan_id: planId,
-                 status: 'active',
-                 stripe_customer_id: customer.id,
-                 stripe_subscription_id: activeSub.id,
-                 current_period_end: new Date(activeSub.current_period_end * 1000).toISOString(),
-                 cancel_at_period_end: activeSub.cancel_at_period_end,
-               };
-             }
+            if (newSub) {
+              subscription = newSub;
+            } else if (insertError) {
+              console.error('Auto-healing failed:', insertError);
+              // Even if insert fails, use the stripe data for display
+              subscription = {
+                user_id: userId,
+                plan_id: planId,
+                status: 'active',
+                stripe_customer_id: customer.id,
+                stripe_subscription_id: activeSub.id,
+                current_period_end: new Date(activeSub.current_period_end * 1000).toISOString(),
+                cancel_at_period_end: activeSub.cancel_at_period_end,
+              };
+            }
           }
         }
       }
@@ -92,9 +92,9 @@ export async function GET(req: Request) {
     }
 
     if (!subscription || !subscription.stripe_customer_id) {
-      return NextResponse.json({ 
+      return NextResponse.json({
         subscription: null,
-        invoices: [] 
+        invoices: []
       });
     }
 
@@ -128,7 +128,7 @@ export async function GET(req: Request) {
     return NextResponse.json({
       subscription: {
         ...subscription,
-        current_period_end: stripeSubscription 
+        current_period_end: stripeSubscription
           ? new Date(stripeSubscription.current_period_end * 1000).toISOString()
           : subscription.current_period_end,
         cancel_at_period_end: stripeSubscription?.cancel_at_period_end || false,
