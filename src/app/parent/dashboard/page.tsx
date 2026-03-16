@@ -196,7 +196,7 @@ export default function ParentDashboard() {
         return;
       }
 
-      const childrenWithLoading = (childrenData || []).map((child) => ({
+      const childrenWithLoading = (childrenData || []).map((child: any) => ({
         ...child,
         stats: null,
         loading: true,
@@ -207,7 +207,7 @@ export default function ParentDashboard() {
       setLoading(false);
 
       // Fetch stats for each child
-      childrenWithLoading.forEach((child) => {
+      childrenWithLoading.forEach((child: any) => {
         fetchChildStats(child.id).then((stats) => {
           setChildren((prev) =>
             prev.map((c) =>
@@ -522,13 +522,12 @@ export default function ParentDashboard() {
                       </h4>
                       <div className="flex items-start gap-3">
                         <div
-                          className={`p-2 rounded-lg shadow-sm ${
-                            child.stats?.lastActivity?.type === "Quiz"
-                              ? "bg-purple-100 text-purple-600"
-                              : child.stats?.lastActivity?.type === "Exercice"
+                          className={`p-2 rounded-lg shadow-sm ${child.stats?.lastActivity?.type === "Quiz"
+                            ? "bg-purple-100 text-purple-600"
+                            : child.stats?.lastActivity?.type === "Exercice"
                               ? "bg-green-100 text-green-600"
                               : "bg-blue-100 text-blue-600"
-                          }`}
+                            }`}
                         >
                           {child.stats?.lastActivity?.type === "Quiz" ? (
                             <CheckCircle className="w-4 h-4" />

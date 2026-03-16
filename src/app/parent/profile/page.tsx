@@ -68,7 +68,7 @@ export default function ParentProfilePage() {
 
       if (user) {
         const isGoogle = user.identities?.some(
-          (id) => id.provider === "google"
+          (id: any) => id.provider === "google"
         );
         setGoogleLinked(!!isGoogle);
       }
@@ -96,7 +96,7 @@ export default function ParentProfilePage() {
 
   const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
-    
+
     const file = e.target.files[0];
     const fileExt = file.name.split(".").pop();
     const fileName = `${Math.random()}.${fileExt}`;
@@ -121,12 +121,12 @@ export default function ParentProfilePage() {
 
       // 2. Update state
       setFormData({ ...formData, avatar: data.url });
-      
+
       // 3. Update DB immediately for avatar
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      
+
       if (user) {
         await supabase
           .from("users")
@@ -250,7 +250,7 @@ export default function ParentProfilePage() {
 
       if (!user) throw new Error("Non connecté");
 
-      const identity = user.identities?.find((id) => id.provider === "google");
+      const identity = user.identities?.find((id: any) => id.provider === "google");
 
       if (!identity) {
         throw new Error("Aucun compte Google lié trouvé.");
@@ -347,11 +347,10 @@ export default function ParentProfilePage() {
 
       {message && (
         <div
-          className={`mb-8 p-4 rounded-xl shadow-sm flex items-center ${
-            message.type === "success"
-              ? "bg-green-50 text-green-700 border border-green-200"
-              : "bg-red-50 text-red-700 border border-red-200"
-          }`}
+          className={`mb-8 p-4 rounded-xl shadow-sm flex items-center ${message.type === "success"
+            ? "bg-green-50 text-green-700 border border-green-200"
+            : "bg-red-50 text-red-700 border border-red-200"
+            }`}
         >
           {message.type === "success" ? (
             <CheckCircle className="w-6 h-6 mr-3" />
@@ -380,16 +379,16 @@ export default function ParentProfilePage() {
                   fill
                   className="rounded-full object-cover border-4 border-white shadow-md"
                 />
-                <label 
-                  htmlFor="avatar-upload" 
+                <label
+                  htmlFor="avatar-upload"
                   className="absolute bottom-0 right-0 bg-[var(--greek-blue)] text-white p-2 rounded-full cursor-pointer shadow-lg hover:bg-blue-600 transition-colors"
                 >
                   <Camera className="w-4 h-4" />
-                  <input 
-                    id="avatar-upload" 
-                    type="file" 
-                    accept="image/*" 
-                    className="hidden" 
+                  <input
+                    id="avatar-upload"
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
                     onChange={handleAvatarUpload}
                     disabled={saving}
                   />
@@ -614,7 +613,7 @@ export default function ParentProfilePage() {
             <Bell className="w-5 h-5 mr-2" />
             Notifications
           </h2>
-          
+
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
@@ -622,11 +621,11 @@ export default function ParentProfilePage() {
                 <p className="text-sm text-gray-500">Recevoir le résumé des progrès de vos enfants</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  className="sr-only peer" 
+                <input
+                  type="checkbox"
+                  className="sr-only peer"
                   checked={notifications.emailReports}
-                  onChange={() => setNotifications({...notifications, emailReports: !notifications.emailReports})}
+                  onChange={() => setNotifications({ ...notifications, emailReports: !notifications.emailReports })}
                 />
                 <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
               </label>
@@ -638,11 +637,11 @@ export default function ParentProfilePage() {
                 <p className="text-sm text-gray-500">Être notifié quand un enfant débloque un badge</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  className="sr-only peer" 
+                <input
+                  type="checkbox"
+                  className="sr-only peer"
                   checked={notifications.emailAlerts}
-                  onChange={() => setNotifications({...notifications, emailAlerts: !notifications.emailAlerts})}
+                  onChange={() => setNotifications({ ...notifications, emailAlerts: !notifications.emailAlerts })}
                 />
                 <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
               </label>
@@ -654,11 +653,11 @@ export default function ParentProfilePage() {
                 <p className="text-sm text-gray-500">Recevoir nos actualités et promotions</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  className="sr-only peer" 
+                <input
+                  type="checkbox"
+                  className="sr-only peer"
                   checked={notifications.emailPromos}
-                  onChange={() => setNotifications({...notifications, emailPromos: !notifications.emailPromos})}
+                  onChange={() => setNotifications({ ...notifications, emailPromos: !notifications.emailPromos })}
                 />
                 <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
               </label>
@@ -677,7 +676,7 @@ export default function ParentProfilePage() {
               <p className="font-medium text-red-800">Supprimer mon compte</p>
               <p className="text-sm text-red-600">Cette action est irréversible et supprimera toutes vos données.</p>
             </div>
-            <button 
+            <button
               onClick={handleDeleteAccount}
               className="px-4 py-2 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium shadow-sm"
             >
