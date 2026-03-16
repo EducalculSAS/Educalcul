@@ -53,7 +53,7 @@ export default function AdminUsersPage() {
 
   const UserMap = useMemo(() => dynamic(
     () => import("@/components/admin/UserMap"),
-    { 
+    {
       ssr: false,
       loading: () => <div className="h-full w-full bg-gray-50 animate-pulse flex items-center justify-center text-gray-400">Chargement de la carte...</div>
     }
@@ -99,7 +99,7 @@ export default function AdminUsersPage() {
           // Fetch location by IP
           const res = await fetch("https://ipapi.co/json/");
           const geo = await res.json();
-          
+
           if (geo.latitude && geo.longitude) {
             await supabase
               .from("users")
@@ -111,7 +111,7 @@ export default function AdminUsersPage() {
                 last_login_ip: geo.ip
               })
               .eq("auth_id", user.id);
-            
+
             // Refresh users list to show me on the map
             fetchUsers();
           }
@@ -140,16 +140,16 @@ export default function AdminUsersPage() {
       .on('presence', { event: 'sync' }, () => {
         const newState = channel.presenceState();
         const onlineIds = new Set<string>();
-        
+
         Object.values(newState).forEach((presences: any) => {
           presences.forEach((p: any) => {
             if (p.auth_id) onlineIds.add(p.auth_id);
           });
         });
-        
+
         setOnlineUsers(onlineIds);
       })
-      .subscribe(async (status) => {
+      .subscribe(async (status: string) => {
         if (status === 'SUBSCRIBED') {
           const { data: { user } } = await supabase.auth.getUser();
           if (user) {
@@ -403,22 +403,22 @@ export default function AdminUsersPage() {
               Carte des Connexions
             </h2>
             <div className="flex items-center gap-1.5 bg-green-50 px-3 py-1 rounded-full border border-green-100">
-               <span className="relative flex h-2 w-2">
-                  <span className={`${activeCount > 0 ? 'animate-ping' : ''} absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 Enrique`}></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-               </span>
-               <span className="text-xs font-bold text-green-700">{activeCount} en ligne</span>
+              <span className="relative flex h-2 w-2">
+                <span className={`${activeCount > 0 ? 'animate-ping' : ''} absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 Enrique`}></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-xs font-bold text-green-700">{activeCount} en ligne</span>
             </div>
           </div>
           <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded-md">
             Interactive & Temps Réel
           </span>
         </div>
-        
+
         <div className="h-[300px] w-full">
-           <UserMap users={mapUsers} />
+          <UserMap users={mapUsers} />
         </div>
-        
+
         <div className="absolute bottom-4 left-6 text-[10px] text-gray-400 italic z-[1000] pointer-events-none">
           * Coordonnées approximatives basées sur l'IP
         </div>
@@ -679,75 +679,75 @@ export default function AdminUsersPage() {
                   }
                 />
                 {modalMode === "edit" && (
-                   <div className="mt-2 p-4 bg-gray-50/80 rounded-2xl border border-gray-100 shadow-inner space-y-3">
-                      <div className="flex items-center gap-2 border-b border-gray-200/50 pb-2">
-                         <Shield size={16} className="text-[var(--greek-blue)]" />
-                         <span className="font-bold text-sm text-[var(--greek-blue)]">Informations d'administration</span>
+                  <div className="mt-2 p-4 bg-gray-50/80 rounded-2xl border border-gray-100 shadow-inner space-y-3">
+                    <div className="flex items-center gap-2 border-b border-gray-200/50 pb-2">
+                      <Shield size={16} className="text-[var(--greek-blue)]" />
+                      <span className="font-bold text-sm text-[var(--greek-blue)]">Informations d'administration</span>
+                    </div>
+
+                    {loadingAuth ? (
+                      <div className="flex items-center justify-center py-4 gap-2 text-gray-400 italic text-xs">
+                        <Loader2 className="w-3 h-3 animate-spin" />
+                        Synchronisation des données...
                       </div>
-                      
-                      {loadingAuth ? (
-                        <div className="flex items-center justify-center py-4 gap-2 text-gray-400 italic text-xs">
-                          <Loader2 className="w-3 h-3 animate-spin" />
-                          Synchronisation des données...
-                        </div>
-                      ) : authDetails ? (
-                        <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-[11px]">
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-1.5 text-gray-500">
-                               <Clock size={12} />
-                               <span>Dernière activité</span>
-                            </div>
-                            <div className="font-semibold text-gray-800 pl-4.5">
-                              {authDetails.last_sign_in_at 
-                                ? new Date(authDetails.last_sign_in_at).toLocaleString("fr-FR", { dateStyle: 'short', timeStyle: 'short' }) 
-                                : "Aucune"}
-                            </div>
+                    ) : authDetails ? (
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-[11px]">
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1.5 text-gray-500">
+                            <Clock size={12} />
+                            <span>Dernière activité</span>
                           </div>
-                          
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-1.5 text-gray-500">
-                               <Globe size={12} />
-                               <span>Localisation</span>
-                            </div>
-                            <div className="font-semibold text-gray-800 pl-4.5">
-                              {authDetails.geo?.city ? `${authDetails.geo.city}, ${authDetails.geo.country}` : "Inconnue"}
-                            </div>
-                          </div>
-
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-1.5 text-gray-500">
-                               <CheckCircle size={12} />
-                               <span>Email vérifié</span>
-                            </div>
-                            <div className={`font-semibold pl-4.5 ${authDetails.email_confirmed_at ? "text-green-600" : "text-amber-600"}`}>
-                              {authDetails.email_confirmed_at ? "Oui ✓" : "En attente"}
-                            </div>
-                          </div>
-
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-1.5 text-gray-500">
-                               <Laptop size={12} />
-                               <span>Plateforme</span>
-                            </div>
-                            <div className="font-semibold text-gray-800 pl-4.5 truncate max-w-[120px]">
-                              {authDetails.identities?.join(", ") || "Email classique"}
-                            </div>
-                          </div>
-
-                          <div className="col-span-2 pt-2 flex items-center justify-between text-[9px] text-gray-400 bg-white/50 p-2 rounded-lg border border-gray-100">
-                             <div className="flex items-center gap-1">
-                                <MapPin size={8} />
-                                <span>ID: <span className="font-mono select-all uppercase">{currentUser?.auth_id?.slice(0, 8)}...</span></span>
-                             </div>
-                             <div>Créé le {new Date(authDetails.created_at).toLocaleDateString("fr-FR")}</div>
+                          <div className="font-semibold text-gray-800 pl-4.5">
+                            {authDetails.last_sign_in_at
+                              ? new Date(authDetails.last_sign_in_at).toLocaleString("fr-FR", { dateStyle: 'short', timeStyle: 'short' })
+                              : "Aucune"}
                           </div>
                         </div>
-                      ) : (
-                        <div className="text-red-500 italic text-center text-xs py-2 bg-red-50 rounded-lg">
-                          Échec du chargement des informations Supabase
+
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1.5 text-gray-500">
+                            <Globe size={12} />
+                            <span>Localisation</span>
+                          </div>
+                          <div className="font-semibold text-gray-800 pl-4.5">
+                            {authDetails.geo?.city ? `${authDetails.geo.city}, ${authDetails.geo.country}` : "Inconnue"}
+                          </div>
                         </div>
-                      )}
-                   </div>
+
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1.5 text-gray-500">
+                            <CheckCircle size={12} />
+                            <span>Email vérifié</span>
+                          </div>
+                          <div className={`font-semibold pl-4.5 ${authDetails.email_confirmed_at ? "text-green-600" : "text-amber-600"}`}>
+                            {authDetails.email_confirmed_at ? "Oui ✓" : "En attente"}
+                          </div>
+                        </div>
+
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1.5 text-gray-500">
+                            <Laptop size={12} />
+                            <span>Plateforme</span>
+                          </div>
+                          <div className="font-semibold text-gray-800 pl-4.5 truncate max-w-[120px]">
+                            {authDetails.identities?.join(", ") || "Email classique"}
+                          </div>
+                        </div>
+
+                        <div className="col-span-2 pt-2 flex items-center justify-between text-[9px] text-gray-400 bg-white/50 p-2 rounded-lg border border-gray-100">
+                          <div className="flex items-center gap-1">
+                            <MapPin size={8} />
+                            <span>ID: <span className="font-mono select-all uppercase">{currentUser?.auth_id?.slice(0, 8)}...</span></span>
+                          </div>
+                          <div>Créé le {new Date(authDetails.created_at).toLocaleDateString("fr-FR")}</div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-red-500 italic text-center text-xs py-2 bg-red-50 rounded-lg">
+                        Échec du chargement des informations Supabase
+                      </div>
+                    )}
+                  </div>
                 )}
               </div>
 
