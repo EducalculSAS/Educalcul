@@ -39,7 +39,7 @@ export default function ChildProfilePage() {
 
       if (authUser) {
         const isGoogle = authUser.identities?.some(
-          (id) => id.provider === "google"
+          (id: any) => id.provider === "google"
         );
         setGoogleLinked(!!isGoogle);
       }
@@ -92,7 +92,7 @@ export default function ChildProfilePage() {
 
       if (!user) throw new Error("Non connecté");
 
-      const identity = user.identities?.find((id) => id.provider === "google");
+      const identity = user.identities?.find((id: any) => id.provider === "google");
 
       if (!identity) {
         throw new Error("Aucun compte Google lié trouvé.");
@@ -161,11 +161,10 @@ export default function ChildProfilePage() {
 
       {message && (
         <div
-          className={`p-4 mb-6 rounded-lg ${
-            message.type === "success"
-              ? "bg-green-100 text-green-800"
-              : "bg-red-100 text-red-800"
-          } flex items-center justify-between shadow-sm border border-transparent`}
+          className={`p-4 mb-6 rounded-lg ${message.type === "success"
+            ? "bg-green-100 text-green-800"
+            : "bg-red-100 text-red-800"
+            } flex items-center justify-between shadow-sm border border-transparent`}
         >
           <div className="flex items-center">
             {message.type === "error" && (
