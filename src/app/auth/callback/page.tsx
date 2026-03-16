@@ -12,14 +12,14 @@ export default function AuthCallback() {
     // Handle error in hash
     const hash = window.location.hash;
     if (hash && hash.includes('error=')) {
-        const params = new URLSearchParams(hash.substring(1)); // remove #
-        const errorDescription = params.get('error_description');
-        setStatus(`Erreur: ${errorDescription?.replace(/\+/g, ' ') || 'Erreur inconnue'}`);
-        // Redirect back to profile after a delay
-        setTimeout(() => {
-             router.push('/'); // Fallback
-        }, 3000);
-        return;
+      const params = new URLSearchParams(hash.substring(1)); // remove #
+      const errorDescription = params.get('error_description');
+      setStatus(`Erreur: ${errorDescription?.replace(/\+/g, ' ') || 'Erreur inconnue'}`);
+      // Redirect back to profile after a delay
+      setTimeout(() => {
+        router.push('/'); // Fallback
+      }, 3000);
+      return;
     }
 
     const handleAuth = async () => {
@@ -29,29 +29,29 @@ export default function AuthCallback() {
       if (session) {
         setStatus('Connexion réussie. Redirection...');
         const role = session.user.user_metadata?.role;
-        
+
         let path = '/profile'; // Default
         if (role === 'admin') path = '/admin/profile';
         else if (role === 'parent') path = '/parent/profile';
         else if (role === 'child') path = '/child/profile';
-        
+
         router.push(path);
       } else {
-         // Wait for auth state change
-         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-            if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || session) {
-                setStatus('Connexion réussie. Redirection...');
-                const role = session?.user?.user_metadata?.role;
-                
-                let path = '/profile'; // Default
-                if (role === 'admin') path = '/admin/profile';
-                else if (role === 'parent') path = '/parent/profile';
-                else if (role === 'child') path = '/child/profile';
-                
-                router.push(path);
-            }
-         });
-         return () => subscription.unsubscribe();
+        // Wait for auth state change
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event: any, session: any) => {
+          if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || session) {
+            setStatus('Connexion réussie. Redirection...');
+            const role = session?.user?.user_metadata?.role;
+
+            let path = '/profile'; // Default
+            if (role === 'admin') path = '/admin/profile';
+            else if (role === 'parent') path = '/parent/profile';
+            else if (role === 'child') path = '/child/profile';
+
+            router.push(path);
+          }
+        });
+        return () => subscription.unsubscribe();
       }
     };
 

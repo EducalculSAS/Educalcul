@@ -96,7 +96,7 @@ export default function Connexion() {
     // Listen for auth changes (e.g. after email confirmation redirect)
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
+    } = supabase.auth.onAuthStateChange((event: any, session: any) => {
       if (event === "SIGNED_IN" && session) {
         checkSession();
       }
