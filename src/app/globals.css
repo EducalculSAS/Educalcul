@@ -1,26 +1,44 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --greek-blue: #3a6ea5;
+  --greek-cream: #fdf6e3;
+  --greek-gold: #c5a148;
+  --greek-bronze: #a97142;
+  --greek-terracotta: #e2725b;
+  --greek-olive: #556b2f;
+  --text-dark: #333;
+  --text-light: var(--greek-cream);
+  --card-bg: #ffffff;
+  --card-border-antique: 1px solid var(--greek-gold);
+  --font-display: "Cinzel", serif;
+  --font-body: "Nunito", sans-serif;
+  --nav-h: 64px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  /* padding-top: var(--nav-h);  Handled by layout or specific pages */
+  background-color: var(--greek-cream);
+  color: var(--text-dark);
+}
+
+@layer components {
+  .btn-primary-greek {
+    @apply bg-[var(--greek-bronze)] border border-[var(--greek-bronze)] text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-sm hover:bg-[var(--greek-gold)] hover:border-[var(--greek-gold)] hover:-translate-y-[1px] hover:shadow-md;
+  }
+
+  .btn-outline-light-greek {
+    @apply border border-[var(--greek-blue)] text-[var(--greek-blue)] bg-transparent font-medium px-5 py-2.5 rounded-lg transition-all duration-200 hover:bg-[var(--greek-blue)] hover:text-[var(--greek-cream)] hover:-translate-y-[1px];
+  }
+
+  .dashboard-card {
+    @apply transition-transform duration-300 ease-out border border-[var(--greek-gold)] bg-white shadow-sm rounded-md flex flex-col hover:-translate-y-1.5 hover:scale-[1.02] hover:shadow-lg;
+    box-shadow: 0 2px 8px rgba(169, 113, 66, 0.15);
+  }
+
+  .dashboard-card:hover {
+    box-shadow: 0 8px 20px rgba(197, 161, 72, 0.3) !important;
+  }
 }

@@ -1,0 +1,501 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import {
+  Plus,
+  Trash2,
+  GripVertical,
+  CheckCircle2,
+  Circle,
+  AlignLeft,
+  Type,
+  HelpCircle,
+  Lightbulb,
+  Sparkles,
+  Loader2,
+} from "lucide-react";
+
+import AIGeneratorModal from "./AIGeneratorModal";
+
+export interface Question {
+  id: string;
+  text: string;
+  type: "single_choice" | "multiple_choice" | "true_false" | "text_input";
+  points: number;
+  options?: string[];
+  correctAnswer?: string | string[];
+  explanation?: string;
+}
+
+interface QuizBuilderProps {
+  initialQuestions: Question[];
+  onChange: (questions: Question[]) => void;
+  onMetadataChange?: (metadata: any) => void;
+}
+
+export default function QuizBuilder({
+  initialQuestions,
+  onChange,
+  onMetadataChange,
+}: QuizBuilderProps) {
+  const [questions, setQuestions] = useState<Question[]>(
+    initialQuestions || []
+  );
+
+  // AI Generation State
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Load KaTeX for Math rendering
+  useEffect(() => {
+    // Inject KaTeX CSS
+    const link = document.createElement("link");
+    link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
+    link.rel = "stylesheet";
+    link.integrity =
+      "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
+    link.crossOrigin = "anonymous";
+    document.head.appendChild(link);
+
+    // Inject KaTeX JS
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
+    script.integrity =
+      "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8";
+    script.crossOrigin = "anonymous";
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // Inject Auto-render extension
+    const autoRenderScript = document.createElement("script");
+    autoRenderScript.src =
+      "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
+    autoRenderScript.integrity =
+      "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05";
+    autoRenderScript.crossOrigin = "anonymous";
+    autoRenderScript.defer = true;
+
+    autoRenderScript.onload = () => {
+      if (contentRef.current && (window as any).renderMathInElement) {
+        (window as any).renderMathInElement(contentRef.current, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true },
+          ],
+          throwOnError: false,
+        });
+      }
+    };
+    document.head.appendChild(autoRenderScript);
+
+    return () => {
+      if (document.head.contains(link)) document.head.removeChild(link);
+      if (document.head.contains(script)) document.head.removeChild(script);
+      if (document.head.contains(autoRenderScript))
+        document.head.removeChild(autoRenderScript);
+    };
+  }, []);
+
+  // Re-run math rendering when questions change
+  useEffect(() => {
+    if ((window as any).renderMathInElement && contentRef.current) {
+      setTimeout(() => {
+        (window as any).renderMathInElement(contentRef.current, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true },
+          ],
+          throwOnError: false,
+        });
+      }, 100);
+    }
+  }, [questions]);
+
+  // Sync state with props when initialQuestions changes
+  useEffect(() => {
+    if (
+      initialQuestions &&
+      JSON.stringify(initialQuestions) !== JSON.stringify(questions)
+    ) {
+      setQuestions(initialQuestions);
+    }
+  }, [initialQuestions]);
+
+  useEffect(() => {
+    onChange(questions);
+  }, [questions]);
+
+  const handleAiGenerate = async (params: any) => {
+    setIsGenerating(true);
+    try {
+      const res = await fetch("/api/admin/generate-quiz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(params),
+      });
+
+      const data = await res.json();
+      if (data.success && data.data) {
+        // Handle new response structure
+        const content = data.data.content || data.data; // Fallback
+        const metadata = data.data.metadata;
+
+        setQuestions([...questions, ...content]);
+
+        if (metadata && onMetadataChange) {
+          onMetadataChange(metadata);
+        }
+
+        setIsAiModalOpen(false);
+      } else {
+        alert("Erreur lors de la génération: " + (data.error || "Inconnue"));
+      }
+    } catch (e) {
+      console.error(e);
+      alert("Erreur de connexion au service IA");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const addQuestion = () => {
+    const newQuestion: Question = {
+      id: crypto.randomUUID(),
+      text: "",
+      type: "single_choice",
+      points: 1,
+      options: ["Option 1", "Option 2"],
+      correctAnswer: "Option 1",
+      explanation: "",
+    };
+    setQuestions([...questions, newQuestion]);
+  };
+
+  const updateQuestion = (id: string, updates: Partial<Question>) => {
+    setQuestions(
+      questions.map((q) => (q.id === id ? { ...q, ...updates } : q))
+    );
+  };
+
+  const removeQuestion = (id: string) => {
+    if (confirm("Supprimer cette question ?")) {
+      setQuestions(questions.filter((q) => q.id !== id));
+    }
+  };
+
+  const addOption = (questionId: string) => {
+    setQuestions(
+      questions.map((q) => {
+        if (q.id === questionId && q.options) {
+          return {
+            ...q,
+            options: [...q.options, `Option ${q.options.length + 1}`],
+          };
+        }
+        return q;
+      })
+    );
+  };
+
+  const updateOption = (questionId: string, index: number, value: string) => {
+    setQuestions(
+      questions.map((q) => {
+        if (q.id === questionId && q.options) {
+          const newOptions = [...q.options];
+          const oldValue = newOptions[index];
+          newOptions[index] = value;
+
+          // Also update correct answer if it matches the old value
+          let newCorrectAnswer = q.correctAnswer;
+          if (Array.isArray(newCorrectAnswer)) {
+            newCorrectAnswer = newCorrectAnswer.map((a) =>
+              a === oldValue ? value : a
+            );
+          } else if (newCorrectAnswer === oldValue) {
+            newCorrectAnswer = value;
+          }
+
+          return { ...q, options: newOptions, correctAnswer: newCorrectAnswer };
+        }
+        return q;
+      })
+    );
+  };
+
+  const removeOption = (questionId: string, index: number) => {
+    setQuestions(
+      questions.map((q) => {
+        if (q.id === questionId && q.options) {
+          const newOptions = q.options.filter((_, i) => i !== index);
+          return { ...q, options: newOptions };
+        }
+        return q;
+      })
+    );
+  };
+
+  const toggleCorrectAnswer = (questionId: string, optionValue: string) => {
+    setQuestions(
+      questions.map((q) => {
+        if (q.id === questionId) {
+          if (q.type === "multiple_choice") {
+            const currentAnswers = Array.isArray(q.correctAnswer)
+              ? q.correctAnswer
+              : [];
+            const newAnswers = currentAnswers.includes(optionValue)
+              ? currentAnswers.filter((a) => a !== optionValue)
+              : [...currentAnswers, optionValue];
+            return { ...q, correctAnswer: newAnswers };
+          } else {
+            return { ...q, correctAnswer: optionValue };
+          }
+        }
+        return q;
+      })
+    );
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg font-bold text-gray-800">
+          Questions ({questions.length})
+        </h3>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => setIsAiModalOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors text-sm font-medium"
+          >
+            <Sparkles size={16} />
+            Générer Quiz IA
+          </button>
+          <button
+            type="button"
+            onClick={addQuestion}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium"
+          >
+            <Plus size={16} />
+            Ajouter une Question
+          </button>
+        </div>
+      </div>
+
+      {isAiModalOpen && (
+        <AIGeneratorModal
+          type="quiz"
+          onGenerate={handleAiGenerate}
+          onClose={() => setIsAiModalOpen(false)}
+        />
+      )}
+
+      {questions.length === 0 ? (
+        <div className="text-center py-12 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50">
+          <p className="text-gray-500 mb-2">Aucune question ajoutée</p>
+          <button
+            type="button"
+            onClick={addQuestion}
+            className="text-blue-600 hover:text-blue-700 font-medium"
+          >
+            Commencer par ajouter une question
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-6" ref={contentRef}>
+          {questions.map((question, index) => (
+            <div
+              key={question.id}
+              className="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm"
+            >
+              <div className="p-4 bg-gray-50 border-b border-gray-100 flex items-start justify-between gap-4">
+                <div className="flex items-center gap-2 text-gray-400 mt-2">
+                  <span className="font-bold">#{index + 1}</span>
+                </div>
+
+                <div className="flex-1 space-y-4">
+                  <div className="flex gap-4">
+                    <input
+                      type="text"
+                      value={question.text}
+                      onChange={(e) =>
+                        updateQuestion(question.id, { text: e.target.value })
+                      }
+                      className="flex-1 bg-white border border-gray-200 rounded-lg p-2 font-medium focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Énoncé de la question..."
+                    />
+
+                    <select
+                      value={question.type}
+                      onChange={(e) =>
+                        updateQuestion(question.id, {
+                          type: e.target.value as any,
+                          // Reset options/answers based on type change if needed
+                          options:
+                            e.target.value === "true_false"
+                              ? ["Vrai", "Faux"]
+                              : e.target.value === "text_input"
+                              ? []
+                              : question.options?.length
+                              ? question.options
+                              : ["Option 1", "Option 2"],
+                          correctAnswer:
+                            e.target.value === "multiple_choice" ? [] : "",
+                        })
+                      }
+                      className="w-40 border-gray-200 rounded-lg text-sm bg-white"
+                    >
+                      <option value="single_choice">Choix Unique</option>
+                      <option value="multiple_choice">Choix Multiple</option>
+                      <option value="true_false">Vrai / Faux</option>
+                      <option value="text_input">Réponse Libre</option>
+                    </select>
+
+                    <div className="flex items-center gap-2 bg-white px-3 border border-gray-200 rounded-lg">
+                      <span className="text-xs uppercase text-gray-500 font-bold">
+                        Pts
+                      </span>
+                      <input
+                        type="number"
+                        value={question.points}
+                        onChange={(e) =>
+                          updateQuestion(question.id, {
+                            points: parseInt(e.target.value) || 0,
+                          })
+                        }
+                        className="w-12 border-none p-0 text-center font-medium focus:ring-0"
+                        min="0"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Options Editor */}
+                  {question.type !== "text_input" && (
+                    <div className="space-y-2 pl-2">
+                      {question.options?.map((option, optIndex) => (
+                        <div key={optIndex} className="flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              toggleCorrectAnswer(question.id, option)
+                            }
+                            className={`p-1 rounded-full transition-colors ${
+                              (
+                                Array.isArray(question.correctAnswer)
+                                  ? question.correctAnswer.includes(option)
+                                  : question.correctAnswer === option
+                              )
+                                ? "text-green-500 bg-green-50"
+                                : "text-gray-300 hover:text-gray-400"
+                            }`}
+                            title="Marquer comme bonne réponse"
+                          >
+                            {question.type === "multiple_choice" ? (
+                              <CheckCircle2 size={20} />
+                            ) : (
+                              <Circle size={20} />
+                            )}
+                          </button>
+
+                          <input
+                            type="text"
+                            value={option}
+                            onChange={(e) =>
+                              updateOption(
+                                question.id,
+                                optIndex,
+                                e.target.value
+                              )
+                            }
+                            readOnly={question.type === "true_false"}
+                            className={`flex-1 border-gray-200 rounded-lg py-1.5 px-3 text-sm ${
+                              question.type === "true_false"
+                                ? "bg-gray-50 text-gray-500 cursor-not-allowed"
+                                : ""
+                            }`}
+                          />
+
+                          {question.type !== "true_false" && (
+                            <button
+                              type="button"
+                              onClick={() =>
+                                removeOption(question.id, optIndex)
+                              }
+                              className="text-gray-300 hover:text-red-500"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          )}
+                        </div>
+                      ))}
+
+                      {question.type !== "true_false" && (
+                        <button
+                          type="button"
+                          onClick={() => addOption(question.id)}
+                          className="text-sm text-blue-600 hover:text-blue-700 font-medium pl-9 flex items-center gap-1"
+                        >
+                          <Plus size={14} /> Ajouter une option
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  {question.type === "text_input" && (
+                    <div className="pl-2">
+                      <div className="flex items-center gap-3">
+                        <span className="text-green-600 font-medium text-sm">
+                          Réponse attendue :
+                        </span>
+                        <input
+                          type="text"
+                          value={question.correctAnswer as string}
+                          onChange={(e) =>
+                            updateQuestion(question.id, {
+                              correctAnswer: e.target.value,
+                            })
+                          }
+                          className="flex-1 border-gray-200 rounded-lg py-1.5 px-3 text-sm"
+                          placeholder="Saisissez la réponse exacte attendue..."
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Explanation / Hint */}
+                  <div className="pt-2 border-t border-gray-100 mt-2">
+                    <div className="flex items-start gap-3">
+                      <Lightbulb size={18} className="text-yellow-500 mt-2" />
+                      <textarea
+                        value={question.explanation || ""}
+                        onChange={(e) =>
+                          updateQuestion(question.id, {
+                            explanation: e.target.value,
+                          })
+                        }
+                        className="flex-1 border-gray-200 rounded-lg text-sm min-h-[60px]"
+                        placeholder="Explication / Solution détaillée (affichée après la réponse)..."
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => removeQuestion(question.id)}
+                  className="text-gray-400 hover:text-red-500 transition-colors"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

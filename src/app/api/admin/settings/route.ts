@@ -1,0 +1,33 @@
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  const envVars = {
+    supabase: {
+      NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: maskSecret(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
+      NEXT_PUBLIC_SUPABASE_SERVICE_ROLE: maskSecret(process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE),
+    },
+    stripe: {
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+      STRIPE_SECRET_KEY: maskSecret(process.env.STRIPE_SECRET_KEY),
+    },
+    ai: {
+      GEMINI_API_KEY: maskSecret(process.env.GEMINI_API_KEY),
+    },
+    app: {
+      NODE_ENV: process.env.NODE_ENV,
+    }
+  };
+
+  return NextResponse.json(envVars);
+}
+
+function maskSecret(secret?: string) {
+  if (!secret) return "Non défini";
+  if (secret.length < 8) return "********";
+  return `${secret.substring(0, 4)}...${secret.substring(secret.length - 4)}`;
+}
+
+export async function POST(request: Request) {
+  return NextResponse.json({ message: "Modification des variables d'environnement non supportée via l'interface web." }, { status: 403 });
+}
