@@ -13,6 +13,7 @@ import {
   CheckCircle,
   AlertCircle,
   Trash2,
+  Clock,
 } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
 
@@ -24,6 +25,13 @@ export default function ChildProfilePage() {
     type: "success" | "error";
     text: string;
   } | null>(null);
+  const [showActivities, setShowActivities] = useState(false);
+  const [activities, setActivities] = useState<{
+    exercises: any[];
+    quizzes: any[];
+    courses: any[];
+  }>({ exercises: [], quizzes: [], courses: [] });
+  const [activeTab, setActiveTab] = useState<"exercises" | "quizzes" | "courses">("exercises");
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -56,6 +64,16 @@ export default function ChildProfilePage() {
 
       if (userData) {
         setUser(userData);
+        // Fetch activities
+        try {
+          const actRes = await fetch(`/api/child/activities?userId=${authUser.id}`);
+          if (actRes.ok) {
+            const actData = await actRes.json();
+            setActivities(actData);
+          }
+        } catch (e) {
+          console.error("Error fetching activities:", e);
+        }
       }
       setLoading(false);
     };
@@ -207,6 +225,15 @@ export default function ChildProfilePage() {
               <Shield className="w-5 h-5" />
               {user.child_username}
             </p>
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={() => setShowActivities(!showActivities)}
+                className="btn-primary-greek px-8 py-2.5 flex items-center gap-2 text-lg shadow-lg hover:scale-105 transition-transform"
+              >
+                <Trophy className="w-5 h-5 text-[var(--greek-gold)]" />
+                {showActivities ? "Masquer mes exploits" : "Voir mes activités"}
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -333,6 +360,118 @@ export default function ChildProfilePage() {
           </div>
         </div>
       </div>
+
+      {/* Activities Section */}
+      {showActivities && (
+        <div className="mt-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-[var(--greek-blue)] mb-2">Historique des Exploits</h2>
+            <div className="h-1 w-24 bg-[var(--greek-gold)] mx-auto rounded-full"></div>
+          </div>
+
+          <div className="bg-white rounded-[20px] shadow-xl border-2 border-[var(--greek-blue)]/10 overflow-hidden">
+            <div className="flex border-b border-gray-100 bg-gray-50/50">
+              {(["exercises", "quizzes", "courses"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex-1 py-4 text-lg font-bold transition-all ${
+                    activeTab === tab
+                      ? "text-[var(--greek-blue)] bg-white border-b-2 border-[var(--greek-blue)]"
+                      : "text-gray-400 hover:text-gray-600"
+                  }`}
+                >
+                  {tab === "exercises" && "Exercices"}
+                  {tab === "quizzes" && "Quiz"}
+                  {tab === "courses" && "Cours"}
+                </button>
+              ))}
+            </div>
+
+            <div className="p-6">
+              {activeTab === "exercises" && (
+                <div className="space-y-4">
+                  {activities.exercises.length === 0 ? (
+                    <EmptyActivities message="Aucun exercice terminé pour le moment. Lance-toi !" />
+                  ) : (
+                    activities.exercises.map((ex) => (
+                      <div key={ex.id} className="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-blue-100 hover:bg-blue-50 transition-colors">
+                        <div>
+                          <p className="font-bold text-[var(--greek-blue)] text-lg">{ex.exercises?.title || "Exercice"}</p>
+                          <p className="text-gray-500 text-sm">{new Date(ex.completed_at).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-2xl font-black text-[var(--greek-blue)]">{ex.score}/{ex.total_points}</p>
+                          <p className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-wider">Score</p>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+
+              {activeTab === "quizzes" && (
+                <div className="space-y-4">
+                  {activities.quizzes.length === 0 ? (
+                    <EmptyActivities message="Aucun quiz complété. Relève le défi !" />
+                  ) : (
+                    activities.quizzes.map((qz) => (
+                      <div key={qz.id} className="p-5 bg-yellow-50/30 rounded-xl border border-yellow-100 hover:bg-yellow-50/50 transition-colors">
+                        <div className="flex items-center justify-between mb-3">
+                          <p className="font-bold text-[var(--greek-blue)] text-xl">{qz.quizzes?.title || "Quiz"}</p>
+                          <div className="px-3 py-1 bg-white border border-yellow-200 rounded-full flex items-center gap-1.5 shadow-sm">
+                            <Clock className="w-4 h-4 text-[var(--greek-gold)]" />
+                            <span className="font-bold text-[var(--greek-blue)]">{Math.floor(qz.time_spent_seconds / 60)}m {qz.time_spent_seconds % 60}s</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <p className="text-gray-500 text-sm">{new Date(qz.completed_at).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</p>
+                          <div className="flex items-end gap-1">
+                            <span className="text-3xl font-black text-[var(--greek-blue)]">{Math.round((qz.score / qz.total_points) * 100)}%</span>
+                            <span className="text-gray-400 font-bold mb-1">({qz.score}/{qz.total_points})</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+
+              {activeTab === "courses" && (
+                <div className="space-y-4">
+                  {activities.courses.length === 0 ? (
+                    <EmptyActivities message="Tu n'as pas encore suivi de cours. Apprendre, c'est grandir !" />
+                  ) : (
+                    activities.courses.map((co) => (
+                      <div key={co.id} className="flex items-center justify-between p-4 bg-purple-50/50 rounded-xl border border-purple-100">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
+                            <CheckCircle className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <p className="font-bold text-[var(--greek-blue)] text-lg">{co.courses?.title || "Cours"}</p>
+                            <p className="text-purple-600 font-medium">Chapitre {co.chapter_index + 1} terminé</p>
+                          </div>
+                        </div>
+                        <p className="text-gray-400 text-sm italic">{new Date(co.completed_at).toLocaleDateString()}</p>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function EmptyActivities({ message }: { message: string }) {
+  return (
+    <div className="text-center py-12 px-6 border-2 border-dashed border-gray-200 rounded-2xl">
+      <Star className="w-12 h-12 text-gray-200 mx-auto mb-4" />
+      <p className="text-gray-500 text-lg italic">{message}</p>
     </div>
   );
 }

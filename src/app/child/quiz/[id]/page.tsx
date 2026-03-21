@@ -45,22 +45,23 @@ export default function QuizDetailPage() {
         return;
       }
 
-      const { data, error } = await supabase
-        .from("quizzes")
-        .select("*, courses(title)")
-        .eq("id", quizId)
-        .single();
-
-      if (error) {
-        console.error("Error fetching quiz:", error);
-      } else {
+      try {
+        const response = await fetch(`/api/admin/quizzes?id=${quizId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch quiz");
+        }
+        const data = await response.json();
         setQuiz(data);
+      } catch (error) {
+        console.error("Error fetching quiz:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchQuiz();
   }, [quizId, isPreview]);
+
 
   // Load KaTeX for Math rendering on the landing page
   useEffect(() => {
@@ -184,8 +185,27 @@ export default function QuizDetailPage() {
         <div className="flex-1 overflow-hidden">
           <QuizViewer 
             quiz={quiz} 
-            onComplete={(score: number, total: number) => {
-              console.log(`Quiz completed: ${score}/${total}`);
+            onComplete={async (score, total, timeSpent) => {
+              console.log(`Quiz completed: ${score}/${total} in ${timeSpent}s`);
+              const { data: { session } } = await supabase.auth.getSession();
+              if (session?.user) {
+                try {
+                  await fetch("/api/child/activities", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      type: "quiz",
+                      userId: session.user.id,
+                      itemId: quiz.id,
+                      score,
+                      totalPoints: total,
+                      timeSpent
+                    })
+                  });
+                } catch (e) {
+                  console.error("Failed to save quiz activity", e);
+                }
+              }
             }} 
           />
         </div>

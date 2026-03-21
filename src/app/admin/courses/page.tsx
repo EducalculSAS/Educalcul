@@ -419,10 +419,12 @@ export default function AdminCoursesPage() {
         thumbnail_url: string;
         folder_id: number | null;
         content_json: Chapter[];
+        level: string;
       } = {
         title: formData.title,
         description: formData.description,
         subject: formData.subject,
+        level: formData.level,
         status: formData.status as "published" | "draft" | "archived",
         thumbnail_url: formData.thumbnail_url,
         folder_id: formData.folder_id,
@@ -912,176 +914,147 @@ export default function AdminCoursesPage() {
 
       {/* Create Course Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden max-h-[90vh] flex flex-col">
-            <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50 flex-shrink-0">
-              <h3 className="text-lg font-bold text-gray-800">
-                {modalMode === "create"
-                  ? "Ajouter un cours"
-                  : "Modifier le cours"}
-              </h3>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600"
-              >
-                <XCircle size={24} />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
+            {/* Header */}
+            <div className="px-8 py-5 border-b border-gray-200 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <BookOpen size={22} className="text-[var(--greek-gold)]" />
+                <h3 className="text-lg font-bold font-[family-name:var(--font-display)]">
+                  {modalMode === "create" ? "Ajouter un cours" : "Modifier le cours"}
+                </h3>
+              </div>
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors text-white/70 hover:text-white">
+                <XCircle size={22} />
               </button>
             </div>
 
-            <form
-              onSubmit={handleSubmit}
-              className="p-6 space-y-4 overflow-y-auto flex-grow"
-            >
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Titre du cours
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.title}
-                  onChange={(e) =>
-                    setFormData({ ...formData, title: e.target.value })
-                  }
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                  placeholder="Ex: Les fractions (CM1)"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Matière
-                  </label>
-                  <select
-                    value={formData.subject}
-                    onChange={(e) =>
-                      setFormData({ ...formData, subject: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[var(--greek-gold)] focus:border-transparent outline-none transition-all"
-                  >
-                    <option value="Mathématiques">Mathématiques</option>
-                    <option value="Français">Français</option>
-                    <option value="Histoire">Histoire</option>
-                    <option value="Géographie">Géographie</option>
-                    <option value="Sciences">Sciences</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Niveau
-                  </label>
-                  <select
-                    value={formData.level}
-                    onChange={(e) =>
-                      setFormData({ ...formData, level: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[var(--greek-gold)] focus:border-transparent outline-none transition-all"
-                  >
-                    {SCHOOL_LEVELS.map((level) => (
-                      <option key={level.value} value={level.value}>
-                        {level.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Description
-                </label>
-                <textarea
-                  value={formData.description}
-                  onChange={(e) =>
-                    setFormData({ ...formData, description: e.target.value })
-                  }
-                  rows={3}
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                  placeholder="Description courte du cours..."
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Image de couverture
-                </label>
-                <div className="flex items-center gap-4">
-                  <div className="relative w-24 h-24 bg-gray-100 rounded-lg overflow-hidden border border-gray-200 flex-shrink-0">
-                    {formData.thumbnail_url ? (
-                      <img
-                        src={formData.thumbnail_url}
-                        alt="Preview"
-                        className="w-full h-full object-cover"
+            <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
+              <div className="flex-1 overflow-y-auto">
+                {/* Section 1: Informations */}
+                <div className="p-6 border-b border-gray-100">
+                  <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">1</span>
+                    Informations générales
+                  </h4>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Titre du cours</label>
+                      <input
+                        type="text" required
+                        value={formData.title}
+                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
+                        placeholder="Ex: Les fractions (CM1)"
                       />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <ImageIcon size={24} />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Matière</label>
+                        <select
+                          value={formData.subject}
+                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
+                        >
+                          <option value="Mathématiques">Mathématiques</option>
+                          <option value="Français">Français</option>
+                          <option value="Histoire">Histoire</option>
+                          <option value="Géographie">Géographie</option>
+                          <option value="Sciences">Sciences</option>
+                        </select>
                       </div>
-                    )}
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Niveau scolaire</label>
+                        <select
+                          value={formData.level}
+                          onChange={(e) => setFormData({ ...formData, level: e.target.value })}
+                          className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
+                        >
+                          {SCHOOL_LEVELS.map((level) => (<option key={level.value} value={level.value}>{level.label}</option>))}
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
+                      <textarea
+                        value={formData.description}
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                        rows={2}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50 resize-none"
+                        placeholder="Description courte du cours..."
+                      />
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleFileUpload}
-                      className="block w-full text-sm text-gray-500
-                        file:mr-4 file:py-2 file:px-4
-                        file:rounded-full file:border-0
-                        file:text-sm file:font-semibold
-                        file:bg-[var(--greek-blue)] file:text-white
-                        hover:file:bg-blue-700
-                      "
-                    />
-                    <p className="mt-1 text-xs text-gray-500">
-                      PNG, JPG jusqu'à 2MB
-                    </p>
-                    {uploading && (
-                      <p className="text-sm text-blue-500 mt-1">
-                        Téléchargement en cours...
-                      </p>
-                    )}
+                </div>
+
+                {/* Section 2: Paramètres */}
+                <div className="p-6 border-b border-gray-100 bg-gray-50/50">
+                  <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">2</span>
+                    Paramètres de publication
+                  </h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Statut</label>
+                      <div className="flex gap-1.5">
+                        {[{ v: "draft", l: "Brouillon" }, { v: "published", l: "Publié" }, { v: "archived", l: "Archivé" }].map((s) => (
+                          <button key={s.v} type="button" onClick={() => setFormData({ ...formData, status: s.v as "draft" | "published" | "archived" })}
+                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-gray-200 bg-white"}`}>
+                            {s.l}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Image de couverture</label>
+                      <div className="flex items-center gap-3">
+                        {formData.thumbnail_url && (
+                          <div className="relative w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-gray-200 flex-shrink-0">
+                            <img src={formData.thumbnail_url} alt="Preview" className="w-full h-full object-cover" />
+                          </div>
+                        )}
+                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium flex-1 justify-center border border-dashed border-gray-300">
+                          <ImageIcon size={16} />
+                          {uploading ? "Upload..." : "Choisir"}
+                          <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
+                        </label>
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                {/* Section 3: Contenu */}
+                <div className="p-6">
+                  <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">3</span>
+                    Contenu du cours
+                  </h4>
+                  <CourseBuilder
+                    initialContent={formData.content_json}
+                    onChange={(chapters) => setFormData({ ...formData, content_json: chapters })}
+                  />
                 </div>
               </div>
 
-              {/* Course Content Builder */}
-              <div className="border-t border-gray-100 pt-4">
-                <h4 className="font-semibold text-gray-800 mb-2">
-                  Contenu du cours
-                </h4>
-                <CourseBuilder
-                  initialContent={formData.content_json}
-                  onChange={(chapters) =>
-                    setFormData({ ...formData, content_json: chapters })
-                  }
-                />
-              </div>
-
-              <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-6 py-2 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
-                >
+              {/* Footer */}
+              <div className="flex justify-end gap-3 p-6 border-t border-gray-200 bg-white flex-shrink-0">
+                <button type="button" onClick={() => setIsModalOpen(false)}
+                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-gray-200">
                   Annuler
                 </button>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="px-6 py-2 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isSubmitting && (
-                    <Loader2 className="animate-spin" size={18} />
-                  )}
-                  {modalMode === "create" ? "Créer" : "Sauvegarder"}
+                <button type="submit" disabled={isSubmitting}
+                  className="px-8 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)]/90 transition-colors disabled:opacity-50 flex items-center gap-2 shadow-md shadow-blue-900/20">
+                  {isSubmitting && <Loader2 className="animate-spin" size={16} />}
+                  {modalMode === "create" ? "Créer le cours" : "Sauvegarder"}
                 </button>
               </div>
             </form>
           </div>
         </div>
       )}
+
+
+
 
       {/* Create Folder Modal */}
       {isFolderModalOpen && (

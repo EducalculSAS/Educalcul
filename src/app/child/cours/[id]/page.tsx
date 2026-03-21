@@ -36,22 +36,23 @@ export default function CourseDetailPage() {
         return;
       }
 
-      const { data, error } = await supabase
-        .from("courses")
-        .select("*")
-        .eq("id", courseId)
-        .single();
-
-      if (error) {
-        console.error("Error fetching course:", error);
-      } else {
+      try {
+        const response = await fetch(`/api/admin/courses?id=${courseId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch course");
+        }
+        const data = await response.json();
         setCourse(data);
+      } catch (error) {
+        console.error("Error fetching course:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchCourse();
   }, [courseId, isPreview]);
+
 
   // Load KaTeX for Math rendering on the landing page
   useEffect(() => {
@@ -167,6 +168,25 @@ export default function CourseDetailPage() {
         <div className="flex-1 overflow-hidden">
           <CourseViewer 
             course={course} 
+            onChapterComplete={async (chapterIndex) => {
+              const { data: { session } } = await supabase.auth.getSession();
+              if (session?.user) {
+                try {
+                  await fetch("/api/child/activities", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      type: "course",
+                      userId: session.user.id,
+                      itemId: course.id,
+                      chapterIndex
+                    })
+                  });
+                } catch (e) {
+                  console.error("Failed to save course activity", e);
+                }
+              }
+            }}
           />
         </div>
       </div>

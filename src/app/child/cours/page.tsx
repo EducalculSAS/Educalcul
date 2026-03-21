@@ -12,41 +12,54 @@ export default function ChildCoursesPage() {
   const [isRendering, setIsRendering] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
 
+
   useEffect(() => {
     const fetchCourses = async () => {
-      // Fetch all courses with folders
-      const { data: coursesData, error } = await supabase
-        .from("courses")
-        .select(
-          `
-          id, 
-          title, 
-          description, 
-          thumbnail_url, 
-          subject,
-          folder_id,
-          course_folders (
-            id,
-            name,
-            color
-          )
-        `
-        )
-        .eq("status", "published")
-        .order("title");
+      setLoading(true);
+      try {
+        // 1. Get the child's grade level from their profile
+        const { data: { session } } = await supabase.auth.getSession();
+        let childLevel: string | null = null;
 
-      if (error) {
-        if (error.code !== "PGRST116") {
-          console.error("Error fetching courses:", error);
+        if (session) {
+          const { data: userData } = await supabase
+            .from("users")
+            .select("grade_level")
+            .eq("auth_id", session.user.id)
+            .maybeSingle();
+          childLevel = userData?.grade_level || null;
+          console.log("Child Level identified for Courses:", childLevel);
         }
-      } else {
-        setCourses(coursesData || []);
+
+        // 2. Fetch ALL published courses via our Admin API (Bypasses RLS)
+        const response = await fetch("/api/admin/courses?status=published");
+        if (!response.ok) throw new Error("Failed to fetch courses from API");
+        
+        const allPublishedCourses = await response.json();
+        console.log("Total published courses found:", allPublishedCourses?.length);
+
+        // 3. Filter by level in the frontend (case-insensitive)
+        let filtered = allPublishedCourses || [];
+        if (childLevel) {
+          filtered = filtered.filter((c: any) => 
+            c.level && c.level.toLowerCase() === childLevel.toLowerCase()
+          );
+        }
+        
+        console.log("Courses after level filtering:", filtered.length);
+        setCourses(filtered);
+      } catch (error) {
+        console.error("Error in fetchCourses:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchCourses();
   }, []);
+
+
+
 
   // Handle LaTeX rendering for the course cards
   useEffect(() => {

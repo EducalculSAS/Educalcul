@@ -16,7 +16,25 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
+    const id = searchParams.get("id");
     const courseId = searchParams.get("course_id");
+
+    if (id) {
+      const { data, error } = await supabaseAdmin
+        .from("exercises")
+        .select(`
+          *,
+          courses (title),
+          exercise_folders (name, color)
+        `)
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        return NextResponse.json({ error: error.message }, { status: 400 });
+      }
+      return NextResponse.json(data);
+    }
 
     let query = supabaseAdmin
       .from("exercises")
@@ -77,6 +95,7 @@ export async function POST(request: Request) {
         type,
         level: level || "6eme",
         status: status || "draft",
+        is_published: status === "published" || status === "active",
         folder_id: folder_id || null,
         thumbnail_url,
         content_json,
@@ -133,6 +152,7 @@ export async function PUT(request: Request) {
         type,
         level,
         status,
+        is_published: status === "published" || status === "active",
         folder_id: folder_id || null,
         thumbnail_url,
         content_json,

@@ -66,7 +66,8 @@ export default function Navbar() {
   }, []);
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
+    try { await supabase.auth.signOut(); } catch (e) { console.error(e); }
+    localStorage.clear();
     setUser(null);
     setUserRole(null);
     window.location.href = "/";

@@ -15,7 +15,7 @@ import {
   Loader2,
 } from "lucide-react";
 
-import AIGeneratorModal from "./AIGeneratorModal";
+import AIChatWindow from "./AIChatWindow";
 
 export interface Question {
   id: string;
@@ -45,6 +45,7 @@ export default function QuizBuilder({
   // AI Generation State
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [selectedLevel, setSelectedLevel] = useState("cm1");
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Load KaTeX for Math rendering
@@ -267,6 +268,24 @@ export default function QuizBuilder({
           Questions ({questions.length})
         </h3>
         <div className="flex gap-2">
+          <select
+            value={selectedLevel}
+            onChange={(e) => setSelectedLevel(e.target.value)}
+            className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+          >
+            <option value="cp">CP</option>
+            <option value="ce1">CE1</option>
+            <option value="ce2">CE2</option>
+            <option value="cm1">CM1</option>
+            <option value="cm2">CM2</option>
+            <option value="6eme">6ème</option>
+            <option value="5eme">5ème</option>
+            <option value="4eme">4ème</option>
+            <option value="3eme">3ème</option>
+            <option value="2nde">2nde</option>
+            <option value="1ere">1ère</option>
+            <option value="terminale">Terminale</option>
+          </select>
           <button
             type="button"
             onClick={() => setIsAiModalOpen(true)}
@@ -287,8 +306,9 @@ export default function QuizBuilder({
       </div>
 
       {isAiModalOpen && (
-        <AIGeneratorModal
+        <AIChatWindow
           type="quiz"
+          level={selectedLevel}
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
         />

@@ -28,7 +28,6 @@ interface AIResponse<T> {
     time_limit: number;
     max_attempts: number;
     type?: string;
-    level?: string;
     grading_type?: string;
     tags?: string[];
   };
@@ -1751,6 +1750,7 @@ export const AI = {
 
     let generatedBlocks: Block[] = [];
     const topicLower = params.topic.toLowerCase();
+    const questionCount = params.count || 5;
 
     // Check if non-math topic
     if (
@@ -1758,37 +1758,40 @@ export const AI = {
         topicLower.includes(k)
       )
     ) {
-      generatedBlocks = generateTopicQuestions(params.topic, 5, "text_input");
+      generatedBlocks = generateTopicQuestions(params.topic, questionCount, "text_input");
     } else {
       // Math generation
       generatedBlocks = generateMathQuestions(
         params.topic,
         params.level,
-        params.count || 5, // Use user requested count
+        questionCount,
         "text_input"
       );
     }
 
-    // Generate content structure with a leading Consigne block
-    const generatedPages: Page[] = [
-      {
-        id: generateId(),
-        title: `Exercices : ${params.topic}`,
-        blocks: [
-          {
-            id: generateId(),
-            type: "text",
-            title: "Énoncé",
-            content: `<div class="p-4 bg-blue-50 border-l-4 border-[var(--greek-blue)] text-blue-900 rounded-r">
-                <p class="font-bold mb-2">Consigne :</p>
-                <p>Traitez les questions suivantes avec attention. Les exercices portent sur : <strong class="text-[var(--greek-blue)]">${params.topic}</strong> (Niveau: ${params.level}).</p>
-                ${params.instructions ? `<p class="mt-2 text-sm italic">Note : ${params.instructions}</p>` : ""}
-              </div>`,
-          },
-          ...generatedBlocks
-        ],
-      },
-    ];
+    // Build pages: one consigne page + question pages (grouped or single)
+    const consignePage: Page = {
+      id: generateId(),
+      title: "Consigne",
+      blocks: [
+        {
+          id: generateId(),
+          type: "text",
+          title: "Présentation de l'exercice",
+          content: `<div class="p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-900 rounded-r"><h3 class="font-bold text-lg mb-2">${params.topic}</h3><p>Lis attentivement chaque question et réponds dans le champ prévu. Montre toute ta démarche si nécessaire.</p></div>`,
+          points: 0,
+        },
+      ],
+    };
+
+    const questionPage: Page = {
+      id: generateId(),
+      title: `Exercices : ${params.topic}`,
+      blocks: generatedBlocks,
+    };
+
+    // Generate content structure
+    const generatedPages: Page[] = [consignePage, questionPage];
 
     return {
       content: generatedPages,
@@ -1798,14 +1801,13 @@ export const AI = {
         difficulty_level: difficultyLevel,
         time_limit:
           difficultyLevel === "easy"
-            ? 10
+            ? 15
             : difficultyLevel === "medium"
-            ? 20
-            : 30,
-        max_attempts: 2,
+            ? 30
+            : 45,
+        max_attempts: 3,
         type: "standard",
         grading_type: "ai",
-        level: params.level, // IMPORTANT: bind the level
         tags: ["Mathématiques", params.topic, params.level],
       },
     };

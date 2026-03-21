@@ -45,7 +45,8 @@ export default function AdminSidebar() {
   ];
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    try { await supabase.auth.signOut(); } catch (e) { console.error(e); }
+    localStorage.clear();
     router.push("/auth/connexion");
   };
 

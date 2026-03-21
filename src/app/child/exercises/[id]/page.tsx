@@ -46,22 +46,23 @@ export default function ExerciseDetailPage() {
         return;
       }
 
-      const { data, error } = await supabase
-        .from("exercises")
-        .select("*, courses(title)")
-        .eq("id", exerciseId)
-        .single();
-
-      if (error) {
-        console.error("Error fetching exercise:", error);
-      } else {
+      try {
+        const response = await fetch(`/api/admin/exercises?id=${exerciseId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch exercise");
+        }
+        const data = await response.json();
         setExercise(data);
+      } catch (error) {
+        console.error("Error fetching exercise:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchExercise();
   }, [exerciseId, isPreview]);
+
 
   // Load KaTeX for Math rendering on the landing page
   useEffect(() => {
@@ -175,8 +176,26 @@ export default function ExerciseDetailPage() {
         <div className="flex-1 overflow-hidden">
           <ExerciseViewer 
             exercise={exercise} 
-            onComplete={(score: number, total: number) => {
+            onComplete={async (score: number, total: number) => {
               console.log(`Exercise completed: ${score}/${total}`);
+              const { data: { session } } = await supabase.auth.getSession();
+              if (session?.user) {
+                try {
+                  await fetch("/api/child/activities", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      type: "exercise",
+                      userId: session.user.id,
+                      itemId: exercise.id,
+                      score,
+                      totalPoints: total
+                    })
+                  });
+                } catch (e) {
+                  console.error("Failed to save exercise activity", e);
+                }
+              }
             }} 
           />
         </div>

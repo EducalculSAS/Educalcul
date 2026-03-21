@@ -23,7 +23,7 @@ interface QuizViewerProps {
     time_limit_minutes?: number | null;
     level?: string;
   };
-  onComplete?: (score: number, totalPoints: number) => void;
+  onComplete?: (score: number, totalPoints: number, timeSpent: number) => void;
 }
 
 export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
@@ -43,6 +43,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
   const [questionFeedbacks, setQuestionFeedbacks] = useState<
     Record<number, string>
   >({});
+  const [startTime] = useState(Date.now());
   const contentRef = useRef<HTMLDivElement>(null);
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -193,15 +194,13 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
     setQuestionResults(newResults);
     setQuestionFeedbacks(newFeedbacks);
     setIsAnswerSubmitted(true);
-    setShowExplanation(true);
-    setShowExplanation(true);
-    setShowExplanation(true);
     setIsValidating(false);
     setQuizCompleted(true);
 
     if (onComplete) {
-      const totalPoints = questions.reduce((acc, q) => acc + q.points, 0);
-      onComplete(totalScore, totalPoints);
+      const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);
+      const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+      onComplete(totalScore, totalPoints, timeSpent);
     }
   };
 

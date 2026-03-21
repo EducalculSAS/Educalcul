@@ -29,9 +29,10 @@ interface CourseViewerProps {
     content_json: Chapter[] | null;
   };
   onComplete?: () => void;
+  onChapterComplete?: (chapterIndex: number) => void;
 }
 
-export default function CourseViewer({ course, onComplete }: CourseViewerProps) {
+export default function CourseViewer({ course, onComplete, onChapterComplete }: CourseViewerProps) {
   const chapters = course.content_json || [];
   const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
@@ -184,9 +185,11 @@ export default function CourseViewer({ course, onComplete }: CourseViewerProps) 
     if (currentLessonIndex < currentChapter.lessons.length - 1) {
       setCurrentLessonIndex(currentLessonIndex + 1);
     } else if (currentChapterIndex < chapters.length - 1) {
+      if (onChapterComplete) onChapterComplete(currentChapterIndex);
       setCurrentChapterIndex(currentChapterIndex + 1);
       setCurrentLessonIndex(0);
     } else {
+      if (onChapterComplete) onChapterComplete(currentChapterIndex);
       setCourseCompleted(true);
       if (onComplete) onComplete();
     }

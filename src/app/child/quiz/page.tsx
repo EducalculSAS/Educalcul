@@ -19,40 +19,50 @@ export default function ChildQuizPage() {
 
   useEffect(() => {
     const fetchQuizzes = async () => {
-      // Fetch all quizzes with folders
-      const { data: quizzesData, error } = await supabase
-        .from("quizzes")
-        .select(
-          `
-          id, 
-          title, 
-          description, 
-          difficulty_level, 
-          course_id, 
-          courses(title),
-          folder_id,
-          quiz_folders (
-            id,
-            name,
-            color
-          )
-        `
-        )
-        .eq("status", "published")
-        .order("title");
+      setLoading(true);
+      try {
+        // 1. Get the child's grade level from their profile
+        const { data: { session } } = await supabase.auth.getSession();
+        let childLevel: string | null = null;
 
-      if (error) {
-        if (error.code !== "PGRST116") {
-          console.error("Error fetching quizzes:", error);
+        if (session) {
+          const { data: userData } = await supabase
+            .from("users")
+            .select("grade_level")
+            .eq("auth_id", session.user.id)
+            .maybeSingle();
+          childLevel = userData?.grade_level || null;
+          console.log("Child Level identified for Quizzes:", childLevel);
         }
-      } else {
-        setQuizzes(quizzesData || []);
+
+        // 2. Fetch ALL published quizzes via our Admin API (Bypasses RLS)
+        const response = await fetch("/api/admin/quizzes?status=published");
+        if (!response.ok) throw new Error("Failed to fetch quizzes from API");
+        
+        const allPublishedQuizzes = await response.json();
+        console.log("Total published quizzes found:", allPublishedQuizzes?.length);
+
+        // 3. Filter by level in the frontend (case-insensitive)
+        let filtered = allPublishedQuizzes || [];
+        if (childLevel) {
+          filtered = filtered.filter((q: any) => 
+            q.level && q.level.toLowerCase() === childLevel.toLowerCase()
+          );
+        }
+        
+        console.log("Quizzes after level filtering:", filtered.length);
+        setQuizzes(filtered);
+      } catch (error) {
+        console.error("Error in fetchQuizzes:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchQuizzes();
   }, []);
+
+
 
   // Group quizzes by folder
   const groupedQuizzes = quizzes.reduce((acc, quiz) => {

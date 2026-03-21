@@ -16,7 +16,25 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
+    const id = searchParams.get("id");
     const courseId = searchParams.get("course_id");
+
+    if (id) {
+      const { data, error } = await supabaseAdmin
+        .from("quizzes")
+        .select(`
+          *,
+          courses (title),
+          quiz_folders (name, color)
+        `)
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        return NextResponse.json({ error: error.message }, { status: 400 });
+      }
+      return NextResponse.json(data);
+    }
 
     let query = supabaseAdmin
       .from("quizzes")

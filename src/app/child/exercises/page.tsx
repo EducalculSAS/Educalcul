@@ -19,44 +19,52 @@ export default function ChildExercisesPage() {
 
   useEffect(() => {
     const fetchExercises = async () => {
-      // Fetch all exercises with folders
-      // Note: Assuming 'exercises' table exists. If not, we handle the error.
-      const { data: exercisesData, error } = await supabase
-        .from("exercises")
-        .select(
-          `
-          id, 
-          title, 
-          description, 
-          difficulty:difficulty_level, 
-          points:points_reward, 
-          courses(title),
-          folder_id,
-          exercise_folders (
-            id,
-            name,
-            color
-          )
-        `
-        )
-        .eq("status", "published")
-        .order("title");
+      setLoading(true);
+      try {
+        // 1. Get the child's grade level from their profile
+        const { data: { session } } = await supabase.auth.getSession();
+        let childLevel: string | null = null;
 
-      if (error) {
-        if (error.code !== "PGRST116" && error.code !== "42P01") {
-          // 42P01 is undefined_table
-          console.error("Error fetching exercises:", error);
+        if (session) {
+          const { data: userData, error: userError } = await supabase
+            .from("users")
+            .select("grade_level")
+            .eq("auth_id", session.user.id)
+            .maybeSingle();
+          
+          if (userError) console.error("Error fetching user profile:", userError);
+          childLevel = userData?.grade_level || null;
+          console.log("Child Level identified:", childLevel);
         }
-        // If table doesn't exist or other error, we might want to show empty state or mock data?
-        // For now, let's just set empty to be safe.
-      } else {
-        setExercises(exercisesData || []);
+
+        // 2. Fetch ALL published exercises via our Admin API (Bypasses RLS)
+        const response = await fetch("/api/admin/exercises?status=published");
+        if (!response.ok) throw new Error("Failed to fetch exercises from API");
+        
+        const allPublishedExercises = await response.json();
+        console.log("Total published exercises found:", allPublishedExercises?.length);
+
+        // 3. Filter by level in the frontend (case-insensitive)
+        let filtered = allPublishedExercises || [];
+        if (childLevel) {
+          filtered = filtered.filter((ex: any) => 
+            ex.level && ex.level.toLowerCase() === childLevel.toLowerCase()
+          );
+        }
+        
+        console.log("Exercises after level filtering:", filtered.length);
+        setExercises(filtered);
+      } catch (error) {
+        console.error("Error in fetchExercises:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchExercises();
   }, []);
+
+
 
   // Group exercises by folder
   const groupedExercises = exercises.reduce((acc, exercise) => {

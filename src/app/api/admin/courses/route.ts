@@ -77,6 +77,7 @@ export async function POST(request: Request) {
         thumbnail_url,
         folder_id: folder_id || null,
         content_json: content_json || [],
+        is_published: status === "published",
       })
       .select()
       .single();
@@ -125,6 +126,7 @@ export async function PUT(request: Request) {
         thumbnail_url,
         folder_id: folder_id || null,
         content_json: content_json || [],
+        is_published: status === "published",
       })
       .eq("id", id)
       .select()

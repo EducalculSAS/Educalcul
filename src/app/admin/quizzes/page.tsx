@@ -10,7 +10,6 @@ import {
   Edit,
   Trash2,
   X,
-  FileText,
   Clock,
   Folder,
   FolderPlus,
@@ -18,7 +17,11 @@ import {
   Home,
   ImageIcon,
   XCircle,
+  FileText,
   BookOpen,
+  BrainCircuit,
+  Zap,
+  GraduationCap,
   Sparkles,
   Loader2,
   Eye,
@@ -113,7 +116,7 @@ export default function AdminQuizzesPage() {
     course_id: "",
     folder_id: "" as string | number,
     time_limit_minutes: 0,
-    difficulty_level: "moyen",
+    difficulty_level: "medium",
     type: "standard",
     level: "6eme",
     grading_type: "auto",
@@ -390,14 +393,14 @@ export default function AdminQuizzesPage() {
       const metadata = data.data.metadata;
 
       setFormData({
-        title: metadata?.title || "Quiz généré par IA",
+        title: metadata?.title || `Quiz : ${params.topic}`,
         description: metadata?.description || "",
         course_id: "",
         folder_id: currentFolderId || "",
         time_limit_minutes: metadata?.time_limit || 10,
-        difficulty_level: metadata?.difficulty_level || "moyen",
+        difficulty_level: params.difficulty || metadata?.difficulty_level || "medium",
         type: metadata?.type || "standard",
-        level: metadata?.level || "6eme",
+        level: params.level || metadata?.level || "6eme",
         grading_type: metadata?.grading_type || "auto",
         max_attempts: metadata?.max_attempts || 0,
         status: "draft",
@@ -455,7 +458,7 @@ export default function AdminQuizzesPage() {
         course_id: "",
         folder_id: "",
         time_limit_minutes: 0,
-        difficulty_level: "moyen",
+        difficulty_level: "medium",
         type: "standard",
         level: "6eme",
         grading_type: "auto",
@@ -504,7 +507,7 @@ export default function AdminQuizzesPage() {
       course_id: quiz.course_id || "",
       folder_id: quiz.folder_id || "",
       time_limit_minutes: quiz.time_limit_minutes || 0,
-      difficulty_level: quiz.difficulty_level || "moyen",
+      difficulty_level: quiz.difficulty_level || "medium",
       type: quiz.type || "standard",
       level: quiz.level || "6eme",
       grading_type: quiz.grading_type || "auto",
@@ -527,7 +530,7 @@ export default function AdminQuizzesPage() {
         course_id: quiz.course_id || "",
         folder_id: quiz.folder_id || "",
         time_limit_minutes: quiz.time_limit_minutes || 0,
-        difficulty_level: quiz.difficulty_level || "moyen",
+        difficulty_level: quiz.difficulty_level || "medium",
         type: quiz.type || "standard",
         level: quiz.level || "6eme",
         grading_type: quiz.grading_type || "auto",
@@ -544,7 +547,7 @@ export default function AdminQuizzesPage() {
         course_id: "",
         folder_id: "",
         time_limit_minutes: 0,
-        difficulty_level: "moyen",
+        difficulty_level: "medium",
         type: "standard",
         level: "6eme",
         grading_type: "auto",
@@ -639,7 +642,7 @@ export default function AdminQuizzesPage() {
                   course_id: "",
                   folder_id: currentFolderId || "",
                   time_limit_minutes: 0,
-                  difficulty_level: "moyen",
+                  difficulty_level: "medium",
                   type: "standard",
                   level: "6eme",
                   grading_type: "auto",
@@ -1023,312 +1026,188 @@ export default function AdminQuizzesPage() {
 
       {/* Modal Création/Édition */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-6 border-b border-gray-100">
-              <h2 className="text-xl font-bold text-gray-900">
-                {editingQuiz ? "Modifier le quiz" : "Nouveau quiz"}
-              </h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600"
-              >
-                <X size={24} />
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
+            {/* Header */}
+            <div className="px-8 py-5 border-b border-gray-200 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <BrainCircuit size={22} className="text-[var(--greek-gold)]" />
+                <h2 className="text-lg font-bold font-[family-name:var(--font-display)]">
+                  {editingQuiz ? "Modifier le quiz" : "Nouveau quiz"}
+                </h2>
+              </div>
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors text-white/70 hover:text-white">
+                <X size={22} />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Titre
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.title}
-                      onChange={(e) =>
-                        setFormData({ ...formData, title: e.target.value })
-                      }
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                      placeholder="Ex: Les équations du second degré"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Cours associé
-                    </label>
-                    <select
-                      value={formData.course_id}
-                      onChange={(e) =>
-                        setFormData({ ...formData, course_id: e.target.value })
-                      }
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                    >
-                      <option value="">Sélectionner un cours</option>
-                      {courses.map((c) => (
-                        <option key={c.id} value={c.id}>
-                          {c.title}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Dossier
-                    </label>
-                    <select
-                      value={formData.folder_id}
-                      onChange={(e) =>
-                        setFormData({ ...formData, folder_id: e.target.value })
-                      }
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                    >
-                      <option value="">Aucun (Racine)</option>
-                      {folders.map((f) => (
-                        <option key={f.id} value={f.id}>
-                          {f.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Niveau
-                    </label>
-                    <select
-                      value={formData.level}
-                      onChange={(e) =>
-                        setFormData({ ...formData, level: e.target.value })
-                      }
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                    >
-                      {SCHOOL_LEVELS.map((level) => (
-                        <option key={level.value} value={level.value}>
-                          {level.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
+              <div className="flex-1 overflow-y-auto">
+                {/* Section 1: Informations */}
+                <div className="p-6 border-b border-gray-100">
+                  <h3 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">1</span>
+                    Informations générales
+                  </h3>
+                  <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Type
-                      </label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Titre du quiz</label>
+                      <input
+                        type="text" required
+                        value={formData.title}
+                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
+                        placeholder="Ex: Les équations du second degré"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Cours associé</label>
+                        <select
+                          value={formData.course_id}
+                          onChange={(e) => setFormData({ ...formData, course_id: e.target.value })}
+                          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
+                        >
+                          <option value="">Aucun</option>
+                          {courses.map((c) => (<option key={c.id} value={c.id}>{c.title}</option>))}
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Dossier</label>
+                        <select
+                          value={formData.folder_id}
+                          onChange={(e) => setFormData({ ...formData, folder_id: e.target.value })}
+                          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
+                        >
+                          <option value="">Racine</option>
+                          {folders.map((f) => (<option key={f.id} value={f.id}>{f.name}</option>))}
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
+                      <textarea
+                        rows={2}
+                        value={formData.description}
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50 resize-none"
+                        placeholder="Description du quiz..."
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2: Paramètres pédagogiques */}
+                <div className="p-6 border-b border-gray-100 bg-gray-50/50">
+                  <h3 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">2</span>
+                    Paramètres pédagogiques
+                  </h3>
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Niveau scolaire</label>
                       <select
-                        value={formData.type || "standard"}
-                        onChange={(e) =>
-                          setFormData({ ...formData, type: e.target.value })
-                        }
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+                        value={formData.level}
+                        onChange={(e) => setFormData({ ...formData, level: e.target.value })}
+                        className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
                       >
-                        {QUIZ_TYPES.map((t) => (
-                          <option key={t.value} value={t.value}>
-                            {t.label}
-                          </option>
-                        ))}
+                        {SCHOOL_LEVELS.map((level) => (<option key={level.value} value={level.value}>{level.label}</option>))}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Notation
-                      </label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Difficulté</label>
+                      <div className="flex gap-1.5">
+                        {[{ v: "easy", l: "Facile", c: "text-green-700 border-green-300 bg-green-50" }, { v: "medium", l: "Moyen", c: "text-blue-700 border-blue-300 bg-blue-50" }, { v: "hard", l: "Difficile", c: "text-red-700 border-red-300 bg-red-50" }].map((d) => (
+                          <button key={d.v} type="button" onClick={() => setFormData({ ...formData, difficulty_level: d.v as any })}
+                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.difficulty_level === d.v ? d.c + " shadow-sm" : "text-gray-400 border-gray-200 bg-white"}`}>
+                            {d.l}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Statut</label>
+                      <div className="flex gap-1.5">
+                        {[{ v: "draft", l: "Brouillon" }, { v: "published", l: "Publié" }, { v: "archived", l: "Archivé" }].map((s) => (
+                          <button key={s.v} type="button" onClick={() => setFormData({ ...formData, status: s.v as "draft" | "published" | "archived" })}
+                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-gray-200 bg-white"}`}>
+                            {s.l}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Correction</label>
                       <select
-                        value={formData.grading_type || "auto"}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            grading_type: e.target.value,
-                          })
-                        }
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+                        value={formData.grading_type}
+                        onChange={(e) => setFormData({ ...formData, grading_type: e.target.value as any })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                       >
                         <option value="auto">Automatique</option>
+                        <option value="ai">IA</option>
                         <option value="manual">Manuelle</option>
-                        <option value="mixed">Mixte</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 mt-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Type</label>
+                      <select
+                        value={formData.type}
+                        onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                      >
+                        <option value="standard">Standard</option>
+                        <option value="speed">Vitesse</option>
+                        <option value="practice">Entraînement</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Durée (min)
-                      </label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Durée (minutes)</label>
                       <input
-                        type="number"
-                        min="0"
+                        type="number" min="0"
                         value={formData.time_limit_minutes}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            time_limit_minutes: parseInt(e.target.value) || 0,
-                          })
-                        }
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Tentatives max
-                      </label>
-                      <input
-                        type="number"
-                        min="0"
-                        value={formData.max_attempts}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            max_attempts: parseInt(e.target.value) || 0,
-                          })
-                        }
+                        onChange={(e) => setFormData({ ...formData, time_limit_minutes: parseInt(e.target.value) || 0 })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                         placeholder="0 = illimité"
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Difficulté
-                      </label>
-                      <select
-                        value={formData.difficulty_level || "medium"}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            difficulty_level: e.target.value as any,
-                          })
-                        }
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                      >
-                        <option value="easy">Facile</option>
-                        <option value="medium">Moyen</option>
-                        <option value="hard">Difficile</option>
-                        <option value="expert">Expert</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Statut
-                      </label>
-                      <select
-                        value={formData.status}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            status: e.target.value as
-                              | "published"
-                              | "draft"
-                              | "archived",
-                          })
-                        }
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-                      >
-                        <option value="draft">Brouillon</option>
-                        <option value="published">Publié</option>
-                        <option value="archived">Archivé</option>
-                      </select>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Essais max</label>
+                      <input
+                        type="number" min="0"
+                        value={formData.max_attempts}
+                        onChange={(e) => setFormData({ ...formData, max_attempts: parseInt(e.target.value) || 0 })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                        placeholder="0 = illimité"
+                      />
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Description
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={formData.description}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          description: e.target.value,
-                        })
-                      }
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 resize-none"
-                      placeholder="Description du quiz..."
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Image miniature
-                    </label>
-                    <div className="space-y-3">
-                      {formData.thumbnail_filename && (
-                        <div className="relative w-full h-32 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-                          <img
-                            src={`/uploads/quiz_thumbnails/${formData.thumbnail_filename}`}
-                            alt="Aperçu"
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src =
-                                formData.thumbnail_filename || "";
-                            }}
-                          />
-                          <button
-                            type="button"
-                            onClick={() =>
-                              setFormData({
-                                ...formData,
-                                thumbnail_filename: "",
-                              })
-                            }
-                            className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
-                          >
-                            <XCircle size={20} />
-                          </button>
-                        </div>
-                      )}
-
-                      <div className="flex items-center gap-2">
-                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium w-full justify-center border border-dashed border-gray-300">
-                          <ImageIcon size={18} />
-                          {uploading
-                            ? "Upload en cours..."
-                            : "Choisir une image"}
-                          <input
-                            type="file"
-                            className="hidden"
-                            accept="image/*"
-                            onChange={handleFileUpload}
-                            disabled={uploading}
-                          />
-                        </label>
-                      </div>
-                      <p className="text-xs text-gray-500 text-center">
-                        Recommandé : 800x600px, JPG/PNG
-                      </p>
-                    </div>
-                  </div>
+                {/* Section 3: Questions */}
+                <div className="p-6">
+                  <h3 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">3</span>
+                    Questions du quiz
+                  </h3>
+                  <QuizBuilder
+                    initialQuestions={formData.content_json || []}
+                    onChange={(questions) => setFormData({ ...formData, content_json: questions })}
+                    onMetadataChange={(metadata) => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        title: metadata.title || prev.title,
+                        description: metadata.description || prev.description,
+                        time_limit_minutes: metadata.time_limit || prev.time_limit_minutes,
+                      }));
+                    }}
+                  />
                 </div>
               </div>
 
-              {/* Quiz Builder */}
-              <div className="border-t border-gray-100 pt-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                  Questions du Quiz
-                </h3>
-                <QuizBuilder
-                  initialQuestions={formData.content_json || []}
-                  onChange={(questions) =>
-                    setFormData({ ...formData, content_json: questions })
-                  }
-                  onMetadataChange={(metadata) => {
-                    setFormData((prev) => ({
-                      ...prev,
-                      title: metadata.title || prev.title,
-                      description: metadata.description || prev.description,
-                      time_limit_minutes:
-                        metadata.time_limit || prev.time_limit_minutes,
-                    }));
-                  }}
-                />
-              </div>
-
-              <div className="flex justify-end gap-3 pt-6 border-t mt-8">
+              {/* Footer */}
+              <div className="flex justify-end gap-3 p-6 border-t border-gray-200 bg-white flex-shrink-0">
                 <button
                   type="button"
                   onClick={() => handlePreview({ 
@@ -1348,23 +1227,17 @@ export default function AdminQuizzesPage() {
                     content_json: formData.content_json,
                     created_at: new Date().toISOString()
                   })}
-                  className="px-6 py-2 bg-blue-100 text-blue-700 font-bold rounded-xl hover:bg-blue-200 transition-colors flex items-center gap-2 mr-auto"
+                  className="px-5 py-2.5 bg-blue-50 text-blue-700 font-bold rounded-xl hover:bg-blue-100 transition-colors flex items-center gap-2 mr-auto border border-blue-200"
                 >
                   <Eye className="w-4 h-4" />
                   Prévisualiser
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-6 py-2 text-gray-500 font-bold hover:bg-gray-100 rounded-xl transition-colors"
-                >
+                <button type="button" onClick={() => setIsModalOpen(false)}
+                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-gray-200">
                   Annuler
                 </button>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="px-8 py-2 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)]/90 transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
+                <button type="submit" disabled={isSubmitting}
+                  className="px-8 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)]/90 transition-colors disabled:opacity-50 flex items-center gap-2 shadow-md shadow-blue-900/20">
                   {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
                   {editingQuiz ? "Mettre à jour" : "Créer le quiz"}
                 </button>
@@ -1373,6 +1246,10 @@ export default function AdminQuizzesPage() {
           </div>
         </div>
       )}
+
+
+
+
 
       {/* Preview Modal removed in favor of tab-based preview */}
     </div>
