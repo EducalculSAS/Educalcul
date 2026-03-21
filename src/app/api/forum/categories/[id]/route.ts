@@ -12,12 +12,13 @@ const supabaseAdmin = createClient(
   }
 );
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const { error } = await supabaseAdmin
       .from("forum_categories")
       .delete()
-      .eq("id", params.id);
+      .eq("id", id);
 
     if (error) throw error;
     return NextResponse.json({ success: true });
@@ -26,15 +27,16 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const body = await req.json();
     const { name, description, icon, order_index } = body;
 
     const { data, error } = await supabaseAdmin
       .from("forum_categories")
       .update({ name, description, icon, order_index })
-      .eq("id", params.id)
+      .eq("id", id)
       .select()
       .single();
 

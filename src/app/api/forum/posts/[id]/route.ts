@@ -6,8 +6,9 @@ const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!
 );
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const { data, error } = await supabaseAdmin
       .from("forum_posts")
       .select(`
@@ -15,7 +16,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
         author:users(first_name, last_name, child_username, role, avatar),
         category:forum_categories(name)
       `)
-      .eq("id", params.id)
+      .eq("id", id)
       .single();
 
     if (error) throw error;
@@ -25,9 +26,10 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { error } = await supabaseAdmin.from("forum_posts").delete().eq("id", params.id);
+    const { id } = await params;
+    const { error } = await supabaseAdmin.from("forum_posts").delete().eq("id", id);
     if (error) throw error;
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -35,8 +37,9 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const body = await req.json();
     const updates: any = {};
     if (body.title !== undefined) updates.title = body.title;
@@ -49,7 +52,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     const { data, error } = await supabaseAdmin
       .from("forum_posts")
       .update(updates)
-      .eq("id", params.id)
+      .eq("id", id)
       .select(`
         *,
         author:users(first_name, last_name, child_username, role, avatar),

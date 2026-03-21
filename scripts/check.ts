@@ -1,8 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
-import dotenv from 'dotenv';
-dotenv.config({ path: '.env.local' });
 
-const sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE);
+const sb = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!
+);
 
 async function check() {
   const { data, error } = await sb.from('user_exercise_attempts').select('*').limit(1);

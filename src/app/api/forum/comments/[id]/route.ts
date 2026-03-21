@@ -6,9 +6,10 @@ const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!
 );
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { error } = await supabaseAdmin.from("forum_comments").delete().eq("id", params.id);
+    const { id } = await params;
+    const { error } = await supabaseAdmin.from("forum_comments").delete().eq("id", id);
     if (error) throw error;
     return NextResponse.json({ success: true });
   } catch (error: any) {
