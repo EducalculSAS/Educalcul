@@ -176,26 +176,8 @@ export default function ExerciseDetailPage() {
         <div className="flex-1 overflow-hidden">
           <ExerciseViewer 
             exercise={exercise} 
-            onComplete={async (score: number, total: number) => {
+            onComplete={(score: number, total: number) => {
               console.log(`Exercise completed: ${score}/${total}`);
-              const { data: { session } } = await supabase.auth.getSession();
-              if (session?.user) {
-                try {
-                  await fetch("/api/child/activities", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      type: "exercise",
-                      userId: session.user.id,
-                      itemId: exercise.id,
-                      score,
-                      totalPoints: total
-                    })
-                  });
-                } catch (e) {
-                  console.error("Failed to save exercise activity", e);
-                }
-              }
             }} 
           />
         </div>

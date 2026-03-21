@@ -17,6 +17,7 @@ import {
   LifeBuoy,
   CreditCard,
   MessageSquare,
+  User,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -41,6 +42,7 @@ export default function AdminSidebar() {
     { name: "Forum", href: "/admin/forum", icon: MessageSquare },
     { name: "Support", href: "/admin/support", icon: LifeBuoy },
     { name: "Abonnements", href: "/admin/subscriptions", icon: CreditCard },
+    { name: "Profil", href: "/admin/profile", icon: User },
     { name: "Paramètres", href: "/admin/settings", icon: Settings },
   ];
 

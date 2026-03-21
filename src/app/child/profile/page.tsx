@@ -397,7 +397,14 @@ export default function ChildProfilePage() {
                     activities.exercises.map((ex) => (
                       <div key={ex.id} className="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-blue-100 hover:bg-blue-50 transition-colors">
                         <div>
-                          <p className="font-bold text-[var(--greek-blue)] text-lg">{ex.exercises?.title || "Exercice"}</p>
+                          <p className="font-bold text-[var(--greek-blue)] text-lg flex items-center gap-2">
+                            {ex.exercises?.title || "Exercice"}
+                            {ex.status === 'in_progress' ? (
+                              <span className="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full font-bold ml-2">En cours</span>
+                            ) : (
+                              <span className="px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full font-bold ml-2">Terminé</span>
+                            )}
+                          </p>
                           <p className="text-gray-500 text-sm">{new Date(ex.completed_at).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}</p>
                         </div>
                         <div className="text-right">
@@ -418,7 +425,14 @@ export default function ChildProfilePage() {
                     activities.quizzes.map((qz) => (
                       <div key={qz.id} className="p-5 bg-yellow-50/30 rounded-xl border border-yellow-100 hover:bg-yellow-50/50 transition-colors">
                         <div className="flex items-center justify-between mb-3">
-                          <p className="font-bold text-[var(--greek-blue)] text-xl">{qz.quizzes?.title || "Quiz"}</p>
+                          <p className="font-bold text-[var(--greek-blue)] text-xl flex items-center gap-2">
+                            {qz.quizzes?.title || "Quiz"}
+                            {qz.status === 'in_progress' ? (
+                              <span className="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full font-bold">En cours</span>
+                            ) : (
+                              <span className="px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full font-bold">Terminé</span>
+                            )}
+                          </p>
                           <div className="px-3 py-1 bg-white border border-yellow-200 rounded-full flex items-center gap-1.5 shadow-sm">
                             <Clock className="w-4 h-4 text-[var(--greek-gold)]" />
                             <span className="font-bold text-[var(--greek-blue)]">{Math.floor(qz.time_spent_seconds / 60)}m {qz.time_spent_seconds % 60}s</span>
@@ -449,8 +463,15 @@ export default function ChildProfilePage() {
                             <CheckCircle className="w-6 h-6" />
                           </div>
                           <div>
-                            <p className="font-bold text-[var(--greek-blue)] text-lg">{co.courses?.title || "Cours"}</p>
-                            <p className="text-purple-600 font-medium">Chapitre {co.chapter_index + 1} terminé</p>
+                            <p className="font-bold text-[var(--greek-blue)] text-lg flex items-center gap-2">
+                              {co.courses?.title || "Cours"}
+                              {co.status === 'in_progress' ? (
+                                <span className="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full font-bold">En cours</span>
+                              ) : (
+                                <span className="px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full font-bold">Terminé</span>
+                              )}
+                            </p>
+                            <p className="text-purple-600 font-medium">Chapitre {co.chapter_index + 1} atteint</p>
                           </div>
                         </div>
                         <p className="text-gray-400 text-sm italic">{new Date(co.completed_at).toLocaleDateString()}</p>

@@ -185,27 +185,8 @@ export default function QuizDetailPage() {
         <div className="flex-1 overflow-hidden">
           <QuizViewer 
             quiz={quiz} 
-            onComplete={async (score, total, timeSpent) => {
+            onComplete={(score, total, timeSpent) => {
               console.log(`Quiz completed: ${score}/${total} in ${timeSpent}s`);
-              const { data: { session } } = await supabase.auth.getSession();
-              if (session?.user) {
-                try {
-                  await fetch("/api/child/activities", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      type: "quiz",
-                      userId: session.user.id,
-                      itemId: quiz.id,
-                      score,
-                      totalPoints: total,
-                      timeSpent
-                    })
-                  });
-                } catch (e) {
-                  console.error("Failed to save quiz activity", e);
-                }
-              }
             }} 
           />
         </div>

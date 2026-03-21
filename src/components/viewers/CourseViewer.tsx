@@ -14,6 +14,7 @@ import {
   ChevronLeft
 } from "lucide-react";
 import { Chapter, Lesson } from "@/components/admin/CourseBuilder";
+import { supabase } from "@/lib/supabaseClient";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -45,6 +46,41 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
   const currentLesson = currentChapter?.lessons[currentLessonIndex];
 
   const [isRendering, setIsRendering] = useState(false);
+
+  // Dynamic progress tracking
+  const saveProgress = async (status: 'in_progress' | 'completed', chapterIndex: number) => {
+    // isPreview might be passed in, or we can check id. Course viewer doesn't receive isPreview explicitly here.
+    if ((course as any).id === undefined || (course as any).id === "preview") return;
+    
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) return;
+    
+    try {
+      await fetch("/api/child/activities", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "course",
+          userId: session.user.id,
+          itemId: (course as any).id,
+          chapterIndex,
+          status,
+        })
+      });
+    } catch (e) {
+      console.error("Failed to save progress", e);
+    }
+  };
+
+  // Track initial start
+  useEffect(() => {
+    saveProgress('in_progress', 0);
+  }, []);
+
+  // Track chapter changes
+  useEffect(() => {
+    saveProgress('in_progress', currentChapterIndex);
+  }, [currentChapterIndex]);
 
   // Load KaTeX for Math rendering
   useEffect(() => {

@@ -17,6 +17,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
+import { supabase } from "@/lib/supabaseClient";
 
 interface ExerciseViewerProps {
   exercise: {
@@ -170,6 +171,40 @@ export default function ExerciseViewer({
   );
 
   const currentPage = pages[currentPageIndex];
+
+  // Dynamic progress tracking
+  const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number) => {
+    const isPreview = exercise.id === undefined || exercise.id === "preview";
+    if (isPreview) return;
+    
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) return;
+    
+    let totalPoints = 0;
+    pages.forEach((p) => p.blocks.forEach((b) => (totalPoints += b.points || 0)));
+
+    try {
+      await fetch("/api/child/activities", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "exercise",
+          userId: session.user.id,
+          itemId: exercise.id,
+          score: currentScore,
+          totalPoints,
+          status,
+        })
+      });
+    } catch (e) {
+      console.error("Failed to save progress", e);
+    }
+  };
+
+  // Track initial start
+  useEffect(() => {
+    saveProgress('in_progress', 0);
+  }, []);
 
   // Load KaTeX for Math rendering
   // Robust LaTeX rendering using MutationObserver
@@ -325,7 +360,10 @@ export default function ExerciseViewer({
     setIsValidating(false);
     setExerciseCompleted(true);
     
-    // We can call onComplete now to save the score, but wait to show the completion screen
+    // Save completed progress dynamically
+    saveProgress('completed', totalScore);
+    
+    // Legacy onComplete for the parent
     if (onComplete) {
       // Calculate total points
       let totalPoints = 0;

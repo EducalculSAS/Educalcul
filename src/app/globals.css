@@ -42,3 +42,18 @@ body {
     box-shadow: 0 8px 20px rgba(197, 161, 72, 0.3) !important;
   }
 }
+
+@keyframes fade-bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-bounce {
+  animation: fade-bounce 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}

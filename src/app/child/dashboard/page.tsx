@@ -13,6 +13,7 @@ import {
   Trophy,
   ArrowRight,
   Play,
+  MessageSquare,
 } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
 
@@ -176,6 +177,27 @@ export default function ChildDashboard() {
               </p>
               <div className="flex items-center text-[var(--greek-gold)] font-bold group-hover:gap-2 transition-all">
                 Jouer <ArrowRight className="w-5 h-5 ml-1" />
+              </div>
+            </div>
+          </Link>
+
+          {/* Forum */}
+          <Link href="/child/forum" className="group">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <MessageSquare className="w-24 h-24 text-[var(--greek-blue)]" />
+              </div>
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
+                <MessageSquare className="w-7 h-7" />
+              </div>
+              <h3 className="text-2xl font-bold text-[var(--greek-blue)] mb-2">
+                Le Forum
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Pose tes questions et aide les autres héros !
+              </p>
+              <div className="flex items-center text-[var(--greek-blue)] font-bold group-hover:gap-2 transition-all">
+                Y aller <ArrowRight className="w-5 h-5 ml-1" />
               </div>
             </div>
           </Link>

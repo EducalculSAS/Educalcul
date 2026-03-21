@@ -168,24 +168,8 @@ export default function CourseDetailPage() {
         <div className="flex-1 overflow-hidden">
           <CourseViewer 
             course={course} 
-            onChapterComplete={async (chapterIndex) => {
-              const { data: { session } } = await supabase.auth.getSession();
-              if (session?.user) {
-                try {
-                  await fetch("/api/child/activities", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      type: "course",
-                      userId: session.user.id,
-                      itemId: course.id,
-                      chapterIndex
-                    })
-                  });
-                } catch (e) {
-                  console.error("Failed to save course activity", e);
-                }
-              }
+            onChapterComplete={(chapterIndex) => {
+              console.log(`Chapter ${chapterIndex} completed`);
             }}
           />
         </div>

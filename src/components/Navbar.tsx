@@ -16,6 +16,7 @@ import {
   BookOpen,
   Trophy,
   Brain,
+  MessageSquare,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -115,8 +116,8 @@ export default function Navbar() {
         {/* Right-aligned Dropdown Menu */}
         <div
           className={`absolute top-[64px] right-0 w-full sm:w-80 bg-[var(--greek-blue)] border-b sm:border-l sm:border-b border-[var(--greek-gold)] shadow-xl flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top ${isOpen
-              ? "scale-y-100 opacity-100"
-              : "scale-y-0 opacity-0 pointer-events-none"
+            ? "scale-y-100 opacity-100"
+            : "scale-y-0 opacity-0 pointer-events-none"
             }`}
         >
           {/* Navigation Links */}
@@ -207,6 +208,13 @@ export default function Navbar() {
                     >
                       <CreditCard className="w-4 h-4" /> Abonnements
                     </Link>
+                    <Link
+                      href="/parent/forum"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <MessageSquare className="w-4 h-4" /> Forum
+                    </Link>
                   </>
                 )}
                 {userRole === "child" && (
@@ -238,6 +246,13 @@ export default function Navbar() {
                       onClick={() => setIsOpen(false)}
                     >
                       <Trophy className="w-4 h-4" /> Mes Trophées
+                    </Link>
+                    <Link
+                      href="/child/forum"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <MessageSquare className="w-4 h-4" /> Forum
                     </Link>
                   </>
                 )}

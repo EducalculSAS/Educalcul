@@ -79,6 +79,7 @@ interface QuizFolder {
   color: string;
   parent_id: number | null;
   status: "published" | "draft" | "archived";
+  grade_level: string | null;
 }
 
 export default function AdminQuizzesPage() {
@@ -105,6 +106,7 @@ export default function AdminQuizzesPage() {
     name: "",
     status: "draft" as "published" | "draft" | "archived",
     color: FOLDER_COLORS[0],
+    grade_level: "6eme" as string,
   });
 
   // Modal state
@@ -291,6 +293,7 @@ export default function AdminQuizzesPage() {
             name: folderFormData.name,
             status: folderFormData.status,
             color: folderFormData.color,
+            grade_level: folderFormData.grade_level,
           })
           .eq("id", editingFolder.id);
 
@@ -301,6 +304,7 @@ export default function AdminQuizzesPage() {
           parent_id: currentFolderId,
           status: folderFormData.status,
           color: folderFormData.color,
+          grade_level: folderFormData.grade_level,
         });
 
         if (error) throw error;
@@ -310,6 +314,7 @@ export default function AdminQuizzesPage() {
         name: "",
         status: "draft",
         color: FOLDER_COLORS[0],
+        grade_level: "6eme",
       });
       setEditingFolder(null);
       setIsFolderModalOpen(false);
@@ -618,6 +623,7 @@ export default function AdminQuizzesPage() {
                   name: "",
                   status: "draft",
                   color: FOLDER_COLORS[0],
+                  grade_level: "6eme",
                 });
                 setIsFolderModalOpen(true);
               }}
@@ -776,6 +782,7 @@ export default function AdminQuizzesPage() {
                         name: folder.name,
                         status: folder.status,
                         color: folder.color || FOLDER_COLORS[0],
+                        grade_level: folder.grade_level || "6eme",
                       });
                       setIsFolderModalOpen(true);
                     }}
@@ -969,6 +976,29 @@ export default function AdminQuizzesPage() {
 
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Niveau du dossier
+                </label>
+                <select
+                  value={folderFormData.grade_level}
+                  onChange={(e) =>
+                    setFolderFormData({
+                      ...folderFormData,
+                      grade_level: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none bg-white"
+                >
+                  <option value="all">Tous niveaux</option>
+                  {SCHOOL_LEVELS.map((level) => (
+                    <option key={level.value} value={level.value}>
+                      {level.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Statut
                 </label>
                 <select
@@ -996,6 +1026,7 @@ export default function AdminQuizzesPage() {
                       name: "",
                       status: "draft",
                       color: FOLDER_COLORS[0],
+                      grade_level: "6eme",
                     });
                   }}
                   className="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"

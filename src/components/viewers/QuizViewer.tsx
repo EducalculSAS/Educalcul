@@ -14,6 +14,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
+import { supabase } from "@/lib/supabaseClient";
 
 interface QuizViewerProps {
   quiz: {
@@ -47,6 +48,41 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
   const currentQuestion = questions[currentQuestionIndex];
+
+  // Dynamic progress tracking
+  const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number) => {
+    const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
+    if (isPreview) return;
+    
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) return;
+    
+    const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);
+    const timeSpent = status === 'completed' ? Math.floor((Date.now() - startTime) / 1000) : 0;
+
+    try {
+      await fetch("/api/child/activities", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "quiz",
+          userId: session.user.id,
+          itemId: (quiz as any).id,
+          score: currentScore,
+          totalPoints,
+          timeSpent,
+          status,
+        })
+      });
+    } catch (e) {
+      console.error("Failed to save progress", e);
+    }
+  };
+
+  // Track initial start
+  useEffect(() => {
+    saveProgress('in_progress', 0);
+  }, []);
 
   // Robust LaTeX rendering using MutationObserver
   useEffect(() => {
@@ -196,6 +232,9 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
     setIsAnswerSubmitted(true);
     setIsValidating(false);
     setQuizCompleted(true);
+
+    // Save completed progress dynamically
+    saveProgress('completed', totalScore);
 
     if (onComplete) {
       const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);

@@ -6,90 +6,84 @@ import {
   Calculator,
   Play,
   Star,
-  Clock,
   Brain,
-  AlertCircle,
+  Folder as FolderIcon,
+  ChevronRight,
+  Home,
+  ArrowLeft,
 } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
 import Link from "next/link";
 
 export default function ChildExercisesPage() {
   const [loading, setLoading] = useState(true);
-  const [exercises, setExercises] = useState<any[]>([]);
+  const [allExercises, setAllExercises] = useState<any[]>([]);
+  const [allFolders, setAllFolders] = useState<any[]>([]);
+  
+  const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
 
   useEffect(() => {
-    const fetchExercises = async () => {
+    const fetchEverything = async () => {
       setLoading(true);
       try {
-        // 1. Get the child's grade level from their profile
         const { data: { session } } = await supabase.auth.getSession();
-        let childLevel: string | null = null;
-
+        let level = null;
         if (session) {
-          const { data: userData, error: userError } = await supabase
+          const { data: userData } = await supabase
             .from("users")
             .select("grade_level")
             .eq("auth_id", session.user.id)
             .maybeSingle();
-          
-          if (userError) console.error("Error fetching user profile:", userError);
-          childLevel = userData?.grade_level || null;
-          console.log("Child Level identified:", childLevel);
+          level = userData?.grade_level || null;
         }
 
-        // 2. Fetch ALL published exercises via our Admin API (Bypasses RLS)
-        const response = await fetch("/api/admin/exercises?status=published");
-        if (!response.ok) throw new Error("Failed to fetch exercises from API");
-        
-        const allPublishedExercises = await response.json();
-        console.log("Total published exercises found:", allPublishedExercises?.length);
-
-        // 3. Filter by level in the frontend (case-insensitive)
-        let filtered = allPublishedExercises || [];
-        if (childLevel) {
-          filtered = filtered.filter((ex: any) => 
-            ex.level && ex.level.toLowerCase() === childLevel.toLowerCase()
-          );
+        // Fetch ALL Folders for this level
+        const folderUrl = `/api/child/folders?type=exercise${level ? `&level=${level}` : ""}&parent_id=all`;
+        const folderRes = await fetch(folderUrl);
+        if (folderRes.ok) {
+          setAllFolders(await folderRes.json());
         }
-        
-        console.log("Exercises after level filtering:", filtered.length);
-        setExercises(filtered);
+
+        // Fetch ALL published exercises
+        const exRes = await fetch("/api/admin/exercises?status=published");
+        if (exRes.ok) {
+          const allPublishedExercises = await exRes.json();
+          let filtered = allPublishedExercises || [];
+          if (level) {
+            filtered = filtered.filter((ex: any) => ex.level?.toLowerCase() === level.toLowerCase());
+          }
+          setAllExercises(filtered);
+        }
       } catch (error) {
-        console.error("Error in fetchExercises:", error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchExercises();
+    fetchEverything();
   }, []);
 
+  const navigateToFolder = (folderId: number, folderName: string) => {
+    setBreadcrumbs([...breadcrumbs, { id: folderId, name: folderName }]);
+    setCurrentFolderId(folderId);
+  };
 
-
-  // Group exercises by folder
-  const groupedExercises = exercises.reduce((acc, exercise) => {
-    const folderName = exercise.exercise_folders?.name || "Autres Exercices";
-    const folderColor = exercise.exercise_folders?.color || "#6c757d";
-    const folderId = exercise.exercise_folders?.id || "uncategorized";
-
-    if (!acc[folderId]) {
-      acc[folderId] = {
-        name: folderName,
-        color: folderColor,
-        exercises: [],
-      };
+  const navigateToBreadcrumb = (index: number) => {
+    if (index === -1) {
+      setBreadcrumbs([]);
+      setCurrentFolderId(null);
+    } else {
+      setBreadcrumbs(breadcrumbs.slice(0, index + 1));
+      setCurrentFolderId(breadcrumbs[index].id);
     }
-    acc[folderId].exercises.push(exercise);
-    return acc;
-  }, {} as Record<string, { name: string; color: string; exercises: any[] }>);
+  };
 
-  const sortedGroups = Object.values(groupedExercises).sort((a: any, b: any) => {
-    if (a.name === "Autres Exercices") return 1;
-    if (b.name === "Autres Exercices") return -1;
-    return a.name.localeCompare(b.name);
-  });
+  const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
+  const currentExercises = allExercises.filter(ex => ex.folder_id === currentFolderId);
 
-  if (loading) {
+  if (loading && allExercises.length === 0 && allFolders.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <MathLoader />
@@ -109,92 +103,112 @@ export default function ChildExercisesPage() {
         </p>
       </div>
 
-      <div className="space-y-12">
-        {sortedGroups.length === 0 && exercises.length === 0 ? (
+      <div className="space-y-8">
+        {/* Back Button */}
+        {currentFolderId !== null && (
+          <button
+            onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
+            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--card-border-antique)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+          >
+            <ArrowLeft size={20} />
+            Retour
+          </button>
+        )}
+
+        {currentFolders.length === 0 && currentExercises.length === 0 ? (
           <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/20">
             <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">
-              Aucun exercice disponible
+              Dossier vide
             </h3>
             <p className="text-gray-500">
-              Reviens plus tard pour t'entraîner !
+              Il n'y a pas d'exercices ici pour le moment.
             </p>
           </div>
         ) : (
-          sortedGroups.map((group: any) => (
-            <div key={group.name} className="space-y-6">
-              <div className="flex items-center gap-3 border-b border-[var(--greek-gold)]/20 pb-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Render Folders */}
+            {currentFolders.map((folder, index) => (
+              <div
+                key={folder.id}
+                onClick={() => navigateToFolder(folder.id, folder.name)}
+                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+                style={{ animationDelay: `${index * 40}ms` }}
+              >
                 <div
-                  className="w-1.5 h-8 rounded-full"
-                  style={{ backgroundColor: group.color }}
-                />
-                <h2 className="text-2xl font-bold text-[var(--greek-blue)]">
-                  {group.name}
-                </h2>
-                <span className="text-sm font-medium text-gray-400 bg-gray-100 px-2 py-1 rounded-full">
-                  {group.exercises.length}
-                </span>
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+                  style={{
+                    backgroundColor: `${folder.color || "#3b82f6"}15`,
+                    color: folder.color || "#3b82f6",
+                  }}
+                >
+                  <FolderIcon size={40} fill="currentColor" fillOpacity={0.2} />
+                </div>
+                <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">
+                  {folder.name}
+                </h3>
               </div>
+            ))}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {group.exercises.map((exercise: any) => (
+            {/* Render Exercises */}
+            {currentExercises.map((exercise, index) => (
+              <div
+                key={exercise.id}
+                className="group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce"
+                style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
+              >
+                <div className="relative h-40 bg-[var(--greek-cream)] overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 opacity-20 pattern-grid-lg"></div>
+                  {exercise.thumbnail_url ? (
+                    <img src={exercise.thumbnail_url} alt={exercise.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  ) : (
+                    <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-80 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
+                  )}
+
                   <div
-                    key={exercise.id}
-                    className="group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full"
+                    className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
+                      exercise.difficulty_level === "facile" || exercise.difficulty_level === "easy"
+                        ? "bg-green-100 text-green-700"
+                        : exercise.difficulty_level === "moyen" || exercise.difficulty_level === "medium"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-red-100 text-red-700"
+                    }`}
                   >
-                    <div className="relative h-40 bg-[var(--greek-cream)] overflow-hidden flex items-center justify-center">
-                      <div className="absolute inset-0 opacity-20 pattern-grid-lg"></div>
-                      <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-80 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
+                    {exercise.difficulty_level === "easy" ? "Facile" : exercise.difficulty_level === "medium" ? "Moyen" : exercise.difficulty_level === "hard" ? "Difficile" : exercise.difficulty_level || "Normal"}
+                  </div>
+                </div>
 
-                      <div
-                        className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
-                          exercise.difficulty === "facile"
-                            ? "bg-green-100 text-green-700"
-                            : exercise.difficulty === "moyen"
-                            ? "bg-yellow-100 text-yellow-700"
-                            : "bg-red-100 text-red-700"
-                        }`}
-                      >
-                        {exercise.difficulty
-                          ? exercise.difficulty.charAt(0).toUpperCase() +
-                            exercise.difficulty.slice(1)
-                          : "Normal"}
-                      </div>
-                    </div>
-
-                    <div className="p-6 flex flex-col flex-grow">
-                      <div className="mb-2 flex items-center justify-between">
-                        <span className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-wider">
-                          {exercise.courses?.title || "Mathématiques"}
-                        </span>
-                        <div className="flex items-center text-[var(--greek-gold)] text-sm font-bold">
-                          <Star className="w-3 h-3 fill-current mr-1" />
-                          {exercise.points || 10} XP
-                        </div>
-                      </div>
-
-                      <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">
-                        {exercise.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
-                        {exercise.description || "Entraîne-toi sur ce sujet !"}
-                      </p>
-
-                      <div className="mt-auto">
-                        <Link
-                          href={`/child/exercises/${exercise.id}`}
-                          className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
-                        >
-                          <Play className="w-4 h-4 fill-current" />
-                          Commencer
-                        </Link>
-                      </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-wider">
+                      {exercise.courses?.title || "Mathématiques"}
+                    </span>
+                    <div className="flex items-center text-[var(--greek-gold)] text-sm font-bold">
+                      <Star className="w-3 h-3 fill-current mr-1" />
+                      {exercise.points || 10} XP
                     </div>
                   </div>
-                ))}
+
+                  <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">
+                    {exercise.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
+                    {exercise.description || exercise.question || "Entraîne-toi sur ce sujet !"}
+                  </p>
+
+                  <div className="mt-auto">
+                    <Link
+                      href={`/child/exercises/${exercise.id}`}
+                      className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
+                    >
+                      <Play className="w-4 h-4 fill-current" />
+                      Commencer
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))
+            ))}
+          </div>
         )}
       </div>
     </div>

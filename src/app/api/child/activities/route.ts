@@ -74,7 +74,7 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex } = body;
+    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status } = body;
 
     if (!type || !userId || !itemId) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -95,26 +95,32 @@ export async function POST(req: Request) {
 
     let result;
     if (type === "exercise") {
-      result = await supabaseAdmin.from("user_exercise_attempts").insert({
+      result = await supabaseAdmin.from("user_exercise_attempts").upsert({
         user_id: internalId,
         exercise_id: itemId,
         score: score || 0,
         total_points: totalPoints || 0,
-      });
+        status: status || 'in_progress',
+        completed_at: new Date().toISOString()
+      }, { onConflict: 'user_id, exercise_id' });
     } else if (type === "quiz") {
-      result = await supabaseAdmin.from("user_quiz_attempts").insert({
+      result = await supabaseAdmin.from("user_quiz_attempts").upsert({
         user_id: internalId,
         quiz_id: itemId,
         score: score || 0,
         total_points: totalPoints || 0,
         time_spent_seconds: timeSpent || 0,
-      });
+        status: status || 'in_progress',
+        completed_at: new Date().toISOString()
+      }, { onConflict: 'user_id, quiz_id' });
     } else if (type === "course") {
       result = await supabaseAdmin.from("user_course_progress").upsert({
         user_id: internalId,
         course_id: itemId,
         chapter_index: chapterIndex || 0,
-      });
+        status: status || 'in_progress',
+        completed_at: new Date().toISOString()
+      }, { onConflict: 'user_id, course_id' });
     }
 
     if (result?.error) throw result.error;

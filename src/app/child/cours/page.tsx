@@ -2,68 +2,69 @@
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { BookOpen, Play, CheckCircle, Clock } from "lucide-react";
+import { BookOpen, Play, CheckCircle, Clock, Folder as FolderIcon, ChevronRight, Home, ArrowLeft } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
 import Link from "next/link";
 
 export default function ChildCoursesPage() {
   const [loading, setLoading] = useState(true);
-  const [courses, setCourses] = useState<any[]>([]);
+  const [allCourses, setAllCourses] = useState<any[]>([]);
+  const [allFolders, setAllFolders] = useState<any[]>([]);
   const [isRendering, setIsRendering] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
-
+  
+  const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
 
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchEverything = async () => {
       setLoading(true);
       try {
-        // 1. Get the child's grade level from their profile
         const { data: { session } } = await supabase.auth.getSession();
-        let childLevel: string | null = null;
-
+        let level = null;
         if (session) {
           const { data: userData } = await supabase
             .from("users")
             .select("grade_level")
             .eq("auth_id", session.user.id)
             .maybeSingle();
-          childLevel = userData?.grade_level || null;
-          console.log("Child Level identified for Courses:", childLevel);
+          level = userData?.grade_level || null;
         }
 
-        // 2. Fetch ALL published courses via our Admin API (Bypasses RLS)
+        // Fetch ALL Folders
+        const folderUrl = `/api/child/folders?type=course${level ? `&level=${level}` : ""}&parent_id=all`;
+        const folderRes = await fetch(folderUrl);
+        if (folderRes.ok) {
+          setAllFolders(await folderRes.json());
+        }
+
+        // Fetch ALL published courses
         const response = await fetch("/api/admin/courses?status=published");
-        if (!response.ok) throw new Error("Failed to fetch courses from API");
-        
-        const allPublishedCourses = await response.json();
-        console.log("Total published courses found:", allPublishedCourses?.length);
-
-        // 3. Filter by level in the frontend (case-insensitive)
-        let filtered = allPublishedCourses || [];
-        if (childLevel) {
-          filtered = filtered.filter((c: any) => 
-            c.level && c.level.toLowerCase() === childLevel.toLowerCase()
-          );
+        if (response.ok) {
+          const allPublishedCourses = await response.json();
+          let filtered = allPublishedCourses || [];
+          if (level) {
+            filtered = filtered.filter((c: any) => c.level?.toLowerCase() === level.toLowerCase());
+          }
+          setAllCourses(filtered);
         }
-        
-        console.log("Courses after level filtering:", filtered.length);
-        setCourses(filtered);
+
       } catch (error) {
-        console.error("Error in fetchCourses:", error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCourses();
+    fetchEverything();
   }, []);
 
+  // Handle LaTeX rendering whenever target items change
+  const currentCourses = allCourses.filter(c => c.folder_id === currentFolderId);
+  const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
 
-
-
-  // Handle LaTeX rendering for the course cards
   useEffect(() => {
-    if (loading || courses.length === 0) return;
+    if (loading || currentCourses.length === 0) return;
 
     const loadKatex = async () => {
       if (!document.getElementById("katex-css")) {
@@ -117,32 +118,26 @@ export default function ChildCoursesPage() {
 
     const timer = setTimeout(loadKatex, 100);
     return () => clearTimeout(timer);
-  }, [loading, courses]);
+  }, [loading, currentCourses]);
 
-  // Group courses by folder
-  const groupedCourses = courses.reduce((acc, course) => {
-    const folderName = (course as any).course_folders?.name || "Autres Cours";
-    const folderColor = (course as any).course_folders?.color || "#6c757d";
-    const folderId = (course as any).course_folders?.id || "uncategorized";
+  const navigateToFolder = (folderId: number, folderName: string) => {
+    setIsRendering(true); // Pre-hide items for smooth transition
+    setBreadcrumbs([...breadcrumbs, { id: folderId, name: folderName }]);
+    setCurrentFolderId(folderId);
+  };
 
-    if (!acc[folderId]) {
-      acc[folderId] = {
-        name: folderName,
-        color: folderColor,
-        courses: [],
-      };
+  const navigateToBreadcrumb = (index: number) => {
+    setIsRendering(true);
+    if (index === -1) {
+      setBreadcrumbs([]);
+      setCurrentFolderId(null);
+    } else {
+      setBreadcrumbs(breadcrumbs.slice(0, index + 1));
+      setCurrentFolderId(breadcrumbs[index].id);
     }
-    acc[folderId].courses.push(course);
-    return acc;
-  }, {} as Record<string, { name: string; color: string; courses: any[] }>);
+  };
 
-  const sortedGroups = Object.values(groupedCourses).sort((a: any, b: any) => {
-    if (a.name === "Autres Cours") return 1;
-    if (b.name === "Autres Cours") return -1;
-    return (a.name as string).localeCompare(b.name as string);
-  });
-
-  if (loading) {
+  if (loading && allCourses.length === 0 && allFolders.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <MathLoader />
@@ -162,80 +157,98 @@ export default function ChildCoursesPage() {
         </p>
       </div>
 
-      <div className="space-y-12" ref={gridRef}>
-        {sortedGroups.length === 0 && courses.length === 0 ? (
+      <div className="space-y-8" ref={gridRef}>
+        {/* Back Button */}
+        {currentFolderId !== null && (
+          <button
+            onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
+            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--card-border-antique)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+          >
+            <ArrowLeft size={20} />
+            Retour
+          </button>
+        )}
+
+        {currentFolders.length === 0 && currentCourses.length === 0 ? (
           <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/20">
             <BookOpen className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">
-              Aucun cours disponible
+              Dossier vide
             </h3>
             <p className="text-gray-500">
               Reviens plus tard pour découvrir de nouveaux contenus !
             </p>
           </div>
         ) : (
-          sortedGroups.map((group: any) => (
-            <div key={group.name} className="space-y-6">
-              <div className="flex items-center gap-3 border-b border-[var(--greek-gold)]/20 pb-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Render Folders */}
+            {currentFolders.map((folder, index) => (
+              <div
+                key={folder.id}
+                onClick={() => navigateToFolder(folder.id, folder.name)}
+                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+                style={{ animationDelay: `${index * 40}ms` }}
+              >
                 <div
-                  className="w-1.5 h-8 rounded-full"
-                  style={{ backgroundColor: group.color }}
-                />
-                <h2 className="text-2xl font-bold text-[var(--greek-blue)]">
-                  {group.name}
-                </h2>
-                <span className="text-sm font-medium text-gray-400 bg-gray-100 px-2 py-1 rounded-full">
-                  {group.courses.length}
-                </span>
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+                  style={{
+                    backgroundColor: `${folder.color || "#3b82f6"}15`,
+                    color: folder.color || "#3b82f6",
+                  }}
+                >
+                  <FolderIcon size={40} fill="currentColor" fillOpacity={0.2} />
+                </div>
+                <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">
+                  {folder.name}
+                </h3>
               </div>
+            ))}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {group.courses.map((course: any) => (
-                  <div
-                    key={course.id}
-                    className={`group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full ${isRendering ? 'opacity-0' : 'opacity-100'}`}
-                  >
-                    <div className="relative h-48 bg-gray-100 overflow-hidden">
-                      {course.thumbnail_url ? (
-                        <img
-                          src={course.thumbnail_url}
-                          alt={course.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/5">
-                          <BookOpen className="w-16 h-16 text-[var(--greek-blue)] opacity-20" />
-                        </div>
-                      )}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[var(--greek-blue)] shadow-sm">
-                        {course.subject || "Mathématiques"}
-                      </div>
+            {/* Render Courses */}
+            {currentCourses.map((course, index) => (
+              <div
+                key={course.id}
+                className={`group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? 'opacity-0' : 'opacity-100'}`}
+                style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
+              >
+                <div className="relative h-48 bg-gray-100 overflow-hidden">
+                  {course.thumbnail_url ? (
+                    <img
+                      src={course.thumbnail_url}
+                      alt={course.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/5">
+                      <BookOpen className="w-16 h-16 text-[var(--greek-blue)] opacity-20" />
                     </div>
-
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">
-                        {course.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
-                        {course.description ||
-                          "Découvre ce chapitre passionnant !"}
-                      </p>
-
-                      <div className="mt-auto">
-                        <Link
-                          href={`/child/cours/${course.id}`}
-                          className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
-                        >
-                          <Play className="w-4 h-4 fill-current" />
-                          Commencer
-                        </Link>
-                      </div>
-                    </div>
+                  )}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[var(--greek-blue)] shadow-sm">
+                    {course.subject || "Mathématiques"}
                   </div>
-                ))}
+                </div>
+
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">
+                    {course.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
+                    {course.description || "Découvre ce chapitre passionnant !"}
+                  </p>
+
+                  <div className="mt-auto">
+                    <Link
+                      href={`/child/cours/${course.id}`}
+                      className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
+                    >
+                      <Play className="w-4 h-4 fill-current" />
+                      Commencer
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))
+            ))}
+          </div>
         )}
       </div>
     </div>

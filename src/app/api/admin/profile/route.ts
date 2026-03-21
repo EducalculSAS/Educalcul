@@ -21,6 +21,7 @@ export async function PUT(request: Request) {
       last_name, 
       email, 
       avatar, 
+      child_username,
       name_animation, 
       avatar_border 
     } = body;
@@ -36,6 +37,7 @@ export async function PUT(request: Request) {
         first_name,
         last_name,
         email,
+        child_username,
         avatar,
         name_animation,
         avatar_border,

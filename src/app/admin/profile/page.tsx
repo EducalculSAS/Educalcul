@@ -17,17 +17,13 @@ export default function AdminProfilePage() {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
+    child_username: "",
     email: "",
     avatar: "avatar1.png",
     name_animation: "soft-sparkle",
     avatar_border: "border-admin",
   });
 
-  const [passwordData, setPasswordData] = useState({
-    current_password: "",
-    new_password: "",
-    confirm_password: "",
-  });
 
   // Avatars list (matching PHP config)
   const avatars = [
@@ -64,6 +60,7 @@ export default function AdminProfilePage() {
       setFormData({
         first_name: data.first_name || "",
         last_name: data.last_name || "",
+        child_username: data.child_username || "",
         email: data.email || session.user.email || "",
         avatar: data.avatar || "avatar1.png",
         name_animation: data.name_animation || "soft-sparkle",
@@ -105,7 +102,7 @@ export default function AdminProfilePage() {
       if (!response.ok)
         throw new Error(result.error || "Failed to update profile");
 
-      setMessage({ text: "Profil mis à jour avec succès !", type: "success" });
+      setMessage({ text: "Profil public mis à jour avec succès !", type: "success" });
       fetchProfile(); // Refresh data
     } catch (error: any) {
       console.error("Error updating profile:", error);
@@ -118,71 +115,7 @@ export default function AdminProfilePage() {
     }
   };
 
-  const handleChangePassword = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSaving(true);
-    setMessage(null);
 
-    if (passwordData.new_password !== passwordData.confirm_password) {
-      setMessage({
-        text: "Les nouveaux mots de passe ne correspondent pas.",
-        type: "error",
-      });
-      setSaving(false);
-      return;
-    }
-
-    if (passwordData.new_password.length < 6) {
-      setMessage({
-        text: "Le mot de passe doit contenir au moins 6 caractères.",
-        type: "error",
-      });
-      setSaving(false);
-      return;
-    }
-
-    try {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      if (!session || !session.user.email) throw new Error("No session");
-
-      // Verify current password by trying to sign in
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: session.user.email,
-        password: passwordData.current_password,
-      });
-
-      if (signInError) {
-        throw new Error("Mot de passe actuel incorrect.");
-      }
-
-      // Update password
-      const { error: updateError } = await supabase.auth.updateUser({
-        password: passwordData.new_password,
-      });
-
-      if (updateError) throw updateError;
-
-      setMessage({
-        text: "Mot de passe modifié avec succès !",
-        type: "success",
-      });
-      setPasswordData({
-        current_password: "",
-        new_password: "",
-        confirm_password: "",
-      });
-    } catch (error: any) {
-      console.error("Error changing password:", error);
-      setMessage({
-        text: error.message || "Erreur lors du changement de mot de passe.",
-        type: "error",
-      });
-    } finally {
-      setSaving(false);
-    }
-  };
 
   if (loading) {
     return (
@@ -392,21 +325,20 @@ export default function AdminProfilePage() {
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
             <Crown className="text-[var(--greek-gold)]" size={32} />
-            Profil Administrateur
+            Identité de Professeur
           </h1>
           <p className="text-[var(--greek-bronze)] text-lg">
-            Personnalisez votre profil et gérez vos informations administrateur
+            Gérez votre image publique et comment les héros vous voient dans le sanctuaire.
           </p>
         </div>
       </div>
 
       {message && (
         <div
-          className={`p-4 mb-6 rounded-xl shadow-sm ${
-            message.type === "success"
-              ? "bg-green-50 text-green-800 border border-green-200"
-              : "bg-red-50 text-red-800 border border-red-200"
-          } flex items-center justify-between`}
+          className={`p-4 mb-6 rounded-xl shadow-sm ${message.type === "success"
+            ? "bg-green-50 text-green-800 border border-green-200"
+            : "bg-red-50 text-red-800 border border-red-200"
+            } flex items-center justify-between`}
         >
           <span className="flex items-center gap-2 font-medium">
             {message.type === "success" ? (
@@ -433,7 +365,7 @@ export default function AdminProfilePage() {
             <div className="bg-[var(--greek-blue)]/5 px-8 py-6 border-b border-gray-100 flex items-center gap-3">
               <User className="text-[var(--greek-blue)]" size={24} />
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
-                Informations Personnelles
+                Branding Public
               </h2>
             </div>
             <div className="p-8">
@@ -441,30 +373,28 @@ export default function AdminProfilePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Prénom *
+                      Nom de Professeur (Public) *
                     </label>
                     <input
                       type="text"
-                      value={formData.first_name}
+                      value={formData.child_username}
                       onChange={(e) =>
-                        setFormData({ ...formData, first_name: e.target.value })
+                        setFormData({ ...formData, child_username: e.target.value })
                       }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all font-bold"
+                      placeholder="Ex: Prof. Archimède"
                       required
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Nom *
+                      Email de Contact
                     </label>
                     <input
-                      type="text"
-                      value={formData.last_name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, last_name: e.target.value })
-                      }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
-                      required
+                      type="email"
+                      value={formData.email}
+                      className="w-full px-4 py-3 border border-gray-100 rounded-xl bg-gray-50 text-gray-400 outline-none cursor-not-allowed"
+                      disabled
                     />
                   </div>
                 </div>
@@ -594,14 +524,13 @@ export default function AdminProfilePage() {
                       <div
                         key={avatar}
                         onClick={() => setFormData({ ...formData, avatar })}
-                        className={`cursor-pointer p-1 border-2 rounded-2xl transition-all hover:bg-[var(--greek-blue)]/5 ${
-                          formData.avatar === avatar
-                            ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5 scale-105"
-                            : "border-transparent hover:border-[var(--greek-gold)]/50"
-                        }`}
+                        className={`cursor-pointer p-1 border-2 rounded-2xl transition-all hover:bg-[var(--greek-blue)]/5 ${formData.avatar === avatar
+                          ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5 scale-105"
+                          : "border-transparent hover:border-[var(--greek-gold)]/50"
+                          }`}
                       >
                         <img
-                          src={`/images/avatar/${avatar}`}
+                          src={`/avatars/${avatar}`}
                           alt={avatar}
                           className="w-full h-auto rounded-full border-2 border-white shadow-sm"
                         />
@@ -616,87 +545,7 @@ export default function AdminProfilePage() {
                   className="w-full md:w-auto px-8 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)] focus:ring-opacity-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Save size={20} />
-                  {saving ? "Enregistrement..." : "Mettre à jour le Profil"}
-                </button>
-              </form>
-            </div>
-          </div>
-
-          {/* Password Card */}
-          <div className="bg-white rounded-[20px] shadow-sm border border-gray-200 overflow-hidden">
-            <div className="bg-[var(--greek-blue)]/5 px-8 py-6 border-b border-gray-100 flex items-center gap-3">
-              <Lock className="text-[var(--greek-blue)]" size={24} />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
-                Changer le Mot de Passe
-              </h2>
-            </div>
-            <div className="p-8">
-              <form onSubmit={handleChangePassword}>
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Mot de passe actuel *
-                  </label>
-                  <input
-                    type="password"
-                    value={passwordData.current_password}
-                    onChange={(e) =>
-                      setPasswordData({
-                        ...passwordData,
-                        current_password: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[var(--greek-gold)] focus:ring-2 focus:ring-[var(--greek-gold)]/20 outline-none transition-all"
-                    required
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Nouveau mot de passe *
-                  </label>
-                  <input
-                    type="password"
-                    value={passwordData.new_password}
-                    onChange={(e) =>
-                      setPasswordData({
-                        ...passwordData,
-                        new_password: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[var(--greek-gold)] focus:ring-2 focus:ring-[var(--greek-gold)]/20 outline-none transition-all"
-                    required
-                    minLength={6}
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Minimum 6 caractères.
-                  </p>
-                </div>
-
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Confirmer le nouveau mot de passe *
-                  </label>
-                  <input
-                    type="password"
-                    value={passwordData.confirm_password}
-                    onChange={(e) =>
-                      setPasswordData({
-                        ...passwordData,
-                        confirm_password: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[var(--greek-gold)] focus:ring-2 focus:ring-[var(--greek-gold)]/20 outline-none transition-all"
-                    required
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={saving}
-                  className="w-full md:w-auto px-6 py-2 bg-yellow-500 text-white font-bold rounded-lg hover:bg-yellow-600 transition-colors flex items-center justify-center gap-2"
-                >
-                  <Key size={18} />
-                  {saving ? "Enregistrement..." : "Changer le Mot de Passe"}
+                  {saving ? "Enregistrement..." : "Sauvegarder l'identité"}
                 </button>
               </form>
             </div>
@@ -711,23 +560,25 @@ export default function AdminProfilePage() {
               Aperçu du Profil
             </div>
             <div className="p-6 text-center">
-              <div className="flex justify-center mb-4 relative">
-                <img
-                  src={`/images/avatar/${formData.avatar}`}
-                  alt="Aperçu"
-                  className={`w-32 h-32 rounded-full object-cover transition-all duration-300 ${formData.avatar_border}`}
-                />
+              <div className="flex justify-center mb-6 relative">
+                <div className={`w-32 h-32 rounded-full overflow-hidden transition-all duration-300 ${formData.avatar_border}`}>
+                  <img
+                    src={`/avatars/${formData.avatar}`}
+                    alt="Aperçu"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
 
               <h4
-                className={`text-2xl mb-4 transition-all duration-300 ${formData.name_animation}`}
+                className={`text-2xl mb-4 transition-all duration-300 font-bold ${formData.name_animation}`}
               >
-                {formData.first_name} {formData.last_name}
+                {formData.child_username || "Nom de Professeur"}
               </h4>
 
-              <div className="inline-block p-4 border-2 border-[var(--greek-gold)] rounded-lg bg-[var(--greek-cream)]">
-                <Shield className="text-[var(--greek-blue)] w-8 h-8 mx-auto mb-2" />
-                <span className="font-serif font-bold text-[var(--greek-bronze)]">
+              <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[var(--greek-gold)] rounded-lg bg-[var(--greek-cream)] shadow-sm">
+                <Shield className="text-[var(--greek-blue)] w-5 h-5" />
+                <span className="font-serif font-bold text-[var(--greek-bronze)] text-sm">
                   Administrateur
                 </span>
               </div>
