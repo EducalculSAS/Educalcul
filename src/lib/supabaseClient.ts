@@ -6,6 +6,7 @@ const supabaseServiceRole = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE || '';
 
 // Singleton implementation to avoid multiple GoTrueClient warnings in dev
 const getSupabaseClient = () => {
+  if (!supabaseUrl || !supabaseAnonKey) return null as any;
   if (!(globalThis as any).supabaseClient) {
     (globalThis as any).supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
   }
@@ -16,8 +17,14 @@ const getSupabaseClient = () => {
 export const supabase = getSupabaseClient();
 
 const getSupabaseAdminClient = () => {
+  if (!supabaseUrl || !supabaseServiceRole) return null as any;
   if (!(globalThis as any).supabaseAdminClient) {
-    (globalThis as any).supabaseAdminClient = createClient(supabaseUrl, supabaseServiceRole);
+    (globalThis as any).supabaseAdminClient = createClient(supabaseUrl, supabaseServiceRole, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
   }
   return (globalThis as any).supabaseAdminClient;
 };
