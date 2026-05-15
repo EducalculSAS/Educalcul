@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import { supabase } from "@/lib/supabaseClient";
+import { useAITutor } from "@/contexts/AITutorContext";
 
 interface ExerciseViewerProps {
   exercise: {
@@ -27,6 +28,9 @@ interface ExerciseViewerProps {
     content_json: Page[] | null;
     grading_type?: "auto" | "ai" | "manual";
     level?: string;
+    type?: string;
+    difficulty_level?: string;
+    courses?: { title?: string; subject?: string; level?: string } | null;
   };
   onComplete?: (score: number, totalPoints: number) => void;
 }
@@ -154,7 +158,45 @@ export default function ExerciseViewer({
   onComplete,
 }: ExerciseViewerProps) {
   const pages = exercise.content_json || [];
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const { pageContext, setPageContext } = useAITutor();
+  
+  // Initialize currentPageIndex from localStorage or default to 0
+  const [currentPageIndex, setCurrentPageIndexState] = useState(() => {
+    if (typeof window === "undefined") return 0;
+    if (!exercise.id) return 0;
+    try {
+      const saved = localStorage.getItem(`exercise-${exercise.id}-page`);
+      const pageCount = (exercise.content_json?.length || 0);
+      const index = saved ? Math.min(parseInt(saved, 10), pageCount - 1) : 0;
+      console.log(`[ExerciseViewer] Loading page index for ${exercise.id}:`, {
+        saved,
+        pageCount,
+        loadedIndex: index,
+      });
+      return index;
+    } catch (e) {
+      console.error("Failed to load page index:", e);
+      return 0;
+    }
+  });
+
+  // Wrapper to save page index to localStorage
+  const setCurrentPageIndex = (newIndex: number | ((prev: number) => number)) => {
+    setCurrentPageIndexState((prev) => {
+      const index = typeof newIndex === "function" ? newIndex(prev) : newIndex;
+      if (exercise.id) {
+        try {
+          localStorage.setItem(`exercise-${exercise.id}-page`, index.toString());
+          console.log(`[ExerciseViewer] Saved page index: exercise=${exercise.id}, page=${index}`);
+        } catch (e) {
+          console.error("Failed to save page index:", e);
+        }
+      } else {
+        console.warn("[ExerciseViewer] No exercise.id available");
+      }
+      return index;
+    });
+  };
   const [answers, setAnswers] = useState<Record<string, any>>({});
   const [submittedBlocks, setSubmittedBlocks] = useState<Set<string>>(
     new Set()
@@ -171,6 +213,103 @@ export default function ExerciseViewer({
   );
 
   const currentPage = pages[currentPageIndex];
+
+  // Initialize AI Tutor context when viewer mounts
+  useEffect(() => {
+    if (!exercise.title) return;
+
+    // Extract content from all blocks (same function as in [id]/page.tsx)
+    const extractContent = (contentJson: any): string => {
+      if (!contentJson || !Array.isArray(contentJson)) {
+        return "";
+      }
+
+      const allContent: string[] = [];
+
+      contentJson.forEach((page: any) => {
+        if (page.blocks && Array.isArray(page.blocks)) {
+          page.blocks.forEach((block: any) => {
+            if (block.content) allContent.push(block.content);
+            if (block.text) allContent.push(block.text);
+            if (block.question) allContent.push(block.question);
+            if (block.prompt) allContent.push(block.prompt);
+
+            if (block.options && Array.isArray(block.options)) {
+              block.options.forEach((opt: any) => {
+                if (opt.text) allContent.push(`- ${opt.text}`);
+                if (opt.label) allContent.push(`- ${opt.label}`);
+              });
+            }
+
+            if (block.type === "true_false" && block.statement) {
+              allContent.push(block.statement);
+            }
+
+            if (block.type === "text_input" && block.label) {
+              allContent.push(block.label);
+            }
+
+            if (block.type === "image") {
+              if (block.alt) allContent.push(`[Image: ${block.alt}]`);
+              if (block.caption) allContent.push(block.caption);
+            }
+          });
+        }
+      });
+
+      return allContent.filter((c) => c && c.length > 0).join("\n");
+    };
+
+    let questionText = extractContent(exercise.content_json);
+
+    // Fallback to description
+    if (!questionText && exercise.description) {
+      questionText = exercise.description;
+    }
+
+    const newContext = {
+      page: "exercise_detail",
+      exerciseTitle: exercise.title,
+      exerciseQuestion: questionText.slice(0, 1000),
+      exerciseDifficulty: exercise.difficulty_level || exercise.level || "moyen",
+      exerciseType: exercise.type || "standard",
+      courseTitle: exercise.courses?.title,
+      courseSubject: exercise.courses?.subject || "Mathématiques",
+      courseLevel: exercise.courses?.level || exercise.level,
+    };
+
+    setPageContext(newContext);
+
+    console.log("✅ AI Tutor context initialized in ExerciseViewer:", {
+      title: exercise.title,
+      hasQuestion: !!questionText,
+      questionLength: questionText?.length || 0,
+      type: exercise.type,
+      fullContext: newContext,
+    });
+  }, [exercise.id, exercise.title, setPageContext]);
+
+  // Update AI Tutor context with current student answers
+  useEffect(() => {
+    const answerSummary = Object.entries(answers)
+      .map(([blockId, answer]) => {
+        if (typeof answer === "string" && answer.length > 0) {
+          return answer;
+        } else if (Array.isArray(answer) && answer.length > 0) {
+          return answer.join(", ");
+        }
+        return null;
+      })
+      .filter((a): a is string => a !== null)
+      .join(" | ");
+
+    if (answerSummary) {
+      setPageContext((ctx) => ({
+        ...ctx,
+        userAnswer: answerSummary.slice(0, 500), // Limit to 500 chars for API
+      }));
+    }
+  }, [answers, setPageContext]);
 
   // Dynamic progress tracking
   const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number) => {
@@ -207,55 +346,98 @@ export default function ExerciseViewer({
   }, []);
 
   // Load KaTeX for Math rendering
-  // Robust LaTeX rendering using MutationObserver
+  // Robust LaTeX rendering with proper state tracking
   useEffect(() => {
-    // Standard loading check
+    let isKaTeXReady = false;
+    let isMounted = true;
+
+    const renderMath = () => {
+      if (!isMounted) return;
+      
+      // Wait a bit for DOM to be ready
+      setTimeout(() => {
+        if (!isMounted) return;
+        
+        const container = document.getElementById("exercise-content-container");
+        if (!container) return;
+        
+        // Check if renderMathInElement is available
+        if (typeof (window as any).renderMathInElement !== "function") {
+          console.warn("KaTeX renderMathInElement not available yet");
+          return;
+        }
+
+        try {
+          (window as any).renderMathInElement(container, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false },
+              { left: "\\(", right: "\\)", display: false },
+              { left: "\\[", right: "\\]", display: true },
+            ],
+            throwOnError: false,
+          });
+          isKaTeXReady = true;
+        } catch (e) {
+          console.error("KaTeX rendering failed:", e);
+        }
+      }, 100);
+    };
+
     const loadKaTeX = () => {
-      if ((window as any).renderMathInElement) {
+      // If already loaded globally, render immediately
+      if (typeof (window as any).renderMathInElement === "function") {
         renderMath();
         return;
       }
       
-      const link = document.createElement("link");
-      link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-      link.rel = "stylesheet";
-      document.head.appendChild(link);
+      // Load CSS
+      if (!document.getElementById("katex-css-exercise")) {
+        const link = document.createElement("link");
+        link.id = "katex-css-exercise";
+        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+      }
 
+      // Load main KaTeX script
       const script = document.createElement("script");
       script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-      script.defer = true;
+      script.async = true;
+      script.onload = () => {
+        if (!isMounted) return;
+        // Once katex.js is loaded, load auto-render
+        const autoRenderScript = document.createElement("script");
+        autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
+        autoRenderScript.async = true;
+        autoRenderScript.onload = () => {
+          if (!isMounted) return;
+          renderMath();
+        };
+        autoRenderScript.onerror = () => {
+          if (!isMounted) return;
+          console.error("Failed to load KaTeX auto-render");
+          renderMath(); // Try anyway with what we have
+        };
+        document.head.appendChild(autoRenderScript);
+      };
+      script.onerror = () => console.error("Failed to load KaTeX main script");
       document.head.appendChild(script);
-
-      const autoRenderScript = document.createElement("script");
-      autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-      autoRenderScript.defer = true;
-      autoRenderScript.onload = renderMath;
-      document.head.appendChild(autoRenderScript);
-    };
-
-    const renderMath = () => {
-      const container = document.getElementById("exercise-content-container");
-      if (container && (window as any).renderMathInElement) {
-        (window as any).renderMathInElement(container, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "\\[", right: "\\]", display: true },
-          ],
-          throwOnError: false,
-        });
-      }
     };
 
     loadKaTeX();
 
-    // Setup MutationObserver for dynamic content
+    // Setup MutationObserver for dynamic content changes
     const container = document.getElementById("exercise-content-container");
-    if (!container) return;
+    if (!container) {
+      return () => { isMounted = false; };
+    }
 
     const observer = new MutationObserver(() => {
-      renderMath();
+      // Only try to render math if KaTeX is ready
+      if (isKaTeXReady && typeof (window as any).renderMathInElement === "function") {
+        renderMath();
+      }
     });
 
     observer.observe(container, { 
@@ -264,7 +446,10 @@ export default function ExerciseViewer({
       characterData: true 
     });
 
-    return () => observer.disconnect();
+    return () => { 
+      isMounted = false;
+      observer.disconnect();
+    };
   }, [currentPageIndex]);
 
   // Visibility control to prevent flicker

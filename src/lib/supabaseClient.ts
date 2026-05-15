@@ -1,34 +1,35 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
-const supabaseServiceRole = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE || '';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseServiceRole = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!;
 
-// Singleton implementation to avoid multiple GoTrueClient warnings in dev
-const getSupabaseClient = () => {
-  if (!supabaseUrl || !supabaseAnonKey) return null as any;
-  if (!(globalThis as any).supabaseClient) {
-    (globalThis as any).supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+// ─── Public client (anon key) — browser + server ──────────────────────────
+// One instance per JS context via globalThis to survive HMR re-evaluation.
+const PUBLIC_KEY = "__sb_public__";
+function getPublicClient(): SupabaseClient {
+  if (!(globalThis as any)[PUBLIC_KEY]) {
+    (globalThis as any)[PUBLIC_KEY] = createClient(supabaseUrl, supabaseAnonKey);
   }
-  return (globalThis as any).supabaseClient;
-};
+  return (globalThis as any)[PUBLIC_KEY];
+}
 
-// Client for client-side operations (uses Anon Key)
-export const supabase = getSupabaseClient();
+export const supabase: SupabaseClient = getPublicClient();
 
-const getSupabaseAdminClient = () => {
-  if (!supabaseUrl || !supabaseServiceRole) return null as any;
-  if (!(globalThis as any).supabaseAdminClient) {
-    (globalThis as any).supabaseAdminClient = createClient(supabaseUrl, supabaseServiceRole, {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-      },
+// ─── Admin client (service role) — SERVER ONLY ────────────────────────────
+// Never instantiate in browser: would create a second GoTrueClient.
+const ADMIN_KEY = "__sb_admin__";
+function getAdminClient(): SupabaseClient {
+  // Guard: in browser, return the public client to avoid duplicate GoTrueClient.
+  // API routes / server components never have `window`.
+  if (typeof window !== "undefined") return supabase;
+
+  if (!(globalThis as any)[ADMIN_KEY]) {
+    (globalThis as any)[ADMIN_KEY] = createClient(supabaseUrl, supabaseServiceRole, {
+      auth: { autoRefreshToken: false, persistSession: false },
     });
   }
-  return (globalThis as any).supabaseAdminClient;
-};
+  return (globalThis as any)[ADMIN_KEY];
+}
 
-// Client for server-side admin operations (uses Service Role Key)
-// WARNING: Only use this in secure server-side contexts (API routes, Server Components)
-export const supabaseAdmin = getSupabaseAdminClient();
+export const supabaseAdmin: SupabaseClient = getAdminClient();

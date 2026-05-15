@@ -84,55 +84,97 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
     saveProgress('in_progress', 0);
   }, []);
 
-  // Robust LaTeX rendering using MutationObserver
+  // Robust LaTeX rendering with proper state tracking
   useEffect(() => {
-    // Standard loading check
+    let isKaTeXReady = false;
+    let isMounted = true;
+
+    const renderMath = () => {
+      if (!isMounted) return;
+      
+      setTimeout(() => {
+        if (!isMounted) return;
+        
+        const container = document.getElementById("quiz-content-container");
+        if (!container) return;
+        
+        // Check if renderMathInElement is available
+        if (typeof (window as any).renderMathInElement !== "function") {
+          console.warn("KaTeX renderMathInElement not available yet");
+          return;
+        }
+
+        try {
+          (window as any).renderMathInElement(container, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false },
+              { left: "\\(", right: "\\)", display: false },
+              { left: "\\[", right: "\\]", display: true },
+            ],
+            throwOnError: false,
+          });
+          isKaTeXReady = true;
+        } catch (e) {
+          console.error("KaTeX rendering failed:", e);
+        }
+      }, 100);
+    };
+
     const loadKaTeX = () => {
-      if ((window as any).renderMathInElement) {
+      // If already loaded globally, render immediately
+      if (typeof (window as any).renderMathInElement === "function") {
         renderMath();
         return;
       }
       
-      const link = document.createElement("link");
-      link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-      link.rel = "stylesheet";
-      document.head.appendChild(link);
+      // Load CSS
+      if (!document.getElementById("katex-css-quiz")) {
+        const link = document.createElement("link");
+        link.id = "katex-css-quiz";
+        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+      }
 
+      // Load main KaTeX script
       const script = document.createElement("script");
       script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-      script.defer = true;
+      script.async = true;
+      script.onload = () => {
+        if (!isMounted) return;
+        // Once katex.js is loaded, load auto-render
+        const autoRenderScript = document.createElement("script");
+        autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
+        autoRenderScript.async = true;
+        autoRenderScript.onload = () => {
+          if (!isMounted) return;
+          renderMath();
+        };
+        autoRenderScript.onerror = () => {
+          if (!isMounted) return;
+          console.error("Failed to load KaTeX auto-render");
+          renderMath(); // Try anyway with what we have
+        };
+        document.head.appendChild(autoRenderScript);
+      };
+      script.onerror = () => console.error("Failed to load KaTeX main script");
       document.head.appendChild(script);
-
-      const autoRenderScript = document.createElement("script");
-      autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-      autoRenderScript.defer = true;
-      autoRenderScript.onload = renderMath;
-      document.head.appendChild(autoRenderScript);
-    };
-
-    const renderMath = () => {
-      const container = document.getElementById("quiz-content-container");
-      if (container && (window as any).renderMathInElement) {
-        (window as any).renderMathInElement(container, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "\\[", right: "\\]", display: true },
-          ],
-          throwOnError: false,
-        });
-      }
     };
 
     loadKaTeX();
 
-    // Setup MutationObserver
+    // Setup MutationObserver for dynamic content changes
     const container = document.getElementById("quiz-content-container");
-    if (!container) return;
+    if (!container) {
+      return () => { isMounted = false; };
+    }
 
     const observer = new MutationObserver(() => {
-      renderMath();
+      // Only try to render math if KaTeX is ready
+      if (isKaTeXReady && typeof (window as any).renderMathInElement === "function") {
+        renderMath();
+      }
     });
 
     observer.observe(container, { 
@@ -141,7 +183,10 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
       characterData: true 
     });
 
-    return () => observer.disconnect();
+    return () => { 
+      isMounted = false;
+      observer.disconnect();
+    };
   }, [currentQuestionIndex, quizCompleted, showExplanation]);
 
   // Visibility control to prevent flicker

@@ -17,18 +17,86 @@ import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import MathLoader from "@/components/MathLoader";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { useAITutor } from "@/contexts/AITutorContext";
+
+// Utility function to extract all content from exercise blocks
+function extractExerciseContent(contentJson: any): string {
+  if (!contentJson || !Array.isArray(contentJson)) {
+    return "";
+  }
+
+  const allContent: string[] = [];
+
+  contentJson.forEach((page: any) => {
+    if (page.blocks && Array.isArray(page.blocks)) {
+      page.blocks.forEach((block: any) => {
+        // Text content
+        if (block.content) allContent.push(block.content);
+        if (block.text) allContent.push(block.text);
+        if (block.question) allContent.push(block.question);
+        if (block.prompt) allContent.push(block.prompt);
+
+        // Single/Multiple choice options
+        if (block.options && Array.isArray(block.options)) {
+          block.options.forEach((opt: any) => {
+            if (opt.text) allContent.push(`- ${opt.text}`);
+            if (opt.label) allContent.push(`- ${opt.label}`);
+          });
+        }
+
+        // True/False specific
+        if (block.type === "true_false") {
+          if (block.statement) allContent.push(block.statement);
+        }
+
+        // Text input specific
+        if (block.type === "text_input") {
+          if (block.label) allContent.push(block.label);
+          if (block.placeholder) allContent.push(`Indice: ${block.placeholder}`);
+        }
+
+        // Image block
+        if (block.type === "image") {
+          if (block.alt) allContent.push(`[Image: ${block.alt}]`);
+          if (block.caption) allContent.push(block.caption);
+        }
+      });
+    }
+  });
+
+  return allContent.filter((c) => c && c.length > 0).join("\n");
+}
 
 export default function ExerciseDetailPage() {
   const params = useParams();
   const router = useRouter();
   const exerciseId = params.id as string;
+  const { setPageContext, clearContext } = useAITutor();
 
   const [loading, setLoading] = useState(true);
   const [exercise, setExercise] = useState<any>(null);
-  const [started, setStarted] = useState(false);
+  // Initialize started state from localStorage
+  const [started, setStartedState] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const wasStarted = localStorage.getItem(`exercise-${exerciseId}-started`);
+    console.log(`[${exerciseId}] Initial check: wasStarted=${wasStarted}`);
+    return wasStarted === "true";
+  });
   const [isRendering, setIsRendering] = useState(false);
   const isPreview = exerciseId === "preview";
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // Wrapper for setStarted that also saves to localStorage
+  const setStarted = (value: boolean) => {
+    setStartedState(value);
+    if (value) {
+      localStorage.setItem(`exercise-${exerciseId}-started`, "true");
+      console.log(`[${exerciseId}] Saved started=true to localStorage`);
+    } else {
+      localStorage.removeItem(`exercise-${exerciseId}-started`);
+      console.log(`[${exerciseId}] Removed started from localStorage`);
+    }
+  };
 
   useEffect(() => {
     const fetchExercise = async () => {
@@ -49,18 +117,79 @@ export default function ExerciseDetailPage() {
       try {
         const response = await fetch(`/api/admin/exercises?id=${exerciseId}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch exercise");
+          throw new Error(`Failed to fetch exercise: ${response.status}`);
         }
         const data = await response.json();
+        
+        if (!data || !data.id) {
+          throw new Error("Invalid exercise data received");
+        }
+        
         setExercise(data);
+        
+        // Log what we received
+        console.log("✅ Exercise fetched successfully:", {
+          id: data.id,
+          title: data.title,
+          type: data.type,
+          difficulty_level: data.difficulty_level,
+          courses: data.courses,
+          hasContentJson: !!data.content_json,
+          contentJsonLength: data.content_json?.length || 0,
+        });
+        
+        // Extract content from ALL block types
+        let questionText = extractExerciseContent(data.content_json);
+        
+        // Fallback: use the description/question field if no content extracted
+        if (!questionText && (data.question || data.description)) {
+          questionText = (data.question || data.description).slice(0, 1000);
+          console.log("✅ Using fallback question field:", questionText.slice(0, 100));
+        }
+        
+        // Extract hints if available
+        const hints = (data.content_json?.hints || [])
+          .map((h: any) => typeof h === "string" ? h : h.text || h.hint || "")
+          .filter((h: string) => h.length > 0)
+          .slice(0, 3);
+        
+        console.log("✅ Exercise context prepared:", {
+          title: data.title,
+          type: data.type,
+          hasQuestion: !!questionText,
+          questionLength: questionText?.length || 0,
+          questionPreview: questionText?.slice(0, 100) || "EMPTY",
+          hintsCount: hints.length,
+        });
+        
+        console.log("✅ Exercise loaded successfully:", {
+          title: data.title,
+          hasQuestions: !!questionText,
+          questionLength: questionText.length,
+          hintsCount: hints.length,
+        });
+        
+        setPageContext({
+          page: "exercise_detail",
+          exerciseTitle: data.title || "Exercice sans titre",
+          exerciseDifficulty: data.difficulty_level || "moyen",
+          exerciseQuestion: questionText,
+          exerciseType: data.type || "standard",
+          exerciseHints: hints,
+          courseTitle: data.courses?.title || data.course_title,
+          courseSubject: data.courses?.subject || "Mathématiques",
+          courseLevel: data.courses?.level || data.level,
+        });
       } catch (error) {
-        console.error("Error fetching exercise:", error);
+        console.error("❌ Error fetching exercise:", error);
+        setExercise(null);
       } finally {
         setLoading(false);
       }
     };
 
     fetchExercise();
+    return () => clearContext();
   }, [exerciseId, isPreview]);
 
 
@@ -165,6 +294,10 @@ export default function ExerciseDetailPage() {
               if (isPreview) {
                 window.close();
               } else {
+                // Clean up saved page index
+                if (exercise?.id) {
+                  localStorage.removeItem(`exercise-${exercise.id}-page`);
+                }
                 setStarted(false);
               }
             }}

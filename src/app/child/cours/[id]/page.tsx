@@ -7,18 +7,38 @@ import MathLoader from "@/components/MathLoader";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
+import { useAITutor } from "@/contexts/AITutorContext";
 
 export default function CourseDetailPage() {
   const params = useParams();
   const router = useRouter();
   const courseId = params.id as string;
+  const { setPageContext, clearContext } = useAITutor();
 
   const [loading, setLoading] = useState(true);
   const [course, setCourse] = useState<any>(null);
-  const [started, setStarted] = useState(false);
+  // Initialize started state from localStorage
+  const [started, setStartedState] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const wasStarted = localStorage.getItem(`course-${courseId}-started`);
+    console.log(`[cours-${courseId}] Initial check: wasStarted=${wasStarted}`);
+    return wasStarted === "true";
+  });
   const [isRendering, setIsRendering] = useState(false);
   const isPreview = courseId === "preview";
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // Wrapper for setStarted that also saves to localStorage
+  const setStarted = (value: boolean) => {
+    setStartedState(value);
+    if (value) {
+      localStorage.setItem(`course-${courseId}-started`, "true");
+      console.log(`[cours-${courseId}] Saved started=true to localStorage`);
+    } else {
+      localStorage.removeItem(`course-${courseId}-started`);
+      console.log(`[cours-${courseId}] Removed started from localStorage`);
+    }
+  };
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -43,6 +63,18 @@ export default function CourseDetailPage() {
         }
         const data = await response.json();
         setCourse(data);
+        // Inject AI tutor context
+        const chaptersSummary = (data.content_json || [])
+          .map((ch: any) => `Chapitre: ${ch.title || ""}\n${(ch.blocks || []).map((b: any) => b.content || b.text || "").join(" ")}`)
+          .join("\n")
+          .slice(0, 2000);
+        setPageContext({
+          page: "cours_detail",
+          courseTitle: data.title,
+          courseSubject: data.subject,
+          courseLevel: data.level,
+          courseContent: chaptersSummary,
+        });
       } catch (error) {
         console.error("Error fetching course:", error);
       } finally {
@@ -51,6 +83,7 @@ export default function CourseDetailPage() {
     };
 
     fetchCourse();
+    return () => clearContext();
   }, [courseId, isPreview]);
 
 
@@ -157,6 +190,10 @@ export default function CourseDetailPage() {
               if (isPreview) {
                 window.close();
               } else {
+                // Clean up saved page index
+                if (course?.id) {
+                  localStorage.removeItem(`course-${course.id}-page`);
+                }
                 setStarted(false);
               }
             }}

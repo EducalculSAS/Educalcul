@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import ForumCategories from "./ForumCategories";
 import ForumPosts from "./ForumPosts";
@@ -20,18 +21,56 @@ export default function ForumApp({ role }: ForumAppProps) {
   const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
 
   const [userAuthId, setUserAuthId] = useState<string | null>(null);
+  const [userDbId, setUserDbId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     async function checkAuth() {
       const { data } = await supabase.auth.getSession();
       if (data.session?.user) {
-        setUserAuthId(data.session.user.id);
+        const authId = data.session.user.id;
+        setUserAuthId(authId);
+        const { data: userData } = await supabase
+          .from("users")
+          .select("id")
+          .eq("auth_id", authId)
+          .single();
+        if (userData) setUserDbId(userData.id);
       }
       setLoading(false);
     }
     checkAuth();
   }, []);
+
+  useEffect(() => {
+    const urlView = searchParams.get("view") as "categories" | "posts" | "thread" | null;
+    const categoryIdParam = searchParams.get("categoryId");
+    const categoryNameParam = searchParams.get("categoryName");
+    const postIdParam = searchParams.get("postId");
+
+    if (!urlView) {
+      setView("categories");
+      return;
+    }
+
+    if (urlView === "posts" && categoryIdParam) {
+      setView("posts");
+      setSelectedCategoryId(Number(categoryIdParam));
+      setSelectedCategoryName(categoryNameParam || "");
+      setSelectedPostId(null);
+      return;
+    }
+
+    if (urlView === "thread" && categoryIdParam && postIdParam) {
+      setView("thread");
+      setSelectedCategoryId(Number(categoryIdParam));
+      setSelectedCategoryName(categoryNameParam || "");
+      setSelectedPostId(Number(postIdParam));
+    }
+  }, [searchParams]);
 
   if (loading) {
     return (
@@ -49,20 +88,44 @@ export default function ForumApp({ role }: ForumAppProps) {
     );
   }
 
+  const syncUrl = (params: Record<string, string | number | null | undefined>) => {
+    const nextParams = new URLSearchParams();
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== null && value !== undefined && value !== "") {
+        nextParams.set(key, String(value));
+      }
+    });
+
+    const query = nextParams.toString();
+    router.push(query ? `${pathname}?${query}` : pathname);
+  };
+
   const navigateToPosts = (categoryId: number, categoryName: string) => {
     setSelectedCategoryId(categoryId);
     setSelectedCategoryName(categoryName);
+    setSelectedPostId(null);
     setView("posts");
+    syncUrl({ view: "posts", categoryId, categoryName });
   };
 
   const navigateToThread = (postId: number) => {
     setSelectedPostId(postId);
     setView("thread");
+    syncUrl({ view: "thread", categoryId: selectedCategoryId, categoryName: selectedCategoryName, postId });
   };
 
-  const goBack = () => {
-    if (view === "thread") setView("posts");
-    else if (view === "posts") setView("categories");
+  const backToCategories = () => {
+    setView("categories");
+    setSelectedCategoryId(null);
+    setSelectedCategoryName("");
+    setSelectedPostId(null);
+    router.push(pathname);
+  };
+
+  const backToPosts = () => {
+    setView("posts");
+    setSelectedPostId(null);
+    syncUrl({ view: "posts", categoryId: selectedCategoryId, categoryName: selectedCategoryName });
   };
 
   return (
@@ -70,24 +133,25 @@ export default function ForumApp({ role }: ForumAppProps) {
       {view === "categories" && (
         <ForumCategories role={role} onSelectCategory={navigateToPosts} />
       )}
-      
+
       {view === "posts" && selectedCategoryId && (
-        <ForumPosts 
-          role={role} 
-          categoryId={selectedCategoryId} 
+        <ForumPosts
+          role={role}
+          categoryId={selectedCategoryId}
           categoryName={selectedCategoryName}
           onSelectPost={navigateToThread}
           userAuthId={userAuthId}
-          onBack={() => setView("categories")}
+          onBack={backToCategories}
         />
       )}
 
       {view === "thread" && selectedPostId && (
-        <ForumThread 
+        <ForumThread
           role={role}
           postId={selectedPostId}
           userAuthId={userAuthId}
-          onBack={() => setView("posts")}
+          userDbId={userDbId}
+          onBack={backToPosts}
         />
       )}
     </div>

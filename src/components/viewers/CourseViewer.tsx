@@ -11,10 +11,12 @@ import {
   FileText,
   Video,
   HelpCircle,
-  ChevronLeft
+  ChevronLeft,
+  Sparkles
 } from "lucide-react";
 import { Chapter, Lesson } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
+import { useAITutor } from "@/contexts/AITutorContext";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -34,18 +36,209 @@ interface CourseViewerProps {
 }
 
 export default function CourseViewer({ course, onComplete, onChapterComplete }: CourseViewerProps) {
+  const { setPageContext, pageContext } = useAITutor();
+  
   const chapters = course.content_json || [];
   const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
   const [courseCompleted, setCourseCompleted] = useState(false);
+  const [selectedText, setSelectedText] = useState("");
+  const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0 });
   const contentRef = useRef<HTMLDivElement>(null);
+  const rangeRef = useRef<Range | null>(null);
 
   const currentChapter = chapters[currentChapterIndex];
   const currentLesson = currentChapter?.lessons[currentLessonIndex];
 
   const [isRendering, setIsRendering] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setSidebarOpen(true);
+    }
+  }, []);
+
+  // Initialize AI context with course content
+  useEffect(() => {
+    if (chapters.length === 0) return;
+
+    const currentChapter = chapters[currentChapterIndex];
+    const currentLesson = currentChapter?.lessons[currentLessonIndex];
+    
+    if (!currentLesson) return;
+
+    // Extract ONLY the current lesson content (not the whole course)
+    // This keeps the context focused and prevents confusion
+    let lessonContent = `${currentLesson.title}`;
+    
+    if (currentLesson.type === "text" && currentLesson.content) {
+      // Limit content to first 2000 chars to keep it focused
+      lessonContent += `\n\n${currentLesson.content.slice(0, 2000)}`;
+      if (currentLesson.content.length > 2000) {
+        lessonContent += "\n\n[Contenu tronqué pour concision]";
+      }
+    } else if (currentLesson.type === "video" && currentLesson.videoUrl) {
+      lessonContent += `\n\n[Vidéo]: ${currentLesson.videoUrl}`;
+    }
+
+    // Set the AI context with ONLY current lesson (not full course)
+    setPageContext({
+      page: "cours_detail",
+      courseTitle: course.title,
+      courseSubject: (course as any).subject || "Maths",
+      courseLevel: (course as any).level || "Collège",
+      courseContent: lessonContent, // CURRENT LESSON ONLY, not full course
+    });
+
+    console.log("📚 AI Context Updated with Current Lesson:", {
+      courseTitle: course.title,
+      lessonTitle: currentLesson.title,
+      contentLength: lessonContent.length,
+    });
+  }, [course.title, currentChapterIndex, currentLessonIndex, setPageContext, chapters]);
+
+  // Load KaTeX on mount
+  useEffect(() => {
+    const loadKatex = () => {
+      if (typeof (window as any).renderMathInElement === "function") {
+        return; // Already loaded
+      }
+
+      // Load CSS
+      if (!document.getElementById("katex-css")) {
+        const link = document.createElement("link");
+        link.id = "katex-css";
+        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+      }
+
+      // Load KaTeX script
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
+      script.async = true;
+      script.onload = () => {
+        // Load auto-render
+        const autoRender = document.createElement("script");
+        autoRender.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
+        autoRender.async = true;
+        autoRender.onload = () => {
+          console.log("✅ KaTeX loaded");
+        };
+        document.head.appendChild(autoRender);
+      };
+      document.head.appendChild(script);
+    };
+
+    loadKatex();
+  }, []);
+
+  // Render math when content changes
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    // Try to render math
+    const renderMath = () => {
+      if (typeof (window as any).renderMathInElement === "function") {
+        try {
+          (window as any).renderMathInElement(contentRef.current, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false },
+              { left: "\\(", right: "\\)", display: false },
+              { left: "\\[", right: "\\]", display: true },
+            ],
+            throwOnError: false,
+          });
+        } catch (e) {
+          // Ignore errors
+        }
+      }
+    };
+
+    // Render immediately
+    renderMath();
+
+    // Also retry after 100ms in case KaTeX was just loaded
+    const timer = setTimeout(renderMath, 100);
+    return () => clearTimeout(timer);
+  }, [currentChapterIndex, currentLessonIndex]);
+
+  // Detect text selection for AI explanation
+  useEffect(() => {
+    const handleSelection = () => {
+      const selection = window.getSelection();
+      if (!selection) return;
+
+      const selectedText = selection.toString().trim();
+      
+      // Show popup for meaningful selections (> 5 chars)
+      if (selectedText.length > 5) {
+        try {
+          const range = selection.getRangeAt(0);
+          rangeRef.current = range.cloneRange(); // Save the range
+          const rect = range.getBoundingClientRect();
+          
+          setSelectedText(selectedText);
+          setSelectionPosition({
+            x: rect.left + rect.width / 2,
+            y: rect.top - 10,
+          });
+        } catch (e) {
+          // Ignore errors getting range
+        }
+      } else {
+        setSelectedText("");
+        rangeRef.current = null;
+      }
+    };
+
+    document.addEventListener("mouseup", handleSelection);
+    document.addEventListener("touchend", handleSelection);
+
+    return () => {
+      document.removeEventListener("mouseup", handleSelection);
+      document.removeEventListener("touchend", handleSelection);
+    };
+  }, []);
+
+  // Re-apply selection after render
+  useEffect(() => {
+    if (selectedText && rangeRef.current) {
+      const sel = window.getSelection();
+      if (sel) {
+        sel.removeAllRanges();
+        sel.addRange(rangeRef.current.cloneRange());
+      }
+    }
+  }, [selectedText]);
+
+  // Handle asking AI about selected text
+  const handleAskAI = () => {
+    if (!selectedText) {
+      console.log("❌ No selected text to send to AI");
+      return;
+    }
+
+    console.log("✨ User clicked 'Ask AI' button with text:", selectedText.slice(0, 50));
+
+    // Create message for AI
+    const message = `Explique-moi ce passage:\n\n"${selectedText}"`;
+
+    // Store the message in a temp var that AITutor will detect
+    (window as any).__pendingAIQuestion = {
+      message,
+      timestamp: Date.now(),
+    };
+
+    console.log("📤 Dispatched AI question, waiting for AITutor to pick it up...");
+
+    // Clear selection
+    setSelectedText("");
+    window.getSelection()?.removeAllRanges();
+  };
 
   // Dynamic progress tracking
   const saveProgress = async (status: 'in_progress' | 'completed', chapterIndex: number) => {
@@ -82,13 +275,19 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
     saveProgress('in_progress', currentChapterIndex);
   }, [currentChapterIndex]);
 
-  // Load KaTeX for Math rendering
+  // Load KaTeX for Math rendering - just load, don't render yet
   useEffect(() => {
-    const loadKatex = async () => {
-      // 1. Inject KaTeX CSS if not already there
-      if (!document.getElementById("katex-css")) {
+    const loadKatex = () => {
+      // If already loaded, done
+      if (typeof (window as any).renderMathInElement === "function") {
+        console.log("📦 KaTeX already loaded");
+        return;
+      }
+      
+      // Load CSS
+      if (!document.getElementById("katex-css-course")) {
         const link = document.createElement("link");
-        link.id = "katex-css";
+        link.id = "katex-css-course";
         link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
         link.rel = "stylesheet";
         link.integrity = "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
@@ -96,103 +295,70 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
         document.head.appendChild(link);
       }
 
-      // 2. Load KaTeX JS
-      const loadScript = (src: string, integrity: string): Promise<void> => {
-        return new Promise((resolve, reject) => {
-          if ((window as any).katex && src.includes("katex.min.js")) return resolve();
-          if ((window as any).renderMathInElement && src.includes("auto-render.min.js")) return resolve();
-          
-          const script = document.createElement("script");
-          script.src = src;
-          script.integrity = integrity;
-          script.crossOrigin = "anonymous";
-          script.async = true;
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error(`Failed to load script ${src}`));
-          document.head.appendChild(script);
-        });
+      // Load main KaTeX
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
+      script.integrity = "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8";
+      script.crossOrigin = "anonymous";
+      script.async = true;
+      script.onload = () => {
+        console.log("✅ KaTeX loaded");
+        // Once katex is loaded, load auto-render
+        const autoRenderScript = document.createElement("script");
+        autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
+        autoRenderScript.integrity = "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05";
+        autoRenderScript.crossOrigin = "anonymous";
+        autoRenderScript.async = true;
+        autoRenderScript.onload = () => {
+          console.log("✅ KaTeX auto-render loaded");
+        };
+        autoRenderScript.onerror = () => {
+          console.error("❌ Failed to load KaTeX auto-render");
+        };
+        document.head.appendChild(autoRenderScript);
       };
-
-      try {
-        await loadScript(
-          "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
-          "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
-        );
-        await loadScript(
-          "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js",
-          "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        );
-        
-        renderMath();
-      } catch (err) {
-        console.error("KaTeX initialization failed:", err);
-      }
+      script.onerror = () => console.error("❌ Failed to load KaTeX");
+      document.head.appendChild(script);
     };
 
-    const renderMath = () => {
-      // Use document-wide check or wait for contentRef
-      const target = contentRef.current || document.body;
-      if ((window as any).renderMathInElement) {
-        setIsRendering(true);
-        try {
-          (window as any).renderMathInElement(target, {
-            delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-            ],
-            throwOnError : false
-          });
-        } catch (e) {
-          console.error("Math rendering error:", e);
-        } finally {
-          setTimeout(() => setIsRendering(false), 30);
-        }
-      }
-    };
-
-    // If already loaded, render immediately
-    if ((window as any).katex && (window as any).renderMathInElement) {
-      renderMath();
-    } else {
-      loadKatex();
-    }
+    loadKatex();
   }, []);
 
-  // Re-run math rendering when content changes using MutationObserver
+  // Observer for content changes - only watch for mutations, don't re-load KaTeX
   useEffect(() => {
     if (!contentRef.current) return;
 
+    // Render math if KaTeX is available
     const renderMath = () => {
-      if (contentRef.current && (window as any).renderMathInElement) {
-        setIsRendering(true);
-        try {
-          (window as any).renderMathInElement(contentRef.current, {
-            delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-            ],
-            throwOnError : false
-          });
-        } catch (e) {
-          console.error("Math rendering error:", e);
-        } finally {
-          // Safety timeout to ensure layout is stable
-          setTimeout(() => setIsRendering(false), 60);
-        }
+      if (typeof (window as any).renderMathInElement !== "function") {
+        return;
+      }
+
+      if (!contentRef.current) {
+        return;
+      }
+
+      try {
+        (window as any).renderMathInElement(contentRef.current, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true },
+          ],
+          throwOnError: false,
+        });
+      } catch (e) {
+        // Silently ignore errors
       }
     };
 
-    // Initial render
+    // Render immediately when content is ready
     renderMath();
 
     // Create an observer to watch for content changes
-    const observer = new MutationObserver((mutations) => {
-      const hasContentChange = mutations.some(m => m.type === 'childList' || m.type === 'characterData');
-      if (hasContentChange) {
+    const observer = new MutationObserver(() => {
+      if (typeof (window as any).renderMathInElement === "function") {
         renderMath();
       }
     });
@@ -204,7 +370,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
     });
 
     return () => observer.disconnect();
-  }, [currentLesson]);
+  }, [currentChapterIndex, currentLessonIndex]);
 
 
   const handleNext = () => {
@@ -308,7 +474,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
       <div 
         className={`fixed inset-y-0 left-0 z-50 w-80 bg-[var(--greek-cream)] border-r border-[var(--greek-gold)] transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 flex flex-col ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className="p-5 border-b border-[var(--greek-gold)] bg-[var(--greek-cream)] flex justify-between items-center shadow-sm z-10">
+        <div className="h-14 md:h-16 px-4 md:px-6 border-b border-[var(--greek-gold)] bg-[var(--greek-cream)] flex justify-between items-center shadow-sm z-10">
           <div>
              <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] truncate max-w-[200px]" title={course.title}>
                {course.title}
@@ -317,12 +483,17 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
                {chapters.reduce((acc, c) => acc + c.lessons.length, 0)} leçons • {chapters.length} chapitres
              </p>
           </div>
-          <button onClick={() => setSidebarOpen(false)} className="md:hidden p-2 text-[var(--greek-bronze)] hover:bg-[var(--greek-gold)]/10 rounded-lg">
-            <X className="w-5 h-5" />
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="md:hidden w-10 h-10 flex items-center justify-center text-[var(--greek-bronze)] hover:bg-[var(--greek-gold)]/10 rounded-lg"
+            aria-label="Fermer le sommaire"
+            title="Fermer le sommaire"
+          >
+            <Menu className="w-5 h-5" />
           </button>
         </div>
         
-        <div className="overflow-y-auto flex-1 p-3 space-y-4">
+        <div className="overflow-y-auto flex-1 px-3 pt-7 pb-3 space-y-4">
           {chapters.map((chapter, cIndex) => (
             <div key={chapter.id} className="space-y-1">
               <div className="px-3 py-2 text-xs font-bold text-[var(--greek-bronze)]/70 uppercase tracking-wider flex items-center gap-2">
@@ -363,7 +534,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col h-full overflow-hidden bg-white relative">
         {/* Header */}
-        <div className="h-16 border-b border-[var(--greek-gold)] flex items-center px-6 justify-between bg-[var(--greek-cream)] shrink-0 z-10">
+        <div className="h-14 md:h-16 border-b border-[var(--greek-gold)] flex items-center px-4 md:px-6 justify-between bg-[var(--greek-cream)] shrink-0 z-10">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -393,22 +564,22 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
 
         {/* Content Viewer */}
         <div className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
-          <div className="max-w-4xl mx-auto px-6 py-10 md:px-12 md:py-16">
+          <div className="max-w-4xl mx-auto px-4 py-6 md:px-12 md:py-16">
             {currentLesson ? (
               <div className="animate-in fade-in duration-500 slide-in-from-bottom-4">
                 {/* Content Header */}
-                <div className="mb-8 pb-6 border-b border-[var(--greek-gold)]/10">
+                <div className="mb-6 md:mb-8 pb-4 md:pb-6 border-b border-[var(--greek-gold)]/10">
                   <div className="flex items-center gap-2 text-sm text-[var(--greek-bronze)] font-medium mb-2 uppercase tracking-wide">
                     {currentLesson.type === 'video' ? <Video size={16}/> : <FileText size={16}/>}
                     {currentLesson.type === 'video' ? 'Vidéo' : 'Leçon'}
                   </div>
-                  <h1 className="text-3xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight">
+                  <h1 className="text-2xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight">
                     {currentLesson.title}
                   </h1>
                 </div>
 
                 {/* Content Body */}
-                <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:font-[family-name:var(--font-display)] prose-headings:text-[var(--greek-blue)] prose-p:text-gray-600 prose-a:text-[var(--greek-blue)] hover:prose-a:text-[var(--greek-gold)] prose-img:rounded-xl prose-img:shadow-lg">
+                <div className="prose prose-sm md:prose-lg max-w-none prose-headings:font-bold prose-headings:font-[family-name:var(--font-display)] prose-headings:text-[var(--greek-blue)] prose-p:text-gray-600 prose-a:text-[var(--greek-blue)] hover:prose-a:text-[var(--greek-gold)] prose-img:rounded-xl prose-img:shadow-lg">
                    {currentLesson.type === 'video' ? (
                      <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-xl bg-black border border-[var(--greek-gold)]/20">
                        {getYouTubeId(currentLesson.content) ? (
@@ -450,19 +621,20 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
         </div>
 
         {/* Footer Navigation */}
-        <div className="h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex items-center justify-between px-6 md:px-12 shrink-0 z-10 sticky bottom-0">
+        <div className="h-auto md:h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 md:gap-0 px-4 md:px-12 py-3 md:py-0 shrink-0 z-10 sticky bottom-0">
           <button
             onClick={handlePrev}
             disabled={currentChapterIndex === 0 && currentLessonIndex === 0}
-            className="group flex items-center gap-2 px-4 py-2 text-[var(--greek-bronze)] font-medium disabled:opacity-30 hover:text-[var(--greek-blue)] transition-colors"
+            className="group flex items-center justify-center md:justify-start gap-2 px-4 py-3 md:py-2 text-[var(--greek-bronze)] font-medium disabled:opacity-30 hover:text-[var(--greek-blue)] transition-colors rounded-xl bg-white/70 md:bg-transparent border border-[var(--greek-gold)]/15 md:border-0"
           >
             <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="hidden md:inline">Leçon précédente</span>
+            <span className="md:hidden">Précédent</span>
           </button>
           
           <button
             onClick={handleNext}
-            className="btn-primary-greek flex items-center gap-3 px-6 py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+            className="btn-primary-greek flex items-center justify-center gap-3 px-6 py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 w-full md:w-auto"
           >
             {currentChapterIndex === chapters.length - 1 && currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1 ? (
               <>Terminer le cours <CheckCircle className="w-5 h-5" /></>
@@ -475,6 +647,42 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
             )}
           </button>
         </div>
+
+        {/* Text Selection Popup */}
+        {selectedText && (
+          <div
+            className="fixed bg-[var(--greek-blue)] text-white rounded-xl shadow-2xl px-4 py-2 z-[100] flex items-center gap-3 border border-[var(--greek-gold)]/50 animate-fade-in pointer-events-auto"
+            style={{
+              left: `${selectionPosition.x}px`,
+              top: `${selectionPosition.y}px`,
+              transform: "translate(-50%, -100%)",
+            }}
+          >
+            <button
+              onClick={handleAskAI}
+              className="flex items-center gap-2 hover:bg-blue-700 px-3 py-1.5 rounded-lg transition-colors font-semibold text-sm whitespace-nowrap"
+              title="Demander à l'IA d'expliquer ce passage"
+            >
+              <Sparkles className="w-4 h-4" />
+              Demander à l'IA
+            </button>
+            <button
+              onClick={() => setSelectedText("")}
+              className="text-white/60 hover:text-white p-1 rounded-lg hover:bg-blue-700 transition-colors"
+              title="Fermer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
+        {/* Invisible click target to dismiss popup */}
+        {selectedText && (
+          <div
+            className="fixed inset-0 z-[99]"
+            onClick={() => setSelectedText("")}
+          />
+        )}
       </div>
     </div>
   );

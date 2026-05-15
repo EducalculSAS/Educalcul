@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
+import { gradeWithQwen } from "@/lib/qwen-service";
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -11,9 +12,6 @@ const supabaseAdmin = createClient(
     },
   }
 );
-
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
 export async function POST(
   req: Request,
@@ -94,9 +92,9 @@ export async function POST(
       isImage ||
       (targetBlock && targetBlock.type === "text_input")
     ) {
-      // --- AI GRADING (Gemini 1.5 Flash) ---
+      // --- AI GRADING (Qwen2.5vl:7b Local) ---
       console.log(
-        "AI Grading requested for:",
+        "🤖 AI Grading requested for:",
         id === "preview" ? "Preview" : exercise.title
       );
 
@@ -104,92 +102,31 @@ export async function POST(
       const correctAns = targetBlock?.correctAnswer || "Non spécifiée";
       const expl = targetBlock?.explanation || "";
 
-      // Construct Gemini Request
-      const systemPrompt = `Tu es un professeur de mathématiques bienveillant qui corrige un élève de niveau "${level || exercise?.level || "6ème"}".
-RÉGLES STRICTES POUR LE FEEDBACK :
-1. Adapte ton vocabulaire et tes explications au niveau "${level || exercise?.level || "6ème"}".
-2. Analyse précisément la réponse (texte ou image) : si la méthode est bonne mais qu'il y a une erreur d'étourderie ou de calcul, dis-lui explicitement qu'il y était presque et valorise son raisonnement.
-3. INTERDIT d'utiliser des tournures banales ou répétitives (ex: évite de commencer tes phrases par "Car", "En effet", "C'est incorrect car").
-4. Sois original, direct, et encourageant dans tes corrections.
-5. Sois souple sur la forme mais rigoureux sur le fond mathématique. Si c'est une image, lis-la attentivement.
-Réponds UNIQUEMENT au format JSON : { "is_correct": boolean, "score": number, "feedback": string }.
-Le score doit être entre 0 et ${maxPoints}.`;
-
-      const userPrompt = `Question : ${questionContent}
-Réponse attendue : ${correctAns}
-Explication : ${expl}
-
-Voici la réponse de l'élève :`;
-
-      const parts: any[] = [{ text: userPrompt }];
-
-      if (isImage) {
-        // Extract base64
-        const base64Data = answer.split(",")[1];
-        const mimeType = answer.split(";")[0].split(":")[1];
-        console.log(
-          `Processing image: ${mimeType}, size: ${base64Data.length} chars`
-        );
-        parts.push({
-          inline_data: {
-            mime_type: mimeType,
-            data: base64Data,
-          },
-        });
-      } else {
-        parts.push({
-          text: typeof answer === "string" ? answer : JSON.stringify(answer),
-        });
-      }
-
       try {
-        const geminiBody = {
-          system_instruction: {
-            parts: [{ text: systemPrompt }],
-          },
-          contents: [
-            {
-              role: "user",
-              parts: parts,
-            },
-          ],
-          generationConfig: {
-            response_mime_type: "application/json",
-          },
-        };
-
-        const aiResponse = await fetch(GEMINI_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(geminiBody),
-        });
-
-        if (!aiResponse.ok) {
-          const errText = await aiResponse.text();
-          console.error("Gemini API Error (Image Analysis):", errText);
-          throw new Error(
-            `Gemini API responded with ${aiResponse.status}: ${errText}`
-          );
+        // For images, we'll use a text description prompt for Qwen
+        let studentAnswerText = answer;
+        if (isImage) {
+          // For images, ask the user to describe what they submitted
+          console.log("⚠️ Image detected - requesting text description from user");
+          studentAnswerText = "[Image submitted - veuillez décrire votre réponse]";
+        } else {
+          studentAnswerText = typeof answer === "string" ? answer : JSON.stringify(answer);
         }
 
-        const aiData = await aiResponse.json();
-        let content = aiData.candidates[0].content.parts[0].text;
-        console.log("AI Response:", content);
-
-        // Clean markdown code blocks if present
-        content = content
-          .replace(/```json/g, "")
-          .replace(/```/g, "")
-          .trim();
-
-        const result = JSON.parse(content);
-        isCorrect = result.is_correct;
-        score = result.score;
-        feedback = result.feedback;
+        const gradingResult = await gradeWithQwen(
+          questionContent,
+          correctAns,
+          studentAnswerText,
+          expl,
+          level || exercise?.level || "6ème",
+          maxPoints
+        );
+        
+        isCorrect = gradingResult.is_correct;
+        score = gradingResult.score;
+        feedback = gradingResult.feedback;
       } catch (e) {
-        console.error("AI Grading Failed:", e);
+        console.error("❌ AI Grading Failed:", e);
         // Fallback for text only
         if (!isImage) {
           const answerText =
@@ -206,7 +143,7 @@ Voici la réponse de l'élève :`;
         } else {
           const errorMessage =
             e instanceof Error ? e.message : "Erreur inconnue";
-          feedback = `Erreur lors de l'analyse de l'image. Détails: ${errorMessage}`;
+          feedback = `Erreur lors de l'analyse. Détails: ${errorMessage}`;
           isCorrect = false;
           score = 0;
         }
@@ -259,6 +196,16 @@ Voici la réponse de l'élève :`;
 
       if (attemptError) {
         console.error("Error saving attempt:", attemptError);
+      }
+
+      // Trigger badge check (fire and forget)
+      const authHeader = req.headers.get("x-user-auth-id");
+      if (authHeader) {
+        fetch(`${req.headers.get("origin") || ""}/api/child/check-badges`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ authId: authHeader }),
+        }).catch(() => {});
       }
     }
 

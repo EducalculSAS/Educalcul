@@ -2,17 +2,8 @@
 
 import { useState, useEffect } from "react";
 import {
-  Users,
-  BookOpen,
-  FileText,
-  MessageSquare,
-  TrendingUp,
-  Activity,
-  Clock,
-  UserPlus,
-  BarChart2,
-  PieChart,
-  Globe,
+  Users, BookOpen, MessageSquare, TrendingUp, Activity,
+  BarChart2, UserPlus, CreditCard, Dumbbell, Gift,
 } from "lucide-react";
 
 export default function ReportsPage() {
@@ -20,239 +11,140 @@ export default function ReportsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchReports();
+    fetch("/api/admin/reports")
+      .then(r => r.json())
+      .then(d => { setData(d); setLoading(false); })
+      .catch(() => setLoading(false));
   }, []);
 
-  const fetchReports = async () => {
-    try {
-      const res = await fetch("/api/admin/reports");
-      if (!res.ok) throw new Error("Failed to fetch reports");
-      const jsonData = await res.json();
-      setData(jsonData);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--greek-blue)]"></div>
-      </div>
-    );
-  }
-
-  if (!data)
-    return <div className="p-6">Erreur de chargement des données.</div>;
+  if (loading) return (
+    <div className="flex justify-center items-center h-64">
+      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[var(--greek-blue)]" />
+    </div>
+  );
+  if (!data) return <div className="p-6 text-red-500">Erreur de chargement.</div>;
 
   const { stats, charts, recent_activity } = data;
+  const maxCount = Math.max(...charts.registrations.map((r: any) => r.count), 1);
+
+  const activityIcon = (type: string) => {
+    if (type === "forum") return <MessageSquare size={14} />;
+    if (type === "exercice") return <Dumbbell size={14} />;
+    return <UserPlus size={14} />;
+  };
+  const activityColor = (type: string) => {
+    if (type === "forum") return "bg-purple-100 text-purple-600";
+    if (type === "exercice") return "bg-green-100 text-green-600";
+    return "bg-blue-100 text-blue-600";
+  };
 
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-            <BarChart2 className="text-[var(--greek-gold)]" size={32} />
-            Rapports & Analytics
-          </h1>
-          <p className="text-[var(--greek-bronze)] text-lg">
-            Vue d'ensemble des performances et de l'activité
-          </p>
-        </div>
+      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8">
+        <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
+          <BarChart2 className="text-[var(--greek-gold)]" size={30} />
+          Rapports & Analytics
+        </h1>
+        <p className="text-[var(--greek-bronze)] mt-1">Vue d'ensemble des performances et de l'activité</p>
       </div>
 
-      {/* Main Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard
-          title="Utilisateurs Total"
-          value={stats.total_users}
-          icon={<Users size={24} />}
-          color="blue"
-          subtext={`${stats.new_registrations_today} aujourd'hui`}
-        />
-        <StatCard
-          title="Parents"
-          value={stats.total_parents}
-          icon={<UserPlus size={24} />}
-          color="green"
-        />
-        <StatCard
-          title="Enfants"
-          value={stats.total_children}
-          icon={<UserPlus size={24} />}
-          color="purple"
-        />
-        <StatCard
-          title="Contenu Total"
-          value={
-            stats.total_courses + stats.total_exercises + stats.total_quizzes
-          }
-          icon={<BookOpen size={24} />}
-          color="orange"
-          subtext={`${stats.total_courses} cours, ${stats.total_quizzes} quiz`}
-        />
+      {/* Stats row 1 — Utilisateurs */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <StatCard title="Utilisateurs" value={stats.total_users} sub={`+${stats.new_today} aujourd'hui`} icon={<Users size={20} />} color="bg-blue-50 text-blue-600" />
+        <StatCard title="Parents" value={stats.total_parents} sub={`+${stats.new_this_week} cette semaine`} icon={<UserPlus size={20} />} color="bg-indigo-50 text-indigo-600" />
+        <StatCard title="Élèves" value={stats.total_children} icon={<Users size={20} />} color="bg-violet-50 text-violet-600" />
+        <StatCard title="Abonnements actifs" value={stats.active_subs} icon={<CreditCard size={20} />} color="bg-green-50 text-green-600" />
       </div>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Registrations Chart */}
+      {/* Stats row 2 — Contenu & activité */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <StatCard title="Cours publiés" value={stats.total_courses} icon={<BookOpen size={20} />} color="bg-orange-50 text-orange-600" />
+        <StatCard title="Exercices" value={stats.total_exercises} sub={`${stats.exercise_attempts} tentatives`} icon={<Dumbbell size={20} />} color="bg-amber-50 text-amber-600" />
+        <StatCard title="Quiz" value={stats.total_quizzes} sub={stats.avg_quiz_score !== null ? `Moy. ${stats.avg_quiz_score}/20` : "Aucune tentative"} icon={<BookOpen size={20} />} color="bg-yellow-50 text-yellow-600" />
+        <StatCard title="Progressions cours" value={stats.course_progress} icon={<TrendingUp size={20} />} color="bg-teal-50 text-teal-600" />
+      </div>
+
+      {/* Stats row 3 — Forum & parrainage */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <StatCard title="Sujets forum" value={stats.forum_posts} icon={<MessageSquare size={20} />} color="bg-purple-50 text-purple-600" />
+        <StatCard title="Commentaires forum" value={stats.forum_comments} icon={<MessageSquare size={20} />} color="bg-pink-50 text-pink-600" />
+        <StatCard title="Codes parrainage" value={stats.parrainage_codes} icon={<Gift size={20} />} color="bg-rose-50 text-rose-600" />
+        <StatCard title="Utilisations parrainage" value={stats.parrainage_uses} icon={<Gift size={20} />} color="bg-red-50 text-red-600" />
+      </div>
+
+      {/* Chart + Activity */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {/* Bar chart — inscriptions par semaine */}
         <div className="bg-white p-6 rounded-[20px] shadow-sm border border-gray-100">
-          <h3 className="text-lg font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
-            <TrendingUp size={20} className="text-[var(--greek-gold)]" />
-            Inscriptions (30 derniers jours)
+          <h3 className="text-base font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
+            <TrendingUp size={18} className="text-[var(--greek-gold)]" />
+            Inscriptions — 8 dernières semaines
           </h3>
-          <div className="h-64 flex items-end justify-between gap-2">
-            {charts.registrations.length > 0 ? (
-              charts.registrations.map((item: any, index: number) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center flex-1 group"
-                >
-                  <div
-                    className="w-full bg-blue-100 hover:bg-[var(--greek-blue)] transition-all rounded-t-sm relative"
-                    style={{ height: `${Math.max(item.count * 10, 5)}%` }} // Simple scaling
-                  >
-                    <div className="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded pointer-events-none">
-                      {item.count}
-                    </div>
+          <div className="flex items-end gap-2 h-48">
+            {charts.registrations.map((item: any, i: number) => {
+              const heightPct = maxCount > 0 ? Math.max((item.count / maxCount) * 100, item.count > 0 ? 4 : 1) : 1;
+              const label = new Date(item.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
+              return (
+                <div key={i} className="flex flex-col items-center flex-1 group">
+                  <div className="relative w-full flex flex-col justify-end" style={{ height: "180px" }}>
+                    {item.count > 0 && (
+                      <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs py-0.5 px-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        {item.count}
+                      </div>
+                    )}
+                    <div
+                      className="w-full rounded-t-md bg-[var(--greek-blue)]/20 group-hover:bg-[var(--greek-blue)] transition-colors"
+                      style={{ height: `${heightPct}%` }}
+                    />
                   </div>
-                  <div className="text-[10px] text-gray-400 mt-2 transform -rotate-45 origin-top-left truncate w-full">
-                    {new Date(item.date).toLocaleDateString("fr-FR", {
-                      day: "2-digit",
-                      month: "2-digit",
-                    })}
-                  </div>
+                  <span className="text-[10px] text-gray-400 mt-1.5 font-medium">{label}</span>
                 </div>
-              ))
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-400">
-                Aucune donnée disponible
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Recent activity */}
+        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-gray-100">
+          <h3 className="text-base font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
+            <Activity size={18} className="text-[var(--greek-gold)]" />
+            Activité récente
+          </h3>
+          <div className="space-y-3">
+            {recent_activity.length > 0 ? recent_activity.map((item: any, i: number) => (
+              <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                <div className={`p-1.5 rounded-lg shrink-0 ${activityColor(item.type)}`}>
+                  {activityIcon(item.type)}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-800 truncate">{item.description}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    {item.type} · {new Date(item.timestamp).toLocaleString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })}
+                  </p>
+                </div>
               </div>
+            )) : (
+              <p className="text-gray-400 text-sm italic py-4 text-center">Aucune activité récente.</p>
             )}
           </div>
         </div>
 
-        {/* Recent Activity */}
-        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-gray-100">
-          <h3 className="text-lg font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
-            <Activity size={20} className="text-[var(--greek-gold)]" />
-            Activités Récentes
-          </h3>
-          <div className="space-y-4">
-            {recent_activity.length > 0 ? (
-              recent_activity.map((item: any, index: number) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 p-3 bg-gray-50 rounded-xl border border-gray-100"
-                >
-                  <div className="p-2 bg-blue-100 text-[var(--greek-blue)] rounded-full">
-                    <UserPlus size={16} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-800">
-                      {item.description}
-                    </p>
-                    <p className="text-xs text-gray-500 capitalize">
-                      {item.type} •{" "}
-                      {new Date(item.timestamp).toLocaleString("fr-FR")}
-                    </p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="text-gray-500 italic">Aucune activité récente.</p>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Advanced Metrics Grid */}
-      <div className="bg-white p-6 rounded-[20px] shadow-sm border border-gray-100">
-        <h3 className="text-lg font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
-          <PieChart size={20} className="text-[var(--greek-gold)]" />
-          Métriques Avancées
-        </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <MetricItem
-            label="Taux de conversion"
-            value={`${stats.conversion_rate || 0}%`}
-            trend="neutral"
-          />
-          <MetricItem
-            label="Durée moyenne session"
-            value={`${stats.avg_session_duration || 0} min`}
-            trend="neutral"
-          />
-          <MetricItem
-            label="Taux de rebond"
-            value={`${stats.bounce_rate || 0}%`}
-            trend="neutral"
-          />
-          <MetricItem
-            label="Rétention (7j)"
-            value={`${stats.retention_rate_7d || 0}%`}
-            trend="neutral"
-          />
-          <MetricItem
-            label="Rétention (30j)"
-            value={`${stats.retention_rate_30d || 0}%`}
-            trend="neutral"
-          />
-          <MetricItem
-            label="Taux de complétion"
-            value={`${stats.completion_rate || 0}%`}
-            trend="neutral"
-          />
-          <MetricItem
-            label="Score moyen Quiz"
-            value={`${stats.avg_quiz_score || 0}/20`}
-            trend="neutral"
-          />
-        </div>
       </div>
     </div>
   );
 }
 
-function StatCard({ title, value, icon, color, subtext }: any) {
-  const colors: Record<string, string> = {
-    blue: "bg-blue-50 text-blue-600",
-    green: "bg-green-50 text-green-600",
-    purple: "bg-purple-50 text-purple-600",
-    orange: "bg-orange-50 text-orange-600",
-  };
-
+function StatCard({ title, value, sub, icon, color }: { title: string; value: number; sub?: string; icon: React.ReactNode; color: string }) {
   return (
-    <div className="bg-white p-6 rounded-[20px] shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h4 className="text-gray-500 text-xs font-bold uppercase tracking-wide">
-            {title}
-          </h4>
-          <div className="text-3xl font-bold text-[var(--greek-blue)] mt-2">{value}</div>
-        </div>
-        <div className={`p-3 rounded-xl ${colors[color] || colors.blue}`}>
-          {icon}
-        </div>
+    <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+      <div className="flex items-start justify-between mb-3">
+        <div className={`p-2 rounded-xl ${color}`}>{icon}</div>
+        <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>
       </div>
-      {subtext && (
-        <div className="text-xs text-gray-500 border-t border-gray-50 pt-3 mt-1">
-          {subtext}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function MetricItem({ label, value, trend }: any) {
-  return (
-    <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
-      <div className="text-2xl font-bold text-[var(--greek-blue)]">{value}</div>
-      <div className="text-xs text-gray-500 mt-1 uppercase font-semibold">{label}</div>
+      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{title}</p>
+      {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
     </div>
   );
 }

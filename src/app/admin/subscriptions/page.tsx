@@ -1,20 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import {
-  CreditCard,
-  Plus,
-  Edit,
-  Trash2,
-  CheckCircle,
-  AlertTriangle,
-  Clock,
-  Calendar,
-  X,
-  Power,
+  CreditCard, Plus, Edit, Trash2, CheckCircle, AlertTriangle,
+  Clock, Calendar, X, Power, Users, Tag, Gift, RefreshCw,
+  TrendingUp, Copy, Check,
 } from "lucide-react";
 
+// ── Types ──────────────────────────────────────────────────────────────────
 interface Plan {
   id: string;
   name: string;
@@ -24,610 +17,768 @@ interface Plan {
   duration_months: number | null;
   trial_days: number | null;
   promo_description: string | null;
-  features: any; // JSON
+  features: any;
   is_active: boolean;
+  sort_order: number;
+  subscriber_count: number;
   created_at: string;
 }
 
+interface ReferralCode {
+  id: string;
+  code: string;
+  owner?: { first_name: string; last_name: string; email: string } | null;
+  discount_type: "percent" | "fixed" | "free_months";
+  discount_value: number;
+  max_uses: number | null;
+  current_uses: number;
+  valid_from: string;
+  valid_until: string | null;
+  is_active: boolean;
+  description: string | null;
+  referral_uses: any[];
+  created_at: string;
+}
+
+// ── Default form values ────────────────────────────────────────────────────
+const defaultPlanForm = {
+  name: "", description: "", price: 0, billing_interval: "month",
+  duration_months: "", trial_days: "", promo_description: "", is_active: true, sort_order: 0,
+  feature_max_children: 1, feature_access_level_exercises: "all",
+  feature_detailed_reports: false, feature_priority_support: false,
+  feature_offline_access: false, feature_custom_avatars: false,
+};
+
+const defaultRefForm = {
+  code: "", description: "", discount_type: "percent", discount_value: 10,
+  max_uses: "", valid_from: "", valid_until: "", is_active: true,
+};
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+function intervalLabel(i: string) {
+  return i === "month" ? "/ mois" : i === "year" ? "/ an" : "unique";
+}
+function discountLabel(type: string, value: number) {
+  if (type === "percent") return `−${value}%`;
+  if (type === "fixed") return `−${value}€`;
+  return `${value} mois offerts`;
+}
+
+// ── Component ─────────────────────────────────────────────────────────────
 export default function AdminSubscriptionsPage() {
+  const [tab, setTab] = useState<"plans" | "promos" | "parrainage">("plans");
+
+  // Plans state
   const [plans, setPlans] = useState<Plan[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(false);
+  const [plansLoading, setPlansLoading] = useState(true);
+  const [showPlanModal, setShowPlanModal] = useState(false);
   const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
-  const [message, setMessage] = useState<{
-    type: "success" | "error";
-    text: string;
-  } | null>(null);
+  const [planForm, setPlanForm] = useState<any>(defaultPlanForm);
 
-  // Form state
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    price: 0,
-    billing_interval: "month",
-    duration_months: "",
-    trial_days: "",
-    promo_description: "",
-    is_active: true,
-    // Features
-    feature_max_children: 1,
-    feature_access_level_exercises: "all",
-    feature_detailed_reports: false,
-    feature_priority_support: false,
-    feature_offline_access: false,
-    feature_custom_avatars: false,
-  });
+  // Referrals state
+  const [codes, setCodes] = useState<ReferralCode[]>([]);
+  const [codesLoading, setCodesLoading] = useState(true);
+  const [showRefModal, setShowRefModal] = useState(false);
+  const [editingCode, setEditingCode] = useState<ReferralCode | null>(null);
+  const [refForm, setRefForm] = useState<any>(defaultRefForm);
+  const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchPlans();
-  }, []);
+  // Shared
+  const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
+  // ── Fetches ──────────────────────────────────────────────────────────────
   const fetchPlans = async () => {
-    try {
-      const res = await fetch("/api/admin/subscriptions");
-      if (res.ok) {
-        const data = await res.json();
-        setPlans(data);
-      }
-    } catch (error) {
-      console.error("Error fetching plans:", error);
-    } finally {
-      setLoading(false);
-    }
+    setPlansLoading(true);
+    const res = await fetch("/api/admin/subscriptions");
+    if (res.ok) setPlans(await res.json());
+    setPlansLoading(false);
   };
 
-  const handleOpenModal = (plan: Plan | null = null) => {
+  const fetchCodes = async () => {
+    setCodesLoading(true);
+    const res = await fetch("/api/admin/referral-codes");
+    if (res.ok) setCodes(await res.json());
+    setCodesLoading(false);
+  };
+
+  useEffect(() => { fetchPlans(); fetchCodes(); }, []);
+
+  const showToast = (type: "success" | "error", text: string) => {
+    setToast({ type, text });
+    setTimeout(() => setToast(null), 4000);
+  };
+
+  // ── Plan CRUD ─────────────────────────────────────────────────────────────
+  const openPlanModal = (plan: Plan | null = null) => {
+    setEditingPlan(plan);
     if (plan) {
-      setEditingPlan(plan);
-      const features =
-        typeof plan.features === "string"
-          ? JSON.parse(plan.features)
-          : plan.features || {};
-      setFormData({
-        name: plan.name,
-        description: plan.description || "",
-        price: plan.price,
-        billing_interval: plan.billing_interval as string,
+      const f = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
+      setPlanForm({
+        name: plan.name, description: plan.description || "",
+        price: plan.price, billing_interval: plan.billing_interval,
         duration_months: plan.duration_months?.toString() || "",
         trial_days: plan.trial_days?.toString() || "",
         promo_description: plan.promo_description || "",
-        is_active: plan.is_active,
-        feature_max_children: features.max_children || 1,
-        feature_access_level_exercises:
-          features.access_level_exercises || "all",
-        feature_detailed_reports: !!features.detailed_reports,
-        feature_priority_support: !!features.priority_support,
-        feature_offline_access: !!features.offline_access,
-        feature_custom_avatars: !!features.custom_avatars,
+        is_active: plan.is_active, sort_order: plan.sort_order ?? 0,
+        feature_max_children: f.max_children || 1,
+        feature_access_level_exercises: f.access_level_exercises || "all",
+        feature_detailed_reports: !!f.detailed_reports,
+        feature_priority_support: !!f.priority_support,
+        feature_offline_access: !!f.offline_access,
+        feature_custom_avatars: !!f.custom_avatars,
       });
     } else {
-      setEditingPlan(null);
-      setFormData({
-        name: "",
-        description: "",
-        price: 0,
-        billing_interval: "month",
-        duration_months: "",
-        trial_days: "",
-        promo_description: "",
-        is_active: true,
-        feature_max_children: 1,
-        feature_access_level_exercises: "all",
-        feature_detailed_reports: false,
-        feature_priority_support: false,
-        feature_offline_access: false,
-        feature_custom_avatars: false,
-      });
+      setPlanForm(defaultPlanForm);
     }
-    setShowModal(true);
+    setShowPlanModal(true);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setEditingPlan(null);
-    setMessage(null);
-  };
-
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value, type } = e.target;
-
-    if (type === "checkbox") {
-      const checked = (e.target as HTMLInputElement).checked;
-      setFormData((prev) => ({ ...prev, [name]: checked }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const savePlan = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const features = {
-      max_children: Number(formData.feature_max_children),
-      access_level_exercises: formData.feature_access_level_exercises,
-      detailed_reports: formData.feature_detailed_reports,
-      priority_support: formData.feature_priority_support,
-      offline_access: formData.feature_offline_access,
-      custom_avatars: formData.feature_custom_avatars,
+      max_children: Number(planForm.feature_max_children),
+      access_level_exercises: planForm.feature_access_level_exercises,
+      detailed_reports: planForm.feature_detailed_reports,
+      priority_support: planForm.feature_priority_support,
+      offline_access: planForm.feature_offline_access,
+      custom_avatars: planForm.feature_custom_avatars,
     };
-
     const payload = {
-      name: formData.name,
-      description: formData.description,
-      price: Number(formData.price),
-      billing_interval: formData.billing_interval,
-      duration_months: formData.duration_months
-        ? Number(formData.duration_months)
-        : null,
-      trial_days: formData.trial_days ? Number(formData.trial_days) : null,
-      promo_description: formData.promo_description,
-      is_active: formData.is_active,
+      name: planForm.name, description: planForm.description,
+      price: Number(planForm.price), billing_interval: planForm.billing_interval,
+      duration_months: planForm.duration_months ? Number(planForm.duration_months) : null,
+      trial_days: planForm.trial_days ? Number(planForm.trial_days) : 0,
+      promo_description: planForm.promo_description || null,
+      is_active: planForm.is_active, sort_order: Number(planForm.sort_order),
       features,
     };
-
-    try {
-      const url = "/api/admin/subscriptions";
-      const method = editingPlan ? "PUT" : "POST";
-      const body = editingPlan
-        ? JSON.stringify({ ...payload, id: editingPlan.id })
-        : JSON.stringify(payload);
-
-      const res = await fetch(url, {
-        method,
-        headers: { "Content-Type": "application/json" },
-        body,
-      });
-
-      const result = await res.json();
-
-      if (!res.ok)
-        throw new Error(result.error || "Erreur lors de la sauvegarde");
-
-      handleCloseModal();
-      fetchPlans();
-      setMessage({
-        type: "success",
-        text: editingPlan
-          ? "Plan modifié avec succès"
-          : "Plan ajouté avec succès",
-      });
-    } catch (error: any) {
-      console.error("Error saving plan:", error);
-      alert(error.message);
-    }
+    const method = editingPlan ? "PUT" : "POST";
+    const body = editingPlan ? JSON.stringify({ ...payload, id: editingPlan.id }) : JSON.stringify(payload);
+    const res = await fetch("/api/admin/subscriptions", { method, headers: { "Content-Type": "application/json" }, body });
+    const result = await res.json();
+    if (!res.ok) { showToast("error", result.error || "Erreur"); return; }
+    showToast("success", editingPlan ? "Plan modifié" : "Plan créé");
+    setShowPlanModal(false);
+    fetchPlans();
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Êtes-vous sûr de vouloir supprimer ce plan ?")) return;
-
-    try {
-      const res = await fetch(`/api/admin/subscriptions?id=${id}`, {
-        method: "DELETE",
-      });
-      const result = await res.json();
-
-      if (!res.ok)
-        throw new Error(result.error || "Erreur lors de la suppression");
-
-      fetchPlans();
-      setMessage({ type: "success", text: "Plan supprimé avec succès" });
-    } catch (error: any) {
-      console.error("Error deleting plan:", error);
-      alert(error.message);
-    }
+  const deletePlan = async (id: string) => {
+    if (!confirm("Supprimer ce plan ?")) return;
+    const res = await fetch(`/api/admin/subscriptions?id=${id}`, { method: "DELETE" });
+    const result = await res.json();
+    if (!res.ok) { showToast("error", result.error); return; }
+    showToast("success", "Plan supprimé");
+    fetchPlans();
   };
 
-  const handleToggleActive = async (plan: Plan) => {
-    try {
-      const res = await fetch("/api/admin/subscriptions", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: plan.id, is_active: !plan.is_active }),
-      });
-
-      if (!res.ok) throw new Error("Erreur lors de la mise à jour");
-
-      fetchPlans();
-    } catch (error) {
-      console.error("Error toggling status:", error);
-    }
+  const togglePlan = async (plan: Plan) => {
+    const res = await fetch("/api/admin/subscriptions", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: plan.id, is_active: !plan.is_active }),
+    });
+    if (res.ok) fetchPlans();
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
+  // ── Referral CRUD ─────────────────────────────────────────────────────────
+  const openRefModal = (code: ReferralCode | null = null) => {
+    setEditingCode(code);
+    if (code) {
+      setRefForm({
+        code: code.code, description: code.description || "",
+        discount_type: code.discount_type, discount_value: code.discount_value,
+        max_uses: code.max_uses?.toString() || "", is_active: code.is_active,
+        valid_from: code.valid_from ? code.valid_from.slice(0, 10) : "",
+        valid_until: code.valid_until ? code.valid_until.slice(0, 10) : "",
+      });
+    } else {
+      setRefForm(defaultRefForm);
+    }
+    setShowRefModal(true);
+  };
+
+  const saveRef = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const payload = {
+      code: refForm.code?.toUpperCase() || undefined,
+      description: refForm.description,
+      discount_type: refForm.discount_type,
+      discount_value: Number(refForm.discount_value),
+      max_uses: refForm.max_uses ? Number(refForm.max_uses) : null,
+      valid_from: refForm.valid_from || new Date().toISOString(),
+      valid_until: refForm.valid_until || null,
+      is_active: refForm.is_active,
+    };
+    const method = editingCode ? "PUT" : "POST";
+    const body = editingCode ? JSON.stringify({ ...payload, id: editingCode.id }) : JSON.stringify(payload);
+    const res = await fetch("/api/admin/referral-codes", { method, headers: { "Content-Type": "application/json" }, body });
+    const result = await res.json();
+    if (!res.ok) { showToast("error", result.error || "Erreur"); return; }
+    showToast("success", editingCode ? "Code modifié" : "Code créé");
+    setShowRefModal(false);
+    fetchCodes();
+  };
+
+  const deleteCode = async (id: string) => {
+    if (!confirm("Supprimer ce code de parrainage ?")) return;
+    const res = await fetch(`/api/admin/referral-codes?id=${id}`, { method: "DELETE" });
+    if (res.ok) { showToast("success", "Code supprimé"); fetchCodes(); }
+  };
+
+  const copyCode = (code: string) => {
+    navigator.clipboard.writeText(code);
+    setCopiedCode(code);
+    setTimeout(() => setCopiedCode(null), 2000);
+  };
+
+  // ── Stats ─────────────────────────────────────────────────────────────────
+  const totalSubscribers = plans.reduce((a, p) => a + (p.subscriber_count || 0), 0);
+  const activePlans = plans.filter((p) => p.is_active).length;
+  const promoCodes = codes.filter((c) => !c.owner);
+  const parainageCodes = codes.filter((c) => !!c.owner);
+  const totalCodeUses = codes.reduce((a, c) => a + c.current_uses, 0);
+
+  // ── Input helper ──────────────────────────────────────────────────────────
+  const inputCls = "w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
+  const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 relative overflow-hidden mb-8">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
-        <div className="relative z-10 flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-              <CreditCard className="text-[var(--greek-gold)]" size={32} />
-              Plans d'Abonnement
-            </h1>
-            <p className="text-[var(--greek-bronze)] text-lg">
-              Gérez les offres d'abonnement disponibles pour les utilisateurs
-            </p>
-          </div>
-          <button
-            onClick={() => handleOpenModal()}
-            className="px-6 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg shadow-blue-900/10"
-          >
-            <Plus size={20} />
-            Nouveau Plan
-          </button>
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* ── Page header ── */}
+      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
+            <CreditCard className="text-[var(--greek-gold)]" size={30} />
+            Abonnements & Parrainage
+          </h1>
+          <p className="text-[var(--greek-bronze)] mt-1">Gérez les plans, les tarifs et les codes de parrainage</p>
         </div>
+        <button
+          onClick={() => tab === "plans" ? openPlanModal() : tab === "promos" ? openRefModal() : undefined}
+          className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" ? "invisible" : ""}`}
+        >
+          <Plus size={18} />
+          {tab === "plans" ? "Nouveau plan" : "Nouveau code promo"}
+        </button>
       </div>
 
-      {message && (
-        <div
-          className={`mb-6 p-4 rounded-[20px] flex items-center shadow-sm ${
-            message.type === "success"
-              ? "bg-green-50 text-green-800 border border-green-200"
-              : "bg-red-50 text-red-800 border border-red-200"
-          }`}
-        >
-          {message.type === "success" ? (
-            <CheckCircle size={20} className="mr-3" />
-          ) : (
-            <AlertTriangle size={20} className="mr-3" />
-          )}
-          {message.text}
-        </div>
-      )}
-
-      {/* Plans Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {plans.map((plan) => (
-          <div
-            key={plan.id}
-            className={`bg-white rounded-[20px] shadow-sm border-2 overflow-hidden transition-all hover:shadow-md ${
-              plan.is_active ? "border-gray-100" : "border-gray-100 opacity-75"
-            }`}
-          >
-            <div
-              className={`px-6 py-4 border-b flex justify-between items-center ${
-                plan.is_active ? "bg-gray-50" : "bg-gray-50"
-              }`}
-            >
-              <h3 className="font-bold text-lg text-[var(--greek-blue)]">
-                {plan.name}
-              </h3>
-              <span
-                className={`px-2 py-1 text-xs font-semibold rounded-full border ${
-                  plan.is_active
-                    ? "bg-green-100 text-green-800 border-green-200"
-                    : "bg-gray-100 text-gray-600 border-gray-200"
-                }`}
-              >
-                {plan.is_active ? "Actif" : "Inactif"}
-              </span>
+      {/* ── Stats row ── */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {[
+          { label: "Plans actifs",       value: activePlans,       icon: CreditCard,  color: "text-blue-600",  bg: "bg-blue-50" },
+          { label: "Abonnés actifs",     value: totalSubscribers,  icon: Users,       color: "text-green-600", bg: "bg-green-50" },
+          { label: "Codes promo",          value: promoCodes.length, icon: Tag,         color: "text-purple-600",bg: "bg-purple-50" },
+          { label: "Utilisations codes", value: totalCodeUses,     icon: TrendingUp,  color: "text-amber-600", bg: "bg-amber-50" },
+        ].map(({ label, value, icon: Icon, color, bg }) => (
+          <div key={label} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-center gap-4">
+            <div className={`w-10 h-10 rounded-xl ${bg} flex items-center justify-center shrink-0`}>
+              <Icon className={`w-5 h-5 ${color}`} />
             </div>
-            <div className="p-6">
-              <div className="flex items-baseline mb-4">
-                <span className="text-3xl font-bold text-[var(--greek-blue)]">
-                  {plan.price}€
-                </span>
-                <span className="text-[var(--greek-bronze)] ml-1">
-                  /
-                  {plan.billing_interval === "month"
-                    ? "mois"
-                    : plan.billing_interval === "year"
-                    ? "an"
-                    : "unique"}
-                </span>
-              </div>
-
-              <p className="text-gray-600 mb-4 h-12 overflow-hidden text-sm">
-                {plan.description}
-              </p>
-
-              <div className="space-y-2 mb-6 text-sm text-gray-600 bg-gray-50 p-3 rounded-xl">
-                {plan.trial_days ? (
-                  <div className="flex items-center text-green-600 font-medium">
-                    <Clock size={16} className="mr-2" />
-                    {plan.trial_days} jours d'essai gratuit
-                  </div>
-                ) : null}
-                {plan.duration_months ? (
-                  <div className="flex items-center">
-                    <Calendar size={16} className="mr-2" />
-                    Durée: {plan.duration_months} mois
-                  </div>
-                ) : null}
-              </div>
-
-              <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                <button
-                  onClick={() => handleToggleActive(plan)}
-                  className={`text-sm font-medium flex items-center gap-1 ${
-                    plan.is_active
-                      ? "text-orange-600 hover:text-orange-800"
-                      : "text-green-600 hover:text-green-800"
-                  }`}
-                >
-                  <Power size={14} />
-                  {plan.is_active ? "Désactiver" : "Activer"}
-                </button>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleOpenModal(plan)}
-                    className="p-2 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors border border-transparent hover:border-blue-100"
-                  >
-                    <Edit size={18} />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(plan.id)}
-                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors border border-transparent hover:border-red-100"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-                </div>
-              </div>
+            <div>
+              <p className="text-2xl font-bold text-gray-800">{value}</p>
+              <p className="text-xs text-gray-500 mt-0.5">{label}</p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Modal */}
-      {showModal && (
+      {/* ── Tabs ── */}
+      <div className="flex gap-1 p-1 bg-gray-100 rounded-xl w-fit mb-6">
+        {([
+          { key: "plans",      label: "Plans d'abonnement" },
+          { key: "promos",     label: "Codes promo" },
+          { key: "parrainage", label: "Parrainage" },
+        ] as const).map(({ key, label }) => (
+          <button key={key} onClick={() => setTab(key)}
+            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${tab === key ? "bg-white shadow-sm text-[var(--greek-blue)]" : "text-gray-500 hover:text-gray-700"}`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* ── Toast ── */}
+      {toast && (
+        <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-2xl shadow-xl text-sm font-semibold ${toast.type === "success" ? "bg-green-600 text-white" : "bg-red-600 text-white"}`}>
+          {toast.type === "success" ? <CheckCircle size={18} /> : <AlertTriangle size={18} />}
+          {toast.text}
+        </div>
+      )}
+
+      {/* ════════════════ PLANS TAB ════════════════ */}
+      {tab === "plans" && (
+        <>
+          {plansLoading ? (
+            <div className="flex justify-center py-20"><RefreshCw className="animate-spin text-gray-400" size={32} /></div>
+          ) : plans.length === 0 ? (
+            <div className="text-center py-20 text-gray-400">
+              <CreditCard size={48} className="mx-auto mb-3 opacity-30" />
+              <p className="font-medium">Aucun plan créé</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+              {plans.map((plan) => {
+                const features = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
+                const featureList = [
+                  `${features.max_children || 1} enfant(s)`,
+                  features.detailed_reports && "Rapports détaillés",
+                  features.priority_support && "Support prioritaire",
+                  features.offline_access && "Accès hors-ligne",
+                  features.custom_avatars && "Avatars personnalisés",
+                ].filter(Boolean) as string[];
+
+                return (
+                  <div key={plan.id} className={`bg-white rounded-2xl border-2 shadow-sm transition-all hover:shadow-md flex flex-col ${plan.is_active ? "border-gray-100" : "border-dashed border-gray-200 opacity-70"}`}>
+                    {/* Card header */}
+                    <div className="px-6 pt-6 pb-4 border-b border-gray-50">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h3 className="font-bold text-lg text-[var(--greek-blue)]">{plan.name}</h3>
+                          {plan.promo_description && (
+                            <span className="inline-block mt-1 px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">{plan.promo_description}</span>
+                          )}
+                        </div>
+                        <span className={`shrink-0 px-2 py-0.5 text-xs font-bold rounded-full ${plan.is_active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                          {plan.is_active ? "Actif" : "Inactif"}
+                        </span>
+                      </div>
+                      <div className="mt-3 flex items-baseline gap-1">
+                        <span className="text-3xl font-extrabold text-gray-800">{plan.price}€</span>
+                        <span className="text-gray-400 text-sm">{intervalLabel(plan.billing_interval)}</span>
+                      </div>
+                      {plan.trial_days ? (
+                        <div className="flex items-center gap-1 mt-1 text-xs text-green-600 font-medium">
+                          <Clock size={12} /> {plan.trial_days} jours d'essai
+                        </div>
+                      ) : null}
+                    </div>
+
+                    {/* Features */}
+                    <div className="px-6 py-4 flex-1">
+                      <p className="text-sm text-gray-500 mb-3">{plan.description}</p>
+                      <ul className="space-y-1.5 mb-3">
+                        {featureList.map((f) => (
+                          <li key={f} className="flex items-center gap-2 text-sm text-gray-600">
+                            <CheckCircle size={14} className="text-green-500 shrink-0" /> {f}
+                          </li>
+                        ))}
+                      </ul>
+                      {/* AI & Personalization restrictions */}
+                      <div className="border-t border-gray-50 pt-3 space-y-1.5">
+                        {/* AI */}
+                        <div className="flex items-center gap-2 text-xs">
+                          {features.ai_access === "none" ? (
+                            <span className="flex items-center gap-1 text-red-400"><X size={12} /> IA : non incluse</span>
+                          ) : features.ai_access === "limited" ? (
+                            <span className="flex items-center gap-1 text-orange-500"><CheckCircle size={12} /> IA : {features.ai_daily_limit} messages/jour</span>
+                          ) : (
+                            <span className="flex items-center gap-1 text-green-600"><CheckCircle size={12} /> IA : illimitée</span>
+                          )}
+                        </div>
+                        {/* Subscription borders */}
+                        {(() => {
+                          const subUnlocks = { "1": [], "2": ["Premium"], "3": ["Famille"], "4": ["Pro","Elite"] } as Record<string, string[]>;
+                          const borders = subUnlocks[plan.id?.toString()] || [];
+                          const colorMap = { "1": [], "2": ["Violet"], "3": ["Turquoise"], "4": ["Flamme","Elite"] } as Record<string, string[]>;
+                          const colors = colorMap[plan.id?.toString()] || [];
+                          return (
+                            <>
+                              <div className="flex items-center gap-2 text-xs">
+                                {borders.length > 0
+                                  ? <span className="flex items-center gap-1 text-purple-600"><CheckCircle size={12} /> Contours : {borders.join(", ")}</span>
+                                  : <span className="flex items-center gap-1 text-gray-400"><X size={12} /> Contours abonnement : aucun</span>}
+                              </div>
+                              <div className="flex items-center gap-2 text-xs">
+                                {colors.length > 0
+                                  ? <span className="flex items-center gap-1 text-indigo-600"><CheckCircle size={12} /> Couleurs nom : {colors.join(", ")}</span>
+                                  : <span className="flex items-center gap-1 text-gray-400"><X size={12} /> Couleurs nom abonnement : aucune</span>}
+                              </div>
+                            </>
+                          );
+                        })()}
+                      </div>
+                    </div>
+
+                    {/* Subscriber list — collapsible */}
+                    {plan.subscriber_count > 0 && expandedPlan === plan.id && (
+                      <div className="px-6 pb-3">
+                        <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
+                          {plan.subscribers.map((s: any) => {
+                            const u = s.user;
+                            const name = [u?.first_name, u?.last_name].filter(Boolean).join(" ") || u?.email || "Utilisateur";
+                            return (
+                              <div key={s.user_id} className="flex items-center gap-2 py-1.5 px-2 bg-gray-50 rounded-lg text-xs">
+                                <div className="w-6 h-6 rounded-lg bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] font-bold flex items-center justify-center shrink-0 text-[10px]">
+                                  {name.charAt(0).toUpperCase()}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <p className="font-semibold text-gray-700 truncate">{name}</p>
+                                  {u?.email && name !== u.email && <p className="text-gray-400 truncate">{u.email}</p>}
+                                </div>
+                                {s.current_period_end && (
+                                  <span className="text-gray-300 shrink-0">
+                                    {new Date(s.current_period_end).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "2-digit" })}
+                                  </span>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Footer */}
+                    <div className="px-6 pb-5 flex items-center justify-between border-t border-gray-50 pt-4">
+                      <button
+                        onClick={() => setExpandedPlan(expandedPlan === plan.id ? null : plan.id)}
+                        className={`flex items-center gap-1.5 text-sm transition-colors ${plan.subscriber_count > 0 ? "text-[var(--greek-blue)] hover:text-blue-800 cursor-pointer" : "text-gray-400 cursor-default"}`}
+                      >
+                        <Users size={14} />
+                        <span className="font-semibold">{plan.subscriber_count}</span> abonné(s)
+                        {plan.subscriber_count > 0 && (
+                          <span className="text-xs opacity-60">{expandedPlan === plan.id ? "▲" : "▼"}</span>
+                        )}
+                      </button>
+                      <div className="flex items-center gap-1">
+                        <button onClick={() => togglePlan(plan)}
+                          className={`p-1.5 rounded-lg text-xs font-medium transition-colors ${plan.is_active ? "text-orange-500 hover:bg-orange-50" : "text-green-600 hover:bg-green-50"}`}
+                          title={plan.is_active ? "Désactiver" : "Activer"}
+                        >
+                          <Power size={15} />
+                        </button>
+                        <button onClick={() => openPlanModal(plan)} className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors">
+                          <Edit size={15} />
+                        </button>
+                        <button onClick={() => deletePlan(plan.id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                          <Trash2 size={15} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ════════════════ CODES PROMO TAB ════════════════ */}
+      {tab === "promos" && (
+        <>
+          {codesLoading ? (
+            <div className="flex justify-center py-20"><RefreshCw className="animate-spin text-gray-400" size={32} /></div>
+          ) : promoCodes.length === 0 ? (
+            <div className="text-center py-20 text-gray-400">
+              <Tag size={48} className="mx-auto mb-3 opacity-30" />
+              <p className="font-medium">Aucun code promo</p>
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+              <table className="w-full text-sm">
+                <thead className="bg-gray-50 border-b border-gray-100">
+                  <tr>
+                    {["Code", "Remise", "Utilisation", "Validité", "Statut", ""].map((h) => (
+                      <th key={h} className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {promoCodes.map((c) => (
+                    <tr key={c.id} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-5 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono font-bold text-[var(--greek-blue)] bg-blue-50 px-2.5 py-1 rounded-lg text-sm tracking-wider">{c.code}</span>
+                          <button onClick={() => copyCode(c.code)} className="text-gray-400 hover:text-gray-600 transition-colors">
+                            {copiedCode === c.code ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                          </button>
+                        </div>
+                        {c.description && <p className="text-xs text-gray-400 mt-0.5">{c.description}</p>}
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className="px-2.5 py-1 bg-amber-50 text-amber-700 font-semibold rounded-full text-xs">
+                          {discountLabel(c.discount_type, c.discount_value)}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4">
+                        <div className="text-sm font-semibold text-gray-700">
+                          {c.current_uses} {c.max_uses ? `/ ${c.max_uses}` : ""}
+                        </div>
+                        {c.max_uses && (
+                          <div className="mt-1 w-24 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-[var(--greek-blue)] rounded-full" style={{ width: `${Math.min(100, (c.current_uses / c.max_uses) * 100)}%` }} />
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-5 py-4 text-xs text-gray-500">
+                        {c.valid_until ? (
+                          <span className={new Date(c.valid_until) < new Date() ? "text-red-500 font-medium" : ""}>
+                            jusqu'au {new Date(c.valid_until).toLocaleDateString("fr-FR")}
+                          </span>
+                        ) : <span className="text-green-600">Sans limite</span>}
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${c.is_active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                          {c.is_active ? "Actif" : "Inactif"}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4">
+                        <div className="flex items-center gap-1 justify-end">
+                          <button onClick={() => openRefModal(c)} className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"><Edit size={14} /></button>
+                          <button onClick={() => deleteCode(c.id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 size={14} /></button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ════════════════ PARRAINAGE TAB ════════════════ */}
+      {tab === "parrainage" && (
+        <>
+          {codesLoading ? (
+            <div className="flex justify-center py-20"><RefreshCw className="animate-spin text-gray-400" size={32} /></div>
+          ) : parainageCodes.length === 0 ? (
+            <div className="text-center py-20 text-gray-400">
+              <Gift size={48} className="mx-auto mb-3 opacity-30" />
+              <p className="font-medium">Aucun utilisateur n'a encore de code de parrainage</p>
+              <p className="text-sm mt-1">Les codes sont générés automatiquement à la première visite de la page abonnement</p>
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+              <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                <p className="text-sm text-gray-500">{parainageCodes.length} utilisateur(s) avec un code actif</p>
+                <p className="text-sm text-gray-500">Total utilisations : <span className="font-bold text-gray-700">{parainageCodes.reduce((a, c) => a + c.current_uses, 0)}</span></p>
+              </div>
+              <table className="w-full text-sm">
+                <thead className="bg-gray-50 border-b border-gray-100">
+                  <tr>
+                    {["Utilisateur", "Code", "Remise offerte", "Utilisations", "Statut", "Actions"].map((h) => (
+                      <th key={h} className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {parainageCodes.map((c) => (
+                    <tr key={c.id} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-5 py-4">
+                        <div className="font-semibold text-gray-800">{c.owner?.first_name} {c.owner?.last_name}</div>
+                        <div className="text-xs text-gray-400">{c.owner?.email}</div>
+                      </td>
+                      <td className="px-5 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono font-bold text-[var(--greek-blue)] bg-blue-50 px-2.5 py-1 rounded-lg text-sm tracking-wider">{c.code}</span>
+                          <button onClick={() => copyCode(c.code)} className="text-gray-400 hover:text-gray-600 transition-colors">
+                            {copiedCode === c.code ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                          </button>
+                        </div>
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className="px-2.5 py-1 bg-amber-50 text-amber-700 font-semibold rounded-full text-xs">
+                          {discountLabel(c.discount_type, c.discount_value)}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl font-bold text-gray-800">{c.current_uses}</span>
+                          {c.referral_uses?.length > 0 && (
+                            <span className="text-xs text-gray-400">filleul(s)</span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${c.is_active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                          {c.is_active ? "Actif" : "Suspendu"}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4">
+                        <div className="flex items-center gap-1">
+                          <button onClick={() => openRefModal(c)} className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors" title="Modifier la remise">
+                            <Edit size={14} />
+                          </button>
+                          <button
+                            onClick={async () => {
+                              await fetch("/api/admin/referral-codes", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: c.id, is_active: !c.is_active }) });
+                              fetchCodes();
+                            }}
+                            className={`p-1.5 rounded-lg transition-colors ${c.is_active ? "text-orange-500 hover:bg-orange-50" : "text-green-600 hover:bg-green-50"}`}
+                            title={c.is_active ? "Suspendre" : "Réactiver"}
+                          >
+                            <Power size={14} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ════════ PLAN MODAL ════════ */}
+      {showPlanModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-[20px] shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-gray-200">
-            <div className="bg-white px-8 py-6 border-b border-gray-100 flex justify-between items-center sticky top-0 z-10">
-              <h2 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
-                {editingPlan ? "Modifier le Plan" : "Nouveau Plan"}
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-100 px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
+              <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
+                {editingPlan ? "Modifier le plan" : "Nouveau plan"}
               </h2>
-              <button
-                onClick={handleCloseModal}
-                className="text-gray-400 hover:text-gray-600 p-2 rounded-full hover:bg-gray-100 transition-colors"
-              >
-                <X size={24} />
+              <button onClick={() => setShowPlanModal(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
+                <X size={20} />
               </button>
             </div>
-
-            <form onSubmit={handleSubmit} className="p-8 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={savePlan} className="p-8 space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="col-span-2">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Nom du Plan
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
-                    placeholder="ex: Premium Mensuel"
-                  />
+                  <label className={labelCls}>Nom du plan *</label>
+                  <input type="text" required value={planForm.name} onChange={e => setPlanForm({...planForm, name: e.target.value})} className={inputCls} placeholder="ex: Premium Mensuel" />
                 </div>
-
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Prix (€)
-                  </label>
-                  <input
-                    type="number"
-                    name="price"
-                    step="0.01"
-                    min="0"
-                    required
-                    value={formData.price}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
-                  />
+                  <label className={labelCls}>Prix (€) *</label>
+                  <input type="number" step="0.01" min="0" required value={planForm.price} onChange={e => setPlanForm({...planForm, price: e.target.value})} className={inputCls} />
                 </div>
-
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Facturation
-                  </label>
-                  <select
-                    name="billing_interval"
-                    value={formData.billing_interval}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all bg-white"
-                  >
+                  <label className={labelCls}>Facturation *</label>
+                  <select value={planForm.billing_interval} onChange={e => setPlanForm({...planForm, billing_interval: e.target.value})} className={inputCls}>
                     <option value="month">Mensuel</option>
                     <option value="year">Annuel</option>
                     <option value="one_time">Paiement unique</option>
                   </select>
                 </div>
-
                 <div className="col-span-2">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    rows={3}
-                    value={formData.description}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all resize-none"
-                    placeholder="Description courte visible par les utilisateurs"
-                  ></textarea>
+                  <label className={labelCls}>Description</label>
+                  <textarea rows={2} value={planForm.description} onChange={e => setPlanForm({...planForm, description: e.target.value})} className={inputCls + " resize-none"} placeholder="Visible par les utilisateurs" />
                 </div>
-
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Durée (Mois)
-                  </label>
-                  <input
-                    type="number"
-                    name="duration_months"
-                    min="1"
-                    value={formData.duration_months}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
-                    placeholder="Optionnel (illimité si vide)"
-                  />
+                  <label className={labelCls}>Essai gratuit (jours)</label>
+                  <input type="number" min="0" value={planForm.trial_days} onChange={e => setPlanForm({...planForm, trial_days: e.target.value})} className={inputCls} placeholder="0" />
                 </div>
-
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Essai Gratuit (Jours)
-                  </label>
-                  <input
-                    type="number"
-                    name="trial_days"
-                    min="0"
-                    value={formData.trial_days}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
-                    placeholder="Optionnel"
-                  />
+                  <label className={labelCls}>Durée (mois)</label>
+                  <input type="number" min="1" value={planForm.duration_months} onChange={e => setPlanForm({...planForm, duration_months: e.target.value})} className={inputCls} placeholder="Illimité si vide" />
                 </div>
-
-                <div className="col-span-2 border-t border-gray-100 pt-6 mt-2">
-                  <h3 className="text-lg font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                    <CheckCircle
-                      size={20}
-                      className="text-[var(--greek-gold)]"
-                    />
-                    Fonctionnalités
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Max Enfants
-                      </label>
-                      <input
-                        type="number"
-                        name="feature_max_children"
-                        min="1"
-                        value={formData.feature_max_children}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Niveau Accès
-                      </label>
-                      <select
-                        name="feature_access_level_exercises"
-                        value={formData.feature_access_level_exercises}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all bg-white"
-                      >
-                        <option value="basic">Basique</option>
-                        <option value="intermediate">Intermédiaire</option>
-                        <option value="advanced">Avancé</option>
-                        <option value="all">Tout</option>
-                      </select>
-                    </div>
-
-                    <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
-                      <div className="flex items-center p-3 rounded-xl border border-gray-200 hover:border-[var(--greek-blue)] transition-colors cursor-pointer">
-                        <input
-                          type="checkbox"
-                          id="feature_detailed_reports"
-                          name="feature_detailed_reports"
-                          checked={formData.feature_detailed_reports}
-                          onChange={handleInputChange}
-                          className="h-5 w-5 text-[var(--greek-blue)] focus:ring-[var(--greek-blue)] border-gray-300 rounded"
-                        />
-                        <label
-                          htmlFor="feature_detailed_reports"
-                          className="ml-3 block text-sm font-medium text-gray-700 cursor-pointer"
-                        >
-                          Rapports Détaillés
-                        </label>
-                      </div>
-                      <div className="flex items-center p-3 rounded-xl border border-gray-200 hover:border-[var(--greek-blue)] transition-colors cursor-pointer">
-                        <input
-                          type="checkbox"
-                          id="feature_priority_support"
-                          name="feature_priority_support"
-                          checked={formData.feature_priority_support}
-                          onChange={handleInputChange}
-                          className="h-5 w-5 text-[var(--greek-blue)] focus:ring-[var(--greek-blue)] border-gray-300 rounded"
-                        />
-                        <label
-                          htmlFor="feature_priority_support"
-                          className="ml-3 block text-sm font-medium text-gray-700 cursor-pointer"
-                        >
-                          Support Prioritaire
-                        </label>
-                      </div>
-                      <div className="flex items-center p-3 rounded-xl border border-gray-200 hover:border-[var(--greek-blue)] transition-colors cursor-pointer">
-                        <input
-                          type="checkbox"
-                          id="feature_offline_access"
-                          name="feature_offline_access"
-                          checked={formData.feature_offline_access}
-                          onChange={handleInputChange}
-                          className="h-5 w-5 text-[var(--greek-blue)] focus:ring-[var(--greek-blue)] border-gray-300 rounded"
-                        />
-                        <label
-                          htmlFor="feature_offline_access"
-                          className="ml-3 block text-sm font-medium text-gray-700 cursor-pointer"
-                        >
-                          Accès Hors-ligne
-                        </label>
-                      </div>
-                      <div className="flex items-center p-3 rounded-xl border border-gray-200 hover:border-[var(--greek-blue)] transition-colors cursor-pointer">
-                        <input
-                          type="checkbox"
-                          id="feature_custom_avatars"
-                          name="feature_custom_avatars"
-                          checked={formData.feature_custom_avatars}
-                          onChange={handleInputChange}
-                          className="h-5 w-5 text-[var(--greek-blue)] focus:ring-[var(--greek-blue)] border-gray-300 rounded"
-                        />
-                        <label
-                          htmlFor="feature_custom_avatars"
-                          className="ml-3 block text-sm font-medium text-gray-700 cursor-pointer"
-                        >
-                          Avatars Personnalisés
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+                <div>
+                  <label className={labelCls}>Badge promo</label>
+                  <input type="text" value={planForm.promo_description} onChange={e => setPlanForm({...planForm, promo_description: e.target.value})} className={inputCls} placeholder="ex: 2 mois offerts" />
                 </div>
-
-                <div className="col-span-2 flex items-center mt-2 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                  <input
-                    type="checkbox"
-                    id="is_active"
-                    name="is_active"
-                    checked={formData.is_active}
-                    onChange={handleInputChange}
-                    className="h-5 w-5 text-green-600 focus:ring-green-500 border-gray-300 rounded"
-                  />
-                  <label
-                    htmlFor="is_active"
-                    className="ml-3 block text-sm font-bold text-gray-700"
-                  >
-                    Plan Actif (visible pour les utilisateurs)
-                  </label>
+                <div>
+                  <label className={labelCls}>Ordre d'affichage</label>
+                  <input type="number" min="0" value={planForm.sort_order} onChange={e => setPlanForm({...planForm, sort_order: e.target.value})} className={inputCls} />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-6 border-t border-gray-100">
-                <button
-                  type="button"
-                  onClick={handleCloseModal}
-                  className="px-6 py-3 text-gray-700 font-medium hover:bg-gray-100 rounded-xl transition-colors"
-                >
-                  Annuler
+              {/* Features */}
+              <div className="border-t border-gray-100 pt-5">
+                <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4">Fonctionnalités incluses</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className={labelCls}>Nb enfants max</label>
+                    <input type="number" min="1" value={planForm.feature_max_children} onChange={e => setPlanForm({...planForm, feature_max_children: e.target.value})} className={inputCls} />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Niveau d'accès</label>
+                    <select value={planForm.feature_access_level_exercises} onChange={e => setPlanForm({...planForm, feature_access_level_exercises: e.target.value})} className={inputCls}>
+                      <option value="basic">Basique</option>
+                      <option value="intermediate">Intermédiaire</option>
+                      <option value="advanced">Avancé</option>
+                      <option value="all">Tout</option>
+                    </select>
+                  </div>
+                  <div className="col-span-2 grid grid-cols-2 gap-3">
+                    {[
+                      { key: "feature_detailed_reports",  label: "Rapports détaillés" },
+                      { key: "feature_priority_support",  label: "Support prioritaire" },
+                      { key: "feature_offline_access",    label: "Accès hors-ligne" },
+                      { key: "feature_custom_avatars",    label: "Avatars personnalisés" },
+                    ].map(({ key, label }) => (
+                      <label key={key} className="flex items-center gap-3 p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">
+                        <input type="checkbox" checked={planForm[key]} onChange={e => setPlanForm({...planForm, [key]: e.target.checked})} className="w-4 h-4 text-[var(--greek-blue)] rounded" />
+                        <span className="text-sm font-medium text-gray-700">{label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <label className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl cursor-pointer border border-gray-200 hover:border-green-400 transition-colors">
+                <input type="checkbox" checked={planForm.is_active} onChange={e => setPlanForm({...planForm, is_active: e.target.checked})} className="w-4 h-4 text-green-600 rounded" />
+                <span className="text-sm font-semibold text-gray-700">Plan actif (visible pour les utilisateurs)</span>
+              </label>
+
+              <div className="flex justify-end gap-3 pt-2">
+                <button type="button" onClick={() => setShowPlanModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
+                <button type="submit" className="px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors shadow-sm">
+                  {editingPlan ? "Mettre à jour" : "Créer le plan"}
                 </button>
-                <button
-                  type="submit"
-                  className="px-8 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-900/10"
-                >
-                  {editingPlan ? "Mettre à jour" : "Créer le Plan"}
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* ════════ REFERRAL MODAL ════════ */}
+      {showRefModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
+            <div className="border-b border-gray-100 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+              <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
+                {editingCode ? "Modifier le code" : "Nouveau code promo"}
+              </h2>
+              <button onClick={() => setShowRefModal(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
+                <X size={20} />
+              </button>
+            </div>
+            <form onSubmit={saveRef} className="p-8 space-y-4">
+              <div>
+                <label className={labelCls}>Code (auto-généré si vide)</label>
+                <input type="text" value={refForm.code} onChange={e => setRefForm({...refForm, code: e.target.value.toUpperCase()})} className={inputCls + " font-mono tracking-wider"} placeholder="ex: BIENVENUE20" />
+              </div>
+              <div>
+                <label className={labelCls}>Description interne</label>
+                <input type="text" value={refForm.description} onChange={e => setRefForm({...refForm, description: e.target.value})} className={inputCls} placeholder="ex: Parrainage influenceur été 2025" />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className={labelCls}>Type de remise</label>
+                  <select value={refForm.discount_type} onChange={e => setRefForm({...refForm, discount_type: e.target.value})} className={inputCls}>
+                    <option value="percent">Pourcentage (%)</option>
+                    <option value="fixed">Montant fixe (€)</option>
+                    <option value="free_months">Mois offerts</option>
+                  </select>
+                </div>
+                <div>
+                  <label className={labelCls}>Valeur</label>
+                  <input type="number" min="0" step="0.01" required value={refForm.discount_value} onChange={e => setRefForm({...refForm, discount_value: e.target.value})} className={inputCls} />
+                </div>
+              </div>
+              <div>
+                <label className={labelCls}>Limite d'utilisation</label>
+                <input type="number" min="1" value={refForm.max_uses} onChange={e => setRefForm({...refForm, max_uses: e.target.value})} className={inputCls} placeholder="Illimité si vide" />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className={labelCls}>Valide à partir du</label>
+                  <input type="date" value={refForm.valid_from} onChange={e => setRefForm({...refForm, valid_from: e.target.value})} className={inputCls} />
+                </div>
+                <div>
+                  <label className={labelCls}>Expire le</label>
+                  <input type="date" value={refForm.valid_until} onChange={e => setRefForm({...refForm, valid_until: e.target.value})} className={inputCls} />
+                </div>
+              </div>
+              <label className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl cursor-pointer border border-gray-200">
+                <input type="checkbox" checked={refForm.is_active} onChange={e => setRefForm({...refForm, is_active: e.target.checked})} className="w-4 h-4 text-green-600 rounded" />
+                <span className="text-sm font-semibold text-gray-700">Code actif</span>
+              </label>
+              <div className="flex justify-end gap-3 pt-2">
+                <button type="button" onClick={() => setShowRefModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
+                <button type="submit" className="px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors shadow-sm">
+                  {editingCode ? "Mettre à jour" : "Créer le code"}
                 </button>
               </div>
             </form>

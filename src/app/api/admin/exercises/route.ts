@@ -20,19 +20,86 @@ export async function GET(request: Request) {
     const courseId = searchParams.get("course_id");
 
     if (id) {
-      const { data, error } = await supabaseAdmin
+      let { data, error } = await supabaseAdmin
         .from("exercises")
         .select(`
-          *,
-          courses (title),
+          id,
+          title,
+          description,
+          question,
+          difficulty_level,
+          type,
+          level,
+          content_json,
+          status,
+          created_at,
+          updated_at,
+          course_id,
+          points,
+          courses (title, subject, level),
           exercise_folders (name, color)
         `)
         .eq("id", id)
         .single();
 
       if (error) {
+        console.error("Error fetching single exercise:", error);
         return NextResponse.json({ error: error.message }, { status: 400 });
       }
+      
+      // Ensure content_json is never empty
+      if (!data.content_json || (Array.isArray(data.content_json) && data.content_json.length === 0)) {
+        const fallbackQuestion = data.question || data.description || data.title || "Énoncé non spécifié";
+        
+        // Create appropriate default block based on exercise type
+        let defaultBlock: any = {
+          id: "block-1",
+          type: "text",
+          content: fallbackQuestion,
+        };
+
+        if (data.type === "single_choice" || data.type === "multiple_choice") {
+          defaultBlock = {
+            id: "block-1",
+            type: data.type === "multiple_choice" ? "multiple_choice" : "single_choice",
+            content: fallbackQuestion,
+            options: [
+              { id: "opt-1", text: "Réponse A" },
+              { id: "opt-2", text: "Réponse B" },
+              { id: "opt-3", text: "Réponse C" },
+            ],
+            correctAnswer: "opt-1",
+          };
+        } else if (data.type === "true_false") {
+          defaultBlock = {
+            id: "block-1",
+            type: "true_false",
+            statement: fallbackQuestion,
+            correctAnswer: true,
+          };
+        } else if (data.type === "text_input") {
+          defaultBlock = {
+            id: "block-1",
+            type: "text_input",
+            label: fallbackQuestion,
+            placeholder: "Votre réponse",
+            expectedAnswer: "",
+          };
+        }
+
+        data.content_json = [
+          {
+            id: "page-1",
+            blocks: [defaultBlock],
+          },
+        ];
+        console.log("✅ Filled empty content_json with fallback:", {
+          id: data.id,
+          title: data.title,
+          type: data.type,
+        });
+      }
+      
       return NextResponse.json(data);
     }
 
@@ -40,8 +107,18 @@ export async function GET(request: Request) {
       .from("exercises")
       .select(
         `
-        *,
-        courses (title),
+        id,
+        title,
+        description,
+        question,
+        difficulty_level,
+        type,
+        level,
+        content_json,
+        status,
+        created_at,
+        course_id,
+        courses (title, subject, level),
         exercise_folders (name, color)
       `
       )
@@ -57,10 +134,65 @@ export async function GET(request: Request) {
     const { data, error } = await query;
 
     if (error) {
+      console.error("Error fetching exercises:", error);
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    return NextResponse.json(data);
+    // Ensure content_json is filled for all exercises
+    const processedData = data.map((exercise: any) => {
+      if (!exercise.content_json || (Array.isArray(exercise.content_json) && exercise.content_json.length === 0)) {
+        const fallbackQuestion = exercise.question || exercise.description || exercise.title || "Énoncé non spécifié";
+        
+        // Create appropriate default block based on exercise type
+        let defaultBlock: any = {
+          id: "block-1",
+          type: "text",
+          content: fallbackQuestion,
+        };
+
+        if (exercise.type === "single_choice" || exercise.type === "multiple_choice") {
+          defaultBlock = {
+            id: "block-1",
+            type: exercise.type === "multiple_choice" ? "multiple_choice" : "single_choice",
+            content: fallbackQuestion,
+            options: [
+              { id: "opt-1", text: "Réponse A" },
+              { id: "opt-2", text: "Réponse B" },
+              { id: "opt-3", text: "Réponse C" },
+            ],
+            correctAnswer: "opt-1",
+          };
+        } else if (exercise.type === "true_false") {
+          defaultBlock = {
+            id: "block-1",
+            type: "true_false",
+            statement: fallbackQuestion,
+            correctAnswer: true,
+          };
+        } else if (exercise.type === "text_input") {
+          defaultBlock = {
+            id: "block-1",
+            type: "text_input",
+            label: fallbackQuestion,
+            placeholder: "Votre réponse",
+            expectedAnswer: "",
+          };
+        }
+
+        return {
+          ...exercise,
+          content_json: [
+            {
+              id: "page-1",
+              blocks: [defaultBlock],
+            },
+          ],
+        };
+      }
+      return exercise;
+    });
+
+    return NextResponse.json(processedData);
   } catch (error: any) {
     console.error("Error fetching exercises:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -72,7 +204,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const {
       title,
-      description, // Maps to 'question' column likely
+      description,
       course_id,
       difficulty_level,
       type,
@@ -85,11 +217,70 @@ export async function POST(request: Request) {
       max_attempts,
     } = body;
 
+    // If content_json is empty or not provided, create a sensible default based on exercise type
+    let finalContentJson = content_json || [];
+    if (!finalContentJson || finalContentJson.length === 0) {
+      // Create a default page with appropriate block based on exercise type
+      let defaultBlock: any = {
+        id: "block-1",
+        type: "text",
+        content: description || title || "Énoncé non spécifié",
+      };
+
+      // Add type-specific defaults
+      if (type === "single_choice" || type === "multiple_choice") {
+        defaultBlock = {
+          id: "block-1",
+          type: type === "multiple_choice" ? "multiple_choice" : "single_choice",
+          content: description || title || "Question",
+          options: [
+            { id: "opt-1", text: "Réponse A" },
+            { id: "opt-2", text: "Réponse B" },
+            { id: "opt-3", text: "Réponse C" },
+          ],
+          correctAnswer: "opt-1",
+        };
+      } else if (type === "true_false") {
+        defaultBlock = {
+          id: "block-1",
+          type: "true_false",
+          statement: description || title || "Énoncé du vrai/faux",
+          correctAnswer: true,
+        };
+      } else if (type === "text_input") {
+        defaultBlock = {
+          id: "block-1",
+          type: "text_input",
+          label: description || title || "Répondez à la question",
+          placeholder: "Votre réponse",
+          expectedAnswer: "",
+        };
+      }
+
+      finalContentJson = [
+        {
+          id: "page-1",
+          blocks: [defaultBlock],
+        },
+      ];
+      console.log("✅ Created default content_json for type:", {
+        title,
+        type,
+        hasDescription: !!description,
+      });
+    } else {
+      console.log("✅ Using provided content_json:", {
+        title,
+        type,
+        pagesCount: finalContentJson.length,
+      });
+    }
+
     const { data, error } = await supabaseAdmin
       .from("exercises")
       .insert({
         title,
-        question: description, // Mapping description to question column
+        question: description,
         course_id,
         difficulty_level,
         type,
@@ -98,7 +289,7 @@ export async function POST(request: Request) {
         is_published: status === "published" || status === "active",
         folder_id: folder_id || null,
         thumbnail_url,
-        content_json,
+        content_json: finalContentJson,
         time_limit: time_limit || null,
         max_attempts: max_attempts || null,
       })
@@ -142,6 +333,58 @@ export async function PUT(request: Request) {
       );
     }
 
+    // If content_json is empty or not provided, create a default structure based on type
+    let finalContentJson = content_json;
+    if (!finalContentJson || (Array.isArray(finalContentJson) && finalContentJson.length === 0)) {
+      // Create appropriate default block based on exercise type
+      let defaultBlock: any = {
+        id: "block-1",
+        type: "text",
+        content: description || title || "Énoncé non spécifié",
+      };
+
+      if (type === "single_choice" || type === "multiple_choice") {
+        defaultBlock = {
+          id: "block-1",
+          type: type === "multiple_choice" ? "multiple_choice" : "single_choice",
+          content: description || title || "Question",
+          options: [
+            { id: "opt-1", text: "Réponse A" },
+            { id: "opt-2", text: "Réponse B" },
+            { id: "opt-3", text: "Réponse C" },
+          ],
+          correctAnswer: "opt-1",
+        };
+      } else if (type === "true_false") {
+        defaultBlock = {
+          id: "block-1",
+          type: "true_false",
+          statement: description || title || "Énoncé du vrai/faux",
+          correctAnswer: true,
+        };
+      } else if (type === "text_input") {
+        defaultBlock = {
+          id: "block-1",
+          type: "text_input",
+          label: description || title || "Répondez à la question",
+          placeholder: "Votre réponse",
+          expectedAnswer: "",
+        };
+      }
+
+      finalContentJson = [
+        {
+          id: "page-1",
+          blocks: [defaultBlock],
+        },
+      ];
+      console.log("✅ Created default content_json from description (UPDATE):", {
+        title,
+        type,
+        hasDescription: !!description,
+      });
+    }
+
     const { data, error } = await supabaseAdmin
       .from("exercises")
       .update({
@@ -155,7 +398,7 @@ export async function PUT(request: Request) {
         is_published: status === "published" || status === "active",
         folder_id: folder_id || null,
         thumbnail_url,
-        content_json,
+        content_json: finalContentJson,
         time_limit: time_limit || null,
         max_attempts: max_attempts || null,
         updated_at: new Date().toISOString(),

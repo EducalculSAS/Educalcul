@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PlusCircle, Users, Trash2, Edit, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import MathLoader from "@/components/MathLoader";
+import { avatarUrl } from "@/lib/avatarUrl";
 
 interface Child {
   id: string;
@@ -88,25 +89,32 @@ export default function ManageChildrenPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <Users className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
-          Mes Enfants
-        </h1>
-        <p className="text-gray-600 text-lg mb-8">
-          Gérez les profils et les accès de vos enfants
-        </p>
-        <div className="flex justify-center">
+    <div className="min-h-screen bg-[var(--greek-cream)]">
+      {/* Hero Header */}
+      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+              <Users className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+              MES ENFANTS
+            </h1>
+            <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
+              <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">GESTION</span>
+              <span>Gérez les profils et les accès de vos enfants</span>
+            </p>
+          </div>
           <Link
             href="/parent/add-child"
-            className="flex items-center bg-[var(--greek-blue)] text-white px-6 py-3 rounded-xl hover:bg-[var(--greek-blue)] transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-bold"
+            className="flex items-center gap-2 bg-[var(--greek-gold)] hover:bg-yellow-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md shrink-0"
           >
-            <PlusCircle className="w-5 h-5 mr-2" />
+            <PlusCircle className="w-5 h-5" />
             Ajouter un enfant
           </Link>
         </div>
       </div>
+    <div className="container mx-auto px-4 pb-12 max-w-6xl">
 
       {children.length === 0 ? (
         <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-12 text-center border border-white/50 max-w-2xl mx-auto">
@@ -142,7 +150,7 @@ export default function ManageChildrenPage() {
                     <div className="w-12 h-12 bg-white shadow-sm rounded-full flex items-center justify-center text-[var(--greek-blue)] font-bold text-xl mr-4 group-hover:scale-110 transition-transform overflow-hidden border-2 border-[var(--greek-gold)]/20">
                       {child.avatar ? (
                         <img
-                          src={`/avatars/${child.avatar}`}
+                          src={avatarUrl(child.avatar, "/avatars/avatar1.png")!}
                           alt={child.first_name}
                           className="w-full h-full object-cover"
                         />
@@ -198,6 +206,7 @@ export default function ManageChildrenPage() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

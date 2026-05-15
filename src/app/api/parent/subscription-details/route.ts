@@ -91,11 +91,13 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'Database error' }, { status: 500 });
     }
 
-    if (!subscription || !subscription.stripe_customer_id) {
-      return NextResponse.json({
-        subscription: null,
-        invoices: []
-      });
+    // Return DB subscription even without Stripe (e.g. manually assigned plans)
+    if (!subscription) {
+      return NextResponse.json({ subscription: null, invoices: [] });
+    }
+
+    if (!subscription.stripe_customer_id) {
+      return NextResponse.json({ subscription, invoices: [] });
     }
 
     const customerId = subscription.stripe_customer_id;

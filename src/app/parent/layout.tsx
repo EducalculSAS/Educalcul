@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
+import AdminMessages from "@/components/AdminMessages";
 
 import MathLoader from "@/components/MathLoader";
 
@@ -42,9 +43,47 @@ export default function ParentLayout({
 
       setUser(userData);
       setLoading(false);
+
+      // Track presence: update last_active_at + geo if missing
+      const now = new Date().toISOString();
+      const today = new Date().toISOString().split("T")[0];
+      const updates: any = { last_active_at: now };
+
+      // Track login streak
+      if (!userData.last_login_date || userData.last_login_date !== today) {
+        const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
+        updates.last_login_date = today;
+        updates.login_count = (userData.login_count || 0) + 1;
+        updates.login_streak = userData.last_login_date === yesterday ? (userData.login_streak || 0) + 1 : 1;
+      }
+
+      if (!userData.latitude) {
+        try {
+          const geo = await fetch("https://ipapi.co/json/").then(r => r.json());
+          if (geo.latitude) {
+            updates.latitude = geo.latitude;
+            updates.longitude = geo.longitude;
+            updates.last_login_city = geo.city;
+            updates.last_login_country = geo.country_name;
+            updates.last_login_ip = geo.ip;
+          }
+        } catch {}
+      }
+
+      await supabase.from("users").update(updates).eq("auth_id", session.user.id);
     };
 
     checkUser();
+
+    // Refresh last_active_at every 2 minutes
+    const interval = setInterval(async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        await supabase.from("users").update({ last_active_at: new Date().toISOString() }).eq("auth_id", session.user.id);
+      }
+    }, 120000);
+
+    return () => clearInterval(interval);
   }, [router]);
 
   if (loading) {
@@ -56,15 +95,12 @@ export default function ParentLayout({
   }
 
   return (
-    <div className="flex flex-col min-h-screen relative bg-[var(--greek-cream)]/30">
+    <div className="min-h-screen bg-[var(--greek-cream)]">
       <Navbar />
-
-      <div className="flex flex-grow pt-[64px] relative z-10">
-        {/* Main Content */}
-        <main className="flex-grow p-4 md:p-8 container mx-auto max-w-7xl">
-          {children}
-        </main>
-      </div>
+      <AdminMessages />
+      <main className="pt-[64px]">
+        {children}
+      </main>
     </div>
   );
 }

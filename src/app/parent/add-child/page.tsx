@@ -201,7 +201,7 @@ export default function AddChildPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-8 max-w-4xl pt-20">
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
           <UserPlus className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />

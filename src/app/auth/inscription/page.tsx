@@ -5,13 +5,14 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import {
-  UserPlus,
   Mail,
   Lock,
   User,
   Calendar,
   AlertCircle,
   CheckCircle,
+  Gift,
+  Loader2,
 } from "lucide-react";
 
 export default function Inscription() {
@@ -32,6 +33,29 @@ export default function Inscription() {
   const [childUsername, setChildUsername] = useState("");
   const [childAge, setChildAge] = useState("");
   const [parentEmail, setParentEmail] = useState("");
+
+  // Referral
+  const [referralCode, setReferralCode] = useState("");
+  const [referralValidating, setReferralValidating] = useState(false);
+  const [referralStatus, setReferralStatus] = useState<"idle" | "valid" | "invalid">("idle");
+
+  const validateReferral = async (code: string) => {
+    if (!code.trim()) { setReferralStatus("idle"); return; }
+    setReferralValidating(true);
+    try {
+      const res = await fetch("/api/parent/validate-referral", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const data = await res.json();
+      setReferralStatus(data.valid ? "valid" : "invalid");
+    } catch {
+      setReferralStatus("invalid");
+    } finally {
+      setReferralValidating(false);
+    }
+  };
 
   const handleGoogleLogin = async () => {
     // Save selected role to localStorage so we can assign it after OAuth callback
@@ -105,11 +129,17 @@ export default function Inscription() {
       if (authError) throw authError;
 
       if (authData.user) {
-        setSuccess("Compte créé avec succès ! Redirection...");
+        // Record referral use if code provided and valid
+        if (role === "parent" && referralCode.trim() && referralStatus === "valid") {
+          await fetch("/api/auth/use-referral", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code: referralCode.trim(), newUserAuthId: authData.user.id }),
+          });
+        }
 
-        setTimeout(() => {
-          router.push("/auth/connexion");
-        }, 2000);
+        setSuccess("Compte créé avec succès ! Redirection...");
+        setTimeout(() => router.push("/auth/connexion"), 2000);
       }
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue lors de l'inscription.");
@@ -320,6 +350,48 @@ export default function Inscription() {
               </div>
             </div>
           </div>
+
+          {role === "parent" && (
+            <div>
+              <label className="block text-[var(--greek-blue)] font-bold mb-2 text-sm">
+                Code de parrainage <span className="text-gray-400 font-normal">(optionnel)</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Gift className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  value={referralCode}
+                  onChange={(e) => {
+                    const val = e.target.value.toUpperCase();
+                    setReferralCode(val);
+                    setReferralStatus("idle");
+                  }}
+                  onBlur={() => validateReferral(referralCode)}
+                  className={`w-full pl-10 pr-10 py-3 border rounded-lg focus:outline-none font-mono tracking-widest uppercase text-sm ${
+                    referralStatus === "valid"
+                      ? "border-green-400 bg-green-50 focus:border-green-500"
+                      : referralStatus === "invalid"
+                      ? "border-red-400 bg-red-50 focus:border-red-500"
+                      : "border-gray-300 focus:border-[var(--greek-blue)]"
+                  }`}
+                  placeholder="EX: RUBEN3K7P"
+                />
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                  {referralValidating && <Loader2 className="w-4 h-4 animate-spin text-gray-400" />}
+                  {!referralValidating && referralStatus === "valid" && <CheckCircle className="w-4 h-4 text-green-500" />}
+                  {!referralValidating && referralStatus === "invalid" && <AlertCircle className="w-4 h-4 text-red-500" />}
+                </div>
+              </div>
+              {referralStatus === "valid" && (
+                <p className="text-xs text-green-600 font-medium mt-1">Code valide — une remise sera appliquée à votre abonnement</p>
+              )}
+              {referralStatus === "invalid" && (
+                <p className="text-xs text-red-500 mt-1">Code invalide ou expiré</p>
+              )}
+            </div>
+          )}
 
           <button
             type="submit"

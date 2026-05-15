@@ -12,7 +12,9 @@ export async function GET() {
       STRIPE_SECRET_KEY: maskSecret(process.env.STRIPE_SECRET_KEY),
     },
     ai: {
-      GEMINI_API_KEY: maskSecret(process.env.GEMINI_API_KEY),
+      AI_PROVIDER: process.env.AI_PROVIDER || "local",
+      QWEN_API_URL: process.env.QWEN_API_URL || "http://localhost:11434/api/generate",
+      QWEN_MODEL: process.env.QWEN_MODEL || "qwen2.5vl:7b",
     },
     app: {
       NODE_ENV: process.env.NODE_ENV,

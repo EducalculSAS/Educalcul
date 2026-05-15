@@ -190,7 +190,7 @@ export default function AdminCoursesPage() {
       }
 
       const { data: foldersData, error: foldersError } = await folderQuery;
-      if (foldersError) throw foldersError;
+      if (foldersError) console.warn("Folders error:", foldersError.message);
 
       // 2. Fetch Courses
       let coursesUrl = `/api/admin/courses?`;
@@ -718,28 +718,30 @@ export default function AdminCoursesPage() {
       </div>
 
       {/* Filters & Search */}
-      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4">
-        <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Rechercher un cours..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-gold)]/50"
-          />
-        </div>
-        <div className="flex gap-4">
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-gold)]/50"
-          >
-            <option value="all">Tous les statuts</option>
-            <option value="published">Publié</option>
-            <option value="draft">Brouillon</option>
-            <option value="archived">Archivé</option>
-          </select>
+      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 space-y-4">
+        <div className="flex flex-col md:flex-row gap-4 flex-wrap">
+          <div className="flex-1 relative min-w-[200px]">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <input
+              type="text"
+              placeholder="Rechercher un cours..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+            />
+          </div>
+          <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0">
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="px-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+            >
+              <option value="all">Tous les statuts</option>
+              <option value="published">Publié</option>
+              <option value="draft">Brouillon</option>
+              <option value="archived">Archivé</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -801,7 +803,7 @@ export default function AdminCoursesPage() {
                     });
                     setIsFolderModalOpen(true);
                   }}
-                  className="p-1.5 bg-white text-gray-400 hover:text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg shadow-sm border border-gray-100"
+                  className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
                   title="Modifier"
                 >
                   <Edit size={14} />
@@ -811,7 +813,7 @@ export default function AdminCoursesPage() {
                     e.stopPropagation();
                     handleDeleteFolder(folder);
                   }}
-                  className="p-1.5 bg-white text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg shadow-sm border border-gray-100"
+                  className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                   title="Supprimer"
                 >
                   <Trash2 size={14} />
@@ -893,21 +895,21 @@ export default function AdminCoursesPage() {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handlePreview(course)}
-                      className="p-1.5 text-gray-400 hover:text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
+                      className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
                       title="Prévisualiser"
                     >
                       <Eye size={18} />
                     </button>
                     <button
                       onClick={() => handleOpenModal("edit", course)}
-                      className="p-1.5 text-gray-400 hover:text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
+                      className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
                       title="Modifier"
                     >
                       <Edit size={18} />
                     </button>
                     <button
                       onClick={() => handleDelete(course)}
-                      className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                       title="Supprimer"
                     >
                       <Trash2 size={18} />

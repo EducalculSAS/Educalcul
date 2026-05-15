@@ -1,23 +1,26 @@
-import React from "react";
 import ForumApp from "@/components/forum/ForumApp";
 import { MessageSquare } from "lucide-react";
 
 export default function ParentForumPage() {
   return (
-    <main className="container mx-auto px-4 py-8 max-w-6xl animate-fade-in">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm flex items-center justify-center gap-4">
-          <MessageSquare className="w-10 h-10 text-[var(--greek-gold)]" />
-          Le Forum des Héros
-        </h1>
-        <p className="text-gray-600 text-lg">
-          Entraide, conseils et progrès pour nos enfants.
-        </p>
+    <div className="w-full min-h-screen bg-[var(--greek-cream)]">
+      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+            <MessageSquare className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+            LE FORUM
+          </h1>
+          <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
+            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">PARENTS</span>
+            <span>Entraide, conseils et suivi pour vos enfants.</span>
+          </p>
+        </div>
       </div>
-      
-      <div className="w-full">
+      <div className="px-4 pb-12 max-w-6xl mx-auto">
         <ForumApp role="parent" />
       </div>
-    </main>
+    </div>
   );
 }

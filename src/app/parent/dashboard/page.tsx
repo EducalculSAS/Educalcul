@@ -5,88 +5,22 @@ import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-  PieChart,
-  Activity,
-  Clock,
-  History,
-  Award,
+  Activity, Users, BookOpen, CheckCircle, TrendingUp,
+  ArrowRight, Lock, Plus, MessageSquare, Crown, UserCircle,
   BarChart2,
-  Lock,
-  ArrowRight,
-  Info,
-  Users,
-  TrendingUp,
-  BookOpen,
-  CheckCircle,
-  Plus,
 } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
-
-// Interfaces
-interface QuizData {
-  title: string;
-}
-
-interface ExerciseData {
-  title: string;
-}
-
-interface CourseData {
-  title: string;
-}
-
-interface CourseViewData {
-  courses: CourseData | null;
-}
-
-interface QuizAttempt {
-  completed_at: string;
-  score: number;
-  total_questions: number;
-  quizzes: QuizData | null;
-}
-
-interface ExerciseAttempt {
-  attempted_at: string;
-  is_correct: boolean;
-  exercises: ExerciseData | null;
-}
-
-interface SessionData {
-  session_ended_at: string;
-  user_course_views: CourseViewData | null;
-}
-
-interface UserCourseView {
-  id: string;
-}
-
-interface UserCourseSession {
-  duration_seconds: number;
-}
+import { avatarUrl } from "@/lib/avatarUrl";
+import { useSubscription } from "@/lib/useSubscription";
 
 interface ChildStats {
-  progress: number;
-  activityCount7d: number;
-  timeSpent7d: { hours: number; minutes: number };
-  lastActivity: {
-    type: string;
-    title: string;
-    date: string;
-    score?: string | null;
-    relativeTime: string;
-  } | null;
-  badges: {
-    icon: string;
-    title: string;
-    key: string;
-  }[];
   exerciseCount: number;
   quizCount: number;
   successRate: number;
+  lastActivity: { type: string; title: string; relativeTime: string } | null;
 }
 
-interface ChildWithStats {
+interface Child {
   id: string;
   first_name: string;
   last_name: string;
@@ -94,488 +28,279 @@ interface ChildWithStats {
   avatar?: string;
   stats: ChildStats | null;
   loading: boolean;
-  error: string | null;
 }
 
-const formatDuration = (totalSeconds: number) => {
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  return { hours, minutes };
-};
-
-const formatRelativeTime = (dateString: string) => {
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  if (diffInSeconds < 60) return "À l'instant";
-  if (diffInSeconds < 3600)
-    return `Il y a ${Math.floor(diffInSeconds / 60)} min`;
-  if (diffInSeconds < 86400)
-    return `Il y a ${Math.floor(diffInSeconds / 3600)} h`;
-  return `Il y a ${Math.floor(diffInSeconds / 86400)} j`;
+const formatRelativeTime = (d: string) => {
+  const diff = Math.floor((Date.now() - new Date(d).getTime()) / 1000);
+  if (diff < 60) return "À l'instant";
+  if (diff < 3600) return `Il y a ${Math.floor(diff / 60)} min`;
+  if (diff < 86400) return `Il y a ${Math.floor(diff / 3600)} h`;
+  return `Il y a ${Math.floor(diff / 86400)} j`;
 };
 
 export default function ParentDashboard() {
   const router = useRouter();
-  const [children, setChildren] = useState<ChildWithStats[]>([]);
+  const sub = useSubscription();
+  const [children, setChildren] = useState<Child[]>([]);
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("Parent");
-  const [canSeeReports, setCanSeeReports] = useState(false);
 
   useEffect(() => {
-    const checkUserAndFetchChildren = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+    (async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) { router.push("/auth/connexion"); return; }
 
-      if (!user) {
-        router.push("/auth/connexion");
-        return;
-      }
+      const { data: userData } = await supabase.from("users").select("first_name, role, id").eq("auth_id", user.id).maybeSingle();
+      if (!userData || userData.role !== "parent") { router.push("/dashboard"); return; }
 
-      // Fetch parent details
-      const { data: userData } = await supabase
-        .from("users")
-        .select("first_name, role")
-        .eq("auth_id", user.id)
-        .maybeSingle();
+      setUserName(userData.first_name || "Parent");
 
-      if (userData) {
-        if (userData.role !== "parent") {
-          router.push("/dashboard");
-          return;
-        }
-        setUserName(userData.first_name || "Parent");
-      }
+      const { data: childrenData } = await supabase.from("users").select("id, first_name, last_name, grade_level, avatar").eq("role", "child").eq("parent_id", userData.id).order("first_name");
 
-      // Check subscription
-      const { data: subData } = await supabase
-        .from("subscriptions")
-        .select("plan_id, status")
-        .eq("user_id", user.id)
-        .eq("status", "active")
-        .maybeSingle();
-
-      // If active sub and not free (assuming 'free' is the basic plan id), allow reports
-      // Adjust logic based on your actual plan IDs.
-      // For now, we'll assume any active subscription except 'free' gives access,
-      // or if you want to be generous for demo, set true.
-      // Based on PHP dashboard, it checks 'detailed_reports' permission.
-      // We'll mimic this:
-      if (subData && subData.plan_id !== "free") {
-        setCanSeeReports(true);
-      } else {
-        setCanSeeReports(false);
-      }
-      // fallback for demo if no table exists yet
-      // setCanSeeReports(true);
-
-      // Fetch children
-      const { data: parentRecord } = await supabase
-        .from("users")
-        .select("id")
-        .eq("auth_id", user.id)
-        .maybeSingle();
-
-      if (!parentRecord) {
-        setLoading(false);
-        return;
-      }
-
-      const { data: childrenData, error: childrenError } = await supabase
-        .from("users")
-        .select("id, first_name, last_name, grade_level, avatar")
-        .eq("role", "child")
-        .eq("parent_id", parentRecord.id)
-        .order("first_name", { ascending: true });
-
-      if (childrenError) {
-        console.error("Error fetching children:", childrenError);
-        setLoading(false);
-        return;
-      }
-
-      const childrenWithLoading = (childrenData || []).map((child: any) => ({
-        ...child,
-        stats: null,
-        loading: true,
-        error: null,
-      }));
-
-      setChildren(childrenWithLoading);
+      const base = (childrenData || []).map((c: any) => ({ ...c, stats: null, loading: true }));
+      setChildren(base);
       setLoading(false);
 
-      // Fetch stats for each child
-      childrenWithLoading.forEach((child: any) => {
-        fetchChildStats(child.id).then((stats) => {
-          setChildren((prev) =>
-            prev.map((c) =>
-              c.id === child.id ? { ...c, stats, loading: false } : c
-            )
-          );
+      base.forEach((child: any) => {
+        fetchChildStats(child.id).then(stats => {
+          setChildren(prev => prev.map(c => c.id === child.id ? { ...c, stats, loading: false } : c));
         });
       });
-    };
-
-    checkUserAndFetchChildren();
-  }, [router]);
+    })();
+  }, []);
 
   const fetchChildStats = async (childId: string): Promise<ChildStats> => {
-    const date7DaysAgo = new Date();
-    date7DaysAgo.setDate(date7DaysAgo.getDate() - 7);
-    const date7DaysAgoIso = date7DaysAgo.toISOString();
+    const [
+      { count: totalEx },
+      { count: totalQuiz },
+      { data: correct },
+      { data: lastQuiz },
+      { data: lastEx },
+    ] = await Promise.all([
+      supabase.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
+      supabase.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
+      supabase.from("user_exercise_attempts").select("id").eq("user_id", childId).eq("is_correct", true),
+      supabase.from("user_quiz_attempts").select("completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(1).maybeSingle() as any,
+      supabase.from("user_exercise_attempts").select("attempted_at, is_correct, exercises(title)").eq("user_id", childId).order("attempted_at", { ascending: false }).limit(1).maybeSingle() as any,
+    ]);
 
-    // 1. Activity Count (7d)
-    const { data: views } = await (supabase as any)
-      .from("user_course_views")
-      .select("id")
-      .eq("user_id", childId)
-      .returns();
+    const successRate = (totalEx || 0) > 0 ? Math.round(((correct?.length || 0) / (totalEx || 1)) * 100) : 0;
 
-    const viewIds = views?.map((v: any) => v.id) || [];
-    let sessionsCount = 0;
-    let sessionsDuration = 0;
-
-    if (viewIds.length > 0) {
-      const { data: sessions } = await (supabase as any)
-        .from("user_course_sessions")
-        .select("duration_seconds")
-        .in("user_course_view_id", viewIds)
-        .gte("session_ended_at", date7DaysAgoIso)
-        .returns();
-
-      sessionsCount = sessions?.length || 0;
-      sessionsDuration =
-        sessions?.reduce(
-          (acc: any, curr: any) => acc + (curr.duration_seconds || 0),
-          0
-        ) || 0;
-    }
-
-    const { count: quizCount } = await supabase
-      .from("user_quiz_attempts")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", childId)
-      .gte("completed_at", date7DaysAgoIso);
-
-    // Total stats (not just 7d) for the cards
-    const { count: totalQuizCount } = await supabase
-      .from("user_quiz_attempts")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", childId);
-
-    const { count: exerciseCount } = await supabase
-      .from("user_exercise_attempts")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", childId)
-      .gte("attempted_at", date7DaysAgoIso);
-
-    const { count: totalExerciseCount } = await supabase
-      .from("user_exercise_attempts")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", childId);
-
-    // Success Rate Calculation
-    const { data: correctExercises } = await supabase
-      .from("user_exercise_attempts")
-      .select("id")
-      .eq("user_id", childId)
-      .eq("is_correct", true);
-
-    const totalAttempts = totalExerciseCount || 0;
-    const successRate =
-      totalAttempts > 0
-        ? Math.round(((correctExercises?.length || 0) / totalAttempts) * 100)
-        : 0;
-
-    const activityCount7d =
-      sessionsCount + (quizCount || 0) + (exerciseCount || 0);
-
-    // 3. Time Spent (7d)
-    const timeSpent7d = formatDuration(sessionsDuration);
-
-    // 4. Last Activity
-    let lastActivity = null;
-
-    const { data: lastQuiz } = await (supabase as any)
-      .from("user_quiz_attempts")
-      .select("completed_at, score, total_questions, quizzes(title)")
-      .eq("user_id", childId)
-      .order("completed_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-
-    const { data: lastExercise } = await (supabase as any)
-      .from("user_exercise_attempts")
-      .select("attempted_at, is_correct, exercises(title)")
-      .eq("user_id", childId)
-      .order("attempted_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-
-    let lastCourse = null;
-    if (viewIds.length > 0) {
-      const { data: lastSession } = await (supabase as any)
-        .from("user_course_sessions")
-        .select("session_ended_at, user_course_views(courses(title))")
-        .in("user_course_view_id", viewIds)
-        .order("session_ended_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
-
-      if (lastSession) {
-        const title = lastSession.user_course_views?.courses?.title || "Cours";
-        lastCourse = {
-          type: "Cours",
-          title: title,
-          date: lastSession.session_ended_at,
-          score: null,
-        };
-      }
-    }
-
-    const activities = [];
-    if (lastQuiz) {
-      activities.push({
-        type: "Quiz",
-        title: lastQuiz.quizzes?.title || "Quiz",
-        date: lastQuiz.completed_at,
-        score: `${lastQuiz.score}/${lastQuiz.total_questions}`,
-      });
-    }
-    if (lastExercise) {
-      activities.push({
-        type: "Exercice",
-        title: lastExercise.exercises?.title || "Exercice",
-        date: lastExercise.attempted_at,
-        score: lastExercise.is_correct ? "Correct" : "Incorrect",
-      });
-    }
-    if (lastCourse) {
-      activities.push(lastCourse);
-    }
-
-    activities.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-
-    if (activities.length > 0) {
-      const best = activities[0];
-      lastActivity = {
-        ...best,
-        relativeTime: formatRelativeTime(best.date),
-      };
-    } else {
-      lastActivity = {
-        type: "Aucune",
-        title: "Aucune activité récente",
-        date: "",
-        relativeTime: "",
-        score: null,
-      };
-    }
-
-    // 5. Badges
-    const badges = [];
-    if (sessionsCount > 0)
-      badges.push({
-        key: "course_start",
-        icon: "play-circle",
-        title: "Premier Chapitre Commencé",
-      });
-    if ((quizCount || 0) > 0)
-      badges.push({
-        key: "quiz_pass",
-        icon: "check-double",
-        title: "Premier Quiz Réussi",
-      });
-
-    const displayBadges = badges.slice(0, 4);
+    const activities: any[] = [];
+    if (lastQuiz?.data) activities.push({ type: "Quiz", title: (lastQuiz.data as any).quizzes?.title || "Quiz", date: (lastQuiz.data as any).completed_at });
+    if (lastEx?.data) activities.push({ type: "Exercice", title: (lastEx.data as any).exercises?.title || "Exercice", date: (lastEx.data as any).attempted_at });
+    activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     return {
-      progress: Math.min(100, Math.round(activityCount7d * 2)),
-      activityCount7d,
-      timeSpent7d,
-      lastActivity,
-      badges: displayBadges,
-      exerciseCount: totalExerciseCount || 0,
-      quizCount: totalQuizCount || 0,
+      exerciseCount: totalEx || 0,
+      quizCount: totalQuiz || 0,
       successRate,
+      lastActivity: activities[0] ? { ...activities[0], relativeTime: formatRelativeTime(activities[0].date) } : null,
     };
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <MathLoader />
-      </div>
-    );
-  }
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><MathLoader /></div>;
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <Activity className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
-          Tableau de Bord
-        </h1>
-        <p className="text-gray-600 text-lg mb-8">
-          Bienvenue, {userName}. Suivez les progrès de vos enfants.
-        </p>
-        <div className="flex justify-center gap-3">
-          <Link
-            href="/parent/children"
-            className="inline-flex items-center px-6 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-[var(--greek-blue)] transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-bold"
-          >
-            <Users className="w-5 h-5 mr-2" />
-            Gérer mes enfants
-          </Link>
-          <Link
-            href="/parent/add-child"
-            className="inline-flex items-center px-6 py-3 bg-[var(--greek-gold)] text-white rounded-xl hover:bg-yellow-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-bold"
-          >
-            <Plus className="w-5 h-5 mr-2" />
-            Ajouter un enfant
-          </Link>
+    <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
+
+      {/* Hero Header — même style que child */}
+      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h1 className="text-3xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-2">
+                Bonjour, {userName} !
+              </h1>
+              <p className="text-xl opacity-90 flex items-center gap-2">
+                <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">PARENT</span>
+                <span>Suivez les progrès de vos enfants.</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
+              <div className="text-center px-4 border-r border-white/20">
+                <div className="text-2xl font-bold text-[var(--greek-gold)]">{children.length}</div>
+                <div className="text-xs uppercase tracking-wider opacity-80">Enfant{children.length !== 1 ? "s" : ""}</div>
+              </div>
+              <div className="text-center px-4">
+                <div className="text-2xl font-bold text-[var(--greek-gold)]">
+                  {children.reduce((a, c) => a + (c.stats?.exerciseCount || 0), 0)}
+                </div>
+                <div className="text-xs uppercase tracking-wider opacity-80">Exercices</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {children.length === 0 ? (
-        <div className="bg-white/80 backdrop-blur-md border border-white/50 text-[var(--greek-blue)] p-8 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-center max-w-2xl mx-auto">
-          <p className="text-xl mb-4 font-[family-name:var(--font-display)]">
-            Vous n'avez pas encore ajouté d'enfant.
-          </p>
-          <Link
-            href="/parent/add-child"
-            className="inline-block bg-[var(--greek-gold)] text-white px-6 py-3 rounded-lg font-bold hover:bg-yellow-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-          >
-            Commencer maintenant
-          </Link>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {children.map((child) => (
-            <div
-              key={child.id}
-              className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 flex flex-col group"
-            >
-              {/* Card Header */}
-              <div className="p-6 border-b border-[rgba(52,73,94,0.1)] bg-gradient-to-r from-[var(--greek-cream)]/50 to-transparent">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-1">
-                      {child.first_name} {child.last_name}
-                    </h3>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] border border-[var(--greek-blue)]/20">
-                      {child.grade_level || "Niveau non défini"}
-                    </span>
-                  </div>
-                  <div className="h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300 overflow-hidden border-2 border-[var(--greek-gold)]/20">
-                    {child.avatar ? (
-                      <img
-                        src={`/avatars/${child.avatar}`}
-                        alt={child.first_name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="font-bold text-lg">
-                        {child.first_name.charAt(0)}
-                      </span>
-                    )}
-                  </div>
-                </div>
+      <div className="container mx-auto max-w-6xl px-4">
+
+        {/* Navigation rapide — même style que child */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          <Link href="/parent/children" className="group">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Users className="w-24 h-24 text-[var(--greek-blue)]" />
               </div>
-
-              {/* Card Body */}
-              <div className="p-6 flex-grow">
-                {child.loading ? (
-                  <div className="flex justify-center py-8">
-                    <div className="animate-spin h-6 w-6 border-b-2 border-[var(--greek-blue)] rounded-full"></div>
-                  </div>
-                ) : (
-                  <div className="space-y-6">
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-white/60 rounded-xl border border-white/60 text-center shadow-sm">
-                        <CheckCircle className="w-5 h-5 text-green-500 mx-auto mb-1" />
-                        <div className="text-lg font-bold text-gray-800">
-                          {child.stats?.exerciseCount || 0}
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          Exercices faits
-                        </div>
-                      </div>
-                      <div className="p-3 bg-white/60 rounded-xl border border-white/60 text-center shadow-sm">
-                        <TrendingUp className="w-5 h-5 text-[var(--greek-gold)] mx-auto mb-1" />
-                        <div className="text-lg font-bold text-gray-800">
-                          {child.stats?.successRate || 0}%
-                        </div>
-                        <div className="text-xs text-gray-500">Réussite</div>
-                      </div>
-                    </div>
-
-                    {/* Last Activity */}
-                    <div className="border-t border-[rgba(52,73,94,0.1)] pt-4">
-                      <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-                        Dernière activité
-                      </h4>
-                      <div className="flex items-start gap-3">
-                        <div
-                          className={`p-2 rounded-lg shadow-sm ${child.stats?.lastActivity?.type === "Quiz"
-                            ? "bg-purple-100 text-purple-600"
-                            : child.stats?.lastActivity?.type === "Exercice"
-                              ? "bg-green-100 text-green-600"
-                              : "bg-blue-100 text-blue-600"
-                            }`}
-                        >
-                          {child.stats?.lastActivity?.type === "Quiz" ? (
-                            <CheckCircle className="w-4 h-4" />
-                          ) : child.stats?.lastActivity?.type === "Exercice" ? (
-                            <BookOpen className="w-4 h-4" />
-                          ) : (
-                            <Activity className="w-4 h-4" />
-                          )}
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-800 line-clamp-1">
-                            {child.stats?.lastActivity?.title ||
-                              "Aucune activité"}
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            {child.stats?.lastActivity?.relativeTime}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-7 h-7" />
               </div>
-
-              {/* Card Footer */}
-              <div className="p-4 bg-[var(--greek-cream)]/30 border-t border-[rgba(52,73,94,0.1)]">
-                {canSeeReports ? (
-                  <Link
-                    href={`/parent/child/${child.id}`}
-                    className="flex items-center justify-center w-full py-2.5 px-4 bg-[var(--greek-blue)] text-white rounded-lg hover:bg-[var(--greek-blue)] transition-all font-medium text-sm group shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-                  >
-                    Voir le rapport complet
-                    <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                ) : (
-                  <Link
-                    href="/parent/subscription"
-                    className="flex items-center justify-center w-full py-2.5 px-4 bg-gray-100 border border-gray-200 text-gray-500 rounded-lg hover:bg-gray-200 transition-all font-medium text-sm"
-                  >
-                    <Lock className="w-4 h-4 mr-2" />
-                    Débloquer le rapport
-                  </Link>
-                )}
+              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Mes Enfants</h3>
+              <p className="text-gray-600 mb-4 text-sm">Gérez les comptes et suivez la progression.</p>
+              <div className="flex items-center text-[var(--greek-blue)] font-bold group-hover:gap-2 transition-all">
+                Gérer <ArrowRight className="w-5 h-5 ml-1" />
               </div>
             </div>
-          ))}
+          </Link>
+
+          <Link href="/parent/forum" className="group">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <MessageSquare className="w-24 h-24 text-[var(--greek-bronze)]" />
+              </div>
+              <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-bronze)] group-hover:scale-110 transition-transform duration-300">
+                <MessageSquare className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Le Forum</h3>
+              <p className="text-gray-600 mb-4 text-sm">Échangez avec d'autres parents et l'équipe.</p>
+              <div className="flex items-center text-[var(--greek-bronze)] font-bold group-hover:gap-2 transition-all">
+                Participer <ArrowRight className="w-5 h-5 ml-1" />
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/parent/subscription" className="group">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Crown className="w-24 h-24 text-[var(--greek-gold)]" />
+              </div>
+              <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-gold)] group-hover:scale-110 transition-transform duration-300">
+                <Crown className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Abonnement</h3>
+              <p className="text-gray-600 mb-4 text-sm">Gérez votre formule et votre parrainage.</p>
+              <div className="flex items-center text-[var(--greek-gold)] font-bold group-hover:gap-2 transition-all">
+                Voir <ArrowRight className="w-5 h-5 ml-1" />
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/parent/profile" className="group">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <UserCircle className="w-24 h-24 text-[var(--greek-blue)]" />
+              </div>
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
+                <UserCircle className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Mon Profil</h3>
+              <p className="text-gray-600 mb-4 text-sm">Modifiez vos informations et votre photo.</p>
+              <div className="flex items-center text-[var(--greek-blue)] font-bold group-hover:gap-2 transition-all">
+                Modifier <ArrowRight className="w-5 h-5 ml-1" />
+              </div>
+            </div>
+          </Link>
         </div>
-      )}
-    </main>
+
+        {/* Section enfants */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
+            <BarChart2 className="w-6 h-6 text-[var(--greek-gold)]" />
+            Suivi de mes enfants
+          </h2>
+          <Link href="/parent/add-child" className="flex items-center gap-2 bg-[var(--greek-gold)] text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-yellow-500 transition-all shadow-sm">
+            <Plus className="w-4 h-4" /> Ajouter un enfant
+          </Link>
+        </div>
+
+        {children.length === 0 ? (
+          <div className="bg-white rounded-[20px] p-10 shadow-sm border border-[var(--card-border-antique)] text-center">
+            <Users className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
+            <p className="text-xl text-[var(--greek-blue)] font-bold font-[family-name:var(--font-display)] mb-2">Aucun enfant ajouté</p>
+            <p className="text-gray-500 mb-6">Ajoutez votre premier enfant pour commencer le suivi.</p>
+            <Link href="/parent/add-child" className="inline-block bg-[var(--greek-gold)] text-white px-6 py-3 rounded-xl font-bold hover:bg-yellow-500 transition-all shadow-md">
+              Commencer maintenant
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {children.map(child => (
+              <div key={child.id} className="bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+
+                {/* Header */}
+                <div className="p-5 border-b border-gray-50">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-2xl bg-[var(--greek-blue)]/10 flex items-center justify-center overflow-hidden font-bold text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
+                        {child.avatar
+                          ? <img src={avatarUrl(child.avatar, "/avatars/avatar1.png")!} alt={child.first_name} className="w-full h-full object-cover" />
+                          : <span className="text-lg">{child.first_name.charAt(0)}</span>}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-[var(--greek-blue)] text-lg leading-tight">{child.first_name} {child.last_name}</h3>
+                        <span className="inline-block text-xs font-semibold bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] px-2 py-0.5 rounded-full">{child.grade_level || "Niveau non défini"}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Body */}
+                <div className="p-5 flex-grow">
+                  {child.loading ? (
+                    <div className="flex justify-center py-8">
+                      <div className="animate-spin h-6 w-6 border-b-2 border-[var(--greek-blue)] rounded-full" />
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                          <CheckCircle className="w-4 h-4 text-green-500 mx-auto mb-1" />
+                          <div className="text-lg font-bold text-gray-800">{child.stats?.exerciseCount || 0}</div>
+                          <div className="text-xs text-gray-500">Exercices</div>
+                        </div>
+                        <div className="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                          <TrendingUp className="w-4 h-4 text-[var(--greek-gold)] mx-auto mb-1" />
+                          <div className="text-lg font-bold text-gray-800">{child.stats?.successRate || 0}%</div>
+                          <div className="text-xs text-gray-500">Réussite</div>
+                        </div>
+                      </div>
+                      {child.stats?.lastActivity && (
+                        <div className="pt-3 border-t border-gray-50">
+                          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Dernière activité</p>
+                          <div className="flex items-center gap-2">
+                            <div className={`p-1.5 rounded-lg ${child.stats.lastActivity.type === "Quiz" ? "bg-purple-100 text-purple-600" : "bg-green-100 text-green-600"}`}>
+                              {child.stats.lastActivity.type === "Quiz" ? <CheckCircle className="w-3.5 h-3.5" /> : <BookOpen className="w-3.5 h-3.5" />}
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-sm font-medium text-gray-800 truncate">{child.stats.lastActivity.title}</p>
+                              <p className="text-xs text-gray-400">{child.stats.lastActivity.relativeTime}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Footer */}
+                <div className="p-4 bg-gray-50 border-t border-gray-50">
+                  {sub.features.detailed_reports ? (
+                    <Link href={`/parent/child/${child.id}`} className="flex items-center justify-center w-full py-2.5 px-4 bg-[var(--greek-blue)] text-white rounded-xl hover:opacity-90 transition-all font-bold text-sm group shadow-sm">
+                      Rapport complet <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  ) : (
+                    <Link href="/parent/subscription" className="flex items-center justify-center w-full py-2.5 px-4 bg-gray-100 border border-gray-200 text-gray-500 rounded-xl hover:bg-gray-200 transition-all font-medium text-sm">
+                      <Lock className="w-4 h-4 mr-2" /> Débloquer le rapport
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

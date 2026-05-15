@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
 import Image from "next/image";
+import { avatarUrl } from "@/lib/avatarUrl";
 
 export default function ParentProfilePage() {
   const router = useRouter();
@@ -334,16 +335,23 @@ export default function ParentProfilePage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <User className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
-          Mon Profil
-        </h1>
-        <p className="text-gray-600 text-lg">
-          Gérer mes informations personnelles
-        </p>
+    <div className="min-h-screen bg-[var(--greek-cream)]">
+      {/* Hero Header */}
+      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+            <User className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+            MON PROFIL
+          </h1>
+          <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
+            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">COMPTE</span>
+            <span>Gérez vos informations personnelles</span>
+          </p>
+        </div>
       </div>
+    <div className="container mx-auto px-4 pb-12 max-w-4xl">
 
       {message && (
         <div
@@ -374,7 +382,7 @@ export default function ParentProfilePage() {
             <div className="flex flex-col items-center mb-6">
               <div className="relative w-24 h-24 mb-3">
                 <Image
-                  src={formData.avatar.startsWith("http") || formData.avatar.startsWith("/") ? formData.avatar : `/avatars/${formData.avatar}`}
+                  src={avatarUrl(formData.avatar, "/avatars/avatar1.png")!}
                   alt="Avatar"
                   fill
                   className="rounded-full object-cover border-4 border-white shadow-md"
@@ -685,6 +693,7 @@ export default function ParentProfilePage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

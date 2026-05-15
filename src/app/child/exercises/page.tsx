@@ -11,11 +11,14 @@ import {
   ChevronRight,
   Home,
   ArrowLeft,
+  Lock,
 } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
 import Link from "next/link";
+import { useSubscription } from "@/lib/useSubscription";
 
 export default function ChildExercisesPage() {
+  const sub = useSubscription();
   const [loading, setLoading] = useState(true);
   const [allExercises, setAllExercises] = useState<any[]>([]);
   const [allFolders, setAllFolders] = useState<any[]>([]);
@@ -92,16 +95,25 @@ export default function ChildExercisesPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <Brain className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
-          Exercices d'Entraînement
-        </h1>
-        <p className="text-gray-600 text-lg">
-          Pratique et améliore tes compétences en mathématiques !
-        </p>
+    <div className="min-h-screen bg-[var(--greek-cream)]">
+      {/* Hero Header */}
+      <div className="bg-[var(--greek-blue)] text-white pt-20 pb-12 px-8 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+              <Brain className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+              EXERCICES
+            </h1>
+            <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
+              <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">ENTRAÎNEMENT</span>
+              <span>Pratique et améliore tes compétences !</span>
+            </p>
+          </div>
+        </div>
       </div>
+    <div className="container mx-auto px-4 pb-12 max-w-6xl">
 
       <div className="space-y-8">
         {/* Back Button */}
@@ -151,10 +163,17 @@ export default function ChildExercisesPage() {
             ))}
 
             {/* Render Exercises */}
-            {currentExercises.map((exercise, index) => (
+            {currentExercises.map((exercise, index) => {
+              const accessLevel = sub.features.access_level_exercises;
+              const diff = exercise.difficulty_level;
+              const isLocked = !sub.loading && (
+                (accessLevel === "basic" && diff !== "easy" && diff !== "facile" && diff !== null) ||
+                (accessLevel === "intermediate" && (diff === "hard" || diff === "difficile"))
+              );
+              return (
               <div
                 key={exercise.id}
-                className="group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce"
+                className={`group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-75" : ""}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-40 bg-[var(--greek-cream)] overflow-hidden flex items-center justify-center">
@@ -197,20 +216,29 @@ export default function ChildExercisesPage() {
                   </p>
 
                   <div className="mt-auto">
-                    <Link
-                      href={`/child/exercises/${exercise.id}`}
-                      className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
-                    >
-                      <Play className="w-4 h-4 fill-current" />
-                      Commencer
-                    </Link>
+                    {isLocked ? (
+                      <Link href="/parent/subscription" className="w-full bg-gray-100 text-gray-500 border border-gray-200 py-3 rounded-lg flex items-center justify-center gap-2 text-sm font-bold hover:bg-gray-200 transition-colors">
+                        <Lock className="w-4 h-4" />
+                        Débloquer — Plan supérieur
+                      </Link>
+                    ) : (
+                      <Link
+                        href={`/child/exercises/${exercise.id}`}
+                        className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
+                      >
+                        <Play className="w-4 h-4 fill-current" />
+                        Commencer
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

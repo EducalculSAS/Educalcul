@@ -1,0 +1,77 @@
+import { NextResponse } from "next/server";
+import { stripe } from "@/lib/stripe";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+
+// GET — sync current subscription status from Stripe to DB
+export async function GET(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const authId = searchParams.get("authId");
+    if (!authId) return NextResponse.json({ error: "Missing authId" }, { status: 400 });
+
+    const { data: sub } = await supabaseAdmin
+      .from("subscriptions")
+      .select("*")
+      .eq("user_id", authId)
+      .maybeSingle();
+
+    if (!sub?.stripe_subscription_id) return NextResponse.json({ synced: false });
+
+    // Pull live status from Stripe
+    const stripeSub = await stripe.subscriptions.retrieve(sub.stripe_subscription_id);
+
+    const newStatus = stripeSub.status === "active" ? "active"
+      : stripeSub.status === "canceled" ? "cancelled"
+      : stripeSub.status;
+
+    await supabaseAdmin.from("subscriptions").update({
+      status: newStatus,
+      plan_id: sub.plan_id, // keep existing unless you store price→plan mapping
+      current_period_end: new Date(stripeSub.current_period_end * 1000).toISOString(),
+      cancel_at_period_end: stripeSub.cancel_at_period_end,
+      updated_at: new Date().toISOString(),
+    }).eq("user_id", authId);
+
+    return NextResponse.json({ synced: true, status: newStatus, cancel_at_period_end: stripeSub.cancel_at_period_end });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}
+
+// POST — sync after Stripe checkout redirect with session_id
+export async function POST(req: Request) {
+  try {
+    const { sessionId, authId } = await req.json();
+    if (!sessionId || !authId) return NextResponse.json({ error: "Missing params" }, { status: 400 });
+
+    const session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ["subscription"],
+    });
+
+    if (session.payment_status !== "paid" && session.status !== "complete") {
+      return NextResponse.json({ error: "Session not paid" }, { status: 400 });
+    }
+
+    const planId = session.metadata?.planId;
+    if (!planId) return NextResponse.json({ error: "No planId in metadata" }, { status: 400 });
+
+    const sub = session.subscription as any;
+
+    await supabaseAdmin.from("subscriptions").upsert({
+      user_id: authId,
+      plan_id: planId,
+      status: "active",
+      stripe_customer_id: session.customer as string,
+      stripe_subscription_id: sub?.id ?? null,
+      current_period_start: sub ? new Date(sub.current_period_start * 1000).toISOString() : new Date().toISOString(),
+      current_period_end: sub ? new Date(sub.current_period_end * 1000).toISOString() : null,
+      cancel_at_period_end: sub?.cancel_at_period_end ?? false,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: "user_id" });
+
+    return NextResponse.json({ success: true, plan_id: planId });
+  } catch (err: any) {
+    console.error("sync-subscription error:", err);
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}

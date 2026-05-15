@@ -16,18 +16,38 @@ import QuizViewer from "@/components/viewers/QuizViewer";
 import MathLoader from "@/components/MathLoader";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { useAITutor } from "@/contexts/AITutorContext";
 
 export default function QuizDetailPage() {
   const params = useParams();
   const router = useRouter();
   const quizId = params.id as string;
+  const { setPageContext, clearContext } = useAITutor();
 
   const [loading, setLoading] = useState(true);
   const [quiz, setQuiz] = useState<any>(null);
-  const [started, setStarted] = useState(false);
+  // Initialize started state from localStorage
+  const [started, setStartedState] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const wasStarted = localStorage.getItem(`quiz-${quizId}-started`);
+    console.log(`[quiz-${quizId}] Initial check: wasStarted=${wasStarted}`);
+    return wasStarted === "true";
+  });
   const [isRendering, setIsRendering] = useState(false);
   const isPreview = quizId === "preview";
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // Wrapper for setStarted that also saves to localStorage
+  const setStarted = (value: boolean) => {
+    setStartedState(value);
+    if (value) {
+      localStorage.setItem(`quiz-${quizId}-started`, "true");
+      console.log(`[quiz-${quizId}] Saved started=true to localStorage`);
+    } else {
+      localStorage.removeItem(`quiz-${quizId}-started`);
+      console.log(`[quiz-${quizId}] Removed started from localStorage`);
+    }
+  };
 
   useEffect(() => {
     const fetchQuiz = async () => {
@@ -52,6 +72,10 @@ export default function QuizDetailPage() {
         }
         const data = await response.json();
         setQuiz(data);
+        setPageContext({
+          page: "quiz_detail",
+          quizTitle: data.title,
+        });
       } catch (error) {
         console.error("Error fetching quiz:", error);
       } finally {
@@ -60,6 +84,7 @@ export default function QuizDetailPage() {
     };
 
     fetchQuiz();
+    return () => clearContext();
   }, [quizId, isPreview]);
 
 
@@ -174,6 +199,10 @@ export default function QuizDetailPage() {
               if (isPreview) {
                 window.close();
               } else {
+                // Clean up saved page index
+                if (quiz?.id) {
+                  localStorage.removeItem(`quiz-${quiz.id}-page`);
+                }
                 setStarted(false);
               }
             }}

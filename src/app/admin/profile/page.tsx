@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { User, Lock, Save, Key, Eye, Crown, Shield } from "lucide-react";
+import { avatarUrl } from "@/lib/avatarUrl";
 
 export default function AdminProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -416,16 +417,14 @@ export default function AdminProfilePage() {
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun style</option>
-                        <optgroup label="🎮 Styles Gaming">
-                          <option value="text-basic">🔵 Texte Basique</option>
-                          <option value="text-bronze">🥉 Texte Bronze</option>
-                          <option value="text-silver">🥈 Texte Argent</option>
-                          <option value="text-gold">🥇 Texte Or</option>
-                          <option value="text-platinum">💎 Texte Platine</option>
-                          <option value="text-diamond">💠 Texte Diamant</option>
-                          <option value="text-admin">
-                            👑 Texte Admin Suprême
-                          </option>
+                        <optgroup label="Styles">
+                          <option value="text-basic">Texte Basique</option>
+                          <option value="text-bronze">Texte Bronze</option>
+                          <option value="text-silver">Texte Argent</option>
+                          <option value="text-gold">Texte Or</option>
+                          <option value="text-platinum">Texte Platine</option>
+                          <option value="text-diamond">Texte Diamant</option>
+                          <option value="text-admin">Texte Admin</option>
                         </optgroup>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
@@ -463,20 +462,14 @@ export default function AdminProfilePage() {
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun contour</option>
-                        <optgroup label="🎮 Contours Gaming">
-                          <option value="border-basic">🔵 Contour Basique</option>
-                          <option value="border-bronze">🥉 Contour Bronze</option>
-                          <option value="border-silver">🥈 Contour Argent</option>
-                          <option value="border-gold">🥇 Contour Or</option>
-                          <option value="border-platinum">
-                            💎 Contour Platine
-                          </option>
-                          <option value="border-diamond">
-                            💠 Contour Diamant
-                          </option>
-                          <option value="border-admin">
-                            👑 Contour Admin Suprême
-                          </option>
+                        <optgroup label="Contours">
+                          <option value="border-basic">Contour Basique</option>
+                          <option value="border-bronze">Contour Bronze</option>
+                          <option value="border-silver">Contour Argent</option>
+                          <option value="border-gold">Contour Or</option>
+                          <option value="border-platinum">Contour Platine</option>
+                          <option value="border-diamond">Contour Diamant</option>
+                          <option value="border-admin">Contour Admin</option>
                         </optgroup>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
@@ -563,7 +556,7 @@ export default function AdminProfilePage() {
               <div className="flex justify-center mb-6 relative">
                 <div className={`w-32 h-32 rounded-full overflow-hidden transition-all duration-300 ${formData.avatar_border}`}>
                   <img
-                    src={`/avatars/${formData.avatar}`}
+                    src={avatarUrl(formData.avatar, "/avatars/avatar1.png")!}
                     alt="Aperçu"
                     className="w-full h-full object-cover"
                   />

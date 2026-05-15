@@ -1,23 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { 
-  MessageSquare, 
-  Plus, 
-  ArrowLeft, 
-  Clock, 
-  Users, 
-  Loader2, 
-  Pin, 
-  Lock, 
-  MessageCircle, 
-  Star,
-  ArrowRight
-} from "lucide-react";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { MessageSquare, Plus, ArrowLeft, Clock, Loader2, Pin, Lock, MessageCircle, Trash2, X } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
+import { avatarUrl } from "@/lib/avatarUrl";
+import { getNameColor } from "@/lib/badgeStyles";
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 
 interface Post {
   id: number;
@@ -26,213 +19,158 @@ interface Post {
   created_at: string;
   is_pinned: boolean;
   is_locked: boolean;
-  author: {
-    first_name: string;
-    last_name: string;
-    child_username?: string;
-    avatar: string | null;
-    role: string;
-  };
+  author: { first_name: string; last_name: string; child_username?: string; avatar: string | null; role: string; };
   comments: { count: number }[];
 }
 
-export default function ForumPosts({ 
-  role, 
-  categoryId, 
-  categoryName, 
-  onBack, 
-  onSelectPost,
-  userAuthId
-}: { 
-  role: ForumRole, 
-  categoryId: number, 
-  categoryName: string, 
-  onBack: () => void, 
-  onSelectPost: (id: number) => void,
-  userAuthId: string | null
+const roleLabel = (r: string) => r === "admin" ? "Admin" : r === "parent" ? "Parent" : "Élève";
+const roleBadge = (r: string) => r === "admin" ? "bg-red-50 text-red-700" : r === "parent" ? "bg-blue-50 text-blue-700" : "bg-green-50 text-green-700";
+const roleAvatar = (r: string) => r === "admin" ? "bg-red-500" : r === "parent" ? "bg-blue-500" : "bg-green-500";
+const authorName = (a: any) => a?.child_username || `${a?.first_name || ""} ${a?.last_name || ""}`.trim() || "Utilisateur";
+
+export default function ForumPosts({ role, categoryId, categoryName, onBack, onSelectPost, userAuthId }: {
+  role: ForumRole; categoryId: number; categoryName: string;
+  onBack: () => void; onSelectPost: (id: number) => void; userAuthId: string | null;
 }) {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  useEffect(() => {
-    fetchPosts();
-  }, [categoryId]);
+  useEffect(() => { fetchPosts(); }, [categoryId]);
 
   const fetchPosts = async () => {
     setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from("forum_posts")
-        .select(`
-          *,
-          author:users(first_name, last_name, child_username, avatar, role),
-          comments:forum_comments(count)
-        `)
-        .eq("category_id", categoryId)
-        .order("is_pinned", { ascending: false })
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      setPosts(data || []);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-    } finally {
-      setLoading(false);
-    }
+    const { data } = await supabase
+      .from("forum_posts")
+      .select("*, author:users(first_name, last_name, child_username, avatar, role, equipped_border, name_color), comments:forum_comments(count)")
+      .eq("category_id", categoryId)
+      .order("is_pinned", { ascending: false })
+      .order("created_at", { ascending: false });
+    setPosts(data || []);
+    setLoading(false);
   };
 
   const handleCreatePost = async () => {
     if (!newPostTitle.trim() || !newPostContent.trim() || !userAuthId) return;
+    const { data: u } = await supabase.from("users").select("id").eq("auth_id", userAuthId).single();
+    if (!u) return;
+    await supabase.from("forum_posts").insert({ category_id: categoryId, author_id: u.id, title: newPostTitle, content: newPostContent });
+    setShowModal(false);
+    setNewPostTitle("");
+    setNewPostContent("");
+    fetchPosts();
+  };
 
-    try {
-      const { data: userData } = await supabase
-        .from("users")
-        .select("id")
-        .eq("auth_id", userAuthId)
-        .single();
+  const handleDelete = async (e: React.MouseEvent, id: number) => {
+    e.stopPropagation();
+    if (!confirm("Supprimer ce sujet et ses commentaires ?")) return;
+    await supabase.from("forum_posts").delete().eq("id", id);
+    fetchPosts();
+  };
 
-      if (!userData) return;
-
-      const { error } = await supabase
-        .from("forum_posts")
-        .insert({
-          category_id: categoryId,
-          author_id: userData.id,
-          title: newPostTitle,
-          content: newPostContent
-        });
-
-      if (error) throw error;
-      setShowModal(false);
-      setNewPostTitle("");
-      setNewPostContent("");
-      fetchPosts();
-    } catch (error) {
-      console.error("Error creating post:", error);
-    }
+  const buildProfileHref = (userId: number | undefined | null) => {
+    if (!userId) return "#";
+    const currentUrl = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+    const returnTo = encodeURIComponent(currentUrl);
+    return role === "admin" ? `/admin/users/detail?id=${userId}` : `/u/${userId}?returnTo=${returnTo}`;
   };
 
   if (loading) return <div className="p-12 flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-gray-400" /></div>;
 
   return (
-    <div className="space-y-8 animate-fade-in">
-      {/* Navigation Sub-Header (Refined Style) */}
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <button 
-            onClick={onBack} 
-            className="p-3 bg-white border border-[var(--greek-gold)]/20 text-[var(--greek-blue)] rounded-2xl hover:bg-gray-50 transition-all shadow-sm group"
-          >
-            <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+        <div className="flex items-center gap-4">
+          <button onClick={onBack} className="p-2 bg-white border border-gray-200 text-[var(--greek-blue)] rounded-xl hover:bg-gray-50 transition-all shadow-sm">
+            <ArrowLeft className="w-5 h-5" />
           </button>
-          <div>
-            <h2 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] tracking-tight">
-              {categoryName}
-            </h2>
-            <div className="h-1.5 w-16 bg-[var(--greek-gold)] rounded-full mt-2 shadow-sm"></div>
-          </div>
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">{categoryName}</h2>
         </div>
-        <button 
-          onClick={() => setShowModal(true)} 
-          className="flex items-center gap-2 bg-[var(--greek-blue)] text-white px-6 py-3 rounded-2xl font-black hover:bg-blue-800 shadow-lg transition-all transform hover:-translate-y-1 active:translate-y-0"
-        >
-          <Plus className="w-6 h-6" /> 
-          <span className="uppercase">Nouveau sujet</span>
+        <button onClick={() => setShowModal(true)} className="flex items-center gap-2 bg-[var(--greek-blue)] text-white px-4 py-2 rounded-xl font-semibold text-sm hover:bg-blue-800 shadow-sm transition-all">
+          <Plus className="w-4 h-4" /> Nouveau sujet
         </button>
       </div>
 
-      <div className="flex flex-col gap-6 w-full">
-          {posts.map((post, idx) => {
-            const commentCount = post.comments?.[0]?.count || 0;
-            const authorName = post.author?.child_username || `${post.author?.first_name} ${post.author?.last_name || ""}`.trim() || 'Héro';
-            
-            return (
-              <div 
-                key={post.id}
-                onClick={() => onSelectPost(post.id)}
-                className={`group cursor-pointer transition-all duration-300 bg-white border border-[var(--card-border-antique)] rounded-[20px] p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 relative overflow-hidden flex items-center justify-between ${post.is_pinned ? 'border-l-8 border-l-[var(--greek-gold)]' : ''}`}
-              >
-                <div className="flex items-center gap-8 flex-1 min-w-0">
-                  <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity text-[var(--greek-blue)]">
-                     <Star className="w-24 h-24" />
+      <div className="space-y-3">
+        {posts.length === 0 && (
+          <div className="text-center py-16 bg-white rounded-2xl border border-gray-100 text-gray-400">
+            Aucun sujet. Lancez la première discussion !
+          </div>
+        )}
+        {posts.map((post) => {
+          const commentCount = post.comments?.[0]?.count || 0;
+          const name = authorName(post.author);
+          const profileHref = buildProfileHref(post.author?.id);
+          return (
+            <div
+              key={post.id}
+              onClick={() => onSelectPost(post.id)}
+              className={`group cursor-pointer bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center justify-between gap-4 ${post.is_pinned ? "border-l-4 border-l-[var(--greek-gold)] border-[var(--greek-gold)]/30" : "border-gray-100"}`}
+            >
+              <div className="flex items-center gap-4 flex-1 min-w-0">
+                <Link href={profileHref} title="Voir le profil" className="shrink-0 hover:opacity-80 transition-opacity" onClick={(e) => e.stopPropagation()}>
+                  <AvatarWithBorder
+                    avatar={post.author?.avatar}
+                    equippedBorder={post.author?.equipped_border}
+                    name={name}
+                    size="md"
+                    bgClass={roleAvatar(post.author?.role)}
+                  />
+                </Link>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    {post.is_pinned && <Pin className="w-3.5 h-3.5 text-[var(--greek-gold)] fill-current shrink-0" />}
+                    {post.is_locked && <Lock className="w-3.5 h-3.5 text-red-500 shrink-0" />}
+                    <h3 className="font-bold text-[var(--greek-blue)] truncate">{post.title}</h3>
                   </div>
-
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-extrabold text-white shrink-0 overflow-hidden shadow-lg border-2 border-white group-hover:scale-110 transition-all duration-300`}>
-                    <div className={`w-full h-full flex items-center justify-center ${
-                      post.author?.role === 'admin' ? 'bg-red-500' : post.author?.role === 'parent' ? 'bg-blue-500' : 'bg-green-500'
-                    }`}>
-                      {post.author?.avatar ? (
-                        <img src={`/avatars/${post.author.avatar}`} alt="Avatar" className="w-full h-full object-cover" />
-                      ) : (authorName.charAt(0).toUpperCase())}
-                    </div>
-                  </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2">
-                       {post.is_pinned && <Pin className="w-5 h-5 text-[var(--greek-gold)] fill-current" />}
-                       {post.is_locked && <Lock className="w-5 h-5 text-red-500" />}
-                       <h3 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] group-hover:text-[var(--greek-gold)] transition-colors truncate">{post.title}</h3>
-                    </div>
-                    
-                    <div className="flex flex-wrap items-center gap-4 text-sm">
-                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-sm ${
-                         post.author?.role === 'admin' ? 'bg-red-50 text-red-700' : post.author?.role === 'parent' ? 'bg-blue-50 text-blue-700' : 'bg-green-50 text-green-700'
-                       }`}>
-                         {post.author?.role === 'admin' ? 'Prof' : post.author?.role === 'parent' ? 'Parent' : 'Héros'}
-                       </span>
-                       <span className="text-gray-400 font-bold">par <span className="text-gray-600 underline decoration-[var(--greek-gold)] decoration-2 underline-offset-4">{authorName}</span></span>
-                       <span className="flex items-center gap-1.5 text-gray-300 font-bold italic"><Clock className="w-4 h-4" /> {formatDistanceToNow(new Date(post.created_at), { addSuffix: true, locale: fr })}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-8 ml-8">
-                  <div className="flex flex-col items-center justify-center gap-1 px-5 py-3 rounded-2xl bg-blue-50 text-[var(--greek-blue)] border border-blue-100/50 group-hover:bg-[var(--greek-gold)]/10 transition-colors">
-                     <MessageCircle className="w-6 h-6" />
-                     <span className="font-black text-lg">{commentCount}</span>
-                  </div>
-                  <div className="hidden md:flex items-center text-[var(--greek-blue)] font-bold group-hover:gap-2 transition-all">
-                     Lire <ArrowRight className="w-5 h-5 ml-1" />
+                  <div className="flex items-center gap-2 text-xs text-gray-400">
+                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase ${roleBadge(post.author?.role)}`}>{roleLabel(post.author?.role)}</span>
+                    <Link href={profileHref} className={`no-underline hover:no-underline ${getNameColor(post.author?.name_color || 'default').cls}`} onClick={(e) => e.stopPropagation()}>{name}</Link>
+                    <span>·</span>
+                    <Clock className="w-3 h-3" />
+                    <span>{formatDistanceToNow(new Date(post.created_at), { addSuffix: true, locale: fr })}</span>
                   </div>
                 </div>
               </div>
-            );
-          })}
+              <div className="flex items-center gap-3 shrink-0">
+                <div className="flex items-center gap-1 text-sm text-gray-500">
+                  <MessageCircle className="w-4 h-4" />
+                  <span className="font-semibold">{commentCount}</span>
+                </div>
+                {role === "admin" && (
+                  <button onClick={(e) => handleDelete(e, post.id)} className="opacity-0 group-hover:opacity-100 p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-[var(--greek-blue)]/60 backdrop-blur-md flex items-center justify-center p-6 z-[60] animate-fade-in">
-          <div className="bg-white rounded-[32px] p-10 max-w-2xl w-full shadow-2xl border-4 border-[var(--greek-gold)]/20 animate-scale-up">
-            <h2 className="text-3xl font-bold text-[var(--greek-blue)] mb-8 font-[family-name:var(--font-display)] flex items-center gap-4">
-               <Plus className="text-[var(--greek-gold)]" size={32} />
-               Lancer une Discussion
-            </h2>
-            <div className="space-y-6">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6 z-50">
+          <div className="bg-white rounded-2xl p-8 max-w-2xl w-full shadow-2xl">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau sujet</h2>
+              <button onClick={() => setShowModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+            </div>
+            <div className="space-y-4">
               <div>
-                <label className="block text-sm font-black text-gray-400 uppercase tracking-widest mb-3">Titre du sujet</label>
-                <input 
-                  type="text" 
-                  value={newPostTitle} 
-                  onChange={(e) => setNewPostTitle(e.target.value)}
-                  className="w-full p-4 bg-gray-50 border-2 border-transparent rounded-2xl focus:border-[var(--greek-gold)] focus:bg-white transition-all outline-none text-lg font-bold"
-                  placeholder="Ex: Comment résoudre cet exercice ?"
-                />
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Titre *</label>
+                <input type="text" value={newPostTitle} onChange={e => setNewPostTitle(e.target.value)} className="w-full px-4 py-2.5 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm" placeholder="Ex : Comment résoudre cet exercice ?" />
               </div>
               <div>
-                <label className="block text-sm font-black text-gray-400 uppercase tracking-widest mb-3">Ton message</label>
-                <textarea 
-                  value={newPostContent} 
-                  onChange={(e) => setNewPostContent(e.target.value)}
-                  className="w-full p-4 bg-gray-50 border-2 border-transparent rounded-2xl focus:border-[var(--greek-gold)] focus:bg-white transition-all outline-none h-48 text-lg font-medium"
-                  placeholder="Écris ton message ici..."
-                />
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Message *</label>
+                <textarea value={newPostContent} onChange={e => setNewPostContent(e.target.value)} className="w-full px-4 py-2.5 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm h-40 resize-none" placeholder="Décris ta question ou ton sujet..." />
               </div>
-              <div className="flex gap-4 pt-4">
-                <button onClick={() => setShowModal(false)} className="flex-1 px-8 py-4 border-2 border-gray-100 text-gray-400 rounded-2xl font-black hover:bg-gray-50 transition-all uppercase tracking-widest">Annuler</button>
-                <button onClick={handleCreatePost} className="flex-1 px-8 py-4 bg-[var(--greek-blue)] text-white rounded-2xl font-black hover:bg-blue-800 shadow-xl transition-all transform hover:-translate-y-1 uppercase tracking-widest">Publier</button>
+              <div className="flex gap-3 pt-2">
+                <button onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 border border-gray-200 text-gray-500 rounded-xl text-sm font-semibold hover:bg-gray-50">Annuler</button>
+                <button onClick={handleCreatePost} className="flex-1 px-4 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800">Publier</button>
               </div>
             </div>
           </div>

@@ -1,119 +1,126 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState, useEffect, Suspense } from "react";
 import {
-  ArrowLeft,
   Crown,
   Check,
-  X,
   CreditCard,
   Clock,
   AlertTriangle,
   Download,
+  Loader2,
+  Sparkles,
+  Gift,
+  Copy,
+  CheckCheck,
+  Users,
 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import MathLoader from "@/components/MathLoader";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface SubscriptionPlan {
-  id: string;
+  id: number;
   name: string;
   price: number;
-  interval: string;
-  features: string[];
-  max_children: number;
+  billing_interval: string;
+  features: string[] | null;
+  description: string | null;
+  trial_days: number;
+  promo_description: string | null;
+  is_active: boolean;
+  sort_order: number;
 }
 
-const PLANS: SubscriptionPlan[] = [
-  {
-    id: "free",
-    name: "Découverte",
-    price: 0,
-    interval: "mois",
-    features: [
-      "Accès limité aux exercices",
-      "1 compte enfant",
-      "Suivi basique",
-    ],
-    max_children: 1,
-  },
-  {
-    id: "premium",
-    name: "Premium",
-    price: 9.99,
-    interval: "mois",
-    features: [
-      "Accès illimité",
-      "Jusqu'à 3 enfants",
-      "Rapports détaillés",
-      "Support prioritaire",
-    ],
-    max_children: 3,
-  },
-  {
-    id: "family",
-    name: "Famille",
-    price: 19.99,
-    interval: "mois",
-    features: [
-      "Tout illimité",
-      "Jusqu'à 6 enfants",
-      "Contenus exclusifs",
-      "Coaching mensuel",
-    ],
-    max_children: 6,
-  },
-];
-
-export default function SubscriptionPage() {
+function SubscriptionPageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
+  const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
   const [currentPlan, setCurrentPlan] = useState<any>(null);
   const [billingHistory, setBillingHistory] = useState<any[]>([]);
   const [user, setUser] = useState<any>(null);
-  const [processingPlanId, setProcessingPlanId] = useState<string | null>(null);
+  const [processingPlanId, setProcessingPlanId] = useState<number | null>(null);
+  // My own referral code
+  const [myReferralCode, setMyReferralCode] = useState<any>(null);
+  const [copied, setCopied] = useState(false);
+  const [pendingDiscount, setPendingDiscount] = useState(0);
 
   useEffect(() => {
-    const fetchSubscription = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+    const fetchAll = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
-      
       setUser(user);
 
       try {
-        const response = await fetch(`/api/parent/subscription-details?userId=${user.id}`);
-        const data = await response.json();
+        // Fetch plans from DB
+        const plansRes = await fetch("/api/admin/subscriptions");
+        if (plansRes.ok) {
+          const plansData = await plansRes.json();
+          setPlans((plansData || []).filter((p: SubscriptionPlan) => p.is_active));
+        }
 
-        if (data.subscription) {
-          setCurrentPlan(data.subscription);
+        // Fetch current subscription
+        const subRes = await fetch(`/api/parent/subscription-details?userId=${user.id}`);
+        const subData = await subRes.json();
+        if (subData.subscription) {
+          setCurrentPlan(subData.subscription);
         } else {
-          setCurrentPlan({ plan_id: "free", status: "active" });
+          setCurrentPlan({ plan_id: null, status: "active" });
         }
+        if (subData.invoices) setBillingHistory(subData.invoices);
 
-        if (data.invoices) {
-          setBillingHistory(data.invoices);
-        }
+        // Fetch user's own referral code
+        const refRes = await fetch(`/api/parent/my-referral-code?authId=${user.id}`);
+        if (refRes.ok) setMyReferralCode(await refRes.json());
+
+        // Fetch pending discount (parrainage reward)
+        const { data: userRow } = await (await import("@/lib/supabaseClient")).supabase
+          .from("users")
+          .select("pending_discount_percent")
+          .eq("auth_id", user.id)
+          .maybeSingle();
+        if (userRow?.pending_discount_percent) setPendingDiscount(userRow.pending_discount_percent);
       } catch (error) {
-        console.error("Error fetching subscription details:", error);
-        setCurrentPlan({ plan_id: "free", status: "active" });
+        console.error("Error fetching data:", error);
+        setCurrentPlan({ plan_id: null, status: "active" });
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSubscription();
+    fetchAll();
   }, []);
 
-  const handleSubscribe = async (planId: string) => {
-    if (planId === "free") {
-      // Logic for free plan (downgrade or keep as is)
-      alert("Vous êtes déjà sur le plan gratuit.");
-      return;
-    }
+  // Sync subscription after Stripe checkout redirect
+  useEffect(() => {
+    const success = searchParams.get("success");
+    const sessionId = searchParams.get("session_id");
+    if (success !== "1" || !sessionId) return;
 
+    (async () => {
+      const { data: { user } } = await (await import("@/lib/supabaseClient")).supabase.auth.getUser();
+      if (!user) return;
+      try {
+        await fetch("/api/parent/sync-subscription", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sessionId, authId: user.id }),
+        });
+        // Clean URL and reload data
+        router.replace("/parent/subscription");
+      } catch {}
+    })();
+  }, [searchParams]);
+
+  const copyCode = () => {
+    if (!myReferralCode?.code) return;
+    navigator.clipboard.writeText(myReferralCode.code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleSubscribe = async (planId: number) => {
     setProcessingPlanId(planId);
     try {
       if (!user) {
@@ -131,6 +138,7 @@ export default function SubscriptionPage() {
           planId,
           userId: user.id,
           email: user.email,
+          referralCode: undefined,
         }),
       });
 
@@ -191,21 +199,28 @@ export default function SubscriptionPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <Crown className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
-          Mon Abonnement
-        </h1>
-        <p className="text-gray-600 text-lg">
-          Gérez votre formule et accédez à vos factures
-        </p>
+    <div className="min-h-screen bg-[var(--greek-cream)]">
+      {/* Hero Header */}
+      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+            <Crown className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+            MON ABONNEMENT
+          </h1>
+          <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
+            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">FORMULE</span>
+            <span>Gérez votre formule et accédez à vos factures</span>
+          </p>
+        </div>
       </div>
+    <div className="container mx-auto px-4 pb-12 max-w-6xl">
 
       {/* Current Subscription Status */}
-      <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 p-8 mb-12 border-l-4 border-l-[var(--greek-gold)]">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center font-[family-name:var(--font-display)]">
-          <CreditCard className="w-6 h-6 mr-3 text-[var(--greek-blue)]" />
+      <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6 mb-8">
+        <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
+          <CreditCard className="w-5 h-5 text-[var(--greek-gold)]" />
           État actuel
         </h2>
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
@@ -213,8 +228,7 @@ export default function SubscriptionPage() {
             <p className="text-gray-600">
               Plan actuel :{" "}
               <span className="font-bold text-[var(--greek-blue)] text-lg">
-                {PLANS.find((p) => p.id === currentPlan?.plan_id)?.name ||
-                  "Gratuit"}
+                {plans.find((p) => p.id === Number(currentPlan?.plan_id))?.name || "Gratuit"}
               </span>
             </p>
             {currentPlan?.current_period_end && (
@@ -230,76 +244,93 @@ export default function SubscriptionPage() {
               </p>
             )}
           </div>
-          <div className="flex gap-3">
-            <button 
-              onClick={handleManagePayment}
-              className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:bg-[var(--greek-blue)] transition-colors"
-            >
-              Gérer le paiement
-            </button>
-          </div>
+          <button
+            onClick={handleManagePayment}
+            className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:opacity-90 transition-colors"
+          >
+            Gérer le paiement
+          </button>
         </div>
       </div>
 
+      {/* Parrainage reward banner */}
+      {pendingDiscount > 0 && (
+        <div className="mb-6 bg-green-50 border border-green-200 rounded-2xl px-6 py-4 flex items-center gap-3">
+          <Gift className="w-6 h-6 text-green-600 flex-shrink-0" />
+          <div>
+            <p className="font-bold text-green-800">Récompense parrainage disponible</p>
+            <p className="text-sm text-green-700">Un ami a utilisé votre code ! Vous bénéficiez de <strong>{pendingDiscount}% de réduction</strong> sur votre prochain abonnement.</p>
+          </div>
+        </div>
+      )}
+
       {/* Pricing Plans */}
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
-        {PLANS.map((plan) => (
-          <div
-            key={plan.id}
-            className={`relative bg-white rounded-xl shadow-sm border p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-              currentPlan?.plan_id === plan.id
-                ? "border-[var(--greek-gold)] ring-1 ring-[var(--greek-gold)]"
-                : "border-gray-200"
-            }`}
-          >
-            {currentPlan?.plan_id === plan.id && (
-              <div className="absolute top-0 right-0 bg-[var(--greek-gold)] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
-                ACTUEL
-              </div>
-            )}
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
-              {plan.name}
-            </h3>
-            <div className="text-3xl font-bold text-[var(--greek-blue)] mb-4">
-              {plan.price}€{" "}
-              <span className="text-sm text-gray-500 font-normal">
-                /{plan.interval}
-              </span>
-            </div>
-            <ul className="space-y-3 mb-8">
-              {plan.features.map((feature, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-start text-sm text-gray-600"
-                >
-                  <Check className="w-4 h-4 text-green-500 mr-2 mt-0.5" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <button
-              onClick={() => handleSubscribe(plan.id)}
-              disabled={currentPlan?.plan_id === plan.id}
-              className={`w-full py-3 rounded-xl font-bold transition-all shadow-md ${
-                currentPlan?.plan_id === plan.id
-                  ? "bg-gray-100 text-gray-400 cursor-default shadow-none"
-                  : "bg-[var(--greek-blue)] text-white hover:bg-[var(--greek-blue)] hover:shadow-lg hover:-translate-y-0.5"
+      <div className={`grid gap-8 mb-12 ${plans.length <= 2 ? "md:grid-cols-2" : plans.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-4"}`}>
+        {plans.map((plan) => {
+          const isCurrent = Number(currentPlan?.plan_id) === plan.id;
+          const features = Array.isArray(plan.features) ? plan.features : [];
+          const intervalLabel = plan.billing_interval === "year" ? "an" : plan.billing_interval === "week" ? "sem." : "mois";
+          return (
+            <div
+              key={plan.id}
+              className={`relative bg-white rounded-xl shadow-sm border p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                isCurrent ? "border-[var(--greek-gold)] ring-1 ring-[var(--greek-gold)]" : "border-gray-200"
               }`}
             >
-              {currentPlan?.plan_id === plan.id
-                ? "Abonnement Actuel"
-                : processingPlanId === plan.id
-                ? "Chargement..."
-                : "S'abonner"}
-            </button>
+              {isCurrent && (
+                <div className="absolute top-0 right-0 bg-[var(--greek-gold)] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                  ACTUEL
+                </div>
+              )}
+              {plan.promo_description && (
+                <div className="flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-2">
+                  <Sparkles className="w-3 h-3" />{plan.promo_description}
+                </div>
+              )}
+              <h3 className="text-xl font-bold text-gray-800 mb-1">{plan.name}</h3>
+              {plan.description && <p className="text-sm text-gray-500 mb-3">{plan.description}</p>}
+              <div className="text-3xl font-bold text-[var(--greek-blue)] mb-4">
+                {plan.price === 0 ? "Gratuit" : `${plan.price}€`}
+                {plan.price > 0 && <span className="text-sm text-gray-500 font-normal"> /{intervalLabel}</span>}
+              </div>
+              {plan.trial_days > 0 && (
+                <p className="text-xs text-green-600 font-medium mb-3 bg-green-50 px-3 py-1.5 rounded-lg">
+                  {plan.trial_days} jours d'essai gratuit
+                </p>
+              )}
+              <ul className="space-y-3 mb-8">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start text-sm text-gray-600">
+                    <Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => handleSubscribe(plan.id)}
+                disabled={isCurrent}
+                className={`w-full py-3 rounded-xl font-bold transition-all shadow-md ${
+                  isCurrent
+                    ? "bg-gray-100 text-gray-400 cursor-default shadow-none"
+                    : "bg-[var(--greek-blue)] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5"
+                }`}
+              >
+                {isCurrent ? "Abonnement Actuel" : processingPlanId === plan.id ? "Chargement..." : plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"}
+              </button>
+            </div>
+          );
+        })}
+        {plans.length === 0 && !loading && (
+          <div className="col-span-full text-center py-12 text-gray-400">
+            Aucun plan disponible pour le moment.
           </div>
-        ))}
+        )}
       </div>
 
       {/* Billing History */}
-      <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 p-8 border-l-4 border-l-gray-400">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center font-[family-name:var(--font-display)]">
-          <Clock className="w-6 h-6 mr-3 text-gray-600" />
+      <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
+        <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
+          <Clock className="w-5 h-5 text-[var(--greek-gold)]" />
           Historique de facturation
         </h2>
         {billingHistory.length > 0 ? (
@@ -365,6 +396,90 @@ export default function SubscriptionPage() {
           <p className="text-gray-500 italic">Aucune facture disponible.</p>
         )}
       </div>
+
+      {/* Parrainage */}
+      <div className="grid md:grid-cols-2 gap-6 mt-8">
+
+        {/* Gauche : mon code */}
+        <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
+          <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
+            <Gift className="w-5 h-5 text-[var(--greek-gold)]" />
+            Mon code de parrainage
+          </h2>
+          <p className="text-sm text-gray-500 mb-4">Partagez ce code — vos filleuls ont {myReferralCode?.discount_value ?? 10}% de réduction, et vous gagnez 10% sur votre prochain renouvellement.</p>
+          {myReferralCode ? (
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 bg-[var(--greek-cream)] rounded-xl px-4 py-4 border border-[var(--greek-gold)]/30">
+                <span className="flex-1 font-mono font-bold text-3xl tracking-[0.25em] text-[var(--greek-blue)]">
+                  {myReferralCode.code}
+                </span>
+                <button onClick={copyCode} className="flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-lg bg-[var(--greek-blue)] text-white hover:opacity-90 transition shrink-0">
+                  {copied ? <CheckCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  {copied ? "Copié !" : "Copier"}
+                </button>
+              </div>
+              <div className="flex items-center gap-3 text-sm">
+                <span className="flex items-center gap-1.5 text-gray-500">
+                  <Users className="w-4 h-4" />
+                  <span className="font-bold text-gray-800">{myReferralCode.current_uses ?? 0}</span> filleul{(myReferralCode.current_uses ?? 0) !== 1 ? "s" : ""}
+                </span>
+                <span className="bg-green-50 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full border border-green-200">
+                  {myReferralCode.discount_value}% offerts à chaque filleul
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+          )}
+        </div>
+
+        {/* Droite : qui a utilisé le code */}
+        <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
+          <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
+            <Users className="w-5 h-5 text-[var(--greek-gold)]" />
+            Mes filleuls
+          </h2>
+          <p className="text-sm text-gray-500 mb-4">Personnes qui ont utilisé votre code.</p>
+          {!myReferralCode ? (
+            <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+          ) : (myReferralCode.uses?.length ?? 0) === 0 ? (
+            <div className="text-center py-8 text-gray-400">
+              <Users className="w-10 h-10 mx-auto mb-2 opacity-20" />
+              <p className="text-sm">Personne n'a encore utilisé votre code.</p>
+            </div>
+          ) : (
+            <ul className="space-y-3">
+              {myReferralCode.uses.map((u: any) => (
+                <li key={u.id} className="flex items-center justify-between gap-3 py-2 border-b border-gray-50 last:border-0">
+                  <div>
+                    <p className="font-semibold text-gray-800 text-sm">
+                      {u.users?.first_name || u.users?.last_name
+                        ? `${u.users.first_name ?? ""} ${u.users.last_name ?? ""}`.trim()
+                        : u.users?.email ?? "Utilisateur"}
+                    </p>
+                    {u.users?.email && (u.users.first_name || u.users.last_name) && (
+                      <p className="text-xs text-gray-400">{u.users.email}</p>
+                    )}
+                  </div>
+                  <span className="text-xs text-gray-400 shrink-0">
+                    {new Date(u.used_at).toLocaleDateString("fr-FR")}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+      </div>
     </div>
+    </div>
+  );
+}
+
+export default function SubscriptionPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin h-8 w-8 rounded-full border-b-2 border-[var(--greek-blue)]" /></div>}>
+      <SubscriptionPageContent />
+    </Suspense>
   );
 }

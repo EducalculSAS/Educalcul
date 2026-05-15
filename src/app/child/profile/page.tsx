@@ -16,6 +16,9 @@ import {
   Clock,
 } from "lucide-react";
 import MathLoader from "@/components/MathLoader";
+import { avatarUrl } from "@/lib/avatarUrl";
+import { getNameColor } from "@/lib/badgeStyles";
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 
 export default function ChildProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -64,6 +67,7 @@ export default function ChildProfilePage() {
 
       if (userData) {
         setUser(userData);
+
         // Fetch activities
         try {
           const actRes = await fetch(`/api/child/activities?userId=${authUser.id}`);
@@ -166,16 +170,23 @@ export default function ChildProfilePage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <User className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
-          Mon Profil
-        </h1>
-        <p className="text-gray-600 text-lg">
-          Voici tes informations de héros !
-        </p>
+    <div className="min-h-screen bg-[var(--greek-cream)]">
+      {/* Hero Header */}
+      <div className="bg-[var(--greek-blue)] text-white pt-20 pb-12 px-8 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+            <User className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+            MON PROFIL
+          </h1>
+          <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
+            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">HÉROS</span>
+            <span>Voici tes informations de héros !</span>
+          </p>
+        </div>
       </div>
+    <div className="container mx-auto px-4 pb-12 max-w-4xl">
 
       {message && (
         <div
@@ -205,20 +216,21 @@ export default function ChildProfilePage() {
           <div className="absolute inset-0 opacity-10 pattern-grid-lg"></div>
         </div>
 
-        {/* Avatar - Positioned absolutely relative to the card to avoid clipping */}
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2">
-          <div className="w-32 h-32 rounded-full border-4 border-white bg-white shadow-lg overflow-hidden p-1">
-            <img
-              src={`/avatars/${user.avatar || "avatar1.png"}`}
-              alt="Avatar"
-              className="w-full h-full rounded-full object-cover"
-            />
-          </div>
+        {/* Avatar avec décorations du contour équipé */}
+        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 pointer-events-none select-none">
+          <AvatarWithBorder
+            avatar={user.avatar}
+            equippedBorder={user.equipped_border}
+            name={user.first_name || "?"}
+            size="xl"
+            bgClass="transparent"
+            circular
+          />
         </div>
 
-        <div className="pt-20 pb-8 px-8">
+        <div className="pt-16 pb-8 px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-[var(--greek-blue)] mb-1">
+            <h2 className={`text-3xl font-bold mb-1 ${getNameColor(user.name_color || 'default').cls}`}>
               {user.first_name} {user.last_name}
             </h2>
             <p className="text-[var(--greek-gold)] font-bold text-lg flex items-center justify-center gap-2">
@@ -484,6 +496,7 @@ export default function ChildProfilePage() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }
