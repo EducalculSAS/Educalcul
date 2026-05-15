@@ -21,6 +21,7 @@ interface Plan {
   is_active: boolean;
   sort_order: number;
   subscriber_count: number;
+  subscribers?: Array<{ user_id: string; status: string; current_period_end: string; user?: { first_name: string; last_name: string; email: string } }>;
   created_at: string;
 }
 
