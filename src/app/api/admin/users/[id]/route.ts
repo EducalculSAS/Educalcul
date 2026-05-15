@@ -1,9 +1,9 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = params.id;
+    const { id } = await params;
     const { data: user, error } = await supabaseAdmin.from("users").select("*").eq("id", id).single();
     if (error || !user) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
@@ -34,9 +34,9 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = params.id;
+    const { id } = await params;
     const { first_name, last_name, email, role, status, grade_level } = await req.json();
     const { data, error } = await supabaseAdmin.from("users").update({ first_name, last_name, email, role, status, grade_level }).eq("id", id).select().single();
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -46,9 +46,9 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = params.id;
+    const { id } = await params;
     const { action, payload } = await req.json();
     const { data: user } = await supabaseAdmin.from("users").select("id, auth_id, email, status").eq("id", id).single();
     if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
