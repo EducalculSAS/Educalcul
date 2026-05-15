@@ -1,5 +1,6 @@
 import ForumApp from "@/components/forum/ForumApp";
 import { MessageSquare } from "lucide-react";
+import { Suspense } from "react";
 
 export default function ChildForumPage() {
   return (
@@ -13,13 +14,18 @@ export default function ChildForumPage() {
             LE FORUM
           </h1>
           <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
-            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">ÉLÈVES</span>
+            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
+              ÉLÈVES
+            </span>
             <span>Pose tes questions et aide les autres !</span>
           </p>
         </div>
       </div>
+
       <div className="px-4 pb-12 max-w-6xl mx-auto">
-        <ForumApp role="child" />
+        <Suspense fallback={<div>Chargement du forum...</div>}>
+          <ForumApp role="child" />
+        </Suspense>
       </div>
     </div>
   );
