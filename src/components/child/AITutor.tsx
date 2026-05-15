@@ -211,10 +211,10 @@ export default function AITutor() {
               const data = await res.json();
               const finalMessages = [
                 ...newMessages,
-                { role: "assistant", content: data.message || "Je suis là ! Réessaie." },
+                { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
               ];
-              setMessages(finalMessages);
-              currentSaveMessages(finalMessages);
+              setMessages(finalMessages as any);
+              currentSaveMessages(finalMessages as any);
             } catch (error) {
               console.error("Error sending AI message:", error);
             } finally {
@@ -267,12 +267,12 @@ export default function AITutor() {
       const newMessages = [
         WELCOME,
         {
-          role: "assistant",
+          role: "assistant" as const,
           content: `Je vois que tu travailles sur **${name}** 📚\nN'hésite pas à me poser une question si tu bloques !`,
         },
       ];
-      setMessages(newMessages);
-      saveMessages(newMessages);
+      setMessages(newMessages as any);
+      saveMessages(newMessages as any);
     }
   }, [pageContext, saveMessages]);
 
@@ -327,19 +327,19 @@ export default function AITutor() {
 
       const newMessages = [
         ...history,
-        { role: "assistant", content: data.message || "Je suis là ! Réessaie." },
+        { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
       ];
       console.log("💾 Saving messages:", { count: newMessages.length });
-      setMessages(newMessages);
-      saveMessages(newMessages);
+      setMessages(newMessages as any);
+      saveMessages(newMessages as any);
     } catch (error) {
       console.error("❌ Fetch error:", error);
       const newMessages = [
         ...history,
-        { role: "assistant", content: "Oups, je n'ai pas pu répondre. Essaie encore !" },
+        { role: "assistant" as const, content: "Oups, je n'ai pas pu répondre. Essaie encore !" },
       ];
-      setMessages(newMessages);
-      saveMessages(newMessages);
+      setMessages(newMessages as any);
+      saveMessages(newMessages as any);
     } finally {
       setLoading(false);
     }

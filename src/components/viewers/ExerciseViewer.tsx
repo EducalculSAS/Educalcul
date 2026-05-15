@@ -278,7 +278,7 @@ export default function ExerciseViewer({
       courseLevel: exercise.courses?.level || exercise.level,
     };
 
-    setPageContext(newContext);
+    setPageContext(newContext as any);
 
     console.log("✅ AI Tutor context initialized in ExerciseViewer:", {
       title: exercise.title,
@@ -304,10 +304,10 @@ export default function ExerciseViewer({
       .join(" | ");
 
     if (answerSummary) {
-      setPageContext((ctx) => ({
-        ...ctx,
+      setPageContext({
+        ...pageContext,
         userAnswer: answerSummary.slice(0, 500), // Limit to 500 chars for API
-      }));
+      });
     }
   }, [answers, setPageContext]);
 

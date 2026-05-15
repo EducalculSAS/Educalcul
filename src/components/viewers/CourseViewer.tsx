@@ -79,8 +79,8 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
       if (currentLesson.content.length > 2000) {
         lessonContent += "\n\n[Contenu tronqué pour concision]";
       }
-    } else if (currentLesson.type === "video" && currentLesson.videoUrl) {
-      lessonContent += `\n\n[Vidéo]: ${currentLesson.videoUrl}`;
+    } else if (currentLesson.type === "video" && (currentLesson as any).videoUrl) {
+      lessonContent += `\n\n[Vidéo]: ${(currentLesson as any).videoUrl}`;
     }
 
     // Set the AI context with ONLY current lesson (not full course)

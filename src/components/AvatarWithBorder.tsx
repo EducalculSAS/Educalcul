@@ -237,7 +237,7 @@ export default function AvatarWithBorder({
 
   return (
     <div
-      className={`shrink-0 ${conf.animCls || ""} ${className}`}
+      className={`shrink-0 ${(conf as any).animCls || ""} ${className}`}
       style={{ display: "inline-block", lineHeight: 0 }}
     >
       <svg

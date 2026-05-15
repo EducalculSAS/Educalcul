@@ -19,7 +19,7 @@ interface Post {
   created_at: string;
   is_pinned: boolean;
   is_locked: boolean;
-  author: { first_name: string; last_name: string; child_username?: string; avatar: string | null; role: string; };
+  author: { id: string; first_name: string; last_name: string; child_username?: string; avatar: string | null; role: string; equipped_border?: string | null; name_color?: string | null; };
   comments: { count: number }[];
 }
 
@@ -46,7 +46,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     setLoading(true);
     const { data } = await supabase
       .from("forum_posts")
-      .select("*, author:users(first_name, last_name, child_username, avatar, role, equipped_border, name_color), comments:forum_comments(count)")
+      .select("*, author:users(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color), comments:forum_comments(count)")
       .eq("category_id", categoryId)
       .order("is_pinned", { ascending: false })
       .order("created_at", { ascending: false });
@@ -72,7 +72,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     fetchPosts();
   };
 
-  const buildProfileHref = (userId: number | undefined | null) => {
+  const buildProfileHref = (userId: string | number | undefined | null) => {
     if (!userId) return "#";
     const currentUrl = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
     const returnTo = encodeURIComponent(currentUrl);

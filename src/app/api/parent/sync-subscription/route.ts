@@ -27,7 +27,7 @@ export async function GET(req: Request) {
     await supabaseAdmin.from("subscriptions").update({
       status: newStatus,
       plan_id: sub.plan_id, // keep existing unless you store price→plan mapping
-      current_period_end: new Date(stripeSub.current_period_end * 1000).toISOString(),
+      current_period_end: new Date((stripeSub as any).current_period_end * 1000).toISOString(),
       cancel_at_period_end: stripeSub.cancel_at_period_end,
       updated_at: new Date().toISOString(),
     }).eq("user_id", authId);

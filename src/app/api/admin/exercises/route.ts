@@ -47,6 +47,10 @@ export async function GET(request: Request) {
         return NextResponse.json({ error: error.message }, { status: 400 });
       }
       
+      if (!data) {
+        return NextResponse.json({ error: "Exercise not found" }, { status: 404 });
+      }
+      
       // Ensure content_json is never empty
       if (!data.content_json || (Array.isArray(data.content_json) && data.content_json.length === 0)) {
         const fallbackQuestion = data.question || data.description || data.title || "Énoncé non spécifié";

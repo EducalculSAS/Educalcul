@@ -405,7 +405,7 @@ export default function AdminSubscriptionsPage() {
                     {plan.subscriber_count > 0 && expandedPlan === plan.id && (
                       <div className="px-6 pb-3">
                         <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
-                          {plan.subscribers.map((s: any) => {
+                          {plan.subscribers?.map((s: any) => {
                             const u = s.user;
                             const name = [u?.first_name, u?.last_name].filter(Boolean).join(" ") || u?.email || "Utilisateur";
                             return (

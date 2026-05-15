@@ -36,7 +36,7 @@ export async function POST(req: Request) {
         let stripeSubId: string | null = null;
         if (session.subscription) {
           const stripeSub = await stripe.subscriptions.retrieve(session.subscription as string);
-          periodEnd = new Date(stripeSub.current_period_end * 1000).toISOString();
+          periodEnd = new Date((stripeSub as any).current_period_end * 1000).toISOString();
           stripeSubId = stripeSub.id;
         }
 
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
         const sub = event.data.object as Stripe.Subscription;
         await supabaseAdmin.from("subscriptions").update({
           status: sub.status === "active" ? "active" : sub.status,
-          current_period_end: new Date(sub.current_period_end * 1000).toISOString(),
+          current_period_end: new Date((sub as any).current_period_end * 1000).toISOString(),
           cancel_at_period_end: sub.cancel_at_period_end,
           updated_at: new Date().toISOString(),
         }).eq("stripe_subscription_id", sub.id);
@@ -95,11 +95,11 @@ export async function POST(req: Request) {
       // ── Invoice paid (renewal confirmed) ────────────────────────────────
       case "invoice.payment_succeeded": {
         const invoice = event.data.object as Stripe.Invoice;
-        if (invoice.subscription) {
+        if ((invoice as any).subscription) {
           await supabaseAdmin.from("subscriptions").update({
             status: "active",
             updated_at: new Date().toISOString(),
-          }).eq("stripe_subscription_id", invoice.subscription as string);
+          }).eq("stripe_subscription_id", (invoice as any).subscription as string);
         }
         break;
       }
@@ -107,11 +107,11 @@ export async function POST(req: Request) {
       // ── Invoice failed ───────────────────────────────────────────────────
       case "invoice.payment_failed": {
         const invoice = event.data.object as Stripe.Invoice;
-        if (invoice.subscription) {
+        if ((invoice as any).subscription) {
           await supabaseAdmin.from("subscriptions").update({
             status: "past_due",
             updated_at: new Date().toISOString(),
-          }).eq("stripe_subscription_id", invoice.subscription as string);
+          }).eq("stripe_subscription_id", (invoice as any).subscription as string);
         }
         break;
       }

@@ -4,7 +4,7 @@
  */
 
 const OPENROUTER_API_URL = "https://openrouter.io/api/v1/chat/completions";
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "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";
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "openrouter/auto";
 
 interface OpenRouterMessage {

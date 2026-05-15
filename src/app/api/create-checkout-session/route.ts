@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       .maybeSingle();
 
     if (userRow?.pending_discount_percent > 0) {
-      discountPercent = Math.max(discountPercent, userRow.pending_discount_percent);
+      discountPercent = Math.max(discountPercent, userRow?.pending_discount_percent || 0);
     }
 
     const priceInCents = Math.round(plan.price * 100);

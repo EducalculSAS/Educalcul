@@ -13,7 +13,7 @@ import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
 import { avatarUrl } from "@/lib/avatarUrl";
 
-interface User { id: number; first_name: string; last_name: string; child_username?: string; avatar: string | null; role: string; }
+interface User { id: number; first_name: string; last_name: string; child_username?: string; avatar: string | null; role: string; equipped_border?: string | null; name_color?: string | null; featured_badges?: any[]; }
 interface Comment { id: number; content: string; created_at: string; author: User; }
 interface Post { id: number; title: string; content: string; created_at: string; is_pinned: boolean; is_locked: boolean; author: User; category: { name: string }; comments: Comment[]; }
 
@@ -188,7 +188,7 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <Link href={buildProfileHref(comment.author?.id)} className={`font-semibold text-sm no-underline hover:no-underline ${getNameColor(comment.author?.name_color || 'default').cls}`} title="Voir le profil">{authorName(comment.author || {})}</Link>
-                  {comment.author?.featured_badges?.length > 0 && <BadgeMinis badgeIds={comment.author.featured_badges} />}
+                  {(comment.author?.featured_badges?.length ?? 0) > 0 && <BadgeMinis badgeIds={comment.author?.featured_badges || []} />}
                   <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase ${roleBadge(comment.author?.role)}`}>{roleLabel(comment.author?.role)}</span>
                   {isAdmin && comment.author?.id && (
                     <a href={`/admin/users/${comment.author.id}`} className="text-gray-300 hover:text-[var(--greek-blue)] transition-colors" title="Voir le profil">
