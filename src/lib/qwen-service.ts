@@ -1,77 +1,84 @@
 /**
- * OpenRouter AI Service (Temporary replacement for Qwen)
- * Provides a wrapper for OpenRouter API models
+ * AI service wrapper that supports either a local Qwen-like endpoint
+ * or OpenRouter. The active provider is controlled by `process.env.AI_PROVIDER`.
  */
 
+const AI_PROVIDER = (process.env.AI_PROVIDER || "local").toLowerCase();
+
 const OPENROUTER_API_URL = "https://openrouter.io/api/v1/chat/completions";
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "openrouter/auto";
 
-interface OpenRouterMessage {
-  role: "user" | "assistant" | "system";
-  content: string;
-}
+const QWEN_API_URL = process.env.QWEN_API_URL || "http://localhost:11434/api/generate";
+const QWEN_MODEL = process.env.QWEN_MODEL || "llava:7b";
 
-interface OpenRouterRequest {
-  model: string;
-  messages: OpenRouterMessage[];
-  temperature?: number;
-  max_tokens?: number;
-}
+type Message = { role: "user" | "assistant" | "system"; content: string };
 
-interface OpenRouterResponse {
-  choices: Array<{
-    message: {
-      content: string;
-    };
-  }>;
-}
+async function callOpenRouterAPI(messages: Message[], temperature: number = 0.7, maxTokens?: number): Promise<string> {
+  const requestBody: any = {
+    model: OPENROUTER_MODEL,
+    messages,
+    temperature,
+    ...(maxTokens && { max_tokens: maxTokens }),
+  };
 
-async function callOpenRouterAPI(messages: OpenRouterMessage[], temperature: number = 0.7, maxTokens?: number): Promise<string> {
-  try {
-    const requestBody: OpenRouterRequest = {
-      model: OPENROUTER_MODEL,
-      messages,
-      temperature,
-      ...(maxTokens && { max_tokens: maxTokens }),
-    };
+  const resp = await fetch(OPENROUTER_API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(process.env.OPENROUTER_API_KEY ? { Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}` } : {}),
+    },
+    body: JSON.stringify(requestBody),
+  });
 
-    console.log("🤖 Calling OpenRouter API...", { model: OPENROUTER_MODEL, messageCount: messages.length });
-
-    const response = await fetch(OPENROUTER_API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-        "HTTP-Referer": "https://educalcul.fr",
-        "X-Title": "Educalcul",
-      },
-      body: JSON.stringify(requestBody),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("❌ OpenRouter API Error:", errorText);
-      throw new Error(`OpenRouter API responded with ${response.status}: ${errorText}`);
-    }
-
-    const data: OpenRouterResponse = await response.json();
-    return data.choices[0].message.content.trim();
-  } catch (error) {
-    console.error("❌ OpenRouter Service Error:", error);
-    throw error;
+  if (!resp.ok) {
+    const err = await resp.text();
+    throw new Error(`OpenRouter error ${resp.status}: ${err}`);
   }
+
+  const data = await resp.json().catch(() => null as any);
+  return (data?.choices?.[0]?.message?.content || (await resp.text())).trim();
+}
+
+async function callLocalQwenAPI(messages: Message[], temperature: number = 0.7, maxTokens?: number): Promise<string> {
+  // Many local Qwen endpoints expect a single `prompt` string.
+  const prompt = messages.map((m) => `${m.role.toUpperCase()}: ${m.content}`).join("\n\n");
+
+  const body: any = {
+    model: QWEN_MODEL,
+    prompt,
+    temperature,
+    ...(maxTokens && { max_tokens: maxTokens }),
+  };
+
+  const resp = await fetch(QWEN_API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!resp.ok) {
+    const err = await resp.text();
+    throw new Error(`Local Qwen error ${resp.status}: ${err}`);
+  }
+
+  // Try JSON then fallback to plain text
+  const json = await resp.json().catch(() => null as any);
+  if (json) {
+    // common shape: { output: string } or {choices:[{text:...}]}
+    return (json.output || json.choices?.[0]?.text || JSON.stringify(json)).toString().trim();
+  }
+
+  return (await resp.text()).trim();
+}
+
+async function callProvider(messages: Message[], temperature = 0.7, maxTokens?: number) {
+  if (AI_PROVIDER === "local") return callLocalQwenAPI(messages, temperature, maxTokens);
+  return callOpenRouterAPI(messages, temperature, maxTokens);
 }
 
 export async function callQwenModel(prompt: string, temperature: number = 0.7): Promise<string> {
-  const messages: OpenRouterMessage[] = [
-    {
-      role: "user",
-      content: prompt,
-    },
-  ];
-  
-  return callOpenRouterAPI(messages, temperature);
+  const messages: Message[] = [{ role: "user", content: prompt }];
+  return callProvider(messages, temperature);
 }
 
 /**
@@ -104,7 +111,7 @@ Voici la réponse de l'élève : ${studentAnswer}
 
 Réponds uniquement en JSON : {"is_correct": boolean, "score": number, "feedback": string}`;
 
-  const messages: OpenRouterMessage[] = [
+  const messages: Message[] = [
     {
       role: "system",
       content: systemPrompt,
@@ -116,7 +123,7 @@ Réponds uniquement en JSON : {"is_correct": boolean, "score": number, "feedback
   ];
 
   try {
-    const responseText = await callOpenRouterAPI(messages, 0.3);
+    const responseText = await callProvider(messages, 0.3);
     
     // Extract JSON from response
     let jsonStr = responseText;
@@ -150,14 +157,11 @@ Réponds uniquement en JSON : {"is_correct": boolean, "score": number, "feedback
  */
 export async function generateWithQwen(prompt: string): Promise<unknown> {
   try {
-    const messages: OpenRouterMessage[] = [
-      {
-        role: "user",
-        content: prompt,
-      },
+    const messages: Message[] = [
+      { role: "user", content: prompt },
     ];
     
-    const response = await callOpenRouterAPI(messages, 0.8);
+    const response = await callProvider(messages, 0.8);
     
     // Try to extract JSON
     let jsonStr = response;
@@ -186,7 +190,7 @@ export async function generateContentWithQwen(
   systemPrompt: string,
   temperature: number = 0.7
 ): Promise<unknown> {
-  const messages: OpenRouterMessage[] = [
+  const messages: Message[] = [
     {
       role: "system",
       content: systemPrompt,
@@ -198,7 +202,7 @@ export async function generateContentWithQwen(
   ];
 
   try {
-    const response = await callOpenRouterAPI(messages, temperature);
+    const response = await callProvider(messages, temperature);
     
     // Try to extract JSON
     let jsonStr = response;
@@ -248,19 +252,13 @@ export async function chatWithQwen(
   maxTokens: number = 300
 ): Promise<string> {
   // Convert messages to OpenRouter format and add system prompt
-  const openRouterMessages: OpenRouterMessage[] = [
-    {
-      role: "system",
-      content: systemPrompt,
-    },
-    ...messages.map((msg) => ({
-      role: msg.role as "user" | "assistant",
-      content: msg.content,
-    })),
+  const openRouterMessages: Message[] = [
+    { role: "system", content: systemPrompt },
+    ...messages.map((msg) => ({ role: msg.role as "user" | "assistant", content: msg.content })),
   ];
 
   try {
-    const response = await callOpenRouterAPI(openRouterMessages, temperature, maxTokens);
+    const response = await callProvider(openRouterMessages, temperature, maxTokens);
     return response.trim();
   } catch (error) {
     console.error("❌ Error in OpenRouter chat:", error);

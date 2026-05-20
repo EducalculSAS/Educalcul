@@ -41,7 +41,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
   const chapters = course.content_json || [];
   const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
   const [courseCompleted, setCourseCompleted] = useState(false);
   const [selectedText, setSelectedText] = useState("");
@@ -53,12 +53,6 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
   const currentLesson = currentChapter?.lessons[currentLessonIndex];
 
   const [isRendering, setIsRendering] = useState(false);
-
-  useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setSidebarOpen(true);
-    }
-  }, []);
 
   // Initialize AI context with course content
   useEffect(() => {
@@ -474,7 +468,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
       <div 
         className={`fixed inset-y-0 left-0 z-50 w-80 bg-[var(--greek-cream)] border-r border-[var(--greek-gold)] transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 flex flex-col ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className="h-14 md:h-16 px-4 md:px-6 border-b border-[var(--greek-gold)] bg-[var(--greek-cream)] flex justify-between items-center shadow-sm z-10">
+        <div className="p-5 border-b border-[var(--greek-gold)] bg-[var(--greek-cream)] flex justify-between items-center shadow-sm z-10">
           <div>
              <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] truncate max-w-[200px]" title={course.title}>
                {course.title}
@@ -483,17 +477,12 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
                {chapters.reduce((acc, c) => acc + c.lessons.length, 0)} leçons • {chapters.length} chapitres
              </p>
           </div>
-          <button
-            onClick={() => setSidebarOpen(false)}
-            className="md:hidden w-10 h-10 flex items-center justify-center text-[var(--greek-bronze)] hover:bg-[var(--greek-gold)]/10 rounded-lg"
-            aria-label="Fermer le sommaire"
-            title="Fermer le sommaire"
-          >
-            <Menu className="w-5 h-5" />
+          <button onClick={() => setSidebarOpen(false)} className="md:hidden p-2 text-[var(--greek-bronze)] hover:bg-[var(--greek-gold)]/10 rounded-lg">
+            <X className="w-5 h-5" />
           </button>
         </div>
         
-        <div className="overflow-y-auto flex-1 px-3 pt-7 pb-3 space-y-4">
+        <div className="overflow-y-auto flex-1 p-3 space-y-4">
           {chapters.map((chapter, cIndex) => (
             <div key={chapter.id} className="space-y-1">
               <div className="px-3 py-2 text-xs font-bold text-[var(--greek-bronze)]/70 uppercase tracking-wider flex items-center gap-2">
@@ -534,7 +523,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col h-full overflow-hidden bg-white relative">
         {/* Header */}
-        <div className="h-14 md:h-16 border-b border-[var(--greek-gold)] flex items-center px-4 md:px-6 justify-between bg-[var(--greek-cream)] shrink-0 z-10">
+        <div className="h-16 border-b border-[var(--greek-gold)] flex items-center px-6 justify-between bg-[var(--greek-cream)] shrink-0 z-10">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -564,22 +553,22 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
 
         {/* Content Viewer */}
         <div className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
-          <div className="max-w-4xl mx-auto px-4 py-6 md:px-12 md:py-16">
+          <div className="max-w-4xl mx-auto px-6 py-10 md:px-12 md:py-16">
             {currentLesson ? (
               <div className="animate-in fade-in duration-500 slide-in-from-bottom-4">
                 {/* Content Header */}
-                <div className="mb-6 md:mb-8 pb-4 md:pb-6 border-b border-[var(--greek-gold)]/10">
+                <div className="mb-8 pb-6 border-b border-[var(--greek-gold)]/10">
                   <div className="flex items-center gap-2 text-sm text-[var(--greek-bronze)] font-medium mb-2 uppercase tracking-wide">
                     {currentLesson.type === 'video' ? <Video size={16}/> : <FileText size={16}/>}
                     {currentLesson.type === 'video' ? 'Vidéo' : 'Leçon'}
                   </div>
-                  <h1 className="text-2xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight">
+                  <h1 className="text-3xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight">
                     {currentLesson.title}
                   </h1>
                 </div>
 
                 {/* Content Body */}
-                <div className="prose prose-sm md:prose-lg max-w-none prose-headings:font-bold prose-headings:font-[family-name:var(--font-display)] prose-headings:text-[var(--greek-blue)] prose-p:text-gray-600 prose-a:text-[var(--greek-blue)] hover:prose-a:text-[var(--greek-gold)] prose-img:rounded-xl prose-img:shadow-lg">
+                <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:font-[family-name:var(--font-display)] prose-headings:text-[var(--greek-blue)] prose-p:text-gray-600 prose-a:text-[var(--greek-blue)] hover:prose-a:text-[var(--greek-gold)] prose-img:rounded-xl prose-img:shadow-lg">
                    {currentLesson.type === 'video' ? (
                      <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-xl bg-black border border-[var(--greek-gold)]/20">
                        {getYouTubeId(currentLesson.content) ? (
@@ -621,20 +610,19 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
         </div>
 
         {/* Footer Navigation */}
-        <div className="h-auto md:h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 md:gap-0 px-4 md:px-12 py-3 md:py-0 shrink-0 z-10 sticky bottom-0">
+        <div className="h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex items-center justify-between px-6 md:px-12 shrink-0 z-10 sticky bottom-0">
           <button
             onClick={handlePrev}
             disabled={currentChapterIndex === 0 && currentLessonIndex === 0}
-            className="group flex items-center justify-center md:justify-start gap-2 px-4 py-3 md:py-2 text-[var(--greek-bronze)] font-medium disabled:opacity-30 hover:text-[var(--greek-blue)] transition-colors rounded-xl bg-white/70 md:bg-transparent border border-[var(--greek-gold)]/15 md:border-0"
+            className="group flex items-center gap-2 px-4 py-2 text-[var(--greek-bronze)] font-medium disabled:opacity-30 hover:text-[var(--greek-blue)] transition-colors"
           >
             <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="hidden md:inline">Leçon précédente</span>
-            <span className="md:hidden">Précédent</span>
           </button>
           
           <button
             onClick={handleNext}
-            className="btn-primary-greek flex items-center justify-center gap-3 px-6 py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 w-full md:w-auto"
+            className="btn-primary-greek flex items-center gap-3 px-6 py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
           >
             {currentChapterIndex === chapters.length - 1 && currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1 ? (
               <>Terminer le cours <CheckCircle className="w-5 h-5" /></>
