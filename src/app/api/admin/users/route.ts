@@ -227,7 +227,6 @@ export async function DELETE(request: Request) {
       .single();
 
     if (checkError && checkError.code !== "PGRST116") {
-      // PGRST116 = "not found", which is expected if user doesn't exist
       console.error(`[DELETE USER] Check error for ${auth_id}:`, checkError);
       return NextResponse.json(
         { error: `Erreur lors de la vérification: ${checkError.message}` },
@@ -240,9 +239,62 @@ export async function DELETE(request: Request) {
       // Continue anyway - try to delete from auth
     } else {
       console.log(`[DELETE USER] Found user ${userData.id} with auth_id ${auth_id}`);
+      
+      // Delete all related data before deleting the user
+      console.log(`[DELETE USER] Deleting related data for user ${userData.id}`);
+      
+      // Delete from all tables that reference users.id
+      const tablesToClean = [
+        { table: "admin_notifications", columns: ["admin_id", "user_id"] },
+        { table: "user_sessions", columns: ["user_id"] },
+        { table: "user_ai_interactions", columns: ["user_id"] },
+        { table: "user_badges", columns: ["user_id"] },
+        { table: "user_cosmetics", columns: ["user_id"] },
+        { table: "user_course_progress", columns: ["user_id"] },
+        { table: "user_exercise_attempts", columns: ["user_id"] },
+        { table: "user_quiz_attempts", columns: ["user_id"] },
+        { table: "referral_uses", columns: ["used_by_user_id"] },
+        { table: "referral_codes", columns: ["owner_user_id"] },
+        { table: "forum_reports", columns: ["reporter_id", "reported_user_id"] },
+        { table: "forum_comments", columns: ["author_id"] },
+        { table: "forum_posts", columns: ["author_id"] },
+        { table: "exercises", columns: ["created_by"] },
+        { table: "exercise_folders", columns: ["created_by"] },
+        { table: "courses", columns: ["created_by"] },
+        { table: "course_folders", columns: ["created_by"] },
+      ];
+
+      for (const { table, columns } of tablesToClean) {
+        for (const column of columns) {
+          const { error: deleteError } = await supabaseAdmin
+            .from(table)
+            .delete()
+            .eq(column, userData.id);
+          
+          if (deleteError) {
+            console.warn(`[DELETE USER] Error deleting from ${table}.${column}:`, deleteError.message);
+            // Continue with other tables
+          } else {
+            console.log(`[DELETE USER] Cleaned ${table}.${column}`);
+          }
+        }
+      }
+
+      // Handle self-referencing children (parent_id)
+      const { error: updateChildrenError } = await supabaseAdmin
+        .from("users")
+        .update({ parent_id: null })
+        .eq("parent_id", userData.id);
+      
+      if (updateChildrenError) {
+        console.warn(`[DELETE USER] Error updating children:`, updateChildrenError.message);
+      } else {
+        console.log(`[DELETE USER] Cleaned parent-child relationships`);
+      }
     }
 
     // Delete from Auth
+    console.log(`[DELETE USER] Deleting from Supabase Auth`);
     const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id);
 
     if (authError) {
@@ -256,9 +308,9 @@ export async function DELETE(request: Request) {
       );
     }
 
-    console.log(`[DELETE USER] Auth user deleted successfully, now cleaning up public.users table`);
+    console.log(`[DELETE USER] Auth user deleted successfully`);
 
-    // Manually delete from public.users (in case cascade didn't work)
+    // Manually delete from public.users
     const { error: dbError } = await supabaseAdmin
       .from("users")
       .delete()
