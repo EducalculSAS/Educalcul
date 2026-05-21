@@ -3,10 +3,10 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 // Use SUPABASE_SERVICE_ROLE (not NEXT_PUBLIC_) for server-side only
-const supabaseServiceRole = process.env.SUPABASE_SERVICE_ROLE || process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE || '';
+const supabaseServiceRole = process.env.SUPABASE_SERVICE_ROLE || process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE;
 
 if (!supabaseServiceRole) {
-  console.warn('[Supabase] Warning: Neither SUPABASE_SERVICE_ROLE nor NEXT_PUBLIC_SUPABASE_SERVICE_ROLE is set. Admin operations will fail.');
+  console.error('[Supabase] FATAL: No SUPABASE_SERVICE_ROLE environment variable found. Admin operations will fail.');
 }
 
 // ─── Public client (anon key) — browser + server ──────────────────────────
@@ -30,6 +30,9 @@ function getAdminClient(): SupabaseClient {
   if (typeof window !== "undefined") return supabase;
 
   if (!(globalThis as any)[ADMIN_KEY]) {
+    if (!supabaseServiceRole) {
+      throw new Error('[Supabase] FATAL: Cannot initialize admin client without SUPABASE_SERVICE_ROLE');
+    }
     (globalThis as any)[ADMIN_KEY] = createClient(supabaseUrl, supabaseServiceRole, {
       auth: { autoRefreshToken: false, persistSession: false },
     });

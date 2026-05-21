@@ -207,6 +207,18 @@ export async function DELETE(request: Request) {
 
     console.log(`[DELETE USER] Starting deletion for auth_id: ${auth_id}`);
 
+    // Check if supabaseAdmin is properly initialized
+    if (!process.env.SUPABASE_SERVICE_ROLE && !process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE) {
+      console.error(`[DELETE USER] FATAL: No SUPABASE_SERVICE_ROLE environment variable found`);
+      return NextResponse.json(
+        { 
+          error: "Configuration error: Service role not configured. Contact administrator.",
+          debug: "SUPABASE_SERVICE_ROLE environment variable is missing"
+        },
+        { status: 500 }
+      );
+    }
+
     // First, check if user exists in public.users table
     const { data: userData, error: checkError } = await supabaseAdmin
       .from("users")
