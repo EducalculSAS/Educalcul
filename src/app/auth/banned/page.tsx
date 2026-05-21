@@ -16,40 +16,29 @@ export default function BannedPage() {
     const checkBanStatus = async () => {
       try {
         const { data: { user } } = await supabase.auth.getUser();
-        
-        if (!user) {
-          // Not logged in, redirect to login
-          router.push('/auth/connexion');
-          return;
-        }
+        if (!user) { router.push('/auth/connexion'); return; }
 
-        // Check if user is banned
         const { data: userData } = await supabase
           .from('users')
-          .select('id, status, first_name, last_name, ban_reason, ban_until')
+          .select('status, first_name, last_name, ban_reason, ban_until')
           .eq('auth_id', user.id)
           .single();
 
-        if (!userData) {
-          setError('Utilisateur non trouvé');
-          setLoading(false);
-          return;
-        }
+        if (!userData) { setError('Utilisateur non trouvé'); setLoading(false); return; }
 
         if (userData.status === 'inactive' || userData.ban_reason) {
-          // User is banned
           setBanData({
             firstName: userData.first_name,
             lastName: userData.last_name,
             reason: userData.ban_reason || 'Votre compte a été suspendu par un administrateur.',
             banUntil: userData.ban_until,
           });
+          // Force sign-out pour empêcher toute navigation après
+          await supabase.auth.signOut();
         } else {
-          // User is not banned, redirect to dashboard
           router.push('/dashboard');
         }
       } catch (err) {
-        console.error('Error checking ban status:', err);
         setError('Une erreur est survenue');
       } finally {
         setLoading(false);
@@ -59,13 +48,8 @@ export default function BannedPage() {
     checkBanStatus();
   }, [router]);
 
-  const handleLogout = async () => {
-    try {
-      await supabase.auth.signOut();
-      router.push('/');
-    } catch (err) {
-      console.error('Logout error:', err);
-    }
+  const handleLogout = () => {
+    router.push('/');
   };
 
   if (loading) {

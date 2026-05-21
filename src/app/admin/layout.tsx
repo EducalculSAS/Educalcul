@@ -28,13 +28,17 @@ export default function AdminLayout({
       // Check role in public.users
       const { data: userData, error } = await supabase
         .from("users")
-        .select("role")
+        .select("role, status, ban_reason")
         .eq("auth_id", session.user.id)
         .maybeSingle();
 
       if (error || !userData || userData.role !== "admin") {
-        console.warn("Access denied: User is not admin");
-        router.push("/dashboard"); // Redirect to generic dashboard
+        router.push("/dashboard");
+        return;
+      }
+
+      if (userData.status === "inactive" || userData.ban_reason) {
+        router.push("/auth/banned");
         return;
       }
 

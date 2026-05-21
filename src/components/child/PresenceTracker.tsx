@@ -1,10 +1,13 @@
 ﻿"use client";
 
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getServerGeo } from "@/lib/geoLocation";
 
 export default function PresenceTracker() {
+  const router = useRouter();
+
   useEffect(() => {
     const track = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -14,12 +17,18 @@ export default function PresenceTracker() {
       const today = new Date().toISOString().split("T")[0];
       const updates: any = { last_active_at: now };
 
-      // Fetch user data once for both login streak + geo check
+      // Fetch user data — include ban fields
       const { data: user } = await supabase
         .from("users")
-        .select("last_login_date, login_count, login_streak, latitude")
+        .select("last_login_date, login_count, login_streak, latitude, status, ban_reason")
         .eq("auth_id", session.user.id)
         .maybeSingle();
+
+      // Vérif ban à chaque refresh
+      if (user?.status === "inactive" || user?.ban_reason) {
+        router.push("/auth/banned");
+        return;
+      }
 
       if (user) {
         // Track login streak

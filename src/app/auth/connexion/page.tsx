@@ -40,14 +40,13 @@ export default function Connexion() {
         const pendingRole = localStorage.getItem("educalcul_pending_role");
 
         // Fetch user role to redirect correctly
-        // Poll for user row creation if it doesn't exist (e.g. fresh signup via Google)
         let attempts = 0;
         let userData = null;
 
         while (attempts < 5 && !userData) {
           const { data } = await supabase
             .from("users")
-            .select("role")
+            .select("role, status, ban_reason")
             .eq("auth_id", session.user.id)
             .single();
 
@@ -57,6 +56,12 @@ export default function Connexion() {
             await new Promise((r) => setTimeout(r, 500));
             attempts++;
           }
+        }
+
+        // Vérif ban
+        if (userData?.status === "inactive" || userData?.ban_reason) {
+          router.push("/auth/banned");
+          return;
         }
 
         let currentRole = userData?.role;
@@ -133,27 +138,22 @@ export default function Connexion() {
       }
 
       if (data.user) {
-        // Fetch user role from public.users table to redirect correctly
-        const { data: userData, error: userError } = await supabase
+        const { data: userData } = await supabase
           .from("users")
-          .select("role")
+          .select("role, status, ban_reason")
           .eq("auth_id", data.user.id)
           .maybeSingle();
 
-        if (userError) {
-          console.error("Error fetching user role:", userError);
+        // Vérif ban AVANT toute redirection
+        if (userData?.status === "inactive" || userData?.ban_reason) {
+          router.push("/auth/banned");
+          return;
         }
 
-        // Default redirect if role not found or generic
         let redirectPath = "/dashboard";
-
-        if (userData?.role === "parent") {
-          redirectPath = "/parent/dashboard";
-        } else if (userData?.role === "child") {
-          redirectPath = "/child/dashboard";
-        } else if (userData?.role === "admin") {
-          redirectPath = "/admin/dashboard";
-        }
+        if (userData?.role === "parent") redirectPath = "/parent/dashboard";
+        else if (userData?.role === "child") redirectPath = "/child/dashboard";
+        else if (userData?.role === "admin") redirectPath = "/admin/dashboard";
 
         router.push(redirectPath);
       }

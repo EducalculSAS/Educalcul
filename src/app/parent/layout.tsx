@@ -38,8 +38,13 @@ export default function ParentLayout({
         .maybeSingle();
 
       if (error || !userData || userData.role !== "parent") {
-        // If not parent, redirect or show error (could be child trying to access parent area)
-        router.push("/dashboard"); // Generic redirect
+        router.push("/dashboard");
+        return;
+      }
+
+      // Vérif ban — redirige même si déjà connecté
+      if (userData.status === "inactive" || userData.ban_reason) {
+        router.push("/auth/banned");
         return;
       }
 
