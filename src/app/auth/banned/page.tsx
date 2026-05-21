@@ -92,7 +92,7 @@ export default function BannedPage() {
     : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50 flex items-center justify-center p-4">
+    <div className="flex items-center justify-center p-4 py-8 w-full">
       <div className="max-w-2xl w-full">
         {/* Main Card */}
         <div className="bg-white rounded-[20px] shadow-2xl border-2 border-red-200 overflow-hidden">
