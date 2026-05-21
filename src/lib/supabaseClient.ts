@@ -3,7 +3,7 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 // Use SUPABASE_SERVICE_ROLE (not NEXT_PUBLIC_) for server-side only
-const supabaseServiceRole = process.env.SUPABASE_SERVICE_ROLE || process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE;
+const supabaseServiceRole = process.env.SUPABASE_SERVICE_ROLE || process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE || '';
 
 if (!supabaseServiceRole) {
   console.warn('[Supabase] Warning: Neither SUPABASE_SERVICE_ROLE nor NEXT_PUBLIC_SUPABASE_SERVICE_ROLE is set. Admin operations will fail.');
