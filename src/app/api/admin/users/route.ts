@@ -188,46 +188,81 @@ export async function DELETE(request: Request) {
     const auth_id = searchParams.get("auth_id");
 
     if (!auth_id) {
+      console.error(`[DELETE USER] Missing auth_id`);
       return NextResponse.json(
         { error: "Auth ID is required" },
         { status: 400 }
       );
     }
 
+    // Validate UUID format
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (!uuidRegex.test(auth_id)) {
+      console.error(`[DELETE USER] Invalid UUID format: ${auth_id}`);
+      return NextResponse.json(
+        { error: "Invalid auth_id format" },
+        { status: 400 }
+      );
+    }
+
     console.log(`[DELETE USER] Starting deletion for auth_id: ${auth_id}`);
 
-    // Delete from Auth (Cascade should handle public.users if set up, but let's be sure)
-    const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(
-      auth_id
-    );
+    // First, check if user exists in public.users table
+    const { data: userData, error: checkError } = await supabaseAdmin
+      .from("users")
+      .select("id, auth_id")
+      .eq("auth_id", auth_id)
+      .single();
+
+    if (checkError && checkError.code !== "PGRST116") {
+      // PGRST116 = "not found", which is expected if user doesn't exist
+      console.error(`[DELETE USER] Check error for ${auth_id}:`, checkError);
+      return NextResponse.json(
+        { error: `Erreur lors de la vérification: ${checkError.message}` },
+        { status: 500 }
+      );
+    }
+
+    if (!userData) {
+      console.warn(`[DELETE USER] User not found in public.users for auth_id: ${auth_id}`);
+      // Continue anyway - try to delete from auth
+    } else {
+      console.log(`[DELETE USER] Found user ${userData.id} with auth_id ${auth_id}`);
+    }
+
+    // Delete from Auth
+    const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id);
 
     if (authError) {
       console.error(`[DELETE USER] Auth deletion error for ${auth_id}:`, authError);
       return NextResponse.json(
-        { error: `Erreur lors de la suppression de l'auth: ${authError.message}` },
-        { status: 400 }
+        { 
+          error: `Erreur lors de la suppression de l'authentification: ${authError.message || authError}`,
+          code: authError.code || "UNKNOWN_ERROR"
+        },
+        { status: 500 }
       );
     }
 
-    console.log(`[DELETE USER] Auth user deleted, now deleting from users table`);
+    console.log(`[DELETE USER] Auth user deleted successfully, now cleaning up public.users table`);
 
-    // Manually delete from public.users just in case cascade isn't perfect or to be explicit
-    const { error: dbError } = await supabaseAdmin.from("users").delete().eq("auth_id", auth_id);
+    // Manually delete from public.users (in case cascade didn't work)
+    const { error: dbError } = await supabaseAdmin
+      .from("users")
+      .delete()
+      .eq("auth_id", auth_id);
     
     if (dbError) {
       console.error(`[DELETE USER] DB deletion error for ${auth_id}:`, dbError);
-      return NextResponse.json(
-        { error: `Erreur lors de la suppression de la BD: ${dbError.message}` },
-        { status: 400 }
-      );
+      // Log but don't fail - auth user is already deleted
     }
 
-    console.log(`[DELETE USER] Successfully deleted user ${auth_id}`);
-    return NextResponse.json({ success: true });
+    console.log(`[DELETE USER] Successfully completed deletion for auth_id: ${auth_id}`);
+    return NextResponse.json({ success: true, message: "User deleted successfully" });
   } catch (error: any) {
     console.error(`[DELETE USER] Unexpected error:`, error);
     return NextResponse.json(
-      { error: `Erreur serveur: ${error.message}` },
+      { error: `Erreur serveur: ${error.message || String(error)}` },
       { status: 500 }
     );
   }
