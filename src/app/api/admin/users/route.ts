@@ -240,6 +240,20 @@ export async function DELETE(request: Request) {
     } else {
       console.log(`[DELETE USER] Found user ${userData.id} with auth_id ${auth_id}`);
       
+      // FIRST: Handle self-referencing children (parent_id) BEFORE deleting anything
+      // This prevents CASCADE delete of children
+      console.log(`[DELETE USER] Updating parent-child relationships`);
+      const { error: updateChildrenError } = await supabaseAdmin
+        .from("users")
+        .update({ parent_id: null })
+        .eq("parent_id", userData.id);
+      
+      if (updateChildrenError) {
+        console.warn(`[DELETE USER] Error updating children:`, updateChildrenError.message);
+      } else {
+        console.log(`[DELETE USER] Orphaned children (set parent_id to null)`);
+      }
+      
       // Delete all related data before deleting the user
       console.log(`[DELETE USER] Deleting related data for user ${userData.id}`);
       
@@ -278,18 +292,6 @@ export async function DELETE(request: Request) {
             console.log(`[DELETE USER] Cleaned ${table}.${column}`);
           }
         }
-      }
-
-      // Handle self-referencing children (parent_id)
-      const { error: updateChildrenError } = await supabaseAdmin
-        .from("users")
-        .update({ parent_id: null })
-        .eq("parent_id", userData.id);
-      
-      if (updateChildrenError) {
-        console.warn(`[DELETE USER] Error updating children:`, updateChildrenError.message);
-      } else {
-        console.log(`[DELETE USER] Cleaned parent-child relationships`);
       }
     }
 
