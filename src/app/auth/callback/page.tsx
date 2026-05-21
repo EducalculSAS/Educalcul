@@ -33,6 +33,24 @@ export default function AuthCallback() {
       if (session) {
         setStatus('Authentification réussie. Redirection...');
 
+        // Check if user is banned
+        try {
+          const { data: userData } = await supabase
+            .from('users')
+            .select('status, ban_reason')
+            .eq('auth_id', session.user.id)
+            .single();
+
+          if (userData?.status === 'inactive' || userData?.ban_reason) {
+            // User is banned, redirect to banned page
+            router.push('/auth/banned');
+            return;
+          }
+        } catch (err) {
+          console.error('Error checking ban status:', err);
+          // Continue with normal flow if there's an error
+        }
+
         // Check if this is a signup flow (Google)
         const signupMode = sessionStorage.getItem('educalcul_signup_mode');
         const pendingRole = sessionStorage.getItem('educalcul_pending_role');

@@ -140,6 +140,30 @@ export default function ChildProfilePage() {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    if (!confirm("Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.")) return;
+    if (!confirm("Vraiment sûr ? Toutes vos données seront perdues.")) return;
+
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error("Non connecté");
+
+      const response = await fetch("/api/parent/delete-account", {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la suppression du compte");
+      }
+
+      await supabase.auth.signOut();
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Delete account error:", error);
+      setMessage({ type: "error", text: "Erreur lors de la suppression." });
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -496,6 +520,26 @@ export default function ChildProfilePage() {
           </div>
         </div>
       )}
+
+      {/* Danger Zone */}
+      <div className="mt-12 bg-red-50 rounded-xl shadow-sm border border-red-200 p-6">
+        <h2 className="text-xl font-bold text-red-700 mb-4 flex items-center">
+          <AlertCircle className="w-5 h-5 mr-2" />
+          Zone de danger
+        </h2>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="font-medium text-red-800">Supprimer mon compte</p>
+            <p className="text-sm text-red-600">Cette action est irréversible et supprimera toutes tes données.</p>
+          </div>
+          <button
+            onClick={handleDeleteAccount}
+            className="px-4 py-2 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium shadow-sm"
+          >
+            Supprimer mon compte
+          </button>
+        </div>
+      </div>
     </div>
     </div>
   );

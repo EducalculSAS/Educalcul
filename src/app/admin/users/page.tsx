@@ -77,6 +77,7 @@ export default function AdminUsersPage() {
   const [showBanModal, setShowBanModal] = useState(false);
   const [banTarget, setBanTarget] = useState<User | null>(null);
   const [banReason, setBanReason] = useState("");
+  const [banDays, setBanDays] = useState<number | null>(null);
 
   // Delete
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -145,10 +146,11 @@ export default function AdminUsersPage() {
     const isBanned = banTarget.status === "inactive";
     await fetch(`/api/admin/user-detail?id=${banTarget.id}`, {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: isBanned ? "unban" : "ban", payload: { reason: banReason } }),
+      body: JSON.stringify({ action: isBanned ? "unban" : "ban", payload: { reason: banReason, banDays } }),
     });
     setShowBanModal(false);
     setBanReason("");
+    setBanDays(null);
     setBanTarget(null);
     setSubmitting(false);
     fetchUsers(true);
@@ -357,13 +359,25 @@ export default function AdminUsersPage() {
                   : `Suspendre le compte de ${banTarget.first_name} ${banTarget.last_name}. L'utilisateur recevra une notification.`}
               </p>
               {banTarget.status === "active" && (
-                <div>
-                  <label className={labelCls}>Raison (optionnel)</label>
-                  <textarea value={banReason} onChange={e => setBanReason(e.target.value)} className={inputCls + " h-20 resize-none"} placeholder="Expliquez la raison..." />
-                </div>
+                <>
+                  <div>
+                    <label className={labelCls}>Durée du bannissement</label>
+                    <select value={banDays || ""} onChange={e => setBanDays(e.target.value ? parseInt(e.target.value) : null)} className={inputCls}>
+                      <option value="">Permanente</option>
+                      <option value="1">1 jour</option>
+                      <option value="7">7 jours</option>
+                      <option value="30">30 jours</option>
+                      <option value="90">90 jours</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelCls}>Raison (optionnel)</label>
+                    <textarea value={banReason} onChange={e => setBanReason(e.target.value)} className={inputCls + " h-20 resize-none"} placeholder="Expliquez la raison..." />
+                  </div>
+                </>
               )}
               <div className="flex justify-end gap-3 pt-2">
-                <button onClick={() => setShowBanModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
+                <button onClick={() => { setShowBanModal(false); setBanReason(""); setBanDays(null); }} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
                 <button onClick={handleBanConfirm} disabled={submitting}
                   className={`flex items-center gap-2 px-7 py-2.5 text-white font-bold rounded-xl transition-colors disabled:opacity-50 ${banTarget.status === "inactive" ? "bg-green-500 hover:bg-green-600" : "bg-orange-500 hover:bg-orange-600"}`}>
                   {submitting && <Loader2 className="w-4 h-4 animate-spin" />}

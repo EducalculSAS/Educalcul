@@ -64,12 +64,29 @@ export async function POST(req: Request) {
     if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     if (action === "ban") {
-      await supabaseAdmin.from("users").update({ status: "inactive" }).eq("id", id);
-      await supabaseAdmin.from("admin_notifications").insert({ user_id: id, type: "ban", title: "Compte suspendu", content: payload?.reason || "Votre compte a été suspendu par un administrateur." });
+      const banDays = payload?.banDays || null;
+      const banUntil = banDays ? new Date(Date.now() + banDays * 24 * 60 * 60 * 1000).toISOString() : null;
+      
+      await supabaseAdmin.from("users").update({ 
+        status: "inactive",
+        ban_reason: payload?.reason || "Votre compte a été suspendu par un administrateur.",
+        ban_until: banUntil,
+      }).eq("id", id);
+      
+      await supabaseAdmin.from("admin_notifications").insert({ 
+        user_id: id, 
+        type: "ban", 
+        title: "Compte suspendu", 
+        content: payload?.reason || "Votre compte a été suspendu par un administrateur." 
+      });
       return NextResponse.json({ success: true });
     }
     if (action === "unban") {
-      await supabaseAdmin.from("users").update({ status: "active" }).eq("id", id);
+      await supabaseAdmin.from("users").update({ 
+        status: "active",
+        ban_reason: null,
+        ban_until: null,
+      }).eq("id", id);
       await supabaseAdmin.from("admin_notifications").insert({ user_id: id, type: "info", title: "Compte réactivé", content: "Votre compte a été réactivé." });
       return NextResponse.json({ success: true });
     }
