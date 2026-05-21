@@ -188,7 +188,7 @@ export default function ChildReportPage() {
             { label: "Quiz", value: stats.quizzesTaken, icon: <Award className="w-5 h-5" />, color: "bg-purple-50 text-purple-600" },
             { label: "Score moyen quiz", value: stats.avgScore > 0 ? `${stats.avgScore}%` : "—", icon: <TrendingUp className="w-5 h-5" />, color: "bg-blue-50 text-blue-600" },
           ].map(s => (
-            <div key={s.label} className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-5">
+            <div key={s.label} className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
               <div className="flex items-start justify-between mb-2">
                 <div className={`p-2 rounded-xl ${s.color}`}>{s.icon}</div>
                 <span className="text-2xl font-bold text-[var(--greek-blue)]">{s.value}</span>
@@ -199,7 +199,7 @@ export default function ChildReportPage() {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 p-1 bg-gray-100 rounded-xl w-fit mb-6">
+        <div className="flex gap-1 p-1 bg-[var(--greek-gold)]/10 rounded-xl w-fit mb-6">
           {([["activite", "Activité"], ["ia", "Analyse IA"]] as const).map(([key, label]) => (
             <button key={key} onClick={() => { setTab(key); if (key === "ia" && !analysis) loadAnalysis(); }}
               className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${tab === key ? "bg-white shadow-sm text-[var(--greek-blue)]" : "text-gray-500 hover:text-gray-700"}`}>
@@ -212,13 +212,13 @@ export default function ChildReportPage() {
         {tab === "activite" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Activity list */}
-            <div className="lg:col-span-2 bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm overflow-hidden">
-              <div className="px-6 py-4 border-b border-gray-50">
+            <div className="lg:col-span-2 bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm overflow-hidden">
+              <div className="px-6 py-4 border-b border-[var(--greek-gold)]/10">
                 <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                   Historique d'activité ({activities.length})
                 </h3>
               </div>
-              <div className="divide-y divide-gray-50 max-h-[600px] overflow-y-auto">
+              <div className="divide-y divide-[var(--greek-gold)]/10 max-h-[600px] overflow-y-auto">
                 {activities.length === 0 ? (
                   <div className="p-8 text-center text-gray-400">Aucune activité enregistrée.</div>
                 ) : activities.map(a => (
@@ -245,7 +245,7 @@ export default function ChildReportPage() {
 
             {/* Subject breakdown */}
             <div className="space-y-5">
-              <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-5">
+              <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
                 <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-[var(--greek-gold)]" />
                   Réussite par matière
@@ -260,7 +260,7 @@ export default function ChildReportPage() {
                         <span className="font-medium text-gray-700 truncate">{s.subject}</span>
                         <span className={`font-bold ml-2 ${pct >= 70 ? "text-green-600" : pct >= 40 ? "text-orange-600" : "text-red-600"}`}>{pct}%</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2">
+                      <div className="w-full bg-[var(--greek-gold)]/10 rounded-full h-2">
                         <div className={`h-2 rounded-full transition-all ${pct >= 70 ? "bg-green-500" : pct >= 40 ? "bg-orange-500" : "bg-red-500"}`} style={{ width: `${pct}%` }} />
                       </div>
                       <p className="text-xs text-gray-400 mt-0.5">{s.correct}/{s.total} corrects</p>
@@ -270,7 +270,7 @@ export default function ChildReportPage() {
               </div>
 
               {/* Quick stats */}
-              <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-5">
+              <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
                 <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] flex items-center gap-2">
                   <Activity className="w-4 h-4 text-[var(--greek-gold)]" />
                   Résumé
@@ -289,7 +289,7 @@ export default function ChildReportPage() {
         {/* Tab: Analyse IA */}
         {tab === "ia" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
+            <div className="lg:col-span-2 bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-2 text-lg">
                   <Brain className="w-5 h-5 text-[var(--greek-gold)]" />
@@ -328,7 +328,7 @@ export default function ChildReportPage() {
             {/* AI context panel */}
             <div className="space-y-5">
               {analysisStats && (
-                <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-5">
+                <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
                   <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] text-sm flex items-center gap-2">
                     <Activity className="w-4 h-4 text-[var(--greek-gold)]" />
                     Données analysées

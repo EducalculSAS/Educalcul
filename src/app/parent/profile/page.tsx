@@ -371,8 +371,8 @@ export default function ParentProfilePage() {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Personal Info Card */}
-        <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 p-8">
-          <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-6 pb-4 border-b border-gray-100 flex items-center font-[family-name:var(--font-display)]">
+        <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[var(--greek-gold)]/20 p-8">
+          <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-6 pb-4 border-b border-[var(--greek-gold)]/15 flex items-center font-[family-name:var(--font-display)]">
             <User className="w-6 h-6 mr-3 text-[var(--greek-gold)]" />
             Informations Personnelles
           </h2>
@@ -416,7 +416,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, firstName: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   required
                 />
               </div>
@@ -430,7 +430,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, lastName: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   required
                 />
               </div>
@@ -448,7 +448,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })
                   }
-                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full pl-10 pr-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   placeholder="+33 6 12 34 56 78"
                 />
               </div>
@@ -466,7 +466,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full pl-10 pr-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   required
                 />
               </div>
@@ -493,8 +493,8 @@ export default function ParentProfilePage() {
         </div>
 
         {/* Security Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-gray-100 flex items-center">
+        <div className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[var(--greek-gold)]/15 flex items-center">
             <Lock className="w-5 h-5 mr-2" />
             Sécurité
           </h2>
@@ -513,7 +513,7 @@ export default function ParentProfilePage() {
                     newPassword: e.target.value,
                   })
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="••••••"
               />
             </div>
@@ -531,7 +531,7 @@ export default function ParentProfilePage() {
                     confirmPassword: e.target.value,
                   })
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="••••••"
               />
             </div>
@@ -554,13 +554,13 @@ export default function ParentProfilePage() {
         </div>
 
         {/* Linked Accounts Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:col-span-2">
-          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-gray-100 flex items-center">
+        <div className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6 md:col-span-2">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[var(--greek-gold)]/15 flex items-center">
             <Mail className="w-5 h-5 mr-2" />
             Comptes liés
           </h2>
 
-          <div className="flex items-center justify-between p-4 border border-gray-100 rounded-lg bg-gray-50">
+          <div className="flex items-center justify-between p-4 border border-[var(--greek-gold)]/15 rounded-lg bg-gray-50">
             <div className="flex items-center">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mr-4">
                 <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -608,7 +608,7 @@ export default function ParentProfilePage() {
             ) : (
               <button
                 onClick={handleLinkGoogle}
-                className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
+                className="px-4 py-2 bg-white border border-[var(--greek-gold)]/30 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
               >
                 Lier le compte
               </button>
@@ -616,8 +616,8 @@ export default function ParentProfilePage() {
           </div>
         </div>
         {/* Notification Preferences */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-gray-100 flex items-center">
+        <div className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[var(--greek-gold)]/15 flex items-center">
             <Bell className="w-5 h-5 mr-2" />
             Notifications
           </h2>
@@ -635,7 +635,7 @@ export default function ParentProfilePage() {
                   checked={notifications.emailReports}
                   onChange={() => setNotifications({ ...notifications, emailReports: !notifications.emailReports })}
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[var(--greek-gold)]/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
               </label>
             </div>
 
@@ -651,7 +651,7 @@ export default function ParentProfilePage() {
                   checked={notifications.emailAlerts}
                   onChange={() => setNotifications({ ...notifications, emailAlerts: !notifications.emailAlerts })}
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[var(--greek-gold)]/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
               </label>
             </div>
 
@@ -667,14 +667,14 @@ export default function ParentProfilePage() {
                   checked={notifications.emailPromos}
                   onChange={() => setNotifications({ ...notifications, emailPromos: !notifications.emailPromos })}
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[var(--greek-gold)]/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
               </label>
             </div>
           </div>
         </div>
 
         {/* Danger Zone */}
-        <div className="bg-red-50 rounded-xl shadow-sm border border-red-100 p-6 md:col-span-2 mt-4">
+        <div className="bg-red-50 rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6 md:col-span-2 mt-4">
           <h2 className="text-xl font-bold text-red-700 mb-4 flex items-center">
             <AlertCircle className="w-5 h-5 mr-2" />
             Zone de danger

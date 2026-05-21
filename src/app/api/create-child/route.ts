@@ -1,5 +1,5 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function POST(request: Request) {
   try {
@@ -12,18 +12,6 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-
-    // Initialize Supabase Admin Client
-    const supabaseAdmin = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!,
-      {
-        auth: {
-          autoRefreshToken: false,
-          persistSession: false,
-        },
-      }
-    );
 
     // Create user
     const { data, error } = await supabaseAdmin.auth.admin.createUser({

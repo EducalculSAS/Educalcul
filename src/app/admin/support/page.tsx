@@ -161,9 +161,10 @@ export default function SupportPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             message: replyMessage,
-            user_email: selectedTicket.user_email, // Assuming these fields exist
-            user_name: selectedTicket.user_name || "Utilisateur",
+            user_email: selectedTicket.user_email,
+            user_name: selectedTicket.user_name || "Visiteur",
             subject: selectedTicket.subject,
+            is_public: !selectedTicket.user_id, // ticket public = pas d'user_id
           }),
         }
       );
@@ -197,11 +198,22 @@ export default function SupportPage() {
       );
       if (!res.ok) throw new Error("Erreur lors du changement de statut");
 
-      showNotification("success", `Statut mis à jour vers ${newStatus}`);
-      fetchTicketDetails(selectedTicket.id);
+      showNotification("success", `Statut mis à jour : ${newStatus}`);
+
+      // Auto-archive quand "Répondu"
+      if (newStatus === "Répondu") {
+        await fetch(`/api/admin/support/tickets/${selectedTicket.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "archive" }),
+        });
+        showNotification("success", "Ticket marqué comme répondu et archivé.");
+        handleBackToList();
+      } else {
+        fetchTicketDetails(selectedTicket.id);
+      }
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : "Une erreur est survenue";
+      const errorMessage = error instanceof Error ? error.message : "Une erreur est survenue";
       showNotification("error", errorMessage);
     } finally {
       setActionLoading(false);
@@ -315,12 +327,12 @@ export default function SupportPage() {
           {/* Tabs */}
           {!selectedTicket && (
             <div className="flex items-center gap-4">
-              <div className="flex bg-gray-50 rounded-xl p-1 border border-gray-200">
+              <div className="flex bg-gray-50 rounded-xl p-1 border border-[var(--greek-gold)]/20">
                 <button
                   onClick={() => setViewMode("active")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     viewMode === "active"
-                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-gray-100"
+                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[var(--greek-gold)]/15"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
@@ -331,7 +343,7 @@ export default function SupportPage() {
                   onClick={() => setViewMode("archived")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     viewMode === "archived"
-                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-gray-100"
+                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[var(--greek-gold)]/15"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
@@ -374,7 +386,7 @@ export default function SupportPage() {
       )}
 
       {/* Main Content */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-gray-200 overflow-hidden min-h-[500px]">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/20 overflow-hidden min-h-[500px]">
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--greek-blue)]"></div>
@@ -383,7 +395,7 @@ export default function SupportPage() {
           // DETAIL VIEW
           <div className="flex flex-col h-full">
             {/* Toolbar */}
-            <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50">
+            <div className="p-4 border-b border-[var(--greek-gold)]/15 flex items-center justify-between bg-gray-50">
               <button
                 onClick={handleBackToList}
                 className="flex items-center text-gray-600 hover:text-[var(--greek-blue)] transition-colors"
@@ -424,7 +436,7 @@ export default function SupportPage() {
                     <button
                       onClick={() => handleArchive(true)}
                       disabled={actionLoading}
-                      className="px-3 py-1.5 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium border border-gray-200"
+                      className="px-3 py-1.5 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium border border-[var(--greek-gold)]/20"
                     >
                       <Archive size={14} className="inline mr-1" /> Archiver
                     </button>
@@ -435,7 +447,7 @@ export default function SupportPage() {
 
             <div className="flex-1 overflow-y-auto p-6 space-y-8">
               {/* Ticket Info */}
-              <div className="bg-white p-6 rounded-[20px] border border-gray-200 shadow-sm">
+              <div className="bg-white p-6 rounded-[20px] border border-[var(--greek-gold)]/20 shadow-sm">
                 <div className="flex justify-between items-start mb-4">
                   <h2 className="text-2xl font-bold text-gray-800">
                     {selectedTicket.subject}
@@ -450,8 +462,8 @@ export default function SupportPage() {
                   <div className="flex items-center gap-2">
                     <User size={16} />
                     <span className="font-semibold">Utilisateur:</span>{" "}
-                    {selectedTicket.user_name || "Inconnu"} (
-                    {selectedTicket.user_email})
+                    {selectedTicket.user_name || "Inconnu"} ({selectedTicket.user_email})
+                    {!selectedTicket.user_id && <span className="ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-200">Contact public</span>}
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock size={16} />
@@ -494,7 +506,7 @@ export default function SupportPage() {
                   replies.map((reply) => (
                     <div
                       key={reply.id}
-                      className="bg-gray-50 p-4 rounded-[20px] border border-gray-200 ml-8 relative"
+                      className="bg-gray-50 p-4 rounded-[20px] border border-[var(--greek-gold)]/15 ml-8 relative"
                     >
                       <div className="absolute top-4 -left-3 w-6 h-6 bg-[var(--greek-gold)] rounded-full border-4 border-white flex items-center justify-center">
                         <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -517,7 +529,7 @@ export default function SupportPage() {
 
               {/* Reply Form */}
               {!selectedTicket.is_archived && (
-                <div className="mt-8 bg-white p-6 rounded-[20px] border border-gray-200 shadow-sm">
+                <div className="mt-8 bg-white p-6 rounded-[20px] border border-[var(--greek-gold)]/20 shadow-sm">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
                     Répondre
                   </h3>
@@ -525,7 +537,7 @@ export default function SupportPage() {
                     <textarea
                       value={replyMessage}
                       onChange={(e) => setReplyMessage(e.target.value)}
-                      className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent min-h-[150px]"
+                      className="w-full p-4 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent min-h-[150px]"
                       placeholder="Écrivez votre réponse ici..."
                       required
                     ></textarea>
@@ -560,7 +572,7 @@ export default function SupportPage() {
           // LIST VIEW
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
-              <thead className="bg-gray-50 border-b border-gray-200">
+              <thead className="bg-gray-50 border-b border-[var(--greek-gold)]/20">
                 <tr>
                   <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
                     Sujet
@@ -609,8 +621,13 @@ export default function SupportPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="text-sm text-gray-700">
-                          {ticket.user_name || "Utilisateur"}
+                        <div className="flex items-center gap-2">
+                          <div className="text-sm text-gray-700">
+                            {ticket.user_name || "Utilisateur"}
+                          </div>
+                          {!ticket.user_id && (
+                            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-200">Public</span>
+                          )}
                         </div>
                         <div className="text-xs text-gray-500">
                           {ticket.user_email}

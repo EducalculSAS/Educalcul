@@ -1,17 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-import { NextResponse } from "next/server";
-import { gradeWithQwen } from "@/lib/qwen-service";
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
+﻿import { NextResponse } from "next/server";
+import { gradeAnswer } from "@/lib/llm";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function POST(
   req: Request,
@@ -34,11 +23,11 @@ export async function POST(
     let isCorrect = false;
     let feedback = "";
 
-    // --- AI GRADING (Qwen2.5vl:7b Local) ---
+    // --- AI GRADING (IA) ---
     console.log("🤖 AI Grading requested for Quiz Question:", id);
 
     try {
-      const gradingResult = await gradeWithQwen(
+      const gradingResult = await gradeAnswer(
         question,
         correctAnswer,
         answer,

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&amp;display=swap');</style>
+    <mask id="cut">
+      <rect width="64" height="64" fill="white"/>
+      <text x="34" y="50.5" font-family="Cinzel, Georgia, serif" font-size="42" font-weight="700"
+            text-anchor="middle" fill="black" stroke="black" stroke-width="2"
+            paint-order="stroke fill">Σ</text>
+    </mask>
+  </defs>
+  <!-- ℂ grand derrière avec découpe -->
+  <text x="32" y="58" font-family="Georgia, serif" font-size="68" font-weight="700"
+        text-anchor="middle" fill="#c5a148" mask="url(#cut)">ℂ</text>
+  <!-- Sigma doré devant -->
+  <text x="34" y="50.5" font-family="Cinzel, Georgia, serif" font-size="42" font-weight="700"
+        text-anchor="middle" fill="#c5a148">Σ</text>
+</svg>

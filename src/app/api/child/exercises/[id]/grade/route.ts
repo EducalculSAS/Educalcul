@@ -1,17 +1,7 @@
-import { createClient } from "@supabase/supabase-js";
-import { NextResponse } from "next/server";
-import { gradeWithQwen } from "@/lib/qwen-service";
+﻿import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { gradeAnswer } from "@/lib/llm";
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
 
 export async function POST(
   req: Request,
@@ -92,7 +82,7 @@ export async function POST(
       isImage ||
       (targetBlock && targetBlock.type === "text_input")
     ) {
-      // --- AI GRADING (Qwen2.5vl:7b Local) ---
+      // --- AI GRADING (IA) ---
       console.log(
         "🤖 AI Grading requested for:",
         id === "preview" ? "Preview" : exercise.title
@@ -103,7 +93,7 @@ export async function POST(
       const expl = targetBlock?.explanation || "";
 
       try {
-        // For images, we'll use a text description prompt for Qwen
+        // Describe image content via text prompt
         let studentAnswerText = answer;
         if (isImage) {
           // For images, ask the user to describe what they submitted
@@ -113,7 +103,7 @@ export async function POST(
           studentAnswerText = typeof answer === "string" ? answer : JSON.stringify(answer);
         }
 
-        const gradingResult = await gradeWithQwen(
+        const gradingResult = await gradeAnswer(
           questionContent,
           correctAns,
           studentAnswerText,

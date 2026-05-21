@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { getServerGeo } from "@/lib/geoLocation";
 
 export default function PresenceTracker() {
   useEffect(() => {
@@ -30,18 +31,15 @@ export default function PresenceTracker() {
           updates.login_streak = lastLogin === yesterday ? (user.login_streak || 0) + 1 : 1;
         }
 
-        // Geo if missing
+        // Geo if missing — silencieux via headers Vercel (pas de popup)
         if (!user.latitude) {
-          try {
-            const geo = await fetch("https://ipapi.co/json/").then(r => r.json());
-            if (geo.latitude) {
-              updates.latitude = geo.latitude;
-              updates.longitude = geo.longitude;
-              updates.last_login_city = geo.city;
-              updates.last_login_country = geo.country_name;
-              updates.last_login_ip = geo.ip;
-            }
-          } catch {}
+          const geo = await getServerGeo();
+          if (geo) {
+            updates.latitude = geo.latitude;
+            updates.longitude = geo.longitude;
+            if (geo.city)    updates.last_login_city    = geo.city;
+            if (geo.country) updates.last_login_country = geo.country;
+          }
         }
       }
 

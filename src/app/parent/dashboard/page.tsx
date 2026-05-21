@@ -119,8 +119,8 @@ export default function ParentDashboard() {
                 <span>Suivez les progrès de vos enfants.</span>
               </p>
             </div>
-            <div className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
-              <div className="text-center px-4 border-r border-white/20">
+            <div className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-[var(--greek-gold)]/15">
+              <div className="text-center px-4 border-r border-[var(--greek-gold)]/20">
                 <div className="text-2xl font-bold text-[var(--greek-gold)]">{children.length}</div>
                 <div className="text-xs uppercase tracking-wider opacity-80">Enfant{children.length !== 1 ? "s" : ""}</div>
               </div>
@@ -140,7 +140,7 @@ export default function ParentDashboard() {
         {/* Navigation rapide — même style que child */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <Link href="/parent/children" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Users className="w-24 h-24 text-[var(--greek-blue)]" />
               </div>
@@ -156,7 +156,7 @@ export default function ParentDashboard() {
           </Link>
 
           <Link href="/parent/forum" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <MessageSquare className="w-24 h-24 text-[var(--greek-bronze)]" />
               </div>
@@ -172,7 +172,7 @@ export default function ParentDashboard() {
           </Link>
 
           <Link href="/parent/subscription" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Crown className="w-24 h-24 text-[var(--greek-gold)]" />
               </div>
@@ -188,7 +188,7 @@ export default function ParentDashboard() {
           </Link>
 
           <Link href="/parent/profile" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <UserCircle className="w-24 h-24 text-[var(--greek-blue)]" />
               </div>
@@ -216,7 +216,7 @@ export default function ParentDashboard() {
         </div>
 
         {children.length === 0 ? (
-          <div className="bg-white rounded-[20px] p-10 shadow-sm border border-[var(--card-border-antique)] text-center">
+          <div className="bg-white rounded-[20px] p-10 shadow-sm border border-[var(--greek-gold)]/20 text-center">
             <Users className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <p className="text-xl text-[var(--greek-blue)] font-bold font-[family-name:var(--font-display)] mb-2">Aucun enfant ajouté</p>
             <p className="text-gray-500 mb-6">Ajoutez votre premier enfant pour commencer le suivi.</p>
@@ -227,10 +227,10 @@ export default function ParentDashboard() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {children.map(child => (
-              <div key={child.id} className="bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+              <div key={child.id} className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/20 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
 
                 {/* Header */}
-                <div className="p-5 border-b border-gray-50">
+                <div className="p-5 border-b border-[var(--greek-gold)]/10">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-11 h-11 rounded-2xl bg-[var(--greek-blue)]/10 flex items-center justify-center overflow-hidden font-bold text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
@@ -255,19 +255,19 @@ export default function ParentDashboard() {
                   ) : (
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                        <div className="p-3 bg-gray-50 rounded-xl border border-[var(--greek-gold)]/15 text-center">
                           <CheckCircle className="w-4 h-4 text-green-500 mx-auto mb-1" />
                           <div className="text-lg font-bold text-gray-800">{child.stats?.exerciseCount || 0}</div>
                           <div className="text-xs text-gray-500">Exercices</div>
                         </div>
-                        <div className="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                        <div className="p-3 bg-gray-50 rounded-xl border border-[var(--greek-gold)]/15 text-center">
                           <TrendingUp className="w-4 h-4 text-[var(--greek-gold)] mx-auto mb-1" />
                           <div className="text-lg font-bold text-gray-800">{child.stats?.successRate || 0}%</div>
                           <div className="text-xs text-gray-500">Réussite</div>
                         </div>
                       </div>
                       {child.stats?.lastActivity && (
-                        <div className="pt-3 border-t border-gray-50">
+                        <div className="pt-3 border-t border-[var(--greek-gold)]/10">
                           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Dernière activité</p>
                           <div className="flex items-center gap-2">
                             <div className={`p-1.5 rounded-lg ${child.stats.lastActivity.type === "Quiz" ? "bg-purple-100 text-purple-600" : "bg-green-100 text-green-600"}`}>
@@ -285,13 +285,13 @@ export default function ParentDashboard() {
                 </div>
 
                 {/* Footer */}
-                <div className="p-4 bg-gray-50 border-t border-gray-50">
+                <div className="p-4 bg-gray-50 border-t border-[var(--greek-gold)]/10">
                   {sub.features.detailed_reports ? (
                     <Link href={`/parent/child/${child.id}`} className="flex items-center justify-center w-full py-2.5 px-4 bg-[var(--greek-blue)] text-white rounded-xl hover:opacity-90 transition-all font-bold text-sm group shadow-sm">
                       Rapport complet <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   ) : (
-                    <Link href="/parent/subscription" className="flex items-center justify-center w-full py-2.5 px-4 bg-gray-100 border border-gray-200 text-gray-500 rounded-xl hover:bg-gray-200 transition-all font-medium text-sm">
+                    <Link href="/parent/subscription" className="flex items-center justify-center w-full py-2.5 px-4 bg-gray-100 border border-[var(--greek-gold)]/20 text-gray-500 rounded-xl hover:bg-gray-200 transition-all font-medium text-sm">
                       <Lock className="w-4 h-4 mr-2" /> Débloquer le rapport
                     </Link>
                   )}

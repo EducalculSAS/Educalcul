@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,8 +10,8 @@ export default function MentionsLegales() {
 
       <main className="flex-grow pt-[100px] pb-16 px-4">
         <div className="container mx-auto max-w-4xl">
-          <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--card-border-antique)] p-8 md:p-12">
-            <h1 className="font-[family-name:var(--font-cinzel)] font-bold text-[var(--greek-blue)] text-3xl md:text-4xl mb-8 border-b-2 border-[var(--greek-gold)] pb-4">
+          <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--greek-gold)] p-8 md:p-12">
+            <h1 className="font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-3xl md:text-4xl mb-8 border-b-2 border-[var(--greek-gold)] pb-4">
               Mentions Légales
             </h1>
 
@@ -66,10 +66,10 @@ export default function MentionsLegales() {
                   <strong>Educalcul</strong> ne pourra être tenu pour responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site internet.
                 </p>
                 <p>
-                  <strong>Educalcul</strong> décline toute responsabilité quant à l'utilisation qui pourrait être faite des informations et contenus présents sur le site.
+                  <strong>Educalcul</strong> décline toute responsabilité quant Ã  l'utilisation qui pourrait être faite des informations et contenus présents sur le site.
                 </p>
                 <p>
-                  <strong>Educalcul</strong> s'engage à sécuriser au mieux le site, cependant sa responsabilité ne pourra être mise en cause si des données indésirables sont importées et installées sur son site à son insu.
+                  <strong>Educalcul</strong> s'engage Ã  sécuriser au mieux le site, cependant sa responsabilité ne pourra être mise en cause si des données indésirables sont importées et installées sur son site Ã  son insu.
                 </p>
               </section>
             </div>

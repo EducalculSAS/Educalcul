@@ -1,16 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
 
 export async function GET(request: Request) {
   try {
@@ -23,19 +13,11 @@ export async function GET(request: Request) {
       let { data, error } = await supabaseAdmin
         .from("exercises")
         .select(`
-          id,
-          title,
-          description,
-          question,
-          difficulty_level,
-          type,
-          level,
-          content_json,
-          status,
-          created_at,
-          updated_at,
-          course_id,
-          points,
+          id, title, description, question,
+          difficulty_level, type, level, status,
+          folder_id, course_id, content_json,
+          points_reward, max_attempts, time_limit,
+          created_at, updated_at,
           courses (title, subject, level),
           exercise_folders (name, color)
         `)
@@ -111,17 +93,11 @@ export async function GET(request: Request) {
       .from("exercises")
       .select(
         `
-        id,
-        title,
-        description,
-        question,
-        difficulty_level,
-        type,
-        level,
-        content_json,
-        status,
-        created_at,
-        course_id,
+        id, title, description, question,
+        difficulty_level, type, level, status,
+        folder_id, course_id, content_json,
+        points_reward, max_attempts, time_limit,
+        created_at, updated_at,
         courses (title, subject, level),
         exercise_folders (name, color)
       `

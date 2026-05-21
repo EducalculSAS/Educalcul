@@ -71,7 +71,7 @@ export default function ChildQuizPage() {
     }
   };
 
-  const currentQuizzes = allQuizzes.filter(q => q.folder_id === currentFolderId);
+  const currentQuizzes = allQuizzes.filter(q => (q.folder_id ?? null) === currentFolderId);
   const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
 
   if (loading && allQuizzes.length === 0 && allFolders.length === 0) {
@@ -108,7 +108,7 @@ export default function ChildQuizPage() {
         {currentFolderId !== null && (
           <button
             onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
-            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--card-border-antique)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--greek-gold)]/30 shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
           >
             <ArrowLeft size={20} />
             Retour
@@ -116,7 +116,7 @@ export default function ChildQuizPage() {
         )}
 
         {currentFolders.length === 0 && currentQuizzes.length === 0 ? (
-          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/20">
+          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/30">
             <Trophy className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">
               Dossier vide
@@ -132,7 +132,7 @@ export default function ChildQuizPage() {
               <div
                 key={folder.id}
                 onClick={() => navigateToFolder(folder.id, folder.name)}
-                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/30 transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 <div
@@ -154,7 +154,7 @@ export default function ChildQuizPage() {
             {currentQuizzes.map((quiz, index) => (
               <div
                 key={quiz.id}
-                className="group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce"
+                className="group bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce"
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-40 bg-[var(--greek-blue)]/10 overflow-hidden flex items-center justify-center">
@@ -166,7 +166,7 @@ export default function ChildQuizPage() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   ) : (
-                    <Trophy className="w-16 h-16 text-[var(--greek-gold)] drop-shadow-md transform group-hover:scale-110 transition-transform duration-300" />
+                    <img src="/logo.png" alt="Educalcul" className="w-16 h-16 object-contain opacity-30" />
                   )}
 
                   <div

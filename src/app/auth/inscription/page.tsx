@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { getSiteUrl } from "@/lib/siteUrl";
 import {
   Mail,
   Lock,
@@ -62,10 +63,11 @@ export default function Inscription() {
     localStorage.setItem("educalcul_pending_role", role);
 
     try {
+      const siteUrl = getSiteUrl();
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/connexion`,
+          redirectTo: `${siteUrl}/auth/callback`,
         },
       });
       if (error) throw error;
@@ -175,8 +177,8 @@ export default function Inscription() {
               onClick={() => setRole("child")}
               className={`px-6 py-2 rounded-md text-sm font-bold transition-all ${
                 role === "child"
-                  ? "bg-[var(--greek-bronze)] text-white shadow-md"
-                  : "text-gray-500 hover:text-[var(--greek-bronze)]"
+                  ? "bg-[var(--greek-gold)] text-white shadow-md"
+                  : "text-gray-500 hover:text-[var(--greek-gold)]"
               }`}
             >
               Élève
@@ -396,10 +398,10 @@ export default function Inscription() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 shadow-md hover:-translate-y-1 ${
+            className={`w-full text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 shadow-md flex items-center justify-center hover:-translate-y-[1px] ${
               role === "parent"
                 ? "bg-[var(--greek-blue)] hover:bg-[#2c5282]"
-                : "bg-[var(--greek-bronze)] hover:bg-[var(--greek-gold)]"
+                : "bg-[var(--greek-gold)] hover:bg-[var(--greek-gold)]"
             }`}
           >
             {loading ? "Inscription en cours..." : "S'inscrire"}
@@ -418,7 +420,7 @@ export default function Inscription() {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full bg-white text-gray-700 font-bold py-3 px-4 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm flex items-center justify-center"
+            className="w-full bg-white text-gray-700 font-bold py-3 px-4 rounded-lg border border-gray-300 hover:bg-gray-50 transition-all duration-200 shadow-sm flex items-center justify-center hover:-translate-y-[1px] hover:shadow-md"
           >
             <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
               <path

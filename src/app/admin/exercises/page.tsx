@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import AIGeneratorModal from "@/components/admin/AIGeneratorModal";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
@@ -22,10 +22,11 @@ import {
   GraduationCap,
   Sparkles,
   Loader2,
-  Eye,
+  Eye, Download, Upload,
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import { SCHOOL_LEVELS } from "@/lib/constants";
+import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -152,6 +153,33 @@ export default function AdminExercisesPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const importExerciseRef = useRef<HTMLInputElement>(null);
+
+  const handleImportExercise = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const data = await importFromJSONFile(file);
+      if (data._type && data._type !== "exercise") { alert("Ce fichier n'est pas un exercice."); return; }
+      setFormData({
+        title: data.title || "",
+        description: data.description || "",
+        subject: data.subject || "Mathématiques",
+        difficulty_level: data.difficulty_level || "facile",
+        level: data.level || "6eme",
+        status: data.status || "draft",
+        thumbnail_url: data.thumbnail_url || "",
+        folder_id: null,
+        points: data.points || 10,
+        time_limit: data.time_limit || 0,
+        max_attempts: data.max_attempts || 0,
+        content_json: data.content_json || [],
+      });
+      setCurrentExercise(null);
+      setIsModalOpen(true);
+    } catch (err: any) { alert(err.message); }
+    e.target.value = "";
+  };
 
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
@@ -685,10 +713,14 @@ export default function AdminExercisesPage() {
               Générer avec IA
             </button>
             <button
-              onClick={() => {
-                resetForm();
-                setIsModalOpen(true);
-              }}
+              onClick={() => importExerciseRef.current?.click()}
+              className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
+            >
+              <Upload size={18} /> Importer JSON
+            </button>
+            <input ref={importExerciseRef} type="file" accept=".json" className="hidden" onChange={handleImportExercise} />
+            <button
+              onClick={() => { resetForm(); setIsModalOpen(true); }}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-lg shadow-blue-900/10"
             >
               <Plus size={20} />
@@ -699,7 +731,7 @@ export default function AdminExercisesPage() {
       </div>
 
       {/* Breadcrumbs */}
-      <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-gray-100 shadow-sm overflow-x-auto">
+      <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[var(--greek-gold)]/15 shadow-sm overflow-x-auto">
         <button
           onClick={() => setCurrentFolderId(null)}
           className={`flex items-center gap-1 hover:text-[var(--greek-blue)] transition-colors ${
@@ -730,7 +762,7 @@ export default function AdminExercisesPage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 space-y-4">
+      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15 space-y-4">
         <div className="flex flex-col md:flex-row gap-4 flex-wrap">
           <div className="flex-1 relative min-w-[200px]">
             <Search
@@ -791,7 +823,7 @@ export default function AdminExercisesPage() {
           [...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 animate-pulse h-64"
+              className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/15 p-4 animate-pulse h-64"
             >
               <div className="h-32 bg-gray-200 rounded-lg mb-4"></div>
               <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
@@ -812,7 +844,7 @@ export default function AdminExercisesPage() {
                   ${
                     dragOverFolderId === folder.id
                       ? "border-[var(--greek-blue)] ring-2 ring-[var(--greek-blue)]/20 bg-blue-50"
-                      : "border-gray-100 hover:shadow-lg hover:-translate-y-1"
+                      : "border-[var(--greek-gold)]/15 hover:shadow-lg hover:-translate-y-1"
                   }`}
               >
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10">
@@ -872,7 +904,7 @@ export default function AdminExercisesPage() {
                 key={exercise.id}
                 draggable
                 onDragStart={(e) => handleDragStart(e, exercise.id)}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow group cursor-move"
+                className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/15 overflow-hidden hover:shadow-md transition-shadow group cursor-move"
               >
                 <div className="relative h-40 bg-gray-100">
                   {exercise.thumbnail_url ? (
@@ -914,7 +946,7 @@ export default function AdminExercisesPage() {
                     {exercise.question || "Aucune description"}
                   </p>
 
-                  <div className="flex justify-between items-center pt-2 border-t border-gray-100">
+                  <div className="flex justify-between items-center pt-2 border-t border-[var(--greek-gold)]/10">
                     <span className="text-xs text-gray-400">
                       {new Date(exercise.created_at).toLocaleDateString()}
                     </span>
@@ -932,6 +964,13 @@ export default function AdminExercisesPage() {
                         title="Modifier"
                       >
                         <Edit size={16} />
+                      </button>
+                      <button
+                        onClick={() => exportAsJSON(exercise, "exercise", exercise.title)}
+                        className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+                        title="Exporter JSON"
+                      >
+                        <Download size={16} />
                       </button>
                       <button
                         onClick={() => handleDelete(exercise.id)}
@@ -976,7 +1015,7 @@ export default function AdminExercisesPage() {
                       name: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none"
+                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/25 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none"
                   placeholder="Ex: Mathématiques"
                   autoFocus
                 />
@@ -1017,7 +1056,7 @@ export default function AdminExercisesPage() {
                       grade_level: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none bg-white"
+                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/25 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none bg-white"
                 >
                   <option value="all">Tous niveaux</option>
                   {SCHOOL_LEVELS.map((level) => (
@@ -1040,7 +1079,7 @@ export default function AdminExercisesPage() {
                       status: e.target.value as any,
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none bg-white"
+                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/25 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none bg-white"
                 >
                   <option value="draft">Brouillon</option>
                   <option value="published">Publié</option>
@@ -1091,7 +1130,7 @@ export default function AdminExercisesPage() {
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
             {/* Header */}
-            <div className="flex justify-between items-center px-8 py-5 border-b border-gray-200 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex-shrink-0">
+            <div className="flex justify-between items-center px-8 py-5 border-b border-[var(--greek-gold)]/20 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex-shrink-0">
               <div className="flex items-center gap-3">
                 <GraduationCap size={24} className="text-[var(--greek-gold)]" />
                 <h2 className="text-xl font-bold font-[family-name:var(--font-display)]">
@@ -1108,7 +1147,7 @@ export default function AdminExercisesPage() {
               <div className="flex-1 overflow-y-auto">
                 
                 {/* Section 1: Informations générales */}
-                <div className="p-6 border-b border-gray-100">
+                <div className="p-6 border-b border-[var(--greek-gold)]/10">
                   <h3 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">1</span>
                     Informations générales
@@ -1121,7 +1160,7 @@ export default function AdminExercisesPage() {
                         required
                         value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
+                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
                         placeholder="Ex: Maths — Les fractions (CP)"
                       />
                     </div>
@@ -1131,7 +1170,7 @@ export default function AdminExercisesPage() {
                         rows={3}
                         value={formData.description}
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] resize-none bg-gray-50"
+                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] resize-none bg-gray-50"
                         placeholder="Description affichée sur la page d'accueil de l'exercice..."
                       />
                     </div>
@@ -1142,7 +1181,7 @@ export default function AdminExercisesPage() {
                           <select
                             value={formData.course_id}
                             onChange={(e) => setFormData({ ...formData, course_id: e.target.value })}
-                            className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
+                            className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
                           >
                             <option value="">Aucun</option>
                             {courses.map((c) => (<option key={c.id} value={c.id}>{c.title}</option>))}
@@ -1153,7 +1192,7 @@ export default function AdminExercisesPage() {
                           <select
                             value={formData.folder_id}
                             onChange={(e) => setFormData({ ...formData, folder_id: e.target.value })}
-                            className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
+                            className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
                           >
                             <option value="">Racine</option>
                             {folders.map((f) => (<option key={f.id} value={f.id}>{f.name}</option>))}
@@ -1163,14 +1202,14 @@ export default function AdminExercisesPage() {
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-1.5">Image miniature</label>
                         {formData.thumbnail_url && (
-                          <div className="relative w-full h-20 bg-gray-100 rounded-lg overflow-hidden border border-gray-200 mb-2">
+                          <div className="relative w-full h-20 bg-gray-100 rounded-lg overflow-hidden border border-[var(--greek-gold)]/20 mb-2">
                             <img src={formData.thumbnail_url} alt="Aperçu" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder-exercise.png"; }} />
                             <button type="button" onClick={() => setFormData({ ...formData, thumbnail_url: "" })} className="absolute top-1.5 right-1.5 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500">
                               <XCircle size={16} />
                             </button>
                           </div>
                         )}
-                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium w-full justify-center border border-dashed border-gray-300">
+                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium w-full justify-center border border-dashed border-[var(--greek-gold)]/30">
                           <ImageIcon size={16} />
                           {uploading ? "Upload en cours..." : "Choisir une image"}
                           <input type="file" className="hidden" accept="image/*" onChange={handleFileUpload} disabled={uploading} />
@@ -1181,7 +1220,7 @@ export default function AdminExercisesPage() {
                 </div>
 
                 {/* Section 2: Paramètres pédagogiques */}
-                <div className="p-6 border-b border-gray-100 bg-gray-50/50">
+                <div className="p-6 border-b border-[var(--greek-gold)]/10 bg-gray-50/50">
                   <h3 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">2</span>
                     Paramètres pédagogiques
@@ -1202,7 +1241,7 @@ export default function AdminExercisesPage() {
                       <div className="flex gap-1.5">
                         {[{ v: "easy", l: "Facile", c: "text-green-700 border-green-300 bg-green-50" }, { v: "medium", l: "Moyen", c: "text-blue-700 border-blue-300 bg-blue-50" }, { v: "hard", l: "Difficile", c: "text-red-700 border-red-300 bg-red-50" }].map((d) => (
                           <button key={d.v} type="button" onClick={() => setFormData({ ...formData, difficulty_level: d.v as "easy" | "medium" | "hard" })}
-                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.difficulty_level === d.v ? d.c + " shadow-sm" : "text-gray-400 border-gray-200 bg-white"}`}>
+                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.difficulty_level === d.v ? d.c + " shadow-sm" : "text-gray-400 border-[var(--greek-gold)]/25 bg-white"}`}>
                             {d.l}
                           </button>
                         ))}
@@ -1213,7 +1252,7 @@ export default function AdminExercisesPage() {
                       <div className="flex gap-1.5">
                         {[{ v: "draft", l: "Brouillon" }, { v: "published", l: "Publié" }, { v: "archived", l: "Archivé" }].map((s) => (
                           <button key={s.v} type="button" onClick={() => setFormData({ ...formData, status: s.v as "draft" | "published" | "archived" })}
-                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-gray-200 bg-white"}`}>
+                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-[var(--greek-gold)]/25 bg-white"}`}>
                             {s.l}
                           </button>
                         ))}
@@ -1224,7 +1263,7 @@ export default function AdminExercisesPage() {
                       <select
                         value={formData.grading_type}
                         onChange={(e) => setFormData({ ...formData, grading_type: e.target.value as "auto" | "ai" | "manual" })}
-                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                       >
                         <option value="auto">Automatique</option>
                         <option value="ai">IA</option>
@@ -1238,7 +1277,7 @@ export default function AdminExercisesPage() {
                       <select
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                       >
                         {EXERCISE_TYPES.map((t) => (<option key={t.value} value={t.value}>{t.label}</option>))}
                       </select>
@@ -1249,7 +1288,7 @@ export default function AdminExercisesPage() {
                         type="number" min="0"
                         value={formData.time_limit}
                         onChange={(e) => setFormData({ ...formData, time_limit: parseInt(e.target.value) || 0 })}
-                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                         placeholder="0 = illimité"
                       />
                     </div>
@@ -1259,7 +1298,7 @@ export default function AdminExercisesPage() {
                         type="number" min="0"
                         value={formData.max_attempts}
                         onChange={(e) => setFormData({ ...formData, max_attempts: parseInt(e.target.value) || 0 })}
-                        className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                         placeholder="0 = illimité"
                       />
                     </div>
@@ -1290,11 +1329,11 @@ export default function AdminExercisesPage() {
               </div>
 
               {/* Footer Actions */}
-              <div className="flex justify-end gap-3 p-6 border-t border-gray-200 bg-white flex-shrink-0">
+              <div className="flex justify-end gap-3 p-6 border-t border-[var(--greek-gold)]/20 bg-white flex-shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-gray-200"
+                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-[var(--greek-gold)]/25"
                 >
                   Annuler
                 </button>

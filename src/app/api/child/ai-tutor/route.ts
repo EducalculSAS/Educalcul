@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { AITutorPageContext } from "@/contexts/AITutorContext";
-import { chatWithQwen } from "@/lib/qwen-service";
+import { chatWithAI } from "@/lib/llm";
 import { checkAIAccess } from "@/lib/checkSubscription";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
@@ -99,7 +99,7 @@ TES RÈGLES POUR LE COURS (EXPLIQUE BRIÈVEMENT!):
 ⏺️ CONCISION STRICTE: MAX 2 PHRASES COURTES! Pas de pavé!
 📖 LIS LE CONTENU DU COURS - C'est ta référence
 💡 EXPLIQUE SIMPLEMENT la partie que l'élève ne comprend pas
-🧮 Utilise le LaTeX pour les formules: $x$, $e^x$, $\frac{a}{b}$
+🧮 FORMULES: toujours entre $...$ ou $$...$$ — JAMAIS de backticks. Ex: $\frac{1}{2}$ et non `\frac{1}{2}`
 ⚠️ SOIS PRUDENT avec les maths - vérife avant d'affirmer!
 😊 Encourage l'élève à chercher lui-même la suite
 🚫 PAS DE LONGS TEXTES - Explique en 2 phrases maximum!`;
@@ -127,7 +127,7 @@ TES RÈGLES (NON NÉGOCIABLE):
 🚫 JAMAIS confirmer/valider une réponse que l'enfant donne. Dire plutôt: "Explique-moi pourquoi tu penses ça?"
 💡 Langage super simple. Phrases courtes. Mots faciles.
 😊 Sympa et encourageant, comme un grand frère/grande sœur.
-🧮 Pour les maths: utiliser le LaTeX proprement ($x$, $\frac{a}{b}$, $\sqrt{x}$).
+🧮 FORMULES: toujours $\frac{a}{b}$, $\sqrt{x}$, $$x^2$$ — JAMAIS de backticks autour du LaTeX.
 🔍 Si l'enfant ne comprend pas: RE-EXPLIQUER avec des mots plus simples, PAS continuer.
 
 RÈGLE STRICTE - NE JAMAIS CONFIRMER LES RÉPONSES:
@@ -220,28 +220,26 @@ export async function POST(req: Request) {
     console.log("🤖 System prompt excerpt:", systemPrompt.slice(0, 300) + "...");
 
     try {
-      // 🤖 Use Qwen2.5vl:7b via Ollama
-      console.log("🤖 AI Tutor: Calling Qwen model...");
+      // 🤖 Use IA OpenRouter
+      console.log("🤖 AI Tutor: appel IA...");
       
-      // Adjust token limit based on context
-      // Courses: STRICT concision (50 tokens = ~1-2 phrases)
-      // Exercises/Quizzes: More tokens for guidance (150 tokens)
-      const maxTokens = context.page === "cours_detail" ? 50 : 150;
+      const maxTokens = 800;
       
-      const message = await chatWithQwen(trimmed, systemPrompt, 0.65, maxTokens);
+      const message = await chatWithAI(trimmed, systemPrompt, 0.65, maxTokens);
       console.log("✅ AI Tutor response received");
       return NextResponse.json({ message });
-    } catch (error) {
-      console.error("❌ Qwen AI Tutor Error:", error);
+    } catch (error: any) {
+      console.error("❌ AI Tutor Error:", error?.message || error);
+      // Retourner l'erreur réelle pour diagnostic
       return NextResponse.json(
-        { message: "Je n'ai pas pu répondre. Réessaie ! 🙏" },
+        { message: `[Erreur IA] ${error?.message || "Inconnu"}` },
         { status: 200 }
       );
     }
   } catch (err: any) {
-    console.error("❌ ai-tutor error:", err);
+    console.error("❌ ai-tutor error:", err?.message || err);
     return NextResponse.json(
-      { message: "Oups, une erreur s'est produite. Réessaie ! 🙏" },
+      { message: `[Erreur] ${err?.message || "Inconnu"}` },
       { status: 200 }
     );
   }

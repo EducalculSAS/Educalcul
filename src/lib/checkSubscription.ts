@@ -47,14 +47,18 @@ export async function getUserFeatures(authId: string): Promise<PlanFeatures> {
   const { data: plan } = await supabaseAdmin
     .from("subscription_plans")
     .select("features")
-    .eq("id", sub.plan_id)
-    .single();
+    .eq("id", Number(sub.plan_id))
+    .maybeSingle();
 
   if (!plan) return FREE_FEATURES;
   return { ...FREE_FEATURES, ...plan.features };
 }
 
 export async function checkAIAccess(authId: string): Promise<{ allowed: boolean; reason?: string; remaining: number }> {
+  // Admins → toujours illimité
+  const { data: roleRow } = await supabaseAdmin.from("users").select("role").eq("auth_id", authId).maybeSingle();
+  if (roleRow?.role === "admin") return { allowed: true, remaining: -1 };
+
   const features = await getUserFeatures(authId);
 
   if (features.ai_access === "none") {

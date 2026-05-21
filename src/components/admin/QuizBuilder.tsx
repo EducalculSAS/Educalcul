@@ -271,7 +271,7 @@ export default function QuizBuilder({
           <select
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
-            className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-3 py-2 bg-white border border-[var(--greek-gold)]/25 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
           >
             <option value="cp">CP</option>
             <option value="ce1">CE1</option>
@@ -315,7 +315,7 @@ export default function QuizBuilder({
       )}
 
       {questions.length === 0 ? (
-        <div className="text-center py-12 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50">
+        <div className="text-center py-12 border-2 border-dashed border-[var(--greek-gold)]/25 rounded-xl bg-gray-50">
           <p className="text-gray-500 mb-2">Aucune question ajoutée</p>
           <button
             type="button"
@@ -330,9 +330,9 @@ export default function QuizBuilder({
           {questions.map((question, index) => (
             <div
               key={question.id}
-              className="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm"
+              className="border border-[var(--greek-gold)]/20 rounded-xl bg-white overflow-hidden shadow-sm"
             >
-              <div className="p-4 bg-gray-50 border-b border-gray-100 flex items-start justify-between gap-4">
+              <div className="p-4 bg-gray-50 border-b border-[var(--greek-gold)]/10 flex items-start justify-between gap-4">
                 <div className="flex items-center gap-2 text-gray-400 mt-2">
                   <span className="font-bold">#{index + 1}</span>
                 </div>
@@ -345,7 +345,7 @@ export default function QuizBuilder({
                       onChange={(e) =>
                         updateQuestion(question.id, { text: e.target.value })
                       }
-                      className="flex-1 bg-white border border-gray-200 rounded-lg p-2 font-medium focus:ring-blue-500 focus:border-blue-500"
+                      className="flex-1 bg-white border border-[var(--greek-gold)]/20 rounded-lg p-2 font-medium focus:ring-blue-500 focus:border-blue-500"
                       placeholder="Énoncé de la question..."
                     />
 
@@ -367,7 +367,7 @@ export default function QuizBuilder({
                             e.target.value === "multiple_choice" ? [] : "",
                         })
                       }
-                      className="w-40 border-gray-200 rounded-lg text-sm bg-white"
+                      className="w-40 border-[var(--greek-gold)]/20 rounded-lg text-sm bg-white"
                     >
                       <option value="single_choice">Choix Unique</option>
                       <option value="multiple_choice">Choix Multiple</option>
@@ -375,7 +375,7 @@ export default function QuizBuilder({
                       <option value="text_input">Réponse Libre</option>
                     </select>
 
-                    <div className="flex items-center gap-2 bg-white px-3 border border-gray-200 rounded-lg">
+                    <div className="flex items-center gap-2 bg-white px-3 border border-[var(--greek-gold)]/20 rounded-lg">
                       <span className="text-xs uppercase text-gray-500 font-bold">
                         Pts
                       </span>
@@ -432,7 +432,7 @@ export default function QuizBuilder({
                               )
                             }
                             readOnly={question.type === "true_false"}
-                            className={`flex-1 border-gray-200 rounded-lg py-1.5 px-3 text-sm ${
+                            className={`flex-1 border-[var(--greek-gold)]/20 rounded-lg py-1.5 px-3 text-sm ${
                               question.type === "true_false"
                                 ? "bg-gray-50 text-gray-500 cursor-not-allowed"
                                 : ""
@@ -479,7 +479,7 @@ export default function QuizBuilder({
                               correctAnswer: e.target.value,
                             })
                           }
-                          className="flex-1 border-gray-200 rounded-lg py-1.5 px-3 text-sm"
+                          className="flex-1 border-[var(--greek-gold)]/20 rounded-lg py-1.5 px-3 text-sm"
                           placeholder="Saisissez la réponse exacte attendue..."
                         />
                       </div>
@@ -487,7 +487,7 @@ export default function QuizBuilder({
                   )}
 
                   {/* Explanation / Hint */}
-                  <div className="pt-2 border-t border-gray-100 mt-2">
+                  <div className="pt-2 border-t border-[var(--greek-gold)]/10 mt-2">
                     <div className="flex items-start gap-3">
                       <Lightbulb size={18} className="text-yellow-500 mt-2" />
                       <textarea
@@ -497,7 +497,7 @@ export default function QuizBuilder({
                             explanation: e.target.value,
                           })
                         }
-                        className="flex-1 border-gray-200 rounded-lg text-sm min-h-[60px]"
+                        className="flex-1 border-[var(--greek-gold)]/20 rounded-lg text-sm min-h-[60px]"
                         placeholder="Explication / Solution détaillée (affichée après la réponse)..."
                       />
                     </div>

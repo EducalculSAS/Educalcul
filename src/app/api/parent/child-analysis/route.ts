@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { chatWithQwen } from "@/lib/qwen-service";
+import { chatWithAI } from "@/lib/llm";
 
 export async function GET(req: Request) {
   try {
@@ -87,7 +87,7 @@ Analyse ces données et produis un rapport structuré en français avec ces sect
 
 Sois précis, bienveillant et basé uniquement sur les données réelles. Si les données sont insuffisantes dis-le clairement. Réponds en français, de façon concise (max 400 mots total).`;
 
-    const analysis = await chatWithQwen(
+    const analysis = await chatWithAI(
       [{ role: "user", content: prompt }],
       "Tu es un assistant pédagogique expert qui analyse la progression d'élèves et donne des conseils aux parents.",
       0.4,

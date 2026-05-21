@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import {
   ArrowRight,
   ArrowLeft,
@@ -19,6 +19,7 @@ import {
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
+import { renderLatexInHTML } from "@/lib/katexLoader";
 
 interface ExerciseViewerProps {
   exercise: {
@@ -345,112 +346,7 @@ export default function ExerciseViewer({
     saveProgress('in_progress', 0);
   }, []);
 
-  // Load KaTeX for Math rendering
-  // Robust LaTeX rendering with proper state tracking
-  useEffect(() => {
-    let isKaTeXReady = false;
-    let isMounted = true;
 
-    const renderMath = () => {
-      if (!isMounted) return;
-      
-      // Wait a bit for DOM to be ready
-      setTimeout(() => {
-        if (!isMounted) return;
-        
-        const container = document.getElementById("exercise-content-container");
-        if (!container) return;
-        
-        // Check if renderMathInElement is available
-        if (typeof (window as any).renderMathInElement !== "function") {
-          console.warn("KaTeX renderMathInElement not available yet");
-          return;
-        }
-
-        try {
-          (window as any).renderMathInElement(container, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true },
-            ],
-            throwOnError: false,
-          });
-          isKaTeXReady = true;
-        } catch (e) {
-          console.error("KaTeX rendering failed:", e);
-        }
-      }, 100);
-    };
-
-    const loadKaTeX = () => {
-      // If already loaded globally, render immediately
-      if (typeof (window as any).renderMathInElement === "function") {
-        renderMath();
-        return;
-      }
-      
-      // Load CSS
-      if (!document.getElementById("katex-css-exercise")) {
-        const link = document.createElement("link");
-        link.id = "katex-css-exercise";
-        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-        link.rel = "stylesheet";
-        document.head.appendChild(link);
-      }
-
-      // Load main KaTeX script
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-      script.async = true;
-      script.onload = () => {
-        if (!isMounted) return;
-        // Once katex.js is loaded, load auto-render
-        const autoRenderScript = document.createElement("script");
-        autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-        autoRenderScript.async = true;
-        autoRenderScript.onload = () => {
-          if (!isMounted) return;
-          renderMath();
-        };
-        autoRenderScript.onerror = () => {
-          if (!isMounted) return;
-          console.error("Failed to load KaTeX auto-render");
-          renderMath(); // Try anyway with what we have
-        };
-        document.head.appendChild(autoRenderScript);
-      };
-      script.onerror = () => console.error("Failed to load KaTeX main script");
-      document.head.appendChild(script);
-    };
-
-    loadKaTeX();
-
-    // Setup MutationObserver for dynamic content changes
-    const container = document.getElementById("exercise-content-container");
-    if (!container) {
-      return () => { isMounted = false; };
-    }
-
-    const observer = new MutationObserver(() => {
-      // Only try to render math if KaTeX is ready
-      if (isKaTeXReady && typeof (window as any).renderMathInElement === "function") {
-        renderMath();
-      }
-    });
-
-    observer.observe(container, { 
-      childList: true, 
-      subtree: true, 
-      characterData: true 
-    });
-
-    return () => { 
-      isMounted = false;
-      observer.disconnect();
-    };
-  }, [currentPageIndex]);
 
   // Visibility control to prevent flicker
   const [contentVisible, setContentVisible] = useState(false);
@@ -711,7 +607,7 @@ export default function ExerciseViewer({
                 {block.content && (
                   <div
                     className="prose max-w-none mb-6 text-gray-600 prose-headings:text-[var(--greek-blue)] prose-a:text-[var(--greek-blue)]"
-                    dangerouslySetInnerHTML={{ __html: block.content }}
+                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(block.content || "") }}
                   />
                 )}
 

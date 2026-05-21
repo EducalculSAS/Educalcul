@@ -13,12 +13,16 @@
   --card-bg: #ffffff;
   --card-border-antique: 1px solid var(--greek-gold);
   --font-display: "Cinzel", serif;
-  --font-body: "Nunito", sans-serif;
+  --font-body: "Cinzel", serif;
   --nav-h: 64px;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
-  font-family: var(--font-body);
+  font-family: "Cinzel", serif;
   /* padding-top: var(--nav-h);  Handled by layout or specific pages */
   background-color: var(--greek-cream);
   color: var(--text-dark);
@@ -26,11 +30,11 @@ body {
 
 @layer components {
   .btn-primary-greek {
-    @apply bg-[var(--greek-bronze)] border border-[var(--greek-bronze)] text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-sm hover:bg-[var(--greek-gold)] hover:border-[var(--greek-gold)] hover:-translate-y-[1px] hover:shadow-md;
+    @apply bg-[var(--greek-gold)] border border-[var(--greek-gold)] text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-sm hover:bg-[var(--greek-gold)] hover:border-[var(--greek-gold)] hover:-translate-y-[1px] hover:shadow-md;
   }
 
   .btn-outline-light-greek {
-    @apply border border-[var(--greek-blue)] text-[var(--greek-blue)] bg-transparent font-medium px-5 py-2.5 rounded-lg transition-all duration-200 hover:bg-[var(--greek-blue)] hover:text-[var(--greek-cream)] hover:-translate-y-[1px];
+    @apply border border-[var(--greek-gold)] text-[var(--greek-gold)] bg-transparent font-medium px-5 py-2.5 rounded-lg transition-all duration-200 hover:bg-[rgba(197,161,72,0.12)] hover:text-[var(--greek-gold)] hover:-translate-y-[1px];
   }
 
   .dashboard-card {
@@ -129,16 +133,15 @@ body {
 }
 .border-anim-pro { animation: border-pro-anim 2s ease-in-out infinite; }
 
+/* ELITE — obsidian holographique (violet nuit → cyan abyssal → blanc fantôme) */
 @keyframes border-elite-anim {
-  0%   { stroke: #f43f5e; filter: drop-shadow(0 0 4px #f43f5eaa); }
-  16%  { stroke: #f97316; filter: drop-shadow(0 0 4px #f97316aa); }
-  33%  { stroke: #eab308; filter: drop-shadow(0 0 4px #eab308aa); }
-  50%  { stroke: #22c55e; filter: drop-shadow(0 0 4px #22c55eaa); }
-  66%  { stroke: #06b6d4; filter: drop-shadow(0 0 4px #06b6d4aa); }
-  83%  { stroke: #8b5cf6; filter: drop-shadow(0 0 4px #8b5cf6aa); }
-  100% { stroke: #f43f5e; filter: drop-shadow(0 0 4px #f43f5eaa); }
+  0%   { stroke: #4c1d95; stroke-width: 3; filter: drop-shadow(0 0 6px #7c3aed99) drop-shadow(0 0 12px #4c1d9566); }
+  25%  { stroke: #7c3aed; stroke-width: 4; filter: drop-shadow(0 0 10px #7c3aedcc) drop-shadow(0 0 20px #4c1d9588); }
+  50%  { stroke: #0d9488; stroke-width: 3; filter: drop-shadow(0 0 8px #0d9488bb) drop-shadow(0 0 16px #0891b266); }
+  75%  { stroke: #e0e7ff; stroke-width: 4; filter: drop-shadow(0 0 12px #e0e7ffcc) drop-shadow(0 0 22px #7c3aed88); }
+  100% { stroke: #4c1d95; stroke-width: 3; filter: drop-shadow(0 0 6px #7c3aed99) drop-shadow(0 0 12px #4c1d9566); }
 }
-.border-anim-elite { animation: border-elite-anim 2s linear infinite; }
+.border-anim-elite { animation: border-elite-anim 3s ease-in-out infinite; }
 
 @keyframes border-flame-anim {
   0%   { stroke: #fbbf24; stroke-width: 2;   filter: drop-shadow(0 0 2px #fbbf2480) drop-shadow(0 0 6px #f9731660); }
@@ -212,21 +215,21 @@ body {
   100% { filter: drop-shadow(0 0 4px #fcd34d) drop-shadow(0 0 8px #f9731660); }
 }
 
-/* ELITE — holographique avec rotation */
+/* ELITE — obsidian : violet nuit ↔ cyan abyssal avec reflet blanc fantôme */
 .name-elite {
-  position: relative;
   display: inline-block;
-  background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6, #06b6d4, #22c55e, #f59e0b);
-  background-size: 300% 100%;
+  background: linear-gradient(90deg, #4c1d95, #7c3aed, #0d9488, #e0e7ff, #0891b2, #7c3aed, #4c1d95);
+  background-size: 400% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: elite-holo 2s linear infinite;
-  filter: drop-shadow(0 0 4px currentColor);
+  font-weight: 800;
+  animation: elite-obsidian 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px #7c3aed88) drop-shadow(0 0 12px #0d948855);
 }
-@keyframes elite-holo {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
+@keyframes elite-obsidian {
+  0%,100% { background-position: 0% 50%;   filter: drop-shadow(0 0 4px #7c3aed88); }
+  50%      { background-position: 200% 50%; filter: drop-shadow(0 0 8px #0d9488aa) drop-shadow(0 0 16px #e0e7ff55); }
 }
 
 /* ARC-EN-CIEL — slide lumineux */
@@ -355,6 +358,33 @@ body {
   0%   { background-position: 0% 50%; }
   100% { background-position: 300% 50%; }
 }
+
+/* ADMIN — arc-en-ciel avec glow tournant (exclusif admin) */
+.name-admin-animated {
+  background: linear-gradient(90deg, #ff6b6b, #ffa94d, #ffd700, #4ecdc4, #45b7d1, #8b5cf6, #ff6b6b);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  animation: name-admin-slide 2s linear infinite;
+  filter: drop-shadow(0 0 6px #ff6b6b66) drop-shadow(0 0 12px #4ecdc466);
+}
+@keyframes name-admin-slide {
+  0%   { background-position: 0% 50%;   filter: drop-shadow(0 0 4px #ff6b6b88); }
+  50%  { background-position: 200% 50%; filter: drop-shadow(0 0 8px #4ecdc4aa); }
+  100% { background-position: 400% 50%; filter: drop-shadow(0 0 4px #8b5cf688); }
+}
+
+@keyframes border-admin-anim {
+  0%   { stroke: #ff6b6b; filter: drop-shadow(0 0 6px #ff6b6b); }
+  20%  { stroke: #ffa94d; filter: drop-shadow(0 0 6px #ffa94d); }
+  40%  { stroke: #ffd700; filter: drop-shadow(0 0 8px #ffd700); }
+  60%  { stroke: #4ecdc4; filter: drop-shadow(0 0 6px #4ecdc4); }
+  80%  { stroke: #8b5cf6; filter: drop-shadow(0 0 8px #8b5cf6); }
+  100% { stroke: #ff6b6b; filter: drop-shadow(0 0 6px #ff6b6b); }
+}
+.border-anim-admin { animation: border-admin-anim 2s linear infinite; }
 
 /* Thin scrollbar for chat */
 .scrollbar-thin { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }

@@ -330,7 +330,7 @@ export default function ExerciseBuilder({
           <select
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
-            className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-3 py-2 bg-white border border-[var(--greek-gold)]/25 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
           >
             <option value="cp">CP</option>
             <option value="ce1">CE1</option>
@@ -374,7 +374,7 @@ export default function ExerciseBuilder({
       )}
 
       {pages.length === 0 ? (
-        <div className="text-center py-8 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50">
+        <div className="text-center py-8 border-2 border-dashed border-[var(--greek-gold)]/25 rounded-xl bg-gray-50">
           <p className="text-gray-500 mb-2">Aucun contenu</p>
           <p className="text-sm text-gray-400">
             Ajoutez une page pour commencer
@@ -385,10 +385,10 @@ export default function ExerciseBuilder({
           {pages.map((page, pageIndex) => (
             <div
               key={page.id}
-              className="border border-gray-200 rounded-xl overflow-hidden bg-white"
+              className="border border-[var(--greek-gold)]/20 rounded-xl overflow-hidden bg-white"
             >
               {/* Page Header */}
-              <div className="flex items-center gap-3 p-4 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-3 p-4 bg-gray-50 border-b border-[var(--greek-gold)]/15">
                 <button
                   onClick={() => togglePage(page.id)}
                   className="p-1 hover:bg-gray-200 rounded text-gray-500"
@@ -427,7 +427,7 @@ export default function ExerciseBuilder({
                     {page.blocks.map((block, blockIndex) => (
                       <div
                         key={block.id}
-                        className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm"
+                        className="bg-white border border-[var(--greek-gold)]/20 rounded-lg p-4 shadow-sm"
                       >
                         <div className="flex justify-between items-start mb-4">
                           <div className="flex-1 grid grid-cols-2 gap-4">
@@ -439,7 +439,7 @@ export default function ExerciseBuilder({
                                   title: e.target.value,
                                 })
                               }
-                              className="border-gray-200 rounded-lg text-sm"
+                              className="border-[var(--greek-gold)]/20 rounded-lg text-sm"
                               placeholder="Titre du bloc"
                             />
                             <select
@@ -449,7 +449,7 @@ export default function ExerciseBuilder({
                                   type: e.target.value as Block["type"],
                                 })
                               }
-                              className="border-gray-200 rounded-lg text-sm"
+                              className="border-[var(--greek-gold)]/20 rounded-lg text-sm"
                             >
                               <option value="text">Texte</option>
                               <option value="image">Image</option>
@@ -492,7 +492,7 @@ export default function ExerciseBuilder({
                                     content: e.target.value,
                                   })
                                 }
-                                className="w-full h-24 border-gray-200 rounded-lg text-sm p-3"
+                                className="w-full h-24 border-[var(--greek-gold)]/20 rounded-lg text-sm p-3"
                                 placeholder="Posez votre question ici..."
                               />
                               {(block.content?.includes("$$") ||
@@ -518,7 +518,7 @@ export default function ExerciseBuilder({
                                     content: e.target.value,
                                   })
                                 }
-                                className="w-full h-32 border-gray-200 rounded-lg text-sm"
+                                className="w-full h-32 border-[var(--greek-gold)]/20 rounded-lg text-sm"
                                 placeholder="Contenu texte (HTML supporté)..."
                               />
                               {(block.content?.includes("$$") ||
@@ -545,7 +545,7 @@ export default function ExerciseBuilder({
                                     content: e.target.value,
                                   })
                                 }
-                                className="w-full border-gray-200 rounded-lg text-sm mb-2"
+                                className="w-full border-[var(--greek-gold)]/20 rounded-lg text-sm mb-2"
                                 placeholder="URL de l'image"
                               />
                               {block.content && (
@@ -580,7 +580,7 @@ export default function ExerciseBuilder({
                                         e.target.value
                                       )
                                     }
-                                    className="flex-1 border-gray-200 rounded-lg text-sm"
+                                    className="flex-1 border-[var(--greek-gold)]/20 rounded-lg text-sm"
                                   />
                                   <button
                                     onClick={() =>
@@ -619,7 +619,7 @@ export default function ExerciseBuilder({
                                         : e.target.value,
                                   })
                                 }
-                                className="w-full border-gray-200 rounded-lg text-sm"
+                                className="w-full border-[var(--greek-gold)]/20 rounded-lg text-sm"
                                 placeholder={
                                   block.type === "multiple_choice"
                                     ? "Option 1,Option 2"
@@ -673,7 +673,7 @@ export default function ExerciseBuilder({
                                     correctAnswer: e.target.value,
                                   })
                                 }
-                                className="w-full border-gray-200 rounded-lg text-sm"
+                                className="w-full border-[var(--greek-gold)]/20 rounded-lg text-sm"
                                 placeholder="La réponse exacte attendue..."
                               />
                             </div>
@@ -691,7 +691,7 @@ export default function ExerciseBuilder({
                                   points: parseInt(e.target.value) || 0,
                                 })
                               }
-                              className="w-20 border-gray-200 rounded text-xs"
+                              className="w-20 border-[var(--greek-gold)]/20 rounded text-xs"
                             />
                           </div>
                         </div>
@@ -700,7 +700,7 @@ export default function ExerciseBuilder({
 
                     <button
                       onClick={() => addBlock(page.id)}
-                      className="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-[var(--greek-blue)] hover:text-[var(--greek-blue)] transition-colors flex items-center justify-center gap-2"
+                      className="w-full py-2 border-2 border-dashed border-[var(--greek-gold)]/25 rounded-lg text-gray-500 hover:border-[var(--greek-blue)] hover:text-[var(--greek-blue)] transition-colors flex items-center justify-center gap-2"
                       type="button"
                     >
                       <Plus size={16} />

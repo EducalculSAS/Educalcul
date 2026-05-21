@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
+import { renderLatexInHTML } from "@/lib/katexLoader";
+
 
 interface QuizViewerProps {
   quiz: {
@@ -84,110 +86,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
     saveProgress('in_progress', 0);
   }, []);
 
-  // Robust LaTeX rendering with proper state tracking
-  useEffect(() => {
-    let isKaTeXReady = false;
-    let isMounted = true;
 
-    const renderMath = () => {
-      if (!isMounted) return;
-      
-      setTimeout(() => {
-        if (!isMounted) return;
-        
-        const container = document.getElementById("quiz-content-container");
-        if (!container) return;
-        
-        // Check if renderMathInElement is available
-        if (typeof (window as any).renderMathInElement !== "function") {
-          console.warn("KaTeX renderMathInElement not available yet");
-          return;
-        }
-
-        try {
-          (window as any).renderMathInElement(container, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true },
-            ],
-            throwOnError: false,
-          });
-          isKaTeXReady = true;
-        } catch (e) {
-          console.error("KaTeX rendering failed:", e);
-        }
-      }, 100);
-    };
-
-    const loadKaTeX = () => {
-      // If already loaded globally, render immediately
-      if (typeof (window as any).renderMathInElement === "function") {
-        renderMath();
-        return;
-      }
-      
-      // Load CSS
-      if (!document.getElementById("katex-css-quiz")) {
-        const link = document.createElement("link");
-        link.id = "katex-css-quiz";
-        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-        link.rel = "stylesheet";
-        document.head.appendChild(link);
-      }
-
-      // Load main KaTeX script
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-      script.async = true;
-      script.onload = () => {
-        if (!isMounted) return;
-        // Once katex.js is loaded, load auto-render
-        const autoRenderScript = document.createElement("script");
-        autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-        autoRenderScript.async = true;
-        autoRenderScript.onload = () => {
-          if (!isMounted) return;
-          renderMath();
-        };
-        autoRenderScript.onerror = () => {
-          if (!isMounted) return;
-          console.error("Failed to load KaTeX auto-render");
-          renderMath(); // Try anyway with what we have
-        };
-        document.head.appendChild(autoRenderScript);
-      };
-      script.onerror = () => console.error("Failed to load KaTeX main script");
-      document.head.appendChild(script);
-    };
-
-    loadKaTeX();
-
-    // Setup MutationObserver for dynamic content changes
-    const container = document.getElementById("quiz-content-container");
-    if (!container) {
-      return () => { isMounted = false; };
-    }
-
-    const observer = new MutationObserver(() => {
-      // Only try to render math if KaTeX is ready
-      if (isKaTeXReady && typeof (window as any).renderMathInElement === "function") {
-        renderMath();
-      }
-    });
-
-    observer.observe(container, { 
-      childList: true, 
-      subtree: true, 
-      characterData: true 
-    });
-
-    return () => { 
-      isMounted = false;
-      observer.disconnect();
-    };
-  }, [currentQuestionIndex, quizCompleted, showExplanation]);
 
   // Visibility control to prevent flicker
   const [contentVisible, setContentVisible] = useState(false);
@@ -290,6 +189,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
+      setShowExplanation(false);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
@@ -424,7 +324,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
 
           {/* Question */}
           <div className="mb-8 prose prose-lg prose-headings:text-[var(--greek-blue)] max-w-none text-gray-900 font-bold">
-            <div dangerouslySetInnerHTML={{ __html: currentQuestion.text }} />
+            <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentQuestion.text || "") }} />
           </div>
 
           {/* Options or Input */}
@@ -515,7 +415,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
                     >
                       <div className="flex-shrink-0">{icon}</div>
                       <div className="font-medium text-lg prose prose-sm max-w-none">
-                        <div dangerouslySetInnerHTML={{ __html: option }} />
+                        <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(option || "") }} />
                       </div>
                     </button>
                   );
@@ -525,20 +425,30 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
           </div>
 
           {/* Explanation */}
-          {showExplanation && currentQuestion.explanation && (
-            <div className="mb-8 p-6 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/30 animate-in fade-in slide-in-from-top-2">
-              <div className="flex items-center gap-2 text-[var(--greek-blue)] font-bold mb-2">
-                <HelpCircle className="w-5 h-5" />
-                Explication
-              </div>
-              <div className="text-[var(--greek-bronze)] prose prose-sm max-w-none">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: currentQuestion.explanation,
-                  }}
-                />
-              </div>
-            </div>
+          {currentQuestion.explanation && (
+            <>
+              {/* En mode révision : toujours visible. Sinon : bouton toggle */}
+              {!showReview && isAnswerSubmitted && (
+                <button
+                  onClick={() => setShowExplanation(v => !v)}
+                  className="mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--greek-blue)] hover:text-blue-800 transition-colors"
+                >
+                  <HelpCircle className="w-4 h-4" />
+                  {showExplanation ? "Masquer l'explication" : "Voir l'explication"}
+                </button>
+              )}
+              {(showReview || showExplanation) && (
+                <div className="mb-8 p-6 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/30">
+                  <div className="flex items-center gap-2 text-[var(--greek-blue)] font-bold mb-2">
+                    <HelpCircle className="w-5 h-5" />
+                    Explication
+                  </div>
+                  <div className="text-[var(--greek-bronze)] prose prose-sm max-w-none">
+                    <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentQuestion.explanation || "") }} />
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
           {/* Actions */}

@@ -180,7 +180,7 @@ export default function AIChatWindow({
                   className={`max-w-[80%] p-3 rounded-2xl text-sm whitespace-pre-wrap ${
                     msg.role === "user"
                       ? "bg-blue-600 text-white rounded-tr-none"
-                      : "bg-white border border-gray-200 text-gray-800 rounded-tl-none shadow-sm"
+                      : "bg-white border border-[var(--greek-gold)]/25 text-gray-800 rounded-tl-none shadow-sm"
                   }`}
                 >
                   {msg.content}
@@ -193,7 +193,7 @@ export default function AIChatWindow({
               <div className="w-8 h-8 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center flex-shrink-0">
                 <Bot size={16} />
               </div>
-              <div className="bg-white border border-gray-200 p-3 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-2">
+              <div className="bg-white border border-[var(--greek-gold)]/25 p-3 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-2">
                 <Loader2 className="w-4 h-4 animate-spin text-[var(--greek-blue)]" />
                 <span className="text-sm text-gray-500">Je réfléchis...</span>
               </div>
@@ -202,7 +202,7 @@ export default function AIChatWindow({
         </div>
 
         {/* Input Area */}
-        <div className="p-4 bg-white border-t border-gray-100">
+        <div className="p-4 bg-white border-t border-[var(--greek-gold)]/15">
           <div className="flex gap-2">
             <input
               type="text"
@@ -210,7 +210,7 @@ export default function AIChatWindow({
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Écrivez votre message..."
-              className="flex-1 border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+              className="flex-1 border border-[var(--greek-gold)]/25 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
               disabled={isLoading}
               autoFocus
             />

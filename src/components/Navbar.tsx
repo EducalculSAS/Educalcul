@@ -1,12 +1,13 @@
-"use client";
+﻿"use client";
 
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 import {
   Menu,
   X,
-  Calculator,
   LogOut,
   User,
   LayoutDashboard,
@@ -17,13 +18,26 @@ import {
   Trophy,
   Brain,
   MessageSquare,
+  HelpCircle,
 } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [firstName, setFirstName] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!isOpen) return;
+      if (navRef.current?.contains(e.target as Node)) return;
+      setIsOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -44,7 +58,7 @@ export default function Navbar() {
 
       const {
         data: { subscription },
-      } = supabase.auth.onAuthStateChange(async (_event: any, session: any) => {
+      } = supabase.auth.onAuthStateChange(async (_event, session) => {
         setUser(session?.user || null);
         if (session?.user) {
           const { data: userData } = await supabase
@@ -94,14 +108,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar fixed top-0 left-0 right-0 z-[1030] bg-[var(--greek-blue)] h-[64px] min-h-[64px] px-4 shadow-md">
+    <nav ref={navRef} className="navbar fixed top-0 left-0 right-0 z-[1030] bg-[var(--greek-blue)] h-[64px] min-h-[64px] px-4 shadow-md">
       <div className="container mx-auto flex items-center justify-between h-full max-w-7xl">
         {/* Brand */}
         <Link
           href={getDashboardLink()}
-          className="navbar-brand flex items-center text-[var(--greek-cream)] hover:text-white transition-colors gap-2 font-[family-name:var(--font-cinzel)] font-bold text-xl no-underline"
+          className="navbar-brand flex items-center text-[var(--greek-cream)] hover:text-white transition-colors gap-2 font-[family-name:var(--font-display)] font-bold text-xl no-underline"
         >
-          <Calculator className="w-5 h-5" />
+          <img src="/logo.png" alt="logo" className="w-9 h-9 relative -top-0.5" />
           <span>Educalcul</span>
         </Link>
 
@@ -125,28 +139,28 @@ export default function Navbar() {
             <div className="flex flex-col p-4 gap-2">
               <Link
                 href="/offres"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors"
+                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
                 onClick={() => setIsOpen(false)}
               >
                 Offres
               </Link>
               <Link
                 href="/tarifs"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors"
+                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
                 onClick={() => setIsOpen(false)}
               >
                 Tarifs
               </Link>
               <Link
                 href="/faq"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors"
+                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
               </Link>
               <Link
                 href="/contact"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors"
+                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
                 onClick={() => setIsOpen(false)}
               >
                 Contact
@@ -165,14 +179,14 @@ export default function Navbar() {
               <>
                 <Link
                   href="/auth/connexion"
-                  className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                  className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                   onClick={() => setIsOpen(false)}
                 >
                   <User className="w-4 h-4" /> Connexion
                 </Link>
                 <Link
                   href="/auth/inscription"
-                  className="btn-primary-greek text-center block w-full mt-2"
+                  className="btn-primary-greek text-center block w-full mt-2 hover:translate-y-[-1px]"
                   onClick={() => setIsOpen(false)}
                 >
                   Inscription
@@ -187,7 +201,7 @@ export default function Navbar() {
                 </div>
                 <Link
                   href={getDashboardLink()}
-                  className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                  className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                   onClick={() => setIsOpen(false)}
                 >
                   <LayoutDashboard className="w-4 h-4" /> Tableau de bord
@@ -196,24 +210,31 @@ export default function Navbar() {
                   <>
                     <Link
                       href="/parent/children"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <Users className="w-4 h-4" /> Mes Enfants
                     </Link>
                     <Link
                       href="/parent/subscription"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <CreditCard className="w-4 h-4" /> Abonnements
                     </Link>
                     <Link
                       href="/parent/forum"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <MessageSquare className="w-4 h-4" /> Forum
+                    </Link>
+                    <Link
+                      href="/parent/support"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <HelpCircle className="w-4 h-4" /> Support
                     </Link>
                   </>
                 )}
@@ -221,38 +242,45 @@ export default function Navbar() {
                   <>
                     <Link
                       href="/child/cours"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <BookOpen className="w-4 h-4" /> Mes Cours
                     </Link>
                     <Link
                       href="/child/exercises"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <Brain className="w-4 h-4" /> Exercices
                     </Link>
                     <Link
                       href="/child/quiz"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <Trophy className="w-4 h-4" /> Quiz & Défis
                     </Link>
                     <Link
                       href="/child/badges"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <Trophy className="w-4 h-4" /> Mes Trophées
                     </Link>
                     <Link
                       href="/child/forum"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
                       <MessageSquare className="w-4 h-4" /> Forum
+                    </Link>
+                    <Link
+                      href="/child/support"
+                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <HelpCircle className="w-4 h-4" /> Support
                     </Link>
                   </>
                 )}

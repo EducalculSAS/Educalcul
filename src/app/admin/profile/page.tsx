@@ -1,9 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { User, Lock, Save, Key, Eye, Crown, Shield } from "lucide-react";
+import { User, Save, Eye, Crown, Shield } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
+
+const ADMIN_AVATAR = "/logo.png";
 
 export default function AdminProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -20,23 +22,11 @@ export default function AdminProfilePage() {
     last_name: "",
     child_username: "",
     email: "",
-    avatar: "avatar1.png",
-    name_animation: "soft-sparkle",
+    avatar: ADMIN_AVATAR,
+    name_animation: "text-admin",
     avatar_border: "border-admin",
   });
 
-
-  // Avatars list (matching PHP config)
-  const avatars = [
-    "avatar1.png",
-    "avatar2.png",
-    "avatar3.png",
-    "avatar4.png",
-    "avatar5.png",
-    "avatar6.png",
-    "avatar7.png",
-    "avatar8.png",
-  ];
 
   useEffect(() => {
     fetchProfile();
@@ -63,8 +53,8 @@ export default function AdminProfilePage() {
         last_name: data.last_name || "",
         child_username: data.child_username || "",
         email: data.email || session.user.email || "",
-        avatar: data.avatar || "avatar1.png",
-        name_animation: data.name_animation || "soft-sparkle",
+        avatar: ADMIN_AVATAR, // always locked to logo
+        name_animation: data.name_animation || "text-admin",
         avatar_border: data.avatar_border || "border-admin",
       });
     } catch (error: any) {
@@ -129,195 +119,49 @@ export default function AdminProfilePage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       <style jsx global>{`
-        /* Replicated Animations and Styles */
-        @keyframes adminGlow {
-          0%,
-          100% {
-            box-shadow: 0 0 40px rgba(255, 107, 107, 0.8),
-              0 0 60px rgba(78, 205, 196, 0.7),
-              inset 0 0 35px rgba(255, 234, 167, 0.4);
-          }
-          50% {
-            box-shadow: 0 0 60px rgba(255, 107, 107, 1),
-              0 0 80px rgba(78, 205, 196, 0.9),
-              inset 0 0 50px rgba(255, 234, 167, 0.6);
-          }
+        /* === BORDER PREVIEW CLASSES (applied directly in admin profile) === */
+        @keyframes adm-glow {
+          0%,100% { box-shadow: 0 0 10px #ff6b6b88, 0 0 20px #4ecdc488; }
+          50%      { box-shadow: 0 0 20px #ffd70099, 0 0 30px #8b5cf688; }
         }
-        @keyframes adminRotate {
-          0% {
-            filter: hue-rotate(0deg);
-          }
-          100% {
-            filter: hue-rotate(360deg);
-          }
+        @keyframes adm-hue { 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
+        @keyframes adm-crown { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+        @keyframes adm-pulse-gold     { 0%,100%{box-shadow:0 0 20px #ffd70099} 50%{box-shadow:0 0 30px #ffd700cc} }
+        @keyframes adm-pulse-diamond  { 0%,100%{filter:hue-rotate(0deg)} 50%{filter:hue-rotate(180deg)} }
+        @keyframes adm-pulse-elite    { 0%{box-shadow:0 0 12px #7c3aed88,0 0 22px #4c1d9555} 50%{box-shadow:0 0 20px #0d9488aa,0 0 35px #e0e7ff44} 100%{box-shadow:0 0 12px #7c3aed88,0 0 22px #4c1d9555} }
+        @keyframes adm-pulse-flame    { 0%,100%{box-shadow:0 0 10px #f9731666} 50%{box-shadow:0 0 20px #ef4444aa} }
+        @keyframes adm-pulse-premium  { 0%,100%{box-shadow:0 0 10px #a855f777} 50%{box-shadow:0 0 20px #d946efaa} }
+
+        .border-bronze  { border:4px solid #cd7f32; box-shadow:0 0 12px rgba(205,127,50,.5); }
+        .border-silver  { border:5px solid #c0c0c0; box-shadow:0 0 15px rgba(192,192,192,.6); }
+        .border-gold    { border:6px solid #ffd700; box-shadow:0 0 20px rgba(255,215,0,.7); animation:adm-pulse-gold 2.5s ease-in-out infinite; }
+        .border-diamond { border:6px solid transparent; background:linear-gradient(45deg,#b9f2ff,#66d9ef,#a8e6cf,#dcedc1) border-box; box-shadow:0 0 25px #b9f2ff88; animation:adm-pulse-diamond 2s ease-in-out infinite; }
+        .border-premium { border:5px solid #a855f7; box-shadow:0 0 18px rgba(168,85,247,.6); animation:adm-pulse-premium 2s ease-in-out infinite; }
+        .border-famille { border:5px solid #14b8a6; box-shadow:0 0 18px rgba(20,184,166,.6); }
+        .border-flamme  { border:5px solid #f97316; box-shadow:0 0 18px rgba(249,115,22,.7); animation:adm-pulse-flame 1s ease-in-out infinite; }
+        .border-pro     { border:6px solid #f59e0b; box-shadow:0 0 20px rgba(245,158,11,.7); animation:adm-pulse-gold 2s ease-in-out infinite; }
+        .border-elite   { border:6px solid #7c3aed; box-shadow:0 0 18px rgba(124,58,237,.6),0 0 30px rgba(13,148,136,.3); animation:adm-pulse-elite 3s ease-in-out infinite; }
+        .border-admin {
+          position:relative;
+          border:8px solid transparent;
+          background:linear-gradient(45deg,#ff6b6b,#ffd700,#4ecdc4,#8b5cf6,#ff6b6b) border-box, linear-gradient(white,white) padding-box;
+          box-shadow:0 0 20px #ff6b6b77;
+          animation:adm-glow 2s ease-in-out infinite, adm-hue 6s linear infinite;
         }
-        @keyframes adminHalo {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-        @keyframes crownFloat {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-5px);
-          }
-        }
-        @keyframes goldPulse {
-          0%,
-          100% {
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
-          }
-          50% {
-            box-shadow: 0 0 35px rgba(255, 215, 0, 1);
-          }
-        }
-        @keyframes platinumShimmer {
-          0%,
-          100% {
-            box-shadow: 0 0 30px rgba(229, 228, 226, 0.9);
-          }
-          50% {
-            box-shadow: 0 0 40px rgba(229, 228, 226, 1);
-          }
-        }
-        @keyframes diamondSparkle {
-          0%,
-          100% {
-            filter: hue-rotate(0deg);
-          }
-          50% {
-            filter: hue-rotate(180deg);
-          }
-        }
-        @keyframes soft-sparkle {
-          0%,
-          100% {
-            opacity: 0.3;
-            transform: scale(0.8);
-          }
-          50% {
-            opacity: 0.8;
-            transform: scale(1.2);
-          }
-        }
-        @keyframes adminTextGlow {
-          0% {
-            filter: brightness(1) saturate(1);
-          }
-          100% {
-            filter: brightness(1.3) saturate(1.5);
-          }
+        .border-admin::after {
+          content:"👑"; position:absolute; top:-18px; right:-8px;
+          font-size:20px; animation:adm-crown 2s ease-in-out infinite; z-index:10;
         }
 
-        /* Border Classes */
-        .avatar-border-basic {
-          border: 3px solid #4a90e2;
-          box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
-        }
-        .avatar-border-bronze {
-          border: 4px solid #cd7f32;
-          box-shadow: 0 0 15px rgba(205, 127, 50, 0.6);
-        }
-        .avatar-border-silver {
-          border: 5px solid #c0c0c0;
-          box-shadow: 0 0 20px rgba(192, 192, 192, 0.7);
-        }
-        .avatar-border-gold {
-          border: 6px solid #ffd700;
-          box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
-          animation: goldPulse 3s ease-in-out infinite;
-        }
-        .avatar-border-platinum {
-          border: 7px solid #e5e4e2;
-          box-shadow: 0 0 30px rgba(229, 228, 226, 0.9);
-          animation: platinumShimmer 4s ease-in-out infinite;
-        }
-        .avatar-border-diamond {
-          border: 8px solid transparent;
-          background: linear-gradient(45deg, #b9f2ff, #66d9ef, #a8e6cf, #dcedc1)
-            border-box;
-          box-shadow: 0 0 35px rgba(185, 242, 255, 0.9);
-          animation: diamondSparkle 2.5s ease-in-out infinite;
-        }
-        .avatar-border-admin {
-          position: relative;
-          border: 10px solid transparent;
-          background: linear-gradient(
-                45deg,
-                #ff6b6b,
-                #4ecdc4,
-                #45b7d1,
-                #96ceb4,
-                #ffeaa7,
-                #dda0dd
-              )
-              border-box,
-            linear-gradient(white, white) padding-box;
-          box-shadow: 0 0 40px rgba(255, 107, 107, 0.8);
-          animation: adminGlow 2s ease-in-out infinite,
-            adminRotate 8s linear infinite;
-        }
-        .avatar-border-admin::after {
-          content: "👑";
-          position: absolute;
-          top: -20px;
-          right: -10px;
-          font-size: 24px;
-          animation: crownFloat 2s ease-in-out infinite;
-          z-index: 10;
-        }
-
-        /* Text Classes */
-        .text-basic {
-          color: #333333 !important;
-        }
-        .text-bronze {
-          color: #cd7f32 !important;
-          text-shadow: 1px 1px 3px rgba(205, 127, 50, 0.5) !important;
-          font-weight: 600 !important;
-        }
-        .text-silver {
-          color: #c0c0c0 !important;
-          text-shadow: 1px 1px 4px rgba(192, 192, 192, 0.6) !important;
-          font-weight: 600 !important;
-        }
-        .text-gold {
-          color: #ffd700 !important;
-          text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.7) !important;
-          font-weight: 700 !important;
-        }
-        .text-platinum {
-          color: #e5e4e2 !important;
-          text-shadow: 2px 2px 6px rgba(229, 228, 226, 0.6) !important;
-          font-weight: 700 !important;
-        }
-        .text-diamond {
-          color: #b9f2ff !important;
-          text-shadow: 2px 2px 8px rgba(185, 242, 255, 0.7) !important;
-          font-weight: 700 !important;
-        }
+        /* Text class — admin rainbow */
         .text-admin {
-          background: linear-gradient(
-            45deg,
-            #ff6b6b,
-            #4ecdc4,
-            #45b7d1,
-            #96ceb4,
-            #ffeaa7,
-            #dda0dd
-          ) !important;
-          -webkit-background-clip: text !important;
-          -webkit-text-fill-color: transparent !important;
-          background-clip: text !important;
-          font-weight: 700 !important;
-          animation: adminTextGlow 3s ease-in-out infinite alternate !important;
+          background:linear-gradient(90deg,#ff6b6b,#ffd700,#4ecdc4,#8b5cf6,#ff6b6b) !important;
+          background-size:300% 100% !important;
+          -webkit-background-clip:text !important; -webkit-text-fill-color:transparent !important;
+          background-clip:text !important; font-weight:800 !important;
+          animation:adm-hue 3s linear infinite !important;
         }
+        .text-basic { color:#333 !important; }
       `}</style>
 
       {/* Header */}
@@ -326,10 +170,10 @@ export default function AdminProfilePage() {
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
             <Crown className="text-[var(--greek-gold)]" size={32} />
-            Identité de Professeur
+            Mon Profil Admin
           </h1>
           <p className="text-[var(--greek-bronze)] text-lg">
-            Gérez votre image publique et comment les héros vous voient dans le sanctuaire.
+            Gérez votre apparence publique sur la plateforme.
           </p>
         </div>
       </div>
@@ -362,11 +206,11 @@ export default function AdminProfilePage() {
         {/* Main Column - Forms */}
         <div className="lg:col-span-2 space-y-8">
           {/* Personal Info Card */}
-          <div className="bg-white rounded-[20px] shadow-sm border border-gray-200 overflow-hidden">
-            <div className="bg-[var(--greek-blue)]/5 px-8 py-6 border-b border-gray-100 flex items-center gap-3">
+          <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/20 overflow-hidden">
+            <div className="bg-[var(--greek-blue)]/5 px-8 py-6 border-b border-[var(--greek-gold)]/15 flex items-center gap-3">
               <User className="text-[var(--greek-blue)]" size={24} />
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
-                Branding Public
+                Profil public
               </h2>
             </div>
             <div className="p-8">
@@ -374,7 +218,7 @@ export default function AdminProfilePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Nom de Professeur (Public) *
+                      Pseudo public *
                     </label>
                     <input
                       type="text"
@@ -382,8 +226,8 @@ export default function AdminProfilePage() {
                       onChange={(e) =>
                         setFormData({ ...formData, child_username: e.target.value })
                       }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all font-bold"
-                      placeholder="Ex: Prof. Archimède"
+                      className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all font-bold"
+                      placeholder="Ex: Admin Educalcul"
                       required
                     />
                   </div>
@@ -394,7 +238,7 @@ export default function AdminProfilePage() {
                     <input
                       type="email"
                       value={formData.email}
-                      className="w-full px-4 py-3 border border-gray-100 rounded-xl bg-gray-50 text-gray-400 outline-none cursor-not-allowed"
+                      className="w-full px-4 py-3 border border-[var(--greek-gold)]/15 rounded-xl bg-gray-50 text-gray-400 outline-none cursor-not-allowed"
                       disabled
                     />
                   </div>
@@ -414,17 +258,27 @@ export default function AdminProfilePage() {
                             name_animation: e.target.value,
                           })
                         }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun style</option>
-                        <optgroup label="Styles">
+                        <optgroup label="✦ Admin exclusif">
+                          <option value="text-admin">👑 Admin (arc-en-ciel)</option>
+                        </optgroup>
+                        <optgroup label="Abonnements">
+                          <option value="name-elite">Élite (obsidian violet-cyan)</option>
+                          <option value="name-flame">Flamme</option>
+                          <option value="name-pro-animated">Annuel Pro (or)</option>
+                          <option value="name-purple-animated">Premium (violet)</option>
+                          <option value="name-teal-animated">Famille (turquoise)</option>
+                        </optgroup>
+                        <optgroup label="Badges">
+                          <option value="name-diamond-animated">Diamant</option>
+                          <option value="name-gold-animated">Or</option>
+                          <option value="name-silver-animated">Argent</option>
+                          <option value="name-bronze-animated">Bronze</option>
+                        </optgroup>
+                        <optgroup label="Autre">
                           <option value="text-basic">Texte Basique</option>
-                          <option value="text-bronze">Texte Bronze</option>
-                          <option value="text-silver">Texte Argent</option>
-                          <option value="text-gold">Texte Or</option>
-                          <option value="text-platinum">Texte Platine</option>
-                          <option value="text-diamond">Texte Diamant</option>
-                          <option value="text-admin">Texte Admin</option>
                         </optgroup>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
@@ -459,17 +313,24 @@ export default function AdminProfilePage() {
                             avatar_border: e.target.value,
                           })
                         }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun contour</option>
-                        <optgroup label="Contours">
-                          <option value="border-basic">Contour Basique</option>
-                          <option value="border-bronze">Contour Bronze</option>
-                          <option value="border-silver">Contour Argent</option>
-                          <option value="border-gold">Contour Or</option>
-                          <option value="border-platinum">Contour Platine</option>
-                          <option value="border-diamond">Contour Diamant</option>
-                          <option value="border-admin">Contour Admin</option>
+                        <optgroup label="✦ Admin exclusif">
+                          <option value="border-admin">👑 Admin (arc-en-ciel)</option>
+                        </optgroup>
+                        <optgroup label="Abonnements">
+                          <option value="border-elite">Élite (obsidian violet)</option>
+                          <option value="border-flamme">Flamme</option>
+                          <option value="border-pro">Annuel Pro</option>
+                          <option value="border-premium">Premium</option>
+                          <option value="border-famille">Famille</option>
+                        </optgroup>
+                        <optgroup label="Badges">
+                          <option value="border-diamond">Diamant</option>
+                          <option value="border-gold">Or</option>
+                          <option value="border-silver">Argent</option>
+                          <option value="border-bronze">Bronze</option>
                         </optgroup>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
@@ -503,32 +364,17 @@ export default function AdminProfilePage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
                     required
                   />
                 </div>
 
-                <div className="mb-8">
-                  <label className="block text-sm font-semibold text-gray-700 mb-4">
-                    Avatar
-                  </label>
-                  <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
-                    {avatars.map((avatar) => (
-                      <div
-                        key={avatar}
-                        onClick={() => setFormData({ ...formData, avatar })}
-                        className={`cursor-pointer p-1 border-2 rounded-2xl transition-all hover:bg-[var(--greek-blue)]/5 ${formData.avatar === avatar
-                          ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5 scale-105"
-                          : "border-transparent hover:border-[var(--greek-gold)]/50"
-                          }`}
-                      >
-                        <img
-                          src={`/avatars/${avatar}`}
-                          alt={avatar}
-                          className="w-full h-auto rounded-full border-2 border-white shadow-sm"
-                        />
-                      </div>
-                    ))}
+                {/* Avatar bloqué — toujours logo.png */}
+                <div className="mb-8 flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                  <img src={ADMIN_AVATAR} alt="Logo" className="w-12 h-12 rounded-xl object-contain" />
+                  <div>
+                    <p className="text-sm font-semibold text-gray-700">Photo de profil</p>
+                    <p className="text-xs text-gray-400 mt-0.5">Le logo du site est utilisé comme photo admin — non modifiable.</p>
                   </div>
                 </div>
 
@@ -538,7 +384,7 @@ export default function AdminProfilePage() {
                   className="w-full md:w-auto px-8 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)] focus:ring-opacity-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Save size={20} />
-                  {saving ? "Enregistrement..." : "Sauvegarder l'identité"}
+                  {saving ? "Enregistrement..." : "Sauvegarder"}
                 </button>
               </form>
             </div>
@@ -553,20 +399,25 @@ export default function AdminProfilePage() {
               Aperçu du Profil
             </div>
             <div className="p-6 text-center">
-              <div className="flex justify-center mb-6 relative">
-                <div className={`w-32 h-32 rounded-full overflow-hidden transition-all duration-300 ${formData.avatar_border}`}>
-                  <img
-                    src={avatarUrl(formData.avatar, "/avatars/avatar1.png")!}
-                    alt="Aperçu"
-                    className="w-full h-full object-cover"
-                  />
+              <div className="flex justify-center mb-8 relative">
+                {/* outer: border + animation — overflow:visible pour que ::after (couronne) soit visible */}
+                <div className={`w-32 h-32 rounded-full transition-all duration-300 ${formData.avatar_border}`}
+                     style={{ overflow: "visible" }}>
+                  {/* inner: clip circulaire de l'image */}
+                  <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                    <img
+                      src={ADMIN_AVATAR}
+                      alt="Logo admin"
+                      className="w-full h-full object-contain p-2"
+                    />
+                  </div>
                 </div>
               </div>
 
               <h4
                 className={`text-2xl mb-4 transition-all duration-300 font-bold ${formData.name_animation}`}
               >
-                {formData.child_username || "Nom de Professeur"}
+                {formData.child_username || "Pseudo admin"}
               </h4>
 
               <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[var(--greek-gold)] rounded-lg bg-[var(--greek-cream)] shadow-sm">

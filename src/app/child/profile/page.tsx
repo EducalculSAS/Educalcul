@@ -249,7 +249,7 @@ export default function ChildProfilePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
+            <div className="bg-blue-50 rounded-xl p-6 border border-[var(--greek-gold)]/20">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-[var(--greek-blue)]">
                   <School className="w-6 h-6" />
@@ -265,7 +265,7 @@ export default function ChildProfilePage() {
               </div>
             </div>
 
-            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-100">
+            <div className="bg-yellow-50 rounded-xl p-6 border border-[var(--greek-gold)]/20">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-[var(--greek-gold)]">
                   <Trophy className="w-6 h-6" />
@@ -279,7 +279,7 @@ export default function ChildProfilePage() {
               </div>
             </div>
 
-            <div className="bg-purple-50 rounded-xl p-6 border border-purple-100">
+            <div className="bg-purple-50 rounded-xl p-6 border border-[var(--greek-gold)]/20">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
                   <BookOpen className="w-6 h-6" />
@@ -293,7 +293,7 @@ export default function ChildProfilePage() {
               </div>
             </div>
 
-            <div className="bg-green-50 rounded-xl p-6 border border-green-100">
+            <div className="bg-green-50 rounded-xl p-6 border border-[var(--greek-gold)]/20">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                   <Star className="w-6 h-6" />
@@ -309,13 +309,13 @@ export default function ChildProfilePage() {
           </div>
 
           {/* Linked Accounts Section */}
-          <div className="mt-8 pt-8 border-t border-gray-100">
+          <div className="mt-8 pt-8 border-t border-[var(--card-border-antique)]">
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center">
               <Mail className="w-5 h-5 mr-2" />
               Connexion rapide
             </h3>
 
-            <div className="flex items-center justify-between p-4 border border-blue-100 rounded-xl bg-blue-50/50">
+            <div className="flex items-center justify-between p-4 border border-[var(--greek-gold)]/20 rounded-xl bg-blue-50/50">
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mr-4">
                   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -363,7 +363,7 @@ export default function ChildProfilePage() {
               ) : (
                 <button
                   onClick={handleLinkGoogle}
-                  className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-bold text-[var(--greek-blue)] hover:bg-gray-50 transition-colors shadow-sm"
+                  className="px-4 py-2 bg-white border border-[var(--greek-gold)]/30 rounded-lg text-sm font-bold text-[var(--greek-blue)] hover:bg-gray-50 transition-colors shadow-sm"
                 >
                   Lier le compte
                 </button>
@@ -382,7 +382,7 @@ export default function ChildProfilePage() {
           </div>
 
           <div className="bg-white rounded-[20px] shadow-xl border-2 border-[var(--greek-blue)]/10 overflow-hidden">
-            <div className="flex border-b border-gray-100 bg-gray-50/50">
+            <div className="flex border-b border-[var(--greek-gold)]/20 bg-gray-50/50">
               {(["exercises", "quizzes", "courses"] as const).map((tab) => (
                 <button
                   key={tab}
@@ -407,7 +407,7 @@ export default function ChildProfilePage() {
                     <EmptyActivities message="Aucun exercice terminé pour le moment. Lance-toi !" />
                   ) : (
                     activities.exercises.map((ex) => (
-                      <div key={ex.id} className="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-blue-100 hover:bg-blue-50 transition-colors">
+                      <div key={ex.id} className="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-[var(--greek-gold)]/20 hover:bg-blue-50 transition-colors">
                         <div>
                           <p className="font-bold text-[var(--greek-blue)] text-lg flex items-center gap-2">
                             {ex.exercises?.title || "Exercice"}
@@ -503,7 +503,7 @@ export default function ChildProfilePage() {
 
 function EmptyActivities({ message }: { message: string }) {
   return (
-    <div className="text-center py-12 px-6 border-2 border-dashed border-gray-200 rounded-2xl">
+    <div className="text-center py-12 px-6 border-2 border-dashed border-[var(--card-border-antique)] rounded-2xl">
       <Star className="w-12 h-12 text-gray-200 mx-auto mb-4" />
       <p className="text-gray-500 text-lg italic">{message}</p>
     </div>

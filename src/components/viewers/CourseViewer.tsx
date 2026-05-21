@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { 
@@ -17,6 +17,7 @@ import {
 import { Chapter, Lesson } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
+import { renderLatexInHTML } from "@/lib/katexLoader";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -47,6 +48,8 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
   const [selectedText, setSelectedText] = useState("");
   const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0 });
   const contentRef = useRef<HTMLDivElement>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const selectedTextRef = useRef("");
   const rangeRef = useRef<Range | null>(null);
 
   const currentChapter = chapters[currentChapterIndex];
@@ -93,145 +96,78 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
     });
   }, [course.title, currentChapterIndex, currentLessonIndex, setPageContext, chapters]);
 
-  // Load KaTeX on mount
-  useEffect(() => {
-    const loadKatex = () => {
-      if (typeof (window as any).renderMathInElement === "function") {
-        return; // Already loaded
-      }
+  // KaTeX pré-rendu via renderLatexInHTML — pas besoin de useLayoutEffect
 
-      // Load CSS
-      if (!document.getElementById("katex-css")) {
-        const link = document.createElement("link");
-        link.id = "katex-css";
-        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-        link.rel = "stylesheet";
-        document.head.appendChild(link);
-      }
-
-      // Load KaTeX script
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-      script.async = true;
-      script.onload = () => {
-        // Load auto-render
-        const autoRender = document.createElement("script");
-        autoRender.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-        autoRender.async = true;
-        autoRender.onload = () => {
-          console.log("✅ KaTeX loaded");
-        };
-        document.head.appendChild(autoRender);
-      };
-      document.head.appendChild(script);
-    };
-
-    loadKatex();
-  }, []);
-
-  // Render math when content changes
-  useEffect(() => {
+  // Remove existing highlights
+  const clearHighlights = () => {
     if (!contentRef.current) return;
-
-    // Try to render math
-    const renderMath = () => {
-      if (typeof (window as any).renderMathInElement === "function") {
-        try {
-          (window as any).renderMathInElement(contentRef.current, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true },
-            ],
-            throwOnError: false,
-          });
-        } catch (e) {
-          // Ignore errors
-        }
+    contentRef.current.querySelectorAll("mark.athena-highlight").forEach(mark => {
+      const parent = mark.parentNode;
+      if (parent) {
+        while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+        parent.removeChild(mark);
+        parent.normalize();
       }
-    };
+    });
+  };
 
-    // Render immediately
-    renderMath();
-
-    // Also retry after 100ms in case KaTeX was just loaded
-    const timer = setTimeout(renderMath, 100);
-    return () => clearTimeout(timer);
-  }, [currentChapterIndex, currentLessonIndex]);
-
-  // Detect text selection for AI explanation
+  // Detect text selection — apply persistent <mark> highlight
   useEffect(() => {
     const handleSelection = () => {
       const selection = window.getSelection();
-      if (!selection) return;
+      if (!selection || !contentRef.current) return;
 
-      const selectedText = selection.toString().trim();
-      
-      // Show popup for meaningful selections (> 5 chars)
-      if (selectedText.length > 5) {
-        try {
-          const range = selection.getRangeAt(0);
-          rangeRef.current = range.cloneRange(); // Save the range
-          const rect = range.getBoundingClientRect();
-          
-          setSelectedText(selectedText);
-          setSelectionPosition({
-            x: rect.left + rect.width / 2,
-            y: rect.top - 10,
-          });
-        } catch (e) {
-          // Ignore errors getting range
-        }
-      } else {
-        setSelectedText("");
-        rangeRef.current = null;
+      const text = selection.toString().trim();
+      if (text.length <= 5) return;
+
+      // Check selection is inside course content
+      if (!selection.rangeCount) return;
+      const range = selection.getRangeAt(0);
+      if (!contentRef.current.contains(range.commonAncestorContainer)) return;
+
+      const rect = range.getBoundingClientRect();
+      rangeRef.current = range.cloneRange();
+      selectedTextRef.current = text;
+      // Show popup imperatively — NO state update = NO re-render = selection preserved
+      if (popupRef.current) {
+        popupRef.current.style.display = "flex";
+        popupRef.current.style.left = `${rect.left + rect.width / 2}px`;
+        popupRef.current.style.top = `${rect.top - 10}px`;
+      }
+    };
+
+    const handleDeselect = () => {
+      const sel = window.getSelection();
+      if (!sel || sel.toString().trim().length === 0) {
+        if (popupRef.current) popupRef.current.style.display = "none";
+        selectedTextRef.current = "";
       }
     };
 
     document.addEventListener("mouseup", handleSelection);
     document.addEventListener("touchend", handleSelection);
-
+    document.addEventListener("selectionchange", handleDeselect);
     return () => {
       document.removeEventListener("mouseup", handleSelection);
       document.removeEventListener("touchend", handleSelection);
+      document.removeEventListener("selectionchange", handleDeselect);
     };
   }, []);
 
-  // Re-apply selection after render
-  useEffect(() => {
-    if (selectedText && rangeRef.current) {
-      const sel = window.getSelection();
-      if (sel) {
-        sel.removeAllRanges();
-        sel.addRange(rangeRef.current.cloneRange());
-      }
-    }
-  }, [selectedText]);
-
   // Handle asking AI about selected text
-  const handleAskAI = () => {
-    if (!selectedText) {
-      console.log("❌ No selected text to send to AI");
-      return;
-    }
-
-    console.log("✨ User clicked 'Ask AI' button with text:", selectedText.slice(0, 50));
-
-    // Create message for AI
-    const message = `Explique-moi ce passage:\n\n"${selectedText}"`;
-
-    // Store the message in a temp var that AITutor will detect
-    (window as any).__pendingAIQuestion = {
-      message,
-      timestamp: Date.now(),
-    };
-
-    console.log("📤 Dispatched AI question, waiting for AITutor to pick it up...");
-
-    // Clear selection
-    setSelectedText("");
+  const hidePopup = () => {
+    if (popupRef.current) popupRef.current.style.display = "none";
+    selectedTextRef.current = "";
+    setSelectedText(""); // keep state in sync for legacy uses
     window.getSelection()?.removeAllRanges();
+  };
+
+  const handleAskAI = () => {
+    const text = selectedTextRef.current;
+    if (!text) return;
+    const message = `Explique-moi ce passage:\n\n"${text}"`;
+    (window as any).__pendingAIQuestion = { message, timestamp: Date.now() };
+    hidePopup();
   };
 
   // Dynamic progress tracking
@@ -269,103 +205,13 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
     saveProgress('in_progress', currentChapterIndex);
   }, [currentChapterIndex]);
 
-  // Load KaTeX for Math rendering - just load, don't render yet
+
+  // Hide popup when lesson changes
   useEffect(() => {
-    const loadKatex = () => {
-      // If already loaded, done
-      if (typeof (window as any).renderMathInElement === "function") {
-        console.log("📦 KaTeX already loaded");
-        return;
-      }
-      
-      // Load CSS
-      if (!document.getElementById("katex-css-course")) {
-        const link = document.createElement("link");
-        link.id = "katex-css-course";
-        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-        link.rel = "stylesheet";
-        link.integrity = "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
-        link.crossOrigin = "anonymous";
-        document.head.appendChild(link);
-      }
-
-      // Load main KaTeX
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-      script.integrity = "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8";
-      script.crossOrigin = "anonymous";
-      script.async = true;
-      script.onload = () => {
-        console.log("✅ KaTeX loaded");
-        // Once katex is loaded, load auto-render
-        const autoRenderScript = document.createElement("script");
-        autoRenderScript.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-        autoRenderScript.integrity = "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05";
-        autoRenderScript.crossOrigin = "anonymous";
-        autoRenderScript.async = true;
-        autoRenderScript.onload = () => {
-          console.log("✅ KaTeX auto-render loaded");
-        };
-        autoRenderScript.onerror = () => {
-          console.error("❌ Failed to load KaTeX auto-render");
-        };
-        document.head.appendChild(autoRenderScript);
-      };
-      script.onerror = () => console.error("❌ Failed to load KaTeX");
-      document.head.appendChild(script);
-    };
-
-    loadKatex();
-  }, []);
-
-  // Observer for content changes - only watch for mutations, don't re-load KaTeX
-  useEffect(() => {
-    if (!contentRef.current) return;
-
-    // Render math if KaTeX is available
-    const renderMath = () => {
-      if (typeof (window as any).renderMathInElement !== "function") {
-        return;
-      }
-
-      if (!contentRef.current) {
-        return;
-      }
-
-      try {
-        (window as any).renderMathInElement(contentRef.current, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "\\[", right: "\\]", display: true },
-          ],
-          throwOnError: false,
-        });
-      } catch (e) {
-        // Silently ignore errors
-      }
-    };
-
-    // Render immediately when content is ready
-    renderMath();
-
-    // Create an observer to watch for content changes
-    const observer = new MutationObserver(() => {
-      if (typeof (window as any).renderMathInElement === "function") {
-        renderMath();
-      }
-    });
-
-    observer.observe(contentRef.current, { 
-      childList: true, 
-      subtree: true, 
-      characterData: true 
-    });
-
-    return () => observer.disconnect();
+    if (popupRef.current) popupRef.current.style.display = "none";
+    selectedTextRef.current = "";
+    setSelectedText("");
   }, [currentChapterIndex, currentLessonIndex]);
-
 
   const handleNext = () => {
     if (!currentChapter) return;
@@ -593,7 +439,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
                        )}
                      </div>
                    ) : (
-                     <div ref={contentRef} dangerouslySetInnerHTML={{ __html: currentLesson.content }} />
+                     <div ref={contentRef} dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentLesson.content || "") }} />
                    )}
                 </div>
               </div>
@@ -636,41 +482,28 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
           </button>
         </div>
 
-        {/* Text Selection Popup */}
-        {selectedText && (
-          <div
-            className="fixed bg-[var(--greek-blue)] text-white rounded-xl shadow-2xl px-4 py-2 z-[100] flex items-center gap-3 border border-[var(--greek-gold)]/50 animate-fade-in pointer-events-auto"
-            style={{
-              left: `${selectionPosition.x}px`,
-              top: `${selectionPosition.y}px`,
-              transform: "translate(-50%, -100%)",
-            }}
+        {/* Text Selection Popup — controlled imperatively via ref, never hidden by React */}
+        <div
+          ref={popupRef}
+          className="fixed bg-[var(--greek-blue)] text-white rounded-xl shadow-2xl px-4 py-2 z-[100] items-center gap-3 border border-[var(--greek-gold)]/50 pointer-events-auto"
+          style={{ display: "none", transform: "translate(-50%, -100%)" }}
+        >
+          <button
+            onMouseDown={e => e.preventDefault()}
+            onClick={handleAskAI}
+            className="flex items-center gap-2 hover:bg-blue-700 px-3 py-1.5 rounded-lg transition-colors font-semibold text-sm whitespace-nowrap"
           >
-            <button
-              onClick={handleAskAI}
-              className="flex items-center gap-2 hover:bg-blue-700 px-3 py-1.5 rounded-lg transition-colors font-semibold text-sm whitespace-nowrap"
-              title="Demander à l'IA d'expliquer ce passage"
-            >
-              <Sparkles className="w-4 h-4" />
-              Demander à l'IA
-            </button>
-            <button
-              onClick={() => setSelectedText("")}
-              className="text-white/60 hover:text-white p-1 rounded-lg hover:bg-blue-700 transition-colors"
-              title="Fermer"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        )}
-
-        {/* Invisible click target to dismiss popup */}
-        {selectedText && (
-          <div
-            className="fixed inset-0 z-[99]"
-            onClick={() => setSelectedText("")}
-          />
-        )}
+            <Sparkles className="w-4 h-4" />
+            Demander à l'IA
+          </button>
+          <button
+            onMouseDown={e => e.preventDefault()}
+            onClick={hidePopup}
+            className="text-white/60 hover:text-white p-1 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </div>
   );

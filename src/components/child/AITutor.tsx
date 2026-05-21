@@ -1,10 +1,11 @@
-"use client";
+﻿"use client";
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from "react";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { Send, X, Minus, Star, RotateCcw, Sparkles, Lock, ArrowRight } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
+import { renderLatexInHTML } from "@/lib/katexLoader";
 
 interface Message {
   role: "user" | "assistant";
@@ -17,57 +18,16 @@ const WELCOME: Message = {
     "Salut ! Je suis **Athéna**, ta tutrice IA.\n\nJe suis là pour t'aider à comprendre tes cours et tes exercices — mais je ne donnerai jamais la réponse directement ! C'est toi qui réfléchis, moi je guide. Qu'est-ce qui te pose problème ?",
 };
 
-// Load KaTeX for math rendering
-function loadKaTeX() {
-  if ((window as any).katex && (window as any).renderMathInElement) {
-    return Promise.resolve();
-  }
-
-  const promises = [];
-
-  // Load KaTeX CSS
-  if (!document.getElementById("katex-css")) {
-    const link = document.createElement("link");
-    link.id = "katex-css";
-    link.rel = "stylesheet";
-    link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-    document.head.appendChild(link);
-  }
-
-  // Load KaTeX JS
-  promises.push(
-    new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-      script.onload = () => resolve(true);
-      document.head.appendChild(script);
-    })
-  );
-
-  // Load auto-render extension
-  promises.push(
-    new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-      script.onload = () => resolve(true);
-      document.head.appendChild(script);
-    })
-  );
-
-  return Promise.all(promises);
-}
 
 function renderContent(text: string) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) =>
-    part.startsWith("**") && part.endsWith("**") ? (
-      <strong key={i} className="font-black text-[var(--greek-blue)]">
-        {part.slice(2, -2)}
-      </strong>
-    ) : (
-      <span key={i}>{part}</span>
-    )
-  );
+  // 1. Convertir les backticks contenant du LaTeX en délimiteurs $...$
+  //    ex: `\frac{1}{2}` → $\frac{1}{2}$
+  let processed = text.replace(/`(\\[^`]+)`/g, (_, math) => `$${math}$`);
+  // 2. Pré-rendre tout le LaTeX
+  const withLatex = renderLatexInHTML(processed);
+  // 3. Gras markdown
+  const withBold = withLatex.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-black" style="color:var(--greek-blue)">$1</strong>');
+  return <span dangerouslySetInnerHTML={{ __html: withBold }} />;
 }
 
 export default function AITutor() {
@@ -86,9 +46,25 @@ export default function AITutor() {
     supabase.auth.getUser().then(({ data }) => setAuthId(data.user?.id ?? null));
   }, []);
 
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!open) return;
+      if (
+        chatPanelRef.current?.contains(e.target as Node) ||
+        floatBtnRef.current?.contains(e.target as Node)
+      ) return;
+      setOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const chatPanelRef = useRef<HTMLDivElement>(null);
+  const floatBtnRef = useRef<HTMLButtonElement>(null);
   
   // Refs to store latest state for event listeners
   const messagesRef = useRef<Message[]>([WELCOME]);
@@ -135,10 +111,6 @@ export default function AITutor() {
     return [WELCOME];
   }, [getContextKey()]);
 
-  // Load KaTeX on mount
-  useEffect(() => {
-    loadKaTeX().catch(console.error);
-  }, []);
 
   // Load saved messages when exercise changes
   useEffect(() => {
@@ -146,24 +118,7 @@ export default function AITutor() {
     setMessages(loaded);
   }, [loadMessages]);
 
-  // Render math in messages whenever they change
-  useEffect(() => {
-    if (messagesContainerRef.current && (window as any).renderMathInElement) {
-      try {
-        (window as any).renderMathInElement(messagesContainerRef.current, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "\\[", right: "\\]", display: true },
-          ],
-          throwOnError: false,
-        });
-      } catch (e) {
-        console.error("Math rendering error:", e);
-      }
-    }
-  }, [messages]);
+  // Render math après chaque nouveau message
 
   // Listen for text selection from CourseViewer with polling
   useEffect(() => {
@@ -361,6 +316,7 @@ export default function AITutor() {
     <>
       {/* ── Floating button — always visible ── */}
       <button
+        ref={floatBtnRef}
         onClick={() => {
           setOpen((v) => !v);
           setMinimized(false);
@@ -402,6 +358,7 @@ export default function AITutor() {
       {/* ── Chat panel ── */}
       {open && (
         <div
+          ref={chatPanelRef}
           className={`fixed bottom-36 md:bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[370px] max-w-[calc(100vw-1.5rem)]
             bg-white rounded-[24px] shadow-2xl border border-[var(--greek-gold)]/30
             flex flex-col overflow-hidden transition-all duration-300 animate-fade-in

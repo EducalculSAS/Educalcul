@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { getSiteUrl } from "@/lib/siteUrl";
 import { LogIn, Mail, Lock, AlertCircle, User } from "lucide-react";
 
 export default function Connexion() {
@@ -15,10 +16,11 @@ export default function Connexion() {
 
   const handleGoogleLogin = async () => {
     try {
+      const siteUrl = getSiteUrl();
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/connexion`,
+          redirectTo: `${siteUrl}/auth/callback`,
         },
       });
       if (error) throw error;
@@ -229,7 +231,7 @@ export default function Connexion() {
             <div className="flex justify-end mt-2">
               <Link
                 href="/auth/forgot-password"
-                className="text-sm text-[var(--greek-bronze)] hover:text-[var(--greek-gold)] transition-colors"
+                className="text-sm text-[var(--greek-gold)] hover:text-[var(--greek-gold)] transition-colors"
               >
                 Mot de passe oublié ?
               </Link>
@@ -239,7 +241,7 @@ export default function Connexion() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[var(--greek-blue)] text-white font-bold py-3 px-4 rounded-lg hover:bg-[#2c5282] transition-colors duration-200 shadow-md flex items-center justify-center"
+            className="btn-primary-greek w-full flex items-center justify-center"
           >
             {loading ? (
               <span className="animate-pulse">Connexion en cours...</span>

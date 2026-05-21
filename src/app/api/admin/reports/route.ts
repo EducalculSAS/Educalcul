@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+// Force dynamic — never cache
+export const dynamic = "force-dynamic";
 
 async function safeCount(table: string, filter?: (q: any) => any): Promise<number> {
   try {

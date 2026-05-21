@@ -60,7 +60,7 @@ export default function ChildCoursesPage() {
   }, []);
 
   // Handle LaTeX rendering whenever target items change
-  const currentCourses = allCourses.filter(c => c.folder_id === currentFolderId);
+  const currentCourses = allCourses.filter(c => (c.folder_id ?? null) === currentFolderId);
   const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
 
   useEffect(() => {
@@ -171,7 +171,7 @@ export default function ChildCoursesPage() {
         {currentFolderId !== null && (
           <button
             onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
-            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--card-border-antique)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--greek-gold)]/30 shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
           >
             <ArrowLeft size={20} />
             Retour
@@ -179,7 +179,7 @@ export default function ChildCoursesPage() {
         )}
 
         {currentFolders.length === 0 && currentCourses.length === 0 ? (
-          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/20">
+          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/30">
             <BookOpen className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">
               Dossier vide
@@ -195,7 +195,7 @@ export default function ChildCoursesPage() {
               <div
                 key={folder.id}
                 onClick={() => navigateToFolder(folder.id, folder.name)}
-                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--card-border-antique)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/30 transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 <div
@@ -217,7 +217,7 @@ export default function ChildCoursesPage() {
             {currentCourses.map((course, index) => (
               <div
                 key={course.id}
-                className={`group bg-white rounded-[20px] shadow-sm border border-[var(--card-border-antique)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? 'opacity-0' : 'opacity-100'}`}
+                className={`group bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? 'opacity-0' : 'opacity-100'}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-48 bg-gray-100 overflow-hidden">
@@ -228,9 +228,7 @@ export default function ChildCoursesPage() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/5">
-                      <BookOpen className="w-16 h-16 text-[var(--greek-blue)] opacity-20" />
-                    </div>
+                    <img src="/logo.png" alt="Educalcul" className="w-20 h-20 object-contain opacity-30 m-auto" />
                   )}
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[var(--greek-blue)] shadow-sm">
                     {course.subject || "Mathématiques"}

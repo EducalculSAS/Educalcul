@@ -65,7 +65,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center relative overflow-hidden">
+        <div className="px-8 py-6 border-b border-[var(--greek-gold)]/15 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
           <div className="flex items-center gap-3 relative z-10">
             <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -121,7 +121,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                 value={params.topic}
                 onChange={(e) => setParams({ ...params, topic: e.target.value })}
                 placeholder="Ex: Les fractions, Le théorème de Pythagore, Les volcans..."
-                className="w-full px-5 py-3 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800 placeholder:font-normal placeholder:text-gray-400"
+                className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800 placeholder:font-normal placeholder:text-gray-400"
                 autoFocus
               />
             </div>
@@ -137,7 +137,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                   <select
                     value={params.level}
                     onChange={(e) => setParams({ ...params, level: e.target.value })}
-                    className="w-full px-5 py-3 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all appearance-none font-medium text-gray-800"
+                    className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all appearance-none font-medium text-gray-800"
                   >
                     {SCHOOL_LEVELS.map((level) => (
                       <option key={level.value} value={level.value}>
@@ -164,7 +164,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                   required
                   value={params.count}
                   onChange={(e) => setParams({ ...params, count: parseInt(e.target.value) || 1 })}
-                  className="w-full px-5 py-3 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800"
+                  className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800"
                 />
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                       py-3 px-4 rounded-xl border-2 font-semibold transition-all flex items-center justify-center
                       ${params.difficulty === diff.id 
                         ? `border-${diff.color}-500 bg-${diff.color}-50 text-${diff.color}-700 shadow-sm` 
-                        : "border-gray-100 bg-white text-gray-500 hover:border-gray-200 hover:bg-gray-50"}
+                        : "border-[var(--greek-gold)]/15 bg-white text-gray-500 hover:border-[var(--greek-gold)]/25 hover:bg-gray-50"}
                     `}
                   >
                     {diff.label}
@@ -209,12 +209,12 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                 onChange={(e) => setParams({ ...params, instructions: e.target.value })}
                 rows={3}
                 placeholder="Ex: Insister sur des exemples pratiques dans la vie quotidienne, adopter un ton ludique et encourageant..."
-                className="w-full px-5 py-3 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all text-gray-800 resize-none"
+                className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all text-gray-800 resize-none"
               />
             </div>
 
             {/* Footer Actions */}
-            <div className="flex justify-end gap-4 pt-4 border-t border-gray-100">
+            <div className="flex justify-end gap-4 pt-4 border-t border-[var(--greek-gold)]/15">
               <button
                 type="button"
                 onClick={onClose}

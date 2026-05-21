@@ -1,21 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Users, BookOpen, MessageSquare, TrendingUp, Activity,
-  BarChart2, UserPlus, CreditCard, Dumbbell, Gift,
+  BarChart2, UserPlus, CreditCard, Dumbbell, Gift, RefreshCw, Clock,
 } from "lucide-react";
+
+const REFRESH_SEC = 30;
 
 export default function ReportsPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [countdown, setCountdown] = useState(REFRESH_SEC);
+
+  const fetchData = useCallback(async (silent = false) => {
+    if (silent) setRefreshing(true); else setLoading(true);
+    try {
+      const r = await fetch(`/api/admin/reports?t=${Date.now()}`, { cache: "no-store" });
+      const d = await r.json();
+      setData(d);
+      setLastUpdated(new Date());
+      setCountdown(REFRESH_SEC);
+    } catch {}
+    finally { setLoading(false); setRefreshing(false); }
+  }, []);
 
   useEffect(() => {
-    fetch("/api/admin/reports")
-      .then(r => r.json())
-      .then(d => { setData(d); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, []);
+    fetchData();
+    const auto = setInterval(() => fetchData(true), REFRESH_SEC * 1000);
+    const tick = setInterval(() => setCountdown(c => c > 1 ? c - 1 : REFRESH_SEC), 1000);
+    return () => { clearInterval(auto); clearInterval(tick); };
+  }, [fetchData]);
 
   if (loading) return (
     <div className="flex justify-center items-center h-64">
@@ -41,12 +58,33 @@ export default function ReportsPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8">
-        <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-          <BarChart2 className="text-[var(--greek-gold)]" size={30} />
-          Rapports & Analytics
-        </h1>
-        <p className="text-[var(--greek-bronze)] mt-1">Vue d'ensemble des performances et de l'activité</p>
+      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-6 flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
+            <BarChart2 className="text-[var(--greek-gold)]" size={30} />
+            Rapports & Analytics
+          </h1>
+          <p className="text-[var(--greek-bronze)] mt-1">Vue d'ensemble des performances et de l'activité</p>
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          {lastUpdated && (
+            <div className="text-right hidden sm:block">
+              <p className="text-xs text-gray-400 flex items-center gap-1 justify-end">
+                <Clock size={11} />
+                {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+              </p>
+              <p className="text-xs text-gray-300">actualisation dans {countdown}s</p>
+            </div>
+          )}
+          <button
+            onClick={() => fetchData(true)}
+            disabled={refreshing}
+            className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
+          >
+            <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
+            Actualiser
+          </button>
+        </div>
       </div>
 
       {/* Stats row 1 — Utilisateurs */}
@@ -77,7 +115,7 @@ export default function ReportsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* Bar chart — inscriptions par semaine */}
-        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-gray-100">
+        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
             <TrendingUp size={18} className="text-[var(--greek-gold)]" />
             Inscriptions — 8 dernières semaines
@@ -107,14 +145,14 @@ export default function ReportsPage() {
         </div>
 
         {/* Recent activity */}
-        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-gray-100">
+        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
             <Activity size={18} className="text-[var(--greek-gold)]" />
             Activité récente
           </h3>
           <div className="space-y-3">
             {recent_activity.length > 0 ? recent_activity.map((item: any, i: number) => (
-              <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+              <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-[var(--greek-gold)]/15">
                 <div className={`p-1.5 rounded-lg shrink-0 ${activityColor(item.type)}`}>
                   {activityIcon(item.type)}
                 </div>
@@ -138,7 +176,7 @@ export default function ReportsPage() {
 
 function StatCard({ title, value, sub, icon, color }: { title: string; value: number; sub?: string; icon: React.ReactNode; color: string }) {
   return (
-    <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+    <div className="bg-white p-5 rounded-2xl shadow-sm border border-[var(--greek-gold)]/15 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-3">
         <div className={`p-2 rounded-xl ${color}`}>{icon}</div>
         <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>

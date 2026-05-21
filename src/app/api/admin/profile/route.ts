@@ -1,36 +1,46 @@
-import { createClient } from "@supabase/supabase-js";
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
 
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-    const { 
-      auth_id, 
-      first_name, 
-      last_name, 
-      email, 
-      avatar, 
+    const {
+      auth_id,
+      first_name,
+      last_name,
+      email,
+      avatar,
       child_username,
-      name_animation, 
-      avatar_border 
+      name_animation,
+      avatar_border,
     } = body;
 
     if (!auth_id) {
       return NextResponse.json({ error: "Auth ID is required" }, { status: 400 });
     }
 
-    // Update public.users
+    // Map CSS class names → badge system keys (used by forum, profiles, etc.)
+    const rawBorderKey = avatar_border ? avatar_border.replace(/^border-/, "") : "admin";
+    // Guard: never allow "none" or "default" for admin — always keep a valid key
+    const borderKey = (!rawBorderKey || rawBorderKey === "none") ? "admin" : rawBorderKey;
+    const nameColorMap: Record<string, string> = {
+      "text-admin":           "admin",
+      "name-elite":           "elite",
+      "name-flame":           "flame",
+      "name-pro-animated":    "pro",
+      "name-purple-animated": "premium",
+      "name-teal-animated":   "famille",
+      "name-diamond-animated":"diamond",
+      "name-gold-animated":   "gold",
+      "name-silver-animated": "silver",
+      "name-bronze-animated": "bronze",
+      "text-basic":           "default",
+    };
+    const rawColorKey = nameColorMap[name_animation] ?? "admin";
+    const nameColorKey = (!rawColorKey || rawColorKey === "default") ? "admin" : rawColorKey;
+
+    // Update public.users — write to BOTH column systems so forum & profile stay in sync
     const { error: updateError } = await supabaseAdmin
       .from("users")
       .update({
@@ -41,6 +51,8 @@ export async function PUT(request: Request) {
         avatar,
         name_animation,
         avatar_border,
+        equipped_border: borderKey,   // used by forum, badge page, public profiles
+        name_color: nameColorKey,     // used by forum, badge page, public profiles
         updated_at: new Date().toISOString(),
       })
       .eq("auth_id", auth_id);

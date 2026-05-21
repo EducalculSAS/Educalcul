@@ -28,28 +28,22 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-
-    // Simulate API call
     try {
-      // Basic validation
       if (!formData.name || !formData.email || !formData.subjectType || !formData.message) {
         throw new Error("Tous les champs sont obligatoires.");
       }
-      if (formData.subjectType === "Autre" && !formData.customSubject) {
-        throw new Error("Veuillez préciser votre sujet.");
-      }
+      const subject = formData.subjectType === "Autre" ? (formData.customSubject || "Autre") : formData.subjectType;
 
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setStatus('success');
-      setFormData({
-        name: "",
-        email: "",
-        subjectType: "",
-        customSubject: "",
-        message: ""
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: formData.name, email: formData.email, subject, message: formData.message }),
       });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi.");
+
+      setStatus('success');
+      setFormData({ name: "", email: "", subjectType: "", customSubject: "", message: "" });
     } catch (err: any) {
       setStatus('error');
       setErrorMessage(err.message || "Une erreur est survenue.");
@@ -66,7 +60,7 @@ export default function Contact() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h1 className="font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-4xl md:text-5xl mb-4 flex items-center justify-center gap-3">
-                <Mail className="w-10 h-10 md:w-12 md:h-12" />
+                <Mail className="w-10 h-10 md:w-12 md:h-12 text-[var(--greek-gold)]" />
                 Contactez-nous
               </h1>
               <p className="text-[var(--greek-blue)] text-xl opacity-80">
@@ -96,9 +90,9 @@ export default function Contact() {
                 </div>
               )}
 
-              <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--card-border-antique)] p-8">
+              <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--greek-gold)] p-8">
                 <h3 className="text-center text-2xl font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] mb-8 flex items-center justify-center gap-2">
-                  <Send className="w-6 h-6" />
+                  <Send className="w-6 h-6 text-[var(--greek-gold)]" />
                   Envoyez-nous un message
                 </h3>
 
@@ -154,12 +148,13 @@ export default function Contact() {
                         required
                       >
                         <option value="">Sélectionnez un sujet</option>
-                        <option value="Question générale">Question générale</option>
+                        <option value="Question sur les abonnements">Question sur les abonnements</option>
                         <option value="Problème technique">Problème technique</option>
-                        <option value="Demande d'aide">Demande d'aide</option>
-                        <option value="Suggestion d'amélioration">Suggestion d'amélioration</option>
                         <option value="Problème de compte">Problème de compte</option>
-                        <option value="Facturation">Facturation</option>
+                        <option value="Question pédagogique">Question pédagogique</option>
+                        <option value="Demande de partenariat">Demande de partenariat</option>
+                        <option value="Signaler un contenu">Signaler un contenu</option>
+                        <option value="Suggestion d'amélioration">Suggestion d'amélioration</option>
                         <option value="Autre">Autre</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -206,7 +201,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-[var(--greek-bronze)] text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-[var(--greek-gold)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="btn-primary-greek w-full flex items-center justify-center gap-2"
                   >
                     {status === 'loading' ? (
                       <>

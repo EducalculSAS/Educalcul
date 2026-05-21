@@ -274,7 +274,7 @@ function SubscriptionPageContent() {
             <div
               key={plan.id}
               className={`relative bg-white rounded-xl shadow-sm border p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                isCurrent ? "border-[var(--greek-gold)] ring-1 ring-[var(--greek-gold)]" : "border-gray-200"
+                isCurrent ? "border-[var(--greek-gold)] ring-1 ring-[var(--greek-gold)]" : "border-[var(--greek-gold)]/20"
               }`}
             >
               {isCurrent && (
@@ -337,7 +337,7 @@ function SubscriptionPageContent() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-200">
+                <tr className="border-b border-[var(--greek-gold)]/20">
                   <th className="text-left py-3 text-gray-500 font-medium">
                     Date
                   </th>
@@ -354,7 +354,7 @@ function SubscriptionPageContent() {
               </thead>
               <tbody>
                 {billingHistory.map((bill) => (
-                  <tr key={bill.id} className="border-b border-gray-100">
+                  <tr key={bill.id} className="border-b border-[var(--greek-gold)]/15">
                     <td className="py-4 text-gray-800">
                       {new Date(bill.date).toLocaleDateString()}
                     </td>
@@ -450,7 +450,7 @@ function SubscriptionPageContent() {
           ) : (
             <ul className="space-y-3">
               {myReferralCode.uses.map((u: any) => (
-                <li key={u.id} className="flex items-center justify-between gap-3 py-2 border-b border-gray-50 last:border-0">
+                <li key={u.id} className="flex items-center justify-between gap-3 py-2 border-b border-[var(--greek-gold)]/10 last:border-0">
                   <div>
                     <p className="font-semibold text-gray-800 text-sm">
                       {u.users?.first_name || u.users?.last_name

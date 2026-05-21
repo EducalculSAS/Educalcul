@@ -309,19 +309,19 @@ export default function QuizDetailPage() {
                 </button>
                 
                 <div className="space-y-4 text-sm text-gray-600">
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                  <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
                     <span className="flex items-center gap-2">
                       <Clock className="w-4 h-4" /> Temps estimé
                     </span>
                     <span className="font-bold">10 min</span>
                   </div>
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                  <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
                     <span className="flex items-center gap-2">
                       <BookOpen className="w-4 h-4" /> Questions
                     </span>
                     <span className="font-bold">{questionCount}</span>
                   </div>
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                  <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
                     <span className="flex items-center gap-2">
                       <Trophy className="w-4 h-4" /> Difficulté
                     </span>

@@ -1,3 +1,8 @@
+export const AVATARS = [
+  "avatar1.png", "avatar2.png", "avatar3.png", "avatar4.png",
+  "avatar5.png", "avatar6.png", "avatar7.png", "avatar8.png",
+];
+
 export const SCHOOL_LEVELS = [
   { value: "cp", label: "CP" },
   { value: "ce1", label: "CE1" },

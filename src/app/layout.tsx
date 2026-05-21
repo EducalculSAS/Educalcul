@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
-import { Cinzel, Outfit } from "next/font/google";
 import "./globals.css";
-
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  variable: "--font-cinzel",
-  weight: ["400", "700"],
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  weight: ["400", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: "Educalcul - Votre plateforme d'apprentissage des maths",
   description: "Plateforme d'apprentissage des mathématiques innovante",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -25,8 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${cinzel.variable} ${outfit.variable}`}>
-      <body className="antialiased min-h-screen flex flex-col font-sans">
+    <html lang="fr">
+      <head>
+        <meta charSet="UTF-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+      </head>
+      <body className="antialiased min-h-screen flex flex-col">
         {children}
       </body>
     </html>

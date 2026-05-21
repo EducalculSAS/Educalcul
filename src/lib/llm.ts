@@ -1,0 +1,182 @@
+﻿/**
+ * Educalcul — Couche transport IA
+ * Provider : OpenRouter (deepseek/deepseek-chat) | Fallback : Ollama local
+ */
+
+const AI_PROVIDER = (process.env.AI_PROVIDER || "openrouter").toLowerCase();
+const OR_URL      = "https://openrouter.ai/api/v1/chat/completions";
+const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-chat";
+const OR_KEY      = process.env.OPENROUTER_API_KEY || "";
+const LOCAL_URL   = process.env.LOCAL_AI_URL       || "http://localhost:11434/api/generate";
+const LOCAL_MODEL = process.env.LOCAL_AI_MODEL     || "mistral:7b";
+
+type Message = { role: "user" | "assistant" | "system"; content: string };
+
+// ── Providers ─────────────────────────────────────────────────────────────────
+
+// Modèles de fallback si le principal est rate-limité (dans l'ordre de préférence)
+const FALLBACK_MODELS = [
+  OR_MODEL,
+  "deepseek/deepseek-r1:free",
+  "google/gemma-3-27b-it:free",
+  "meta-llama/llama-3.3-70b-instruct:free",
+];
+
+async function callOpenRouterModel(
+  model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false
+): Promise<{ ok: boolean; text: string; status: number }> {
+  const body: any = { model, messages: msgs, temperature: temp };
+  if (maxTokens) body.max_tokens = maxTokens;
+  // Reasoning seulement pour la génération de contenu, jamais pour le chat
+  if (reasoning) body.reasoning = { enabled: true };
+
+  const resp = await fetch(OR_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type":  "application/json",
+      "Authorization": `Bearer ${OR_KEY}`,
+      "HTTP-Referer":  "https://educalcul.fr",
+      "X-Title":       "Educalcul",
+    },
+    body: JSON.stringify(body),
+  });
+
+  const text = await resp.text();
+  return { ok: resp.ok, text, status: resp.status };
+}
+
+async function callOpenRouter(
+  msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false
+): Promise<string> {
+  for (const model of FALLBACK_MODELS) {
+    const { ok, text, status } = await callOpenRouterModel(model, msgs, temp, maxTokens, reasoning);
+
+    if (ok) {
+      try {
+        const parsed = JSON.parse(text);
+        const msg = parsed?.choices?.[0]?.message;
+        // content peut être null sur les modèles reasoning — fallback sur reasoning_details
+        const content = msg?.content
+          ?? msg?.reasoning
+          ?? parsed?.choices?.[0]?.text
+          ?? null;
+        if (content) return content.trim();
+        // Si content null et finish_reason=length → réponse tronquée, continuer au fallback
+        const finishReason = parsed?.choices?.[0]?.finish_reason;
+        if (finishReason === "length") {
+          console.warn(`[llm] ${model} hit max_tokens, trying next...`);
+          continue;
+        }
+        return text.trim();
+      } catch { return text.trim(); }
+    }
+
+    // 429 = rate limit → essaie le modèle suivant
+    if (status === 429) {
+      console.warn(`[llm] ${model} rate-limited (429), trying next...`);
+      continue;
+    }
+
+    // Autre erreur → log et continue quand même
+    console.error(`[llm] ${model} error ${status}:`, text.slice(0, 200));
+    if (FALLBACK_MODELS.indexOf(model) < FALLBACK_MODELS.length - 1) continue;
+    throw new Error(`OpenRouter ${status}: ${text.slice(0, 200)}`);
+  }
+
+  throw new Error("Tous les modèles IA sont indisponibles. Réessaie dans quelques secondes.");
+}
+
+async function callLocal(msgs: Message[], temp = 0.7): Promise<string> {
+  const prompt = msgs.map(m => `${m.role.toUpperCase()}: ${m.content}`).join("\n\n");
+  const resp = await fetch(LOCAL_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ model: LOCAL_MODEL, prompt, temperature: temp }),
+  });
+  const raw = await resp.text();
+  if (!resp.ok) throw new Error(`Local AI ${resp.status}: ${raw.slice(0, 200)}`);
+  if (raw.includes('"response"'))
+    return raw.split("\n").filter(Boolean)
+      .reduce((acc, l) => { try { return acc + (JSON.parse(l).response ?? ""); } catch { return acc; } }, "")
+      .trim();
+  try { const j = JSON.parse(raw); return (j.output || j.choices?.[0]?.message?.content || raw).toString().trim(); }
+  catch { return raw.trim(); }
+}
+
+function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false) {
+  return AI_PROVIDER === "local"
+    ? callLocal(msgs, temp)
+    : callOpenRouter(msgs, temp, maxTokens, reasoning);
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function extractJSON(text: string): string {
+  const block = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+  if (block) return block[1];
+  const obj = text.match(/\{[\s\S]*\}/);
+  return obj ? obj[0] : text;
+}
+
+function parseJSON(raw: string): unknown {
+  try { return JSON.parse(raw); }
+  catch {
+    try { return JSON.parse(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")); }
+    catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+  }
+}
+
+// ── Exports publics ───────────────────────────────────────────────────────────
+
+/** Corriger une réponse élève */
+export async function gradeAnswer(
+  question: string, correctAnswer: string, studentAnswer: string,
+  explanation: string | undefined, level: string, maxPoints: number
+): Promise<{ is_correct: boolean; score: number; feedback: string }> {
+  const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}".
+RÈGLES pour le feedback :
+1. Adapte ton vocabulaire au niveau de l'élève.
+2. Si correct : félicite brièvement et confirme la bonne réponse.
+3. Si incorrect : donne OBLIGATOIREMENT la réponse correcte avec les calculs détaillés étape par étape.
+4. Montre TOUJOURS la méthode ET le résultat final, pas seulement l'un des deux.
+5. Sois encourageant même en cas d'erreur.
+6. Réponds UNIQUEMENT en JSON sur une seule ligne.
+7. score = 0 si incorrect, ${maxPoints} si correct.`;
+
+  const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
+  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.3, undefined, false);
+  const r = parseJSON(extractJSON(text)) as any;
+  return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
+}
+
+/** Générer un cours/exercice/quiz structuré → JSON parsé (reasoning activé) */
+export async function generateStructuredContent(
+  prompt: string, systemPrompt: string, temperature = 0.7
+): Promise<unknown> {
+  const text = await dispatch(
+    [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
+    temperature,
+    8000,
+    true  // ← reasoning activé : meilleure qualité pédagogique, structure logique
+  );
+  return parseJSON(extractJSON(text));
+}
+
+/** Chatbot tuteur IA — reasoning DÉSACTIVÉ pour la rapidité */
+export async function chatWithAI(
+  messages: Array<{ role: "user" | "assistant"; content: string }>,
+  systemPrompt: string,
+  temperature = 0.65,
+  maxTokens = 700
+): Promise<string> {
+  return (await dispatch(
+    [{ role: "system", content: systemPrompt }, ...messages.map(m => ({ role: m.role as "user"|"assistant", content: m.content }))],
+    temperature, maxTokens,
+    false  // ← reasoning désactivé : réponses instantanées pour l'élève
+  )).trim();
+}
+
+// ── Aliases de compatibilité ───────────────────────────────────────────────────
+export const gradeWithQwen           = gradeAnswer;
+export const generateContentWithQwen = generateStructuredContent;
+export const chatWithQwen            = chatWithAI;

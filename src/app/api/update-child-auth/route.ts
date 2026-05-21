@@ -1,10 +1,5 @@
-import { createClient } from "@supabase/supabase-js";
-import { NextResponse } from "next/server";
-import { supabase as supabaseAdmin } from "@/lib/supabaseClient"; // This is actually the public client, we need admin client here.
-
-// We need a separate admin client creation because the exported one might not be admin
-// depending on how it's configured. Usually it uses ANON key.
-// We need SERVICE_ROLE key for admin ops.
+﻿import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function POST(request: Request) {
   try {
@@ -18,30 +13,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Initialize Admin Client
-    const supabaseService = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!,
-      {
-        auth: {
-          autoRefreshToken: false,
-          persistSession: false,
-        },
-      }
-    );
-
     // 1. Verify Parent owns the child
-    // We can use the service client to bypass RLS, but we must verify the relationship manually
-    // or trust the caller? No, we must verify.
-    // The caller (client) sends parentAuthId, but anyone can send anything.
-    // Ideally we should get the session from the request cookies to be secure.
-    // But for now let's rely on the input and check DB.
-    
-    // Better: Get the session from the request headers/cookies to ensure the caller is indeed the parent.
-    // However, in this context (API route), retrieving session might be complex if we don't use the helper.
-    // Let's assume the client sends the parentAuthId and we verify that the child belongs to a parent with that auth_id.
-    
-    const { data: parentUser, error: parentError } = await supabaseService
+    const { data: parentUser, error: parentError } = await supabaseAdmin
       .from("users")
       .select("id")
       .eq("auth_id", parentAuthId)
@@ -51,7 +24,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Parent not found" }, { status: 403 });
     }
 
-    const { data: childUser, error: childError } = await supabaseService
+    const { data: childUser, error: childError } = await supabaseAdmin
       .from("users")
       .select("*")
       .eq("id", childId)
@@ -71,7 +44,7 @@ export async function POST(request: Request) {
 
     if (authUserId) {
       // Update existing auth user password
-      const { error: updateError } = await supabaseService.auth.admin.updateUserById(
+      const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(
         authUserId,
         { password: password }
       );
@@ -92,11 +65,11 @@ export async function POST(request: Request) {
       const email = `${childUser.child_username}@educalcul.user`;
       
       // Check if user with this email already exists (edge case)
-      const { data: existingAuth } = await supabaseService.from('auth.users').select('id').eq('email', email).maybeSingle();
+      const { data: existingAuth } = await supabaseAdmin.from('auth.users').select('id').eq('email', email).maybeSingle();
        // Wait, we can't select from auth.users directly via API usually unless we use RPC or admin listUsers.
        // admin.createUser will fail if exists.
 
-      const { data: newUser, error: createError } = await supabaseService.auth.admin.createUser({
+      const { data: newUser, error: createError } = await supabaseAdmin.auth.admin.createUser({
         email: email,
         password: password,
         email_confirm: true,
@@ -114,7 +87,7 @@ export async function POST(request: Request) {
       authUserId = newUser.user.id;
 
       // Link back to public.users
-      const { error: linkError } = await supabaseService
+      const { error: linkError } = await supabaseAdmin
         .from("users")
         .update({ auth_id: authUserId })
         .eq("id", childId);

@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
 
@@ -58,16 +59,13 @@ export default function ParentLayout({
       }
 
       if (!userData.latitude) {
-        try {
-          const geo = await fetch("https://ipapi.co/json/").then(r => r.json());
-          if (geo.latitude) {
-            updates.latitude = geo.latitude;
-            updates.longitude = geo.longitude;
-            updates.last_login_city = geo.city;
-            updates.last_login_country = geo.country_name;
-            updates.last_login_ip = geo.ip;
-          }
-        } catch {}
+        const geo = await getServerGeo();
+        if (geo) {
+          updates.latitude = geo.latitude;
+          updates.longitude = geo.longitude;
+          if (geo.city)    updates.last_login_city    = geo.city;
+          if (geo.country) updates.last_login_country = geo.country;
+        }
       }
 
       await supabase.from("users").update(updates).eq("auth_id", session.user.id);

@@ -30,57 +30,89 @@ export default function FAQ() {
     {
       id: "general",
       title: "Généralités",
-      icon: <Info className="w-6 h-6 mr-2 text-[var(--greek-bronze)]" />,
+      icon: <Info className="w-6 h-6 mr-2 text-[var(--greek-gold)]" />,
       items: [
         {
-          question: "Qu'est-ce qu'Educalculate ?",
-          answer: "Educalculate est une plateforme d'apprentissage en ligne ludique et interactive conçue pour aider les enfants du primaire (CP au CM2) et début de collège (6ème) à maîtriser les mathématiques. Nous proposons des leçons claires, des exercices adaptés et des quiz amusants pour renforcer la compréhension et la confiance en soi."
+          question: "C'est quoi Educalcul ?",
+          answer: "Educalcul est un site de maths pour les enfants. On y trouve des leçons simples, des exercices, des quiz et un suivi clair pour avancer pas à pas."
         },
         {
-          question: "À quels niveaux scolaires s'adresse Educalculate ?",
-          answer: "Notre contenu couvre principalement les programmes de mathématiques de l'école primaire française, du CP au CM2, ainsi que le début du collège (classe de 6ème). Nous adaptons les exercices au niveau sélectionné par l'enfant lors de son inscription ou dans son profil."
+          question: "Pour quels niveaux c'est fait ?",
+          answer: "Le contenu va du CP au CM2, avec aussi quelques activités pour la 6e. L'enfant choisit son niveau pour voir ce qui lui correspond."
         },
         {
-          question: "Educalculate est-il conforme aux programmes scolaires ?",
-          answer: "Oui, notre équipe pédagogique s'efforce d'aligner le contenu des leçons et exercices avec les compétences et notions clés des programmes de l'Éducation Nationale française pour les niveaux concernés. Cependant, Educalculate est un outil de soutien et de complément, il ne remplace pas l'enseignement scolaire."
+          question: "Est-ce que ça suit le programme scolaire ?",
+          answer: "Oui, les contenus sont pensés pour rester proches de ce qui est vu à l'école. L'idée est d'aider l'enfant à comprendre et à s'entraîner sans le perdre."
+        },
+        {
+          question: "Est-ce que mon enfant peut travailler seul ?",
+          answer: "Oui. Les consignes sont courtes, les exercices sont guidés et les corrections aident à avancer sans bloquer."
+        },
+        {
+          question: "Sur quels appareils on peut l'utiliser ?",
+          answer: "Educalcul fonctionne sur ordinateur, tablette et téléphone. Le site s'adapte à la taille de l'écran."
         }
       ]
     },
     {
       id: "comptes",
-      title: "Comptes et Inscription",
-      icon: <UserCog className="w-6 h-6 mr-2 text-[var(--greek-bronze)]" />,
+      title: "Comptes et accès",
+      icon: <UserCog className="w-6 h-6 mr-2 text-[var(--greek-gold)]" />,
       items: [
         {
-          question: "Comment inscrire mon enfant ?",
-          answer: "L'inscription se fait via le compte Parent. Cliquez sur \"Inscription\" sur notre site, créez votre compte Parent, puis depuis votre tableau de bord Parent, vous pourrez ajouter un ou plusieurs profils pour vos enfants. Vous choisirez leur prénom (ou pseudo), leur niveau scolaire et leur mot de passe initial."
+          question: "Comment créer un compte ?",
+          answer: "Clique sur Inscription, choisis ton type de compte, puis remplis le formulaire. C'est rapide et tu peux commencer juste après."
         },
         {
-          question: "Quelle est la différence entre un compte Parent et un compte Enfant ?",
-          answer: "Le compte Parent gère l'abonnement, les informations de facturation et la création/gestion des profils enfants. Il permet également de suivre la progression globale de chaque enfant. Le compte Enfant est l'interface d'apprentissage : accès aux leçons, exercices, quiz, et suivi de sa propre progression et de ses récompenses."
+          question: "Parent et enfant, c'est différent ?",
+          answer: "Oui. Le compte Parent sert à gérer les enfants et l'abonnement. Le compte Enfant sert à faire les leçons, les exercices et les quiz."
         },
         {
-          question: "J'ai oublié mon mot de passe (Parent ou Enfant), comment faire ?",
-          answer: "Sur la page de connexion correspondante (Parent ou Enfant), cliquez sur le lien \"Mot de passe oublié ?\". Suivez les instructions pour réinitialiser votre mot de passe via l'email associé au compte Parent. Si un enfant oublie son mot de passe, le Parent peut le réinitialiser depuis son propre tableau de bord."
+          question: "J'ai oublié mon mot de passe, je fais quoi ?",
+          answer: "Sur la page de connexion, clique sur Mot de passe oublié. Tu recevras les étapes par email pour le réinitialiser."
         },
         {
-          question: "Puis-je modifier le niveau scolaire de mon enfant ?",
-          answer: "Oui, le niveau scolaire peut être ajusté. L'enfant peut le modifier depuis son profil (avec ou sans validation parentale selon les paramètres futurs). Le parent peut également ajuster le niveau depuis son tableau de bord de gestion des profils enfants. Cela adaptera le contenu proposé à l'enfant."
+          question: "Je peux changer le niveau plus tard ?",
+          answer: "Oui. Le niveau peut être ajusté si l'enfant progresse vite ou s'il faut revenir sur les bases."
+        },
+        {
+          question: "Il faut un compte pour tester le site ?",
+          answer: "Pour voir les offres et les explications, non. Pour faire les activités, oui, il faut se connecter."
         }
       ]
     },
     {
-      id: "abonnements",
-      title: "Abonnements et Tarifs",
-      icon: <CreditCard className="w-6 h-6 mr-2 text-[var(--greek-bronze)]" />,
+      id: "cours",
+      title: "Cours, exercices et abonnements",
+      icon: <CreditCard className="w-6 h-6 mr-2 text-[var(--greek-gold)]" />,
       items: [
         {
-          question: "Quelles sont les formules d'abonnement proposées ?",
+          question: "Qu'est-ce qu'on trouve dans les cours ?",
+          answer: "Des explications simples, des exemples et des activités pour s'entraîner tout de suite après."
+        },
+        {
+          question: "Les exercices corrigent aussi les erreurs ?",
+          answer: "Oui, l'enfant voit ce qui est juste ou faux et peut comprendre où il s'est trompé."
+        },
+        {
+          question: "Est-ce qu'il y a des quiz ?",
+          answer: "Oui. Les quiz servent à vérifier ce qui a été compris et à revoir ce qui doit encore être travaillé."
+        },
+        {
+          question: "Comment suivre les progrès ?",
+          answer: "Le tableau de bord montre l'avancée, les exercices faits et les points à revoir."
+        },
+        {
+          question: "Quels sont les abonnements proposés ?",
           answer: (
             <span>
-              Nous proposons généralement plusieurs formules (mensuelle, annuelle) avec des tarifs dégressifs pour plusieurs enfants. Vous trouverez tous les détails sur notre page <a href="/tarifs" className="text-[var(--greek-blue)] underline hover:text-[var(--greek-gold)]">Nos offres</a>.
+              Il y a plusieurs formules selon le besoin de la famille. Tu peux voir tous les détails sur la page <a href="/tarifs" className="text-[var(--greek-blue)] underline hover:text-[var(--greek-gold)]">Tarifs</a>.
             </span>
           )
+        },
+        {
+          question: "L'abonnement se renouvelle tout seul ?",
+          answer: "Ça dépend de la formule choisie. Les détails sont indiqués clairement sur la page Tarifs avant de valider."
         }
       ]
     }
@@ -96,7 +128,7 @@ export default function FAQ() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h1 className="font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-4xl md:text-5xl mb-4 flex items-center justify-center gap-3">
-                <CircleHelp className="w-10 h-10 md:w-12 md:h-12" />
+                <CircleHelp className="w-10 h-10 md:w-12 md:h-12 text-[var(--greek-gold)]" />
                 FAQ
               </h1>
               <p className="text-[var(--greek-blue)] text-xl opacity-80">
@@ -111,7 +143,7 @@ export default function FAQ() {
           <div className="container mx-auto px-4 max-w-4xl">
             {faqSections.map((section, sIndex) => (
               <div key={section.id} className="mb-12">
-                <h2 className="flex items-center text-2xl font-bold text-[var(--greek-blue)] mb-6 border-b-2 border-[var(--greek-bronze)] pb-2 font-[family-name:var(--font-display)]">
+                <h2 className="flex items-center text-2xl font-bold text-[var(--greek-blue)] mb-6 border-b-2 border-[var(--greek-gold)] pb-2 font-[family-name:var(--font-display)]">
                   {section.icon}
                   {section.title}
                 </h2>
@@ -124,21 +156,21 @@ export default function FAQ() {
                     return (
                       <div 
                         key={iIndex} 
-                        className="bg-white rounded-[6px] border border-[var(--card-border-antique)] shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+                        className="bg-white rounded-[6px] border border-[var(--greek-gold)] shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                       >
                         <button
                           onClick={() => toggleItem(itemId)}
                           className={`w-full text-left px-6 py-4 flex justify-between items-center font-semibold transition-colors ${
                             isOpen 
-                              ? 'text-[var(--greek-blue)] bg-[rgba(197,161,72,0.1)] border-b border-[var(--greek-bronze)]' 
+                              ? 'text-[var(--greek-blue)] bg-[rgba(197,161,72,0.1)] border-b border-[var(--greek-gold)]' 
                               : 'text-[var(--greek-blue)] hover:bg-gray-50'
                           }`}
                         >
                           <span className="text-lg">{item.question}</span>
                           {isOpen ? (
-                            <ChevronUp className="w-5 h-5 text-[var(--greek-bronze)] flex-shrink-0 ml-4" />
+                            <ChevronUp className="w-5 h-5 text-[var(--greek-gold)] flex-shrink-0 ml-4" />
                           ) : (
-                            <ChevronDown className="w-5 h-5 text-[var(--greek-bronze)] flex-shrink-0 ml-4" />
+                            <ChevronDown className="w-5 h-5 text-[var(--greek-gold)] flex-shrink-0 ml-4" />
                           )}
                         </button>
                         

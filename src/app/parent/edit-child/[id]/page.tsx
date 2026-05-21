@@ -13,17 +13,7 @@ import {
 import { useRouter, useParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import MathLoader from "@/components/MathLoader";
-
-const AVATARS = [
-  "avatar1.png",
-  "avatar2.png",
-  "avatar3.png",
-  "avatar4.png",
-  "avatar5.png",
-  "avatar6.png",
-  "avatar7.png",
-  "avatar8.png",
-];
+import { AVATARS } from "@/lib/constants";
 
 const GRADE_LEVELS = [
   "CP",
@@ -229,7 +219,7 @@ export default function EditChildPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, firstName: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                 />
               </div>
               <div>
@@ -243,7 +233,7 @@ export default function EditChildPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, lastName: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                 />
               </div>
             </div>
@@ -257,7 +247,7 @@ export default function EditChildPage() {
                 disabled
                 title="Le nom d'utilisateur ne peut pas être modifié"
                 value={formData.username}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed"
+                className="w-full px-4 py-2 border border-[var(--greek-gold)]/20 rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed"
               />
               <p className="text-xs text-gray-500 mt-1">
                 Le nom d'utilisateur ne peut pas être modifié.
@@ -275,7 +265,7 @@ export default function EditChildPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
               <p className="text-xs text-gray-500 mt-1">
                 Remplissez ce champ pour définir ou modifier le mot de passe de
@@ -293,7 +283,7 @@ export default function EditChildPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, gradeLevel: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               >
                 {GRADE_LEVELS.map((level) => (
                   <option key={level} value={level}>
@@ -315,7 +305,7 @@ export default function EditChildPage() {
                     className={`cursor-pointer rounded-full p-1 border-2 transition-all duration-200 ${
                       formData.avatar === avatar
                         ? "border-[var(--greek-gold)] scale-110 shadow-md"
-                        : "border-transparent hover:border-gray-200 hover:scale-105"
+                        : "border-transparent hover:border-[var(--greek-gold)]/20 hover:scale-105"
                     }`}
                   >
                     <img

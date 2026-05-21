@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import { getSiteUrl } from '../../../lib/siteUrl';
 
 export default function AuthCallback() {
   const router = useRouter();
@@ -14,41 +15,31 @@ export default function AuthCallback() {
     if (hash && hash.includes('error=')) {
       const params = new URLSearchParams(hash.substring(1)); // remove #
       const errorDescription = params.get('error_description');
-      setStatus(`Erreur: ${errorDescription?.replace(/\+/g, ' ') || 'Erreur inconnue'}`);
-      // Redirect back to profile after a delay
       setTimeout(() => {
-        router.push('/'); // Fallback
+        setStatus(`Erreur: ${errorDescription?.replace(/\+/g, ' ') || 'Erreur inconnue'}`);
+      }, 0);
+      // Redirect back to home after a delay
+      setTimeout(() => {
+        const siteUrl = getSiteUrl();
+        router.push(siteUrl ? `${siteUrl}/` : '/'); // Fallback
       }, 3000);
       return;
     }
 
     const handleAuth = async () => {
       // Check if session exists (Supabase client handles hash automatically on init)
-      const { data: { session }, error } = await supabase.auth.getSession();
+      const { data: { session } } = await supabase.auth.getSession();
 
       if (session) {
         setStatus('Connexion réussie. Redirection...');
-        const role = session.user.user_metadata?.role;
 
-        let path = '/profile'; // Default
-        if (role === 'admin') path = '/admin/profile';
-        else if (role === 'parent') path = '/parent/profile';
-        else if (role === 'child') path = '/child/profile';
-
-        router.push(path);
+        router.push('/dashboard');
       } else {
         // Wait for auth state change
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((event: any, session: any) => {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
           if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || session) {
             setStatus('Connexion réussie. Redirection...');
-            const role = session?.user?.user_metadata?.role;
-
-            let path = '/profile'; // Default
-            if (role === 'admin') path = '/admin/profile';
-            else if (role === 'parent') path = '/parent/profile';
-            else if (role === 'child') path = '/child/profile';
-
-            router.push(path);
+            router.push('/dashboard');
           }
         });
         return () => subscription.unsubscribe();

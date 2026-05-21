@@ -1,5 +1,5 @@
 /** Avatar border styles by key */
-export const BORDER_STYLES: Record<string, { ring: string; label: string; preview: string; source?: "badge" | "subscription" }> = {
+export const BORDER_STYLES: Record<string, { ring: string; label: string; preview: string; source?: "badge" | "subscription" | "admin" }> = {
   none:     { ring: "",    label: "Aucun",       preview: "border-gray-200",   source: "badge" },
   bronze:   { ring: "",    label: "Bronze",      preview: "border-amber-600",  source: "badge" },
   silver:   { ring: "",    label: "Argent",      preview: "border-gray-400",   source: "badge" },
@@ -10,10 +10,11 @@ export const BORDER_STYLES: Record<string, { ring: string; label: string; previe
   flamme:   { ring: "",    label: "Flamme",      preview: "border-orange-500", source: "subscription" },
   pro:      { ring: "",    label: "Annuel Pro",  preview: "border-yellow-500", source: "subscription" },
   elite:    { ring: "",    label: "Elite",       preview: "border-pink-500",   source: "subscription" },
+  admin:    { ring: "",    label: "Admin",       preview: "border-red-500",    source: "admin" },
 };
 
 /** Name color styles by key */
-export const NAME_COLORS: Record<string, { cls: string; label: string; source?: "badge" | "subscription" }> = {
+export const NAME_COLORS: Record<string, { cls: string; label: string; source?: "badge" | "subscription" | "admin" }> = {
   // Badge unlocks (5 tiers)
   default:  { cls: "text-gray-800",         label: "Défaut",      source: "badge" },
   bronze:   { cls: "name-bronze-animated",  label: "Bronze",      source: "badge" },
@@ -26,6 +27,8 @@ export const NAME_COLORS: Record<string, { cls: string; label: string; source?: 
   pro:      { cls: "name-pro-animated",     label: "Annuel Pro",  source: "subscription" },
   flame:    { cls: "name-flame",            label: "Flamme",      source: "subscription" },
   elite:    { cls: "name-elite",            label: "Elite",       source: "subscription" },
+  // Admin exclusive
+  admin:    { cls: "name-admin-animated",   label: "Admin",       source: "admin" },
 };
 
 /** Plan ID → unlocked borders & colors */

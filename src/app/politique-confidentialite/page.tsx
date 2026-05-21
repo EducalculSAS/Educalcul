@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,8 +10,8 @@ export default function PolitiqueConfidentialite() {
 
       <main className="flex-grow pt-[100px] pb-16 px-4">
         <div className="container mx-auto max-w-4xl">
-          <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--card-border-antique)] p-8 md:p-12">
-            <h1 className="font-[family-name:var(--font-cinzel)] font-bold text-[var(--greek-blue)] text-3xl md:text-4xl mb-8 border-b-2 border-[var(--greek-gold)] pb-4">
+          <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--greek-gold)] p-8 md:p-12">
+            <h1 className="font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-3xl md:text-4xl mb-8 border-b-2 border-[var(--greek-gold)] pb-4">
               Politique de Confidentialité
             </h1>
 
@@ -41,7 +41,7 @@ export default function PolitiqueConfidentialite() {
                 <ul className="list-disc list-inside ml-4 space-y-2">
                   <li>Fournir et gérer nos services éducatifs</li>
                   <li>Suivre la progression des élèves</li>
-                  <li>Communiquer avec les utilisateurs (support, mises à jour)</li>
+                  <li>Communiquer avec les utilisateurs (support, mises Ã  jour)</li>
                   <li>Améliorer notre plateforme</li>
                 </ul>
               </section>
@@ -51,7 +51,7 @@ export default function PolitiqueConfidentialite() {
                   3. Protection des données
                 </h2>
                 <p>
-                  Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos données personnelles contre tout accès, modification, divulgation ou destruction non autorisé. Toutes les communications sont chiffrées via le protocole SSL/TLS.
+                  Nous mettons en Å“uvre des mesures de sécurité appropriées pour protéger vos données personnelles contre tout accès, modification, divulgation ou destruction non autorisé. Toutes les communications sont chiffrées via le protocole SSL/TLS.
                 </p>
               </section>
 
@@ -64,12 +64,12 @@ export default function PolitiqueConfidentialite() {
                 </p>
                 <ul className="list-disc list-inside ml-4 space-y-2">
                   <li>Droit d'accès et de rectification</li>
-                  <li>Droit à l'effacement ("droit à l'oubli")</li>
-                  <li>Droit à la limitation du traitement</li>
-                  <li>Droit à la portabilité des données</li>
+                  <li>Droit Ã  l'effacement ("droit Ã  l'oubli")</li>
+                  <li>Droit Ã  la limitation du traitement</li>
+                  <li>Droit Ã  la portabilité des données</li>
                 </ul>
                 <p className="mt-4">
-                  Pour exercer ces droits, vous pouvez nous contacter à l'adresse : privacy@educalcul.com
+                  Pour exercer ces droits, vous pouvez nous contacter Ã  l'adresse : privacy@educalcul.com
                 </p>
               </section>
 

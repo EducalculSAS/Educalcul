@@ -243,7 +243,7 @@ export default function CourseDetailPage() {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/10">
-              <BookOpen className="w-24 h-24 text-[var(--greek-blue)] opacity-20" />
+              <img src="/logo.png" alt="Educalcul" className="w-24 h-24 object-contain opacity-20" />
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -296,13 +296,13 @@ export default function CourseDetailPage() {
                 </button>
                 
                 <div className="space-y-4 text-sm text-gray-600">
-                  <div className="flex items-center justify-between border-b border-gray-200 pb-2">
+                  <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
                     <span className="flex items-center gap-2">
                       <Clock className="w-4 h-4" /> Durée estimée
                     </span>
                     <span className="font-bold">15 min</span>
                   </div>
-                  <div className="flex items-center justify-between border-b border-gray-200 pb-2">
+                  <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
                     <span className="flex items-center gap-2">
                       <BookOpen className="w-4 h-4" /> Difficulté
                     </span>

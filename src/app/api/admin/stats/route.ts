@@ -1,44 +1,60 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from 'next/server';
+import { supabaseAdmin } from '@/lib/supabaseClient';
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    // Execute counts in parallel
+    const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+
     const [
-      { count: usersCount, error: usersError },
-      { count: subsCount, error: subsError },
-      { count: coursesCount, error: coursesError },
-      { count: exercisesCount, error: exercisesError },
-      { count: quizzesCount, error: quizzesError }
+      { count: totalUsers },
+      { count: activeSubs },
+      { count: publishedCourses },
+      { count: totalExercises },
+      { count: totalQuizzes },
+      { count: openTickets },
+      { count: pendingReports },
+      { count: newUsersWeek },
+      { data: recentUsers },
+      { data: recentCourses },
+      { data: recentPosts },
     ] = await Promise.all([
       supabaseAdmin.from('users').select('*', { count: 'exact', head: true }),
       supabaseAdmin.from('subscriptions').select('*', { count: 'exact', head: true }).eq('status', 'active'),
       supabaseAdmin.from('courses').select('*', { count: 'exact', head: true }).eq('status', 'published'),
       supabaseAdmin.from('exercises').select('*', { count: 'exact', head: true }),
-      supabaseAdmin.from('quizzes').select('*', { count: 'exact', head: true })
+      supabaseAdmin.from('quizzes').select('*', { count: 'exact', head: true }),
+      supabaseAdmin.from('support_tickets').select('*', { count: 'exact', head: true }).eq('status', 'Ouvert'),
+      supabaseAdmin.from('forum_reports').select('*', { count: 'exact', head: true }),
+      supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).gte('created_at', sevenDaysAgo),
+      supabaseAdmin.from('users')
+        .select('id, first_name, last_name, role, avatar, created_at')
+        .order('created_at', { ascending: false }).limit(6),
+      supabaseAdmin.from('courses')
+        .select('id, title, subject, level, status, created_at')
+        .order('created_at', { ascending: false }).limit(5),
+      supabaseAdmin.from('forum_posts')
+        .select('id, title, created_at, author:users(first_name, last_name, child_username)')
+        .order('created_at', { ascending: false }).limit(5),
     ]);
 
-    if (usersError) console.error("Error counting users:", usersError);
-    if (subsError) console.error("Error counting subscriptions:", subsError);
-    if (coursesError) console.error("Error counting courses:", coursesError);
-
     return NextResponse.json({
-      users: usersCount || 0,
-      active_subscriptions: subsCount || 0,
-      published_courses: coursesCount || 0,
-      exercises: exercisesCount || 0,
-      quizzes: quizzesCount || 0
+      counts: {
+        users: totalUsers ?? 0,
+        active_subscriptions: activeSubs ?? 0,
+        published_courses: publishedCourses ?? 0,
+        exercises: totalExercises ?? 0,
+        quizzes: totalQuizzes ?? 0,
+        open_tickets: openTickets ?? 0,
+        pending_reports: pendingReports ?? 0,
+        new_users_week: newUsersWeek ?? 0,
+      },
+      recent: {
+        users: recentUsers ?? [],
+        courses: recentCourses ?? [],
+        forum_posts: recentPosts ?? [],
+      },
     });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
