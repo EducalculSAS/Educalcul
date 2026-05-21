@@ -235,7 +235,6 @@ export default function AdminDashboard() {
               { href: "/admin/forum",          icon: <MessageSquare size={15} />,  label: "Forum",           color: "hover:bg-indigo-50 hover:text-indigo-700"},
               { href: "/admin/support",        icon: <TicketCheck size={15} />,    label: "Support",         color: "hover:bg-amber-50 hover:text-amber-700"  },
               { href: "/admin/reports",        icon: <BarChart2 size={15} />,      label: "Rapports",        color: "hover:bg-teal-50 hover:text-teal-700"    },
-              { href: "/admin/referrals",      icon: <Gift size={15} />,           label: "Parrainage",      color: "hover:bg-rose-50 hover:text-rose-700"    },
               { href: "/admin/settings",       icon: <Settings size={15} />,       label: "Paramètres",      color: "hover:bg-gray-50 hover:text-gray-700"    },
             ].map(({ href, icon, label, color }) => (
               <Link

@@ -104,7 +104,7 @@ export default function Navbar() {
   const getProfileLink = () => {
     if (userRole === "parent") return "/parent/profile";
     if (userRole === "child") return "/child/profile";
-    return "/profile";
+    return "/admin/profile";
   };
 
   return (
