@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import {
@@ -21,12 +22,19 @@ import {
   HelpCircle,
 } from "lucide-react";
 
+// Pages "app" où on affiche le menu connecté
+const APP_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"];
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [firstName, setFirstName] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
+
+  // Sur les pages publiques, on n'affiche PAS le menu connecté
+  const isAppPage = APP_PREFIXES.some(p => pathname?.startsWith(p));
 
   // Close when clicking outside
   useEffect(() => {
@@ -134,8 +142,8 @@ export default function Navbar() {
             : "scale-y-0 opacity-0 pointer-events-none"
             }`}
         >
-          {/* Navigation Links */}
-          {!user && (
+          {/* Navigation Links — toujours visibles sur pages publiques */}
+          {(!user || !isAppPage) && (
             <div className="flex flex-col p-4 gap-2">
               <Link
                 href="/offres"
@@ -169,13 +177,13 @@ export default function Navbar() {
           )}
 
           {/* Divider */}
-          {!user && (
+          {(!user || !isAppPage) && (
             <div className="h-px bg-[var(--greek-gold)] opacity-30 mx-4"></div>
           )}
 
           {/* Auth Section */}
           <div className="flex flex-col p-4 gap-2">
-            {!user ? (
+            {!user || !isAppPage ? (
               <>
                 <Link
                   href="/auth/connexion"
@@ -192,7 +200,7 @@ export default function Navbar() {
                   Inscription
                 </Link>
               </>
-            ) : (
+            ) : user && isAppPage ? (
               <>
                 <div className="px-4 py-2 mb-2 text-[var(--greek-gold)] font-bold border-b border-[var(--greek-gold)]/20">
                   {firstName
@@ -301,7 +309,7 @@ export default function Navbar() {
                   <LogOut className="w-4 h-4" /> Déconnexion
                 </button>
               </>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
