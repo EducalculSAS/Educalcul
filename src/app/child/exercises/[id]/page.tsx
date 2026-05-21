@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -414,7 +414,7 @@ export default function ExerciseDetailPage() {
                     <span className="flex items-center gap-2">
                       <Star className="w-4 h-4" /> Récompense
                     </span>
-                    <span className="font-bold text-[var(--greek-gold)]">{exercise.points || 10} XP</span>
+                    <span className="font-bold text-[var(--greek-gold)]">{exercise.points_reward || 10} XP</span>
                   </div>
                   <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
                     <span className="flex items-center gap-2">

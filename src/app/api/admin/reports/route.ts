@@ -92,7 +92,7 @@ export async function GET() {
     const [{ data: recentRegistrations }, { data: recentPosts }, { data: recentAttempts }] = await Promise.all([
       supabaseAdmin.from("users").select("first_name, last_name, role, created_at").order("created_at", { ascending: false }).limit(4),
       supabaseAdmin.from("forum_posts").select("title, created_at, author:users(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
-      supabaseAdmin.from("user_exercise_attempts").select("created_at, user:users(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
+      supabaseAdmin.from("user_exercise_attempts").select("created_at, users(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
     ]);
 
     const activity = [

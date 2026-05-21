@@ -34,7 +34,7 @@ export async function GET(req: Request) {
     // Fetch course progress (last 10)
     const { data: courseProgress } = await supabaseAdmin
       .from("user_course_progress")
-      .select("created_at, course:courses(title, subject)")
+      .select("created_at, courses(title, subject)")
       .eq("user_id", childId)
       .order("created_at", { ascending: false })
       .limit(10);

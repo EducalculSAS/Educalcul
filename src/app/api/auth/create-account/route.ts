@@ -1,5 +1,5 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,12 +22,6 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-
-    // Initialize admin client (only at runtime)
-    const supabaseAdmin = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-      process.env.SUPABASE_SERVICE_ROLE_KEY || ""
-    );
 
     // Create Supabase Auth user
     const signUpEmail = role === "child" 

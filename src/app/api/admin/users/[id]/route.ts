@@ -18,9 +18,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
       supabaseAdmin.from("forum_comments").select("*", { count: "exact", head: true }).eq("author_id", id),
       supabaseAdmin.from("subscriptions").select("*, plan:subscription_plans(name, price)").eq("user_id", user.auth_id).eq("status", "active").maybeSingle(),
       supabaseAdmin.from("users").select("id, first_name, last_name, grade_level, avatar").eq("parent_id", id).eq("role", "child"),
-      supabaseAdmin.from("user_exercise_attempts").select("created_at, exercise:exercises(title)").eq("user_id", id).order("created_at", { ascending: false }).limit(5),
+      supabaseAdmin.from("user_exercise_attempts").select("created_at, exercises(title)").eq("user_id", id).order("created_at", { ascending: false }).limit(5),
       supabaseAdmin.from("admin_notifications").select("*").eq("user_id", id).order("created_at", { ascending: false }).limit(10),
-      supabaseAdmin.from("user_badges").select("badge:badges(name, icon_name)").eq("user_id", id),
+      supabaseAdmin.from("user_badges").select("badge:badges(name, icon)").eq("user_id", id),
     ]);
 
     return NextResponse.json({

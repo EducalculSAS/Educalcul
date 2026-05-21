@@ -57,7 +57,7 @@ export async function POST(
         );
       }
       exercise = dbExercise;
-      maxPoints = exercise.points || 10;
+      maxPoints = exercise.points_reward || 10;
 
       if (block_id && exercise.content_json) {
         const allBlocks = exercise.content_json.flatMap((p: any) => p.blocks);
@@ -175,13 +175,10 @@ export async function POST(
           user_id,
           exercise_id: id,
           score,
-          max_score: maxPoints,
+          total_points: maxPoints,
           is_correct: isCorrect,
-          duration_seconds: time_spent || 0,
-          attempt_data: {
-            answer: isImage ? "image_data_hidden" : answer,
-            feedback,
-          },
+          attempted_at: new Date().toISOString(),
+          status: isCorrect ? "completed" : "attempted",
         });
 
       if (attemptError) {

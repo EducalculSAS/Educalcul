@@ -82,7 +82,7 @@ export default function ChildReportPage() {
       const [{ data: quizzes }, { data: exercises }, { data: courseProgress }] = await Promise.all([
         supabase.from("user_quiz_attempts").select("id, completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(30),
         supabase.from("user_exercise_attempts").select("id, attempted_at, is_correct, exercises(title, difficulty_level, subject)").eq("user_id", childId).order("attempted_at", { ascending: false }).limit(30),
-        supabase.from("user_course_progress").select("id, created_at, course:courses(title, subject)").eq("user_id", childId).order("created_at", { ascending: false }).limit(20),
+        supabase.from("user_course_progress").select("id, created_at, course_id, courses(title, subject)").eq("user_id", childId).order("created_at", { ascending: false }).limit(20),
       ]);
 
       const allActivities: ActivityItem[] = [];
