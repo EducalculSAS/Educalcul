@@ -62,9 +62,9 @@ export async function GET(req: Request) {
       date: new Date(q.completed_at).toLocaleDateString("fr-FR"),
     })) || [];
 
-    const courseSummary = courseProgress?.slice(0, 8).map(c => ({
-      cours: (c.course as any)?.title || "?",
-      matiere: (c.course as any)?.subject || "?",
+    const courseSummary = courseProgress?.slice(0, 8).map((c: any) => ({
+      cours: Array.isArray(c.courses) ? c.courses[0]?.title : c.courses?.title || "?",
+      matiere: Array.isArray(c.courses) ? c.courses[0]?.subject : c.courses?.subject || "?",
     })) || [];
 
     const prompt = `Tu es un assistant pédagogique expert. Voici les données de progression de ${child?.first_name || "l'enfant"} (${child?.grade_level || "niveau non défini"}).
