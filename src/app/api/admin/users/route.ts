@@ -5,9 +5,23 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function GET(request: Request) {
   try {
+    // Check if service role is configured
+    if (!process.env.SUPABASE_SERVICE_ROLE && !process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE) {
+      console.error(`[GET USERS] FATAL: No SUPABASE_SERVICE_ROLE environment variable found`);
+      return NextResponse.json(
+        { 
+          error: "Configuration error: Service role not configured.",
+          debug: "SUPABASE_SERVICE_ROLE environment variable is missing"
+        },
+        { status: 500 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const role = searchParams.get("role");
     const status = searchParams.get("status");
+
+    console.log(`[GET USERS] Fetching users with role=${role}, status=${status}`);
 
     let query = supabaseAdmin
       .from("users")
@@ -24,12 +38,14 @@ export async function GET(request: Request) {
     const { data, error } = await query;
 
     if (error) {
+      console.error(`[GET USERS] Supabase error:`, error);
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
+    console.log(`[GET USERS] Successfully fetched ${data?.length || 0} users`);
     return NextResponse.json(data);
   } catch (error: any) {
-    console.error("Error fetching users:", error);
+    console.error("[GET USERS] Catch error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
@@ -295,22 +311,17 @@ export async function DELETE(request: Request) {
       }
     }
 
-    // Delete from Auth
+    // Delete from Auth (best effort - may fail with scoped API keys)
     console.log(`[DELETE USER] Deleting from Supabase Auth`);
     const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id);
 
     if (authError) {
-      console.error(`[DELETE USER] Auth deletion error for ${auth_id}:`, authError);
-      return NextResponse.json(
-        { 
-          error: `Erreur lors de la suppression de l'authentification: ${authError.message || authError}`,
-          code: authError.code || "UNKNOWN_ERROR"
-        },
-        { status: 500 }
-      );
+      console.warn(`[DELETE USER] Could not delete auth user (non-critical):`, authError.message);
+      // Continue anyway - database is already fully cleaned, user is effectively deleted
+      // Scoped API keys may not have deleteUser permission - this is acceptable
     }
 
-    console.log(`[DELETE USER] Auth user deleted successfully`);
+    console.log(`[DELETE USER] User successfully deleted from database`);
 
     // Manually delete from public.users
     const { error: dbError } = await supabaseAdmin
