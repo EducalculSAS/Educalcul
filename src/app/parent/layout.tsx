@@ -1,8 +1,9 @@
 ﻿"use client";
 
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getServerGeo } from "@/lib/geoLocation";
 
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";

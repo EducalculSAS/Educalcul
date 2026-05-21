@@ -30,7 +30,7 @@ export function renderLatexInHTML(html: string): string {
   });
 
   // 3. \(...\) inline
-  result = result.replace(/\\\((.+?)\\\)/gs, (match, math) => {
+  result = result.replace(/\\\(([\s\S]+?)\\\)/g, (match, math) => {
     try {
       return katex.renderToString(math.trim(), { displayMode: false, throwOnError: false });
     } catch { return match; }

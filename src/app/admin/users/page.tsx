@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { supabase } from "@/lib/supabaseClient";
+import { getServerGeo } from "@/lib/geoLocation";
 
 import {
   Users, Search, Plus, Trash2, CheckCircle, XCircle,

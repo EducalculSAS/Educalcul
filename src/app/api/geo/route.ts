@@ -34,7 +34,7 @@ export async function GET(request: Request) {
       latitude:  parseFloat(vercelLat),
       longitude: parseFloat(vercelLng),
       city:      cityRaw ? decodeURIComponent(cityRaw) : undefined,
-      country:   COUNTRY_NAMES[countryCode] ?? countryCode || undefined,
+      country:   (COUNTRY_NAMES[countryCode] ?? countryCode) || undefined,
     });
   }
 

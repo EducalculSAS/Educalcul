@@ -164,18 +164,18 @@ export default function AdminExercisesPage() {
       setFormData({
         title: data.title || "",
         description: data.description || "",
-        subject: data.subject || "Mathématiques",
-        difficulty_level: data.difficulty_level || "facile",
+        course_id: "",
+        difficulty_level: "medium",
+        type: data.type || "standard",
         level: data.level || "6eme",
+        grading_type: "auto",
         status: data.status || "draft",
         thumbnail_url: data.thumbnail_url || "",
-        folder_id: null,
-        points: data.points || 10,
+        folder_id: "",
         time_limit: data.time_limit || 0,
         max_attempts: data.max_attempts || 0,
         content_json: data.content_json || [],
       });
-      setCurrentExercise(null);
       setIsModalOpen(true);
     } catch (err: any) { alert(err.message); }
     e.target.value = "";

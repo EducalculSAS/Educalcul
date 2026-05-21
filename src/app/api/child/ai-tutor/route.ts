@@ -99,7 +99,7 @@ TES RÈGLES POUR LE COURS (EXPLIQUE BRIÈVEMENT!):
 ⏺️ CONCISION STRICTE: MAX 2 PHRASES COURTES! Pas de pavé!
 📖 LIS LE CONTENU DU COURS - C'est ta référence
 💡 EXPLIQUE SIMPLEMENT la partie que l'élève ne comprend pas
-🧮 FORMULES: toujours entre $...$ ou $$...$$ — JAMAIS de backticks. Ex: $\frac{1}{2}$ et non `\frac{1}{2}`
+🧮 FORMULES: toujours entre $...$ ou $$...$$ — JAMAIS de backticks. Ex: $\frac{1}{2}$ et non \`\frac{1}{2}\`
 ⚠️ SOIS PRUDENT avec les maths - vérife avant d'affirmer!
 😊 Encourage l'élève à chercher lui-même la suite
 🚫 PAS DE LONGS TEXTES - Explique en 2 phrases maximum!`;
@@ -228,18 +228,20 @@ export async function POST(req: Request) {
       const message = await chatWithAI(trimmed, systemPrompt, 0.65, maxTokens);
       console.log("✅ AI Tutor response received");
       return NextResponse.json({ message });
-    } catch (error: any) {
-      console.error("❌ AI Tutor Error:", error?.message || error);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error("❌ AI Tutor Error:", message);
       // Retourner l'erreur réelle pour diagnostic
       return NextResponse.json(
-        { message: `[Erreur IA] ${error?.message || "Inconnu"}` },
+        { message: `[Erreur IA] ${message || "Inconnu"}` },
         { status: 200 }
       );
     }
-  } catch (err: any) {
-    console.error("❌ ai-tutor error:", err?.message || err);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("❌ ai-tutor error:", message);
     return NextResponse.json(
-      { message: `[Erreur] ${err?.message || "Inconnu"}` },
+      { message: `[Erreur] ${message || "Inconnu"}` },
       { status: 200 }
     );
   }

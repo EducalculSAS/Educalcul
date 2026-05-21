@@ -120,11 +120,15 @@ export default function AdminQuizzesPage() {
       setFormData({
         title: data.title || "",
         description: data.description || "",
-        subject: data.subject || "Mathématiques",
+        course_id: "",
+        folder_id: "",
+        time_limit_minutes: data.time_limit_minutes || data.time_limit || 0,
+        difficulty_level: data.difficulty_level || "medium",
+        type: data.type || "standard",
         level: data.level || "6eme",
+        grading_type: "auto",
+        max_attempts: data.max_attempts || 0,
         status: data.status || "draft",
-        time_limit: data.time_limit || 0,
-        pass_score: data.pass_score || 70,
         thumbnail_filename: "",
         content_json: data.content_json || [],
       });
