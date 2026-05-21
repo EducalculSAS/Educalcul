@@ -21,7 +21,6 @@ export default function Inscription() {
   const [role, setRole] = useState<"parent" | "child">("parent");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   // Form states
   const [firstName, setFirstName] = useState("");
@@ -59,8 +58,9 @@ export default function Inscription() {
   };
 
   const handleGoogleLogin = async () => {
-    // Save selected role to localStorage so we can assign it after OAuth callback
-    localStorage.setItem("educalcul_pending_role", role);
+    // Store signup intent + role for plan selection after Google callback
+    sessionStorage.setItem("educalcul_signup_mode", "google");
+    sessionStorage.setItem("educalcul_pending_role", role);
 
     try {
       const siteUrl = getSiteUrl();
@@ -79,7 +79,6 @@ export default function Inscription() {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    setSuccess(null);
     setLoading(true);
 
     // Validation
@@ -96,55 +95,27 @@ export default function Inscription() {
     }
 
     try {
-      let signUpEmail = email.trim();
-      let signUpPassword = password;
-      let metaData = {
-        first_name: firstName.trim(),
-        last_name: lastName.trim(),
-        role: role,
-        child_username: childUsername.trim() || null,
-        child_age: childAge || null,
-        parent_email: parentEmail.trim() || null,
+      // Store registration data in sessionStorage (not creating user yet)
+      const registrationData = {
+        role,
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
+        password,
+        childUsername: childUsername.trim() || null,
+        childAge: childAge || null,
+        parentEmail: parentEmail.trim() || null,
+        referralCode: referralCode.trim() || null,
+        referralStatus,
       };
 
-      if (role === "child") {
-        // Construct email for child (remove spaces and special chars)
-        const sanitizedUsername = childUsername
-          .trim()
-          .replace(/\s+/g, "")
-          .toLowerCase();
-        signUpEmail = `${sanitizedUsername}@educalcul.user`;
-        // Check age logic if needed
-      }
+      sessionStorage.setItem("educalcul_signup_data", JSON.stringify(registrationData));
+      sessionStorage.setItem("educalcul_signup_mode", "email");
 
-      // 1. Sign up with Supabase Auth
-      // Note: A Postgres Trigger handles the insertion into public.users
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: signUpEmail,
-        password: signUpPassword,
-        options: {
-          data: metaData,
-          emailRedirectTo: `${window.location.origin}/auth/connexion`,
-        },
-      });
-
-      if (authError) throw authError;
-
-      if (authData.user) {
-        // Record referral use if code provided and valid
-        if (role === "parent" && referralCode.trim() && referralStatus === "valid") {
-          await fetch("/api/auth/use-referral", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code: referralCode.trim(), newUserAuthId: authData.user.id }),
-          });
-        }
-
-        setSuccess("Compte créé avec succès ! Redirection...");
-        setTimeout(() => router.push("/auth/connexion"), 2000);
-      }
+      // Redirect to plan selection
+      router.push("/auth/inscription/select-plan");
     } catch (err: any) {
-      setError(err.message || "Une erreur est survenue lors de l'inscription.");
+      setError(err.message || "Une erreur est survenue.");
     } finally {
       setLoading(false);
     }
@@ -195,14 +166,7 @@ export default function Inscription() {
           </div>
         )}
 
-        {success && (
-          <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded-r">
-            <div className="flex items-center">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-              <p className="text-green-700 text-sm">{success}</p>
-            </div>
-          </div>
-        )}
+
 
         <form onSubmit={handleRegister} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -404,7 +368,7 @@ export default function Inscription() {
                 : "bg-[var(--greek-gold)] hover:bg-[var(--greek-gold)]"
             }`}
           >
-            {loading ? "Inscription en cours..." : "S'inscrire"}
+            {loading ? "Redirection en cours..." : "Continuer vers les plans"}
           </button>
 
           <div className="relative flex items-center justify-center mb-6">
@@ -416,7 +380,7 @@ export default function Inscription() {
             </span>
           </div>
 
-          {/* Google Login Button */}
+          {/* Google Signup Button */}
           <button
             type="button"
             onClick={handleGoogleLogin}

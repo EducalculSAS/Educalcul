@@ -35,32 +35,61 @@ interface SubscriptionPlan {
 function SubscriptionPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const isNewSignup = searchParams.get("new") === "true";
   const [loading, setLoading] = useState(true);
   const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
   const [currentPlan, setCurrentPlan] = useState<any>(null);
   const [billingHistory, setBillingHistory] = useState<any[]>([]);
   const [user, setUser] = useState<any>(null);
   const [processingPlanId, setProcessingPlanId] = useState<number | null>(null);
-  // My own referral code
   const [myReferralCode, setMyReferralCode] = useState<any>(null);
   const [copied, setCopied] = useState(false);
   const [pendingDiscount, setPendingDiscount] = useState(0);
+  const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
+  const [signupData, setSignupData] = useState<any>(null);
 
   useEffect(() => {
     const fetchAll = async () => {
+      // NEW SIGNUP FLOW
+      if (isNewSignup) {
+        try {
+          const storedPlan = sessionStorage.getItem("educalcul_selected_plan");
+          const storedData = sessionStorage.getItem("educalcul_signup_data");
+          
+          if (!storedPlan || !storedData) {
+            router.push("/auth/inscription");
+            return;
+          }
+
+          const planData = JSON.parse(storedPlan);
+          const signupFormData = JSON.parse(storedData);
+          
+          setSelectedPlan(planData);
+          setSignupData(signupFormData);
+          setLoading(false);
+          return;
+        } catch (error) {
+          console.error("Error loading signup data:", error);
+          router.push("/auth/inscription");
+          return;
+        }
+      }
+
+      // NORMAL FLOW
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) {
+        router.push("/auth/connexion");
+        return;
+      }
       setUser(user);
 
       try {
-        // Fetch plans from DB
         const plansRes = await fetch("/api/admin/subscriptions");
         if (plansRes.ok) {
           const plansData = await plansRes.json();
           setPlans((plansData || []).filter((p: SubscriptionPlan) => p.is_active));
         }
 
-        // Fetch current subscription
         const subRes = await fetch(`/api/parent/subscription-details?userId=${user.id}`);
         const subData = await subRes.json();
         if (subData.subscription) {
@@ -70,12 +99,10 @@ function SubscriptionPageContent() {
         }
         if (subData.invoices) setBillingHistory(subData.invoices);
 
-        // Fetch user's own referral code
         const refRes = await fetch(`/api/parent/my-referral-code?authId=${user.id}`);
         if (refRes.ok) setMyReferralCode(await refRes.json());
 
-        // Fetch pending discount (parrainage reward)
-        const { data: userRow } = await (await import("@/lib/supabaseClient")).supabase
+        const { data: userRow } = await supabase
           .from("users")
           .select("pending_discount_percent")
           .eq("auth_id", user.id)
@@ -90,28 +117,56 @@ function SubscriptionPageContent() {
     };
 
     fetchAll();
-  }, []);
+  }, [isNewSignup, router]);
 
-  // Sync subscription after Stripe checkout redirect
+  // Sync subscription after Stripe checkout
   useEffect(() => {
     const success = searchParams.get("success");
     const sessionId = searchParams.get("session_id");
     if (success !== "1" || !sessionId) return;
 
     (async () => {
-      const { data: { user } } = await (await import("@/lib/supabaseClient")).supabase.auth.getUser();
-      if (!user) return;
       try {
+        // NEW SIGNUP FLOW - Create account after payment
+        if (isNewSignup && signupData) {
+          const createUserRes = await fetch("/api/auth/create-account", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ...signupData,
+              sessionId,
+            }),
+          });
+
+          if (createUserRes.ok) {
+            sessionStorage.removeItem("educalcul_signup_data");
+            sessionStorage.removeItem("educalcul_selected_plan");
+            sessionStorage.removeItem("educalcul_signup_mode");
+            sessionStorage.removeItem("educalcul_pending_role");
+            
+            const dashboardPath = signupData.role === "parent" ? "/parent/dashboard" : "/child/dashboard";
+            router.replace(dashboardPath);
+            return;
+          } else {
+            console.error("Failed to create account");
+          }
+        }
+
+        // NORMAL FLOW
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+        
         await fetch("/api/parent/sync-subscription", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ sessionId, authId: user.id }),
         });
-        // Clean URL and reload data
         router.replace("/parent/subscription");
-      } catch {}
+      } catch (error) {
+        console.error("Error syncing subscription:", error);
+      }
     })();
-  }, [searchParams]);
+  }, [searchParams, isNewSignup, signupData, router]);
 
   const copyCode = () => {
     if (!myReferralCode?.code) return;
@@ -123,17 +178,37 @@ function SubscriptionPageContent() {
   const handleSubscribe = async (planId: number) => {
     setProcessingPlanId(planId);
     try {
+      if (isNewSignup && signupData) {
+        const response = await fetch("/api/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            planId,
+            isNewSignup: true,
+            email: signupData.email,
+            referralCode: signupData.referralCode || undefined,
+          }),
+        });
+
+        const data = await response.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          console.error("Error creating checkout session:", data.error);
+          alert("Une erreur est survenue. Veuillez réessayer.");
+          setProcessingPlanId(null);
+        }
+        return;
+      }
+
       if (!user) {
-        // Redirect to login if not authenticated
         router.push("/auth/connexion?redirect=/parent/subscription");
         return;
       }
 
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           planId,
           userId: user.id,
@@ -143,7 +218,6 @@ function SubscriptionPageContent() {
       });
 
       const data = await response.json();
-
       if (data.url) {
         window.location.href = data.url;
       } else {
@@ -165,9 +239,7 @@ function SubscriptionPageContent() {
     try {
       const response = await fetch("/api/create-portal-session", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user.id }),
       });
 
@@ -187,7 +259,15 @@ function SubscriptionPageContent() {
   };
 
   const handleCancel = () => {
-    handleManagePayment(); // Redirect to portal for cancellation
+    if (isNewSignup) {
+      sessionStorage.removeItem("educalcul_signup_data");
+      sessionStorage.removeItem("educalcul_selected_plan");
+      sessionStorage.removeItem("educalcul_signup_mode");
+      sessionStorage.removeItem("educalcul_pending_role");
+      router.push("/");
+    } else {
+      handleManagePayment();
+    }
   };
 
   if (loading) {
@@ -207,271 +287,297 @@ function SubscriptionPageContent() {
         <div className="relative z-10 max-w-6xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
             <Crown className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
-            MON ABONNEMENT
+            {isNewSignup ? "CHOISIR UN PLAN" : "MON ABONNEMENT"}
           </h1>
           <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
             <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">FORMULE</span>
-            <span>Gérez votre formule et accédez à vos factures</span>
+            <span>{isNewSignup ? "Finalisez votre inscription en choisissant un plan" : "Gérez votre formule et accédez à vos factures"}</span>
           </p>
         </div>
       </div>
-    <div className="container mx-auto px-4 pb-12 max-w-6xl">
 
-      {/* Current Subscription Status */}
-      <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6 mb-8">
-        <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
-          <CreditCard className="w-5 h-5 text-[var(--greek-gold)]" />
-          État actuel
-        </h2>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div>
-            <p className="text-gray-600">
-              Plan actuel :{" "}
-              <span className="font-bold text-[var(--greek-blue)] text-lg">
-                {plans.find((p) => p.id === Number(currentPlan?.plan_id))?.name || "Gratuit"}
-              </span>
-            </p>
-            {currentPlan?.current_period_end && (
-              <p className="text-sm text-gray-500 flex items-center mt-1">
-                <Clock className="w-4 h-4 mr-1" />
-                Renouvellement le : {new Date(currentPlan.current_period_end).toLocaleDateString()}
-              </p>
-            )}
-            {currentPlan?.cancel_at_period_end && (
-              <p className="text-sm text-red-500 flex items-center mt-1">
-                <AlertTriangle className="w-4 h-4 mr-1" />
-                Se termine le : {new Date(currentPlan.current_period_end).toLocaleDateString()}
-              </p>
-            )}
-          </div>
-          <button
-            onClick={handleManagePayment}
-            className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:opacity-90 transition-colors"
-          >
-            Gérer le paiement
-          </button>
-        </div>
-      </div>
-
-      {/* Parrainage reward banner */}
-      {pendingDiscount > 0 && (
-        <div className="mb-6 bg-green-50 border border-green-200 rounded-2xl px-6 py-4 flex items-center gap-3">
-          <Gift className="w-6 h-6 text-green-600 flex-shrink-0" />
-          <div>
-            <p className="font-bold text-green-800">Récompense parrainage disponible</p>
-            <p className="text-sm text-green-700">Un ami a utilisé votre code ! Vous bénéficiez de <strong>{pendingDiscount}% de réduction</strong> sur votre prochain abonnement.</p>
-          </div>
-        </div>
-      )}
-
-      {/* Pricing Plans */}
-      <div className={`grid gap-8 mb-12 ${plans.length <= 2 ? "md:grid-cols-2" : plans.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-4"}`}>
-        {plans.map((plan) => {
-          const isCurrent = Number(currentPlan?.plan_id) === plan.id;
-          const features = Array.isArray(plan.features) ? plan.features : [];
-          const intervalLabel = plan.billing_interval === "year" ? "an" : plan.billing_interval === "week" ? "sem." : "mois";
-          return (
-            <div
-              key={plan.id}
-              className={`relative bg-white rounded-xl shadow-sm border p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                isCurrent ? "border-[var(--greek-gold)] ring-1 ring-[var(--greek-gold)]" : "border-[var(--greek-gold)]/20"
-              }`}
-            >
-              {isCurrent && (
-                <div className="absolute top-0 right-0 bg-[var(--greek-gold)] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
-                  ACTUEL
-                </div>
-              )}
-              {plan.promo_description && (
-                <div className="flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-2">
-                  <Sparkles className="w-3 h-3" />{plan.promo_description}
-                </div>
-              )}
-              <h3 className="text-xl font-bold text-gray-800 mb-1">{plan.name}</h3>
-              {plan.description && <p className="text-sm text-gray-500 mb-3">{plan.description}</p>}
-              <div className="text-3xl font-bold text-[var(--greek-blue)] mb-4">
-                {plan.price === 0 ? "Gratuit" : `${plan.price}€`}
-                {plan.price > 0 && <span className="text-sm text-gray-500 font-normal"> /{intervalLabel}</span>}
-              </div>
-              {plan.trial_days > 0 && (
-                <p className="text-xs text-green-600 font-medium mb-3 bg-green-50 px-3 py-1.5 rounded-lg">
-                  {plan.trial_days} jours d'essai gratuit
+      <div className="container mx-auto px-4 pb-12 max-w-6xl">
+        {/* Current Subscription Status (only for normal flow) */}
+        {!isNewSignup && (
+          <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6 mb-8">
+            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
+              <CreditCard className="w-5 h-5 text-[var(--greek-gold)]" />
+              État actuel
+            </h2>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div>
+                <p className="text-gray-600">
+                  Plan actuel :{" "}
+                  <span className="font-bold text-[var(--greek-blue)] text-lg">
+                    {plans.find((p) => p.id === Number(currentPlan?.plan_id))?.name || "Gratuit"}
+                  </span>
                 </p>
-              )}
-              <ul className="space-y-3 mb-8">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                {currentPlan?.current_period_end && (
+                  <p className="text-sm text-gray-500 flex items-center mt-1">
+                    <Clock className="w-4 h-4 mr-1" />
+                    Renouvellement le : {new Date(currentPlan.current_period_end).toLocaleDateString()}
+                  </p>
+                )}
+                {currentPlan?.cancel_at_period_end && (
+                  <p className="text-sm text-red-500 flex items-center mt-1">
+                    <AlertTriangle className="w-4 h-4 mr-1" />
+                    Se termine le : {new Date(currentPlan.current_period_end).toLocaleDateString()}
+                  </p>
+                )}
+              </div>
               <button
-                onClick={() => handleSubscribe(plan.id)}
-                disabled={isCurrent}
-                className={`w-full py-3 rounded-xl font-bold transition-all shadow-md ${
-                  isCurrent
-                    ? "bg-gray-100 text-gray-400 cursor-default shadow-none"
-                    : "bg-[var(--greek-blue)] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5"
-                }`}
+                onClick={handleManagePayment}
+                className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:opacity-90 transition-colors"
               >
-                {isCurrent ? "Abonnement Actuel" : processingPlanId === plan.id ? "Chargement..." : plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"}
+                Gérer le paiement
               </button>
             </div>
-          );
-        })}
-        {plans.length === 0 && !loading && (
-          <div className="col-span-full text-center py-12 text-gray-400">
-            Aucun plan disponible pour le moment.
           </div>
         )}
-      </div>
 
-      {/* Billing History */}
-      <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
-        <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
-          <Clock className="w-5 h-5 text-[var(--greek-gold)]" />
-          Historique de facturation
-        </h2>
-        {billingHistory.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-[var(--greek-gold)]/20">
-                  <th className="text-left py-3 text-gray-500 font-medium">
-                    Date
-                  </th>
-                  <th className="text-left py-3 text-gray-500 font-medium">
-                    Montant
-                  </th>
-                  <th className="text-left py-3 text-gray-500 font-medium">
-                    Statut
-                  </th>
-                  <th className="text-right py-3 text-gray-500 font-medium">
-                    Facture
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {billingHistory.map((bill) => (
-                  <tr key={bill.id} className="border-b border-[var(--greek-gold)]/15">
-                    <td className="py-4 text-gray-800">
-                      {new Date(bill.date).toLocaleDateString()}
-                    </td>
-                    <td className="py-4 text-gray-800 font-medium">
-                      {bill.amount}€
-                    </td>
-                    <td className="py-4">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-bold ${
-                          bill.status === "paid"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-yellow-100 text-yellow-700"
-                        }`}
-                      >
-                        {bill.status === "paid" ? "Payé" : bill.status}
-                      </span>
-                    </td>
-                    <td className="py-4 text-right">
-                      {bill.pdf_url ? (
-                        <a
-                          href={bill.pdf_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[var(--greek-blue)] hover:underline flex items-center justify-end"
-                        >
-                          <Download className="w-4 h-4 mr-1" />
-                          PDF
-                        </a>
-                      ) : (
-                        <span className="text-gray-400 text-sm">Indisponible</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* Parrainage reward banner (only for normal flow) */}
+        {!isNewSignup && pendingDiscount > 0 && (
+          <div className="mb-6 bg-green-50 border border-green-200 rounded-2xl px-6 py-4 flex items-center gap-3">
+            <Gift className="w-6 h-6 text-green-600 flex-shrink-0" />
+            <div>
+              <p className="font-bold text-green-800">Récompense parrainage disponible</p>
+              <p className="text-sm text-green-700">Un ami a utilisé votre code ! Vous bénéficiez de <strong>{pendingDiscount}% de réduction</strong> sur votre prochain abonnement.</p>
+            </div>
           </div>
+        )}
+
+        {/* Pricing Plans */}
+        {isNewSignup ? (
+          // NEW SIGNUP - Show only selected plan
+          selectedPlan && (
+            <div className="max-w-2xl mx-auto mb-12">
+              <div className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)] ring-2 ring-[var(--greek-gold)] p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">{selectedPlan.name}</h3>
+                {selectedPlan.description && <p className="text-gray-500 mb-6">{selectedPlan.description}</p>}
+                <div className="text-4xl font-bold text-[var(--greek-blue)] mb-6">
+                  {selectedPlan.price === 0 ? "Gratuit" : `${selectedPlan.price}€`}
+                  {selectedPlan.price > 0 && <span className="text-sm text-gray-500 font-normal"> /{selectedPlan.billing_interval === "year" ? "an" : "mois"}</span>}
+                </div>
+                {selectedPlan.trial_days > 0 && (
+                  <p className="text-sm text-green-600 font-medium mb-6 bg-green-50 px-4 py-2 rounded-lg">
+                    {selectedPlan.trial_days} jours d'essai gratuit
+                  </p>
+                )}
+                <ul className="space-y-3 mb-8">
+                  {(Array.isArray(selectedPlan.features) ? selectedPlan.features : []).map((feature, idx) => (
+                    <li key={idx} className="flex items-start text-gray-600">
+                      <Check className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    onClick={handleCancel}
+                    className="py-3 rounded-xl font-bold text-[var(--greek-blue)] border-2 border-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    onClick={() => handleSubscribe(selectedPlan.id)}
+                    disabled={processingPlanId === selectedPlan.id}
+                    className="py-3 rounded-xl font-bold bg-[var(--greek-gold)] text-white hover:opacity-90 transition-colors disabled:opacity-60"
+                  >
+                    {processingPlanId === selectedPlan.id ? "Chargement..." : "Payer"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )
         ) : (
-          <p className="text-gray-500 italic">Aucune facture disponible.</p>
+          // NORMAL FLOW - Show all plans
+          <div className={`grid gap-8 mb-12 ${plans.length <= 2 ? "md:grid-cols-2" : plans.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-4"}`}>
+            {plans.map((plan) => {
+              const isCurrent = Number(currentPlan?.plan_id) === plan.id;
+              const features = Array.isArray(plan.features) ? plan.features : [];
+              const intervalLabel = plan.billing_interval === "year" ? "an" : plan.billing_interval === "week" ? "sem." : "mois";
+              return (
+                <div
+                  key={plan.id}
+                  className={`relative bg-white rounded-xl shadow-sm border p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                    isCurrent ? "border-[var(--greek-gold)] ring-1 ring-[var(--greek-gold)]" : "border-[var(--greek-gold)]/20"
+                  }`}
+                >
+                  {isCurrent && (
+                    <div className="absolute top-0 right-0 bg-[var(--greek-gold)] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                      ACTUEL
+                    </div>
+                  )}
+                  {plan.promo_description && (
+                    <div className="flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-2">
+                      <Sparkles className="w-3 h-3" />{plan.promo_description}
+                    </div>
+                  )}
+                  <h3 className="text-xl font-bold text-gray-800 mb-1">{plan.name}</h3>
+                  {plan.description && <p className="text-sm text-gray-500 mb-3">{plan.description}</p>}
+                  <div className="text-3xl font-bold text-[var(--greek-blue)] mb-4">
+                    {plan.price === 0 ? "Gratuit" : `${plan.price}€`}
+                    {plan.price > 0 && <span className="text-sm text-gray-500 font-normal"> /{intervalLabel}</span>}
+                  </div>
+                  {plan.trial_days > 0 && (
+                    <p className="text-xs text-green-600 font-medium mb-3 bg-green-50 px-3 py-1.5 rounded-lg">
+                      {plan.trial_days} jours d'essai gratuit
+                    </p>
+                  )}
+                  <ul className="space-y-3 mb-8">
+                    {features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-gray-600">
+                        <Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() => handleSubscribe(plan.id)}
+                    disabled={isCurrent}
+                    className={`w-full py-3 rounded-xl font-bold transition-all shadow-md ${
+                      isCurrent
+                        ? "bg-gray-100 text-gray-400 cursor-default shadow-none"
+                        : "bg-[var(--greek-blue)] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5"
+                    }`}
+                  >
+                    {isCurrent ? "Abonnement Actuel" : processingPlanId === plan.id ? "Chargement..." : plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"}
+                  </button>
+                </div>
+              );
+            })}
+            {plans.length === 0 && !loading && (
+              <div className="col-span-full text-center py-12 text-gray-400">
+                Aucun plan disponible pour le moment.
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Billing History (only for normal flow) */}
+        {!isNewSignup && (
+          <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
+            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
+              <Clock className="w-5 h-5 text-[var(--greek-gold)]" />
+              Historique de facturation
+            </h2>
+            {billingHistory.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-[var(--greek-gold)]/20">
+                      <th className="text-left py-3 text-gray-500 font-medium">Date</th>
+                      <th className="text-left py-3 text-gray-500 font-medium">Montant</th>
+                      <th className="text-left py-3 text-gray-500 font-medium">Statut</th>
+                      <th className="text-right py-3 text-gray-500 font-medium">Facture</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {billingHistory.map((bill) => (
+                      <tr key={bill.id} className="border-b border-[var(--greek-gold)]/15">
+                        <td className="py-4 text-gray-800">{new Date(bill.date).toLocaleDateString()}</td>
+                        <td className="py-4 text-gray-800 font-medium">{bill.amount}€</td>
+                        <td className="py-4">
+                          <span className={`px-3 py-1 rounded-full text-xs font-bold ${bill.status === "paid" ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>
+                            {bill.status === "paid" ? "Payé" : bill.status}
+                          </span>
+                        </td>
+                        <td className="py-4 text-right">
+                          {bill.pdf_url ? (
+                            <a href={bill.pdf_url} target="_blank" rel="noopener noreferrer" className="text-[var(--greek-blue)] hover:underline flex items-center justify-end">
+                              <Download className="w-4 h-4 mr-1" />
+                              PDF
+                            </a>
+                          ) : (
+                            <span className="text-gray-400 text-sm">Indisponible</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="text-gray-500 italic">Aucune facture disponible.</p>
+            )}
+          </div>
+        )}
+
+        {/* Parrainage (only for normal flow) */}
+        {!isNewSignup && (
+          <div className="grid md:grid-cols-2 gap-6 mt-8">
+            {/* Mon code */}
+            <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
+              <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
+                <Gift className="w-5 h-5 text-[var(--greek-gold)]" />
+                Mon code de parrainage
+              </h2>
+              <p className="text-sm text-gray-500 mb-4">Partagez ce code — vos filleuls ont {myReferralCode?.discount_value ?? 10}% de réduction, et vous gagnez 10% sur votre prochain renouvellement.</p>
+              {myReferralCode ? (
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 bg-[var(--greek-cream)] rounded-xl px-4 py-4 border border-[var(--greek-gold)]/30">
+                    <span className="flex-1 font-mono font-bold text-3xl tracking-[0.25em] text-[var(--greek-blue)]">
+                      {myReferralCode.code}
+                    </span>
+                    <button onClick={copyCode} className="flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-lg bg-[var(--greek-blue)] text-white hover:opacity-90 transition shrink-0">
+                      {copied ? <CheckCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                      {copied ? "Copié !" : "Copier"}
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="flex items-center gap-1.5 text-gray-500">
+                      <Users className="w-4 h-4" />
+                      <span className="font-bold text-gray-800">{myReferralCode.current_uses ?? 0}</span> filleul{(myReferralCode.current_uses ?? 0) !== 1 ? "s" : ""}
+                    </span>
+                    <span className="bg-green-50 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full border border-green-200">
+                      {myReferralCode.discount_value}% offerts à chaque filleul
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+              )}
+            </div>
+
+            {/* Filleuls */}
+            <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
+              <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
+                <Users className="w-5 h-5 text-[var(--greek-gold)]" />
+                Mes filleuls
+              </h2>
+              <p className="text-sm text-gray-500 mb-4">Personnes qui ont utilisé votre code.</p>
+              {!myReferralCode ? (
+                <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+              ) : (myReferralCode.uses?.length ?? 0) === 0 ? (
+                <div className="text-center py-8 text-gray-400">
+                  <Users className="w-10 h-10 mx-auto mb-2 opacity-20" />
+                  <p className="text-sm">Personne n'a encore utilisé votre code.</p>
+                </div>
+              ) : (
+                <ul className="space-y-3">
+                  {myReferralCode.uses.map((u: any) => (
+                    <li key={u.id} className="flex items-center justify-between gap-3 py-2 border-b border-[var(--greek-gold)]/10 last:border-0">
+                      <div>
+                        <p className="font-semibold text-gray-800 text-sm">
+                          {u.users?.first_name || u.users?.last_name
+                            ? `${u.users.first_name ?? ""} ${u.users.last_name ?? ""}`.trim()
+                            : u.users?.email ?? "Utilisateur"}
+                        </p>
+                        {u.users?.email && (u.users.first_name || u.users.last_name) && (
+                          <p className="text-xs text-gray-400">{u.users.email}</p>
+                        )}
+                      </div>
+                      <span className="text-xs text-gray-400 shrink-0">
+                        {new Date(u.used_at).toLocaleDateString("fr-FR")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
         )}
       </div>
-
-      {/* Parrainage */}
-      <div className="grid md:grid-cols-2 gap-6 mt-8">
-
-        {/* Gauche : mon code */}
-        <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
-          <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
-            <Gift className="w-5 h-5 text-[var(--greek-gold)]" />
-            Mon code de parrainage
-          </h2>
-          <p className="text-sm text-gray-500 mb-4">Partagez ce code — vos filleuls ont {myReferralCode?.discount_value ?? 10}% de réduction, et vous gagnez 10% sur votre prochain renouvellement.</p>
-          {myReferralCode ? (
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 bg-[var(--greek-cream)] rounded-xl px-4 py-4 border border-[var(--greek-gold)]/30">
-                <span className="flex-1 font-mono font-bold text-3xl tracking-[0.25em] text-[var(--greek-blue)]">
-                  {myReferralCode.code}
-                </span>
-                <button onClick={copyCode} className="flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-lg bg-[var(--greek-blue)] text-white hover:opacity-90 transition shrink-0">
-                  {copied ? <CheckCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  {copied ? "Copié !" : "Copier"}
-                </button>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <span className="flex items-center gap-1.5 text-gray-500">
-                  <Users className="w-4 h-4" />
-                  <span className="font-bold text-gray-800">{myReferralCode.current_uses ?? 0}</span> filleul{(myReferralCode.current_uses ?? 0) !== 1 ? "s" : ""}
-                </span>
-                <span className="bg-green-50 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full border border-green-200">
-                  {myReferralCode.discount_value}% offerts à chaque filleul
-                </span>
-              </div>
-            </div>
-          ) : (
-            <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
-          )}
-        </div>
-
-        {/* Droite : qui a utilisé le code */}
-        <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-6">
-          <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
-            <Users className="w-5 h-5 text-[var(--greek-gold)]" />
-            Mes filleuls
-          </h2>
-          <p className="text-sm text-gray-500 mb-4">Personnes qui ont utilisé votre code.</p>
-          {!myReferralCode ? (
-            <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
-          ) : (myReferralCode.uses?.length ?? 0) === 0 ? (
-            <div className="text-center py-8 text-gray-400">
-              <Users className="w-10 h-10 mx-auto mb-2 opacity-20" />
-              <p className="text-sm">Personne n'a encore utilisé votre code.</p>
-            </div>
-          ) : (
-            <ul className="space-y-3">
-              {myReferralCode.uses.map((u: any) => (
-                <li key={u.id} className="flex items-center justify-between gap-3 py-2 border-b border-[var(--greek-gold)]/10 last:border-0">
-                  <div>
-                    <p className="font-semibold text-gray-800 text-sm">
-                      {u.users?.first_name || u.users?.last_name
-                        ? `${u.users.first_name ?? ""} ${u.users.last_name ?? ""}`.trim()
-                        : u.users?.email ?? "Utilisateur"}
-                    </p>
-                    {u.users?.email && (u.users.first_name || u.users.last_name) && (
-                      <p className="text-xs text-gray-400">{u.users.email}</p>
-                    )}
-                  </div>
-                  <span className="text-xs text-gray-400 shrink-0">
-                    {new Date(u.used_at).toLocaleDateString("fr-FR")}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-      </div>
-    </div>
     </div>
   );
 }

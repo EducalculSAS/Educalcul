@@ -31,15 +31,59 @@ export default function AuthCallback() {
       const { data: { session } } = await supabase.auth.getSession();
 
       if (session) {
-        setStatus('Connexion réussie. Redirection...');
+        setStatus('Authentification réussie. Redirection...');
 
-        router.push('/dashboard');
+        // Check if this is a signup flow (Google)
+        const signupMode = sessionStorage.getItem('educalcul_signup_mode');
+        const pendingRole = sessionStorage.getItem('educalcul_pending_role');
+
+        if (signupMode === 'google' && pendingRole) {
+          // Create minimal signup data for Google signup
+          const googleSignupData = {
+            role: pendingRole,
+            firstName: session.user.user_metadata?.full_name?.split(' ')[0] || '',
+            lastName: session.user.user_metadata?.full_name?.split(' ').slice(1).join(' ') || '',
+            email: session.user.email || '',
+            password: '',
+            childUsername: null,
+            childAge: null,
+            parentEmail: null,
+            referralCode: null,
+            referralStatus: 'idle',
+          };
+          sessionStorage.setItem('educalcul_signup_data', JSON.stringify(googleSignupData));
+          router.push('/auth/inscription/select-plan');
+        } else {
+          // Normal login - redirect to dashboard
+          router.push('/dashboard');
+        }
       } else {
         // Wait for auth state change
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
           if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || session) {
-            setStatus('Connexion réussie. Redirection...');
-            router.push('/dashboard');
+            setStatus('Authentification réussie. Redirection...');
+            
+            const signupMode = sessionStorage.getItem('educalcul_signup_mode');
+            const pendingRole = sessionStorage.getItem('educalcul_pending_role');
+
+            if (signupMode === 'google' && pendingRole && session) {
+              const googleSignupData = {
+                role: pendingRole,
+                firstName: session.user.user_metadata?.full_name?.split(' ')[0] || '',
+                lastName: session.user.user_metadata?.full_name?.split(' ').slice(1).join(' ') || '',
+                email: session.user.email || '',
+                password: '',
+                childUsername: null,
+                childAge: null,
+                parentEmail: null,
+                referralCode: null,
+                referralStatus: 'idle',
+              };
+              sessionStorage.setItem('educalcul_signup_data', JSON.stringify(googleSignupData));
+              router.push('/auth/inscription/select-plan');
+            } else {
+              router.push('/dashboard');
+            }
           }
         });
         return () => subscription.unsubscribe();
