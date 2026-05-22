@@ -49,32 +49,33 @@ export default function ParentLayout({
       }
 
       setUser(userData);
-      setLoading(false);
+      setLoading(false); // ← page rendue immédiatement, tracking en arrière-plan
 
-      // Track presence: update last_active_at + geo if missing
-      const now = new Date().toISOString();
-      const today = new Date().toISOString().split("T")[0];
-      const updates: any = { last_active_at: now };
+      // Fire-and-forget : ne bloque PAS la navigation
+      (async () => {
+        const now = new Date().toISOString();
+        const today = new Date().toISOString().split("T")[0];
+        const updates: any = { last_active_at: now };
 
-      // Track login streak
-      if (!userData.last_login_date || userData.last_login_date !== today) {
-        const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
-        updates.last_login_date = today;
-        updates.login_count = (userData.login_count || 0) + 1;
-        updates.login_streak = userData.last_login_date === yesterday ? (userData.login_streak || 0) + 1 : 1;
-      }
-
-      if (!userData.latitude) {
-        const geo = await getServerGeo();
-        if (geo) {
-          updates.latitude = geo.latitude;
-          updates.longitude = geo.longitude;
-          if (geo.city)    updates.last_login_city    = geo.city;
-          if (geo.country) updates.last_login_country = geo.country;
+        if (!userData.last_login_date || userData.last_login_date !== today) {
+          const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
+          updates.last_login_date = today;
+          updates.login_count = (userData.login_count || 0) + 1;
+          updates.login_streak = userData.last_login_date === yesterday ? (userData.login_streak || 0) + 1 : 1;
         }
-      }
 
-      await supabase.from("users").update(updates).eq("auth_id", session.user.id);
+        if (!userData.latitude) {
+          const geo = await getServerGeo();
+          if (geo) {
+            updates.latitude = geo.latitude;
+            updates.longitude = geo.longitude;
+            if (geo.city)    updates.last_login_city    = geo.city;
+            if (geo.country) updates.last_login_country = geo.country;
+          }
+        }
+
+        await supabase.from("users").update(updates).eq("auth_id", session.user.id);
+      })();
     };
 
     checkUser();

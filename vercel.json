@@ -1,0 +1,11 @@
+{
+  "regions": ["lhr1"],
+  "functions": {
+    "src/app/api/**": {
+      "maxDuration": 30
+    },
+    "src/app/api/admin/ai/**": {
+      "maxDuration": 300
+    }
+  }
+}
