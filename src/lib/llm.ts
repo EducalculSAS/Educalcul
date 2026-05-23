@@ -17,8 +17,6 @@ type Message = { role: "user" | "assistant" | "system"; content: string };
 // Modèles de fallback si le principal est rate-limité (dans l'ordre de préférence)
 const FALLBACK_MODELS = [
   OR_MODEL,
-  "meta-llama/llama-3.3-70b-instruct:free",
-  "nousresearch/hermes-3-llama-3.1-405b:free",
 ];
 
 async function callOpenRouterModel(
