@@ -1,7 +1,25 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { sendEmail } from "@/lib/mailer";
+import { buildEmailHtml, EMAIL_BASE_URL } from "@/lib/emailTemplates";
+import { notify } from "@/lib/notify";
 import Stripe from "stripe";
+
+async function getUserByCustomerId(customerId: string) {
+  const { data } = await supabaseAdmin
+    .from("subscriptions")
+    .select("user_id")
+    .eq("stripe_customer_id", customerId)
+    .maybeSingle();
+  if (!data?.user_id) return null;
+  const { data: profile } = await supabaseAdmin
+    .from("users")
+    .select("first_name, email, auth_id")
+    .eq("auth_id", data.user_id)
+    .maybeSingle();
+  return profile ? { ...profile, authId: data.user_id } : null;
+}
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -101,6 +119,24 @@ export async function POST(req: Request) {
             updated_at: new Date().toISOString(),
           }).eq("stripe_subscription_id", (invoice as any).subscription as string);
         }
+
+        // Email facture + notification
+        const user = await getUserByCustomerId(invoice.customer as string);
+        if (user && invoice.hosted_invoice_url) {
+          const amount = (invoice.amount_paid / 100).toFixed(2);
+          sendEmail({
+            toEmail: user.email,
+            toName: user.first_name || "Utilisateur",
+            subject: "Votre paiement a été confirmé",
+            textPart: `Bonjour ${user.first_name},\n\nVotre paiement de ${amount}€ a bien été enregistré.\n\nL'équipe Educalcul`,
+            htmlPart: buildEmailHtml({
+              title: "Paiement confirmé",
+              body: `<p>Bonjour <strong>${user.first_name}</strong>,</p><p>Votre paiement de <strong>${amount} €</strong> a bien été enregistré. Votre accès est actif.</p>`,
+              cta: { label: "Voir ma facture", url: invoice.hosted_invoice_url },
+            }),
+          }).catch(console.error);
+          notify({ userId: user.authId, type: "payment", title: "Paiement confirmé", body: `${amount} € encaissés`, link: "/parent/subscription" });
+        }
         break;
       }
 
@@ -112,6 +148,31 @@ export async function POST(req: Request) {
             status: "past_due",
             updated_at: new Date().toISOString(),
           }).eq("stripe_subscription_id", (invoice as any).subscription as string);
+        }
+
+        // Email paiement échoué + notification urgente
+        const user = await getUserByCustomerId(invoice.customer as string);
+        if (user) {
+          sendEmail({
+            toEmail: user.email,
+            toName: user.first_name || "Utilisateur",
+            subject: "Problème avec votre paiement Educalcul",
+            textPart: `Bonjour ${user.first_name},\n\nNous n'avons pas pu encaisser votre paiement. Veuillez mettre à jour votre moyen de paiement.\n\nL'équipe Educalcul`,
+            htmlPart: buildEmailHtml({
+              title: "Problème de paiement",
+              body: `
+                <p>Bonjour <strong>${user.first_name}</strong>,</p>
+                <p>Nous n'avons pas pu traiter votre paiement pour votre abonnement Educalcul.</p>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:16px 0;">
+                  <tr><td style="background:#fff3cd;border-left:3px solid #c5a148;padding:14px 18px;border-radius:0 8px 8px 0;">
+                    <p style="margin:0;font-size:13px;color:#92400e;">Mettez à jour votre moyen de paiement pour conserver votre accès à Educalcul.</p>
+                  </td></tr>
+                </table>
+              `,
+              cta: { label: "Mettre à jour mon paiement", url: `${EMAIL_BASE_URL}/parent/subscription` },
+            }),
+          }).catch(console.error);
+          notify({ userId: user.authId, type: "payment_failed", title: "Échec du paiement", body: "Mettez à jour votre moyen de paiement", link: "/parent/subscription" });
         }
         break;
       }

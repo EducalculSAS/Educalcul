@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PasswordStrength from "@/components/PasswordStrength";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
@@ -38,6 +39,26 @@ export default function Inscription() {
   const [referralCode, setReferralCode] = useState("");
   const [referralValidating, setReferralValidating] = useState(false);
   const [referralStatus, setReferralStatus] = useState<"idle" | "valid" | "invalid">("idle");
+  const [cguAccepted, setCguAccepted] = useState(false);
+
+  // Restaurer les données si l'utilisateur revient depuis select-plan
+  useEffect(() => {
+    const stored = sessionStorage.getItem("educalcul_signup_data");
+    const mode = sessionStorage.getItem("educalcul_signup_mode");
+    if (stored && mode === "email") {
+      try {
+        const d = JSON.parse(stored);
+        if (d.role) setRole(d.role);
+        if (d.firstName) setFirstName(d.firstName);
+        if (d.lastName) setLastName(d.lastName);
+        if (d.email) setEmail(d.email);
+        if (d.childUsername) setChildUsername(d.childUsername);
+        if (d.childAge) setChildAge(d.childAge);
+        if (d.parentEmail) setParentEmail(d.parentEmail);
+        if (d.referralCode) { setReferralCode(d.referralCode); setReferralStatus("valid"); }
+      } catch {}
+    }
+  }, []);
 
   const validateReferral = async (code: string) => {
     if (!code.trim()) { setReferralStatus("idle"); return; }
@@ -94,8 +115,31 @@ export default function Inscription() {
       return;
     }
 
+    if (!cguAccepted) {
+      setError("Vous devez accepter les CGU pour continuer.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      // Store registration data in sessionStorage (not creating user yet)
+      // Vérifier si l'email/username est déjà pris AVANT le paiement
+      const checkRes = await fetch("/api/auth/validate-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          role,
+          childUsername: childUsername.trim() || null,
+        }),
+      });
+      const checkData = await checkRes.json();
+      if (!checkData.valid) {
+        setError(checkData.error || "Email ou nom d'utilisateur déjà utilisé.");
+        setLoading(false);
+        return;
+      }
+
+      // Store registration data in sessionStorage
       const registrationData = {
         role,
         firstName: firstName.trim(),
@@ -107,12 +151,12 @@ export default function Inscription() {
         parentEmail: parentEmail.trim() || null,
         referralCode: referralCode.trim() || null,
         referralStatus,
+        cguAcceptedAt: new Date().toISOString(),
       };
 
       sessionStorage.setItem("educalcul_signup_data", JSON.stringify(registrationData));
       sessionStorage.setItem("educalcul_signup_mode", "email");
 
-      // Redirect to plan selection
       router.push("/auth/inscription/select-plan");
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue.");
@@ -123,7 +167,7 @@ export default function Inscription() {
 
   return (
     <div className="w-full max-w-2xl">
-      <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--greek-gold)] p-8">
+      <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[rgba(197,161,72,0.25)] p-8">
         <div className="text-center mb-8">
           <h1 className="font-[family-name:var(--font-display)] text-3xl text-[var(--greek-blue)] font-bold mb-2">
             Créer un compte
@@ -158,11 +202,9 @@ export default function Inscription() {
         </div>
 
         {error && (
-          <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-r">
-            <div className="flex items-center">
-              <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
-              <p className="text-red-700 text-sm">{error}</p>
-            </div>
+          <div className="flex items-center gap-2 px-4 py-3 mb-6 rounded-xl border text-sm" style={{ background: "var(--greek-blue)", borderColor: "rgba(239,68,68,0.3)", color: "rgba(255,255,255,0.9)" }}>
+            <AlertCircle className="w-4 h-4 text-red-300 shrink-0" />
+            <p>{error}</p>
           </div>
         )}
 
@@ -296,6 +338,7 @@ export default function Inscription() {
                   required
                 />
               </div>
+              <PasswordStrength password={password} />
             </div>
             <div>
               <label className="block text-[var(--greek-blue)] font-bold mb-2 text-sm">
@@ -337,10 +380,10 @@ export default function Inscription() {
                   onBlur={() => validateReferral(referralCode)}
                   className={`w-full pl-10 pr-10 py-3 border rounded-lg focus:outline-none font-mono tracking-widest uppercase text-sm ${
                     referralStatus === "valid"
-                      ? "border-green-400 bg-green-50 focus:border-green-500"
+                      ? "border-[var(--greek-gold)] bg-[rgba(197,161,72,0.05)] focus:border-[var(--greek-gold)]"
                       : referralStatus === "invalid"
-                      ? "border-red-400 bg-red-50 focus:border-red-500"
-                      : "border-gray-300 focus:border-[var(--greek-blue)]"
+                      ? "border-red-400/50 bg-red-500/5 focus:border-red-400"
+                      : "border-[rgba(197,161,72,0.3)] focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)]/30"
                   }`}
                   placeholder="EX: RUBEN3K7P"
                 />
@@ -359,10 +402,30 @@ export default function Inscription() {
             </div>
           )}
 
+          {/* Acceptation CGU */}
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <input
+              type="checkbox"
+              checked={cguAccepted}
+              onChange={e => setCguAccepted(e.target.checked)}
+              className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[var(--greek-blue)] focus:ring-[var(--greek-blue)] shrink-0"
+            />
+            <span className="text-sm text-gray-600 leading-relaxed">
+              J'accepte les{" "}
+              <a href="/cgu" target="_blank" className="text-[var(--greek-blue)] font-semibold hover:underline">
+                Conditions Générales d'Utilisation
+              </a>{" "}
+              et la{" "}
+              <a href="/politique-confidentialite" target="_blank" className="text-[var(--greek-blue)] font-semibold hover:underline">
+                Politique de confidentialité
+              </a>
+            </span>
+          </label>
+
           <button
             type="submit"
-            disabled={loading}
-            className={`w-full text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 shadow-md flex items-center justify-center hover:-translate-y-[1px] ${
+            disabled={loading || !cguAccepted}
+            className={`w-full text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 shadow-md flex items-center justify-center hover:-translate-y-[1px] disabled:opacity-50 disabled:cursor-not-allowed ${
               role === "parent"
                 ? "bg-[var(--greek-blue)] hover:bg-[#2c5282]"
                 : "bg-[var(--greek-gold)] hover:bg-[var(--greek-gold)]"
@@ -373,7 +436,7 @@ export default function Inscription() {
 
           <div className="relative flex items-center justify-center mb-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t" style={{ borderColor: "rgba(197,161,72,0.2)" }}></div>
             </div>
             <span className="relative bg-white px-4 text-sm text-gray-500">
               Ou s'inscrire avec
@@ -384,7 +447,7 @@ export default function Inscription() {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full bg-white text-gray-700 font-bold py-3 px-4 rounded-lg border border-gray-300 hover:bg-gray-50 transition-all duration-200 shadow-sm flex items-center justify-center hover:-translate-y-[1px] hover:shadow-md"
+            className="w-full bg-white font-bold py-3 px-4 rounded-lg border transition-all duration-200 shadow-sm flex items-center justify-center hover:-translate-y-[1px] hover:shadow-md" style={{ borderColor: "rgba(197,161,72,0.3)", color: "var(--greek-blue)" }}
           >
             <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
               <path

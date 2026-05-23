@@ -2,112 +2,92 @@
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
+const NAV_COLS = [
+  {
+    title: "Explorer",
+    links: [
+      { label: "Nos Offres", href: "/offres" },
+      { label: "Tarifs", href: "/tarifs" },
+      { label: "FAQ", href: "/faq" },
+    ],
+  },
+  {
+    title: "Compte",
+    links: [
+      { label: "Se connecter", href: "/auth/connexion" },
+      { label: "Créer un compte", href: "/auth/inscription" },
+    ],
+  },
+  {
+    title: "Aide",
+    links: [
+      { label: "Contact", href: "/contact" },
+      { label: "Mentions légales", href: "/mentions-legales" },
+      { label: "Confidentialité", href: "/politique-confidentialite" },
+      { label: "CGU", href: "/cgu" },
+    ],
+  },
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="modern-footer bg-[#3a6ea5] text-white relative overflow-hidden py-12 mt-auto">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="col-span-1">
-            <div className="flex items-center gap-3 font-[family-name:var(--font-display)] font-bold text-2xl mb-4 text-white">
-              <img src="/logo.png" alt="logo" className="w-10 h-10 relative -top-0.5" />
-              <span className="text-white">Educalcul</span>
-            </div>
-            <p className="text-white/80 text-sm leading-relaxed mb-6">
-              Plateforme d&apos;apprentissage des mathématiques innovante, conçue
-              pour accompagner chaque enfant dans sa réussite scolaire avec des
-              méthodes pédagogiques modernes et ludiques.
+    <footer style={{ background: "var(--greek-blue)" }} className="text-white mt-auto">
+      <div className="container mx-auto px-6 py-16 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <img src="/logo.png" alt="Educalcul" className="h-12 w-auto object-contain mb-5" />
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
+              Plateforme d&apos;apprentissage des mathématiques, du CP à la Terminale.
+              IA pédagogique, progression gamifiée, suivi parents.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-[var(--greek-gold)] hover:-translate-y-1 transition-all duration-300"
-                >
-                  <Icon className="w-5 h-5" />
+                <a key={i} href="#"
+                  className="w-9 h-9 flex items-center justify-center rounded-lg transition-all duration-200 hover:-translate-y-0.5 bg-white/[0.06] border border-white/[0.08] hover:bg-[var(--greek-gold)]">
+                  <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h6 className="text-[var(--greek-gold)] font-[family-name:var(--font-display)] font-semibold text-lg mb-5 relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-8 after:h-0.5 after:bg-[var(--greek-gold)]">
-              Explorer
-            </h6>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/offres" className="text-white/90 hover:text-[var(--greek-gold)] hover:translate-x-1 transition-all duration-300 inline-block">
-                  Nos Offres
-                </Link>
-              </li>
-              <li>
-                <Link href="/tarifs" className="text-white/90 hover:text-[var(--greek-gold)] hover:translate-x-1 transition-all duration-300 inline-block">
-                  Tarifs
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h6 className="text-[var(--greek-gold)] font-[family-name:var(--font-display)] font-semibold text-lg mb-5 relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-8 after:h-0.5 after:bg-[var(--greek-gold)]">
-              Compte
-            </h6>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/auth/connexion" className="text-white/90 hover:text-[var(--greek-gold)] hover:translate-x-1 transition-all duration-300 inline-block">
-                  Se connecter
-                </Link>
-              </li>
-              <li>
-                <Link href="/auth/inscription" className="text-white/90 hover:text-[var(--greek-gold)] hover:translate-x-1 transition-all duration-300 inline-block">
-                  Inscription
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h6 className="text-[var(--greek-gold)] font-[family-name:var(--font-display)] font-semibold text-lg mb-5 relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-8 after:h-0.5 after:bg-[var(--greek-gold)]">
-              Aide
-            </h6>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/faq" className="text-white/90 hover:text-[var(--greek-gold)] hover:translate-x-1 transition-all duration-300 inline-block">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-white/90 hover:text-[var(--greek-gold)] hover:translate-x-1 transition-all duration-300 inline-block">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Nav cols */}
+          {NAV_COLS.map((col) => (
+            <div key={col.title}>
+              <p
+                className="text-xs font-bold tracking-widest uppercase mb-4 font-[family-name:var(--font-display)]"
+                style={{ color: "var(--greek-gold)" }}
+              >
+                {col.title}
+              </p>
+              <ul className="space-y-3">
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="text-sm transition-all duration-200 hover:translate-x-1 hover:text-white inline-block"
+                      style={{ color: "rgba(255,255,255,0.5)" }}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-[rgba(197,161,72,0.5)] to-transparent my-8"></div>
+        {/* Divider */}
+        <div className="my-10 h-px" style={{ background: "rgba(197,161,72,0.2)" }} />
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/70 text-sm">
-            &copy; {currentYear} Educalcul. Tous droits réservés.
+        {/* Bottom */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+            &copy; {currentYear} Educalcul — Tous droits réservés.
           </p>
-          <div className="flex gap-6">
-            {[
-              ["Mentions légales", "/mentions-legales"],
-              ["Politique de confidentialité", "/politique-confidentialite"],
-              ["CGU", "/cgu"],
-            ].map(([label, href]) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-white/70 text-sm hover:text-[var(--greek-gold)] transition-colors"
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

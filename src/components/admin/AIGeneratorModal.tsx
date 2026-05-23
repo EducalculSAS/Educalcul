@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { Sparkles, XCircle, Loader2, BookOpen, BrainCircuit, Target, Settings2, FileText } from "lucide-react";
@@ -25,23 +25,21 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
     instructions: "",
   });
   const [isGenerating, setIsGenerating] = useState(false);
+  const [fieldError, setFieldError] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!params.topic.trim()) {
-      alert("Veuillez entrer un sujet.");
+      setFieldError("Veuillez entrer un sujet.");
       return;
     }
     if (params.count < 1 || params.count > 50) {
-      alert("Le nombre doit être compris entre 1 et 50.");
+      setFieldError("Le nombre doit être compris entre 1 et 50.");
       return;
     }
-    
+    setFieldError(null);
     setIsGenerating(true);
     onGenerate(params);
-    // Note: The parent component should handle setting isGenerating to false and closing the modal
-    // typically by passing down a completely fresh instance or handling state externally. 
-    // If onGenerate is async, we could await it here, but usually it's handled by parent.
   };
 
   const getTitle = () => {
@@ -62,10 +60,10 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
-      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden animate-fade-bounce">
         
         {/* Header */}
-        <div className="px-8 py-6 border-b border-[var(--greek-gold)]/15 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center relative overflow-hidden">
+        <div className="px-8 py-6 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
           <div className="flex items-center gap-3 relative z-10">
             <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -108,7 +106,14 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
         ) : (
           /* Form Content */
           <form onSubmit={handleSubmit} className="p-8 space-y-6">
-            
+
+            {fieldError && (
+              <div className="flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-medium" style={{ background: "var(--greek-blue)", borderColor: "rgba(239,68,68,0.3)", color: "rgba(255,255,255,0.9)" }}>
+                <XCircle size={16} className="text-red-300 shrink-0" />
+                {fieldError}
+              </div>
+            )}
+
             {/* Subject Input */}
             <div>
               <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
@@ -121,7 +126,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                 value={params.topic}
                 onChange={(e) => setParams({ ...params, topic: e.target.value })}
                 placeholder="Ex: Les fractions, Le théorème de Pythagore, Les volcans..."
-                className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800 placeholder:font-normal placeholder:text-gray-400"
+                className="w-full px-5 py-3 border border-[rgba(197,161,72,0.25)] bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800 placeholder:font-normal placeholder:text-gray-400"
                 autoFocus
               />
             </div>
@@ -137,7 +142,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                   <select
                     value={params.level}
                     onChange={(e) => setParams({ ...params, level: e.target.value })}
-                    className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all appearance-none font-medium text-gray-800"
+                    className="w-full px-5 py-3 border border-[rgba(197,161,72,0.25)] bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all appearance-none font-medium text-gray-800"
                   >
                     {SCHOOL_LEVELS.map((level) => (
                       <option key={level.value} value={level.value}>
@@ -164,7 +169,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                   required
                   value={params.count}
                   onChange={(e) => setParams({ ...params, count: parseInt(e.target.value) || 1 })}
-                  className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800"
+                  className="w-full px-5 py-3 border border-[rgba(197,161,72,0.25)] bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800"
                 />
               </div>
             </div>
@@ -189,7 +194,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                       py-3 px-4 rounded-xl border-2 font-semibold transition-all flex items-center justify-center
                       ${params.difficulty === diff.id 
                         ? `border-${diff.color}-500 bg-${diff.color}-50 text-${diff.color}-700 shadow-sm` 
-                        : "border-[var(--greek-gold)]/15 bg-white text-gray-500 hover:border-[var(--greek-gold)]/25 hover:bg-gray-50"}
+                        : "border-[rgba(197,161,72,0.25)] bg-white text-gray-500 hover:border-[rgba(197,161,72,0.25)] hover:bg-gray-50"}
                     `}
                   >
                     {diff.label}
@@ -209,12 +214,12 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
                 onChange={(e) => setParams({ ...params, instructions: e.target.value })}
                 rows={3}
                 placeholder="Ex: Insister sur des exemples pratiques dans la vie quotidienne, adopter un ton ludique et encourageant..."
-                className="w-full px-5 py-3 border border-[var(--greek-gold)]/25 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all text-gray-800 resize-none"
+                className="w-full px-5 py-3 border border-[rgba(197,161,72,0.25)] bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/50 focus:border-[var(--greek-blue)] transition-all text-gray-800 resize-none"
               />
             </div>
 
             {/* Footer Actions */}
-            <div className="flex justify-end gap-4 pt-4 border-t border-[var(--greek-gold)]/15">
+            <div className="flex justify-end gap-4 pt-4 border-t border-[rgba(197,161,72,0.25)]">
               <button
                 type="button"
                 onClick={onClose}

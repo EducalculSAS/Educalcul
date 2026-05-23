@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getDashboardPath } from "@/lib/authRedirect";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
+import NotificationBell from "@/components/NotificationBell";
 import {
   Menu,
   X,
@@ -48,44 +50,35 @@ export default function Navbar() {
   }, [isOpen]);
 
   useEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      setUser(session?.user || null);
-
-      if (session?.user) {
-        const { data: userData } = await supabase
-          .from("users")
-          .select("role, first_name")
-          .eq("auth_id", session.user.id)
-          .maybeSingle();
-        setUserRole(userData?.role || null);
-        setFirstName(userData?.first_name || null);
-      }
-
-      const {
-        data: { subscription },
-      } = supabase.auth.onAuthStateChange(async (_event, session) => {
-        setUser(session?.user || null);
-        if (session?.user) {
-          const { data: userData } = await supabase
-            .from("users")
-            .select("role, first_name")
-            .eq("auth_id", session.user.id)
-            .maybeSingle();
-          setUserRole(userData?.role || null);
-          setFirstName(userData?.first_name || null);
-        } else {
-          setUserRole(null);
-          setFirstName(null);
-        }
-      });
-
-      return () => subscription.unsubscribe();
+    const fetchUserData = async (authId: string) => {
+      const { data: userData } = await supabase
+        .from("users")
+        .select("role, first_name")
+        .eq("auth_id", authId)
+        .maybeSingle();
+      setUserRole(userData?.role || null);
+      setFirstName(userData?.first_name || null);
     };
 
-    getUser();
+    // Vérification initiale
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user || null);
+      if (session?.user) fetchUserData(session.user.id);
+    });
+
+    // Écoute des changements (login/logout) — cleanup correctement retourné au useEffect
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "INITIAL_SESSION") return; // déjà géré par getSession ci-dessus
+      setUser(session?.user || null);
+      if (session?.user) {
+        fetchUserData(session.user.id);
+      } else {
+        setUserRole(null);
+        setFirstName(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const handleSignOut = async () => {
@@ -103,10 +96,8 @@ export default function Navbar() {
   };
 
   const getDashboardLink = () => {
-    if (!user) return "/";
-    if (userRole === "parent") return "/parent/dashboard";
-    if (userRole === "child") return "/child/dashboard";
-    return "/dashboard";
+    if (!user || !userRole || !firstName) return "/";
+    return getDashboardPath(userRole);
   };
 
   const getProfileLink = () => {
@@ -116,59 +107,64 @@ export default function Navbar() {
   };
 
   return (
-    <nav ref={navRef} className="navbar fixed top-0 left-0 right-0 z-[1030] bg-[var(--greek-blue)] h-[64px] min-h-[64px] px-4 shadow-md">
+    <nav ref={navRef} className="navbar fixed top-0 left-0 right-0 z-[1030] h-[64px] min-h-[64px] px-6 shadow-md" style={{background:"var(--greek-blue)",borderBottom:"1px solid rgba(197,161,72,0.12)"}}>
       <div className="container mx-auto flex items-center justify-between h-full max-w-7xl">
         {/* Brand */}
-        <Link
-          href={getDashboardLink()}
-          className="navbar-brand flex items-center text-[var(--greek-cream)] hover:text-white transition-colors gap-2 font-[family-name:var(--font-display)] font-bold text-xl no-underline"
-        >
-          <img src="/logo.png" alt="logo" className="w-9 h-9 relative -top-0.5" />
-          <span>Educalcul</span>
+        <Link href={getDashboardLink()} className="flex items-center gap-2 no-underline flex-shrink-0">
+          <img src="/logo.png" alt="logo" className="h-10 w-auto object-contain" />
         </Link>
 
-        {/* Menu Toggle (Always visible) */}
-        <button
-          className="p-2 text-[var(--greek-cream)] hover:text-[var(--greek-gold)] transition-colors flex items-center gap-2"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Cloche + burger */}
+        <div className="flex items-center gap-2">
+          {user && firstName && <NotificationBell />}
+          <button
+            className="p-2 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
+            style={{color:"rgba(255,255,255,0.7)"}}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
 
-        {/* Right-aligned Dropdown Menu */}
+        {/* Dropdown Menu */}
         <div
-          className={`absolute top-[64px] right-0 w-full sm:w-80 bg-[var(--greek-blue)] border-b sm:border-l sm:border-b border-[var(--greek-gold)] shadow-xl flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top ${isOpen
-            ? "scale-y-100 opacity-100"
-            : "scale-y-0 opacity-0 pointer-events-none"
-            }`}
+          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
+          style={{background:"var(--greek-blue)",borderBottom:"1px solid rgba(197,161,72,0.15)",boxShadow:"0 20px 40px rgba(0,0,0,0.3)"}}
         >
           {/* Navigation Links — toujours visibles sur pages publiques */}
           {(!user || !isAppPage) && (
             <div className="flex flex-col p-4 gap-2">
               <Link
+                href="/"
+                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
+                onClick={() => setIsOpen(false)}
+              >
+                Accueil
+              </Link>
+              <Link
                 href="/offres"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
+                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                 onClick={() => setIsOpen(false)}
               >
                 Offres
               </Link>
               <Link
                 href="/tarifs"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
+                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                 onClick={() => setIsOpen(false)}
               >
                 Tarifs
               </Link>
               <Link
                 href="/faq"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
+                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
               </Link>
               <Link
                 href="/contact"
-                className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1"
+                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                 onClick={() => setIsOpen(false)}
               >
                 Contact
@@ -178,7 +174,7 @@ export default function Navbar() {
 
           {/* Divider */}
           {(!user || !isAppPage) && (
-            <div className="h-px bg-[var(--greek-gold)] opacity-30 mx-4"></div>
+            <div className="h-px mx-4" style={{background:"rgba(197,161,72,0.2)"}}></div>
           )}
 
           {/* Auth Section */}
@@ -187,29 +183,30 @@ export default function Navbar() {
               <>
                 <Link
                   href="/auth/connexion"
-                  className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                   onClick={() => setIsOpen(false)}
                 >
                   <User className="w-4 h-4" /> Connexion
                 </Link>
                 <Link
                   href="/auth/inscription"
-                  className="btn-primary-greek text-center block w-full mt-2 hover:translate-y-[-1px]"
+                  className="text-center block w-full mt-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all hover:opacity-90 hover:-translate-y-0.5 hover:shadow-lg"
+                  style={{background:"var(--greek-gold)",color:"#fff"}}
                   onClick={() => setIsOpen(false)}
                 >
-                  Inscription
+                  S'inscrire
                 </Link>
               </>
             ) : user && isAppPage ? (
               <>
-                <div className="px-4 py-2 mb-2 text-[var(--greek-gold)] font-bold border-b border-[var(--greek-gold)]/20">
+                <div className="px-4 py-3 mb-1 text-xs font-bold tracking-widest uppercase border-b font-[family-name:var(--font-display)]" style={{color:"var(--greek-gold)",borderColor:"rgba(197,161,72,0.2)"}}>
                   {firstName
                     ? `${firstName} - ${getRoleDisplayName()}`
                     : getRoleDisplayName()}
                 </div>
                 <Link
                   href={getDashboardLink()}
-                  className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                   onClick={() => setIsOpen(false)}
                 >
                   <LayoutDashboard className="w-4 h-4" /> Tableau de bord
@@ -218,28 +215,35 @@ export default function Navbar() {
                   <>
                     <Link
                       href="/parent/children"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <Users className="w-4 h-4" /> Mes Enfants
                     </Link>
                     <Link
+                      href="/parent/support"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <MessageSquare className="w-4 h-4" /> Mes messages
+                    </Link>
+                    <Link
                       href="/parent/subscription"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <CreditCard className="w-4 h-4" /> Abonnements
                     </Link>
                     <Link
                       href="/parent/forum"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <MessageSquare className="w-4 h-4" /> Forum
                     </Link>
                     <Link
                       href="/parent/support"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <HelpCircle className="w-4 h-4" /> Support
@@ -250,42 +254,42 @@ export default function Navbar() {
                   <>
                     <Link
                       href="/child/cours"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <BookOpen className="w-4 h-4" /> Mes Cours
                     </Link>
                     <Link
                       href="/child/exercises"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <Brain className="w-4 h-4" /> Exercices
                     </Link>
                     <Link
                       href="/child/quiz"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <Trophy className="w-4 h-4" /> Quiz & Défis
                     </Link>
                     <Link
                       href="/child/badges"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <Trophy className="w-4 h-4" /> Mes Trophées
                     </Link>
                     <Link
                       href="/child/forum"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <MessageSquare className="w-4 h-4" /> Forum
                     </Link>
                     <Link
                       href="/child/support"
-                      className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
+                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
                     >
                       <HelpCircle className="w-4 h-4" /> Support
@@ -304,7 +308,7 @@ export default function Navbar() {
                     handleSignOut();
                     setIsOpen(false);
                   }}
-                  className="text-[var(--greek-cream)] hover:text-[var(--greek-terracotta)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(226,114,91,0.1)] transition-colors text-left w-full flex items-center gap-2"
+                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 text-left w-full flex items-center gap-2 hover:text-red-400 hover:bg-red-500/10" style={{color:"rgba(255,255,255,0.5)"}}
                 >
                   <LogOut className="w-4 h-4" /> Déconnexion
                 </button>

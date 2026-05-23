@@ -120,7 +120,7 @@ export default function ChildExercisesPage() {
         {currentFolderId !== null && (
           <button
             onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
-            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--greek-gold)]/30 shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
           >
             <ArrowLeft size={20} />
             Retour
@@ -128,7 +128,7 @@ export default function ChildExercisesPage() {
         )}
 
         {currentFolders.length === 0 && currentExercises.length === 0 ? (
-          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/30">
+          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
             <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">
               Dossier vide
@@ -144,7 +144,7 @@ export default function ChildExercisesPage() {
               <div
                 key={folder.id}
                 onClick={() => navigateToFolder(folder.id, folder.name)}
-                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/30 transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 <div
@@ -173,7 +173,7 @@ export default function ChildExercisesPage() {
               return (
               <div
                 key={exercise.id}
-                className={`group bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-75" : ""}`}
+                className={`group bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-75" : ""}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-40 bg-[var(--greek-cream)] overflow-hidden flex items-center justify-center">
@@ -217,7 +217,7 @@ export default function ChildExercisesPage() {
 
                   <div className="mt-auto">
                     {isLocked ? (
-                      <Link href="/parent/subscription" className="w-full bg-gray-100 text-gray-500 border border-[var(--greek-gold)]/20 py-3 rounded-lg flex items-center justify-center gap-2 text-sm font-bold hover:bg-gray-200 transition-colors">
+                      <Link href="/parent/subscription" className="w-full bg-gray-100 text-gray-500 border border-[rgba(197,161,72,0.25)] py-3 rounded-lg flex items-center justify-center gap-2 text-sm font-bold hover:bg-gray-200 transition-colors">
                         <Lock className="w-4 h-4" />
                         Débloquer — Plan supérieur
                       </Link>

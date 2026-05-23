@@ -3,109 +3,85 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
-import { getSiteUrl } from '../../../lib/siteUrl';
+import { resolveAuthDestination } from '@/lib/authRedirect';
 
 export default function AuthCallback() {
   const router = useRouter();
   const [status, setStatus] = useState('Traitement de la réponse...');
 
   useEffect(() => {
-    // Handle error in hash
+    // Erreur OAuth dans le hash
     const hash = window.location.hash;
     if (hash && hash.includes('error=')) {
-      const params = new URLSearchParams(hash.substring(1)); // remove #
-      const errorDescription = params.get('error_description');
-      setTimeout(() => {
-        setStatus(`Erreur: ${errorDescription?.replace(/\+/g, ' ') || 'Erreur inconnue'}`);
-      }, 0);
-      // Redirect back to home after a delay
-      setTimeout(() => {
-        const siteUrl = getSiteUrl();
-        router.push(siteUrl ? `${siteUrl}/` : '/'); // Fallback
-      }, 3000);
+      const params = new URLSearchParams(hash.substring(1));
+      const errorDescription = params.get('error_description') || 'Erreur inconnue';
+      router.push(`/auth/connexion?error=oauth&message=${encodeURIComponent(errorDescription.replace(/\+/g, ' '))}`);
       return;
     }
 
     const handleAuth = async () => {
-      // Check if session exists (Supabase client handles hash automatically on init)
       const { data: { session } } = await supabase.auth.getSession();
 
-      if (session) {
-        setStatus('Authentification réussie. Redirection...');
-
-        // Check if user is banned
-        try {
-          const { data: userData } = await supabase
-            .from('users')
-            .select('status, ban_reason')
-            .eq('auth_id', session.user.id)
-            .single();
-
-          if (userData?.status === 'inactive' || userData?.ban_reason) {
-            // User is banned, redirect to banned page
-            router.push('/auth/banned');
-            return;
-          }
-        } catch (err) {
-          console.error('Error checking ban status:', err);
-          // Continue with normal flow if there's an error
-        }
-
-        // Check if this is a signup flow (Google)
-        const signupMode = sessionStorage.getItem('educalcul_signup_mode');
-        const pendingRole = sessionStorage.getItem('educalcul_pending_role');
-
-        if (signupMode === 'google' && pendingRole) {
-          // Create minimal signup data for Google signup
-          const googleSignupData = {
-            role: pendingRole,
-            firstName: session.user.user_metadata?.full_name?.split(' ')[0] || '',
-            lastName: session.user.user_metadata?.full_name?.split(' ').slice(1).join(' ') || '',
-            email: session.user.email || '',
-            password: '',
-            childUsername: null,
-            childAge: null,
-            parentEmail: null,
-            referralCode: null,
-            referralStatus: 'idle',
-          };
-          sessionStorage.setItem('educalcul_signup_data', JSON.stringify(googleSignupData));
-          router.push('/auth/inscription/select-plan');
-        } else {
-          // Normal login - redirect to dashboard
-          router.push('/dashboard');
-        }
-      } else {
-        // Wait for auth state change
+      if (!session) {
+        // Attendre que la session arrive (email confirmation, etc.)
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-          if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || session) {
-            setStatus('Authentification réussie. Redirection...');
-            
-            const signupMode = sessionStorage.getItem('educalcul_signup_mode');
-            const pendingRole = sessionStorage.getItem('educalcul_pending_role');
-
-            if (signupMode === 'google' && pendingRole && session) {
-              const googleSignupData = {
-                role: pendingRole,
-                firstName: session.user.user_metadata?.full_name?.split(' ')[0] || '',
-                lastName: session.user.user_metadata?.full_name?.split(' ').slice(1).join(' ') || '',
-                email: session.user.email || '',
-                password: '',
-                childUsername: null,
-                childAge: null,
-                parentEmail: null,
-                referralCode: null,
-                referralStatus: 'idle',
-              };
-              sessionStorage.setItem('educalcul_signup_data', JSON.stringify(googleSignupData));
-              router.push('/auth/inscription/select-plan');
-            } else {
-              router.push('/dashboard');
-            }
+          if ((event === 'SIGNED_IN' || event === 'USER_UPDATED') && session) {
+            handleSession(session);
           }
         });
         return () => subscription.unsubscribe();
       }
+
+      handleSession(session);
+    };
+
+    const handleSession = async (session: any) => {
+      setStatus('Authentification réussie. Redirection...');
+
+      // Méthode unique : resolveAuthDestination gère ban + role + first_name
+      const dest = await resolveAuthDestination(supabase, session.user.id);
+
+      if (dest === 'banned') {
+        router.push('/auth/banned');
+        return;
+      }
+
+      // Compte complet existant → dashboard
+      if (dest !== 'no_account' && dest !== 'incomplete') {
+        sessionStorage.removeItem('educalcul_signup_mode');
+        sessionStorage.removeItem('educalcul_pending_role');
+        router.push(dest);
+        return;
+      }
+
+      // Pas de compte ou compte incomplet → flow inscription Google
+      const authIntent = sessionStorage.getItem('educalcul_auth_intent');
+      const signupMode = sessionStorage.getItem('educalcul_signup_mode');
+      const pendingRole = sessionStorage.getItem('educalcul_pending_role');
+      sessionStorage.removeItem('educalcul_auth_intent');
+
+      // Préparer les données Google pour complete-google
+      const googleSignupData = {
+        role: pendingRole || 'parent',
+        firstName: session.user.user_metadata?.given_name || session.user.user_metadata?.full_name?.split(' ')[0] || '',
+        lastName: session.user.user_metadata?.family_name || session.user.user_metadata?.full_name?.split(' ').slice(1).join(' ') || '',
+        email: session.user.email || '',
+        password: '', childUsername: null, childAge: null,
+        parentEmail: null, referralCode: null, referralStatus: 'idle',
+      };
+
+      // Dans tous les cas (login ou signup), si pas de compte → inscription
+      if (authIntent === 'login' || signupMode === 'google' || dest === 'incomplete') {
+        sessionStorage.setItem('educalcul_signup_data', JSON.stringify(googleSignupData));
+        sessionStorage.setItem('educalcul_signup_mode', 'google');
+        sessionStorage.setItem('educalcul_pending_role', pendingRole || 'parent');
+        router.push('/auth/inscription/complete-google');
+        return;
+      }
+
+      // Fallback : déconnecter et erreur
+      await supabase.auth.signOut();
+      router.push('/auth/connexion?error=no_account');
     };
 
     handleAuth();

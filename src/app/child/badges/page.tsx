@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -175,7 +175,7 @@ export default function ChildBadgesPage() {
       <div className="max-w-6xl mx-auto px-4 space-y-8">
 
         {/* Personnalisation */}
-        <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/30 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
           <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] text-lg mb-5 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-[var(--greek-gold)]" />
             Personnalisation
@@ -222,7 +222,7 @@ export default function ChildBadgesPage() {
                   return (
                     <button key={key} onClick={() => unlocked && equip(undefined, key)} disabled={!unlocked || equipping}
                       className={`relative flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all cursor-pointer
-                        ${active ? "border-[var(--greek-blue)] bg-blue-50" : unlocked ? "border-[var(--greek-gold)]/30 hover:border-[var(--greek-gold)]" : "border-[var(--greek-gold)]/20 bg-gray-50"}`}
+                        ${active ? "border-[var(--greek-blue)] bg-blue-50" : unlocked ? "border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-gold)]" : "border-[rgba(197,161,72,0.25)] bg-gray-50"}`}
                     >
                       {/* Toujours montrer la vraie couleur */}
                       <span className={`text-sm font-bold px-2 ${val.cls}`}>{user?.first_name || "Nom"}</span>
@@ -242,7 +242,7 @@ export default function ChildBadgesPage() {
         </div>
 
         {/* Badges mis en avant */}
-        <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/30 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] text-lg flex items-center gap-2">
               <Star className="w-5 h-5 text-[var(--greek-gold)]" />
@@ -262,7 +262,7 @@ export default function ChildBadgesPage() {
               const Icon = bid && badge ? (ICON_MAP[badge.icon] || Star) : null;
               return (
                 <div key={slot} className={`flex-1 h-20 rounded-2xl border-2 border-dashed flex items-center justify-center transition-all
-                  ${bid ? "border-[var(--greek-blue)] bg-blue-50" : "border-[var(--greek-gold)]/20 bg-gray-50"}`}>
+                  ${bid ? "border-[var(--greek-blue)] bg-blue-50" : "border-[rgba(197,161,72,0.25)] bg-gray-50"}`}>
                   {badge && Icon ? (
                     <div className="flex flex-col items-center gap-1">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: badge.color + "20" }}>
@@ -314,7 +314,7 @@ export default function ChildBadgesPage() {
               return (
                 <div key={badge.id}
               onClick={() => isEarned && toggleFeatured(badge.id)}
-              className={`bg-white rounded-2xl border p-4 flex flex-col items-center text-center transition-all ${isEarned ? "border-[var(--greek-gold)]/30 shadow-sm hover:shadow-md cursor-pointer" : "border-[var(--greek-gold)]/20 opacity-60"} ${featuredBadges.includes(badge.id) ? "ring-2 ring-[var(--greek-blue)] bg-blue-50" : ""}`}>
+              className={`bg-white rounded-2xl border p-4 flex flex-col items-center text-center transition-all ${isEarned ? "border-[rgba(197,161,72,0.25)] shadow-sm hover:shadow-md cursor-pointer" : "border-[rgba(197,161,72,0.25)] opacity-60"} ${featuredBadges.includes(badge.id) ? "ring-2 ring-[var(--greek-blue)] bg-blue-50" : ""}`}>
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${isEarned ? "" : "grayscale"}`}
                     style={{ backgroundColor: isEarned ? badge.color + "20" : "#f3f4f6" }}>
                     <Icon className="w-7 h-7" style={{ color: isEarned ? badge.color : "#9ca3af" }} />

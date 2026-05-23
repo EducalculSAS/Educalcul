@@ -1,19 +1,27 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Force la piste de scrollbar à toujours être réservée — évite le décalage de
+   mise en page entre les pages scrollables et les pages courtes */
+html {
+  overflow-y: scroll;
+}
+
 :root {
-  --greek-blue: #3a6ea5;
-  --greek-cream: #fdf6e3;
+  --greek-blue: #0f1e3a;
+  --greek-blue-mid: #1a3a6e;
+  --greek-cream: #faf7f2;
+  --greek-cream-dark: #f0ead8;
   --greek-gold: #c5a148;
   --greek-bronze: #a97142;
-  --greek-terracotta: #e2725b;
-  --greek-olive: #556b2f;
-  --text-dark: #333;
-  --text-light: var(--greek-cream);
+  --greek-border: #ede0c0;
+  --text-dark: #1a1008;
+  --text-muted: #6b5e42;
+  --text-light: #faf7f2;
   --card-bg: #ffffff;
-  --card-border-antique: 1px solid var(--greek-gold);
+  --card-border-antique: #ede0c0;
   --font-display: "Cinzel", serif;
-  --font-body: "Cinzel", serif;
+  --font-body: "Inter", Arial, sans-serif;
   --nav-h: 64px;
 }
 
@@ -22,13 +30,35 @@ html {
 }
 
 body {
-  font-family: "Cinzel", serif;
-  /* padding-top: var(--nav-h);  Handled by layout or specific pages */
+  font-family: var(--font-body);
   background-color: var(--greek-cream);
   color: var(--text-dark);
 }
 
 @layer components {
+  /* ── Crème Académique ───────────────────────── */
+  .card-academic {
+    @apply bg-white rounded-2xl border border-[var(--greek-border)] shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  .btn-navy {
+    @apply bg-[var(--greek-blue)] text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-all duration-200 shadow-md;
+    font-family: var(--font-body);
+  }
+  .btn-gold-outline {
+    @apply border-2 border-[var(--greek-gold)] text-[var(--greek-gold)] bg-transparent font-semibold px-6 py-3 rounded-xl hover:bg-[rgba(197,161,72,0.08)] transition-all duration-200;
+    font-family: var(--font-body);
+  }
+  .section-title {
+    @apply font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-3xl md:text-4xl;
+  }
+  .gold-divider {
+    @apply flex items-center gap-4 my-10;
+  }
+  .gold-divider::before, .gold-divider::after {
+    content: '';
+    @apply flex-1 h-px bg-[var(--greek-border)];
+  }
+  /* ─────────────────────────────────────────── */
   .btn-primary-greek {
     @apply bg-[var(--greek-gold)] border border-[var(--greek-gold)] text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-sm hover:bg-[var(--greek-gold)] hover:border-[var(--greek-gold)] hover:-translate-y-[1px] hover:shadow-md;
   }
@@ -45,6 +75,15 @@ body {
   .dashboard-card:hover {
     box-shadow: 0 8px 20px rgba(197, 161, 72, 0.3) !important;
   }
+}
+
+@keyframes float-symbol {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(2.5deg); }
+  66%       { transform: translateY(9px) rotate(-1.5deg); }
+}
+.animate-float-symbol {
+  animation: float-symbol ease-in-out infinite;
 }
 
 @keyframes fade-bounce {
@@ -69,6 +108,15 @@ body {
 }
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Footer nav — translate-x comme le menu déroulant */
+.footer-nav-link {
+  transition: color 200ms ease, transform 200ms ease;
+}
+.footer-nav-link:hover {
+  transform: translateX(4px);
+  color: #fff !important;
 }
 
 @keyframes spin-slow {

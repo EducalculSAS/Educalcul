@@ -7,8 +7,8 @@ import { getServerGeo } from "@/lib/geoLocation";
 
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
-
 import MathLoader from "@/components/MathLoader";
+import ParentOnboarding from "@/components/onboarding/ParentOnboarding";
 
 export default function ParentLayout({
   children,
@@ -18,9 +18,22 @@ export default function ParentLayout({
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   useEffect(() => {
     const checkUser = async () => {
+      // Flow nouveau signup : l'utilisateur n'a pas encore de compte,
+      // on le laisse accéder à /parent/subscription?new=true sans auth
+      const isNewSignupFlow =
+        typeof window !== "undefined" &&
+        window.location.pathname === "/parent/subscription" &&
+        new URLSearchParams(window.location.search).get("new") === "true";
+
+      if (isNewSignupFlow) {
+        setLoading(false);
+        return;
+      }
+
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -49,7 +62,10 @@ export default function ParentLayout({
       }
 
       setUser(userData);
-      setLoading(false); // ← page rendue immédiatement, tracking en arrière-plan
+      setLoading(false);
+
+      // Onboarding première connexion
+      if (!userData.onboarding_completed) setShowOnboarding(true);
 
       // Fire-and-forget : ne bloque PAS la navigation
       (async () => {
@@ -106,6 +122,13 @@ export default function ParentLayout({
       <main className="pt-[64px]">
         {children}
       </main>
+      {showOnboarding && user && (
+        <ParentOnboarding
+          firstName={user.first_name || ""}
+          authId={user.auth_id}
+          onComplete={() => setShowOnboarding(false)}
+        />
+      )}
     </div>
   );
 }

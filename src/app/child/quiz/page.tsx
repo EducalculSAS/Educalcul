@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -108,7 +108,7 @@ export default function ChildQuizPage() {
         {currentFolderId !== null && (
           <button
             onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
-            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[var(--greek-gold)]/30 shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+            className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
           >
             <ArrowLeft size={20} />
             Retour
@@ -116,7 +116,7 @@ export default function ChildQuizPage() {
         )}
 
         {currentFolders.length === 0 && currentQuizzes.length === 0 ? (
-          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/30">
+          <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
             <Trophy className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">
               Dossier vide
@@ -132,7 +132,7 @@ export default function ChildQuizPage() {
               <div
                 key={folder.id}
                 onClick={() => navigateToFolder(folder.id, folder.name)}
-                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/30 transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 <div
@@ -154,7 +154,7 @@ export default function ChildQuizPage() {
             {currentQuizzes.map((quiz, index) => (
               <div
                 key={quiz.id}
-                className="group bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce"
+                className="group bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce"
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-40 bg-[var(--greek-blue)]/10 overflow-hidden flex items-center justify-center">

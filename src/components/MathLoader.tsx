@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 
 export default function MathLoader() {
   return (
@@ -6,7 +6,7 @@ export default function MathLoader() {
       <div className="relative w-24 h-24">
         {/* Animated circles/orbit */}
         <div className="absolute inset-0 border-4 border-[var(--greek-blue)]/20 rounded-full animate-[spin_3s_linear_infinite]"></div>
-        <div className="absolute inset-2 border-4 border-[var(--greek-gold)]/30 rounded-full animate-[spin_2s_linear_infinite_reverse]"></div>
+        <div className="absolute inset-2 border-4 border-[rgba(197,161,72,0.25)] rounded-full animate-[spin_2s_linear_infinite_reverse]"></div>
         
         {/* Floating Math Symbols */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">

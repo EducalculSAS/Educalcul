@@ -50,7 +50,7 @@ const statusBadge = (status: string) => {
 const isOnline = (u: User) =>
   !!u.last_active_at && Date.now() - new Date(u.last_active_at).getTime() < ONLINE_THRESHOLD_MS;
 
-const inputCls = "w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
+const inputCls = "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
 const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
 
 export default function AdminUsersPage() {
@@ -175,7 +175,7 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 relative overflow-hidden">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
@@ -193,7 +193,7 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Map */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15 p-6 relative h-[400px] z-0">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 relative h-[400px] z-0">
         <div className="flex justify-between items-center mb-4 relative z-10">
           <h2 className="text-lg font-bold text-[var(--greek-blue)] flex items-center gap-2">
             <Globe className="text-[var(--greek-gold)]" size={20} />Carte des Connexions
@@ -214,7 +214,7 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15 space-y-4">
+      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] space-y-4">
         <div className="flex flex-col md:flex-row gap-4 flex-wrap">
           <div className="flex-1 relative min-w-[200px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
@@ -235,10 +235,10 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15 overflow-hidden">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-gray-50 border-b border-[var(--greek-gold)]/15">
+            <thead className="bg-gray-50 border-b border-[rgba(197,161,72,0.25)]">
               <tr>
                 {["Utilisateur", "Email", "Rôle", "Statut", "Dernière activité", "Actions"].map(h => (
                   <th key={h} className={`px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider ${h === "Actions" ? "text-right" : "text-left"}`}>{h}</th>
@@ -308,7 +308,7 @@ export default function AdminUsersPage() {
       {showFormModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
-            <div className="sticky top-0 bg-white border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
+            <div className="sticky top-0 bg-white border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouvel utilisateur</h2>
               <button onClick={() => setShowFormModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={20} /></button>
             </div>
@@ -346,7 +346,7 @@ export default function AdminUsersPage() {
       {showBanModal && banTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className={`text-xl font-bold font-[family-name:var(--font-display)] ${banTarget.status === "inactive" ? "text-green-600" : "text-orange-500"}`}>
                 {banTarget.status === "inactive" ? "Réactiver le compte" : "Bannir l'utilisateur"}
               </h2>
@@ -393,7 +393,7 @@ export default function AdminUsersPage() {
       {showDeleteModal && deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-red-600 font-[family-name:var(--font-display)]">Supprimer le compte</h2>
               <button onClick={() => setShowDeleteModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>

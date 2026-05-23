@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -232,7 +232,7 @@ export default function CourseDetailPage() {
 
       <div 
         ref={contentRef}
-        className={`bg-white rounded-[20px] shadow-lg border-2 border-[var(--greek-gold)]/30 overflow-hidden transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}
+        className={`bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}
       >
         <div className="relative h-64 md:h-80 bg-gray-100">
           {course.thumbnail_url ? (
@@ -282,7 +282,7 @@ export default function CourseDetailPage() {
             </div>
 
             <div className="w-full md:w-80 flex-shrink-0">
-              <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[var(--greek-gold)]/20 sticky top-24">
+              <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24">
                 <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-4 text-center">
                   Prêt à commencer ?
                 </h3>
@@ -296,13 +296,13 @@ export default function CourseDetailPage() {
                 </button>
                 
                 <div className="space-y-4 text-sm text-gray-600">
-                  <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
+                  <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">
                       <Clock className="w-4 h-4" /> Durée estimée
                     </span>
                     <span className="font-bold">15 min</span>
                   </div>
-                  <div className="flex items-center justify-between border-b border-[var(--card-border-antique)] pb-2">
+                  <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">
                       <BookOpen className="w-4 h-4" /> Difficulté
                     </span>

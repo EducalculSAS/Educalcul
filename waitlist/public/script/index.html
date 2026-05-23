@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Script Vidéo — Educalcul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; background:#0f172a; color:white; min-height:100vh; padding:48px 24px; }
+    .header { text-align:center; margin-bottom:56px; }
+    .logo { font-family:'Cinzel',serif; font-size:28px; color:#c5a148; margin-bottom:8px; }
+    h1 { font-size:18px; font-weight:500; color:#94a3b8; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; max-width:1000px; margin:0 auto; }
+    .card { background:#1e293b; border:1px solid #334155; border-radius:16px; padding:28px; text-decoration:none; color:white; transition:all 0.2s; display:block; position:relative; overflow:hidden; }
+    .card:hover { border-color:#c5a148; transform:translateY(-3px); box-shadow:0 8px 32px rgba(197,161,72,0.15); }
+    .scene-num { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#c5a148; margin-bottom:12px; }
+    .card-title { font-size:17px; font-weight:700; margin-bottom:8px; }
+    .card-desc { font-size:13px; color:#94a3b8; line-height:1.6; margin-bottom:16px; }
+    .card-url { font-size:11px; color:#475569; font-family:monospace; background:#0f172a; padding:4px 8px; border-radius:6px; display:inline-block; }
+    .arrow { position:absolute; top:28px; right:28px; color:#334155; font-size:20px; transition:all 0.2s; }
+    .card:hover .arrow { color:#c5a148; transform:translate(3px,-3px); }
+    .tip { max-width:1000px; margin:40px auto 0; background:#1e293b; border:1px solid #334155; border-radius:12px; padding:20px 24px; font-size:13px; color:#94a3b8; line-height:1.7; }
+    .tip strong { color:#c5a148; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Educalcul</div>
+    <h1>Écrans pour le script vidéo Screen Studio</h1>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="bulletin.html" target="_blank">
+      <div class="scene-num">Scène 1</div>
+      <div class="card-title">Bulletin scolaire</div>
+      <div class="card-desc">Note de maths 6/20, commentaire négatif de l'enseignant. Zoom sur la ligne maths.</div>
+      <div class="card-url">bulletin.html</div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="card" href="exercice-faux.html" target="_blank">
+      <div class="scene-num">Scène 2</div>
+      <div class="card-title">Exercice — mauvaise réponse</div>
+      <div class="card-desc">L'élève répond x = 9 à l'équation 3x + 5 = 14. Message d'erreur animé.</div>
+      <div class="card-url">exercice-faux.html</div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="card" href="google.html" target="_blank">
+      <div class="scene-num">Scène 3</div>
+      <div class="card-title">Recherche Google (fictive)</div>
+      <div class="card-desc">Recherche "meilleur site pour apprendre vraiment les maths" avec résultats réalistes.</div>
+      <div class="card-url">google.html</div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="card" href="../index.html" target="_blank">
+      <div class="scene-num">Scène 4</div>
+      <div class="card-title">Découverte d'Educalcul</div>
+      <div class="card-desc">La landing page waitlist. Taper educalcul.com dans la barre d'adresse → arriver ici.</div>
+      <div class="card-url">/ (waitlist)</div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="card" href="profil-enfant.html" target="_blank">
+      <div class="scene-num">Scène 5</div>
+      <div class="card-title">Créer un profil enfant</div>
+      <div class="card-desc">Formulaire pré-rempli : Lucas, 4ème. Cliquer sur "Créer le profil".</div>
+      <div class="card-url">profil-enfant.html</div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="card" href="cours.html" target="_blank">
+      <div class="scene-num">Scène 6</div>
+      <div class="card-title">Cours — Équations step by step</div>
+      <div class="card-desc">3x + 5 = 14 résolu en 5 étapes claires. Scroll lent pour montrer la pédagogie.</div>
+      <div class="card-url">cours.html</div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="card" href="exercice-reussi.html" target="_blank">
+      <div class="scene-num">Scène 7</div>
+      <div class="card-title">Exercice — Bonne réponse</div>
+      <div class="card-desc">x = 3 pour 2x + 4 = 10. Animation "Bonne réponse !" + +25 XP. Zoom sur la validation.</div>
+      <div class="card-url">exercice-reussi.html</div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="card" href="../index.html" target="_blank">
+      <div class="scene-num">Scène 8</div>
+      <div class="card-title">Logo final</div>
+      <div class="card-desc">Revenir sur la landing page, zoomer sur le logo Educalcul et le tagline.</div>
+      <div class="card-url">/ (waitlist)</div>
+      <div class="arrow">↗</div>
+    </a>
+  </div>
+
+  <div class="tip">
+    <strong>Conseils Screen Studio :</strong>
+    Ouvre chaque page en plein écran (F11) · Zoom automatique activé sur les clics ·
+    Vitesse ×1.5 pour la navigation, ×1 pour les moments clés (correction, validation) ·
+    Transitions "fade" entre les scènes · Résolution : 1920×1080 minimum
+  </div>
+</body>
+</html>

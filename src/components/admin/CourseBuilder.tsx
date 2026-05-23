@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { 
@@ -125,7 +125,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
       </div>
 
       {chapters.length === 0 ? (
-        <div className="text-center py-12 border-2 border-dashed border-[var(--greek-gold)]/25 rounded-xl bg-gray-50">
+        <div className="text-center py-12 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
           <p className="text-gray-500 mb-2">Le cours est vide</p>
           <button
             type="button"
@@ -138,9 +138,9 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
       ) : (
         <div className="space-y-4">
           {chapters.map((chapter, index) => (
-            <div key={chapter.id} className="border border-[var(--greek-gold)]/20 rounded-xl bg-white overflow-hidden shadow-sm">
+            <div key={chapter.id} className="border border-[rgba(197,161,72,0.25)] rounded-xl bg-white overflow-hidden shadow-sm">
               {/* Chapter Header */}
-              <div className="flex items-center gap-3 p-4 bg-gray-50 border-b border-[var(--greek-gold)]/10">
+              <div className="flex items-center gap-3 p-4 bg-gray-50 border-b border-[rgba(197,161,72,0.25)]">
                 <button
                   type="button"
                   onClick={() => toggleChapter(chapter.id)}
@@ -179,7 +179,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
               {expandedChapters.has(chapter.id) && (
                 <div className="p-4 space-y-4 bg-white">
                   {chapter.lessons.map((lesson, lIndex) => (
-                    <div key={lesson.id} className="flex gap-4 p-4 border border-[var(--greek-gold)]/15 rounded-lg hover:border-blue-100 transition-colors group">
+                    <div key={lesson.id} className="flex gap-4 p-4 border border-[rgba(197,161,72,0.25)] rounded-lg hover:border-blue-100 transition-colors group">
                       <div className="mt-2 text-gray-300">
                         <GripVertical size={20} />
                       </div>
@@ -191,7 +191,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                               type="text"
                               value={lesson.title}
                               onChange={(e) => updateLesson(chapter.id, lesson.id, { title: e.target.value })}
-                              className="w-full font-semibold text-gray-800 focus:outline-none focus:border-b border-[var(--greek-gold)]/20 pb-1 mb-2"
+                              className="w-full font-semibold text-gray-800 focus:outline-none focus:border-b border-[rgba(197,161,72,0.25)] pb-1 mb-2"
                               placeholder="Titre de la leçon"
                             />
                             
@@ -199,7 +199,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                               <select
                                 value={lesson.type}
                                 onChange={(e) => updateLesson(chapter.id, lesson.id, { type: e.target.value as any })}
-                                className="text-sm border-[var(--greek-gold)]/20 rounded-lg text-gray-600 focus:ring-blue-500 focus:border-blue-500"
+                                className="text-sm border-[rgba(197,161,72,0.25)] rounded-lg text-gray-600 focus:ring-blue-500 focus:border-blue-500"
                               >
                                 <option value="text">Texte / Article</option>
                                 <option value="video">Vidéo</option>
@@ -213,7 +213,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                                   type="number"
                                   value={lesson.duration || 0}
                                   onChange={(e) => updateLesson(chapter.id, lesson.id, { duration: parseInt(e.target.value) })}
-                                  className="w-16 border-[var(--greek-gold)]/20 rounded-lg text-sm"
+                                  className="w-16 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                                   min="0"
                                 />
                               </div>
@@ -235,7 +235,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                             <textarea
                               value={lesson.content}
                               onChange={(e) => updateLesson(chapter.id, lesson.id, { content: e.target.value })}
-                              className="w-full min-h-[100px] p-3 border border-[var(--greek-gold)]/20 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm"
+                              className="w-full min-h-[100px] p-3 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm"
                               placeholder="Contenu du cours (Markdown supporté)..."
                             />
                           )}
@@ -247,7 +247,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                                 type="url"
                                 value={lesson.content}
                                 onChange={(e) => updateLesson(chapter.id, lesson.id, { content: e.target.value })}
-                                className="flex-1 border-[var(--greek-gold)]/20 rounded-lg text-sm"
+                                className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                                 placeholder="URL de la vidéo (Youtube, Vimeo...)"
                               />
                             </div>
@@ -260,7 +260,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                                 type="url"
                                 value={lesson.content}
                                 onChange={(e) => updateLesson(chapter.id, lesson.id, { content: e.target.value })}
-                                className="flex-1 border-[var(--greek-gold)]/20 rounded-lg text-sm"
+                                className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                                 placeholder="URL du fichier PDF..."
                               />
                             </div>
@@ -273,7 +273,7 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                   <button
                     type="button"
                     onClick={() => addLesson(chapter.id)}
-                    className="w-full py-2 border-2 border-dashed border-[var(--greek-gold)]/25 rounded-lg text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                    className="w-full py-2 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-lg text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors text-sm font-medium flex items-center justify-center gap-2"
                   >
                     <Plus size={16} />
                     Ajouter une leçon

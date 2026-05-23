@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -96,8 +96,8 @@ export default function ChildDashboard() {
                 <span>Prêt à apprendre ?</span>
               </p>
             </div>
-            <div className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-[var(--greek-gold)]/20">
-              <div className="text-center px-4 border-r border-[var(--greek-gold)]/20">
+            <div className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-[rgba(197,161,72,0.25)]">
+              <div className="text-center px-4 border-r border-[rgba(197,161,72,0.25)]">
                 <div className="text-2xl font-bold text-[var(--greek-gold)]">{stats.badges}</div>
                 <div className="text-xs uppercase tracking-wider opacity-80">Badges</div>
               </div>
@@ -120,7 +120,7 @@ export default function ChildDashboard() {
             { href: "/child/forum", icon: MessageSquare, label: "Forum", desc: "Pose tes questions", color: "bg-blue-100 text-[var(--greek-blue)]", action: "Y aller" },
           ].map(({ href, icon: Icon, label, desc, color, action }) => (
             <Link key={href} href={href} className="group">
-              <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+              <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   <Icon className="w-24 h-24" />
                 </div>
@@ -138,7 +138,7 @@ export default function ChildDashboard() {
         </div>
 
         {/* À faire ensuite — données réelles */}
-        <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/40 mb-8">
+        <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] mb-8">
           <div className="flex items-center gap-3 mb-5">
             <Star className="w-5 h-5 text-[var(--greek-gold)] fill-current" />
             <h2 className="text-xl font-bold text-[var(--greek-blue)]">À faire ensuite</h2>
@@ -146,7 +146,7 @@ export default function ChildDashboard() {
           <div className="grid md:grid-cols-2 gap-4">
             {/* Prochain cours */}
             {nextCourse ? (
-              <div className="bg-blue-50 rounded-2xl p-5 border border-[var(--greek-gold)]/25 flex items-center justify-between gap-4">
+              <div className="bg-blue-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[var(--greek-blue)] rounded-xl flex items-center justify-center text-white shrink-0">
                     <BookOpen className="w-6 h-6" />
@@ -162,7 +162,7 @@ export default function ChildDashboard() {
                 </Link>
               </div>
             ) : (
-              <div className="bg-gray-50 rounded-2xl p-5 border border-[var(--greek-gold)]/20 flex items-center gap-3 text-gray-400">
+              <div className="bg-gray-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center gap-3 text-gray-400">
                 <BookOpen className="w-6 h-6" />
                 <span className="text-sm">Aucun cours disponible pour ton niveau.</span>
               </div>
@@ -170,7 +170,7 @@ export default function ChildDashboard() {
 
             {/* Prochain exercice */}
             {nextExercise ? (
-              <div className="bg-orange-50 rounded-2xl p-5 border border-[var(--greek-gold)]/25 flex items-center justify-between gap-4">
+              <div className="bg-orange-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[var(--greek-bronze)] rounded-xl flex items-center justify-center text-white shrink-0">
                     <PenTool className="w-6 h-6" />
@@ -186,7 +186,7 @@ export default function ChildDashboard() {
                 </Link>
               </div>
             ) : (
-              <div className="bg-gray-50 rounded-2xl p-5 border border-[var(--greek-gold)]/20 flex items-center gap-3 text-gray-400">
+              <div className="bg-gray-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center gap-3 text-gray-400">
                 <PenTool className="w-6 h-6" />
                 <span className="text-sm">Tous les exercices ont été faits !</span>
               </div>
@@ -195,7 +195,7 @@ export default function ChildDashboard() {
         </div>
 
         {/* Mes Trophées — réels */}
-        <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[var(--greek-gold)]/30">
+        <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-3">
               <Trophy className="w-5 h-5 text-[var(--greek-bronze)]" />
@@ -219,7 +219,7 @@ export default function ChildDashboard() {
               {earnedBadges.map((b: any) => {
                 const Icon = ICON_MAP[b.icon] || Star;
                 return (
-                  <div key={b.id} className="rounded-2xl border border-[var(--greek-gold)]/25 p-4 flex flex-col items-center text-center shadow-sm"
+                  <div key={b.id} className="rounded-2xl border border-[rgba(197,161,72,0.25)] p-4 flex flex-col items-center text-center shadow-sm"
                     style={{ backgroundColor: b.color + "10" }}>
                     <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-2" style={{ backgroundColor: b.color + "20" }}>
                       <Icon className="w-6 h-6" style={{ color: b.color }} />

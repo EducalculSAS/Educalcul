@@ -165,7 +165,7 @@ export default function AdminProfilePage() {
       `}</style>
 
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 relative overflow-hidden mb-8">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden mb-8">
         <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
@@ -206,8 +206,8 @@ export default function AdminProfilePage() {
         {/* Main Column - Forms */}
         <div className="lg:col-span-2 space-y-8">
           {/* Personal Info Card */}
-          <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/20 overflow-hidden">
-            <div className="bg-[var(--greek-blue)]/5 px-8 py-6 border-b border-[var(--greek-gold)]/15 flex items-center gap-3">
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden">
+            <div className="bg-[var(--greek-blue)]/5 px-8 py-6 border-b border-[rgba(197,161,72,0.25)] flex items-center gap-3">
               <User className="text-[var(--greek-blue)]" size={24} />
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                 Profil public
@@ -226,7 +226,7 @@ export default function AdminProfilePage() {
                       onChange={(e) =>
                         setFormData({ ...formData, child_username: e.target.value })
                       }
-                      className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all font-bold"
+                      className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all font-bold"
                       placeholder="Ex: Admin Educalcul"
                       required
                     />
@@ -238,7 +238,7 @@ export default function AdminProfilePage() {
                     <input
                       type="email"
                       value={formData.email}
-                      className="w-full px-4 py-3 border border-[var(--greek-gold)]/15 rounded-xl bg-gray-50 text-gray-400 outline-none cursor-not-allowed"
+                      className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50 text-gray-400 outline-none cursor-not-allowed"
                       disabled
                     />
                   </div>
@@ -258,7 +258,7 @@ export default function AdminProfilePage() {
                             name_animation: e.target.value,
                           })
                         }
-                        className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun style</option>
                         <optgroup label="✦ Admin exclusif">
@@ -313,7 +313,7 @@ export default function AdminProfilePage() {
                             avatar_border: e.target.value,
                           })
                         }
-                        className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun contour</option>
                         <optgroup label="✦ Admin exclusif">
@@ -364,7 +364,7 @@ export default function AdminProfilePage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-4 py-3 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
                     required
                   />
                 </div>

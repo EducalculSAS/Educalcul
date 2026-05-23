@@ -499,7 +499,7 @@ export default function ExerciseViewer({
     const isPreview = exercise.id === undefined || exercise.id === "preview";
 
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-in fade-in zoom-in bg-white">
+      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-bounce bg-white">
         <div className="w-24 h-24 bg-[var(--greek-blue)] rounded-full flex items-center justify-center mb-6 shadow-xl">
           <Trophy className="w-12 h-12 text-[var(--greek-gold)]" />
         </div>
@@ -514,7 +514,7 @@ export default function ExerciseViewer({
           .
         </p>
         
-        <div className="w-full max-w-md bg-gray-50 border border-[var(--greek-gold)]/20 rounded-2xl p-6 mb-8">
+        <div className="w-full max-w-md bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-gray-500 font-medium">Réussite</span>
             <span className="text-[var(--greek-blue)] font-bold">{percentage}%</span>
@@ -598,7 +598,7 @@ export default function ExerciseViewer({
                     {block.title}
                   </h4>
                   {block.points && (
-                    <span className="text-xs font-bold bg-[var(--greek-gold)]/20 text-[var(--greek-bronze)] border border-[var(--greek-gold)]/30 px-2 py-1 rounded-full">
+                    <span className="text-xs font-bold bg-[var(--greek-gold)]/20 text-[var(--greek-bronze)] border border-[rgba(197,161,72,0.25)] px-2 py-1 rounded-full">
                       {block.points} pts
                     </span>
                   )}
@@ -843,7 +843,7 @@ export default function ExerciseViewer({
 
                 {/* Feedback after global validation */}
                 {isSubmitted && (
-                  <div className="mt-4 pt-4 border-t border-[var(--greek-gold)]/10 flex flex-col gap-3">
+                  <div className="mt-4 pt-4 border-t border-[rgba(197,161,72,0.25)] flex flex-col gap-3">
                     <div
                       className={`text-sm font-bold flex items-center gap-2 ${
                         isCorrect ? "text-green-600" : "text-red-600"

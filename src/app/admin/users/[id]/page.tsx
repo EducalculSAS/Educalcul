@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ const roleBadge = (r: string) => {
   return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700"><Baby className="w-3 h-3" />Élève</span>;
 };
 
-const inputCls = "w-full px-3 py-2 border border-[var(--greek-gold)]/25 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
+const inputCls = "w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
 const labelCls = "block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1";
 
 export default function UserDetailPage() {
@@ -144,7 +144,7 @@ export default function UserDetailPage() {
       )}
 
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-6">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
           <div className="flex items-center gap-4">
             <button onClick={() => router.push("/admin/users")} className="p-2 text-[var(--greek-blue)] hover:bg-blue-50 rounded-xl transition-colors shrink-0">
@@ -176,7 +176,7 @@ export default function UserDetailPage() {
                 <button onClick={saveEdit} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-xl text-sm font-semibold hover:bg-green-600 transition-colors shadow-sm disabled:opacity-50">
                   {actionLoading ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />} Enregistrer
                 </button>
-                <button onClick={() => { setEditMode(false); }} className="flex items-center gap-2 px-4 py-2 border border-[var(--greek-gold)]/20 text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
+                <button onClick={() => { setEditMode(false); }} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
                   <X size={15} /> Annuler
                 </button>
               </>
@@ -197,7 +197,7 @@ export default function UserDetailPage() {
                 <Ban size={15} /> Bannir
               </button>
             )}
-            <button onClick={() => doAction("reset_password")} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 border border-[var(--greek-gold)]/20 text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
+            <button onClick={() => doAction("reset_password")} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
               <KeyRound size={15} /> Reset MDP
             </button>
             <button onClick={handleDelete} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 text-red-500 border border-red-200 rounded-xl text-sm font-semibold hover:bg-red-50 transition-colors">
@@ -212,7 +212,7 @@ export default function UserDetailPage() {
         <div className="space-y-5">
 
           {/* Edit form or info display */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">
               {editMode ? "Modifier le profil" : "Informations"}
             </h2>
@@ -269,7 +269,7 @@ export default function UserDetailPage() {
 
           {/* Subscription — masqué pour les admins */}
           {user.role !== "admin" && (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2"><CreditCard className="w-4 h-4" />Abonnement</h2>
               {subscription ? (
                 <div>
@@ -282,7 +282,7 @@ export default function UserDetailPage() {
 
           {/* Children */}
           {user.role === "parent" && (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Enfants ({children.length})</h2>
               {children.length > 0 ? children.map((c: any) => (
                 <button key={c.id} onClick={() => router.push(`/admin/users/${c.id}`)} className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors text-left mb-1">
@@ -300,7 +300,7 @@ export default function UserDetailPage() {
 
           {/* Badges */}
           {badges.length > 0 && (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2"><Trophy className="w-4 h-4" />Badges</h2>
               <div className="flex flex-wrap gap-2">
                 {badges.map((b: any, i: number) => (
@@ -323,7 +323,7 @@ export default function UserDetailPage() {
               { label: "Sujets forum", value: stats.forum_posts, color: "bg-purple-50 text-purple-600" },
               { label: "Commentaires", value: stats.forum_comments, color: "bg-pink-50 text-pink-600" },
             ].map(s => (
-              <div key={s.label} className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-4">
+              <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-4">
                 <p className={`text-2xl font-bold mb-1 ${s.color.split(" ")[1]}`}>{s.value}</p>
                 <p className="text-xs text-gray-400 uppercase font-semibold tracking-wide">{s.label}</p>
               </div>
@@ -331,7 +331,7 @@ export default function UserDetailPage() {
           </div>
 
           {/* Admin notifications history */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2"><Bell className="w-4 h-4" />Historique des actions</h2>
             {notifications.length > 0 ? (
               <div className="space-y-2">
@@ -352,7 +352,7 @@ export default function UserDetailPage() {
           </div>
 
           {/* Recent activity */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2"><Clock className="w-4 h-4" />Activité récente</h2>
             {recent_activity.length > 0 ? (
               <div className="divide-y divide-gray-50">
@@ -373,7 +373,7 @@ export default function UserDetailPage() {
       {showMessageModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Envoyer un message</h2>
               <button onClick={() => setShowMessageModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>
@@ -409,7 +409,7 @@ export default function UserDetailPage() {
       {showBanModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-red-600 font-[family-name:var(--font-display)]">Bannir l'utilisateur</h2>
               <button onClick={() => setShowBanModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>

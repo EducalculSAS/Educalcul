@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import Navbar from "@/components/Navbar";
 import { Lock, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function UpdatePassword() {
@@ -71,11 +70,8 @@ export default function UpdatePassword() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
-      <Navbar />
-
-      <main className="flex-grow pt-[64px] flex items-center justify-center p-4">
-        <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--card-border-antique)] p-8 max-w-md w-full">
+    <div className="w-full max-w-md">
+        <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 w-full">
           <div className="text-center mb-8">
             <h1 className="font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-2xl mb-2">
               Nouveau mot de passe
@@ -86,9 +82,9 @@ export default function UpdatePassword() {
           </div>
 
           {status === "success" ? (
-            <div className="text-center animate-in fade-in zoom-in duration-300">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
+            <div className="text-center animate-fade-bounce">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(197,161,72,0.15)" }}>
+                <CheckCircle className="w-8 h-8" style={{ color: "var(--greek-gold)" }} />
               </div>
               <p className="text-gray-800 mb-6">{message}</p>
               <p className="text-sm text-gray-500">
@@ -98,8 +94,8 @@ export default function UpdatePassword() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {status === "error" && (
-                <div className="p-3 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <div className="flex items-center gap-2 px-4 py-3 rounded-xl border text-sm" style={{ background: "var(--greek-blue)", borderColor: "rgba(239,68,68,0.3)", color: "rgba(255,255,255,0.9)" }}>
+                  <AlertCircle className="w-4 h-4 text-red-300 shrink-0" />
                   {message}
                 </div>
               )}
@@ -120,7 +116,7 @@ export default function UpdatePassword() {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)] transition-colors"
+                    className="w-full pl-10 pr-4 py-3 border border-[rgba(197,161,72,0.3)] rounded-lg focus:outline-none focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)]/30 transition-colors"
                     placeholder="••••••••"
                     required
                     minLength={6}
@@ -145,7 +141,7 @@ export default function UpdatePassword() {
                     id="confirmPassword"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)] transition-colors"
+                    className="w-full pl-10 pr-4 py-3 border border-[rgba(197,161,72,0.3)] rounded-lg focus:outline-none focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)]/30 transition-colors"
                     placeholder="••••••••"
                     required
                     minLength={6}
@@ -171,7 +167,6 @@ export default function UpdatePassword() {
             </form>
           )}
         </div>
-      </main>
     </div>
   );
 }

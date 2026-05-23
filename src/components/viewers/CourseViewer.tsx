@@ -257,7 +257,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
 
   if (!chapters.length) {
     return (
-      <div className="flex flex-col items-center justify-center h-64 text-gray-500 bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-8">
+      <div className="flex flex-col items-center justify-center h-64 text-gray-500 bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-8">
         <FileText className="w-12 h-12 mb-4 text-[var(--greek-gold)]/50" />
         <p className="text-[var(--greek-blue)]">Ce cours ne contient aucun contenu pour le moment.</p>
       </div>
@@ -269,7 +269,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
     const totalLessons = chapters.reduce((acc, c) => acc + c.lessons.length, 0);
 
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-in fade-in zoom-in bg-white border border-[var(--greek-gold)]">
+      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-bounce bg-white border border-[var(--greek-gold)]">
         <div className="w-24 h-24 bg-[var(--greek-blue)] rounded-full flex items-center justify-center mb-6 shadow-xl">
           <Play className="w-12 h-12 text-[var(--greek-gold)] ml-1" />
         </div>
@@ -281,7 +281,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
           Tu as validé les {totalLessons} leçons prévues.
         </p>
         
-        <div className="w-full max-w-md bg-gray-50 border border-[var(--greek-gold)]/20 rounded-2xl p-6 mb-8">
+        <div className="w-full max-w-md bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-gray-500 font-medium">Progression totale</span>
             <span className="text-[var(--greek-blue)] font-bold">100%</span>
@@ -389,7 +389,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
                  {Math.round((completedLessons.size / chapters.reduce((acc, c) => acc + c.lessons.length, 0)) * 100)}%
                </span>
              </div>
-             <div className="w-10 h-10 rounded-full bg-[var(--greek-blue)]/10 flex items-center justify-center border-2 border-[var(--greek-gold)]/30">
+             <div className="w-10 h-10 rounded-full bg-[var(--greek-blue)]/10 flex items-center justify-center border-2 border-[rgba(197,161,72,0.25)]">
                 <span className="font-bold text-[var(--greek-blue)] text-sm">
                   {Math.round((completedLessons.size / chapters.reduce((acc, c) => acc + c.lessons.length, 0)) * 100)}%
                 </span>
@@ -401,9 +401,9 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
         <div className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
           <div className="max-w-4xl mx-auto px-6 py-10 md:px-12 md:py-16">
             {currentLesson ? (
-              <div className="animate-in fade-in duration-500 slide-in-from-bottom-4">
+              <div className="animate-fade-bounce">
                 {/* Content Header */}
-                <div className="mb-8 pb-6 border-b border-[var(--greek-gold)]/10">
+                <div className="mb-8 pb-6 border-b border-[rgba(197,161,72,0.25)]">
                   <div className="flex items-center gap-2 text-sm text-[var(--greek-bronze)] font-medium mb-2 uppercase tracking-wide">
                     {currentLesson.type === 'video' ? <Video size={16}/> : <FileText size={16}/>}
                     {currentLesson.type === 'video' ? 'Vidéo' : 'Leçon'}
@@ -416,7 +416,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
                 {/* Content Body */}
                 <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:font-[family-name:var(--font-display)] prose-headings:text-[var(--greek-blue)] prose-p:text-gray-600 prose-a:text-[var(--greek-blue)] hover:prose-a:text-[var(--greek-gold)] prose-img:rounded-xl prose-img:shadow-lg">
                    {currentLesson.type === 'video' ? (
-                     <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-xl bg-black border border-[var(--greek-gold)]/20">
+                     <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-xl bg-black border border-[rgba(197,161,72,0.25)]">
                        {getYouTubeId(currentLesson.content) ? (
                          <iframe 
                            className="w-full h-full"
@@ -445,7 +445,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
               </div>
             ) : (
               <div className="text-center text-gray-400 py-32">
-                <div className="w-20 h-20 bg-[var(--greek-cream)] rounded-full flex items-center justify-center mx-auto mb-6 border border-[var(--greek-gold)]/20">
+                <div className="w-20 h-20 bg-[var(--greek-cream)] rounded-full flex items-center justify-center mx-auto mb-6 border border-[rgba(197,161,72,0.25)]">
                   <Play className="w-8 h-8 text-[var(--greek-gold)] ml-1" />
                 </div>
                 <h3 className="text-xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-2">Prêt à commencer ?</h3>
@@ -485,7 +485,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
         {/* Text Selection Popup — controlled imperatively via ref, never hidden by React */}
         <div
           ref={popupRef}
-          className="fixed bg-[var(--greek-blue)] text-white rounded-xl shadow-2xl px-4 py-2 z-[100] items-center gap-3 border border-[var(--greek-gold)]/50 pointer-events-auto"
+          className="fixed bg-[var(--greek-blue)] text-white rounded-xl shadow-2xl px-4 py-2 z-[100] items-center gap-3 border border-[rgba(197,161,72,0.25)] pointer-events-auto"
           style={{ display: "none", transform: "translate(-50%, -100%)" }}
         >
           <button

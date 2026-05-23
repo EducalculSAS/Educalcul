@@ -2,180 +2,103 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CircleHelp, Info, UserCog, CreditCard, ChevronDown, ChevronUp } from "lucide-react";
+import Link from "next/link";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
-type FAQItem = {
-  question: string;
-  answer: React.ReactNode;
-};
+type FAQItem = { question: string; answer: React.ReactNode };
+type FAQSection = { title: string; items: FAQItem[] };
 
-type FAQSection = {
-  id: string;
-  title: string;
-  icon: React.ReactNode;
-  items: FAQItem[];
-};
+const FAQ_DATA: FAQSection[] = [
+  {
+    title: "Généralités",
+    items: [
+      { question: "C'est quoi Educalcul ?", answer: "Educalcul est une plateforme de mathématiques pour les enfants. On y trouve des leçons claires, des exercices, des quiz et un suivi détaillé pour progresser pas à pas." },
+      { question: "Pour quels niveaux c'est fait ?", answer: "Le contenu couvre du CE1 à la 3ème. L'enfant choisit son niveau pour accéder aux contenus adaptés à sa classe." },
+      { question: "Est-ce que ça suit le programme scolaire ?", answer: "Oui, tous les contenus sont alignés sur le programme officiel de l'Éducation Nationale." },
+      { question: "Mon enfant peut-il travailler seul ?", answer: "Oui. Les consignes sont courtes, les exercices sont guidés et les corrections expliquées permettent d'avancer sans bloquer." },
+      { question: "Sur quels appareils peut-on l'utiliser ?", answer: "Educalcul fonctionne sur ordinateur, tablette et téléphone. Le site s'adapte à toutes les tailles d'écran." },
+    ],
+  },
+  {
+    title: "Comptes et accès",
+    items: [
+      { question: "Comment créer un compte ?", answer: "Cliquez sur Inscription, choisissez votre type de compte, puis remplissez le formulaire. C'est rapide et vous pouvez commencer immédiatement." },
+      { question: "Quelle est la différence entre compte Parent et Enfant ?", answer: "Le compte Parent permet de gérer les enfants, les abonnements et de suivre les progrès. Le compte Enfant est dédié aux leçons, exercices et quiz." },
+      { question: "J'ai oublié mon mot de passe, que faire ?", answer: "Sur la page de connexion, cliquez sur « Mot de passe oublié ». Vous recevrez un lien par email pour le réinitialiser." },
+      { question: "Peut-on changer de niveau en cours d'année ?", answer: "Oui. Le niveau peut être ajusté à tout moment depuis l'espace parent si l'enfant progresse vite ou s'il faut revoir les bases." },
+    ],
+  },
+  {
+    title: "Cours, exercices & abonnements",
+    items: [
+      { question: "Qu'est-ce qu'on trouve dans les cours ?", answer: "Des explications claires, des exemples concrets et des activités pour s'entraîner immédiatement après chaque leçon." },
+      { question: "Les exercices corrigent-ils les erreurs ?", answer: "Oui, l'enfant voit ce qui est juste ou faux et peut comprendre ses erreurs grâce aux explications détaillées." },
+      { question: "Comment suivre les progrès de mon enfant ?", answer: "Le tableau de bord parent affiche l'avancée, les exercices réalisés, les badges obtenus et les points à revoir." },
+      {
+        question: "Quels abonnements sont proposés ?",
+        answer: (
+          <span>
+            Plusieurs formules sont disponibles selon vos besoins. Retrouvez tous les détails sur la page{" "}
+            <Link href="/tarifs" className="text-[var(--greek-blue)] underline hover:text-[var(--greek-gold)] transition-colors">Tarifs</Link>.
+          </span>
+        ),
+      },
+      { question: "L'abonnement se renouvelle-t-il automatiquement ?", answer: "Cela dépend de la formule choisie. Tous les détails sont indiqués clairement avant validation, et vous pouvez annuler à tout moment." },
+    ],
+  },
+];
 
 export default function FAQ() {
-  // State to track open accordion items
-  // Using a string ID like "sectionIndex-itemIndex"
   const [openItem, setOpenItem] = useState<string | null>(null);
-
-  const toggleItem = (id: string) => {
-    setOpenItem(openItem === id ? null : id);
-  };
-
-  const faqSections: FAQSection[] = [
-    {
-      id: "general",
-      title: "Généralités",
-      icon: <Info className="w-6 h-6 mr-2 text-[var(--greek-gold)]" />,
-      items: [
-        {
-          question: "C'est quoi Educalcul ?",
-          answer: "Educalcul est un site de maths pour les enfants. On y trouve des leçons simples, des exercices, des quiz et un suivi clair pour avancer pas à pas."
-        },
-        {
-          question: "Pour quels niveaux c'est fait ?",
-          answer: "Le contenu va du CP au CM2, avec aussi quelques activités pour la 6e. L'enfant choisit son niveau pour voir ce qui lui correspond."
-        },
-        {
-          question: "Est-ce que ça suit le programme scolaire ?",
-          answer: "Oui, les contenus sont pensés pour rester proches de ce qui est vu à l'école. L'idée est d'aider l'enfant à comprendre et à s'entraîner sans le perdre."
-        },
-        {
-          question: "Est-ce que mon enfant peut travailler seul ?",
-          answer: "Oui. Les consignes sont courtes, les exercices sont guidés et les corrections aident à avancer sans bloquer."
-        },
-        {
-          question: "Sur quels appareils on peut l'utiliser ?",
-          answer: "Educalcul fonctionne sur ordinateur, tablette et téléphone. Le site s'adapte à la taille de l'écran."
-        }
-      ]
-    },
-    {
-      id: "comptes",
-      title: "Comptes et accès",
-      icon: <UserCog className="w-6 h-6 mr-2 text-[var(--greek-gold)]" />,
-      items: [
-        {
-          question: "Comment créer un compte ?",
-          answer: "Clique sur Inscription, choisis ton type de compte, puis remplis le formulaire. C'est rapide et tu peux commencer juste après."
-        },
-        {
-          question: "Parent et enfant, c'est différent ?",
-          answer: "Oui. Le compte Parent sert à gérer les enfants et l'abonnement. Le compte Enfant sert à faire les leçons, les exercices et les quiz."
-        },
-        {
-          question: "J'ai oublié mon mot de passe, je fais quoi ?",
-          answer: "Sur la page de connexion, clique sur Mot de passe oublié. Tu recevras les étapes par email pour le réinitialiser."
-        },
-        {
-          question: "Je peux changer le niveau plus tard ?",
-          answer: "Oui. Le niveau peut être ajusté si l'enfant progresse vite ou s'il faut revenir sur les bases."
-        },
-        {
-          question: "Il faut un compte pour tester le site ?",
-          answer: "Pour voir les offres et les explications, non. Pour faire les activités, oui, il faut se connecter."
-        }
-      ]
-    },
-    {
-      id: "cours",
-      title: "Cours, exercices et abonnements",
-      icon: <CreditCard className="w-6 h-6 mr-2 text-[var(--greek-gold)]" />,
-      items: [
-        {
-          question: "Qu'est-ce qu'on trouve dans les cours ?",
-          answer: "Des explications simples, des exemples et des activités pour s'entraîner tout de suite après."
-        },
-        {
-          question: "Les exercices corrigent aussi les erreurs ?",
-          answer: "Oui, l'enfant voit ce qui est juste ou faux et peut comprendre où il s'est trompé."
-        },
-        {
-          question: "Est-ce qu'il y a des quiz ?",
-          answer: "Oui. Les quiz servent à vérifier ce qui a été compris et à revoir ce qui doit encore être travaillé."
-        },
-        {
-          question: "Comment suivre les progrès ?",
-          answer: "Le tableau de bord montre l'avancée, les exercices faits et les points à revoir."
-        },
-        {
-          question: "Quels sont les abonnements proposés ?",
-          answer: (
-            <span>
-              Il y a plusieurs formules selon le besoin de la famille. Tu peux voir tous les détails sur la page <a href="/tarifs" className="text-[var(--greek-blue)] underline hover:text-[var(--greek-gold)]">Tarifs</a>.
-            </span>
-          )
-        },
-        {
-          question: "L'abonnement se renouvelle tout seul ?",
-          answer: "Ça dépend de la formule choisie. Les détails sont indiqués clairement sur la page Tarifs avant de valider."
-        }
-      ]
-    }
-  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
       <Navbar />
-
       <main className="flex-grow pt-[64px]">
-        {/* Hero Section */}
-        <section className="bg-[var(--greek-cream)] py-20 text-center relative z-10">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h1 className="font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-4xl md:text-5xl mb-4 flex items-center justify-center gap-3">
-                <CircleHelp className="w-10 h-10 md:w-12 md:h-12 text-[var(--greek-gold)]" />
-                FAQ
-              </h1>
-              <p className="text-[var(--greek-blue)] text-xl opacity-80">
-                Trouvez rapidement les réponses à vos questions sur Educalcul
-              </p>
-            </div>
+
+        {/* HERO */}
+        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-24 text-center">
+          {[{s:"∑",x:6,y:10,z:96,d:0,t:7.2},{s:"π",x:87,y:7,z:72,d:1.3,t:8.5},{s:"√",x:12,y:62,z:58,d:0.6,t:9.1},{s:"∫",x:91,y:48,z:104,d:2.1,t:7.4},{s:"Δ",x:43,y:14,z:50,d:0.9,t:10.2},{s:"∞",x:65,y:70,z:66,d:1.8,t:8.0},{s:"α",x:2,y:40,z:44,d:2.7,t:9.3},{s:"×",x:76,y:26,z:54,d:0.4,t:7.8},{s:"θ",x:50,y:78,z:62,d:2.0,t:8.8},{s:"β",x:28,y:53,z:42,d:3.3,t:10.5},{s:"≠",x:58,y:30,z:46,d:1.1,t:9.7},{s:"÷",x:19,y:84,z:38,d:2.9,t:7.3}].map((cfg,i)=>(
+            <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none" style={{left:`${cfg.x}%`,top:`${cfg.y}%`,fontSize:`${cfg.z}px`,fontFamily:"Georgia,serif",color:"var(--greek-gold)",opacity:0.13,animationDuration:`${cfg.t}s`,animationDelay:`${cfg.d}s`}}>{cfg.s}</span>
+          ))}
+          <div className="relative container mx-auto px-6 max-w-3xl">
+            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-5">FAQ</h1>
+            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
+              Trouvez rapidement les réponses à vos questions sur Educalcul.
+            </p>
           </div>
         </section>
 
-        {/* FAQ Sections */}
-        <section className="pb-20">
-          <div className="container mx-auto px-4 max-w-4xl">
-            {faqSections.map((section, sIndex) => (
-              <div key={section.id} className="mb-12">
-                <h2 className="flex items-center text-2xl font-bold text-[var(--greek-blue)] mb-6 border-b-2 border-[var(--greek-gold)] pb-2 font-[family-name:var(--font-display)]">
-                  {section.icon}
-                  {section.title}
-                </h2>
-                
-                <div className="space-y-4">
-                  {section.items.map((item, iIndex) => {
-                    const itemId = `${sIndex}-${iIndex}`;
-                    const isOpen = openItem === itemId;
-                    
+        {/* FAQ */}
+        <section className="py-20">
+          <div className="container mx-auto px-6 max-w-3xl">
+            {FAQ_DATA.map((section, sIdx) => (
+              <div key={sIdx} className="mb-12">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-px bg-[var(--greek-gold)] opacity-60" />
+                  <h2 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)]">{section.title}</h2>
+                  <div className="flex-1 h-px bg-[var(--greek-border)]" />
+                </div>
+
+                <div className="space-y-3">
+                  {section.items.map((item, iIdx) => {
+                    const id = `${sIdx}-${iIdx}`;
+                    const isOpen = openItem === id;
                     return (
-                      <div 
-                        key={iIndex} 
-                        className="bg-white rounded-[6px] border border-[var(--greek-gold)] shadow-sm hover:shadow-md transition-shadow overflow-hidden"
-                      >
+                      <div key={id} className="bg-white rounded-xl overflow-hidden border border-[var(--greek-border)] transition-shadow duration-200 hover:shadow-md">
                         <button
-                          onClick={() => toggleItem(itemId)}
-                          className={`w-full text-left px-6 py-4 flex justify-between items-center font-semibold transition-colors ${
-                            isOpen 
-                              ? 'text-[var(--greek-blue)] bg-[rgba(197,161,72,0.1)] border-b border-[var(--greek-gold)]' 
-                              : 'text-[var(--greek-blue)] hover:bg-gray-50'
-                          }`}
+                          onClick={() => setOpenItem(isOpen ? null : id)}
+                          className="w-full text-left px-6 py-5 flex justify-between items-center gap-4 transition-colors"
+                          style={{ background: isOpen ? "rgba(197,161,72,0.06)" : "transparent" }}
                         >
-                          <span className="text-lg">{item.question}</span>
-                          {isOpen ? (
-                            <ChevronUp className="w-5 h-5 text-[var(--greek-gold)] flex-shrink-0 ml-4" />
-                          ) : (
-                            <ChevronDown className="w-5 h-5 text-[var(--greek-gold)] flex-shrink-0 ml-4" />
-                          )}
+                          <span className="font-semibold text-sm text-[var(--greek-blue)] leading-snug">{item.question}</span>
+                          {isOpen
+                            ? <ChevronUp className="w-4 h-4 flex-shrink-0 text-[var(--greek-gold)]" />
+                            : <ChevronDown className="w-4 h-4 flex-shrink-0 text-[var(--text-muted)]" />}
                         </button>
-                        
                         {isOpen && (
-                          <div className="px-6 py-4 text-gray-700 bg-white animate-in slide-in-from-top-2 duration-200">
+                          <div className="px-6 pb-5 text-sm text-[var(--text-muted)] leading-relaxed border-t border-[var(--greek-border)] pt-4">
                             {item.answer}
                           </div>
                         )}
@@ -185,10 +108,19 @@ export default function FAQ() {
                 </div>
               </div>
             ))}
+
+            {/* CTA */}
+            <div className="mt-4 text-center p-10 rounded-2xl bg-[var(--greek-blue)] text-white">
+              <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-3">Vous n'avez pas trouvé votre réponse ?</h3>
+              <p className="text-white/60 text-sm mb-6">Notre équipe répond généralement en moins de 24h.</p>
+              <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-[var(--greek-gold)] text-black hover:opacity-90 transition-all">
+                Nous contacter
+              </Link>
+            </div>
           </div>
         </section>
-      </main>
 
+      </main>
       <Footer />
     </div>
   );

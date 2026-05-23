@@ -102,25 +102,42 @@ export async function GET(req: Request) {
 
     const customerId = subscription.stripe_customer_id;
 
-    // 2. Fetch subscription details from Stripe to get renewal date
-    let stripeSubscription = null;
+    // 2. Fetch subscription details from Stripe to get renewal date + cancellation status
+    let stripeSubscription: any = null;
     if (subscription.stripe_subscription_id) {
       stripeSubscription = await stripe.subscriptions.retrieve(
         subscription.stripe_subscription_id
       );
     }
 
+    const stripeCancelAtPeriodEnd = stripeSubscription?.cancel_at_period_end ?? false;
+    const stripePeriodEnd = stripeSubscription
+      ? new Date(stripeSubscription.current_period_end * 1000).toISOString()
+      : subscription.current_period_end;
+
+    // Synchroniser cancel_at_period_end en DB si Stripe est différent
+    // (l'utilisateur a annulé via le portail Stripe → DB doit refléter ça)
+    if (stripeSubscription && stripeCancelAtPeriodEnd !== subscription.cancel_at_period_end) {
+      await supabaseAdmin
+        .from('subscriptions')
+        .update({
+          cancel_at_period_end: stripeCancelAtPeriodEnd,
+          current_period_end: stripePeriodEnd,
+        })
+        .eq('stripe_subscription_id', subscription.stripe_subscription_id);
+    }
+
     // 3. Fetch invoices from Stripe
     const invoices = await stripe.invoices.list({
       customer: customerId,
-      limit: 12, // Last 12 invoices
+      limit: 12,
       status: 'paid',
     });
 
     const formattedInvoices = invoices.data.map(invoice => ({
       id: invoice.id,
       date: new Date(invoice.created * 1000).toISOString(),
-      amount: invoice.amount_paid / 100, // Convert cents to currency unit
+      amount: invoice.amount_paid / 100,
       currency: invoice.currency.toUpperCase(),
       status: invoice.status,
       pdf_url: invoice.invoice_pdf,
@@ -130,10 +147,8 @@ export async function GET(req: Request) {
     return NextResponse.json({
       subscription: {
         ...subscription,
-        current_period_end: stripeSubscription
-          ? new Date((stripeSubscription as any).current_period_end * 1000).toISOString()
-          : subscription.current_period_end,
-        cancel_at_period_end: (stripeSubscription as any)?.cancel_at_period_end || false,
+        current_period_end: stripePeriodEnd,
+        cancel_at_period_end: stripeCancelAtPeriodEnd,
       },
       invoices: formattedInvoices,
     });

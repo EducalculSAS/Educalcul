@@ -1,6 +1,8 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sendEmail } from "@/lib/mailjet";
+import { sendEmail } from "@/lib/mailer";
+import { notify } from "@/lib/notify";
+import { buildEmailHtml } from "@/lib/emailTemplates";
 
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -37,17 +39,15 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
     // 3. Envoyer email UNIQUEMENT pour les tickets publics (contact form)
     if (is_public && user_email) {
-      const emailSubject = `Re: ${subject} — Educalcul Support`;
-      const emailHtml = `
-        <p>Bonjour ${user_name || ""},</p>
-        <p>Notre équipe a répondu à votre message :</p>
-        <div style="padding:12px;background:#f9f9f9;border-left:3px solid #3a6ea5;margin:16px 0;">
-          ${message.replace(/\n/g, "<br>")}
-        </div>
-        <p>Si vous avez d'autres questions, n'hésitez pas à nous recontacter sur <a href="https://educalcul.fr/contact">educalcul.fr/contact</a>.</p>
-        <p>Cordialement,<br>L'équipe Educalcul</p>
-      `;
-      const emailText = `Bonjour ${user_name || ""},\n\nNotre équipe a répondu à votre message :\n\n${message}\n\nCordialement,\nL'équipe Educalcul`;
+      // Charger le template depuis la DB
+      const { data: tmpl } = await supabaseAdmin.from("email_templates").select("subject,body").eq("key", "support_reply").single();
+      const firstName = user_name?.split(" ")[0] || "Utilisateur";
+      const emailSubject = tmpl ? tmpl.subject.replace(/\{\{name\}\}/g, firstName) : `Re: ${subject} — Educalcul Support`;
+      const bodyHtml = tmpl
+        ? tmpl.body.replace(/\{\{name\}\}/g, firstName).replace(/\{\{reply\}\}/g, message.replace(/\n/g, "<br>"))
+        : `<p>Bonjour ${firstName},</p><blockquote style="border-left:3px solid #c5a148;padding:12px 16px;background:#fffbeb;">${message.replace(/\n/g, "<br>")}</blockquote>`;
+      const emailHtml = buildEmailHtml({ title: emailSubject, body: bodyHtml, cta: { label: "Nous contacter", url: "https://educalcul.fr/contact" } });
+      const emailText = `Bonjour ${firstName},\n\nNotre équipe a répondu à votre message :\n\n${message}\n\nL'équipe Educalcul`;
 
       const result = await sendEmail({
         toEmail: user_email,
@@ -59,7 +59,13 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
       if (!result.success) {
         console.error("Email non envoyé:", result.error);
-        return NextResponse.json({ success: true, warning: "Réponse sauvegardée mais email non envoyé." });
+      }
+
+      // Notification in-app si l'utilisateur a un compte
+      const { data: ticketData } = await supabaseAdmin
+        .from("support_tickets").select("user_id").eq("id", id).maybeSingle();
+      if (ticketData?.user_id) {
+        notify({ userId: ticketData.user_id, type: "support_reply", title: "Réponse à votre message", body: message.slice(0, 80), link: "/parent/support" });
       }
     }
 

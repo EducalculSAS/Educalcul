@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { supabase } from "@/lib/supabaseClient";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function ForgotPassword() {
@@ -20,31 +17,31 @@ export default function ForgotPassword() {
     setMessage("");
 
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(
-        email.trim(),
-        {
-          redirectTo: `${window.location.origin}/auth/update-password`,
-        }
-      );
+      const res = await fetch("/api/auth/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
 
-      if (error) throw error;
+      const data = await res.json();
+
+      if (!res.ok) {
+        setStatus("error");
+        setMessage(`Erreur: ${data.error}`);
+        return;
+      }
 
       setStatus("success");
-      setMessage(
-        "Un email de réinitialisation a été envoyé si un compte existe avec cette adresse."
-      );
+      setMessage("Si un compte existe avec cette adresse, un email de réinitialisation a été envoyé.");
     } catch (err: any) {
       setStatus("error");
-      setMessage(err.message || "Une erreur est survenue.");
+      setMessage("Une erreur de connexion est survenue. Veuillez réessayer.");
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
-      <Navbar />
-
-      <main className="flex-grow pt-[64px] flex items-center justify-center p-4">
-        <div className="bg-white rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[var(--card-border-antique)] p-8 max-w-md w-full">
+    <div className="w-full max-w-md">
+        <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 w-full">
           <div className="text-center mb-8">
             <h1 className="font-[family-name:var(--font-display)] font-bold text-[var(--greek-blue)] text-2xl mb-2">
               Mot de passe oublié ?
@@ -56,9 +53,9 @@ export default function ForgotPassword() {
           </div>
 
           {status === "success" ? (
-            <div className="text-center animate-in fade-in zoom-in duration-300">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
+            <div className="text-center animate-fade-bounce">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(197,161,72,0.15)" }}>
+                <CheckCircle className="w-8 h-8" style={{ color: "var(--greek-gold)" }} />
               </div>
               <p className="text-gray-800 mb-6">{message}</p>
               <Link
@@ -71,8 +68,8 @@ export default function ForgotPassword() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {status === "error" && (
-                <div className="p-3 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <div className="flex items-center gap-2 px-4 py-3 rounded-xl border text-sm" style={{ background: "var(--greek-blue)", borderColor: "rgba(239,68,68,0.3)", color: "rgba(255,255,255,0.9)" }}>
+                  <AlertCircle className="w-4 h-4 text-red-300 shrink-0" />
                   {message}
                 </div>
               )}
@@ -93,7 +90,7 @@ export default function ForgotPassword() {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)] transition-colors"
+                    className="w-full pl-10 pr-4 py-3 border border-[rgba(197,161,72,0.3)] rounded-lg focus:outline-none focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)]/30 transition-colors"
                     placeholder="votre@email.com"
                     required
                     disabled={status === "loading"}
@@ -127,9 +124,6 @@ export default function ForgotPassword() {
             </form>
           )}
         </div>
-      </main>
-
-      <Footer />
     </div>
   );
 }

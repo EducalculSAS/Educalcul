@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -63,10 +63,10 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
   };
 
   return (
-    <div id="user-map-container" className="h-full w-full rounded-[20px] overflow-hidden border border-[var(--greek-gold)]/15 shadow-sm relative bg-white z-0">
+    <div id="user-map-container" className="h-full w-full rounded-[20px] overflow-hidden border border-[rgba(197,161,72,0.25)] shadow-sm relative bg-white z-0">
        <button 
           onClick={toggleFullScreen}
-          className="absolute top-4 right-4 z-[1000] bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm border border-[var(--greek-gold)]/15 hover:bg-white transition-colors text-gray-600 hover:text-[var(--greek-blue)]"
+          className="absolute top-4 right-4 z-[1000] bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm border border-[rgba(197,161,72,0.25)] hover:bg-white transition-colors text-gray-600 hover:text-[var(--greek-blue)]"
           title="Plein écran"
        >
           <Maximize2 size={18} />
@@ -92,7 +92,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
           >
             <Popup>
               <div className="text-sm p-1 min-w-[180px]">
-                <div className="flex items-center justify-between gap-4 mb-2 border-b border-[var(--greek-gold)]/10 pb-2">
+                <div className="flex items-center justify-between gap-4 mb-2 border-b border-[rgba(197,161,72,0.25)] pb-2">
                   <p className="font-bold flex items-center gap-2 text-[var(--greek-blue)]">
                     <span className={`w-2.5 h-2.5 rounded-full border border-white shadow-sm ${
                       user.role === 'admin' ? 'bg-red-500' : 
@@ -134,7 +134,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
                   )}
                 </div>
 
-                <div className="mt-2 pt-2 border-t border-[var(--greek-gold)]/10 flex items-center justify-between">
+                <div className="mt-2 pt-2 border-t border-[rgba(197,161,72,0.25)] flex items-center justify-between">
                    <span className="text-[9px] text-gray-400 capitalize bg-gray-50 px-2 py-0.5 rounded italic">
                       {user.role}
                    </span>
@@ -146,7 +146,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
       </MapContainer>
 
       {/* Legend */}
-      <div className="absolute bottom-16 right-4 z-[1000] bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm border border-[var(--greek-gold)]/15 flex flex-col gap-1.5 text-[10px]">
+      <div className="absolute bottom-16 right-4 z-[1000] bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm border border-[rgba(197,161,72,0.25)] flex flex-col gap-1.5 text-[10px]">
           <div className="flex items-center gap-2">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500 border border-white"></div>
             <span className="font-medium text-gray-700">Admin</span>

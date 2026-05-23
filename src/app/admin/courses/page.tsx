@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -652,7 +652,7 @@ export default function AdminCoursesPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 relative overflow-hidden">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
@@ -707,7 +707,7 @@ export default function AdminCoursesPage() {
       </div>
 
       {/* Navigation & Breadcrumbs */}
-      <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[var(--greek-gold)]/15 shadow-sm overflow-x-auto">
+      <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
         <button
           onClick={() => setCurrentFolderId(null)}
           className={`flex items-center gap-1 hover:text-[var(--greek-blue)] transition-colors ${
@@ -738,7 +738,7 @@ export default function AdminCoursesPage() {
       </div>
 
       {/* Filters & Search */}
-      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15 space-y-4">
+      <div className="bg-white p-4 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] space-y-4">
         <div className="flex flex-col md:flex-row gap-4 flex-wrap">
           <div className="flex-1 relative min-w-[200px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -780,7 +780,7 @@ export default function AdminCoursesPage() {
 
         {/* Empty State */}
         {!loading && folders.length === 0 && filteredCourses.length === 0 && (
-          <div className="col-span-full py-12 text-center text-gray-500 bg-white rounded-xl border border-[var(--greek-gold)]/20 border-dashed">
+          <div className="col-span-full py-12 text-center text-gray-500 bg-white rounded-xl border border-[rgba(197,161,72,0.25)] border-dashed">
             <div className="flex flex-col items-center justify-center">
               <FolderIcon size={48} className="text-gray-200 mb-2" />
               <p>Ce dossier est vide</p>
@@ -807,7 +807,7 @@ export default function AdminCoursesPage() {
               ${
                 dragOverFolderId === folder.id
                   ? "border-[var(--greek-blue)] ring-2 ring-[var(--greek-blue)]/20 bg-blue-50"
-                  : "border-[var(--greek-gold)]/15 hover:shadow-lg hover:-translate-y-1"
+                  : "border-[rgba(197,161,72,0.25)] hover:shadow-lg hover:-translate-y-1"
               }`}
             >
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10">
@@ -872,7 +872,7 @@ export default function AdminCoursesPage() {
               className={`bg-white rounded-xl shadow-sm border overflow-hidden transition-shadow group flex flex-col h-full cursor-move ${
                 draggedCourseId === course.id
                   ? "border-[var(--greek-blue)] opacity-50 border-2 border-dashed"
-                  : "border-[var(--greek-gold)]/15 hover:shadow-md"
+                  : "border-[rgba(197,161,72,0.25)] hover:shadow-md"
               }`}
             >
               <div className="relative h-40 bg-gray-100 flex-shrink-0">
@@ -908,7 +908,7 @@ export default function AdminCoursesPage() {
                   {course.description || "Aucune description"}
                 </p>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[var(--greek-gold)]/10 mt-auto">
+                <div className="flex items-center justify-between pt-4 border-t border-[rgba(197,161,72,0.25)] mt-auto">
                   <span className="text-xs text-gray-400">
                     {new Date(course.created_at).toLocaleDateString("fr-FR")}
                   </span>
@@ -953,7 +953,7 @@ export default function AdminCoursesPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
             {/* Header */}
-            <div className="px-8 py-5 border-b border-[var(--greek-gold)]/20 bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
+            <div className="px-8 py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
               <div className="flex items-center gap-3">
                 <BookOpen size={22} className="text-[var(--greek-gold)]" />
                 <h3 className="text-lg font-bold font-[family-name:var(--font-display)]">
@@ -968,7 +968,7 @@ export default function AdminCoursesPage() {
             <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
               <div className="flex-1 overflow-y-auto">
                 {/* Section 1: Informations */}
-                <div className="p-6 border-b border-[var(--greek-gold)]/10">
+                <div className="p-6 border-b border-[rgba(197,161,72,0.25)]">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">1</span>
                     Informations générales
@@ -980,7 +980,7 @@ export default function AdminCoursesPage() {
                         type="text" required
                         value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
+                        className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
                         placeholder="Ex: Les fractions (CM1)"
                       />
                     </div>
@@ -990,7 +990,7 @@ export default function AdminCoursesPage() {
                         <select
                           value={formData.subject}
                           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                          className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
+                          className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
                         >
                           <option value="Mathématiques">Mathématiques</option>
                           <option value="Français">Français</option>
@@ -1016,7 +1016,7 @@ export default function AdminCoursesPage() {
                         value={formData.description}
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                         rows={2}
-                        className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50 resize-none"
+                        className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50 resize-none"
                         placeholder="Description courte du cours..."
                       />
                     </div>
@@ -1024,7 +1024,7 @@ export default function AdminCoursesPage() {
                 </div>
 
                 {/* Section 2: Paramètres */}
-                <div className="p-6 border-b border-[var(--greek-gold)]/10 bg-gray-50/50">
+                <div className="p-6 border-b border-[rgba(197,161,72,0.25)] bg-gray-50/50">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">2</span>
                     Paramètres de publication
@@ -1035,7 +1035,7 @@ export default function AdminCoursesPage() {
                       <div className="flex gap-1.5">
                         {[{ v: "draft", l: "Brouillon" }, { v: "published", l: "Publié" }, { v: "archived", l: "Archivé" }].map((s) => (
                           <button key={s.v} type="button" onClick={() => setFormData({ ...formData, status: s.v as "draft" | "published" | "archived" })}
-                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-[var(--greek-gold)]/25 bg-white"}`}>
+                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-[rgba(197,161,72,0.25)] bg-white"}`}>
                             {s.l}
                           </button>
                         ))}
@@ -1045,11 +1045,11 @@ export default function AdminCoursesPage() {
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Image de couverture</label>
                       <div className="flex items-center gap-3">
                         {formData.thumbnail_url && (
-                          <div className="relative w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-[var(--greek-gold)]/20 flex-shrink-0">
+                          <div className="relative w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-[rgba(197,161,72,0.25)] flex-shrink-0">
                             <img src={formData.thumbnail_url} alt="Preview" className="w-full h-full object-cover" />
                           </div>
                         )}
-                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium flex-1 justify-center border border-dashed border-[var(--greek-gold)]/30">
+                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium flex-1 justify-center border border-dashed border-[rgba(197,161,72,0.25)]">
                           <ImageIcon size={16} />
                           {uploading ? "Upload..." : "Choisir"}
                           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
@@ -1073,9 +1073,9 @@ export default function AdminCoursesPage() {
               </div>
 
               {/* Footer */}
-              <div className="flex justify-end gap-3 p-6 border-t border-[var(--greek-gold)]/20 bg-white flex-shrink-0">
+              <div className="flex justify-end gap-3 p-6 border-t border-[rgba(197,161,72,0.25)] bg-white flex-shrink-0">
                 <button type="button" onClick={() => setIsModalOpen(false)}
-                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-[var(--greek-gold)]/25">
+                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-[rgba(197,161,72,0.25)]">
                   Annuler
                 </button>
                 <button type="submit" disabled={isSubmitting}
@@ -1096,7 +1096,7 @@ export default function AdminCoursesPage() {
       {isFolderModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-[var(--greek-gold)]/10 flex justify-between items-center bg-gray-50">
+            <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] flex justify-between items-center bg-gray-50">
               <h3 className="text-lg font-bold text-gray-800">
                 {editingFolder ? "Modifier le dossier" : "Nouveau Dossier"}
               </h3>
@@ -1132,7 +1132,7 @@ export default function AdminCoursesPage() {
                       name: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/25 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                   placeholder="Ex: Chapitre 1"
                 />
               </div>
@@ -1148,7 +1148,7 @@ export default function AdminCoursesPage() {
                       grade_level: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/25 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                 >
                   <option value="all">Tous niveaux</option>
                   {SCHOOL_LEVELS.map((level) => (
@@ -1170,7 +1170,7 @@ export default function AdminCoursesPage() {
                       status: e.target.value as any,
                     })
                   }
-                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/25 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                 >
                   <option value="draft">Brouillon</option>
                   <option value="published">Publié</option>

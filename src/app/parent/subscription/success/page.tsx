@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -83,7 +83,7 @@ function SuccessContent() {
         </Link>
         <Link 
           href="/parent/subscription" 
-          className="px-6 py-3 border border-[var(--greek-gold)]/30 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          className="px-6 py-3 border border-[rgba(197,161,72,0.25)] text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
         >
           Voir mon abonnement
         </Link>

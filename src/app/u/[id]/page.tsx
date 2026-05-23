@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, Suspense } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -169,7 +169,7 @@ function PublicProfile() {
               { label: "Quiz", value: stats.quiz, color: "text-purple-600", bg: "bg-purple-50" },
               { label: "Cours", value: stats.cours, color: "text-blue-600", bg: "bg-blue-50" },
             ].map(s => (
-              <div key={s.label} className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-4 text-center">
+              <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-4 text-center">
                 <p className={`text-2xl font-bold ${s.color}`}>{s.value}</p>
                 <p className="text-xs text-gray-400 font-semibold uppercase tracking-wide mt-0.5">{s.label}</p>
               </div>
@@ -179,7 +179,7 @@ function PublicProfile() {
 
         {/* All earned badges */}
         {allBadges.length > 0 && (
-          <div className="bg-white rounded-2xl border border-[var(--card-border-antique)] shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-4 flex items-center gap-2">
               <Trophy className="w-4 h-4 text-[var(--greek-gold)]" />
               Badges obtenus ({allBadges.length})

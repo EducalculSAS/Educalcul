@@ -17,9 +17,8 @@ type Message = { role: "user" | "assistant" | "system"; content: string };
 // Modèles de fallback si le principal est rate-limité (dans l'ordre de préférence)
 const FALLBACK_MODELS = [
   OR_MODEL,
-  "deepseek/deepseek-r1:free",
-  "google/gemma-3-27b-it:free",
   "meta-llama/llama-3.3-70b-instruct:free",
+  "nousresearch/hermes-3-llama-3.1-405b:free",
 ];
 
 async function callOpenRouterModel(
@@ -48,39 +47,47 @@ async function callOpenRouterModel(
 async function callOpenRouter(
   msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false
 ): Promise<string> {
-  for (const model of FALLBACK_MODELS) {
+  const rateLimited: string[] = [];
+
+  async function tryModel(model: string): Promise<string | null> {
     const { ok, text, status } = await callOpenRouterModel(model, msgs, temp, maxTokens, reasoning);
 
     if (ok) {
       try {
         const parsed = JSON.parse(text);
         const msg = parsed?.choices?.[0]?.message;
-        // content peut être null sur les modèles reasoning — fallback sur reasoning_details
-        const content = msg?.content
-          ?? msg?.reasoning
-          ?? parsed?.choices?.[0]?.text
-          ?? null;
+        const content = msg?.content ?? msg?.reasoning ?? parsed?.choices?.[0]?.text ?? null;
         if (content) return content.trim();
-        // Si content null et finish_reason=length → réponse tronquée, continuer au fallback
         const finishReason = parsed?.choices?.[0]?.finish_reason;
-        if (finishReason === "length") {
-          console.warn(`[llm] ${model} hit max_tokens, trying next...`);
-          continue;
-        }
+        if (finishReason === "length") { console.warn(`[llm] ${model} hit max_tokens`); return null; }
         return text.trim();
       } catch { return text.trim(); }
     }
 
-    // 429 = rate limit → essaie le modèle suivant
-    if (status === 429) {
-      console.warn(`[llm] ${model} rate-limited (429), trying next...`);
-      continue;
+    if (status === 429 || status === 503) {
+      console.warn(`[llm] ${model} rate-limited (${status}), queued for retry`);
+      rateLimited.push(model);
+      return null;
     }
 
-    // Autre erreur → log et continue quand même
-    console.error(`[llm] ${model} error ${status}:`, text.slice(0, 200));
-    if (FALLBACK_MODELS.indexOf(model) < FALLBACK_MODELS.length - 1) continue;
-    throw new Error(`OpenRouter ${status}: ${text.slice(0, 200)}`);
+    console.error(`[llm] ${model} error ${status}: ${text.slice(0, 400)}`);
+    return null;
+  }
+
+  // 1ère passe : tous les modèles
+  for (const model of FALLBACK_MODELS) {
+    const result = await tryModel(model);
+    if (result) return result;
+  }
+
+  // 2ème passe : retenter les modèles rate-limités avec un court délai
+  if (rateLimited.length > 0) {
+    await new Promise(r => setTimeout(r, 1500));
+    for (const model of rateLimited) {
+      console.log(`[llm] retrying rate-limited model: ${model}`);
+      const result = await tryModel(model);
+      if (result) return result;
+    }
   }
 
   throw new Error("Tous les modèles IA sont indisponibles. Réessaie dans quelques secondes.");

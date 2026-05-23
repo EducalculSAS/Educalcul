@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -117,7 +117,7 @@ export default function ManageChildrenPage() {
     <div className="container mx-auto px-4 pb-12 max-w-6xl">
 
       {children.length === 0 ? (
-        <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-12 text-center border border-white/50 max-w-2xl mx-auto">
+        <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-12 text-center max-w-2xl mx-auto">
           <div className="flex justify-center mb-6">
             <div className="p-4 bg-[var(--greek-cream)] rounded-full">
               <Users className="w-16 h-16 text-[var(--greek-blue)]" />
@@ -142,12 +142,12 @@ export default function ManageChildrenPage() {
           {children.map((child) => (
             <div
               key={child.id}
-              className="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 overflow-hidden hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group"
+              className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
             >
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-white shadow-sm rounded-full flex items-center justify-center text-[var(--greek-blue)] font-bold text-xl mr-4 group-hover:scale-110 transition-transform overflow-hidden border-2 border-[var(--greek-gold)]/20">
+                    <div className="w-12 h-12 bg-white shadow-sm rounded-full flex items-center justify-center text-[var(--greek-blue)] font-bold text-xl mr-4 group-hover:scale-110 transition-transform overflow-hidden border-2 border-[rgba(197,161,72,0.25)]">
                       {child.avatar ? (
                         <img
                           src={avatarUrl(child.avatar, "/avatars/avatar1.png")!}

@@ -10,7 +10,7 @@ export default function AuthLayout({
   return (
     <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
       <Navbar />
-      <main className="flex-grow pt-[80px] pb-10 flex items-start justify-center px-4">
+      <main className="flex-grow pt-[80px] pb-10 flex items-start justify-center px-4 bg-[var(--greek-cream)]">
         {children}
       </main>
       <Footer />

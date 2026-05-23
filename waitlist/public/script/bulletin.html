@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bulletin de notes — Collège Jean Jaurès</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #f5f5f5; padding: 40px; color: #222; }
+    .page { background: white; max-width: 820px; margin: 0 auto; padding: 48px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); border-radius: 4px; }
+    .header { text-align: center; border-bottom: 3px solid #1a3a6b; padding-bottom: 20px; margin-bottom: 28px; }
+    .school { font-size: 11px; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+    .title { font-size: 22px; font-weight: 700; color: #1a3a6b; margin-bottom: 4px; }
+    .subtitle { font-size: 13px; color: #888; }
+    .meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+    .meta-item { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 6px; padding: 12px 16px; }
+    .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 4px; }
+    .meta-value { font-size: 14px; font-weight: 600; color: #222; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead tr { background: #1a3a6b; color: white; }
+    thead th { padding: 10px 14px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.5px; }
+    tbody tr { border-bottom: 1px solid #f0f0f0; }
+    tbody tr:nth-child(even) { background: #fafafa; }
+    td { padding: 11px 14px; }
+    .matiere { font-weight: 500; }
+    .note { font-weight: 700; text-align: center; font-size: 15px; }
+    .note.bad { color: #e53e3e; }
+    .note.avg { color: #d97706; }
+    .note.good { color: #38a169; }
+    .appr { color: #555; font-size: 12px; font-style: italic; }
+    .appr.bad { color: #e53e3e; }
+    .moy-row td { background: #f0f4ff; font-weight: 600; border-top: 2px solid #1a3a6b; }
+    .highlight-row td { background: #fff5f5; }
+    .highlight-row .note { font-size: 18px; }
+    .footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #e5e5e5; display: flex; justify-content: space-between; font-size: 11px; color: #aaa; }
+    .stamp { border: 2px solid #1a3a6b; color: #1a3a6b; padding: 6px 14px; border-radius: 4px; font-weight: 700; font-size: 10px; letter-spacing: 2px; opacity: 0.4; transform: rotate(-3deg); display: inline-block; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="school">Académie de Paris · Collège Jean Jaurès</div>
+      <div class="title">Bulletin Trimestriel</div>
+      <div class="subtitle">2ème Trimestre — Année scolaire 2024–2025</div>
+    </div>
+
+    <div class="meta">
+      <div class="meta-item">
+        <div class="meta-label">Élève</div>
+        <div class="meta-value">Lucas Moreau</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Classe</div>
+        <div class="meta-value">4ème B</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Rang</div>
+        <div class="meta-value">18 / 28</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">Matière</th>
+          <th style="width:10%;text-align:center">Note /20</th>
+          <th style="width:10%;text-align:center">Classe /20</th>
+          <th>Appréciation du professeur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="matiere">Français</td>
+          <td class="note avg">13</td>
+          <td class="note" style="color:#999;font-size:12px;">12.4</td>
+          <td class="appr">Travail sérieux, bonne participation à l'oral.</td>
+        </tr>
+        <tr>
+          <td class="matiere">Histoire-Géographie</td>
+          <td class="note good">15</td>
+          <td class="note" style="color:#999;font-size:12px;">13.1</td>
+          <td class="appr">Excellente mémorisation des cours, bon esprit d'analyse.</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="matiere">⚠ Mathématiques</td>
+          <td class="note bad">6</td>
+          <td class="note" style="color:#999;font-size:12px;">14.2</td>
+          <td class="appr bad">Résultats très insuffisants. Difficultés persistantes sur les équations et les calculs algébriques. Un travail régulier à la maison est impératif.</td>
+        </tr>
+        <tr>
+          <td class="matiere">Sciences Physiques</td>
+          <td class="note avg">10</td>
+          <td class="note" style="color:#999;font-size:12px;">12.0</td>
+          <td class="appr">Des lacunes en calcul numérique pénalisent les résultats.</td>
+        </tr>
+        <tr>
+          <td class="matiere">SVT</td>
+          <td class="note good">14</td>
+          <td class="note" style="color:#999;font-size:12px;">13.4</td>
+          <td class="appr">Bonne compréhension des leçons.</td>
+        </tr>
+        <tr>
+          <td class="matiere">Anglais</td>
+          <td class="note avg">12</td>
+          <td class="note" style="color:#999;font-size:12px;">13.8</td>
+          <td class="appr">Doit s'investir davantage à l'écrit.</td>
+        </tr>
+        <tr>
+          <td class="matiere">Espagnol</td>
+          <td class="note good">14.5</td>
+          <td class="note" style="color:#999;font-size:12px;">13.2</td>
+          <td class="appr">Très bon niveau, participe activement.</td>
+        </tr>
+        <tr>
+          <td class="matiere">Éducation Physique</td>
+          <td class="note good">16</td>
+          <td class="note" style="color:#999;font-size:12px;">14.0</td>
+          <td class="appr">Excellent comportement et implication.</td>
+        </tr>
+        <tr class="moy-row">
+          <td>Moyenne générale</td>
+          <td class="note avg" style="font-size:16px;">12.3</td>
+          <td class="note" style="color:#1a3a6b;font-size:12px;">13.4</td>
+          <td style="color:#1a3a6b;font-size:12px;">Les mathématiques tirent fortement la moyenne vers le bas. Soutien recommandé.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <div>Édité le 15 mars 2025 · Collège Jean Jaurès, Paris 11e</div>
+      <div class="stamp">ORIGINAL</div>
+    </div>
+  </div>
+</body>
+</html>

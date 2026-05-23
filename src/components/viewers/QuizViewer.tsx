@@ -225,7 +225,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
     const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
 
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-in fade-in zoom-in bg-white border border-[var(--greek-gold)]">
+      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-bounce bg-white border border-[var(--greek-gold)]">
         <div className="w-24 h-24 bg-[var(--greek-blue)] rounded-full flex items-center justify-center mb-6 shadow-xl">
           <Trophy className="w-12 h-12 text-[var(--greek-gold)]" />
         </div>
@@ -240,7 +240,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
           .
         </p>
         
-        <div className="w-full max-w-md bg-gray-50 border border-[var(--greek-gold)]/20 rounded-2xl p-6 mb-8">
+        <div className="w-full max-w-md bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-gray-500 font-medium">Réussite</span>
             <span className="text-[var(--greek-blue)] font-bold">{percentage}%</span>
@@ -310,14 +310,14 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
           {/* Header */}
           <div className="flex justify-between items-start mb-8">
             <div className="flex items-center gap-3">
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--greek-cream)] text-[var(--greek-blue)] font-bold text-sm border border-[var(--greek-gold)]/30">
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--greek-cream)] text-[var(--greek-blue)] font-bold text-sm border border-[rgba(197,161,72,0.25)]">
                 {currentQuestionIndex + 1}
               </span>
               <span className="text-gray-400 font-medium text-sm uppercase tracking-wide">
                 / {questions.length} Question{questions.length > 1 ? "s" : ""}
               </span>
             </div>
-            <div className="px-3 py-1 bg-[var(--greek-cream)] rounded-full text-xs font-bold text-[var(--greek-bronze)] border border-[var(--greek-gold)]/30">
+            <div className="px-3 py-1 bg-[var(--greek-cream)] rounded-full text-xs font-bold text-[var(--greek-bronze)] border border-[rgba(197,161,72,0.25)]">
               {currentQuestion.points} Points
             </div>
           </div>
@@ -438,7 +438,7 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
                 </button>
               )}
               {(showReview || showExplanation) && (
-                <div className="mb-8 p-6 bg-[var(--greek-cream)] rounded-xl border border-[var(--greek-gold)]/30">
+                <div className="mb-8 p-6 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
                   <div className="flex items-center gap-2 text-[var(--greek-blue)] font-bold mb-2">
                     <HelpCircle className="w-5 h-5" />
                     Explication

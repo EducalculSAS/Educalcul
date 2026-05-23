@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -188,7 +188,7 @@ export default function ChildReportPage() {
             { label: "Quiz", value: stats.quizzesTaken, icon: <Award className="w-5 h-5" />, color: "bg-purple-50 text-purple-600" },
             { label: "Score moyen quiz", value: stats.avgScore > 0 ? `${stats.avgScore}%` : "—", icon: <TrendingUp className="w-5 h-5" />, color: "bg-blue-50 text-blue-600" },
           ].map(s => (
-            <div key={s.label} className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
+            <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <div className="flex items-start justify-between mb-2">
                 <div className={`p-2 rounded-xl ${s.color}`}>{s.icon}</div>
                 <span className="text-2xl font-bold text-[var(--greek-blue)]">{s.value}</span>
@@ -212,8 +212,8 @@ export default function ChildReportPage() {
         {tab === "activite" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Activity list */}
-            <div className="lg:col-span-2 bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm overflow-hidden">
-              <div className="px-6 py-4 border-b border-[var(--greek-gold)]/10">
+            <div className="lg:col-span-2 bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
+              <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)]">
                 <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                   Historique d'activité ({activities.length})
                 </h3>
@@ -245,7 +245,7 @@ export default function ChildReportPage() {
 
             {/* Subject breakdown */}
             <div className="space-y-5">
-              <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
+              <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
                 <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-[var(--greek-gold)]" />
                   Réussite par matière
@@ -270,7 +270,7 @@ export default function ChildReportPage() {
               </div>
 
               {/* Quick stats */}
-              <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
+              <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
                 <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] flex items-center gap-2">
                   <Activity className="w-4 h-4 text-[var(--greek-gold)]" />
                   Résumé
@@ -289,7 +289,7 @@ export default function ChildReportPage() {
         {/* Tab: Analyse IA */}
         {tab === "ia" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-6">
+            <div className="lg:col-span-2 bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-2 text-lg">
                   <Brain className="w-5 h-5 text-[var(--greek-gold)]" />
@@ -328,7 +328,7 @@ export default function ChildReportPage() {
             {/* AI context panel */}
             <div className="space-y-5">
               {analysisStats && (
-                <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/20 shadow-sm p-5">
+                <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
                   <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] text-sm flex items-center gap-2">
                     <Activity className="w-4 h-4 text-[var(--greek-gold)]" />
                     Données analysées

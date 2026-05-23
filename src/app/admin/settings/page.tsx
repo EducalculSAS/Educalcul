@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { Settings, Eye, EyeOff, Copy, Check, Save, Loader2, RefreshCw } from "lucide-react";
@@ -49,7 +49,7 @@ export default function AdminSettingsPage() {
     setTimeout(() => setCopied(null), 2000);
   };
 
-  const inputCls = "flex-1 px-3 py-2 border border-[var(--greek-gold)]/25 rounded-xl text-sm font-mono focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none bg-white";
+  const inputCls = "flex-1 px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl text-sm font-mono focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none bg-white";
 
   return (
     <div className="space-y-6">
@@ -60,7 +60,7 @@ export default function AdminSettingsPage() {
       )}
 
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
@@ -69,7 +69,7 @@ export default function AdminSettingsPage() {
             </h1>
             <p className="text-[var(--greek-bronze)] mt-1">Variables d'environnement — dev uniquement</p>
           </div>
-          <button onClick={fetchSettings} className="flex items-center gap-2 px-4 py-2 border border-[var(--greek-gold)]/20 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
+          <button onClick={fetchSettings} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
             <RefreshCw size={14} /> Rafraîchir
           </button>
         </div>
@@ -82,8 +82,8 @@ export default function AdminSettingsPage() {
         <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-[var(--greek-blue)]" /></div>
       ) : (
         Object.entries(groups).map(([groupKey, group]) => (
-          <div key={groupKey} className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm overflow-hidden">
-            <div className="px-6 py-4 bg-gray-50 border-b border-[var(--greek-gold)]/15">
+          <div key={groupKey} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
+            <div className="px-6 py-4 bg-gray-50 border-b border-[rgba(197,161,72,0.25)]">
               <h2 className="font-bold text-[var(--greek-blue)] text-base">{group.label}</h2>
             </div>
             <div className="divide-y divide-gray-50">

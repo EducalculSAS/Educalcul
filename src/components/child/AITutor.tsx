@@ -360,7 +360,7 @@ export default function AITutor() {
         <div
           ref={chatPanelRef}
           className={`fixed bottom-36 md:bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[370px] max-w-[calc(100vw-1.5rem)]
-            bg-white rounded-[24px] shadow-2xl border border-[var(--greek-gold)]/30
+            bg-white rounded-[24px] shadow-2xl border border-[rgba(197,161,72,0.25)]
             flex flex-col overflow-hidden transition-all duration-300 animate-fade-in
             ${minimized ? "h-[68px]" : "h-[540px]"}
           `}
@@ -421,7 +421,7 @@ export default function AITutor() {
               {/* ── Context chip ── */}
               {contextLabel && (
                 <div className="px-4 pt-3 shrink-0 max-h-12 overflow-hidden">
-                  <div className="flex items-center gap-2 bg-[var(--greek-cream)] border border-[var(--greek-gold)]/20 rounded-xl px-3 py-1.5">
+                  <div className="flex items-center gap-2 bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-xl px-3 py-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
                     <span className="text-[10px] text-[var(--greek-bronze)] font-black uppercase tracking-widest truncate">
                       {contextLabel}
@@ -452,7 +452,7 @@ export default function AITutor() {
                           className={`max-w-[78%] px-4 py-2.5 text-sm leading-relaxed rounded-2xl ${
                             msg.role === "user"
                               ? "bg-[var(--greek-blue)] text-white font-bold rounded-br-sm shadow-sm"
-                              : "bg-[var(--greek-cream)] text-gray-700 rounded-bl-sm border border-[var(--greek-gold)]/20"
+                              : "bg-[var(--greek-cream)] text-gray-700 rounded-bl-sm border border-[rgba(197,161,72,0.25)]"
                           }`}
                         >
                           {renderContent(msg.content)}
@@ -477,7 +477,7 @@ export default function AITutor() {
                     <div className="w-7 h-7 rounded-xl bg-[var(--greek-gold)] flex items-center justify-center shrink-0 shadow-sm">
                       <Star className="w-3.5 h-3.5 text-[var(--greek-blue)] fill-current" />
                     </div>
-                    <div className="bg-[var(--greek-cream)] border border-[var(--greek-gold)]/20 px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1.5 items-center">
+                    <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1.5 items-center">
                       <span className="w-2 h-2 bg-[var(--greek-gold)] rounded-full animate-bounce [animation-delay:0ms]" />
                       <span className="w-2 h-2 bg-[var(--greek-gold)] rounded-full animate-bounce [animation-delay:150ms]" />
                       <span className="w-2 h-2 bg-[var(--greek-gold)] rounded-full animate-bounce [animation-delay:300ms]" />
@@ -494,7 +494,7 @@ export default function AITutor() {
                     <button
                       key={s}
                       onClick={() => { setInput(s); setTimeout(() => inputRef.current?.focus(), 50); }}
-                      className="text-[11px] bg-[var(--greek-cream)] border border-[var(--greek-gold)]/30 hover:border-[var(--greek-gold)] hover:bg-[var(--greek-gold)]/10 text-[var(--greek-bronze)] font-black px-3 py-1.5 rounded-full transition-all"
+                      className="text-[11px] bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-gold)] hover:bg-[var(--greek-gold)]/10 text-[var(--greek-bronze)] font-black px-3 py-1.5 rounded-full transition-all"
                     >
                       {s}
                     </button>
@@ -504,8 +504,8 @@ export default function AITutor() {
 
               {/* ── Input or upgrade prompt ── */}
               {sub.features.ai_access === "none" ? (
-                <div className="px-4 pb-4 pt-2 shrink-0 border-t border-[var(--greek-gold)]/15">
-                  <div className="bg-gradient-to-br from-[var(--greek-blue)]/5 to-[var(--greek-gold)]/5 border border-[var(--greek-gold)]/20 rounded-2xl p-4 text-center">
+                <div className="px-4 pb-4 pt-2 shrink-0 border-t border-[rgba(197,161,72,0.25)]">
+                  <div className="bg-gradient-to-br from-[var(--greek-blue)]/5 to-[var(--greek-gold)]/5 border border-[rgba(197,161,72,0.25)] rounded-2xl p-4 text-center">
                     <Lock className="w-6 h-6 text-[var(--greek-gold)] mx-auto mb-2" />
                     <p className="text-sm font-bold text-[var(--greek-blue)] mb-1">Athéna IA — Plan requis</p>
                     <p className="text-xs text-gray-500 mb-3">L'assistant IA est disponible à partir du plan Premium.</p>
@@ -515,7 +515,7 @@ export default function AITutor() {
                   </div>
                 </div>
               ) : (
-                <div className="px-4 pb-4 pt-2 shrink-0 border-t border-[var(--greek-gold)]/15">
+                <div className="px-4 pb-4 pt-2 shrink-0 border-t border-[rgba(197,161,72,0.25)]">
                   <div className="flex gap-2 items-end bg-[var(--greek-cream)] border-2 border-transparent focus-within:border-[var(--greek-gold)] rounded-2xl p-2 transition-all">
                     <textarea
                       ref={inputRef}

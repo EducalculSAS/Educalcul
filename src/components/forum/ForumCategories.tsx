@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import { MessageSquare, Plus, Loader2, Trash2, X } from "lucide-react";
@@ -76,7 +76,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
             <div
               key={cat.id}
               onClick={() => onSelectCategory(cat.id, cat.name)}
-              className="group cursor-pointer bg-white border border-[var(--greek-gold)]/30 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col relative"
+              className="group cursor-pointer bg-white border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col relative"
             >
               {role === "admin" && (
                 <button
@@ -91,7 +91,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
               </div>
               <h3 className="text-lg font-bold text-[var(--greek-blue)] mb-1">{cat.name}</h3>
               <p className="text-gray-500 text-sm mb-4 line-clamp-2 flex-1">{cat.description}</p>
-              <div className="text-xs text-gray-400 font-semibold pt-3 border-t border-[var(--greek-gold)]/15">
+              <div className="text-xs text-gray-400 font-semibold pt-3 border-t border-[rgba(197,161,72,0.25)]">
                 {count} sujet{count !== 1 ? "s" : ""}
               </div>
             </div>
@@ -114,14 +114,14 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
             <form onSubmit={handleCreateCategory} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Nom *</label>
-                <input value={newCatName} onChange={e => setNewCatName(e.target.value)} className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/30 rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm" required />
+                <input value={newCatName} onChange={e => setNewCatName(e.target.value)} className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm" required />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Description</label>
-                <textarea value={newCatDesc} onChange={e => setNewCatDesc(e.target.value)} className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/30 rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm h-24 resize-none" />
+                <textarea value={newCatDesc} onChange={e => setNewCatDesc(e.target.value)} className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm h-24 resize-none" />
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 border border-[var(--greek-gold)]/20 text-gray-500 rounded-xl text-sm font-semibold hover:bg-gray-50">Annuler</button>
+                <button type="button" onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 border border-[rgba(197,161,72,0.25)] text-gray-500 rounded-xl text-sm font-semibold hover:bg-gray-50">Annuler</button>
                 <button type="submit" className="flex-1 px-4 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800">Créer</button>
               </div>
             </form>

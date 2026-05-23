@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import {
@@ -24,6 +24,10 @@ import { avatarUrl } from "@/lib/avatarUrl";
 export default function ParentProfilePage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteStep, setDeleteStep] = useState<1|2>(1);
+  const [hasActiveSubscription, setHasActiveSubscription] = useState(false);
+  const [childrenCount, setChildrenCount] = useState(0);
   const [saving, setSaving] = useState(false);
   const [googleLinked, setGoogleLinked] = useState(false);
   const [message, setMessage] = useState<{
@@ -40,9 +44,8 @@ export default function ParentProfilePage() {
   });
 
   const [notifications, setNotifications] = useState({
-    emailReports: true,
-    emailPromos: false,
-    emailAlerts: true,
+    notif_weekly_reports: true,
+    notif_offers_news: false,
   });
 
   const [passwordData, setPasswordData] = useState({
@@ -63,7 +66,7 @@ export default function ParentProfilePage() {
 
       const { data: profile, error } = await supabase
         .from("users")
-        .select("first_name, last_name, role, email, avatar")
+        .select("id, first_name, last_name, role, email, avatar, notif_weekly_reports, notif_offers_news")
         .eq("auth_id", user.id)
         .single();
 
@@ -84,10 +87,27 @@ export default function ParentProfilePage() {
         setFormData({
           firstName: profile.first_name || "",
           lastName: profile.last_name || "",
-          email: user.email || "",
-          phone: "", // Phone number not available in current schema
+          email: profile.email || "", // email de public.users, pas l'email Google de auth.users
+          phone: "",
           avatar: profile.avatar || "/avatars/avatar1.png",
         });
+        setNotifications({
+          notif_weekly_reports: profile.notif_weekly_reports ?? true,
+          notif_offers_news: profile.notif_offers_news ?? false,
+        });
+      }
+      // Vérifier abonnement actif + nb enfants (pour la modale de suppression)
+      if (user && profile?.id) {
+        const [subRes, childRes] = await Promise.all([
+          // On passe par l'API qui synchronise cancel_at_period_end depuis Stripe
+          // (évite le cas où l'user annule via le portail mais la DB n'est pas encore à jour)
+          fetch(`/api/parent/subscription-details?userId=${user.id}`).then(r => r.json()).catch(() => ({})),
+          supabase.from("users").select("*", { count: "exact", head: true }).eq("parent_id", profile.id).eq("role", "child"),
+        ]);
+        // Abonnement bloquant = existe, actif, non annulé
+        const sub = subRes.subscription;
+        setHasActiveSubscription(!!sub && sub.status === 'active' && !sub.cancel_at_period_end);
+        setChildrenCount(childRes.count ?? 0);
       }
       setLoading(false);
     };
@@ -145,24 +165,28 @@ export default function ParentProfilePage() {
   };
 
   const handleDeleteAccount = async () => {
-    if (!confirm("Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.")) return;
-    if (!confirm("Vraiment sûr ? Toutes vos données et celles de vos enfants seront perdues.")) return;
-
     setSaving(true);
+    setShowDeleteModal(false);
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) throw new Error("Session expirée");
+
       const response = await fetch("/api/parent/delete-account", {
         method: "DELETE",
+        headers: { "Authorization": `Bearer ${session.access_token}` },
       });
 
-      if (!response.ok) {
-        throw new Error("Erreur lors de la suppression du compte");
-      }
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Erreur lors de la suppression");
 
       await supabase.auth.signOut();
+      // Nettoyer tout le sessionStorage pour éviter les résidus lors d'une réinscription
+      sessionStorage.clear();
+      localStorage.clear();
       router.push("/");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Delete account error:", error);
-      setMessage({ type: "error", text: "Erreur lors de la suppression." });
+      setMessage({ type: "error", text: error.message || "Erreur lors de la suppression." });
       setSaving(false);
     }
   };
@@ -203,9 +227,18 @@ export default function ParentProfilePage() {
           email: formData.email,
         });
         if (authError) throw authError;
+        // Email de sécurité : email modifié
+        const { data: { session: sess } } = await supabase.auth.getSession();
+        if (sess) {
+          fetch("/api/auth/security-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${sess.access_token}` },
+            body: JSON.stringify({ event: "email_changed", newEmail: formData.email }),
+          }).catch(console.error);
+        }
         setMessage({
           type: "success",
-          text: "Profil mis à jour. Si vous avez changé votre email, veuillez vérifier votre nouvelle adresse.",
+          text: "Profil mis à jour. Vérifiez votre nouvelle adresse email.",
         });
       } else {
         setMessage({ type: "success", text: "Profil mis à jour avec succès." });
@@ -307,6 +340,16 @@ export default function ParentProfilePage() {
 
       if (error) throw error;
 
+      // Email de sécurité : mot de passe modifié
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        fetch("/api/auth/security-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
+          body: JSON.stringify({ event: "password_changed" }),
+        }).catch(console.error);
+      }
+
       setMessage({
         type: "success",
         text: "Mot de passe mis à jour avec succès.",
@@ -335,6 +378,7 @@ export default function ParentProfilePage() {
   }
 
   return (
+    <>
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
       <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
@@ -371,8 +415,8 @@ export default function ParentProfilePage() {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Personal Info Card */}
-        <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[var(--greek-gold)]/20 p-8">
-          <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-6 pb-4 border-b border-[var(--greek-gold)]/15 flex items-center font-[family-name:var(--font-display)]">
+        <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[rgba(197,161,72,0.25)] p-8">
+          <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-6 pb-4 border-b border-[rgba(197,161,72,0.25)] flex items-center font-[family-name:var(--font-display)]">
             <User className="w-6 h-6 mr-3 text-[var(--greek-gold)]" />
             Informations Personnelles
           </h2>
@@ -416,7 +460,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, firstName: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   required
                 />
               </div>
@@ -430,7 +474,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, lastName: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   required
                 />
               </div>
@@ -448,7 +492,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })
                   }
-                  className="w-full pl-10 pr-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full pl-10 pr-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   placeholder="+33 6 12 34 56 78"
                 />
               </div>
@@ -466,7 +510,7 @@ export default function ParentProfilePage() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full pl-10 pr-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full pl-10 pr-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                   required
                 />
               </div>
@@ -493,8 +537,8 @@ export default function ParentProfilePage() {
         </div>
 
         {/* Security Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6">
-          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[var(--greek-gold)]/15 flex items-center">
+        <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
             <Lock className="w-5 h-5 mr-2" />
             Sécurité
           </h2>
@@ -513,7 +557,7 @@ export default function ParentProfilePage() {
                     newPassword: e.target.value,
                   })
                 }
-                className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="••••••"
               />
             </div>
@@ -531,7 +575,7 @@ export default function ParentProfilePage() {
                     confirmPassword: e.target.value,
                   })
                 }
-                className="w-full px-3 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="••••••"
               />
             </div>
@@ -554,13 +598,13 @@ export default function ParentProfilePage() {
         </div>
 
         {/* Linked Accounts Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6 md:col-span-2">
-          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[var(--greek-gold)]/15 flex items-center">
+        <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
             <Mail className="w-5 h-5 mr-2" />
             Comptes liés
           </h2>
 
-          <div className="flex items-center justify-between p-4 border border-[var(--greek-gold)]/15 rounded-lg bg-gray-50">
+          <div className="flex items-center justify-between p-4 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-50">
             <div className="flex items-center">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mr-4">
                 <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -608,7 +652,7 @@ export default function ParentProfilePage() {
             ) : (
               <button
                 onClick={handleLinkGoogle}
-                className="px-4 py-2 bg-white border border-[var(--greek-gold)]/30 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
+                className="px-4 py-2 bg-white border border-[rgba(197,161,72,0.25)] rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
               >
                 Lier le compte
               </button>
@@ -616,65 +660,45 @@ export default function ParentProfilePage() {
           </div>
         </div>
         {/* Notification Preferences */}
-        <div className="bg-white rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6">
-          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[var(--greek-gold)]/15 flex items-center">
+        <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
             <Bell className="w-5 h-5 mr-2" />
             Notifications
           </h2>
 
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-medium text-gray-800">Rapports hebdomadaires</p>
-                <p className="text-sm text-gray-500">Recevoir le résumé des progrès de vos enfants</p>
+            {([
+              { key: "notif_weekly_reports", label: "Rapports hebdomadaires", desc: "Recevoir le résumé des progrès de vos enfants" },
+              { key: "notif_offers_news", label: "Offres et nouveautés", desc: "Recevoir nos actualités et promotions" },
+            ] as const).map(({ key, label, desc }) => (
+              <div key={key} className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-gray-800">{label}</p>
+                  <p className="text-sm text-gray-500">{desc}</p>
+                </div>
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    checked={notifications[key]}
+                    onChange={async () => {
+                      const updated = { ...notifications, [key]: !notifications[key] };
+                      setNotifications(updated);
+                      const { data: { user: u } } = await supabase.auth.getUser();
+                      if (u) {
+                        supabase.from("users").update({ [key]: updated[key] }).eq("auth_id", u.id).then(() => {});
+                      }
+                    }}
+                  />
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[rgba(197,161,72,0.25)] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
+                </label>
               </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="sr-only peer"
-                  checked={notifications.emailReports}
-                  onChange={() => setNotifications({ ...notifications, emailReports: !notifications.emailReports })}
-                />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[var(--greek-gold)]/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
-              </label>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-medium text-gray-800">Alertes de progression</p>
-                <p className="text-sm text-gray-500">Être notifié quand un enfant débloque un badge</p>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="sr-only peer"
-                  checked={notifications.emailAlerts}
-                  onChange={() => setNotifications({ ...notifications, emailAlerts: !notifications.emailAlerts })}
-                />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[var(--greek-gold)]/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
-              </label>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-medium text-gray-800">Offres et nouveautés</p>
-                <p className="text-sm text-gray-500">Recevoir nos actualités et promotions</p>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="sr-only peer"
-                  checked={notifications.emailPromos}
-                  onChange={() => setNotifications({ ...notifications, emailPromos: !notifications.emailPromos })}
-                />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[var(--greek-gold)]/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
-              </label>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Danger Zone */}
-        <div className="bg-red-50 rounded-xl shadow-sm border border-[var(--greek-gold)]/20 p-6 md:col-span-2 mt-4">
+        <div className="bg-red-50 rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2 mt-4">
           <h2 className="text-xl font-bold text-red-700 mb-4 flex items-center">
             <AlertCircle className="w-5 h-5 mr-2" />
             Zone de danger
@@ -685,7 +709,7 @@ export default function ParentProfilePage() {
               <p className="text-sm text-red-600">Cette action est irréversible et supprimera toutes vos données.</p>
             </div>
             <button
-              onClick={handleDeleteAccount}
+              onClick={() => { setDeleteStep(1); setShowDeleteModal(true); }}
               className="px-4 py-2 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium shadow-sm"
             >
               Supprimer mon compte
@@ -695,5 +719,114 @@ export default function ParentProfilePage() {
       </div>
     </div>
     </div>
+    {/* Modale suppression compte */}
+    {showDeleteModal && (
+      <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+          {hasActiveSubscription ? (
+            /* ── Étape bloquante : abonnement actif ── */
+            <>
+              <div className="bg-amber-500 px-6 py-5 text-white">
+                <h3 className="text-xl font-bold flex items-center gap-2">
+                  <AlertCircle className="w-5 h-5" />
+                  Action requise
+                </h3>
+              </div>
+              <div className="px-6 py-6">
+                <p className="text-gray-700 mb-4 font-semibold">
+                  Vous avez un abonnement actif.
+                </p>
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+                  Vous devez d'abord <strong>annuler votre abonnement</strong> depuis la page Abonnement avant de pouvoir supprimer votre compte.
+                </div>
+              </div>
+              <div className="px-6 pb-6 flex gap-3 justify-end">
+                <button
+                  onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }}
+                  className="px-5 py-2.5 border border-gray-200 rounded-xl text-gray-600 font-semibold hover:bg-gray-50 transition-colors"
+                >
+                  Fermer
+                </button>
+                <a
+                  href="/parent/subscription"
+                  onClick={() => setShowDeleteModal(false)}
+                  className="px-5 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors"
+                >
+                  Gérer l'abonnement
+                </a>
+              </div>
+            </>
+          ) : (
+            /* ── Étapes normales de suppression ── */
+            <>
+              <div className="bg-red-600 px-6 py-5 text-white">
+                <h3 className="text-xl font-bold flex items-center gap-2">
+                  <AlertCircle className="w-5 h-5" />
+                  {deleteStep === 1 ? "Supprimer mon compte" : "Dernière confirmation"}
+                </h3>
+              </div>
+              <div className="px-6 py-6">
+                {deleteStep === 1 ? (
+                  <>
+                    <p className="text-gray-700 mb-4">
+                      Êtes-vous sûr de vouloir supprimer définitivement votre compte ?
+                    </p>
+                    <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700 space-y-1.5">
+                      <p>• Votre compte parent sera supprimé</p>
+                      {childrenCount > 0 && (
+                        <p className="font-semibold">• {childrenCount} compte{childrenCount > 1 ? "s" : ""} enfant{childrenCount > 1 ? "s" : ""} associé{childrenCount > 1 ? "s" : ""} sera{childrenCount > 1 ? "ont" : ""} supprimé{childrenCount > 1 ? "s" : ""}</p>
+                      )}
+                      <p>• Toutes les données de progression seront perdues</p>
+                      <p>• Cette action est irréversible</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-gray-700 mb-3 font-semibold">
+                      Cette action est irréversible. Êtes-vous absolument certain ?
+                    </p>
+                    {childrenCount > 0 && (
+                      <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-sm text-red-700 mb-3">
+                        Les {childrenCount} compte{childrenCount > 1 ? "s" : ""} enfant{childrenCount > 1 ? "s" : ""} seront définitivement supprimés.
+                      </div>
+                    )}
+                    <p className="text-sm text-gray-500">
+                      Il n'y a aucun moyen de récupérer vos données après la suppression.
+                    </p>
+                  </>
+                )}
+              </div>
+              <div className="px-6 pb-6 flex gap-3 justify-end">
+                <button
+                  onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }}
+                  className="px-5 py-2.5 border border-gray-200 rounded-xl text-gray-600 font-semibold hover:bg-gray-50 transition-colors"
+                >
+                  Annuler
+                </button>
+                {deleteStep === 1 ? (
+                  <button
+                    onClick={() => setDeleteStep(2)}
+                    className="px-5 py-2.5 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition-colors"
+                  >
+                    Continuer
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleDeleteAccount}
+                    disabled={saving}
+                    className="px-5 py-2.5 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
+                    Supprimer définitivement
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    )}
+    </>
   );
 }
+

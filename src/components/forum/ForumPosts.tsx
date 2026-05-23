@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -85,7 +85,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button onClick={onBack} className="p-2 bg-white border border-[var(--greek-gold)]/30 text-[var(--greek-blue)] rounded-xl hover:bg-gray-50 transition-all shadow-sm">
+          <button onClick={onBack} className="p-2 bg-white border border-[rgba(197,161,72,0.25)] text-[var(--greek-blue)] rounded-xl hover:bg-gray-50 transition-all shadow-sm">
             <ArrowLeft className="w-5 h-5" />
           </button>
           <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">{categoryName}</h2>
@@ -97,7 +97,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
 
       <div className="space-y-3">
         {posts.length === 0 && (
-          <div className="text-center py-16 bg-white rounded-2xl border border-[var(--greek-gold)]/20 text-gray-400">
+          <div className="text-center py-16 bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] text-gray-400">
             Aucun sujet. Lancez la première discussion !
           </div>
         )}
@@ -109,7 +109,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
             <div
               key={post.id}
               onClick={() => onSelectPost(post.id)}
-              className={`group cursor-pointer bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center justify-between gap-4 ${post.is_pinned ? "border-l-4 border-l-[var(--greek-gold)] border-[var(--greek-gold)]/30" : "border-[var(--greek-gold)]/20"}`}
+              className={`group cursor-pointer bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center justify-between gap-4 ${post.is_pinned ? "border-l-4 border-l-[var(--greek-gold)] border-[rgba(197,161,72,0.25)]" : "border-[rgba(197,161,72,0.25)]"}`}
             >
               <div className="flex items-center gap-4 flex-1 min-w-0">
                 <Link href={profileHref} title="Voir le profil" className="shrink-0 hover:opacity-80 transition-opacity" onClick={(e) => e.stopPropagation()}>
@@ -162,14 +162,14 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
             <div className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Titre *</label>
-                <input type="text" value={newPostTitle} onChange={e => setNewPostTitle(e.target.value)} className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/30 rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm" placeholder="Ex : Comment résoudre cet exercice ?" />
+                <input type="text" value={newPostTitle} onChange={e => setNewPostTitle(e.target.value)} className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm" placeholder="Ex : Comment résoudre cet exercice ?" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Message *</label>
-                <textarea value={newPostContent} onChange={e => setNewPostContent(e.target.value)} className="w-full px-4 py-2.5 border border-[var(--greek-gold)]/30 rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm h-40 resize-none" placeholder="Décris ta question ou ton sujet..." />
+                <textarea value={newPostContent} onChange={e => setNewPostContent(e.target.value)} className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm h-40 resize-none" placeholder="Décris ta question ou ton sujet..." />
               </div>
               <div className="flex gap-3 pt-2">
-                <button onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 border border-[var(--greek-gold)]/20 text-gray-500 rounded-xl text-sm font-semibold hover:bg-gray-50">Annuler</button>
+                <button onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 border border-[rgba(197,161,72,0.25)] text-gray-500 rounded-xl text-sm font-semibold hover:bg-gray-50">Annuler</button>
                 <button onClick={handleCreatePost} className="flex-1 px-4 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800">Publier</button>
               </div>
             </div>

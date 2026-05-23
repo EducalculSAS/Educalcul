@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,6 +18,7 @@ import {
   CreditCard,
   MessageSquare,
   User,
+  Mail,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -40,6 +41,7 @@ export default function AdminSidebar() {
     { name: "Quiz", href: "/admin/quizzes", icon: Trophy },
     { name: "Rapports", href: "/admin/reports", icon: FileText },
     { name: "Forum", href: "/admin/forum", icon: MessageSquare },
+    { name: "Emails", href: "/admin/emails", icon: Mail },
     { name: "Support", href: "/admin/support", icon: LifeBuoy },
     { name: "Abonnements", href: "/admin/subscriptions", icon: CreditCard },
     { name: "Profil", href: "/admin/profile", icon: User },
@@ -76,7 +78,7 @@ export default function AdminSidebar() {
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="p-6 border-b border-[var(--greek-gold)]/30">
+        <div className="p-6 border-b border-[rgba(197,161,72,0.25)]">
           <h1 className="text-2xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-gold)]">
             EduCalcul
             <span className="block text-sm text-white/70 font-sans mt-1">
@@ -109,7 +111,7 @@ export default function AdminSidebar() {
           })}
         </nav>
 
-        <div className="absolute bottom-0 left-0 w-full p-4 border-t border-[var(--greek-gold)]/30 bg-[var(--greek-blue)]">
+        <div className="absolute bottom-0 left-0 w-full p-4 border-t border-[rgba(197,161,72,0.25)] bg-[var(--greek-blue)]">
           <button
             onClick={handleLogout}
             className="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-all duration-200"

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -21,7 +21,7 @@ const PRIORITY_CONFIG: Record<string, { label: string; color: string }> = {
   high:   { label: "Urgent",  color: "bg-red-100 text-red-700" },
 };
 
-const inputCls = "w-full px-4 py-2.5 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
+const inputCls = "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
 const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
 
 export default function SupportPage({ role }: { role: "child" | "parent" }) {
@@ -113,7 +113,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
             <Plus size={18} /> Nouveau ticket
           </button>
         ) : (
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/30 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
             <div className="flex items-center justify-between mb-5">
               <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau ticket</h2>
               <button onClick={() => setShowForm(false)} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"><X size={16} /></button>
@@ -151,7 +151,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
           {loading ? (
             <div className="text-center py-12 text-gray-400">Chargement...</div>
           ) : tickets.length === 0 ? (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/30 p-10 text-center text-gray-400">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-10 text-center text-gray-400">
               <MessageCircle className="w-10 h-10 mx-auto mb-2 opacity-20" />
               <p>Aucun ticket pour le moment.</p>
             </div>
@@ -164,7 +164,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                 const isExpanded = expanded === ticket.id;
                 const replies = ticket.replies || [];
                 return (
-                  <div key={ticket.id} className="bg-white rounded-2xl border border-[var(--greek-gold)]/30 shadow-sm overflow-hidden">
+                  <div key={ticket.id} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
                     <button onClick={() => setExpanded(isExpanded ? null : ticket.id)}
                       className="w-full p-5 flex items-start justify-between gap-4 text-left hover:bg-gray-50 transition-colors">
                       <div className="flex-1 min-w-0">
@@ -182,7 +182,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                     </button>
 
                     {isExpanded && (
-                      <div className="border-t border-[var(--greek-gold)]/15 p-5 space-y-4">
+                      <div className="border-t border-[rgba(197,161,72,0.25)] p-5 space-y-4">
                         {/* Message original */}
                         <div className="bg-gray-50 rounded-xl p-4">
                           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Votre message</p>

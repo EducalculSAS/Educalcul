@@ -4,33 +4,42 @@ import { supabaseAdmin } from '@/lib/supabaseClient';
 
 export async function POST(req: Request) {
   try {
-    const { planId, userId, email, referralCode } = await req.json();
+    const { planId, userId, email, referralCode, isNewSignup } = await req.json();
 
-    if (!planId || !userId || !email) {
+    if (!planId || !email) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
+    if (!isNewSignup && !userId) {
+      return NextResponse.json({ error: 'Missing user ID' }, { status: 400 });
+    }
+
     // Fetch plan from DB
-    const { data: plan, error: planErr } = await supabaseAdmin
+    const { data: plan } = await supabaseAdmin
       .from('subscription_plans')
       .select('*')
       .eq('id', planId)
       .eq('is_active', true)
-      .single();
+      .maybeSingle();
 
-    if (planErr || !plan) {
+    if (!plan) {
       return NextResponse.json({ error: 'Invalid plan ID' }, { status: 400 });
     }
 
     if (plan.price === 0) {
-      // Free plan — no Stripe needed, just record it
-      await supabaseAdmin.from('subscriptions').upsert({
-        user_id: userId,
-        plan_id: planId.toString(),
-        status: 'active',
-        started_at: new Date().toISOString(),
-      }, { onConflict: 'user_id' });
-      return NextResponse.json({ url: `${req.headers.get('origin')}/parent/subscription?success=1` });
+      // Free plan — no Stripe needed
+      if (!isNewSignup && userId) {
+        // For existing users, record directly
+        await supabaseAdmin.from('subscriptions').upsert({
+          user_id: userId,
+          plan_id: planId.toString(),
+          status: 'active',
+          current_period_start: new Date().toISOString(),
+        }, { onConflict: 'user_id' });
+        return NextResponse.json({ url: `${req.headers.get('origin')}/parent/subscription?success=1` });
+      }
+      // For new signups on free plan, redirect with success so account gets created
+      return NextResponse.json({ url: `${req.headers.get('origin')}/parent/subscription?new=true&success=1&session_id=free` });
     }
 
     // Resolve discount from referral code or pending reward
@@ -42,19 +51,23 @@ export async function POST(req: Request) {
         .select('*')
         .eq('code', referralCode.trim().toUpperCase())
         .eq('is_active', true)
-        .single();
+        .maybeSingle();
 
       if (rc && rc.discount_type === 'percent') {
         discountPercent = Math.max(discountPercent, rc.discount_value);
       }
     }
 
-    // Check pending parrainage reward
-    const { data: userRow } = await supabaseAdmin
-      .from('users')
-      .select('pending_discount_percent, id')
-      .eq('auth_id', userId)
-      .maybeSingle();
+    // Check pending parrainage reward (only for existing users)
+    let userRow: any = null;
+    if (!isNewSignup && userId) {
+      const { data } = await supabaseAdmin
+        .from('users')
+        .select('pending_discount_percent, id')
+        .eq('auth_id', userId)
+        .maybeSingle();
+      userRow = data;
+    }
 
     if (userRow?.pending_discount_percent > 0) {
       discountPercent = Math.max(discountPercent, userRow?.pending_discount_percent || 0);
@@ -77,14 +90,21 @@ export async function POST(req: Request) {
       quantity: 1,
     };
 
+    const origin = req.headers.get('origin');
     const sessionData: any = {
       payment_method_types: ['card'],
       line_items: [lineItem],
       mode: 'subscription',
-      success_url: `${req.headers.get('origin')}/parent/subscription?success=1&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.get('origin')}/parent/subscription`,
+      // Pour les nouveaux signups : inclure new=true dans l'URL de retour
+      // sinon isNewSignup sera false et le compte ne sera pas créé
+      success_url: isNewSignup
+        ? `${origin}/auth/inscription/success?session_id={CHECKOUT_SESSION_ID}`
+        : `${origin}/parent/subscription?success=1&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: isNewSignup
+        ? `${origin}/auth/inscription/select-plan`
+        : `${origin}/parent/subscription`,
       customer_email: email,
-      metadata: { userId, planId: planId.toString(), referralCode: referralCode || '' },
+      metadata: { userId: userId || '', planId: planId.toString(), referralCode: referralCode || '', isNewSignup: isNewSignup ? 'true' : 'false' },
     };
 
     if (plan.trial_days > 0) {
@@ -99,7 +119,7 @@ export async function POST(req: Request) {
         .from('referral_codes')
         .select('id, current_uses, owner_user_id')
         .eq('code', referralCode.trim().toUpperCase())
-        .single();
+        .maybeSingle();
       if (rc && userRow?.id) {
         await supabaseAdmin.from('referral_uses').insert({
           referral_code_id: rc.id,

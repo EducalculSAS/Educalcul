@@ -1,5 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { rateLimit } from "@/lib/rateLimit";
+import { sendEmail } from "@/lib/mailer";
+import { welcomeEmail } from "@/lib/emailTemplates";
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,85 +16,125 @@ export async function POST(req: NextRequest) {
       childAge,
       parentEmail,
       sessionId,
+      existingAuthId, // fourni pour les signups Google (user dÃ©jÃ  crÃ©Ã© via OAuth)
+      cguAcceptedAt,
     } = await req.json();
 
-    // Validate required fields
-    if (!role || !firstName || !lastName || !email || !password || !sessionId) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+    if (!role || !firstName || !email || !sessionId) {
+      return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
     }
 
-    // Create Supabase Auth user
-    const signUpEmail = role === "child" 
-      ? `${childUsername?.replace(/\s+/g, "").toLowerCase()}@educalcul.user`
-      : email;
-
-    const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
-      email: signUpEmail,
-      password: password,
-      email_confirm: true,
-      user_metadata: {
-        first_name: firstName,
-        last_name: lastName,
-        role: role,
-        child_username: childUsername || null,
-        child_age: childAge || null,
-        parent_email: parentEmail || null,
-      },
-    });
-
-    if (authError) {
-      console.error("Auth creation error:", authError);
-      return NextResponse.json(
-        { error: authError.message },
-        { status: 400 }
-      );
+    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const rl = rateLimit(`create-account:${ip}`, 10, 60 * 60 * 1000);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de tentatives. RÃ©essayez plus tard." }, { status: 429 });
     }
 
-    if (!authData.user) {
-      return NextResponse.json(
-        { error: "Failed to create user" },
-        { status: 400 }
-      );
+    const signUpEmail =
+      role === "child"
+        ? `${(childUsername || "").replace(/\s+/g, "").toLowerCase()}@educalcul.user`
+        : email;
+
+    let authUserId: string = existingAuthId || "";
+
+    // Si pas d'auth existant â†’ crÃ©er l'utilisateur Supabase Auth (flow email/password)
+    if (!authUserId) {
+      const actualPassword =
+        password ||
+        Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+
+      const { data: authData, error: authError } =
+        await supabaseAdmin.auth.admin.createUser({
+          email: signUpEmail,
+          password: actualPassword,
+          email_confirm: true,
+          user_metadata: {
+            first_name: firstName,
+            last_name: lastName,
+            role,
+            child_username: childUsername || null,
+            child_age: childAge || null,
+            parent_email: parentEmail || null,
+          },
+        });
+
+      if (authError || !authData.user) {
+        console.error("Auth creation error:", authError);
+        return NextResponse.json(
+          { error: authError?.message || "Impossible de crÃ©er l'utilisateur" },
+          { status: 400 }
+        );
+      }
+
+      authUserId = authData.user.id;
     }
 
-    // Create user record in public.users (trigger should handle this, but let's ensure it)
-    const { error: userError } = await supabaseAdmin
+    // CrÃ©er la ligne dans public.users
+    // On vÃ©rifie d'abord si elle existe (cas Google oÃ¹ le trigger l'a peut-Ãªtre dÃ©jÃ  crÃ©Ã©e)
+    const { data: existingRow } = await supabaseAdmin
       .from("users")
-      .insert({
-        auth_id: authData.user.id,
+      .select("id")
+      .eq("auth_id", authUserId)
+      .maybeSingle();
+
+    if (!existingRow) {
+      const { error: insertError } = await supabaseAdmin.from("users").insert({
+        auth_id: authUserId,
         first_name: firstName,
-        last_name: lastName,
+        last_name: lastName || "",
         email: signUpEmail,
-        role: role,
+        role,
+        status: "active",
         child_username: childUsername || null,
         child_age: childAge || null,
-        parent_email: parentEmail || null,
+        cgu_accepted_at: cguAcceptedAt || new Date().toISOString(),
       });
-
-    if (userError && !userError.message.includes("duplicate")) {
-      console.error("User record creation error:", userError);
-      // Don't fail here - the trigger might have created it
+      if (insertError) {
+        console.error("User record insert error:", insertError.message, insertError.details);
+        if (!insertError.message.includes("duplicate") && !insertError.message.includes("unique")) {
+          return NextResponse.json({ error: `Impossible de crÃ©er le profil: ${insertError.message}` }, { status: 500 });
+        }
+      }
+    } else {
+      // Mettre Ã  jour le profil si la ligne existe dÃ©jÃ  (cas Google signup)
+      await supabaseAdmin.from("users").update({
+        first_name: firstName,
+        last_name: lastName || "",
+        role,
+        status: "active",
+      }).eq("auth_id", authUserId);
     }
 
-    // TODO: Link Stripe subscription to this user if sessionId was provided
-    // This would involve querying Stripe for the session and linking the customer
-
-    return NextResponse.json(
-      {
-        success: true,
-        userId: authData.user.id,
+    // GÃ©nÃ©rer un lien de confirmation (email_confirm: false lors de la crÃ©ation)
+    let confirmUrl = "https://educalcul.fr/parent/dashboard";
+    try {
+      const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
+        type: "magiclink",
         email: signUpEmail,
-      },
-      { status: 200 }
-    );
-  } catch (error) {
+        options: { redirectTo: "https://educalcul.fr/auth/callback" },
+      });
+      if (linkData?.properties?.action_link) {
+        confirmUrl = linkData.properties.action_link;
+      }
+    } catch (e) {
+      console.warn("Could not generate magic link, using dashboard URL");
+    }
+
+    // Email de confirmation avec lien (non bloquant)
+    const tmpl = welcomeEmail(firstName, confirmUrl);
+    sendEmail({
+      toEmail: signUpEmail,
+      toName: `${firstName} ${lastName || ""}`.trim(),
+      ...tmpl,
+    }).catch(console.error);
+
+    return NextResponse.json({ success: true, userId: authUserId, requireEmailConfirm: true });
+  } catch (error: any) {
     console.error("Account creation error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: error?.message || "Erreur interne" },
       { status: 500 }
     );
   }
 }
+

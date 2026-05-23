@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ const roleBadge = (r: string) => {
   return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700"><Baby className="w-3 h-3" />Élève</span>;
 };
 
-const inputCls = "w-full px-3 py-2 border border-[var(--greek-gold)]/25 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
+const inputCls = "w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
 const labelCls = "block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1";
 
 function Row({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
@@ -34,7 +34,7 @@ function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLab
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-        <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+        <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
           <h2 className="text-xl font-bold font-[family-name:var(--font-display)] text-gray-800">{title}</h2>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
         </div>
@@ -187,7 +187,7 @@ showToast("success", "Profil mis à jour");
       )}
 
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-6">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
           <div className="flex items-start gap-4 min-w-0">
             <button onClick={() => router.push("/admin/users")} className="p-2 text-[var(--greek-blue)] hover:bg-blue-50 rounded-xl transition-colors shrink-0 mt-1">
@@ -245,7 +245,7 @@ showToast("success", "Profil mis à jour");
         {/* Left */}
         <div className="space-y-5">
           {/* Info / Edit */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Informations</h2>
             <div className="space-y-3 text-sm">
               <Row label="Inscrit le" value={new Date(user.created_at).toLocaleDateString("fr-FR")} />
@@ -258,7 +258,7 @@ showToast("success", "Profil mis à jour");
 
           {/* Subscription — parents only, pas pour les admins */}
           {!isChild && user.role !== "admin" && (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
                 <CreditCard className="w-4 h-4" />Abonnement
               </h2>
@@ -299,7 +299,7 @@ showToast("success", "Profil mis à jour");
 
           {/* Children — parents only */}
           {isParent && (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Enfants ({children.length})</h2>
               {children.length > 0 ? children.map((c: any) => (
                 <button key={c.id} onClick={() => router.push(`/admin/users/detail?id=${c.id}`)} className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors text-left mb-1">
@@ -313,7 +313,7 @@ showToast("success", "Profil mis à jour");
           )}
 
           {badges.length > 0 && (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2"><Trophy className="w-4 h-4" />Badges</h2>
               <div className="flex flex-wrap gap-2">
                 {badges.map((b: any, i: number) => <span key={i} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200">{b.badge?.name}</span>)}
@@ -333,7 +333,7 @@ showToast("success", "Profil mis à jour");
                 { label: "Quiz", value: stats.quiz_attempts, color: "text-blue-600" },
                 { label: "Cours", value: stats.course_progress, color: "text-teal-600" },
               ].map(s => (
-                <div key={s.label} className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-4">
+                <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-4">
                   <p className={`text-2xl font-bold mb-1 ${s.color}`}>{s.value}</p>
                   <p className="text-xs text-gray-400 uppercase font-semibold tracking-wide">{s.label}</p>
                 </div>
@@ -342,7 +342,7 @@ showToast("success", "Profil mis à jour");
           )}
 
           {/* Messages admin (notifications) */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2"><Bell className="w-4 h-4" />Messages & actions admin</h2>
             {notifications.length > 0 ? (
               <div className="space-y-2">
@@ -360,7 +360,7 @@ showToast("success", "Profil mis à jour");
           </div>
 
           {/* Forum posts */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <button onClick={() => setShowPosts(!showPosts)} className="w-full flex items-center justify-between">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><MessageSquare className="w-4 h-4" />Sujets forum ({forum_posts.length})</h2>
               {showPosts ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
@@ -368,7 +368,7 @@ showToast("success", "Profil mis à jour");
             {showPosts && (
               <div className="mt-3 space-y-2">
                 {forum_posts.length > 0 ? forum_posts.map((p: any) => (
-                  <div key={p.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[var(--greek-gold)]/15">
+                  <div key={p.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-800 text-sm truncate">{p.title}</p>
                       <p className="text-xs text-gray-400 mt-0.5">{p.category?.name} · {new Date(p.created_at).toLocaleDateString("fr-FR")}</p>
@@ -384,7 +384,7 @@ showToast("success", "Profil mis à jour");
           </div>
 
           {/* Forum comments → "Messages" */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <button onClick={() => setShowComments(!showComments)} className="w-full flex items-center justify-between">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><MessageCircle className="w-4 h-4" />Messages forum ({forum_comments.length})</h2>
               {showComments ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
@@ -392,7 +392,7 @@ showToast("success", "Profil mis à jour");
             {showComments && (
               <div className="mt-3 space-y-2">
                 {forum_comments.length > 0 ? forum_comments.map((c: any) => (
-                  <div key={c.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[var(--greek-gold)]/15">
+                  <div key={c.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                     <div className="min-w-0">
                       <p className="text-xs text-gray-400 mb-0.5">Dans : {c.post?.title || "Sujet supprimé"}</p>
                       <p className="text-sm text-gray-700 line-clamp-3">{c.content}</p>
@@ -408,7 +408,7 @@ showToast("success", "Profil mis à jour");
           </div>
 
           {/* Signalements */}
-          <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
               <Flag className="w-4 h-4 text-red-400" />
               Signalements reçus ({reports.filter((r: any) => r.status === "pending").length} en attente)
@@ -416,7 +416,7 @@ showToast("success", "Profil mis à jour");
             {reports.length > 0 ? (
               <div className="space-y-2">
                 {reports.map((r: any) => (
-                  <div key={r.id} className={`p-3 rounded-xl border text-sm ${r.status === "pending" ? "bg-red-50 border-red-100" : r.status === "reviewed" ? "bg-green-50 border-green-100" : "bg-gray-50 border-[var(--greek-gold)]/15"}`}>
+                  <div key={r.id} className={`p-3 rounded-xl border text-sm ${r.status === "pending" ? "bg-red-50 border-red-100" : r.status === "reviewed" ? "bg-green-50 border-green-100" : "bg-gray-50 border-[rgba(197,161,72,0.25)]"}`}>
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <p className="font-semibold text-gray-800">{r.reason}</p>
@@ -450,7 +450,7 @@ showToast("success", "Profil mis à jour");
       {showEditModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Modifier le profil</h2>
               <button onClick={() => setShowEditModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>
@@ -488,7 +488,7 @@ showToast("success", "Profil mis à jour");
       {showResetModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-purple-600 font-[family-name:var(--font-display)]">Nouveau mot de passe</h2>
               <button onClick={() => setShowResetModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>
@@ -523,7 +523,7 @@ showToast("success", "Profil mis à jour");
       {showMessageModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Envoyer un message</h2>
               <button onClick={() => setShowMessageModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>

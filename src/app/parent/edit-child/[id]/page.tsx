@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -190,7 +190,7 @@ export default function EditChildPage() {
         </p>
       </div>
 
-      <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 overflow-hidden p-8">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden p-8">
         <div>
           {error && (
             <div className="bg-red-50 text-red-600 p-4 rounded-lg mb-6 flex items-center border border-red-200">
@@ -219,7 +219,7 @@ export default function EditChildPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, firstName: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                 />
               </div>
               <div>
@@ -233,7 +233,7 @@ export default function EditChildPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, lastName: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                 />
               </div>
             </div>
@@ -247,7 +247,7 @@ export default function EditChildPage() {
                 disabled
                 title="Le nom d'utilisateur ne peut pas être modifié"
                 value={formData.username}
-                className="w-full px-4 py-2 border border-[var(--greek-gold)]/20 rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed"
+                className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed"
               />
               <p className="text-xs text-gray-500 mt-1">
                 Le nom d'utilisateur ne peut pas être modifié.
@@ -265,7 +265,7 @@ export default function EditChildPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
               <p className="text-xs text-gray-500 mt-1">
                 Remplissez ce champ pour définir ou modifier le mot de passe de
@@ -283,7 +283,7 @@ export default function EditChildPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, gradeLevel: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-[var(--greek-gold)]/30 rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+                className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               >
                 {GRADE_LEVELS.map((level) => (
                   <option key={level} value={level}>
@@ -305,7 +305,7 @@ export default function EditChildPage() {
                     className={`cursor-pointer rounded-full p-1 border-2 transition-all duration-200 ${
                       formData.avatar === avatar
                         ? "border-[var(--greek-gold)] scale-110 shadow-md"
-                        : "border-transparent hover:border-[var(--greek-gold)]/20 hover:scale-105"
+                        : "border-transparent hover:border-[rgba(197,161,72,0.25)] hover:scale-105"
                     }`}
                   >
                     <img

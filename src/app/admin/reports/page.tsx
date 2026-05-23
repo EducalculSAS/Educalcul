@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
@@ -58,7 +58,7 @@ export default function ReportsPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-6 flex items-center justify-between">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
             <BarChart2 className="text-[var(--greek-gold)]" size={30} />
@@ -115,7 +115,7 @@ export default function ReportsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* Bar chart — inscriptions par semaine */}
-        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15">
+        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)]">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
             <TrendingUp size={18} className="text-[var(--greek-gold)]" />
             Inscriptions — 8 dernières semaines
@@ -145,14 +145,14 @@ export default function ReportsPage() {
         </div>
 
         {/* Recent activity */}
-        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[var(--greek-gold)]/15">
+        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)]">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
             <Activity size={18} className="text-[var(--greek-gold)]" />
             Activité récente
           </h3>
           <div className="space-y-3">
             {recent_activity.length > 0 ? recent_activity.map((item: any, i: number) => (
-              <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-[var(--greek-gold)]/15">
+              <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                 <div className={`p-1.5 rounded-lg shrink-0 ${activityColor(item.type)}`}>
                   {activityIcon(item.type)}
                 </div>
@@ -176,7 +176,7 @@ export default function ReportsPage() {
 
 function StatCard({ title, value, sub, icon, color }: { title: string; value: number; sub?: string; icon: React.ReactNode; color: string }) {
   return (
-    <div className="bg-white p-5 rounded-2xl shadow-sm border border-[var(--greek-gold)]/15 hover:shadow-md transition-shadow">
+    <div className="bg-white p-5 rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-3">
         <div className={`p-2 rounded-xl ${color}`}>{icon}</div>
         <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>

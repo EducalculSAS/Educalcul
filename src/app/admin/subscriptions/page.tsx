@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -241,13 +241,13 @@ export default function AdminSubscriptionsPage() {
   const totalCodeUses = codes.reduce((a, c) => a + c.current_uses, 0);
 
   // ── Input helper ──────────────────────────────────────────────────────────
-  const inputCls = "w-full px-4 py-2.5 border border-[var(--greek-gold)]/25 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
+  const inputCls = "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
   const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* ── Page header ── */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
             <CreditCard className="text-[var(--greek-gold)]" size={30} />
@@ -272,7 +272,7 @@ export default function AdminSubscriptionsPage() {
           { label: "Codes promo",          value: promoCodes.length, icon: Tag,         color: "text-purple-600",bg: "bg-purple-50" },
           { label: "Utilisations codes", value: totalCodeUses,     icon: TrendingUp,  color: "text-amber-600", bg: "bg-amber-50" },
         ].map(({ label, value, icon: Icon, color, bg }) => (
-          <div key={label} className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm p-5 flex items-center gap-4">
+          <div key={label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5 flex items-center gap-4">
             <div className={`w-10 h-10 rounded-xl ${bg} flex items-center justify-center shrink-0`}>
               <Icon className={`w-5 h-5 ${color}`} />
             </div>
@@ -330,9 +330,9 @@ export default function AdminSubscriptionsPage() {
                 ].filter(Boolean) as string[];
 
                 return (
-                  <div key={plan.id} className={`bg-white rounded-2xl border-2 shadow-sm transition-all hover:shadow-md flex flex-col ${plan.is_active ? "border-[var(--greek-gold)]/15" : "border-dashed border-[var(--greek-gold)]/25 opacity-70"}`}>
+                  <div key={plan.id} className={`bg-white rounded-2xl border-2 shadow-sm transition-all hover:shadow-md flex flex-col ${plan.is_active ? "border-[rgba(197,161,72,0.25)]" : "border-dashed border-[rgba(197,161,72,0.25)] opacity-70"}`}>
                     {/* Card header */}
-                    <div className="px-6 pt-6 pb-4 border-b border-[var(--greek-gold)]/10">
+                    <div className="px-6 pt-6 pb-4 border-b border-[rgba(197,161,72,0.25)]">
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <h3 className="font-bold text-lg text-[var(--greek-blue)]">{plan.name}</h3>
@@ -366,7 +366,7 @@ export default function AdminSubscriptionsPage() {
                         ))}
                       </ul>
                       {/* AI & Personalization restrictions */}
-                      <div className="border-t border-[var(--greek-gold)]/10 pt-3 space-y-1.5">
+                      <div className="border-t border-[rgba(197,161,72,0.25)] pt-3 space-y-1.5">
                         {/* AI */}
                         <div className="flex items-center gap-2 text-xs">
                           {features.ai_access === "none" ? (
@@ -430,7 +430,7 @@ export default function AdminSubscriptionsPage() {
                     )}
 
                     {/* Footer */}
-                    <div className="px-6 pb-5 flex items-center justify-between border-t border-[var(--greek-gold)]/10 pt-4">
+                    <div className="px-6 pb-5 flex items-center justify-between border-t border-[rgba(197,161,72,0.25)] pt-4">
                       <button
                         onClick={() => setExpandedPlan(expandedPlan === plan.id ? null : plan.id)}
                         className={`flex items-center gap-1.5 text-sm transition-colors ${plan.subscriber_count > 0 ? "text-[var(--greek-blue)] hover:text-blue-800 cursor-pointer" : "text-gray-400 cursor-default"}`}
@@ -475,9 +475,9 @@ export default function AdminSubscriptionsPage() {
               <p className="font-medium">Aucun code promo</p>
             </div>
           ) : (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm overflow-hidden">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 border-b border-[var(--greek-gold)]/15">
+                <thead className="bg-gray-50 border-b border-[rgba(197,161,72,0.25)]">
                   <tr>
                     {["Code", "Remise", "Utilisation", "Validité", "Statut", ""].map((h) => (
                       <th key={h} className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{h}</th>
@@ -550,13 +550,13 @@ export default function AdminSubscriptionsPage() {
               <p className="text-sm mt-1">Les codes sont générés automatiquement à la première visite de la page abonnement</p>
             </div>
           ) : (
-            <div className="bg-white rounded-2xl border border-[var(--greek-gold)]/15 shadow-sm overflow-hidden">
-              <div className="px-6 py-4 border-b border-[var(--greek-gold)]/15 flex items-center justify-between">
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
+              <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] flex items-center justify-between">
                 <p className="text-sm text-gray-500">{parainageCodes.length} utilisateur(s) avec un code actif</p>
                 <p className="text-sm text-gray-500">Total utilisations : <span className="font-bold text-gray-700">{parainageCodes.reduce((a, c) => a + c.current_uses, 0)}</span></p>
               </div>
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 border-b border-[var(--greek-gold)]/15">
+                <thead className="bg-gray-50 border-b border-[rgba(197,161,72,0.25)]">
                   <tr>
                     {["Utilisateur", "Code", "Remise offerte", "Utilisations", "Statut", "Actions"].map((h) => (
                       <th key={h} className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{h}</th>
@@ -626,7 +626,7 @@ export default function AdminSubscriptionsPage() {
       {showPlanModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
+            <div className="sticky top-0 bg-white border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                 {editingPlan ? "Modifier le plan" : "Nouveau plan"}
               </h2>
@@ -675,7 +675,7 @@ export default function AdminSubscriptionsPage() {
               </div>
 
               {/* Features */}
-              <div className="border-t border-[var(--greek-gold)]/15 pt-5">
+              <div className="border-t border-[rgba(197,161,72,0.25)] pt-5">
                 <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4">Fonctionnalités incluses</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -698,7 +698,7 @@ export default function AdminSubscriptionsPage() {
                       { key: "feature_offline_access",    label: "Accès hors-ligne" },
                       { key: "feature_custom_avatars",    label: "Avatars personnalisés" },
                     ].map(({ key, label }) => (
-                      <label key={key} className="flex items-center gap-3 p-3 border border-[var(--greek-gold)]/20 rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">
+                      <label key={key} className="flex items-center gap-3 p-3 border border-[rgba(197,161,72,0.25)] rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">
                         <input type="checkbox" checked={planForm[key]} onChange={e => setPlanForm({...planForm, [key]: e.target.checked})} className="w-4 h-4 text-[var(--greek-blue)] rounded" />
                         <span className="text-sm font-medium text-gray-700">{label}</span>
                       </label>
@@ -707,7 +707,7 @@ export default function AdminSubscriptionsPage() {
                 </div>
               </div>
 
-              <label className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl cursor-pointer border border-[var(--greek-gold)]/20 hover:border-green-400 transition-colors">
+              <label className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl cursor-pointer border border-[rgba(197,161,72,0.25)] hover:border-green-400 transition-colors">
                 <input type="checkbox" checked={planForm.is_active} onChange={e => setPlanForm({...planForm, is_active: e.target.checked})} className="w-4 h-4 text-green-600 rounded" />
                 <span className="text-sm font-semibold text-gray-700">Plan actif (visible pour les utilisateurs)</span>
               </label>
@@ -727,7 +727,7 @@ export default function AdminSubscriptionsPage() {
       {showRefModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
-            <div className="border-b border-[var(--greek-gold)]/15 px-8 py-5 flex items-center justify-between rounded-t-2xl">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                 {editingCode ? "Modifier le code" : "Nouveau code promo"}
               </h2>
@@ -772,7 +772,7 @@ export default function AdminSubscriptionsPage() {
                   <input type="date" value={refForm.valid_until} onChange={e => setRefForm({...refForm, valid_until: e.target.value})} className={inputCls} />
                 </div>
               </div>
-              <label className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl cursor-pointer border border-[var(--greek-gold)]/20">
+              <label className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl cursor-pointer border border-[rgba(197,161,72,0.25)]">
                 <input type="checkbox" checked={refForm.is_active} onChange={e => setRefForm({...refForm, is_active: e.target.checked})} className="w-4 h-4 text-green-600 rounded" />
                 <span className="text-sm font-semibold text-gray-700">Code actif</span>
               </label>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -311,7 +311,7 @@ export default function SupportPage() {
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/30 p-8 relative overflow-hidden">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -327,12 +327,12 @@ export default function SupportPage() {
           {/* Tabs */}
           {!selectedTicket && (
             <div className="flex items-center gap-4">
-              <div className="flex bg-gray-50 rounded-xl p-1 border border-[var(--greek-gold)]/20">
+              <div className="flex bg-gray-50 rounded-xl p-1 border border-[rgba(197,161,72,0.25)]">
                 <button
                   onClick={() => setViewMode("active")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     viewMode === "active"
-                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[var(--greek-gold)]/15"
+                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[rgba(197,161,72,0.25)]"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
@@ -343,7 +343,7 @@ export default function SupportPage() {
                   onClick={() => setViewMode("archived")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     viewMode === "archived"
-                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[var(--greek-gold)]/15"
+                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[rgba(197,161,72,0.25)]"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
@@ -386,7 +386,7 @@ export default function SupportPage() {
       )}
 
       {/* Main Content */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[var(--greek-gold)]/20 overflow-hidden min-h-[500px]">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden min-h-[500px]">
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--greek-blue)]"></div>
@@ -395,7 +395,7 @@ export default function SupportPage() {
           // DETAIL VIEW
           <div className="flex flex-col h-full">
             {/* Toolbar */}
-            <div className="p-4 border-b border-[var(--greek-gold)]/15 flex items-center justify-between bg-gray-50">
+            <div className="p-4 border-b border-[rgba(197,161,72,0.25)] flex items-center justify-between bg-gray-50">
               <button
                 onClick={handleBackToList}
                 className="flex items-center text-gray-600 hover:text-[var(--greek-blue)] transition-colors"
@@ -436,7 +436,7 @@ export default function SupportPage() {
                     <button
                       onClick={() => handleArchive(true)}
                       disabled={actionLoading}
-                      className="px-3 py-1.5 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium border border-[var(--greek-gold)]/20"
+                      className="px-3 py-1.5 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium border border-[rgba(197,161,72,0.25)]"
                     >
                       <Archive size={14} className="inline mr-1" /> Archiver
                     </button>
@@ -447,7 +447,7 @@ export default function SupportPage() {
 
             <div className="flex-1 overflow-y-auto p-6 space-y-8">
               {/* Ticket Info */}
-              <div className="bg-white p-6 rounded-[20px] border border-[var(--greek-gold)]/20 shadow-sm">
+              <div className="bg-white p-6 rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm">
                 <div className="flex justify-between items-start mb-4">
                   <h2 className="text-2xl font-bold text-gray-800">
                     {selectedTicket.subject}
@@ -506,7 +506,7 @@ export default function SupportPage() {
                   replies.map((reply) => (
                     <div
                       key={reply.id}
-                      className="bg-gray-50 p-4 rounded-[20px] border border-[var(--greek-gold)]/15 ml-8 relative"
+                      className="bg-gray-50 p-4 rounded-[20px] border border-[rgba(197,161,72,0.25)] ml-8 relative"
                     >
                       <div className="absolute top-4 -left-3 w-6 h-6 bg-[var(--greek-gold)] rounded-full border-4 border-white flex items-center justify-center">
                         <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -529,7 +529,7 @@ export default function SupportPage() {
 
               {/* Reply Form */}
               {!selectedTicket.is_archived && (
-                <div className="mt-8 bg-white p-6 rounded-[20px] border border-[var(--greek-gold)]/20 shadow-sm">
+                <div className="mt-8 bg-white p-6 rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
                     Répondre
                   </h3>
@@ -537,7 +537,7 @@ export default function SupportPage() {
                     <textarea
                       value={replyMessage}
                       onChange={(e) => setReplyMessage(e.target.value)}
-                      className="w-full p-4 border border-[var(--greek-gold)]/30 rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent min-h-[150px]"
+                      className="w-full p-4 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent min-h-[150px]"
                       placeholder="Écrivez votre réponse ici..."
                       required
                     ></textarea>
@@ -572,7 +572,7 @@ export default function SupportPage() {
           // LIST VIEW
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
-              <thead className="bg-gray-50 border-b border-[var(--greek-gold)]/20">
+              <thead className="bg-gray-50 border-b border-[rgba(197,161,72,0.25)]">
                 <tr>
                   <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
                     Sujet

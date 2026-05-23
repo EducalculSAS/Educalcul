@@ -62,11 +62,11 @@ export default function BannedPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-red-50 p-4">
+      <div className="min-h-screen flex items-center justify-center p-4" style={{ background: "var(--greek-cream)" }}>
         <div className="max-w-md text-center">
-          <AlertTriangle className="w-16 h-16 text-red-600 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-red-700 mb-2">Erreur</h1>
-          <p className="text-red-600">{error}</p>
+          <AlertTriangle className="w-16 h-16 mx-auto mb-4" style={{ color: "var(--greek-bronze)" }} />
+          <h1 className="text-2xl font-bold mb-2" style={{ color: "var(--greek-blue)" }}>Erreur</h1>
+          <p style={{ color: "var(--text-muted)" }}>{error}</p>
         </div>
       </div>
     );
@@ -118,8 +118,8 @@ export default function BannedPage() {
                 <FileText className="w-6 h-6 text-red-600" />
                 <h2 className="text-xl font-bold text-gray-900">Motif de la suspension</h2>
               </div>
-              <div className="bg-red-50 border-l-4 border-red-600 p-6 rounded-lg">
-                <p className="text-gray-800 leading-relaxed">
+              <div className="p-6 rounded-xl border" style={{ background: "rgba(239,68,68,0.05)", borderColor: "rgba(239,68,68,0.2)" }}>
+                <p className="leading-relaxed" style={{ color: "var(--text-dark)" }}>
                   {banData.reason}
                 </p>
               </div>
@@ -132,11 +132,11 @@ export default function BannedPage() {
                   <Clock className="w-6 h-6 text-orange-600" />
                   <h2 className="text-xl font-bold text-gray-900">Durée de la suspension</h2>
                 </div>
-                <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg">
-                  <p className="text-gray-700">
-                    Votre compte sera réactivé le <strong>{banEndDate}</strong>
+                <div className="p-6 rounded-xl border" style={{ background: "rgba(197,161,72,0.08)", borderColor: "rgba(197,161,72,0.25)" }}>
+                  <p style={{ color: "var(--text-dark)" }}>
+                    Votre compte sera réactivé le <strong style={{ color: "var(--greek-blue)" }}>{banEndDate}</strong>
                   </p>
-                  <p className="text-sm text-gray-600 mt-2">
+                  <p className="text-sm mt-2" style={{ color: "var(--text-muted)" }}>
                     Vous pourrez vous reconnecter à cette date.
                   </p>
                 </div>
@@ -144,23 +144,23 @@ export default function BannedPage() {
             )}
 
             {isBanPermanent && (
-              <div className="bg-red-50 border border-red-200 p-6 rounded-lg">
-                <p className="text-red-800 font-medium">
-                  ⚠️ Cette suspension est permanente.
+              <div className="p-6 rounded-xl border" style={{ background: "rgba(239,68,68,0.05)", borderColor: "rgba(239,68,68,0.2)" }}>
+                <p className="font-medium" style={{ color: "var(--greek-blue)" }}>
+                  Cette suspension est permanente.
                 </p>
               </div>
             )}
 
             {/* Info Message */}
-            <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg">
-              <p className="text-blue-800">
+            <div className="p-6 rounded-xl border" style={{ background: "rgba(197,161,72,0.06)", borderColor: "rgba(197,161,72,0.2)" }}>
+              <p style={{ color: "var(--text-muted)" }}>
                 Si vous pensez que cette action est une erreur, contactez notre équipe de support via le formulaire de contact.
               </p>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="bg-gray-50 border-t border-gray-200 px-8 py-6 flex gap-4 justify-between sm:justify-end">
+          <div className="px-8 py-6 flex gap-4 justify-between sm:justify-end border-t" style={{ background: "var(--greek-cream)", borderColor: "var(--greek-border)" }}>
             <button
               onClick={handleLogout}
               className="flex items-center gap-2 px-6 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-opacity shadow-sm"

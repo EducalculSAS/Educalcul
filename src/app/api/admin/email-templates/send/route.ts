@@ -1,0 +1,71 @@
+﻿import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { sendEmail } from "@/lib/mailer";
+import { emailTemplate } from "@/lib/emailTemplates";
+
+export async function POST(req: Request) {
+  try {
+    const { templateId, target, specificEmail, selectedUserId, customEmail } = await req.json();
+
+    const { data: tmpl, error: tmplErr } = await supabaseAdmin
+      .from("email_templates")
+      .select("*")
+      .eq("id", templateId)
+      .single();
+    if (tmplErr || !tmpl) return NextResponse.json({ error: "Template introuvable" }, { status: 404 });
+
+    // RÃ©soudre les destinataires
+    let users: { email: string; first_name: string | null }[] = [];
+
+    if (target === "custom_email" && customEmail) {
+      // Adresse personnalisÃ©e â€” pas forcÃ©ment un user du site
+      users = [{ email: customEmail.trim(), first_name: null }];
+    } else if (target === "specific_user" && selectedUserId) {
+      const { data: u } = await supabaseAdmin
+        .from("users").select("email, first_name").eq("id", selectedUserId).maybeSingle();
+      if (!u) return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
+      users = [u];
+    } else if (specificEmail) {
+      const { data: u } = await supabaseAdmin
+        .from("users").select("email, first_name").eq("email", specificEmail).maybeSingle();
+      if (!u) return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
+      users = [u];
+    } else {
+      let query = supabaseAdmin.from("users").select("email, first_name").eq("role", "parent");
+      if (target === "notif_weekly_reports") query = query.eq("notif_weekly_reports", true);
+      if (target === "notif_offers_news") query = query.eq("notif_offers_news", true);
+      const { data } = await query;
+      users = data || [];
+    }
+
+    let sent = 0;
+    let failed = 0;
+
+    for (const u of users) {
+      if (!u.email) continue;
+      const firstName = u.first_name || "Utilisateur";
+      const personalizedBody = tmpl.body.replace(/\{\{firstName\}\}/g, firstName);
+      const html = emailTemplate({ title: tmpl.subject, body: personalizedBody });
+
+      const result = await sendEmail({
+        toEmail: u.email,
+        toName: firstName,
+        subject: tmpl.subject,
+        textPart: personalizedBody.replace(/<[^>]*>/g, ""),
+        htmlPart: html,
+      });
+      if (result.success) sent++; else failed++;
+    }
+
+    // Mettre Ã  jour last_sent_at et sent_count
+    await supabaseAdmin.from("email_templates").update({
+      last_sent_at: new Date().toISOString(),
+      sent_count: (tmpl.sent_count || 0) + sent,
+    }).eq("id", templateId);
+
+    return NextResponse.json({ success: true, sent, failed, total: users.length });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}
+
