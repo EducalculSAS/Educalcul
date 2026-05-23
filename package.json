@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "start-qwen": "node scripts/start-qwen.mjs",
-    "dev-with-qwen": "concurrently \"npm run start-qwen\" \"npm run dev\"",
-    "qwen-check": "node -e \"require('node-fetch'); const fetch = (await import('node-fetch')).default; fetch('http://localhost:11434/api/tags').then(r => console.log(r.ok ? '✅ Ollama running' : '❌ Ollama not running')).catch(() => console.log('❌ Ollama not running'))\""
+    "lint": "eslint"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "^0.10.0",
@@ -24,7 +21,6 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
-    "node-fetch": "^3.3.2",
     "nodemailer": "^8.0.7",
     "react": "19.2.3",
     "react-dom": "19.2.3",

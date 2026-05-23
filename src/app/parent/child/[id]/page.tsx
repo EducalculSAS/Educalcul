@@ -140,7 +140,7 @@ export default function ChildReportPage() {
       setAnalysis(data.analysis);
       setAnalysisStats(data.stats);
     } catch {
-      setAnalysis("Erreur lors de l'analyse. Vérifiez que l'IA locale (Ollama) est démarrée.");
+      setAnalysis("Erreur lors de l'analyse. Vérifiez que l'IA est disponible.");
     } finally {
       setAnalysisLoading(false);
     }
@@ -349,7 +349,7 @@ export default function ChildReportPage() {
                   <span className="text-sm font-bold text-[var(--greek-blue)]">À propos de l'analyse</span>
                 </div>
                 <p className="text-xs text-gray-600 leading-relaxed">
-                  L'analyse est générée par Athéna, l'IA locale d'Educalcul. Elle est basée sur les 30 dernières activités réelles de {child.first_name}. Aucune donnée n'est envoyée vers des serveurs externes.
+                  L'analyse est générée par Athéna, l'IA d'Educalcul. Elle est basée sur les 30 dernières activités réelles de {child.first_name}.
                 </p>
               </div>
             </div>

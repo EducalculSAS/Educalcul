@@ -1,14 +1,11 @@
 ﻿/**
- * Educalcul — Couche transport IA
- * Provider : OpenRouter (deepseek/deepseek-chat) | Fallback : Ollama local
+ * Educalcul — Couche transport IA via OpenRouter
  */
 
-const AI_PROVIDER = (process.env.AI_PROVIDER || "openrouter").toLowerCase();
 const OR_URL      = "https://openrouter.ai/api/v1/chat/completions";
 const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-chat";
+const OR_FALLBACK_MODEL = process.env.OPENROUTER_FALLBACK_MODEL || "deepseek/deepseek-chat-v3-0324";
 const OR_KEY      = process.env.OPENROUTER_API_KEY || "";
-const LOCAL_URL   = process.env.LOCAL_AI_URL       || "http://localhost:11434/api/generate";
-const LOCAL_MODEL = process.env.LOCAL_AI_MODEL     || "mistral:7b";
 
 type Message = { role: "user" | "assistant" | "system"; content: string };
 
@@ -17,6 +14,8 @@ type Message = { role: "user" | "assistant" | "system"; content: string };
 // Modèles de fallback si le principal est rate-limité (dans l'ordre de préférence)
 const FALLBACK_MODELS = [
   OR_MODEL,
+  OR_FALLBACK_MODEL,
+  "deepseek/deepseek-chat",
 ];
 
 async function callOpenRouterModel(
@@ -91,27 +90,8 @@ async function callOpenRouter(
   throw new Error("Tous les modèles IA sont indisponibles. Réessaie dans quelques secondes.");
 }
 
-async function callLocal(msgs: Message[], temp = 0.7): Promise<string> {
-  const prompt = msgs.map(m => `${m.role.toUpperCase()}: ${m.content}`).join("\n\n");
-  const resp = await fetch(LOCAL_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ model: LOCAL_MODEL, prompt, temperature: temp }),
-  });
-  const raw = await resp.text();
-  if (!resp.ok) throw new Error(`Local AI ${resp.status}: ${raw.slice(0, 200)}`);
-  if (raw.includes('"response"'))
-    return raw.split("\n").filter(Boolean)
-      .reduce((acc, l) => { try { return acc + (JSON.parse(l).response ?? ""); } catch { return acc; } }, "")
-      .trim();
-  try { const j = JSON.parse(raw); return (j.output || j.choices?.[0]?.message?.content || raw).toString().trim(); }
-  catch { return raw.trim(); }
-}
-
 function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false) {
-  return AI_PROVIDER === "local"
-    ? callLocal(msgs, temp)
-    : callOpenRouter(msgs, temp, maxTokens, reasoning);
+  return callOpenRouter(msgs, temp, maxTokens, reasoning);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
