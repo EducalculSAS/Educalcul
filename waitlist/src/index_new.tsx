@@ -7,8 +7,9 @@ import UserDashboard from "./components/UserDashboard";
 import Leaderboard from "./components/Leaderboard";
 import { getCurrentUser } from "./lib/waitlist";
 import "./index.css";
+import type { View } from "./components/Navbar";
 
-type ViewType = "landing" | "dashboard" | "leaderboard";
+type ViewType = View;
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<string | null>(null);

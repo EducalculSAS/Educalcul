@@ -195,7 +195,11 @@ export default function AdminEmailsPage() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <h3 className="font-bold text-[var(--greek-blue)] truncate">{tmpl.name}</h3>
-            {!tmpl.is_deletable && <Lock className="w-3.5 h-3.5 text-gray-400 shrink-0" title="Template système" />}
+            {!tmpl.is_deletable && (
+              <span title="Template système" aria-label="Template système">
+                <Lock className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+              </span>
+            )}
           </div>
           <p className="text-sm text-gray-500 truncate">{tmpl.subject}</p>
         </div>
@@ -248,7 +252,7 @@ export default function AdminEmailsPage() {
         </button>
         {tmpl.target !== "triggered" && (
           <button
-            onClick={() => { setSendTmpl(tmpl); setSendForm({ target: tmpl.target, specificEmail: "" }); setSendResult(null); }}
+            onClick={() => { setSendTmpl(tmpl); setSendForm({ target: tmpl.target, specificEmail: "", selectedUserId: "" }); setSendResult(null); }}
             title="Envoyer"
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[var(--greek-blue)] rounded-lg hover:opacity-90 transition-all"
           >

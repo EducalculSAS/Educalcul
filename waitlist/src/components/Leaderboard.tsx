@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Trophy, Users, Share2 } from 'lucide-react';
 import { getLeaderboard, getGlobalStats, WaitlistEntry } from '../lib/waitlist';
 
+type LeaderboardStats = {
+  totalSignups: number;
+  totalReferrals: number;
+  topReferrer: WaitlistEntry | null;
+};
+
 export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState<WaitlistEntry[]>([]);
-  const [stats, setStats] = useState({ totalSignups: 0, totalReferrals: 0, topReferrer: null });
+  const [stats, setStats] = useState<LeaderboardStats>({ totalSignups: 0, totalReferrals: 0, topReferrer: null });
 
   useEffect(() => {
     setLeaderboard(getLeaderboard());
