@@ -13,7 +13,7 @@ import {
   ArrowLeft,
   Lock,
 } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { useSubscription } from "@/lib/useSubscription";
 
@@ -89,7 +89,7 @@ export default function ChildExercisesPage() {
   if (loading && allExercises.length === 0 && allFolders.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -242,3 +242,5 @@ export default function ChildExercisesPage() {
     </div>
   );
 }
+
+

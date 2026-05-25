@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { BookOpen, Play, CheckCircle, Clock, Trophy, Folder as FolderIcon, ChevronRight, Home, ArrowLeft } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 
 export default function ChildQuizPage() {
@@ -77,7 +77,7 @@ export default function ChildQuizPage() {
   if (loading && allQuizzes.length === 0 && allFolders.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -220,3 +220,5 @@ export default function ChildQuizPage() {
     </div>
   );
 }
+
+

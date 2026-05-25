@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, X } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
@@ -163,7 +163,7 @@ export default function CourseDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -317,3 +317,5 @@ export default function CourseDetailPage() {
     </div>
   );
 }
+
+

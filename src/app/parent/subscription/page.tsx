@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/components/Toast";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface SubscriptionPlan {
@@ -293,7 +293,7 @@ function SubscriptionPageContent() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -612,3 +612,5 @@ export default function SubscriptionPage() {
     </Suspense>
   );
 }
+
+

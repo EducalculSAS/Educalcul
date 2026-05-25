@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
-  Folder,
   BookOpen,
   Calculator,
   Trophy,
@@ -19,6 +18,7 @@ import {
   MessageSquare,
   User,
   Mail,
+  Scale,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -44,6 +44,7 @@ export default function AdminSidebar() {
     { name: "Emails", href: "/admin/emails", icon: Mail },
     { name: "Support", href: "/admin/support", icon: LifeBuoy },
     { name: "Abonnements", href: "/admin/subscriptions", icon: CreditCard },
+    { name: "Juridique", href: "/admin/juridique", icon: Scale },
     { name: "Profil", href: "/admin/profile", icon: User },
     { name: "Paramètres", href: "/admin/settings", icon: Settings },
   ];

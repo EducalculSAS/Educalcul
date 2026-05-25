@@ -15,7 +15,7 @@ import {
   Trash2,
   Clock,
 } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -167,7 +167,7 @@ export default function ChildProfilePage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -553,3 +553,5 @@ function EmptyActivities({ message }: { message: string }) {
     </div>
   );
 }
+
+

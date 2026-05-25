@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Trophy, Lock, CheckCircle, Star, Zap, BookOpen, Crown, Target, Brain, Sparkles, Flame, Pencil, Map, Loader2 } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { BORDER_STYLES, NAME_COLORS, getBorderStyle, getNameColor, getSubscriptionUnlocks } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -133,7 +133,7 @@ export default function ChildBadgesPage() {
     setEquipping(false);
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><MathLoader /></div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><AppAdminLoader /></div>;
 
   const earned = badges.filter(b => earnedIds.has(b.id));
   const img = avatarUrl(user?.avatar);
@@ -346,3 +346,5 @@ export default function ChildBadgesPage() {
     </div>
   );
 }
+
+

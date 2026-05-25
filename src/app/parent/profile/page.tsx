@@ -17,7 +17,7 @@ import {
   LogOut,
   Phone,
 } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import Image from "next/image";
 import { avatarUrl } from "@/lib/avatarUrl";
 
@@ -372,7 +372,7 @@ export default function ParentProfilePage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -829,4 +829,6 @@ export default function ParentProfilePage() {
     </>
   );
 }
+
+
 

@@ -1,10 +1,11 @@
 ﻿"use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import {
   CreditCard, Plus, Edit, Trash2, CheckCircle, AlertTriangle,
-  Clock, Calendar, X, Power, Users, Tag, Gift, RefreshCw,
-  TrendingUp, Copy, Check,
+  Clock, X, Power, Users, Tag, Gift,
+  TrendingUp, Copy, Check, GripVertical,
 } from "lucide-react";
 
 // ── Types ──────────────────────────────────────────────────────────────────
@@ -84,6 +85,10 @@ export default function AdminSubscriptionsPage() {
   const [refForm, setRefForm] = useState<any>(defaultRefForm);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
+
+  // Drag-and-drop
+  const dragId = useRef<string | null>(null);
+  const [dragOver, setDragOver] = useState<string | null>(null);
 
   // Shared
   const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -173,6 +178,33 @@ export default function AdminSubscriptionsPage() {
     fetchPlans();
   };
 
+  // ── Drag-and-drop reorder ──────────────────────────────────────────────────
+  const handleDrop = async (targetId: string) => {
+    const fromId = dragId.current;
+    if (!fromId || fromId === targetId) { setDragOver(null); return; }
+
+    const from = plans.find(p => p.id === fromId);
+    const to   = plans.find(p => p.id === targetId);
+    if (!from || !to) { setDragOver(null); return; }
+
+    // Swap sort_order locally
+    const next = plans.map(p => {
+      if (p.id === fromId) return { ...p, sort_order: to.sort_order };
+      if (p.id === targetId) return { ...p, sort_order: from.sort_order };
+      return p;
+    }).sort((a, b) => a.sort_order - b.sort_order);
+
+    setPlans(next);
+    setDragOver(null);
+
+    // Persist both
+    await Promise.all([
+      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: fromId, sort_order: to.sort_order }) }),
+      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: targetId, sort_order: from.sort_order }) }),
+    ]);
+    showToast("success", "Ordre mis à jour");
+  };
+
   const togglePlan = async (plan: Plan) => {
     const res = await fetch("/api/admin/subscriptions", {
       method: "PUT",
@@ -243,6 +275,11 @@ export default function AdminSubscriptionsPage() {
   // ── Input helper ──────────────────────────────────────────────────────────
   const inputCls = "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
   const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
+  const isPageLoading = plansLoading || codesLoading;
+
+  if (isPageLoading) {
+    return <AppAdminLoader />;
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -310,14 +347,16 @@ export default function AdminSubscriptionsPage() {
       {/* ════════════════ PLANS TAB ════════════════ */}
       {tab === "plans" && (
         <>
-          {plansLoading ? (
-            <div className="flex justify-center py-20"><RefreshCw className="animate-spin text-gray-400" size={32} /></div>
-          ) : plans.length === 0 ? (
+          {plans.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
               <CreditCard size={48} className="mx-auto mb-3 opacity-30" />
               <p className="font-medium">Aucun plan créé</p>
             </div>
           ) : (
+            <>
+            <p className="text-xs text-gray-400 mb-4 flex items-center gap-1.5">
+              <GripVertical className="w-3.5 h-3.5" /> Glissez les cartes pour réorganiser l&apos;ordre d&apos;affichage sur le site.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
               {plans.map((plan) => {
                 const features = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
@@ -330,15 +369,27 @@ export default function AdminSubscriptionsPage() {
                 ].filter(Boolean) as string[];
 
                 return (
-                  <div key={plan.id} className={`bg-white rounded-2xl border-2 shadow-sm transition-all hover:shadow-md flex flex-col ${plan.is_active ? "border-[rgba(197,161,72,0.25)]" : "border-dashed border-[rgba(197,161,72,0.25)] opacity-70"}`}>
+                  <div
+                    key={plan.id}
+                    draggable
+                    onDragStart={() => { dragId.current = plan.id; }}
+                    onDragEnd={() => { dragId.current = null; setDragOver(null); }}
+                    onDragOver={e => { e.preventDefault(); setDragOver(plan.id); }}
+                    onDrop={() => handleDrop(plan.id)}
+                    className={`bg-white rounded-2xl border-2 shadow-sm transition-all hover:shadow-md flex flex-col select-none ${plan.is_active ? "border-[rgba(197,161,72,0.25)]" : "border-dashed border-[rgba(197,161,72,0.25)] opacity-70"} ${dragOver === plan.id ? "ring-2 ring-[var(--greek-gold)] ring-offset-2 scale-[1.02]" : ""}`}
+                    style={{ transition: "transform 0.15s, box-shadow 0.15s" }}
+                  >
                     {/* Card header */}
-                    <div className="px-6 pt-6 pb-4 border-b border-[rgba(197,161,72,0.25)]">
+                    <div className="px-6 pt-5 pb-4 border-b border-[rgba(197,161,72,0.25)]">
                       <div className="flex items-start justify-between gap-2">
-                        <div>
-                          <h3 className="font-bold text-lg text-[var(--greek-blue)]">{plan.name}</h3>
-                          {plan.promo_description && (
-                            <span className="inline-block mt-1 px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">{plan.promo_description}</span>
-                          )}
+                        <div className="flex items-center gap-2">
+                          <GripVertical className="w-4 h-4 text-gray-300 cursor-grab active:cursor-grabbing flex-shrink-0" />
+                          <div>
+                            <h3 className="font-bold text-lg text-[var(--greek-blue)]">{plan.name}</h3>
+                            {plan.promo_description && (
+                              <span className="inline-block mt-1 px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">{plan.promo_description}</span>
+                            )}
+                          </div>
                         </div>
                         <span className={`shrink-0 px-2 py-0.5 text-xs font-bold rounded-full ${plan.is_active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
                           {plan.is_active ? "Actif" : "Inactif"}
@@ -460,6 +511,7 @@ export default function AdminSubscriptionsPage() {
                 );
               })}
             </div>
+            </>
           )}
         </>
       )}
@@ -467,9 +519,7 @@ export default function AdminSubscriptionsPage() {
       {/* ════════════════ CODES PROMO TAB ════════════════ */}
       {tab === "promos" && (
         <>
-          {codesLoading ? (
-            <div className="flex justify-center py-20"><RefreshCw className="animate-spin text-gray-400" size={32} /></div>
-          ) : promoCodes.length === 0 ? (
+          {promoCodes.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
               <Tag size={48} className="mx-auto mb-3 opacity-30" />
               <p className="font-medium">Aucun code promo</p>
@@ -541,9 +591,7 @@ export default function AdminSubscriptionsPage() {
       {/* ════════════════ PARRAINAGE TAB ════════════════ */}
       {tab === "parrainage" && (
         <>
-          {codesLoading ? (
-            <div className="flex justify-center py-20"><RefreshCw className="animate-spin text-gray-400" size={32} /></div>
-          ) : parainageCodes.length === 0 ? (
+          {parainageCodes.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
               <Gift size={48} className="mx-auto mb-3 opacity-30" />
               <p className="font-medium">Aucun utilisateur n'a encore de code de parrainage</p>

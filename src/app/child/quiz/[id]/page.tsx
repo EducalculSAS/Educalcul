@@ -13,7 +13,7 @@ import {
   X,
 } from "lucide-react";
 import QuizViewer from "@/components/viewers/QuizViewer";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -162,7 +162,7 @@ export default function QuizDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -336,3 +336,5 @@ export default function QuizDetailPage() {
     </div>
   );
 }
+
+

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { BookOpen, Play, CheckCircle, Clock, Folder as FolderIcon, ChevronRight, Home, ArrowLeft } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 
 export default function ChildCoursesPage() {
@@ -140,7 +140,7 @@ export default function ChildCoursesPage() {
   if (loading && allCourses.length === 0 && allFolders.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -262,3 +262,5 @@ export default function ChildCoursesPage() {
     </div>
   );
 }
+
+

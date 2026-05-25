@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import AdminSidebar from "@/components/AdminSidebar";
 
 export default function AdminLayout({
@@ -51,7 +51,7 @@ export default function AdminLayout({
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -65,3 +65,5 @@ export default function AdminLayout({
     </div>
   );
 }
+
+

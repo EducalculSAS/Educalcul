@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { PlusCircle, Users, Trash2, Edit, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 
 interface Child {
@@ -83,7 +83,7 @@ export default function ManageChildrenPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -210,3 +210,5 @@ export default function ManageChildrenPage() {
     </div>
   );
 }
+
+

@@ -1,10 +1,10 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import { AlertTriangle, Clock, FileText, LogIn } from 'lucide-react';
-import MathLoader from '@/components/MathLoader';
+import AppAdminLoader from '@/components/AppAdminLoader';
 
 export default function BannedPage() {
   const router = useRouter();
@@ -24,16 +24,16 @@ export default function BannedPage() {
           .eq('auth_id', user.id)
           .single();
 
-        if (!userData) { setError('Utilisateur non trouvé'); setLoading(false); return; }
+        if (!userData) { setError('Utilisateur non trouvÃ©'); setLoading(false); return; }
 
         if (userData.status === 'inactive' || userData.ban_reason) {
           setBanData({
             firstName: userData.first_name,
             lastName: userData.last_name,
-            reason: userData.ban_reason || 'Votre compte a été suspendu par un administrateur.',
+            reason: userData.ban_reason || 'Votre compte a Ã©tÃ© suspendu par un administrateur.',
             banUntil: userData.ban_until,
           });
-          // Force sign-out pour empêcher toute navigation après
+          // Force sign-out pour empÃªcher toute navigation aprÃ¨s
           await supabase.auth.signOut();
         } else {
           router.push('/dashboard');
@@ -55,7 +55,7 @@ export default function BannedPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -75,7 +75,7 @@ export default function BannedPage() {
   if (!banData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -130,14 +130,14 @@ export default function BannedPage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3 mb-4">
                   <Clock className="w-6 h-6 text-orange-600" />
-                  <h2 className="text-xl font-bold text-gray-900">Durée de la suspension</h2>
+                  <h2 className="text-xl font-bold text-gray-900">DurÃ©e de la suspension</h2>
                 </div>
                 <div className="p-6 rounded-xl border" style={{ background: "rgba(197,161,72,0.08)", borderColor: "rgba(197,161,72,0.25)" }}>
                   <p style={{ color: "var(--text-dark)" }}>
-                    Votre compte sera réactivé le <strong style={{ color: "var(--greek-blue)" }}>{banEndDate}</strong>
+                    Votre compte sera rÃ©activÃ© le <strong style={{ color: "var(--greek-blue)" }}>{banEndDate}</strong>
                   </p>
                   <p className="text-sm mt-2" style={{ color: "var(--text-muted)" }}>
-                    Vous pourrez vous reconnecter à cette date.
+                    Vous pourrez vous reconnecter Ã  cette date.
                   </p>
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function BannedPage() {
             {/* Info Message */}
             <div className="p-6 rounded-xl border" style={{ background: "rgba(197,161,72,0.06)", borderColor: "rgba(197,161,72,0.2)" }}>
               <p style={{ color: "var(--text-muted)" }}>
-                Si vous pensez que cette action est une erreur, contactez notre équipe de support via le formulaire de contact.
+                Si vous pensez que cette action est une erreur, contactez notre Ã©quipe de support via le formulaire de contact.
               </p>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function BannedPage() {
               className="flex items-center gap-2 px-6 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-opacity shadow-sm"
             >
               <LogIn className="w-5 h-5" />
-              Se déconnecter
+              Se dÃ©connecter
             </button>
           </div>
         </div>
@@ -181,3 +181,5 @@ export default function BannedPage() {
     </div>
   );
 }
+
+

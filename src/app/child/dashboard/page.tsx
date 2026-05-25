@@ -8,7 +8,7 @@ import {
   BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
   Play, MessageSquare, Star, CheckCircle, Zap,
 } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 
 const ICON_MAP: Record<string, any> = {
   pencil: PenTool, zap: Zap, flame: Star, star: Star, crown: Trophy,
@@ -77,7 +77,7 @@ export default function ChildDashboard() {
     })();
   }, [router]);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]"><MathLoader /></div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]"><AppAdminLoader /></div>;
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
@@ -235,3 +235,5 @@ export default function ChildDashboard() {
     </div>
   );
 }
+
+

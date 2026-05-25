@@ -7,7 +7,7 @@ import { getServerGeo } from "@/lib/geoLocation";
 
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import ParentOnboarding from "@/components/onboarding/ParentOnboarding";
 
 export default function ParentLayout({
@@ -110,7 +110,7 @@ export default function ParentLayout({
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -132,3 +132,5 @@ export default function ParentLayout({
     </div>
   );
 }
+
+

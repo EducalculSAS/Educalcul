@@ -9,7 +9,7 @@ import {
   TrendingUp, Activity, Brain, Sparkles, Loader2, RotateCcw,
   Star,
 } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 
 interface ActivityItem {
@@ -146,7 +146,7 @@ export default function ChildReportPage() {
     }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><MathLoader /></div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><AppAdminLoader /></div>;
   if (!child) return null;
 
   return (
@@ -359,3 +359,5 @@ export default function ChildReportPage() {
     </div>
   );
 }
+
+

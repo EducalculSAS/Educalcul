@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useRouter, useParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { AVATARS } from "@/lib/constants";
 
 const GRADE_LEVELS = [
@@ -173,7 +173,7 @@ export default function EditChildPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <MathLoader />
+        <AppAdminLoader />
       </div>
     );
   }
@@ -343,3 +343,5 @@ export default function EditChildPage() {
     </div>
   );
 }
+
+

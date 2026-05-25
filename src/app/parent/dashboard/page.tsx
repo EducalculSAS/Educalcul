@@ -9,7 +9,7 @@ import {
   ArrowRight, Lock, Plus, MessageSquare, Crown, UserCircle,
   BarChart2,
 } from "lucide-react";
-import MathLoader from "@/components/MathLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { useSubscription } from "@/lib/useSubscription";
 
@@ -99,7 +99,7 @@ export default function ParentDashboard() {
     };
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><MathLoader /></div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><AppAdminLoader /></div>;
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
@@ -304,3 +304,5 @@ export default function ParentDashboard() {
     </div>
   );
 }
+
+
