@@ -19,6 +19,7 @@ import {
   User,
   Mail,
   Scale,
+  GraduationCap,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -45,6 +46,7 @@ export default function AdminSidebar() {
     { name: "Support", href: "/admin/support", icon: LifeBuoy },
     { name: "Abonnements", href: "/admin/subscriptions", icon: CreditCard },
     { name: "Juridique", href: "/admin/juridique", icon: Scale },
+    { name: "Programmes", href: "/admin/programmes", icon: GraduationCap },
     { name: "Profil", href: "/admin/profile", icon: User },
     { name: "Paramètres", href: "/admin/settings", icon: Settings },
   ];

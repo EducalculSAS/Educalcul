@@ -1,20 +1,25 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
-import { 
-  Play, 
-  CheckCircle, 
-  Circle, 
-  ChevronRight, 
+import {
+  Play,
+  CheckCircle,
+  Circle,
+  ChevronRight,
   Menu,
   X,
   FileText,
   Video,
   HelpCircle,
   ChevronLeft,
-  Sparkles
+  Sparkles,
+  Lightbulb,
+  XCircle as XCircleIcon,
+  Eye,
+  PencilLine,
+  Loader2
 } from "lucide-react";
-import { Chapter, Lesson } from "@/components/admin/CourseBuilder";
+import { Chapter, Lesson, Exercise } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -442,6 +447,15 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
                      <div ref={contentRef} dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentLesson.content || "") }} />
                    )}
                 </div>
+
+                {/* Interactive mini-exercises */}
+                {currentLesson.exercises && currentLesson.exercises.length > 0 && (
+                  <InlineMiniExercises
+                    lessonId={currentLesson.id}
+                    exercises={currentLesson.exercises}
+                    level={(course as any).level}
+                  />
+                )}
               </div>
             ) : (
               <div className="text-center text-gray-400 py-32">
@@ -504,6 +518,362 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
             <X className="w-4 h-4" />
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Inline Mini-Exercises ──────────────────────────────────────────────────
+interface ExerciseState {
+  input: string;
+  attempts: number;
+  status: "idle" | "correct" | "wrong" | "revealed" | "grading";
+  showHint: boolean;
+  feedback?: string;
+}
+
+interface InlineMiniExercisesProps {
+  lessonId: string;
+  exercises: Exercise[];
+  level?: string;
+}
+
+function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercisesProps) {
+  const [states, setStates] = useState<Record<string, ExerciseState>>({});
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Reset state when the lesson changes
+  useEffect(() => {
+    const initial: Record<string, ExerciseState> = {};
+    exercises.forEach((ex) => {
+      initial[ex.id] = {
+        input: "",
+        attempts: 0,
+        status: "idle",
+        showHint: false,
+        feedback: undefined,
+      };
+    });
+    setStates(initial);
+  }, [lessonId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Render KaTeX inside questions / explanations when content changes
+  useEffect(() => {
+    if (!containerRef.current) return;
+    // renderLatexInHTML is already applied via dangerouslySetInnerHTML below — nothing more to do
+  }, [states]);
+
+  const updateState = (id: string, patch: Partial<ExerciseState>) => {
+    setStates((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], ...patch },
+    }));
+  };
+
+  const handleVerify = async (ex: Exercise) => {
+    const state = states[ex.id];
+    if (!state) return;
+    updateState(ex.id, { status: "grading", feedback: undefined });
+    try {
+      const resp = await fetch("/api/child/grade-mini-exercise", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: ex.question,
+          answer: ex.answer,
+          studentAnswer: state.input,
+          level: level,
+        }),
+      });
+      const result = await resp.json();
+      if (result.is_correct) {
+        updateState(ex.id, { status: "correct", feedback: result.feedback });
+      } else {
+        updateState(ex.id, {
+          status: "wrong",
+          attempts: state.attempts + 1,
+          feedback: result.feedback,
+        });
+      }
+    } catch {
+      updateState(ex.id, {
+        status: "wrong",
+        attempts: state.attempts + 1,
+        feedback: "Impossible de corriger pour l'instant.",
+      });
+    }
+  };
+
+  const handleRetry = (id: string) => {
+    updateState(id, { status: "idle", input: "" });
+  };
+
+  const handleReveal = (id: string) => {
+    updateState(id, { status: "revealed" });
+  };
+
+  const handleToggleHint = (id: string) => {
+    const s = states[id];
+    updateState(id, { showHint: !s?.showHint });
+  };
+
+  return (
+    <div ref={containerRef} className="mt-12 pt-8 border-t border-[rgba(197,161,72,0.25)]">
+      <h2
+        className="text-2xl font-bold mb-6 flex items-center gap-3 font-[family-name:var(--font-display)]"
+        style={{ color: "var(--greek-blue)" }}
+      >
+        <PencilLine className="w-7 h-7" style={{ color: "var(--greek-gold)" }} />
+        <span>
+          <span style={{ color: "var(--greek-gold)" }}>✏️</span> Mini-exercices
+        </span>
+      </h2>
+
+      <div className="space-y-4">
+        {exercises.map((ex, idx) => {
+          const s = states[ex.id] || {
+            input: "",
+            attempts: 0,
+            status: "idle" as const,
+            showHint: false,
+          };
+          const isCorrect = s.status === "correct";
+          const isWrong = s.status === "wrong";
+          const isRevealed = s.status === "revealed";
+          const isGrading = s.status === "grading";
+          const showCorrection = s.attempts >= 2 && !isCorrect && !isRevealed;
+
+          return (
+            <div
+              key={ex.id}
+              className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm transition-all"
+              style={{
+                borderColor: isCorrect
+                  ? "var(--greek-gold)"
+                  : isWrong
+                  ? "#fecaca"
+                  : "#e5e7eb",
+              }}
+            >
+              <div className="flex items-start gap-3 mb-4">
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0"
+                  style={{
+                    background: "var(--greek-blue)",
+                    color: "#fff",
+                  }}
+                >
+                  {idx + 1}
+                </div>
+                <div className="flex-1">
+                  <div
+                    className="text-gray-800 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: renderLatexInHTML(ex.question),
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Hint toggle */}
+              {ex.hint && !isCorrect && !isRevealed && (
+                <div className="mb-3">
+                  <button
+                    type="button"
+                    onClick={() => handleToggleHint(ex.id)}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors"
+                    style={{
+                      borderColor: "var(--greek-gold)",
+                      color: "var(--greek-blue)",
+                      background: s.showHint
+                        ? "rgba(197,161,72,0.1)"
+                        : "transparent",
+                    }}
+                  >
+                    <Lightbulb className="w-3.5 h-3.5" />
+                    {s.showHint ? "Masquer l'indice" : "Indice 💡"}
+                  </button>
+                  {s.showHint && (
+                    <div
+                      className="mt-2 px-4 py-2.5 rounded-lg text-sm"
+                      style={{
+                        background: "rgba(197,161,72,0.08)",
+                        color: "#7c5e1a",
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: renderLatexInHTML(ex.hint),
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+
+              {/* Input + verify */}
+              {!isCorrect && !isRevealed && (
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={s.input}
+                    disabled={isGrading}
+                    onChange={(e) =>
+                      updateState(ex.id, { input: e.target.value })
+                    }
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        if (!isGrading) handleVerify(ex);
+                      }
+                    }}
+                    placeholder="Ta réponse..."
+                    className="flex-1 px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 focus:border-[var(--greek-blue)] transition-all text-gray-800 disabled:opacity-60"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleVerify(ex)}
+                    disabled={!s.input.trim() || isGrading}
+                    className="px-5 py-2.5 rounded-xl font-bold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+                    style={{ background: "var(--greek-blue)" }}
+                  >
+                    {isGrading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Correction...</span>
+                      </>
+                    ) : (
+                      "Vérifier"
+                    )}
+                  </button>
+                </div>
+              )}
+
+              {/* Wrong feedback */}
+              {isWrong && (
+                <div
+                  className="mt-3 p-3 rounded-xl flex items-start gap-2"
+                  style={{ background: "#fef2f2", color: "#991b1b" }}
+                >
+                  <XCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="font-semibold text-sm">Pas tout à fait…</p>
+                    {s.feedback && (
+                      <div
+                        className="text-xs mt-1.5 opacity-90 leading-relaxed"
+                        dangerouslySetInnerHTML={{
+                          __html: renderLatexInHTML(s.feedback),
+                        }}
+                      />
+                    )}
+                    <p className="text-xs mt-0.5 opacity-80">
+                      Tentative {s.attempts} {s.attempts >= 2 ? "— tu peux voir la correction" : "— essaie encore"}
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        type="button"
+                        onClick={() => handleRetry(ex.id)}
+                        className="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors"
+                        style={{
+                          borderColor: "#fecaca",
+                          color: "#991b1b",
+                          background: "#fff",
+                        }}
+                      >
+                        Réessayer
+                      </button>
+                      {showCorrection && (
+                        <button
+                          type="button"
+                          onClick={() => handleReveal(ex.id)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white"
+                          style={{ background: "var(--greek-blue)" }}
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          Voir la correction
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Correct feedback */}
+              {isCorrect && (
+                <div
+                  className="mt-3 p-4 rounded-xl flex items-start gap-2"
+                  style={{
+                    background: "rgba(197,161,72,0.1)",
+                    color: "var(--greek-blue)",
+                    borderLeft: "3px solid var(--greek-gold)",
+                  }}
+                >
+                  <CheckCircle
+                    className="w-5 h-5 flex-shrink-0 mt-0.5"
+                    style={{ color: "var(--greek-gold)" }}
+                  />
+                  <div className="flex-1">
+                    <p className="font-bold text-sm">Excellent ! ✨</p>
+                    {s.feedback && (
+                      <div
+                        className="text-sm mt-1.5 opacity-90 leading-relaxed"
+                        dangerouslySetInnerHTML={{
+                          __html: renderLatexInHTML(s.feedback),
+                        }}
+                      />
+                    )}
+                    {ex.explanation && (
+                      <div
+                        className="text-sm mt-1.5 opacity-90 leading-relaxed"
+                        dangerouslySetInnerHTML={{
+                          __html: renderLatexInHTML(ex.explanation),
+                        }}
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Revealed correction */}
+              {isRevealed && (
+                <div
+                  className="mt-3 p-4 rounded-xl"
+                  style={{
+                    background: "#f9fafb",
+                    border: "1px solid #e5e7eb",
+                  }}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <Eye className="w-4 h-4" style={{ color: "var(--greek-blue)" }} />
+                    <span
+                      className="text-xs font-bold uppercase tracking-wider"
+                      style={{ color: "var(--greek-blue)" }}
+                    >
+                      Correction
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-700 mb-2">
+                    <span className="font-semibold">Réponse :</span>{" "}
+                    <span style={{ color: "var(--greek-blue)" }}>{ex.answer}</span>
+                  </p>
+                  {ex.explanation && (
+                    <div
+                      className="text-sm text-gray-600 leading-relaxed"
+                      dangerouslySetInnerHTML={{
+                        __html: renderLatexInHTML(ex.explanation),
+                      }}
+                    />
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => handleRetry(ex.id)}
+                    className="mt-3 text-xs font-semibold underline"
+                    style={{ color: "var(--greek-blue)" }}
+                  >
+                    Réessayer cet exercice
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -1,0 +1,381 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import {
+  Sparkles,
+  X,
+  Calculator,
+  FileText,
+  Brain,
+  ArrowLeft,
+  Loader2,
+  GraduationCap,
+  Link as LinkIcon,
+} from "lucide-react";
+import { SCHOOL_LEVELS } from "@/lib/constants";
+import { supabase } from "@/lib/supabaseClient";
+
+export interface ExerciseGenParams {
+  exerciseType: "simple" | "contextual";
+  linkedCourseId: string | null;
+  linkedCourseTitle: string | null;
+  subject: string;
+  level: string;
+  difficulty: "easy" | "medium" | "hard";
+  questionCount: number;
+  subjectArea: string;
+  instructions: string;
+}
+
+interface ExerciseGeneratorModalProps {
+  onGenerate: (params: ExerciseGenParams) => void;
+  onClose: () => void;
+}
+
+const SUBJECT_AREAS = [
+  "Algèbre",
+  "Géométrie",
+  "Statistiques",
+  "Arithmétique",
+  "Fonctions",
+  "Probabilités",
+  "Trigonométrie",
+];
+
+export default function ExerciseGeneratorModal({
+  onGenerate,
+  onClose,
+}: ExerciseGeneratorModalProps) {
+  const [step, setStep] = useState<1 | 2>(1);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [courses, setCourses] = useState<{ id: string; title: string }[]>([]);
+  const [params, setParams] = useState<ExerciseGenParams>({
+    exerciseType: "simple",
+    linkedCourseId: null,
+    linkedCourseTitle: null,
+    subject: "",
+    level: "6eme",
+    difficulty: "medium",
+    questionCount: 5,
+    subjectArea: "Algèbre",
+    instructions: "",
+  });
+  const [fieldError, setFieldError] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase
+        .from("courses")
+        .select("id, title")
+        .eq("status", "published")
+        .order("title");
+      if (data) setCourses(data as any);
+    })();
+  }, []);
+
+  const handleTypeSelect = (type: "simple" | "contextual") => {
+    setParams((p) => ({ ...p, exerciseType: type }));
+    setStep(2);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!params.subject.trim()) {
+      setFieldError("Veuillez entrer un sujet.");
+      return;
+    }
+    setFieldError(null);
+    setIsGenerating(true);
+    onGenerate(params);
+  };
+
+  const handleCourseChange = (id: string) => {
+    if (!id) {
+      setParams((p) => ({ ...p, linkedCourseId: null, linkedCourseTitle: null }));
+    } else {
+      const c = courses.find((c) => c.id === id);
+      setParams((p) => ({
+        ...p,
+        linkedCourseId: id,
+        linkedCourseTitle: c?.title || null,
+        subject: p.subject || c?.title || "",
+      }));
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden border border-[rgba(197,161,72,0.25)]">
+        {/* Navy hero header */}
+        <div className="px-8 py-6 bg-gradient-to-r from-[var(--greek-blue)] to-blue-900 text-white flex justify-between items-center flex-shrink-0 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10 pattern-grid-lg pointer-events-none" />
+          <div className="flex items-center gap-3 relative z-10">
+            <div className="w-12 h-12 rounded-2xl bg-[var(--greek-gold)]/20 border border-[var(--greek-gold)]/40 flex items-center justify-center">
+              <Sparkles className="text-[var(--greek-gold)]" size={22} />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold font-[family-name:var(--font-display)]">
+                Générer un exercice avec l'IA
+              </h2>
+              <p className="text-xs text-white/70 mt-0.5">
+                {step === 1
+                  ? "Étape 1 : choisis le type d'exercice"
+                  : "Étape 2 : configure les détails"}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="group p-2 transition-colors text-white/70 hover:text-white relative z-10"
+          >
+            <X size={22} className="transition-transform group-hover:scale-125" />
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="flex-1 overflow-y-auto">
+          {isGenerating ? (
+            <div className="p-16 flex flex-col items-center justify-center text-center">
+              <div className="relative w-24 h-24 mb-6">
+                <div className="absolute inset-0 rounded-full bg-[var(--greek-gold)]/20 animate-ping" />
+                <div className="relative w-24 h-24 rounded-full bg-[var(--greek-blue)] flex items-center justify-center shadow-xl">
+                  <Brain className="w-12 h-12 text-[var(--greek-gold)] animate-pulse" />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-2">
+                Athéna réfléchit...
+              </h3>
+              <p className="text-sm text-[var(--greek-bronze)]">
+                Création de ton exercice {params.exerciseType === "simple" ? "simple" : "contextuel"} en cours.
+              </p>
+            </div>
+          ) : step === 1 ? (
+            <div className="p-8 space-y-4">
+              <p className="text-sm text-gray-600 mb-2">
+                Quel type d'exercice veux-tu créer ?
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button
+                  type="button"
+                  onClick={() => handleTypeSelect("simple")}
+                  className="p-6 rounded-2xl border-2 border-[rgba(197,161,72,0.25)] bg-white hover:border-[var(--greek-gold)] hover:shadow-lg transition-all text-left group"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--greek-blue)]/10 flex items-center justify-center mb-4 group-hover:bg-[var(--greek-blue)] transition-colors">
+                    <Calculator
+                      className="w-7 h-7 text-[var(--greek-blue)] group-hover:text-[var(--greek-gold)] transition-colors"
+                    />
+                  </div>
+                  <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] text-lg mb-1">
+                    Exercice simple
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Calculs directs, questions courtes
+                  </p>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleTypeSelect("contextual")}
+                  className="p-6 rounded-2xl border-2 border-[rgba(197,161,72,0.25)] bg-white hover:border-[var(--greek-gold)] hover:shadow-lg transition-all text-left group"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--greek-blue)]/10 flex items-center justify-center mb-4 group-hover:bg-[var(--greek-blue)] transition-colors">
+                    <FileText
+                      className="w-7 h-7 text-[var(--greek-blue)] group-hover:text-[var(--greek-gold)] transition-colors"
+                    />
+                  </div>
+                  <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] text-lg mb-1">
+                    Exercice contextuel
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Introduction, mise en situation, problème long
+                  </p>
+                </button>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="p-8 space-y-5">
+              {/* Linked course */}
+              <div>
+                <label className="text-sm font-semibold text-[var(--greek-blue)] mb-1.5 flex items-center gap-2">
+                  <LinkIcon size={14} />
+                  Lier à un cours publié
+                </label>
+                <select
+                  value={params.linkedCourseId || ""}
+                  onChange={(e) => handleCourseChange(e.target.value)}
+                  className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white"
+                >
+                  <option value="">Aucun cours lié</option>
+                  {courses.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Subject */}
+              <div>
+                <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                  Sujet / thème
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={params.subject}
+                  onChange={(e) =>
+                    setParams({ ...params, subject: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white"
+                  placeholder="Ex: Les équations du premier degré"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                    Domaine
+                  </label>
+                  <select
+                    value={params.subjectArea}
+                    onChange={(e) =>
+                      setParams({ ...params, subjectArea: e.target.value })
+                    }
+                    className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                  >
+                    {SUBJECT_AREAS.map((a) => (
+                      <option key={a} value={a}>
+                        {a}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                    Niveau scolaire
+                  </label>
+                  <select
+                    value={params.level}
+                    onChange={(e) =>
+                      setParams({ ...params, level: e.target.value })
+                    }
+                    className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                  >
+                    {SCHOOL_LEVELS.map((l) => (
+                      <option key={l.value} value={l.value}>
+                        {l.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                  Difficulté
+                </label>
+                <div className="flex gap-2">
+                  {[
+                    { v: "easy", l: "Facile" },
+                    { v: "medium", l: "Moyen" },
+                    { v: "hard", l: "Difficile" },
+                  ].map((d) => (
+                    <button
+                      key={d.v}
+                      type="button"
+                      onClick={() =>
+                        setParams({
+                          ...params,
+                          difficulty: d.v as "easy" | "medium" | "hard",
+                        })
+                      }
+                      style={{
+                        background:
+                          params.difficulty === d.v
+                            ? "var(--greek-blue)"
+                            : "#fff",
+                        color:
+                          params.difficulty === d.v
+                            ? "#fff"
+                            : "var(--greek-blue)",
+                        borderColor:
+                          params.difficulty === d.v
+                            ? "var(--greek-blue)"
+                            : "rgba(197,161,72,0.25)",
+                      }}
+                      className="flex-1 py-2.5 text-sm font-bold rounded-xl border-2 transition-all"
+                    >
+                      {d.l}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                  Nombre de questions : {params.questionCount}
+                </label>
+                <input
+                  type="range"
+                  min={3}
+                  max={10}
+                  value={params.questionCount}
+                  onChange={(e) =>
+                    setParams({
+                      ...params,
+                      questionCount: parseInt(e.target.value),
+                    })
+                  }
+                  className="w-full accent-[var(--greek-blue)]"
+                />
+                <div className="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>3</span>
+                  <span>10</span>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                  Instructions supplémentaires (optionnel)
+                </label>
+                <textarea
+                  rows={3}
+                  value={params.instructions}
+                  onChange={(e) =>
+                    setParams({ ...params, instructions: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white resize-none"
+                  placeholder="Ex: Inclure des fractions, axé sur la résolution graphique..."
+                />
+              </div>
+
+              {fieldError && (
+                <div className="px-4 py-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
+                  {fieldError}
+                </div>
+              )}
+
+              <div className="flex justify-between gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="px-5 py-2.5 text-[var(--greek-blue)] font-bold rounded-xl border border-[rgba(197,161,72,0.25)] hover:bg-gray-50 transition-colors flex items-center gap-2"
+                >
+                  <ArrowLeft size={16} />
+                  Retour
+                </button>
+                <button
+                  type="submit"
+                  className="px-8 py-2.5 bg-[var(--greek-gold)] text-white font-bold rounded-xl hover:bg-yellow-600 transition-colors flex items-center gap-2 shadow-lg shadow-yellow-900/10"
+                >
+                  <Sparkles size={16} />
+                  Générer
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

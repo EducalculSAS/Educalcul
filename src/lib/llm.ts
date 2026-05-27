@@ -23,19 +23,26 @@ async function callOpenRouterModel(
 ): Promise<{ ok: boolean; text: string; status: number }> {
   const body: any = { model, messages: msgs, temperature: temp };
   if (maxTokens) body.max_tokens = maxTokens;
-  // Reasoning seulement pour la génération de contenu, jamais pour le chat
-  if (reasoning) body.reasoning = { enabled: true };
 
-  const resp = await fetch(OR_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type":  "application/json",
-      "Authorization": `Bearer ${OR_KEY}`,
-      "HTTP-Referer":  "https://educalcul.fr",
-      "X-Title":       "Educalcul",
-    },
-    body: JSON.stringify(body),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 240_000); // 4 min max
+
+  let resp: Response;
+  try {
+    resp = await fetch(OR_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type":  "application/json",
+        "Authorization": `Bearer ${OR_KEY}`,
+        "HTTP-Referer":  "https://educalcul.fr",
+        "X-Title":       "Educalcul",
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 
   const text = await resp.text();
   return { ok: resp.ok, text, status: resp.status };
@@ -134,7 +141,7 @@ RÈGLES pour le feedback :
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
 
-/** Générer un cours/exercice/quiz structuré → JSON parsé (reasoning activé) */
+/** Générer un cours/exercice/quiz structuré → JSON parsé */
 export async function generateStructuredContent(
   prompt: string, systemPrompt: string, temperature = 0.7
 ): Promise<unknown> {
@@ -142,7 +149,7 @@ export async function generateStructuredContent(
     [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
     temperature,
     8000,
-    true  // ← reasoning activé : meilleure qualité pédagogique, structure logique
+    false  // reasoning désactivé : DeepSeek ne le supporte pas via OpenRouter
   );
   return parseJSON(extractJSON(text));
 }

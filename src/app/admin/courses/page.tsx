@@ -6,11 +6,11 @@ import {
   BookOpen, Search, Plus, Edit, Trash2, XCircle, Loader2,
   Image as ImageIcon, Sparkles, Eye, Folder as FolderIcon,
   FolderPlus, ChevronRight, Home, Download, Upload,
+  CheckCircle, AlertTriangle,
 } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
-import CourseViewer from "@/components/viewers/CourseViewer";
-import AIGeneratorModal from "@/components/admin/AIGeneratorModal";
+import AIGeneratorModal, { AIGenerateParams } from "@/components/admin/AIGeneratorModal";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 
 interface Course {
@@ -119,6 +119,16 @@ export default function AdminCoursesPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isRendering, setIsRendering] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  // Notification Modal State (replaces alert())
+  const [notification, setNotification] = useState<
+    | {
+        variant: "success" | "error";
+        title: string;
+        subtitle: string;
+      }
+    | null
+  >(null);
 
   useEffect(() => {
     fetchContents();
@@ -307,7 +317,7 @@ export default function AdminCoursesPage() {
     }
   };
 
-  const handleAiGenerate = async (params: any) => {
+  const handleAiGenerate = async (params: AIGenerateParams) => {
     setIsGenerating(true);
 
     try {
@@ -317,10 +327,16 @@ export default function AdminCoursesPage() {
         body: JSON.stringify({
           grade_level: params.level || "6eme",
           subject: params.topic,
-          type: "cours_complet", // AI determines this is a course
+          type: "cours_complet",
           page_count: params.count?.toString() || "2",
           difficulty: params.difficulty || "medium",
           additional_info: params.instructions || "",
+          lessons_per_chapter: params.lessonsPerChapter,
+          content_style: params.contentStyle,
+          include_exercises: params.includeExercises,
+          language_level: params.languageLevel,
+          subject_area: params.subjectArea,
+          duration_per_lesson: params.durationPerLesson,
         }),
       });
 
@@ -332,7 +348,7 @@ export default function AdminCoursesPage() {
 
       const aiCourse = data.course || data;
 
-      // Add IDs to chapters and lessons if missing
+      // Add IDs to chapters / lessons / exercises if missing
       const processedContent = (aiCourse.chapters || []).map(
         (chapter: any) => ({
           id: crypto.randomUUID(),
@@ -342,7 +358,17 @@ export default function AdminCoursesPage() {
             title: lesson.title,
             type: lesson.type || "text",
             content: lesson.content || "",
-            duration: lesson.duration || 10,
+            duration: lesson.duration || params.durationPerLesson || 30,
+            exercises: Array.isArray(lesson.exercises)
+              ? lesson.exercises.map((ex: any, idx: number) => ({
+                  id: ex.id || `ex-${idx + 1}`,
+                  question: ex.question || "",
+                  type: "short_answer" as const,
+                  answer: ex.answer || "",
+                  hint: ex.hint || undefined,
+                  explanation: ex.explanation || undefined,
+                }))
+              : [],
           })),
         })
       );
@@ -354,22 +380,28 @@ export default function AdminCoursesPage() {
         level: params.level || "6eme",
         status: "draft",
         thumbnail_url: "",
-        folder_id: currentFolderId, // Auto-assign to current folder
+        folder_id: currentFolderId,
         content_json: processedContent,
       });
 
       console.log("AI Content Generated:", aiCourse);
-      alert(
-        "Cours généré avec succès ! Vous pouvez maintenant compléter les détails."
-      );
 
       setIsAiModalOpen(false);
-      setModalMode("create");
-      setIsModalOpen(true);
+      setNotification({
+        variant: "success",
+        title: "Cours généré !",
+        subtitle:
+          "Le contenu a été importé dans le formulaire. Complétez les détails et publiez.",
+      });
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Erreur IA inconnue";
-      alert("Erreur IA: " + errorMessage);
+      setIsAiModalOpen(false);
+      setNotification({
+        variant: "error",
+        title: "Erreur de génération",
+        subtitle: errorMessage,
+      });
     } finally {
       setIsGenerating(false);
     }
@@ -1236,6 +1268,90 @@ export default function AdminCoursesPage() {
           onClose={() => setIsAiModalOpen(false)}
         />
       )}
+
+      {/* Notification Modal — replaces alert() */}
+      {notification && (
+        <NotificationModal
+          variant={notification.variant}
+          title={notification.title}
+          subtitle={notification.subtitle}
+          onAction={() => {
+            const wasSuccess = notification.variant === "success";
+            setNotification(null);
+            if (wasSuccess) {
+              setModalMode("create");
+              setIsModalOpen(true);
+            } else {
+              setIsAiModalOpen(true);
+            }
+          }}
+          onClose={() => setNotification(null)}
+        />
+      )}
+    </div>
+  );
+}
+
+// ─── Notification Modal — styled replacement for alert() ───────────────────────
+interface NotificationModalProps {
+  variant: "success" | "error";
+  title: string;
+  subtitle: string;
+  onAction: () => void;
+  onClose: () => void;
+}
+
+function NotificationModal({
+  variant,
+  title,
+  subtitle,
+  onAction,
+  onClose,
+}: NotificationModalProps) {
+  const isSuccess = variant === "success";
+  const Icon = isSuccess ? CheckCircle : AlertTriangle;
+  const accent = isSuccess ? "#10b981" : "#ef4444";
+  const ctaLabel = isSuccess ? "Continuer" : "Réessayer";
+
+  return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md overflow-hidden animate-fade-bounce">
+        <div className="px-8 pt-8 pb-4 flex flex-col items-center text-center">
+          <div
+            className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+            style={{ background: `${accent}15` }}
+          >
+            <Icon size={36} style={{ color: accent }} strokeWidth={2.25} />
+          </div>
+          <h3
+            className="text-2xl font-bold mb-2 font-[family-name:var(--font-display)]"
+            style={{ color: "var(--greek-blue)" }}
+          >
+            {title}
+          </h3>
+          <p className="text-gray-600 text-sm leading-relaxed">{subtitle}</p>
+        </div>
+        <div className="px-8 pb-8 pt-2 flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={onAction}
+            className="w-full py-3 rounded-xl font-bold text-white transition-all shadow-md hover:-translate-y-0.5"
+            style={{
+              background:
+                "linear-gradient(to right, var(--greek-gold), #b08438)",
+            }}
+          >
+            {ctaLabel}
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-full py-2.5 rounded-xl font-medium text-gray-500 hover:bg-gray-100 transition-colors text-sm"
+          >
+            Fermer
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

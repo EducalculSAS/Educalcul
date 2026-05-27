@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
-import AIGeneratorModal from "@/components/admin/AIGeneratorModal";
+import QuizGeneratorModal, { QuizGenParams } from "@/components/admin/QuizGeneratorModal";
 import QuizBuilder, { Question } from "@/components/admin/QuizBuilder";
 import {
   Plus,
@@ -161,6 +161,7 @@ export default function AdminQuizzesPage() {
 
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchInitialData();
@@ -408,7 +409,8 @@ export default function AdminQuizzesPage() {
     }
   };
 
-  const handleAiGenerate = async (params: any) => {
+  const handleAiGenerate = async (params: QuizGenParams) => {
+    setAiError(null);
     try {
       const response = await fetch("/api/admin/generate-quiz", {
         method: "POST",
@@ -422,17 +424,17 @@ export default function AdminQuizzesPage() {
         throw new Error(data.message || data.error || "Generation failed");
       }
 
-      // Handle new response structure
-      const content = data.data.content || data.data; // Fallback
+      const content = data.data.content || data.data;
       const metadata = data.data.metadata;
 
       setFormData({
-        title: metadata?.title || `Quiz : ${params.topic}`,
+        title: metadata?.title || `Quiz : ${params.subject}`,
         description: metadata?.description || "",
-        course_id: "",
+        course_id: params.linkedCourseId || "",
         folder_id: currentFolderId || "",
         time_limit_minutes: metadata?.time_limit || 10,
-        difficulty_level: params.difficulty || metadata?.difficulty_level || "medium",
+        difficulty_level:
+          params.difficulty || metadata?.difficulty_level || "medium",
         type: metadata?.type || "standard",
         level: params.level || metadata?.level || "6eme",
         grading_type: metadata?.grading_type || "auto",
@@ -443,12 +445,12 @@ export default function AdminQuizzesPage() {
       });
 
       setIsAiModalOpen(false);
-      setEditingQuiz(null); // Ensure we are in create mode
+      setEditingQuiz(null);
       setIsModalOpen(true);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Erreur IA inconnue";
-      alert("Erreur IA: " + errorMessage);
+      setAiError(errorMessage);
     }
   };
 
@@ -1089,10 +1091,27 @@ export default function AdminQuizzesPage() {
         </div>
       )}
 
+      {/* Inline AI error */}
+      {aiError && (
+        <div className="px-4 py-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-start gap-2">
+          <XCircle size={18} className="flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="font-semibold">Erreur IA</p>
+            <p className="opacity-90">{aiError}</p>
+          </div>
+          <button
+            onClick={() => setAiError(null)}
+            className="text-red-700 hover:text-red-900"
+            aria-label="Fermer"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       {/* Modal AI Generator */}
       {isAiModalOpen && (
-        <AIGeneratorModal
-          type="quiz"
+        <QuizGeneratorModal
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
         />

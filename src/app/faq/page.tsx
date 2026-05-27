@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ChevronDown, ArrowRight, GraduationCap } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 const SYM = [
@@ -168,10 +168,35 @@ export default function FAQ() {
               ))}
             </div>
 
+            {/* Badge programme EN */}
+            <Link
+              href="/programmes"
+              className="flex flex-col sm:flex-row items-center justify-between gap-5 p-6 rounded-2xl mt-10 mb-4 transition-all hover:-translate-y-0.5 hover:shadow-md"
+              style={{ background: "#fff", border: "1px solid var(--greek-border)" }}
+            >
+              <div className="flex items-center gap-5 flex-wrap justify-center sm:justify-start">
+                <img src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" className="h-10 w-auto object-contain" />
+                <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
+                <img src="/eduscol.svg" alt="Eduscol" className="h-7 w-auto object-contain" />
+              </div>
+              <div className="text-center sm:text-left flex-1 px-2">
+                <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>
+                  Contenus alignés sur le programme officiel
+                </p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                  Du CP à la Terminale — toutes filières lycée incluses
+                </p>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs font-bold flex-shrink-0" style={{ color: "var(--greek-gold)" }}>
+                <GraduationCap size={14} />
+                Voir les programmes →
+              </div>
+            </Link>
+
             {/* CTA */}
             <div
               ref={ctaRef}
-              className="mt-8 text-center p-10 rounded-2xl text-white"
+              className="mt-4 text-center p-10 rounded-2xl text-white"
               style={{
                 background: "var(--greek-blue)",
                 opacity: ctaVisible ? 1 : 0,

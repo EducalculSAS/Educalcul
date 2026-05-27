@@ -13,12 +13,22 @@ import {
   Image as ImageIcon
 } from "lucide-react";
 
+export interface Exercise {
+  id: string;
+  question: string;
+  type: "short_answer";
+  answer: string;
+  hint?: string;
+  explanation?: string;
+}
+
 export interface Lesson {
   id: string;
   title: string;
   type: "text" | "video" | "pdf" | "quiz";
   content: string; // HTML/Markdown or URL
   duration?: number; // minutes
+  exercises?: Exercise[];
 }
 
 export interface Chapter {

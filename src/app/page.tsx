@@ -57,9 +57,11 @@ export default function Home() {
   const [epsiHover, setEpsiHover]     = useState(false);
   const [dashVisible, setDashVisible] = useState(false);
   const [bentoVisible, setBentoVisible] = useState(false);
+  const [photosVisible, setPhotosVisible] = useState(false);
   const [scrolled, setScrolled]       = useState(false);
   const dashRef  = useRef<HTMLDivElement>(null);
   const bentoRef = useRef<HTMLDivElement>(null);
+  const photosRef = useRef<HTMLDivElement>(null);
 
   /* Count-up uniquement sur les pourcentages */
   const pct0 = useCountUp(87, 1300, dashVisible);
@@ -92,6 +94,17 @@ export default function Home() {
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setBentoVisible(true); obs.disconnect(); } },
       { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const el = photosRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setPhotosVisible(true); obs.disconnect(); } },
+      { threshold: 0.1 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -368,6 +381,155 @@ export default function Home() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          §3b — PHOTOS ENFANTS
+      ════════════════════════════════════════════════════════ */}
+      <section className="py-20 px-6 overflow-hidden" style={{ background: "var(--greek-cream)" }} ref={photosRef}>
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12 max-w-lg">
+            <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>
+              Des élèves qui comprennent,<br />
+              <span style={{ color: "var(--greek-gold)" }}>enfin.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+            {/* Photo 1 — grande */}
+            <div
+              className="group md:col-span-2 relative rounded-3xl overflow-hidden"
+              style={{
+                height: 420,
+                opacity: photosVisible ? 1 : 0,
+                transform: photosVisible ? "translateY(0) scale(1)" : "translateY(32px) scale(0.97)",
+                transition: "opacity 700ms ease, transform 700ms ease",
+                transitionDelay: "0ms",
+              }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=900&q=80&fit=crop"
+                alt="Élève qui travaille et sourit"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.65) 0%, transparent 50%)" }} />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-white font-[family-name:var(--font-display)] font-bold text-lg leading-snug mb-1">
+                  "Enfin, maman comprend mes devoirs !"
+                </p>
+                <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>Théo · CE2 · Suivi avec son parent</p>
+              </div>
+            </div>
+
+            {/* Colonne droite */}
+            <div className="flex flex-col gap-4">
+              {/* Photo 2 */}
+              <div
+                className="group relative rounded-3xl overflow-hidden"
+                style={{
+                  height: 200,
+                  opacity: photosVisible ? 1 : 0,
+                  transform: photosVisible ? "translateY(0)" : "translateY(32px)",
+                  transition: "opacity 700ms ease, transform 700ms ease",
+                  transitionDelay: "120ms",
+                }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80&fit=crop"
+                  alt="Enfants qui apprennent ensemble"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.5) 0%, transparent 60%)" }} />
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-white text-sm font-semibold">Apprendre avec plaisir 😊</p>
+                </div>
+              </div>
+
+              {/* Photo 3 */}
+              <div
+                className="group relative rounded-3xl overflow-hidden"
+                style={{
+                  height: 200,
+                  opacity: photosVisible ? 1 : 0,
+                  transform: photosVisible ? "translateY(0)" : "translateY(32px)",
+                  transition: "opacity 700ms ease, transform 700ms ease",
+                  transitionDelay: "240ms",
+                }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80&fit=crop"
+                  alt="Enfant qui réussit ses exercices"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.5) 0%, transparent 60%)" }} />
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-white text-sm font-semibold">Les maths au tableau 🔢</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Badge programme EN sous les photos */}
+          <div
+            className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl"
+            style={{
+              background: "#fff",
+              border: "1px solid var(--greek-border)",
+              opacity: photosVisible ? 1 : 0,
+              transform: photosVisible ? "translateY(0)" : "translateY(16px)",
+              transition: "opacity 700ms ease, transform 700ms ease",
+              transitionDelay: "360ms",
+            }}
+          >
+            <div className="flex items-center gap-6 flex-wrap justify-center sm:justify-start">
+              <img src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" className="h-10 w-auto object-contain" />
+              <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
+              <img src="/eduscol.svg" alt="Eduscol" className="h-7 w-auto object-contain" />
+            </div>
+            <div className="text-center sm:text-right">
+              <p className="text-sm font-bold" style={{ color: "var(--greek-blue)" }}>
+                100% aligné sur le programme officiel
+              </p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                Du CP à la Terminale, toutes filières
+              </p>
+            </div>
+            <Link
+              href="/programmes"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5"
+              style={{ background: "var(--greek-blue)", color: "#fff" }}
+            >
+              Voir les programmes <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          §3c — TRUSTPILOT BANNER
+      ════════════════════════════════════════════════════════ */}
+      <section className="py-12 px-6" style={{ background: "var(--greek-cream)", borderTop: "1px solid var(--greek-border)" }}>
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-sm font-bold mb-1" style={{ color: "var(--greek-blue)" }}>Ils nous font confiance</p>
+            <p className="text-xs" style={{ color: "var(--text-muted)" }}>Avis vérifiés · Trustpilot</p>
+          </div>
+          <div
+            className="trustpilot-widget flex-1"
+            data-locale="fr-FR"
+            data-template-id="56278e9abfbbba0bdcd568bc"
+            data-businessunit-id="683561cbf1dfb483f8e9a20c"
+            data-style-height="52px"
+            data-style-width="100%"
+            data-theme="light"
+            data-stars="4,5"
+            suppressHydrationWarning
+          >
+            <a href="https://fr.trustpilot.com/review/educalcul.fr" target="_blank" rel="noopener">
+              Voir nos avis sur Trustpilot
+            </a>
+          </div>
         </div>
       </section>
 

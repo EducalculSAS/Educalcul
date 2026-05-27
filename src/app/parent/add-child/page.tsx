@@ -12,22 +12,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { AVATARS } from "@/lib/constants";
-
-const GRADE_LEVELS = [
-  "CP",
-  "CE1",
-  "CE2",
-  "CM1",
-  "CM2",
-  "6ème",
-  "5ème",
-  "4ème",
-  "3ème",
-  "2nde",
-  "1ère",
-  "Terminale",
-];
+import { AVATARS, SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 
 export default function AddChildPage() {
   const router = useRouter();
@@ -42,7 +27,7 @@ export default function AddChildPage() {
     username: "",
     password: "",
     passwordConfirm: "",
-    gradeLevel: "CP",
+    gradeLevel: "cp",
     avatar: "avatar1.png",
   });
 
@@ -166,7 +151,7 @@ export default function AddChildPage() {
         username: "",
         password: "",
         passwordConfirm: "",
-        gradeLevel: "CP",
+        gradeLevel: "cp",
         avatar: "avatar1.png",
       });
 
@@ -308,7 +293,7 @@ export default function AddChildPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Niveau scolaire
+                Niveau scolaire & voie
               </label>
               <select
                 value={formData.gradeLevel}
@@ -317,12 +302,26 @@ export default function AddChildPage() {
                 }
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               >
-                {GRADE_LEVELS.map((level) => (
-                  <option key={level} value={level}>
-                    {level}
-                  </option>
+                {SCHOOL_LEVEL_GROUPS.map((group) => (
+                  <optgroup key={group.label} label={group.label}>
+                    {group.levels.map((val) => {
+                      const found = SCHOOL_LEVELS.find((l) => l.value === val);
+                      return found ? (
+                        <option key={found.value} value={found.value}>
+                          {found.label}
+                        </option>
+                      ) : null;
+                    })}
+                  </optgroup>
                 ))}
               </select>
+              {["2nde", "1ere-generale", "1ere-generale-maths", "1ere-sti2d", "1ere-stmg", "1ere-st2s", "1ere-stl", "1ere-std2a", "1ere-sthr",
+                "terminale-generale", "terminale-generale-maths", "terminale-generale-expertes", "terminale-generale-complementaires",
+                "terminale-sti2d", "terminale-stmg", "terminale-st2s", "terminale-stl"].includes(formData.gradeLevel) && (
+                <p className="text-xs text-[var(--greek-bronze)] mt-1.5 flex items-center gap-1">
+                  <span>🎓</span> La filière sélectionnée sera utilisée pour adapter les contenus au programme officiel.
+                </p>
+              )}
             </div>
 
             <div>

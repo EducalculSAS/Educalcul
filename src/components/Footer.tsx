@@ -8,6 +8,7 @@ const NAV_COLS = [
     links: [
       { label: "Nos Offres", href: "/offres" },
       { label: "Tarifs", href: "/tarifs" },
+      { label: "Programmes", href: "/programmes" },
       { label: "FAQ", href: "/faq" },
     ],
   },

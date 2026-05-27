@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import AIGeneratorModal from "@/components/admin/AIGeneratorModal";
+import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import {
   Plus,
@@ -185,6 +185,7 @@ export default function AdminExercisesPage() {
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchInitialData();
@@ -459,8 +460,9 @@ export default function AdminExercisesPage() {
     window.open("/child/exercises/preview", "_blank");
   };
 
-  const handleAiGenerate = async (params: any) => {
+  const handleAiGenerate = async (params: ExerciseGenParams) => {
     setIsGenerating(true);
+    setAiError(null);
 
     try {
       const response = await fetch("/api/admin/generate-exercise", {
@@ -475,16 +477,18 @@ export default function AdminExercisesPage() {
         throw new Error(data.message || data.error || "Generation failed");
       }
 
-      // Handle new response structure
-      const content = data.data.content || data.data; // Fallback
+      const content = data.data.pages || data.data.content || data.data;
       const metadata = data.data.metadata;
 
       setFormData({
-        title: metadata?.title || `Exercice : ${params.topic}`,
+        title: metadata?.title || `Exercice : ${params.subject}`,
         description: metadata?.description || "",
-        course_id: "",
+        course_id: params.linkedCourseId || "",
         folder_id: currentFolderId || "",
-        difficulty_level: (params.difficulty as "easy" | "medium" | "hard") || metadata?.difficulty_level || "medium",
+        difficulty_level:
+          (params.difficulty as "easy" | "medium" | "hard") ||
+          metadata?.difficulty_level ||
+          "medium",
         type: metadata?.type || "standard",
         level: params.level || metadata?.level || "6eme",
         grading_type: metadata?.grading_type || "ai",
@@ -496,12 +500,12 @@ export default function AdminExercisesPage() {
       });
 
       setIsAiModalOpen(false);
-      setEditingExercise(null); // Ensure we are in create mode
+      setEditingExercise(null);
       setIsModalOpen(true);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Erreur IA inconnue";
-      alert("Erreur IA: " + errorMessage);
+      setAiError(errorMessage);
     } finally {
       setIsGenerating(false);
     }
@@ -1116,10 +1120,27 @@ export default function AdminExercisesPage() {
         </div>
       )}
 
+      {/* Inline AI error */}
+      {aiError && (
+        <div className="px-4 py-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-start gap-2">
+          <XCircle size={18} className="flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="font-semibold">Erreur IA</p>
+            <p className="opacity-90">{aiError}</p>
+          </div>
+          <button
+            onClick={() => setAiError(null)}
+            className="text-red-700 hover:text-red-900"
+            aria-label="Fermer"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       {/* Modal AI Generator */}
       {isAiModalOpen && (
-        <AIGeneratorModal
-          type="exercise"
+        <ExerciseGeneratorModal
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
         />
