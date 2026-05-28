@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import AdminSidebar from "@/components/AdminSidebar";
+import { useGeoConsent } from "@/hooks/useGeoConsent";
 
 export default function AdminLayout({
   children,
@@ -12,6 +13,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  useGeoConsent();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] flex">
       <AdminSidebar />
-      <div className="flex-1 lg:ml-64 p-8 transition-all duration-300">
+      <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
         {children}
       </div>
     </div>

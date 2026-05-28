@@ -538,21 +538,21 @@ function SubscriptionPageContent() {
               <p className="text-sm text-gray-500 mb-4">Partagez ce code — vos filleuls ont {myReferralCode?.discount_value ?? 10}% de réduction, et vous gagnez 10% sur votre prochain renouvellement.</p>
               {myReferralCode ? (
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 bg-[var(--greek-cream)] rounded-xl px-4 py-4 border border-[rgba(197,161,72,0.25)]">
-                    <span className="flex-1 font-mono font-bold text-3xl tracking-[0.25em] text-[var(--greek-blue)]">
+                  <div className="flex items-center gap-2 bg-[var(--greek-cream)] rounded-xl px-3 py-3 sm:px-4 sm:py-4 border border-[rgba(197,161,72,0.25)]">
+                    <span className="flex-1 min-w-0 font-mono font-bold text-xl sm:text-2xl tracking-[0.15em] sm:tracking-[0.25em] text-[var(--greek-blue)] truncate">
                       {myReferralCode.code}
                     </span>
-                    <button onClick={copyCode} className="flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-lg bg-[var(--greek-blue)] text-white hover:opacity-90 transition shrink-0">
+                    <button onClick={copyCode} className="flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-2 rounded-lg bg-[var(--greek-blue)] text-white hover:opacity-90 transition shrink-0">
                       {copied ? <CheckCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                       {copied ? "Copié !" : "Copier"}
                     </button>
                   </div>
-                  <div className="flex items-center gap-3 text-sm">
+                  <div className="flex flex-wrap items-center gap-2 text-sm">
                     <span className="flex items-center gap-1.5 text-gray-500">
-                      <Users className="w-4 h-4" />
+                      <Users className="w-4 h-4 flex-shrink-0" />
                       <span className="font-bold text-gray-800">{myReferralCode.current_uses ?? 0}</span> filleul{(myReferralCode.current_uses ?? 0) !== 1 ? "s" : ""}
                     </span>
-                    <span className="bg-green-50 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full border border-green-200">
+                    <span className="bg-green-50 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full border border-green-200 whitespace-nowrap">
                       {myReferralCode.discount_value}% offerts à chaque filleul
                     </span>
                   </div>

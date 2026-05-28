@@ -34,7 +34,7 @@ async function callOpenRouterModel(
       headers: {
         "Content-Type":  "application/json",
         "Authorization": `Bearer ${OR_KEY}`,
-        "HTTP-Referer":  "https://educalcul.fr",
+        "HTTP-Referer":  "https://educalcul.com",
         "X-Title":       "Educalcul",
       },
       body: JSON.stringify(body),

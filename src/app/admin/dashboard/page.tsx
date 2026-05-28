@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
+import PageLoader from "@/components/PageLoader";
 import {
   Users, CreditCard, BookOpen, Calculator, Brain,
   MessageSquare, TicketCheck, AlertTriangle, TrendingUp,
@@ -39,11 +40,7 @@ export default function AdminDashboard() {
 
   useEffect(() => { load(); }, [load]);
 
-  if (loading) return (
-    <div className="flex justify-center items-center h-64">
-      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[var(--greek-blue)]" />
-    </div>
-  );
+  if (loading) return <PageLoader />;
   if (!data) return <div className="p-6 text-red-500">Erreur de chargement.</div>;
 
   const { counts, recent } = data;
@@ -75,7 +72,7 @@ export default function AdminDashboard() {
             className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
           >
             <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
-            Actualiser
+            <span className="hidden sm:inline">Actualiser</span>
           </button>
         </div>
       </div>

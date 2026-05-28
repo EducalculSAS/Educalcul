@@ -33,6 +33,18 @@ body {
   font-family: var(--font-body);
   background-color: var(--greek-cream);
   color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ── Décalage global navbar fixe 64px ───────────── */
+main,
+.page-main {
+  padding-top: var(--nav-h);
+}
+
+/* Pages qui gèrent elles-mêmes leur padding-top (admin, auth) */
+.no-nav-offset {
+  padding-top: 0;
 }
 
 @layer components {
@@ -75,6 +87,31 @@ body {
   .dashboard-card:hover {
     box-shadow: 0 8px 20px rgba(197, 161, 72, 0.3) !important;
   }
+}
+
+/* ── Admin : headers responsives — évite le débordement sur petits écrans ── */
+@media (max-width: 768px) {
+  .admin-page-header {
+    padding: 1.25rem !important;
+  }
+  .admin-page-header h1 {
+    font-size: 1.4rem !important;
+    flex-wrap: wrap;
+  }
+  .admin-page-header .header-actions {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* ── Leaflet containment — empêche le map de casser le layout mobile ── */
+.leaflet-container {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.leaflet-tile-pane,
+.leaflet-overlay-pane {
+  max-width: 100%;
 }
 
 @keyframes float-symbol {

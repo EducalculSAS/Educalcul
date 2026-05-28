@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect } from "react";
+import PageLoader from "@/components/PageLoader";
 import { Settings, Eye, EyeOff, Copy, Check, Save, Loader2, RefreshCw } from "lucide-react";
 
 export default function AdminSettingsPage() {
@@ -79,7 +80,7 @@ export default function AdminSettingsPage() {
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-[var(--greek-blue)]" /></div>
+        <PageLoader />
       ) : (
         Object.entries(groups).map(([groupKey, group]) => (
           <div key={groupKey} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">

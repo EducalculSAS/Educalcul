@@ -1,10 +1,10 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, LogIn, Users, TrendingUp, BookOpen, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 /* ─── Symboles math hero — plus nombreux et plus visibles ─── */
@@ -53,12 +53,155 @@ function useCountUp(target: number, duration = 1200, trigger = false) {
   return val;
 }
 
+/* ── Types ── */
+interface TpReview {
+  id: string;
+  title: string;
+  text: string;
+  rating: number;
+  is_verified: boolean;
+  name: string;
+  country: string;
+  total_reviews: number;
+}
+
+/* ── Trustpilot brand colors ── */
+const TP_GREEN = "#00b67a";
+const TP_GREY  = "#dcdce6";
+
+/* ── Trustpilot star (rect avec étoile découpée, style officiel) ── */
+function TpStar({ filled, size = 28 }: { filled: boolean; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="2" fill={filled ? TP_GREEN : TP_GREY} />
+      <path
+        d="M20 6l3.708 11.41H35.41l-9.527 6.924 3.708 11.41L20 28.82l-9.59 6.924 3.708-11.41L4.59 17.41H16.29L20 6z"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
+
+/* ── Logo Trustpilot (étoile verte + texte) ── */
+function TrustpilotLogo({ size = 22 }: { size?: number }) {
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="2" fill={TP_GREEN} />
+        <path d="M20 6l3.708 11.41H35.41l-9.527 6.924 3.708 11.41L20 28.82l-9.59 6.924 3.708-11.41L4.59 17.41H16.29L20 6z" fill="#fff" />
+      </svg>
+      <span style={{ fontFamily: "sans-serif", fontWeight: 700, fontSize: size * 0.9, color: "#191919", letterSpacing: "-0.02em" }}>Trustpilot</span>
+    </span>
+  );
+}
+
+/* ── Étoiles rating (5 carrés verts/gris) ── */
+function TpStars({ rating, size = 28 }: { rating: number; size?: number }) {
+  return (
+    <div className="flex gap-1">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <TpStar key={i} filled={i < Math.round(rating)} size={size} />
+      ))}
+    </div>
+  );
+}
+
+/* ── Section Trustpilot complète ── */
+function TestimonialsSection({ reviews }: { reviews: TpReview[] }) {
+  const avgRating = reviews.length
+    ? Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10
+    : null;
+
+  return (
+    <div>
+      {/* Bandeau header style Trustpilot */}
+      <div
+        className="rounded-2xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+        style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}
+      >
+        <div className="flex flex-col items-center sm:items-start gap-2">
+          <TrustpilotLogo size={26} />
+          {avgRating ? (
+            <>
+              <TpStars rating={avgRating} size={36} />
+              <p className="text-sm font-bold" style={{ color: "#191919" }}>
+                Note : <span style={{ color: TP_GREEN }}>{avgRating}</span>
+                <span className="font-normal text-gray-400"> / 5 · {reviews.length} avis</span>
+              </p>
+            </>
+          ) : (
+            <>
+              <TpStars rating={0} size={36} />
+              <p className="text-sm text-gray-400">Soyez le premier à laisser un avis !</p>
+            </>
+          )}
+        </div>
+        <a
+          href="https://fr.trustpilot.com/review/educalcul.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-bold px-5 py-2.5 rounded-full transition-all hover:opacity-90"
+          style={{ background: TP_GREEN, color: "#fff" }}
+        >
+          Laisser un avis
+        </a>
+      </div>
+
+      {/* Grille des avis */}
+      {reviews.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {reviews.slice(0, 8).map((r, i) => (
+            <div
+              key={r.id}
+              className={`rounded-xl p-5 flex flex-col gap-3${i >= 4 ? " hidden lg:flex" : ""}`}
+              style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}
+            >
+              <TpStars rating={r.rating} size={22} />
+              {r.title && (
+                <p className="text-sm font-bold leading-snug" style={{ color: "#191919" }}>{r.title}</p>
+              )}
+              <p className="text-sm leading-relaxed flex-1" style={{ color: "#555" }}>
+                {r.text.length > 150 ? r.text.slice(0, 147) + "…" : r.text}
+              </p>
+              <div className="flex items-center gap-2 pt-2 border-t border-gray-100">
+                <div
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+                  style={{ background: TP_GREEN }}
+                >
+                  {r.name[0].toUpperCase()}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold truncate" style={{ color: "#191919" }}>{r.name}</p>
+                  <p className="text-[10px]" style={{ color: "#999" }}>{r.total_reviews} avis</p>
+                </div>
+                {r.is_verified && (
+                  <span className="ml-auto text-[10px] font-semibold flex-shrink-0" style={{ color: TP_GREEN }}>✓ Vérifié</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   const [epsiHover, setEpsiHover]     = useState(false);
   const [dashVisible, setDashVisible] = useState(false);
   const [bentoVisible, setBentoVisible] = useState(false);
   const [photosVisible, setPhotosVisible] = useState(false);
   const [scrolled, setScrolled]       = useState(false);
+  const [tpReviews, setTpReviews]     = useState<TpReview[]>([]);
+  const [stepsVisible, setStepsVisible] = useState(false);
+  const stepsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetch("/api/trustpilot-reviews")
+      .then(r => r.json())
+      .then(d => { if (Array.isArray(d.reviews) && d.reviews.length > 0) setTpReviews(d.reviews); })
+      .catch(() => {});
+  }, []);
   const dashRef  = useRef<HTMLDivElement>(null);
   const bentoRef = useRef<HTMLDivElement>(null);
   const photosRef = useRef<HTMLDivElement>(null);
@@ -110,6 +253,17 @@ export default function Home() {
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    const el = stepsRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStepsVisible(true); obs.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "#0f1e3a" }}>
       <Navbar />
@@ -135,7 +289,7 @@ export default function Home() {
       ════════════════════════════════════════════════════════ */}
       <section
         className="relative flex flex-col items-center justify-center overflow-hidden"
-        style={{ minHeight: "100dvh", background: "#0f1e3a" }}
+        style={{ minHeight: "100dvh", background: "#0f1e3a", paddingTop: "var(--nav-h)" }}
       >
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {SYM.map((cfg, i) => (
@@ -155,7 +309,7 @@ export default function Home() {
         }} />
 
         <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-3xl">
-          <img src="/logo.png" alt="Educalcul" className="mb-10 w-auto" style={{ height: 110 }} />
+          <Image src="/logo.png" alt="Educalcul" width={192} height={110} className="mb-10 w-auto" style={{ height: 110 }} priority />
 
           <h1
             className="font-[family-name:var(--font-display)] font-bold leading-[1.02] tracking-tight mb-6"
@@ -252,7 +406,7 @@ export default function Home() {
                     onMouseEnter={() => setEpsiHover(true)}
                     onMouseLeave={() => setEpsiHover(false)}
                   >
-                    <img src="/logoAI.png" alt="EpsiAI" className="w-10 h-10 object-contain" />
+                    <Image src="/logoAI.png" alt="EpsiAI" width={40} height={40} className="w-10 h-10 object-contain" />
                   </div>
                   <div
                     className="absolute pointer-events-none"
@@ -360,7 +514,7 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-between rounded-xl py-2.5 px-1" style={{ background: "rgba(255,255,255,0.04)", height: 64 }}>
                   <div className="h-8 flex items-end justify-center">
                     <div className="relative w-10 h-10" style={{ marginBottom: -4 }}>
-                      <img src="/Streaks.gif" alt="streak" className="absolute inset-0 w-full h-full object-contain" />
+                      <Image src="/Streaks.gif" alt="streak" fill className="object-contain" unoptimized />
                       <span
                         className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-display)] font-bold z-10"
                         style={{ color: "#fff", fontSize: 11, textShadow: "0 1px 8px rgba(0,0,0,1), 0 0 16px rgba(0,0,0,0.8)", paddingTop: 10 }}
@@ -442,7 +596,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.5) 0%, transparent 60%)" }} />
                 <div className="absolute bottom-4 left-4">
-                  <p className="text-white text-sm font-semibold">Apprendre avec plaisir 😊</p>
+                  <p className="text-white text-sm font-semibold" style={{ fontFamily: "Cinzel, serif" }}>Apprendre avec plaisir</p>
                 </div>
               </div>
 
@@ -464,7 +618,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.5) 0%, transparent 60%)" }} />
                 <div className="absolute bottom-4 left-4">
-                  <p className="text-white text-sm font-semibold">Les maths au tableau 🔢</p>
+                  <p className="text-white text-sm font-semibold" style={{ fontFamily: "Cinzel, serif" }}>Les maths au tableau</p>
                 </div>
               </div>
             </div>
@@ -483,9 +637,9 @@ export default function Home() {
             }}
           >
             <div className="flex items-center gap-6 flex-wrap justify-center sm:justify-start">
-              <img src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" className="h-10 w-auto object-contain" />
+              <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={80} height={40} className="h-10 w-auto object-contain" unoptimized />
               <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
-              <img src="/eduscol.svg" alt="Eduscol" className="h-7 w-auto object-contain" />
+              <Image src="/eduscol.svg" alt="Eduscol" width={80} height={28} className="h-7 w-auto object-contain" unoptimized />
             </div>
             <div className="text-center sm:text-right">
               <p className="text-sm font-bold" style={{ color: "var(--greek-blue)" }}>
@@ -507,29 +661,17 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          §3c — TRUSTPILOT BANNER
+          §3c — TÉMOIGNAGES
       ════════════════════════════════════════════════════════ */}
-      <section className="py-12 px-6" style={{ background: "var(--greek-cream)", borderTop: "1px solid var(--greek-border)" }}>
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="text-sm font-bold mb-1" style={{ color: "var(--greek-blue)" }}>Ils nous font confiance</p>
-            <p className="text-xs" style={{ color: "var(--text-muted)" }}>Avis vérifiés · Trustpilot</p>
+      <section className="py-16 px-6" style={{ background: "var(--greek-cream)" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Avis clients</p>
+            <h2 className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
+              Ce que disent nos familles
+            </h2>
           </div>
-          <div
-            className="trustpilot-widget flex-1"
-            data-locale="fr-FR"
-            data-template-id="56278e9abfbbba0bdcd568bc"
-            data-businessunit-id="683561cbf1dfb483f8e9a20c"
-            data-style-height="52px"
-            data-style-width="100%"
-            data-theme="light"
-            data-stars="4,5"
-            suppressHydrationWarning
-          >
-            <a href="https://fr.trustpilot.com/review/educalcul.fr" target="_blank" rel="noopener">
-              Voir nos avis sur Trustpilot
-            </a>
-          </div>
+          <TestimonialsSection reviews={tpReviews} />
         </div>
       </section>
 
@@ -544,15 +686,56 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative">
-            <div className="hidden md:block absolute top-7 left-[14%] right-[14%] h-px" style={{ background: "linear-gradient(90deg, transparent, var(--greek-border) 20%, var(--greek-border) 80%, transparent)" }} />
+          <div ref={stepsRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 relative">
+
+            {/* ── Ligne horizontale animée — desktop uniquement ── */}
+            <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-px overflow-hidden">
+              <div
+                className="h-full origin-left"
+                style={{
+                  background: `linear-gradient(90deg, var(--greek-gold), var(--greek-border))`,
+                  transform: stepsVisible ? "scaleX(1)" : "scaleX(0)",
+                  transition: "transform 1.4s cubic-bezier(0.4,0,0.2,1)",
+                  transitionDelay: "0.5s",
+                }}
+              />
+            </div>
+
             {[
               { num: "01", title: "Créez votre compte",   desc: "Parent ou élève, inscription en 2 minutes." },
               { num: "02", title: "Choisissez un plan",   desc: "Offre adaptée à vos besoins." },
               { num: "03", title: "L'enfant apprend",     desc: "Cours, exercices, quiz et IA à portée de main." },
               { num: "04", title: "Suivez les résultats", desc: "Stats claires depuis votre espace parent." },
             ].map((s, i) => (
-              <div key={i} className="flex flex-col items-center text-center">
+              <div
+                key={i}
+                className="flex flex-col items-center text-center px-4 pb-10 md:pb-0 relative"
+                style={{
+                  opacity: stepsVisible ? 1 : 0,
+                  transform: stepsVisible ? "translateY(0)" : "translateY(24px)",
+                  transition: "opacity 0.5s ease, transform 0.5s ease",
+                  transitionDelay: `${0.1 + i * 0.2}s`,
+                }}
+              >
+                {/* Ligne verticale entre steps — mobile/sm uniquement */}
+                {i < 3 && (
+                  <div
+                    className="md:hidden absolute left-1/2 -translate-x-1/2 w-px overflow-hidden"
+                    style={{ top: 56, height: 40, background: "var(--greek-border)" }}
+                  >
+                    <div
+                      className="w-full origin-top"
+                      style={{
+                        background: "var(--greek-gold)",
+                        height: "100%",
+                        transform: stepsVisible ? "scaleY(1)" : "scaleY(0)",
+                        transition: "transform 0.4s ease",
+                        transitionDelay: `${0.3 + i * 0.2}s`,
+                      }}
+                    />
+                  </div>
+                )}
+
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center mb-5 relative z-10 font-[family-name:var(--font-display)] font-bold text-lg"
                   style={{

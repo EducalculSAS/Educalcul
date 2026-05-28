@@ -25,6 +25,7 @@ import {
   Eye, Download, Upload,
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
+import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 
@@ -154,10 +155,15 @@ export default function AdminExercisesPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
   const importExerciseRef = useRef<HTMLInputElement>(null);
+  const [showImportModal, setShowImportModal] = useState(false);
 
   const handleImportExercise = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    await processImportFile(file);
+  };
+
+  const processImportFile = async (file: File) => {
     try {
       const data = await importFromJSONFile(file);
       if (data._type && data._type !== "exercise") { alert("Ce fichier n'est pas un exercice."); return; }
@@ -178,7 +184,6 @@ export default function AdminExercisesPage() {
       });
       setIsModalOpen(true);
     } catch (err: any) { alert(err.message); }
-    e.target.value = "";
   };
 
   // AI Generation state
@@ -717,12 +722,11 @@ export default function AdminExercisesPage() {
               Générer avec IA
             </button>
             <button
-              onClick={() => importExerciseRef.current?.click()}
+              onClick={() => setShowImportModal(true)}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
             >
               <Upload size={18} /> Importer JSON
             </button>
-            <input ref={importExerciseRef} type="file" accept=".json" className="hidden" onChange={handleImportExercise} />
             <button
               onClick={() => { resetForm(); setIsModalOpen(true); }}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-lg shadow-blue-900/10"
@@ -1373,6 +1377,14 @@ export default function AdminExercisesPage() {
       )}
 
       {/* Preview Modal removed in favor of tab-based preview */}
+
+      {showImportModal && (
+        <ImportJsonModal
+          label="exercice"
+          onClose={() => setShowImportModal(false)}
+          onFileLoaded={processImportFile}
+        />
+      )}
     </div>
   );
 }

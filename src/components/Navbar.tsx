@@ -1,7 +1,7 @@
 ﻿"use client";
 
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
@@ -82,8 +82,21 @@ export default function Navbar() {
   }, []);
 
   const handleSignOut = async () => {
-    try { await supabase.auth.signOut(); } catch (e) { console.error(e); }
+    try {
+      // Effacer la position précise avant déconnexion
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        await fetch("/api/user/location", {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${session.access_token}` },
+        });
+      }
+      await supabase.auth.signOut();
+    } catch (e) { console.error(e); }
+    const cookieConsent = localStorage.getItem("cookie_consent");
     localStorage.clear();
+    if (cookieConsent) localStorage.setItem("cookie_consent", cookieConsent);
+    sessionStorage.removeItem("geo_sent");
     setUser(null);
     setUserRole(null);
     window.location.href = "/";
@@ -111,7 +124,7 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between h-full max-w-7xl">
         {/* Brand */}
         <Link href={getDashboardLink()} className="flex items-center gap-2 no-underline flex-shrink-0">
-          <img src="/logo.png" alt="logo" className="h-10 w-auto object-contain" />
+          <Image src="/logo.png" alt="Educalcul" width={70} height={40} className="h-10 w-auto object-contain" priority />
         </Link>
 
         {/* Cloche + burger */}
@@ -298,7 +311,7 @@ export default function Navbar() {
                 )}
                 <Link
                   href={getProfileLink()}
-                  className="text-[var(--greek-cream)] hover:text-[var(--greek-gold)] font-[family-name:var(--font-display)] py-2 px-4 rounded-md hover:bg-[rgba(197,161,72,0.1)] transition-colors flex items-center gap-2"
+                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                   onClick={() => setIsOpen(false)}
                 >
                   <Settings className="w-4 h-4" /> Profil
@@ -308,7 +321,7 @@ export default function Navbar() {
                     handleSignOut();
                     setIsOpen(false);
                   }}
-                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 text-left w-full flex items-center gap-2 hover:text-red-400 hover:bg-red-500/10" style={{color:"rgba(255,255,255,0.5)"}}
+                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 text-left w-full flex items-center gap-2 hover:translate-x-1 hover:text-red-400 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.5)"}}
                 >
                   <LogOut className="w-4 h-4" /> Déconnexion
                 </button>

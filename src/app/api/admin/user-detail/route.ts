@@ -13,7 +13,7 @@ export async function GET(req: Request) {
     const [
       { count: ea }, { count: qa }, { count: cp },
       { data: sub }, { data: children }, { data: notifs }, { data: bdg },
-      { data: posts }, { data: comments }, { data: reports },
+      { data: posts }, { data: comments }, { data: reports }, { data: loginHistory },
     ] = await Promise.all([
       supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", id),
       supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", id),
@@ -25,6 +25,7 @@ export async function GET(req: Request) {
       supabaseAdmin.from("forum_posts").select("id, title, content, created_at, is_locked, category:forum_categories(name)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
       supabaseAdmin.from("forum_comments").select("id, content, created_at, post:forum_posts(title)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
       supabaseAdmin.from("forum_reports").select("*, reporter:users!reporter_id(first_name, last_name), post:forum_posts(title), comment:forum_comments(content)").eq("reported_user_id", id).order("created_at", { ascending: false }),
+      supabaseAdmin.from("user_login_history").select("*").eq("user_id", id).order("logged_at", { ascending: false }).limit(200),
     ]);
 
     return NextResponse.json({
@@ -33,6 +34,7 @@ export async function GET(req: Request) {
       subscription: sub ?? null, children: children ?? [],
       notifications: notifs ?? [], badges: bdg ?? [],
       forum_posts: posts ?? [], forum_comments: comments ?? [], reports: reports ?? [],
+      login_history: loginHistory ?? [],
     });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });

@@ -1,11 +1,8 @@
-﻿"use client";
+"use client";
 
-import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-
-import { Maximize2, Minimize2, Mail, Clock, MapPin, User as UserIcon } from "lucide-react";
+import { Map, Marker } from "react-map-gl/maplibre";
+import { MapPin, Mail, Clock } from "lucide-react";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 interface UserMarker {
   id: string;
@@ -20,145 +17,94 @@ interface UserMarker {
   isOnline?: boolean;
 }
 
-// Function to create colored markers
-const getMarkerIcon = (role: string) => {
-  let color = "#3b82f6"; // Default blue
-  if (role === 'admin') color = "#ef4444"; // Red
-  if (role === 'parent') color = "#22c55e"; // Green
-
-  return L.divIcon({
-    html: `<div style="background-color: ${color}; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);"></div>`,
-    className: 'custom-div-icon',
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
-  });
+const ROLE_COLOR: Record<string, string> = {
+  admin:  "#ef4444",
+  parent: "#22c55e",
+  child:  "#3b82f6",
 };
 
-function MapController() {
-  const map = useMap();
-  useEffect(() => {
-    if (map) {
-      map.scrollWheelZoom.enable();
-      // Ensure the map can receive focus for keyboard/wheel events
-      const container = map.getContainer();
-      container.style.outline = "none";
-      container.tabIndex = 0;
-    }
-  }, [map]);
-  return null;
-}
+// Style Carto Voyager — beau, sans API key
+const MAP_STYLE = "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
 
 export default function UserMap({ users }: { users: UserMarker[] }) {
-  const toggleFullScreen = () => {
-    const mapElement = document.getElementById("user-map-container");
-    if (!mapElement) return;
-
-    if (!document.fullscreenElement) {
-      mapElement.requestFullscreen().catch((err) => {
-        console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  };
-
   return (
-    <div id="user-map-container" className="h-full w-full rounded-[20px] overflow-hidden border border-[rgba(197,161,72,0.25)] shadow-sm relative bg-white z-0">
-       <button 
-          onClick={toggleFullScreen}
-          className="absolute top-4 right-4 z-[1000] bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm border border-[rgba(197,161,72,0.25)] hover:bg-white transition-colors text-gray-600 hover:text-[var(--greek-blue)]"
-          title="Plein écran"
-       >
-          <Maximize2 size={18} />
-       </button>
-
-      <MapContainer
-        center={[20, 0]}
-        zoom={2}
-        style={{ height: "100%", width: "100%" }}
-        scrollWheelZoom={true}
-        doubleClickZoom={true}
+    <div
+      id="user-map-container"
+      className="h-full w-full rounded-[20px] overflow-hidden border border-[rgba(197,161,72,0.25)] shadow-sm relative"
+    >
+      <Map
+        initialViewState={{ longitude: 2, latitude: 46, zoom: 4 }}
+        style={{ width: "100%", height: "100%" }}
+        mapStyle={MAP_STYLE}
+        attributionControl={false}
       >
-        <MapController />
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {users.map((user) => (
-          <Marker 
-            key={user.id} 
-            position={[user.lat, user.lng]}
-            icon={getMarkerIcon(user.role)}
+        {users.map(user => (
+          <Marker
+            key={user.id}
+            longitude={user.lng}
+            latitude={user.lat}
+            anchor="center"
           >
-            <Popup>
-              <div className="text-sm p-1 min-w-[180px]">
-                <div className="flex items-center justify-between gap-4 mb-2 border-b border-[rgba(197,161,72,0.25)] pb-2">
-                  <p className="font-bold flex items-center gap-2 text-[var(--greek-blue)]">
-                    <span className={`w-2.5 h-2.5 rounded-full border border-white shadow-sm ${
-                      user.role === 'admin' ? 'bg-red-500' : 
-                      user.role === 'parent' ? 'bg-green-500' : 'bg-blue-500'
-                    }`}></span>
-                    {user.name}
-                  </p>
-                  <div className="flex items-center gap-1.5">
-                    {user.isOnline && (
-                      <span className="flex h-1.5 w-1.5 relative">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-                      </span>
-                    )}
-                    <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider ${
-                      user.isOnline ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
-                    }`}>
-                      {user.isOnline ? 'En ligne' : 'Hors ligne'}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="space-y-2 text-gray-600 text-[11px]">
-                  <div className="flex items-center gap-2">
-                    <Mail size={12} className="text-gray-400 group-hover:text-blue-500 transition-colors" />
-                    <span className="truncate max-w-[140px]" title={user.email}>{user.email}</span>
-                  </div>
-                  
-                  <div className="flex items-center gap-2">
-                    <MapPin size={12} className="text-gray-400" />
-                    <span>{user.city || "Localisation inconnue"}</span>
-                  </div>
+            <div title={`${user.name} — ${user.city || ""}`} className="group cursor-pointer relative">
+              {/* Point animé si online */}
+              <span className="relative flex h-3.5 w-3.5">
+                {user.isOnline && (
+                  <span
+                    className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
+                    style={{ background: ROLE_COLOR[user.role] }}
+                  />
+                )}
+                <span
+                  className="relative inline-flex rounded-full h-3.5 w-3.5 border-2 border-white shadow-md"
+                  style={{ background: ROLE_COLOR[user.role] }}
+                />
+              </span>
 
-                  {user.lastActive && (
-                    <div className="flex items-center gap-2">
-                      <Clock size={12} className="text-gray-400" />
-                      <span>Activité: {new Date(user.lastActive).toLocaleDateString("fr-FR", { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}</span>
-                    </div>
-                  )}
+              {/* Tooltip hover */}
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col bg-white rounded-xl shadow-xl border border-gray-100 p-3 min-w-[190px] z-50 text-xs pointer-events-none">
+                <p className="font-bold text-[var(--greek-blue)] mb-1">{user.name}</p>
+                <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+                  <Mail size={10} /> <span className="truncate max-w-[150px]">{user.email}</span>
                 </div>
-
-                <div className="mt-2 pt-2 border-t border-[rgba(197,161,72,0.25)] flex items-center justify-between">
-                   <span className="text-[9px] text-gray-400 capitalize bg-gray-50 px-2 py-0.5 rounded italic">
-                      {user.role}
-                   </span>
+                {user.city && (
+                  <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+                    <MapPin size={10} /> {user.city}
+                  </div>
+                )}
+                {user.lastActive && (
+                  <div className="flex items-center gap-1.5 text-gray-400">
+                    <Clock size={10} />
+                    {new Date(user.lastActive).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
+                  </div>
+                )}
+                <div className="mt-1.5 pt-1.5 border-t border-gray-100 flex items-center justify-between">
+                  <span className="capitalize text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
+                    style={{ background: ROLE_COLOR[user.role] + "20", color: ROLE_COLOR[user.role] }}>
+                    {user.role}
+                  </span>
+                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${user.isOnline ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                    {user.isOnline ? "En ligne" : "Hors ligne"}
+                  </span>
                 </div>
               </div>
-            </Popup>
+            </div>
           </Marker>
         ))}
-      </MapContainer>
+      </Map>
 
-      {/* Legend */}
-      <div className="absolute bottom-16 right-4 z-[1000] bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm border border-[rgba(197,161,72,0.25)] flex flex-col gap-1.5 text-[10px]">
-          <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500 border border-white"></div>
-            <span className="font-medium text-gray-700">Admin</span>
+      {/* Légende */}
+      <div className="absolute bottom-4 right-4 z-10 bg-white/90 backdrop-blur-sm p-2.5 rounded-xl shadow border border-gray-100 flex flex-col gap-1.5 text-[10px]">
+        {(["admin", "parent", "child"] as const).map(role => (
+          <div key={role} className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full border-2 border-white shadow-sm" style={{ background: ROLE_COLOR[role] }} />
+            <span className="font-medium text-gray-700 capitalize">{role === "child" ? "Enfant" : role === "parent" ? "Parent" : "Admin"}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-green-500 border border-white"></div>
-            <span className="font-medium text-gray-700">Parent</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-blue-500 border border-white"></div>
-            <span className="font-medium text-gray-700">Enfant</span>
-          </div>
+        ))}
+      </div>
+
+      {/* Compteur */}
+      <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow border border-gray-100 text-xs font-semibold text-[var(--greek-blue)]">
+        {users.length} position{users.length !== 1 ? "s" : ""} précise{users.length !== 1 ? "s" : ""}
       </div>
     </div>
   );

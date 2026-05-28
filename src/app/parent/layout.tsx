@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { getServerGeo } from "@/lib/geoLocation";
+import { useGeoConsent } from "@/hooks/useGeoConsent";
 
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
@@ -16,6 +16,7 @@ export default function ParentLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  useGeoConsent();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -69,28 +70,16 @@ export default function ParentLayout({
 
       // Fire-and-forget : ne bloque PAS la navigation
       (async () => {
-        const now = new Date().toISOString();
-        const today = new Date().toISOString().split("T")[0];
-        const updates: any = { last_active_at: now };
-
-        if (!userData.last_login_date || userData.last_login_date !== today) {
-          const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
-          updates.last_login_date = today;
-          updates.login_count = (userData.login_count || 0) + 1;
-          updates.login_streak = userData.last_login_date === yesterday ? (userData.login_streak || 0) + 1 : 1;
-        }
-
-        if (!userData.latitude) {
-          const geo = await getServerGeo();
-          if (geo) {
-            updates.latitude = geo.latitude;
-            updates.longitude = geo.longitude;
-            if (geo.city)    updates.last_login_city    = geo.city;
-            if (geo.country) updates.last_login_country = geo.country;
-          }
-        }
-
-        await supabase.from("users").update(updates).eq("auth_id", session.user.id);
+        const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
+        const device_type = /Mobi|Android|iPhone|iPad/i.test(ua) ? "mobile" : "desktop";
+        await fetch("/api/user/track-login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({ device_type, user_agent: ua }),
+        });
       })();
     };
 

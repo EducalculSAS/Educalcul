@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import {
-  ArrowLeft, Shield, Baby, Calendar, MapPin, Globe,
-  Activity, BookOpen, MessageSquare, Trophy, Ban, MessageCircle,
+  ArrowLeft, Shield, Baby, MapPin,
+  Trophy, Ban, MessageCircle,
   KeyRound, Trash2, CheckCircle, AlertTriangle, Send, X, Loader2,
-  Clock, Edit, Bell, CreditCard, Save, User as UserIcon,
+  Clock, Edit, Bell, CreditCard, Save, User as UserIcon, Download, FileText, Table,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
+import PageLoader from "@/components/PageLoader";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -19,6 +20,301 @@ const roleBadge = (r: string) => {
 const inputCls = "w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
 const labelCls = "block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1";
 
+// ─── Export helpers ────────────────────────────────────────────────────────
+
+function exportCSV(data: any) {
+  const { user, stats, subscription, children, badges, notifications, login_history } = data;
+  const BOM = "﻿";
+  const sep = ";";
+  const q = (v: any) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const d = (v: any) => v ? new Date(v).toLocaleString("fr-FR") : "";
+  const history: any[] = login_history ?? [];
+
+  const rows: string[][] = [
+    ["=== INFORMATIONS GÉNÉRALES ==="],
+    ["ID", user.id],
+    ["Prénom", user.first_name ?? ""],
+    ["Nom", user.last_name ?? ""],
+    ["Email", user.email ?? ""],
+    ["Rôle", user.role ?? ""],
+    ["Statut", user.status ?? ""],
+    ["Niveau scolaire", user.grade_level ?? ""],
+    ["Date d'inscription", d(user.created_at)],
+    ["Dernière activité", d(user.last_active_at)],
+    [],
+    ["=== CONNEXION & APPAREIL ==="],
+    ["Nombre de connexions", user.login_count ?? 0],
+    ["Série de connexions", user.login_streak ?? 0],
+    ["Dernière IP", user.last_login_ip ?? ""],
+    ["Dernière ville", user.last_login_city ?? ""],
+    ["Dernier pays", user.last_login_country ?? ""],
+    ["Type d'appareil", user.device_type ?? ""],
+    ["User Agent", user.user_agent ?? ""],
+    ["Localisation GPS", user.location_precise ? `${user.latitude}, ${user.longitude}` : "Non autorisée"],
+    [],
+    ["=== HISTORIQUE COMPLET DES CONNEXIONS ==="],
+    ...(history.length > 0
+      ? [
+          ["N°", "Date & heure", "IP", "Ville", "Pays", "Type d'appareil", "User Agent", "Latitude", "Longitude"],
+          ...history.map((h: any, i: number) => [
+            i + 1,
+            d(h.logged_at),
+            h.ip ?? "",
+            h.city ?? "",
+            h.country ?? "",
+            h.device_type ?? "",
+            h.user_agent ?? "",
+            h.latitude?.toFixed(5) ?? "",
+            h.longitude?.toFixed(5) ?? "",
+          ]),
+        ]
+      : [["Aucune connexion enregistrée"]]),
+    [],
+    ["=== STATISTIQUES D'UTILISATION ==="],
+    ["Tentatives d'exercices", stats.exercise_attempts],
+    ["Tentatives de quiz", stats.quiz_attempts],
+    ["Cours suivis", stats.course_progress],
+    ["Sujets de forum", stats.forum_posts ?? 0],
+    ["Commentaires forum", stats.forum_comments ?? 0],
+    [],
+    ["=== ABONNEMENT ==="],
+    ["Plan", subscription?.plan?.name ?? "Aucun"],
+    ["Prix", subscription?.plan?.price ? `${subscription.plan.price}€/mois` : ""],
+    ["Statut abonnement", subscription?.status ?? ""],
+    ["Début période", d(subscription?.current_period_start)],
+    ["Fin période", d(subscription?.current_period_end)],
+    [],
+    ["=== BADGES ==="],
+    ["Badges obtenus", badges.map((b: any) => b.badge?.name).filter(Boolean).join(", ")],
+    [],
+    ["=== ENFANTS LIÉS ==="],
+    ...(children.length > 0
+      ? [["Prénom", "Nom", "Niveau"], ...children.map((c: any) => [c.first_name ?? "", c.last_name ?? "", c.grade_level ?? ""])]
+      : [["Aucun enfant lié"]]),
+    [],
+    ["=== HISTORIQUE DES ACTIONS ADMIN ==="],
+    ...(notifications.length > 0
+      ? [["Date", "Type", "Titre", "Contenu"], ...notifications.map((n: any) => [d(n.created_at), n.type, n.title, n.content])]
+      : [["Aucune action"]]),
+  ];
+
+  const csv = BOM + rows.map(row => row.map(q).join(sep)).join("\r\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `user_${user.first_name}_${user.last_name}_${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportPDF(data: any) {
+  const { user, stats, subscription, children, badges, notifications, forum_posts, forum_comments, login_history } = data;
+  const history: any[] = login_history ?? [];
+  const d = (v: any) => v ? new Date(v).toLocaleString("fr-FR") : "—";
+
+  const section = (title: string, rows: [string, string][]) => `
+    <div class="section">
+      <h2>${title}</h2>
+      <table>
+        ${rows.map(([k, v]) => `<tr><td class="label">${k}</td><td class="value">${v || "—"}</td></tr>`).join("")}
+      </table>
+    </div>`;
+
+  const html = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Profil — ${user.first_name} ${user.last_name}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #222; font-size: 12px; }
+    .page { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+    /* Header */
+    .header { background: #1a3a5c; color: #fff; padding: 28px 32px; border-radius: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 20px; }
+    .logo-wrap { flex-shrink: 0; }
+    .logo-wrap img { height: 48px; width: auto; }
+    .header-info { flex: 1; }
+    .header-title { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700; color: #fff; }
+    .header-sub { color: rgba(255,255,255,0.65); font-size: 12px; margin-top: 4px; }
+    .header-meta { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; }
+    .badge-parent { background: #dbeafe; color: #1d4ed8; }
+    .badge-child { background: #dcfce7; color: #166534; }
+    .badge-admin { background: #f3e8ff; color: #7e22ce; }
+    .badge-active { background: #d1fae5; color: #065f46; }
+    .badge-inactive { background: #fee2e2; color: #991b1b; }
+    .divider { border: none; border-top: 2px solid #c5a148; opacity: 0.3; margin: 0 0 20px; }
+    .brand { font-family: 'Cinzel', serif; font-size: 11px; color: #c5a148; letter-spacing: 0.12em; font-weight: 600; }
+
+    /* Stats grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+    .stat-card { background: #f8f6f0; border: 1px solid #e8dfc8; border-radius: 10px; padding: 14px 16px; text-align: center; }
+    .stat-num { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: #1a3a5c; }
+    .stat-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 3px; font-weight: 600; }
+
+    /* Sections */
+    .section { background: #fafaf8; border: 1px solid rgba(197,161,72,0.2); border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; break-inside: avoid; }
+    .section h2 { font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; color: #1a3a5c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(197,161,72,0.25); }
+    table { width: 100%; border-collapse: collapse; }
+    tr:not(:last-child) td { border-bottom: 1px solid rgba(197,161,72,0.1); }
+    td { padding: 5px 0; vertical-align: top; }
+    td.label { color: #888; width: 42%; font-weight: 500; }
+    td.value { color: #222; font-weight: 500; word-break: break-word; }
+
+    /* Badges */
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .badge-item { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; border-radius: 20px; padding: 3px 10px; font-size: 10px; font-weight: 700; }
+
+    /* Notifs */
+    .notif { padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; font-size: 11px; }
+    .notif-ban { background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; }
+    .notif-warning { background: #fff7ed; border: 1px solid #fdba74; color: #9a3412; }
+    .notif-message { background: #eff6ff; border: 1px solid #93c5fd; color: #1e40af; }
+    .notif-info { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .notif-date { opacity: 0.6; font-size: 10px; float: right; }
+
+    /* Footer */
+    .footer { text-align: center; margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(197,161,72,0.2); color: #aaa; font-size: 10px; }
+    .footer .brand { font-size: 14px; display: block; margin-bottom: 4px; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-wrap"><img src="/logo.png" alt="Educalcul" /></div>
+    <div class="header-info">
+      <div class="brand">EDUCALCUL — Fiche Utilisateur</div>
+      <div class="header-title">${user.first_name ?? ""} ${user.last_name ?? ""}</div>
+      <div class="header-sub">${user.email ?? ""}</div>
+      <div class="header-meta">
+        <span class="badge badge-${user.role}">${user.role === "parent" ? "Parent" : user.role === "child" ? "Élève" : "Admin"}</span>
+        <span class="badge badge-${user.status === "active" ? "active" : "inactive"}">${user.status === "active" ? "Actif" : "Inactif"}</span>
+        ${user.grade_level ? `<span class="badge badge-active">${user.grade_level}</span>` : ""}
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">${stats.exercise_attempts}</div><div class="stat-label">Exercices</div></div>
+    <div class="stat-card"><div class="stat-num">${stats.quiz_attempts}</div><div class="stat-label">Quiz</div></div>
+    <div class="stat-card"><div class="stat-num">${stats.course_progress}</div><div class="stat-label">Cours suivis</div></div>
+  </div>
+
+  ${section("Informations générales", [
+    ["ID interne", user.id],
+    ["Inscrit le", d(user.created_at)],
+    ["Dernière activité", d(user.last_active_at)],
+  ])}
+
+  ${section("Connexion & Appareil", [
+    ["Nombre de connexions", String(user.login_count ?? 0)],
+    ["Série de connexions (jours)", String(user.login_streak ?? 0)],
+    ["Dernière IP connue", user.last_login_ip ?? ""],
+    ["Dernière ville connue", user.last_login_city ?? ""],
+    ["Dernier pays connu", user.last_login_country ?? ""],
+    ["Type d'appareil", user.device_type ?? ""],
+    ["Localisation GPS", user.location_precise ? `${user.latitude?.toFixed(5)}, ${user.longitude?.toFixed(5)}` : "Non autorisée"],
+  ])}
+
+  ${history.length > 0 ? `
+  <div class="section" style="break-inside:auto">
+    <h2>Historique des connexions (${history.length})</h2>
+    <table style="font-size:10px">
+      <thead>
+        <tr style="background:#1a3a5c;color:#fff">
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">#</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Date & heure</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">IP</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Ville</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Pays</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Appareil</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">GPS</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${history.map((h: any, i: number) => `
+        <tr style="background:${i % 2 === 0 ? "#fff" : "#f8f6f0"}">
+          <td style="padding:5px 8px;color:#aaa">${history.length - i}</td>
+          <td style="padding:5px 8px">${d(h.logged_at)}</td>
+          <td style="padding:5px 8px;font-family:monospace;font-size:9px">${h.ip || "—"}</td>
+          <td style="padding:5px 8px">${h.city || "—"}</td>
+          <td style="padding:5px 8px">${h.country || "—"}</td>
+          <td style="padding:5px 8px">${h.device_type || "—"}</td>
+          <td style="padding:5px 8px;font-size:9px">${h.latitude ? `${h.latitude.toFixed(3)}, ${h.longitude?.toFixed(3)}` : "—"}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+  </div>` : `
+  <div class="section">
+    <h2>Historique des connexions</h2>
+    <p style="color:#aaa;font-size:11px;text-align:center;padding:8px">Aucune connexion enregistrée</p>
+  </div>`}
+
+  ${section("Abonnement", [
+    ["Plan", subscription?.plan?.name ?? "Aucun"],
+    ["Tarif", subscription?.plan?.price ? `${subscription.plan.price}€/mois` : ""],
+    ["Statut", subscription?.status ?? ""],
+    ["Début de période", d(subscription?.current_period_start)],
+    ["Fin de période", d(subscription?.current_period_end)],
+  ])}
+
+  ${badges.length > 0 ? `
+  <div class="section">
+    <h2>Badges & Trophées</h2>
+    <div class="badges">
+      ${badges.map((b: any) => `<span class="badge-item">${b.badge?.name ?? ""}</span>`).join("")}
+    </div>
+  </div>` : ""}
+
+  ${children.length > 0 ? section("Enfants liés", children.map((c: any) => [`${c.first_name} ${c.last_name}`, c.grade_level ?? ""])) : ""}
+
+  ${forum_posts?.length > 0 || forum_comments?.length > 0 ? `
+  <div class="section">
+    <h2>Activité Forum</h2>
+    <table>
+      <tr><td class="label">Sujets créés</td><td class="value">${forum_posts?.length ?? 0}</td></tr>
+      <tr><td class="label">Commentaires</td><td class="value">${forum_comments?.length ?? 0}</td></tr>
+      ${forum_posts?.slice(0, 3).map((p: any) => `<tr><td class="label" style="opacity:.6;padding-left:8px">• ${new Date(p.created_at).toLocaleDateString("fr-FR")}</td><td class="value">${p.title}</td></tr>`).join("") ?? ""}
+    </table>
+  </div>` : ""}
+
+  ${notifications.length > 0 ? `
+  <div class="section">
+    <h2>Historique des actions admin</h2>
+    ${notifications.slice(0, 10).map((n: any) => `
+    <div class="notif notif-${n.type || "message"}">
+      <span class="notif-date">${new Date(n.created_at).toLocaleDateString("fr-FR")}</span>
+      <strong>${n.title}</strong><br/><span style="opacity:.8">${n.content}</span>
+    </div>`).join("")}
+  </div>` : ""}
+
+  <div class="footer">
+    <span class="brand">EDUCALCUL</span>
+    Document généré le ${new Date().toLocaleString("fr-FR")} — Usage interne confidentiel
+  </div>
+</div>
+</body>
+</html>`;
+
+  const win = window.open("", "_blank");
+  if (!win) return;
+  win.document.write(html);
+  win.document.close();
+  win.onload = () => { win.focus(); win.print(); };
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+
 export default function UserDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
@@ -28,6 +324,7 @@ export default function UserDetailPage() {
   const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [editMode, setEditMode] = useState(false);
   const [editForm, setEditForm] = useState<any>({});
+  const [showExportModal, setShowExportModal] = useState(false);
 
   // Message modal
   const [showMessageModal, setShowMessageModal] = useState(false);
@@ -121,11 +418,7 @@ export default function UserDetailPage() {
     setActionLoading(false);
   };
 
-  if (loading) return (
-    <div className="flex justify-center items-center h-64">
-      <Loader2 className="w-8 h-8 animate-spin text-[var(--greek-blue)]" />
-    </div>
-  );
+  if (loading) return <PageLoader className="h-64" />;
   if (!data) return <div className="p-6 text-red-500">Utilisateur introuvable.</div>;
 
   const { user, stats, subscription, children, recent_activity, notifications, badges } = data;
@@ -171,6 +464,13 @@ export default function UserDetailPage() {
 
           {/* Actions */}
           <div className="flex flex-wrap gap-2 shrink-0">
+            <button
+              onClick={() => setShowExportModal(true)}
+              className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.4)] text-[var(--greek-gold)] rounded-xl text-sm font-semibold hover:bg-amber-50 transition-colors"
+            >
+              <Download size={15} /> Exporter
+            </button>
+
             {editMode ? (
               <>
                 <button onClick={saveEdit} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-xl text-sm font-semibold hover:bg-green-600 transition-colors shadow-sm disabled:opacity-50">
@@ -368,6 +668,61 @@ export default function UserDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* Export modal */}
+      {showExportModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm">
+            <div className="border-b border-[rgba(197,161,72,0.25)] px-6 py-4 flex items-center justify-between rounded-t-2xl">
+              <h2 className="text-lg font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Exporter</h2>
+              <button onClick={() => setShowExportModal(false)} className="p-1.5 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+            </div>
+            <div className="p-6 space-y-3">
+              <p className="text-sm text-gray-500 mb-4">Profil de {user.first_name} {user.last_name}</p>
+              <button
+                onClick={() => { exportCSV(data); setShowExportModal(false); }}
+                className="w-full flex items-center gap-3 px-5 py-3.5 border border-[rgba(197,161,72,0.3)] rounded-xl hover:bg-green-50 hover:border-green-200 transition-colors text-left"
+              >
+                <div className="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center shrink-0">
+                  <Table size={18} className="text-green-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-gray-800">Fichier CSV</p>
+                  <p className="text-xs text-gray-400">Compatible Excel, Google Sheets</p>
+                </div>
+              </button>
+              <button
+                onClick={() => { exportPDF(data); setShowExportModal(false); }}
+                className="w-full flex items-center gap-3 px-5 py-3.5 border border-[rgba(197,161,72,0.3)] rounded-xl hover:bg-red-50 hover:border-red-200 transition-colors text-left"
+              >
+                <div className="w-9 h-9 rounded-lg bg-red-100 flex items-center justify-center shrink-0">
+                  <FileText size={18} className="text-red-500" />
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-gray-800">Fichier PDF</p>
+                  <p className="text-xs text-gray-400">Mise en page Educalcul avec logo</p>
+                </div>
+              </button>
+              <button
+                onClick={() => {
+                  exportCSV(data);
+                  setTimeout(() => exportPDF(data), 300);
+                  setShowExportModal(false);
+                }}
+                className="w-full flex items-center gap-3 px-5 py-3.5 bg-[var(--greek-blue)] rounded-xl hover:bg-blue-900 transition-colors text-left"
+              >
+                <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+                  <Download size={18} className="text-white" />
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-white">Télécharger les deux</p>
+                  <p className="text-xs text-white/60">CSV + PDF en une seule fois</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Send message modal */}
       {showMessageModal && (

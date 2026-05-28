@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -11,7 +12,7 @@ export default function NotFound() {
           <div className="font-[family-name:var(--font-display)] text-8xl font-black text-[var(--greek-blue)] opacity-10 mb-0 leading-none">
             404
           </div>
-          <img src="/logo.png" alt="Educalcul" className="w-16 h-16 object-contain mx-auto mb-4 opacity-30" />
+          <Image src="/logo.png" alt="Educalcul" width={64} height={64} className="w-16 h-16 object-contain mx-auto mb-4 opacity-30" />
           <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--greek-blue)] mb-3">
             Page introuvable
           </h1>

@@ -1,14 +1,13 @@
 ﻿"use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import { supabase } from "@/lib/supabaseClient";
-import { getServerGeo } from "@/lib/geoLocation";
 
 import {
   Users, Search, Plus, Trash2, CheckCircle, XCircle,
   Loader2, Shield, User as UserIcon, Baby, Globe, MapPin,
-  X, Eye, Ban, KeyRound,
+  X, Eye, Ban, Download, FileText, Table,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { avatarUrl } from "@/lib/avatarUrl";
@@ -30,6 +29,7 @@ interface User {
   last_login_country?: string;
   latitude?: number;
   longitude?: number;
+  location_precise?: boolean;
   last_active_at?: string;
 }
 
@@ -53,6 +53,275 @@ const isOnline = (u: User) =>
 const inputCls = "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
 const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
 
+// ─── Export helpers ──────────────────────────────────────────────────────────
+
+interface LoginEvent {
+  id: number;
+  logged_at: string;
+  ip?: string;
+  city?: string;
+  country?: string;
+  device_type?: string;
+  user_agent?: string;
+  latitude?: number;
+  longitude?: number;
+}
+
+async function fetchLoginHistory(userId: string): Promise<LoginEvent[]> {
+  try {
+    const r = await fetch(`/api/admin/user-login-history?user_id=${userId}`);
+    if (!r.ok) return [];
+    return await r.json();
+  } catch { return []; }
+}
+
+function buildCSV(users: User[], loginHistory?: LoginEvent[]): string {
+  const q = (v: any) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const d = (v: any) => v ? new Date(v).toLocaleString("fr-FR") : "";
+
+  if (users.length === 1 && loginHistory) {
+    // Fiche détaillée d'un seul utilisateur avec historique complet
+    const u = users[0];
+    const summaryHeaders = ["ID", "Prénom", "Nom", "Email", "Rôle", "Statut", "Niveau", "Dernière activité", "Inscription", "Connexions totales"];
+    const summaryRow = [u.id, u.first_name, u.last_name, u.email, u.role, u.status, u.grade_level || "", d(u.last_active_at), d(u.created_at), loginHistory.length];
+
+    const separator = [""];
+    const historyTitle = ["=== HISTORIQUE DES CONNEXIONS ==="];
+    const histHeaders = ["N°", "Date & heure", "IP", "Ville", "Pays", "Type d'appareil", "User Agent", "Latitude", "Longitude"];
+    const histRows = loginHistory.map((h, i) => [
+      i + 1, d(h.logged_at), h.ip || "", h.city || "", h.country || "",
+      h.device_type || "", h.user_agent || "",
+      h.latitude?.toFixed(5) || "", h.longitude?.toFixed(5) || "",
+    ]);
+
+    return "﻿" + [summaryHeaders, summaryRow, separator, historyTitle, histHeaders, ...histRows]
+      .map(r => r.map(q).join(";")).join("\r\n");
+  }
+
+  // Export liste multi-users
+  const headers = ["ID", "Prénom", "Nom", "Email", "Rôle", "Statut", "Niveau", "Ville", "Pays", "IP", "Dernière activité", "Inscription", "Localisation GPS"];
+  const rows = users.map(u => [
+    u.id, u.first_name, u.last_name, u.email, u.role, u.status,
+    u.grade_level || "", u.last_login_city || "", u.last_login_country || "",
+    u.last_login_ip || "", d(u.last_active_at), d(u.created_at),
+    u.location_precise ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "Non autorisée",
+  ]);
+  return "﻿" + [headers, ...rows].map(r => r.map(q).join(";")).join("\r\n");
+}
+
+function downloadCSV(users: User[], filename: string, loginHistory?: LoginEvent[]) {
+  const blob = new Blob([buildCSV(users, loginHistory)], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): string {
+  const NAVY = "#1a3a5c", GOLD = "#c5a148";
+  const d = (v: any) => v ? new Date(v).toLocaleString("fr-FR") : "—";
+  const single = users.length === 1;
+  const u = users[0];
+
+  const historySection = single && loginHistory && loginHistory.length > 0 ? `
+    <div class="bar"></div>
+    <h2 class="section-title">Historique des connexions (${loginHistory.length})</h2>
+    <table class="main-table">
+      <thead><tr>
+        <th>#</th><th>Date & heure</th><th>IP</th><th>Ville</th><th>Pays</th><th>Appareil</th><th>GPS</th>
+      </tr></thead>
+      <tbody>
+        ${loginHistory.map((h, i) => `<tr>
+          <td style="color:#888">${loginHistory.length - i}</td>
+          <td>${d(h.logged_at)}</td>
+          <td style="font-family:monospace;font-size:10px">${h.ip || "—"}</td>
+          <td>${h.city || "—"}</td>
+          <td>${h.country || "—"}</td>
+          <td>${h.device_type || "—"}</td>
+          <td style="font-size:10px">${h.latitude ? `${h.latitude.toFixed(4)}, ${h.longitude?.toFixed(4)}` : "—"}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>` : single && loginHistory?.length === 0 ? `
+    <div class="bar"></div>
+    <p style="color:#aaa;font-size:11px;text-align:center;padding:12px">Aucun historique de connexion enregistré</p>` : "";
+
+  const tableRows = single ? `
+    <table class="info-table">
+      ${[
+        ["ID interne", u.id],
+        ["Email", u.email],
+        ["Rôle", u.role],
+        ["Statut", u.status],
+        ["Niveau", u.grade_level || "—"],
+        ["Dernière ville connue", u.last_login_city || "—"],
+        ["Dernier pays connu", u.last_login_country || "—"],
+        ["Dernière IP connue", u.last_login_ip || "—"],
+        ["Dernière activité", d(u.last_active_at)],
+        ["Inscription", d(u.created_at)],
+        ["Total connexions", loginHistory ? String(loginHistory.length) : "—"],
+        ["Localisation GPS", u.location_precise ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "Non autorisée"],
+      ].map(([k, v]) => `<tr><td class="label">${k}</td><td class="value">${v}</td></tr>`).join("")}
+    </table>
+    ${historySection}` : `
+    <table class="main-table">
+      <thead><tr>
+        <th>Nom</th><th>Email</th><th>Rôle</th><th>Statut</th><th>Ville</th><th>Inscription</th>
+      </tr></thead>
+      <tbody>
+        ${users.map(u => `<tr>
+          <td>${u.first_name} ${u.last_name}</td>
+          <td>${u.email}</td>
+          <td>${u.role}</td>
+          <td>${u.status}</td>
+          <td>${u.last_login_city || "—"}</td>
+          <td>${d(u.created_at)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>`;
+
+  return `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;font-size:12px;color:#222;background:#fff}
+    .page{max-width:900px;margin:0 auto;padding:24px}
+    .header{background:${NAVY};color:#fff;padding:24px 32px;border-radius:10px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
+    .header img{height:40px;width:auto;flex-shrink:0}
+    .brand{font-family:'Cinzel',serif;font-size:10px;color:${GOLD};letter-spacing:5px;text-transform:uppercase;margin-bottom:4px}
+    .header-title{font-family:'Cinzel',serif;font-size:20px;font-weight:700}
+    .header-sub{color:rgba(255,255,255,0.6);font-size:11px;margin-top:3px}
+    .section-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:${NAVY};margin-bottom:10px;letter-spacing:.05em}
+    .info-table{width:100%;border-collapse:collapse;background:#fafaf8;border:1px solid rgba(197,161,72,0.2);border-radius:8px;overflow:hidden;margin-bottom:6px}
+    .info-table tr:not(:last-child) td{border-bottom:1px solid rgba(197,161,72,0.1)}
+    .info-table td{padding:7px 14px;vertical-align:top}
+    .info-table td.label{color:#888;width:38%;font-weight:500}
+    .info-table td.value{font-weight:500;color:#222}
+    .main-table{width:100%;border-collapse:collapse;font-size:11px}
+    .main-table thead tr{background:${NAVY};color:#fff}
+    .main-table th{padding:8px 10px;text-align:left;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.08em;font-weight:600}
+    .main-table tbody tr:nth-child(even){background:#f8f6f0}
+    .main-table td{padding:6px 10px;border-bottom:1px solid rgba(197,161,72,0.08)}
+    .bar{height:2px;background:linear-gradient(90deg,${NAVY},${GOLD},${NAVY});margin:16px 0}
+    .footer{text-align:center;color:#aaa;font-size:10px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(197,161,72,0.2)}
+    .footer strong{font-family:'Cinzel',serif;color:${GOLD};font-size:12px;display:block;margin-bottom:3px}
+    @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.main-table{page-break-inside:auto}tr{page-break-inside:avoid}}
+  </style></head><body>
+  <div class="page">
+    <div class="header">
+      <img src="/logo.png" alt="Educalcul"/>
+      <div>
+        <div class="brand">EDUCALCUL</div>
+        <div class="header-title">${title}</div>
+        <div class="header-sub">${single ? `${u.first_name} ${u.last_name} — ${u.email}` : `${users.length} utilisateurs — ${new Date().toLocaleDateString("fr-FR")}`}</div>
+      </div>
+    </div>
+    <div class="bar"></div>
+    ${tableRows}
+    <div class="footer">
+      <strong>EDUCALCUL</strong>
+      Généré le ${new Date().toLocaleString("fr-FR")} — Usage interne confidentiel
+    </div>
+  </div>
+</body></html>`;
+}
+
+function openPDF(users: User[], title: string, loginHistory?: LoginEvent[]) {
+  const win = window.open("", "_blank");
+  if (!win) return;
+  win.document.write(buildPDF(users, title, loginHistory));
+  win.document.close();
+  win.onload = () => { win.focus(); win.print(); };
+}
+
+// ─── Export Modal ─────────────────────────────────────────────────────────────
+
+function ExportModal({ users, title, onClose }: { users: User[]; title: string; onClose: () => void }) {
+  const isSingle = users.length === 1;
+  const [loginHistory, setLoginHistory] = useState<LoginEvent[] | null>(null);
+  const [loadingHistory, setLoadingHistory] = useState(false);
+
+  const filename = isSingle
+    ? `user_${users[0].first_name}_${users[0].last_name}_${new Date().toISOString().slice(0, 10)}`
+    : `educalcul_users_${new Date().toISOString().slice(0, 10)}`;
+
+  useEffect(() => {
+    if (!isSingle) return;
+    setLoadingHistory(true);
+    fetchLoginHistory(users[0].id).then(h => {
+      setLoginHistory(h);
+      setLoadingHistory(false);
+    });
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm">
+        <div className="border-b border-[rgba(197,161,72,0.25)] px-6 py-4 flex items-center justify-between rounded-t-2xl">
+          <h2 className="text-lg font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Exporter</h2>
+          <button onClick={onClose} className="p-1.5 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+        </div>
+        <div className="p-6 space-y-3">
+          <div className="flex items-center justify-between mb-1">
+            <p className="text-sm text-gray-500">{title}</p>
+            {isSingle && (
+              <span className="text-xs text-gray-400 flex items-center gap-1">
+                {loadingHistory ? (
+                  <><Loader2 size={11} className="animate-spin" /> Chargement historique…</>
+                ) : (
+                  <>{loginHistory?.length ?? 0} connexion{(loginHistory?.length ?? 0) > 1 ? "s" : ""}</>
+                )}
+              </span>
+            )}
+          </div>
+          <button
+            disabled={isSingle && loadingHistory}
+            onClick={() => { downloadCSV(users, `${filename}.csv`, loginHistory ?? undefined); onClose(); }}
+            className="w-full flex items-center gap-3 px-5 py-3.5 border border-[rgba(197,161,72,0.3)] rounded-xl hover:bg-green-50 hover:border-green-200 transition-colors text-left disabled:opacity-50"
+          >
+            <div className="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center shrink-0">
+              <Table size={18} className="text-green-600" />
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-gray-800">Fichier CSV</p>
+              <p className="text-xs text-gray-400">{isSingle ? "Profil + historique complet des connexions" : "Compatible Excel, Google Sheets"}</p>
+            </div>
+          </button>
+          <button
+            disabled={isSingle && loadingHistory}
+            onClick={() => { openPDF(users, title, loginHistory ?? undefined); onClose(); }}
+            className="w-full flex items-center gap-3 px-5 py-3.5 border border-[rgba(197,161,72,0.3)] rounded-xl hover:bg-red-50 hover:border-red-200 transition-colors text-left disabled:opacity-50"
+          >
+            <div className="w-9 h-9 rounded-lg bg-red-100 flex items-center justify-center shrink-0">
+              <FileText size={18} className="text-red-500" />
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-gray-800">Fichier PDF</p>
+              <p className="text-xs text-gray-400">{isSingle ? "Fiche + tableau des connexions" : "Mise en page Educalcul avec logo"}</p>
+            </div>
+          </button>
+          <button
+            disabled={isSingle && loadingHistory}
+            onClick={() => {
+              downloadCSV(users, `${filename}.csv`, loginHistory ?? undefined);
+              setTimeout(() => openPDF(users, title, loginHistory ?? undefined), 300);
+              onClose();
+            }}
+            className="w-full flex items-center gap-3 px-5 py-3.5 bg-[var(--greek-blue)] rounded-xl hover:bg-blue-900 transition-colors text-left disabled:opacity-50"
+          >
+            <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+              <Download size={18} className="text-white" />
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-white">Télécharger les deux</p>
+              <p className="text-xs text-white/60">CSV + PDF en une seule fois</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminUsersPage() {
   const router = useRouter();
   const [users, setUsers] = useState<User[]>([]);
@@ -69,6 +338,10 @@ export default function AdminUsersPage() {
   ), []);
 
   // ── Modal states ──────────────────────────────────────────────────────────
+  // Export
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [exportTarget, setExportTarget] = useState<User[] | null>(null);
+
   // Create
   const [showFormModal, setShowFormModal] = useState(false);
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" });
@@ -87,7 +360,10 @@ export default function AdminUsersPage() {
   useEffect(() => {
     fetchUsers();
     const interval = setInterval(() => fetchUsers(true), 30000);
-    return () => clearInterval(interval);
+    // Rafraîchit la carte dès qu'une position GPS vient d'être envoyée
+    const onGeo = () => setTimeout(() => fetchUsers(true), 3000);
+    window.addEventListener("geo_location_sent", onGeo);
+    return () => { clearInterval(interval); window.removeEventListener("geo_location_sent", onGeo); };
   }, [roleFilter, statusFilter]);
 
   useEffect(() => {
@@ -96,13 +372,7 @@ export default function AdminUsersPage() {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
         setCurrentAuthId(user.id);
-        const { data: ud } = await supabase.from("users").select("latitude").eq("auth_id", user.id).single();
-        const updates: any = { last_active_at: new Date().toISOString() };
-        if (ud && !ud.latitude) {
-          const geo = await getServerGeo();
-          if (geo) { updates.latitude = geo.latitude; updates.longitude = geo.longitude; if (geo.city) updates.last_login_city = geo.city; if (geo.country) updates.last_login_country = geo.country; }
-        }
-        await supabase.from("users").update(updates).eq("auth_id", user.id);
+        await supabase.from("users").update({ last_active_at: new Date().toISOString() }).eq("auth_id", user.id);
       } catch {}
     })();
   }, []);
@@ -166,7 +436,8 @@ export default function AdminUsersPage() {
     setSubmitting(false);
   };
 
-  const mapUsers = users.filter(u => u.latitude && u.longitude).map(u => ({
+  // Uniquement les positions précises (GPS avec consentement cookie) — pas les positions IP
+  const mapUsers = users.filter(u => u.latitude && u.longitude && u.location_precise).map(u => ({
     id: u.id, name: `${u.first_name} ${u.last_name}`, email: u.email,
     status: u.status, lat: u.latitude!, lng: u.longitude!, role: u.role,
     city: u.last_login_city, lastActive: u.last_active_at, isOnline: isOnline(u),
@@ -175,30 +446,37 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none" />
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
-          <div>
-            <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-              <Users className="text-[var(--greek-gold)]" size={30} />
-              Gestion des Utilisateurs
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-2xl md:text-3xl font-bold text-[var(--greek-blue)] mb-1 font-[family-name:var(--font-display)] flex items-center gap-3 flex-wrap">
+              <Users className="text-[var(--greek-gold)] flex-shrink-0" size={28} />
+              <span>Gestion des Utilisateurs</span>
             </h1>
-            <p className="text-[var(--greek-bronze)]">Gérez les comptes parents, élèves et administrateurs</p>
+            <p className="text-[var(--greek-bronze)] text-sm">Gérez les comptes parents, élèves et administrateurs</p>
           </div>
-          <button onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" }); setShowFormModal(true); }}
-            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold">
-            <Plus size={18} /> Nouvel Utilisateur
-          </button>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <button onClick={() => { setExportTarget(filteredUsers); setShowExportModal(true); }}
+              className="flex items-center gap-2 px-4 py-2.5 border border-[rgba(197,161,72,0.35)] text-[var(--greek-blue)] rounded-xl hover:bg-[rgba(197,161,72,0.06)] transition-colors font-semibold text-sm"
+              title="Exporter les utilisateurs">
+              <Download size={16} />
+              <span className="hidden sm:inline">Exporter</span>
+            </button>
+            <button onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" }); setShowFormModal(true); }}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold text-sm">
+              <Plus size={18} /> <span className="hidden sm:inline">Nouvel Utilisateur</span><span className="sm:hidden">Nouveau</span>
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Map */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 relative h-[400px] z-0">
-        <div className="flex justify-between items-center mb-4 relative z-10">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-4 sm:p-6 relative z-0 overflow-hidden">
+        <div className="flex flex-wrap justify-between items-center gap-2 mb-4 relative z-10">
           <h2 className="text-lg font-bold text-[var(--greek-blue)] flex items-center gap-2">
             <Globe className="text-[var(--greek-gold)]" size={20} />Carte des Connexions
           </h2>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <div className="flex items-center gap-1.5 bg-green-50 px-3 py-1 rounded-full border border-green-100">
               <span className="relative flex h-2 w-2">
                 {onlineCount > 0 && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />}
@@ -206,11 +484,12 @@ export default function AdminUsersPage() {
               </span>
               <span className="text-xs font-bold text-green-700">{onlineCount} en ligne</span>
             </div>
-            <span className="text-xs text-gray-400">Actif dans les 5 dernières minutes</span>
+            <span className="text-xs text-gray-400 hidden sm:inline">Actif dans les 5 dernières minutes</span>
           </div>
         </div>
-        <div className="h-[300px] w-full"><UserMap users={mapUsers} /></div>
-        <div className="absolute bottom-3 left-6 text-[10px] text-gray-400 italic z-[1000] pointer-events-none">* Coordonnées approximatives basées sur l'IP</div>
+        <div className="w-full overflow-hidden rounded-xl" style={{ height: "clamp(220px, 50vw, 400px)" }}>
+          <UserMap users={mapUsers} />
+        </div>
       </div>
 
       {/* Filters */}
@@ -285,6 +564,11 @@ export default function AdminUsersPage() {
                           className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors" title="Voir le profil">
                           <Eye size={15} />
                         </button>
+                        <button
+                          onClick={() => { setExportTarget([user]); setShowExportModal(true); }}
+                          className="p-1.5 text-[var(--greek-gold)] hover:bg-amber-50 rounded-lg transition-colors" title="Exporter">
+                          <Download size={15} />
+                        </button>
                         <button onClick={() => { setBanTarget(user); setBanReason(""); setShowBanModal(true); }}
                           className={`p-1.5 rounded-lg transition-colors ${user.status === "inactive" ? "text-green-600 hover:bg-green-50" : "text-orange-500 hover:bg-orange-50"}`}
                           title={user.status === "inactive" ? "Réactiver" : "Bannir"}>
@@ -303,6 +587,17 @@ export default function AdminUsersPage() {
           </table>
         </div>
       </div>
+
+      {/* ── MODAL: Export ── */}
+      {showExportModal && exportTarget && (
+        <ExportModal
+          users={exportTarget}
+          title={exportTarget.length === 1
+            ? `Profil de ${exportTarget[0].first_name} ${exportTarget[0].last_name}`
+            : `${exportTarget.length} utilisateurs sélectionnés`}
+          onClose={() => { setShowExportModal(false); setExportTarget(null); }}
+        />
+      )}
 
       {/* ── MODAL: Créer utilisateur ── */}
       {showFormModal && (

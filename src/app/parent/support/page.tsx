@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { MessageSquare, Send, Loader2, ChevronDown, ChevronUp, Mail } from "lucide-react";
+import { MessageSquare, Send, Loader2, ChevronDown, ChevronUp, Mail, Star, X, RotateCcw } from "lucide-react";
 
 interface Reply {
   id: number;
@@ -22,10 +22,115 @@ interface Ticket {
   replies: Reply[];
 }
 
+// ── Support Chatbot ───────────────────────────────────────────────────────────
+interface BotMsg { from: "bot" | "user"; text: string }
+
+const BOT_RULES: { patterns: RegExp[]; answer: string }[] = [
+  { patterns: [/mot.de.passe|oubli|connexion|connect/i], answer: "Si vous avez oublié votre mot de passe, rendez-vous sur la page de connexion et cliquez sur « Mot de passe oublié ». Un lien de réinitialisation vous sera envoyé par e-mail." },
+  { patterns: [/abonnement|tarif|prix|paiement|facture|plan/i], answer: "Vous pouvez gérer votre abonnement depuis **Mes paramètres → Abonnement**. Pour toute question de facturation, notre équipe peut vous aider via un ticket." },
+  { patterns: [/enfant|compte enfant|profil enfant|ajouter/i], answer: "Pour ajouter un profil enfant, allez dans **Mes enfants → Ajouter un enfant**. Chaque enfant dispose d'un identifiant unique pour se connecter." },
+  { patterns: [/exercice|quiz|cours|contenu|module/i], answer: "Les exercices, quiz et cours sont accessibles selon votre niveau d'abonnement. Si un contenu n'est pas disponible, vérifiez votre plan dans **Abonnements**." },
+  { patterns: [/bug|erreur|problème|plante|marche pas|fonctionne pas/i], answer: "Désolé pour ce problème ! Essayez d'abord de vider le cache de votre navigateur et de vous reconnecter. Si le problème persiste, l'équipe peut vous aider." },
+  { patterns: [/badge|récompense|trophée/i], answer: "Les badges sont attribués automatiquement selon les progrès (connexions consécutives, exercices réussis…). La page **Mes Trophées** les liste tous." },
+  { patterns: [/supprimer|annuler.*compte|désactiver/i], answer: "Pour supprimer ou désactiver votre compte, contactez notre équipe avec l'objet « Suppression de compte ». Votre demande sera traitée sous 48h." },
+  { patterns: [/délai|réponse|attente|rapide|urgent/i], answer: "Notre équipe répond généralement sous 24h (jours ouvrés). Pour les demandes urgentes, précisez-le dans votre message." },
+];
+
+const BOT_FALLBACK = "Je n'ai pas de réponse précise à cette question. Notre équipe sera ravie de vous aider via un message !";
+
+const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Athéna**, votre assistante support. Posez-moi votre question ou choisissez un sujet ci-dessous." };
+
+function SupportChatbot() {
+  const [open, setOpen] = useState(false);
+  const [messages, setMessages] = useState<BotMsg[]>([BOT_WELCOME]);
+  const [input, setInput] = useState("");
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (open) setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 80);
+  }, [messages, open]);
+
+  const sendMessage = (text?: string) => {
+    const txt = (text || input).trim();
+    if (!txt) return;
+    const rule = BOT_RULES.find(r => r.patterns.some(p => p.test(txt)));
+    setMessages(prev => [...prev, { from: "user", text: txt }, { from: "bot", text: rule ? rule.answer : BOT_FALLBACK }]);
+    setInput("");
+  };
+
+  const renderBotText = (text: string) => text.split(/\*\*(.*?)\*\*/g).map((p, i) => i % 2 === 1 ? <strong key={i} className="font-bold">{p}</strong> : p);
+
+  return (
+    <>
+      <button onClick={() => setOpen(v => !v)} aria-label="Support Athéna"
+        className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl bg-[var(--greek-blue)] hover:bg-blue-800 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 group">
+        {open ? <X className="w-6 h-6 text-white" /> : (
+          <>
+            <Star className="w-7 h-7 text-[var(--greek-gold)] fill-current" />
+            <span className="absolute bottom-full right-0 mb-3 whitespace-nowrap bg-[var(--greek-blue)] text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest pointer-events-none">Aide rapide</span>
+          </>
+        )}
+      </button>
+
+      {open && (
+        <div className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-sm bg-white rounded-3xl shadow-2xl border border-[rgba(197,161,72,0.25)] flex flex-col overflow-hidden" style={{ height: 440 }}>
+          <div className="bg-[var(--greek-blue)] px-5 py-3.5 flex items-center justify-between shrink-0">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-[var(--greek-gold)] flex items-center justify-center shrink-0">
+                <Star className="w-4 h-4 text-[var(--greek-blue)] fill-current" />
+              </div>
+              <div>
+                <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm tracking-wider">ATHÉNA</p>
+                <p className="text-white/50 text-[9px] font-black uppercase tracking-widest">Assistante Support</p>
+              </div>
+            </div>
+            <div className="flex gap-1">
+              <button onClick={() => setMessages([BOT_WELCOME])} className="text-white/50 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-all"><RotateCcw className="w-3.5 h-3.5" /></button>
+              <button onClick={() => setOpen(false)} className="text-white/50 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-all"><X className="w-4 h-4" /></button>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-white">
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex gap-2 ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                {msg.from === "bot" && <div className="w-6 h-6 rounded-lg bg-[var(--greek-gold)] flex items-center justify-center shrink-0 mt-0.5"><Star className="w-3 h-3 text-[var(--greek-blue)] fill-current" /></div>}
+                <div className={`max-w-[82%] text-sm px-3.5 py-2.5 rounded-2xl leading-relaxed ${msg.from === "user" ? "bg-[var(--greek-blue)] text-white rounded-br-sm font-medium" : "bg-[var(--greek-cream)] text-gray-700 rounded-bl-sm border border-[rgba(197,161,72,0.2)]"}`}>
+                  {renderBotText(msg.text)}
+                </div>
+              </div>
+            ))}
+            <div ref={bottomRef} />
+          </div>
+
+          {messages.length <= 1 && (
+            <div className="px-4 pb-2 flex flex-wrap gap-1.5 shrink-0">
+              {["Mot de passe oublié", "Gérer mon abonnement", "Ajouter un enfant", "Signaler un bug"].map(q => (
+                <button key={q} onClick={() => sendMessage(q)} className="text-[10px] bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-gold)] text-[var(--greek-blue)] font-bold px-2.5 py-1 rounded-full transition-all">{q}</button>
+              ))}
+            </div>
+          )}
+
+          <div className="px-4 pb-4 pt-2 border-t border-[rgba(197,161,72,0.15)] shrink-0">
+            <div className="flex gap-2 items-center bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] focus-within:border-[var(--greek-gold)] rounded-2xl px-3 py-2 transition-all">
+              <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter") sendMessage(); }}
+                placeholder="Votre question…" className="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 outline-none" />
+              <button onClick={() => sendMessage()} disabled={!input.trim()} className="w-8 h-8 bg-[var(--greek-blue)] text-white rounded-xl flex items-center justify-center hover:bg-blue-800 disabled:opacity-30 transition-all shrink-0">
+                <Send className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function ParentSupportPage() {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
-  const [openTicketId, setOpenTicketId] = useState<number | null>(null);
+  const [openTicketIds, setOpenTicketIds] = useState<Set<number>>(new Set());
   const [replyText, setReplyText] = useState<Record<number, string>>({});
   const [sending, setSending] = useState<number | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -42,9 +147,13 @@ export default function ParentSupportPage() {
 
   useEffect(() => { fetchTickets(); }, []);
 
-  useEffect(() => {
-    if (openTicketId) setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
-  }, [openTicketId, tickets]);
+  const toggleTicket = (id: number) => {
+    setOpenTicketIds(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
 
   const handleReply = async (ticketId: number) => {
     const msg = replyText[ticketId]?.trim();
@@ -69,13 +178,17 @@ export default function ParentSupportPage() {
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
-      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-10 px-4 rounded-b-[40px] shadow-lg mb-8">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-[family-name:var(--font-display)] font-bold flex items-center gap-3">
-            <MessageSquare className="w-8 h-8 text-[var(--greek-gold)]" />
-            Mes messages
+      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="max-w-3xl mx-auto relative z-10">
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+            <MessageSquare className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+            MES MESSAGES
           </h1>
-          <p className="mt-2 opacity-75 text-sm">Vos échanges avec l'équipe Educalcul</p>
+          <p className="text-xl opacity-90 flex items-center gap-3">
+            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">SUPPORT</span>
+            <span>Vos échanges avec l'équipe Educalcul</span>
+          </p>
         </div>
       </div>
 
@@ -91,22 +204,18 @@ export default function ParentSupportPage() {
         ) : (
           <div className="space-y-4">
             {tickets.map(ticket => {
-              const isOpen = openTicketId === ticket.id;
+              const isOpen = openTicketIds.has(ticket.id);
               const allReplies = (ticket.replies || []).sort((a, b) =>
                 new Date(a.replied_at).getTime() - new Date(b.replied_at).getTime()
               );
               return (
                 <div key={ticket.id} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
-                  <button
-                    onClick={() => setOpenTicketId(isOpen ? null : ticket.id)}
-                    className="w-full px-6 py-4 flex items-start justify-between hover:bg-gray-50 transition-colors text-left"
-                  >
+                  <button onClick={() => toggleTicket(ticket.id)}
+                    className="w-full px-6 py-4 flex items-start justify-between hover:bg-gray-50 transition-colors text-left">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <p className="font-bold text-[var(--greek-blue)] truncate">{ticket.subject}</p>
-                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${statusColor(ticket.status)}`}>
-                          {ticket.status}
-                        </span>
+                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${statusColor(ticket.status)}`}>{ticket.status}</span>
                       </div>
                       <p className="text-xs text-gray-400">
                         {allReplies.length > 0
@@ -120,7 +229,6 @@ export default function ParentSupportPage() {
                   {isOpen && (
                     <div className="border-t border-gray-100">
                       <div className="px-6 py-4 space-y-4 max-h-96 overflow-y-auto">
-                        {/* Message initial admin */}
                         <div className="flex justify-start">
                           <div className="max-w-[80%] bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl rounded-tl-sm px-4 py-3">
                             <p className="text-xs font-semibold text-[var(--greek-gold)] mb-1">Equipe Educalcul</p>
@@ -135,15 +243,9 @@ export default function ParentSupportPage() {
 
                         {allReplies.map(reply => (
                           <div key={reply.id} className={`flex ${reply.is_admin ? "justify-start" : "justify-end"}`}>
-                            <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                              reply.is_admin
-                                ? "bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-tl-sm"
-                                : "bg-[var(--greek-blue)] text-white rounded-tr-sm"
-                            }`}>
+                            <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${reply.is_admin ? "bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-tl-sm" : "bg-[var(--greek-blue)] text-white rounded-tr-sm"}`}>
                               {reply.is_admin && <p className="text-xs font-semibold text-[var(--greek-gold)] mb-1">{reply.author_name || "Equipe Educalcul"}</p>}
-                              <p className={`text-sm leading-relaxed whitespace-pre-wrap ${reply.is_admin ? "text-gray-700" : "text-white"}`}>
-                                {reply.reply_message}
-                              </p>
+                              <p className={`text-sm leading-relaxed whitespace-pre-wrap ${reply.is_admin ? "text-gray-700" : "text-white"}`}>{reply.reply_message}</p>
                               <p className={`text-xs mt-1.5 ${reply.is_admin ? "text-gray-400" : "text-white/50 text-right"}`}>
                                 {new Date(reply.replied_at).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
                               </p>
@@ -184,6 +286,8 @@ export default function ParentSupportPage() {
           </div>
         )}
       </div>
+
+      <SupportChatbot />
     </div>
   );
 }

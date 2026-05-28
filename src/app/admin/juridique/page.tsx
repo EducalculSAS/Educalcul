@@ -5,6 +5,7 @@ import {
   Scale, FileText, Lock, Save, Eye, ChevronDown, CheckCircle,
   AlertTriangle, RefreshCw, Plus, Trash2, GripVertical,
 } from "lucide-react";
+import PageLoader from "@/components/PageLoader";
 import type { LegalPageData, LegalSection } from "@/components/LegalPageRenderer";
 
 const PAGES = [
@@ -101,10 +102,10 @@ export default function AdminJuridique() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="space-y-6">
 
       {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
             <Scale className="text-[var(--greek-gold)]" size={30} />
@@ -131,27 +132,25 @@ export default function AdminJuridique() {
       </div>
 
       {/* Page tabs */}
-      <div className="flex gap-2 mb-6">
-        {PAGES.map(({ slug, label, icon: Icon, color }) => (
+      <div className="flex flex-wrap gap-2">
+        {PAGES.map(({ slug, label, icon: Icon }) => (
           <button
             key={slug}
             onClick={() => { setActiveSlug(slug); setOpenSection(null); }}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all border ${
+            className={`flex items-center gap-1.5 px-3 py-2.5 sm:px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               activeSlug === slug
                 ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)] shadow-md"
                 : "bg-white text-gray-600 border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-blue)] hover:text-[var(--greek-blue)]"
             }`}
           >
-            <Icon size={16} />
+            <Icon size={14} className="shrink-0" />
             {label}
           </button>
         ))}
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-20">
-          <RefreshCw className="animate-spin text-gray-400" size={32} />
-        </div>
+        <PageLoader className="h-64" />
       ) : !page ? (
         <div className="text-center py-20 text-gray-400">Page non trouvée en base de données.</div>
       ) : (

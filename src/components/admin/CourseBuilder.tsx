@@ -1,16 +1,18 @@
 ﻿"use client";
 
 import { useState, useEffect } from "react";
-import { 
-  Plus, 
-  Trash2, 
-  GripVertical, 
-  ChevronDown, 
-  ChevronRight, 
-  FileText, 
-  Video, 
+import {
+  Plus,
+  Trash2,
+  GripVertical,
+  ChevronDown,
+  ChevronRight,
+  FileText,
+  Video,
   Link as LinkIcon,
-  Image as ImageIcon
+  Image as ImageIcon,
+  XCircle,
+  Upload,
 } from "lucide-react";
 
 export interface Exercise {
@@ -27,6 +29,7 @@ export interface Lesson {
   title: string;
   type: "text" | "video" | "pdf" | "quiz";
   content: string; // HTML/Markdown or URL
+  image_url?: string; // optional illustration for text lessons
   duration?: number; // minutes
   exercises?: Exercise[];
 }
@@ -45,6 +48,30 @@ interface CourseBuilderProps {
 export default function CourseBuilder({ initialContent, onChange }: CourseBuilderProps) {
   const [chapters, setChapters] = useState<Chapter[]>(initialContent || []);
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(new Set());
+  const [uploadingLesson, setUploadingLesson] = useState<string | null>(null);
+
+  const handleLessonImageUpload = async (
+    chapterId: string,
+    lessonId: string,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    setUploadingLesson(lessonId);
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("folder", "uploads/course_images");
+    try {
+      const response = await fetch("/api/admin/upload", { method: "POST", body: formData });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Upload failed");
+      updateLesson(chapterId, lessonId, { image_url: result.url });
+    } catch (err: any) {
+      alert("Erreur upload: " + err.message);
+    } finally {
+      setUploadingLesson(null);
+    }
+  };
 
   // Update parent when local state changes
   useEffect(() => {
@@ -189,14 +216,14 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
               {expandedChapters.has(chapter.id) && (
                 <div className="p-4 space-y-4 bg-white">
                   {chapter.lessons.map((lesson, lIndex) => (
-                    <div key={lesson.id} className="flex gap-4 p-4 border border-[rgba(197,161,72,0.25)] rounded-lg hover:border-blue-100 transition-colors group">
-                      <div className="mt-2 text-gray-300">
+                    <div key={lesson.id} className="flex flex-col sm:flex-row gap-3 p-4 border border-[rgba(197,161,72,0.25)] rounded-lg hover:border-blue-100 transition-colors group">
+                      <div className="hidden sm:block mt-2 text-gray-300 flex-shrink-0">
                         <GripVertical size={20} />
                       </div>
-                      
-                      <div className="flex-1 space-y-4">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
+
+                      <div className="flex-1 min-w-0 space-y-3">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1 min-w-0">
                             <input
                               type="text"
                               value={lesson.title}
@@ -204,60 +231,93 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
                               className="w-full font-semibold text-gray-800 focus:outline-none focus:border-b border-[rgba(197,161,72,0.25)] pb-1 mb-2"
                               placeholder="Titre de la leçon"
                             />
-                            
-                            <div className="flex gap-4">
+
+                            <div className="flex flex-wrap gap-3">
                               <select
                                 value={lesson.type}
                                 onChange={(e) => updateLesson(chapter.id, lesson.id, { type: e.target.value as any })}
-                                className="text-sm border-[rgba(197,161,72,0.25)] rounded-lg text-gray-600 focus:ring-blue-500 focus:border-blue-500"
+                                className="text-sm border border-[rgba(197,161,72,0.25)] rounded-lg text-gray-600 focus:ring-blue-500 focus:border-blue-500 px-2 py-1.5"
                               >
                                 <option value="text">Texte / Article</option>
                                 <option value="video">Vidéo</option>
                                 <option value="pdf">Document PDF</option>
                                 <option value="quiz">Quiz</option>
                               </select>
-                              
+
                               <div className="flex items-center gap-2 text-sm text-gray-500">
-                                <span className="text-xs uppercase">Durée (min)</span>
+                                <span className="text-xs uppercase whitespace-nowrap">Durée (min)</span>
                                 <input
                                   type="number"
                                   value={lesson.duration || 0}
                                   onChange={(e) => updateLesson(chapter.id, lesson.id, { duration: parseInt(e.target.value) })}
-                                  className="w-16 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                  className="w-16 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm px-2 py-1.5"
                                   min="0"
                                 />
                               </div>
                             </div>
                           </div>
-                          
+
                           <button
                             type="button"
                             onClick={() => removeLesson(chapter.id, lesson.id)}
-                            className="text-gray-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="text-gray-300 hover:text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex-shrink-0"
                           >
                             <Trash2 size={16} />
                           </button>
                         </div>
 
                         {/* Content Editor based on Type */}
-                        <div className="bg-gray-50 p-3 rounded-lg">
+                        <div className="bg-gray-50 p-3 rounded-lg space-y-3">
                           {lesson.type === "text" && (
-                            <textarea
-                              value={lesson.content}
-                              onChange={(e) => updateLesson(chapter.id, lesson.id, { content: e.target.value })}
-                              className="w-full min-h-[100px] p-3 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm"
-                              placeholder="Contenu du cours (Markdown supporté)..."
-                            />
+                            <>
+                              <textarea
+                                value={lesson.content}
+                                onChange={(e) => updateLesson(chapter.id, lesson.id, { content: e.target.value })}
+                                className="w-full min-h-[100px] p-3 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm resize-y overflow-x-auto break-words"
+                                placeholder="Contenu du cours (HTML/Markdown supporté)..."
+                              />
+                              {/* Image upload for text lessons */}
+                              <div>
+                                {lesson.image_url ? (
+                                  <div className="relative w-full max-w-xs">
+                                    <img
+                                      src={lesson.image_url}
+                                      alt="Illustration"
+                                      className="w-full h-32 object-cover rounded-lg border border-[rgba(197,161,72,0.25)]"
+                                    />
+                                    <button
+                                      type="button"
+                                      onClick={() => updateLesson(chapter.id, lesson.id, { image_url: "" })}
+                                      className="absolute top-1.5 right-1.5 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
+                                    >
+                                      <XCircle size={16} />
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-dashed border-[rgba(197,161,72,0.4)] rounded-lg text-xs text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors">
+                                    <Upload size={14} />
+                                    {uploadingLesson === lesson.id ? "Upload..." : "Ajouter une image"}
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      className="hidden"
+                                      disabled={uploadingLesson === lesson.id}
+                                      onChange={(e) => handleLessonImageUpload(chapter.id, lesson.id, e)}
+                                    />
+                                  </label>
+                                )}
+                              </div>
+                            </>
                           )}
-                          
+
                           {lesson.type === "video" && (
                             <div className="flex items-center gap-3">
-                              <Video size={20} className="text-gray-400" />
+                              <Video size={20} className="text-gray-400 flex-shrink-0" />
                               <input
                                 type="url"
                                 value={lesson.content}
                                 onChange={(e) => updateLesson(chapter.id, lesson.id, { content: e.target.value })}
-                                className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                className="flex-1 min-w-0 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm px-3 py-2"
                                 placeholder="URL de la vidéo (Youtube, Vimeo...)"
                               />
                             </div>
@@ -265,12 +325,12 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
 
                           {lesson.type === "pdf" && (
                             <div className="flex items-center gap-3">
-                              <FileText size={20} className="text-gray-400" />
+                              <FileText size={20} className="text-gray-400 flex-shrink-0" />
                               <input
                                 type="url"
                                 value={lesson.content}
                                 onChange={(e) => updateLesson(chapter.id, lesson.id, { content: e.target.value })}
-                                className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                className="flex-1 min-w-0 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm px-3 py-2"
                                 placeholder="URL du fichier PDF..."
                               />
                             </div>

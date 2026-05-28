@@ -5,6 +5,23 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ChevronDown, ArrowRight, GraduationCap } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import JsonLd from "@/components/JsonLd";
+import Image from "next/image";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "C'est quoi Educalcul ?", acceptedAnswer: { "@type": "Answer", text: "Educalcul est une plateforme de mathématiques pour les enfants. On y trouve des leçons claires, des exercices, des quiz et un suivi détaillé pour progresser pas à pas." } },
+    { "@type": "Question", name: "Pour quels niveaux c'est fait ?", acceptedAnswer: { "@type": "Answer", text: "Le contenu couvre du CP à la Terminale. L'enfant choisit son niveau pour accéder aux contenus adaptés à sa classe." } },
+    { "@type": "Question", name: "Est-ce que ça suit le programme scolaire ?", acceptedAnswer: { "@type": "Answer", text: "Oui, tous les contenus sont alignés sur le programme officiel de l'Éducation Nationale." } },
+    { "@type": "Question", name: "Comment créer un compte ?", acceptedAnswer: { "@type": "Answer", text: "Cliquez sur Inscription, choisissez votre type de compte, puis remplissez le formulaire. C'est rapide et vous pouvez commencer immédiatement." } },
+    { "@type": "Question", name: "Quels abonnements sont proposés ?", acceptedAnswer: { "@type": "Answer", text: "Educalcul propose une formule Gratuite, une formule Famille et une formule Premium. Consultez la page Tarifs pour le détail des fonctionnalités incluses." } },
+    { "@type": "Question", name: "L'abonnement se renouvelle-t-il automatiquement ?", acceptedAnswer: { "@type": "Answer", text: "Cela dépend de la formule choisie. Tous les détails sont indiqués clairement avant validation, et vous pouvez annuler à tout moment." } },
+    { "@type": "Question", name: "Sur quels appareils peut-on l'utiliser ?", acceptedAnswer: { "@type": "Answer", text: "Educalcul fonctionne sur ordinateur, tablette et téléphone. Le site s'adapte à toutes les tailles d'écran." } },
+    { "@type": "Question", name: "Comment suivre les progrès de mon enfant ?", acceptedAnswer: { "@type": "Answer", text: "Le tableau de bord parent affiche l'avancée, les exercices réalisés, les badges obtenus et les points à revoir." } },
+  ],
+};
 
 const SYM = [
   { s: "∑", x: 6,  y: 10, z: 96,  d: 0,   t: 7.2  },
@@ -87,6 +104,7 @@ export default function FAQ() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
+      <JsonLd data={faqSchema} />
       <Navbar />
       <main className="flex-grow pt-[64px]">
 
@@ -175,9 +193,9 @@ export default function FAQ() {
               style={{ background: "#fff", border: "1px solid var(--greek-border)" }}
             >
               <div className="flex items-center gap-5 flex-wrap justify-center sm:justify-start">
-                <img src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" className="h-10 w-auto object-contain" />
+                <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={80} height={40} className="h-10 w-auto object-contain" unoptimized />
                 <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
-                <img src="/eduscol.svg" alt="Eduscol" className="h-7 w-auto object-contain" />
+                <Image src="/eduscol.svg" alt="Eduscol" width={80} height={28} className="h-7 w-auto object-contain" unoptimized />
               </div>
               <div className="text-center sm:text-left flex-1 px-2">
                 <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>

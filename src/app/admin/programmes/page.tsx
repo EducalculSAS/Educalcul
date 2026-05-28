@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Upload, Trash2, FileText, CheckCircle, AlertTriangle, Loader2, BookOpen, X } from "lucide-react";
+import { Upload, Trash2, FileText, CheckCircle, AlertTriangle, Loader2, BookOpen, X, GraduationCap } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
@@ -93,7 +93,7 @@ export default function AdminProgrammesPage() {
   if (loading) return <AppAdminLoader />;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="space-y-6 max-w-4xl">
       {/* Notification */}
       {notification && (
         <div className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-4 rounded-2xl shadow-xl text-sm font-semibold transition-all ${notification.type === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
@@ -103,11 +103,12 @@ export default function AdminProgrammesPage() {
       )}
 
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-1">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+        <h1 className="text-3xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] flex items-center gap-3 mb-1">
+          <GraduationCap className="text-[var(--greek-gold)]" size={30} />
           Programmes officiels
         </h1>
-        <p className="text-sm text-[var(--text-muted)]">
+        <p className="text-[var(--greek-bronze)]">
           Dépose les PDFs officiels par niveau. L&apos;IA s&apos;en servira comme référence pour la génération.
         </p>
       </div>

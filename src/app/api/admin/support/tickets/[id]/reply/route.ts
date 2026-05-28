@@ -46,7 +46,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       const bodyHtml = tmpl
         ? tmpl.body.replace(/\{\{name\}\}/g, firstName).replace(/\{\{reply\}\}/g, message.replace(/\n/g, "<br>"))
         : `<p>Bonjour ${firstName},</p><blockquote style="border-left:3px solid #c5a148;padding:12px 16px;background:#fffbeb;">${message.replace(/\n/g, "<br>")}</blockquote>`;
-      const emailHtml = buildEmailHtml({ title: emailSubject, body: bodyHtml, cta: { label: "Nous contacter", url: "https://educalcul.fr/contact" } });
+      const emailHtml = buildEmailHtml({ title: emailSubject, body: bodyHtml, cta: { label: "Nous contacter", url: "https://educalcul.com/contact" } });
       const emailText = `Bonjour ${firstName},\n\nNotre équipe a répondu à votre message :\n\n${message}\n\nL'équipe Educalcul`;
 
       const result = await sendEmail({

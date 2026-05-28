@@ -1,9 +1,9 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, BookOpen, ExternalLink, ArrowRight, FileText } from "lucide-react";
 import { PROGRAMMES_NATIONAUX, ProgrammeEntry } from "@/lib/programmes-nationaux";
@@ -214,7 +214,7 @@ export default function ProgrammesPage() {
       <Navbar />
 
       {/* Hero — match FAQ style */}
-      <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-24 text-center">
+      <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+4rem)] pb-24 text-center">
         {SYM.map((cfg, i) => (
           <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none"
             style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.13, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
@@ -222,9 +222,9 @@ export default function ProgrammesPage() {
         ))}
         <div className="relative container mx-auto px-6 max-w-3xl">
           <div className="flex items-center justify-center gap-6 mb-8 flex-wrap">
-            <img src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" className="h-12 w-auto object-contain" style={{ filter: "brightness(10)" }} />
+            <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={96} height={48} className="h-12 w-auto object-contain" style={{ filter: "brightness(10)" }} unoptimized />
             <div className="w-px h-10" style={{ background: "rgba(255,255,255,0.2)" }} />
-            <img src="/eduscol.svg" alt="Eduscol" className="h-8 w-auto object-contain" style={{ filter: "brightness(10)" }} />
+            <Image src="/eduscol.svg" alt="Eduscol" width={80} height={32} className="h-8 w-auto object-contain" style={{ filter: "brightness(10)" }} unoptimized />
           </div>
           <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-5">
             Programmes officiels

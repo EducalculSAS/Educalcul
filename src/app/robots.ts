@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/parent/", "/child/", "/admin/", "/api/"],
       },
     ],
-    sitemap: "https://educalcul.fr/sitemap.xml",
+    sitemap: "https://educalcul.com/sitemap.xml",
   };
 }

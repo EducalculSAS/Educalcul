@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Twitter, Instagram, Youtube, Mail } from "lucide-react";
 
 const NAV_COLS = [
   {
@@ -40,11 +40,18 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-1">
-            <img src="/logo.png" alt="Educalcul" className="h-12 w-auto object-contain mb-5" />
-            <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
+            <Image src="/logo.png" alt="Educalcul" width={84} height={48} className="h-12 w-auto object-contain mb-5" />
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.45)" }}>
               Plateforme d&apos;apprentissage des mathématiques, du CP à la Terminale.
               IA pédagogique, progression gamifiée, suivi parents.
             </p>
+            <a href="mailto:educalcul@gmail.com"
+              className="flex items-center gap-2 text-sm mb-5 transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.45)" }}
+            >
+              <Mail className="w-4 h-4 shrink-0" />
+              educalcul@gmail.com
+            </a>
             <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
                 <a key={i} href="#"

@@ -15,6 +15,7 @@ export default function CookieBanner() {
   const accept = () => {
     localStorage.setItem("cookie_consent", "accepted");
     setVisible(false);
+    window.dispatchEvent(new Event("cookie_consent_accepted"));
   };
 
   const decline = () => {
@@ -30,7 +31,7 @@ export default function CookieBanner() {
         <div className="flex items-start gap-3 flex-1">
           <Cookie className="w-5 h-5 text-[var(--greek-gold)] shrink-0 mt-0.5" />
           <p className="text-sm text-white/90 leading-relaxed">
-            Nous utilisons des cookies essentiels au fonctionnement du site. En continuant, vous acceptez notre{" "}
+            Nous utilisons des cookies et données de navigation pour améliorer votre expérience. En continuant, vous acceptez notre{" "}
             <Link href="/politique-confidentialite" className="text-[var(--greek-gold)] underline hover:no-underline">
               politique de confidentialité
             </Link>{" "}
@@ -41,16 +42,10 @@ export default function CookieBanner() {
           </p>
         </div>
         <div className="flex gap-3 shrink-0">
-          <button
-            onClick={decline}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white/70 hover:text-white border border-white/30 rounded-lg transition-colors"
-          >
+          <button onClick={decline} className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white/70 hover:text-white border border-white/30 rounded-lg transition-colors">
             <X className="w-4 h-4" /> Refuser
           </button>
-          <button
-            onClick={accept}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold bg-[var(--greek-gold)] text-white rounded-lg hover:opacity-90 transition-all"
-          >
+          <button onClick={accept} className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold bg-[var(--greek-gold)] text-white rounded-lg hover:opacity-90 transition-all">
             <Check className="w-4 h-4" /> Accepter
           </button>
         </div>

@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, Suspense } from "react";
+import PageLoader from "@/components/PageLoader";
 import { useSearchParams, useRouter } from "next/navigation";
 import {
   ArrowLeft, Shield, Baby, Ban, MessageCircle, KeyRound, Trash2,
@@ -165,7 +166,7 @@ showToast("success", "Profil mis à jour");
   };
 
   if (!id) return <div className="p-6 text-red-500">ID manquant.</div>;
-  if (loading) return <div className="flex justify-center items-center h-64"><Loader2 className="w-8 h-8 animate-spin text-[var(--greek-blue)]" /></div>;
+  if (loading) return <PageLoader />;
   if (!data) return <div className="p-6 text-red-500">Utilisateur introuvable.</div>;
 
   const { user, stats, subscription, children, notifications, badges, forum_posts, forum_comments, reports } = data;
@@ -565,7 +566,7 @@ showToast("success", "Profil mis à jour");
 
 export default function UserDetailPage() {
   return (
-    <Suspense fallback={<div className="flex justify-center items-center h-64"><Loader2 className="w-8 h-8 animate-spin text-[var(--greek-blue)]" /></div>}>
+    <Suspense fallback={<PageLoader />}>
       <UserDetailContent />
     </Suspense>
   );

@@ -1,9 +1,11 @@
 ﻿"use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import PageLoader from "@/components/PageLoader";
 import {
   Users, BookOpen, MessageSquare, TrendingUp, Activity,
   BarChart2, UserPlus, CreditCard, Dumbbell, Gift, RefreshCw, Clock,
+  Wifi, Globe, MapPin, ShieldOff, Eye,
 } from "lucide-react";
 
 const REFRESH_SEC = 30;
@@ -34,14 +36,10 @@ export default function ReportsPage() {
     return () => { clearInterval(auto); clearInterval(tick); };
   }, [fetchData]);
 
-  if (loading) return (
-    <div className="flex justify-center items-center h-64">
-      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[var(--greek-blue)]" />
-    </div>
-  );
+  if (loading) return <PageLoader />;
   if (!data) return <div className="p-6 text-red-500">Erreur de chargement.</div>;
 
-  const { stats, charts, recent_activity } = data;
+  const { stats, charts, recent_activity, top_countries } = data;
   const maxCount = Math.max(...charts.registrations.map((r: any) => r.count), 1);
 
   const activityIcon = (type: string) => {
@@ -82,7 +80,7 @@ export default function ReportsPage() {
             className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
           >
             <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
-            Actualiser
+            <span className="hidden sm:inline">Actualiser</span>
           </button>
         </div>
       </div>
@@ -109,6 +107,116 @@ export default function ReportsPage() {
         <StatCard title="Commentaires forum" value={stats.forum_comments} icon={<MessageSquare size={20} />} color="bg-pink-50 text-pink-600" />
         <StatCard title="Codes parrainage" value={stats.parrainage_codes} icon={<Gift size={20} />} color="bg-rose-50 text-rose-600" />
         <StatCard title="Utilisations parrainage" value={stats.parrainage_uses} icon={<Gift size={20} />} color="bg-red-50 text-red-600" />
+      </div>
+
+      {/* ── Performance & Trafic ─────────────────────────────────────────── */}
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+        <h3 className="text-base font-bold text-[var(--greek-blue)] mb-5 flex items-center gap-2">
+          <Wifi size={18} className="text-[var(--greek-gold)]" />
+          Performance &amp; Trafic du site
+        </h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          <PerfCard
+            label="En ligne maintenant"
+            value={stats.online_now}
+            icon={<Wifi size={16} />}
+            color="bg-green-500"
+            sub="actifs < 5 min"
+            pulse={stats.online_now > 0}
+          />
+          <PerfCard
+            label="Actifs 24h"
+            value={stats.active_24h}
+            icon={<Activity size={16} />}
+            color="bg-blue-500"
+            sub={`${stats.total_users > 0 ? Math.round((stats.active_24h / stats.total_users) * 100) : 0}% des users`}
+          />
+          <PerfCard
+            label="Actifs 7 jours"
+            value={stats.active_7d}
+            icon={<TrendingUp size={16} />}
+            color="bg-indigo-500"
+            sub={`${stats.total_users > 0 ? Math.round((stats.active_7d / stats.total_users) * 100) : 0}% des users`}
+          />
+          <PerfCard
+            label="Actifs 30 jours"
+            value={stats.active_30d}
+            icon={<Eye size={16} />}
+            color="bg-purple-500"
+            sub={`${stats.total_users > 0 ? Math.round((stats.active_30d / stats.total_users) * 100) : 0}% des users`}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          {/* Engagement rate */}
+          <div className="bg-gray-50 rounded-2xl p-4 border border-[rgba(197,161,72,0.15)]">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+              <TrendingUp size={13} /> Taux d&apos;engagement
+            </p>
+            {[
+              { label: "Retention 24h", val: stats.total_users > 0 ? Math.round((stats.active_24h / stats.total_users) * 100) : 0, color: "bg-green-400" },
+              { label: "Retention 7j",  val: stats.total_users > 0 ? Math.round((stats.active_7d  / stats.total_users) * 100) : 0, color: "bg-blue-400"  },
+              { label: "Retention 30j", val: stats.total_users > 0 ? Math.round((stats.active_30d / stats.total_users) * 100) : 0, color: "bg-indigo-400"},
+            ].map(({ label, val, color }) => (
+              <div key={label} className="mb-2">
+                <div className="flex justify-between text-xs mb-1">
+                  <span className="text-gray-500">{label}</span>
+                  <span className="font-bold text-gray-700">{val}%</span>
+                </div>
+                <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                  <div className={`h-full ${color} rounded-full transition-all duration-700`} style={{ width: `${Math.min(val, 100)}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Autres métriques */}
+          <div className="bg-gray-50 rounded-2xl p-4 border border-[rgba(197,161,72,0.15)]">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+              <Globe size={13} /> Métriques globales
+            </p>
+            <div className="space-y-2.5">
+              {[
+                { label: "Abonnés actifs", value: stats.active_subs, total: stats.total_users, color: "text-green-600" },
+                { label: "Avec localisation GPS", value: stats.users_with_gps, total: stats.total_users, color: "text-blue-600" },
+                { label: "Comptes suspendus", value: stats.banned_users, total: stats.total_users, color: "text-red-500" },
+              ].map(({ label, value, total, color }) => (
+                <div key={label} className="flex items-center justify-between text-xs">
+                  <span className="text-gray-500">{label}</span>
+                  <span className={`font-bold ${color}`}>
+                    {value} <span className="text-gray-400 font-normal">/ {total}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Top pays */}
+          <div className="bg-gray-50 rounded-2xl p-4 border border-[rgba(197,161,72,0.15)]">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+              <MapPin size={13} /> Top pays
+            </p>
+            {top_countries && top_countries.length > 0 ? (
+              <div className="space-y-2">
+                {top_countries.map((c: any, i: number) => {
+                  const pct = stats.total_users > 0 ? Math.round((c.count / stats.total_users) * 100) : 0;
+                  return (
+                    <div key={c.country} className="flex items-center gap-2 text-xs">
+                      <span className="text-gray-400 w-4 shrink-0">{i + 1}.</span>
+                      <span className="flex-1 text-gray-700 font-medium truncate">{c.country}</span>
+                      <span className="text-gray-500 shrink-0">{c.count}</span>
+                      <div className="w-12 h-1.5 bg-gray-200 rounded-full overflow-hidden shrink-0">
+                        <div className="h-full bg-[var(--greek-blue)] rounded-full" style={{ width: `${pct}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <p className="text-xs text-gray-400 italic">Aucune donnée géographique</p>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Chart + Activity */}
@@ -182,6 +290,31 @@ function StatCard({ title, value, sub, icon, color }: { title: string; value: nu
         <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>
       </div>
       <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{title}</p>
+      {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
+    </div>
+  );
+}
+
+function PerfCard({ label, value, icon, color, sub, pulse }: {
+  label: string; value: number; icon: React.ReactNode; color: string; sub?: string; pulse?: boolean;
+}) {
+  return (
+    <div className="bg-gray-50 rounded-2xl p-4 border border-[rgba(197,161,72,0.15)]">
+      <div className="flex items-center justify-between mb-1">
+        <div className={`w-8 h-8 rounded-lg ${color} flex items-center justify-center text-white`}>
+          {icon}
+        </div>
+        <div className="flex items-center gap-1.5">
+          {pulse && value > 0 && (
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+            </span>
+          )}
+          <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>
+        </div>
+      </div>
+      <p className="text-xs font-semibold text-gray-600 mt-1">{label}</p>
       {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
     </div>
   );

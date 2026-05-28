@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import ForumCategories from "./ForumCategories";
 import ForumPosts from "./ForumPosts";
 import ForumThread from "./ForumThread";
-import { Loader2 } from "lucide-react";
+import PageLoader from "@/components/PageLoader";
 
 export type ForumRole = "admin" | "parent" | "child";
 
@@ -73,11 +73,7 @@ export default function ForumApp({ role }: ForumAppProps) {
   }, [searchParams]);
 
   if (loading) {
-    return (
-      <div className="flex justify-center p-12">
-        <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
-      </div>
-    );
+    return <PageLoader className="h-48" />;
   }
 
   if (!userAuthId) {

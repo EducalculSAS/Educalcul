@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect } from "react";
+import PageLoader from "@/components/PageLoader";
 import { supabase } from "@/lib/supabaseClient";
 import { User, Save, Eye, Crown, Shield } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
@@ -108,13 +109,7 @@ export default function AdminProfilePage() {
 
 
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--greek-blue)]"></div>
-      </div>
-    );
-  }
+  if (loading) return <PageLoader className="min-h-screen" />;
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">

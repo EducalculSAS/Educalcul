@@ -9,7 +9,6 @@ import {
   Calculator,
   Trophy,
   FileText,
-  Settings,
   LogOut,
   Menu,
   X,
@@ -48,7 +47,6 @@ export default function AdminSidebar() {
     { name: "Juridique", href: "/admin/juridique", icon: Scale },
     { name: "Programmes", href: "/admin/programmes", icon: GraduationCap },
     { name: "Profil", href: "/admin/profile", icon: User },
-    { name: "Paramètres", href: "/admin/settings", icon: Settings },
   ];
 
   const handleLogout = async () => {
@@ -62,35 +60,39 @@ export default function AdminSidebar() {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 right-4 z-50 p-2 bg-[var(--greek-blue)] text-white rounded-md shadow-lg"
+        className="lg:hidden fixed z-[1050] p-2 bg-[var(--greek-blue)] text-white rounded-md shadow-lg"
+        style={{ top: 12, left: 16 }}
       >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
+        {isOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
       {/* Sidebar Overlay for Mobile */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-black/50 z-40"
+          className="lg:hidden fixed inset-0 bg-black/50 z-[1040]"
           onClick={() => setIsOpen(false)}
         />
       )}
 
-      {/* Sidebar Container */}
+      {/* Sidebar Container — commence sous la navbar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-[var(--greek-blue)] text-white z-40 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed left-0 w-64 bg-[var(--greek-blue)] text-white z-[1040] transform transition-transform duration-300 ease-in-out lg:translate-x-0 flex flex-col ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
+        style={{
+          top: 0,
+          height: "100dvh",
+        }}
       >
-        <div className="p-6 border-b border-[rgba(197,161,72,0.25)]">
-          <h1 className="text-2xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-gold)]">
-            EduCalcul
-            <span className="block text-sm text-white/70 font-sans mt-1">
-              Admin Panel
-            </span>
+        {/* Header sidebar */}
+        <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] flex-shrink-0">
+          <h1 className="text-xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-gold)]">
+            Admin Panel
           </h1>
         </div>
 
-        <nav className="p-4 space-y-2 overflow-y-auto h-[calc(100vh-140px)]">
+        {/* Nav items — scroll indépendant */}
+        <nav className="flex-1 overflow-y-auto p-3 space-y-1">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive =
@@ -101,25 +103,26 @@ export default function AdminSidebar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 text-sm ${
                   isActive
                     ? "bg-[var(--greek-gold)] text-[var(--greek-blue)] font-bold shadow-md"
                     : "text-white/80 hover:bg-white/10 hover:text-white"
                 }`}
               >
-                <Icon size={20} />
-                <span>{item.name}</span>
+                <Icon size={18} className="flex-shrink-0" />
+                <span className="truncate">{item.name}</span>
               </Link>
             );
           })}
         </nav>
 
-        <div className="absolute bottom-0 left-0 w-full p-4 border-t border-[rgba(197,161,72,0.25)] bg-[var(--greek-blue)]">
+        {/* Déconnexion — collé en bas */}
+        <div className="flex-shrink-0 p-3 border-t border-[rgba(197,161,72,0.25)]">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-all duration-200"
+            className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-all duration-200 text-sm"
           >
-            <LogOut size={20} />
+            <LogOut size={18} className="flex-shrink-0" />
             <span>Déconnexion</span>
           </button>
         </div>

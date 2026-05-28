@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import PageLoader from "@/components/PageLoader";
 import {
   Inbox,
   Archive,
@@ -388,9 +389,7 @@ export default function SupportPage() {
       {/* Main Content */}
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden min-h-[500px]">
         {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--greek-blue)]"></div>
-          </div>
+          <PageLoader />
         ) : selectedTicket ? (
           // DETAIL VIEW
           <div className="flex flex-col h-full">

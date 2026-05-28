@@ -27,6 +27,7 @@ import {
   Loader2, Eye, Download, Upload,
 } from "lucide-react";
 import QuizViewer from "@/components/viewers/QuizViewer";
+import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 
 const FOLDER_COLORS = [
@@ -110,10 +111,15 @@ export default function AdminQuizzesPage() {
   });
 
   const importQuizRef = useRef<HTMLInputElement>(null);
+  const [showImportModal, setShowImportModal] = useState(false);
 
   const handleImportQuiz = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    await processImportFile(file);
+  };
+
+  const processImportFile = async (file: File) => {
     try {
       const data = await importFromJSONFile(file);
       if (data._type && data._type !== "quiz") { alert("Ce fichier n'est pas un quiz."); return; }
@@ -135,7 +141,6 @@ export default function AdminQuizzesPage() {
       setEditingQuiz(null);
       setIsModalOpen(true);
     } catch (err: any) { alert(err.message); }
-    e.target.value = "";
   };
 
   // Modal state
@@ -696,12 +701,11 @@ export default function AdminQuizzesPage() {
               Nouveau Quiz
             </button>
             <button
-              onClick={() => importQuizRef.current?.click()}
+              onClick={() => setShowImportModal(true)}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
             >
               <Upload size={18} /> Importer JSON
             </button>
-            <input ref={importQuizRef} type="file" accept=".json" className="hidden" onChange={handleImportQuiz} />
           </div>
         </div>
       </div>
@@ -1187,6 +1191,31 @@ export default function AdminQuizzesPage() {
                         placeholder="Description du quiz..."
                       />
                     </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Image miniature</label>
+                      {formData.thumbnail_filename ? (
+                        <div className="relative w-full h-20 bg-gray-100 rounded-lg overflow-hidden border border-[rgba(197,161,72,0.25)] mb-2">
+                          <img
+                            src={`/uploads/quiz_thumbnails/${formData.thumbnail_filename}`}
+                            alt="Aperçu"
+                            className="w-full h-full object-cover"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setFormData({ ...formData, thumbnail_filename: "" })}
+                            className="absolute top-1.5 right-1.5 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
+                          >
+                            <XCircle size={16} />
+                          </button>
+                        </div>
+                      ) : (
+                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium border border-dashed border-[rgba(197,161,72,0.25)]">
+                          <ImageIcon size={16} />
+                          {uploading ? "Upload..." : "Choisir une image"}
+                          <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
+                        </label>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -1345,6 +1374,14 @@ export default function AdminQuizzesPage() {
 
 
       {/* Preview Modal removed in favor of tab-based preview */}
+
+      {showImportModal && (
+        <ImportJsonModal
+          label="quiz"
+          onClose={() => setShowImportModal(false)}
+          onFileLoaded={processImportFile}
+        />
+      )}
     </div>
   );
 }

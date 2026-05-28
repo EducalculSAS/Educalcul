@@ -106,12 +106,12 @@ export async function POST(req: NextRequest) {
     }
 
     // GÃ©nÃ©rer un lien de confirmation (email_confirm: false lors de la crÃ©ation)
-    let confirmUrl = "https://educalcul.fr/parent/dashboard";
+    let confirmUrl = "https://educalcul.com/parent/dashboard";
     try {
       const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
         type: "magiclink",
         email: signUpEmail,
-        options: { redirectTo: "https://educalcul.fr/auth/callback" },
+        options: { redirectTo: "https://educalcul.com/auth/callback" },
       });
       if (linkData?.properties?.action_link) {
         confirmUrl = linkData.properties.action_link;

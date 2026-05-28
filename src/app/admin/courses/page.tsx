@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import PageLoader from "@/components/PageLoader";
 import {
   BookOpen, Search, Plus, Edit, Trash2, XCircle, Loader2,
   Image as ImageIcon, Sparkles, Eye, Folder as FolderIcon,
@@ -804,9 +805,8 @@ export default function AdminCoursesPage() {
       >
         {/* Loading State */}
         {loading && (
-          <div className="col-span-full py-12 text-center text-gray-500">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2 text-[var(--greek-blue)]" />
-            Chargement du contenu...
+          <div className="col-span-full">
+            <PageLoader />
           </div>
         )}
 
@@ -1079,6 +1079,13 @@ export default function AdminCoursesPage() {
                         {formData.thumbnail_url && (
                           <div className="relative w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-[rgba(197,161,72,0.25)] flex-shrink-0">
                             <img src={formData.thumbnail_url} alt="Preview" className="w-full h-full object-cover" />
+                            <button
+                              type="button"
+                              onClick={() => setFormData((prev) => ({ ...prev, thumbnail_url: "" }))}
+                              className="absolute top-0.5 right-0.5 p-0.5 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
+                            >
+                              <XCircle size={13} />
+                            </button>
                           </div>
                         )}
                         <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium flex-1 justify-center border border-dashed border-[rgba(197,161,72,0.25)]">

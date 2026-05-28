@@ -48,6 +48,39 @@ export async function GET() {
       ),
     ]);
 
+    // ── Trafic / performance ────────────────────────────────────────────────
+    const fiveMinAgo  = new Date(now.getTime() - 5  * 60 * 1000);
+    const oneDayAgo   = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+    const [
+      onlineNow, active24h, active7d, active30d,
+      usersWithGps, bannedUsers,
+    ] = await Promise.all([
+      safeCount("users", q => q.gte("last_active_at", fiveMinAgo.toISOString())),
+      safeCount("users", q => q.gte("last_active_at", oneDayAgo.toISOString())),
+      safeCount("users", q => q.gte("last_active_at", sevenDaysAgo.toISOString())),
+      safeCount("users", q => q.gte("last_active_at", thirtyDaysAgo.toISOString())),
+      safeCount("users", q => q.eq("location_precise", true)),
+      safeCount("users", q => q.eq("status", "inactive")),
+    ]);
+
+    // Sessions / logins proxy : users who logged in the last 30 days
+    // Top pays
+    let topCountries: { country: string; count: number }[] = [];
+    try {
+      const { data: countryData } = await supabaseAdmin
+        .from("users")
+        .select("last_login_country")
+        .not("last_login_country", "is", null);
+      const map: Record<string, number> = {};
+      (countryData || []).forEach((u: any) => {
+        if (u.last_login_country) map[u.last_login_country] = (map[u.last_login_country] || 0) + 1;
+      });
+      topCountries = Object.entries(map)
+        .map(([country, count]) => ({ country, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 5);
+    } catch {}
+
     // ── Avg quiz score ───────────────────────────────────────────────────────
     let avgQuizScore: number | null = null;
     try {
@@ -136,9 +169,16 @@ export async function GET() {
         avg_quiz_score: avgQuizScore,
         parrainage_codes: parrainageCodes,
         parrainage_uses: parrainageUses,
+        online_now: onlineNow,
+        active_24h: active24h,
+        active_7d: active7d,
+        active_30d: active30d,
+        users_with_gps: usersWithGps,
+        banned_users: bannedUsers,
       },
       charts: { registrations: registrationsChart },
       recent_activity: activity,
+      top_countries: topCountries,
     });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
