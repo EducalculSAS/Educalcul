@@ -344,7 +344,7 @@ export default function AdminEmailsPage() {
             .replace(/\{\{reply\}\}/g, "Bonjour, merci pour votre message. Voici notre réponse..."),
         });
         return (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[1060] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[95vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 shrink-0">
               <div>
@@ -372,7 +372,7 @@ export default function AdminEmailsPage() {
           logoBaseUrl: origin,
         });
         return (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[1060] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[95vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 shrink-0">
               <h3 className="font-bold text-[var(--greek-blue)]">{editTmpl.name}</h3>
@@ -461,7 +461,7 @@ export default function AdminEmailsPage() {
 
       {/* ── MODAL ENVOI ── */}
       {sendTmpl && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[1060] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h3 className="font-bold text-[var(--greek-blue)]">Envoyer — {sendTmpl.name}</h3>
@@ -546,7 +546,7 @@ export default function AdminEmailsPage() {
 
       {/* ── MODAL CRÉATION ── */}
       {createOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[1060] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h3 className="font-bold text-[var(--greek-blue)]">Nouveau</h3>

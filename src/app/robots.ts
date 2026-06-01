@@ -5,10 +5,24 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/offres", "/tarifs", "/faq", "/contact", "/auth/inscription", "/auth/connexion"],
-        disallow: ["/parent/", "/child/", "/admin/", "/api/"],
+        allow: [
+          "/",
+          "/offres",
+          "/tarifs",
+          "/faq",
+          "/contact",
+          "/programmes",
+          "/programmes/",
+          "/auth/inscription",
+          "/auth/connexion",
+          "/mentions-legales",
+          "/politique-confidentialite",
+          "/cgu",
+        ],
+        disallow: ["/parent/", "/child/", "/admin/", "/api/", "/dashboard"],
       },
     ],
     sitemap: "https://educalcul.com/sitemap.xml",
+    host: "https://educalcul.com",
   };
 }

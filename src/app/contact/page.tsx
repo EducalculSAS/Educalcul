@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Send, CheckCircle, AlertCircle, Mail, Clock, MessageSquare } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Mail, Clock, MessageSquare, ShieldCheck } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 const SYM = [
@@ -87,18 +87,39 @@ export default function Contact() {
       <Navbar />
       <main className="flex-grow pt-[64px]">
 
-        {/* HERO */}
-        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-24 text-center">
+        {/* HERO — split, panneau message à droite */}
+        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-32">
           {SYM.map((cfg, i) => (
             <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none"
-              style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.13, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
+              style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.1, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
             >{cfg.s}</span>
           ))}
-          <div className="relative container mx-auto px-6 max-w-3xl">
-            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-5">Contactez-nous</h1>
-            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
-              Notre équipe est disponible pour répondre à toutes vos questions.
-            </p>
+          <div className="relative container mx-auto px-6 max-w-5xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Gauche */}
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.6)" }}>Support</p>
+                <h1 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-5 text-white"
+                  style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)" }}>
+                  Contactez-nous
+                </h1>
+                <p className="text-white/55 text-lg leading-relaxed">
+                  Une équipe française à votre écoute — pour chaque question, grande ou petite.
+                </p>
+              </div>
+              {/* Droite — sujets de contact */}
+              <div className="hidden md:flex flex-col gap-3">
+                <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.3)" }}>Vous souhaitez nous parler de…</p>
+                <div className="flex flex-wrap gap-2">
+                  {SUBJECTS.filter(s => s !== "Autre").map((s, i) => (
+                    <span key={i} className="px-3 py-1.5 rounded-full text-xs font-medium"
+                      style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(240,237,232,0.6)" }}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -114,26 +135,28 @@ export default function Contact() {
                 </h2>
                 {[
                   { icon: <Mail className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />, title: "Email", desc: "educalcul@gmail.com" },
-                  { icon: <Clock className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />, title: "Délai de réponse", desc: "Moins de 24h en semaine" },
-                  { icon: <MessageSquare className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />, title: "Support", desc: "Du lundi au vendredi" },
+                  { icon: <Clock className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />, title: "Réponse sous 24h", desc: "En semaine, jours ouvrés" },
+                  { icon: <MessageSquare className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />, title: "Support en français", desc: "Une équipe dédiée, basée en France" },
+                  { icon: <ShieldCheck className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />, title: "RGPD & confidentialité", desc: "Vos données ne sont jamais partagées" },
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-start gap-4 p-5 bg-white rounded-xl"
+                    className="flex items-start gap-4 p-5 bg-white rounded-2xl"
                     style={{
-                      border: "1px solid #e5e7eb",
+                      border: "1px solid rgba(197,161,72,0.18)",
+                      boxShadow: "0 2px 12px rgba(15,30,58,0.04)",
                       opacity: infoVisible ? 1 : 0,
                       transform: infoVisible ? "translateX(0)" : "translateX(-16px)",
                       transition: `opacity 0.5s ${i * 80}ms, transform 0.5s ${i * 80}ms`,
                     }}
                   >
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(197,161,72,0.08)" }}>
+                      style={{ background: "rgba(197,161,72,0.10)", border: "1px solid rgba(197,161,72,0.2)" }}>
                       {item.icon}
                     </div>
                     <div>
-                      <p className="font-[family-name:var(--font-display)] font-semibold text-sm text-[var(--greek-blue)]">{item.title}</p>
-                      <p className="text-sm text-[var(--text-muted)] mt-0.5">{item.desc}</p>
+                      <p className="font-[family-name:var(--font-display)] font-semibold text-sm" style={{ color: "var(--greek-blue)" }}>{item.title}</p>
+                      <p className="text-xs mt-0.5 leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}

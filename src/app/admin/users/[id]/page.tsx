@@ -671,7 +671,7 @@ export default function UserDetailPage() {
 
       {/* Export modal */}
       {showExportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-6 py-4 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-lg font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Exporter</h2>
@@ -726,7 +726,7 @@ export default function UserDetailPage() {
 
       {/* Send message modal */}
       {showMessageModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Envoyer un message</h2>
@@ -762,7 +762,7 @@ export default function UserDetailPage() {
 
       {/* Ban modal */}
       {showBanModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-red-600 font-[family-name:var(--font-display)]">Bannir l'utilisateur</h2>

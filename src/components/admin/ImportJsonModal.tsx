@@ -29,7 +29,7 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
   }, [handleFile]);
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1060] p-4" onClick={onClose}>
       <div
         className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
         onClick={(e) => e.stopPropagation()}
@@ -40,8 +40,8 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
             <FileJson size={17} />
             Importer un {label}
           </h3>
-          <button onClick={onClose} className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
-            <X size={18} />
+          <button onClick={onClose} className="group text-white/70 hover:text-white transition-colors p-2 relative z-10" aria-label="Fermer">
+            <X size={22} className="transition-transform group-hover:scale-125" />
           </button>
         </div>
 

@@ -12,6 +12,7 @@ import {
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AIGeneratorModal, { AIGenerateParams } from "@/components/admin/AIGeneratorModal";
+import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 
 interface Course {
@@ -81,6 +82,7 @@ export default function AdminCoursesPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
   const importCourseRef = useRef<HTMLInputElement>(null);
 
   const handleImportCourse = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -722,12 +724,11 @@ export default function AdminCoursesPage() {
               Générer avec IA
             </button>
             <button
-              onClick={() => importCourseRef.current?.click()}
+              onClick={() => setShowImportModal(true)}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
             >
               <Upload size={18} /> Importer JSON
             </button>
-            <input ref={importCourseRef} type="file" accept=".json" className="hidden" onChange={handleImportCourse} />
             <button
               onClick={() => handleOpenModal("create")}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-lg shadow-blue-900/10"
@@ -982,7 +983,7 @@ export default function AdminCoursesPage() {
 
       {/* Create Course Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
             {/* Header */}
             <div className="px-8 py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
@@ -992,7 +993,7 @@ export default function AdminCoursesPage() {
                   {modalMode === "create" ? "Ajouter un cours" : "Modifier le cours"}
                 </h3>
               </div>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors text-white/70 hover:text-white">
+              <button onClick={() => setIsModalOpen(false)} className="group p-2 text-white/70 hover:text-white transition-colors relative z-10">
                 <XCircle size={22} />
               </button>
             </div>
@@ -1133,7 +1134,7 @@ export default function AdminCoursesPage() {
 
       {/* Create Folder Modal */}
       {isFolderModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm overflow-hidden">
             <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] flex justify-between items-center bg-gray-50">
               <h3 className="text-lg font-bold text-gray-800">
@@ -1276,6 +1277,18 @@ export default function AdminCoursesPage() {
         />
       )}
 
+      {showImportModal && (
+        <ImportJsonModal
+          onClose={() => setShowImportModal(false)}
+          onFileLoaded={(file) => {
+            const fakeEvent = { target: { files: [file] } } as unknown as React.ChangeEvent<HTMLInputElement>;
+            handleImportCourse(fakeEvent);
+            setShowImportModal(false);
+          }}
+          label="cours"
+        />
+      )}
+
       {/* Notification Modal — replaces alert() */}
       {notification && (
         <NotificationModal
@@ -1321,7 +1334,7 @@ function NotificationModal({
   const ctaLabel = isSuccess ? "Continuer" : "Réessayer";
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <div className="bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md overflow-hidden animate-fade-bounce">
         <div className="px-8 pt-8 pb-4 flex flex-col items-center text-center">
           <div

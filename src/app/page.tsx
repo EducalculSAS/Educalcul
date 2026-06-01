@@ -117,7 +117,7 @@ function TestimonialsSection({ reviews }: { reviews: TpReview[] }) {
       {/* Bandeau header style Trustpilot */}
       <div
         className="rounded-2xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-6"
-        style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}
+        style={{ background: "#fff", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 2px 16px rgba(15,30,58,0.05)" }}
       >
         <div className="flex flex-col items-center sm:items-start gap-2">
           <TrustpilotLogo size={26} />
@@ -140,7 +140,7 @@ function TestimonialsSection({ reviews }: { reviews: TpReview[] }) {
           href="https://fr.trustpilot.com/review/educalcul.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-bold px-5 py-2.5 rounded-full transition-all hover:opacity-90"
+          className="text-sm font-bold px-5 py-2.5 rounded-full transition-all hover:-translate-y-[2px] hover:shadow-md active:scale-[0.98]"
           style={{ background: TP_GREEN, color: "#fff" }}
         >
           Laisser un avis
@@ -192,9 +192,10 @@ export default function Home() {
   const [bentoVisible, setBentoVisible] = useState(false);
   const [photosVisible, setPhotosVisible] = useState(false);
   const [scrolled, setScrolled]       = useState(false);
-  const [tpReviews, setTpReviews]     = useState<TpReview[]>([]);
-  const [stepsVisible, setStepsVisible] = useState(false);
+  const [tpReviews, setTpReviews]         = useState<TpReview[]>([]);
   const stepsRef = useRef<HTMLDivElement>(null);
+  const tpCardRef = useRef<HTMLDivElement>(null);
+  const [tpCardVisible, setTpCardVisible] = useState(false);
 
   useEffect(() => {
     fetch("/api/trustpilot-reviews")
@@ -254,15 +255,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const el = stepsRef.current;
+    const el = tpCardRef.current;
     if (!el) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) { setTpCardVisible(true); return; }
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setStepsVisible(true); obs.disconnect(); } },
-      { threshold: 0.2 }
+      ([entry]) => { if (entry.isIntersecting) { setTpCardVisible(true); obs.disconnect(); } },
+      { threshold: 0.1 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+
 
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "#0f1e3a" }}>
@@ -324,7 +327,7 @@ export default function Home() {
             avec une méthode rigoureuse, une IA pédagogique et un suivi parental précis.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 mb-8">
+          <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/auth/inscription"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-200 hover:-translate-y-[2px] active:scale-[0.98] font-[family-name:var(--font-display)]"
@@ -341,7 +344,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <p className="text-sm italic" style={{ color: "rgba(197,161,72,0.55)", fontFamily: "Georgia, serif" }}>
+
+          <p className="text-sm italic mt-6" style={{ color: "rgba(197,161,72,0.45)", fontFamily: "Georgia, serif" }}>
             Parce que progresser, ça aussi, ça se calcule.
           </p>
         </div>
@@ -350,26 +354,31 @@ export default function Home() {
       {/* ════════════════════════════════════════════════════════
           §2 — MANIFESTE
       ════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ background: "var(--greek-cream)" }}>
+      <section className="py-32 px-6" style={{ background: "var(--greek-cream)" }}>
         <div className="max-w-4xl mx-auto">
-          <blockquote
-            className="font-[family-name:var(--font-display)] font-bold leading-tight"
-            style={{ color: "var(--greek-blue)", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
-          >
-            "Votre enfant ne manque pas de capacités.
-            <br />
-            <span style={{ color: "var(--greek-gold)" }}>Il manque d'une bonne méthode.</span>"
-          </blockquote>
-          <p className="mt-8 text-sm leading-relaxed max-w-xl" style={{ color: "var(--text-muted)" }}>
-            Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils, au bon moment, de la bonne façon.
-          </p>
+          <div className="flex gap-8 items-start">
+            <div className="hidden sm:block w-1 rounded-full flex-shrink-0 mt-2" style={{ background: "var(--greek-gold)", height: 72, opacity: 0.6 }} />
+            <div>
+              <blockquote
+                className="font-[family-name:var(--font-display)] font-bold leading-tight"
+                style={{ color: "var(--greek-blue)", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
+              >
+                "Votre enfant ne manque pas de capacités.
+                <br />
+                <span style={{ color: "var(--greek-gold)" }}>Il manque d'une bonne méthode.</span>"
+              </blockquote>
+              <p className="mt-8 text-sm leading-relaxed max-w-xl" style={{ color: "var(--text-muted)" }}>
+                Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils, au bon moment, de la bonne façon.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════
           §3 — BENTO GRID
       ════════════════════════════════════════════════════════ */}
-      <section className="pb-24 px-6" style={{ background: "var(--greek-cream)" }}>
+      <section className="pt-4 pb-28 px-6" style={{ background: "var(--greek-cream)" }}>
         <div className="max-w-5xl mx-auto" ref={bentoRef}>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -637,7 +646,7 @@ export default function Home() {
             }}
           >
             <div className="flex items-center gap-6 flex-wrap justify-center sm:justify-start">
-              <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={80} height={40} className="h-10 w-auto object-contain" unoptimized />
+              <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={180} height={180} className="w-auto object-contain flex-shrink-0" style={{ height: 180 }} unoptimized />
               <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
               <Image src="/eduscol.svg" alt="Eduscol" width={80} height={28} className="h-7 w-auto object-contain" unoptimized />
             </div>
@@ -664,14 +673,17 @@ export default function Home() {
           §3c — TÉMOIGNAGES
       ════════════════════════════════════════════════════════ */}
       <section className="py-16 px-6" style={{ background: "var(--greek-cream)" }}>
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-8">
             <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Avis clients</p>
+
             <h2 className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
               Ce que disent nos familles
             </h2>
           </div>
-          <TestimonialsSection reviews={tpReviews} />
+          <div ref={tpCardRef} style={{ opacity: tpCardVisible ? 1 : 0, transform: tpCardVisible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.6s, transform 0.6s" }}>
+            <TestimonialsSection reviews={tpReviews} />
+          </div>
         </div>
       </section>
 
@@ -686,54 +698,23 @@ export default function Home() {
             </h2>
           </div>
 
-          <div ref={stepsRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 relative">
 
-            {/* ── Ligne horizontale animée — desktop uniquement ── */}
-            <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-px overflow-hidden">
-              <div
-                className="h-full origin-left"
-                style={{
-                  background: `linear-gradient(90deg, var(--greek-gold), var(--greek-border))`,
-                  transform: stepsVisible ? "scaleX(1)" : "scaleX(0)",
-                  transition: "transform 1.4s cubic-bezier(0.4,0,0.2,1)",
-                  transitionDelay: "0.5s",
-                }}
-              />
-            </div>
+            {/* Ligne horizontale — desktop */}
+            <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-px"
+              style={{ background: `linear-gradient(90deg, var(--greek-gold), var(--greek-border))` }} />
 
             {[
-              { num: "01", title: "Créez votre compte",   desc: "Parent ou élève, inscription en 2 minutes." },
-              { num: "02", title: "Choisissez un plan",   desc: "Offre adaptée à vos besoins." },
-              { num: "03", title: "L'enfant apprend",     desc: "Cours, exercices, quiz et IA à portée de main." },
-              { num: "04", title: "Suivez les résultats", desc: "Stats claires depuis votre espace parent." },
+              { num: "01", title: "Créez votre espace",   desc: "Parent, lycéen autonome ou élève suivi — 2 minutes, sans carte bancaire requise." },
+              { num: "02", title: "Choisissez votre plan", desc: "7 jours d'essai gratuit sur tous les plans. Accès immédiat à tous les contenus." },
+              { num: "03", title: "L'enfant apprend",      desc: "Cours structurés, exercices progressifs et EpsiAI qui guide sans donner la réponse." },
+              { num: "04", title: "Vous pilotez",          desc: "Tableau de bord parent : progrès par chapitre, streaks et alertes hebdomadaires." },
             ].map((s, i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center text-center px-4 pb-10 md:pb-0 relative"
-                style={{
-                  opacity: stepsVisible ? 1 : 0,
-                  transform: stepsVisible ? "translateY(0)" : "translateY(24px)",
-                  transition: "opacity 0.5s ease, transform 0.5s ease",
-                  transitionDelay: `${0.1 + i * 0.2}s`,
-                }}
-              >
-                {/* Ligne verticale entre steps — mobile/sm uniquement */}
+              <div key={i} className="flex flex-col items-center text-center px-4 pb-10 md:pb-0 relative">
+                {/* Ligne verticale entre steps — mobile uniquement */}
                 {i < 3 && (
-                  <div
-                    className="md:hidden absolute left-1/2 -translate-x-1/2 w-px overflow-hidden"
-                    style={{ top: 56, height: 40, background: "var(--greek-border)" }}
-                  >
-                    <div
-                      className="w-full origin-top"
-                      style={{
-                        background: "var(--greek-gold)",
-                        height: "100%",
-                        transform: stepsVisible ? "scaleY(1)" : "scaleY(0)",
-                        transition: "transform 0.4s ease",
-                        transitionDelay: `${0.3 + i * 0.2}s`,
-                      }}
-                    />
-                  </div>
+                  <div className="md:hidden absolute left-1/2 -translate-x-1/2 w-px"
+                    style={{ top: 56, height: 40, background: "var(--greek-gold)", opacity: 0.4 }} />
                 )}
 
                 <div
@@ -778,9 +759,11 @@ export default function Home() {
             Votre enfant mérite<br />
             <span style={{ color: "var(--greek-gold)" }}>le meilleur départ</span>
           </h2>
-          <p className="text-base mb-10 max-w-md mx-auto leading-relaxed" style={{ color: "rgba(240,237,232,0.42)" }}>
-            7 jours d&apos;essai gratuit, sans engagement, pas de paiement 
-          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm" style={{ color: "rgba(240,237,232,0.42)" }}>
+            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> 7 jours gratuits</span>
+            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Sans carte bancaire</span>
+            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Annulable à tout moment</span>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/auth/inscription"

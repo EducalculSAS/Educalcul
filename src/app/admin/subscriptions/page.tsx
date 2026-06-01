@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import AppAdminLoader from "@/components/AppAdminLoader";
+import { BORDER_STYLES, NAME_COLORS } from "@/lib/badgeStyles";
 import {
   CreditCard, Plus, Edit, Trash2, CheckCircle, AlertTriangle,
   Clock, X, Power, Users, Tag, Gift,
@@ -48,7 +49,11 @@ const defaultPlanForm = {
   duration_months: "", trial_days: "", promo_description: "", is_active: true, sort_order: 0,
   feature_max_children: 1, feature_access_level_exercises: "all",
   feature_detailed_reports: false, feature_priority_support: false,
-  feature_offline_access: false, feature_custom_avatars: false,
+  feature_custom_avatars: false,
+  feature_ai_access: "limited" as "none" | "limited" | "unlimited",
+  feature_ai_daily_limit: 10,
+  cosmetic_borders: [] as string[],
+  cosmetic_colors: [] as string[],
 };
 
 const defaultRefForm = {
@@ -131,8 +136,11 @@ export default function AdminSubscriptionsPage() {
         feature_access_level_exercises: f.access_level_exercises || "all",
         feature_detailed_reports: !!f.detailed_reports,
         feature_priority_support: !!f.priority_support,
-        feature_offline_access: !!f.offline_access,
         feature_custom_avatars: !!f.custom_avatars,
+        feature_ai_access: (f.ai_access || "limited") as "none" | "limited" | "unlimited",
+        feature_ai_daily_limit: f.ai_daily_limit ?? 10,
+        cosmetic_borders: (f.cosmetic_borders as string[]) ?? [],
+        cosmetic_colors: (f.cosmetic_colors as string[]) ?? [],
       });
     } else {
       setPlanForm(defaultPlanForm);
@@ -147,8 +155,11 @@ export default function AdminSubscriptionsPage() {
       access_level_exercises: planForm.feature_access_level_exercises,
       detailed_reports: planForm.feature_detailed_reports,
       priority_support: planForm.feature_priority_support,
-      offline_access: planForm.feature_offline_access,
       custom_avatars: planForm.feature_custom_avatars,
+      ai_access: planForm.feature_ai_access,
+      ai_daily_limit: planForm.feature_ai_access === "unlimited" ? -1 : Number(planForm.feature_ai_daily_limit),
+      cosmetic_borders: planForm.cosmetic_borders,
+      cosmetic_colors: planForm.cosmetic_colors,
     };
     const payload = {
       name: planForm.name, description: planForm.description,
@@ -364,7 +375,6 @@ export default function AdminSubscriptionsPage() {
                   `${features.max_children || 1} enfant(s)`,
                   features.detailed_reports && "Rapports détaillés",
                   features.priority_support && "Support prioritaire",
-                  features.offline_access && "Accès hors-ligne",
                   features.custom_avatars && "Avatars personnalisés",
                 ].filter(Boolean) as string[];
 
@@ -672,7 +682,7 @@ export default function AdminSubscriptionsPage() {
 
       {/* ════════ PLAN MODAL ════════ */}
       {showPlanModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto">
             <div className="sticky top-0 bg-white border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
@@ -722,6 +732,45 @@ export default function AdminSubscriptionsPage() {
                 </div>
               </div>
 
+              {/* Cosmétiques débloqués */}
+              <div className="border-t border-[rgba(197,161,72,0.25)] pt-5">
+                <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-1">Cosmétiques débloqués automatiquement</h3>
+                <p className="text-xs text-gray-400 mb-4">L&apos;enfant voit ces éléments disponibles dans Trophées → Personnalisation</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Contours d&apos;avatar</p>
+                    <div className="space-y-2">
+                      {Object.entries(BORDER_STYLES).filter(([, v]) => v.source === "subscription").map(([key, val]) => (
+                        <label key={key} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-gray-50">
+                          <input type="checkbox"
+                            checked={planForm.cosmetic_borders.includes(key)}
+                            onChange={e => setPlanForm({ ...planForm, cosmetic_borders: e.target.checked ? [...planForm.cosmetic_borders, key] : planForm.cosmetic_borders.filter((b: string) => b !== key) })}
+                            className="w-4 h-4 text-[var(--greek-blue)] rounded"
+                          />
+                          <span className={`w-4 h-4 rounded-full border-2 ${val.preview}`} />
+                          <span className="text-sm font-medium text-gray-700">{val.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Couleurs de nom</p>
+                    <div className="space-y-2">
+                      {Object.entries(NAME_COLORS).filter(([, v]) => v.source === "subscription").map(([key, val]) => (
+                        <label key={key} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-gray-50">
+                          <input type="checkbox"
+                            checked={planForm.cosmetic_colors.includes(key)}
+                            onChange={e => setPlanForm({ ...planForm, cosmetic_colors: e.target.checked ? [...planForm.cosmetic_colors, key] : planForm.cosmetic_colors.filter((c: string) => c !== key) })}
+                            className="w-4 h-4 text-[var(--greek-blue)] rounded"
+                          />
+                          <span className={`text-sm font-bold ${val.cls}`}>{val.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Features */}
               <div className="border-t border-[rgba(197,161,72,0.25)] pt-5">
                 <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4">Fonctionnalités incluses</h3>
@@ -739,15 +788,27 @@ export default function AdminSubscriptionsPage() {
                       <option value="all">Tout</option>
                     </select>
                   </div>
+                  {/* IA access */}
+                  <div>
+                    <label className={labelCls}>Accès IA (EpsiAI)</label>
+                    <select value={planForm.feature_ai_access} onChange={e => setPlanForm({...planForm, feature_ai_access: e.target.value as "none" | "limited" | "unlimited"})} className={inputCls}>
+                      <option value="none">Aucun accès</option>
+                      <option value="limited">Limité (messages/jour)</option>
+                      <option value="unlimited">Illimité</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelCls}>Messages IA / jour {planForm.feature_ai_access === "unlimited" ? "(ignoré si illimité)" : ""}</label>
+                    <input type="number" min="0" value={planForm.feature_ai_daily_limit} disabled={planForm.feature_ai_access !== "limited"} onChange={e => setPlanForm({...planForm, feature_ai_daily_limit: Number(e.target.value)})} className={inputCls + (planForm.feature_ai_access !== "limited" ? " opacity-40" : "")} />
+                  </div>
                   <div className="col-span-2 grid grid-cols-2 gap-3">
                     {[
-                      { key: "feature_detailed_reports",  label: "Rapports détaillés" },
-                      { key: "feature_priority_support",  label: "Support prioritaire" },
-                      { key: "feature_offline_access",    label: "Accès hors-ligne" },
-                      { key: "feature_custom_avatars",    label: "Avatars personnalisés" },
+                      { key: "feature_detailed_reports", label: "Rapports détaillés" },
+                      { key: "feature_priority_support", label: "Support prioritaire" },
+                      { key: "feature_custom_avatars",   label: "Avatars personnalisés" },
                     ].map(({ key, label }) => (
                       <label key={key} className="flex items-center gap-3 p-3 border border-[rgba(197,161,72,0.25)] rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">
-                        <input type="checkbox" checked={planForm[key]} onChange={e => setPlanForm({...planForm, [key]: e.target.checked})} className="w-4 h-4 text-[var(--greek-blue)] rounded" />
+                        <input type="checkbox" checked={(planForm as Record<string, unknown>)[key] as boolean} onChange={e => setPlanForm({...planForm, [key]: e.target.checked})} className="w-4 h-4 text-[var(--greek-blue)] rounded" />
                         <span className="text-sm font-medium text-gray-700">{label}</span>
                       </label>
                     ))}
@@ -773,7 +834,7 @@ export default function AdminSubscriptionsPage() {
 
       {/* ════════ REFERRAL MODAL ════════ */}
       {showRefModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">

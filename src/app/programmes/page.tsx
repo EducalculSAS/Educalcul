@@ -178,17 +178,27 @@ function LevelCard({ prog, color, isOpen, onToggle, dbPdf }: { prog: ProgrammeEn
   );
 }
 
-export default function ProgrammesPage() {
-  const [openLevel, setOpenLevel] = useState<string | null>("2nde");
-  const [visible, setVisible] = useState(false);
-  const [dbPdfs, setDbPdfs] = useState<Record<string, DbPdf>>({});
+function ScrollRevealGroup({ children, className }: { children: ((visible: boolean) => React.ReactNode) | React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.05 });
-    if (ref.current) obs.observe(ref.current);
+    const el = ref.current;
+    if (!el) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) { setVisible(true); return; }
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.08 });
+    obs.observe(el);
     return () => obs.disconnect();
   }, []);
+  return (
+    <div ref={ref} className={className} data-visible={visible}>
+      {typeof children === "function" ? (children as (v: boolean) => React.ReactNode)(visible) : children}
+    </div>
+  );
+}
+
+export default function ProgrammesPage() {
+  const [openLevel, setOpenLevel] = useState<string | null>(null);
+  const [dbPdfs, setDbPdfs] = useState<Record<string, DbPdf>>({});
 
   useEffect(() => {
     fetch("/api/programmes")
@@ -213,68 +223,119 @@ export default function ProgrammesPage() {
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
       <Navbar />
 
-      {/* Hero — match FAQ style */}
-      <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+4rem)] pb-24 text-center">
+      {/* Hero — avec barre de progression niveaux */}
+      <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+4rem)] pb-20 text-center">
         {SYM.map((cfg, i) => (
           <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none"
-            style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.13, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
+            style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.1, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
           >{cfg.s}</span>
         ))}
         <div className="relative container mx-auto px-6 max-w-3xl">
-          <div className="flex items-center justify-center gap-6 mb-8 flex-wrap">
-            <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={96} height={48} className="h-12 w-auto object-contain" style={{ filter: "brightness(10)" }} unoptimized />
-            <div className="w-px h-10" style={{ background: "rgba(255,255,255,0.2)" }} />
-            <Image src="/eduscol.svg" alt="Eduscol" width={80} height={32} className="h-8 w-auto object-contain" style={{ filter: "brightness(10)" }} unoptimized />
-          </div>
-          <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-5">
+          <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-4">
             Programmes officiels
           </h1>
-          <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-white/55 text-lg max-w-xl mx-auto leading-relaxed mb-10">
             Du CP à la Terminale — aligné sur l&apos;Éducation Nationale, par niveau et filière.
           </p>
+          {/* Barre de progression niveaux */}
+          <div className="flex items-center justify-center gap-0 max-w-2xl mx-auto">
+            {[
+              { label: "CP", color: "#22c55e" },
+              { label: "CE1", color: "#22c55e" },
+              { label: "CE2", color: "#22c55e" },
+              { label: "CM1", color: "#22c55e" },
+              { label: "CM2", color: "#22c55e" },
+              { label: "6e", color: "#60a5fa" },
+              { label: "5e", color: "#60a5fa" },
+              { label: "4e", color: "#60a5fa" },
+              { label: "3e", color: "#60a5fa" },
+              { label: "2nde", color: "var(--greek-gold)" },
+              { label: "1re", color: "var(--greek-gold)" },
+              { label: "Tle", color: "#f472b6" },
+            ].map((lvl, i, arr) => (
+              <div key={i} className="flex items-center">
+                <div className="flex flex-col items-center gap-1">
+                  <div className="w-2 h-2 rounded-full" style={{ background: lvl.color, opacity: 0.9 }} />
+                  <span className="text-[9px] font-semibold hidden sm:block" style={{ color: "rgba(255,255,255,0.35)" }}>{lvl.label}</span>
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="w-4 sm:w-7 h-px mx-0.5" style={{ background: "rgba(255,255,255,0.1)" }} />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Contenu programmes */}
-      <section className="py-16 px-6" ref={ref}>
+      <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto space-y-12">
-          {LEVEL_GROUPS.map((group, gi) => {
+          {/* Logos officiels + texte */}
+          <ScrollRevealGroup>
+            {(v: boolean) => (
+          <div className="flex flex-col items-center text-center gap-5"
+            style={{ opacity: v ? 1 : 0, transform: v ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.6s, transform 0.6s" }}>
+            <div className="flex items-center gap-8">
+              <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={180} height={180} className="w-auto object-contain flex-shrink-0" style={{ height: 180 }} unoptimized />
+              <div className="w-px h-12" style={{ background: "var(--greek-border)" }} />
+              <Image src="/eduscol.svg" alt="Eduscol" width={110} height={36} className="h-9 w-auto object-contain" unoptimized />
+            </div>
+            <div className="max-w-xl">
+              <p className="font-bold text-base leading-relaxed" style={{ fontFamily: "var(--font-display)", color: "var(--greek-blue)" }}>
+                Programmes 100 % conformes aux référentiels officiels
+              </p>
+              <p className="text-sm mt-1.5 leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                Tous les contenus d'Educalcul sont élaborés en stricte conformité avec les programmes publiés par le Ministère de l'Éducation Nationale et référencés sur Éduscol.
+              </p>
+            </div>
+          </div>
+            )}
+          </ScrollRevealGroup>
+          {LEVEL_GROUPS.map((group) => {
             const progs = PROGRAMMES_NATIONAUX.filter((p) => group.levels.includes(p.level));
             if (!progs.length) return null;
             return (
-              <div
-                key={group.label}
-                className="transition-all duration-700"
-                style={{
-                  opacity: visible ? 1 : 0,
-                  transform: visible ? "translateY(0)" : "translateY(24px)",
-                  transitionDelay: `${gi * 80}ms`,
-                }}
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="h-px flex-1" style={{ background: "var(--greek-border)" }} />
-                  <span
-                    className="px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
-                    style={{ background: group.bg, color: group.color, border: `1px solid ${group.border}` }}
-                  >
-                    {group.label}
-                  </span>
-                  <div className="h-px flex-1" style={{ background: "var(--greek-border)" }} />
-                </div>
-
-                <div className="space-y-2">
-                  {progs.map((prog) => (
-                    <LevelCard
-                      key={prog.level}
-                      prog={prog}
-                      color={group.color}
-                      isOpen={openLevel === prog.level}
-                      onToggle={() => setOpenLevel(openLevel === prog.level ? null : prog.level)}
-                      dbPdf={dbPdfs[prog.level]}
-                    />
-                  ))}
-                </div>
-              </div>
+              <ScrollRevealGroup key={group.label}>
+                {(visible: boolean) => (
+                  <>
+                    <div
+                      className="flex items-center gap-3 mb-5"
+                      style={{
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? "translateY(0)" : "translateY(16px)",
+                        transition: "opacity 0.4s 0ms, transform 0.4s 0ms",
+                      }}
+                    >
+                      <div className="h-px flex-1" style={{ background: "var(--greek-border)" }} />
+                      <span className="px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
+                        style={{ background: group.bg, color: group.color, border: `1px solid ${group.border}` }}>
+                        {group.label}
+                      </span>
+                      <div className="h-px flex-1" style={{ background: "var(--greek-border)" }} />
+                    </div>
+                    <div className="space-y-2">
+                      {progs.map((prog, pi) => (
+                        <div
+                          key={prog.level}
+                          style={{
+                            opacity: visible ? 1 : 0,
+                            transform: visible ? "translateY(0)" : "translateY(16px)",
+                            transition: `opacity 0.4s ${50 + pi * 55}ms, transform 0.4s ${50 + pi * 55}ms`,
+                          }}
+                        >
+                          <LevelCard
+                            prog={prog}
+                            color={group.color}
+                            isOpen={openLevel === prog.level}
+                            onToggle={() => setOpenLevel(openLevel === prog.level ? null : prog.level)}
+                            dbPdf={dbPdfs[prog.level]}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </ScrollRevealGroup>
             );
           })}
         </div>

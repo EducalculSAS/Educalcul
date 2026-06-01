@@ -18,6 +18,15 @@ interface Plan {
   features: Record<string, boolean | number | string | null>;
 }
 
+/* A row in the comparison: either a real plan or a custom config */
+interface CompareItem {
+  key: string;            // unique key (plan-<id> or custom-<n>)
+  name: string;
+  price: number;
+  billing_interval: string;
+  features: Record<string, boolean | number | string | null>;
+}
+
 /* ─── Floating symbols ─── */
 const SYM = [
   { s: "∑", x: 6,  y: 10, z: 96,  d: 0,   t: 7.2  },
@@ -36,27 +45,67 @@ const SYM = [
 
 /* ─── Feature rows with tooltips ─── */
 const FEATURE_ROWS: { key: string; label: string; tip?: string }[] = [
-  { key: "max_children",           label: "Nombre d'enfants",        tip: "Profils enfants actifs simultanément" },
-  { key: "access_level_exercises", label: "Accès aux exercices",     tip: "Niveaux disponibles (CP à Terminale)" },
+  { key: "max_children",           label: "Enfants",                 tip: "Profils enfants actifs simultanément" },
+  { key: "access_level_exercises", label: "Niveaux scolaires",       tip: "CP à 6ème / CP à 3ème / CP à Terminale" },
   { key: "ai_access",              label: "IA EpsiAI",               tip: "Accès à l'assistante pédagogique IA" },
   { key: "ai_daily_limit",         label: "Questions IA / jour",     tip: "Nombre de messages envoyés à EpsiAI" },
+  { key: "quiz_access",            label: "Quiz & évaluations",      tip: "Accès à tous les quiz" },
   { key: "detailed_reports",       label: "Rapports hebdomadaires",  tip: "Email récapitulatif chaque semaine" },
-  { key: "custom_avatars",         label: "Avatars personnalisés",   tip: "Débloquer des skins exclusifs" },
-  { key: "offline_access",         label: "Accès hors-ligne",        tip: "Télécharger les leçons sans internet" },
+  { key: "custom_avatars",         label: "Avatars & cosmétiques",   tip: "Contours et couleurs de nom exclusifs" },
   { key: "priority_support",       label: "Support prioritaire",     tip: "Réponse garantie sous 4h en semaine" },
 ];
 
 function formatVal(key: string, val: boolean | number | string | null): { label: string; included: boolean } {
-  if (val === false || val === null) return { label: "", included: false };
+  if (val === false || val === null || val === 0 || val === "none") return { label: "", included: false };
   if (val === true) return { label: "Inclus", included: true };
-  if (key === "max_children") return { label: `${val} enfant${Number(val) > 1 ? "s" : ""}`, included: true };
-  if (key === "ai_daily_limit") return { label: val === -1 ? "Illimité" : `${val} / jour`, included: true };
-  if (key === "ai_access") return { label: val === "unlimited" ? "Illimité" : "Limité", included: true };
-  if (key === "access_level_exercises") return { label: val === "all" ? "Tous niveaux" : String(val), included: true };
+  if (key === "max_children") return { label: Number(val) === -1 ? "Illimité" : `${val} enfant${Number(val) > 1 ? "s" : ""}`, included: true };
+  if (key === "ai_daily_limit") return { label: Number(val) === -1 ? "Illimité" : `${val} / jour`, included: true };
+  if (key === "ai_access") {
+    if (val === "unlimited") return { label: "Illimité", included: true };
+    if (val === "limited") return { label: "Limité", included: true };
+    return { label: "", included: false };
+  }
+  if (key === "access_level_exercises") {
+    if (val === "all") return { label: "CP → Terminale", included: true };
+    if (val === "college") return { label: "CP → 3ème", included: true };
+    if (val === "basic") return { label: "CP → 6ème", included: true };
+    return { label: String(val), included: true };
+  }
+  if (key === "history") {
+    if (val === "unlim" || val === "unlimited") return { label: "Illimité", included: true };
+    if (val === "30d") return { label: "30 jours", included: true };
+    if (val === "7d") return { label: "7 jours", included: true };
+    return { label: String(val), included: true };
+  }
   return { label: String(val), included: true };
 }
 
 const intervalLabel = (i: string) => i === "year" ? "/an" : "/mois";
+
+const isLyceen = (p: Plan) => /lycéen/i.test(p.name);
+
+/* ─── Mini FAQ item ─── */
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(197,161,72,0.18)", background: "#fff" }}>
+      <button
+        type="button"
+        onClick={() => setOpen(v => !v)}
+        className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left transition-colors hover:bg-[rgba(197,161,72,0.03)]"
+      >
+        <span className="font-[family-name:var(--font-display)] font-semibold text-sm" style={{ color: "var(--greek-blue)" }}>{question}</span>
+        <span
+          className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-lg font-light transition-transform duration-300"
+          style={{ background: "rgba(197,161,72,0.10)", color: "var(--greek-gold)", transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
+        >+</span>
+      </button>
+      <div style={{ maxHeight: open ? "200px" : "0px", overflow: "hidden", transition: "max-height 0.3s ease" }}>
+        <p className="px-6 pb-4 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{answer}</p>
+      </div>
+    </div>
+  );
+}
 
 /* ─── Plan detail modal ─── */
 function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
@@ -159,85 +208,161 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
   );
 }
 
-/* ─── Sticky comparison table ─── */
-function ComparisonTable({ plans }: { plans: Plan[] }) {
-  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
-  const [pinnedCol, setPinnedCol] = useState<number | null>(1); // Popular pre-selected
-  const [tip, setTip] = useState<string | null>(null);
-  const tableRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.05 });
-    if (tableRef.current) obs.observe(tableRef.current);
-    return () => obs.disconnect();
-  }, []);
-
+/* ─── Plan card (used in both Familles and Lycéens tabs) ─── */
+function PlanCard({
+  plan, idx, popular, hideChildren, cardsVisible, onOpen,
+  compareChecked, onToggleCompare,
+}: {
+  plan: Plan;
+  idx: number;
+  popular: boolean;
+  hideChildren: boolean;
+  cardsVisible: boolean;
+  onOpen: () => void;
+  compareChecked: boolean;
+  onToggleCompare: () => void;
+}) {
+  const rows = FEATURE_ROWS.slice(0, 4).filter(r => !(hideChildren && r.key === "max_children"));
   return (
     <div
-      ref={tableRef}
-      className="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm"
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
-        transition: "opacity 0.6s, transform 0.6s",
+        position: "relative",
+        zIndex: popular ? 10 : 1,
+        transform: popular ? "scale(1.04)" : undefined,
+        opacity: cardsVisible ? undefined : 0,
+        animation: cardsVisible ? `cardIn 0.5s ease-out ${popular ? "180ms" : "0ms"} both` : "none",
       }}
     >
+      <div
+        className="relative flex flex-col bg-white rounded-2xl group h-full"
+        style={{
+          border: popular ? "2px solid var(--greek-gold)" : "1px solid var(--greek-border)",
+          boxShadow: popular ? "0 8px 40px rgba(197,161,72,0.18)" : "0 2px 12px rgba(15,30,58,0.05)",
+        }}
+      >
+        {popular && (
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <div className="px-4 py-1.5 rounded-full text-xs font-bold bg-[var(--greek-gold)] text-black shadow-md flex items-center gap-1.5">
+              <Star className="w-3 h-3 fill-current" /> Populaire
+            </div>
+          </div>
+        )}
+
+        <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)] cursor-pointer" onClick={onOpen}>
+          {plan.promo_description && (
+            <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-3">
+              <Sparkles className="w-3 h-3" />{plan.promo_description}
+            </div>
+          )}
+          {plan.trial_days > 0 && (
+            <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200 mb-3">
+              {plan.trial_days} jours d&apos;essai gratuit
+            </div>
+          )}
+          <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">{plan.name}</h3>
+          {plan.description && <p className="text-sm text-[var(--text-muted)]">{plan.description}</p>}
+        </div>
+
+        <div className="px-7 py-6 text-center border-b border-[var(--greek-border)] cursor-pointer" onClick={onOpen}>
+          <div className="flex items-end justify-center gap-1">
+            <span className="font-[family-name:var(--font-display)] text-4xl font-bold text-[var(--greek-blue)]">
+              {Number(plan.price) === 0 ? "Gratuit" : `${plan.price}€`}
+            </span>
+            {Number(plan.price) > 0 && (
+              <span className="text-sm text-[var(--text-muted)] mb-1.5">{intervalLabel(plan.billing_interval)}</span>
+            )}
+          </div>
+        </div>
+
+        <div className="px-7 py-6 flex-grow flex flex-col">
+          <ul className="space-y-2.5 mb-6">
+            {rows.map(row => {
+              const { label, included } = formatVal(row.key, plan.features?.[row.key]);
+              if (!included) return null;
+              return (
+                <li key={row.key} className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[rgba(197,161,72,0.12)] flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-[var(--greek-gold)]" />
+                  </div>
+                  <span className="text-sm text-[var(--text-dark)] flex-1">{row.label}</span>
+                  {label !== "Inclus" && (
+                    <span className="text-xs font-semibold text-[var(--greek-gold)]">{label}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <button
+            onClick={onOpen}
+            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all group-hover:-translate-y-0.5 group-hover:shadow-md font-[family-name:var(--font-display)]"
+            style={popular
+              ? { background: "var(--greek-blue)", color: "white" }
+              : { border: "2px solid var(--greek-blue)", color: "var(--greek-blue)" }
+            }
+          >
+            Voir les détails <ArrowRight className="w-4 h-4" />
+          </button>
+
+          {/* Comparer checkbox */}
+          <label className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold cursor-pointer select-none" style={{ color: "var(--text-muted)" }}>
+            <input
+              type="checkbox"
+              checked={compareChecked}
+              onChange={onToggleCompare}
+              className="w-4 h-4 rounded accent-[var(--greek-gold)] cursor-pointer"
+            />
+            Comparer
+          </label>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Comparison table (driven by generic CompareItem list) ─── */
+function ComparisonTable({ items, onRemove }: { items: CompareItem[]; onRemove: (key: string) => void }) {
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+  const [tip, setTip] = useState<string | null>(null);
+
+  return (
+    <div className="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
       <table className="w-full min-w-[560px] border-collapse">
-        {/* Sticky thead */}
         <thead>
           <tr>
-            {/* Feature column label */}
             <th
               className="sticky top-0 z-20 text-left px-6 py-5 text-xs font-semibold uppercase tracking-wider"
-              style={{ background: "var(--greek-blue)", color: "rgba(255,255,255,0.35)", width: "38%" }}
+              style={{ background: "var(--greek-blue)", color: "rgba(255,255,255,0.35)", width: "34%" }}
             >
               Fonctionnalité
             </th>
-
-            {/* Plan headers */}
-            {plans.map((plan, idx) => {
-              const isPinned = pinnedCol === idx;
-              return (
-                <th
-                  key={plan.id}
-                  className="sticky top-0 z-20 text-center px-4 py-0 cursor-pointer transition-colors"
-                  style={{
-                    background: isPinned ? "rgba(197,161,72,0.14)" : "var(--greek-blue)",
-                    borderBottom: isPinned ? "2px solid var(--greek-gold)" : "2px solid transparent",
-                    minWidth: 140,
-                  }}
-                  onClick={() => setPinnedCol(isPinned ? null : idx)}
-                >
-                  <div className="py-5">
-                    {idx === 1 && (
-                      <div className="inline-flex items-center gap-1 mb-1 px-2 py-0.5 rounded-full text-xs font-bold" style={{ background: "var(--greek-gold)", color: "black" }}>
-                        <Star className="w-2.5 h-2.5 fill-current" /> Populaire
-                      </div>
+            {items.map(item => (
+              <th
+                key={item.key}
+                className="sticky top-0 z-20 text-center px-4 py-0"
+                style={{ background: "var(--greek-blue)", minWidth: 150 }}
+              >
+                <div className="py-5 relative">
+                  <button
+                    onClick={() => onRemove(item.key)}
+                    className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
+                    style={{ color: "rgba(255,255,255,0.5)" }}
+                    aria-label="Retirer de la comparaison"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                  <div className="font-bold text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>{item.name}</div>
+                  <div className="mt-1 font-[family-name:var(--font-display)] text-xl font-bold text-white">
+                    {Number(item.price) === 0 ? "Gratuit" : `${item.price.toFixed(2)}€`}
+                    {Number(item.price) > 0 && (
+                      <span className="text-xs font-normal ml-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{intervalLabel(item.billing_interval)}</span>
                     )}
-                    <div className="font-bold text-sm" style={{ color: isPinned ? "var(--greek-gold)" : "rgba(255,255,255,0.9)" }}>
-                      {plan.name}
-                    </div>
-                    <div className="mt-1 font-[family-name:var(--font-display)] text-xl font-bold" style={{ color: isPinned ? "var(--greek-gold)" : "white" }}>
-                      {Number(plan.price) === 0 ? "Gratuit" : `${plan.price}€`}
-                      {Number(plan.price) > 0 && (
-                        <span className="text-xs font-normal ml-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{intervalLabel(plan.billing_interval)}</span>
-                      )}
-                    </div>
-                    {plan.trial_days > 0 && (
-                      <div className="text-xs mt-1" style={{ color: "rgba(52,211,153,0.9)" }}>{plan.trial_days}j d&apos;essai</div>
-                    )}
-                    <div className="mt-2 text-xs" style={{ color: isPinned ? "rgba(197,161,72,0.7)" : "rgba(255,255,255,0.3)" }}>
-                      {isPinned ? "Sélectionné ✓" : "Cliquer pour sélectionner"}
-                    </div>
                   </div>
-                </th>
-              );
-            })}
+                </div>
+              </th>
+            ))}
           </tr>
         </thead>
 
-        {/* Body */}
         <tbody>
           {FEATURE_ROWS.map((row, rIdx) => (
             <tr
@@ -246,7 +371,6 @@ function ComparisonTable({ plans }: { plans: Plan[] }) {
               onMouseLeave={() => setHoveredRow(null)}
               style={{ background: hoveredRow === rIdx ? "rgba(197,161,72,0.04)" : rIdx % 2 === 0 ? "white" : "var(--greek-cream)" }}
             >
-              {/* Feature label */}
               <td className="px-6 py-4 border-b" style={{ borderColor: "var(--greek-border)" }}>
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium" style={{ color: "var(--greek-blue)" }}>{row.label}</span>
@@ -268,19 +392,10 @@ function ComparisonTable({ plans }: { plans: Plan[] }) {
                 </div>
               </td>
 
-              {/* Plan cells */}
-              {plans.map((plan, idx) => {
-                const { label, included } = formatVal(row.key, plan.features?.[row.key]);
-                const isPinned = pinnedCol === idx;
+              {items.map(item => {
+                const { label, included } = formatVal(row.key, item.features?.[row.key]);
                 return (
-                  <td
-                    key={plan.id}
-                    className="px-4 py-4 text-center border-b transition-colors"
-                    style={{
-                      borderColor: "var(--greek-border)",
-                      background: isPinned ? "rgba(197,161,72,0.06)" : "transparent",
-                      }}
-                  >
+                  <td key={item.key} className="px-4 py-4 text-center border-b" style={{ borderColor: "var(--greek-border)" }}>
                     {included ? (
                       label === "Inclus" ? (
                         <div className="flex justify-center">
@@ -303,49 +418,271 @@ function ComparisonTable({ plans }: { plans: Plan[] }) {
               })}
             </tr>
           ))}
-
-          {/* CTA row */}
-          <tr style={{ background: "var(--greek-cream)" }}>
-            <td className="px-6 py-5" />
-            {plans.map((plan, idx) => {
-              const isPinned = pinnedCol === idx;
-              return (
-                <td
-                  key={plan.id}
-                  className="px-4 py-5 text-center"
-                  style={{
-                    background: isPinned ? "rgba(197,161,72,0.06)" : "transparent",
-                    borderLeft: isPinned ? "1px solid rgba(197,161,72,0.2)" : "none",
-                    borderRight: isPinned ? "1px solid rgba(197,161,72,0.2)" : "none",
-                  }}
-                >
-                  <Link
-                    href="/auth/inscription"
-                    className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-bold text-xs transition-all hover:-translate-y-0.5 hover:shadow-md font-[family-name:var(--font-display)]"
-                    style={isPinned
-                      ? { background: "var(--greek-blue)", color: "white" }
-                      : { border: "2px solid var(--greek-blue)", color: "var(--greek-blue)" }
-                    }
-                  >
-                    {Number(plan.price) === 0 ? "Gratuit" : "Choisir"} <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </td>
-              );
-            })}
-          </tr>
         </tbody>
       </table>
     </div>
   );
 }
 
+/* ─── Configurator ─── */
+
+// Options IA (prix de base, multipliés ensuite par le nb d'enfants)
+const AI_OPTIONS = [
+  { id: "none",  label: "Aucune",     daily: 0,   basePrice: 0    },
+  { id: "5",     label: "5/j",        daily: 5,   basePrice: 0.79 },
+  { id: "10",    label: "10/j",       daily: 10,  basePrice: 1.49 },
+  { id: "20",    label: "20/j",       daily: 20,  basePrice: 2.49 },
+  { id: "50",    label: "50/j",       daily: 50,  basePrice: 4.29 },
+  { id: "100",   label: "100/j",      daily: 100, basePrice: 5.99 },
+  { id: "unlim", label: "Illimitée",  daily: -1,  basePrice: 6.99 },
+] as const;
+type AIId = "none" | "5" | "10" | "20" | "50" | "100" | "unlim";
+
+const BASE_PRICE = { lyceen: 1.99, famille: 2.99 };
+
+/** Coût des enfants : quadratique */
+function childrenCost(n: number): number {
+  if (n <= 1) return 0;
+  const x = n - 1;
+  return Math.round((0.5 * x + 0.25 * x * x) * 100) / 100;
+}
+
+/** Multiplicateur IA selon nb enfants (exponentiel, plafonné à ×4) */
+function aiMultiplier(type: "lyceen" | "famille", n: number): number {
+  if (type === "lyceen") return 1;
+  return Math.min(1 + (n - 1) * 0.35, 4.0);
+}
+
+interface ConfigState {
+  type: "lyceen" | "famille";
+  children: number;   // nombre saisi librement
+  ai: AIId;
+  reports: boolean;
+  support: boolean;
+  avatars: boolean;
+  quiz: boolean;
+}
+
+function configPrice(c: ConfigState): number {
+  let p = BASE_PRICE[c.type];
+  const n = Math.max(1, c.children);
+  if (c.type === "famille") p += childrenCost(n);
+  const aiBase = AI_OPTIONS.find(o => o.id === c.ai)!.basePrice;
+  p += Math.round(aiBase * aiMultiplier(c.type, n) * 100) / 100;
+  if (c.reports) p += 0.99;
+  if (c.support) p += 1.49;
+  if (c.avatars) p += 0.99;
+  if (c.quiz)    p += 0.99;
+  return Math.round(p * 100) / 100;
+}
+
+function configToCompareItem(c: ConfigState, key: string): CompareItem {
+  const ai = AI_OPTIONS.find(o => o.id === c.ai)!;
+  const n = Math.max(1, c.children);
+  return {
+    key,
+    name: c.type === "lyceen" ? "Mon plan (Lycéen)" : "Mon plan (Famille)",
+    price: configPrice(c),
+    billing_interval: "month",
+    features: {
+      max_children: c.type === "famille" ? n : 0,
+      access_level_exercises: "all",
+      ai_access: c.ai === "none" ? "none" : c.ai === "unlim" ? "unlimited" : "limited",
+      ai_daily_limit: c.ai === "none" ? 0 : ai.daily,
+      detailed_reports: c.reports,
+      custom_avatars: c.avatars,
+      priority_support: c.support,
+      quiz_access: c.quiz,
+    },
+  };
+}
+
+function Toggle({ label, sub, price, value, onChange }: { label: string; sub?: string; price: number; value: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <div className="flex items-center justify-between gap-4 px-5 py-3.5 rounded-xl"
+      style={{ background: "#fff", border: `1.5px solid ${value ? "rgba(197,161,72,0.5)" : "var(--greek-border)"}` }}>
+      <div className="min-w-0">
+        <span className="text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>{label}</span>
+        {sub && <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{sub}</p>}
+        <span className="text-xs font-semibold ml-1" style={{ color: "var(--greek-gold)" }}>+{price.toFixed(2)}€</span>
+      </div>
+      <button type="button" onClick={() => onChange(!value)}
+        className="relative w-11 h-6 rounded-full transition-colors flex-shrink-0"
+        style={{ background: value ? "var(--greek-gold)" : "rgba(15,30,58,0.12)" }}>
+        <span className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform"
+          style={{ transform: value ? "translateX(20px)" : "translateX(0)" }} />
+      </button>
+    </div>
+  );
+}
+
+function Configurator({ onAdd, alreadyAdded }: { onAdd: (c: ConfigState) => void; alreadyAdded: boolean }) {
+  const [cfg, setCfg] = useState<ConfigState>({
+    type: "famille", children: 1, ai: "none",
+    reports: false, support: false, avatars: false, quiz: false,
+  });
+  const n = Math.max(1, cfg.children);
+  const mult = aiMultiplier(cfg.type, n);
+  const total = configPrice(cfg);
+  const aiOption = AI_OPTIONS.find(o => o.id === cfg.ai)!;
+  const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
+  const aiIdx = AI_OPTIONS.findIndex(o => o.id === cfg.ai);
+
+  return (
+    <div className="grid md:grid-cols-5 gap-8 items-start">
+      <div className="md:col-span-3 space-y-6">
+
+        {/* Type */}
+        <div>
+          <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--text-muted)" }}>Type d&apos;abonnement</p>
+          <div className="flex gap-3">
+            {([["lyceen", "Lycéen solo"], ["famille", "Famille"]] as const).map(([val, lab]) => (
+              <button key={val} onClick={() => setCfg(c => ({ ...c, type: val, children: 1 }))}
+                className="flex-1 px-4 py-3 rounded-xl text-sm font-bold transition-all font-[family-name:var(--font-display)]"
+                style={cfg.type === val
+                  ? { background: "var(--greek-blue)", color: "#fff" }
+                  : { border: "2px solid var(--greek-border)", color: "var(--greek-blue)" }}>
+                {lab}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Enfants — saisie libre */}
+        {cfg.type === "famille" && (
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>Nombre d&apos;enfants</p>
+              {n > 1 && <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
+                +{childrenCost(n).toFixed(2)}€
+              </span>}
+            </div>
+            <div className="flex items-center gap-3">
+              <input
+                type="number" min={1} max={999} value={cfg.children}
+                onChange={e => setCfg(c => ({ ...c, children: Math.max(1, parseInt(e.target.value) || 1) }))}
+                className="w-28 px-4 py-2.5 rounded-xl text-sm font-bold text-center border outline-none focus:border-[var(--greek-blue)]"
+                style={{ border: "1.5px solid var(--greek-border)", color: "var(--greek-blue)" }}
+              />
+              <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                <div>1er enfant inclus</div>
+                <div>Plus d&apos;enfants → IA plus chère</div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* IA — barre de sélection visuelle */}
+        <div>
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>IA EpsiAI</p>
+            {cfg.ai !== "none" && (
+              <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
+                +{aiActualPrice.toFixed(2)}€
+                {cfg.type === "famille" && n > 1 && (
+                  <span className="ml-1 font-normal" style={{ color: "var(--text-muted)" }}>
+                    (×{mult.toFixed(2)} pour {n} enfants)
+                  </span>
+                )}
+              </span>
+            )}
+          </div>
+          {/* Barre track */}
+          <div className="relative">
+            {/* Piste de fond */}
+            <div className="flex rounded-xl overflow-hidden" style={{ border: "1.5px solid var(--greek-border)" }}>
+              {AI_OPTIONS.map((o, i) => (
+                <button key={o.id} onClick={() => setCfg(c => ({ ...c, ai: o.id }))}
+                  className="flex-1 py-2.5 text-center transition-all"
+                  style={{
+                    background: i <= aiIdx ? "var(--greek-blue)" : "#fff",
+                    color: i <= aiIdx ? (i === aiIdx ? "var(--greek-gold)" : "rgba(255,255,255,0.6)") : "var(--text-muted)",
+                    fontSize: "0.7rem",
+                    fontWeight: 600,
+                    borderRight: i < AI_OPTIONS.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none",
+                  }}>
+                  {o.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          {cfg.type === "famille" && n > 1 && cfg.ai !== "none" && (
+            <p className="text-xs mt-1.5" style={{ color: "rgba(197,161,72,0.8)" }}>
+              ⚠ Le prix de l&apos;IA augmente avec le nombre d&apos;enfants
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2.5">
+          <Toggle label="Rapports hebdomadaires" sub="Résumé email chaque semaine" price={0.99} value={cfg.reports} onChange={v => setCfg(c => ({ ...c, reports: v }))} />
+          <Toggle label="Quiz" sub="Accès à tous les quiz et évaluations" price={0.99} value={cfg.quiz} onChange={v => setCfg(c => ({ ...c, quiz: v }))} />
+          <Toggle label="Avatars &amp; cosmétiques" sub="Contours et couleurs de nom exclusifs" price={0.99} value={cfg.avatars} onChange={v => setCfg(c => ({ ...c, avatars: v }))} />
+          <Toggle label="Support prioritaire" sub="Réponse garantie sous 4h en semaine" price={1.49} value={cfg.support} onChange={v => setCfg(c => ({ ...c, support: v }))} />
+        </div>
+      </div>
+
+      {/* Summary card */}
+      <div className="md:col-span-2">
+        <div className="rounded-2xl p-7 sticky top-24" style={{ background: "var(--greek-blue)" }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "rgba(197,161,72,0.7)" }}>Votre formule</p>
+          <div className="flex items-end gap-1 mb-1">
+            <span className="font-[family-name:var(--font-display)] text-5xl font-bold text-white">{total.toFixed(2)}€</span>
+            <span className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.45)" }}>/mois</span>
+          </div>
+          <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>
+            {cfg.type === "famille"
+              ? `Famille · ${cfg.children === -1 ? "enfants illimités" : `${cfg.children} enfant${cfg.children > 1 ? "s" : ""}`}`
+              : "Lycéen solo"}
+          </p>
+          {/* Mini détail prix */}
+          <div className="space-y-1.5 mb-6 text-xs border-t border-white/10 pt-4">
+            <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
+              <span>Base {cfg.type === "lyceen" ? "lycéen" : "famille"}</span>
+              <span>{BASE_PRICE[cfg.type].toFixed(2)}€</span>
+            </div>
+            {cfg.type === "famille" && n > 1 && (
+              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <span>{n} enfants</span>
+                <span>+{childrenCost(n).toFixed(2)}€</span>
+              </div>
+            )}
+            {cfg.ai !== "none" && (
+              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <span>IA {AI_OPTIONS.find(o => o.id === cfg.ai)!.label}</span>
+                <span>+{aiActualPrice.toFixed(2)}€</span>
+              </div>
+            )}
+          </div>
+          <button onClick={() => onAdd(cfg)} disabled={alreadyAdded}
+            className="w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all font-[family-name:var(--font-display)] disabled:opacity-40 disabled:cursor-not-allowed hover:-translate-y-0.5"
+            style={{ background: "var(--greek-gold)", color: "#fff" }}>
+            {alreadyAdded ? "Déjà ajouté ✓" : "Ajouter à la comparaison"}
+            {!alreadyAdded && <ArrowRight className="w-4 h-4" />}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── Page ─── */
+type TabId = "familles" | "lyceens" | "abonnement";
+
 export default function Tarifs() {
   const [plans, setPlans] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
-  const [cardsVisible, setCardsVisible] = useState(false);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const [tab, setTab] = useState<TabId>("familles");
+  const [cardsVisible,   setCardsVisible]   = useState(false);
+  const [garantieVisible, setGarantieVisible] = useState(false);
+  const [faqVisible,      setFaqVisible]      = useState(false);
+  const cardsRef    = useRef<HTMLDivElement>(null);
+  const garantieRef = useRef<HTMLDivElement>(null);
+  const faqRef      = useRef<HTMLDivElement>(null);
+
+  // Comparison: set of selected real-plan ids + an optional custom config
+  const [comparePlanIds, setComparePlanIds] = useState<Set<number>>(new Set());
+  const [customConfig, setCustomConfig] = useState<ConfigState | null>(null);
 
   useEffect(() => {
     fetch("/api/plans")
@@ -363,29 +700,149 @@ export default function Tarifs() {
     return () => clearTimeout(t);
   }, [loading, plans]);
 
+  useEffect(() => {
+    const makeObs = (ref: React.RefObject<HTMLDivElement | null>, setter: (v: boolean) => void) => {
+      const el = ref.current; if (!el) return;
+      if (el.getBoundingClientRect().top < window.innerHeight) { setter(true); return; }
+      const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setter(true); obs.disconnect(); } }, { threshold: 0.1 });
+      obs.observe(el);
+      return () => obs.disconnect();
+    };
+    makeObs(garantieRef, setGarantieVisible);
+    makeObs(faqRef, setFaqVisible);
+  }, []);
+
+  const famillePlans = plans.filter(p => !isLyceen(p));
+  const lyceenPlans = plans.filter(p => isLyceen(p));
+
+  const togglePlanCompare = (id: number) => {
+    setComparePlanIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  // Build list of compare items (preserve plan order, custom last)
+  const compareItems: CompareItem[] = [
+    ...plans
+      .filter(p => comparePlanIds.has(p.id))
+      .map(p => ({
+        key: `plan-${p.id}`,
+        name: p.name,
+        price: Number(p.price),
+        billing_interval: p.billing_interval,
+        features: p.features,
+      })),
+    ...(customConfig ? [configToCompareItem(customConfig, "custom")] : []),
+  ];
+
+  const removeCompare = (key: string) => {
+    if (key === "custom") { setCustomConfig(null); return; }
+    const id = Number(key.replace("plan-", ""));
+    setComparePlanIds(prev => { const n = new Set(prev); n.delete(id); return n; });
+  };
+
+  const TABS: { id: TabId; label: string }[] = [
+    { id: "familles", label: "Pour les familles" },
+    { id: "lyceens", label: "Pour les lycéens" },
+    { id: "abonnement", label: "Mon abonnement" },
+  ];
+
+  const renderCards = (list: Plan[], hideChildren: boolean) => (
+    <div className={`grid grid-cols-1 gap-8 ${list.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : list.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
+      {list.map((plan, idx) => (
+        <PlanCard
+          key={plan.id}
+          plan={plan}
+          idx={idx}
+          popular={list.length > 1 && idx === 1}
+          hideChildren={hideChildren}
+          cardsVisible={cardsVisible}
+          onOpen={() => setSelectedPlan(plan)}
+          compareChecked={comparePlanIds.has(plan.id)}
+          onToggleCompare={() => togglePlanCompare(plan.id)}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
       <Navbar />
       <main className="flex-grow pt-[64px]">
 
-        {/* HERO */}
-        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-24 text-center">
+        {/* HERO — split, panneau droite garanties */}
+        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-32">
           {SYM.map((cfg, i) => (
             <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none"
-              style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.13, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
+              style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.1, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
             >{cfg.s}</span>
           ))}
-          <div className="relative container mx-auto px-6 max-w-3xl">
-            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-5">Nos Formules</h1>
-            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
-              Sans engagement, sans frais cachés. Annulez à tout moment depuis votre espace.
-            </p>
+          <div className="relative container mx-auto px-6 max-w-5xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Gauche */}
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.6)" }}>Abonnements</p>
+                <h1 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-5 text-white"
+                  style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)" }}>
+                  Nos Formules
+                </h1>
+                <p className="text-white/55 text-lg leading-relaxed mb-8">
+                  Sans engagement, sans frais cachés. Annulez à tout moment depuis votre espace.
+                </p>
+                <Link href="/auth/inscription"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 hover:shadow-lg font-[family-name:var(--font-display)]"
+                  style={{ background: "var(--greek-gold)", color: "#fff", boxShadow: "0 8px 32px rgba(197,161,72,0.32)" }}>
+                  Essai gratuit 7 jours <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+              {/* Droite — garanties visuelles */}
+              <div className="hidden md:flex flex-col gap-4">
+                <div className="rounded-2xl p-6" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "rgba(197,161,72,0.6)" }}>Pour commencer</p>
+                  <p className="font-[family-name:var(--font-display)] font-bold mt-2" style={{ color: "var(--greek-gold)", fontSize: "2.8rem", lineHeight: 1 }}>0 €</p>
+                  <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.35)" }}>Accès immédiat à toutes les fonctionnalités — 7 jours sans frais</p>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {["Sans engagement", "Sans carte bancaire", "Annulable à tout moment", "Accès immédiat"].map((item, i) => (
+                    <div key={i} className="flex items-center gap-2 px-4 py-3 rounded-xl"
+                      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                      <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--greek-gold)" }} />
+                      <span className="text-xs" style={{ color: "rgba(240,237,232,0.55)" }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* PLAN CARDS */}
-        <section className="py-20 bg-[var(--greek-cream)]">
+        {/* TABS + CONTENT */}
+        <section className="py-20 bg-[var(--greek-cream)]" ref={cardsRef}>
           <div className="container mx-auto px-6 max-w-5xl">
+            <style>{`
+              @keyframes cardIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+            `}</style>
+
+            {/* Tab switcher */}
+            <div className="flex justify-center mb-12">
+              <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-2xl" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
+                {TABS.map(t => (
+                  <button
+                    key={t.id}
+                    onClick={() => setTab(t.id)}
+                    className="px-5 py-2.5 rounded-xl text-sm font-bold transition-all font-[family-name:var(--font-display)]"
+                    style={tab === t.id
+                      ? { background: "var(--greek-blue)", color: "#fff" }
+                      : { background: "transparent", color: "var(--greek-blue)" }}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {loading ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[0, 1, 2].map(i => (
@@ -411,133 +868,97 @@ export default function Tarifs() {
                   </div>
                 ))}
               </div>
-            ) : plans.length === 0 ? (
-              <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>
             ) : (
               <>
-              <style>{`
-                @keyframes cardIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-              `}</style>
-              <div className={`grid grid-cols-1 gap-8 ${plans.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : "md:grid-cols-3"}`}>
-                {plans.map((plan, idx) => {
-                  const isPopular = idx === 1;
-                  return (
-                    <div
-                      key={plan.id}
-                      style={{
-                        position: "relative",
-                        zIndex: isPopular ? 10 : 1,
-                        transform: isPopular ? "scale(1.04)" : undefined,
-                        opacity: cardsVisible ? undefined : 0,
-                        animation: cardsVisible ? `cardIn 0.5s ease-out ${isPopular ? "180ms" : "0ms"} both` : "none",
-                      }}
-                    >
-                      <div
-                        className="relative flex flex-col bg-white rounded-2xl cursor-pointer group h-full"
-                        style={{
-                          border: isPopular ? "2px solid var(--greek-gold)" : "1px solid var(--greek-border)",
-                          boxShadow: isPopular ? "0 8px 40px rgba(197,161,72,0.18)" : "0 2px 12px rgba(15,30,58,0.05)",
-                        }}
-                        onClick={() => setSelectedPlan(plan)}
-                      >
-                        {isPopular && (
-                          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                            <div className="px-4 py-1.5 rounded-full text-xs font-bold bg-[var(--greek-gold)] text-black shadow-md flex items-center gap-1.5">
-                              <Star className="w-3 h-3 fill-current" /> Populaire
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)]">
-                          {plan.promo_description && (
-                            <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-3">
-                              <Sparkles className="w-3 h-3" />{plan.promo_description}
-                            </div>
-                          )}
-                          {plan.trial_days > 0 && (
-                            <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200 mb-3">
-                              {plan.trial_days} jours d&apos;essai gratuit
-                            </div>
-                          )}
-                          <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">{plan.name}</h3>
-                          {plan.description && <p className="text-sm text-[var(--text-muted)]">{plan.description}</p>}
-                        </div>
-
-                        <div className="px-7 py-6 text-center border-b border-[var(--greek-border)]">
-                          <div className="flex items-end justify-center gap-1">
-                            <span className="font-[family-name:var(--font-display)] text-4xl font-bold text-[var(--greek-blue)]">
-                              {Number(plan.price) === 0 ? "Gratuit" : `${plan.price}€`}
-                            </span>
-                            {Number(plan.price) > 0 && (
-                              <span className="text-sm text-[var(--text-muted)] mb-1.5">{intervalLabel(plan.billing_interval)}</span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="px-7 py-6 flex-grow">
-                          <ul className="space-y-2.5 mb-6">
-                            {FEATURE_ROWS.slice(0, 4).map(row => {
-                              const { label, included } = formatVal(row.key, plan.features?.[row.key]);
-                              if (!included) return null;
-                              return (
-                                <li key={row.key} className="flex items-center gap-3">
-                                  <div className="w-5 h-5 rounded-full bg-[rgba(197,161,72,0.12)] flex items-center justify-center flex-shrink-0">
-                                    <Check className="w-3 h-3 text-[var(--greek-gold)]" />
-                                  </div>
-                                  <span className="text-sm text-[var(--text-dark)] flex-1">{row.label}</span>
-                                  {label !== "Inclus" && (
-                                    <span className="text-xs font-semibold text-[var(--greek-gold)]">{label}</span>
-                                  )}
-                                </li>
-                              );
-                            })}
-                          </ul>
-                          <button
-                            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all group-hover:-translate-y-0.5 group-hover:shadow-md font-[family-name:var(--font-display)]"
-                            style={isPopular
-                              ? { background: "var(--greek-blue)", color: "white" }
-                              : { border: "2px solid var(--greek-blue)", color: "var(--greek-blue)" }
-                            }
-                          >
-                            Voir les détails <ArrowRight className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </div>
+                {tab === "familles" && (
+                  famillePlans.length === 0
+                    ? <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>
+                    : renderCards(famillePlans, false)
+                )}
+                {tab === "lyceens" && (
+                  lyceenPlans.length === 0
+                    ? <p className="text-center text-[var(--text-muted)] py-20">Aucun plan lycéen disponible pour le moment.</p>
+                    : renderCards(lyceenPlans, true)
+                )}
+                {tab === "abonnement" && (
+                  <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-10">
+                      <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] mb-2">Composez votre formule</h2>
+                      <p className="text-[var(--text-muted)] text-sm">Ajustez les options, le prix se met à jour automatiquement.</p>
                     </div>
-                  );
-                })}
-              </div>
+                    <Configurator
+                      onAdd={(c) => setCustomConfig(c)}
+                      alreadyAdded={customConfig !== null}
+                    />
+                  </div>
+                )}
               </>
+            )}
+
+            {/* COMPARATEUR */}
+            {compareItems.length >= 2 && (
+              <div className="mt-16">
+                <div className="text-center mb-8">
+                  <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl md:text-3xl text-[var(--greek-blue)] mb-3">
+                    Comparateur
+                  </h2>
+                  {/* Selected chips */}
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {compareItems.map(item => (
+                      <span key={item.key} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold"
+                        style={{ background: "rgba(197,161,72,0.12)", color: "var(--greek-blue)" }}>
+                        {item.name}
+                        <button onClick={() => removeCompare(item.key)} className="hover:text-[var(--greek-gold)] transition-colors" aria-label="Retirer">
+                          <X className="w-3 h-3" />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <ComparisonTable items={compareItems} onRemove={removeCompare} />
+              </div>
             )}
           </div>
         </section>
 
-        {/* TABLEAU COMPARATIF */}
-        {plans.length > 0 && (
-          <section className="py-20 bg-[var(--greek-cream)] border-t border-gray-100">
-            <div className="container mx-auto px-6 max-w-5xl">
-              <div className="text-center mb-12">
-                <h2 className="font-[family-name:var(--font-display)] font-bold text-3xl md:text-4xl text-[var(--greek-blue)] mb-3">
-                  Comparez les formules
-                </h2>
-                <p className="text-[var(--text-muted)] text-sm">
-                  Cliquez sur un plan pour le mettre en avant. Survolez <Info className="w-3 h-3 inline" /> pour plus de détails.
-                </p>
-              </div>
-              <ComparisonTable plans={plans} />
-            </div>
-          </section>
-        )}
-
         {/* GARANTIE */}
         <section className="py-14 bg-[var(--greek-cream)] border-t border-gray-100 text-center">
           <div className="container mx-auto px-6 max-w-xl">
+            <div ref={garantieRef} style={{ opacity: garantieVisible ? 1 : 0, transform: garantieVisible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.5s, transform 0.5s" }}>
             <div className="w-8 h-px bg-[var(--greek-gold)] mx-auto mb-5 opacity-60" />
             <h3 className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)] mb-2">
               Sans engagement · Annulable à tout moment
             </h3>
             <p className="text-[var(--text-muted)] text-sm leading-relaxed">
               Paiement sécurisé par Stripe. Aucun frais caché. Remboursement garanti dans les 7 jours si insatisfait.
+            </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MINI-FAQ */}
+        <section className="py-16 px-6" style={{ background: "var(--greek-cream)" }}>
+          <div className="max-w-2xl mx-auto" ref={faqRef}>
+            <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-center mb-8" style={{ color: "var(--greek-blue)", opacity: faqVisible ? 1 : 0, transform: faqVisible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.4s, transform 0.4s" }}>
+              Questions fréquentes
+            </h2>
+            <div className="space-y-3">
+              {[
+                { q: "Puis-je changer de plan à tout moment ?", a: "Oui, vous pouvez passer à un plan supérieur ou inférieur à n'importe quel moment depuis votre espace parent. Le changement est effectif immédiatement et le montant est ajusté au prorata." },
+                { q: "Y a-t-il un engagement de durée ?", a: "Non. Les abonnements sont sans engagement. Vous pouvez annuler à tout moment depuis votre compte, sans frais ni justification." },
+                { q: "La période d'essai est-elle vraiment gratuite ?", a: "Oui, aucune carte bancaire n'est requise pour commencer. L'essai gratuit vous donne accès à toutes les fonctionnalités du plan choisi sans limitation." },
+                { q: "Que se passe-t-il si je dépasse le nombre d'enfants autorisé ?", a: "Vous serez invité à passer à un plan supérieur. Aucun enfant ne perd l'accès brutalement — vous avez un délai pour régulariser votre abonnement." },
+              ].map((item, i) => (
+                <div key={i} style={{ opacity: faqVisible ? 1 : 0, transform: faqVisible ? "translateY(0)" : "translateY(16px)", transition: `opacity 0.4s ${80 + i * 60}ms, transform 0.4s ${80 + i * 60}ms` }}>
+                  <FaqItem question={item.q} answer={item.a} />
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-sm mt-8" style={{ color: "var(--text-muted)" }}>
+              Vous avez une autre question ?{" "}
+              <a href="/contact" className="font-semibold hover:underline" style={{ color: "var(--greek-gold)" }}>Contactez-nous</a>
+              {" "}ou consultez la{" "}
+              <a href="/faq" className="font-semibold hover:underline" style={{ color: "var(--greek-gold)" }}>FAQ complète</a>.
             </p>
           </div>
         </section>

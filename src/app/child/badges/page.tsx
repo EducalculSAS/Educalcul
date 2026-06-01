@@ -73,6 +73,8 @@ export default function ChildBadgesPage() {
         const { data: cosmetics } = await supabase.from("user_cosmetics").select("cosmetic_key").eq("user_id", userData.id);
         for (const c of (cosmetics || [])) {
           const k = c.cosmetic_key;
+          // Skip subscription-sourced cosmetics: those come exclusively from plan features.
+          if (BORDER_STYLES[k]?.source === "subscription" || NAME_COLORS[k]?.source === "subscription") continue;
           if (k === 'flamme') { borders.add('flamme'); colors.add('flame'); }
           else if (k === 'elite_text') { colors.add('elite'); }
           else { borders.add(k); colors.add(k); }
@@ -87,7 +89,13 @@ export default function ChildBadgesPage() {
         }
         const { data: sub } = await supabase
           .from("subscriptions").select("plan_id").eq("user_id", subUserId).maybeSingle();
-        const subUnlocks = getSubscriptionUnlocks(sub?.plan_id ?? null);
+        let planFeatures = null;
+        if (sub?.plan_id) {
+          const { data: planData } = await supabase
+            .from("subscription_plans").select("features").eq("id", sub.plan_id).maybeSingle();
+          planFeatures = planData?.features ?? null;
+        }
+        const subUnlocks = getSubscriptionUnlocks(sub?.plan_id ?? null, planFeatures);
         subUnlocks.borders.forEach(b => borders.add(b));
         subUnlocks.colors.forEach(c => colors.add(c));
         setUnlockedBorders(borders);

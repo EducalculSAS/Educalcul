@@ -31,16 +31,25 @@ export const NAME_COLORS: Record<string, { cls: string; label: string; source?: 
   admin:    { cls: "name-admin-animated",   label: "Admin",       source: "admin" },
 };
 
-/** Plan ID → unlocked borders & colors */
-export const SUBSCRIPTION_UNLOCKS: Record<string, { borders: string[]; colors: string[] }> = {
-  "1": { borders: [],                       colors: [] },
-  "2": { borders: ["premium"],              colors: ["premium"] },
-  "3": { borders: ["famille","flamme"],     colors: ["famille"] },
-  "4": { borders: ["flamme","pro","elite"], colors: ["pro","flame","elite"] },
+/** Fallback statique (si features pas encore chargées) */
+const SUBSCRIPTION_UNLOCKS_FALLBACK: Record<string, { borders: string[]; colors: string[] }> = {
+  "2": { borders: ["premium"],          colors: ["premium"] },
+  "3": { borders: ["famille","flamme"], colors: ["famille"] },
 };
 
 export function getBorderStyle(key: string) { return BORDER_STYLES[key] ?? BORDER_STYLES.none; }
 export function getNameColor(key: string) { return NAME_COLORS[key] ?? NAME_COLORS.default; }
-export function getSubscriptionUnlocks(planId: string | number | null) {
-  return SUBSCRIPTION_UNLOCKS[String(planId)] ?? { borders: [], colors: [] };
+
+/** Utilise les features du plan si disponibles, sinon fallback hardcodé */
+export function getSubscriptionUnlocks(
+  planId: string | number | null,
+  planFeatures?: { cosmetic_borders?: string[]; cosmetic_colors?: string[] } | null
+): { borders: string[]; colors: string[] } {
+  if (planFeatures?.cosmetic_borders !== undefined) {
+    return {
+      borders: planFeatures.cosmetic_borders ?? [],
+      colors: planFeatures.cosmetic_colors ?? [],
+    };
+  }
+  return SUBSCRIPTION_UNLOCKS_FALLBACK[String(planId)] ?? { borders: [], colors: [] };
 }

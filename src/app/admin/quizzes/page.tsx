@@ -676,6 +676,12 @@ export default function AdminQuizzesPage() {
               Générer avec IA
             </button>
             <button
+              onClick={() => setShowImportModal(true)}
+              className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
+            >
+              <Upload size={18} /> Importer JSON
+            </button>
+            <button
               onClick={() => {
                 setEditingQuiz(null);
                 setFormData({
@@ -699,12 +705,6 @@ export default function AdminQuizzesPage() {
             >
               <Plus size={20} />
               Nouveau Quiz
-            </button>
-            <button
-              onClick={() => setShowImportModal(true)}
-              className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
-            >
-              <Upload size={18} /> Importer JSON
             </button>
           </div>
         </div>
@@ -975,7 +975,7 @@ export default function AdminQuizzesPage() {
 
       {/* Folder Creation/Edit Modal */}
       {isFolderModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1060] p-4">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-800 mb-4">
               {editingFolder ? "Modifier le dossier" : "Nouveau Dossier"}
@@ -1123,7 +1123,7 @@ export default function AdminQuizzesPage() {
 
       {/* Modal Création/Édition */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1060] p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
             {/* Header */}
             <div className="px-8 py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
@@ -1133,8 +1133,8 @@ export default function AdminQuizzesPage() {
                   {editingQuiz ? "Modifier le quiz" : "Nouveau quiz"}
                 </h2>
               </div>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors text-white/70 hover:text-white">
-                <X size={22} />
+              <button onClick={() => setIsModalOpen(false)} className="group p-2 text-white/70 hover:text-white transition-colors relative z-10">
+                <X size={22} className="transition-transform group-hover:scale-125" />
               </button>
             </div>
 

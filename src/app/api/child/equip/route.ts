@@ -42,7 +42,12 @@ export async function POST(req: Request) {
       if (parent?.auth_id) subUserId = parent.auth_id;
     }
     const { data: sub } = await supabaseAdmin.from("subscriptions").select("plan_id").eq("user_id", subUserId).maybeSingle();
-    const subUnlocks = getSubscriptionUnlocks(sub?.plan_id ?? null);
+    let planFeatures = null;
+    if (sub?.plan_id) {
+      const { data: planData } = await supabaseAdmin.from("subscription_plans").select("features").eq("id", sub.plan_id).maybeSingle();
+      planFeatures = planData?.features ?? null;
+    }
+    const subUnlocks = getSubscriptionUnlocks(sub?.plan_id ?? null, planFeatures);
     subUnlocks.borders.forEach(b => unlockedBorders.add(b));
     subUnlocks.colors.forEach(c => unlockedColors.add(c));
 

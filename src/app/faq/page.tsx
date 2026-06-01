@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { ChevronDown, ArrowRight, GraduationCap } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import JsonLd from "@/components/JsonLd";
 import Image from "next/image";
@@ -97,10 +97,76 @@ function useScrollVisible() {
   return { ref, visible };
 }
 
+function FaqSection({ section, sIdx, openItem, setOpenItem }: {
+  section: FAQSection;
+  sIdx: number;
+  openItem: string | null;
+  setOpenItem: (id: string | null) => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) { setVisible(true); return; }
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.08 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className="mb-10">
+      <div className="flex items-center gap-4 mb-5"
+        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "opacity 0.4s 0ms, transform 0.4s 0ms" }}>
+        <div className="w-6 h-px opacity-60" style={{ background: "var(--greek-gold)" }} />
+        <h2 className="font-[family-name:var(--font-display)] font-bold text-base text-[var(--greek-blue)] uppercase tracking-wider">{section.title}</h2>
+        <div className="flex-1 h-px bg-gray-200" />
+      </div>
+      <div className="space-y-2.5">
+        {section.items.map((item, iIdx) => (
+          <div key={`${sIdx}-${iIdx}`}
+            style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: `opacity 0.4s ${50 + iIdx * 55}ms, transform 0.4s ${50 + iIdx * 55}ms` }}>
+            <FaqItem id={`${sIdx}-${iIdx}`} question={item.question} answer={item.answer} openItem={openItem} setOpenItem={setOpenItem} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FaqItem({ id, question, answer, openItem, setOpenItem }: {
+  id: string;
+  question: string;
+  answer: React.ReactNode;
+  openItem: string | null;
+  setOpenItem: (id: string | null) => void;
+}) {
+  const isOpen = openItem === id;
+  return (
+    <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(197,161,72,0.18)", background: "#fff" }}>
+      <button
+        type="button"
+        onClick={() => setOpenItem(isOpen ? null : id)}
+        className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left transition-colors hover:bg-[rgba(197,161,72,0.03)]"
+      >
+        <span className="font-[family-name:var(--font-display)] font-semibold text-sm" style={{ color: "var(--greek-blue)" }}>{question}</span>
+        <span
+          className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-lg font-light transition-transform duration-300"
+          style={{ background: "rgba(197,161,72,0.10)", color: "var(--greek-gold)", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
+        >+</span>
+      </button>
+      <div style={{ maxHeight: isOpen ? "400px" : "0px", overflow: "hidden", transition: "max-height 0.3s ease" }}>
+        <div className="px-6 pb-5 pt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+          {answer}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FAQ() {
   const [openItem, setOpenItem] = useState<string | null>(null);
-  const { ref: contentRef, visible: contentVisible } = useScrollVisible();
-  const { ref: ctaRef, visible: ctaVisible } = useScrollVisible();
+  const { ref: badgeRef, visible: badgeVisible } = useScrollVisible();
+  const { ref: ctaRef,   visible: ctaVisible   } = useScrollVisible();
 
   return (
     <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
@@ -108,108 +174,75 @@ export default function FAQ() {
       <Navbar />
       <main className="flex-grow pt-[64px]">
 
-        {/* HERO */}
-        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-24 text-center">
+        {/* HERO — split, aperçu questions à droite */}
+        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-32">
           {SYM.map((cfg, i) => (
             <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none"
-              style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.13, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
+              style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.1, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
             >{cfg.s}</span>
           ))}
-          <div className="relative container mx-auto px-6 max-w-3xl">
-            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-5">Questions fréquentes</h1>
-            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
-              Tout ce que vous devez savoir avant de commencer.
-            </p>
+          <div className="relative container mx-auto px-6 max-w-5xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Gauche */}
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.6)" }}>Aide & réponses</p>
+                <h1 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4 text-white"
+                  style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)" }}>
+                  Questions fréquentes
+                </h1>
+                <p className="text-white/55 text-lg leading-relaxed mb-6">
+                  Tout ce que vous devez savoir avant de commencer.
+                </p>
+              </div>
+              {/* Droite — catégories */}
+              <div className="hidden md:flex flex-col gap-3">
+                {FAQ_DATA.map((section, i) => (
+                  <div key={i} className="flex items-center justify-between px-5 py-4 rounded-xl gap-4"
+                    style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                    <div>
+                      <p className="text-sm font-[family-name:var(--font-display)] font-semibold" style={{ color: "rgba(240,237,232,0.8)" }}>{section.title}</p>
+                    </div>
+                    <ChevronDown className="w-4 h-4 flex-shrink-0" style={{ color: "rgba(197,161,72,0.45)" }} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
         {/* FAQ */}
         <section className="py-20 bg-[var(--greek-cream)]">
           <div className="container mx-auto px-6 max-w-3xl">
-            <div
-              ref={contentRef}
-              style={{
-                opacity: contentVisible ? 1 : 0,
-                transform: contentVisible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity 0.5s, transform 0.5s",
-              }}
-            >
+            <div>
               {FAQ_DATA.map((section, sIdx) => (
-                <div key={sIdx} className="mb-10">
-                  {/* Section header */}
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-6 h-px opacity-60" style={{ background: "var(--greek-gold)" }} />
-                    <h2 className="font-[family-name:var(--font-display)] font-bold text-base text-[var(--greek-blue)] uppercase tracking-wider">{section.title}</h2>
-                    <div className="flex-1 h-px bg-gray-200" />
-                  </div>
-
-                  <div className="space-y-2.5">
-                    {section.items.map((item, iIdx) => {
-                      const id = `${sIdx}-${iIdx}`;
-                      const isOpen = openItem === id;
-                      return (
-                        <div
-                          key={id}
-                          className="bg-white rounded-xl overflow-hidden transition-shadow duration-200 hover:shadow-sm"
-                          style={{ border: "1px solid #e5e7eb" }}
-                        >
-                          <button
-                            onClick={() => setOpenItem(isOpen ? null : id)}
-                            className="w-full text-left px-6 py-4 flex justify-between items-center gap-4 transition-colors"
-                            style={{ background: isOpen ? "rgba(197,161,72,0.05)" : "transparent" }}
-                          >
-                            <span className="font-[family-name:var(--font-display)] font-semibold text-sm text-[var(--greek-blue)] leading-snug">{item.question}</span>
-                            <ChevronDown
-                              className="w-4 h-4 flex-shrink-0 transition-transform duration-300"
-                              style={{
-                                color: isOpen ? "var(--greek-gold)" : "#9ca3af",
-                                transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                              }}
-                            />
-                          </button>
-                          <div
-                            style={{
-                              maxHeight: isOpen ? 400 : 0,
-                              overflow: "hidden",
-                              transition: "max-height 0.3s ease",
-                            }}
-                          >
-                            <div className="px-6 pb-5 pt-4 text-sm text-[var(--text-muted)] leading-relaxed border-t border-gray-100">
-                              {item.answer}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                <FaqSection key={sIdx} section={section} sIdx={sIdx} openItem={openItem} setOpenItem={setOpenItem} />
               ))}
             </div>
 
             {/* Badge programme EN */}
-            <Link
-              href="/programmes"
-              className="flex flex-col sm:flex-row items-center justify-between gap-5 p-6 rounded-2xl mt-10 mb-4 transition-all hover:-translate-y-0.5 hover:shadow-md"
-              style={{ background: "#fff", border: "1px solid var(--greek-border)" }}
-            >
-              <div className="flex items-center gap-5 flex-wrap justify-center sm:justify-start">
-                <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={80} height={40} className="h-10 w-auto object-contain" unoptimized />
+            <div ref={badgeRef} className="mt-10 mb-4 flex flex-col sm:flex-row items-center justify-between gap-5 p-5 rounded-2xl"
+              style={{ background: "#fff", border: "1px solid var(--greek-border)", boxShadow: "0 2px 12px rgba(15,30,58,0.04)", opacity: badgeVisible ? 1 : 0, transform: badgeVisible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.5s, transform 0.5s" }}>
+              <div className="flex items-center gap-5 flex-shrink-0">
+                <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={80} height={80} className="w-auto object-contain flex-shrink-0" style={{ height: 80 }} unoptimized />
                 <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
-                <Image src="/eduscol.svg" alt="Eduscol" width={80} height={28} className="h-7 w-auto object-contain" unoptimized />
+                <Image src="/eduscol.svg" alt="Eduscol" width={80} height={26} className="w-auto object-contain flex-shrink-0" style={{ height: 26 }} unoptimized />
               </div>
-              <div className="text-center sm:text-left flex-1 px-2">
-                <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>
-                  Contenus alignés sur le programme officiel
+              <div className="flex-1 text-center sm:text-left">
+                <p className="text-sm font-bold" style={{ color: "var(--greek-blue)" }}>
+                  100% aligné sur le programme officiel
                 </p>
                 <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                  Du CP à la Terminale — toutes filières lycée incluses
+                  Du CP à la Terminale, toutes filières
                 </p>
               </div>
-              <div className="flex items-center gap-1.5 text-xs font-bold flex-shrink-0" style={{ color: "var(--greek-gold)" }}>
-                <GraduationCap size={14} />
-                Voir les programmes →
-              </div>
-            </Link>
+              <Link
+                href="/programmes"
+                className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5"
+                style={{ background: "var(--greek-blue)", color: "#fff" }}
+              >
+                Voir les programmes <ArrowRight size={14} />
+              </Link>
+            </div>
 
             {/* CTA */}
             <div
@@ -227,7 +260,7 @@ export default function FAQ() {
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 hover:shadow-lg font-[family-name:var(--font-display)]"
-                style={{ background: "var(--greek-gold)", color: "#000" }}
+                style={{ background: "var(--greek-gold)", color: "#fff" }}
               >
                 Nous contacter <ArrowRight className="w-4 h-4" />
               </Link>

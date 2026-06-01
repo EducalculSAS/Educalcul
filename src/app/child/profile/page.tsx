@@ -1,557 +1,525 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
-  User,
-  Trophy,
-  Star,
-  Shield,
-  School,
-  BookOpen,
-  Mail,
-  CheckCircle,
-  AlertCircle,
-  Trash2,
-  Clock,
+  User, Trophy, Star, Shield, School, BookOpen, Mail,
+  CheckCircle, AlertCircle, Trash2, Clock, Lock, Save,
+  Camera, Bell, Loader2, CreditCard, Brain,
 } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
+import Image from "next/image";
+import Link from "next/link";
+
+const GoogleIcon = () => (
+  <svg className="w-6 h-6" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+  </svg>
+);
+
+function EmptyActivities({ message }: { message: string }) {
+  return (
+    <div className="text-center py-10 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-2xl">
+      <Star className="w-10 h-10 text-gray-200 mx-auto mb-3" />
+      <p className="text-gray-400 italic text-sm">{message}</p>
+    </div>
+  );
+}
 
 export default function ChildProfilePage() {
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
+  const [saving, setSaving]   = useState(false);
+  const [user, setUser]       = useState<any>(null);
+  const [authUser, setAuthUser] = useState<any>(null);
   const [googleLinked, setGoogleLinked] = useState(false);
-  const [message, setMessage] = useState<{
-    type: "success" | "error";
-    text: string;
-  } | null>(null);
+  const [subscription, setSubscription] = useState<any>(null);
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteStep, setDeleteStep] = useState<1|2>(1);
+
   const [showActivities, setShowActivities] = useState(false);
-  const [activities, setActivities] = useState<{
-    exercises: any[];
-    quizzes: any[];
-    courses: any[];
-  }>({ exercises: [], quizzes: [], courses: [] });
+  const [activities, setActivities] = useState<{ exercises: any[]; quizzes: any[]; courses: any[] }>({ exercises: [], quizzes: [], courses: [] });
   const [activeTab, setActiveTab] = useState<"exercises" | "quizzes" | "courses">("exercises");
 
+  // Formulaires
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", avatar: "/avatars/avatar1.png" });
+  const [passwordData, setPasswordData] = useState({ newPassword: "", confirmPassword: "" });
+  const [notifications, setNotifications] = useState({ notif_weekly_reports: false, notif_offers_news: false });
+
   useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user: authUser },
-      } = await supabase.auth.getUser();
+    const load = async () => {
+      const { data: { user: au } } = await supabase.auth.getUser();
+      if (!au) { window.location.href = "/auth/connexion"; return; }
+      setAuthUser(au);
+      setGoogleLinked(!!au.identities?.some((id: any) => id.provider === "google"));
 
-      if (!authUser) {
-        // Redirect to login if not authenticated
-        window.location.href = "/auth/connexion";
-        return;
-      }
-
-      if (authUser) {
-        const isGoogle = authUser.identities?.some(
-          (id: any) => id.provider === "google"
-        );
-        setGoogleLinked(!!isGoogle);
-      }
-
-      const { data: userData, error } = await supabase
-        .from("users")
-        .select("*")
-        .eq("auth_id", authUser.id)
-        .maybeSingle();
-
-      if (error) {
-        console.error("Error fetching user profile:", error);
-      }
-
+      const { data: userData } = await supabase.from("users").select("*").eq("auth_id", au.id).maybeSingle();
       if (userData) {
         setUser(userData);
+        setFormData({
+          firstName: userData.first_name || "",
+          lastName:  userData.last_name  || "",
+          email:     userData.email      || au.email || "",
+          avatar:    userData.avatar     || "/avatars/avatar1.png",
+        });
+        setNotifications({
+          notif_weekly_reports: userData.notif_weekly_reports ?? false,
+          notif_offers_news:    userData.notif_offers_news    ?? false,
+        });
 
-        // Fetch activities
+        // Activités
         try {
-          const actRes = await fetch(`/api/child/activities?userId=${authUser.id}`);
-          if (actRes.ok) {
-            const actData = await actRes.json();
-            setActivities(actData);
-          }
-        } catch (e) {
-          console.error("Error fetching activities:", e);
-        }
+          const r = await fetch(`/api/child/activities?userId=${au.id}`);
+          if (r.ok) setActivities(await r.json());
+        } catch {}
+
+        // Abonnement (si l'enfant a son propre abonnement)
+        try {
+          const r = await fetch(`/api/parent/subscription-details?userId=${au.id}`);
+          if (r.ok) { const d = await r.json(); setSubscription(d.subscription || null); }
+        } catch {}
       }
       setLoading(false);
     };
-
-    fetchUser();
+    load();
   }, []);
+
+  const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.[0]) return;
+    setSaving(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", e.target.files[0]);
+      fd.append("folder", "uploads/avatars");
+      const r = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      setFormData(prev => ({ ...prev, avatar: d.url }));
+      const { data: { user: au } } = await supabase.auth.getUser();
+      if (au) await supabase.from("users").update({ avatar: d.url }).eq("auth_id", au.id);
+      setMessage({ type: "success", text: "Photo mise à jour." });
+    } catch { setMessage({ type: "error", text: "Erreur lors de l'upload." }); }
+    finally { setSaving(false); }
+  };
+
+  const handleProfileUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    setMessage(null);
+    try {
+      const { data: { user: au } } = await supabase.auth.getUser();
+      if (!au) throw new Error("Non connecté");
+      await supabase.from("users").update({ first_name: formData.firstName, last_name: formData.lastName }).eq("auth_id", au.id);
+      if (formData.email !== (au.email || "")) {
+        await supabase.auth.updateUser({ email: formData.email });
+        setMessage({ type: "success", text: "Profil mis à jour. Vérifie ta nouvelle adresse email." });
+      } else {
+        setMessage({ type: "success", text: "Profil mis à jour." });
+      }
+    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
+    finally { setSaving(false); }
+  };
+
+  const handlePasswordUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwordData.newPassword.length < 6) { setMessage({ type: "error", text: "Mot de passe trop court (6 car. min)." }); return; }
+    if (passwordData.newPassword !== passwordData.confirmPassword) { setMessage({ type: "error", text: "Les mots de passe ne correspondent pas." }); return; }
+    setSaving(true);
+    try {
+      const { error } = await supabase.auth.updateUser({ password: passwordData.newPassword });
+      if (error) throw error;
+      setMessage({ type: "success", text: "Mot de passe mis à jour." });
+      setPasswordData({ newPassword: "", confirmPassword: "" });
+    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
+    finally { setSaving(false); }
+  };
 
   const handleLinkGoogle = async () => {
     try {
-      const { data, error } = await supabase.auth.linkIdentity({
-        provider: "google",
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
-        },
-      });
+      const { error } = await supabase.auth.linkIdentity({ provider: "google", options: { redirectTo: `${window.location.origin}/auth/callback` } });
       if (error) throw error;
-    } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "Erreur lors de la liaison avec Google.";
-      setMessage({
-        type: "error",
-        text: errorMessage,
-      });
-    }
+    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
   };
 
   const handleUnlinkGoogle = async () => {
     try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-
-      if (!user) throw new Error("Non connecté");
-
-      const identity = user.identities?.find((id: any) => id.provider === "google");
-
-      if (!identity) {
-        throw new Error("Aucun compte Google lié trouvé.");
-      }
-
+      const { data: { user: au } } = await supabase.auth.getUser();
+      const identity = au?.identities?.find((id: any) => id.provider === "google");
+      if (!identity) throw new Error("Aucun compte Google lié.");
       const { error } = await supabase.auth.unlinkIdentity(identity);
       if (error) throw error;
-
       setGoogleLinked(false);
-      setMessage({
-        type: "success",
-        text: "Compte Google délié avec succès.",
-      });
-    } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "Erreur lors de la dissociation du compte.";
-      setMessage({
-        type: "error",
-        text: errorMessage,
-      });
-    }
+      setMessage({ type: "success", text: "Compte Google délié." });
+    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
   };
 
   const handleDeleteAccount = async () => {
-    if (!confirm("Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.")) return;
-    if (!confirm("Vraiment sûr ? Toutes vos données seront perdues.")) return;
-
+    setSaving(true);
+    setShowDeleteModal(false);
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error("Non connecté");
-
-      const response = await fetch("/api/parent/delete-account", {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Erreur lors de la suppression du compte");
-      }
-
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) throw new Error("Session expirée");
+      const r = await fetch("/api/parent/delete-account", { method: "DELETE", headers: { Authorization: `Bearer ${session.access_token}` } });
+      if (!r.ok) throw new Error((await r.json()).error);
       await supabase.auth.signOut();
+      sessionStorage.clear(); localStorage.clear();
       window.location.href = "/";
-    } catch (error) {
-      console.error("Delete account error:", error);
-      setMessage({ type: "error", text: "Erreur lors de la suppression." });
-    }
+    } catch (err: any) { setMessage({ type: "error", text: err.message }); setSaving(false); }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <AppAdminLoader />
-      </div>
-    );
-  }
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><AppAdminLoader /></div>;
+  if (!user)   return <div className="min-h-screen flex items-center justify-center"><p>Profil introuvable</p></div>;
 
-  if (!user) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-2">
-            Profil introuvable
-          </h2>
-          <p className="text-gray-600 mb-4">
-            Impossible de charger les informations du profil.
-          </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="btn-primary-greek px-6 py-2"
-          >
-            Réessayer
-          </button>
-        </div>
-      </div>
-    );
-  }
+  const isSubActive = subscription?.status === "active";
 
   return (
+    <>
     <div className="min-h-screen bg-[var(--greek-cream)]">
-      {/* Hero Header */}
-      <div className="bg-[var(--greek-blue)] text-white pt-20 pb-12 px-8 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+      {/* Hero */}
+      <div className="bg-[var(--greek-blue)] text-white pt-20 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
-            <User className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-2 flex items-center gap-4">
+            <User className="w-10 h-10 text-[var(--greek-gold)]" />
             MON PROFIL
           </h1>
-          <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
-            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">HÉROS</span>
-            <span>Voici tes informations de héros !</span>
-          </p>
+          <p className="opacity-70 text-sm">Gérez tes informations et ta progression</p>
         </div>
       </div>
-    <div className="container mx-auto px-4 pb-12 max-w-4xl">
 
-      {message && (
-        <div
-          className={`p-4 mb-6 rounded-lg ${message.type === "success"
-            ? "bg-green-100 text-green-800"
-            : "bg-red-100 text-red-800"
-            } flex items-center justify-between shadow-sm border border-transparent`}
-        >
-          <div className="flex items-center">
-            {message.type === "error" && (
-              <AlertCircle className="w-5 h-5 mr-2" />
-            )}
-            {message.type === "success" && (
-              <CheckCircle className="w-5 h-5 mr-2" />
-            )}
-            <span>{message.text}</span>
+      <div className="container mx-auto px-4 pb-16 max-w-4xl space-y-6">
+
+        {/* Message */}
+        {message && (
+          <div className={`p-4 rounded-xl flex items-center gap-3 text-sm font-medium ${message.type === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
+            {message.type === "success" ? <CheckCircle className="w-5 h-5 shrink-0" /> : <AlertCircle className="w-5 h-5 shrink-0" />}
+            {message.text}
+            <button className="ml-auto font-bold text-lg leading-none" onClick={() => setMessage(null)}>×</button>
           </div>
-          <button onClick={() => setMessage(null)} className="font-bold">
-            &times;
-          </button>
-        </div>
-      )}
+        )}
 
-      <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden relative">
-        {/* Header Background */}
-        <div className="h-32 bg-[var(--greek-blue)] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10 pattern-grid-lg"></div>
-        </div>
-
-        {/* Avatar avec décorations du contour équipé */}
-        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 pointer-events-none select-none">
-          <AvatarWithBorder
-            avatar={user.avatar}
-            equippedBorder={user.equipped_border}
-            name={user.first_name || "?"}
-            size="xl"
-            bgClass="transparent"
-            circular
-          />
-        </div>
-
-        <div className="pt-16 pb-8 px-8">
-          <div className="text-center mb-8">
-            <h2 className={`text-3xl font-bold mb-1 ${getNameColor(user.name_color || 'default').cls}`}>
-              {user.first_name} {user.last_name}
-            </h2>
-            <p className="text-[var(--greek-gold)] font-bold text-lg flex items-center justify-center gap-2">
-              <Shield className="w-5 h-5" />
-              {user.child_username}
-            </p>
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={() => setShowActivities(!showActivities)}
-                className="btn-primary-greek px-8 py-2.5 flex items-center gap-2 text-lg shadow-lg hover:scale-105 transition-transform"
-              >
-                <Trophy className="w-5 h-5 text-[var(--greek-gold)]" />
-                {showActivities ? "Masquer mes exploits" : "Voir mes activités"}
+        {/* ── Avatar + identité ── */}
+        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] overflow-hidden">
+          <div className="h-24 bg-[var(--greek-blue)] relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 0,rgba(255,255,255,0.05) 1px,transparent 0,transparent 50%)", backgroundSize: "12px 12px" }} />
+          </div>
+          <div className="relative -mt-12 flex flex-col sm:flex-row items-center sm:items-end gap-4 px-6 pb-6">
+            <div className="relative">
+              <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" bgClass="transparent" circular />
+              <label htmlFor="avatar-upload" className="absolute bottom-1 right-1 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform hover:scale-110" style={{ background: "var(--greek-blue)" }}>
+                <Camera className="w-4 h-4 text-white" />
+                <input id="avatar-upload" type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload} disabled={saving} />
+              </label>
+            </div>
+            <div className="text-center sm:text-left sm:mb-2">
+              <h2 className={`text-2xl font-bold ${getNameColor(user.name_color || "default").cls}`}>{user.first_name} {user.last_name}</h2>
+              <p className="text-sm font-bold flex items-center justify-center sm:justify-start gap-1.5" style={{ color: "var(--greek-gold)" }}>
+                <Shield className="w-4 h-4" />{user.child_username}
+              </p>
+            </div>
+            <div className="sm:ml-auto flex gap-3">
+              <button onClick={() => setShowActivities(v => !v)} className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all hover:-translate-y-0.5" style={{ background: "var(--greek-blue)", color: "#fff" }}>
+                <Trophy className="w-4 h-4 text-[var(--greek-gold)]" />
+                {showActivities ? "Masquer" : "Mes activités"}
               </button>
             </div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-blue-50 rounded-xl p-6 border border-[rgba(197,161,72,0.25)]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-[var(--greek-blue)]">
-                  <School className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[var(--greek-blue)]">
-                    Niveau
-                  </h3>
-                  <p className="text-gray-600 text-lg">
-                    {user.grade_level || "Non défini"}
-                  </p>
+        {/* ── Stats rapides ── */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {[
+            { icon: School,   label: "Niveau",       value: user.grade_level || "—", color: "#3b82f6" },
+            { icon: Trophy,   label: "Trophées",     value: "0",                    color: "var(--greek-gold)" },
+            { icon: BookOpen, label: "Cours suivis", value: `${activities.courses.length}`, color: "#a855f7" },
+            { icon: Brain,    label: "Exercices",    value: `${activities.exercises.length}`, color: "#10b981" },
+          ].map(({ icon: Icon, label, value, color }, i) => (
+            <div key={i} className="bg-white rounded-2xl p-4 border border-[rgba(197,161,72,0.2)] flex flex-col gap-2">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: `${color}15` }}>
+                <Icon className="w-5 h-5" style={{ color }} />
+              </div>
+              <p className="text-xl font-bold" style={{ color: "var(--greek-blue)" }}>{value}</p>
+              <p className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Abonnement ── */}
+        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
+            <CreditCard className="w-5 h-5 text-[var(--greek-gold)]" />
+            Mon abonnement
+          </h2>
+          {isSubActive ? (
+            <div className="flex items-center justify-between p-4 rounded-xl" style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.2)" }}>
+              <div>
+                <p className="font-bold text-green-700">Abonnement actif</p>
+                <p className="text-xs text-green-600 mt-0.5">Plan : {subscription.plan_name || "Premium"}</p>
+              </div>
+              <Link href="/child/subscription" className="text-sm font-bold px-4 py-2 rounded-xl transition-all hover:opacity-80" style={{ background: "var(--greek-blue)", color: "#fff" }}>
+                Gérer
+              </Link>
+            </div>
+          ) : (
+            <div className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.2)" }}>
+              <div>
+                <p className="font-semibold" style={{ color: "var(--greek-blue)" }}>Aucun abonnement actif</p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>Débloquez toutes les fonctionnalités IA</p>
+              </div>
+              <Link href="/auth/inscription/select-plan" className="text-sm font-bold px-4 py-2 rounded-xl transition-all hover:-translate-y-0.5" style={{ background: "var(--greek-gold)", color: "#fff" }}>
+                S'abonner
+              </Link>
+            </div>
+          )}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* ── Infos personnelles ── */}
+          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
+            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
+              <User className="w-5 h-5 text-[var(--greek-gold)]" />
+              Informations personnelles
+            </h2>
+            <form onSubmit={handleProfileUpdate} className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { label: "Prénom", key: "firstName" as const },
+                  { label: "Nom",    key: "lastName"  as const },
+                ].map(({ label, key }) => (
+                  <div key={key}>
+                    <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>{label}</label>
+                    <input type="text" value={formData[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))}
+                      className="w-full px-3 py-2.5 rounded-xl text-sm outline-none transition-all"
+                      style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }}
+                      onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
+                      onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")}
+                      required />
+                  </div>
+                ))}
+              </div>
+              <div>
+                <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>Email</label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
+                  <input type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm outline-none transition-all"
+                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }}
+                    onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
+                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")} />
                 </div>
               </div>
-            </div>
-
-            <div className="bg-yellow-50 rounded-xl p-6 border border-[rgba(197,161,72,0.25)]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-[var(--greek-gold)]">
-                  <Trophy className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[var(--greek-blue)]">
-                    Trophées
-                  </h3>
-                  <p className="text-gray-600 text-lg">0 débloqués</p>
-                </div>
+              <div className="text-right">
+                <button type="submit" disabled={saving} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-50" style={{ background: "var(--greek-blue)" }}>
+                  {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                  Enregistrer
+                </button>
               </div>
-            </div>
-
-            <div className="bg-purple-50 rounded-xl p-6 border border-[rgba(197,161,72,0.25)]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
-                  <BookOpen className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[var(--greek-blue)]">
-                    Cours suivis
-                  </h3>
-                  <p className="text-gray-600 text-lg">0 chapitres</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-green-50 rounded-xl p-6 border border-[rgba(197,161,72,0.25)]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                  <Star className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[var(--greek-blue)]">
-                    Points
-                  </h3>
-                  <p className="text-gray-600 text-lg">0 XP</p>
-                </div>
-              </div>
-            </div>
+            </form>
           </div>
 
-          {/* Linked Accounts Section */}
-          <div className="mt-8 pt-8 border-t border-[rgba(197,161,72,0.25)]">
-            <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center">
-              <Mail className="w-5 h-5 mr-2" />
-              Connexion rapide
-            </h3>
-
-            <div className="flex items-center justify-between p-4 border border-[rgba(197,161,72,0.25)] rounded-xl bg-blue-50/50">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mr-4">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24">
-                    <path
-                      fill="#4285F4"
-                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                    />
-                    <path
-                      fill="#34A853"
-                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                    />
-                    <path
-                      fill="#FBBC05"
-                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                    />
-                    <path
-                      fill="#EA4335"
-                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                    />
-                  </svg>
+          {/* ── Sécurité ── */}
+          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
+            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
+              <Lock className="w-5 h-5 text-[var(--greek-gold)]" />
+              Sécurité
+            </h2>
+            <form onSubmit={handlePasswordUpdate} className="space-y-4">
+              {[
+                { label: "Nouveau mot de passe",    key: "newPassword"     as const },
+                { label: "Confirmer le mot de passe", key: "confirmPassword" as const },
+              ].map(({ label, key }) => (
+                <div key={key}>
+                  <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>{label}</label>
+                  <input type="password" value={passwordData[key]} onChange={e => setPasswordData(p => ({ ...p, [key]: e.target.value }))}
+                    className="w-full px-3 py-2.5 rounded-xl text-sm outline-none transition-all"
+                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }}
+                    placeholder="••••••••"
+                    onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
+                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")} />
                 </div>
+              ))}
+              <div className="text-right pt-1">
+                <button type="submit" disabled={saving} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-50" style={{ background: "var(--greek-blue)" }}>
+                  {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4" />}
+                  Modifier
+                </button>
+              </div>
+            </form>
+          </div>
+
+          {/* ── Comptes liés ── */}
+          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
+            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
+              <Mail className="w-5 h-5 text-[var(--greek-gold)]" />
+              Comptes liés
+            </h2>
+            <div className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.2)" }}>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm"><GoogleIcon /></div>
                 <div>
-                  <p className="font-bold text-gray-900">Google</p>
-                  <p className="text-sm text-gray-500">
-                    {googleLinked
-                      ? "Ton compte est lié à Google"
-                      : "Lie ton compte Google pour te connecter plus vite"}
-                  </p>
+                  <p className="font-semibold text-sm" style={{ color: "var(--greek-blue)" }}>Google</p>
+                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>{googleLinked ? "Compte lié" : "Non lié"}</p>
                 </div>
               </div>
               {googleLinked ? (
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 border border-green-200">
-                    <CheckCircle className="w-4 h-4 mr-1" />
-                    Lié
-                  </span>
-                  <button
-                    onClick={handleUnlinkGoogle}
-                    className="p-1 text-gray-400 hover:text-red-500 transition-colors"
-                    title="Délier le compte"
-                  >
-                    <Trash2 className="w-5 h-5" />
-                  </button>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Lié</span>
+                  <button onClick={handleUnlinkGoogle} className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" /></button>
                 </div>
               ) : (
-                <button
-                  onClick={handleLinkGoogle}
-                  className="px-4 py-2 bg-white border border-[rgba(197,161,72,0.25)] rounded-lg text-sm font-bold text-[var(--greek-blue)] hover:bg-gray-50 transition-colors shadow-sm"
-                >
-                  Lier le compte
+                <button onClick={handleLinkGoogle} className="text-xs font-bold px-4 py-2 rounded-xl border transition-all hover:opacity-80" style={{ borderColor: "rgba(197,161,72,0.3)", color: "var(--greek-blue)" }}>
+                  Lier
                 </button>
               )}
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Activities Section */}
-      {showActivities && (
-        <div className="mt-12 animate-fade-bounce">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-[var(--greek-blue)] mb-2">Historique des Exploits</h2>
-            <div className="h-1 w-24 bg-[var(--greek-gold)] mx-auto rounded-full"></div>
+          {/* ── Notifications ── */}
+          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
+            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
+              <Bell className="w-5 h-5 text-[var(--greek-gold)]" />
+              Notifications
+            </h2>
+            <div className="space-y-4">
+              {([
+                { key: "notif_weekly_reports", label: "Rapports de progression",  desc: "Recevoir un résumé hebdomadaire" },
+                { key: "notif_offers_news",    label: "Offres et nouveautés",      desc: "Actualités et promotions Educalcul" },
+              ] as const).map(({ key, label, desc }) => (
+                <div key={key} className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>{label}</p>
+                    <p className="text-xs" style={{ color: "var(--text-muted)" }}>{desc}</p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" className="sr-only peer" checked={notifications[key]}
+                      onChange={async () => {
+                        const upd = { ...notifications, [key]: !notifications[key] };
+                        setNotifications(upd);
+                        const { data: { user: au } } = await supabase.auth.getUser();
+                        if (au) supabase.from("users").update({ [key]: upd[key] }).eq("auth_id", au.id).then(() => {});
+                      }} />
+                    <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]" />
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
 
-          <div className="bg-white rounded-[20px] shadow-xl border-2 border-[var(--greek-blue)]/10 overflow-hidden">
-            <div className="flex border-b border-[rgba(197,161,72,0.25)] bg-gray-50/50">
-              {(["exercises", "quizzes", "courses"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-4 text-lg font-bold transition-all ${
-                    activeTab === tab
-                      ? "text-[var(--greek-blue)] bg-white border-b-2 border-[var(--greek-blue)]"
-                      : "text-gray-400 hover:text-gray-600"
-                  }`}
-                >
-                  {tab === "exercises" && "Exercices"}
-                  {tab === "quizzes" && "Quiz"}
-                  {tab === "courses" && "Cours"}
+        {/* ── Activités ── */}
+        {showActivities && (
+          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] overflow-hidden">
+            <div className="p-6 border-b border-[rgba(197,161,72,0.15)]">
+              <h2 className="text-lg font-bold font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>Historique des activités</h2>
+            </div>
+            <div className="flex border-b border-[rgba(197,161,72,0.15)]">
+              {(["exercises","quizzes","courses"] as const).map(tab => (
+                <button key={tab} onClick={() => setActiveTab(tab)}
+                  className={`flex-1 py-3 text-sm font-bold transition-all ${activeTab === tab ? "border-b-2 border-[var(--greek-blue)] text-[var(--greek-blue)]" : "text-gray-400 hover:text-gray-600"}`}>
+                  {tab === "exercises" ? "Exercices" : tab === "quizzes" ? "Quiz" : "Cours"}
                 </button>
               ))}
             </div>
-
             <div className="p-6">
               {activeTab === "exercises" && (
-                <div className="space-y-4">
-                  {activities.exercises.length === 0 ? (
-                    <EmptyActivities message="Aucun exercice terminé pour le moment. Lance-toi !" />
-                  ) : (
-                    activities.exercises.map((ex) => (
-                      <div key={ex.id} className="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-[rgba(197,161,72,0.25)] hover:bg-blue-50 transition-colors">
-                        <div>
-                          <p className="font-bold text-[var(--greek-blue)] text-lg flex items-center gap-2">
-                            {ex.exercises?.title || "Exercice"}
-                            {ex.status === 'in_progress' ? (
-                              <span className="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full font-bold ml-2">En cours</span>
-                            ) : (
-                              <span className="px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full font-bold ml-2">Terminé</span>
-                            )}
-                          </p>
-                          <p className="text-gray-500 text-sm">{new Date(ex.completed_at).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-2xl font-black text-[var(--greek-blue)]">{ex.score}/{ex.total_points}</p>
-                          <p className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-wider">Score</p>
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
+                activities.exercises.length === 0 ? <EmptyActivities message="Aucun exercice terminé pour le moment." /> :
+                <div className="space-y-3">{activities.exercises.map(ex => (
+                  <div key={ex.id} className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.15)" }}>
+                    <div>
+                      <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>{ex.exercises?.title || "Exercice"}</p>
+                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>{new Date(ex.completed_at).toLocaleDateString("fr-FR")}</p>
+                    </div>
+                    <p className="font-black" style={{ color: "var(--greek-blue)" }}>{ex.score}/{ex.total_points}</p>
+                  </div>
+                ))}</div>
               )}
-
               {activeTab === "quizzes" && (
-                <div className="space-y-4">
-                  {activities.quizzes.length === 0 ? (
-                    <EmptyActivities message="Aucun quiz complété. Relève le défi !" />
-                  ) : (
-                    activities.quizzes.map((qz) => (
-                      <div key={qz.id} className="p-5 bg-yellow-50/30 rounded-xl border border-yellow-100 hover:bg-yellow-50/50 transition-colors">
-                        <div className="flex items-center justify-between mb-3">
-                          <p className="font-bold text-[var(--greek-blue)] text-xl flex items-center gap-2">
-                            {qz.quizzes?.title || "Quiz"}
-                            {qz.status === 'in_progress' ? (
-                              <span className="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full font-bold">En cours</span>
-                            ) : (
-                              <span className="px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full font-bold">Terminé</span>
-                            )}
-                          </p>
-                          <div className="px-3 py-1 bg-white border border-yellow-200 rounded-full flex items-center gap-1.5 shadow-sm">
-                            <Clock className="w-4 h-4 text-[var(--greek-gold)]" />
-                            <span className="font-bold text-[var(--greek-blue)]">{Math.floor(qz.time_spent_seconds / 60)}m {qz.time_spent_seconds % 60}s</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <p className="text-gray-500 text-sm">{new Date(qz.completed_at).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</p>
-                          <div className="flex items-end gap-1">
-                            <span className="text-3xl font-black text-[var(--greek-blue)]">{Math.round((qz.score / qz.total_points) * 100)}%</span>
-                            <span className="text-gray-400 font-bold mb-1">({qz.score}/{qz.total_points})</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
+                activities.quizzes.length === 0 ? <EmptyActivities message="Aucun quiz complété. Relève le défi !" /> :
+                <div className="space-y-3">{activities.quizzes.map(qz => (
+                  <div key={qz.id} className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.15)" }}>
+                    <div>
+                      <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>{qz.quizzes?.title || "Quiz"}</p>
+                      <p className="text-xs flex items-center gap-1" style={{ color: "var(--text-muted)" }}><Clock className="w-3 h-3" />{Math.floor(qz.time_spent_seconds/60)}m {qz.time_spent_seconds%60}s</p>
+                    </div>
+                    <p className="font-black" style={{ color: "var(--greek-blue)" }}>{Math.round((qz.score/qz.total_points)*100)}%</p>
+                  </div>
+                ))}</div>
               )}
-
               {activeTab === "courses" && (
-                <div className="space-y-4">
-                  {activities.courses.length === 0 ? (
-                    <EmptyActivities message="Tu n'as pas encore suivi de cours. Apprendre, c'est grandir !" />
-                  ) : (
-                    activities.courses.map((co) => (
-                      <div key={co.id} className="flex items-center justify-between p-4 bg-purple-50/50 rounded-xl border border-purple-100">
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
-                            <CheckCircle className="w-6 h-6" />
-                          </div>
-                          <div>
-                            <p className="font-bold text-[var(--greek-blue)] text-lg flex items-center gap-2">
-                              {co.courses?.title || "Cours"}
-                              {co.status === 'in_progress' ? (
-                                <span className="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full font-bold">En cours</span>
-                              ) : (
-                                <span className="px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full font-bold">Terminé</span>
-                              )}
-                            </p>
-                            <p className="text-purple-600 font-medium">Chapitre {co.chapter_index + 1} atteint</p>
-                          </div>
-                        </div>
-                        <p className="text-gray-400 text-sm italic">{new Date(co.completed_at).toLocaleDateString()}</p>
-                      </div>
-                    ))
-                  )}
-                </div>
+                activities.courses.length === 0 ? <EmptyActivities message="Aucun cours suivi pour l'instant." /> :
+                <div className="space-y-3">{activities.courses.map(co => (
+                  <div key={co.id} className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.15)" }}>
+                    <div>
+                      <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>{co.courses?.title || "Cours"}</p>
+                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>Chapitre {co.chapter_index + 1}</p>
+                    </div>
+                    <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 text-green-700">Suivi</span>
+                  </div>
+                ))}</div>
               )}
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Danger Zone */}
-      <div className="mt-12 bg-red-50 rounded-xl shadow-sm border border-red-200 p-6">
-        <h2 className="text-xl font-bold text-red-700 mb-4 flex items-center">
-          <AlertCircle className="w-5 h-5 mr-2" />
-          Zone de danger
-        </h2>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="font-medium text-red-800">Supprimer mon compte</p>
-            <p className="text-sm text-red-600">Cette action est irréversible et supprimera toutes tes données.</p>
+        {/* ── Danger zone ── */}
+        <div className="rounded-2xl p-6 border border-red-200 bg-red-50">
+          <h2 className="text-base font-bold text-red-700 mb-3 flex items-center gap-2"><AlertCircle className="w-5 h-5" />Zone de danger</h2>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p className="font-semibold text-red-800 text-sm">Supprimer mon compte</p>
+              <p className="text-xs text-red-600">Action irréversible — toutes tes données seront perdues.</p>
+            </div>
+            <button onClick={() => { setDeleteStep(1); setShowDeleteModal(true); }} className="px-4 py-2 bg-white border border-red-200 text-red-600 rounded-xl text-sm font-semibold hover:bg-red-100 transition-colors">
+              Supprimer mon compte
+            </button>
           </div>
-          <button
-            onClick={handleDeleteAccount}
-            className="px-4 py-2 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium shadow-sm"
-          >
-            Supprimer mon compte
-          </button>
         </div>
       </div>
     </div>
-    </div>
+
+    {/* Modale suppression */}
+    {showDeleteModal && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.5)", backdropFilter: "blur(4px)" }}>
+        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+          <div className="bg-red-600 px-6 py-4 text-white">
+            <h3 className="text-lg font-bold flex items-center gap-2"><AlertCircle className="w-5 h-5" />
+              {deleteStep === 1 ? "Supprimer mon compte" : "Dernière confirmation"}
+            </h3>
+          </div>
+          <div className="p-6">
+            {deleteStep === 1 ? (
+              <>
+                <p className="text-gray-700 mb-4 text-sm">Es-tu sûr(e) de vouloir supprimer définitivement ton compte ?</p>
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-xs text-red-700 space-y-1">
+                  <p>• Toutes tes données de progression seront perdues</p>
+                  <p>• Tes badges et trophées seront supprimés</p>
+                  <p>• Cette action est irréversible</p>
+                </div>
+              </>
+            ) : (
+              <p className="text-gray-700 text-sm font-semibold">Es-tu absolument certain(e) ? Il n'y a aucun moyen de récupérer tes données.</p>
+            )}
+          </div>
+          <div className="px-6 pb-6 flex gap-3 justify-end">
+            <button onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }} className="px-5 py-2 border border-gray-200 rounded-xl text-gray-600 text-sm font-semibold hover:bg-gray-50">Annuler</button>
+            {deleteStep === 1 ? (
+              <button onClick={() => setDeleteStep(2)} className="px-5 py-2 bg-red-500 text-white text-sm font-bold rounded-xl hover:bg-red-600">Continuer</button>
+            ) : (
+              <button onClick={handleDeleteAccount} disabled={saving} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-xl hover:bg-red-700 disabled:opacity-50 flex items-center gap-2">
+                {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}Supprimer
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
-
-function EmptyActivities({ message }: { message: string }) {
-  return (
-    <div className="text-center py-12 px-6 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-2xl">
-      <Star className="w-12 h-12 text-gray-200 mx-auto mb-4" />
-      <p className="text-gray-500 text-lg italic">{message}</p>
-    </div>
-  );
-}
-
-

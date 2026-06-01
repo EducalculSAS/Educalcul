@@ -13,7 +13,8 @@ export async function POST(req: NextRequest) {
       email,
       password,
       childUsername,
-      childAge,
+      childAge,   // legacy (parent-created children)
+      childLevel, // self-registered lycéen
       parentEmail,
       sessionId,
       existingAuthId, // fourni pour les signups Google (user dÃ©jÃ  crÃ©Ã© via OAuth)
@@ -30,10 +31,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Trop de tentatives. RÃ©essayez plus tard." }, { status: 429 });
     }
 
-    const signUpEmail =
-      role === "child"
-        ? `${(childUsername || "").replace(/\s+/g, "").toLowerCase()}@educalcul.user`
-        : email;
+    // Self-registered children provide their own real email
+    const childHasOwnEmail = role === "child" && email && email.includes("@") && !email.endsWith("@educalcul.user");
+    const signUpEmail = role === "child" && !childHasOwnEmail
+      ? `${(childUsername || "").replace(/\s+/g, "").toLowerCase()}@educalcul.user`
+      : email;
 
     let authUserId: string = existingAuthId || "";
 
@@ -54,6 +56,7 @@ export async function POST(req: NextRequest) {
             role,
             child_username: childUsername || null,
             child_age: childAge || null,
+            child_level: childLevel || null,
             parent_email: parentEmail || null,
           },
         });
@@ -87,6 +90,8 @@ export async function POST(req: NextRequest) {
         status: "active",
         child_username: childUsername || null,
         child_age: childAge || null,
+        child_level: childLevel || null,
+        parent_email: (role === "child" && parentEmail) ? parentEmail : null,
         cgu_accepted_at: cguAcceptedAt || new Date().toISOString(),
       });
       if (insertError) {
@@ -121,12 +126,18 @@ export async function POST(req: NextRequest) {
     }
 
     // Email de confirmation avec lien (non bloquant)
-    const tmpl = welcomeEmail(firstName, confirmUrl);
-    sendEmail({
-      toEmail: signUpEmail,
-      toName: `${firstName} ${lastName || ""}`.trim(),
-      ...tmpl,
-    }).catch(console.error);
+    // Pour les enfants avec pseudo@educalcul.user, envoyer à parentEmail si disponible
+    const welcomeRecipient = (role === "child" && !childHasOwnEmail && parentEmail)
+      ? parentEmail
+      : signUpEmail;
+    if (welcomeRecipient && welcomeRecipient.includes("@") && !welcomeRecipient.endsWith("@educalcul.user")) {
+      const tmpl = welcomeEmail(firstName, confirmUrl);
+      sendEmail({
+        toEmail: welcomeRecipient,
+        toName: `${firstName} ${lastName || ""}`.trim(),
+        ...tmpl,
+      }).catch(console.error);
+    }
 
     return NextResponse.json({ success: true, userId: authUserId, requireEmailConfirm: true });
   } catch (error: any) {
