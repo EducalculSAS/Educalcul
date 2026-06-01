@@ -141,13 +141,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Renseigner après création des comptes webmaster :
-    // google: "COLLER_CODE_GOOGLE_SEARCH_CONSOLE",
-    // yandex: "COLLER_CODE_YANDEX_WEBMASTER",
-    other: {
-      // Bing Webmaster Tools (coller le code après création du compte)
-      // "msvalidate.01": "COLLER_CODE_BING",
-    },
+    google: "dncjn01vvZtOV9fLHpx3AmMD7rpxdAfkJ-KztiDGIrM",
   },
   category: "education",
 };
