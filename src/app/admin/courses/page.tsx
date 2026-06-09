@@ -8,6 +8,8 @@ import {
   Image as ImageIcon, Sparkles, Eye, Folder as FolderIcon,
   FolderPlus, ChevronRight, Home, Download, Upload,
   CheckCircle, AlertTriangle,
+  Calculator, Brain, Trophy, Star, Pencil, Ruler,
+  FlaskConical, Shapes, Pi, Puzzle,
 } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
@@ -35,6 +37,7 @@ interface Folder {
   status: "published" | "draft" | "archived";
   color: string;
   grade_level: string | null;
+  icon?: string | null;
 }
 
 const FOLDER_COLORS = [
@@ -49,6 +52,26 @@ const FOLDER_COLORS = [
   "#f97316", // Orange
   "#64748b", // Slate
 ];
+
+const FOLDER_ICONS = [
+  { name: "folder", Icon: FolderIcon },
+  { name: "book", Icon: BookOpen },
+  { name: "calculator", Icon: Calculator },
+  { name: "brain", Icon: Brain },
+  { name: "trophy", Icon: Trophy },
+  { name: "star", Icon: Star },
+  { name: "pencil", Icon: Pencil },
+  { name: "ruler", Icon: Ruler },
+  { name: "flask", Icon: FlaskConical },
+  { name: "shapes", Icon: Shapes },
+  { name: "pi", Icon: Pi },
+  { name: "puzzle", Icon: Puzzle },
+];
+
+const getFolderIcon = (iconName?: string | null) => {
+  const found = FOLDER_ICONS.find((i) => i.name === iconName);
+  return found ? found.Icon : FolderIcon;
+};
 
 export default function AdminCoursesPage() {
   // Navigation State
@@ -65,6 +88,9 @@ export default function AdminCoursesPage() {
   // Drag and Drop State
   const [draggedCourseId, setDraggedCourseId] = useState<string | null>(null);
   const [dragOverFolderId, setDragOverFolderId] = useState<number | null>(null);
+  const [dragOverBreadcrumb, setDragOverBreadcrumb] = useState<
+    number | "root" | null
+  >(null);
 
   // Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -115,6 +141,7 @@ export default function AdminCoursesPage() {
     status: "draft" as "published" | "draft" | "archived",
     color: FOLDER_COLORS[0],
     grade_level: "6eme" as string,
+    icon: "" as string,
   });
 
   // AI States
@@ -567,6 +594,7 @@ export default function AdminCoursesPage() {
             status: folderFormData.status,
             color: folderFormData.color,
             grade_level: folderFormData.grade_level,
+            icon: folderFormData.icon || null,
           })
           .eq("id", editingFolder.id);
 
@@ -578,6 +606,7 @@ export default function AdminCoursesPage() {
           status: folderFormData.status,
           color: folderFormData.color,
           grade_level: folderFormData.grade_level,
+          icon: folderFormData.icon || null,
         });
 
         if (error) throw error;
@@ -588,6 +617,7 @@ export default function AdminCoursesPage() {
         status: "draft",
         color: FOLDER_COLORS[0],
         grade_level: "6eme",
+        icon: "",
       });
       setEditingFolder(null);
       setIsFolderModalOpen(false);
@@ -607,6 +637,10 @@ export default function AdminCoursesPage() {
     setDraggedCourseId(courseId);
   };
 
+  const handleFolderDragStart = (e: React.DragEvent, folderId: number) => {
+    e.dataTransfer.setData("folderId", String(folderId));
+  };
+
   const handleDragOver = (e: React.DragEvent, folderId: number) => {
     e.preventDefault(); // Necessary to allow dropping
     setDragOverFolderId(folderId);
@@ -616,34 +650,88 @@ export default function AdminCoursesPage() {
     setDragOverFolderId(null);
   };
 
-  const handleDrop = async (e: React.DragEvent, targetFolderId: number) => {
-    e.preventDefault();
-    setDragOverFolderId(null);
-    const courseId = e.dataTransfer.getData("courseId");
+  // Checks if `candidateId` is the folder itself or one of its descendants,
+  // by walking up the parent chain of the candidate target.
+  const isSelfOrDescendant = async (
+    folderId: number,
+    candidateId: number | null
+  ): Promise<boolean> => {
+    let currentId: number | null = candidateId;
+    let guard = 0;
+    while (currentId !== null && guard < 50) {
+      if (currentId === folderId) return true;
+      const { data } = await supabase
+        .from("course_folders")
+        .select("parent_id")
+        .eq("id", currentId)
+        .single();
+      currentId = (data?.parent_id as number | null) ?? null;
+      guard++;
+    }
+    return false;
+  };
 
-    if (!courseId) return;
+  // Moves a course or a folder (depending on dataTransfer payload)
+  // into the target folder (null = root).
+  const moveDroppedItem = async (
+    e: React.DragEvent,
+    targetFolderId: number | null
+  ) => {
+    const courseId = e.dataTransfer.getData("courseId");
+    const folderId = e.dataTransfer.getData("folderId");
 
     try {
-      // Update course folder_id
-      const response = await fetch("/api/admin/courses", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: courseId,
-          folder_id: targetFolderId,
-        }),
-      });
+      if (courseId) {
+        const response = await fetch("/api/admin/courses", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: courseId,
+            folder_id: targetFolderId,
+          }),
+        });
 
-      if (!response.ok) throw new Error("Failed to move course");
+        if (!response.ok) throw new Error("Failed to move course");
+        fetchContents();
+      } else if (folderId) {
+        if (targetFolderId !== null && Number(folderId) === targetFolderId)
+          return;
+        // Prevent cycles: target must not be the folder itself or a descendant
+        if (await isSelfOrDescendant(Number(folderId), targetFolderId)) {
+          alert("Impossible de déplacer un dossier dans lui-même ou un de ses sous-dossiers");
+          return;
+        }
+        const { error } = await supabase
+          .from("course_folders")
+          .update({ parent_id: targetFolderId })
+          .eq("id", Number(folderId));
 
-      // Refresh to show course moved (disappear from current view)
-      fetchContents();
+        if (error) throw error;
+        fetchContents();
+      }
     } catch (error) {
-      console.error("Error moving course:", error);
-      alert("Erreur lors du déplacement du cours");
+      console.error("Error moving item:", error);
+      alert("Erreur lors du déplacement");
     } finally {
       setDraggedCourseId(null);
     }
+  };
+
+  const handleDrop = async (e: React.DragEvent, targetFolderId: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragOverFolderId(null);
+    await moveDroppedItem(e, targetFolderId);
+  };
+
+  const handleBreadcrumbDrop = async (
+    e: React.DragEvent,
+    targetFolderId: number | null
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragOverBreadcrumb(null);
+    await moveDroppedItem(e, targetFolderId);
   };
 
   const getStatusBadge = (status: string) => {
@@ -708,6 +796,7 @@ export default function AdminCoursesPage() {
                   status: "draft",
                   color: FOLDER_COLORS[0],
                   grade_level: "6eme",
+                  icon: "",
                 });
                 setIsFolderModalOpen(true);
               }}
@@ -744,8 +833,18 @@ export default function AdminCoursesPage() {
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
         <button
           onClick={() => setCurrentFolderId(null)}
-          className={`flex items-center gap-1 hover:text-[var(--greek-blue)] transition-colors ${
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragOverBreadcrumb("root");
+          }}
+          onDragLeave={() => setDragOverBreadcrumb(null)}
+          onDrop={(e) => handleBreadcrumbDrop(e, null)}
+          className={`flex items-center gap-1 px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
             currentFolderId === null ? "font-bold text-[var(--greek-blue)]" : ""
+          } ${
+            dragOverBreadcrumb === "root"
+              ? "bg-[var(--greek-gold)]/20 rounded-lg"
+              : ""
           }`}
         >
           <Home size={16} />
@@ -759,9 +858,19 @@ export default function AdminCoursesPage() {
             <ChevronRight size={14} className="text-gray-400" />
             <button
               onClick={() => setCurrentFolderId(folder.id)}
-              className={`hover:text-[var(--greek-blue)] transition-colors ${
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOverBreadcrumb(folder.id);
+              }}
+              onDragLeave={() => setDragOverBreadcrumb(null)}
+              onDrop={(e) => handleBreadcrumbDrop(e, folder.id)}
+              className={`px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
                 index === breadcrumbs.length - 1
                   ? "font-bold text-[var(--greek-blue)]"
+                  : ""
+              } ${
+                dragOverBreadcrumb === folder.id
+                  ? "bg-[var(--greek-gold)]/20 rounded-lg"
                   : ""
               }`}
             >
@@ -829,9 +938,13 @@ export default function AdminCoursesPage() {
 
         {/* Folders List */}
         {!loading &&
-          folders.map((folder) => (
+          folders.map((folder) => {
+            const FolderCardIcon = getFolderIcon(folder.icon);
+            return (
             <div
               key={`folder-${folder.id}`}
+              draggable
+              onDragStart={(e) => handleFolderDragStart(e, folder.id)}
               onDragOver={(e) => handleDragOver(e, folder.id)}
               onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, folder.id)}
@@ -853,6 +966,7 @@ export default function AdminCoursesPage() {
                       status: folder.status,
                       color: folder.color || FOLDER_COLORS[0],
                       grade_level: folder.grade_level || "6eme",
+                      icon: folder.icon || "",
                     });
                     setIsFolderModalOpen(true);
                   }}
@@ -880,7 +994,7 @@ export default function AdminCoursesPage() {
                   color: folder.color || "#3b82f6",
                 }}
               >
-                <FolderIcon size={32} fill="currentColor" fillOpacity={0.2} />
+                <FolderCardIcon size={32} fill="currentColor" fillOpacity={0.2} />
               </div>
               <h3 className="font-bold text-gray-800 text-lg mb-1 truncate w-full px-2">
                 {folder.name}
@@ -893,7 +1007,8 @@ export default function AdminCoursesPage() {
                   : "Brouillon"}
               </p>
             </div>
-          ))}
+            );
+          })}
 
         {/* Courses List */}
         {!loading &&
@@ -1149,6 +1264,7 @@ export default function AdminCoursesPage() {
                     status: "draft",
                     color: FOLDER_COLORS[0],
                     grade_level: "6eme",
+                    icon: "",
                   });
                 }}
                 className="text-gray-400 hover:text-gray-600"
@@ -1239,6 +1355,29 @@ export default function AdminCoursesPage() {
                   ))}
                 </div>
               </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Icône du dossier
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {FOLDER_ICONS.map(({ name, Icon }) => (
+                    <button
+                      key={name}
+                      type="button"
+                      onClick={() =>
+                        setFolderFormData({ ...folderFormData, icon: name })
+                      }
+                      className={`w-9 h-9 rounded-full flex items-center justify-center bg-gray-50 transition-transform hover:scale-110 ${
+                        (folderFormData.icon || "folder") === name
+                          ? "ring-2 ring-[var(--greek-blue)] scale-110"
+                          : ""
+                      }`}
+                    >
+                      <Icon size={18} style={{ color: folderFormData.color }} />
+                    </button>
+                  ))}
+                </div>
+              </div>
               <div className="flex justify-end gap-3">
                 <button
                   type="button"
@@ -1250,6 +1389,7 @@ export default function AdminCoursesPage() {
                       status: "draft",
                       color: FOLDER_COLORS[0],
                       grade_level: "6eme",
+                      icon: "",
                     });
                   }}
                   className="px-4 py-2 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"

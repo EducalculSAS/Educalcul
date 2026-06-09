@@ -2,15 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { BookOpen, Play, CheckCircle, Clock, Trophy, Folder as FolderIcon, ChevronRight, Home, ArrowLeft } from "lucide-react";
+import { BookOpen, Play, CheckCircle, Clock, Trophy, Folder as FolderIcon, ChevronRight, Home, ArrowLeft, XCircle } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
+import { getFolderIcon } from "@/lib/folderIcons";
 
 export default function ChildQuizPage() {
   const [loading, setLoading] = useState(true);
   const [allQuizzes, setAllQuizzes] = useState<any[]>([]);
   const [allFolders, setAllFolders] = useState<any[]>([]);
-  
+  const [quizProgress, setQuizProgress] = useState<Record<string, { status: string; score: number }>>({});
+
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
 
@@ -45,6 +47,15 @@ export default function ChildQuizPage() {
             filtered = filtered.filter((q: any) => q.level?.toLowerCase() === level.toLowerCase());
           }
           setAllQuizzes(filtered);
+
+          // Load progress from localStorage
+          const prog: Record<string, { status: string; score: number }> = {};
+          for (const q of filtered) {
+            const status = localStorage.getItem(`qz-${q.id}-status`);
+            const score = parseInt(localStorage.getItem(`qz-${q.id}-score`) || "0");
+            if (status) prog[q.id] = { status, score };
+          }
+          setQuizProgress(prog);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -142,7 +153,7 @@ export default function ChildQuizPage() {
                     color: folder.color || "#3b82f6",
                   }}
                 >
-                  <FolderIcon size={40} fill="currentColor" fillOpacity={0.2} />
+                  {(() => { const I = getFolderIcon(folder.icon); return <I size={40} fill="currentColor" fillOpacity={0.2} />; })()}
                 </div>
                 <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">
                   {folder.name}
@@ -151,10 +162,15 @@ export default function ChildQuizPage() {
             ))}
 
             {/* Render Quizzes */}
-            {currentQuizzes.map((quiz, index) => (
+            {currentQuizzes.map((quiz, index) => {
+              const prog = quizProgress[quiz.id];
+              const isPassed = prog?.status === "passed";
+              const isFailed = prog?.status === "failed";
+              const isDone = isPassed || isFailed;
+              return (
               <div
                 key={quiz.id}
-                className="group bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce"
+                className={`group bg-white rounded-[20px] shadow-sm border-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isPassed ? "border-green-400" : isFailed ? "border-red-400" : "border-[rgba(197,161,72,0.25)]"}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-40 bg-[var(--greek-blue)]/10 overflow-hidden flex items-center justify-center">
@@ -167,6 +183,12 @@ export default function ChildQuizPage() {
                     />
                   ) : (
                     <img src="/logo.png" alt="Educalcul" className="w-16 h-16 object-contain opacity-30" />
+                  )}
+                  {isDone && (
+                    <div className={`absolute top-4 left-4 flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold shadow-sm ${isPassed ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
+                      {isPassed ? <CheckCircle className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
+                      {isPassed ? `Réussi ${prog.score}%` : `Échoué ${prog.score}%`}
+                    </div>
                   )}
 
                   <div
@@ -207,12 +229,13 @@ export default function ChildQuizPage() {
                       className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
                     >
                       <Play className="w-4 h-4 fill-current" />
-                      Lancer le Quiz
+                      {isDone ? "Recommencer" : "Lancer le Quiz"}
                     </Link>
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

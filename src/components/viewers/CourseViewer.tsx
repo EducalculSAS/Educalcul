@@ -19,6 +19,7 @@ import {
   PencilLine,
   Loader2
 } from "lucide-react";
+import Link from "next/link";
 import { Chapter, Lesson, Exercise } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -39,16 +40,34 @@ interface CourseViewerProps {
   };
   onComplete?: () => void;
   onChapterComplete?: (chapterIndex: number) => void;
+  onBack?: () => void;
 }
 
-export default function CourseViewer({ course, onComplete, onChapterComplete }: CourseViewerProps) {
+export default function CourseViewer({ course, onComplete, onChapterComplete, onBack }: CourseViewerProps) {
   const { setPageContext, pageContext } = useAITutor();
   
   const chapters = course.content_json || [];
-  const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
-  const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
+  const courseId = (course as any).id;
+  const isPreviewCourse = !courseId || courseId === "preview";
+
+  const [currentChapterIndex, setCurrentChapterIndex] = useState(() => {
+    if (typeof window === "undefined" || isPreviewCourse) return 0;
+    return parseInt(localStorage.getItem(`cv-${courseId}-ch`) || "0");
+  });
+  const [currentLessonIndex, setCurrentLessonIndex] = useState(() => {
+    if (typeof window === "undefined" || isPreviewCourse) return 0;
+    return parseInt(localStorage.getItem(`cv-${courseId}-ls`) || "0");
+  });
+  const [sidebarOpen, setSidebarOpen] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 768 : true
+  );
+  const [completedLessons, setCompletedLessons] = useState<Set<string>>(() => {
+    if (typeof window === "undefined" || isPreviewCourse) return new Set();
+    try {
+      const raw = localStorage.getItem(`cv-${courseId}-done`);
+      return raw ? new Set(JSON.parse(raw)) : new Set();
+    } catch { return new Set(); }
+  });
   const [courseCompleted, setCourseCompleted] = useState(false);
   const [selectedText, setSelectedText] = useState("");
   const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0 });
@@ -56,6 +75,26 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
   const popupRef = useRef<HTMLDivElement>(null);
   const selectedTextRef = useRef("");
   const rangeRef = useRef<Range | null>(null);
+  const sessionStartRef = useRef<number>(Date.now());
+
+  // Accumulated time from previous sessions + current
+  const getAccumulatedSeconds = () => {
+    if (isPreviewCourse) return 0;
+    return parseInt(localStorage.getItem(`cv-${courseId}-time`) || "0");
+  };
+  const saveTimeSpent = () => {
+    if (isPreviewCourse) return;
+    const elapsed = Math.round((Date.now() - sessionStartRef.current) / 1000);
+    const total = getAccumulatedSeconds() + elapsed;
+    localStorage.setItem(`cv-${courseId}-time`, String(total));
+    sessionStartRef.current = Date.now(); // reset so we don't double-count
+    return total;
+  };
+
+  useEffect(() => {
+    sessionStartRef.current = Date.now();
+    return () => { saveTimeSpent(); };
+  }, []);
 
   const currentChapter = chapters[currentChapterIndex];
   const currentLesson = currentChapter?.lessons[currentLessonIndex];
@@ -176,13 +215,13 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
   };
 
   // Dynamic progress tracking
-  const saveProgress = async (status: 'in_progress' | 'completed', chapterIndex: number) => {
-    // isPreview might be passed in, or we can check id. Course viewer doesn't receive isPreview explicitly here.
-    if ((course as any).id === undefined || (course as any).id === "preview") return;
-    
+  const saveProgress = async (status: 'in_progress' | 'completed', chapterIndex: number, extraCompletedLessons?: Set<string>) => {
+    if (isPreviewCourse) return;
     const { data: { session } } = await supabase.auth.getSession();
     if (!session?.user) return;
-    
+    const timeSpent = saveTimeSpent() ?? getAccumulatedSeconds();
+    const done = extraCompletedLessons ?? completedLessons;
+    const totalLessonsCount = chapters.reduce((a, c) => a + c.lessons.length, 0);
     try {
       await fetch("/api/child/activities", {
         method: "POST",
@@ -190,15 +229,33 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
         body: JSON.stringify({
           type: "course",
           userId: session.user.id,
-          itemId: (course as any).id,
+          itemId: courseId,
           chapterIndex,
           status,
+          timeSpent,
+          lessonsCompleted: [...done],
+          lessonCount: totalLessonsCount,
+          lastLessonId: currentLesson?.id ?? null,
+          lastChapterIndex: currentChapterIndex,
+          lastLessonIndex: currentLessonIndex,
         })
       });
     } catch (e) {
       console.error("Failed to save progress", e);
     }
   };
+
+  // Persist navigation state
+  useEffect(() => {
+    if (isPreviewCourse) return;
+    localStorage.setItem(`cv-${courseId}-ch`, String(currentChapterIndex));
+    localStorage.setItem(`cv-${courseId}-ls`, String(currentLessonIndex));
+  }, [currentChapterIndex, currentLessonIndex]);
+
+  useEffect(() => {
+    if (isPreviewCourse) return;
+    localStorage.setItem(`cv-${courseId}-done`, JSON.stringify([...completedLessons]));
+  }, [completedLessons]);
 
   // Track initial start
   useEffect(() => {
@@ -237,6 +294,11 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
       setCurrentLessonIndex(0);
     } else {
       if (onChapterComplete) onChapterComplete(currentChapterIndex);
+      const finalCompleted = new Set(completedLessons);
+      if (currentLesson) finalCompleted.add(currentLesson.id);
+      saveProgress('completed', currentChapterIndex, finalCompleted);
+      // Mark completed in localStorage so course list can read it
+      if (!isPreviewCourse) localStorage.setItem(`cv-${courseId}-status`, 'completed');
       setCourseCompleted(true);
       if (onComplete) onComplete();
     }
@@ -270,54 +332,104 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
   }
 
   if (courseCompleted) {
-    const isPreview = (course as any).id === undefined || (course as any).id === "preview";
     const totalLessons = chapters.reduce((acc, c) => acc + c.lessons.length, 0);
+    const timeTotal = getAccumulatedSeconds();
+    const mins = Math.floor(timeTotal / 60);
+    const courseFull = course as any;
 
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-bounce bg-white border border-[var(--greek-gold)]">
-        <div className="w-24 h-24 bg-[var(--greek-blue)] rounded-full flex items-center justify-center mb-6 shadow-xl">
-          <Play className="w-12 h-12 text-[var(--greek-gold)] ml-1" />
-        </div>
-        <h2 className="text-4xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-2">
-          Génial !
-        </h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-md">
-          Tu as terminé le cours <span className="font-bold text-[var(--greek-blue)]">"{course.title}"</span>.
-          Tu as validé les {totalLessons} leçons prévues.
-        </p>
-        
-        <div className="w-full max-w-md bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-gray-500 font-medium">Progression totale</span>
-            <span className="text-[var(--greek-blue)] font-bold">100%</span>
-          </div>
-          <div className="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
-            <div className="bg-[var(--greek-gold)] h-full w-full transition-all duration-1000" />
-          </div>
-        </div>
+      <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
+          <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden">
+            {/* Thumbnail header — same as preview */}
+            <div className="relative h-64 md:h-80 bg-gray-100">
+              {courseFull.thumbnail_url ? (
+                <img src={courseFull.thumbnail_url} alt={course.title} className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/10">
+                  <img src="/logo.png" alt="Educalcul" className="w-24 h-24 object-contain opacity-20" />
+                </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white w-full">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--greek-gold)] text-[var(--greek-blue)] text-xs font-bold rounded-full mb-3 shadow-md">
+                    <CheckCircle className="w-3.5 h-3.5" /> Cours terminé !
+                  </div>
+                  <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2">{course.title}</h1>
+                </div>
+              </div>
+            </div>
 
-        <button
-          onClick={() => {
-            if (isPreview) {
-              window.close();
-            } else {
-              window.location.href = "/child/cours";
-            }
-          }}
-          className="btn-primary-greek py-4 px-12 text-lg flex items-center gap-2 shadow-xl"
-        >
-          <ChevronLeft className="w-5 h-5" />
-          {isPreview ? "Fermer l'aperçu" : "Retour aux cours"}
-        </button>
+            <div className="p-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                {/* Left: description + stats */}
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
+                    <CheckCircle className="w-6 h-6 text-[var(--greek-gold)]" />
+                    Félicitations !
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Tu as terminé ce cours avec succès. Maintenant que tu maîtrises ces notions, mets tes connaissances à l'épreuve !
+                  </p>
+
+                  {/* Stats grid */}
+                  <div className="grid grid-cols-3 gap-3">
+                    {[
+                      { value: `${totalLessons}/${totalLessons}`, sub: "leçons complétées" },
+                      { value: mins > 0 ? `${mins} min` : "< 1 min", sub: "temps passé" },
+                      { value: "100%", sub: "progression" },
+                    ].map(s => (
+                      <div key={s.sub} className="bg-[var(--greek-cream)] rounded-xl p-4 text-center border border-[rgba(197,161,72,0.25)]">
+                        <p className="text-xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)]">{s.value}</p>
+                        <p className="text-xs text-gray-400 mt-0.5">{s.sub}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right: CTA card — same layout as preview sidebar */}
+                <div className="w-full md:w-80 flex-shrink-0">
+                  <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24 space-y-3">
+                    <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 text-center">Et maintenant ?</h3>
+                    <Link
+                      href="/child/exercises"
+                      className="w-full btn-primary-greek py-4 text-base shadow-lg flex items-center justify-center transform hover:scale-105 transition-all"
+                    >
+                      Faire les exercices
+                    </Link>
+                    <Link
+                      href="/child/quiz"
+                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-blue)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
+                    >
+                      Tenter le quiz
+                    </Link>
+                    <Link
+                      href="/child/cours"
+                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-bronze)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
+                    >
+                      Retour aux cours
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
+  const totalLessons = chapters.reduce((acc, c) => acc + c.lessons.length, 0);
+  const progressPct = totalLessons > 0 ? Math.round((completedLessons.size / totalLessons) * 100) : 0;
+  const r = 17;
+  const circ = 2 * Math.PI * r;
+  const dashOffset = circ - (progressPct / 100) * circ;
+
   return (
-    <div className="flex h-full bg-white overflow-hidden border border-[var(--greek-gold)]">
+    <div className="flex h-full bg-white overflow-hidden border border-[var(--greek-gold)] relative">
       {/* Sidebar - Chapter Navigation */}
-      <div 
-        className={`fixed inset-y-0 left-0 z-50 w-80 bg-[var(--greek-cream)] border-r border-[var(--greek-gold)] transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 flex flex-col ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+      <div
+        className={`absolute inset-y-0 left-0 z-30 bg-[var(--greek-cream)] border-r border-[var(--greek-gold)] flex flex-col transition-all duration-300 ease-in-out md:relative md:inset-auto md:z-auto ${sidebarOpen ? "translate-x-0 w-72 md:w-72" : "-translate-x-full md:translate-x-0 w-72 md:w-0 md:overflow-hidden md:border-r-0"}`}
       >
         <div className="p-5 border-b border-[var(--greek-gold)] bg-[var(--greek-cream)] flex justify-between items-center shadow-sm z-10">
           <div>
@@ -374,31 +486,48 @@ export default function CourseViewer({ course, onComplete, onChapterComplete }: 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col h-full overflow-hidden bg-white relative">
         {/* Header */}
-        <div className="h-16 border-b border-[var(--greek-gold)] flex items-center px-6 justify-between bg-[var(--greek-cream)] shrink-0 z-10">
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 -ml-2 hover:bg-[var(--greek-gold)]/10 rounded-lg md:hidden text-[var(--greek-blue)]"
+        <div className="h-14 border-b border-[var(--greek-gold)] flex items-center px-4 gap-2 bg-[var(--greek-cream)] shrink-0 z-10">
+          {/* Flèche retour */}
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
+              title="Retour à l'aperçu"
             >
-              <Menu className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
-            <h2 className="text-lg font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] truncate">
+          )}
+          {/* Menu burger */}
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+
+          {/* Titre leçon — scrollable horizontalement sur mobile */}
+          <div className="flex-1 overflow-x-auto scrollbar-none min-w-0">
+            <h2 className="text-base font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] whitespace-nowrap">
               {currentLesson?.title}
             </h2>
           </div>
 
-          <div className="flex items-center gap-4">
-             <div className="hidden md:flex flex-col items-end">
-               <span className="text-xs text-[var(--greek-bronze)] uppercase font-bold tracking-wider">Progression</span>
-               <span className="text-sm font-bold text-[var(--greek-blue)]">
-                 {Math.round((completedLessons.size / chapters.reduce((acc, c) => acc + c.lessons.length, 0)) * 100)}%
-               </span>
-             </div>
-             <div className="w-10 h-10 rounded-full bg-[var(--greek-blue)]/10 flex items-center justify-center border-2 border-[rgba(197,161,72,0.25)]">
-                <span className="font-bold text-[var(--greek-blue)] text-sm">
-                  {Math.round((completedLessons.size / chapters.reduce((acc, c) => acc + c.lessons.length, 0)) * 100)}%
-                </span>
-             </div>
+          {/* Cercle progression SVG */}
+          <div className="flex-shrink-0">
+            <svg width="44" height="44" viewBox="0 0 44 44">
+              <circle cx="22" cy="22" r={r} fill="none" stroke="rgba(197,161,72,0.2)" strokeWidth="3" />
+              <circle
+                cx="22" cy="22" r={r} fill="none"
+                stroke="var(--greek-gold)" strokeWidth="3"
+                strokeDasharray={circ} strokeDashoffset={dashOffset}
+                strokeLinecap="round"
+                transform="rotate(-90 22 22)"
+                style={{ transition: "stroke-dashoffset 0.6s ease" }}
+              />
+              <text x="22" y="26" textAnchor="middle" fontSize="10" fontWeight="bold" fill="var(--greek-blue)">
+                {progressPct}%
+              </text>
+            </svg>
           </div>
         </div>
 

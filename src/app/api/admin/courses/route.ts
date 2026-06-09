@@ -103,19 +103,25 @@ export async function PUT(request: Request) {
       );
     }
 
+    // Build a partial update: only include fields whose keys are present in the body.
+    // This prevents a folder move ({ id, folder_id }) from wiping title/content/etc.
+    const updatePayload: Record<string, any> = {};
+    const has = (k: string) => Object.prototype.hasOwnProperty.call(body, k);
+    if (has("title")) updatePayload.title = title;
+    if (has("description")) updatePayload.description = description;
+    if (has("subject")) updatePayload.subject = subject;
+    if (has("level")) updatePayload.level = level;
+    if (has("status")) {
+      updatePayload.status = status;
+      updatePayload.is_published = status === "published";
+    }
+    if (has("thumbnail_url")) updatePayload.thumbnail_url = thumbnail_url;
+    if (has("folder_id")) updatePayload.folder_id = folder_id || null;
+    if (has("content_json")) updatePayload.content_json = content_json || [];
+
     const { data, error } = await supabaseAdmin
       .from("courses")
-      .update({
-        title,
-        description,
-        subject,
-        level,
-        status,
-        thumbnail_url,
-        folder_id: folder_id || null,
-        content_json: content_json || [],
-        is_published: status === "published",
-      })
+      .update(updatePayload)
       .eq("id", id)
       .select()
       .single();

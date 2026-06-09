@@ -134,24 +134,28 @@ export async function PUT(request: Request) {
       );
     }
 
+    // Build a partial update: only include fields whose keys are present in the body.
+    // This prevents a folder move ({ id, folder_id }) from wiping title/content/etc.
+    const updatePayload: Record<string, any> = { updated_at: new Date().toISOString() };
+    const has = (k: string) => Object.prototype.hasOwnProperty.call(body, k);
+    if (has("title")) updatePayload.title = title;
+    if (has("description")) updatePayload.description = description;
+    if (has("course_id")) updatePayload.course_id = course_id || null;
+    if (has("time_limit_minutes")) updatePayload.time_limit_minutes = time_limit_minutes;
+    if (has("min_score_percent")) updatePayload.min_score_percent = body.min_score_percent || null;
+    if (has("status")) updatePayload.status = status;
+    if (has("folder_id")) updatePayload.folder_id = folder_id || null;
+    if (has("thumbnail_filename")) updatePayload.thumbnail_filename = thumbnail_filename;
+    if (has("content_json")) updatePayload.content_json = content_json;
+    if (has("type")) updatePayload.type = type;
+    if (has("difficulty_level")) updatePayload.difficulty_level = difficulty_level;
+    if (has("level")) updatePayload.level = level;
+    if (has("max_attempts")) updatePayload.max_attempts = max_attempts;
+    if (has("grading_type")) updatePayload.grading_type = grading_type;
+
     const { data, error } = await supabaseAdmin
       .from("quizzes")
-      .update({
-        title,
-        description,
-        course_id,
-        time_limit_minutes,
-        status,
-        folder_id: folder_id || null,
-        thumbnail_filename,
-        content_json,
-        type,
-        difficulty_level,
-        level,
-        max_attempts,
-        grading_type,
-        updated_at: new Date().toISOString(),
-      })
+      .update(updatePayload)
       .eq("id", id)
       .select()
       .single();

@@ -23,6 +23,16 @@ import {
   Sparkles,
   Loader2,
   Eye, Download, Upload,
+  Calculator,
+  Brain,
+  Trophy,
+  Star,
+  Pencil,
+  Ruler,
+  FlaskConical,
+  Shapes,
+  Pi,
+  Puzzle,
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
@@ -39,6 +49,26 @@ const FOLDER_COLORS = [
   "#06b6d4", // Cyan
   "#84cc16", // Lime
 ];
+
+const FOLDER_ICONS = [
+  { name: "folder", Icon: Folder },
+  { name: "book", Icon: BookOpen },
+  { name: "calculator", Icon: Calculator },
+  { name: "brain", Icon: Brain },
+  { name: "trophy", Icon: Trophy },
+  { name: "star", Icon: Star },
+  { name: "pencil", Icon: Pencil },
+  { name: "ruler", Icon: Ruler },
+  { name: "flask", Icon: FlaskConical },
+  { name: "shapes", Icon: Shapes },
+  { name: "pi", Icon: Pi },
+  { name: "puzzle", Icon: Puzzle },
+];
+
+const getFolderIcon = (iconName?: string | null) => {
+  const found = FOLDER_ICONS.find((i) => i.name === iconName);
+  return found ? found.Icon : Folder;
+};
 
 const EXERCISE_TYPES = [
   { value: "standard", label: "Standard (Calcul/Réponse libre)" },
@@ -62,6 +92,8 @@ interface Exercise {
   status: "published" | "draft" | "archived";
   thumbnail_url: string | null;
   time_limit: number | null;
+  time_limit_minutes: number | null;
+  min_score_percent: number | null;
   max_attempts: number | null;
   created_at: string;
   content_json: Page[] | null;
@@ -82,6 +114,7 @@ interface ExerciseFolder {
   parent_id: number | null;
   status: "published" | "draft" | "archived";
   grade_level: string | null;
+  icon?: string | null;
 }
 
 interface ExerciseFormData {
@@ -96,6 +129,8 @@ interface ExerciseFormData {
   status: "published" | "draft" | "archived";
   thumbnail_url: string;
   time_limit: number;
+  time_limit_minutes: number;
+  min_score_percent: number;
   max_attempts: number;
   content_json: Page[];
 }
@@ -116,6 +151,9 @@ export default function AdminExercisesPage() {
     null
   );
   const [dragOverFolderId, setDragOverFolderId] = useState<number | null>(null);
+  const [dragOverBreadcrumb, setDragOverBreadcrumb] = useState<
+    number | "root" | null
+  >(null);
 
   // Folder creation/edit state
   const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
@@ -127,6 +165,7 @@ export default function AdminExercisesPage() {
     status: "draft" as "published" | "draft" | "archived",
     color: FOLDER_COLORS[0],
     grade_level: "6eme" as string,
+    icon: "",
   });
 
   // Filters
@@ -149,6 +188,8 @@ export default function AdminExercisesPage() {
     status: "draft",
     thumbnail_url: "",
     time_limit: 0,
+    time_limit_minutes: 0,
+    min_score_percent: 0,
     max_attempts: 0,
     content_json: [] as Page[],
   });
@@ -179,6 +220,8 @@ export default function AdminExercisesPage() {
         thumbnail_url: data.thumbnail_url || "",
         folder_id: "",
         time_limit: data.time_limit || 0,
+        time_limit_minutes: data.time_limit_minutes || 0,
+        min_score_percent: data.min_score_percent || 0,
         max_attempts: data.max_attempts || 0,
         content_json: data.content_json || [],
       });
@@ -306,6 +349,10 @@ export default function AdminExercisesPage() {
     setDraggedExerciseId(exerciseId);
   };
 
+  const handleFolderDragStart = (e: React.DragEvent, folderId: number) => {
+    e.dataTransfer.setData("folderId", String(folderId));
+  };
+
   const handleDragOver = (e: React.DragEvent, folderId: number) => {
     e.preventDefault();
     setDragOverFolderId(folderId);
@@ -315,34 +362,88 @@ export default function AdminExercisesPage() {
     setDragOverFolderId(null);
   };
 
-  const handleDrop = async (e: React.DragEvent, targetFolderId: number) => {
-    e.preventDefault();
-    setDragOverFolderId(null);
-    const exerciseId = e.dataTransfer.getData("exerciseId");
+  // Checks if `candidateId` is the folder itself or one of its descendants,
+  // by walking up the parent chain of the candidate target.
+  const isSelfOrDescendant = async (
+    folderId: number,
+    candidateId: number | null
+  ): Promise<boolean> => {
+    let currentId: number | null = candidateId;
+    let guard = 0;
+    while (currentId !== null && guard < 50) {
+      if (currentId === folderId) return true;
+      const { data } = await supabase
+        .from("exercise_folders")
+        .select("parent_id")
+        .eq("id", currentId)
+        .single();
+      currentId = (data?.parent_id as number | null) ?? null;
+      guard++;
+    }
+    return false;
+  };
 
-    if (!exerciseId) return;
+  // Moves an exercise or a folder (depending on dataTransfer payload)
+  // into the target folder (null = root).
+  const moveDroppedItem = async (
+    e: React.DragEvent,
+    targetFolderId: number | null
+  ) => {
+    const exerciseId = e.dataTransfer.getData("exerciseId");
+    const folderId = e.dataTransfer.getData("folderId");
 
     try {
-      // Update exercise folder_id
-      const response = await fetch("/api/admin/exercises", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: exerciseId,
-          folder_id: targetFolderId,
-        }),
-      });
+      if (exerciseId) {
+        const response = await fetch("/api/admin/exercises", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: exerciseId,
+            folder_id: targetFolderId,
+          }),
+        });
 
-      if (!response.ok) throw new Error("Failed to move exercise");
+        if (!response.ok) throw new Error("Failed to move exercise");
+        fetchContents();
+      } else if (folderId) {
+        if (targetFolderId !== null && Number(folderId) === targetFolderId)
+          return;
+        // Prevent cycles: target must not be the folder itself or a descendant
+        if (await isSelfOrDescendant(Number(folderId), targetFolderId)) {
+          alert("Impossible de déplacer un dossier dans lui-même ou un de ses sous-dossiers");
+          return;
+        }
+        const { error } = await supabase
+          .from("exercise_folders")
+          .update({ parent_id: targetFolderId })
+          .eq("id", Number(folderId));
 
-      // Refresh to show exercise moved
-      fetchContents();
+        if (error) throw error;
+        fetchContents();
+      }
     } catch (error) {
-      console.error("Error moving exercise:", error);
-      alert("Erreur lors du déplacement de l'exercice");
+      console.error("Error moving item:", error);
+      alert("Erreur lors du déplacement");
     } finally {
       setDraggedExerciseId(null);
     }
+  };
+
+  const handleDrop = async (e: React.DragEvent, targetFolderId: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragOverFolderId(null);
+    await moveDroppedItem(e, targetFolderId);
+  };
+
+  const handleBreadcrumbDrop = async (
+    e: React.DragEvent,
+    targetFolderId: number | null
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragOverBreadcrumb(null);
+    await moveDroppedItem(e, targetFolderId);
   };
 
   const handleSaveFolder = async (e: React.FormEvent) => {
@@ -358,6 +459,7 @@ export default function AdminExercisesPage() {
             status: folderFormData.status,
             color: folderFormData.color,
             grade_level: folderFormData.grade_level,
+            icon: folderFormData.icon || null,
           })
           .eq("id", editingFolder.id);
 
@@ -369,6 +471,7 @@ export default function AdminExercisesPage() {
           status: folderFormData.status,
           color: folderFormData.color,
           grade_level: folderFormData.grade_level,
+          icon: folderFormData.icon || null,
         });
 
         if (error) throw error;
@@ -379,6 +482,7 @@ export default function AdminExercisesPage() {
         status: "draft",
         color: FOLDER_COLORS[0],
         grade_level: "6eme",
+        icon: "",
       });
       setEditingFolder(null);
       setIsFolderModalOpen(false);
@@ -457,10 +561,12 @@ export default function AdminExercisesPage() {
       status: exercise.status,
       thumbnail_url: exercise.thumbnail_url || "",
       time_limit: exercise.time_limit || 0,
+      time_limit_minutes: exercise.time_limit_minutes || 0,
+      min_score_percent: exercise.min_score_percent || 0,
       max_attempts: exercise.max_attempts || 0,
       content_json: exercise.content_json || [],
     };
-    
+
     localStorage.setItem("exercise_preview_data", JSON.stringify(previewData));
     window.open("/child/exercises/preview", "_blank");
   };
@@ -500,6 +606,8 @@ export default function AdminExercisesPage() {
         status: "draft",
         thumbnail_url: "",
         time_limit: metadata?.time_limit || 0,
+        time_limit_minutes: metadata?.time_limit_minutes || 0,
+        min_score_percent: metadata?.min_score_percent || 0,
         max_attempts: metadata?.max_attempts || 0,
         content_json: content || [],
       });
@@ -529,6 +637,12 @@ export default function AdminExercisesPage() {
         // Handle numeric conversions
         time_limit: formData.time_limit
           ? parseInt(String(formData.time_limit))
+          : null,
+        time_limit_minutes: formData.time_limit_minutes
+          ? parseInt(String(formData.time_limit_minutes))
+          : null,
+        min_score_percent: formData.min_score_percent
+          ? parseInt(String(formData.min_score_percent))
           : null,
         max_attempts: formData.max_attempts
           ? parseInt(String(formData.max_attempts))
@@ -573,6 +687,8 @@ export default function AdminExercisesPage() {
       status: "draft",
       thumbnail_url: "",
       time_limit: 0,
+      time_limit_minutes: 0,
+      min_score_percent: 0,
       max_attempts: 0,
       content_json: [],
     });
@@ -616,6 +732,8 @@ export default function AdminExercisesPage() {
       status: exercise.status,
       thumbnail_url: exercise.thumbnail_url || "",
       time_limit: exercise.time_limit || 0,
+      time_limit_minutes: exercise.time_limit_minutes || 0,
+      min_score_percent: exercise.min_score_percent || 0,
       max_attempts: exercise.max_attempts || 0,
       content_json: exercise.content_json || [],
     });
@@ -706,6 +824,7 @@ export default function AdminExercisesPage() {
                   status: "draft",
                   color: FOLDER_COLORS[0],
                   grade_level: "6eme",
+                  icon: "",
                 });
                 setIsFolderModalOpen(true);
               }}
@@ -742,8 +861,18 @@ export default function AdminExercisesPage() {
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
         <button
           onClick={() => setCurrentFolderId(null)}
-          className={`flex items-center gap-1 hover:text-[var(--greek-blue)] transition-colors ${
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragOverBreadcrumb("root");
+          }}
+          onDragLeave={() => setDragOverBreadcrumb(null)}
+          onDrop={(e) => handleBreadcrumbDrop(e, null)}
+          className={`flex items-center gap-1 px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
             currentFolderId === null ? "font-bold text-[var(--greek-blue)]" : ""
+          } ${
+            dragOverBreadcrumb === "root"
+              ? "bg-[var(--greek-gold)]/20 rounded-lg"
+              : ""
           }`}
         >
           <Home size={16} />
@@ -757,9 +886,19 @@ export default function AdminExercisesPage() {
             <ChevronRight size={14} className="text-gray-400" />
             <button
               onClick={() => setCurrentFolderId(folder.id)}
-              className={`hover:text-[var(--greek-blue)] transition-colors ${
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOverBreadcrumb(folder.id);
+              }}
+              onDragLeave={() => setDragOverBreadcrumb(null)}
+              onDrop={(e) => handleBreadcrumbDrop(e, folder.id)}
+              className={`px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
                 index === breadcrumbs.length - 1
                   ? "font-bold text-[var(--greek-blue)]"
+                  : ""
+              } ${
+                dragOverBreadcrumb === folder.id
+                  ? "bg-[var(--greek-gold)]/20 rounded-lg"
                   : ""
               }`}
             >
@@ -841,9 +980,13 @@ export default function AdminExercisesPage() {
         ) : (
           <>
             {/* Folders */}
-            {folders.map((folder) => (
+            {folders.map((folder) => {
+              const FolderCardIcon = getFolderIcon(folder.icon);
+              return (
               <div
                 key={`folder-${folder.id}`}
+                draggable
+                onDragStart={(e) => handleFolderDragStart(e, folder.id)}
                 onDragOver={(e) => handleDragOver(e, folder.id)}
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, folder.id)}
@@ -865,6 +1008,7 @@ export default function AdminExercisesPage() {
                         status: folder.status,
                         color: folder.color || FOLDER_COLORS[0],
                         grade_level: folder.grade_level || "6eme",
+                        icon: folder.icon || "",
                       });
                       setIsFolderModalOpen(true);
                     }}
@@ -892,7 +1036,7 @@ export default function AdminExercisesPage() {
                     color: folder.color || "#3b82f6",
                   }}
                 >
-                  <Folder size={32} fill="currentColor" fillOpacity={0.2} />
+                  <FolderCardIcon size={32} fill="currentColor" fillOpacity={0.2} />
                 </div>
                 <h3 className="font-bold text-gray-800 text-lg mb-1 truncate w-full px-2">
                   {folder.name}
@@ -905,7 +1049,8 @@ export default function AdminExercisesPage() {
                     : "Brouillon"}
                 </p>
               </div>
-            ))}
+              );
+            })}
 
             {filteredExercises.map((exercise) => (
               <div
@@ -1053,6 +1198,30 @@ export default function AdminExercisesPage() {
               </div>
 
               <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Icône du dossier
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {FOLDER_ICONS.map(({ name, Icon }) => (
+                    <button
+                      key={name}
+                      type="button"
+                      onClick={() =>
+                        setFolderFormData({ ...folderFormData, icon: name })
+                      }
+                      className={`w-9 h-9 rounded-full flex items-center justify-center bg-gray-50 transition-transform hover:scale-110 ${
+                        (folderFormData.icon || "folder") === name
+                          ? "ring-2 ring-[var(--greek-blue)] scale-110"
+                          : ""
+                      }`}
+                    >
+                      <Icon size={18} style={{ color: folderFormData.color }} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Niveau du dossier
                 </label>
@@ -1105,6 +1274,7 @@ export default function AdminExercisesPage() {
                       status: "draft",
                       color: FOLDER_COLORS[0],
                       grade_level: "6eme",
+                      icon: "",
                     });
                   }}
                   className="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
@@ -1318,6 +1488,16 @@ export default function AdminExercisesPage() {
                       />
                     </div>
                     <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Score minimum requis (%)</label>
+                      <input
+                        type="number" min="0" max="100"
+                        value={formData.min_score_percent}
+                        onChange={(e) => setFormData({ ...formData, min_score_percent: parseInt(e.target.value) || 0 })}
+                        className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                        placeholder="0 = pas de minimum"
+                      />
+                    </div>
+                    <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Essais max</label>
                       <input
                         type="number" min="0"
@@ -1346,6 +1526,8 @@ export default function AdminExercisesPage() {
                         description: metadata.description || prev.description,
                         difficulty_level: metadata.difficulty_level || prev.difficulty_level,
                         time_limit: metadata.time_limit || prev.time_limit,
+                        time_limit_minutes: metadata.time_limit_minutes || prev.time_limit_minutes,
+                        min_score_percent: metadata.min_score_percent || prev.min_score_percent,
                         max_attempts: metadata.max_attempts || prev.max_attempts,
                       }));
                     }}

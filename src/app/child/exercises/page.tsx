@@ -12,17 +12,21 @@ import {
   Home,
   ArrowLeft,
   Lock,
+  CheckCircle,
+  XCircle,
 } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { useSubscription } from "@/lib/useSubscription";
+import { getFolderIcon } from "@/lib/folderIcons";
 
 export default function ChildExercisesPage() {
   const sub = useSubscription();
   const [loading, setLoading] = useState(true);
   const [allExercises, setAllExercises] = useState<any[]>([]);
   const [allFolders, setAllFolders] = useState<any[]>([]);
-  
+  const [exerciseProgress, setExerciseProgress] = useState<Record<string, { status: string; score: number }>>({});
+
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
 
@@ -57,6 +61,15 @@ export default function ChildExercisesPage() {
             filtered = filtered.filter((ex: any) => ex.level?.toLowerCase() === level.toLowerCase());
           }
           setAllExercises(filtered);
+
+          // Load progress from localStorage
+          const prog: Record<string, { status: string; score: number }> = {};
+          for (const ex of filtered) {
+            const status = localStorage.getItem(`ex-${ex.id}-status`);
+            const score = parseInt(localStorage.getItem(`ex-${ex.id}-score`) || "0");
+            if (status) prog[ex.id] = { status, score };
+          }
+          setExerciseProgress(prog);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -154,7 +167,7 @@ export default function ChildExercisesPage() {
                     color: folder.color || "#3b82f6",
                   }}
                 >
-                  <FolderIcon size={40} fill="currentColor" fillOpacity={0.2} />
+                  {(() => { const I = getFolderIcon(folder.icon); return <I size={40} fill="currentColor" fillOpacity={0.2} />; })()}
                 </div>
                 <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">
                   {folder.name}
@@ -170,10 +183,14 @@ export default function ChildExercisesPage() {
                 (accessLevel === "basic" && diff !== "easy" && diff !== "facile" && diff !== null) ||
                 (accessLevel === "intermediate" && (diff === "hard" || diff === "difficile"))
               );
+              const prog = exerciseProgress[exercise.id];
+              const isPassed = prog?.status === "passed";
+              const isFailed = prog?.status === "failed";
+              const isDone = isPassed || isFailed;
               return (
               <div
                 key={exercise.id}
-                className={`group bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-75" : ""}`}
+                className={`group bg-white rounded-[20px] shadow-sm border-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-75" : ""} ${isPassed ? "border-green-400" : isFailed ? "border-red-400" : "border-[rgba(197,161,72,0.25)]"}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-40 bg-[var(--greek-cream)] overflow-hidden flex items-center justify-center">
@@ -182,6 +199,12 @@ export default function ChildExercisesPage() {
                     <img src={exercise.thumbnail_url} alt={exercise.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   ) : (
                     <img src="/logo.png" alt="Educalcul" className="w-16 h-16 object-contain opacity-30" />
+                  )}
+                  {isDone && (
+                    <div className={`absolute top-4 left-4 flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold shadow-sm ${isPassed ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
+                      {isPassed ? <CheckCircle className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
+                      {isPassed ? `Réussi ${prog.score}%` : `Échoué ${prog.score}%`}
+                    </div>
                   )}
 
                   <div
@@ -227,7 +250,7 @@ export default function ChildExercisesPage() {
                         className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
                       >
                         <Play className="w-4 h-4 fill-current" />
-                        Commencer
+                        {isDone ? "Recommencer" : "Commencer"}
                       </Link>
                     )}
                   </div>

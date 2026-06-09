@@ -192,31 +192,35 @@ export default function QuizDetailPage() {
   if (started) {
     return (
       <div className="fixed inset-0 z-50 bg-white flex flex-col overflow-hidden">
-        <div className="flex justify-between items-center p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-          <h1 className="text-lg font-bold truncate">{quiz.title}</h1>
-          <button 
+        <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
+          <button
+            onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
+            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
+            title="Retour à l'aperçu"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <h1 className="text-lg font-bold truncate flex-1">{quiz.title}</h1>
+          <button
             onClick={() => {
-              if (isPreview) {
-                window.close();
-              } else {
-                // Clean up saved page index
-                if (quiz?.id) {
-                  localStorage.removeItem(`quiz-${quiz.id}-page`);
-                }
+              if (isPreview) { window.close(); } else {
+                if (quiz?.id) localStorage.removeItem(`quiz-${quiz.id}-page`);
                 setStarted(false);
               }
             }}
-            className="p-1 hover:bg-white/10 rounded-full transition-colors"
+            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
+            title="Fermer"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
         <div className="flex-1 overflow-hidden">
-          <QuizViewer 
-            quiz={quiz} 
+          <QuizViewer
+            quiz={quiz}
+            onBack={() => setStarted(false)}
             onComplete={(score, total, timeSpent) => {
               console.log(`Quiz completed: ${score}/${total} in ${timeSpent}s`);
-            }} 
+            }}
           />
         </div>
       </div>
@@ -311,9 +315,11 @@ export default function QuizDetailPage() {
                 <div className="space-y-4 text-sm text-gray-600">
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" /> Temps estimé
+                      <Clock className="w-4 h-4" /> {quiz.time_limit_minutes ? "Limite de temps" : "Temps estimé"}
                     </span>
-                    <span className="font-bold">10 min</span>
+                    <span className={`font-bold ${quiz.time_limit_minutes ? "text-red-500" : ""}`}>
+                      {quiz.time_limit_minutes ? `${quiz.time_limit_minutes} min` : "10 min"}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">

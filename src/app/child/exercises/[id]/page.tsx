@@ -287,31 +287,35 @@ export default function ExerciseDetailPage() {
   if (started) {
     return (
       <div className="fixed inset-0 z-50 bg-white flex flex-col overflow-hidden">
-        <div className="flex justify-between items-center p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-          <h1 className="text-lg font-bold truncate">{exercise.title}</h1>
-          <button 
+        <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
+          <button
+            onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
+            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
+            title="Retour à l'aperçu"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <h1 className="text-lg font-bold truncate flex-1">{exercise.title}</h1>
+          <button
             onClick={() => {
-              if (isPreview) {
-                window.close();
-              } else {
-                // Clean up saved page index
-                if (exercise?.id) {
-                  localStorage.removeItem(`exercise-${exercise.id}-page`);
-                }
+              if (isPreview) { window.close(); } else {
+                if (exercise?.id) localStorage.removeItem(`exercise-${exercise.id}-page`);
                 setStarted(false);
               }
             }}
-            className="p-1 hover:bg-white/10 rounded-full transition-colors"
+            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
+            title="Fermer"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
         <div className="flex-1 overflow-hidden">
-          <ExerciseViewer 
-            exercise={exercise} 
+          <ExerciseViewer
+            exercise={exercise}
+            onBack={() => setStarted(false)}
             onComplete={(score: number, total: number) => {
               console.log(`Exercise completed: ${score}/${total}`);
-            }} 
+            }}
           />
         </div>
       </div>

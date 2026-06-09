@@ -64,7 +64,7 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status } = body;
+    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status, scorePercent, passed } = body;
 
     if (!type || !userId || !itemId) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -91,6 +91,8 @@ export async function POST(req: Request) {
         score: score || 0,
         total_points: totalPoints || 0,
         status: status || 'in_progress',
+        score_percent: scorePercent ?? null,
+        passed: passed ?? null,
         completed_at: new Date().toISOString()
       }, { onConflict: 'user_id, exercise_id' });
     } else if (type === "quiz") {
@@ -101,6 +103,8 @@ export async function POST(req: Request) {
         total_points: totalPoints || 0,
         time_spent_seconds: timeSpent || 0,
         status: status || 'in_progress',
+        score_percent: scorePercent ?? null,
+        passed: passed ?? null,
         completed_at: new Date().toISOString()
       }, { onConflict: 'user_id, quiz_id' });
     } else if (type === "course") {

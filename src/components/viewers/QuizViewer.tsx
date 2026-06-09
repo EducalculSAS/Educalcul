@@ -12,7 +12,9 @@ import {
   Sparkles,
   Type,
   HelpCircle,
+  Clock,
 } from "lucide-react";
+import Link from "next/link";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -25,11 +27,13 @@ interface QuizViewerProps {
     content_json: Question[] | null;
     time_limit_minutes?: number | null;
     level?: string;
+    min_score_percent?: number | null;
   };
   onComplete?: (score: number, totalPoints: number, timeSpent: number) => void;
+  onBack?: () => void;
 }
 
-export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
+export default function QuizViewer({ quiz, onComplete, onBack }: QuizViewerProps) {
   const questions = quiz.content_json || [];
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, any>>({});
@@ -46,21 +50,53 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
   const [questionFeedbacks, setQuestionFeedbacks] = useState<
     Record<number, string>
   >({});
-  const [startTime] = useState(Date.now());
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // Timer
+  const timeLimitSeconds = quiz.time_limit_minutes ? quiz.time_limit_minutes * 60 : null;
+  const [elapsed, setElapsed] = useState(0); // seconds elapsed
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const startTimeRef = useRef<number>(Date.now());
+
+  useEffect(() => {
+    if (quizCompleted) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+    timerRef.current = setInterval(() => {
+      const secs = Math.floor((Date.now() - startTimeRef.current) / 1000);
+      setElapsed(secs);
+      // Auto-submit when countdown hits 0
+      if (timeLimitSeconds && secs >= timeLimitSeconds) {
+        if (timerRef.current) clearInterval(timerRef.current);
+        validateAllAnswers();
+      }
+    }, 1000);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [quizCompleted]);
+
+  const formatTime = (s: number) => {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${m}:${sec.toString().padStart(2, "0")}`;
+  };
+  const displayTime = timeLimitSeconds
+    ? Math.max(0, timeLimitSeconds - elapsed)
+    : elapsed;
+  const isLowTime = timeLimitSeconds ? displayTime <= 30 : false;
 
   const currentQuestion = questions[currentQuestionIndex];
 
   // Dynamic progress tracking
-  const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number) => {
+  const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number, scorePercent?: number, passed?: boolean) => {
     const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
     if (isPreview) return;
-    
+
     const { data: { session } } = await supabase.auth.getSession();
     if (!session?.user) return;
-    
+
     const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);
-    const timeSpent = status === 'completed' ? Math.floor((Date.now() - startTime) / 1000) : 0;
+    const timeSpent = status === 'completed' ? elapsed : 0;
 
     try {
       await fetch("/api/child/activities", {
@@ -74,6 +110,8 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
           totalPoints,
           timeSpent,
           status,
+          scorePercent,
+          passed,
         })
       });
     } catch (e) {
@@ -177,13 +215,16 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
     setIsValidating(false);
     setQuizCompleted(true);
 
-    // Save completed progress dynamically
-    saveProgress('completed', totalScore);
+    // Save completed progress with pass/fail
+    const tp = questions.reduce((acc, q) => acc + (q.points || 1), 0);
+    const pct = tp > 0 ? Math.round((totalScore / tp) * 100) : 100;
+    const thr = (quiz as any).min_score_percent || 0;
+    const didPass = thr > 0 ? pct >= thr : true;
+    saveProgress('completed', totalScore, pct, didPass);
 
     if (onComplete) {
       const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);
-      const timeSpent = Math.floor((Date.now() - startTime) / 1000);
-      onComplete(totalScore, totalPoints, timeSpent);
+      onComplete(totalScore, totalPoints, elapsed);
     }
   };
 
@@ -222,62 +263,96 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
   if (quizCompleted) {
     const totalPoints = questions.reduce((acc, q) => acc + q.points, 0);
     const percentage = Math.round((score / totalPoints) * 100);
+    const mins = Math.floor(elapsed / 60);
     const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
+    const threshold = (quiz as any).min_score_percent || 0;
+    const passed = threshold > 0 ? percentage >= threshold : true;
+    // Save pass/fail to localStorage
+    const qzId = (quiz as any).id;
+    if (qzId && qzId !== "preview") {
+      localStorage.setItem(`qz-${qzId}-status`, passed ? "passed" : "failed");
+      localStorage.setItem(`qz-${qzId}-score`, String(percentage));
+    }
 
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8 text-center animate-fade-bounce bg-white border border-[var(--greek-gold)]">
-        <div className="w-24 h-24 bg-[var(--greek-blue)] rounded-full flex items-center justify-center mb-6 shadow-xl">
-          <Trophy className="w-12 h-12 text-[var(--greek-gold)]" />
-        </div>
-        <h2 className="text-4xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-2">
-          Félicitations !
-        </h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-md">
-          Tu as terminé ce quiz avec un score de{" "}
-          <span className="font-bold text-[var(--greek-blue)]">
-            {score} / {totalPoints}
-          </span>
-          .
-        </p>
-        
-        <div className="w-full max-w-md bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-gray-500 font-medium">Réussite</span>
-            <span className="text-[var(--greek-blue)] font-bold">{percentage}%</span>
-          </div>
-          <div className="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
-            <div 
-              className="bg-[var(--greek-gold)] h-full transition-all duration-1000" 
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
-        </div>
+      <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
+          <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden">
+            {/* Thumbnail header */}
+            <div className={`relative h-64 md:h-80 overflow-hidden flex items-center justify-center ${passed ? "bg-[var(--greek-blue)]" : "bg-red-800"}`}>
+              <Trophy className="w-24 h-24 text-[var(--greek-gold)] opacity-20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white w-full">
+                  <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold rounded-full mb-3 shadow-md ${passed ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "bg-red-500 text-white"}`}>
+                    {passed ? <><CheckCircle className="w-3.5 h-3.5" /> Quiz réussi !</> : <><XCircle className="w-3.5 h-3.5" /> Score insuffisant</>}
+                  </div>
+                  <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2">{quiz.title}</h1>
+                </div>
+              </div>
+            </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 mt-6">
-          <button
-            onClick={() => {
-              setQuizCompleted(false);
-              setShowReview(true);
-              setCurrentQuestionIndex(0);
-            }}
-            className="py-4 px-8 text-lg flex items-center justify-center gap-2 shadow-md bg-white text-[var(--greek-blue)] border-2 border-[var(--greek-blue)] hover:bg-[var(--greek-cream)] font-bold rounded-xl transition-all"
-          >
-            <Sparkles className="w-5 h-5 text-[var(--greek-gold)]" />
-            Voir la correction
-          </button>
-          <button
-            onClick={() => {
-              if (isPreview) {
-                window.close();
-              } else {
-                window.location.href = "/child/quiz";
-              }
-            }}
-            className="btn-primary-greek py-4 px-8 text-lg flex items-center justify-center gap-2 shadow-xl rounded-xl"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            {isPreview ? "Fermer l'aperçu" : "Retour aux quiz"}
-          </button>
+            <div className="p-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                {/* Left */}
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
+                    <Trophy className="w-6 h-6 text-[var(--greek-gold)]" />
+                    Félicitations !
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Tu as terminé ce quiz. Consulte ta correction ou retourne t'exercer !
+                  </p>
+                  <div className="grid grid-cols-3 gap-3">
+                    {[
+                      { value: `${score}/${totalPoints}`, sub: "points obtenus" },
+                      { value: mins > 0 ? `${mins} min` : "< 1 min", sub: "temps passé" },
+                      { value: `${percentage}%`, sub: "réussite" },
+                    ].map((s, i) => (
+                      <div key={s.sub} className={`rounded-xl p-4 text-center border ${i === 2 ? (passed ? "bg-green-50 border-green-300" : "bg-red-50 border-red-300") : "bg-[var(--greek-cream)] border-[rgba(197,161,72,0.25)]"}`}>
+                        <p className={`text-xl font-bold font-[family-name:var(--font-display)] ${i === 2 ? (passed ? "text-green-600" : "text-red-600") : "text-[var(--greek-blue)]"}`}>{s.value}</p>
+                        <p className="text-xs text-gray-400 mt-0.5">{s.sub}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {threshold > 0 && (
+                    <div className={`mt-4 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl ${passed ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
+                      {passed ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                      {passed ? `Seuil atteint (${threshold}% requis)` : `Seuil non atteint — ${threshold}% requis, tu as eu ${percentage}%`}
+                    </div>
+                  )}
+                </div>
+
+                {/* Right CTA */}
+                <div className="w-full md:w-80 flex-shrink-0">
+                  <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24 space-y-3">
+                    <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 text-center">Et maintenant ?</h3>
+                    <button
+                      onClick={() => {
+                        setQuizCompleted(false);
+                        setShowReview(true);
+                        setCurrentQuestionIndex(0);
+                      }}
+                      className="w-full btn-primary-greek py-4 text-base shadow-lg flex items-center justify-center transform hover:scale-105 transition-all"
+                    >
+                      Voir la correction
+                    </button>
+                    <Link
+                      href="/child/exercises"
+                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-blue)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
+                    >
+                      Faire les exercices
+                    </Link>
+                    <Link
+                      href="/child/quiz"
+                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-bronze)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
+                    >
+                      Retour aux quiz
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -287,12 +362,29 @@ export default function QuizViewer({ quiz, onComplete }: QuizViewerProps) {
     <div className="flex flex-col h-full bg-white overflow-hidden border border-[var(--greek-gold)]" id="quiz-content-container">
       {/* Header with Progress Bar */}
       <div className="bg-[var(--greek-cream)] border-b border-[var(--greek-gold)] shrink-0">
-        <div className="px-6 py-4 flex items-center justify-between">
-          <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)]">
-            {quiz.title}
-          </h3>
-          <div className="text-sm font-medium text-[var(--greek-blue)] bg-[var(--greek-blue)]/10 border border-[var(--greek-gold)] px-3 py-1 rounded-full">
-            Question {currentQuestionIndex + 1} / {questions.length}
+        <div className="px-6 py-4 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            {onBack && (
+              <button
+                onClick={onBack}
+                className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
+                title="Retour"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+            )}
+            <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] truncate">
+              {quiz.title}
+            </h3>
+          </div>
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold border ${isLowTime ? "bg-red-50 border-red-400 text-red-600 animate-pulse" : "bg-[var(--greek-blue)]/10 border-[var(--greek-gold)] text-[var(--greek-blue)]"}`}>
+              <Clock className="w-3.5 h-3.5" />
+              {timeLimitSeconds ? formatTime(displayTime) : formatTime(elapsed)}
+            </div>
+            <div className="text-sm font-medium text-[var(--greek-blue)] bg-[var(--greek-blue)]/10 border border-[var(--greek-gold)] px-3 py-1 rounded-full">
+              {currentQuestionIndex + 1} / {questions.length}
+            </div>
           </div>
         </div>
         <div className="bg-gray-100 h-1.5 w-full overflow-hidden">

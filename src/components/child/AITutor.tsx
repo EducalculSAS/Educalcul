@@ -2,7 +2,8 @@
 
 import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from "react";
 import { useAITutor } from "@/contexts/AITutorContext";
-import { Send, X, Minus, Star, RotateCcw, Sparkles, Lock, ArrowRight } from "lucide-react";
+import { Send, X, Minus, RotateCcw, Lock, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -14,8 +15,7 @@ interface Message {
 
 const WELCOME: Message = {
   role: "assistant",
-  content:
-    "Salut ! Je suis **Athéna**, ta tutrice IA.\n\nJe suis là pour t'aider à comprendre tes cours et tes exercices — mais je ne donnerai jamais la réponse directement ! C'est toi qui réfléchis, moi je guide. Qu'est-ce qui te pose problème ?",
+  content: "Salut ! Comment puis-je t'aider ?",
 };
 
 
@@ -201,35 +201,6 @@ export default function AITutor() {
     }
   }, [open, minimized]);
 
-  // Reset chat when navigating to a new piece of content
-  const lastContextKey = useRef("");
-  useEffect(() => {
-    const key = `${pageContext.page}|${pageContext.courseTitle || ""}|${pageContext.exerciseTitle || ""}|${pageContext.quizTitle || ""}`;
-    if (key === lastContextKey.current) return;
-    lastContextKey.current = key;
-
-    const name =
-      pageContext.courseTitle ||
-      pageContext.exerciseTitle ||
-      pageContext.quizTitle;
-
-    if (
-      name &&
-      (pageContext.page === "cours_detail" ||
-        pageContext.page === "exercise_detail" ||
-        pageContext.page === "quiz_detail")
-    ) {
-      const newMessages = [
-        WELCOME,
-        {
-          role: "assistant" as const,
-          content: `Je vois que tu travailles sur **${name}** 📚\nN'hésite pas à me poser une question si tu bloques !`,
-        },
-      ];
-      setMessages(newMessages as any);
-      saveMessages(newMessages as any);
-    }
-  }, [pageContext, saveMessages]);
 
   const sendMessage = useCallback(async () => {
     if (!input.trim() || loading) return;
@@ -314,20 +285,16 @@ export default function AITutor() {
 
   return (
     <>
-      {/* ── Floating button — always visible ── */}
+      {/* ── Floating button ── */}
       <button
         ref={floatBtnRef}
-        onClick={() => {
-          setOpen((v) => !v);
-          setMinimized(false);
-          setHasOpened(true);
-        }}
+        onClick={() => { setOpen((v) => !v); setMinimized(false); setHasOpened(true); }}
         aria-label="Ouvrir Athéna"
-        className={`fixed bottom-28 md:bottom-6 right-4 md:right-6 z-50 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 select-none group
-          bg-[var(--greek-blue)] hover:bg-blue-800
+        className={`fixed bottom-[88px] right-4 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 select-none group
           ${open ? "scale-90" : "hover:scale-110 hover:-translate-y-1"}
           ${!hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}
         `}
+        style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}
       >
         {!hasOpened && !sub.loading && sub.features.ai_access !== "none" && (
           <span className="absolute inset-0 rounded-full border-2 border-[var(--greek-gold)] animate-ping opacity-60" />
@@ -343,14 +310,10 @@ export default function AITutor() {
           </span>
         )}
         {open ? (
-          <X className="w-7 h-7 text-white" />
+          <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.8)" }} />
         ) : (
           <>
-            <Star className="w-8 h-8 text-[var(--greek-gold)] fill-current" />
-            <span className="absolute bottom-full right-0 mb-3 whitespace-nowrap bg-[var(--greek-blue)] text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none uppercase tracking-widest">
-              {sub.features.ai_access === "none" ? "Athéna IA — Abonnement requis" :
-               sub.features.ai_access === "limited" ? `Athéna IA · ${aiRemaining(sub)} restants` : "Athéna IA"}
-            </span>
+            <Image src="/logoAI.png" alt="EpsiAI" width={30} height={30} className="object-contain" />
           </>
         )}
       </button>
@@ -359,71 +322,49 @@ export default function AITutor() {
       {open && (
         <div
           ref={chatPanelRef}
-          className={`fixed bottom-36 md:bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[370px] max-w-[calc(100vw-1.5rem)]
-            bg-white rounded-[24px] shadow-2xl border border-[rgba(197,161,72,0.25)]
-            flex flex-col overflow-hidden transition-all duration-300 animate-fade-in
-            ${minimized ? "h-[68px]" : "h-[540px]"}
+          className={`fixed bottom-[164px] right-4 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-[calc(100vw-1.5rem)]
+            rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-[height] duration-300 animate-chat-open
+            ${minimized ? "h-[60px]" : "h-[500px]"}
           `}
+          style={{ background: "#0d1829", border: "1px solid rgba(197,161,72,0.25)" }}
         >
           {/* ── Header ── */}
-          <div className="bg-[var(--greek-blue)] px-5 py-3.5 flex items-center justify-between shrink-0 relative overflow-hidden">
-            {/* blur orbs */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-2xl pointer-events-none" />
-
-            <div className="relative z-10 flex items-center gap-3">
-              {/* Avatar */}
-              <div className="w-10 h-10 rounded-2xl bg-[var(--greek-gold)] flex items-center justify-center shadow-lg shrink-0">
-                <Star className="w-5 h-5 text-[var(--greek-blue)] fill-current" />
-              </div>
-              <div>
-                <div className="text-white font-[family-name:var(--font-display)] font-bold text-base tracking-wider leading-none">
-                  ATHÉNA
-                </div>
-                <div className="text-white/60 text-[10px] font-black uppercase tracking-widest mt-0.5">
-                  Tutrice IA · Maths
-                </div>
-              </div>
+          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ borderBottom: "1px solid rgba(197,161,72,0.15)", background: "rgba(255,255,255,0.03)" }}>
+            <Image src="/logoAI.png" alt="Athéna" width={28} height={28} className="object-contain flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Athéna</p>
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Tutrice IA · Maths</p>
             </div>
-
-            <div className="relative z-10 flex items-center gap-1.5">
-              <button
-                onClick={() => {
-                  setOpen(false);
-                  setMinimized(false);
-                }}
-                className="text-white/50 hover:text-white p-2 rounded-xl hover:bg-white/10 transition-all"
-                title="Fermer"
-                aria-label="Fermer Athéna"
-              >
-                <X className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setMessages([WELCOME]);
-                  saveMessages([WELCOME]);
-                }}
-                className="text-white/50 hover:text-white p-2 rounded-xl hover:bg-white/10 transition-all"
-                title="Nouvelle conversation"
-              >
-                <RotateCcw className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setMinimized((v) => !v)}
-                className="text-white/50 hover:text-white p-2 rounded-xl hover:bg-white/10 transition-all"
-              >
-                <Minus className="w-4 h-4" />
-              </button>
-            </div>
+            <button onClick={() => { setMessages([WELCOME]); saveMessages([WELCOME]); }}
+              className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+              title="Nouvelle conversation">
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+            <button onClick={() => setMinimized(v => !v)}
+              className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}>
+              <Minus className="w-3.5 h-3.5" />
+            </button>
+            <button onClick={() => { setOpen(false); setMinimized(false); }}
+              className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+              title="Fermer">
+              <X className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           {!minimized && (
             <>
               {/* ── Context chip ── */}
               {contextLabel && (
-                <div className="px-4 pt-3 shrink-0 max-h-12 overflow-hidden">
-                  <div className="flex items-center gap-2 bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-xl px-3 py-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
-                    <span className="text-[10px] text-[var(--greek-bronze)] font-black uppercase tracking-widest truncate">
+                <div className="px-3 pt-2.5 shrink-0">
+                  <div className="flex items-center gap-2 rounded-xl px-3 py-1.5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(197,161,72,0.15)" }}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0" />
+                    <span className="text-[10px] font-black uppercase tracking-widest truncate" style={{ color: "rgba(197,161,72,0.8)" }}>
                       {contextLabel}
                     </span>
                   </div>
@@ -431,56 +372,32 @@ export default function AITutor() {
               )}
 
               {/* ── Messages ── */}
-              <div 
+              <div
                 ref={messagesContainerRef}
-                className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-0 bg-white flex flex-col"
-                style={{ contain: 'layout' }}
+                className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-2.5 min-h-0"
+                style={{ scrollbarWidth: "none" }}
               >
-                {messages && messages.length > 0 ? (
-                  <>
-                    {messages.map((msg, i) => (
-                      <div
-                        key={i}
-                        className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"} w-full animate-fade-in`}
-                      >
-                        {msg.role === "assistant" && (
-                          <div className="w-7 h-7 rounded-xl bg-[var(--greek-gold)] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                            <Star className="w-3.5 h-3.5 text-[var(--greek-blue)] fill-current" />
-                          </div>
-                        )}
-                        <div
-                          className={`max-w-[78%] px-4 py-2.5 text-sm leading-relaxed rounded-2xl ${
-                            msg.role === "user"
-                              ? "bg-[var(--greek-blue)] text-white font-bold rounded-br-sm shadow-sm"
-                              : "bg-[var(--greek-cream)] text-gray-700 rounded-bl-sm border border-[rgba(197,161,72,0.25)]"
-                          }`}
-                        >
-                          {renderContent(msg.content)}
-                        </div>
-                        {msg.role === "user" && (
-                          <div className="w-7 h-7 rounded-xl bg-[var(--greek-blue)] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                            <span className="text-white text-[10px] font-black">Toi</span>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </>
-                ) : (
-                  <div className="flex items-center justify-center h-full text-gray-400 text-sm">
-                    Aucun message pour le moment
-                  </div>
-                )}
-
-                {/* Typing indicator */}
-                {loading && (
-                  <div className="flex gap-2.5 justify-start">
-                    <div className="w-7 h-7 rounded-xl bg-[var(--greek-gold)] flex items-center justify-center shrink-0 shadow-sm">
-                      <Star className="w-3.5 h-3.5 text-[var(--greek-blue)] fill-current" />
+                {messages.map((msg, i) => (
+                  <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"} animate-fade-in`}>
+                    {msg.role === "assistant" && (
+                      <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0 mt-1" />
+                    )}
+                    <div className="max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed"
+                      style={msg.role === "assistant"
+                        ? { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }
+                        : { background: "var(--greek-gold)", color: "#fff", borderBottomRightRadius: 4 }}>
+                      {renderContent(msg.content)}
                     </div>
-                    <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1.5 items-center">
-                      <span className="w-2 h-2 bg-[var(--greek-gold)] rounded-full animate-bounce [animation-delay:0ms]" />
-                      <span className="w-2 h-2 bg-[var(--greek-gold)] rounded-full animate-bounce [animation-delay:150ms]" />
-                      <span className="w-2 h-2 bg-[var(--greek-gold)] rounded-full animate-bounce [animation-delay:300ms]" />
+                  </div>
+                ))}
+
+                {loading && (
+                  <div className="flex items-center gap-2">
+                    <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0" />
+                    <div className="px-3.5 py-2.5 rounded-2xl" style={{ background: "rgba(255,255,255,0.07)" }}>
+                      <span className="flex gap-1 items-center h-3.5">
+                        {[0, 1, 2].map(j => <span key={j} className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -489,63 +406,48 @@ export default function AITutor() {
 
               {/* ── Quick suggestions ── */}
               {messages.length <= 2 && (
-                <div className="px-4 pb-2 flex flex-wrap gap-2 shrink-0">
-                  {["Je ne comprends pas", "Donne-moi un indice", "Comment naviguer ?"].map((s) => (
-                    <button
-                      key={s}
+                <div className="px-3 pb-2 flex flex-wrap gap-1.5 shrink-0">
+                  {["Je ne comprends pas", "Donne-moi un indice"].map((s) => (
+                    <button key={s}
                       onClick={() => { setInput(s); setTimeout(() => inputRef.current?.focus(), 50); }}
-                      className="text-[11px] bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-gold)] hover:bg-[var(--greek-gold)]/10 text-[var(--greek-bronze)] font-black px-3 py-1.5 rounded-full transition-all"
-                    >
+                      className="text-[10px] font-black px-3 py-1.5 rounded-full transition-all"
+                      style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.2)", color: "rgba(197,161,72,0.8)" }}>
                       {s}
                     </button>
                   ))}
                 </div>
               )}
 
-              {/* ── Input or upgrade prompt ── */}
+              {/* ── Input or upgrade ── */}
               {sub.features.ai_access === "none" ? (
-                <div className="px-4 pb-4 pt-2 shrink-0 border-t border-[rgba(197,161,72,0.25)]">
-                  <div className="bg-gradient-to-br from-[var(--greek-blue)]/5 to-[var(--greek-gold)]/5 border border-[rgba(197,161,72,0.25)] rounded-2xl p-4 text-center">
-                    <Lock className="w-6 h-6 text-[var(--greek-gold)] mx-auto mb-2" />
-                    <p className="text-sm font-bold text-[var(--greek-blue)] mb-1">Athéna IA — Plan requis</p>
-                    <p className="text-xs text-gray-500 mb-3">L'assistant IA est disponible à partir du plan Premium.</p>
-                    <a href="/parent/subscription" className="flex items-center justify-center gap-1.5 bg-[var(--greek-blue)] text-white text-xs font-bold px-4 py-2 rounded-xl hover:bg-blue-800 transition-colors">
+                <div className="px-3 pb-3 pt-2 shrink-0" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
+                  <div className="rounded-2xl p-4 text-center" style={{ background: "rgba(197,161,72,0.07)", border: "1px solid rgba(197,161,72,0.2)" }}>
+                    <Lock className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--greek-gold)" }} />
+                    <p className="text-sm font-bold mb-1" style={{ color: "rgba(240,237,232,0.9)" }}>Plan requis</p>
+                    <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>L'IA est disponible à partir du plan Premium.</p>
+                    <a href="/parent/subscription" className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl"
+                      style={{ background: "var(--greek-gold)", color: "#fff" }}>
                       Voir les abonnements <ArrowRight className="w-3 h-3" />
                     </a>
                   </div>
                 </div>
               ) : (
-                <div className="px-4 pb-4 pt-2 shrink-0 border-t border-[rgba(197,161,72,0.25)]">
-                  <div className="flex gap-2 items-end bg-[var(--greek-cream)] border-2 border-transparent focus-within:border-[var(--greek-gold)] rounded-2xl p-2 transition-all">
-                    <textarea
-                      ref={inputRef}
-                      value={input}
-                      onChange={(e) => setInput(e.target.value)}
-                      onKeyDown={handleKey}
-                      placeholder="Pose ta question ici…"
-                      rows={1}
-                      className="flex-1 bg-transparent text-gray-800 text-sm placeholder:text-gray-400 outline-none resize-none max-h-24 py-1 px-1 font-medium leading-relaxed"
-                      style={{ minHeight: "34px" }}
-                    />
-                    <button
-                      onClick={sendMessage}
-                      disabled={!input.trim() || loading}
-                      className="w-9 h-9 rounded-xl bg-[var(--greek-blue)] text-white flex items-center justify-center shrink-0
-                        hover:bg-blue-800 disabled:opacity-30 disabled:cursor-not-allowed
-                        transition-all shadow-sm hover:scale-105 active:scale-95"
-                    >
-                      <Send className="w-4 h-4" />
-                    </button>
-                  </div>
-                  {sub.features.ai_access === "limited" ? (
-                    <p className="text-center text-gray-400 text-[9px] mt-1 font-bold">
-                      {aiRemaining(sub)} message{aiRemaining(sub) !== 1 ? "s" : ""} restant{aiRemaining(sub) !== 1 ? "s" : ""} aujourd'hui
-                    </p>
-                  ) : (
-                    <p className="text-center text-gray-300 text-[9px] mt-1.5 font-bold uppercase tracking-widest">
-                      Entrée pour envoyer · Shift+Entrée pour sauter une ligne
-                    </p>
-                  )}
+                <div className="px-3 py-3 shrink-0 flex gap-2" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
+                  <textarea
+                    ref={inputRef}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKey}
+                    placeholder="Pose ta question…"
+                    rows={1}
+                    className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none resize-none"
+                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)", minHeight: "36px", maxHeight: "80px" }}
+                  />
+                  <button onClick={sendMessage} disabled={!input.trim() || loading}
+                    className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 self-end transition-all hover:-translate-y-0.5 disabled:opacity-40"
+                    style={{ background: "var(--greek-gold)" }}>
+                    <Send className="w-3.5 h-3.5 text-white" />
+                  </button>
                 </div>
               )}
             </>

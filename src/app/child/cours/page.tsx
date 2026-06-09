@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { BookOpen, Play, CheckCircle, Clock, Folder as FolderIcon, ChevronRight, Home, ArrowLeft } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
+import { getFolderIcon } from "@/lib/folderIcons";
 
 export default function ChildCoursesPage() {
   const [loading, setLoading] = useState(true);
@@ -15,6 +16,7 @@ export default function ChildCoursesPage() {
   
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
+  const [courseProgress, setCourseProgress] = useState<Record<string, { status: string; pct: number }>>({});
 
   useEffect(() => {
     const fetchEverything = async () => {
@@ -47,6 +49,17 @@ export default function ChildCoursesPage() {
             filtered = filtered.filter((c: any) => c.level?.toLowerCase() === level.toLowerCase());
           }
           setAllCourses(filtered);
+
+          // Load progress from localStorage for each course
+          const prog: Record<string, { status: string; pct: number }> = {};
+          for (const c of filtered) {
+            const status = localStorage.getItem(`cv-${c.id}-status`) || "not_started";
+            const done = (() => { try { return JSON.parse(localStorage.getItem(`cv-${c.id}-done`) || "[]"); } catch { return []; } })();
+            const totalL = (c.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
+            const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
+            if (status !== "not_started" || pct > 0) prog[c.id] = { status, pct };
+          }
+          setCourseProgress(prog);
         }
 
       } catch (error) {
@@ -191,7 +204,9 @@ export default function ChildCoursesPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Render Folders */}
-            {currentFolders.map((folder, index) => (
+            {currentFolders.map((folder, index) => {
+              const FolderCardIcon = getFolderIcon(folder.icon);
+              return (
               <div
                 key={folder.id}
                 onClick={() => navigateToFolder(folder.id, folder.name)}
@@ -205,19 +220,27 @@ export default function ChildCoursesPage() {
                     color: folder.color || "#3b82f6",
                   }}
                 >
-                  <FolderIcon size={40} fill="currentColor" fillOpacity={0.2} />
+                  <FolderCardIcon size={40} fill="currentColor" fillOpacity={0.2} />
                 </div>
                 <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">
                   {folder.name}
                 </h3>
               </div>
-            ))}
+              );
+            })}
 
             {/* Render Courses */}
-            {currentCourses.map((course, index) => (
+            {currentCourses.map((course, index) => {
+              const prog = courseProgress[course.id];
+              const isCompleted = prog?.status === "completed";
+              const isInProgress = !isCompleted && prog && prog.pct > 0;
+              const totalL = (course.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
+              const donePct = prog?.pct ?? 0;
+
+              return (
               <div
                 key={course.id}
-                className={`group bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? 'opacity-0' : 'opacity-100'}`}
+                className={`group bg-white rounded-[20px] shadow-sm border-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? 'opacity-0' : 'opacity-100'} ${isCompleted ? 'border-green-400' : 'border-[rgba(197,161,72,0.25)]'}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-48 bg-gray-100 overflow-hidden">
@@ -233,15 +256,32 @@ export default function ChildCoursesPage() {
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[var(--greek-blue)] shadow-sm">
                     {course.subject || "Mathématiques"}
                   </div>
+                  {isCompleted && (
+                    <div className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm flex items-center gap-1">
+                      <CheckCircle className="w-3 h-3" /> Terminé
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">
                     {course.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
                     {course.description || "Découvre ce chapitre passionnant !"}
                   </p>
+
+                  {isInProgress && (
+                    <div className="mb-4">
+                      <div className="flex justify-between text-xs text-gray-500 mb-1">
+                        <span>{donePct}% complété</span>
+                        {totalL > 0 && <span>{Math.round(donePct * totalL / 100)}/{totalL} leçons</span>}
+                      </div>
+                      <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-[var(--greek-gold)] rounded-full transition-all" style={{ width: `${donePct}%` }} />
+                      </div>
+                    </div>
+                  )}
 
                   <div className="mt-auto">
                     <Link
@@ -249,12 +289,13 @@ export default function ChildCoursesPage() {
                       className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
                     >
                       <Play className="w-4 h-4 fill-current" />
-                      Commencer
+                      {isCompleted ? "Revoir" : isInProgress ? "Reprendre" : "Commencer"}
                     </Link>
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

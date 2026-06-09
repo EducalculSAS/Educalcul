@@ -159,9 +159,11 @@ export async function POST(req: Request) {
       { count: exoCount }, { count: correctCount }, { count: quizCount },
       { count: courseCount }, { data: quizScores },
     ] = await Promise.all([
-      supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId),
+      // Count exercises that are passed (or completed if no threshold was set, i.e. passed IS NULL)
+      supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).or("passed.eq.true,passed.is.null"),
       supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).eq("is_correct", true),
-      supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId),
+      // Count quizzes that are passed (or completed if no threshold was set)
+      supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).or("passed.eq.true,passed.is.null"),
       supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", userId),
       supabaseAdmin.from("user_quiz_attempts").select("score, total_questions").eq("user_id", userId),
     ]);

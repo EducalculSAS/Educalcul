@@ -313,9 +313,13 @@ export async function PUT(request: Request) {
       );
     }
 
-    // If content_json is empty or not provided, create a default structure based on type
+    // Partial update: if content_json key was not sent at all (e.g. drag & drop move
+    // that only sends id + folder_id), we must NOT touch the stored content.
+    const hasContentKey = Object.prototype.hasOwnProperty.call(body, "content_json");
+
+    // If content_json is explicitly provided but empty, create a default structure based on type
     let finalContentJson = content_json;
-    if (!finalContentJson || (Array.isArray(finalContentJson) && finalContentJson.length === 0)) {
+    if (hasContentKey && (!finalContentJson || (Array.isArray(finalContentJson) && finalContentJson.length === 0))) {
       // Create appropriate default block based on exercise type
       let defaultBlock: any = {
         id: "block-1",
@@ -365,24 +369,31 @@ export async function PUT(request: Request) {
       });
     }
 
+    // Build a partial update: only include fields whose keys are present in the body.
+    // This prevents a folder move ({ id, folder_id }) from wiping title/content/etc.
+    const updatePayload: Record<string, any> = { updated_at: new Date().toISOString() };
+    const has = (k: string) => Object.prototype.hasOwnProperty.call(body, k);
+    if (has("title")) updatePayload.title = title;
+    if (has("description")) updatePayload.question = description;
+    if (has("course_id")) updatePayload.course_id = course_id || null;
+    if (has("difficulty_level")) updatePayload.difficulty_level = difficulty_level;
+    if (has("type")) updatePayload.type = type;
+    if (has("level")) updatePayload.level = level;
+    if (has("status")) {
+      updatePayload.status = status;
+      updatePayload.is_published = status === "published" || status === "active";
+    }
+    if (has("folder_id")) updatePayload.folder_id = folder_id || null;
+    if (has("thumbnail_url")) updatePayload.thumbnail_url = thumbnail_url;
+    if (hasContentKey) updatePayload.content_json = finalContentJson;
+    if (has("time_limit")) updatePayload.time_limit = time_limit || null;
+    if (has("time_limit_minutes")) updatePayload.time_limit_minutes = body.time_limit_minutes || null;
+    if (has("min_score_percent")) updatePayload.min_score_percent = body.min_score_percent || null;
+    if (has("max_attempts")) updatePayload.max_attempts = max_attempts || null;
+
     const { data, error } = await supabaseAdmin
       .from("exercises")
-      .update({
-        title,
-        question: description,
-        course_id,
-        difficulty_level,
-        type,
-        level,
-        status,
-        is_published: status === "published" || status === "active",
-        folder_id: folder_id || null,
-        thumbnail_url,
-        content_json: finalContentJson,
-        time_limit: time_limit || null,
-        max_attempts: max_attempts || null,
-        updated_at: new Date().toISOString(),
-      })
+      .update(updatePayload)
       .eq("id", id)
       .select()
       .single();

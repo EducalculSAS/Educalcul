@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, X } from "lucide-react";
+import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, X, CheckCircle } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -17,6 +17,7 @@ export default function CourseDetailPage() {
 
   const [loading, setLoading] = useState(true);
   const [course, setCourse] = useState<any>(null);
+  const [resumeInfo, setResumeInfo] = useState<{ pct: number; chapterIndex: number; status: string } | null>(null);
   // Initialize started state from localStorage
   const [started, setStartedState] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -63,6 +64,13 @@ export default function CourseDetailPage() {
         }
         const data = await response.json();
         setCourse(data);
+        // Load resume info from localStorage
+        const status = localStorage.getItem(`cv-${courseId}-status`) || "not_started";
+        const chIdx = parseInt(localStorage.getItem(`cv-${courseId}-ch`) || "0");
+        const done = (() => { try { return JSON.parse(localStorage.getItem(`cv-${courseId}-done`) || "[]"); } catch { return []; } })();
+        const totalL = (data.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
+        const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
+        if (status !== "not_started" || pct > 0) setResumeInfo({ pct, chapterIndex: chIdx, status });
         // Inject AI tutor context
         const chaptersSummary = (data.content_json || [])
           .map((ch: any) => `Chapitre: ${ch.title || ""}\n${(ch.blocks || []).map((b: any) => b.content || b.text || "").join(" ")}`)
@@ -183,28 +191,32 @@ export default function CourseDetailPage() {
   if (started) {
     return (
       <div className="fixed inset-0 z-50 bg-white flex flex-col overflow-hidden">
-        <div className="flex justify-between items-center p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-          <h1 className="text-lg font-bold truncate">{course.title}</h1>
-          <button 
+        <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
+          <button
+            onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
+            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
+            title="Retour à l'aperçu"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <h1 className="text-lg font-bold truncate flex-1">{course.title}</h1>
+          <button
             onClick={() => {
-              if (isPreview) {
-                window.close();
-              } else {
-                // Clean up saved page index
-                if (course?.id) {
-                  localStorage.removeItem(`course-${course.id}-page`);
-                }
+              if (isPreview) { window.close(); } else {
+                if (course?.id) localStorage.removeItem(`course-${course.id}-page`);
                 setStarted(false);
               }
             }}
-            className="p-1 hover:bg-white/10 rounded-full transition-colors"
+            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
+            title="Fermer"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
         <div className="flex-1 overflow-hidden">
-          <CourseViewer 
-            course={course} 
+          <CourseViewer
+            course={course}
+            onBack={() => { if (!isPreview) setStarted(false); }}
             onChapterComplete={(chapterIndex) => {
               console.log(`Chapter ${chapterIndex} completed`);
             }}
@@ -284,17 +296,38 @@ export default function CourseDetailPage() {
             <div className="w-full md:w-80 flex-shrink-0">
               <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24">
                 <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-4 text-center">
-                  Prêt à commencer ?
+                  {resumeInfo?.status === "completed" ? "Cours terminé !" : resumeInfo ? "Reprendre le cours" : "Prêt à commencer ?"}
                 </h3>
-                
-                <button 
+
+                {resumeInfo && resumeInfo.status !== "completed" && (
+                  <div className="mb-4">
+                    <div className="flex justify-between text-xs text-gray-500 mb-1">
+                      <span>Progression</span>
+                      <span>{resumeInfo.pct}%</span>
+                    </div>
+                    <div className="w-full h-2 bg-white rounded-full overflow-hidden border border-[rgba(197,161,72,0.25)]">
+                      <div className="h-full bg-[var(--greek-gold)] rounded-full" style={{ width: `${resumeInfo.pct}%` }} />
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2 text-center">
+                      Chapitre {resumeInfo.chapterIndex + 1}
+                    </p>
+                  </div>
+                )}
+
+                {resumeInfo?.status === "completed" && (
+                  <div className="mb-4 flex items-center justify-center gap-2 text-green-600 font-bold text-sm">
+                    <CheckCircle className="w-5 h-5" /> 100% complété
+                  </div>
+                )}
+
+                <button
                   onClick={() => setStarted(true)}
                   className="w-full btn-primary-greek py-4 text-lg shadow-lg mb-4 flex items-center justify-center gap-2 transform hover:scale-105 transition-all"
                 >
                   <Play className="w-6 h-6 fill-current" />
-                  Démarrer la leçon
+                  {resumeInfo?.status === "completed" ? "Revoir le cours" : resumeInfo ? "Reprendre" : "Démarrer la leçon"}
                 </button>
-                
+
                 <div className="space-y-4 text-sm text-gray-600">
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">
