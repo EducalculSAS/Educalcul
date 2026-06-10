@@ -17,11 +17,15 @@ import {
   Pencil,
   Keyboard,
   Trash2,
+  Eraser,
+  Undo2,
 } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
+import MathInput, { MathInputHandle } from "@/components/MathInput";
+import "katex/dist/katex.min.css";
 
 interface ExerciseViewerProps {
   exercise: {
@@ -39,7 +43,18 @@ interface ExerciseViewerProps {
   };
   onComplete?: (score: number, totalPoints: number) => void;
   onBack?: () => void;
+  reviewMode?: boolean;
+  initialProgress?: {
+    answers?: Record<string, any>;
+    submittedBlocks?: string[];
+    results?: Record<string, boolean>;
+    aiFeedback?: Record<string, string>;
+    score?: number;
+    blockModes?: Record<string, "text" | "draw">;
+  } | null;
 }
+
+const COLORS = ["#000000", "#ef4444", "#3b82f6", "#22c55e", "#c5a148"];
 
 function DrawingCanvas({
   onChange,
@@ -53,6 +68,14 @@ function DrawingCanvas({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
+  const [tool, setTool] = useState<"pen" | "eraser">("pen");
+  const toolRef = useRef(tool);
+  toolRef.current = tool;
+  const [penColor, setPenColor] = useState("#000000");
+  const penColorRef = useRef(penColor);
+  penColorRef.current = penColor;
+  const historyRef = useRef<string[]>([]);
+  const [canUndo, setCanUndo] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -81,22 +104,34 @@ function DrawingCanvas({
     }
   }, []); // Only run once on mount
 
+  const pushHistory = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    historyRef.current.push(canvas.toDataURL("image/png"));
+    if (historyRef.current.length > 30) historyRef.current.shift();
+    setCanUndo(true);
+  };
+
   const startDrawing = (e: any) => {
     if (disabled || !ctx || !canvasRef.current) return;
-    const { offsetX, offsetY } = getCoordinates(e);
+    pushHistory();
+    const { x, y } = getCoordinates(e);
+    if (toolRef.current === "eraser") {
+      ctx.strokeStyle = "#FFFFFF";
+      ctx.lineWidth = 20;
+    } else {
+      ctx.strokeStyle = penColorRef.current;
+      ctx.lineWidth = 2;
+    }
     ctx.beginPath();
-    ctx.moveTo(offsetX, offsetY);
+    ctx.moveTo(x, y);
     setIsDrawing(true);
   };
 
   const draw = (e: any) => {
     if (!isDrawing || disabled || !ctx || !canvasRef.current) return;
-    // Prevent scrolling on touch devices
-    if (e.type.startsWith("touch")) {
-      // e.preventDefault(); // React synthetic events might need passive: false elsewhere
-    }
-    const { offsetX, offsetY } = getCoordinates(e);
-    ctx.lineTo(offsetX, offsetY);
+    const { x, y } = getCoordinates(e);
+    ctx.lineTo(x, y);
     ctx.stroke();
   };
 
@@ -107,24 +142,49 @@ function DrawingCanvas({
     onChange(canvasRef.current.toDataURL("image/png"));
   };
 
+  // Convertit les coordonnées de l'événement (CSS px) en coordonnées du canvas
+  // (résolution interne) pour éviter le décalage du trait sur mobile/tactile.
   const getCoordinates = (e: any) => {
+    const canvas = canvasRef.current!;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    let clientX: number;
+    let clientY: number;
     if (e.nativeEvent instanceof MouseEvent) {
-      return {
-        offsetX: e.nativeEvent.offsetX,
-        offsetY: e.nativeEvent.offsetY,
-      };
+      clientX = e.nativeEvent.clientX;
+      clientY = e.nativeEvent.clientY;
+    } else {
+      const touch = e.nativeEvent.touches[0] || e.nativeEvent.changedTouches[0];
+      clientX = touch.clientX;
+      clientY = touch.clientY;
     }
-    // Touch events
-    const rect = e.target.getBoundingClientRect();
-    const touch = e.nativeEvent.touches[0] || e.nativeEvent.changedTouches[0];
+
     return {
-      offsetX: touch.clientX - rect.left,
-      offsetY: touch.clientY - rect.top,
+      x: (clientX - rect.left) * scaleX,
+      y: (clientY - rect.top) * scaleY,
     };
+  };
+
+  const undo = () => {
+    if (disabled || !ctx || !canvasRef.current) return;
+    const last = historyRef.current.pop();
+    if (!last) return;
+    setCanUndo(historyRef.current.length > 0);
+    const canvas = canvasRef.current;
+    const img = new Image();
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+      onChange(canvas.toDataURL("image/png"));
+    };
+    img.src = last;
   };
 
   const clearCanvas = () => {
     if (disabled || !ctx || !canvasRef.current) return;
+    pushHistory();
     // Fill with white instead of clearing to transparency
     ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -147,13 +207,54 @@ function DrawingCanvas({
         onTouchEnd={stopDrawing}
       />
       {!disabled && (
-        <button
-          onClick={clearCanvas}
-          className="absolute top-2 right-2 p-2 bg-white/80 rounded-full shadow hover:bg-red-50 text-red-500 border border-red-200"
-          title="Effacer tout"
-        >
-          <Trash2 className="w-4 h-4" />
-        </button>
+        <div className="absolute top-2 left-2 flex items-center gap-1.5 p-1 bg-white/80 rounded-full shadow border border-[rgba(197,161,72,0.3)]">
+          {COLORS.map((c) => (
+            <button
+              key={c}
+              onClick={() => {
+                setPenColor(c);
+                setTool("pen");
+              }}
+              className={`w-5 h-5 rounded-full border-2 transition-transform ${
+                tool === "pen" && penColor === c
+                  ? "border-[var(--greek-blue)] scale-110"
+                  : "border-white"
+              }`}
+              style={{ backgroundColor: c }}
+              title="Couleur"
+            />
+          ))}
+        </div>
+      )}
+      {!disabled && (
+        <div className="absolute top-2 right-2 flex items-center gap-1.5">
+          <button
+            onClick={() => setTool((t) => (t === "pen" ? "eraser" : "pen"))}
+            className={`p-2 rounded-full shadow border transition-colors ${
+              tool === "eraser"
+                ? "bg-[var(--greek-blue)] border-[var(--greek-blue)] text-white"
+                : "bg-white/80 border-[rgba(197,161,72,0.3)] text-[var(--text-dark)] hover:bg-[var(--greek-gold)]/10"
+            }`}
+            title={tool === "eraser" ? "Repasser en stylo" : "Gomme"}
+          >
+            <Eraser className="w-4 h-4" />
+          </button>
+          <button
+            onClick={undo}
+            disabled={!canUndo}
+            className="p-2 bg-white/80 rounded-full shadow border border-[rgba(197,161,72,0.3)] text-[var(--text-dark)] hover:bg-[var(--greek-gold)]/10 disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Annuler le dernier trait"
+          >
+            <Undo2 className="w-4 h-4" />
+          </button>
+          <button
+            onClick={clearCanvas}
+            className="p-2 bg-white/80 rounded-full shadow hover:bg-red-50 text-red-500 border border-red-200"
+            title="Effacer tout"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+        </div>
       )}
     </div>
   );
@@ -163,6 +264,8 @@ export default function ExerciseViewer({
   exercise,
   onComplete,
   onBack,
+  reviewMode,
+  initialProgress,
 }: ExerciseViewerProps) {
   const pages = exercise.content_json || [];
   const { pageContext, setPageContext } = useAITutor();
@@ -204,20 +307,140 @@ export default function ExerciseViewer({
       return index;
     });
   };
-  const [answers, setAnswers] = useState<Record<string, any>>({});
+  // Charge la progression sauvegardée (réponses, soumissions, score, feedback...)
+  const loadProgress = (): {
+    answers: Record<string, any>;
+    submittedBlocks: string[];
+    results: Record<string, boolean>;
+    aiFeedback: Record<string, string>;
+    score: number;
+    exerciseCompleted: boolean;
+    blockModes: Record<string, "text" | "draw">;
+  } | null => {
+    if (typeof window === "undefined" || !exercise.id) return null;
+    try {
+      const saved = localStorage.getItem(`exercise-${exercise.id}-progress`);
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      console.error("Failed to load exercise progress:", e);
+      return null;
+    }
+  };
+
+  const [answers, setAnswers] = useState<Record<string, any>>(
+    () => (reviewMode ? initialProgress?.answers : loadProgress()?.answers) || {}
+  );
+  const mathfieldRefs = useRef<Record<string, MathInputHandle | null>>({});
   const [submittedBlocks, setSubmittedBlocks] = useState<Set<string>>(
-    new Set()
+    () => new Set((reviewMode ? initialProgress?.submittedBlocks : loadProgress()?.submittedBlocks) || [])
   );
   const [loadingBlocks, setLoadingBlocks] = useState<Set<string>>(new Set());
-  const [results, setResults] = useState<Record<string, boolean>>({});
-  const [aiFeedback, setAiFeedback] = useState<Record<string, string>>({});
-  const [score, setScore] = useState(0);
-  const [exerciseCompleted, setExerciseCompleted] = useState(false);
+  const [results, setResults] = useState<Record<string, boolean>>(
+    () => (reviewMode ? initialProgress?.results : loadProgress()?.results) || {}
+  );
+  const [aiFeedback, setAiFeedback] = useState<Record<string, string>>(
+    () => (reviewMode ? initialProgress?.aiFeedback : loadProgress()?.aiFeedback) || {}
+  );
+  const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : loadProgress()?.score) || 0);
+  const [exerciseCompleted, setExerciseCompleted] = useState(
+    () => (reviewMode ? true : loadProgress()?.exerciseCompleted) || false
+  );
   const [showReview, setShowReview] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(
-    {}
+    () => (reviewMode ? initialProgress?.blockModes : loadProgress()?.blockModes) || {}
   );
+
+  // Sauvegarde la progression à chaque changement pour permettre de reprendre l'exercice
+  useEffect(() => {
+    if (reviewMode) return;
+    if (typeof window === "undefined" || !exercise.id || exercise.id === "preview") return;
+    try {
+      localStorage.setItem(
+        `exercise-${exercise.id}-progress`,
+        JSON.stringify({
+          answers,
+          submittedBlocks: Array.from(submittedBlocks),
+          results,
+          aiFeedback,
+          score,
+          exerciseCompleted,
+          blockModes,
+        })
+      );
+    } catch (e) {
+      console.error("Failed to save exercise progress:", e);
+    }
+  }, [answers, submittedBlocks, results, aiFeedback, score, exerciseCompleted, blockModes, exercise.id]);
+
+  // Charge la progression depuis la base de données (survit à une déconnexion / changement d'appareil)
+  const userIdRef = useRef<string | null>(null);
+  const progressLoadedFromDbRef = useRef(false);
+  useEffect(() => {
+    if (reviewMode) return;
+    if (!exercise.id || exercise.id === "preview") return;
+    (async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user) return;
+      userIdRef.current = session.user.id;
+
+      try {
+        const res = await fetch(`/api/child/exercises/${exercise.id}/progress?userId=${session.user.id}`);
+        const data = await res.json();
+        const p = data?.progress;
+        if (p) {
+          setAnswers(p.answers || {});
+          setSubmittedBlocks(new Set(p.submittedBlocks || []));
+          setResults(p.results || {});
+          setAiFeedback(p.aiFeedback || {});
+          setScore(p.score || 0);
+          setExerciseCompleted(p.exerciseCompleted || false);
+          setBlockModes(p.blockModes || {});
+        }
+      } catch (e) {
+        console.error("Failed to load exercise progress from DB:", e);
+      } finally {
+        progressLoadedFromDbRef.current = true;
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exercise.id]);
+
+  // Sauvegarde la progression en base de données (debounced)
+  const saveProgressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (reviewMode) return;
+    if (!exercise.id || exercise.id === "preview") return;
+    if (!progressLoadedFromDbRef.current) return; // évite d'écraser avant le chargement initial
+    if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
+    saveProgressTimeoutRef.current = setTimeout(async () => {
+      const userId = userIdRef.current;
+      if (!userId) return;
+      try {
+        await fetch(`/api/child/exercises/${exercise.id}/progress`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userId,
+            progress: {
+              answers,
+              submittedBlocks: Array.from(submittedBlocks),
+              results,
+              aiFeedback,
+              score,
+              exerciseCompleted,
+              blockModes,
+            },
+          }),
+        });
+      } catch (e) {
+        console.error("Failed to save exercise progress to DB:", e);
+      }
+    }, 1000);
+    return () => {
+      if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
+    };
+  }, [answers, submittedBlocks, results, aiFeedback, score, exerciseCompleted, blockModes, exercise.id]);
 
   const currentPage = pages[currentPageIndex];
 
@@ -519,7 +742,7 @@ export default function ExerciseViewer({
     );
   }
 
-  if (exerciseCompleted) {
+  if (exerciseCompleted && !reviewMode) {
     let totalPoints = 0;
     pages.forEach((p) => p.blocks.forEach((b) => (totalPoints += b.points || 0)));
     const percentage = totalPoints > 0 ? Math.round((score / totalPoints) * 100) : 100;
@@ -654,7 +877,7 @@ export default function ExerciseViewer({
           )}
 
           {currentPage.blocks.map((block) => {
-            const isSubmitted = submittedBlocks.has(block.id);
+            const isSubmitted = reviewMode || submittedBlocks.has(block.id);
             const answer = answers[block.id];
 
             // Determine correctness for feedback
@@ -733,99 +956,43 @@ export default function ExerciseViewer({
                         />
                       ) : (
                         <>
-                          {!isSubmitted && (
-                            <div className="flex flex-wrap gap-1 p-2 bg-gray-50 border border-b-0 border-gray-300 rounded-t-lg">
-                              {[
-                                { label: "x²", val: "^2" },
-                                { label: "√", val: "\\sqrt{}" },
-                                { label: "a/b", val: "\\frac{}{}" },
-                                { label: "π", val: "\\pi" },
-                                { label: "∞", val: "\\infty" },
-                                { label: "≤", val: "\\le" },
-                                { label: "≥", val: "\\ge" },
-                                { label: "≠", val: "\\ne" },
-                                { label: "→", val: "\\to" },
-                                { label: "∈", val: "\\in" },
-                                { label: "ℝ", val: "\\mathbb{R}" },
-                              ].map((btn) => (
-                                <button
-                                  key={btn.label}
-                                  onClick={() => {
-                                    const el = document.getElementById(
-                                      `textarea-${block.id}`
-                                    ) as HTMLTextAreaElement;
-                                    const current =
-                                      answers[block.id] &&
-                                      !answers[block.id].startsWith(
-                                        "data:image"
-                                      )
-                                        ? answers[block.id]
-                                        : "";
-                                    if (el) {
-                                      const start = el.selectionStart;
-                                      const end = el.selectionEnd;
-                                      const newVal =
-                                        current.substring(0, start) +
-                                        btn.val +
-                                        current.substring(end);
-                                      handleBlockAnswerChange(block.id, newVal);
-                                      setTimeout(() => {
-                                        el.focus();
-                                        el.setSelectionRange(
-                                          start + btn.val.length,
-                                          start + btn.val.length
-                                        );
-                                      }, 0);
-                                    } else {
-                                      handleBlockAnswerChange(
-                                        block.id,
-                                        current + btn.val
-                                      );
-                                    }
+                          {(() => {
+                            const currentVal =
+                              answers[block.id] &&
+                              !answers[block.id].startsWith("data:image")
+                                ? answers[block.id]
+                                : "";
+                            return (
+                              <div className="relative">
+                                <MathInput
+                                  ref={(el) => {
+                                    mathfieldRefs.current[block.id] = el;
                                   }}
-                                  className="px-2 py-1 bg-white border border-gray-300 rounded hover:bg-blue-50 text-xs font-mono text-gray-700 shadow-sm"
-                                  title={`Insérer ${btn.val}`}
-                                >
-                                  {btn.label}
-                                </button>
-                              ))}
-                            </div>
-                          )}
-
-                          <div className="relative">
-                            <textarea
-                              id={`textarea-${block.id}`}
-                              disabled={isSubmitted}
-                              value={
-                                answers[block.id] &&
-                                !answers[block.id].startsWith("data:image")
-                                  ? answers[block.id]
-                                  : ""
-                              }
-                              onChange={(e) =>
-                                handleBlockAnswerChange(
-                                  block.id,
-                                  e.target.value
-                                )
-                              }
-                              className={`w-full min-h-[120px] p-3 border rounded-b-lg focus:ring-2 focus:ring-[var(--greek-blue)] outline-none font-mono text-sm ${
-                                isSubmitted
-                                  ? isCorrect
-                                    ? "border-green-500 bg-green-50"
-                                    : "border-red-500 bg-red-50"
-                                  : "border-gray-300 focus:border-[var(--greek-blue)] rounded-t-none"
-                              }`}
-                              placeholder="Votre réponse... (Utilisez le clavier ci-dessus pour les maths)"
-                            />
-                            {exercise.grading_type === "ai" && !isSubmitted && (
-                              <div
-                                className="absolute right-3 bottom-3 text-[var(--greek-blue)]/50"
-                                title="Correction par IA"
-                              >
-                                <Sparkles className="w-5 h-5" />
+                                  value={currentVal}
+                                  disabled={isSubmitted}
+                                  onChange={(latex) =>
+                                    handleBlockAnswerChange(block.id, latex)
+                                  }
+                                  className={`w-full min-h-[60px] border rounded-lg focus-within:ring-2 focus-within:ring-[var(--greek-blue)] text-lg ${
+                                    isSubmitted
+                                      ? isCorrect
+                                        ? "border-green-500 bg-green-50"
+                                        : "border-red-500 bg-red-50"
+                                      : "border-gray-300 focus-within:border-[var(--greek-blue)]"
+                                  }`}
+                                  placeholder="Tapez votre réponse"
+                                />
+                                {exercise.grading_type === "ai" && !isSubmitted && (
+                                  <div
+                                    className="absolute right-3 bottom-3 text-[var(--greek-blue)]/50 pointer-events-none"
+                                    title="Correction par IA"
+                                  >
+                                    <Sparkles className="w-5 h-5" />
+                                  </div>
+                                )}
                               </div>
-                            )}
-                          </div>
+                            );
+                          })()}
                         </>
                       )}
                     </div>
@@ -940,7 +1107,7 @@ export default function ExerciseViewer({
                           <span className="font-bold text-blue-700 block mb-1">
                             Feedback IA :
                           </span>
-                          {aiFeedback[block.id]}
+                          <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(aiFeedback[block.id]) }} />
                         </div>
                       </div>
                     )}
@@ -978,6 +1145,15 @@ export default function ExerciseViewer({
           <ArrowLeft className="w-4 h-4" /> Précédent
         </button>
 
+        {reviewMode ? (
+          <button
+            onClick={handleNextPage}
+            disabled={currentPageIndex >= pages.length - 1}
+            className="btn-primary-greek px-6 py-2 flex items-center gap-2 shadow-md hover:shadow-lg disabled:opacity-50"
+          >
+            Suivant <ArrowRight className="w-4 h-4" />
+          </button>
+        ) : (
         <button
           onClick={
             showReview
@@ -1018,6 +1194,7 @@ export default function ExerciseViewer({
             </>
           )}
         </button>
+        )}
       </div>
     </div>
   );

@@ -110,6 +110,12 @@ export default function ChildQuizPage() {
               <span>Teste tes connaissances et gagne des trophées !</span>
             </p>
           </div>
+          <Link
+            href="/child/quiz/history"
+            className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2.5 rounded-xl font-bold transition-colors flex items-center gap-2"
+          >
+            Mes tentatives
+          </Link>
         </div>
       </div>
     <div className="container mx-auto px-4 pb-12 max-w-6xl">

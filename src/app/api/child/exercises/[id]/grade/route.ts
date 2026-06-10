@@ -1,6 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { gradeAnswer } from "@/lib/llm";
+import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
 
 
 export async function POST(
@@ -93,25 +93,28 @@ export async function POST(
       const expl = targetBlock?.explanation || "";
 
       try {
-        // Describe image content via text prompt
-        let studentAnswerText = answer;
+        let gradingResult;
         if (isImage) {
-          // For images, ask the user to describe what they submitted
-          console.log("⚠️ Image detected - requesting text description from user");
-          studentAnswerText = "[Image submitted - veuillez décrire votre réponse]";
+          gradingResult = await gradeImageAnswer(
+            questionContent,
+            correctAns,
+            answer,
+            expl,
+            level || exercise?.level || "6ème",
+            maxPoints
+          );
         } else {
-          studentAnswerText = typeof answer === "string" ? answer : JSON.stringify(answer);
+          const studentAnswerText = typeof answer === "string" ? answer : JSON.stringify(answer);
+          gradingResult = await gradeAnswer(
+            questionContent,
+            correctAns,
+            studentAnswerText,
+            expl,
+            level || exercise?.level || "6ème",
+            maxPoints
+          );
         }
 
-        const gradingResult = await gradeAnswer(
-          questionContent,
-          correctAns,
-          studentAnswerText,
-          expl,
-          level || exercise?.level || "6ème",
-          maxPoints
-        );
-        
         isCorrect = gradingResult.is_correct;
         score = gradingResult.score;
         feedback = gradingResult.feedback;

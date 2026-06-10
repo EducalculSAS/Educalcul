@@ -187,10 +187,10 @@ function TestimonialsSection({ reviews }: { reviews: TpReview[] }) {
 }
 
 const STEPS = [
-  { num: "01", title: "Créez votre espace",    desc: "Parent, lycéen autonome ou élève suivi — 2 minutes, sans carte bancaire requise." },
-  { num: "02", title: "Choisissez votre plan",  desc: "7 jours d'essai gratuit sur tous les plans. Accès immédiat à tous les contenus." },
-  { num: "03", title: "L'enfant apprend",        desc: "Cours structurés, exercices progressifs et EpsiAI qui guide sans donner la réponse." },
-  { num: "04", title: "Vous pilotez",            desc: "Tableau de bord parent : progrès par chapitre, streaks et alertes hebdomadaires." },
+  { num: "01", title: "Créez votre espace",    desc: "Créez un compte Educalcul en 2 minutes chrono." },
+  { num: "02", title: "Choisissez votre plan",  desc: "Bénéficiez de 7 jours d’essai offerts. Accès immédiat à tous les contenus." },
+  { num: "03", title: "Votre enfant apprend",        desc: "Cours structurés, exercices adaptés et quiz pour vérifier les connaissances." },
+  { num: "04", title: "Suivez ses progrès",            desc: "Tableau de bord détaillé pour mesurer sa progression" },
 ];
 
 function StepsSection() {
@@ -449,12 +449,15 @@ export default function Home() {
             style={{ color: "#f0ede8", fontSize: "clamp(2.6rem, 5.5vw, 4.2rem)" }}
           >
             Les maths<br />
-            <span style={{ color: "var(--greek-gold)" }}>enfin maîtrisés</span>
+            <span style={{ color: "var(--greek-gold)" }}>enfin à portée de main</span>
           </h1>
 
           <p className="text-base leading-relaxed mb-10 max-w-lg" style={{ color: "rgba(240,237,232,0.48)" }}>
-            La seule plateforme qui accompagne chaque élève, du CP à la Terminale,
-            avec une méthode rigoureuse, une IA pédagogique et un suivi parental précis.
+            Educalcul, la seule plateforme qui accompagne tous les élèves en mathématiques, du CP à la Terminale.
+            <br />
+            Pour votre enfant : du contenu de qualité accompagné d’une IA socratique, dans un environnement ludique.
+            <br />
+            Pour vous : un suivi parental précis pour observer ses progrès en toute sérénité.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
@@ -476,7 +479,7 @@ export default function Home() {
 
 
           <p className="text-sm italic mt-6" style={{ color: "rgba(197,161,72,0.45)", fontFamily: "Georgia, serif" }}>
-            Parce que progresser, ça aussi, ça se calcule.
+            Educalcul, par amour des mathématiques.
           </p>
         </div>
       </section>
@@ -600,7 +603,7 @@ export default function Home() {
                 Chaque progrès,<br />visible en temps réel
               </h3>
               <p className="text-sm leading-relaxed max-w-sm" style={{ color: "rgba(240,237,232,0.5)" }}>
-                Tableau de bord parents avec progression par chapitre, taux de réussite et alertes personnalisées.
+                Tableau de bord parents avec progression par chapitre, taux de réussite et notifications personnalisées.
               </p>
             </div>
 
@@ -829,11 +832,11 @@ export default function Home() {
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-6" style={{ color: "#f0ede8", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
             Votre enfant mérite<br />
-            <span style={{ color: "var(--greek-gold)" }}>le meilleur départ</span>
+            <span style={{ color: "var(--greek-gold)" }}>le meilleur.</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm" style={{ color: "rgba(240,237,232,0.42)" }}>
-            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> 7 jours gratuits</span>
-            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Sans carte bancaire</span>
+            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Méthodologie adaptée</span>
+            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> 7 jours offerts</span>
             <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Annulable à tout moment</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

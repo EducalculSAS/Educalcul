@@ -7,7 +7,12 @@ const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-chat";
 const OR_FALLBACK_MODEL = process.env.OPENROUTER_FALLBACK_MODEL || "deepseek/deepseek-chat-v3-0324";
 const OR_KEY      = process.env.OPENROUTER_API_KEY || "";
 
-type Message = { role: "user" | "assistant" | "system"; content: string };
+type Message = { role: "user" | "assistant" | "system"; content: string | MessageContentPart[] };
+type MessageContentPart =
+  | { type: "text"; text: string }
+  | { type: "image_url"; image_url: { url: string } };
+
+const OR_VISION_MODEL = process.env.OPENROUTER_VISION_MODEL || "qwen/qwen2.5-vl-72b-instruct";
 
 // ── Providers ─────────────────────────────────────────────────────────────────
 
@@ -138,6 +143,47 @@ RÈGLES pour le feedback :
   const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
   const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.3, undefined, false);
   const r = parseJSON(extractJSON(text)) as any;
+  return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
+}
+
+/** Corriger une réponse élève soumise sous forme de dessin (image base64) via un modèle vision */
+export async function gradeImageAnswer(
+  question: string, correctAnswer: string, imageDataUrl: string,
+  explanation: string | undefined, level: string, maxPoints: number
+): Promise<{ is_correct: boolean; score: number; feedback: string }> {
+  const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}".
+Tu reçois une photo/dessin de la réponse manuscrite d'un élève.
+RÈGLES pour le feedback :
+1. Adapte ton vocabulaire au niveau de l'élève.
+2. Lis attentivement ce que l'élève a écrit ou dessiné sur l'image.
+3. Si correct : félicite brièvement et confirme la bonne réponse.
+4. Si incorrect : donne OBLIGATOIREMENT la réponse correcte avec les calculs détaillés étape par étape.
+5. Montre TOUJOURS la méthode ET le résultat final, pas seulement l'un des deux.
+6. Sois encourageant même en cas d'erreur.
+7. Réponds UNIQUEMENT en JSON sur une seule ligne.
+8. score = 0 si incorrect, ${maxPoints} si correct.`;
+
+  const userText = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication : ${explanation || "Aucune"}\nVoici la réponse de l'élève sous forme d'image (dessin/écriture manuscrite). Analyse-la.\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
+
+  const msgs: Message[] = [
+    { role: "system", content: system },
+    {
+      role: "user",
+      content: [
+        { type: "text", text: userText },
+        { type: "image_url", image_url: { url: imageDataUrl } },
+      ],
+    },
+  ];
+
+  const { ok, text, status } = await callOpenRouterModel(OR_VISION_MODEL, msgs, 0.3);
+  if (!ok) {
+    console.error(`[llm] vision model ${OR_VISION_MODEL} error ${status}: ${text.slice(0, 400)}`);
+    throw new Error("Le modèle de vision IA est indisponible. Réessaie dans quelques secondes.");
+  }
+  const parsed = JSON.parse(text);
+  const content = parsed?.choices?.[0]?.message?.content ?? "";
+  const r = parseJSON(extractJSON(content)) as any;
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
 

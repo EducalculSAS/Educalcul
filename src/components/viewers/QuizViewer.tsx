@@ -31,25 +31,34 @@ interface QuizViewerProps {
   };
   onComplete?: (score: number, totalPoints: number, timeSpent: number) => void;
   onBack?: () => void;
+  reviewMode?: boolean;
+  initialProgress?: {
+    answers?: Record<number, any>;
+    questionResults?: Record<number, boolean>;
+    questionFeedbacks?: Record<number, string>;
+    score?: number;
+  } | null;
 }
 
-export default function QuizViewer({ quiz, onComplete, onBack }: QuizViewerProps) {
+export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initialProgress }: QuizViewerProps) {
   const questions = quiz.content_json || [];
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, any>>({});
-  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState<Record<number, any>>(
+    () => (reviewMode ? initialProgress?.answers : undefined) || {}
+  );
+  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(!!reviewMode);
+  const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : 0) || 0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [showReview, setShowReview] = useState(false);
+  const [showReview, setShowReview] = useState(!!reviewMode);
   const [showExplanation, setShowExplanation] = useState(false);
   const [isGrading, setIsGrading] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [questionResults, setQuestionResults] = useState<
     Record<number, boolean>
-  >({});
+  >(() => (reviewMode ? initialProgress?.questionResults : undefined) || {});
   const [questionFeedbacks, setQuestionFeedbacks] = useState<
     Record<number, string>
-  >({});
+  >(() => (reviewMode ? initialProgress?.questionFeedbacks : undefined) || {});
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Timer
@@ -59,7 +68,7 @@ export default function QuizViewer({ quiz, onComplete, onBack }: QuizViewerProps
   const startTimeRef = useRef<number>(Date.now());
 
   useEffect(() => {
-    if (quizCompleted) {
+    if (reviewMode || quizCompleted) {
       if (timerRef.current) clearInterval(timerRef.current);
       return;
     }
@@ -121,8 +130,71 @@ export default function QuizViewer({ quiz, onComplete, onBack }: QuizViewerProps
 
   // Track initial start
   useEffect(() => {
+    if (reviewMode) return;
     saveProgress('in_progress', 0);
   }, []);
+
+  // Sauvegarde la progression détaillée (réponses, résultats, feedback) en base
+  const saveDetailedProgress = async (status: 'in_progress' | 'completed', extra?: { results?: Record<number, boolean>; feedbacks?: Record<number, string>; finalScore?: number }) => {
+    const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
+    if (isPreview || reviewMode) return;
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) return;
+    try {
+      await fetch(`/api/child/quizzes/${(quiz as any).id}/progress`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: session.user.id,
+          progress: {
+            answers,
+            questionResults: extra?.results ?? questionResults,
+            questionFeedbacks: extra?.feedbacks ?? questionFeedbacks,
+            score: extra?.finalScore ?? score,
+            status,
+          },
+        }),
+      });
+    } catch (e) {
+      console.error("Failed to save quiz progress", e);
+    }
+  };
+
+  // Charge la progression en cours depuis la base (reprise après déconnexion)
+  useEffect(() => {
+    if (reviewMode) return;
+    const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
+    if (isPreview) return;
+    (async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user) return;
+      try {
+        const res = await fetch(`/api/child/quizzes/${(quiz as any).id}/progress?userId=${session.user.id}`);
+        const data = await res.json();
+        if (data?.status === "in_progress" && data?.progress?.answers) {
+          setAnswers(data.progress.answers);
+        }
+      } catch (e) {
+        console.error("Failed to load quiz progress", e);
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Sauvegarde la progression à chaque réponse (debounced)
+  const saveQuizProgressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (reviewMode) return;
+    if (Object.keys(answers).length === 0) return;
+    if (saveQuizProgressTimeoutRef.current) clearTimeout(saveQuizProgressTimeoutRef.current);
+    saveQuizProgressTimeoutRef.current = setTimeout(() => {
+      saveDetailedProgress('in_progress');
+    }, 1000);
+    return () => {
+      if (saveQuizProgressTimeoutRef.current) clearTimeout(saveQuizProgressTimeoutRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [answers]);
 
 
 
@@ -221,6 +293,7 @@ export default function QuizViewer({ quiz, onComplete, onBack }: QuizViewerProps
     const thr = (quiz as any).min_score_percent || 0;
     const didPass = thr > 0 ? pct >= thr : true;
     saveProgress('completed', totalScore, pct, didPass);
+    saveDetailedProgress('completed', { results: newResults, feedbacks: newFeedbacks, finalScore: totalScore });
 
     if (onComplete) {
       const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);
@@ -559,6 +632,8 @@ export default function QuizViewer({ quiz, onComplete, onBack }: QuizViewerProps
                 showReview
                   ? currentQuestionIndex < questions.length - 1
                     ? handleNextQuestion
+                    : reviewMode
+                    ? onBack || (() => {})
                     : () => {
                         setShowReview(false);
                         setQuizCompleted(true);
@@ -588,7 +663,7 @@ export default function QuizViewer({ quiz, onComplete, onBack }: QuizViewerProps
                   </>
                 ) : (
                   <>
-                    Terminer la révision
+                    {reviewMode ? "Fermer" : "Terminer la révision"}
                     <CheckCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   </>
                 )
