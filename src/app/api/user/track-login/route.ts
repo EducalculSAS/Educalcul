@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createClient } from "@supabase/supabase-js";
+import { getIpGeo } from "@/lib/ipGeo";
+
+export const dynamic = "force-dynamic";
 
 async function getUser(request: Request) {
   const auth = request.headers.get("authorization");
@@ -18,7 +21,8 @@ export async function POST(request: Request) {
     const authUser = await getUser(request);
     if (!authUser) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
 
-    const { city, country, ip, device_type, user_agent, latitude, longitude } = await request.json().catch(() => ({}));
+    const { device_type, user_agent } = await request.json().catch(() => ({}));
+    const geo = await getIpGeo(request);
 
     // Fetch DB user
     const { data: dbUser } = await supabaseAdmin
@@ -35,32 +39,37 @@ export async function POST(request: Request) {
 
     const updates: Record<string, any> = { last_active_at: new Date().toISOString() };
 
+    if (geo.ip)      updates.last_login_ip      = geo.ip;
+    if (geo.city)    updates.last_login_city    = geo.city;
+    if (geo.country) updates.last_login_country = geo.country;
+    if (geo.available) {
+      updates.latitude  = geo.latitude;
+      updates.longitude = geo.longitude;
+    }
+    if (device_type) updates.device_type = device_type;
+    if (user_agent)  updates.user_agent  = user_agent;
+
     if (isNewDay) {
       updates.last_login_date = today;
       updates.login_count = (dbUser.login_count || 0) + 1;
       updates.login_streak = dbUser.last_login_date === yesterday ? (dbUser.login_streak || 0) + 1 : 1;
-      if (city)    updates.last_login_city    = city;
-      if (country) updates.last_login_country = country;
-      if (ip)      updates.last_login_ip      = ip;
-      if (device_type) updates.device_type    = device_type;
-      if (user_agent)  updates.user_agent     = user_agent;
     }
 
     // Update users table
     await supabaseAdmin.from("users").update(updates).eq("auth_id", authUser.id);
 
-    // Always insert a login history row (one per session/day)
+    // One login history row per session/day
     if (isNewDay) {
       await supabaseAdmin.from("user_login_history").insert({
         user_id:     dbUser.id,
         logged_at:   new Date().toISOString(),
-        city:        city        || null,
-        country:     country     || null,
-        ip:          ip          || null,
+        ip:          geo.ip || null,
+        city:        geo.city || null,
+        country:     geo.country || null,
+        latitude:    geo.available ? geo.latitude : null,
+        longitude:   geo.available ? geo.longitude : null,
         device_type: device_type || null,
-        user_agent:  user_agent  || null,
-        latitude:    latitude    || null,
-        longitude:   longitude   || null,
+        user_agent:  user_agent || null,
       });
     }
 

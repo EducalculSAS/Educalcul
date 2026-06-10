@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ToastProvider } from "@/components/Toast";
+import { ConfirmProvider } from "@/components/ConfirmDialog";
 import CookieBanner from "@/components/CookieBanner";
 import JsonLd from "@/components/JsonLd";
 
@@ -172,8 +173,10 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
         <JsonLd data={educationalOrgSchema} />
         <ToastProvider>
-          {children}
-          <CookieBanner />
+          <ConfirmProvider>
+            {children}
+            <CookieBanner />
+          </ConfirmProvider>
         </ToastProvider>
       </body>
     </html>

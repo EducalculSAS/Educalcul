@@ -11,6 +11,10 @@ import {
   Shapes,
   Pi,
   Puzzle,
+  LineChart,
+  Hash,
+  Table2,
+  Superscript,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,6 +31,10 @@ export const FOLDER_ICONS: { name: string; Icon: LucideIcon }[] = [
   { name: "shapes", Icon: Shapes },
   { name: "pi", Icon: Pi },
   { name: "puzzle", Icon: Puzzle },
+  { name: "chart", Icon: LineChart },
+  { name: "numbers", Icon: Hash },
+  { name: "table", Icon: Table2 },
+  { name: "exponent", Icon: Superscript },
 ];
 
 export const getFolderIcon = (iconName?: string | null): LucideIcon => {

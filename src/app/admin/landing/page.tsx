@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { Mail, Users, Trash2, Download, RefreshCw, Search, Calendar } from "lucide-react";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface WaitlistEntry {
   id: number;
@@ -11,6 +12,7 @@ interface WaitlistEntry {
 }
 
 export default function AdminLandingPage() {
+  const confirm = useConfirm();
   const [entries, setEntries] = useState<WaitlistEntry[]>([]);
   const [filtered, setFiltered] = useState<WaitlistEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -44,7 +46,7 @@ export default function AdminLandingPage() {
   };
 
   const deleteEntry = async (id: number) => {
-    if (!confirm("Supprimer cet email de la waitlist ?")) return;
+    if (!(await confirm("Supprimer cet email de la waitlist ?"))) return;
     setDeleting(id);
     const { error } = await supabaseAdmin.from("waitlist").delete().eq("id", id);
     if (error) showToast("error", "Erreur lors de la suppression");

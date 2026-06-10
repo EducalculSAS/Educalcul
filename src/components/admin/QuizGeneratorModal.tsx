@@ -4,13 +4,12 @@ import { useEffect, useState } from "react";
 import {
   Sparkles,
   X,
-  Brain,
-  Loader2,
   Link as LinkIcon,
   BrainCircuit,
 } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
+import type { AIGenerateProgress } from "./ExerciseGeneratorModal";
 
 export interface QuizGenParams {
   linkedCourseId: string | null;
@@ -25,11 +24,13 @@ export interface QuizGenParams {
 interface QuizGeneratorModalProps {
   onGenerate: (params: QuizGenParams) => void;
   onClose: () => void;
+  progress?: AIGenerateProgress | null;
 }
 
 export default function QuizGeneratorModal({
   onGenerate,
   onClose,
+  progress,
 }: QuizGeneratorModalProps) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [courses, setCourses] = useState<{ id: string; title: string }[]>([]);
@@ -109,19 +110,54 @@ export default function QuizGeneratorModal({
 
         <div className="flex-1 overflow-y-auto">
           {isGenerating ? (
-            <div className="p-16 flex flex-col items-center justify-center text-center">
-              <div className="relative w-24 h-24 mb-6">
-                <div className="absolute inset-0 rounded-full bg-[var(--greek-gold)]/20 animate-ping" />
-                <div className="relative w-24 h-24 rounded-full bg-[var(--greek-blue)] flex items-center justify-center shadow-xl">
-                  <Brain className="w-12 h-12 text-[var(--greek-gold)] animate-pulse" />
-                </div>
+            <div className="p-12 flex flex-col items-center justify-center min-h-[400px] bg-gray-50">
+              <div className="relative mb-6">
+                <div className="absolute inset-0 bg-[var(--greek-blue)] opacity-20 blur-xl rounded-full animate-pulse" />
+                <BrainCircuit size={64} className="text-[var(--greek-blue)] relative z-10 animate-bounce" />
               </div>
-              <h3 className="text-xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-2">
-                Athéna réfléchit...
-              </h3>
-              <p className="text-sm text-[var(--greek-bronze)]">
-                Création de ton quiz en cours.
+              <h4 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-display)]">
+                Création en cours...
+              </h4>
+              <p className="text-gray-500 text-center max-w-md mb-6">
+                {progress?.message || "Notre IA pédagogique compose ton quiz avec soin."}
               </p>
+
+              {progress && progress.total > 0 && (
+                <div className="w-full max-w-md">
+                  <div className="flex justify-between text-xs font-bold text-[var(--greek-blue)] mb-1.5">
+                    <span>Progression</span>
+                    <span>{Math.round((progress.current / progress.total) * 100)}%</span>
+                  </div>
+                  <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all duration-500 ease-out"
+                      style={{
+                        width: `${Math.max(4, Math.round((progress.current / progress.total) * 100))}%`,
+                        background: "linear-gradient(to right, var(--greek-blue), var(--greek-gold))",
+                      }}
+                    />
+                  </div>
+
+                  {progress.chapters.length > 0 && (
+                    <ul className="mt-5 space-y-1.5 text-left">
+                      {progress.chapters.map((title, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                          <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs flex-shrink-0">
+                            ✓
+                          </span>
+                          <span className="truncate">{title}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+
+              <div className="mt-8 flex gap-2">
+                <span className="w-3 h-3 rounded-full bg-[var(--greek-gold)] animate-ping" style={{ animationDelay: "0ms" }} />
+                <span className="w-3 h-3 rounded-full bg-[var(--greek-gold)] animate-ping" style={{ animationDelay: "150ms" }} />
+                <span className="w-3 h-3 rounded-full bg-[var(--greek-gold)] animate-ping" style={{ animationDelay: "300ms" }} />
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="p-8 space-y-5">

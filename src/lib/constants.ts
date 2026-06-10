@@ -16,20 +16,10 @@ export const SCHOOL_LEVELS = [
   { value: "2nde", label: "Seconde (Générale & Techno)" },
   { value: "1ere-generale", label: "Première Générale (sans spé maths)" },
   { value: "1ere-generale-maths", label: "Première Générale (spé maths)" },
-  { value: "1ere-sti2d", label: "Première STI2D" },
-  { value: "1ere-stmg", label: "Première STMG" },
-  { value: "1ere-st2s", label: "Première ST2S" },
-  { value: "1ere-stl", label: "Première STL" },
-  { value: "1ere-std2a", label: "Première STD2A" },
-  { value: "1ere-sthr", label: "Première STHR" },
   { value: "terminale-generale", label: "Terminale Générale (sans maths)" },
   { value: "terminale-generale-maths", label: "Terminale Générale (spé maths)" },
   { value: "terminale-generale-expertes", label: "Terminale Générale (maths expertes)" },
   { value: "terminale-generale-complementaires", label: "Terminale Générale (maths complémentaires)" },
-  { value: "terminale-sti2d", label: "Terminale STI2D" },
-  { value: "terminale-stmg", label: "Terminale STMG" },
-  { value: "terminale-st2s", label: "Terminale ST2S" },
-  { value: "terminale-stl", label: "Terminale STL" },
 ];
 
 /** Grouped levels for student creation form (lycée needs voie selection) */
@@ -47,9 +37,7 @@ export const SCHOOL_LEVEL_GROUPS = [
     levels: [
       "2nde",
       "1ere-generale", "1ere-generale-maths",
-      "1ere-sti2d", "1ere-stmg", "1ere-st2s", "1ere-stl", "1ere-std2a", "1ere-sthr",
       "terminale-generale", "terminale-generale-maths", "terminale-generale-expertes", "terminale-generale-complementaires",
-      "terminale-sti2d", "terminale-stmg", "terminale-st2s", "terminale-stl",
     ],
   },
 ];

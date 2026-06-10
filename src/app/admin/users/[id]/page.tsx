@@ -8,6 +8,7 @@ import {
   KeyRound, Trash2, CheckCircle, AlertTriangle, Send, X, Loader2,
   Clock, Edit, Bell, CreditCard, Save, User as UserIcon, Download, FileText, Table,
 } from "lucide-react";
+import { useConfirm } from "@/components/ConfirmDialog";
 import { avatarUrl } from "@/lib/avatarUrl";
 import PageLoader from "@/components/PageLoader";
 
@@ -45,23 +46,31 @@ function exportCSV(data: any) {
     ["=== CONNEXION & APPAREIL ==="],
     ["Nombre de connexions", user.login_count ?? 0],
     ["Série de connexions", user.login_streak ?? 0],
-    ["Dernière IP", user.last_login_ip ?? ""],
-    ["Dernière ville", user.last_login_city ?? ""],
-    ["Dernier pays", user.last_login_country ?? ""],
+    ["Dernière IP (connexion)", user.last_login_ip ?? ""],
+    ["Dernière ville (connexion)", user.last_login_city ?? ""],
+    ["Dernier pays (connexion)", user.last_login_country ?? ""],
+    ["Dernière IP (déconnexion)", user.last_logout_ip ?? ""],
+    ["Dernière ville (déconnexion)", user.last_logout_city ?? ""],
+    ["Dernier pays (déconnexion)", user.last_logout_country ?? ""],
+    ["Date dernière déconnexion", d(user.last_logout_at)],
     ["Type d'appareil", user.device_type ?? ""],
     ["User Agent", user.user_agent ?? ""],
-    ["Localisation GPS", user.location_precise ? `${user.latitude}, ${user.longitude}` : "Non autorisée"],
+    ["Localisation (IP)", user.latitude && user.longitude ? `${user.latitude}, ${user.longitude}` : ""],
     [],
     ["=== HISTORIQUE COMPLET DES CONNEXIONS ==="],
     ...(history.length > 0
       ? [
-          ["N°", "Date & heure", "IP", "Ville", "Pays", "Type d'appareil", "User Agent", "Latitude", "Longitude"],
+          ["N°", "Connexion", "IP", "Ville", "Pays", "Déconnexion", "IP sortie", "Ville sortie", "Pays sortie", "Type d'appareil", "User Agent", "Latitude", "Longitude"],
           ...history.map((h: any, i: number) => [
             i + 1,
             d(h.logged_at),
             h.ip ?? "",
             h.city ?? "",
             h.country ?? "",
+            d(h.logged_out_at),
+            h.logout_ip ?? "",
+            h.logout_city ?? "",
+            h.logout_country ?? "",
             h.device_type ?? "",
             h.user_agent ?? "",
             h.latitude?.toFixed(5) ?? "",
@@ -219,11 +228,15 @@ function exportPDF(data: any) {
   ${section("Connexion & Appareil", [
     ["Nombre de connexions", String(user.login_count ?? 0)],
     ["Série de connexions (jours)", String(user.login_streak ?? 0)],
-    ["Dernière IP connue", user.last_login_ip ?? ""],
-    ["Dernière ville connue", user.last_login_city ?? ""],
-    ["Dernier pays connu", user.last_login_country ?? ""],
+    ["Dernière IP connue (connexion)", user.last_login_ip ?? ""],
+    ["Dernière ville connue (connexion)", user.last_login_city ?? ""],
+    ["Dernier pays connu (connexion)", user.last_login_country ?? ""],
+    ["Dernière IP connue (déconnexion)", user.last_logout_ip ?? ""],
+    ["Dernière ville connue (déconnexion)", user.last_logout_city ?? ""],
+    ["Dernier pays connu (déconnexion)", user.last_logout_country ?? ""],
+    ["Date dernière déconnexion", d(user.last_logout_at)],
     ["Type d'appareil", user.device_type ?? ""],
-    ["Localisation GPS", user.location_precise ? `${user.latitude?.toFixed(5)}, ${user.longitude?.toFixed(5)}` : "Non autorisée"],
+    ["Localisation (IP)", user.latitude && user.longitude ? `${user.latitude?.toFixed(5)}, ${user.longitude?.toFixed(5)}` : ""],
   ])}
 
   ${history.length > 0 ? `
@@ -238,7 +251,8 @@ function exportPDF(data: any) {
           <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Ville</th>
           <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Pays</th>
           <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Appareil</th>
-          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">GPS</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Localisation</th>
+          <th style="padding:5px 8px;text-align:left;font-family:Cinzel,serif;font-size:8px;letter-spacing:.06em">Déconnexion</th>
         </tr>
       </thead>
       <tbody>
@@ -251,6 +265,7 @@ function exportPDF(data: any) {
           <td style="padding:5px 8px">${h.country || "—"}</td>
           <td style="padding:5px 8px">${h.device_type || "—"}</td>
           <td style="padding:5px 8px;font-size:9px">${h.latitude ? `${h.latitude.toFixed(3)}, ${h.longitude?.toFixed(3)}` : "—"}</td>
+          <td style="padding:5px 8px;font-size:9px">${h.logged_out_at ? `${d(h.logged_out_at)}${h.logout_city ? ` (${h.logout_city})` : ""}` : "—"}</td>
         </tr>`).join("")}
       </tbody>
     </table>
@@ -316,6 +331,7 @@ function exportPDF(data: any) {
 // ───────────────────────────────────────────────────────────────────────────
 
 export default function UserDetailPage() {
+  const confirm = useConfirm();
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
   const [data, setData] = useState<any>(null);
@@ -333,6 +349,7 @@ export default function UserDetailPage() {
   // Ban modal
   const [showBanModal, setShowBanModal] = useState(false);
   const [banReason, setBanReason] = useState("");
+  const [banDays, setBanDays] = useState<number | null>(null);
 
   useEffect(() => { fetchUser(); }, [id]);
 
@@ -398,9 +415,10 @@ export default function UserDetailPage() {
   };
 
   const handleBan = async () => {
-    await doAction("ban", { reason: banReason });
+    await doAction("ban", { reason: banReason, banDays });
     setShowBanModal(false);
     setBanReason("");
+    setBanDays(null);
   };
 
   const handleSendMessage = async () => {
@@ -410,7 +428,7 @@ export default function UserDetailPage() {
   };
 
   const handleDelete = async () => {
-    if (!confirm("Supprimer définitivement ce compte ? Cette action est irréversible.")) return;
+    if (!(await confirm("Supprimer définitivement ce compte ? Cette action est irréversible."))) return;
     setActionLoading(true);
     const res = await fetch(`/api/admin/users?auth_id=${data.user.auth_id}`, { method: "DELETE" });
     if (res.ok) router.push("/admin/users");
@@ -561,8 +579,11 @@ export default function UserDetailPage() {
                 <Row label="Inscrit le" value={new Date(user.created_at).toLocaleDateString("fr-FR")} />
                 {user.last_active_at && <Row label="Dernière activité" value={new Date(user.last_active_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })} />}
                 {user.grade_level && <Row label="Niveau" value={user.grade_level} />}
-                {user.last_login_ip && <Row label="IP" value={user.last_login_ip} mono />}
-                {user.last_login_country && <Row label="Pays" value={`${user.last_login_city || ""} ${user.last_login_country}`} />}
+                {user.last_login_ip && <Row label="IP (connexion)" value={user.last_login_ip} mono />}
+                {user.last_login_country && <Row label="Pays (connexion)" value={`${user.last_login_city || ""} ${user.last_login_country}`} />}
+                {user.last_logout_ip && <Row label="IP (déconnexion)" value={user.last_logout_ip} mono />}
+                {user.last_logout_country && <Row label="Pays (déconnexion)" value={`${user.last_logout_city || ""} ${user.last_logout_country}`} />}
+                {user.last_logout_at && <Row label="Dernière déconnexion" value={new Date(user.last_logout_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })} />}
               </div>
             )}
           </div>
@@ -771,11 +792,21 @@ export default function UserDetailPage() {
             <div className="p-8 space-y-4">
               <p className="text-sm text-gray-600">Le compte sera suspendu et l'utilisateur recevra une notification.</p>
               <div>
+                <label className={labelCls}>Durée du bannissement</label>
+                <select value={banDays || ""} onChange={e => setBanDays(e.target.value ? parseInt(e.target.value) : null)} className={inputCls}>
+                  <option value="">Permanente</option>
+                  <option value="1">1 jour</option>
+                  <option value="7">7 jours</option>
+                  <option value="30">30 jours</option>
+                  <option value="90">90 jours</option>
+                </select>
+              </div>
+              <div>
                 <label className={labelCls}>Raison (optionnel)</label>
                 <textarea value={banReason} onChange={e => setBanReason(e.target.value)} className={inputCls + " h-24 resize-none"} placeholder="Expliquez la raison..." />
               </div>
               <div className="flex justify-end gap-3 pt-2">
-                <button onClick={() => setShowBanModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
+                <button onClick={() => { setShowBanModal(false); setBanReason(""); setBanDays(null); }} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
                 <button onClick={handleBan} disabled={actionLoading} className="flex items-center gap-2 px-7 py-2.5 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition-colors disabled:opacity-50">
                   {actionLoading ? <Loader2 size={15} className="animate-spin" /> : <Ban size={15} />} Bannir
                 </button>

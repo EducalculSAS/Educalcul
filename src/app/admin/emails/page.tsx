@@ -7,6 +7,7 @@ import {
   CheckCircle, AlertCircle, Lock, Clock, Users, Calendar, X,
 } from "lucide-react";
 import { buildEmailHtml } from "@/lib/emailTemplates";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface EmailTemplate {
   id: number;
@@ -47,6 +48,7 @@ const SCHEDULE_OPTIONS = [
 ];
 
 export default function AdminEmailsPage() {
+  const confirm = useConfirm();
   const [templates, setTemplates] = useState<EmailTemplate[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -157,7 +159,7 @@ export default function AdminEmailsPage() {
   };
 
   const handleDelete = async (tmpl: EmailTemplate) => {
-    if (!confirm(`Supprimer "${tmpl.name}" ?`)) return;
+    if (!(await confirm(`Supprimer "${tmpl.name}" ?`))) return;
     const res = await fetch("/api/admin/email-templates", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },

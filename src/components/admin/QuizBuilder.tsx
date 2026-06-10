@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useConfirm } from "@/components/ConfirmDialog";
 import {
   Plus,
   Trash2,
@@ -38,6 +39,7 @@ export default function QuizBuilder({
   onChange,
   onMetadataChange,
 }: QuizBuilderProps) {
+  const confirm = useConfirm();
   const [questions, setQuestions] = useState<Question[]>(
     initialQuestions || []
   );
@@ -183,8 +185,8 @@ export default function QuizBuilder({
     );
   };
 
-  const removeQuestion = (id: string) => {
-    if (confirm("Supprimer cette question ?")) {
+  const removeQuestion = async (id: string) => {
+    if (await confirm("Supprimer cette question ?")) {
       setQuestions(questions.filter((q) => q.id !== id));
     }
   };

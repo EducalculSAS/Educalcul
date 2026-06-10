@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import PageLoader from "@/components/PageLoader";
 import type { LegalPageData, LegalSection } from "@/components/LegalPageRenderer";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 const PAGES = [
   { slug: "mentions-legales", label: "Mentions Légales",         icon: Scale,    href: "/mentions-legales",           color: "blue"   },
@@ -24,6 +25,7 @@ const inputCls = "w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded
 const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
 
 export default function AdminJuridique() {
+  const confirm = useConfirm();
   const [activeSlug, setActiveSlug] = useState("mentions-legales");
   const [pages, setPages] = useState<Record<string, LegalPageData>>({});
   const [loading, setLoading] = useState(true);
@@ -68,8 +70,8 @@ export default function AdminJuridique() {
     setOpenSection(`section-${Date.now() - 1}`);
   };
 
-  const deleteSection = (idx: number) => {
-    if (!confirm("Supprimer cette section ?")) return;
+  const deleteSection = async (idx: number) => {
+    if (!(await confirm("Supprimer cette section ?"))) return;
     const sections = [...(page?.sections ?? [])];
     sections.splice(idx, 1);
     updatePage("sections", sections);

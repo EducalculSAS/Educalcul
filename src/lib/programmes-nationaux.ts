@@ -244,79 +244,6 @@ export const PROGRAMMES_NATIONAUX: ProgrammeEntry[] = [
       },
     ],
   },
-  {
-    level: "1ere-sti2d",
-    label: "Première STI2D",
-    themes: [
-      {
-        titre: "Analyse",
-        notions: ["Fonctions : limites, continuité", "Dérivation : règles, applications technologiques", "Suites numériques"],
-      },
-      {
-        titre: "Algèbre",
-        notions: ["Équations et systèmes d'équations", "Matrices (introduction)", "Calcul vectoriel"],
-      },
-      {
-        titre: "Statistiques et probabilités",
-        notions: ["Loi binomiale", "Loi normale (approche)", "Fluctuation, estimation"],
-      },
-      {
-        titre: "Géométrie et trigonométrie",
-        notions: ["Trigonométrie (sin, cos, tan, formules)", "Nombres complexes (introduction)"],
-      },
-    ],
-  },
-  {
-    level: "1ere-stmg",
-    label: "Première STMG",
-    themes: [
-      {
-        titre: "Mathématiques appliquées à la gestion",
-        notions: ["Suites arithmétiques et géométriques (annuités)", "Fonctions : affines, polynômes du 2nd degré", "Dérivation et optimisation", "Statistiques : séries doubles, corrélation, régression", "Probabilités : loi de Bernoulli, loi binomiale"],
-      },
-    ],
-  },
-  {
-    level: "1ere-st2s",
-    label: "Première ST2S",
-    themes: [
-      {
-        titre: "Mathématiques appliquées au secteur social et sanitaire",
-        notions: ["Statistiques descriptives et inférentielles", "Probabilités", "Fonctions affines et exponentielles (croissance)", "Lecture et interprétation de données"],
-      },
-    ],
-  },
-  {
-    level: "1ere-stl",
-    label: "Première STL",
-    themes: [
-      {
-        titre: "Analyse et calcul",
-        notions: ["Dérivation", "Fonctions exponentielles et logarithmiques", "Suites", "Trigonométrie", "Nombres complexes (introduction)"],
-      },
-    ],
-  },
-  {
-    level: "1ere-std2a",
-    label: "Première STD2A",
-    themes: [
-      {
-        titre: "Mathématiques appliquées au design",
-        notions: ["Géométrie plane et dans l'espace", "Trigonométrie", "Fonctions", "Statistiques"],
-      },
-    ],
-  },
-  {
-    level: "1ere-sthr",
-    label: "Première STHR",
-    themes: [
-      {
-        titre: "Mathématiques appliquées à l'hôtellerie-restauration",
-        notions: ["Proportionnalité, pourcentages", "Suites (annuités)", "Statistiques descriptives", "Probabilités simples"],
-      },
-    ],
-  },
-
   // ────────── TERMINALE ──────────
   {
     level: "terminale-generale-maths",
@@ -418,54 +345,6 @@ export const PROGRAMMES_NATIONAUX: ProgrammeEntry[] = [
       {
         titre: "Culture mathématique générale",
         notions: ["Lecture de données statistiques", "Raisonnement logique", "Algorithmique basique"],
-      },
-    ],
-  },
-  {
-    level: "terminale-sti2d",
-    label: "Terminale STI2D",
-    themes: [
-      {
-        titre: "Analyse",
-        notions: ["Fonctions logarithmiques et exponentielles", "Intégration", "Équations différentielles"],
-      },
-      {
-        titre: "Algèbre",
-        notions: ["Nombres complexes", "Systèmes d'équations", "Calcul matriciel"],
-      },
-      {
-        titre: "Statistiques et probabilités",
-        notions: ["Loi normale", "Estimation, intervalles de confiance", "Tests"],
-      },
-    ],
-  },
-  {
-    level: "terminale-stmg",
-    label: "Terminale STMG",
-    themes: [
-      {
-        titre: "Mathématiques appliquées à la gestion",
-        notions: ["Fonctions logarithmiques et exponentielles", "Programmation linéaire (optimisation)", "Suites : modèles financiers avancés", "Statistiques inférentielles"],
-      },
-    ],
-  },
-  {
-    level: "terminale-st2s",
-    label: "Terminale ST2S",
-    themes: [
-      {
-        titre: "Mathématiques pour le secteur sanitaire et social",
-        notions: ["Statistiques inférentielles : intervalle de confiance, tests", "Loi normale", "Modèles exponentiels"],
-      },
-    ],
-  },
-  {
-    level: "terminale-stl",
-    label: "Terminale STL",
-    themes: [
-      {
-        titre: "Analyse et probabilités",
-        notions: ["Intégration", "Loi continue, loi normale", "Équations différentielles", "Nombres complexes"],
       },
     ],
   },

@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useConfirm } from "@/components/ConfirmDialog";
 import {
   Plus,
   Trash2,
@@ -55,6 +56,7 @@ export default function ExerciseBuilder({
   onChange,
   onMetadataChange,
 }: ExerciseBuilderProps) {
+  const confirm = useConfirm();
   const [pages, setPages] = useState<Page[]>(initialContent || []);
   const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set());
 
@@ -185,8 +187,8 @@ export default function ExerciseBuilder({
     setPages(pages.map((p) => (p.id === id ? { ...p, ...updates } : p)));
   };
 
-  const removePage = (id: string) => {
-    if (confirm("Supprimer cette page et tout son contenu ?")) {
+  const removePage = async (id: string) => {
+    if (await confirm("Supprimer cette page et tout son contenu ?")) {
       setPages(pages.filter((p) => p.id !== id));
     }
   };

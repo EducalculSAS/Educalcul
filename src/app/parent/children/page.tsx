@@ -6,6 +6,7 @@ import { PlusCircle, Users, Trash2, Edit, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface Child {
   id: string;
@@ -17,6 +18,7 @@ interface Child {
 }
 
 export default function ManageChildrenPage() {
+  const confirm = useConfirm();
   const [children, setChildren] = useState<Child[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
@@ -58,9 +60,10 @@ export default function ManageChildrenPage() {
 
   const handleDelete = async (childId: string) => {
     if (
-      !confirm(
-        "Êtes-vous sûr de vouloir supprimer ce profil enfant ? Cette action est irréversible."
-      )
+      !(await confirm(
+        "Êtes-vous sûr de vouloir supprimer ce profil enfant ? Cette action est irréversible.",
+        { danger: true, title: "Supprimer le profil" }
+      ))
     ) {
       return;
     }

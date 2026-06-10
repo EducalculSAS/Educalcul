@@ -18,6 +18,7 @@ import {
   Tag,
   Mail,
 } from "lucide-react";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 type Ticket = {
   id: number;
@@ -51,6 +52,7 @@ type TicketReply = {
 };
 
 export default function SupportPage() {
+  const confirm = useConfirm();
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState<"active" | "archived">("active");
@@ -122,9 +124,9 @@ export default function SupportPage() {
 
   const handlePurge = async () => {
     if (
-      !confirm(
+      !(await confirm(
         "Voulez-vous vraiment supprimer définitivement tous les tickets archivés ?"
-      )
+      ))
     )
       return;
     setActionLoading(true);
@@ -255,9 +257,9 @@ export default function SupportPage() {
   const handleDelete = async () => {
     if (
       !selectedTicket ||
-      !confirm(
+      !(await confirm(
         "Êtes-vous sûr de vouloir supprimer définitivement ce ticket et ses réponses ?"
-      )
+      ))
     )
       return;
     setActionLoading(true);

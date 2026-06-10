@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Upload, Trash2, FileText, CheckCircle, AlertTriangle, Loader2, BookOpen, X, GraduationCap } from "lucide-react";
+import { Upload, Trash2, FileText, CheckCircle, AlertTriangle, Loader2, BookOpen, X, GraduationCap, Download, Pencil, Save } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface ProgrammePdf {
   id: string;
@@ -12,18 +13,21 @@ interface ProgrammePdf {
   level_label: string;
   file_url: string;
   file_name: string;
-  custom_content: string;
   uploaded_at: string;
 }
 
 export default function AdminProgrammesPage() {
+  const confirm = useConfirm();
   const [pdfs, setPdfs] = useState<ProgrammePdf[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState(SCHOOL_LEVELS[9].value); // 2nde by default
-  const [customContent, setCustomContent] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [notification, setNotification] = useState<{ type: "success" | "error"; msg: string } | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editLabel, setEditLabel] = useState("");
+  const [editFileName, setEditFileName] = useState("");
+  const [saving, setSaving] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const showNotification = (type: "success" | "error", msg: string) => {
@@ -63,13 +67,11 @@ export default function AdminProgrammesPage() {
           level_label: levelLabel,
           file_url: fileUrl,
           file_name: file.name,
-          custom_content: customContent,
         }),
       });
       if (!res.ok) throw new Error("Erreur serveur");
       showNotification("success", "Programme enregistré avec succès !");
       setFile(null);
-      setCustomContent("");
       if (fileRef.current) fileRef.current.value = "";
       fetchPdfs();
     } catch (err: unknown) {
@@ -80,8 +82,36 @@ export default function AdminProgrammesPage() {
     }
   };
 
+  const startEdit = (pdf: ProgrammePdf) => {
+    setEditingId(pdf.id);
+    setEditLabel(pdf.level_label || "");
+    setEditFileName(pdf.file_name || "");
+  };
+
+  const cancelEdit = () => setEditingId(null);
+
+  const saveEdit = async (id: string) => {
+    setSaving(true);
+    try {
+      const res = await fetch("/api/admin/programmes", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, level_label: editLabel, file_name: editFileName }),
+      });
+      if (!res.ok) throw new Error("Erreur serveur");
+      showNotification("success", "Programme mis à jour !");
+      setEditingId(null);
+      fetchPdfs();
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erreur lors de la mise à jour.";
+      showNotification("error", msg);
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const handleDelete = async (level: string) => {
-    if (!confirm("Supprimer ce programme ?")) return;
+    if (!(await confirm("Supprimer ce programme ?"))) return;
     await fetch("/api/admin/programmes", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -109,7 +139,7 @@ export default function AdminProgrammesPage() {
           Programmes officiels
         </h1>
         <p className="text-[var(--greek-bronze)]">
-          Dépose les PDFs officiels par niveau. L&apos;IA s&apos;en servira comme référence pour la génération.
+          Dépose les PDFs officiels par niveau pour les rendre consultables sur la page publique des programmes.
         </p>
       </div>
 
@@ -156,19 +186,6 @@ export default function AdminProgrammesPage() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
-              Contenu clé pour l&apos;IA <span className="font-normal text-[var(--text-muted)]">(optionnel — notions principales, copiées depuis le PDF)</span>
-            </label>
-            <textarea
-              rows={4}
-              value={customContent}
-              onChange={e => setCustomContent(e.target.value)}
-              className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white resize-none text-sm"
-              placeholder="Ex : Fonctions : dérivation, variations, limites. Probabilités : loi normale, loi binomiale..."
-            />
-          </div>
-
           <div className="flex justify-end">
             <button
               type="submit"
@@ -195,36 +212,85 @@ export default function AdminProgrammesPage() {
         ) : (
           <div className="space-y-3">
             {pdfs.map(pdf => (
-              <div key={pdf.id} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-4 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(197,161,72,0.1)" }}>
-                    <BookOpen size={18} style={{ color: "var(--greek-gold)" }} />
+              <div key={pdf.id} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-4">
+                {editingId === pdf.id ? (
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-xs font-semibold text-[var(--greek-blue)] mb-1">Titre / Niveau affiché</label>
+                      <input
+                        value={editLabel}
+                        onChange={e => setEditLabel(e.target.value)}
+                        className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-[var(--greek-blue)] mb-1">Nom du fichier</label>
+                      <input
+                        value={editFileName}
+                        onChange={e => setEditFileName(e.target.value)}
+                        className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+                      />
+                    </div>
+                    <div className="flex justify-end gap-2">
+                      <button onClick={cancelEdit} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-[rgba(197,161,72,0.3)] text-[var(--text-muted)] hover:bg-gray-50">
+                        Annuler
+                      </button>
+                      <button
+                        onClick={() => saveEdit(pdf.id)}
+                        disabled={saving}
+                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg text-white disabled:opacity-60"
+                        style={{ background: "var(--greek-blue)" }}
+                      >
+                        {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
+                        Enregistrer
+                      </button>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <p className="font-bold text-sm text-[var(--greek-blue)] truncate">{pdf.level_label || pdf.level}</p>
-                    <p className="text-xs text-[var(--text-muted)] truncate">{pdf.file_name}</p>
-                    {pdf.custom_content && (
-                      <p className="text-xs text-green-600 mt-0.5">✓ Contenu IA configuré</p>
-                    )}
+                ) : (
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(197,161,72,0.1)" }}>
+                        <BookOpen size={18} style={{ color: "var(--greek-gold)" }} />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-bold text-sm text-[var(--greek-blue)] truncate">{pdf.level_label || pdf.level}</p>
+                        <p className="text-xs text-[var(--text-muted)] truncate">{pdf.file_name}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <a
+                        href={pdf.file_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 text-xs font-bold rounded-lg border transition-colors hover:bg-gray-50"
+                        style={{ borderColor: "rgba(197,161,72,0.3)", color: "var(--greek-blue)" }}
+                      >
+                        Voir le PDF
+                      </a>
+                      <a
+                        href={pdf.file_url}
+                        download={pdf.file_name}
+                        className="p-2 rounded-lg text-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
+                        title="Télécharger"
+                      >
+                        <Download size={16} />
+                      </a>
+                      <button
+                        onClick={() => startEdit(pdf)}
+                        className="p-2 rounded-lg text-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
+                        title="Modifier"
+                      >
+                        <Pencil size={16} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(pdf.level)}
+                        className="p-2 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-2 flex-shrink-0">
-                  <a
-                    href={pdf.file_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1.5 text-xs font-bold rounded-lg border transition-colors hover:bg-gray-50"
-                    style={{ borderColor: "rgba(197,161,72,0.3)", color: "var(--greek-blue)" }}
-                  >
-                    Voir le PDF
-                  </a>
-                  <button
-                    onClick={() => handleDelete(pdf.level)}
-                    className="p-2 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </div>
+                )}
               </div>
             ))}
           </div>

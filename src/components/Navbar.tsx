@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { trackLogout } from "@/lib/trackLogout";
 import { getDashboardPath } from "@/lib/authRedirect";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import NotificationBell from "@/components/NotificationBell";
@@ -83,20 +84,12 @@ export default function Navbar() {
 
   const handleSignOut = async () => {
     try {
-      // Effacer la position précise avant déconnexion
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        await fetch("/api/user/location", {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${session.access_token}` },
-        });
-      }
+      await trackLogout();
       await supabase.auth.signOut();
     } catch (e) { console.error(e); }
     const cookieConsent = localStorage.getItem("cookie_consent");
     localStorage.clear();
     if (cookieConsent) localStorage.setItem("cookie_consent", cookieConsent);
-    sessionStorage.removeItem("geo_sent");
     setUser(null);
     setUserRole(null);
     window.location.href = "/";

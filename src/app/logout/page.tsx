@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { trackLogout } from "@/lib/trackLogout";
 
 import AppAdminLoader from "@/components/AppAdminLoader";
 
@@ -11,6 +12,7 @@ export default function LogoutPage() {
 
   useEffect(() => {
     const handleLogout = async () => {
+      await trackLogout();
       await supabase.auth.signOut();
       router.push("/");
       router.refresh(); // Force refresh to update server components/navbar state if needed

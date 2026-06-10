@@ -72,6 +72,7 @@ function UserDetailContent() {
   const [msgForm, setMsgForm] = useState({ title: "", content: "", type: "message" });
   const [showBanModal, setShowBanModal] = useState(false);
   const [banReason, setBanReason] = useState("");
+  const [banDays, setBanDays] = useState<number | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   // Expand sections
@@ -131,7 +132,7 @@ showToast("success", "Profil mis à jour");
     finally { setActionLoading(false); }
   };
 
-  const handleBan = async () => { await doAction("ban", { reason: banReason }); setShowBanModal(false); setBanReason(""); };
+  const handleBan = async () => { await doAction("ban", { reason: banReason, banDays }); setShowBanModal(false); setBanReason(""); setBanDays(null); };
 
   const handleDelete = async () => {
     setActionLoading(true);
@@ -545,12 +546,24 @@ showToast("success", "Profil mis à jour");
 
       {/* Ban modal */}
       <ConfirmModal
-        open={showBanModal} onClose={() => { setShowBanModal(false); setBanReason(""); }}
+        open={showBanModal} onClose={() => { setShowBanModal(false); setBanReason(""); setBanDays(null); }}
         onConfirm={handleBan} title="Bannir l'utilisateur"
         description="Le compte sera suspendu et l'utilisateur recevra une notification."
         confirmLabel="Bannir" confirmClass="bg-orange-500 hover:bg-orange-600" loading={actionLoading}
       >
-        <div><label className={labelCls}>Raison (optionnel)</label><textarea value={banReason} onChange={e => setBanReason(e.target.value)} className={inputCls + " h-20 resize-none"} placeholder="Expliquez la raison..." /></div>
+        <div className="space-y-3">
+          <div>
+            <label className={labelCls}>Durée du bannissement</label>
+            <select value={banDays || ""} onChange={e => setBanDays(e.target.value ? parseInt(e.target.value) : null)} className={inputCls}>
+              <option value="">Permanente</option>
+              <option value="1">1 jour</option>
+              <option value="7">7 jours</option>
+              <option value="30">30 jours</option>
+              <option value="90">90 jours</option>
+            </select>
+          </div>
+          <div><label className={labelCls}>Raison (optionnel)</label><textarea value={banReason} onChange={e => setBanReason(e.target.value)} className={inputCls + " h-20 resize-none"} placeholder="Expliquez la raison..." /></div>
+        </div>
       </ConfirmModal>
 
       {/* Delete modal */}

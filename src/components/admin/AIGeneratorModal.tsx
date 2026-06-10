@@ -32,10 +32,18 @@ export interface AIGenerateParams {
   durationPerLesson: number;
 }
 
+export interface AIGenerateProgress {
+  current: number;
+  total: number;
+  message: string;
+  chapters: string[];
+}
+
 interface AIGeneratorModalProps {
   type: "course" | "exercise" | "quiz";
   onGenerate: (params: AIGenerateParams) => void;
   onClose: () => void;
+  progress?: AIGenerateProgress | null;
 }
 
 const SUBJECT_AREAS = [
@@ -51,7 +59,7 @@ const SUBJECT_AREAS = [
 
 const DURATIONS = [20, 30, 45, 60];
 
-export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGeneratorModalProps) {
+export default function AIGeneratorModal({ type, onGenerate, onClose, progress }: AIGeneratorModalProps) {
   const [params, setParams] = useState<AIGenerateParams>({
     topic: "",
     level: "6eme",
@@ -193,9 +201,41 @@ export default function AIGeneratorModal({ type, onGenerate, onClose }: AIGenera
             <h4 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-display)]">
               Création en cours...
             </h4>
-            <p className="text-gray-500 text-center max-w-md">
-              Notre IA pédagogique compose votre cours avec soin. Cela peut prendre une minute.
+            <p className="text-gray-500 text-center max-w-md mb-6">
+              {progress?.message || "Notre IA pédagogique compose votre cours avec soin. Cela peut prendre quelques minutes."}
             </p>
+
+            {progress && progress.total > 0 && (
+              <div className="w-full max-w-md">
+                <div className="flex justify-between text-xs font-bold text-[var(--greek-blue)] mb-1.5">
+                  <span>Progression</span>
+                  <span>{Math.round((progress.current / progress.total) * 100)}%</span>
+                </div>
+                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-500 ease-out"
+                    style={{
+                      width: `${Math.max(4, Math.round((progress.current / progress.total) * 100))}%`,
+                      background: "linear-gradient(to right, var(--greek-blue), var(--greek-gold))",
+                    }}
+                  />
+                </div>
+
+                {progress.chapters.length > 0 && (
+                  <ul className="mt-5 space-y-1.5 text-left">
+                    {progress.chapters.map((title, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                        <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs flex-shrink-0">
+                          ✓
+                        </span>
+                        <span className="truncate">{title}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+
             <div className="mt-8 flex gap-2">
               <span className="w-3 h-3 rounded-full bg-[var(--greek-gold)] animate-ping" style={{ animationDelay: "0ms" }} />
               <span className="w-3 h-3 rounded-full bg-[var(--greek-gold)] animate-ping" style={{ animationDelay: "150ms" }} />

@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import AdminSidebar from "@/components/AdminSidebar";
-import { useGeoConsent } from "@/hooks/useGeoConsent";
 
 export default function AdminLayout({
   children,
@@ -13,7 +12,6 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  useGeoConsent();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

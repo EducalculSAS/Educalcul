@@ -27,9 +27,12 @@ interface User {
   last_login_ip?: string;
   last_login_city?: string;
   last_login_country?: string;
+  last_logout_ip?: string;
+  last_logout_city?: string;
+  last_logout_country?: string;
+  last_logout_at?: string;
   latitude?: number;
   longitude?: number;
-  location_precise?: boolean;
   last_active_at?: string;
 }
 
@@ -65,6 +68,10 @@ interface LoginEvent {
   user_agent?: string;
   latitude?: number;
   longitude?: number;
+  logged_out_at?: string;
+  logout_ip?: string;
+  logout_city?: string;
+  logout_country?: string;
 }
 
 async function fetchLoginHistory(userId: string): Promise<LoginEvent[]> {
@@ -99,12 +106,12 @@ function buildCSV(users: User[], loginHistory?: LoginEvent[]): string {
   }
 
   // Export liste multi-users
-  const headers = ["ID", "Prénom", "Nom", "Email", "Rôle", "Statut", "Niveau", "Ville", "Pays", "IP", "Dernière activité", "Inscription", "Localisation GPS"];
+  const headers = ["ID", "Prénom", "Nom", "Email", "Rôle", "Statut", "Niveau", "Ville", "Pays", "IP", "IP déconnexion", "Dernière activité", "Inscription", "Localisation (IP)"];
   const rows = users.map(u => [
     u.id, u.first_name, u.last_name, u.email, u.role, u.status,
     u.grade_level || "", u.last_login_city || "", u.last_login_country || "",
-    u.last_login_ip || "", d(u.last_active_at), d(u.created_at),
-    u.location_precise ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "Non autorisée",
+    u.last_login_ip || "", u.last_logout_ip || "", d(u.last_active_at), d(u.created_at),
+    u.latitude && u.longitude ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "",
   ]);
   return "﻿" + [headers, ...rows].map(r => r.map(q).join(";")).join("\r\n");
 }
@@ -156,10 +163,11 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
         ["Dernière ville connue", u.last_login_city || "—"],
         ["Dernier pays connu", u.last_login_country || "—"],
         ["Dernière IP connue", u.last_login_ip || "—"],
+        ["IP déconnexion", u.last_logout_ip || "—"],
         ["Dernière activité", d(u.last_active_at)],
         ["Inscription", d(u.created_at)],
         ["Total connexions", loginHistory ? String(loginHistory.length) : "—"],
-        ["Localisation GPS", u.location_precise ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "Non autorisée"],
+        ["Localisation (IP)", u.latitude && u.longitude ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "—"],
       ].map(([k, v]) => `<tr><td class="label">${k}</td><td class="value">${v}</td></tr>`).join("")}
     </table>
     ${historySection}` : `
@@ -360,10 +368,7 @@ export default function AdminUsersPage() {
   useEffect(() => {
     fetchUsers();
     const interval = setInterval(() => fetchUsers(true), 30000);
-    // Rafraîchit la carte dès qu'une position GPS vient d'être envoyée
-    const onGeo = () => setTimeout(() => fetchUsers(true), 3000);
-    window.addEventListener("geo_location_sent", onGeo);
-    return () => { clearInterval(interval); window.removeEventListener("geo_location_sent", onGeo); };
+    return () => clearInterval(interval);
   }, [roleFilter, statusFilter]);
 
   useEffect(() => {
@@ -436,8 +441,8 @@ export default function AdminUsersPage() {
     setSubmitting(false);
   };
 
-  // Uniquement les positions précises (GPS avec consentement cookie) — pas les positions IP
-  const mapUsers = users.filter(u => u.latitude && u.longitude && u.location_precise).map(u => ({
+  // Positions approximatives basées sur l'IP de connexion
+  const mapUsers = users.filter(u => u.latitude && u.longitude).map(u => ({
     id: u.id, name: `${u.first_name} ${u.last_name}`, email: u.email,
     status: u.status, lat: u.latitude!, lng: u.longitude!, role: u.role,
     city: u.last_login_city, lastActive: u.last_active_at, isOnline: isOnline(u),

@@ -11,6 +11,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface Post {
   id: number;
@@ -32,6 +33,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
   role: ForumRole; categoryId: number; categoryName: string;
   onBack: () => void; onSelectPost: (id: number) => void; userAuthId: string | null;
 }) {
+  const confirm = useConfirm();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -67,7 +69,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
 
   const handleDelete = async (e: React.MouseEvent, id: number) => {
     e.stopPropagation();
-    if (!confirm("Supprimer ce sujet et ses commentaires ?")) return;
+    if (!(await confirm("Supprimer ce sujet et ses commentaires ?"))) return;
     await supabase.from("forum_posts").delete().eq("id", id);
     fetchPosts();
   };

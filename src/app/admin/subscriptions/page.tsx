@@ -8,6 +8,7 @@ import {
   Clock, X, Power, Users, Tag, Gift,
   TrendingUp, Copy, Check, GripVertical,
 } from "lucide-react";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Plan {
@@ -73,6 +74,7 @@ function discountLabel(type: string, value: number) {
 
 // ── Component ─────────────────────────────────────────────────────────────
 export default function AdminSubscriptionsPage() {
+  const confirm = useConfirm();
   const [tab, setTab] = useState<"plans" | "promos" | "parrainage">("plans");
 
   // Plans state
@@ -181,7 +183,7 @@ export default function AdminSubscriptionsPage() {
   };
 
   const deletePlan = async (id: string) => {
-    if (!confirm("Supprimer ce plan ?")) return;
+    if (!(await confirm("Supprimer ce plan ?"))) return;
     const res = await fetch(`/api/admin/subscriptions?id=${id}`, { method: "DELETE" });
     const result = await res.json();
     if (!res.ok) { showToast("error", result.error); return; }
@@ -265,7 +267,7 @@ export default function AdminSubscriptionsPage() {
   };
 
   const deleteCode = async (id: string) => {
-    if (!confirm("Supprimer ce code de parrainage ?")) return;
+    if (!(await confirm("Supprimer ce code de parrainage ?"))) return;
     const res = await fetch(`/api/admin/referral-codes?id=${id}`, { method: "DELETE" });
     if (res.ok) { showToast("success", "Code supprimé"); fetchCodes(); }
   };

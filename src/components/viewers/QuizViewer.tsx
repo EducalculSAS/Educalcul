@@ -60,6 +60,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
     Record<number, string>
   >(() => (reviewMode ? initialProgress?.questionFeedbacks : undefined) || {});
   const contentRef = useRef<HTMLDivElement>(null);
+  const mainScrollRef = useRef<HTMLDivElement>(null);
 
   // Timer
   const timeLimitSeconds = quiz.time_limit_minutes ? quiz.time_limit_minutes * 60 : null;
@@ -204,6 +205,12 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
     setContentVisible(false);
     const timer = setTimeout(() => setContentVisible(true), 150);
     return () => clearTimeout(timer);
+  }, [currentQuestionIndex]);
+
+  // Scroll back to top when changing question
+  useEffect(() => {
+    mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [currentQuestionIndex]);
 
   const handleSelectOption = (option: string) => {
@@ -470,7 +477,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
         </div>
       </div>
 
-      <div className={`flex-1 overflow-y-auto p-4 md:p-8 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}>
+      <div ref={mainScrollRef} className={`flex-1 overflow-y-auto p-4 md:p-8 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}>
         <div className="max-w-3xl mx-auto py-4">
           {/* Header */}
           <div className="flex justify-between items-start mb-8">

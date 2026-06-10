@@ -3,7 +3,7 @@
  */
 
 const OR_URL      = "https://openrouter.ai/api/v1/chat/completions";
-const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-chat";
+const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-v4-flash";
 const OR_FALLBACK_MODEL = process.env.OPENROUTER_FALLBACK_MODEL || "deepseek/deepseek-chat-v3-0324";
 const OR_KEY      = process.env.OPENROUTER_API_KEY || "";
 
@@ -12,7 +12,7 @@ type MessageContentPart =
   | { type: "text"; text: string }
   | { type: "image_url"; image_url: { url: string } };
 
-const OR_VISION_MODEL = process.env.OPENROUTER_VISION_MODEL || "qwen/qwen2.5-vl-72b-instruct";
+const OR_VISION_MODEL = process.env.OPENROUTER_VISION_MODEL || "inclusionai/ling-2.6-flash";
 
 // ── Providers ─────────────────────────────────────────────────────────────────
 
@@ -115,11 +115,39 @@ function extractJSON(text: string): string {
   return obj ? obj[0] : text;
 }
 
+/** Échappe les retours à la ligne / tabulations littéraux à l'intérieur des chaînes JSON */
+function escapeControlCharsInStrings(raw: string): string {
+  let out = "";
+  let inString = false;
+  let escaped = false;
+  for (const ch of raw) {
+    if (inString) {
+      if (escaped) { out += ch; escaped = false; continue; }
+      if (ch === "\\") { out += ch; escaped = true; continue; }
+      if (ch === '"') { inString = false; out += ch; continue; }
+      if (ch === "\n") { out += "\\n"; continue; }
+      if (ch === "\r") { out += "\\r"; continue; }
+      if (ch === "\t") { out += "\\t"; continue; }
+      out += ch;
+      continue;
+    }
+    if (ch === '"') { inString = true; out += ch; continue; }
+    out += ch;
+  }
+  return out;
+}
+
 function parseJSON(raw: string): unknown {
   try { return JSON.parse(raw); }
   catch {
     try { return JSON.parse(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")); }
-    catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+    catch {
+      try { return JSON.parse(escapeControlCharsInStrings(raw)); }
+      catch {
+        try { return JSON.parse(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"))); }
+        catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+      }
+    }
   }
 }
 
@@ -130,18 +158,22 @@ export async function gradeAnswer(
   question: string, correctAnswer: string, studentAnswer: string,
   explanation: string | undefined, level: string, maxPoints: number
 ): Promise<{ is_correct: boolean; score: number; feedback: string }> {
-  const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}".
+  const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}". Corrige vite et bien.
+RÈGLES D'ÉQUIVALENCE (très important) :
+- Accepte TOUTE forme mathématiquement équivalente à la réponse attendue, même si elle diffère de la formulation donnée : fraction non simplifiée ou simplifiée (ex: 4/8 = 1/2), nombre décimal vs fraction (ex: 0.5 = 1/2), forme développée vs factorisée, ordre différent des termes/solutions, unités équivalentes, écriture avec ou sans espace/virgule décimale, pourcentage vs décimal (ex: 50% = 0.5), racine simplifiée ou non.
+- Seule l'exactitude mathématique compte, pas la forme exacte du texte.
 RÈGLES pour le feedback :
 1. Adapte ton vocabulaire au niveau de l'élève.
-2. Si correct : félicite brièvement et confirme la bonne réponse.
+2. Si correct : félicite brièvement et confirme la bonne réponse (même si la forme diffère, précise que c'est une forme équivalente correcte si pertinent).
 3. Si incorrect : donne OBLIGATOIREMENT la réponse correcte avec les calculs détaillés étape par étape.
 4. Montre TOUJOURS la méthode ET le résultat final, pas seulement l'un des deux.
 5. Sois encourageant même en cas d'erreur.
-6. Réponds UNIQUEMENT en JSON sur une seule ligne.
-7. score = 0 si incorrect, ${maxPoints} si correct.`;
+6. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
+7. score = 0 si incorrect, ${maxPoints} si correct.
+8. Reste concis : feedback de 2-4 phrases maximum.`;
 
   const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
-  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.3, undefined, false);
+  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 500, false);
   const r = parseJSON(extractJSON(text)) as any;
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
@@ -153,6 +185,9 @@ export async function gradeImageAnswer(
 ): Promise<{ is_correct: boolean; score: number; feedback: string }> {
   const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}".
 Tu reçois une photo/dessin de la réponse manuscrite d'un élève.
+RÈGLES D'ÉQUIVALENCE (très important) :
+- Accepte TOUTE forme mathématiquement équivalente à la réponse attendue : fraction non simplifiée ou simplifiée, décimal vs fraction, forme développée vs factorisée, ordre différent, pourcentage vs décimal, racine simplifiée ou non.
+- Seule l'exactitude mathématique compte, pas la forme exacte.
 RÈGLES pour le feedback :
 1. Adapte ton vocabulaire au niveau de l'élève.
 2. Lis attentivement ce que l'élève a écrit ou dessiné sur l'image.
@@ -160,8 +195,9 @@ RÈGLES pour le feedback :
 4. Si incorrect : donne OBLIGATOIREMENT la réponse correcte avec les calculs détaillés étape par étape.
 5. Montre TOUJOURS la méthode ET le résultat final, pas seulement l'un des deux.
 6. Sois encourageant même en cas d'erreur.
-7. Réponds UNIQUEMENT en JSON sur une seule ligne.
-8. score = 0 si incorrect, ${maxPoints} si correct.`;
+7. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
+8. score = 0 si incorrect, ${maxPoints} si correct.
+9. Reste concis : feedback de 2-4 phrases maximum.`;
 
   const userText = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication : ${explanation || "Aucune"}\nVoici la réponse de l'élève sous forme d'image (dessin/écriture manuscrite). Analyse-la.\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
 
@@ -176,7 +212,7 @@ RÈGLES pour le feedback :
     },
   ];
 
-  const { ok, text, status } = await callOpenRouterModel(OR_VISION_MODEL, msgs, 0.3);
+  const { ok, text, status } = await callOpenRouterModel(OR_VISION_MODEL, msgs, 0.2, 500);
   if (!ok) {
     console.error(`[llm] vision model ${OR_VISION_MODEL} error ${status}: ${text.slice(0, 400)}`);
     throw new Error("Le modèle de vision IA est indisponible. Réessaie dans quelques secondes.");

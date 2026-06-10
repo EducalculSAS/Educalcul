@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect } from "react";
+import { useConfirm } from "@/components/ConfirmDialog";
 import {
   Plus,
   Trash2,
@@ -46,6 +47,7 @@ interface CourseBuilderProps {
 }
 
 export default function CourseBuilder({ initialContent, onChange }: CourseBuilderProps) {
+  const confirm = useConfirm();
   const [chapters, setChapters] = useState<Chapter[]>(initialContent || []);
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(new Set());
   const [uploadingLesson, setUploadingLesson] = useState<string | null>(null);
@@ -92,8 +94,8 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
     setChapters(chapters.map(c => c.id === id ? { ...c, ...updates } : c));
   };
 
-  const removeChapter = (id: string) => {
-    if (confirm("Supprimer ce chapitre et tout son contenu ?")) {
+  const removeChapter = async (id: string) => {
+    if (await confirm("Supprimer ce chapitre et tout son contenu ?")) {
       setChapters(chapters.filter(c => c.id !== id));
     }
   };
@@ -136,8 +138,8 @@ export default function CourseBuilder({ initialContent, onChange }: CourseBuilde
     }));
   };
 
-  const removeLesson = (chapterId: string, lessonId: string) => {
-    if (confirm("Supprimer cette leçon ?")) {
+  const removeLesson = async (chapterId: string, lessonId: string) => {
+    if (await confirm("Supprimer cette leçon ?")) {
       setChapters(chapters.map(c => {
         if (c.id === chapterId) {
           return { ...c, lessons: c.lessons.filter(l => l.id !== lessonId) };

@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
+import ExerciseGeneratorModal, { ExerciseGenParams, AIGenerateProgress } from "@/components/admin/ExerciseGeneratorModal";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
+import { useConfirm } from "@/components/ConfirmDialog";
 import {
   Plus,
   Search,
@@ -33,11 +34,16 @@ import {
   Shapes,
   Pi,
   Puzzle,
+  LineChart,
+  Hash,
+  Table2,
+  Superscript,
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
+import { EXERCISE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -46,8 +52,10 @@ const FOLDER_COLORS = [
   "#f59e0b", // Amber
   "#8b5cf6", // Violet
   "#ec4899", // Pink
-  "#06b6d4", // Cyan
+  "#1e3a8a", // Bleu marine
   "#84cc16", // Lime
+  "#166534", // Vert foncé
+  "#78350f", // Marron
 ];
 
 const FOLDER_ICONS = [
@@ -63,6 +71,10 @@ const FOLDER_ICONS = [
   { name: "shapes", Icon: Shapes },
   { name: "pi", Icon: Pi },
   { name: "puzzle", Icon: Puzzle },
+  { name: "chart", Icon: LineChart },
+  { name: "numbers", Icon: Hash },
+  { name: "table", Icon: Table2 },
+  { name: "exponent", Icon: Superscript },
 ];
 
 const getFolderIcon = (iconName?: string | null) => {
@@ -136,6 +148,7 @@ interface ExerciseFormData {
 }
 
 export default function AdminExercisesPage() {
+  const confirm = useConfirm();
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [courses, setCourses] = useState<Course[]>([]);
   const [folders, setFolders] = useState<ExerciseFolder[]>([]);
@@ -233,6 +246,7 @@ export default function AdminExercisesPage() {
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [aiProgress, setAiProgress] = useState<AIGenerateProgress | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -498,9 +512,9 @@ export default function AdminExercisesPage() {
 
   const handleDeleteFolder = async (folder: ExerciseFolder) => {
     if (
-      !confirm(
+      !(await confirm(
         `Voulez-vous vraiment supprimer le dossier "${folder.name}" et tout son contenu ?`
-      )
+      ))
     )
       return;
 
@@ -574,6 +588,7 @@ export default function AdminExercisesPage() {
   const handleAiGenerate = async (params: ExerciseGenParams) => {
     setIsGenerating(true);
     setAiError(null);
+    setAiProgress({ current: 0, total: 0, message: "Préparation de l'exercice...", chapters: [] });
 
     try {
       const response = await fetch("/api/admin/generate-exercise", {
@@ -582,14 +597,52 @@ export default function AdminExercisesPage() {
         body: JSON.stringify(params),
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
+      if (!response.ok || !response.body) {
+        const data = await response.json().catch(() => ({}));
         throw new Error(data.message || data.error || "Generation failed");
       }
 
-      const content = data.data.pages || data.data.content || data.data;
-      const metadata = data.data.metadata;
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let result: any = null;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          const evt = JSON.parse(line);
+          if (evt.type === "progress") {
+            setAiProgress((prev) => ({
+              current: evt.current,
+              total: evt.total,
+              message: evt.message,
+              chapters: prev?.chapters || [],
+            }));
+            if (evt.step === "chapter" && evt.current > 0) {
+              setAiProgress((prev) => ({
+                current: evt.current,
+                total: evt.total,
+                message: evt.message,
+                chapters: [...(prev?.chapters || []), evt.message].slice(-evt.total),
+              }));
+            }
+          } else if (evt.type === "done") {
+            result = evt.data;
+          } else if (evt.type === "error") {
+            throw new Error(evt.message || "Erreur de génération");
+          }
+        }
+      }
+
+      if (!result) throw new Error("Aucune donnée générée");
+
+      const content = result.content;
+      const metadata = result.metadata;
 
       setFormData({
         title: metadata?.title || `Exercice : ${params.subject}`,
@@ -621,6 +674,7 @@ export default function AdminExercisesPage() {
       setAiError(errorMessage);
     } finally {
       setIsGenerating(false);
+      setAiProgress(null);
     }
   };
 
@@ -696,7 +750,7 @@ export default function AdminExercisesPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Êtes-vous sûr de vouloir supprimer cet exercice ?")) return;
+    if (!(await confirm("Êtes-vous sûr de vouloir supprimer cet exercice ?"))) return;
 
     try {
       const response = await fetch(`/api/admin/exercises?id=${id}`, {
@@ -844,7 +898,7 @@ export default function AdminExercisesPage() {
               onClick={() => setShowImportModal(true)}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
             >
-              <Upload size={18} /> Importer JSON
+              <Upload size={18} /> JSON
             </button>
             <button
               onClick={() => { resetForm(); setIsModalOpen(true); }}
@@ -1057,6 +1111,7 @@ export default function AdminExercisesPage() {
                 key={exercise.id}
                 draggable
                 onDragStart={(e) => handleDragStart(e, exercise.id)}
+                onDragEnd={() => setDraggedExerciseId(null)}
                 className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden hover:shadow-md transition-shadow group cursor-move"
               >
                 <div className="relative h-40 bg-gray-100">
@@ -1149,18 +1204,39 @@ export default function AdminExercisesPage() {
 
       {/* Folder Creation/Edit Modal */}
       {isFolderModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1060] p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
-              {editingFolder ? "Modifier le dossier" : "Nouveau Dossier"}
-            </h2>
-            <form onSubmit={handleSaveFolder}>
-              <div className="mb-4">
+        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm overflow-hidden">
+            <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] flex justify-between items-center bg-gray-50">
+              <h3 className="text-lg font-bold text-gray-800">
+                {editingFolder ? "Modifier le dossier" : "Nouveau Dossier"}
+              </h3>
+              <button
+                onClick={() => {
+                  setIsFolderModalOpen(false);
+                  setEditingFolder(null);
+                  setFolderFormData({
+                    name: "",
+                    status: "draft",
+                    color: FOLDER_COLORS[0],
+                    grade_level: "6eme",
+                    icon: "",
+                  });
+                }}
+                className="group p-2 text-gray-400 hover:text-gray-600 transition-colors relative z-10"
+                aria-label="Fermer"
+              >
+                <X size={22} className="transition-transform group-hover:scale-125" />
+              </button>
+            </div>
+            <form onSubmit={handleSaveFolder} className="p-6 space-y-4">
+              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Nom du dossier
                 </label>
                 <input
                   type="text"
+                  required
+                  autoFocus
                   value={folderFormData.name}
                   onChange={(e) =>
                     setFolderFormData({
@@ -1168,12 +1244,51 @@ export default function AdminExercisesPage() {
                       name: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none"
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                   placeholder="Ex: Mathématiques"
-                  autoFocus
                 />
               </div>
-
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Niveau du dossier
+                </label>
+                <select
+                  value={folderFormData.grade_level}
+                  onChange={(e) =>
+                    setFolderFormData({
+                      ...folderFormData,
+                      grade_level: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                >
+                  <option value="all">Tous niveaux</option>
+                  {SCHOOL_LEVELS.map((level) => (
+                    <option key={level.value} value={level.value}>
+                      {level.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Statut
+                </label>
+                <select
+                  value={folderFormData.status}
+                  onChange={(e) =>
+                    setFolderFormData({
+                      ...folderFormData,
+                      status: e.target.value as any,
+                    })
+                  }
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                >
+                  <option value="draft">Brouillon</option>
+                  <option value="published">Publié</option>
+                  <option value="archived">Archivé</option>
+                </select>
+              </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Couleur du dossier
@@ -1196,7 +1311,6 @@ export default function AdminExercisesPage() {
                   ))}
                 </div>
               </div>
-
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Icône du dossier
@@ -1220,50 +1334,7 @@ export default function AdminExercisesPage() {
                   ))}
                 </div>
               </div>
-
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Niveau du dossier
-                </label>
-                <select
-                  value={folderFormData.grade_level}
-                  onChange={(e) =>
-                    setFolderFormData({
-                      ...folderFormData,
-                      grade_level: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none bg-white"
-                >
-                  <option value="all">Tous niveaux</option>
-                  {SCHOOL_LEVELS.map((level) => (
-                    <option key={level.value} value={level.value}>
-                      {level.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Statut
-                </label>
-                <select
-                  value={folderFormData.status}
-                  onChange={(e) =>
-                    setFolderFormData({
-                      ...folderFormData,
-                      status: e.target.value as any,
-                    })
-                  }
-                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] outline-none bg-white"
-                >
-                  <option value="draft">Brouillon</option>
-                  <option value="published">Publié</option>
-                  <option value="archived">Archivé</option>
-                </select>
-              </div>
-              <div className="flex justify-end gap-2">
+              <div className="flex justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => {
@@ -1277,14 +1348,14 @@ export default function AdminExercisesPage() {
                       icon: "",
                     });
                   }}
-                  className="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+                  className="px-4 py-2 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
                   disabled={!folderFormData.name.trim()}
-                  className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-50"
                 >
                   {editingFolder ? "Sauvegarder" : "Créer"}
                 </button>
@@ -1317,6 +1388,7 @@ export default function AdminExercisesPage() {
         <ExerciseGeneratorModal
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
+          progress={aiProgress}
         />
       )}
 
@@ -1565,6 +1637,8 @@ export default function AdminExercisesPage() {
           label="exercice"
           onClose={() => setShowImportModal(false)}
           onFileLoaded={processImportFile}
+          template={EXERCISE_JSON_TEMPLATE}
+          templateFilename="modele_exercice.json"
         />
       )}
     </div>

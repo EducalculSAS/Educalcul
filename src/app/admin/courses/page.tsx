@@ -4,18 +4,21 @@ import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import PageLoader from "@/components/PageLoader";
 import {
-  BookOpen, Search, Plus, Edit, Trash2, XCircle, Loader2,
+  BookOpen, Search, Plus, Edit, Trash2, XCircle, X, Loader2,
   Image as ImageIcon, Sparkles, Eye, Folder as FolderIcon,
   FolderPlus, ChevronRight, Home, Download, Upload,
   CheckCircle, AlertTriangle,
   Calculator, Brain, Trophy, Star, Pencil, Ruler,
   FlaskConical, Shapes, Pi, Puzzle,
+  LineChart, Hash, Table2, Superscript,
 } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
+import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
-import AIGeneratorModal, { AIGenerateParams } from "@/components/admin/AIGeneratorModal";
+import AIGeneratorModal, { AIGenerateParams, AIGenerateProgress } from "@/components/admin/AIGeneratorModal";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_LEVELS } from "@/lib/constants";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface Course {
   id: string;
@@ -47,10 +50,12 @@ const FOLDER_COLORS = [
   "#f59e0b", // Yellow/Gold
   "#8b5cf6", // Purple
   "#ec4899", // Pink
-  "#6366f1", // Indigo
+  "#1e3a8a", // Bleu marine
   "#14b8a6", // Teal
   "#f97316", // Orange
   "#64748b", // Slate
+  "#166534", // Vert foncé
+  "#78350f", // Marron
 ];
 
 const FOLDER_ICONS = [
@@ -66,6 +71,10 @@ const FOLDER_ICONS = [
   { name: "shapes", Icon: Shapes },
   { name: "pi", Icon: Pi },
   { name: "puzzle", Icon: Puzzle },
+  { name: "chart", Icon: LineChart },
+  { name: "numbers", Icon: Hash },
+  { name: "table", Icon: Table2 },
+  { name: "exponent", Icon: Superscript },
 ];
 
 const getFolderIcon = (iconName?: string | null) => {
@@ -74,6 +83,7 @@ const getFolderIcon = (iconName?: string | null) => {
 };
 
 export default function AdminCoursesPage() {
+  const confirm = useConfirm();
   // Navigation State
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<Folder[]>([]);
@@ -99,7 +109,7 @@ export default function AdminCoursesPage() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    subject: "Mathématiques",
+    subject: "Algèbre",
     level: "6eme",
     status: "draft",
     thumbnail_url: "",
@@ -120,7 +130,7 @@ export default function AdminCoursesPage() {
       setFormData({
         title: data.title || "",
         description: data.description || "",
-        subject: data.subject || "Mathématiques",
+        subject: data.subject || "Algèbre",
         level: data.level || "6eme",
         status: data.status || "draft",
         thumbnail_url: data.thumbnail_url || "",
@@ -147,6 +157,7 @@ export default function AdminCoursesPage() {
   // AI States
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [aiProgress, setAiProgress] = useState<AIGenerateProgress | null>(null);
   const [isRendering, setIsRendering] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -349,6 +360,29 @@ export default function AdminCoursesPage() {
 
   const handleAiGenerate = async (params: AIGenerateParams) => {
     setIsGenerating(true);
+    setAiProgress({ current: 0, total: params.count || 1, message: "Initialisation...", chapters: [] });
+
+    const processChapter = (chapter: any) => ({
+      id: crypto.randomUUID(),
+      title: chapter.title,
+      lessons: (chapter.lessons || []).map((lesson: any) => ({
+        id: crypto.randomUUID(),
+        title: lesson.title,
+        type: lesson.type || "text",
+        content: lesson.content || "",
+        duration: lesson.duration || params.durationPerLesson || 30,
+        exercises: Array.isArray(lesson.exercises)
+          ? lesson.exercises.map((ex: any, idx: number) => ({
+              id: ex.id || `ex-${idx + 1}`,
+              question: ex.question || "",
+              type: "short_answer" as const,
+              answer: ex.answer || "",
+              hint: ex.hint || undefined,
+              explanation: ex.explanation || undefined,
+            }))
+          : [],
+      })),
+    });
 
     try {
       const response = await fetch("/api/admin/ai/course", {
@@ -370,51 +404,70 @@ export default function AdminCoursesPage() {
         }),
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
+      if (!response.ok || !response.body) {
+        const data = await response.json().catch(() => ({}));
         throw new Error(data.message || data.error || "Generation failed");
       }
 
-      const aiCourse = data.course || data;
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
 
-      // Add IDs to chapters / lessons / exercises if missing
-      const processedContent = (aiCourse.chapters || []).map(
-        (chapter: any) => ({
-          id: crypto.randomUUID(),
-          title: chapter.title,
-          lessons: (chapter.lessons || []).map((lesson: any) => ({
-            id: crypto.randomUUID(),
-            title: lesson.title,
-            type: lesson.type || "text",
-            content: lesson.content || "",
-            duration: lesson.duration || params.durationPerLesson || 30,
-            exercises: Array.isArray(lesson.exercises)
-              ? lesson.exercises.map((ex: any, idx: number) => ({
-                  id: ex.id || `ex-${idx + 1}`,
-                  question: ex.question || "",
-                  type: "short_answer" as const,
-                  answer: ex.answer || "",
-                  hint: ex.hint || undefined,
-                  explanation: ex.explanation || undefined,
-                }))
-              : [],
-          })),
-        })
-      );
+      let courseTitle = params.topic;
+      let courseDescription = "";
+      const chapters: any[] = [];
+      let total = params.count || 1;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          const event = JSON.parse(line);
+
+          if (event.type === "progress") {
+            setAiProgress((prev) => ({
+              current: event.current,
+              total: event.total,
+              message: event.message,
+              chapters: prev?.chapters || [],
+            }));
+            total = event.total;
+          } else if (event.type === "outline") {
+            courseTitle = event.title || courseTitle;
+            courseDescription = event.description || "";
+          } else if (event.type === "chapter") {
+            chapters[event.index] = processChapter(event.chapter);
+            setAiProgress((prev) => ({
+              current: event.index + 1,
+              total: prev?.total || total,
+              message: prev?.message || "",
+              chapters: [...(prev?.chapters || []), event.chapter.title],
+            }));
+          } else if (event.type === "error") {
+            throw new Error(event.message);
+          } else if (event.type === "done") {
+            courseTitle = event.course?.title || courseTitle;
+            courseDescription = event.course?.description || courseDescription;
+          }
+        }
+      }
 
       setFormData({
-        title: aiCourse.title || params.topic,
-        description: aiCourse.description || "",
+        title: courseTitle,
+        description: courseDescription,
         subject: params.topic,
         level: params.level || "6eme",
         status: "draft",
         thumbnail_url: "",
         folder_id: currentFolderId,
-        content_json: processedContent,
+        content_json: chapters.filter(Boolean),
       });
-
-      console.log("AI Content Generated:", aiCourse);
 
       setIsAiModalOpen(false);
       setNotification({
@@ -434,6 +487,7 @@ export default function AdminCoursesPage() {
       });
     } finally {
       setIsGenerating(false);
+      setAiProgress(null);
     }
   };
 
@@ -441,7 +495,7 @@ export default function AdminCoursesPage() {
     const previewData = {
       title: course.title,
       description: course.description || "",
-      subject: course.subject || "Mathématiques",
+      subject: course.subject || "Algèbre",
       level: course.level || "6eme",
       content_json: course.content_json || [],
     };
@@ -460,7 +514,7 @@ export default function AdminCoursesPage() {
       setFormData({
         title: course.title,
         description: course.description || "",
-        subject: course.subject || "Mathématiques",
+        subject: course.subject || "Algèbre",
         level: course.level || "6eme",
         status: course.status as string,
         thumbnail_url: course.thumbnail_url || "",
@@ -472,7 +526,7 @@ export default function AdminCoursesPage() {
       setFormData({
         title: "",
         description: "",
-        subject: "Mathématiques",
+        subject: "Algèbre",
         level: "6eme",
         status: "draft",
         thumbnail_url: "",
@@ -538,9 +592,9 @@ export default function AdminCoursesPage() {
 
   const handleDelete = async (course: Course) => {
     if (
-      !confirm(
+      !(await confirm(
         `Êtes-vous sûr de vouloir supprimer le cours "${course.title}" ?`
-      )
+      ))
     )
       return;
 
@@ -565,7 +619,7 @@ export default function AdminCoursesPage() {
   };
 
   const handleDeleteFolder = async (folder: Folder) => {
-    if (!confirm(`Supprimer le dossier "${folder.name}" et tout son contenu ?`))
+    if (!(await confirm(`Supprimer le dossier "${folder.name}" et tout son contenu ?`)))
       return;
 
     try {
@@ -816,14 +870,14 @@ export default function AdminCoursesPage() {
               onClick={() => setShowImportModal(true)}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
             >
-              <Upload size={18} /> Importer JSON
+              <Upload size={18} /> JSON
             </button>
             <button
               onClick={() => handleOpenModal("create")}
               className="flex items-center justify-center gap-2 px-4 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-lg shadow-blue-900/10"
             >
               <Plus size={20} />
-              Ajouter un cours
+              Nouveau Cours
             </button>
           </div>
         </div>
@@ -1017,6 +1071,7 @@ export default function AdminCoursesPage() {
               key={`course-${course.id}`}
               draggable
               onDragStart={(e) => handleDragStart(e, course.id)}
+              onDragEnd={() => setDraggedCourseId(null)}
               className={`bg-white rounded-xl shadow-sm border overflow-hidden transition-shadow group flex flex-col h-full cursor-move ${
                 draggedCourseId === course.id
                   ? "border-[var(--greek-blue)] opacity-50 border-2 border-dashed"
@@ -1043,7 +1098,7 @@ export default function AdminCoursesPage() {
               <div className="p-4 flex-1 flex flex-col">
                 <div className="mb-2">
                   <span className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-wide">
-                    {course.subject || "Mathématiques"}
+                    {course.subject || "Algèbre"}
                   </span>
                 </div>
                 <h3
@@ -1108,8 +1163,8 @@ export default function AdminCoursesPage() {
                   {modalMode === "create" ? "Ajouter un cours" : "Modifier le cours"}
                 </h3>
               </div>
-              <button onClick={() => setIsModalOpen(false)} className="group p-2 text-white/70 hover:text-white transition-colors relative z-10">
-                <XCircle size={22} />
+              <button onClick={() => setIsModalOpen(false)} className="group p-2 text-white/70 hover:text-white transition-colors relative z-10" aria-label="Fermer">
+                <X size={22} className="transition-transform group-hover:scale-125" />
               </button>
             </div>
 
@@ -1134,17 +1189,20 @@ export default function AdminCoursesPage() {
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Matière</label>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Domaine</label>
                         <select
                           value={formData.subject}
                           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                           className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
                         >
-                          <option value="Mathématiques">Mathématiques</option>
-                          <option value="Français">Français</option>
-                          <option value="Histoire">Histoire</option>
-                          <option value="Géographie">Géographie</option>
-                          <option value="Sciences">Sciences</option>
+                          <option value="Algèbre">Algèbre</option>
+                          <option value="Géométrie">Géométrie</option>
+                          <option value="Statistiques">Statistiques</option>
+                          <option value="Arithmétique">Arithmétique</option>
+                          <option value="Fonctions">Fonctions</option>
+                          <option value="Probabilités">Probabilités</option>
+                          <option value="Mesures">Mesures</option>
+                          <option value="Logique">Logique</option>
                         </select>
                       </div>
                       <div>
@@ -1267,9 +1325,10 @@ export default function AdminCoursesPage() {
                     icon: "",
                   });
                 }}
-                className="text-gray-400 hover:text-gray-600"
+                className="group p-2 text-gray-400 hover:text-gray-600 transition-colors relative z-10"
+                aria-label="Fermer"
               >
-                <XCircle size={24} />
+                <X size={22} className="transition-transform group-hover:scale-125" />
               </button>
             </div>
             <form onSubmit={handleSaveFolder} className="p-6 space-y-4">
@@ -1414,6 +1473,7 @@ export default function AdminCoursesPage() {
           type="course"
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
+          progress={aiProgress}
         />
       )}
 
@@ -1426,6 +1486,8 @@ export default function AdminCoursesPage() {
             setShowImportModal(false);
           }}
           label="cours"
+          template={COURSE_JSON_TEMPLATE}
+          templateFilename="modele_cours.json"
         />
       )}
 
@@ -1515,3 +1577,4 @@ function NotificationModal({
     </div>
   );
 }
+

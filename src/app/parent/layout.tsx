@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { useGeoConsent } from "@/hooks/useGeoConsent";
 
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
@@ -16,7 +15,6 @@ export default function ParentLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  useGeoConsent();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);

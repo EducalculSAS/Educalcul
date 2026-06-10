@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { trackLogout } from "@/lib/trackLogout";
 import { useRouter } from "next/navigation";
 
 export default function AdminSidebar() {
@@ -50,7 +51,7 @@ export default function AdminSidebar() {
   ];
 
   const handleLogout = async () => {
-    try { await supabase.auth.signOut(); } catch (e) { console.error(e); }
+    try { await trackLogout(); await supabase.auth.signOut(); } catch (e) { console.error(e); }
     localStorage.clear();
     router.push("/auth/connexion");
   };

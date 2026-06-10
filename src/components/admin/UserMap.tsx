@@ -26,7 +26,38 @@ const ROLE_COLOR: Record<string, string> = {
 // Style Carto Voyager — beau, sans API key
 const MAP_STYLE = "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
 
+// Évite que plusieurs utilisateurs au même endroit (même ville/IP) se superposent :
+// décale chaque marqueur partageant des coordonnées arrondies sur un petit cercle.
+function spreadOverlaps(users: UserMarker[]): UserMarker[] {
+  const groups = new globalThis.Map<string, UserMarker[]>();
+  for (const u of users) {
+    const key = `${u.lat.toFixed(2)},${u.lng.toFixed(2)}`;
+    const group = groups.get(key);
+    if (group) group.push(u);
+    else groups.set(key, [u]);
+  }
+
+  const result: UserMarker[] = [];
+  for (const group of groups.values()) {
+    if (group.length === 1) {
+      result.push(group[0]);
+      continue;
+    }
+    const radius = 0.04 + group.length * 0.005;
+    group.forEach((u, i) => {
+      const angle = (2 * Math.PI * i) / group.length;
+      result.push({
+        ...u,
+        lat: u.lat + radius * Math.sin(angle),
+        lng: u.lng + radius * Math.cos(angle),
+      });
+    });
+  }
+  return result;
+}
+
 export default function UserMap({ users }: { users: UserMarker[] }) {
+  const spread = spreadOverlaps(users);
   return (
     <div
       id="user-map-container"
@@ -38,7 +69,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
         mapStyle={MAP_STYLE}
         attributionControl={false}
       >
-        {users.map(user => (
+        {spread.map(user => (
           <Marker
             key={user.id}
             longitude={user.lng}
@@ -104,7 +135,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
 
       {/* Compteur */}
       <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow border border-gray-100 text-xs font-semibold text-[var(--greek-blue)]">
-        {users.length} position{users.length !== 1 ? "s" : ""} précise{users.length !== 1 ? "s" : ""}
+        {users.length} position{users.length !== 1 ? "s" : ""}
       </div>
     </div>
   );

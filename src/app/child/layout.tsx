@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import GeoConsentTracker from "@/components/GeoConsentTracker";
 import { ReactNode } from "react";
 import { AITutorProvider } from "@/contexts/AITutorContext";
 import AITutor from "@/components/child/AITutor";
@@ -12,7 +11,6 @@ export default function ChildLayout({ children }: { children: ReactNode }) {
     <AITutorProvider>
       <Navbar />
       <PresenceTracker />
-      <GeoConsentTracker />
       <AdminMessages />
       <ChildOnboardingWrapper />
       <main className="pt-[64px] min-h-screen bg-[var(--greek-cream)]">

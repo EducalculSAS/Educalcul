@@ -59,7 +59,7 @@ export async function GET() {
       safeCount("users", q => q.gte("last_active_at", oneDayAgo.toISOString())),
       safeCount("users", q => q.gte("last_active_at", sevenDaysAgo.toISOString())),
       safeCount("users", q => q.gte("last_active_at", thirtyDaysAgo.toISOString())),
-      safeCount("users", q => q.eq("location_precise", true)),
+      safeCount("users", q => q.not("latitude", "is", null)),
       safeCount("users", q => q.eq("status", "inactive")),
     ]);
 

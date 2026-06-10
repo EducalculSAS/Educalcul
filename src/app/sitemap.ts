@@ -6,11 +6,9 @@ const LEVELS = [
   "cp","ce1","ce2","cm1","cm2",
   "6eme","5eme","4eme","3eme",
   "2nde",
-  "1ere-generale","1ere-generale-maths","1ere-sti2d","1ere-stmg",
-  "1ere-st2s","1ere-stl","1ere-std2a","1ere-sthr",
+  "1ere-generale","1ere-generale-maths",
   "terminale-generale","terminale-generale-maths","terminale-generale-expertes",
-  "terminale-generale-complementaires","terminale-sti2d","terminale-stmg",
-  "terminale-st2s","terminale-stl",
+  "terminale-generale-complementaires",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

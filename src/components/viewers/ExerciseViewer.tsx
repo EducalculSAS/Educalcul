@@ -443,6 +443,7 @@ export default function ExerciseViewer({
   }, [answers, submittedBlocks, results, aiFeedback, score, exerciseCompleted, blockModes, exercise.id]);
 
   const currentPage = pages[currentPageIndex];
+  const mainScrollRef = useRef<HTMLDivElement>(null);
 
   // Session timer
   const sessionStartRef = useRef<number>(Date.now());
@@ -604,6 +605,12 @@ export default function ExerciseViewer({
     setContentVisible(false);
     const timer = setTimeout(() => setContentVisible(true), 150);
     return () => clearTimeout(timer);
+  }, [currentPageIndex]);
+
+  // Scroll back to top when changing page
+  useEffect(() => {
+    mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [currentPageIndex]);
 
   const handleBlockAnswerChange = (blockId: string, value: any) => {
@@ -867,6 +874,7 @@ export default function ExerciseViewer({
       {/* Content */}
       <div
         id="exercise-content-container"
+        ref={mainScrollRef}
         className={`flex-1 overflow-y-auto p-4 md:p-8 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}
       >
         <div className="max-w-3xl mx-auto space-y-8 pb-20">

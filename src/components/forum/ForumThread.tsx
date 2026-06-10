@@ -12,6 +12,7 @@ import { fr } from "date-fns/locale";
 import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
 import { avatarUrl } from "@/lib/avatarUrl";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface User { id: number; first_name: string; last_name: string; child_username?: string; avatar: string | null; role: string; equipped_border?: string | null; name_color?: string | null; featured_badges?: any[]; }
 interface Comment { id: number; content: string; created_at: string; author: User; }
@@ -25,6 +26,7 @@ const authorName = (a: any) => a?.child_username || `${a?.first_name || ""} ${a?
 export default function ForumThread({ role, postId, userAuthId, userDbId, onBack }: {
   role: ForumRole; postId: number; userAuthId: string | null; userDbId: number | null; onBack: () => void;
 }) {
+  const confirm = useConfirm();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [newComment, setNewComment] = useState("");
@@ -59,13 +61,13 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
   };
 
   const deleteComment = async (id: number) => {
-    if (!confirm("Supprimer ce commentaire ?")) return;
+    if (!(await confirm("Supprimer ce commentaire ?"))) return;
     await supabase.from("forum_comments").delete().eq("id", id);
     fetchThread();
   };
 
   const deletePost = async () => {
-    if (!confirm("Supprimer ce sujet et tous les commentaires ?")) return;
+    if (!(await confirm("Supprimer ce sujet et tous les commentaires ?"))) return;
     await supabase.from("forum_posts").delete().eq("id", postId);
     onBack();
   };

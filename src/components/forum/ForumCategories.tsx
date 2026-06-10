@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { MessageSquare, Plus, Loader2, Trash2, X } from "lucide-react";
 import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
+import { useConfirm } from "@/components/ConfirmDialog";
 
 interface Category {
   id: number;
@@ -14,6 +15,7 @@ interface Category {
 }
 
 export default function ForumCategories({ role, onSelectCategory }: { role: ForumRole; onSelectCategory: (id: number, name: string) => void }) {
+  const confirm = useConfirm();
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -50,7 +52,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
 
   const handleDelete = async (e: React.MouseEvent, id: number) => {
     e.stopPropagation();
-    if (!confirm("Supprimer cette catégorie et tous ses sujets ?")) return;
+    if (!(await confirm("Supprimer cette catégorie et tous ses sujets ?"))) return;
     await supabase.from("forum_posts").delete().eq("category_id", id);
     await supabase.from("forum_categories").delete().eq("id", id);
     fetchCategories();

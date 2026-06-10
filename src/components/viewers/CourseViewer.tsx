@@ -72,6 +72,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   const [selectedText, setSelectedText] = useState("");
   const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0 });
   const contentRef = useRef<HTMLDivElement>(null);
+  const mainScrollRef = useRef<HTMLDivElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
   const selectedTextRef = useRef("");
   const rangeRef = useRef<Range | null>(null);
@@ -273,6 +274,12 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     if (popupRef.current) popupRef.current.style.display = "none";
     selectedTextRef.current = "";
     setSelectedText("");
+  }, [currentChapterIndex, currentLessonIndex]);
+
+  // Scroll back to top when changing lesson/chapter
+  useEffect(() => {
+    mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [currentChapterIndex, currentLessonIndex]);
 
   const handleNext = () => {
@@ -532,7 +539,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         </div>
 
         {/* Content Viewer */}
-        <div className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
+        <div ref={mainScrollRef} className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
           <div className="max-w-4xl mx-auto px-6 py-10 md:px-12 md:py-16">
             {currentLesson ? (
               <div className="animate-fade-bounce">
