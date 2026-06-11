@@ -34,20 +34,22 @@ export default function ConnexionClient() {
 
   useEffect(() => { setMounted(true); }, []);
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = () => {
     sessionStorage.removeItem("educalcul_signup_mode");
     sessionStorage.removeItem("educalcul_pending_role");
     sessionStorage.removeItem("educalcul_signup_data");
     sessionStorage.setItem("educalcul_auth_intent", "login");
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: { redirectTo: `${getSiteUrl()}/auth/callback` },
-      });
-      if (error) throw error;
-    } catch (err: any) {
-      setError(err.message || "Erreur lors de la connexion avec Google");
-    }
+
+    const redirectUri = `${getSiteUrl()}/api/auth/google/callback`;
+    const params = new URLSearchParams({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
+      redirect_uri: redirectUri,
+      response_type: "code",
+      scope: "openid email profile",
+      access_type: "online",
+      prompt: "select_account",
+    });
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
   };
 
   const handleLogin = async (e: React.FormEvent) => {

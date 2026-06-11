@@ -20,6 +20,18 @@ export default function AuthCallback() {
     }
 
     const handleAuth = async () => {
+      // Flow OAuth Google maison : tokens transmis dans le hash par /api/auth/google/callback
+      if (hash && hash.includes('access_token=')) {
+        const params = new URLSearchParams(hash.substring(1));
+        const access_token = params.get('access_token');
+        const refresh_token = params.get('refresh_token');
+        if (access_token && refresh_token) {
+          history.replaceState(null, '', window.location.pathname);
+          const { data: { session } } = await supabase.auth.setSession({ access_token, refresh_token });
+          if (session) { handleSession(session); return; }
+        }
+      }
+
       const { data: { session } } = await supabase.auth.getSession();
 
       if (!session) {
