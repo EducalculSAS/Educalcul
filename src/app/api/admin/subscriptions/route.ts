@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
-// GET — list all plans (+ optional subscriber counts)
-export async function GET() {
+// GET — list all plans. Subscriber details are attached only for admins;
+// the public signup page only needs the plan fields themselves.
+export async function GET(req: Request) {
   try {
     const { data: plans, error } = await supabaseAdmin
       .from("subscription_plans")
@@ -10,6 +12,11 @@ export async function GET() {
       .order("sort_order", { ascending: true });
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) {
+      return NextResponse.json(plans || []);
+    }
 
     // Attach subscriber count + subscriber list per plan
     const plansWithCount = await Promise.all(

@@ -1,35 +1,35 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { childId, password, parentAuthId, newUsername } = body;
+    // Identity comes from the verified JWT, never from the request body.
+    const requester = await requireRole(request, ["parent", "admin"]);
+    if (!requester) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-    if (!childId || !parentAuthId || (!password && !newUsername)) {
+    const body = await request.json();
+    const { childId, password, newUsername } = body;
+
+    if (!childId || (!password && !newUsername)) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // 1. Verify Parent owns the child
-    const { data: parentUser, error: parentError } = await supabaseAdmin
-      .from("users")
-      .select("id")
-      .eq("auth_id", parentAuthId)
-      .single();
-
-    if (parentError || !parentUser) {
-      return NextResponse.json({ error: "Parent not found" }, { status: 403 });
-    }
-
-    const { data: childUser, error: childError } = await supabaseAdmin
+    // 1. Verify the requester owns the child (admins may manage any child)
+    let childQuery = supabaseAdmin
       .from("users")
       .select("*")
       .eq("id", childId)
-      .eq("parent_id", parentUser.id)
-      .single();
+      .eq("role", "child");
+    if (requester.role !== "admin") {
+      childQuery = childQuery.eq("parent_id", requester.id);
+    }
+    const { data: childUser, error: childError } = await childQuery.single();
 
     if (childError || !childUser) {
       return NextResponse.json(

@@ -20,6 +20,36 @@ function getPublicClient(): SupabaseClient {
 
 export const supabase: SupabaseClient = getPublicClient();
 
+// ─── Attach the Supabase JWT to same-origin /api/ calls (browser only) ─────
+// Server routes and the middleware authenticate requests via this header, so
+// every page gets auth transparently without touching individual fetch calls.
+const FETCH_PATCH_KEY = "__api_fetch_patched__";
+if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
+  (window as any)[FETCH_PATCH_KEY] = true;
+  const originalFetch = window.fetch.bind(window);
+  window.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+    try {
+      const url =
+        typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
+      if (url.startsWith("/api/")) {
+        const { data: { session } } = await getPublicClient().auth.getSession();
+        if (session?.access_token) {
+          const headers = new Headers(
+            init?.headers ?? (input instanceof Request ? input.headers : undefined)
+          );
+          if (!headers.has("Authorization")) {
+            headers.set("Authorization", `Bearer ${session.access_token}`);
+          }
+          init = { ...init, headers };
+        }
+      }
+    } catch {
+      // Never block a request because token retrieval failed.
+    }
+    return originalFetch(input as any, init);
+  }) as typeof fetch;
+}
+
 // ─── Admin client (service role) — SERVER ONLY ────────────────────────────
 // Never instantiate in browser: would create a second GoTrueClient.
 const ADMIN_KEY = "__sb_admin__";
