@@ -10,6 +10,7 @@ import {
   Flag, ChevronDown, ChevronUp, Save,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
+import { supabase } from "@/lib/supabaseClient";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -74,6 +75,14 @@ function UserDetailContent() {
   const [banReason, setBanReason] = useState("");
   const [banDays, setBanDays] = useState<number | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [currentAuthId, setCurrentAuthId] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setCurrentAuthId(session?.user.id ?? null);
+    })();
+  }, []);
 
   // Expand sections
   const [showPosts, setShowPosts] = useState(false);
@@ -138,7 +147,7 @@ showToast("success", "Profil mis à jour");
 
   const handleDelete = async () => {
     setActionLoading(true);
-    const res = await fetch(`/api/admin/users?auth_id=${data.user.auth_id}`, { method: "DELETE" });
+    const res = await fetch(`/api/admin/users?auth_id=${data.user.auth_id}&userId=${currentAuthId}`, { method: "DELETE" });
     if (res.ok) router.push("/admin/users");
     else showToast("error", "Erreur lors de la suppression");
     setActionLoading(false);
@@ -581,7 +590,7 @@ showToast("success", "Profil mis à jour");
                   onClick={async () => {
                     if (!newPassword.trim() || newPassword.length < 6) return;
                     setActionLoading(true);
-                    await fetch("/api/admin/users", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: data.user.id, auth_id: data.user.auth_id, password: newPassword }) });
+                    await fetch("/api/admin/users", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ userId: currentAuthId, id: data.user.id, auth_id: data.user.auth_id, password: newPassword }) });
                     showToast("success", "Mot de passe mis à jour");
                     setShowResetModal(false);
                     setNewPassword("");

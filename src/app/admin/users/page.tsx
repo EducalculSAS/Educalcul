@@ -384,7 +384,9 @@ export default function AdminUsersPage() {
 
   const fetchUsers = async (silent = false) => {
     if (!silent) setLoading(true);
-    let url = "/api/admin/users?";
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) { if (!silent) setLoading(false); return; }
+    let url = `/api/admin/users?userId=${session.user.id}`;
     if (roleFilter !== "all") url += `&role=${roleFilter}`;
     if (statusFilter !== "all") url += `&status=${statusFilter}`;
     const res = await fetch(url);
@@ -405,7 +407,7 @@ export default function AdminUsersPage() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const body: any = { firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
+      const body: any = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
       const res = await fetch("/api/admin/users", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || "Erreur");
@@ -434,7 +436,7 @@ export default function AdminUsersPage() {
   const handleDeleteConfirm = async () => {
     if (!deleteTarget) return;
     setSubmitting(true);
-    const res = await fetch(`/api/admin/users?auth_id=${deleteTarget.auth_id}`, { method: "DELETE" });
+    const res = await fetch(`/api/admin/users?auth_id=${deleteTarget.auth_id}&userId=${currentAuthId}`, { method: "DELETE" });
     if (res.ok) setUsers(users.filter(u => u.id !== deleteTarget.id));
     setShowDeleteModal(false);
     setDeleteTarget(null);

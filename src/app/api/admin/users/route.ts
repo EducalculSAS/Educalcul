@@ -3,16 +3,23 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 
 // Initialize Supabase Admin Client
 
+async function resolveAdmin(authId: string | null) {
+  if (!authId) return null;
+  const { data } = await supabaseAdmin
+    .from("users")
+    .select("id, role")
+    .eq("auth_id", authId)
+    .maybeSingle();
+  return data && data.role === "admin" ? data : null;
+}
+
 export async function GET(request: Request) {
   try {
     // Check if service role is configured
-    if (!process.env.SUPABASE_SERVICE_ROLE && !process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE) {
+    if (!process.env.SUPABASE_SERVICE_ROLE) {
       console.error(`[GET USERS] FATAL: No SUPABASE_SERVICE_ROLE environment variable found`);
       return NextResponse.json(
-        { 
-          error: "Configuration error: Service role not configured.",
-          debug: "SUPABASE_SERVICE_ROLE environment variable is missing"
-        },
+        { error: "Configuration error: Service role not configured." },
         { status: 500 }
       );
     }
@@ -21,7 +28,8 @@ export async function GET(request: Request) {
     const role = searchParams.get("role");
     const status = searchParams.get("status");
 
-    console.log(`[GET USERS] Fetching users with role=${role}, status=${status}`);
+    const admin = await resolveAdmin(searchParams.get("userId"));
+    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     let query = supabaseAdmin
       .from("users")
@@ -42,7 +50,6 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    console.log(`[GET USERS] Successfully fetched ${data?.length || 0} users`);
     return NextResponse.json(data);
   } catch (error: any) {
     console.error("[GET USERS] Catch error:", error);
@@ -53,7 +60,10 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, password, firstName, lastName, role, status, gradeLevel, childAge } = body;
+    const { userId, email, password, firstName, lastName, role, status, gradeLevel, childAge } = body;
+
+    const admin = await resolveAdmin(userId);
+    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     // 1. Create User in Supabase Auth
     const { data: authData, error: authError } =
@@ -139,8 +149,11 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-    const { id, auth_id, email, password, firstName, lastName, role, status, gradeLevel, childAge } =
+    const { userId, id, auth_id, email, password, firstName, lastName, role, status, gradeLevel, childAge } =
       body;
+
+    const admin = await resolveAdmin(userId);
+    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     if (!auth_id) {
       return NextResponse.json(
@@ -203,6 +216,9 @@ export async function DELETE(request: Request) {
     const { searchParams } = new URL(request.url);
     const auth_id = searchParams.get("auth_id");
 
+    const admin = await resolveAdmin(searchParams.get("userId"));
+    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
     if (!auth_id) {
       console.error(`[DELETE USER] Missing auth_id`);
       return NextResponse.json(
@@ -224,13 +240,10 @@ export async function DELETE(request: Request) {
     console.log(`[DELETE USER] Starting deletion for auth_id: ${auth_id}`);
 
     // Check if supabaseAdmin is properly initialized
-    if (!process.env.SUPABASE_SERVICE_ROLE && !process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE) {
+    if (!process.env.SUPABASE_SERVICE_ROLE) {
       console.error(`[DELETE USER] FATAL: No SUPABASE_SERVICE_ROLE environment variable found`);
       return NextResponse.json(
-        { 
-          error: "Configuration error: Service role not configured. Contact administrator.",
-          debug: "SUPABASE_SERVICE_ROLE environment variable is missing"
-        },
+        { error: "Configuration error: Service role not configured. Contact administrator." },
         { status: 500 }
       );
     }
