@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
+import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
 import {
   Plus,
   Trash2,
@@ -16,7 +17,8 @@ import {
   Loader2,
 } from "lucide-react";
 
-import AIChatWindow from "./AIChatWindow";
+import AIEditModal from "./AIEditModal";
+import ContentInsertToolbar from "./ContentInsertToolbar";
 
 export interface Question {
   id: string;
@@ -43,10 +45,21 @@ export default function QuizBuilder({
   const [questions, setQuestions] = useState<Question[]>(
     initialQuestions || []
   );
+  const [draggedQuestion, setDraggedQuestion] = useState<number | null>(null);
+  useDragAutoScroll(draggedQuestion !== null);
 
-  // AI Generation State
-  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const moveQuestion = (from: number, to: number) => {
+    if (from === to || to < 0 || to >= questions.length) return;
+    setQuestions((prev) => {
+      const copy = [...prev];
+      const [moved] = copy.splice(from, 1);
+      copy.splice(to, 0, moved);
+      return copy;
+    });
+  };
+
+  // AI Edit State
+  const [isAiEditModalOpen, setIsAiEditModalOpen] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("cm1");
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -132,39 +145,6 @@ export default function QuizBuilder({
   useEffect(() => {
     onChange(questions);
   }, [questions]);
-
-  const handleAiGenerate = async (params: any) => {
-    setIsGenerating(true);
-    try {
-      const res = await fetch("/api/admin/generate-quiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(params),
-      });
-
-      const data = await res.json();
-      if (data.success && data.data) {
-        // Handle new response structure
-        const content = data.data.content || data.data; // Fallback
-        const metadata = data.data.metadata;
-
-        setQuestions([...questions, ...content]);
-
-        if (metadata && onMetadataChange) {
-          onMetadataChange(metadata);
-        }
-
-        setIsAiModalOpen(false);
-      } else {
-        alert("Erreur lors de la génération: " + (data.error || "Inconnue"));
-      }
-    } catch (e) {
-      console.error(e);
-      alert("Erreur de connexion au service IA");
-    } finally {
-      setIsGenerating(false);
-    }
-  };
 
   const addQuestion = () => {
     const newQuestion: Question = {
@@ -290,11 +270,11 @@ export default function QuizBuilder({
           </select>
           <button
             type="button"
-            onClick={() => setIsAiModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors text-sm font-medium"
+            onClick={() => setIsAiEditModalOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm font-medium"
           >
             <Sparkles size={16} />
-            Générer Quiz IA
+            Modifier avec l'IA
           </button>
           <button
             type="button"
@@ -307,12 +287,13 @@ export default function QuizBuilder({
         </div>
       </div>
 
-      {isAiModalOpen && (
-        <AIChatWindow
+      {isAiEditModalOpen && (
+        <AIEditModal
           type="quiz"
           level={selectedLevel}
-          onGenerate={handleAiGenerate}
-          onClose={() => setIsAiModalOpen(false)}
+          content={questions}
+          onApply={(updated) => setQuestions(updated)}
+          onClose={() => setIsAiEditModalOpen(false)}
         />
       )}
 
@@ -332,10 +313,20 @@ export default function QuizBuilder({
           {questions.map((question, index) => (
             <div
               key={question.id}
-              className="border border-[rgba(197,161,72,0.25)] rounded-xl bg-white overflow-hidden shadow-sm"
+              draggable
+              onDragStart={() => setDraggedQuestion(index)}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => {
+                e.preventDefault();
+                if (draggedQuestion !== null) moveQuestion(draggedQuestion, index);
+                setDraggedQuestion(null);
+              }}
+              onDragEnd={() => setDraggedQuestion(null)}
+              className={`border border-[rgba(197,161,72,0.25)] rounded-xl bg-white overflow-hidden shadow-sm transition-opacity ${draggedQuestion === index ? "opacity-40" : ""}`}
             >
               <div className="p-4 bg-gray-50 border-b border-[rgba(197,161,72,0.25)] flex items-start justify-between gap-4">
-                <div className="flex items-center gap-2 text-gray-400 mt-2">
+                <div className="flex items-center gap-2 text-gray-400 mt-2 cursor-grab active:cursor-grabbing" title="Glisser pour réordonner">
+                  <GripVertical size={18} />
                   <span className="font-bold">#{index + 1}</span>
                 </div>
 
@@ -492,16 +483,25 @@ export default function QuizBuilder({
                   <div className="pt-2 border-t border-[rgba(197,161,72,0.25)] mt-2">
                     <div className="flex items-start gap-3">
                       <Lightbulb size={18} className="text-yellow-500 mt-2" />
-                      <textarea
-                        value={question.explanation || ""}
-                        onChange={(e) =>
-                          updateQuestion(question.id, {
-                            explanation: e.target.value,
-                          })
-                        }
-                        className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm min-h-[60px]"
-                        placeholder="Explication / Solution détaillée (affichée après la réponse)..."
-                      />
+                      <div className="flex-1 space-y-2">
+                        <ContentInsertToolbar
+                          onInsert={(html) =>
+                            updateQuestion(question.id, {
+                              explanation: `${question.explanation || ""}\n${html}\n`,
+                            })
+                          }
+                        />
+                        <textarea
+                          value={question.explanation || ""}
+                          onChange={(e) =>
+                            updateQuestion(question.id, {
+                              explanation: e.target.value,
+                            })
+                          }
+                          className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm min-h-[60px]"
+                          placeholder="Explication / Solution détaillée (affichée après la réponse)..."
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

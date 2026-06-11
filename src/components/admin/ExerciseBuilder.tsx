@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
+import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
 import {
   Plus,
   Trash2,
@@ -18,7 +19,8 @@ import {
   Loader2,
 } from "lucide-react";
 
-import AIChatWindow from "./AIChatWindow";
+import AIEditModal from "./AIEditModal";
+import ContentInsertToolbar from "./ContentInsertToolbar";
 
 export interface Block {
   id: string;
@@ -59,10 +61,32 @@ export default function ExerciseBuilder({
   const confirm = useConfirm();
   const [pages, setPages] = useState<Page[]>(initialContent || []);
   const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set());
+  const [draggedPage, setDraggedPage] = useState<number | null>(null);
+  const [draggedBlock, setDraggedBlock] = useState<{ pageId: string; index: number } | null>(null);
+  useDragAutoScroll(draggedPage !== null || draggedBlock !== null);
 
-  // AI Generation State
-  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const reorder = <T,>(arr: T[], from: number, to: number): T[] => {
+    const copy = [...arr];
+    const [moved] = copy.splice(from, 1);
+    copy.splice(to, 0, moved);
+    return copy;
+  };
+
+  const movePage = (from: number, to: number) => {
+    if (from === to || to < 0 || to >= pages.length) return;
+    setPages(reorder(pages, from, to));
+  };
+
+  const moveBlock = (pageId: string, from: number, to: number) => {
+    setPages(pages.map((p) => {
+      if (p.id !== pageId) return p;
+      if (from === to || to < 0 || to >= p.blocks.length) return p;
+      return { ...p, blocks: reorder(p.blocks, from, to) };
+    }));
+  };
+
+  // AI Edit State
+  const [isAiEditModalOpen, setIsAiEditModalOpen] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("cm1");
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -131,47 +155,6 @@ export default function ExerciseBuilder({
   useEffect(() => {
     onChange(pages);
   }, [pages]);
-
-  const handleAiGenerate = async (params: any) => {
-    setIsGenerating(true);
-    try {
-      const res = await fetch("/api/admin/generate-exercise", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(params),
-      });
-
-      const data = await res.json();
-      if (data.success && data.data) {
-        // Handle new response structure (content + metadata)
-        const content = data.data.content || data.data; // Fallback for old API
-        const metadata = data.data.metadata;
-
-        // Append generated pages
-        const newPages = [...pages, ...content];
-        setPages(newPages);
-
-        // Expand new pages
-        const newExpanded = new Set(expandedPages);
-        content.forEach((p: Page) => newExpanded.add(p.id));
-        setExpandedPages(newExpanded);
-
-        // Update parent metadata if callback provided
-        if (metadata && onMetadataChange) {
-          onMetadataChange(metadata);
-        }
-
-        setIsAiModalOpen(false);
-      } else {
-        alert("Erreur lors de la génération: " + (data.error || "Inconnue"));
-      }
-    } catch (e) {
-      console.error(e);
-      alert("Erreur de connexion au service IA");
-    } finally {
-      setIsGenerating(false);
-    }
-  };
 
   const addPage = () => {
     const newPage: Page = {
@@ -348,12 +331,12 @@ export default function ExerciseBuilder({
             <option value="terminale">Terminale</option>
           </select>
           <button
-            onClick={() => setIsAiModalOpen(true)}
-            className="flex items-center gap-2 px-3 py-1.5 bg-amber-500 text-white text-sm rounded-lg hover:bg-amber-600 transition-colors"
+            onClick={() => setIsAiEditModalOpen(true)}
+            className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white text-sm rounded-lg hover:bg-purple-600 transition-colors"
             type="button"
           >
             <Sparkles size={16} />
-            Générer avec l'IA
+            Modifier avec l'IA
           </button>
           <button
             onClick={addPage}
@@ -366,12 +349,13 @@ export default function ExerciseBuilder({
         </div>
       </div>
 
-      {isAiModalOpen && (
-        <AIChatWindow
+      {isAiEditModalOpen && (
+        <AIEditModal
           type="exercise"
           level={selectedLevel}
-          onGenerate={handleAiGenerate}
-          onClose={() => setIsAiModalOpen(false)}
+          content={pages}
+          onApply={(updated) => setPages(updated)}
+          onClose={() => setIsAiEditModalOpen(false)}
         />
       )}
 
@@ -387,10 +371,22 @@ export default function ExerciseBuilder({
           {pages.map((page, pageIndex) => (
             <div
               key={page.id}
-              className="border border-[rgba(197,161,72,0.25)] rounded-xl overflow-hidden bg-white"
+              draggable
+              onDragStart={() => setDraggedPage(pageIndex)}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => {
+                e.preventDefault();
+                if (draggedPage !== null) movePage(draggedPage, pageIndex);
+                setDraggedPage(null);
+              }}
+              onDragEnd={() => setDraggedPage(null)}
+              className={`border border-[rgba(197,161,72,0.25)] rounded-xl overflow-hidden bg-white transition-opacity ${draggedPage === pageIndex ? "opacity-40" : ""}`}
             >
               {/* Page Header */}
               <div className="flex items-center gap-3 p-4 bg-gray-50 border-b border-[rgba(197,161,72,0.25)]">
+                <div className="cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500" title="Glisser pour réordonner">
+                  <GripVertical size={18} />
+                </div>
                 <button
                   onClick={() => togglePage(page.id)}
                   className="p-1 hover:bg-gray-200 rounded text-gray-500"
@@ -429,9 +425,23 @@ export default function ExerciseBuilder({
                     {page.blocks.map((block, blockIndex) => (
                       <div
                         key={block.id}
-                        className="bg-white border border-[rgba(197,161,72,0.25)] rounded-lg p-4 shadow-sm"
+                        draggable
+                        onDragStart={() => setDraggedBlock({ pageId: page.id, index: blockIndex })}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          if (draggedBlock && draggedBlock.pageId === page.id) {
+                            moveBlock(page.id, draggedBlock.index, blockIndex);
+                          }
+                          setDraggedBlock(null);
+                        }}
+                        onDragEnd={() => setDraggedBlock(null)}
+                        className={`bg-white border border-[rgba(197,161,72,0.25)] rounded-lg p-4 shadow-sm transition-opacity ${draggedBlock?.pageId === page.id && draggedBlock.index === blockIndex ? "opacity-40" : ""}`}
                       >
                         <div className="flex justify-between items-start mb-4">
+                          <div className="cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500 mr-2 mt-1" title="Glisser pour réordonner">
+                            <GripVertical size={16} />
+                          </div>
                           <div className="flex-1 grid grid-cols-2 gap-4">
                             <input
                               type="text"
@@ -487,6 +497,13 @@ export default function ExerciseBuilder({
                               <label className="text-xs font-medium text-gray-500 uppercase">
                                 Énoncé
                               </label>
+                              <ContentInsertToolbar
+                                onInsert={(html) =>
+                                  updateBlock(page.id, block.id, {
+                                    content: `${block.content || ""}\n${html}\n`,
+                                  })
+                                }
+                              />
                               <textarea
                                 value={block.content}
                                 onChange={(e) =>
@@ -513,6 +530,13 @@ export default function ExerciseBuilder({
 
                           {block.type === "text" && (
                             <div>
+                              <ContentInsertToolbar
+                                onInsert={(html) =>
+                                  updateBlock(page.id, block.id, {
+                                    content: `${block.content || ""}\n${html}\n`,
+                                  })
+                                }
+                              />
                               <textarea
                                 value={block.content}
                                 onChange={(e) =>

@@ -119,6 +119,14 @@ Tu DOIS répondre UNIQUEMENT avec un objet JSON valide respectant exactement cet
   ]
 }
 
+═══ TABLEAUX & GRAPHIQUES (à utiliser SI PERTINENT, sans en abuser) ═══
+• Si l'exercice s'y prête (étude de fonction, signe, variations, tableau de valeurs), tu peux insérer dans le "content" d'un bloc "text" un tableau au format :
+  <table class="math-table math-table-sign"><thead><tr><th>x</th>...</tr></thead><tbody><tr><td>...</td></tr></tbody></table>
+  (classes possibles : math-table-value, math-table-sign, math-table-variation). Utilise ↗, ↘, +, -, 0, ∞, ‖ pour les signes/variations.
+• Pour une courbe simple, insère un placeholder de graphique au format :
+  <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
+• N'insère ces éléments QUE quand ils apportent une vraie valeur pédagogique pour ce type d'exercice.
+
 Génère exactement ${count} question(s) de type "text_input" dans "blocks". Réponds UNIQUEMENT avec le JSON, sans markdown ni explication.`;
 
           const userPrompt = `Sujet : ${subject}

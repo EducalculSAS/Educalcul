@@ -17,13 +17,19 @@ import {
   XCircle as XCircleIcon,
   Eye,
   PencilLine,
-  Loader2
+  Loader2,
+  Keyboard,
+  Pencil,
+  Image as ImageIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { Chapter, Lesson, Exercise } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
+import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
+import MathInput from "@/components/MathInput";
+import DrawingCanvas from "@/components/DrawingCanvas";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -465,8 +471,9 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                   const isCompleted = completedLessons.has(lesson.id);
                   
                   let Icon = FileText;
-                  if (lesson.type === "video") Icon = Video;
-                  if (lesson.type === "quiz") Icon = HelpCircle;
+                  if (lesson.type === "video" || lesson.type === "video_file") Icon = Video;
+                  if (lesson.type === "quiz" || lesson.type === "exercise") Icon = PencilLine;
+                  if (lesson.type === "image") Icon = ImageIcon;
 
                   return (
                     <button
@@ -546,8 +553,8 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                 {/* Content Header */}
                 <div className="mb-8 pb-6 border-b border-[rgba(197,161,72,0.25)]">
                   <div className="flex items-center gap-2 text-sm text-[var(--greek-bronze)] font-medium mb-2 uppercase tracking-wide">
-                    {currentLesson.type === 'video' ? <Video size={16}/> : <FileText size={16}/>}
-                    {currentLesson.type === 'video' ? 'Vidéo' : 'Leçon'}
+                    {currentLesson.type === 'video' || currentLesson.type === 'video_file' ? <Video size={16}/> : <FileText size={16}/>}
+                    {currentLesson.type === 'video' || currentLesson.type === 'video_file' ? 'Vidéo' : 'Leçon'}
                   </div>
                   <h1 className="text-3xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight">
                     {currentLesson.title}
@@ -579,13 +586,105 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                          </div>
                        )}
                      </div>
+                   ) : currentLesson.type === 'video_file' ? (
+                     <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-xl bg-black border border-[rgba(197,161,72,0.25)]">
+                       {currentLesson.content ? (
+                         <video src={currentLesson.content} controls className="w-full h-full" />
+                       ) : (
+                         <div className="w-full h-full flex items-center justify-center text-white">
+                           <div className="text-center">
+                             <Video className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                             <p>Vidéo non disponible</p>
+                           </div>
+                         </div>
+                       )}
+                     </div>
+                   ) : currentLesson.type === 'pdf' ? (
+                     currentLesson.content ? (
+                       <div className="w-full rounded-2xl overflow-hidden shadow-xl border border-[rgba(197,161,72,0.25)]" style={{ height: "80vh" }}>
+                         <iframe src={currentLesson.content} title={currentLesson.title} className="w-full h-full" />
+                       </div>
+                     ) : (
+                       <div className="text-center text-gray-400 py-12">
+                         <FileText className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                         <p>Document PDF non disponible</p>
+                       </div>
+                     )
+                   ) : currentLesson.type === 'table' || currentLesson.type === 'graph' ? (
+                     currentLesson.content?.trim() ? (
+                       <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(currentLesson.content)) }} />
+                     ) : (
+                       <p className="text-gray-400 italic">Contenu non disponible.</p>
+                     )
+                   ) : currentLesson.type === 'image' ? (
+                     currentLesson.image_url ? (
+                       <img src={currentLesson.image_url} alt={currentLesson.title} className="max-w-full rounded-xl border border-[rgba(197,161,72,0.25)]" />
+                     ) : (
+                       <p className="text-gray-400 italic">Image non disponible.</p>
+                     )
+                   ) : (currentLesson.type === 'exercise' || currentLesson.type === 'quiz') ? (
+                     currentLesson.exercises && currentLesson.exercises.length > 0 ? (
+                       <InlineMiniExercises
+                         lessonId={currentLesson.id}
+                         exercises={currentLesson.exercises}
+                         level={(course as any).level}
+                         title={currentLesson.type === 'quiz' ? 'Quiz' : 'Mini-exercices'}
+                       />
+                     ) : (
+                       <p className="text-gray-400 italic">Aucune question pour le moment.</p>
+                     )
+                   ) : currentLesson.blocks && currentLesson.blocks.length > 0 ? (
+                     <div ref={contentRef} className="space-y-6">
+                       {currentLesson.blocks.map((block) => {
+                         if (block.type === "text" || block.type === "table" || block.type === "graph") {
+                           if (!block.content?.trim()) return null;
+                           return (
+                             <div
+                               key={block.id}
+                               dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(block.content || "")) }}
+                             />
+                           );
+                         }
+                         if (block.type === "image" && block.image_url) {
+                           return (
+                             <img
+                               key={block.id}
+                               src={block.image_url}
+                               alt=""
+                               className="max-w-full rounded-xl border border-[rgba(197,161,72,0.25)]"
+                             />
+                           );
+                         }
+                         if (block.type === "exercise" && block.exercise) {
+                           return (
+                             <InlineMiniExercises
+                               key={block.id}
+                               lessonId={currentLesson.id}
+                               exercises={[block.exercise]}
+                               level={(course as any).level}
+                               compact
+                             />
+                           );
+                         }
+                         return null;
+                       })}
+                     </div>
                    ) : (
-                     <div ref={contentRef} dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentLesson.content || "") }} />
+                     <>
+                       <div ref={contentRef} dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(currentLesson.content || "")) }} />
+                       {currentLesson.image_url && (
+                         <img
+                           src={currentLesson.image_url}
+                           alt=""
+                           className="max-w-full rounded-xl border border-[rgba(197,161,72,0.25)] mt-6"
+                         />
+                       )}
+                     </>
                    )}
                 </div>
 
-                {/* Interactive mini-exercises */}
-                {currentLesson.exercises && currentLesson.exercises.length > 0 && (
+                {/* Interactive mini-exercises (legacy lessons without blocks) */}
+                {!currentLesson.blocks && currentLesson.exercises && currentLesson.exercises.length > 0 && (
                   <InlineMiniExercises
                     lessonId={currentLesson.id}
                     exercises={currentLesson.exercises}
@@ -666,15 +765,18 @@ interface ExerciseState {
   status: "idle" | "correct" | "wrong" | "revealed" | "grading";
   showHint: boolean;
   feedback?: string;
+  mode: "text" | "draw";
 }
 
 interface InlineMiniExercisesProps {
   lessonId: string;
   exercises: Exercise[];
   level?: string;
+  compact?: boolean;
+  title?: string;
 }
 
-function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercisesProps) {
+function InlineMiniExercises({ lessonId, exercises, level, compact, title }: InlineMiniExercisesProps) {
   const [states, setStates] = useState<Record<string, ExerciseState>>({});
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -688,6 +790,7 @@ function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercises
         status: "idle",
         showHint: false,
         feedback: undefined,
+        mode: "text",
       };
     });
     setStates(initial);
@@ -741,7 +844,7 @@ function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercises
   };
 
   const handleRetry = (id: string) => {
-    updateState(id, { status: "idle", input: "" });
+    updateState(id, { status: "idle", input: "", mode: "text" });
   };
 
   const handleReveal = (id: string) => {
@@ -754,16 +857,16 @@ function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercises
   };
 
   return (
-    <div ref={containerRef} className="mt-12 pt-8 border-t border-[rgba(197,161,72,0.25)]">
-      <h2
-        className="text-2xl font-bold mb-6 flex items-center gap-3 font-[family-name:var(--font-display)]"
-        style={{ color: "var(--greek-blue)" }}
-      >
-        <PencilLine className="w-7 h-7" style={{ color: "var(--greek-gold)" }} />
-        <span>
-          <span style={{ color: "var(--greek-gold)" }}>✏️</span> Mini-exercices
-        </span>
-      </h2>
+    <div ref={containerRef} className={compact ? "" : "mt-12 pt-8 border-t border-[rgba(197,161,72,0.25)]"}>
+      {!compact && (
+        <h2
+          className="text-2xl font-bold mb-6 flex items-center gap-3 font-[family-name:var(--font-display)]"
+          style={{ color: "var(--greek-blue)" }}
+        >
+          <PencilLine className="w-7 h-7" style={{ color: "var(--greek-gold)" }} />
+          <span>{title || "Mini-exercices"}</span>
+        </h2>
+      )}
 
       <div className="space-y-4">
         {exercises.map((ex, idx) => {
@@ -772,6 +875,7 @@ function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercises
             attempts: 0,
             status: "idle" as const,
             showHint: false,
+            mode: "text" as const,
           };
           const isCorrect = s.status === "correct";
           const isWrong = s.status === "wrong";
@@ -846,28 +950,56 @@ function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercises
 
               {/* Input + verify */}
               {!isCorrect && !isRevealed && (
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={s.input}
-                    disabled={isGrading}
-                    onChange={(e) =>
-                      updateState(ex.id, { input: e.target.value })
-                    }
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        if (!isGrading) handleVerify(ex);
-                      }
-                    }}
-                    placeholder="Ta réponse..."
-                    className="flex-1 px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 focus:border-[var(--greek-blue)] transition-all text-gray-800 disabled:opacity-60"
-                  />
+                <div className="flex flex-col gap-2">
+                  {/* Mode toggle */}
+                  <div className="flex justify-end gap-2 mb-1">
+                    <button
+                      type="button"
+                      onClick={() => updateState(ex.id, { mode: "text" })}
+                      className={`p-1.5 rounded-lg flex items-center gap-1 text-xs font-bold transition-colors ${
+                        s.mode !== "draw"
+                          ? "bg-[var(--greek-blue)] text-white shadow-sm"
+                          : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                      }`}
+                      title="Mode Clavier"
+                    >
+                      <Keyboard className="w-3 h-3" /> Clavier
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => updateState(ex.id, { mode: "draw" })}
+                      className={`p-1.5 rounded-lg flex items-center gap-1 text-xs font-bold transition-colors ${
+                        s.mode === "draw"
+                          ? "bg-[var(--greek-blue)] text-white shadow-sm"
+                          : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                      }`}
+                      title="Mode Dessin"
+                    >
+                      <Pencil className="w-3 h-3" /> Dessin
+                    </button>
+                  </div>
+
+                  {s.mode === "draw" ? (
+                    <DrawingCanvas
+                      disabled={isGrading}
+                      initialData={s.input}
+                      onChange={(data) => updateState(ex.id, { input: data })}
+                    />
+                  ) : (
+                    <MathInput
+                      value={s.input.startsWith("data:image") ? "" : s.input}
+                      disabled={isGrading}
+                      onChange={(latex) => updateState(ex.id, { input: latex })}
+                      placeholder="Ta réponse..."
+                      className="w-full min-h-[48px] px-2 border border-gray-200 bg-gray-50 rounded-xl focus-within:ring-2 focus-within:ring-[var(--greek-blue)]/30 focus-within:border-[var(--greek-blue)] transition-all text-gray-800"
+                    />
+                  )}
+
                   <button
                     type="button"
                     onClick={() => handleVerify(ex)}
                     disabled={!s.input.trim() || isGrading}
-                    className="px-5 py-2.5 rounded-xl font-bold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+                    className="self-end px-5 py-2.5 rounded-xl font-bold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
                     style={{ background: "var(--greek-blue)" }}
                   >
                     {isGrading ? (
@@ -955,14 +1087,6 @@ function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercises
                         }}
                       />
                     )}
-                    {ex.explanation && (
-                      <div
-                        className="text-sm mt-1.5 opacity-90 leading-relaxed"
-                        dangerouslySetInnerHTML={{
-                          __html: renderLatexInHTML(ex.explanation),
-                        }}
-                      />
-                    )}
                   </div>
                 </div>
               )}
@@ -989,14 +1113,6 @@ function InlineMiniExercises({ lessonId, exercises, level }: InlineMiniExercises
                     <span className="font-semibold">Réponse :</span>{" "}
                     <span style={{ color: "var(--greek-blue)" }}>{ex.answer}</span>
                   </p>
-                  {ex.explanation && (
-                    <div
-                      className="text-sm text-gray-600 leading-relaxed"
-                      dangerouslySetInnerHTML={{
-                        __html: renderLatexInHTML(ex.explanation),
-                      }}
-                    />
-                  )}
                   <button
                     type="button"
                     onClick={() => handleRetry(ex.id)}

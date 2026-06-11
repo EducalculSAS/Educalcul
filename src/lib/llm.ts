@@ -12,7 +12,7 @@ type MessageContentPart =
   | { type: "text"; text: string }
   | { type: "image_url"; image_url: { url: string } };
 
-const OR_VISION_MODEL = process.env.OPENROUTER_VISION_MODEL || "inclusionai/ling-2.6-flash";
+const OR_VISION_MODEL = process.env.OPENROUTER_VISION_MODEL || "qwen/qwen2.5-vl-72b-instruct";
 
 // ── Providers ─────────────────────────────────────────────────────────────────
 
@@ -158,22 +158,22 @@ export async function gradeAnswer(
   question: string, correctAnswer: string, studentAnswer: string,
   explanation: string | undefined, level: string, maxPoints: number
 ): Promise<{ is_correct: boolean; score: number; feedback: string }> {
-  const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}". Corrige vite et bien.
+  const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}". Corrige avec soin et pédagogie.
 RÈGLES D'ÉQUIVALENCE (très important) :
 - Accepte TOUTE forme mathématiquement équivalente à la réponse attendue, même si elle diffère de la formulation donnée : fraction non simplifiée ou simplifiée (ex: 4/8 = 1/2), nombre décimal vs fraction (ex: 0.5 = 1/2), forme développée vs factorisée, ordre différent des termes/solutions, unités équivalentes, écriture avec ou sans espace/virgule décimale, pourcentage vs décimal (ex: 50% = 0.5), racine simplifiée ou non.
 - Seule l'exactitude mathématique compte, pas la forme exacte du texte.
 RÈGLES pour le feedback :
-1. Adapte ton vocabulaire au niveau de l'élève.
-2. Si correct : félicite brièvement et confirme la bonne réponse (même si la forme diffère, précise que c'est une forme équivalente correcte si pertinent).
-3. Si incorrect : donne OBLIGATOIREMENT la réponse correcte avec les calculs détaillés étape par étape.
-4. Montre TOUJOURS la méthode ET le résultat final, pas seulement l'un des deux.
-5. Sois encourageant même en cas d'erreur.
+1. Adapte ton vocabulaire et ton niveau de détail au niveau de l'élève.
+2. EXPLIQUE TOUJOURS LA MÉTHODE pas à pas, étape par étape, que la réponse soit correcte ou non — pas seulement le résultat. L'objectif est que l'élève comprenne le raisonnement, pas juste s'il a "bon" ou "faux".
+3. Si correct : confirme la bonne réponse (en précisant si la forme diffère mais reste équivalente), PUIS récapitule brièvement la méthode/le raisonnement qui mène à cette réponse pour consolider la compréhension.
+4. Si incorrect : explique d'abord où se situe l'erreur dans le raisonnement de l'élève si elle est identifiable, donne ensuite la résolution complète étape par étape menant à la réponse correcte, avec les calculs détaillés.
+5. Sois encourageant même en cas d'erreur, sans être condescendant.
 6. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
 7. score = 0 si incorrect, ${maxPoints} si correct.
-8. Reste concis : feedback de 2-4 phrases maximum.`;
+8. Le feedback doit être complet mais clair : généralement 3 à 6 phrases, plus si la résolution étape par étape le nécessite. Utilise des sauts de ligne (\\n) entre les étapes pour la lisibilité.`;
 
-  const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
-  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 500, false);
+  const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
+  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 800, false);
   const r = parseJSON(extractJSON(text)) as any;
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
@@ -189,17 +189,17 @@ RÈGLES D'ÉQUIVALENCE (très important) :
 - Accepte TOUTE forme mathématiquement équivalente à la réponse attendue : fraction non simplifiée ou simplifiée, décimal vs fraction, forme développée vs factorisée, ordre différent, pourcentage vs décimal, racine simplifiée ou non.
 - Seule l'exactitude mathématique compte, pas la forme exacte.
 RÈGLES pour le feedback :
-1. Adapte ton vocabulaire au niveau de l'élève.
-2. Lis attentivement ce que l'élève a écrit ou dessiné sur l'image.
-3. Si correct : félicite brièvement et confirme la bonne réponse.
-4. Si incorrect : donne OBLIGATOIREMENT la réponse correcte avec les calculs détaillés étape par étape.
-5. Montre TOUJOURS la méthode ET le résultat final, pas seulement l'un des deux.
-6. Sois encourageant même en cas d'erreur.
+1. Adapte ton vocabulaire et ton niveau de détail au niveau de l'élève.
+2. Lis attentivement ce que l'élève a écrit ou dessiné sur l'image (démarche ET résultat final).
+3. EXPLIQUE TOUJOURS LA MÉTHODE pas à pas, étape par étape, que la réponse soit correcte ou non — pas seulement le résultat. L'objectif est que l'élève comprenne le raisonnement.
+4. Si correct : confirme la bonne réponse, PUIS récapitule brièvement la méthode/le raisonnement qui mène à cette réponse pour consolider la compréhension.
+5. Si incorrect : explique d'abord où se situe l'erreur dans la démarche de l'élève si elle est identifiable sur l'image, donne ensuite la résolution complète étape par étape menant à la réponse correcte, avec les calculs détaillés.
+6. Sois encourageant même en cas d'erreur, sans être condescendant.
 7. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
 8. score = 0 si incorrect, ${maxPoints} si correct.
-9. Reste concis : feedback de 2-4 phrases maximum.`;
+9. Le feedback doit être complet mais clair : généralement 3 à 6 phrases, plus si la résolution étape par étape le nécessite. Utilise des sauts de ligne (\\n) entre les étapes pour la lisibilité.`;
 
-  const userText = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication : ${explanation || "Aucune"}\nVoici la réponse de l'élève sous forme d'image (dessin/écriture manuscrite). Analyse-la.\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
+  const userText = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nVoici la réponse de l'élève sous forme d'image (dessin/écriture manuscrite). Analyse-la.\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
 
   const msgs: Message[] = [
     { role: "system", content: system },
@@ -212,7 +212,7 @@ RÈGLES pour le feedback :
     },
   ];
 
-  const { ok, text, status } = await callOpenRouterModel(OR_VISION_MODEL, msgs, 0.2, 500);
+  const { ok, text, status } = await callOpenRouterModel(OR_VISION_MODEL, msgs, 0.2, 800);
   if (!ok) {
     console.error(`[llm] vision model ${OR_VISION_MODEL} error ${status}: ${text.slice(0, 400)}`);
     throw new Error("Le modèle de vision IA est indisponible. Réessaie dans quelques secondes.");
@@ -225,12 +225,12 @@ RÈGLES pour le feedback :
 
 /** Générer un cours/exercice/quiz structuré → JSON parsé */
 export async function generateStructuredContent(
-  prompt: string, systemPrompt: string, temperature = 0.7
+  prompt: string, systemPrompt: string, temperature = 0.7, maxTokens = 8000
 ): Promise<unknown> {
   const text = await dispatch(
     [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
     temperature,
-    8000,
+    maxTokens,
     false  // reasoning désactivé : DeepSeek ne le supporte pas via OpenRouter
   );
   return parseJSON(extractJSON(text));

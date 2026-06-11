@@ -107,6 +107,15 @@ ${programmeBlock ? programmeBlock + "\n" : ""}
 • N'utilise JAMAIS de retour à la ligne littéral à l'intérieur d'une chaîne JSON : écris le HTML sur une seule ligne (utilise <br> ou des balises pour la mise en forme, pas de \\n).
 • DOUBLE-ÉCHAPPE les backslashes JSON : \\\\frac{a}{b} → donne \\frac{a}{b} dans le rendu
 
+═══ TABLEAUX & GRAPHIQUES (à utiliser SI PERTINENT, sans en abuser) ═══
+• Si la notion s'y prête (étude de fonction, signe, variations, tableau de valeurs, etc.), insère DIRECTEMENT dans le "content" HTML un tableau au format :
+  <table class="math-table math-table-sign"><thead><tr><th>x</th>...</tr></thead><tbody><tr><td>...</td></tr></tbody></table>
+  (classes possibles : math-table-value, math-table-sign, math-table-variation). Utilise ↗, ↘, +, -, 0, ∞, ‖ pour les signes/variations.
+• Pour une courbe simple (fonction affine, second degré, etc.), insère un placeholder de graphique au format :
+  <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
+  (un seul par leçon maximum, uniquement si visualiser la courbe aide vraiment à comprendre).
+• N'insère ces éléments QUE quand ils apportent une vraie valeur pédagogique — la majorité des leçons n'en ont pas besoin.
+
 ${exercisesInstruction}`;
 
   const encoder = new TextEncoder();

@@ -18,6 +18,7 @@ import Link from "next/link";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
+import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
 
 
 interface QuizViewerProps {
@@ -616,7 +617,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
                     Explication
                   </div>
                   <div className="text-[var(--greek-bronze)] prose prose-sm max-w-none">
-                    <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentQuestion.explanation || "") }} />
+                    <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(currentQuestion.explanation || "")) }} />
                   </div>
                 </div>
               )}

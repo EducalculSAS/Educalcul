@@ -485,3 +485,22 @@ main,
   to   { opacity: 1; transform: translateY(0)   scale(1);    }
 }
 .animate-chat-open { animation: chatOpen 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+/* Math tables (value / sign / variation tables) */
+.math-table { border-collapse: collapse; margin: 1rem auto; font-size: 0.95rem; }
+.math-table th, .math-table td {
+  border: 1px solid #c5a148;
+  padding: 0.4rem 0.9rem;
+  text-align: center;
+  min-width: 2.5rem;
+}
+.math-table th { background: rgba(197,161,72,0.12); font-weight: 600; }
+.math-table-sign td, .math-table-variation td { font-size: 1.1rem; }
+
+/* Math graphs */
+.math-graph { display: flex; justify-content: center; margin: 1rem auto; }
+.math-graph svg { max-width: 100%; height: auto; }
+.math-graph .graph-axis { stroke: #9ca3af; stroke-width: 1; }
+.math-graph .graph-grid { stroke: #e5e7eb; stroke-width: 0.5; }
+.math-graph .graph-curve { stroke: #1d4ed8; stroke-width: 2; fill: none; }
+.math-graph .graph-label { font-size: 10px; fill: #6b7280; font-family: sans-serif; }

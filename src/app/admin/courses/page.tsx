@@ -1281,6 +1281,7 @@ export default function AdminCoursesPage() {
                   <CourseBuilder
                     initialContent={formData.content_json}
                     onChange={(chapters) => setFormData({ ...formData, content_json: chapters })}
+                    level={formData.level}
                   />
                 </div>
               </div>
