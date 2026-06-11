@@ -9,6 +9,7 @@ import AppAdminLoader from "@/components/AppAdminLoader";
 import CalendarView, { CalendarEventItem } from "@/components/calendar/CalendarView";
 import EventModal from "@/components/calendar/EventModal";
 import { getEventTypeMeta, PARENT_ONLY_EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
+import { STUDENT_ZONE_OPTIONS } from "@/lib/calendarZones";
 
 interface ChildOption {
   id: number;
@@ -24,6 +25,7 @@ export default function ParentCalendarPage() {
   const [activeOwnerId, setActiveOwnerId] = useState<number | null>(null);
   const [events, setEvents] = useState<CalendarEventItem[]>([]);
   const [globalEvents, setGlobalEvents] = useState<CalendarEventItem[]>([]);
+  const [schoolZone, setSchoolZone] = useState("C");
   const [subscriptionEvent, setSubscriptionEvent] = useState<CalendarEventItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<CalendarEventItem | null>(null);
@@ -36,6 +38,7 @@ export default function ParentCalendarPage() {
     const data = await res.json();
     setEvents(data.events || []);
     setGlobalEvents(data.globalEvents || []);
+    setSchoolZone(data.schoolZone || "C");
   }, []);
 
   useEffect(() => {
@@ -129,6 +132,17 @@ export default function ParentCalendarPage() {
     }
   };
 
+  const handleZoneChange = async (zone: string) => {
+    if (!authId || !activeOwnerId) return;
+    setSchoolZone(zone);
+    await fetch(`/api/calendar/zone`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: authId, ownerId: activeOwnerId, zone }),
+    });
+    await loadEvents(authId, activeOwnerId);
+  };
+
   const handleSuggest = async () => {
     if (!authId || !activeOwnerId || activeOwnerId === parentId) return;
     setSuggesting(true);
@@ -212,7 +226,19 @@ export default function ParentCalendarPage() {
               );
             })}
           </div>
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 flex-wrap items-center">
+            <label className="flex items-center gap-2 text-xs font-medium text-[var(--greek-blue)]">
+              Zone scolaire
+              <select
+                value={schoolZone}
+                onChange={e => handleZoneChange(e.target.value)}
+                className="px-2 py-1.5 rounded-[8px] border border-[rgba(197,161,72,0.3)] text-xs bg-white outline-none focus:ring-2 focus:ring-[var(--greek-blue)]"
+              >
+                {STUDENT_ZONE_OPTIONS.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+            </label>
             {!isOwnCalendar && (
               <button
                 onClick={handleSuggest}

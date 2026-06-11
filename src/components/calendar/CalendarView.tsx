@@ -1,9 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, CalendarDays, List } from "lucide-react";
 import { getEventTypeMeta } from "@/lib/calendarEventTypes";
-import { getHolidaysInRange } from "@/lib/schoolHolidays";
 
 export interface CalendarEventItem {
   id: string;
@@ -21,7 +20,6 @@ interface CalendarViewProps {
   globalEvents?: CalendarEventItem[];
   onDayClick?: (date: string) => void;
   onEventClick?: (event: CalendarEventItem) => void;
-  showHolidays?: boolean;
   compact?: boolean;
 }
 
@@ -34,32 +32,18 @@ const DAY_NAMES = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 const toIso = (y: number, m: number, d: number) =>
   `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 
-export default function CalendarView({ events, globalEvents = [], onDayClick, onEventClick, showHolidays = true, compact = false }: CalendarViewProps) {
+export default function CalendarView({ events, globalEvents = [], onDayClick, onEventClick, compact = false }: CalendarViewProps) {
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
+  const [view, setView] = useState<"month" | "agenda">("month");
 
   const todayIso = toIso(today.getFullYear(), today.getMonth(), today.getDate());
 
-  const allEvents: CalendarEventItem[] = useMemo(() => {
-    const merged = [
-      ...events,
-      ...globalEvents.map(e => ({ ...e, id: `global-${e.id}`, isVirtual: true })),
-    ];
-    if (!showHolidays) return merged;
-    const from = `${year}-${String(month + 1).padStart(2, "0")}-01`;
-    const lastDay = new Date(year, month + 1, 0).getDate();
-    const to = `${year}-${String(month + 1).padStart(2, "0")}-${String(lastDay).padStart(2, "0")}`;
-    const holidays = getHolidaysInRange(from, to).map(h => ({
-      id: `holiday-${h.id}`,
-      title: h.title,
-      event_type: "vacances",
-      start_date: h.start_date,
-      end_date: h.end_date,
-      isVirtual: true,
-    }));
-    return [...merged, ...holidays];
-  }, [events, globalEvents, showHolidays, year, month]);
+  const allEvents: CalendarEventItem[] = useMemo(() => [
+    ...events,
+    ...globalEvents.map(e => ({ ...e, id: `global-${e.id}`, isVirtual: true })),
+  ], [events, globalEvents]);
 
   const eventsByDay = useMemo(() => {
     const map: Record<string, CalendarEventItem[]> = {};
@@ -95,10 +79,23 @@ export default function CalendarView({ events, globalEvents = [], onDayClick, on
   const goNext = () => {
     if (month === 11) { setYear(y => y + 1); setMonth(0); } else setMonth(m => m + 1);
   };
+  const goToday = () => {
+    setYear(today.getFullYear());
+    setMonth(today.getMonth());
+  };
+
+  const agendaEvents = useMemo(() => {
+    const from = `${year}-${String(month + 1).padStart(2, "0")}-01`;
+    const lastDay = new Date(year, month + 1, 0).getDate();
+    const to = `${year}-${String(month + 1).padStart(2, "0")}-${String(lastDay).padStart(2, "0")}`;
+    return allEvents
+      .filter(ev => ev.start_date <= to && (ev.end_date || ev.start_date) >= from)
+      .sort((a, b) => a.start_date.localeCompare(b.start_date));
+  }, [allEvents, year, month]);
 
   return (
     <div className={compact ? "" : "bg-white rounded-[20px] p-4 md:p-6 shadow-sm border border-[rgba(197,161,72,0.25)]"}>
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-3 gap-2">
         <button
           onClick={goPrev}
           className="p-1.5 rounded-full hover:bg-[rgba(197,161,72,0.1)] transition-colors"
@@ -106,18 +103,70 @@ export default function CalendarView({ events, globalEvents = [], onDayClick, on
         >
           <ChevronLeft className="w-4 h-4 text-[var(--greek-blue)]" />
         </button>
-        <h3 className={`font-bold text-[var(--greek-blue)] ${compact ? "text-sm" : "text-lg"}`}>
+        <button onClick={goToday} className={`font-bold text-[var(--greek-blue)] hover:text-[var(--greek-gold)] transition-colors ${compact ? "text-sm" : "text-lg"}`}>
           {MONTH_NAMES[month]} {year}
-        </h3>
-        <button
-          onClick={goNext}
-          className="p-1.5 rounded-full hover:bg-[rgba(197,161,72,0.1)] transition-colors"
-          aria-label="Mois suivant"
-        >
-          <ChevronRight className="w-4 h-4 text-[var(--greek-blue)]" />
         </button>
+        <div className="flex items-center gap-1">
+          {!compact && (
+            <div className="flex items-center rounded-full border border-[rgba(197,161,72,0.25)] overflow-hidden mr-1">
+              <button
+                onClick={() => setView("month")}
+                className={`p-1.5 transition-colors ${view === "month" ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.1)]"}`}
+                aria-label="Vue mois"
+              >
+                <CalendarDays className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => setView("agenda")}
+                className={`p-1.5 transition-colors ${view === "agenda" ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.1)]"}`}
+                aria-label="Vue agenda"
+              >
+                <List className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+          <button
+            onClick={goNext}
+            className="p-1.5 rounded-full hover:bg-[rgba(197,161,72,0.1)] transition-colors"
+            aria-label="Mois suivant"
+          >
+            <ChevronRight className="w-4 h-4 text-[var(--greek-blue)]" />
+          </button>
+        </div>
       </div>
 
+      {!compact && view === "agenda" ? (
+        <div className="flex flex-col gap-2 max-h-[420px] overflow-y-auto pr-1">
+          {agendaEvents.length === 0 ? (
+            <p className="text-sm text-gray-400 text-center py-8">Aucun événement ce mois-ci.</p>
+          ) : (
+            agendaEvents.map(ev => {
+              const meta = getEventTypeMeta(ev.event_type);
+              const d = new Date(ev.start_date + "T00:00:00");
+              return (
+                <button
+                  key={ev.id}
+                  onClick={() => onEventClick?.(ev)}
+                  className="flex items-center gap-3 p-2.5 rounded-[12px] border border-[rgba(197,161,72,0.15)] hover:bg-[rgba(197,161,72,0.08)] transition-colors text-left"
+                >
+                  <div className={`flex flex-col items-center justify-center rounded-[10px] min-w-[48px] h-[48px] ${ev.start_date === todayIso ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "bg-[rgba(197,161,72,0.1)] text-[var(--greek-blue)]"}`}>
+                    <span className="text-[10px] font-semibold uppercase">{MONTH_NAMES[d.getMonth()].slice(0, 3)}</span>
+                    <span className="text-base font-bold leading-none">{d.getDate()}</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-sm text-gray-800 truncate">{ev.title}</p>
+                    {ev.end_date && ev.end_date !== ev.start_date && (
+                      <p className="text-xs text-gray-400">jusqu'au {ev.end_date}</p>
+                    )}
+                  </div>
+                  <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: meta.color }} />
+                </button>
+              );
+            })
+          )}
+        </div>
+      ) : (
+      <>
       <div className="grid grid-cols-7 gap-1 mb-1">
         {DAY_NAMES.map(d => (
           <div key={d} className="text-center text-[10px] font-semibold text-[var(--greek-bronze)] py-1">
@@ -198,6 +247,8 @@ export default function CalendarView({ events, globalEvents = [], onDayClick, on
           );
         })}
       </div>
+      </>
+      )}
     </div>
   );
 }

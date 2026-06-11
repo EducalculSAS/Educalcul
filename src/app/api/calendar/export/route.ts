@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { generateIcs } from "@/lib/ics";
-import { SCHOOL_HOLIDAYS } from "@/lib/schoolHolidays";
 
 // GET /api/calendar/export?token=<auth_uuid>&ownerId=<id>
 // `token` must match the auth_id of either the owner or their parent.
@@ -18,7 +17,7 @@ export async function GET(req: Request) {
 
     const { data: requester } = await supabaseAdmin
       .from("users")
-      .select("id, role, parent_id")
+      .select("id, role, parent_id, school_zone")
       .eq("auth_id", token)
       .maybeSingle();
     if (!requester) return NextResponse.json({ error: "Invalid token" }, { status: 403 });
@@ -48,9 +47,20 @@ export async function GET(req: Request) {
     const { data: events, error } = await query;
     if (error) throw error;
 
+    let ownerZone = requester.school_zone || "C";
+    if (ownerId !== requester.id) {
+      const { data: ownerData } = await supabaseAdmin
+        .from("users")
+        .select("school_zone")
+        .eq("id", ownerId)
+        .maybeSingle();
+      ownerZone = ownerData?.school_zone || "C";
+    }
+
     const { data: globalEvents, error: globalError } = await supabaseAdmin
       .from("global_calendar_events")
-      .select("*");
+      .select("*")
+      .or(`zone.eq.all,zone.eq.${ownerZone}`);
     if (globalError) throw globalError;
 
     const icsEvents = [
@@ -60,12 +70,6 @@ export async function GET(req: Request) {
         description: e.description,
         start_date: e.start_date,
         end_date: e.end_date,
-      })),
-      ...SCHOOL_HOLIDAYS.map(h => ({
-        id: `holiday-${h.id}`,
-        title: h.title,
-        start_date: h.start_date,
-        end_date: h.end_date,
       })),
       ...(globalEvents || []).map((e: any) => ({
         id: `global-${e.id}`,

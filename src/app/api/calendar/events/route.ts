@@ -9,7 +9,7 @@ const PARENT_ALLOWED_TYPES = new Set(PARENT_ONLY_EVENT_TYPE_OPTIONS.map(o => o.v
 async function resolveUser(authId: string) {
   const { data } = await supabaseAdmin
     .from("users")
-    .select("id, role, parent_id")
+    .select("id, role, parent_id, school_zone")
     .eq("auth_id", authId)
     .maybeSingle();
   return data;
@@ -62,13 +62,24 @@ export async function GET(req: Request) {
     const { data, error } = await query;
     if (error) throw error;
 
+    let ownerZone = requester.school_zone || "C";
+    if (ownerId !== requester.id) {
+      const { data: ownerData } = await supabaseAdmin
+        .from("users")
+        .select("school_zone")
+        .eq("id", ownerId)
+        .maybeSingle();
+      ownerZone = ownerData?.school_zone || "C";
+    }
+
     const { data: globalEvents, error: globalError } = await supabaseAdmin
       .from("global_calendar_events")
       .select("*")
+      .or(`zone.eq.all,zone.eq.${ownerZone}`)
       .order("start_date", { ascending: true });
     if (globalError) throw globalError;
 
-    return NextResponse.json({ events: data || [], globalEvents: globalEvents || [] });
+    return NextResponse.json({ events: data || [], globalEvents: globalEvents || [], schoolZone: ownerZone });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

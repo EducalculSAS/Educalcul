@@ -36,7 +36,7 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { userId, title, description, event_type, start_date, end_date } = body;
+    const { userId, title, description, event_type, start_date, end_date, zone } = body;
     if (!userId || !title || !start_date) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
@@ -52,6 +52,7 @@ export async function POST(req: Request) {
         event_type: event_type || "vacances",
         start_date,
         end_date: end_date || null,
+        zone: zone || "all",
         created_by: admin.id,
       })
       .select()

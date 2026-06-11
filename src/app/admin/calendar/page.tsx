@@ -5,6 +5,7 @@ import { Calendar, Plus, Trash2, Edit, X } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { getEventTypeMeta, EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
+import { ZONE_OPTIONS, getZoneLabel } from "@/lib/calendarZones";
 import { useConfirm } from "@/components/ConfirmDialog";
 
 const ADMIN_EVENT_TYPE_OPTIONS = [
@@ -19,6 +20,7 @@ interface GlobalEvent {
   event_type: string;
   start_date: string;
   end_date: string | null;
+  zone: string;
 }
 
 const inputCls = "w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
@@ -38,6 +40,8 @@ export default function AdminCalendarPage() {
   const [eventType, setEventType] = useState("vacances");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [zone, setZone] = useState("all");
+  const [zoneFilter, setZoneFilter] = useState("all");
 
   const loadEvents = useCallback(async (uid: string) => {
     const res = await fetch(`/api/admin/calendar-events?userId=${uid}`);
@@ -62,6 +66,7 @@ export default function AdminCalendarPage() {
     setEventType("vacances");
     setStartDate(new Date().toISOString().slice(0, 10));
     setEndDate("");
+    setZone("all");
     setModalOpen(true);
   };
 
@@ -72,6 +77,7 @@ export default function AdminCalendarPage() {
     setEventType(ev.event_type);
     setStartDate(ev.start_date);
     setEndDate(ev.end_date || "");
+    setZone(ev.zone || "all");
     setModalOpen(true);
   };
 
@@ -86,6 +92,7 @@ export default function AdminCalendarPage() {
         event_type: eventType,
         start_date: startDate,
         end_date: endDate || null,
+        zone,
       };
       if (editing) {
         await fetch(`/api/admin/calendar-events/${editing.id}`, {
@@ -134,11 +141,29 @@ export default function AdminCalendarPage() {
       </div>
 
       <p className="text-sm text-gray-500 mb-4">
-        Ces événements (vacances scolaires, dates importantes...) apparaissent automatiquement dans les calendriers de tous les parents et élèves.
+        Ces événements (vacances scolaires, dates importantes...) apparaissent automatiquement dans les calendriers de tous les parents et élèves, filtrés selon leur zone scolaire.
       </p>
 
+      <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-1">
+        {[{ value: "all", label: "Toutes" }, ...ZONE_OPTIONS.filter(z => z.value !== "all")].map(opt => (
+          <button
+            key={opt.value}
+            onClick={() => setZoneFilter(opt.value)}
+            className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+              zoneFilter === opt.value
+                ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]"
+                : "bg-[rgba(197,161,72,0.1)] text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.2)]"
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden">
-        {events.length === 0 ? (
+        {(() => {
+          const filteredEvents = zoneFilter === "all" ? events : events.filter(e => e.zone === zoneFilter);
+          return filteredEvents.length === 0 ? (
           <div className="text-center py-12 text-gray-400">
             <Calendar className="w-10 h-10 mx-auto mb-2 opacity-20" />
             <p className="text-sm">Aucun événement global pour le moment.</p>
@@ -149,13 +174,14 @@ export default function AdminCalendarPage() {
               <tr>
                 <th className="text-left px-4 py-3">Titre</th>
                 <th className="text-left px-4 py-3">Type</th>
+                <th className="text-left px-4 py-3">Zone</th>
                 <th className="text-left px-4 py-3">Début</th>
                 <th className="text-left px-4 py-3">Fin</th>
                 <th className="text-right px-4 py-3">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {events.map(ev => {
+              {filteredEvents.map(ev => {
                 const meta = getEventTypeMeta(ev.event_type);
                 return (
                   <tr key={ev.id} className="border-t border-[rgba(197,161,72,0.15)]">
@@ -165,6 +191,7 @@ export default function AdminCalendarPage() {
                         {meta.label}
                       </span>
                     </td>
+                    <td className="px-4 py-3 text-gray-600">{getZoneLabel(ev.zone || "all")}</td>
                     <td className="px-4 py-3 text-gray-600">{ev.start_date}</td>
                     <td className="px-4 py-3 text-gray-600">{ev.end_date || "—"}</td>
                     <td className="px-4 py-3 text-right">
@@ -182,7 +209,8 @@ export default function AdminCalendarPage() {
               })}
             </tbody>
           </table>
-        )}
+          );
+        })()}
       </div>
 
       {modalOpen && (
@@ -206,6 +234,14 @@ export default function AdminCalendarPage() {
                 <label className={labelCls}>Type</label>
                 <select value={eventType} onChange={e => setEventType(e.target.value)} className={inputCls}>
                   {ADMIN_EVENT_TYPE_OPTIONS.map(opt => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className={labelCls}>Zone</label>
+                <select value={zone} onChange={e => setZone(e.target.value)} className={inputCls}>
+                  {ZONE_OPTIONS.map(opt => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
                   ))}
                 </select>

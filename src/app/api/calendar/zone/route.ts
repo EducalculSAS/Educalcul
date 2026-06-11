@@ -1,0 +1,54 @@
+import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { ZONE_OPTIONS } from "@/lib/calendarZones";
+
+const ALLOWED_ZONES = new Set(ZONE_OPTIONS.filter(z => z.value !== "all").map(z => z.value));
+
+async function resolveUser(authId: string) {
+  const { data } = await supabaseAdmin
+    .from("users")
+    .select("id, role, parent_id")
+    .eq("auth_id", authId)
+    .maybeSingle();
+  return data;
+}
+
+// PATCH: update the school zone of the requester or one of their children
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+    const { userId, ownerId, zone } = body;
+    if (!userId || !ownerId || !zone) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+    if (!ALLOWED_ZONES.has(zone)) {
+      return NextResponse.json({ error: "Invalid zone" }, { status: 400 });
+    }
+
+    const requester = await resolveUser(userId);
+    if (!requester) return NextResponse.json({ error: "User not found" }, { status: 404 });
+
+    const ownerIdNum = Number(ownerId);
+    let allowed = requester.id === ownerIdNum;
+    if (!allowed && requester.role === "parent") {
+      const { data: child } = await supabaseAdmin
+        .from("users")
+        .select("id")
+        .eq("id", ownerIdNum)
+        .eq("parent_id", requester.id)
+        .maybeSingle();
+      allowed = !!child;
+    }
+    if (!allowed) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+    const { error } = await supabaseAdmin
+      .from("users")
+      .update({ school_zone: zone })
+      .eq("id", ownerIdNum);
+    if (error) throw error;
+
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

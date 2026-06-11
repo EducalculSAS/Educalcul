@@ -14,7 +14,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   try {
     const { id } = await params;
     const body = await req.json();
-    const { userId, title, description, event_type, start_date, end_date } = body;
+    const { userId, title, description, event_type, start_date, end_date, zone } = body;
     if (!userId) return NextResponse.json({ error: "Missing userId" }, { status: 400 });
 
     const admin = await resolveAdmin(userId);
@@ -26,6 +26,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     if (event_type !== undefined) updates.event_type = event_type;
     if (start_date !== undefined) updates.start_date = start_date;
     if (end_date !== undefined) updates.end_date = end_date;
+    if (zone !== undefined) updates.zone = zone;
 
     const { data, error } = await supabaseAdmin
       .from("global_calendar_events")
