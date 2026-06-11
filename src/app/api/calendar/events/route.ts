@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
+
+const CHILD_ALLOWED_TYPES = new Set(EVENT_TYPE_OPTIONS.map(o => o.value));
+const PARENT_ALLOWED_TYPES = new Set(PARENT_ONLY_EVENT_TYPE_OPTIONS.map(o => o.value));
 
 // Resolves the internal bigint user id + role + parent_id from an auth UUID
 async function resolveUser(authId: string) {
@@ -88,6 +92,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
+    const allowedTypes = requester.role === "parent" ? PARENT_ALLOWED_TYPES : CHILD_ALLOWED_TYPES;
+    const safeEventType = event_type && allowedTypes.has(event_type) ? event_type : "event";
+
     const { data, error } = await supabaseAdmin
       .from("calendar_events")
       .insert({
@@ -96,7 +103,7 @@ export async function POST(req: Request) {
         created_by_role: requester.role,
         title,
         description: description || null,
-        event_type: event_type || "event",
+        event_type: safeEventType,
         start_date,
         end_date: end_date || null,
         all_day: all_day !== false,
