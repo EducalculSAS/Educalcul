@@ -81,6 +81,8 @@ function UserDetailContent() {
   const [plans, setPlans] = useState<any[]>([]);
   const [selectedPlanId, setSelectedPlanId] = useState<string>("");
   const [savingPlan, setSavingPlan] = useState(false);
+  const [freeWeeksOffset, setFreeWeeksOffset] = useState<number>(0);
+  const [freeTimeLoading, setFreeTimeLoading] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -154,10 +156,27 @@ showToast("success", "Profil mis à jour");
       });
       const result = await res.json();
       if (!res.ok) throw new Error(result.error);
-      showToast("success", "Abonnement mis à jour");
+      showToast("success", result.stripeLinked ? "Abonnement mis à jour (Stripe synchronisé)" : "Abonnement mis à jour (sans Stripe — client introuvable ou plan gratuit)");
       fetchUser();
     } catch (err: any) { showToast("error", err.message || "Erreur"); }
     finally { setSavingPlan(false); }
+  };
+
+  const addFreeTime = async (sign: 1 | -1) => {
+    setFreeTimeLoading(true);
+    try {
+      const res = await fetch("/api/admin/user-detail?id=" + id, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "add_free_time", payload: { days: sign * 7 } }),
+      });
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error);
+      setFreeWeeksOffset(w => w + sign);
+      showToast("success", sign > 0 ? "1 semaine ajoutée" : "1 semaine retirée");
+      fetchUser();
+    } catch (err: any) { showToast("error", err.message || "Erreur"); }
+    finally { setFreeTimeLoading(false); }
   };
 
   const handleSendMessage = async () => {
@@ -271,11 +290,32 @@ showToast("success", "Profil mis à jour");
                   className={inputCls}
                 >
                   <option value="">— Aucun abonnement —</option>
-                  {plans.map((p: any) => (
-                    <option key={p.id} value={p.id.toString()}>
-                      {p.name} — {p.price}€/{p.billing_interval === "year" ? "an" : "mois"}
-                    </option>
-                  ))}
+                  {Object.entries(
+                    plans
+                      .filter((p: any) => p.is_active)
+                      .reduce((groups: Record<string, any[]>, p: any) => {
+                        (groups[p.name] ??= []).push(p);
+                        return groups;
+                      }, {})
+                  ).map(([groupName, groupPlans]) => {
+                    const order = ["month", "quarter", "semester", "year", "one_time"];
+                    const sorted = [...(groupPlans as any[])].sort((a, b) => order.indexOf(a.billing_interval) - order.indexOf(b.billing_interval));
+                    return (
+                      <optgroup key={groupName} label={groupName}>
+                        {sorted.map((p: any) => (
+                          <option key={p.id} value={p.id.toString()}>
+                            {p.price}€ — {
+                              p.billing_interval === "year" ? "Annuel"
+                              : p.billing_interval === "semester" ? "Semestriel"
+                              : p.billing_interval === "quarter" ? "Trimestriel"
+                              : p.billing_interval === "one_time" ? "Unique"
+                              : "Mensuel"
+                            }
+                          </option>
+                        ))}
+                      </optgroup>
+                    );
+                  })}
                 </select>
                 <button
                   onClick={savePlan}
@@ -283,7 +323,7 @@ showToast("success", "Profil mis à jour");
                   className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800 transition-colors disabled:opacity-50"
                 >
                   {savingPlan ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
-                  Appliquer
+                  Attribuer cet abonnement
                 </button>
                 {subscription ? (
                   <p className="text-xs text-gray-400 text-center">
@@ -295,6 +335,42 @@ showToast("success", "Profil mis à jour");
                 ) : (
                   <p className="text-xs text-gray-400 text-center italic">Aucun abonnement actif</p>
                 )}
+
+                {subscription && (() => {
+                  const remainingMs = subscription.current_period_end
+                    ? new Date(subscription.current_period_end).getTime() - Date.now()
+                    : 0;
+                  const remainingDays = Math.max(0, Math.round(remainingMs / (24 * 60 * 60 * 1000)));
+                  const remainingWeeks = Math.round(remainingDays / 7);
+                  return (
+                    <div className="pt-3 border-t border-gray-100 space-y-2">
+                      <p className={labelCls}>Durée gratuite offerte</p>
+                      <p className="text-xs text-gray-500">
+                        Temps restant : <span className="font-semibold text-gray-700">{remainingDays} jour{remainingDays > 1 ? "s" : ""}</span>
+                        {" "}(~{remainingWeeks} semaine{remainingWeeks > 1 ? "s" : ""})
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => addFreeTime(-1)}
+                          disabled={freeTimeLoading}
+                          className="px-3 py-2 rounded-xl text-sm font-bold bg-red-50 text-red-700 hover:bg-red-100 transition-colors disabled:opacity-50"
+                        >
+                          − 1 semaine
+                        </button>
+                        <span className="flex-1 text-center text-sm font-bold" style={{ color: "var(--greek-blue)" }}>
+                          {freeWeeksOffset > 0 ? `+${freeWeeksOffset}` : freeWeeksOffset} semaine{Math.abs(freeWeeksOffset) > 1 ? "s" : ""}
+                        </span>
+                        <button
+                          onClick={() => addFreeTime(1)}
+                          disabled={freeTimeLoading}
+                          className="px-3 py-2 rounded-xl text-sm font-bold bg-green-50 text-green-700 hover:bg-green-100 transition-colors disabled:opacity-50"
+                        >
+                          + 1 semaine
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           )}

@@ -58,6 +58,23 @@ export async function POST(req: Request) {
           stripeSubId = stripeSub.id;
         }
 
+        // Un utilisateur ne doit avoir qu'un seul abonnement Stripe actif :
+        // on annule l'ancien s'il existe et diffère du nouveau
+        const { data: existingSub } = await supabaseAdmin
+          .from("subscriptions")
+          .select("stripe_subscription_id")
+          .eq("user_id", userId)
+          .maybeSingle();
+
+        const oldSubId = existingSub?.stripe_subscription_id;
+        if (oldSubId && oldSubId !== stripeSubId) {
+          try {
+            await stripe.subscriptions.cancel(oldSubId);
+          } catch (e: any) {
+            console.warn("Could not cancel previous subscription:", e.message);
+          }
+        }
+
         await supabaseAdmin.from("subscriptions").upsert({
           user_id: userId,
           plan_id: planId,

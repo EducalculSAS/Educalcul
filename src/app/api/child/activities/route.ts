@@ -64,7 +64,7 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status, scorePercent, passed } = body;
+    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status, scorePercent, passed, lessonsCompleted, lessonCount, lastLessonId, lastChapterIndex, lastLessonIndex } = body;
 
     if (!type || !userId || !itemId) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -113,6 +113,14 @@ export async function POST(req: Request) {
         course_id: itemId,
         chapter_index: chapterIndex || 0,
         status: status || 'in_progress',
+        progress_json: {
+          lessonsCompleted: lessonsCompleted || [],
+          lessonCount: lessonCount || 0,
+          lastLessonId: lastLessonId ?? null,
+          lastChapterIndex: lastChapterIndex ?? 0,
+          lastLessonIndex: lastLessonIndex ?? 0,
+          timeSpent: timeSpent || 0,
+        },
         completed_at: new Date().toISOString()
       }, { onConflict: 'user_id, course_id' });
     }

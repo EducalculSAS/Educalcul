@@ -173,7 +173,16 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
       try {
         const res = await fetch(`/api/child/quizzes/${(quiz as any).id}/progress?userId=${session.user.id}`);
         const data = await res.json();
-        if (data?.status === "in_progress" && data?.progress?.answers) {
+        if (data?.status === "completed") {
+          const p = data?.progress;
+          if (p?.answers) setAnswers(p.answers);
+          if (p?.questionResults) setQuestionResults(p.questionResults);
+          if (p?.questionFeedbacks) setQuestionFeedbacks(p.questionFeedbacks);
+          setScore(p?.score || 0);
+          setIsAnswerSubmitted(true);
+          setQuizCompleted(true);
+          setShowReview(true);
+        } else if (data?.status === "in_progress" && data?.progress?.answers) {
           setAnswers(data.progress.answers);
         }
       } catch (e) {

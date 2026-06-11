@@ -4,9 +4,9 @@ import { supabaseAdmin } from '@/lib/supabaseClient';
 
 export async function POST(req: Request) {
   try {
-    const { planId, userId, email, referralCode, isNewSignup } = await req.json();
+    let { planId, userId, email, referralCode, isNewSignup, customConfig } = await req.json();
 
-    if (!planId || !email) {
+    if ((!planId && !customConfig) || !email) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
@@ -14,16 +14,42 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing user ID' }, { status: 400 });
     }
 
-    // Fetch plan from DB
-    const { data: plan } = await supabaseAdmin
-      .from('subscription_plans')
-      .select('*')
-      .eq('id', planId)
-      .eq('is_active', true)
-      .maybeSingle();
+    let plan: any = null;
 
-    if (!plan) {
-      return NextResponse.json({ error: 'Invalid plan ID' }, { status: 400 });
+    if (customConfig) {
+      // Crée un plan "sur mesure" caché (is_active=false) pour ce client uniquement
+      const { data: customPlan, error: customErr } = await supabaseAdmin
+        .from('subscription_plans')
+        .insert({
+          name: 'Sur mesure',
+          description: 'Abonnement personnalisé',
+          price: customConfig.price,
+          billing_interval: 'month',
+          trial_days: 0,
+          is_active: false,
+          features: customConfig.features,
+        })
+        .select('*')
+        .single();
+
+      if (customErr || !customPlan) {
+        return NextResponse.json({ error: customErr?.message || 'Could not create custom plan' }, { status: 500 });
+      }
+      plan = customPlan;
+      planId = customPlan.id;
+    } else {
+      // Fetch plan from DB
+      const { data: dbPlan } = await supabaseAdmin
+        .from('subscription_plans')
+        .select('*')
+        .eq('id', planId)
+        .eq('is_active', true)
+        .maybeSingle();
+
+      if (!dbPlan) {
+        return NextResponse.json({ error: 'Invalid plan ID' }, { status: 400 });
+      }
+      plan = dbPlan;
     }
 
     if (plan.price === 0) {
@@ -78,14 +104,20 @@ export async function POST(req: Request) {
       ? Math.round(priceInCents * (1 - discountPercent / 100))
       : priceInCents;
 
-    const billingInterval = plan.billing_interval === 'year' ? 'year' : 'month';
+    const RECURRING: Record<string, { interval: 'month' | 'year'; interval_count: number }> = {
+      month:    { interval: 'month', interval_count: 1 },
+      quarter:  { interval: 'month', interval_count: 3 },
+      semester: { interval: 'month', interval_count: 6 },
+      year:     { interval: 'year',  interval_count: 1 },
+    };
+    const recurring = RECURRING[plan.billing_interval] || RECURRING.month;
 
     const lineItem: any = {
       price_data: {
         currency: 'eur',
         product_data: { name: plan.name },
         unit_amount: discountedPrice,
-        recurring: { interval: billingInterval },
+        recurring,
       },
       quantity: 1,
     };

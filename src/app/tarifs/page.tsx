@@ -80,9 +80,21 @@ function formatVal(key: string, val: boolean | number | string | null): { label:
   return { label: String(val), included: true };
 }
 
-const intervalLabel = (i: string) => i === "year" ? "/an" : "/mois";
+const intervalLabel = (i: string) => {
+  switch (i) {
+    case "year": return "/an";
+    case "semester": return "/semestre";
+    case "quarter": return "/trimestre";
+    default: return "/mois";
+  }
+};
 
-const isLyceen = (p: Plan) => /lycéen/i.test(p.name);
+const INTERVAL_LABELS: { id: string; label: string }[] = [
+  { id: "month", label: "Mensuel" },
+  { id: "quarter", label: "Trimestriel" },
+  { id: "semester", label: "Semestriel" },
+  { id: "year", label: "Annuel" },
+];
 
 /* ─── Mini FAQ item ─── */
 function FaqItem({ question, answer }: { question: string; answer: string }) {
@@ -427,18 +439,19 @@ function ComparisonTable({ items, onRemove }: { items: CompareItem[]; onRemove: 
 /* ─── Configurator ─── */
 
 // Options IA (prix de base, multipliés ensuite par le nb d'enfants)
+// Limites généreuses : le coût réel par message (modèles DeepSeek) est très faible,
+// on garde donc une marge minime pour favoriser l'usage.
 const AI_OPTIONS = [
   { id: "none",  label: "Aucune",     daily: 0,   basePrice: 0    },
-  { id: "5",     label: "5/j",        daily: 5,   basePrice: 0.79 },
-  { id: "10",    label: "10/j",       daily: 10,  basePrice: 1.49 },
-  { id: "20",    label: "20/j",       daily: 20,  basePrice: 2.49 },
-  { id: "50",    label: "50/j",       daily: 50,  basePrice: 4.29 },
-  { id: "100",   label: "100/j",      daily: 100, basePrice: 5.99 },
-  { id: "unlim", label: "Illimitée",  daily: -1,  basePrice: 6.99 },
+  { id: "15",    label: "15/j",       daily: 15,  basePrice: 0.99 },
+  { id: "30",    label: "30/j",       daily: 30,  basePrice: 1.99 },
+  { id: "60",    label: "60/j",       daily: 60,  basePrice: 3.49 },
+  { id: "120",   label: "120/j",      daily: 120, basePrice: 5.99 },
+  { id: "unlim", label: "Illimitée",  daily: -1,  basePrice: 8.99 },
 ] as const;
-type AIId = "none" | "5" | "10" | "20" | "50" | "100" | "unlim";
+type AIId = "none" | "15" | "30" | "60" | "120" | "unlim";
 
-const BASE_PRICE = { lyceen: 1.99, famille: 2.99 };
+const BASE_PRICE = { famille: 14.99 };
 
 /** Coût des enfants : quadratique */
 function childrenCost(n: number): number {
@@ -448,13 +461,11 @@ function childrenCost(n: number): number {
 }
 
 /** Multiplicateur IA selon nb enfants (exponentiel, plafonné à ×4) */
-function aiMultiplier(type: "lyceen" | "famille", n: number): number {
-  if (type === "lyceen") return 1;
+function aiMultiplier(n: number): number {
   return Math.min(1 + (n - 1) * 0.35, 4.0);
 }
 
 interface ConfigState {
-  type: "lyceen" | "famille";
   children: number;   // nombre saisi librement
   ai: AIId;
   reports: boolean;
@@ -464,11 +475,11 @@ interface ConfigState {
 }
 
 function configPrice(c: ConfigState): number {
-  let p = BASE_PRICE[c.type];
+  let p = BASE_PRICE.famille;
   const n = Math.max(1, c.children);
-  if (c.type === "famille") p += childrenCost(n);
+  p += childrenCost(n);
   const aiBase = AI_OPTIONS.find(o => o.id === c.ai)!.basePrice;
-  p += Math.round(aiBase * aiMultiplier(c.type, n) * 100) / 100;
+  p += Math.round(aiBase * aiMultiplier(n) * 100) / 100;
   if (c.reports) p += 0.99;
   if (c.support) p += 1.49;
   if (c.avatars) p += 0.99;
@@ -481,11 +492,11 @@ function configToCompareItem(c: ConfigState, key: string): CompareItem {
   const n = Math.max(1, c.children);
   return {
     key,
-    name: c.type === "lyceen" ? "Mon plan (Lycéen)" : "Mon plan (Famille)",
+    name: "Mon abonnement personnalisé",
     price: configPrice(c),
     billing_interval: "month",
     features: {
-      max_children: c.type === "famille" ? n : 0,
+      max_children: n,
       access_level_exercises: "all",
       ai_access: c.ai === "none" ? "none" : c.ai === "unlim" ? "unlimited" : "limited",
       ai_daily_limit: c.ai === "none" ? 0 : ai.daily,
@@ -518,11 +529,11 @@ function Toggle({ label, sub, price, value, onChange }: { label: string; sub?: s
 
 function Configurator({ onAdd, alreadyAdded }: { onAdd: (c: ConfigState) => void; alreadyAdded: boolean }) {
   const [cfg, setCfg] = useState<ConfigState>({
-    type: "famille", children: 1, ai: "none",
+    children: 1, ai: "none",
     reports: false, support: false, avatars: false, quiz: false,
   });
   const n = Math.max(1, cfg.children);
-  const mult = aiMultiplier(cfg.type, n);
+  const mult = aiMultiplier(n);
   const total = configPrice(cfg);
   const aiOption = AI_OPTIONS.find(o => o.id === cfg.ai)!;
   const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
@@ -532,45 +543,27 @@ function Configurator({ onAdd, alreadyAdded }: { onAdd: (c: ConfigState) => void
     <div className="grid md:grid-cols-5 gap-8 items-start">
       <div className="md:col-span-3 space-y-6">
 
-        {/* Type */}
+        {/* Enfants — saisie libre */}
         <div>
-          <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--text-muted)" }}>Type d&apos;abonnement</p>
-          <div className="flex gap-3">
-            {([["lyceen", "Lycéen solo"], ["famille", "Famille"]] as const).map(([val, lab]) => (
-              <button key={val} onClick={() => setCfg(c => ({ ...c, type: val, children: 1 }))}
-                className="flex-1 px-4 py-3 rounded-xl text-sm font-bold transition-all font-[family-name:var(--font-display)]"
-                style={cfg.type === val
-                  ? { background: "var(--greek-blue)", color: "#fff" }
-                  : { border: "2px solid var(--greek-border)", color: "var(--greek-blue)" }}>
-                {lab}
-              </button>
-            ))}
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>Nombre d&apos;enfants</p>
+            {n > 1 && <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
+              +{childrenCost(n).toFixed(2)}€
+            </span>}
+          </div>
+          <div className="flex items-center gap-3">
+            <input
+              type="number" min={1} max={999} value={cfg.children}
+              onChange={e => setCfg(c => ({ ...c, children: Math.max(1, parseInt(e.target.value) || 1) }))}
+              className="w-28 px-4 py-2.5 rounded-xl text-sm font-bold text-center border outline-none focus:border-[var(--greek-blue)]"
+              style={{ border: "1.5px solid var(--greek-border)", color: "var(--greek-blue)" }}
+            />
+            <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              <div>1er enfant inclus</div>
+              <div>Plus d&apos;enfants → IA plus chère</div>
+            </div>
           </div>
         </div>
-
-        {/* Enfants — saisie libre */}
-        {cfg.type === "famille" && (
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>Nombre d&apos;enfants</p>
-              {n > 1 && <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
-                +{childrenCost(n).toFixed(2)}€
-              </span>}
-            </div>
-            <div className="flex items-center gap-3">
-              <input
-                type="number" min={1} max={999} value={cfg.children}
-                onChange={e => setCfg(c => ({ ...c, children: Math.max(1, parseInt(e.target.value) || 1) }))}
-                className="w-28 px-4 py-2.5 rounded-xl text-sm font-bold text-center border outline-none focus:border-[var(--greek-blue)]"
-                style={{ border: "1.5px solid var(--greek-border)", color: "var(--greek-blue)" }}
-              />
-              <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                <div>1er enfant inclus</div>
-                <div>Plus d&apos;enfants → IA plus chère</div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* IA — barre de sélection visuelle */}
         <div>
@@ -579,7 +572,7 @@ function Configurator({ onAdd, alreadyAdded }: { onAdd: (c: ConfigState) => void
             {cfg.ai !== "none" && (
               <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
                 +{aiActualPrice.toFixed(2)}€
-                {cfg.type === "famille" && n > 1 && (
+                {n > 1 && (
                   <span className="ml-1 font-normal" style={{ color: "var(--text-muted)" }}>
                     (×{mult.toFixed(2)} pour {n} enfants)
                   </span>
@@ -606,7 +599,7 @@ function Configurator({ onAdd, alreadyAdded }: { onAdd: (c: ConfigState) => void
               ))}
             </div>
           </div>
-          {cfg.type === "famille" && n > 1 && cfg.ai !== "none" && (
+          {n > 1 && cfg.ai !== "none" && (
             <p className="text-xs mt-1.5" style={{ color: "rgba(197,161,72,0.8)" }}>
               ⚠ Le prix de l&apos;IA augmente avec le nombre d&apos;enfants
             </p>
@@ -630,17 +623,15 @@ function Configurator({ onAdd, alreadyAdded }: { onAdd: (c: ConfigState) => void
             <span className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.45)" }}>/mois</span>
           </div>
           <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>
-            {cfg.type === "famille"
-              ? `Famille · ${cfg.children === -1 ? "enfants illimités" : `${cfg.children} enfant${cfg.children > 1 ? "s" : ""}`}`
-              : "Lycéen solo"}
+            {`Sur mesure · ${cfg.children} enfant${cfg.children > 1 ? "s" : ""}`}
           </p>
           {/* Mini détail prix */}
           <div className="space-y-1.5 mb-6 text-xs border-t border-white/10 pt-4">
             <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
-              <span>Base {cfg.type === "lyceen" ? "lycéen" : "famille"}</span>
-              <span>{BASE_PRICE[cfg.type].toFixed(2)}€</span>
+              <span>Base personnalisée</span>
+              <span>{BASE_PRICE.famille.toFixed(2)}€</span>
             </div>
-            {cfg.type === "famille" && n > 1 && (
+            {n > 1 && (
               <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
                 <span>{n} enfants</span>
                 <span>+{childrenCost(n).toFixed(2)}€</span>
@@ -666,13 +657,14 @@ function Configurator({ onAdd, alreadyAdded }: { onAdd: (c: ConfigState) => void
 }
 
 /* ─── Page ─── */
-type TabId = "familles" | "lyceens" | "abonnement";
+type TabId = "familles" | "abonnement";
 
 export default function Tarifs() {
   const [plans, setPlans] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [tab, setTab] = useState<TabId>("familles");
+  const [interval, setInterval] = useState<string>("month");
   const [cardsVisible,   setCardsVisible]   = useState(false);
   const [garantieVisible, setGarantieVisible] = useState(false);
   const [faqVisible,      setFaqVisible]      = useState(false);
@@ -712,8 +704,7 @@ export default function Tarifs() {
     makeObs(faqRef, setFaqVisible);
   }, []);
 
-  const famillePlans = plans.filter(p => !isLyceen(p));
-  const lyceenPlans = plans.filter(p => isLyceen(p));
+  const famillePlans = plans.filter(p => p.billing_interval === interval);
 
   const togglePlanCompare = (id: number) => {
     setComparePlanIds(prev => {
@@ -745,7 +736,6 @@ export default function Tarifs() {
 
   const TABS: { id: TabId; label: string }[] = [
     { id: "familles", label: "Pour les familles" },
-    { id: "lyceens", label: "Pour les lycéens" },
     { id: "abonnement", label: "Mon abonnement" },
   ];
 
@@ -871,14 +861,27 @@ export default function Tarifs() {
             ) : (
               <>
                 {tab === "familles" && (
-                  famillePlans.length === 0
-                    ? <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>
-                    : renderCards(famillePlans, false)
-                )}
-                {tab === "lyceens" && (
-                  lyceenPlans.length === 0
-                    ? <p className="text-center text-[var(--text-muted)] py-20">Aucun plan lycéen disponible pour le moment.</p>
-                    : renderCards(lyceenPlans, true)
+                  <>
+                    <div className="flex justify-center mb-10">
+                      <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid var(--greek-border)" }}>
+                        {INTERVAL_LABELS.map(it => (
+                          <button
+                            key={it.id}
+                            onClick={() => setInterval(it.id)}
+                            className="px-4 py-2 rounded-lg text-xs font-bold transition-all font-[family-name:var(--font-display)]"
+                            style={interval === it.id
+                              ? { background: "var(--greek-blue)", color: "#fff" }
+                              : { background: "transparent", color: "var(--greek-blue)" }}
+                          >
+                            {it.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    {famillePlans.length === 0
+                      ? <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>
+                      : renderCards(famillePlans, false)}
+                  </>
                 )}
                 {tab === "abonnement" && (
                   <div className="max-w-4xl mx-auto">

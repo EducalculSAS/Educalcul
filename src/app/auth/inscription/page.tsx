@@ -1,25 +1,14 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import PasswordStrength from "@/components/PasswordStrength";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { supabase } from "@/lib/supabaseClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import {
   Mail, Lock, User, AlertCircle, CheckCircle,
   Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff,
-  Users, GraduationCap, BookOpen,
 } from "lucide-react";
-
-/* ── Niveaux scolaires ── */
-const LYCEE_FILIERES: Record<string, string[]> = {
-  "Seconde": ["Seconde GT", "Seconde Pro"],
-  "Première": ["1ère Générale", "1ère STMG", "1ère STI2D", "1ère ST2S", "1ère STL", "1ère STD2A", "1ère Bac Pro"],
-  "Terminale": ["Terminale Générale", "Terminale STMG", "Terminale STI2D", "Terminale ST2S", "Terminale STL", "Terminale STD2A", "Terminale Bac Pro"],
-};
-const LYCEE_ANNEES = Object.keys(LYCEE_FILIERES) as ("Seconde" | "Première" | "Terminale")[];
-type ChildLevel = string;
 
 /* ── Google SVG ── */
 const GoogleIcon = () => (
@@ -64,6 +53,7 @@ function Field({
 
 const STEPS = ["Profil", "Sécurité", "Finalisation"];
 const TOTAL = STEPS.length;
+const ROLE = "parent" as const;
 
 export default function Inscription() {
   const router = useRouter();
@@ -73,22 +63,15 @@ export default function Inscription() {
   const [dir, setDir] = useState<1 | -1>(1);
   const [animating, setAnimating] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [showMinorConsent, setShowMinorConsent] = useState(false);
-  const [minorConsentAccepted, setMinorConsentAccepted] = useState(false);
 
-  const [role, setRole] = useState<"parent" | "child" | "">("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   /* Step 1 */
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName]   = useState("");
-  const [childLevel, setChildLevel] = useState<ChildLevel>("");
-  const [childAnnee, setChildAnnee] = useState<"Seconde" | "Première" | "Terminale" | "">("");
   /* Step 2 */
   const [email, setEmail]               = useState("");
-  const [childUsername, setChildUsername] = useState("");
-  const [parentEmail, setParentEmail]     = useState(""); // optionnel pour lycéen
   const [password, setPassword]           = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPwd, setShowPwd]   = useState(false);
@@ -106,13 +89,9 @@ export default function Inscription() {
     if (stored && mode === "email") {
       try {
         const d = JSON.parse(stored);
-        if (d.role === "parent" || d.role === "child") setRole(d.role);
         if (d.firstName)     setFirstName(d.firstName);
         if (d.lastName)      setLastName(d.lastName);
         if (d.email)         setEmail(d.email);
-        if (d.childUsername) setChildUsername(d.childUsername);
-        if (d.childLevel)    setChildLevel(d.childLevel);
-        if (d.parentEmail)   setParentEmail(d.parentEmail);
         if (d.referralCode)  { setReferralCode(d.referralCode); setReferralStatus("valid"); }
       } catch {}
     }
@@ -131,18 +110,11 @@ export default function Inscription() {
   /* ── Validation par étape ── */
   const validateStep = (s: number): string | null => {
     if (s === 0) {
-      if (!role)             return "Veuillez sélectionner votre profil (Parent ou Élève).";
       if (!firstName.trim()) return "Veuillez entrer votre prénom.";
       if (!lastName.trim())  return "Veuillez entrer votre nom.";
-      if (role === "child" && !childAnnee) return "Veuillez sélectionner ta classe (Seconde, Première ou Terminale).";
-      if (role === "child" && !childLevel) return "Veuillez sélectionner ta filière.";
     }
     if (s === 1) {
-      if (role === "parent" && !email.trim()) return "Veuillez entrer votre email.";
-      if (role === "child") {
-        if (!childUsername.trim()) return "Veuillez choisir un pseudo.";
-        if (!email.trim())         return "Veuillez entrer ton adresse email.";
-      }
+      if (!email.trim())          return "Veuillez entrer votre email.";
       if (!password)              return "Veuillez choisir un mot de passe.";
       if (password.length < 6)   return "Le mot de passe doit contenir au moins 6 caractères.";
       if (password !== confirmPassword) return "Les mots de passe ne correspondent pas.";
@@ -151,15 +123,9 @@ export default function Inscription() {
   };
 
   const handleNext = () => {
-    // Cas collégien : on ne bloque pas avec une erreur, on laisse l'UI afficher le panel
     const err = validateStep(step);
     if (err) { setError(err); return; }
     setError(null);
-    // Lycéen → popup consentement parental (mineur)
-    if (step === 1 && role === "child" && !minorConsentAccepted) {
-      setShowMinorConsent(true);
-      return;
-    }
     if (step < TOTAL - 1) goTo(step + 1);
   };
 
@@ -180,15 +146,11 @@ export default function Inscription() {
   /* ── Google ── */
   const handleGoogleLogin = () => {
     sessionStorage.setItem("educalcul_signup_mode", "google");
-    // Si un rôle est déjà sélectionné, on le pré-remplit dans complete-google
-    if (role) sessionStorage.setItem("educalcul_pending_role", role);
-    else sessionStorage.removeItem("educalcul_pending_role");
+    sessionStorage.setItem("educalcul_pending_role", ROLE);
     sessionStorage.setItem("educalcul_signup_data", JSON.stringify({
-      role: role || null,
+      role: ROLE,
       firstName: firstName.trim() || null,
       lastName: lastName.trim() || null,
-      childAnnee: childAnnee || null,
-      childLevel: childLevel || null,
     }));
 
     const redirectUri = `${getSiteUrl()}/api/auth/google/callback`;
@@ -209,16 +171,13 @@ export default function Inscription() {
     setError(null);
     setLoading(true);
     try {
-      const checkRes  = await fetch("/api/auth/validate-signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email.trim(), role, childUsername: childUsername.trim() || null }) });
+      const checkRes  = await fetch("/api/auth/validate-signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email.trim(), role: ROLE }) });
       const checkData = await checkRes.json();
-      if (!checkData.valid) { setError(checkData.error || "Email ou pseudo déjà utilisé."); setLoading(false); return; }
+      if (!checkData.valid) { setError(checkData.error || "Email déjà utilisé."); setLoading(false); return; }
 
       sessionStorage.setItem("educalcul_signup_data", JSON.stringify({
-        role, firstName: firstName.trim(), lastName: lastName.trim(),
+        role: ROLE, firstName: firstName.trim(), lastName: lastName.trim(),
         email: email.trim(), password,
-        childUsername: childUsername.trim() || null,
-        childLevel: childLevel || null,
-        parentEmail: parentEmail.trim() || null,
         referralCode: referralCode.trim() || null,
         referralStatus, cguAcceptedAt: new Date().toISOString(),
       }));
@@ -228,116 +187,11 @@ export default function Inscription() {
     finally { setLoading(false); }
   };
 
-  /* ── Niveau lycée ou collège ── */
-  const isLycee = !!childLevel; // toutes les options proposées sont lycée
-
-  /* ── Couleur selon rôle ── */
-  const accent = role === "child" ? "var(--greek-gold)" : "var(--greek-blue)";
+  const accent = "var(--greek-blue)";
 
   const stepContent = [
     /* ── ÉTAPE 1 : Profil ── */
     <div key="s0" className="space-y-5">
-      {/* Choix rôle */}
-      <div>
-        <p className="text-xs font-bold mb-3 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>Je suis…</p>
-        <div className="grid grid-cols-2 gap-3">
-          {([
-            { v: "parent", label: "Parent",     Icon: Users,          desc: "Je suis responsable légal" },
-            { v: "child",  label: "Élève lycée", Icon: GraduationCap,  desc: "Seconde · Première · Terminale" },
-          ] as const).map(({ v, label, Icon, desc }) => (
-            <button
-              key={v}
-              type="button"
-              onClick={() => { setRole(v); setChildLevel(""); setChildAnnee(""); }}
-              className="relative flex flex-col items-center gap-2 p-4 rounded-2xl text-sm font-bold transition-all duration-200"
-              style={{
-                background: role === v ? (v === "parent" ? "var(--greek-blue)" : "var(--greek-gold)") : "var(--greek-cream)",
-                border: `2px solid ${role === v ? (v === "parent" ? "var(--greek-blue)" : "var(--greek-gold)") : "rgba(197,161,72,0.25)"}`,
-                color: role === v ? "#fff" : "var(--greek-blue)",
-                transform: role === v ? "scale(1.02)" : "scale(1)",
-                boxShadow: role === v ? "0 6px 24px rgba(15,30,58,0.2)" : "none",
-              }}
-            >
-              <Icon className="w-6 h-6" />
-              <span>{label}</span>
-              <span className="text-[10px] font-normal opacity-70">{desc}</span>
-              {role === v && (
-                <span className="absolute top-2 right-2 w-4 h-4 rounded-full bg-white/30 flex items-center justify-center">
-                  <CheckCircle className="w-3 h-3" />
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-
-      </div>
-
-      {/* Warning primaire / collège — visible uniquement si Élève sélectionné, animé */}
-      <div
-        style={{
-          overflow: "hidden",
-          maxHeight: role === "child" ? "80px" : "0px",
-          opacity: role === "child" ? 1 : 0,
-          transform: role === "child" ? "translateY(0)" : "translateY(-6px)",
-          transition: "max-height 0.35s ease, opacity 0.28s ease, transform 0.28s ease",
-          marginTop: role === "child" ? "4px" : "0px",
-        }}
-      >
-        <div className="flex items-start gap-2 px-3 py-2.5 rounded-xl text-xs" style={{ background: "rgba(197,161,72,0.08)", border: "1px solid rgba(197,161,72,0.2)", color: "var(--text-muted)" }}>
-          <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
-          <span>Les élèves de <strong style={{ color: "var(--greek-blue)" }}>primaire et collège</strong> doivent obligatoirement passer par un <strong style={{ color: "var(--greek-blue)" }}>compte parent</strong>.</span>
-        </div>
-      </div>
-
-      {/* Sélecteur de niveau — uniquement pour les élèves */}
-      {role === "child" && (
-        <div style={{ animation: "stepFadeUp 0.3s ease forwards" }}>
-          <p className="text-xs font-bold mb-2 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>
-            <BookOpen className="w-3.5 h-3.5 inline mr-1 -mt-0.5" />Ta classe
-          </p>
-
-          {/* Choix de l'année */}
-          <div className="flex gap-2 mb-3">
-            {LYCEE_ANNEES.map(annee => (
-              <button
-                key={annee}
-                type="button"
-                onClick={() => { setChildAnnee(annee); setChildLevel(""); }}
-                className="flex-1 py-2 rounded-xl text-xs font-bold transition-all duration-200"
-                style={{
-                  background: childAnnee === annee ? "var(--greek-blue)" : "var(--greek-cream)",
-                  color:      childAnnee === annee ? "#fff" : "var(--greek-blue)",
-                  border:     `1.5px solid ${childAnnee === annee ? "var(--greek-blue)" : "rgba(197,161,72,0.25)"}`,
-                }}
-              >
-                {annee}
-              </button>
-            ))}
-          </div>
-
-          {/* Filières selon l'année */}
-          {childAnnee && (
-            <div className="flex flex-wrap gap-2" style={{ animation: "stepFadeUp 0.25s ease forwards" }}>
-              {LYCEE_FILIERES[childAnnee].map(filiere => (
-                <button
-                  key={filiere}
-                  type="button"
-                  onClick={() => setChildLevel(filiere)}
-                  className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200"
-                  style={{
-                    background: childLevel === filiere ? "var(--greek-gold)" : "var(--greek-cream)",
-                    color:      childLevel === filiere ? "#fff" : "var(--greek-blue)",
-                    border:     `1.5px solid ${childLevel === filiere ? "var(--greek-gold)" : "rgba(197,161,72,0.25)"}`,
-                  }}
-                >
-                  {filiere}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
       <div className="grid grid-cols-2 gap-3">
         <Field label="Prénom" icon={<User className="w-4 h-4" />} value={firstName} onChange={setFirstName} placeholder="Marie" required />
         <Field label="Nom"    icon={<User className="w-4 h-4" />} value={lastName}  onChange={setLastName}  placeholder="Dupont" required />
@@ -346,26 +200,7 @@ export default function Inscription() {
 
     /* ── ÉTAPE 2 : Sécurité ── */
     <div key="s1" className="space-y-4">
-      {role === "parent" ? (
-        <Field label="Email" icon={<Mail className="w-4 h-4" />} type="email" value={email} onChange={setEmail} placeholder="parent@exemple.com" required />
-      ) : (
-        <>
-          {/* Niveau (affiché en lecture seule — sélectionné à l'étape 1) */}
-          <div className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold" style={{ background: "rgba(197,161,72,0.10)", border: "1.5px solid rgba(197,161,72,0.25)", color: "var(--greek-gold)" }}>
-            <BookOpen className="w-4 h-4 shrink-0" />
-            <span>Niveau : <strong>{childLevel}</strong> — Lycée</span>
-          </div>
-
-          <Field label="Pseudo" icon={<User className="w-4 h-4" />} value={childUsername} onChange={setChildUsername} placeholder="chouette123" required />
-          <Field label="Ton email" icon={<Mail className="w-4 h-4" />} type="email" value={email} onChange={setEmail} placeholder="toi@exemple.com" required />
-          <div>
-            <Field label="Email d'un parent" icon={<Mail className="w-4 h-4" />} type="email" value={parentEmail} onChange={setParentEmail} placeholder="parent@exemple.com (optionnel)" />
-            <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
-              Optionnel — tes parents pourront suivre ta progression.
-            </p>
-          </div>
-        </>
-      )}
+      <Field label="Email" icon={<Mail className="w-4 h-4" />} type="email" value={email} onChange={setEmail} placeholder="parent@exemple.com" required />
 
       <Field
         label="Mot de passe"
@@ -400,45 +235,39 @@ export default function Inscription() {
       <div className="rounded-2xl p-4" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.2)" }}>
         <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: "var(--greek-gold)" }}>Récapitulatif</p>
         <div className="space-y-1 text-sm" style={{ color: "var(--greek-blue)" }}>
-          <p><span className="opacity-60">Rôle :</span> {role === "parent" ? "Parent" : "Élève"}</p>
           <p><span className="opacity-60">Nom :</span> {firstName} {lastName}</p>
-          {role === "parent" && <p><span className="opacity-60">Email :</span> {email}</p>}
-          {role === "child"  && <p><span className="opacity-60">Pseudo :</span> {childUsername}</p>}
-          {role === "child"  && <p><span className="opacity-60">Niveau :</span> {childLevel}</p>}
-          {role === "child"  && <p><span className="opacity-60">Email :</span> {email}</p>}
+          <p><span className="opacity-60">Email :</span> {email}</p>
         </div>
       </div>
 
-      {role === "parent" && (
-        <div>
-          <label className="block text-xs font-bold mb-1.5 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>
-            Code de parrainage <span className="font-normal opacity-50">(optionnel)</span>
-          </label>
-          <div className="relative">
-            <Gift className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
-            <input
-              type="text"
-              value={referralCode}
-              onChange={e => { setReferralCode(e.target.value.toUpperCase()); setReferralStatus("idle"); }}
-              onBlur={() => validateReferral(referralCode)}
-              className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none font-mono tracking-widest uppercase transition-all"
-              style={{
-                background: "var(--greek-cream)",
-                border: `1.5px solid ${referralStatus === "valid" ? "var(--greek-gold)" : referralStatus === "invalid" ? "rgba(239,68,68,0.4)" : "rgba(197,161,72,0.25)"}`,
-                color: "var(--greek-blue)",
-              }}
-              placeholder="EX: RUBEN3K7P"
-            />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2">
-              {referralValidating && <Loader2 className="w-4 h-4 animate-spin" style={{ color: "var(--text-muted)" }} />}
-              {!referralValidating && referralStatus === "valid"   && <CheckCircle className="w-4 h-4 text-green-500" />}
-              {!referralValidating && referralStatus === "invalid" && <AlertCircle className="w-4 h-4 text-red-400" />}
-            </span>
-          </div>
-          {referralStatus === "valid"   && <p className="text-xs text-green-600 font-medium mt-1">✓ Code valide — remise appliquée</p>}
-          {referralStatus === "invalid" && <p className="text-xs text-red-400 mt-1">Code invalide ou expiré</p>}
+      <div>
+        <label className="block text-xs font-bold mb-1.5 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>
+          Code de parrainage <span className="font-normal opacity-50">(optionnel)</span>
+        </label>
+        <div className="relative">
+          <Gift className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
+          <input
+            type="text"
+            value={referralCode}
+            onChange={e => { setReferralCode(e.target.value.toUpperCase()); setReferralStatus("idle"); }}
+            onBlur={() => validateReferral(referralCode)}
+            className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none font-mono tracking-widest uppercase transition-all"
+            style={{
+              background: "var(--greek-cream)",
+              border: `1.5px solid ${referralStatus === "valid" ? "var(--greek-gold)" : referralStatus === "invalid" ? "rgba(239,68,68,0.4)" : "rgba(197,161,72,0.25)"}`,
+              color: "var(--greek-blue)",
+            }}
+            placeholder="EX: RUBEN3K7P"
+          />
+          <span className="absolute right-3 top-1/2 -translate-y-1/2">
+            {referralValidating && <Loader2 className="w-4 h-4 animate-spin" style={{ color: "var(--text-muted)" }} />}
+            {!referralValidating && referralStatus === "valid"   && <CheckCircle className="w-4 h-4 text-green-500" />}
+            {!referralValidating && referralStatus === "invalid" && <AlertCircle className="w-4 h-4 text-red-400" />}
+          </span>
         </div>
-      )}
+        {referralStatus === "valid"   && <p className="text-xs text-green-600 font-medium mt-1">✓ Code valide — remise appliquée</p>}
+        {referralStatus === "invalid" && <p className="text-xs text-red-400 mt-1">Code invalide ou expiré</p>}
+      </div>
 
       {/* CGU */}
       <label className="flex items-start gap-3 cursor-pointer">
@@ -599,63 +428,6 @@ export default function Inscription() {
           Se connecter
         </Link>
       </p>
-
-      {/* ── Modale consentement mineur ── */}
-      {showMinorConsent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.6)", backdropFilter: "blur(4px)" }}>
-          <div
-            className="w-full max-w-sm rounded-3xl p-7"
-            style={{ background: "#fff", boxShadow: "0 24px 64px rgba(15,30,58,0.2)", animation: "stepFadeUp 0.3s ease forwards" }}
-          >
-            {/* Icône */}
-            <div className="flex justify-center mb-5">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl" style={{ background: "rgba(197,161,72,0.12)", border: "2px solid rgba(197,161,72,0.25)" }}>
-                🛡️
-              </div>
-            </div>
-
-            <h3 className="text-center font-bold text-xl mb-2" style={{ fontFamily: "var(--font-display)", color: "var(--greek-blue)" }}>
-              Accord parental requis
-            </h3>
-            <p className="text-center text-sm mb-6" style={{ color: "var(--text-muted)" }}>
-              Tu es mineur(e). En créant ce compte, tu confirmes que <strong>tes parents ou tuteurs légaux</strong> sont informés et ont donné leur accord.
-            </p>
-
-            <label className="flex items-start gap-3 cursor-pointer mb-6 p-3 rounded-xl" style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.2)" }}>
-              <input
-                type="checkbox"
-                checked={minorConsentAccepted}
-                onChange={e => setMinorConsentAccepted(e.target.checked)}
-                className="mt-0.5 w-4 h-4 rounded shrink-0"
-                style={{ accentColor: "var(--greek-blue)" }}
-              />
-              <span className="text-sm leading-relaxed" style={{ color: "var(--greek-blue)" }}>
-                Je confirme avoir l'accord de mes parents ou tuteurs légaux pour créer ce compte.
-              </span>
-            </label>
-
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => { setShowMinorConsent(false); setMinorConsentAccepted(false); }}
-                className="flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all hover:opacity-80"
-                style={{ background: "var(--greek-cream)", color: "var(--greek-blue)", border: "1.5px solid rgba(197,161,72,0.25)" }}
-              >
-                Annuler
-              </button>
-              <button
-                type="button"
-                disabled={!minorConsentAccepted}
-                onClick={() => { setShowMinorConsent(false); goTo(step + 1); }}
-                className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-40 disabled:cursor-not-allowed"
-                style={{ background: "var(--greek-blue)" }}
-              >
-                Continuer
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

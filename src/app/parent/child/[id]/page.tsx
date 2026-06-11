@@ -394,7 +394,7 @@ export default function ChildReportPage() {
                   Fonctionnalité Premium
                 </h3>
                 <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                  L'analyse IA d'Athéna est disponible avec un abonnement actif. Passez à un plan supérieur pour obtenir des rapports personnalisés sur la progression de {child.first_name}.
+                  L'analyse IA d'EpsiAI est disponible avec un abonnement actif. Passez à un plan supérieur pour obtenir des rapports personnalisés sur la progression de {child.first_name}.
                 </p>
                 <Link
                   href="/parent/subscription"
@@ -439,7 +439,7 @@ export default function ChildReportPage() {
                         <div className="w-12 h-12 rounded-2xl bg-[var(--greek-gold)] flex items-center justify-center animate-pulse">
                           <Star className="w-6 h-6 text-[var(--greek-blue)] fill-current" />
                         </div>
-                        <p className="text-gray-500 text-sm">Athéna analyse les données de {child.first_name}…</p>
+                        <p className="text-gray-500 text-sm">EpsiAI analyse les données de {child.first_name}…</p>
                         <p className="text-gray-300 text-xs">Cela peut prendre quelques secondes</p>
                       </div>
                     ) : analysis ? (
@@ -492,7 +492,7 @@ export default function ChildReportPage() {
                       <span className="text-sm font-bold text-[var(--greek-blue)]">À propos de l'analyse</span>
                     </div>
                     <p className="text-xs text-gray-600 leading-relaxed">
-                      L'analyse est générée par Athéna, l'IA d'Educalcul. Elle est basée sur les 30 dernières activités de {child.first_name}.
+                      L'analyse est générée par EpsiAI, l'IA d'Educalcul. Elle est basée sur les 30 dernières activités de {child.first_name}.
                     </p>
                   </div>
                 </div>

@@ -186,8 +186,13 @@ export default function ExerciseViewer({
           setResults(p.results || {});
           setAiFeedback(p.aiFeedback || {});
           setScore(p.score || 0);
-          setExerciseCompleted(p.exerciseCompleted || false);
+          setExerciseCompleted(p.exerciseCompleted || data?.status === "completed" || false);
           setBlockModes(p.blockModes || {});
+        } else if (data?.status === "completed") {
+          // Le statut "completed" a été enregistré (via /api/child/activities) mais le
+          // progress_json détaillé n'a jamais été persisté (ex: navigation rapide après
+          // la fin de l'exercice). On marque quand même l'exercice comme terminé.
+          setExerciseCompleted(true);
         }
       } catch (e) {
         console.error("Failed to load exercise progress from DB:", e);
@@ -205,7 +210,8 @@ export default function ExerciseViewer({
     if (!exercise.id || exercise.id === "preview") return;
     if (!progressLoadedFromDbRef.current) return; // évite d'écraser avant le chargement initial
     if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
-    saveProgressTimeoutRef.current = setTimeout(async () => {
+
+    const doSave = async () => {
       const userId = userIdRef.current;
       if (!userId) return;
       try {
@@ -228,7 +234,16 @@ export default function ExerciseViewer({
       } catch (e) {
         console.error("Failed to save exercise progress to DB:", e);
       }
-    }, 1000);
+    };
+
+    // Sauvegarde immédiate (non debounced) quand l'exercice vient d'être terminé,
+    // pour ne pas perdre l'état "terminé" si l'utilisateur quitte la page tout de suite.
+    if (exerciseCompleted) {
+      doSave();
+      return;
+    }
+
+    saveProgressTimeoutRef.current = setTimeout(doSave, 1000);
     return () => {
       if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
     };
@@ -492,7 +507,16 @@ export default function ExerciseViewer({
     
     // Save completed progress dynamically (pass threshold computed post-state-set)
     const tp = (() => { let t = 0; pages.forEach(p => p.blocks.forEach(b => (t += b.points || 0))); return t; })();
-    const pct = tp > 0 ? Math.round((totalScore / tp) * 100) : 100;
+    let pct: number;
+    if (tp > 0) {
+      pct = Math.round((totalScore / tp) * 100);
+    } else {
+      // Aucun block n'a de points définis : se baser sur le ratio de bonnes réponses
+      // pour éviter d'afficher 100% par défaut quel que soit le résultat.
+      const gradableCount = Object.keys(newResults).length;
+      const correctCount = Object.values(newResults).filter(Boolean).length;
+      pct = gradableCount > 0 ? Math.round((correctCount / gradableCount) * 100) : 100;
+    }
     const thr = exercise.min_score_percent || 0;
     const didPass = thr > 0 ? pct >= thr : true;
     saveProgress('completed', totalScore, pct, didPass);

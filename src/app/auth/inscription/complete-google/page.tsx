@@ -3,15 +3,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { User, Mail, Lock, AlertCircle, Loader2, CheckCircle, BookOpen, Users, GraduationCap } from "lucide-react";
+import { User, Mail, Lock, AlertCircle, Loader2, CheckCircle } from "lucide-react";
 import PasswordStrength from "@/components/PasswordStrength";
 
-const LYCEE_FILIERES: Record<string, string[]> = {
-  "Seconde":   ["Seconde GT", "Seconde Pro"],
-  "Première":  ["1ère Générale", "1ère STMG", "1ère STI2D", "1ère ST2S", "1ère STL", "1ère STD2A", "1ère Bac Pro"],
-  "Terminale": ["Terminale Générale", "Terminale STMG", "Terminale STI2D", "Terminale ST2S", "Terminale STL", "Terminale STD2A", "Terminale Bac Pro"],
-};
-const LYCEE_ANNEES = Object.keys(LYCEE_FILIERES) as ("Seconde" | "Première" | "Terminale")[];
+const ROLE = "parent" as const;
 
 export default function CompleteGoogleProfile() {
   const router = useRouter();
@@ -25,13 +20,6 @@ export default function CompleteGoogleProfile() {
   const [email, setEmail]                   = useState("");
   const [password, setPassword]             = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole]                     = useState<"parent" | "child" | "">("");
-
-  /* Enfant */
-  const [childUsername, setChildUsername]   = useState("");
-  const [childAnnee, setChildAnnee]         = useState<"Seconde" | "Première" | "Terminale" | "">("");
-  const [childLevel, setChildLevel]         = useState("");
-  const [parentEmail, setParentEmail]       = useState("");
 
   useEffect(() => {
     const init = async () => {
@@ -53,19 +41,13 @@ export default function CompleteGoogleProfile() {
       setLastName(meta?.family_name || parts.slice(1).join(" ") || "");
       setEmail(session.user.email || "");
 
-      // Récupérer rôle + données pré-remplies depuis l'inscription
+      // Récupérer données pré-remplies depuis l'inscription
       try {
         const stored = sessionStorage.getItem("educalcul_signup_data");
-        const pendingRole = sessionStorage.getItem("educalcul_pending_role");
-        // Pré-sélectionner si déjà choisi avant Google, sinon laisser vide (choix dans cette page)
-        if (pendingRole === "child" || pendingRole === "parent") setRole(pendingRole);
-
         if (stored) {
           const d = JSON.parse(stored);
           if (d.firstName)   setFirstName(v => v || d.firstName);
           if (d.lastName)    setLastName(v => v || d.lastName);
-          if (d.childAnnee)  setChildAnnee(d.childAnnee);
-          if (d.childLevel)  setChildLevel(d.childLevel);
         }
       } catch {}
 
@@ -78,15 +60,8 @@ export default function CompleteGoogleProfile() {
     e.preventDefault();
     setError(null);
 
-    if (!role) {
-      setError("Veuillez sélectionner votre profil (Parent ou Élève)."); return;
-    }
     if (!firstName.trim() || !lastName.trim()) {
       setError("Prénom et nom sont obligatoires."); return;
-    }
-    if (role === "child") {
-      if (!childUsername.trim()) { setError("Veuillez choisir un pseudo."); return; }
-      if (!childLevel)           { setError("Veuillez sélectionner ta filière."); return; }
     }
     if (!password) { setError("Le mot de passe est obligatoire."); return; }
     if (password.length < 6) { setError("Le mot de passe doit contenir au moins 6 caractères."); return; }
@@ -112,20 +87,17 @@ export default function CompleteGoogleProfile() {
     }
 
     const signupData = {
-      role: role as "parent" | "child",
+      role: ROLE,
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       email,
       password,
-      childUsername: role === "child" ? childUsername.trim() : null,
-      childLevel:    role === "child" ? childLevel : null,
-      parentEmail:   role === "child" && parentEmail ? parentEmail.trim() : null,
       referralCode: null,
       referralStatus: "idle",
     };
     sessionStorage.setItem("educalcul_signup_data", JSON.stringify(signupData));
     sessionStorage.setItem("educalcul_signup_mode", "google");
-    sessionStorage.setItem("educalcul_pending_role", role);
+    sessionStorage.setItem("educalcul_pending_role", ROLE);
 
     router.push("/auth/inscription/select-plan");
   };
@@ -157,48 +129,6 @@ export default function CompleteGoogleProfile() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-
-          {/* Choix rôle */}
-          <div>
-            <p className="text-xs font-bold mb-2 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>Je suis…</p>
-            <div className="grid grid-cols-2 gap-3">
-              {([
-                { v: "parent", label: "Parent",      Icon: Users,         desc: "Responsable légal" },
-                { v: "child",  label: "Élève lycée",  Icon: GraduationCap, desc: "Seconde · Première · Terminale" },
-              ] as const).map(({ v, label, Icon, desc }) => (
-                <button key={v} type="button"
-                  onClick={() => { setRole(v); setChildLevel(""); setChildAnnee(""); }}
-                  className="relative flex flex-col items-center gap-1.5 p-3 rounded-2xl text-sm font-bold transition-all duration-200"
-                  style={{
-                    background: role === v ? (v === "parent" ? "var(--greek-blue)" : "var(--greek-gold)") : "var(--greek-cream)",
-                    border: `2px solid ${role === v ? (v === "parent" ? "var(--greek-blue)" : "var(--greek-gold)") : "rgba(197,161,72,0.25)"}`,
-                    color: role === v ? "#fff" : "var(--greek-blue)",
-                    transform: role === v ? "scale(1.02)" : "scale(1)",
-                  }}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span>{label}</span>
-                  <span className="text-[10px] font-normal opacity-70">{desc}</span>
-                  {role === v && <span className="absolute top-2 right-2"><CheckCircle className="w-3.5 h-3.5" /></span>}
-                </button>
-              ))}
-            </div>
-            <div
-              style={{
-                overflow: "hidden",
-                maxHeight: role === "child" ? "60px" : "0px",
-                opacity: role === "child" ? 1 : 0,
-                transform: role === "child" ? "translateY(0)" : "translateY(-6px)",
-                transition: "max-height 0.35s ease, opacity 0.28s ease, transform 0.28s ease",
-                marginTop: role === "child" ? "8px" : "0px",
-              }}
-            >
-              <div className="flex items-start gap-2 px-3 py-2 rounded-xl text-xs" style={{ background: "rgba(197,161,72,0.08)", border: "1px solid rgba(197,161,72,0.2)", color: "var(--text-muted)" }}>
-                <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
-                <span>Primaire et collège : inscription uniquement via un <strong style={{ color: "var(--greek-blue)" }}>compte parent</strong>.</span>
-              </div>
-            </div>
-          </div>
 
           {/* Email (lecture seule) */}
           <div>
@@ -235,79 +165,6 @@ export default function CompleteGoogleProfile() {
               </div>
             ))}
           </div>
-
-          {/* Champs spécifiques enfant */}
-          {role === "child" && (
-            <div className="space-y-4 pt-1">
-              {/* Pseudo */}
-              <div>
-                <label className="block text-xs font-bold mb-1.5 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>Pseudo</label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
-                  <input
-                    type="text" value={childUsername} onChange={e => setChildUsername(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none transition-all"
-                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)", color: "var(--greek-blue)" }}
-                    placeholder="chouette123" required
-                    onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
-                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")}
-                  />
-                </div>
-              </div>
-
-              {/* Filière */}
-              <div>
-                <label className="block text-xs font-bold mb-2 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>
-                  <BookOpen className="w-3.5 h-3.5 inline mr-1 -mt-0.5" />Ta classe
-                </label>
-                <div className="flex gap-2 mb-2">
-                  {LYCEE_ANNEES.map(annee => (
-                    <button key={annee} type="button"
-                      onClick={() => { setChildAnnee(annee); setChildLevel(""); }}
-                      className="flex-1 py-2 rounded-xl text-xs font-bold transition-all"
-                      style={{
-                        background: childAnnee === annee ? "var(--greek-blue)" : "var(--greek-cream)",
-                        color:      childAnnee === annee ? "#fff" : "var(--greek-blue)",
-                        border:     `1.5px solid ${childAnnee === annee ? "var(--greek-blue)" : "rgba(197,161,72,0.25)"}`,
-                      }}
-                    >{annee}</button>
-                  ))}
-                </div>
-                {childAnnee && (
-                  <div className="flex flex-wrap gap-2">
-                    {LYCEE_FILIERES[childAnnee].map(f => (
-                      <button key={f} type="button" onClick={() => setChildLevel(f)}
-                        className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
-                        style={{
-                          background: childLevel === f ? "var(--greek-gold)" : "var(--greek-cream)",
-                          color:      childLevel === f ? "#fff" : "var(--greek-blue)",
-                          border:     `1.5px solid ${childLevel === f ? "var(--greek-gold)" : "rgba(197,161,72,0.25)"}`,
-                        }}
-                      >{f}</button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Email parent (optionnel) */}
-              <div>
-                <label className="block text-xs font-bold mb-1.5 tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>
-                  Email d'un parent <span className="font-normal opacity-50">(optionnel)</span>
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
-                  <input
-                    type="email" value={parentEmail} onChange={e => setParentEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none transition-all"
-                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)", color: "var(--greek-blue)" }}
-                    placeholder="parent@exemple.com"
-                    onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
-                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Mot de passe */}
           <div className="space-y-3 pt-1">

@@ -264,13 +264,55 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     localStorage.setItem(`cv-${courseId}-done`, JSON.stringify([...completedLessons]));
   }, [completedLessons]);
 
-  // Track initial start
+  // Charge la progression sauvegardée en base (reprise après déconnexion)
+  const progressLoadedFromDbRef = useRef(false);
   useEffect(() => {
-    saveProgress('in_progress', 0);
+    if (isPreviewCourse) { progressLoadedFromDbRef.current = true; return; }
+    (async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session?.user) return;
+        const res = await fetch(`/api/child/courses/${courseId}/progress?userId=${session.user.id}`);
+        const data = await res.json();
+        const p = data?.progress;
+        if (p?.lessonsCompleted?.length) {
+          setCompletedLessons(new Set(p.lessonsCompleted));
+        }
+        if (typeof p?.lastChapterIndex === "number") {
+          setCurrentChapterIndex(p.lastChapterIndex);
+        }
+        if (typeof p?.lastLessonIndex === "number") {
+          setCurrentLessonIndex(p.lastLessonIndex);
+        }
+        if (data?.status === "completed") {
+          setCourseCompleted(true);
+        }
+      } catch (e) {
+        console.error("Failed to load course progress", e);
+      } finally {
+        progressLoadedFromDbRef.current = true;
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Track initial start (après chargement de la progression depuis la base)
+  useEffect(() => {
+    if (isPreviewCourse) return;
+    let cancelled = false;
+    (async () => {
+      while (!progressLoadedFromDbRef.current && !cancelled) {
+        await new Promise((r) => setTimeout(r, 50));
+      }
+      if (!cancelled) saveProgress('in_progress', currentChapterIndex);
+    })();
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Track chapter changes
   useEffect(() => {
+    if (!progressLoadedFromDbRef.current) return;
     saveProgress('in_progress', currentChapterIndex);
   }, [currentChapterIndex]);
 

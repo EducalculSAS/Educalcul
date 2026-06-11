@@ -170,25 +170,11 @@ export async function POST(
       }
     }
 
-    // 3. Save Attempt (Only if not preview)
+    // 3. Trigger badge check (fire and forget) — la persistance de la tentative
+    // (user_exercise_attempts) est gérée par /api/child/activities et
+    // /api/child/exercises/[id]/progress, qui résolvent correctement l'auth_id
+    // vers l'id interne et utilisent un upsert sur (user_id, exercise_id).
     if (id !== "preview" && user_id) {
-      const { error: attemptError } = await supabaseAdmin
-        .from("user_exercise_attempts")
-        .insert({
-          user_id,
-          exercise_id: id,
-          score,
-          total_points: maxPoints,
-          is_correct: isCorrect,
-          attempted_at: new Date().toISOString(),
-          status: isCorrect ? "completed" : "attempted",
-        });
-
-      if (attemptError) {
-        console.error("Error saving attempt:", attemptError);
-      }
-
-      // Trigger badge check (fire and forget)
       const authHeader = req.headers.get("x-user-auth-id");
       if (authHeader) {
         fetch(`${req.headers.get("origin") || ""}/api/child/check-badges`, {
