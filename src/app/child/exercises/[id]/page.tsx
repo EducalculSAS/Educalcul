@@ -6,12 +6,12 @@ import {
   ArrowLeft,
   Play,
   Clock,
-  Star,
   Brain,
   CheckCircle,
   HelpCircle,
   X,
   AlertCircle,
+  Eye,
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import AppAdminLoader from "@/components/AppAdminLoader";
@@ -80,9 +80,19 @@ export default function ExerciseDetailPage() {
     if (typeof window === "undefined") return false;
     const wasStarted = localStorage.getItem(`exercise-${exerciseId}-started`);
     console.log(`[${exerciseId}] Initial check: wasStarted=${wasStarted}`);
-    return wasStarted === "true";
+    if (wasStarted !== "true") return false;
+    try {
+      const localProg = localStorage.getItem(`exercise-${exerciseId}-progress`);
+      if (localProg && JSON.parse(localProg)?.exerciseCompleted) return false;
+    } catch {}
+    return true;
   });
   const [isRendering, setIsRendering] = useState(false);
+  const [attemptsHistory, setAttemptsHistory] = useState<any[]>([]);
+  const [alreadyCompleted, setAlreadyCompleted] = useState(false);
+  const [attemptKey, setAttemptKey] = useState(0);
+  const [forceNewAttempt, setForceNewAttempt] = useState(false);
+  const [openCorrection, setOpenCorrection] = useState(false);
   const isPreview = exerciseId === "preview";
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -190,6 +200,30 @@ export default function ExerciseDetailPage() {
 
     fetchExercise();
     return () => clearContext();
+  }, [exerciseId, isPreview]);
+
+  // Charge l'historique des tentatives précédentes
+  useEffect(() => {
+    if (isPreview) return;
+    (async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user) return;
+      try {
+        const res = await fetch(`/api/child/exercises/${exerciseId}/progress?userId=${session.user.id}`);
+        const data = await res.json();
+        setAttemptsHistory(data?.attemptsHistory || []);
+        let localCompleted = false;
+        try {
+          const localProg = localStorage.getItem(`exercise-${exerciseId}-progress`);
+          localCompleted = localProg ? !!JSON.parse(localProg)?.exerciseCompleted : false;
+        } catch {}
+        const completed = data?.status === "completed" || localCompleted;
+        setAlreadyCompleted(completed);
+        if (completed) setStarted(false);
+      } catch (e) {
+        console.error("Failed to load attempts history", e);
+      }
+    })();
   }, [exerciseId, isPreview]);
 
 
@@ -311,7 +345,11 @@ export default function ExerciseDetailPage() {
         </div>
         <div className="flex-1 overflow-hidden">
           <ExerciseViewer
+            key={attemptKey}
             exercise={exercise}
+            forceNewAttempt={forceNewAttempt}
+            openCorrection={openCorrection}
+            bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a: any) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
             onComplete={(score: number, total: number) => {
               console.log(`Exercise completed: ${score}/${total}`);
@@ -399,14 +437,33 @@ export default function ExerciseDetailPage() {
                   Prêt à t'entraîner ?
                 </h3>
                 
-                <button 
-                  onClick={() => setStarted(true)}
-                  className="w-full btn-primary-greek py-4 text-lg shadow-lg mb-4 flex items-center justify-center gap-2 transform hover:scale-105 transition-all"
-                >
-                  <Play className="w-6 h-6 fill-current" />
-                  Commencer l'exercice
-                </button>
-                
+                {(() => {
+                  const maxAttempts: number | null = exercise.max_attempts ?? null;
+                  const attemptsUsed = attemptsHistory.length;
+                  const limitReached = !!maxAttempts && attemptsUsed >= maxAttempts;
+                  return (
+                    <button
+                      onClick={() => {
+                        if (limitReached) return;
+                        setForceNewAttempt(alreadyCompleted);
+                        if (alreadyCompleted) setAttemptKey((k) => k + 1);
+                        setStarted(true);
+                      }}
+                      disabled={limitReached}
+                      className={`w-full py-4 text-lg shadow-lg mb-1 flex items-center justify-center gap-2 transform transition-all rounded-full font-bold ${limitReached ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "btn-primary-greek hover:scale-105"}`}
+                    >
+                      <Play className="w-6 h-6 fill-current" />
+                      {limitReached ? "Tentatives épuisées" : alreadyCompleted ? "Recommencer l'exercice" : "Commencer l'exercice"}
+                    </button>
+                  );
+                })()}
+                {!!exercise.max_attempts && (
+                  <p className="text-xs text-gray-500 text-center mb-4">
+                    {attemptsHistory.length}/{exercise.max_attempts} tentative{exercise.max_attempts > 1 ? "s" : ""} utilisée{attemptsHistory.length > 1 ? "s" : ""}
+                  </p>
+                )}
+                {!exercise.max_attempts && <div className="mb-4" />}
+
                 <div className="space-y-4 text-sm text-gray-600">
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">
@@ -416,17 +473,40 @@ export default function ExerciseDetailPage() {
                   </div>
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">
-                      <Star className="w-4 h-4" /> Récompense
-                    </span>
-                    <span className="font-bold text-[var(--greek-gold)]">{exercise.points_reward || 10} XP</span>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
-                    <span className="flex items-center gap-2">
                       <HelpCircle className="w-4 h-4" /> Difficulté
                     </span>
                     <span className="font-bold text-[var(--greek-blue)]">{exercise.difficulty ? exercise.difficulty.toUpperCase() : "NORMAL"}</span>
                   </div>
                 </div>
+
+                {attemptsHistory.length > 0 && (
+                  <div className="mt-6 pt-4 border-t border-[rgba(197,161,72,0.25)]">
+                    <h4 className="text-sm font-bold text-[var(--greek-blue)] mb-3">Tes derniers essais</h4>
+                    <div className="space-y-2">
+                      {attemptsHistory.slice(-5).reverse().map((a, i) => (
+                        <div key={i} className="flex items-center justify-between text-sm bg-white rounded-lg px-3 py-2 border border-[rgba(197,161,72,0.15)]">
+                          <span className="text-gray-500">
+                            {a.completed_at ? new Date(a.completed_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "—"}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <span className={`font-bold ${a.passed === false ? "text-red-500" : "text-green-600"}`}>
+                              {a.score_percent ?? 0}%
+                            </span>
+                            {i === 0 && (
+                              <button
+                                onClick={() => { setForceNewAttempt(false); setOpenCorrection(true); setStarted(true); }}
+                                title="Voir ma correction"
+                                className="text-[var(--greek-blue)] hover:opacity-70"
+                              >
+                                <Eye className="w-4 h-4" />
+                              </button>
+                            )}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

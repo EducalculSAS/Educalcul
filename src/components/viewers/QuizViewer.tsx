@@ -33,6 +33,12 @@ interface QuizViewerProps {
   onComplete?: (score: number, totalPoints: number, timeSpent: number) => void;
   onBack?: () => void;
   reviewMode?: boolean;
+  /** Force le démarrage d'une nouvelle tentative (ignore la progression précédemment terminée) */
+  forceNewAttempt?: boolean;
+  /** Meilleur score (%) déjà obtenu lors de tentatives précédentes */
+  bestScorePercent?: number;
+  /** Ouvre directement la correction de la dernière tentative au lieu de l'écran de fin */
+  openCorrection?: boolean;
   initialProgress?: {
     answers?: Record<number, any>;
     questionResults?: Record<number, boolean>;
@@ -41,7 +47,7 @@ interface QuizViewerProps {
   } | null;
 }
 
-export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initialProgress }: QuizViewerProps) {
+export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, forceNewAttempt, bestScorePercent, openCorrection, initialProgress }: QuizViewerProps) {
   const questions = quiz.content_json || [];
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, any>>(
@@ -173,15 +179,23 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
       try {
         const res = await fetch(`/api/child/quizzes/${(quiz as any).id}/progress?userId=${session.user.id}`);
         const data = await res.json();
-        if (data?.status === "completed") {
+        if (forceNewAttempt) {
+          // Nouvelle tentative : on ne restaure pas l'état d'une session précédente
+        } else if (data?.status === "completed") {
           const p = data?.progress;
           if (p?.answers) setAnswers(p.answers);
           if (p?.questionResults) setQuestionResults(p.questionResults);
           if (p?.questionFeedbacks) setQuestionFeedbacks(p.questionFeedbacks);
           setScore(p?.score || 0);
           setIsAnswerSubmitted(true);
-          setQuizCompleted(true);
-          setShowReview(true);
+          if (openCorrection) {
+            setQuizCompleted(false);
+            setShowReview(true);
+            setCurrentQuestionIndex(0);
+          } else {
+            setQuizCompleted(true);
+            setShowReview(true);
+          }
         } else if (data?.status === "in_progress" && data?.progress?.answers) {
           setAnswers(data.progress.answers);
         }
@@ -404,6 +418,11 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
                       </div>
                     ))}
                   </div>
+                  {typeof bestScorePercent === "number" && bestScorePercent > percentage && (
+                    <p className="mt-3 text-sm text-[var(--greek-blue)] font-bold">
+                      Ton meilleur score reste {bestScorePercent}%
+                    </p>
+                  )}
                   {threshold > 0 && (
                     <div className={`mt-4 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl ${passed ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
                       {passed ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
@@ -649,11 +668,16 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
                 showReview
                   ? currentQuestionIndex < questions.length - 1
                     ? handleNextQuestion
-                    : reviewMode
+                    : reviewMode || openCorrection
                     ? onBack || (() => {})
                     : () => {
                         setShowReview(false);
                         setQuizCompleted(true);
+                        const tp = questions.reduce((acc, q) => acc + (q.points || 1), 0);
+                        const pct = tp > 0 ? Math.round((score / tp) * 100) : 100;
+                        const thr = (quiz as any).min_score_percent || 0;
+                        const didPass = thr > 0 ? pct >= thr : true;
+                        saveProgress('completed', score, pct, didPass);
                       }
                   : currentQuestionIndex < questions.length - 1
                   ? handleNextQuestion
@@ -680,7 +704,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, initi
                   </>
                 ) : (
                   <>
-                    {reviewMode ? "Fermer" : "Terminer la révision"}
+                    {reviewMode || openCorrection ? "Fermer" : "Terminer la révision"}
                     <CheckCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   </>
                 )

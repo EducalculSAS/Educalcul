@@ -25,7 +25,7 @@ export default function ChildExercisesPage() {
   const [loading, setLoading] = useState(true);
   const [allExercises, setAllExercises] = useState<any[]>([]);
   const [allFolders, setAllFolders] = useState<any[]>([]);
-  const [exerciseProgress, setExerciseProgress] = useState<Record<string, { status: string; score: number }>>({});
+  const [exerciseProgress, setExerciseProgress] = useState<Record<string, { status: string; score: number; attempts: number }>>({});
 
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
@@ -62,12 +62,34 @@ export default function ChildExercisesPage() {
           }
           setAllExercises(filtered);
 
-          // Load progress from localStorage
-          const prog: Record<string, { status: string; score: number }> = {};
+          // Load progress from DB (fallback to localStorage)
+          const dbHistory: Record<string, any[]> = {};
+          if (session?.user) {
+            try {
+              const actRes = await fetch(`/api/child/activities?userId=${session.user.id}`);
+              if (actRes.ok) {
+                const act = await actRes.json();
+                (act.exercises || []).forEach((a: any) => {
+                  dbHistory[a.exercise_id] = a.attempts_history || [];
+                });
+              }
+            } catch (e) {
+              console.error("Failed to load exercise progress", e);
+            }
+          }
+
+          const prog: Record<string, { status: string; score: number; attempts: number }> = {};
           for (const ex of filtered) {
+            const history = dbHistory[ex.id];
+            if (history && history.length > 0) {
+              const everPassed = history.some((a: any) => a.passed === true);
+              const best = history.reduce((max: number, a: any) => Math.max(max, a.score_percent ?? 0), 0);
+              prog[ex.id] = { status: everPassed ? "passed" : "failed", score: best, attempts: history.length };
+              continue;
+            }
             const status = localStorage.getItem(`ex-${ex.id}-status`);
             const score = parseInt(localStorage.getItem(`ex-${ex.id}-score`) || "0");
-            if (status) prog[ex.id] = { status, score };
+            if (status) prog[ex.id] = { status, score, attempts: 0 };
           }
           setExerciseProgress(prog);
         }
@@ -124,12 +146,6 @@ export default function ChildExercisesPage() {
               <span>Pratique et améliore tes compétences !</span>
             </p>
           </div>
-          <Link
-            href="/child/exercises/history"
-            className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2.5 rounded-xl font-bold transition-colors flex items-center gap-2"
-          >
-            Mes tentatives
-          </Link>
         </div>
       </div>
     <div className="container mx-auto px-4 pb-12 max-w-6xl">
@@ -210,6 +226,7 @@ export default function ChildExercisesPage() {
                     <div className={`absolute top-4 left-4 flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold shadow-sm ${isPassed ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
                       {isPassed ? <CheckCircle className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
                       {isPassed ? `Réussi ${prog.score}%` : `Échoué ${prog.score}%`}
+                      {prog.attempts > 0 && ` · ${prog.attempts} tentative${prog.attempts > 1 ? "s" : ""}`}
                     </div>
                   )}
 
@@ -231,10 +248,6 @@ export default function ChildExercisesPage() {
                     <span className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-wider">
                       {exercise.courses?.title || "Mathématiques"}
                     </span>
-                    <div className="flex items-center text-[var(--greek-gold)] text-sm font-bold">
-                      <Star className="w-3 h-3 fill-current mr-1" />
-                      {exercise.points_reward || 10} XP
-                    </div>
                   </div>
 
                   <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">

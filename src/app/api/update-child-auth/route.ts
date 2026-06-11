@@ -4,9 +4,9 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { childId, password, parentAuthId } = body;
+    const { childId, password, parentAuthId, newUsername } = body;
 
-    if (!childId || !password || !parentAuthId) {
+    if (!childId || !parentAuthId || (!password && !newUsername)) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -43,10 +43,17 @@ export async function POST(request: Request) {
     let action = "updated";
 
     if (authUserId) {
-      // Update existing auth user password
+      // Update existing auth user password and/or email
+      const updates: { password?: string; email?: string; email_confirm?: boolean } = {};
+      if (password) updates.password = password;
+      if (newUsername) {
+        updates.email = `${newUsername}@educalcul.user`;
+        updates.email_confirm = true;
+      }
+
       const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(
         authUserId,
-        { password: password }
+        updates
       );
 
       if (updateError) {
@@ -59,7 +66,7 @@ export async function POST(request: Request) {
       }
     }
 
-    if (!authUserId) {
+    if (!authUserId && password) {
       // Create new auth user
       action = "created";
       const email = `${childUser.child_username}@educalcul.user`;

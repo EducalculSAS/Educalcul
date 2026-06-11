@@ -11,7 +11,7 @@ export default function ChildQuizPage() {
   const [loading, setLoading] = useState(true);
   const [allQuizzes, setAllQuizzes] = useState<any[]>([]);
   const [allFolders, setAllFolders] = useState<any[]>([]);
-  const [quizProgress, setQuizProgress] = useState<Record<string, { status: string; score: number }>>({});
+  const [quizProgress, setQuizProgress] = useState<Record<string, { status: string; score: number; attempts: number }>>({});
 
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
@@ -48,12 +48,34 @@ export default function ChildQuizPage() {
           }
           setAllQuizzes(filtered);
 
-          // Load progress from localStorage
-          const prog: Record<string, { status: string; score: number }> = {};
+          // Load progress from DB (fallback to localStorage)
+          const dbHistory: Record<string, any[]> = {};
+          if (session?.user) {
+            try {
+              const actRes = await fetch(`/api/child/activities?userId=${session.user.id}`);
+              if (actRes.ok) {
+                const act = await actRes.json();
+                (act.quizzes || []).forEach((a: any) => {
+                  dbHistory[a.quiz_id] = a.attempts_history || [];
+                });
+              }
+            } catch (e) {
+              console.error("Failed to load quiz progress", e);
+            }
+          }
+
+          const prog: Record<string, { status: string; score: number; attempts: number }> = {};
           for (const q of filtered) {
+            const history = dbHistory[q.id];
+            if (history && history.length > 0) {
+              const everPassed = history.some((a: any) => a.passed === true);
+              const best = history.reduce((max: number, a: any) => Math.max(max, a.score_percent ?? 0), 0);
+              prog[q.id] = { status: everPassed ? "passed" : "failed", score: best, attempts: history.length };
+              continue;
+            }
             const status = localStorage.getItem(`qz-${q.id}-status`);
             const score = parseInt(localStorage.getItem(`qz-${q.id}-score`) || "0");
-            if (status) prog[q.id] = { status, score };
+            if (status) prog[q.id] = { status, score, attempts: 0 };
           }
           setQuizProgress(prog);
         }
@@ -110,12 +132,6 @@ export default function ChildQuizPage() {
               <span>Teste tes connaissances et gagne des trophées !</span>
             </p>
           </div>
-          <Link
-            href="/child/quiz/history"
-            className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2.5 rounded-xl font-bold transition-colors flex items-center gap-2"
-          >
-            Mes tentatives
-          </Link>
         </div>
       </div>
     <div className="container mx-auto px-4 pb-12 max-w-6xl">
@@ -194,6 +210,7 @@ export default function ChildQuizPage() {
                     <div className={`absolute top-4 left-4 flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold shadow-sm ${isPassed ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
                       {isPassed ? <CheckCircle className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
                       {isPassed ? `Réussi ${prog.score}%` : `Échoué ${prog.score}%`}
+                      {prog.attempts > 0 && ` · ${prog.attempts} tentative${prog.attempts > 1 ? "s" : ""}`}
                     </div>
                   )}
 

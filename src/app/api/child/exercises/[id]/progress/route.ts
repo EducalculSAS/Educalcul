@@ -26,14 +26,18 @@ export async function GET(
 
     const { data, error } = await supabaseAdmin
       .from("user_exercise_attempts")
-      .select("progress_json, status")
+      .select("progress_json, status, attempts_history")
       .eq("user_id", userRecord.id)
       .eq("exercise_id", id)
       .maybeSingle();
 
     if (error) throw error;
 
-    return NextResponse.json({ progress: data?.progress_json || null, status: data?.status || null });
+    return NextResponse.json({
+      progress: data?.progress_json || null,
+      status: data?.status || null,
+      attemptsHistory: data?.attempts_history || [],
+    });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

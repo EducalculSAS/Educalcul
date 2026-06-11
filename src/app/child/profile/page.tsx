@@ -3,16 +3,14 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
-  User, Trophy, Star, Shield, School, BookOpen, Mail,
-  CheckCircle, AlertCircle, Trash2, Clock, Lock, Save,
-  Camera, Bell, Loader2, CreditCard, Brain,
+  User, Trophy, Shield, School, BookOpen, Mail,
+  CheckCircle, AlertCircle, Trash2,
+  Camera, Bell, Loader2, Brain,
 } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
-import Image from "next/image";
-import Link from "next/link";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -23,33 +21,20 @@ const GoogleIcon = () => (
   </svg>
 );
 
-function EmptyActivities({ message }: { message: string }) {
-  return (
-    <div className="text-center py-10 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-2xl">
-      <Star className="w-10 h-10 text-gray-200 mx-auto mb-3" />
-      <p className="text-gray-400 italic text-sm">{message}</p>
-    </div>
-  );
-}
-
 export default function ChildProfilePage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving]   = useState(false);
   const [user, setUser]       = useState<any>(null);
   const [authUser, setAuthUser] = useState<any>(null);
   const [googleLinked, setGoogleLinked] = useState(false);
-  const [subscription, setSubscription] = useState<any>(null);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteStep, setDeleteStep] = useState<1|2>(1);
 
-  const [showActivities, setShowActivities] = useState(false);
   const [activities, setActivities] = useState<{ exercises: any[]; quizzes: any[]; courses: any[] }>({ exercises: [], quizzes: [], courses: [] });
-  const [activeTab, setActiveTab] = useState<"exercises" | "quizzes" | "courses">("exercises");
 
   // Formulaires
   const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", avatar: "/avatars/avatar1.png" });
-  const [passwordData, setPasswordData] = useState({ newPassword: "", confirmPassword: "" });
   const [notifications, setNotifications] = useState({ notif_weekly_reports: false, notif_offers_news: false });
 
   useEffect(() => {
@@ -78,12 +63,6 @@ export default function ChildProfilePage() {
           const r = await fetch(`/api/child/activities?userId=${au.id}`);
           if (r.ok) setActivities(await r.json());
         } catch {}
-
-        // Abonnement (si l'enfant a son propre abonnement)
-        try {
-          const r = await fetch(`/api/parent/subscription-details?userId=${au.id}`);
-          if (r.ok) { const d = await r.json(); setSubscription(d.subscription || null); }
-        } catch {}
       }
       setLoading(false);
     };
@@ -105,38 +84,6 @@ export default function ChildProfilePage() {
       if (au) await supabase.from("users").update({ avatar: d.url }).eq("auth_id", au.id);
       setMessage({ type: "success", text: "Photo mise à jour." });
     } catch { setMessage({ type: "error", text: "Erreur lors de l'upload." }); }
-    finally { setSaving(false); }
-  };
-
-  const handleProfileUpdate = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSaving(true);
-    setMessage(null);
-    try {
-      const { data: { user: au } } = await supabase.auth.getUser();
-      if (!au) throw new Error("Non connecté");
-      await supabase.from("users").update({ first_name: formData.firstName, last_name: formData.lastName }).eq("auth_id", au.id);
-      if (formData.email !== (au.email || "")) {
-        await supabase.auth.updateUser({ email: formData.email });
-        setMessage({ type: "success", text: "Profil mis à jour. Vérifie ta nouvelle adresse email." });
-      } else {
-        setMessage({ type: "success", text: "Profil mis à jour." });
-      }
-    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
-    finally { setSaving(false); }
-  };
-
-  const handlePasswordUpdate = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (passwordData.newPassword.length < 6) { setMessage({ type: "error", text: "Mot de passe trop court (6 car. min)." }); return; }
-    if (passwordData.newPassword !== passwordData.confirmPassword) { setMessage({ type: "error", text: "Les mots de passe ne correspondent pas." }); return; }
-    setSaving(true);
-    try {
-      const { error } = await supabase.auth.updateUser({ password: passwordData.newPassword });
-      if (error) throw error;
-      setMessage({ type: "success", text: "Mot de passe mis à jour." });
-      setPasswordData({ newPassword: "", confirmPassword: "" });
-    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
     finally { setSaving(false); }
   };
 
@@ -176,8 +123,6 @@ export default function ChildProfilePage() {
   if (loading) return <div className="min-h-screen flex items-center justify-center"><AppAdminLoader /></div>;
   if (!user)   return <div className="min-h-screen flex items-center justify-center"><p>Profil introuvable</p></div>;
 
-  const isSubActive = subscription?.status === "active";
-
   return (
     <>
     <div className="min-h-screen bg-[var(--greek-cream)]">
@@ -194,7 +139,7 @@ export default function ChildProfilePage() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 pb-16 max-w-4xl space-y-6">
+      <div className="container mx-auto px-4 pb-16 max-w-5xl space-y-6">
 
         {/* Message */}
         {message && (
@@ -210,7 +155,7 @@ export default function ChildProfilePage() {
           <div className="h-24 bg-[var(--greek-blue)] relative overflow-hidden">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 0,rgba(255,255,255,0.05) 1px,transparent 0,transparent 50%)", backgroundSize: "12px 12px" }} />
           </div>
-          <div className="relative -mt-12 flex flex-col sm:flex-row items-center sm:items-end gap-4 px-6 pb-6">
+          <div className="relative -mt-12 flex flex-col items-center gap-3 px-6 pb-6 text-center">
             <div className="relative">
               <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" bgClass="transparent" circular />
               <label htmlFor="avatar-upload" className="absolute bottom-1 right-1 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform hover:scale-110" style={{ background: "var(--greek-blue)" }}>
@@ -218,17 +163,11 @@ export default function ChildProfilePage() {
                 <input id="avatar-upload" type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload} disabled={saving} />
               </label>
             </div>
-            <div className="text-center sm:text-left sm:mb-2">
+            <div>
               <h2 className={`text-2xl font-bold ${getNameColor(user.name_color || "default").cls}`}>{user.first_name} {user.last_name}</h2>
-              <p className="text-sm font-bold flex items-center justify-center sm:justify-start gap-1.5" style={{ color: "var(--greek-gold)" }}>
+              <p className="text-sm font-bold flex items-center justify-center gap-1.5" style={{ color: "var(--greek-gold)" }}>
                 <Shield className="w-4 h-4" />{user.child_username}
               </p>
-            </div>
-            <div className="sm:ml-auto flex gap-3">
-              <button onClick={() => setShowActivities(v => !v)} className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all hover:-translate-y-0.5" style={{ background: "var(--greek-blue)", color: "#fff" }}>
-                <Trophy className="w-4 h-4 text-[var(--greek-gold)]" />
-                {showActivities ? "Masquer" : "Mes activités"}
-              </button>
             </div>
           </div>
         </div>
@@ -251,109 +190,36 @@ export default function ChildProfilePage() {
           ))}
         </div>
 
-        {/* ── Abonnement ── */}
-        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
-          <h2 className="text-lg font-bold mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-            <CreditCard className="w-5 h-5 text-[var(--greek-gold)]" />
-            Mon abonnement
-          </h2>
-          {isSubActive ? (
-            <div className="flex items-center justify-between p-4 rounded-xl" style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.2)" }}>
-              <div>
-                <p className="font-bold text-green-700">Abonnement actif</p>
-                <p className="text-xs text-green-600 mt-0.5">Plan : {subscription.plan_name || "Premium"}</p>
-              </div>
-              <Link href="/child/subscription" className="text-sm font-bold px-4 py-2 rounded-xl transition-all hover:opacity-80" style={{ background: "var(--greek-blue)", color: "#fff" }}>
-                Gérer
-              </Link>
-            </div>
-          ) : (
-            <div className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.2)" }}>
-              <div>
-                <p className="font-semibold" style={{ color: "var(--greek-blue)" }}>Aucun abonnement actif</p>
-                <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>Débloquez toutes les fonctionnalités IA</p>
-              </div>
-              <Link href="/auth/inscription/select-plan" className="text-sm font-bold px-4 py-2 rounded-xl transition-all hover:-translate-y-0.5" style={{ background: "var(--greek-gold)", color: "#fff" }}>
-                S'abonner
-              </Link>
-            </div>
-          )}
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="space-y-6">
           {/* ── Infos personnelles ── */}
           <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
             <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
               <User className="w-5 h-5 text-[var(--greek-gold)]" />
               Informations personnelles
             </h2>
-            <form onSubmit={handleProfileUpdate} className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { label: "Prénom", key: "firstName" as const },
-                  { label: "Nom",    key: "lastName"  as const },
-                ].map(({ label, key }) => (
-                  <div key={key}>
-                    <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>{label}</label>
-                    <input type="text" value={formData[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))}
-                      className="w-full px-3 py-2.5 rounded-xl text-sm outline-none transition-all"
-                      style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }}
-                      onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
-                      onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")}
-                      required />
-                  </div>
-                ))}
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>Pseudo</label>
+                <div className="relative">
+                  <Shield className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
+                  <input type="text" value={user.child_username || ""} disabled
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm outline-none opacity-70 cursor-not-allowed"
+                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }} />
+                </div>
               </div>
               <div>
                 <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>Email</label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
-                  <input type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm outline-none transition-all"
-                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }}
-                    onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
-                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")} />
+                  <input type="email" value={formData.email} disabled
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm outline-none opacity-70 cursor-not-allowed"
+                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }} />
                 </div>
               </div>
-              <div className="text-right">
-                <button type="submit" disabled={saving} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-50" style={{ background: "var(--greek-blue)" }}>
-                  {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-                  Enregistrer
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
 
-          {/* ── Sécurité ── */}
-          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
-            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-              <Lock className="w-5 h-5 text-[var(--greek-gold)]" />
-              Sécurité
-            </h2>
-            <form onSubmit={handlePasswordUpdate} className="space-y-4">
-              {[
-                { label: "Nouveau mot de passe",    key: "newPassword"     as const },
-                { label: "Confirmer le mot de passe", key: "confirmPassword" as const },
-              ].map(({ label, key }) => (
-                <div key={key}>
-                  <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>{label}</label>
-                  <input type="password" value={passwordData[key]} onChange={e => setPasswordData(p => ({ ...p, [key]: e.target.value }))}
-                    className="w-full px-3 py-2.5 rounded-xl text-sm outline-none transition-all"
-                    style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }}
-                    placeholder="••••••••"
-                    onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
-                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")} />
-                </div>
-              ))}
-              <div className="text-right pt-1">
-                <button type="submit" disabled={saving} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-50" style={{ background: "var(--greek-blue)" }}>
-                  {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4" />}
-                  Modifier
-                </button>
-              </div>
-            </form>
-          </div>
-
+          <div className="grid md:grid-cols-2 gap-6">
           {/* ── Comptes liés ── */}
           <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
             <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
@@ -411,62 +277,8 @@ export default function ChildProfilePage() {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* ── Activités ── */}
-        {showActivities && (
-          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] overflow-hidden">
-            <div className="p-6 border-b border-[rgba(197,161,72,0.15)]">
-              <h2 className="text-lg font-bold font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>Historique des activités</h2>
-            </div>
-            <div className="flex border-b border-[rgba(197,161,72,0.15)]">
-              {(["exercises","quizzes","courses"] as const).map(tab => (
-                <button key={tab} onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-3 text-sm font-bold transition-all ${activeTab === tab ? "border-b-2 border-[var(--greek-blue)] text-[var(--greek-blue)]" : "text-gray-400 hover:text-gray-600"}`}>
-                  {tab === "exercises" ? "Exercices" : tab === "quizzes" ? "Quiz" : "Cours"}
-                </button>
-              ))}
-            </div>
-            <div className="p-6">
-              {activeTab === "exercises" && (
-                activities.exercises.length === 0 ? <EmptyActivities message="Aucun exercice terminé pour le moment." /> :
-                <div className="space-y-3">{activities.exercises.map(ex => (
-                  <div key={ex.id} className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.15)" }}>
-                    <div>
-                      <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>{ex.exercises?.title || "Exercice"}</p>
-                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>{new Date(ex.completed_at).toLocaleDateString("fr-FR")}</p>
-                    </div>
-                    <p className="font-black" style={{ color: "var(--greek-blue)" }}>{ex.score}/{ex.total_points}</p>
-                  </div>
-                ))}</div>
-              )}
-              {activeTab === "quizzes" && (
-                activities.quizzes.length === 0 ? <EmptyActivities message="Aucun quiz complété. Relève le défi !" /> :
-                <div className="space-y-3">{activities.quizzes.map(qz => (
-                  <div key={qz.id} className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.15)" }}>
-                    <div>
-                      <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>{qz.quizzes?.title || "Quiz"}</p>
-                      <p className="text-xs flex items-center gap-1" style={{ color: "var(--text-muted)" }}><Clock className="w-3 h-3" />{Math.floor(qz.time_spent_seconds/60)}m {qz.time_spent_seconds%60}s</p>
-                    </div>
-                    <p className="font-black" style={{ color: "var(--greek-blue)" }}>{Math.round((qz.score/qz.total_points)*100)}%</p>
-                  </div>
-                ))}</div>
-              )}
-              {activeTab === "courses" && (
-                activities.courses.length === 0 ? <EmptyActivities message="Aucun cours suivi pour l'instant." /> :
-                <div className="space-y-3">{activities.courses.map(co => (
-                  <div key={co.id} className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.15)" }}>
-                    <div>
-                      <p className="font-bold text-sm" style={{ color: "var(--greek-blue)" }}>{co.courses?.title || "Cours"}</p>
-                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>Chapitre {co.chapter_index + 1}</p>
-                    </div>
-                    <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 text-green-700">Suivi</span>
-                  </div>
-                ))}</div>
-              )}
-            </div>
           </div>
-        )}
+        </div>
 
         {/* ── Danger zone ── */}
         <div className="rounded-2xl p-6 border border-red-200 bg-red-50">

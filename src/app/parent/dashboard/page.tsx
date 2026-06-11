@@ -10,6 +10,7 @@ import {
   BarChart2,
 } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
+import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { useSubscription } from "@/lib/useSubscription";
 
@@ -44,6 +45,8 @@ export default function ParentDashboard() {
   const [children, setChildren] = useState<Child[]>([]);
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("Parent");
+  const [authId, setAuthId] = useState<string | null>(null);
+  const [parentId, setParentId] = useState<number | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -54,6 +57,8 @@ export default function ParentDashboard() {
       if (!userData || userData.role !== "parent") { router.push("/dashboard"); return; }
 
       setUserName(userData.first_name || "Parent");
+      setAuthId(user.id);
+      setParentId(userData.id);
 
       const { data: childrenData } = await supabase.from("users").select("id, first_name, last_name, grade_level, avatar").eq("role", "child").eq("parent_id", userData.id).order("first_name");
 
@@ -298,6 +303,13 @@ export default function ParentDashboard() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Calendrier */}
+        {authId && parentId && (
+          <div className="mt-8">
+            <MiniCalendarWidget authId={authId} ownerId={parentId} isParent={true} title="Calendrier" fullCalendarHref="/parent/calendar" />
           </div>
         )}
       </div>

@@ -58,7 +58,23 @@ export default function ConnexionClient() {
     setLoading(true);
     try {
       let email = identifier.trim();
-      if (!email.includes("@")) email = `${email}@educalcul.user`;
+      if (!email.includes("@")) {
+        try {
+          const r = await fetch("/api/auth/resolve-username", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: email }),
+          });
+          if (r.ok) {
+            const d = await r.json();
+            if (d.email) email = d.email;
+          } else {
+            email = `${email}@educalcul.user`;
+          }
+        } catch {
+          email = `${email}@educalcul.user`;
+        }
+      }
       const { data, error: authError } = await supabase.auth.signInWithPassword({ email, password });
       if (authError) throw authError;
       if (data.user) {

@@ -50,11 +50,32 @@ export default function ChildCoursesPage() {
           }
           setAllCourses(filtered);
 
-          // Load progress from localStorage for each course
+          // Load progress from DB (fallback to localStorage) for each course
+          const dbProgress: Record<string, { status: string; lessonsCompleted: string[] }> = {};
+          if (session?.user) {
+            try {
+              const actRes = await fetch(`/api/child/activities?userId=${session.user.id}`);
+              if (actRes.ok) {
+                const act = await actRes.json();
+                (act.courses || []).forEach((cp: any) => {
+                  dbProgress[cp.course_id] = {
+                    status: cp.status || "not_started",
+                    lessonsCompleted: cp.progress_json?.lessonsCompleted || [],
+                  };
+                });
+              }
+            } catch (e) {
+              console.error("Failed to load course progress", e);
+            }
+          }
+
           const prog: Record<string, { status: string; pct: number }> = {};
           for (const c of filtered) {
-            const status = localStorage.getItem(`cv-${c.id}-status`) || "not_started";
-            const done = (() => { try { return JSON.parse(localStorage.getItem(`cv-${c.id}-done`) || "[]"); } catch { return []; } })();
+            const dbp = dbProgress[c.id];
+            const status = dbp?.status || localStorage.getItem(`cv-${c.id}-status`) || "not_started";
+            const done = dbp
+              ? dbp.lessonsCompleted
+              : (() => { try { return JSON.parse(localStorage.getItem(`cv-${c.id}-done`) || "[]"); } catch { return []; } })();
             const totalL = (c.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
             const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
             if (status !== "not_started" || pct > 0) prog[c.id] = { status, pct };
@@ -150,7 +171,7 @@ export default function ChildCoursesPage() {
     }
   };
 
-  if (loading && allCourses.length === 0 && allFolders.length === 0) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <AppAdminLoader />
@@ -232,7 +253,7 @@ export default function ChildCoursesPage() {
             {/* Render Courses */}
             {currentCourses.map((course, index) => {
               const prog = courseProgress[course.id];
-              const isCompleted = prog?.status === "completed";
+              const isCompleted = prog?.status === "completed" || (prog?.pct ?? 0) >= 100;
               const isInProgress = !isCompleted && prog && prog.pct > 0;
               const totalL = (course.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
               const donePct = prog?.pct ?? 0;

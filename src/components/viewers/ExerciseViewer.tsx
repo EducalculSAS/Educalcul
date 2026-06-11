@@ -42,6 +42,12 @@ interface ExerciseViewerProps {
   onComplete?: (score: number, totalPoints: number) => void;
   onBack?: () => void;
   reviewMode?: boolean;
+  /** Force le démarrage d'une nouvelle tentative (ignore la progression précédemment terminée) */
+  forceNewAttempt?: boolean;
+  /** Meilleur score (%) déjà obtenu lors de tentatives précédentes */
+  bestScorePercent?: number;
+  /** Ouvre directement la correction (revue détaillée) au lieu de l'écran de fin */
+  openCorrection?: boolean;
   initialProgress?: {
     answers?: Record<string, any>;
     submittedBlocks?: string[];
@@ -57,15 +63,33 @@ export default function ExerciseViewer({
   onComplete,
   onBack,
   reviewMode,
+  forceNewAttempt,
+  bestScorePercent,
+  openCorrection,
   initialProgress,
 }: ExerciseViewerProps) {
   const pages = exercise.content_json || [];
   const { pageContext, setPageContext } = useAITutor();
+
+  // Nouvelle tentative : on efface la progression locale précédente
+  useEffect(() => {
+    if (!forceNewAttempt || typeof window === "undefined" || !exercise.id) return;
+    localStorage.removeItem(`exercise-${exercise.id}-progress`);
+    localStorage.removeItem(`exercise-${exercise.id}-page`);
+    setExerciseCompleted(false);
+    setAnswers({});
+    setSubmittedBlocks(new Set());
+    setResults({});
+    setAiFeedback({});
+    setScore(0);
+    setBlockModes({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
   // Initialize currentPageIndex from localStorage or default to 0
   const [currentPageIndex, setCurrentPageIndexState] = useState(() => {
     if (typeof window === "undefined") return 0;
-    if (!exercise.id) return 0;
+    if (!exercise.id || forceNewAttempt) return 0;
     try {
       const saved = localStorage.getItem(`exercise-${exercise.id}-page`);
       const pageCount = (exercise.content_json?.length || 0);
@@ -109,7 +133,7 @@ export default function ExerciseViewer({
     exerciseCompleted: boolean;
     blockModes: Record<string, "text" | "draw">;
   } | null => {
-    if (typeof window === "undefined" || !exercise.id) return null;
+    if (typeof window === "undefined" || !exercise.id || forceNewAttempt) return null;
     try {
       const saved = localStorage.getItem(`exercise-${exercise.id}-progress`);
       return saved ? JSON.parse(saved) : null;
@@ -171,6 +195,11 @@ export default function ExerciseViewer({
   useEffect(() => {
     if (reviewMode) return;
     if (!exercise.id || exercise.id === "preview") return;
+    if (forceNewAttempt) {
+      // Nouvelle tentative : on ne restaure pas l'état d'une session précédente
+      progressLoadedFromDbRef.current = true;
+      return;
+    }
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session?.user) return;
@@ -188,6 +217,11 @@ export default function ExerciseViewer({
           setScore(p.score || 0);
           setExerciseCompleted(p.exerciseCompleted || data?.status === "completed" || false);
           setBlockModes(p.blockModes || {});
+          if (openCorrection) {
+            setExerciseCompleted(false);
+            setShowReview(true);
+            setCurrentPageIndex(0);
+          }
         } else if (data?.status === "completed") {
           // Le statut "completed" a été enregistré (via /api/child/activities) mais le
           // progress_json détaillé n'a jamais été persisté (ex: navigation rapide après
@@ -620,6 +654,11 @@ export default function ExerciseViewer({
                       </div>
                     ))}
                   </div>
+                  {typeof bestScorePercent === "number" && bestScorePercent > percentage && (
+                    <p className="mt-3 text-sm text-[var(--greek-blue)] font-bold">
+                      Ton meilleur score reste {bestScorePercent}%
+                    </p>
+                  )}
                   {threshold > 0 && (
                     <div className={`mt-4 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl ${passed ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
                       {passed ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
@@ -949,7 +988,9 @@ export default function ExerciseViewer({
         <button
           onClick={handlePrevPage}
           disabled={currentPageIndex === 0}
-          className="px-4 py-2 text-[var(--greek-bronze)] font-medium disabled:opacity-50 hover:bg-[var(--greek-gold)]/10 rounded-lg flex items-center gap-2 transition-colors"
+          className={`px-4 py-2 text-[var(--greek-bronze)] font-medium hover:bg-[var(--greek-gold)]/10 rounded-lg flex items-center gap-2 transition-colors ${
+            currentPageIndex === 0 ? "opacity-0 pointer-events-none" : ""
+          }`}
         >
           <ArrowLeft className="w-4 h-4" /> Précédent
         </button>
@@ -968,9 +1009,23 @@ export default function ExerciseViewer({
             showReview
               ? currentPageIndex < pages.length - 1
                 ? handleNextPage
+                : openCorrection
+                ? onBack || (() => {})
                 : () => {
                     setShowReview(false);
                     setExerciseCompleted(true);
+                    const tp = (() => { let t = 0; pages.forEach(p => p.blocks.forEach(b => (t += b.points || 0))); return t; })();
+                    let pct: number;
+                    if (tp > 0) {
+                      pct = Math.round((score / tp) * 100);
+                    } else {
+                      const gradableCount = Object.keys(results).length;
+                      const correctCount = Object.values(results).filter(Boolean).length;
+                      pct = gradableCount > 0 ? Math.round((correctCount / gradableCount) * 100) : 100;
+                    }
+                    const thr = exercise.min_score_percent || 0;
+                    const didPass = thr > 0 ? pct >= thr : true;
+                    saveProgress('completed', score, pct, didPass);
                   }
               : currentPageIndex < pages.length - 1
               ? handleNextPage
@@ -990,7 +1045,7 @@ export default function ExerciseViewer({
               </>
             ) : (
               <>
-                Terminer l'exercice <CheckCircle className="w-4 h-4" />
+                {openCorrection ? "Fermer" : "Terminer l'exercice"} <CheckCircle className="w-4 h-4" />
               </>
             )
           ) : currentPageIndex < pages.length - 1 ? (

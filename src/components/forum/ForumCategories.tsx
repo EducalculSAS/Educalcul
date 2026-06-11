@@ -1,10 +1,11 @@
 ﻿"use client";
 
 import React, { useEffect, useState } from "react";
-import { MessageSquare, Plus, Loader2, Trash2, X } from "lucide-react";
+import { MessageSquare, Plus, Trash2, X } from "lucide-react";
 import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AppAdminLoader from "@/components/AppAdminLoader";
 
 interface Category {
   id: number;
@@ -58,7 +59,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
     fetchCategories();
   };
 
-  if (loading) return <div className="p-12 flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-gray-400" /></div>;
+  if (loading) return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
 
   return (
     <div className="space-y-6">

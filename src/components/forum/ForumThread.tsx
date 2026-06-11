@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowLeft, Send, Trash2, Loader2, Pin, Lock, ExternalLink, Flag, X, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Send, Trash2, Pin, Lock, ExternalLink, Flag, X, AlertTriangle } from "lucide-react";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { getBorderStyle, getNameColor } from "@/lib/badgeStyles";
@@ -104,7 +105,7 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
     return isAdmin ? `/admin/users/detail?id=${userId}` : `/u/${userId}?returnTo=${returnTo}`;
   };
 
-  if (loading || !post) return <div className="p-12 flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-gray-400" /></div>;
+  if (loading || !post) return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
 
   const AuthorChip = ({ a }: { a: any }) => {
     const nameCol = getNameColor(a?.name_color || 'default');

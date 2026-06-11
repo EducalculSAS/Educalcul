@@ -40,6 +40,7 @@ export default function EditChildPage() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [parentId, setParentId] = useState<string | null>(null);
+  const [originalUsername, setOriginalUsername] = useState("");
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -87,6 +88,7 @@ export default function EditChildPage() {
         return;
       }
 
+      setOriginalUsername(childData.child_username || "");
       setFormData({
         firstName: childData.first_name,
         lastName: childData.last_name,
@@ -132,8 +134,9 @@ export default function EditChildPage() {
 
       if (updateError) throw updateError;
 
-      // Handle Password Update / Auth Creation via API
-      if (formData.password && formData.password.length > 0) {
+      // Handle Password Update / Username (auth email) change / Auth Creation via API
+      const usernameChanged = formData.username !== originalUsername;
+      if ((formData.password && formData.password.length > 0) || usernameChanged) {
         const {
           data: { user },
         } = await supabase.auth.getUser();
@@ -145,7 +148,8 @@ export default function EditChildPage() {
           },
           body: JSON.stringify({
             childId,
-            password: formData.password,
+            password: formData.password || undefined,
+            newUsername: usernameChanged ? formData.username : undefined,
             parentAuthId: user?.id,
           }),
         });
@@ -153,7 +157,7 @@ export default function EditChildPage() {
         const authResult = await response.json();
         if (!response.ok) {
           throw new Error(
-            authResult.error || "Erreur lors de la mise à jour du mot de passe."
+            authResult.error || "Erreur lors de la mise à jour du compte."
           );
         }
       }

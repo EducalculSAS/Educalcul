@@ -85,6 +85,22 @@ export async function POST(req: Request) {
 
     let result;
     if (type === "exercise") {
+      let attemptsHistory: any[] = [];
+      if (status === "completed") {
+        const { data: existing } = await supabaseAdmin
+          .from("user_exercise_attempts")
+          .select("attempts_history")
+          .eq("user_id", internalId)
+          .eq("exercise_id", itemId)
+          .maybeSingle();
+        attemptsHistory = [...(existing?.attempts_history || []), {
+          score: score || 0,
+          total_points: totalPoints || 0,
+          score_percent: scorePercent ?? null,
+          passed: passed ?? null,
+          completed_at: new Date().toISOString(),
+        }];
+      }
       result = await supabaseAdmin.from("user_exercise_attempts").upsert({
         user_id: internalId,
         exercise_id: itemId,
@@ -93,9 +109,26 @@ export async function POST(req: Request) {
         status: status || 'in_progress',
         score_percent: scorePercent ?? null,
         passed: passed ?? null,
-        completed_at: new Date().toISOString()
+        completed_at: new Date().toISOString(),
+        ...(status === "completed" ? { attempts_history: attemptsHistory } : {}),
       }, { onConflict: 'user_id, exercise_id' });
     } else if (type === "quiz") {
+      let attemptsHistory: any[] = [];
+      if (status === "completed") {
+        const { data: existing } = await supabaseAdmin
+          .from("user_quiz_attempts")
+          .select("attempts_history")
+          .eq("user_id", internalId)
+          .eq("quiz_id", itemId)
+          .maybeSingle();
+        attemptsHistory = [...(existing?.attempts_history || []), {
+          score: score || 0,
+          total_points: totalPoints || 0,
+          score_percent: scorePercent ?? null,
+          passed: passed ?? null,
+          completed_at: new Date().toISOString(),
+        }];
+      }
       result = await supabaseAdmin.from("user_quiz_attempts").upsert({
         user_id: internalId,
         quiz_id: itemId,
@@ -105,7 +138,8 @@ export async function POST(req: Request) {
         status: status || 'in_progress',
         score_percent: scorePercent ?? null,
         passed: passed ?? null,
-        completed_at: new Date().toISOString()
+        completed_at: new Date().toISOString(),
+        ...(status === "completed" ? { attempts_history: attemptsHistory } : {}),
       }, { onConflict: 'user_id, quiz_id' });
     } else if (type === "course") {
       result = await supabaseAdmin.from("user_course_progress").upsert({

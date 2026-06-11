@@ -70,7 +70,8 @@ export default function CourseDetailPage() {
         const done = (() => { try { return JSON.parse(localStorage.getItem(`cv-${courseId}-done`) || "[]"); } catch { return []; } })();
         const totalL = (data.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
         const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
-        if (status !== "not_started" || pct > 0) setResumeInfo({ pct, chapterIndex: chIdx, status });
+        const effectiveStatus = status === "completed" || pct >= 100 ? "completed" : status;
+        if (effectiveStatus !== "not_started" || pct > 0) setResumeInfo({ pct, chapterIndex: chIdx, status: effectiveStatus });
         // Inject AI tutor context
         const chaptersSummary = (data.content_json || [])
           .map((ch: any) => `Chapitre: ${ch.title || ""}\n${(ch.blocks || []).map((b: any) => b.content || b.text || "").join(" ")}`)
@@ -216,6 +217,7 @@ export default function CourseDetailPage() {
         <div className="flex-1 overflow-hidden">
           <CourseViewer
             course={course}
+            reviewMode={resumeInfo?.status === "completed"}
             onBack={() => { if (!isPreview) setStarted(false); }}
             onChapterComplete={(chapterIndex) => {
               console.log(`Chapter ${chapterIndex} completed`);

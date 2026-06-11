@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import ForumCategories from "./ForumCategories";
 import ForumPosts from "./ForumPosts";
 import ForumThread from "./ForumThread";
-import PageLoader from "@/components/PageLoader";
+import AppAdminLoader from "@/components/AppAdminLoader";
 
 export type ForumRole = "admin" | "parent" | "child";
 
@@ -73,7 +73,7 @@ export default function ForumApp({ role }: ForumAppProps) {
   }, [searchParams]);
 
   if (loading) {
-    return <PageLoader className="h-48" />;
+    return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
   }
 
   if (!userAuthId) {

@@ -47,9 +47,10 @@ interface CourseViewerProps {
   onComplete?: () => void;
   onChapterComplete?: (chapterIndex: number) => void;
   onBack?: () => void;
+  reviewMode?: boolean;
 }
 
-export default function CourseViewer({ course, onComplete, onChapterComplete, onBack }: CourseViewerProps) {
+export default function CourseViewer({ course, onComplete, onChapterComplete, onBack, reviewMode }: CourseViewerProps) {
   const { setPageContext, pageContext } = useAITutor();
   
   const chapters = course.content_json || [];
@@ -57,11 +58,11 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   const isPreviewCourse = !courseId || courseId === "preview";
 
   const [currentChapterIndex, setCurrentChapterIndex] = useState(() => {
-    if (typeof window === "undefined" || isPreviewCourse) return 0;
+    if (typeof window === "undefined" || isPreviewCourse || reviewMode) return 0;
     return parseInt(localStorage.getItem(`cv-${courseId}-ch`) || "0");
   });
   const [currentLessonIndex, setCurrentLessonIndex] = useState(() => {
-    if (typeof window === "undefined" || isPreviewCourse) return 0;
+    if (typeof window === "undefined" || isPreviewCourse || reviewMode) return 0;
     return parseInt(localStorage.getItem(`cv-${courseId}-ls`) || "0");
   });
   const [sidebarOpen, setSidebarOpen] = useState(() =>
@@ -254,20 +255,20 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
   // Persist navigation state
   useEffect(() => {
-    if (isPreviewCourse) return;
+    if (isPreviewCourse || reviewMode) return;
     localStorage.setItem(`cv-${courseId}-ch`, String(currentChapterIndex));
     localStorage.setItem(`cv-${courseId}-ls`, String(currentLessonIndex));
   }, [currentChapterIndex, currentLessonIndex]);
 
   useEffect(() => {
-    if (isPreviewCourse) return;
+    if (isPreviewCourse || reviewMode) return;
     localStorage.setItem(`cv-${courseId}-done`, JSON.stringify([...completedLessons]));
   }, [completedLessons]);
 
   // Charge la progression sauvegardée en base (reprise après déconnexion)
   const progressLoadedFromDbRef = useRef(false);
   useEffect(() => {
-    if (isPreviewCourse) { progressLoadedFromDbRef.current = true; return; }
+    if (isPreviewCourse || reviewMode) { progressLoadedFromDbRef.current = true; return; }
     (async () => {
       try {
         const { data: { session } } = await supabase.auth.getSession();
@@ -298,7 +299,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
   // Track initial start (après chargement de la progression depuis la base)
   useEffect(() => {
-    if (isPreviewCourse) return;
+    if (isPreviewCourse || reviewMode) return;
     let cancelled = false;
     (async () => {
       while (!progressLoadedFromDbRef.current && !cancelled) {
@@ -312,7 +313,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
   // Track chapter changes
   useEffect(() => {
-    if (!progressLoadedFromDbRef.current) return;
+    if (!progressLoadedFromDbRef.current || reviewMode) return;
     saveProgress('in_progress', currentChapterIndex);
   }, [currentChapterIndex]);
 
@@ -332,6 +333,13 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
   const handleNext = () => {
     if (!currentChapter) return;
+
+    const isLastLesson = currentChapterIndex === chapters.length - 1 && currentLessonIndex === currentChapter.lessons.length - 1;
+
+    if (reviewMode && isLastLesson) {
+      if (onBack) onBack();
+      return;
+    }
 
     // Mark current as complete
     if (currentLesson) {
@@ -762,7 +770,11 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
             className="btn-primary-greek flex items-center gap-3 px-6 py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
           >
             {currentChapterIndex === chapters.length - 1 && currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1 ? (
-              <>Terminer le cours <CheckCircle className="w-5 h-5" /></>
+              reviewMode ? (
+                <>Continuer <ChevronRight className="w-5 h-5" /></>
+              ) : (
+                <>Terminer le cours <CheckCircle className="w-5 h-5" /></>
+              )
             ) : (
               <>
                 <span className="hidden md:inline">Leçon suivante</span>

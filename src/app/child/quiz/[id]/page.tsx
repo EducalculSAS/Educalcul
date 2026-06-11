@@ -11,6 +11,7 @@ import {
   CheckCircle,
   BookOpen,
   X,
+  Eye,
 } from "lucide-react";
 import QuizViewer from "@/components/viewers/QuizViewer";
 import AppAdminLoader from "@/components/AppAdminLoader";
@@ -31,9 +32,17 @@ export default function QuizDetailPage() {
     if (typeof window === "undefined") return false;
     const wasStarted = localStorage.getItem(`quiz-${quizId}-started`);
     console.log(`[quiz-${quizId}] Initial check: wasStarted=${wasStarted}`);
-    return wasStarted === "true";
+    if (wasStarted !== "true") return false;
+    if (localStorage.getItem(`qz-${quizId}-status`)) return false;
+    return true;
   });
   const [isRendering, setIsRendering] = useState(false);
+  const [attemptsHistory, setAttemptsHistory] = useState<any[]>([]);
+  const [historyLoaded, setHistoryLoaded] = useState(quizId === "preview");
+  const [alreadyCompleted, setAlreadyCompleted] = useState(false);
+  const [attemptKey, setAttemptKey] = useState(0);
+  const [forceNewAttempt, setForceNewAttempt] = useState(false);
+  const [openCorrection, setOpenCorrection] = useState(false);
   const isPreview = quizId === "preview";
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -85,6 +94,28 @@ export default function QuizDetailPage() {
 
     fetchQuiz();
     return () => clearContext();
+  }, [quizId, isPreview]);
+
+  // Charge l'historique des tentatives précédentes
+  useEffect(() => {
+    if (isPreview) return;
+    (async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user) return;
+      try {
+        const res = await fetch(`/api/child/quizzes/${quizId}/progress?userId=${session.user.id}`);
+        const data = await res.json();
+        setAttemptsHistory(data?.attemptsHistory || []);
+        const localCompleted = !!localStorage.getItem(`qz-${quizId}-status`);
+        const completed = data?.status === "completed" || localCompleted;
+        setAlreadyCompleted(completed);
+        if (completed) setStarted(false);
+      } catch (e) {
+        console.error("Failed to load attempts history", e);
+      } finally {
+        setHistoryLoaded(true);
+      }
+    })();
   }, [quizId, isPreview]);
 
 
@@ -216,7 +247,11 @@ export default function QuizDetailPage() {
         </div>
         <div className="flex-1 overflow-hidden">
           <QuizViewer
+            key={attemptKey}
             quiz={quiz}
+            forceNewAttempt={forceNewAttempt}
+            openCorrection={openCorrection}
+            bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a: any) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
             onComplete={(score, total, timeSpent) => {
               console.log(`Quiz completed: ${score}/${total} in ${timeSpent}s`);
@@ -304,14 +339,35 @@ export default function QuizDetailPage() {
                   Prêt pour le défi ?
                 </h3>
                 
-                <button 
-                  onClick={() => setStarted(true)}
-                  className="w-full btn-primary-greek py-4 text-lg shadow-lg mb-4 flex items-center justify-center gap-2 transform hover:scale-105 transition-all"
-                >
-                  <Play className="w-6 h-6 fill-current" />
-                  Démarrer le quiz
-                </button>
-                
+                {!historyLoaded ? (
+                  <div className="w-full py-4 rounded-full bg-gray-100 animate-pulse mb-1" style={{ height: "56px" }} />
+                ) : (() => {
+                  const maxAttempts: number | null = quiz.max_attempts ?? null;
+                  const attemptsUsed = attemptsHistory.length;
+                  const limitReached = !!maxAttempts && attemptsUsed >= maxAttempts;
+                  return (
+                    <button
+                      onClick={() => {
+                        if (limitReached) return;
+                        setForceNewAttempt(alreadyCompleted);
+                        if (alreadyCompleted) setAttemptKey((k) => k + 1);
+                        setStarted(true);
+                      }}
+                      disabled={limitReached}
+                      className={`w-full py-4 text-lg shadow-lg mb-1 flex items-center justify-center gap-2 transform transition-all rounded-full font-bold ${limitReached ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "btn-primary-greek hover:scale-105"}`}
+                    >
+                      <Play className="w-6 h-6 fill-current" />
+                      {limitReached ? "Tentatives épuisées" : alreadyCompleted ? "Recommencer le quiz" : "Démarrer le quiz"}
+                    </button>
+                  );
+                })()}
+                {!!quiz.max_attempts && (
+                  <p className="text-xs text-gray-500 text-center mb-4">
+                    {attemptsHistory.length}/{quiz.max_attempts} tentative{quiz.max_attempts > 1 ? "s" : ""} utilisée{attemptsHistory.length > 1 ? "s" : ""}
+                  </p>
+                )}
+                {!quiz.max_attempts && <div className="mb-4" />}
+
                 <div className="space-y-4 text-sm text-gray-600">
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">
@@ -334,6 +390,35 @@ export default function QuizDetailPage() {
                     <span className="font-bold text-[var(--greek-blue)]">{difficultyLabel}</span>
                   </div>
                 </div>
+
+                {attemptsHistory.length > 0 && (
+                  <div className="mt-6 pt-4 border-t border-[rgba(197,161,72,0.25)]">
+                    <h4 className="text-sm font-bold text-[var(--greek-blue)] mb-3">Tes derniers essais</h4>
+                    <div className="space-y-2">
+                      {attemptsHistory.slice(-5).reverse().map((a, i) => (
+                        <div key={i} className="flex items-center justify-between text-sm bg-[var(--greek-cream)] rounded-lg px-3 py-2 border border-[rgba(197,161,72,0.15)]">
+                          <span className="text-gray-500">
+                            {a.completed_at ? new Date(a.completed_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "—"}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <span className={`font-bold ${a.passed === false ? "text-red-500" : "text-green-600"}`}>
+                              {a.score_percent ?? 0}%
+                            </span>
+                            {i === 0 && (
+                              <button
+                                onClick={() => { setForceNewAttempt(false); setOpenCorrection(true); setStarted(true); }}
+                                title="Voir ma correction"
+                                className="text-[var(--greek-blue)] hover:opacity-70"
+                              >
+                                <Eye className="w-4 h-4" />
+                              </button>
+                            )}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

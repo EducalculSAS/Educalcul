@@ -9,6 +9,7 @@ import {
   Play, MessageSquare, Star, CheckCircle, Zap,
 } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
+import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 
 const ICON_MAP: Record<string, any> = {
   pencil: PenTool, zap: Zap, flame: Star, star: Star, crown: Trophy,
@@ -23,6 +24,7 @@ export default function ChildDashboard() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
+  const [authId, setAuthId] = useState<string | null>(null);
   const [gradeLevel, setGradeLevel] = useState<string | null>(null);
   const [nextCourse, setNextCourse] = useState<any>(null);
   const [nextExercise, setNextExercise] = useState<any>(null);
@@ -38,6 +40,7 @@ export default function ChildDashboard() {
       if (!userData || userData.role !== "child") { router.push("/dashboard"); return; }
 
       setUser(userData);
+      setAuthId(session.user.id);
       setGradeLevel(userData.grade_level);
 
       const level = userData.grade_level;
@@ -193,6 +196,13 @@ export default function ChildDashboard() {
             )}
           </div>
         </div>
+
+        {/* Calendrier */}
+        {authId && user && (
+          <div className="mb-8">
+            <MiniCalendarWidget authId={authId} ownerId={user.id} isParent={false} title="Mon Calendrier" fullCalendarHref="/child/calendar" />
+          </div>
+        )}
 
         {/* Mes Trophées — réels */}
         <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">

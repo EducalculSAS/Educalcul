@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { MessageSquare, Plus, ArrowLeft, Clock, Loader2, Pin, Lock, MessageCircle, Trash2, X } from "lucide-react";
+import { MessageSquare, Plus, ArrowLeft, Clock, Pin, Lock, MessageCircle, Trash2, X } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -81,7 +82,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     return role === "admin" ? `/admin/users/detail?id=${userId}` : `/u/${userId}?returnTo=${returnTo}`;
   };
 
-  if (loading) return <div className="p-12 flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-gray-400" /></div>;
+  if (loading) return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
 
   return (
     <div className="space-y-6">
