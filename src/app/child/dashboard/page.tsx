@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import {
   BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
   Play, MessageSquare, Star, CheckCircle, Zap,
@@ -36,7 +37,7 @@ export default function ChildDashboard() {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) { router.push("/auth/connexion"); return; }
 
-      const { data: userData } = await supabase.from("users").select("*").eq("auth_id", session.user.id).maybeSingle();
+      const { data: userData }: any = await supabase.from("users").select(USER_SELECT_COLUMNS).eq("auth_id", session.user.id).maybeSingle();
       if (!userData || userData.role !== "child") { router.push("/dashboard"); return; }
 
       setUser(userData);

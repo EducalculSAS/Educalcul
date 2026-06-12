@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useRouter, useParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { AVATARS } from "@/lib/constants";
 
@@ -75,9 +76,9 @@ export default function EditChildPage() {
       setParentId(parentData.id);
 
       // 2. Fetch Child Data
-      const { data: childData, error: childError } = await supabase
+      const { data: childData, error: childError }: any = await supabase
         .from("users")
-        .select("*")
+        .select(USER_SELECT_COLUMNS)
         .eq("id", childId)
         .eq("parent_id", parentData.id) // Security check
         .single();

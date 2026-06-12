@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { PlusCircle, Users, Trash2, Edit, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
+import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -43,9 +44,9 @@ export default function ManageChildrenPage() {
 
       if (!parentRecord) return;
 
-      const { data } = await supabase
+      const { data }: any = await supabase
         .from("users")
-        .select("*")
+        .select(USER_SELECT_COLUMNS)
         .eq("parent_id", parentRecord.id)
         .eq("role", "child")
         .order("first_name");

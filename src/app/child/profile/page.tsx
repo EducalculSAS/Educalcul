@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import {
   User, Trophy, Shield, School, BookOpen, Mail,
   CheckCircle, AlertCircle, Trash2,
@@ -44,7 +45,7 @@ export default function ChildProfilePage() {
       setAuthUser(au);
       setGoogleLinked(!!au.identities?.some((id: any) => id.provider === "google"));
 
-      const { data: userData } = await supabase.from("users").select("*").eq("auth_id", au.id).maybeSingle();
+      const { data: userData }: any = await supabase.from("users").select(USER_SELECT_COLUMNS).eq("auth_id", au.id).maybeSingle();
       if (userData) {
         setUser(userData);
         setFormData({

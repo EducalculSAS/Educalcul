@@ -102,7 +102,7 @@ export default function ParentProfilePage() {
           // On passe par l'API qui synchronise cancel_at_period_end depuis Stripe
           // (évite le cas où l'user annule via le portail mais la DB n'est pas encore à jour)
           fetch(`/api/parent/subscription-details?userId=${user.id}`).then(r => r.json()).catch(() => ({})),
-          supabase.from("users").select("*", { count: "exact", head: true }).eq("parent_id", profile.id).eq("role", "child"),
+          supabase.from("users").select("id", { count: "exact", head: true }).eq("parent_id", profile.id).eq("role", "child"),
         ]);
         // Abonnement bloquant = existe, actif, non annulé
         const sub = subRes.subscription;

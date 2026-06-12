@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import PageLoader from "@/components/PageLoader";
 import { supabase } from "@/lib/supabaseClient";
+import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { User, Save, Eye, Crown, Shield } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 
@@ -40,9 +41,9 @@ export default function AdminProfilePage() {
       } = await supabase.auth.getSession();
       if (!session) return;
 
-      const { data, error } = await supabase
+      const { data, error }: any = await supabase
         .from("users")
-        .select("*")
+        .select(USER_SELECT_COLUMNS)
         .eq("auth_id", session.user.id)
         .single();
 

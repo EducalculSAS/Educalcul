@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
@@ -43,9 +44,9 @@ export default function ParentLayout({
       }
 
       // Verify role
-      const { data: userData, error } = await supabase
+      const { data: userData, error }: any = await supabase
         .from("users")
-        .select("*")
+        .select(USER_SELECT_COLUMNS)
         .eq("auth_id", session.user.id)
         .maybeSingle();
 
