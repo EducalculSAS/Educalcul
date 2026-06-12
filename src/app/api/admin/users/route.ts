@@ -1,106 +1,115 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-
-// Initialize Supabase Admin Client
-
-async function resolveAdmin(authId: string | null) {
-  if (!authId) return null;
-  const { data } = await supabaseAdmin
-    .from("users")
-    .select("id, role")
-    .eq("auth_id", authId)
-    .maybeSingle();
-  return data && data.role === "admin" ? data : null;
-}
+import { requireRole } from "@/lib/apiAuth";
+import { auditLog, AuditAction } from "@/lib/auditLog";
+import { validateEmail, validateName, isValidRole, isValidUUID, validateString } from "@/lib/validation";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function GET(request: Request) {
   try {
-    // Check if service role is configured
-    if (!process.env.SUPABASE_SERVICE_ROLE) {
-      console.error(`[GET USERS] FATAL: No SUPABASE_SERVICE_ROLE environment variable found`);
-      return NextResponse.json(
-        { error: "Configuration error: Service role not configured." },
-        { status: 500 }
-      );
+    // ✓ SECURITY: Require admin authentication
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { searchParams } = new URL(request.url);
     const role = searchParams.get("role");
     const status = searchParams.get("status");
 
-    const admin = await resolveAdmin(searchParams.get("userId"));
-    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-
     let query = supabaseAdmin
       .from("users")
       .select("*")
       .order("created_at", { ascending: false });
 
-    if (role && role !== "all") {
+    if (role && role !== "all" && isValidRole(role)) {
       query = query.eq("role", role);
     }
-    if (status && status !== "all") {
+    if (status && status !== "all" && ["active", "inactive", "banned"].includes(status)) {
       query = query.eq("status", status);
     }
 
     const { data, error } = await query;
 
     if (error) {
-      console.error(`[GET USERS] Supabase error:`, error);
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      console.error(`[admin-users-get] Supabase error:`, error);
+      return NextResponse.json({ error: "Failed to fetch users" }, { status: 500 });
     }
 
     return NextResponse.json(data);
   } catch (error: any) {
-    console.error("[GET USERS] Catch error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("[admin-users-get] Catch error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
+    // ✓ SECURITY: Require admin authentication
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // ✓ SECURITY: Rate limiting on user creation
+    const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+    const rl = rateLimitWithBackoff(`admin:user-create:${ip}`, 10, 60000); // 10 per minute
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const body = await request.json();
-    const { userId, email, password, firstName, lastName, role, status, gradeLevel, childAge } = body;
+    const { email, password, firstName, lastName, role, status, gradeLevel, childAge } = body;
 
-    const admin = await resolveAdmin(userId);
-    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    // ✓ SECURITY: Input validation
+    if (!validateEmail(email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
 
-    // 1. Create User in Supabase Auth
-    const { data: authData, error: authError } =
-      await supabaseAdmin.auth.admin.createUser({
-        email,
-        password,
-        email_confirm: true,
-        user_metadata: {
-          role,
-          first_name: firstName,
-          last_name: lastName,
-          grade_level: gradeLevel,
-          child_age: childAge,
-        },
-      });
+    if (!password || password.length < 8) {
+      return NextResponse.json({ error: "Password must be at least 8 characters" }, { status: 400 });
+    }
+
+    const validatedFirstName = validateName(firstName);
+    if (!validatedFirstName) {
+      return NextResponse.json({ error: "Invalid first name" }, { status: 400 });
+    }
+
+    const validatedLastName = validateName(lastName);
+    if (!validatedLastName) {
+      return NextResponse.json({ error: "Invalid last name" }, { status: 400 });
+    }
+
+    if (!isValidRole(role)) {
+      return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+    }
+
+    // Create auth user
+    const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
+      email,
+      password,
+      email_confirm: true,
+      user_metadata: {
+        role,
+        first_name: validatedFirstName,
+        last_name: validatedLastName,
+        grade_level: gradeLevel,
+        child_age: childAge,
+      },
+    });
 
     if (authError) {
-      return NextResponse.json({ error: authError.message }, { status: 400 });
+      console.error("[admin-users-post] Auth error:", authError);
+      return NextResponse.json({ error: "Failed to create user" }, { status: 400 });
     }
 
     if (!authData.user) {
-      return NextResponse.json(
-        { error: "Failed to create auth user" },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "Failed to create user" }, { status: 500 });
     }
 
     const authId = authData.user.id;
 
-    // 2. Create User in public.users
-    // Note: If you have a trigger that automatically creates a public.users entry on auth.users insert,
-    // you should Update it instead of Insert.
-    // However, usually triggers are for self-registration. For admin creation, explicit insert is safer if trigger checks for metadata.
-    // Let's assume we might need to update or insert.
-    // Best approach: Try to insert, if conflict (due to trigger), update.
-
-    // Check if user exists (via trigger)
+    // Check if user exists via trigger
     const { data: existingUser } = await supabaseAdmin
       .from("users")
       .select("id")
@@ -108,15 +117,14 @@ export async function POST(request: Request) {
       .maybeSingle();
 
     if (existingUser) {
-      // Update existing
       const { error: updateError } = await supabaseAdmin
         .from("users")
         .update({
-          first_name: firstName,
-          last_name: lastName,
-          role: role,
+          first_name: validatedFirstName,
+          last_name: validatedLastName,
+          role,
           status: status || "active",
-          email: email, // ensure email is synced
+          email,
           grade_level: gradeLevel,
           child_age: childAge ? String(childAge) : null,
         })
@@ -124,14 +132,13 @@ export async function POST(request: Request) {
 
       if (updateError) throw updateError;
     } else {
-      // Insert new
       const { error: insertError } = await supabaseAdmin.from("users").insert({
         auth_id: authId,
-        first_name: firstName,
-        last_name: lastName,
-        role: role,
+        first_name: validatedFirstName,
+        last_name: validatedLastName,
+        role,
         status: status || "active",
-        email: email,
+        email,
         grade_level: gradeLevel,
         child_age: childAge ? String(childAge) : null,
       });
@@ -139,32 +146,56 @@ export async function POST(request: Request) {
       if (insertError) throw insertError;
     }
 
+    // ✓ SECURITY: Log admin action
+    await auditLog({
+      action: AuditAction.USER_CREATED,
+      adminId: admin.id,
+      targetType: "user",
+      targetId: authId,
+      details: { email, role, firstName: validatedFirstName, lastName: validatedLastName },
+    }, request);
+
     return NextResponse.json({ success: true, user: authData.user });
   } catch (error: any) {
-    console.error("Error creating user:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("[admin-users-post] Error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
 export async function PUT(request: Request) {
   try {
-    const body = await request.json();
-    const { userId, id, auth_id, email, password, firstName, lastName, role, status, gradeLevel, childAge } =
-      body;
-
-    const admin = await resolveAdmin(userId);
-    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-
-    if (!auth_id) {
-      return NextResponse.json(
-        { error: "User Auth ID is required" },
-        { status: 400 }
-      );
+    // ✓ SECURITY: Require admin authentication
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // 1. Update Auth User (Email/Password/Metadata)
+    const body = await request.json();
+    const { auth_id, email, password, firstName, lastName, role, status, gradeLevel, childAge } = body;
+
+    // ✓ SECURITY: Validate input
+    if (!isValidUUID(auth_id)) {
+      return NextResponse.json({ error: "Invalid auth_id" }, { status: 400 });
+    }
+
+    if (email && !validateEmail(email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
+
+    if (firstName && !validateName(firstName)) {
+      return NextResponse.json({ error: "Invalid first name" }, { status: 400 });
+    }
+
+    if (lastName && !validateName(lastName)) {
+      return NextResponse.json({ error: "Invalid last name" }, { status: 400 });
+    }
+
+    if (role && !isValidRole(role)) {
+      return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+    }
+
+    // Update auth user
     const authUpdates: any = {
-      email,
       user_metadata: {
         role,
         first_name: firstName,
@@ -173,9 +204,8 @@ export async function PUT(request: Request) {
         child_age: childAge,
       },
     };
-    if (password) {
-      authUpdates.password = password;
-    }
+    if (email) authUpdates.email = email;
+    if (password && password.length >= 8) authUpdates.password = password;
 
     const { error: authError } = await supabaseAdmin.auth.admin.updateUserById(
       auth_id,
@@ -183,10 +213,11 @@ export async function PUT(request: Request) {
     );
 
     if (authError) {
-      return NextResponse.json({ error: authError.message }, { status: 400 });
+      console.error("[admin-users-put] Auth error:", authError);
+      return NextResponse.json({ error: "Failed to update user" }, { status: 400 });
     }
 
-    // 2. Update Public User
+    // Update public user
     const { error: publicError } = await supabaseAdmin
       .from("users")
       .update({
@@ -201,66 +232,53 @@ export async function PUT(request: Request) {
       .eq("auth_id", auth_id);
 
     if (publicError) {
-      return NextResponse.json({ error: publicError.message }, { status: 400 });
+      console.error("[admin-users-put] Database error:", publicError);
+      return NextResponse.json({ error: "Failed to update user" }, { status: 400 });
     }
+
+    // ✓ SECURITY: Log admin action
+    await auditLog({
+      action: AuditAction.USER_UPDATED,
+      adminId: admin.id,
+      targetType: "user",
+      targetId: auth_id,
+      details: { email, role, firstName, lastName },
+    }, request);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error("Error updating user:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("[admin-users-put] Error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
 export async function DELETE(request: Request) {
   try {
+    // ✓ SECURITY: Require admin authentication
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const auth_id = searchParams.get("auth_id");
 
-    const admin = await resolveAdmin(searchParams.get("userId"));
-    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-
-    if (!auth_id) {
-      console.error(`[DELETE USER] Missing auth_id`);
-      return NextResponse.json(
-        { error: "Auth ID is required" },
-        { status: 400 }
-      );
-    }
-
-    // Validate UUID format
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-    if (!uuidRegex.test(auth_id)) {
-      console.error(`[DELETE USER] Invalid UUID format: ${auth_id}`);
-      return NextResponse.json(
-        { error: "Invalid auth_id format" },
-        { status: 400 }
-      );
+    if (!auth_id || !isValidUUID(auth_id)) {
+      return NextResponse.json({ error: "Invalid auth_id" }, { status: 400 });
     }
 
     console.log(`[DELETE USER] Starting deletion for auth_id: ${auth_id}`);
 
-    // Check if supabaseAdmin is properly initialized
-    if (!process.env.SUPABASE_SERVICE_ROLE) {
-      console.error(`[DELETE USER] FATAL: No SUPABASE_SERVICE_ROLE environment variable found`);
-      return NextResponse.json(
-        { error: "Configuration error: Service role not configured. Contact administrator." },
-        { status: 500 }
-      );
-    }
-
     // First, check if user exists in public.users table
     const { data: userData, error: checkError } = await supabaseAdmin
       .from("users")
-      .select("id, auth_id")
+      .select("id, auth_id, email")
       .eq("auth_id", auth_id)
       .single();
 
     if (checkError && checkError.code !== "PGRST116") {
       console.error(`[DELETE USER] Check error for ${auth_id}:`, checkError);
-      return NextResponse.json(
-        { error: `Erreur lors de la vérification: ${checkError.message}` },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "Failed to check user" }, { status: 500 });
     }
 
     if (!userData) {
@@ -347,13 +365,19 @@ export async function DELETE(request: Request) {
       // Log but don't fail - auth user is already deleted
     }
 
+    // ✓ SECURITY: Log admin action
+    await auditLog({
+      action: AuditAction.USER_DELETED,
+      adminId: admin.id,
+      targetType: "user",
+      targetId: auth_id,
+      details: { deletedEmail: userData?.email },
+    }, request);
+
     console.log(`[DELETE USER] Successfully completed deletion for auth_id: ${auth_id}`);
     return NextResponse.json({ success: true, message: "User deleted successfully" });
   } catch (error: any) {
     console.error(`[DELETE USER] Unexpected error:`, error);
-    return NextResponse.json(
-      { error: `Erreur serveur: ${error.message || String(error)}` },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

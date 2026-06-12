@@ -1,16 +1,18 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { validateEmail, validateString, validateName } from "@/lib/validation";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sendEmail } from "@/lib/mailer";
 import { buildEmailHtml, EMAIL_BASE_URL } from "@/lib/emailTemplates";
 
 const SUBJECTS = [
   "Question sur les abonnements",
-  "ProblÃ¨me technique",
-  "ProblÃ¨me de compte",
-  "Question pÃ©dagogique",
+  "Problème technique",
+  "Problème de compte",
+  "Question pédagogique",
   "Demande de partenariat",
   "Signaler un contenu",
-  "Suggestion d'amÃ©lioration",
+  "Suggestion d'amélioration",
   "Autre",
 ];
 
@@ -18,11 +20,34 @@ export async function POST(req: Request) {
   try {
     const { name, email, subject, message } = await req.json();
 
-    if (!name || !email || !subject || !message) {
-      return NextResponse.json({ error: "Tous les champs sont obligatoires." }, { status: 400 });
+    // ✓ HIGH PRIORITY FIX: Validate all inputs with length limits
+    const validatedName = validateName(name);
+    if (!validatedName) {
+      return NextResponse.json({ error: "Invalid name" }, { status: 400 });
     }
-    if (!SUBJECTS.includes(subject)) {
-      return NextResponse.json({ error: "Sujet invalide." }, { status: 400 });
+
+    if (!validateEmail(email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
+
+    if (!subject || !SUBJECTS.includes(subject)) {
+      return NextResponse.json({ error: "Invalid subject" }, { status: 400 });
+    }
+
+    const validatedMessage = validateString(message, 10000);
+    if (!validatedMessage || validatedMessage.length < 10) {
+      return NextResponse.json({ error: "Message too short or invalid" }, { status: 400 });
+    }
+
+    // ✓ HIGH PRIORITY FIX: Add rate limiting
+    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const config = RATE_LIMITS["contact:form"];
+    const rl = rateLimitWithBackoff(`contact:${ip}`, config.maxAttempts, config.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: "Too many submissions. Please try again later." },
+        { status: 429 }
+      );
     }
 
     const { data, error } = await supabaseAdmin
@@ -30,51 +55,67 @@ export async function POST(req: Request) {
       .insert({
         user_id: null,
         user_email: email,
-        user_name: name,
+        user_name: validatedName,
         subject,
-        message,
+        message: validatedMessage,
         priority: "normal",
         status: "Ouvert",
       })
       .select()
       .single();
 
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    if (error) {
+      console.error("[contact] Database error:", error);
+      return NextResponse.json({ error: "Could not submit form" }, { status: 500 });
+    }
 
-    // Charger les templates depuis la DB et envoyer les emails (non bloquants)
-    const [tmplUser, tmplAdmin] = await Promise.all([
+    // Load email templates and send confirmation (non-blocking)
+    Promise.all([
       supabaseAdmin.from("email_templates").select("subject,body").eq("key", "contact_user").single(),
       supabaseAdmin.from("email_templates").select("subject,body").eq("key", "contact_admin").single(),
-    ]);
+    ]).then(([tmplUser, tmplAdmin]) => {
+      const safeReplace = (s: string, vars: Record<string, string>) => {
+        let result = s;
+        for (const [key, value] of Object.entries(vars)) {
+          result = result.split(`{{${key}}}`).join(value);
+        }
+        return result;
+      };
 
-    const vars = (s: string) => s
-      .replace(/\{\{name\}\}/g, name)
-      .replace(/\{\{email\}\}/g, email)
-      .replace(/\{\{subject\}\}/g, subject)
-      .replace(/\{\{message\}\}/g, message);
+      const vars = { name: validatedName, email, subject, message: validatedMessage };
 
-    if (tmplUser.data) {
-      sendEmail({
-        toEmail: email, toName: name,
-        subject: vars(tmplUser.data.subject),
-        textPart: vars(tmplUser.data.body).replace(/<[^>]*>/g, ""),
-        htmlPart: buildEmailHtml({ title: vars(tmplUser.data.subject), body: vars(tmplUser.data.body) }),
-      }).catch(console.error);
-    }
+      if (tmplUser.data) {
+        sendEmail({
+          toEmail: email,
+          toName: validatedName,
+          subject: safeReplace(tmplUser.data.subject, vars),
+          textPart: safeReplace(tmplUser.data.body, vars).replace(/<[^>]*>/g, ""),
+          htmlPart: buildEmailHtml({
+            title: safeReplace(tmplUser.data.subject, vars),
+            body: safeReplace(tmplUser.data.body, vars),
+          }),
+        }).catch(console.error);
+      }
 
-    if (tmplAdmin.data) {
-      const adminEmail = process.env.ADMIN_EMAIL_FROM || "ruben.combe@gmail.com";
-      sendEmail({
-        toEmail: adminEmail, toName: "Admin Educalcul",
-        subject: vars(tmplAdmin.data.subject),
-        textPart: vars(tmplAdmin.data.body).replace(/<[^>]*>/g, ""),
-        htmlPart: buildEmailHtml({ title: vars(tmplAdmin.data.subject), body: vars(tmplAdmin.data.body) }),
-      }).catch(console.error);
-    }
+      if (tmplAdmin.data) {
+        const adminEmail = process.env.ADMIN_EMAIL_FROM || "support@educalcul.com";
+        sendEmail({
+          toEmail: adminEmail,
+          toName: "Educalcul Support",
+          subject: safeReplace(tmplAdmin.data.subject, vars),
+          textPart: safeReplace(tmplAdmin.data.body, vars).replace(/<[^>]*>/g, ""),
+          htmlPart: buildEmailHtml({
+            title: safeReplace(tmplAdmin.data.subject, vars),
+            body: safeReplace(tmplAdmin.data.body, vars),
+          }),
+        }).catch(console.error);
+      }
+    }).catch(console.error);
 
     return NextResponse.json({ success: true, id: data.id }, { status: 201 });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("[contact] Error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 

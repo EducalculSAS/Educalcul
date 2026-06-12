@@ -1,15 +1,29 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe } from "@/lib/stripe";
+import { isValidNumericId } from "@/lib/validation";
+import { auditLog, AuditAction } from "@/lib/auditLog";
+import { requireRole } from "@/lib/apiAuth";
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
-    if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    
+    // ✓ SECURITY: Validate numeric ID format
+    if (!id || !isValidNumericId(id)) {
+      return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
+    }
 
-    const { data: user, error } = await supabaseAdmin.from("users").select("*").eq("id", id).single();
-    if (error || !user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    const { data: user, error } = await supabaseAdmin
+      .from("users")
+      .select("*")
+      .eq("id", id)
+      .single();
+    
+    if (error || !user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
 
     const [
       { count: ea }, { count: qa }, { count: cp },
@@ -38,33 +52,79 @@ export async function GET(req: Request) {
       login_history: loginHistory ?? [],
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("[user-detail] Error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
 export async function PUT(req: Request) {
   try {
+    // ✓ SECURITY: Require admin authentication
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
-    if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    
+    if (!id || !isValidNumericId(id)) {
+      return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
+    }
+
     const { first_name, last_name, email, role, status, grade_level } = await req.json();
-    const { data, error } = await supabaseAdmin.from("users").update({ first_name, last_name, email, role, status, grade_level }).eq("id", id).select().single();
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    const { data, error } = await supabaseAdmin.from("users")
+      .update({ first_name, last_name, email, role, status, grade_level })
+      .eq("id", id)
+      .select()
+      .single();
+    
+    if (error) {
+      console.error("[user-detail-put] Database error:", error);
+      return NextResponse.json({ error: "Failed to update user" }, { status: 500 });
+    }
+
+    // ✓ SECURITY: Log admin action
+    await auditLog({
+      action: AuditAction.USER_UPDATED,
+      adminId: admin.id,
+      targetUserId: Number(id),
+      targetType: "user",
+      targetId: id,
+      details: { email, role, firstName: first_name, lastName: last_name },
+    }, req);
+
     return NextResponse.json(data);
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("[user-detail-put] Error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
 export async function POST(req: Request) {
   try {
+    // ✓ SECURITY: Require admin authentication
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
-    if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    
+    if (!id || !isValidNumericId(id)) {
+      return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
+    }
 
     const { action, payload } = await req.json();
-    const { data: user } = await supabaseAdmin.from("users").select("id, auth_id, email, status").eq("id", id).single();
-    if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    const { data: user } = await supabaseAdmin.from("users")
+      .select("id, auth_id, email, status")
+      .eq("id", id)
+      .single();
+    
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
 
     if (action === "ban") {
       const banDays = payload?.banDays || null;
@@ -72,7 +132,7 @@ export async function POST(req: Request) {
       
       await supabaseAdmin.from("users").update({ 
         status: "inactive",
-        ban_reason: payload?.reason || "Votre compte a été suspendu par un administrateur.",
+        ban_reason: validateString(payload?.reason, 500) || "Account suspended by admin",
         ban_until: banUntil,
       }).eq("id", id);
       
@@ -82,6 +142,17 @@ export async function POST(req: Request) {
         title: "Compte suspendu", 
         content: payload?.reason || "Votre compte a été suspendu par un administrateur." 
       });
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.USER_BANNED,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "user",
+        targetId: String(id),
+        details: { reason: payload?.reason, banDays },
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     if (action === "unban") {
@@ -90,21 +161,71 @@ export async function POST(req: Request) {
         ban_reason: null,
         ban_until: null,
       }).eq("id", id);
-      await supabaseAdmin.from("admin_notifications").insert({ user_id: id, type: "info", title: "Compte réactivé", content: "Votre compte a été réactivé." });
+      await supabaseAdmin.from("admin_notifications").insert({ 
+        user_id: id, 
+        type: "info", 
+        title: "Compte réactivé", 
+        content: "Votre compte a été réactivé." 
+      });
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.USER_UNBANNED,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "user",
+        targetId: String(id),
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     if (action === "send_message") {
-      if (!payload?.title || !payload?.content) return NextResponse.json({ error: "title and content required" }, { status: 400 });
-      await supabaseAdmin.from("admin_notifications").insert({ user_id: id, type: payload.type || "message", title: payload.title, content: payload.content });
+      const title = validateString(payload?.title, 500);
+      const content = validateString(payload?.content, 10000);
+      if (!title || !content) {
+        return NextResponse.json({ error: "Invalid title or content" }, { status: 400 });
+      }
+      await supabaseAdmin.from("admin_notifications").insert({ 
+        user_id: id, 
+        type: payload.type || "message", 
+        title, 
+        content 
+      });
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.ADMIN_MESSAGE,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "user",
+        targetId: String(id),
+        details: { title, messageLength: content.length },
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     if (action === "reset_password") {
-      if (user.email) await supabaseAdmin.auth.admin.generateLink({ type: "recovery", email: user.email });
+      if (user.email) {
+        await supabaseAdmin.auth.admin.generateLink({ type: "recovery", email: user.email });
+      }
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.PASSWORD_RESET,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "user",
+        targetId: String(id),
+        details: { email: user.email },
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     if (action === "set_plan") {
       const planId = payload?.plan_id?.toString();
-      if (!planId) return NextResponse.json({ error: "plan_id required" }, { status: 400 });
+      if (!planId || !isValidNumericId(planId)) {
+        return NextResponse.json({ error: "Invalid plan_id" }, { status: 400 });
+      }
 
       const { data: plan } = await supabaseAdmin
         .from("subscription_plans")
@@ -186,13 +307,26 @@ export async function POST(req: Request) {
         current_period_end: newPeriodEnd || new Date(Date.now() + periodDays * 24 * 60 * 60 * 1000).toISOString(),
         updated_at: new Date().toISOString(),
       }, { onConflict: "user_id" });
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.SUBSCRIPTION_CHANGED,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "subscription",
+        targetId: planId,
+        details: { planId, planName: plan?.name, stripeLinked: !!newStripeSubId },
+      }, req);
+
       return NextResponse.json({ success: true, stripeLinked: !!newStripeSubId });
     }
 
-    // Ajoute (ou retire) une durée gratuite sur l'abonnement actuel : payload.days peut être négatif
+    // Ajoute (ou retire) une durée gratuite sur l'abonnement actuel
     if (action === "add_free_time") {
       const days = Number(payload?.days);
-      if (!days) return NextResponse.json({ error: "days required" }, { status: 400 });
+      if (!days || isNaN(days) || !Number.isInteger(days) || Math.abs(days) > 3650) {
+        return NextResponse.json({ error: "Invalid days value" }, { status: 400 });
+      }
 
       const { data: existingSub } = await supabaseAdmin
         .from("subscriptions")
@@ -200,7 +334,9 @@ export async function POST(req: Request) {
         .eq("user_id", user.auth_id)
         .maybeSingle();
 
-      if (!existingSub) return NextResponse.json({ error: "Aucun abonnement actif. Attribue d'abord un plan." }, { status: 400 });
+      if (!existingSub) {
+        return NextResponse.json({ error: "No active subscription" }, { status: 400 });
+      }
 
       const base = existingSub.current_period_end
         ? new Date(existingSub.current_period_end)
@@ -213,27 +349,93 @@ export async function POST(req: Request) {
         updated_at: new Date().toISOString(),
       }).eq("user_id", user.auth_id);
 
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.SUBSCRIPTION_CHANGED,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "subscription",
+        targetId: String(id),
+        details: { daysAdded: days, newEndDate: newEnd.toISOString() },
+      }, req);
+
       return NextResponse.json({ success: true, current_period_end: newEnd.toISOString() });
     }
 
     if (action === "delete_post") {
-      await supabaseAdmin.from("forum_posts").delete().eq("id", payload.post_id);
+      const postId = payload?.post_id;
+      if (!postId || !isValidNumericId(postId)) {
+        return NextResponse.json({ error: "Invalid post_id" }, { status: 400 });
+      }
+      await supabaseAdmin.from("forum_posts").delete().eq("id", postId);
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.FORUM_POST_DELETED,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "post",
+        targetId: postId,
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     if (action === "delete_comment") {
-      await supabaseAdmin.from("forum_comments").delete().eq("id", payload.comment_id);
+      const commentId = payload?.comment_id;
+      if (!commentId || !isValidNumericId(commentId)) {
+        return NextResponse.json({ error: "Invalid comment_id" }, { status: 400 });
+      }
+      await supabaseAdmin.from("forum_comments").delete().eq("id", commentId);
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.FORUM_COMMENT_DELETED,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "comment",
+        targetId: commentId,
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     if (action === "dismiss_report") {
-      await supabaseAdmin.from("forum_reports").update({ status: "dismissed" }).eq("id", payload.report_id);
+      const reportId = payload?.report_id;
+      if (!reportId || !isValidNumericId(reportId)) {
+        return NextResponse.json({ error: "Invalid report_id" }, { status: 400 });
+      }
+      await supabaseAdmin.from("forum_reports").update({ status: "dismissed" }).eq("id", reportId);
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.REPORT_DISMISSED,
+        adminId: admin.id,
+        targetType: "report",
+        targetId: reportId,
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     if (action === "review_report") {
-      await supabaseAdmin.from("forum_reports").update({ status: "reviewed" }).eq("id", payload.report_id);
+      const reportId = payload?.report_id;
+      if (!reportId || !isValidNumericId(reportId)) {
+        return NextResponse.json({ error: "Invalid report_id" }, { status: 400 });
+      }
+      await supabaseAdmin.from("forum_reports").update({ status: "reviewed" }).eq("id", reportId);
+
+      // ✓ SECURITY: Log admin action
+      await auditLog({
+        action: AuditAction.REPORT_DISMISSED,
+        adminId: admin.id,
+        targetType: "report",
+        targetId: reportId,
+        details: { action: "reviewed" },
+      }, req);
+
       return NextResponse.json({ success: true });
     }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("[user-detail-post] Error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

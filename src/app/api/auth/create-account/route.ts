@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { rateLimit } from "@/lib/rateLimit";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { validateEmail, validateName, validateString } from "@/lib/validation";
 import { sendEmail } from "@/lib/mailer";
 import { welcomeEmail } from "@/lib/emailTemplates";
 
@@ -13,21 +14,45 @@ export async function POST(req: NextRequest) {
       email,
       password,
       sessionId,
-      existingAuthId, // fourni pour les signups Google (user déjà créé via OAuth)
+      existingAuthId,
       cguAcceptedAt,
     } = await req.json();
 
+    // ✓ HIGH PRIORITY FIX: Input validation
     if (!role || !firstName || !email || !sessionId) {
-      return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    // ✓ HIGH PRIORITY FIX: Validate input lengths
+    const validatedFirstName = validateName(firstName);
+    const validatedLastName = validateName(lastName || "");
+    if (!validatedFirstName) {
+      return NextResponse.json({ error: "Invalid first name" }, { status: 400 });
+    }
+    if (lastName && !validatedLastName) {
+      return NextResponse.json({ error: "Invalid last name" }, { status: 400 });
+    }
+
+    // ✓ HIGH PRIORITY FIX: Validate email format
+    if (!validateEmail(email)) {
+      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
+    }
+
+    // ✓ SECURITY: Validate role
+    if (!["parent", "child", "admin"].includes(role)) {
+      return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+    }
+
+    // ✓ HIGH PRIORITY FIX: Advanced rate limiting with backoff
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
-    const rl = rateLimit(`create-account:${ip}`, 10, 60 * 60 * 1000);
+    const config = RATE_LIMITS["auth:signup"];
+    const rl = rateLimitWithBackoff(`auth:signup:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ error: "Trop de tentatives. Réessayez plus tard." }, { status: 429 });
+      const message = rl.blocked 
+        ? "Too many signup attempts. Please try again in 1 hour." 
+        : "Too many signup attempts. Please try again later.";
+      return NextResponse.json({ error: message }, { status: 429 });
     }
-
-    const signUpEmail = email;
 
     let authUserId: string = existingAuthId || "";
 
@@ -39,12 +64,12 @@ export async function POST(req: NextRequest) {
 
       const { data: authData, error: authError } =
         await supabaseAdmin.auth.admin.createUser({
-          email: signUpEmail,
+          email,
           password: actualPassword,
           email_confirm: true,
           user_metadata: {
-            first_name: firstName,
-            last_name: lastName,
+            first_name: validatedFirstName,
+            last_name: validatedLastName || "",
             role,
           },
         });
@@ -52,7 +77,7 @@ export async function POST(req: NextRequest) {
       if (authError || !authData.user) {
         console.error("Auth creation error:", authError);
         return NextResponse.json(
-          { error: authError?.message || "Impossible de créer l'utilisateur" },
+          { error: "Could not create account. Please try again." },
           { status: 400 }
         );
       }
@@ -61,7 +86,6 @@ export async function POST(req: NextRequest) {
     }
 
     // Créer la ligne dans public.users
-    // On vérifie d'abord si elle existe (cas Google où le trigger l'a peut-être déjà créée)
     const { data: existingRow } = await supabaseAdmin
       .from("users")
       .select("id")
@@ -71,50 +95,50 @@ export async function POST(req: NextRequest) {
     if (!existingRow) {
       const { error: insertError } = await supabaseAdmin.from("users").insert({
         auth_id: authUserId,
-        first_name: firstName,
-        last_name: lastName || "",
-        email: signUpEmail,
+        first_name: validatedFirstName,
+        last_name: validatedLastName || "",
+        email,
         role,
         status: "active",
         cgu_accepted_at: cguAcceptedAt || new Date().toISOString(),
       });
       if (insertError) {
-        console.error("User record insert error:", insertError.message, insertError.details);
+        console.error("User record insert error:", insertError);
         if (!insertError.message.includes("duplicate") && !insertError.message.includes("unique")) {
-          return NextResponse.json({ error: `Impossible de créer le profil: ${insertError.message}` }, { status: 500 });
+          return NextResponse.json({ error: "Could not create profile" }, { status: 500 });
         }
       }
     } else {
-      // Mettre à jour le profil si la ligne existe déjà (cas Google signup)
+      // Mettre à jour le profil si la ligne existe déjà
       await supabaseAdmin.from("users").update({
-        first_name: firstName,
-        last_name: lastName || "",
+        first_name: validatedFirstName,
+        last_name: validatedLastName || "",
         role,
         status: "active",
       }).eq("auth_id", authUserId);
     }
 
-    // Générer un lien de confirmation (email_confirm: false lors de la création)
+    // Générer un lien de confirmation
     let confirmUrl = "https://educalcul.com/parent/dashboard";
     try {
       const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
         type: "magiclink",
-        email: signUpEmail,
+        email: email,
         options: { redirectTo: "https://educalcul.com/auth/callback" },
       });
       if (linkData?.properties?.action_link) {
         confirmUrl = linkData.properties.action_link;
       }
     } catch (e) {
-      console.warn("Could not generate magic link, using dashboard URL");
+      console.warn("Could not generate magic link");
     }
 
-    // Email de confirmation avec lien (non bloquant)
-    if (signUpEmail && signUpEmail.includes("@")) {
-      const tmpl = welcomeEmail(firstName, confirmUrl);
+    // Email de confirmation (non bloquant)
+    if (email && email.includes("@")) {
+      const tmpl = welcomeEmail(validatedFirstName, confirmUrl);
       sendEmail({
-        toEmail: signUpEmail,
-        toName: `${firstName} ${lastName || ""}`.trim(),
+        toEmail: email,
+        toName: `${validatedFirstName} ${validatedLastName || ""}`.trim(),
         ...tmpl,
       }).catch(console.error);
     }

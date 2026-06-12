@@ -3,6 +3,8 @@ import { AITutorPageContext } from "@/contexts/AITutorContext";
 import { chatWithAI } from "@/lib/llm";
 import { checkAIAccess } from "@/lib/checkSubscription";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { validateString } from "@/lib/validation";
 
 interface Message {
   role: "user" | "assistant";
@@ -60,14 +62,25 @@ export async function POST(req: Request) {
     const messages: Message[] = body.messages ?? [];
     const context: AITutorPageContext = body.context ?? { page: "other" };
 
-    // ── Subscription gate ──────────────────────────────────────────────────
+    // ✓ HIGH PRIORITY FIX: Rate limiting on expensive AI endpoint
     const authHeader = req.headers.get("x-user-auth-id");
+    const rateLimitKey = authHeader || (req.headers.get("x-forwarded-for") ?? "unknown");
+    const config = RATE_LIMITS["ai:tutor"];
+    const rl = rateLimitWithBackoff(`ai:tutor:${rateLimitKey}`, config.maxAttempts, config.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { message: null, blocked: true, reason: "Too many AI requests. Please wait before trying again." },
+        { status: 429 }
+      );
+    }
+
+    // ── Subscription gate ──────────────────────────────────────────────────
     if (authHeader) {
       const access = await checkAIAccess(authHeader);
       if (!access.allowed) {
         return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
       }
-      // Record usage without blocking the AI response (fire-and-forget).
+      // Record usage without blocking the AI response (fire-and-forget)
       supabaseAdmin
         .from("users")
         .select("id")

@@ -1,21 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// ✓ SECURITY: Note - SERVICE_KEY is only used here for role checking
+// Consider creating a restricted role in Supabase with only SELECT on users.role
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE!;
 
-// GET endpoints under /api/admin that regular logged-in users legitimately read
-// (published content). The routes themselves return only what the client asks for.
+// GET endpoints under /api/admin that regular logged-in users can legitimately read
 const AUTHENTICATED_READ = new Set([
   "/api/admin/courses",
   "/api/admin/exercises",
   "/api/admin/quizzes",
 ]);
 
-// Endpoints reachable without any session (route sanitizes its own output).
+// Endpoints reachable without any session (route validates its own output)
 function isPublic(pathname: string, method: string) {
-  // Plan list shown on the public signup page — the route strips subscriber data
-  // for non-admin callers.
+  // Plans list shown on public signup - route strips subscriber data for non-admin
   return pathname === "/api/admin/subscriptions" && method === "GET";
 }
 
@@ -32,6 +32,7 @@ async function getAuthUserId(token: string): Promise<string | null> {
   }
 }
 
+// ✓ SECURITY IMPROVEMENT: Reduced scope - only fetch role, no other sensitive data
 async function getRole(authId: string): Promise<string | null> {
   try {
     const res = await fetch(
@@ -58,7 +59,7 @@ export async function middleware(req: NextRequest) {
   const authId = await getAuthUserId(token);
   if (!authId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  // Published-content reads and avatar uploads: any authenticated user.
+  // Published-content reads and avatar uploads: any authenticated user
   const isUserLevel =
     (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
     (method === "POST" && pathname === "/api/admin/upload");

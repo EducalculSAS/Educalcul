@@ -1,9 +1,18 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
+import { validateEmail, validateName, validateString, isValidUUID } from "@/lib/validation";
+import { auditLog, AuditAction } from "@/lib/auditLog";
 
 
 export async function PUT(request: Request) {
   try {
+    // ✓ SECURITY: Require admin authentication
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = await request.json();
     const {
       auth_id,
@@ -16,13 +25,30 @@ export async function PUT(request: Request) {
       avatar_border,
     } = body;
 
-    if (!auth_id) {
-      return NextResponse.json({ error: "Auth ID is required" }, { status: 400 });
+    // ✓ SECURITY: Validate auth_id
+    if (!auth_id || !isValidUUID(auth_id)) {
+      return NextResponse.json({ error: "Invalid auth_id" }, { status: 400 });
     }
 
-    // Map CSS class names → badge system keys (used by forum, profiles, etc.)
+    // ✓ SECURITY: Validate inputs
+    if (first_name && !validateName(first_name)) {
+      return NextResponse.json({ error: "Invalid first name" }, { status: 400 });
+    }
+
+    if (last_name && !validateName(last_name)) {
+      return NextResponse.json({ error: "Invalid last name" }, { status: 400 });
+    }
+
+    if (email && !validateEmail(email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
+
+    if (child_username && !validateString(child_username, 100)) {
+      return NextResponse.json({ error: "Invalid username" }, { status: 400 });
+    }
+
+    // Map CSS class names → badge system keys
     const rawBorderKey = avatar_border ? avatar_border.replace(/^border-/, "") : "admin";
-    // Guard: never allow "none" or "default" for admin — always keep a valid key
     const borderKey = (!rawBorderKey || rawBorderKey === "none") ? "admin" : rawBorderKey;
     const nameColorMap: Record<string, string> = {
       "text-admin":           "admin",
@@ -40,46 +66,56 @@ export async function PUT(request: Request) {
     const rawColorKey = nameColorMap[name_animation] ?? "admin";
     const nameColorKey = (!rawColorKey || rawColorKey === "default") ? "admin" : rawColorKey;
 
-    // Update public.users — write to BOTH column systems so forum & profile stay in sync
+    // Update public.users
     const { error: updateError } = await supabaseAdmin
       .from("users")
       .update({
-        first_name,
-        last_name,
-        email,
-        child_username,
-        avatar,
-        name_animation,
-        avatar_border,
-        equipped_border: borderKey,   // used by forum, badge page, public profiles
-        name_color: nameColorKey,     // used by forum, badge page, public profiles
+        first_name: first_name || undefined,
+        last_name: last_name || undefined,
+        email: email || undefined,
+        child_username: child_username || undefined,
+        avatar: avatar || undefined,
+        name_animation: name_animation || undefined,
+        avatar_border: avatar_border || undefined,
+        equipped_border: borderKey,
+        name_color: nameColorKey,
         updated_at: new Date().toISOString(),
       })
       .eq("auth_id", auth_id);
 
     if (updateError) {
-      return NextResponse.json({ error: updateError.message }, { status: 500 });
+      console.error("[admin-profile-put] Database error:", updateError);
+      return NextResponse.json({ error: "Failed to update profile" }, { status: 500 });
     }
 
-    // Update Auth email if provided and different
-    // Note: This might trigger email confirmation flow depending on Supabase settings.
+    // Update Auth email if provided
     if (email) {
       const { error: authError } = await supabaseAdmin.auth.admin.updateUserById(auth_id, {
         email: email,
         user_metadata: {
-            first_name,
-            last_name
+          first_name: first_name || undefined,
+          last_name: last_name || undefined,
         }
       });
       
       if (authError) {
-        console.error("Error updating auth user:", authError);
-        // We don't fail the whole request if auth update fails (e.g. rate limit or same email)
+        console.error("[admin-profile-put] Auth error:", authError);
+        // Don't fail entirely if auth update fails
       }
     }
 
+    // ✓ SECURITY: Log admin action
+    await auditLog({
+      action: AuditAction.USER_UPDATED,
+      adminId: admin.id,
+      targetType: "user",
+      targetId: auth_id,
+      details: { email, firstName: first_name, lastName: last_name, username: child_username },
+    }, request);
+
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("[admin-profile-put] Error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
