@@ -14,7 +14,7 @@ const securityHeaders = [
   // ✓ CRITICAL FIX: Content-Security-Policy to prevent XSS
   {
     key: "Content-Security-Policy",
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co https://js.stripe.com https://m.stripe.network https://api.openrouter.ai; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'",
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co https://js.stripe.com https://m.stripe.network https://api.openrouter.ai; frame-src https://js.stripe.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self' blob:",
   },
   // ✓ CRITICAL FIX: HSTS - enforce HTTPS
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
