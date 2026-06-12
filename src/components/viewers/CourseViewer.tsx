@@ -218,7 +218,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     const text = selectedTextRef.current;
     if (!text) return;
     const message = `Explique-moi ce passage:\n\n"${text}"`;
-    (window as any).__pendingAIQuestion = { message, timestamp: Date.now() };
+    window.dispatchEvent(new CustomEvent("educalcul:ai-question", { detail: { message } }));
     hidePopup();
   };
 

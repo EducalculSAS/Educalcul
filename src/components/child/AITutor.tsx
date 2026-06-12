@@ -120,67 +120,48 @@ export default function AITutor() {
 
   // Render math après chaque nouveau message
 
-  // Listen for text selection from CourseViewer with polling
+  // Listen for "explain this passage" requests dispatched by CourseViewer.
   useEffect(() => {
-    let lastTimestamp = 0;
-    const interval = setInterval(() => {
-      const pending = (window as any).__pendingAIQuestion;
-      if (pending && pending.timestamp > lastTimestamp) {
-        lastTimestamp = pending.timestamp;
-        const { message } = pending;
-        
-        if (message) {
-          console.log("📋 Received pending AI question:", message.slice(0, 50));
-          
-          // Use refs to get latest state
-          const currentMessages = messagesRef.current;
-          const currentContext = pageContextRef.current;
-          const currentSaveMessages = saveMessagesRef.current;
-          
-          // Add user message
-          const userMsg: Message = { role: "user", content: message };
-          const newMessages = [...currentMessages, userMsg];
-          
-          // Update state and save
-          setMessages(newMessages);
-          currentSaveMessages(newMessages);
-          
-          // Open chat
-          setOpen(true);
-          setMinimized(false);
-          
-          // Send message to AI
-          setLoading(true);
-          
-          setTimeout(async () => {
-            try {
-              const res = await fetch("/api/child/ai-tutor", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ 
-                  messages: newMessages.slice(-10),
-                  context: currentContext
-                }),
-              });
-              
-              const data = await res.json();
-              const finalMessages = [
-                ...newMessages,
-                { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
-              ];
-              setMessages(finalMessages as any);
-              currentSaveMessages(finalMessages as any);
-            } catch (error) {
-              console.error("Error sending AI message:", error);
-            } finally {
-              setLoading(false);
-            }
-          }, 100);
-        }
+    const onAskAI = async (e: Event) => {
+      const message = (e as CustomEvent).detail?.message;
+      if (!message) return;
+
+      // Use refs to read the latest state without re-subscribing the listener.
+      const currentMessages = messagesRef.current;
+      const currentContext = pageContextRef.current;
+      const currentSaveMessages = saveMessagesRef.current;
+
+      const userMsg: Message = { role: "user", content: message };
+      const newMessages = [...currentMessages, userMsg];
+      setMessages(newMessages);
+      currentSaveMessages(newMessages);
+
+      setOpen(true);
+      setMinimized(false);
+      setLoading(true);
+
+      try {
+        const res = await fetch("/api/child/ai-tutor", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: newMessages.slice(-10), context: currentContext }),
+        });
+        const data = await res.json();
+        const finalMessages = [
+          ...newMessages,
+          { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
+        ];
+        setMessages(finalMessages as any);
+        currentSaveMessages(finalMessages as any);
+      } catch (error) {
+        console.error("Error sending AI message:", error);
+      } finally {
+        setLoading(false);
       }
-    }, 100); // Check every 100ms
-    
-    return () => clearInterval(interval);
+    };
+
+    window.addEventListener("educalcul:ai-question", onAskAI);
+    return () => window.removeEventListener("educalcul:ai-question", onAskAI);
   }, []);
 
   useEffect(() => {

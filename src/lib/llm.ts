@@ -26,7 +26,14 @@ const FALLBACK_MODELS = [
 async function callOpenRouterModel(
   model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false
 ): Promise<{ ok: boolean; text: string; status: number }> {
-  const body: any = { model, messages: msgs, temperature: temp };
+  const body: any = {
+    model,
+    messages: msgs,
+    temperature: temp,
+    // Route to the highest-throughput provider for this model (same model =
+    // same quality, just faster generation). Keep fallbacks on for reliability.
+    provider: { sort: "throughput", allow_fallbacks: true },
+  };
   if (maxTokens) body.max_tokens = maxTokens;
 
   const controller = new AbortController();

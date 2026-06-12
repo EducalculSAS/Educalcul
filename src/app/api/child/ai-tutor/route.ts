@@ -67,24 +67,22 @@ export async function POST(req: Request) {
       if (!access.allowed) {
         return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
       }
-      // Record usage
-      const { data: userData } = await supabaseAdmin.from("users").select("id").eq("auth_id", authHeader).maybeSingle();
-      if (userData) {
-        await supabaseAdmin.from("user_ai_interactions").insert({ user_id: userData.id, feature_type: "ai_tutor" });
-      }
+      // Record usage without blocking the AI response (fire-and-forget).
+      supabaseAdmin
+        .from("users")
+        .select("id")
+        .eq("auth_id", authHeader)
+        .maybeSingle()
+        .then(({ data: userData }) =>
+          userData
+            ? supabaseAdmin
+                .from("user_ai_interactions")
+                .insert({ user_id: userData.id, feature_type: "ai_tutor" })
+            : undefined
+        )
+        .then(undefined, (e) => console.error("[ai-tutor] usage log failed:", e?.message));
     }
     // ──────────────────────────────────────────────────────────────────────
-
-    // Log received context for debugging
-    console.log("📥 AI Tutor received context:", {
-      page: context.page,
-      exerciseTitle: context.exerciseTitle,
-      exerciseQuestion: context.exerciseQuestion?.slice(0, 100) || "NO QUESTION",
-      hasQuestion: !!context.exerciseQuestion,
-      questionLength: context.exerciseQuestion?.length || 0,
-      courseTitle: context.courseTitle,
-      exerciseType: context.exerciseType,
-    });
 
     // Keep only last user/assistant messages
     const userOnly = messages.filter((m) => m.role === "user" || m.role === "assistant");
@@ -98,17 +96,9 @@ export async function POST(req: Request) {
     const trimmed = lastUserMessages.slice(firstUser);
 
     const systemPrompt = buildSystemPrompt(context);
-    console.log("🤖 System prompt length:", systemPrompt.length, "chars");
-    console.log("🤖 System prompt excerpt:", systemPrompt.slice(0, 300) + "...");
 
     try {
-      // 🤖 Use IA OpenRouter
-      console.log("🤖 AI Tutor: appel IA...");
-      
-      const maxTokens = 800;
-      
-      const message = await chatWithAI(trimmed, systemPrompt, 0.65, maxTokens);
-      console.log("✅ AI Tutor response received");
+      const message = await chatWithAI(trimmed, systemPrompt, 0.65, 800);
       return NextResponse.json({ message });
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);

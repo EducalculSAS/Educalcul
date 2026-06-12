@@ -17,13 +17,21 @@ const FREE_FEATURES: PlanFeatures = {
   access_level_exercises: "basic",
 };
 
-export async function getUserFeatures(authId: string): Promise<PlanFeatures> {
-  // Check if this user is a child — if so, use parent's subscription
-  const { data: userRow } = await supabaseAdmin
-    .from("users")
-    .select("role, parent_id")
-    .eq("auth_id", authId)
-    .maybeSingle();
+export async function getUserFeatures(
+  authId: string,
+  prefetchedUser?: { id?: number; role: string; parent_id: number | null } | null
+): Promise<PlanFeatures> {
+  // Check if this user is a child — if so, use parent's subscription.
+  // Reuse the caller's already-fetched row when provided to save a round-trip.
+  let userRow = prefetchedUser;
+  if (userRow === undefined) {
+    const { data } = await supabaseAdmin
+      .from("users")
+      .select("role, parent_id")
+      .eq("auth_id", authId)
+      .maybeSingle();
+    userRow = data;
+  }
 
   let subscriptionUserId = authId;
   if (userRow?.role === "child" && userRow?.parent_id) {
@@ -55,11 +63,18 @@ export async function getUserFeatures(authId: string): Promise<PlanFeatures> {
 }
 
 export async function checkAIAccess(authId: string): Promise<{ allowed: boolean; reason?: string; remaining: number }> {
-  // Admins → toujours illimité
-  const { data: roleRow } = await supabaseAdmin.from("users").select("role").eq("auth_id", authId).maybeSingle();
-  if (roleRow?.role === "admin") return { allowed: true, remaining: -1 };
+  // Single users lookup, reused for the admin check, feature resolution and
+  // usage counting below (was 3 separate round-trips).
+  const { data: userRow } = await supabaseAdmin
+    .from("users")
+    .select("id, role, parent_id")
+    .eq("auth_id", authId)
+    .maybeSingle();
 
-  const features = await getUserFeatures(authId);
+  if (!userRow) return { allowed: false, reason: "Utilisateur introuvable", remaining: 0 };
+  if (userRow.role === "admin") return { allowed: true, remaining: -1 };
+
+  const features = await getUserFeatures(authId, userRow);
 
   if (features.ai_access === "none") {
     return { allowed: false, reason: "Votre plan Découverte n'inclut pas l'assistant IA. Passez à un plan payant.", remaining: 0 };
@@ -73,19 +88,10 @@ export async function checkAIAccess(authId: string): Promise<{ allowed: boolean;
   const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
 
-  // Get user DB id from auth_id
-  const { data: userData } = await supabaseAdmin
-    .from("users")
-    .select("id")
-    .eq("auth_id", authId)
-    .maybeSingle();
-
-  if (!userData) return { allowed: false, reason: "Utilisateur introuvable", remaining: 0 };
-
   const { count } = await supabaseAdmin
     .from("user_ai_interactions")
     .select("*", { count: "exact", head: true })
-    .eq("user_id", userData.id)
+    .eq("user_id", userRow.id)
     .eq("feature_type", "ai_tutor")
     .gte("created_at", todayStart.toISOString());
 
