@@ -1,7 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe } from "@/lib/stripe";
-import { isValidNumericId } from "@/lib/validation";
+import { isValidNumericId, validateString } from "@/lib/validation";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { requireRole } from "@/lib/apiAuth";
 

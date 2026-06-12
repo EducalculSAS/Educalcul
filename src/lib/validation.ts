@@ -32,6 +32,9 @@ export function isValidEmail(email: string): boolean {
   return email.length <= 255 && emailRegex.test(email);
 }
 
+/** Alias for isValidEmail */
+export const validateEmail = isValidEmail;
+
 /**
  * Validate string with max length (prevents DoS)
  */
