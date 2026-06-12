@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 const CHILD_ALLOWED_TYPES = new Set(EVENT_TYPE_OPTIONS.map(o => o.value));
 const PARENT_ALLOWED_TYPES = new Set(PARENT_ONLY_EVENT_TYPE_OPTIONS.map(o => o.value));
@@ -31,13 +32,14 @@ async function canAccessOwner(requester: { id: number; role: string; parent_id: 
 // PATCH: update an event
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
     const body = await req.json();
-    const { userId, title, description, event_type, start_date, end_date, all_day, color, visible_to_child } = body;
+    const { title, description, event_type, start_date, end_date, all_day, color, visible_to_child } = body;
 
-    if (!userId) return NextResponse.json({ error: "Missing userId" }, { status: 400 });
-
-    const requester = await resolveUser(userId);
+    const requester = await resolveUser(me.authId);
     if (!requester) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     const { data: existing, error: fetchError } = await supabaseAdmin
@@ -82,12 +84,11 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 // DELETE: remove an event
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = await params;
-    const { searchParams } = new URL(req.url);
-    const userId = searchParams.get("userId");
-    if (!userId) return NextResponse.json({ error: "Missing userId" }, { status: 400 });
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const requester = await resolveUser(userId);
+    const { id } = await params;
+    const requester = await resolveUser(me.authId);
     if (!requester) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     const { data: existing, error: fetchError } = await supabaseAdmin

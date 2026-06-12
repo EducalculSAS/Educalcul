@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { ZONE_OPTIONS } from "@/lib/calendarZones";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 const ALLOWED_ZONES = new Set(ZONE_OPTIONS.filter(z => z.value !== "all").map(z => z.value));
 
@@ -16,16 +17,19 @@ async function resolveUser(authId: string) {
 // PATCH: update the school zone of the requester or one of their children
 export async function PATCH(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await req.json();
-    const { userId, ownerId, zone } = body;
-    if (!userId || !ownerId || !zone) {
+    const { ownerId, zone } = body;
+    if (!ownerId || !zone) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
     if (!ALLOWED_ZONES.has(zone)) {
       return NextResponse.json({ error: "Invalid zone" }, { status: 400 });
     }
 
-    const requester = await resolveUser(userId);
+    const requester = await resolveUser(me.authId);
     if (!requester) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     const ownerIdNum = Number(ownerId);

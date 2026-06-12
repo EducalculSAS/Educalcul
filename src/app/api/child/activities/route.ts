@@ -1,15 +1,23 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 
 
 // GET: Fetch all activities for the current user
 export async function GET(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(req.url);
     const authId = searchParams.get("userId"); // This is the auth.uid (UUID)
 
     if (!authId) {
       return NextResponse.json({ error: "User ID required" }, { status: 400 });
+    }
+    // Self, the child's parent, or admin only.
+    if (!(await canActOnAuthId(me, authId))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     // Must find the internal BIGINT ID to filter correctly if needed

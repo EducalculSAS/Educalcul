@@ -1,6 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 
 export async function POST(
@@ -8,6 +9,10 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Require a valid session: the AI grader costs money — no anonymous calls.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
     const body = await req.json();
     const {
@@ -174,15 +179,15 @@ export async function POST(
     // (user_exercise_attempts) est gérée par /api/child/activities et
     // /api/child/exercises/[id]/progress, qui résolvent correctement l'auth_id
     // vers l'id interne et utilisent un upsert sur (user_id, exercise_id).
-    if (id !== "preview" && user_id) {
-      const authHeader = req.headers.get("x-user-auth-id");
-      if (authHeader) {
-        fetch(`${req.headers.get("origin") || ""}/api/child/check-badges`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ authId: authHeader }),
-        }).catch(() => {});
-      }
+    if (id !== "preview") {
+      fetch(`${req.headers.get("origin") || ""}/api/child/check-badges`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: req.headers.get("authorization") || "",
+        },
+        body: JSON.stringify({ authId: me.authId }),
+      }).catch(() => {});
     }
 
     return NextResponse.json({

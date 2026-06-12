@@ -6,6 +6,7 @@ import { validateEmail, validateName, isValidRole, isValidUUID, validateString }
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function GET(request: Request) {
+    console.log("[route] GET /api/admin/users appelé");  // ← ajoute ça
   try {
     // ✓ SECURITY: Require admin authentication
     const admin = await requireRole(request, ["admin"]);

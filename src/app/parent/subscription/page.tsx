@@ -515,7 +515,8 @@ function SubscriptionPageContent() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          customConfig: { price: configPrice(cfg), features: configFeatures(cfg) },
+          // Send the raw config; the server recomputes price + features authoritatively.
+          customConfig: { config: cfg },
           userId: user.id,
           email: user.email,
         }),

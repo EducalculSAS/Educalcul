@@ -4,6 +4,7 @@ import { chatWithAI } from "@/lib/llm";
 import { checkAIAccess } from "@/lib/checkSubscription";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { validateString } from "@/lib/validation";
 
 interface Message {
@@ -58,15 +59,18 @@ ${isCours
 
 export async function POST(req: Request) {
   try {
+    // Identity from the verified JWT — gating can no longer be bypassed by
+    // omitting/spoofing a client header, and anonymous calls are rejected.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ message: null, blocked: true, reason: "Unauthorized" }, { status: 401 });
+
     const body = await req.json();
     const messages: Message[] = body.messages ?? [];
     const context: AITutorPageContext = body.context ?? { page: "other" };
 
-    // ✓ HIGH PRIORITY FIX: Rate limiting on expensive AI endpoint
-    const authHeader = req.headers.get("x-user-auth-id");
-    const rateLimitKey = authHeader || (req.headers.get("x-forwarded-for") ?? "unknown");
+    // ✓ Rate limiting on expensive AI endpoint, keyed on the real user.
     const config = RATE_LIMITS["ai:tutor"];
-    const rl = rateLimitWithBackoff(`ai:tutor:${rateLimitKey}`, config.maxAttempts, config.windowMs);
+    const rl = rateLimitWithBackoff(`ai:tutor:${me.authId}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { message: null, blocked: true, reason: "Too many AI requests. Please wait before trying again." },
@@ -74,27 +78,16 @@ export async function POST(req: Request) {
       );
     }
 
-    // ── Subscription gate ──────────────────────────────────────────────────
-    if (authHeader) {
-      const access = await checkAIAccess(authHeader);
-      if (!access.allowed) {
-        return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
-      }
-      // Record usage without blocking the AI response (fire-and-forget)
-      supabaseAdmin
-        .from("users")
-        .select("id")
-        .eq("auth_id", authHeader)
-        .maybeSingle()
-        .then(({ data: userData }) =>
-          userData
-            ? supabaseAdmin
-                .from("user_ai_interactions")
-                .insert({ user_id: userData.id, feature_type: "ai_tutor" })
-            : undefined
-        )
-        .then(undefined, (e) => console.error("[ai-tutor] usage log failed:", e?.message));
+    // ── Subscription gate (mandatory) ──────────────────────────────────────
+    const access = await checkAIAccess(me.authId);
+    if (!access.allowed) {
+      return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
     }
+    // Record usage without blocking the AI response (fire-and-forget)
+    supabaseAdmin
+      .from("user_ai_interactions")
+      .insert({ user_id: me.id, feature_type: "ai_tutor" })
+      .then(undefined, (e) => console.error("[ai-tutor] usage log failed:", e?.message));
     // ──────────────────────────────────────────────────────────────────────
 
     // Keep only last user/assistant messages

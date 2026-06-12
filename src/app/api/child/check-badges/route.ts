@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 
 // ── Tier thresholds per category ────────────────────────────────────────────
 // Returns the tier level (0 = nothing, 1 = first badge, 2 = second, etc.)
@@ -143,8 +144,14 @@ const COSMETIC_REQUIREMENTS: Record<string, {
 
 export async function POST(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { authId } = await req.json();
     if (!authId) return NextResponse.json({ error: "Missing authId" }, { status: 400 });
+    if (!(await canActOnAuthId(me, authId))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
 
     const { data: user } = await supabaseAdmin.from("users").select("id, login_count, login_streak").eq("auth_id", authId).single();
     if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });

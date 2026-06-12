@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 const CHILD_ALLOWED_TYPES = new Set(EVENT_TYPE_OPTIONS.map(o => o.value));
 const PARENT_ALLOWED_TYPES = new Set(PARENT_ONLY_EVENT_TYPE_OPTIONS.map(o => o.value));
@@ -33,13 +34,14 @@ async function canAccessOwner(requester: { id: number; role: string; parent_id: 
 // GET: list events for a given calendar owner (child or parent)
 export async function GET(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(req.url);
-    const authId = searchParams.get("userId");
     const ownerIdParam = searchParams.get("ownerId");
 
-    if (!authId) return NextResponse.json({ error: "Missing userId" }, { status: 400 });
-
-    const requester = await resolveUser(authId);
+    // Requester identity comes from the verified JWT, not from a client param.
+    const requester = await resolveUser(me.authId);
     if (!requester) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     const ownerId = ownerIdParam ? Number(ownerIdParam) : requester.id;
@@ -88,14 +90,17 @@ export async function GET(req: Request) {
 // POST: create a new event
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { userId, ownerId, title, description, event_type, start_date, end_date, all_day, color, visible_to_child } = body;
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    if (!userId || !ownerId || !title || !start_date) {
+    const body = await req.json();
+    const { ownerId, title, description, event_type, start_date, end_date, all_day, color, visible_to_child } = body;
+
+    if (!ownerId || !title || !start_date) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const requester = await resolveUser(userId);
+    const requester = await resolveUser(me.authId);
     if (!requester) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     const ownerIdNum = Number(ownerId);

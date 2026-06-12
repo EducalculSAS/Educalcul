@@ -2,17 +2,15 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { validateEmail, validateString, validateName, isValidUUID } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 // GET — tickets de l'utilisateur
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const userId = searchParams.get("userId"); // auth_id
-
-    // ✓ SECURITY: Validate UUID format
-    if (!userId || !isValidUUID(userId)) {
-      return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
-    }
+    // A user can only list their OWN tickets — identity from the JWT.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const userId = me.authId;
 
     const { data: tickets, error } = await supabaseAdmin
       .from("support_tickets")
@@ -37,11 +35,15 @@ export async function GET(req: Request) {
 // POST — créer un ticket
 export async function POST(req: Request) {
   try {
-    const { userId, userEmail, userName, subject, message, priority } = await req.json();
+    // Ticket is bound to the authenticated user; the client cannot forge user_id.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const userId = me.authId;
+
+    const { userEmail, userName, subject, message, priority } = await req.json();
 
     // ✓ HIGH PRIORITY FIX: Add rate limiting
-    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
-    const rateLimitKey = userId || ip;
+    const rateLimitKey = userId;
     const config = RATE_LIMITS["support:ticket"];
     const rl = rateLimitWithBackoff(`support:${rateLimitKey}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {

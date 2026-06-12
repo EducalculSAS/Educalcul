@@ -1,18 +1,14 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
+import { getAuthenticatedUser } from '@/lib/apiAuth';
 
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const userId = searchParams.get('userId');
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: 'Missing user ID' },
-        { status: 400 }
-      );
-    }
+    // Identity comes from the verified JWT, never from a client-supplied param.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const userId = me.authId;
 
     // 1. Get subscription from Supabase to find Stripe Customer ID
     let { data: subscription, error: dbError } = await supabaseAdmin

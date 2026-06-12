@@ -1,5 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 
 export async function GET(req: Request) {
@@ -31,16 +32,11 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await req.json();
-    const { title, content, categoryId, authId } = body;
-
-    const { data: userRecord, error: userError } = await supabaseAdmin
-      .from("users")
-      .select("id")
-      .eq("auth_id", authId)
-      .maybeSingle();
-
-    if (userError || !userRecord) throw new Error("User not found");
+    const { title, content, categoryId } = body;
 
     const { data, error } = await supabaseAdmin
       .from("forum_posts")
@@ -48,7 +44,7 @@ export async function POST(req: Request) {
         title,
         content,
         category_id: categoryId,
-        author_id: userRecord.id,
+        author_id: me.id, // author is always the authenticated caller
       })
       .select(`
         *,

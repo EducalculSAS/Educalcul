@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 function generateCode(length = 8) {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -9,9 +10,9 @@ function generateCode(length = 8) {
 // GET — return (or auto-create) the user's personal referral code
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const authId = searchParams.get("authId");
-    if (!authId) return NextResponse.json({ error: "Missing authId" }, { status: 400 });
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const authId = me.authId;
 
     // Resolve DB user id
     const { data: userRow, error: userErr } = await supabaseAdmin

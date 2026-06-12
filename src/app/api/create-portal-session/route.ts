@@ -1,17 +1,14 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
+import { getAuthenticatedUser } from '@/lib/apiAuth';
 
 export async function POST(req: Request) {
   try {
-    const { userId } = await req.json();
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: 'Missing user ID' },
-        { status: 400 }
-      );
-    }
+    // The billing portal must only ever be opened for the caller's own account.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const userId = me.authId;
 
     // Get subscription to find Stripe Customer ID
     let { data: subscription, error: dbError } = await supabaseAdmin

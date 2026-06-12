@@ -1,5 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
 
 export async function GET() {
@@ -19,6 +20,9 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
+    if (!(await requireRole(req, ["admin"]))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
     const { name, description, icon, orderIndex } = await req.json();
 
     const { data, error } = await supabaseAdmin

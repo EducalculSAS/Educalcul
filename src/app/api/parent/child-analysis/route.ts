@@ -1,12 +1,21 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAI } from "@/lib/llm";
+import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
 
 export async function GET(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(req.url);
     const childId = searchParams.get("childId");
     if (!childId) return NextResponse.json({ error: "Missing childId" }, { status: 400 });
+
+    // The caller must own this child (or be admin).
+    if (!(await canActOnInternalId(me, Number(childId)))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
 
     // Fetch child profile
     const { data: child } = await supabaseAdmin

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
+import { getAuthenticatedUser } from '@/lib/apiAuth';
+import { computeCustomPlan } from '@/lib/customPlanPricing';
 
 export async function POST(req: Request) {
   try {
@@ -10,24 +12,36 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    if (!isNewSignup && !userId) {
-      return NextResponse.json({ error: 'Missing user ID' }, { status: 400 });
+    // Existing-user actions must be bound to the authenticated caller; new
+    // signups have no account/session yet so they pass through unauthenticated.
+    if (!isNewSignup) {
+      const me = await getAuthenticatedUser(req);
+      if (!me) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      userId = me.authId;
+    } else {
+      userId = userId || '';
     }
 
     let plan: any = null;
 
     if (customConfig) {
+      // SECURITY: never trust a client-supplied price/features. Recompute the
+      // custom plan authoritatively from the raw config server-side.
+      const computed = computeCustomPlan(customConfig.config ?? customConfig);
+      if (!computed) {
+        return NextResponse.json({ error: 'Invalid custom configuration' }, { status: 400 });
+      }
       // Crée un plan "sur mesure" caché (is_active=false) pour ce client uniquement
       const { data: customPlan, error: customErr } = await supabaseAdmin
         .from('subscription_plans')
         .insert({
           name: 'Sur mesure',
           description: 'Abonnement personnalisé',
-          price: customConfig.price,
+          price: computed.price,
           billing_interval: 'month',
           trial_days: 0,
           is_active: false,
-          features: customConfig.features,
+          features: computed.features,
         })
         .select('*')
         .single();

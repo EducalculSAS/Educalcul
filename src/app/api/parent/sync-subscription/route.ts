@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 // GET — sync current subscription status from Stripe to DB
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const authId = searchParams.get("authId");
-    if (!authId) return NextResponse.json({ error: "Missing authId" }, { status: 400 });
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const authId = me.authId;
 
     const { data: sub } = await supabaseAdmin
       .from("subscriptions")
@@ -41,8 +42,11 @@ export async function GET(req: Request) {
 // POST — sync after Stripe checkout redirect with session_id
 export async function POST(req: Request) {
   try {
-    const { sessionId, authId } = await req.json();
-    if (!sessionId || !authId) return NextResponse.json({ error: "Missing params" }, { status: 400 });
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const { sessionId } = await req.json();
+    const authId = me.authId;
+    if (!sessionId) return NextResponse.json({ error: "Missing params" }, { status: 400 });
 
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ["subscription"],

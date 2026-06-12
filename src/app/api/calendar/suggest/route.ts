@@ -1,23 +1,23 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAI } from "@/lib/llm";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 // POST: parent asks AI to suggest a revision schedule for a child, based on weak subjects
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { userId, childId } = body;
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    if (!userId || !childId) {
+    const body = await req.json();
+    const { childId } = body;
+
+    if (!childId) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const { data: requester } = await supabaseAdmin
-      .from("users")
-      .select("id, role")
-      .eq("auth_id", userId)
-      .maybeSingle();
-    if (!requester || requester.role !== "parent") {
+    const requester = { id: me.id, role: me.role };
+    if (requester.role !== "parent") {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

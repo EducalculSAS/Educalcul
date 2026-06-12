@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getSubscriptionUnlocks } from "@/lib/badgeStyles";
+import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 
 export async function POST(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { authId, equipped_border, name_color } = await req.json();
     if (!authId) return NextResponse.json({ error: "Missing authId" }, { status: 400 });
+    if (!(await canActOnAuthId(me, authId))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
 
     const { data: user } = await supabaseAdmin.from("users").select("id").eq("auth_id", authId).single();
     if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });

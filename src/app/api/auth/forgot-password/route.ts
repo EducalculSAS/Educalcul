@@ -2,6 +2,7 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { buildEmailHtml, EMAIL_BASE_URL } from "@/lib/emailTemplates";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(req: Request) {
   const { email } = await req.json();
@@ -9,22 +10,34 @@ export async function POST(req: Request) {
 
   const entered = email.trim().toLowerCase();
 
+  // Rate limit (per IP + per target email) to prevent reset-email bombing.
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+  const cfg = RATE_LIMITS["auth:forgot-password"];
+  const rlIp = rateLimitWithBackoff(`forgot:ip:${ip}`, cfg.maxAttempts, cfg.windowMs);
+  const rlEmail = rateLimitWithBackoff(`forgot:email:${entered}`, cfg.maxAttempts, cfg.windowMs);
+  if (!rlIp.allowed || !rlEmail.allowed) {
+    // Generic success to avoid revealing anything; just don't send another mail.
+    return NextResponse.json({ success: true });
+  }
+
   // Trouver l'auth_id via SQL (cherche dans auth.users + auth.identities + public.users)
   const { data: foundId, error: rpcErr } = await supabaseAdmin
     .rpc("find_auth_id_by_email", { p_email: entered });
 
   if (rpcErr) {
-    return NextResponse.json({ error: `RPC error: ${rpcErr.message}` }, { status: 500 });
+    console.error("[forgot-password] RPC error:", rpcErr.message);
+    return NextResponse.json({ success: true });
   }
 
   if (!foundId) {
-    return NextResponse.json({ success: true }); // compte inexistant, ne pas rÃ©vÃ©ler
+    return NextResponse.json({ success: true }); // compte inexistant, ne pas révéler
   }
 
-  // RÃ©cupÃ©rer l'email principal du compte (celui enregistrÃ© dans auth.users)
+  // Récupérer l'email principal du compte (celui enregistré dans auth.users)
   const { data: authUser, error: auErr } = await supabaseAdmin.auth.admin.getUserById(foundId);
   if (auErr || !authUser.user?.email) {
-    return NextResponse.json({ error: `getUserById error: ${auErr?.message}` }, { status: 500 });
+    console.error("[forgot-password] getUserById error:", auErr?.message);
+    return NextResponse.json({ success: true });
   }
 
   // RÃ©cupÃ©rer le prÃ©nom
@@ -40,7 +53,8 @@ export async function POST(req: Request) {
   });
 
   if (linkErr || !linkData?.properties?.action_link) {
-    return NextResponse.json({ error: `generateLink: ${linkErr?.message}` }, { status: 500 });
+    console.error("[forgot-password] generateLink error:", linkErr?.message);
+    return NextResponse.json({ success: true });
   }
 
   // Envoyer Ã  l'email entrÃ© par l'utilisateur (pas forcÃ©ment l'email principal)

@@ -1,12 +1,17 @@
 ﻿import { NextResponse } from "next/server";
 import { gradeAnswer } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Require a valid session: the AI grader costs money — no anonymous calls.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
     const body = await req.json();
     const {

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { notify } from "@/lib/notify";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 export async function GET(req: Request) {
   try {
@@ -23,17 +24,15 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await req.json();
-    const { postId, content, authId } = body;
-
-    const { data: userRecord, error: userError } = await supabaseAdmin
-      .from("users").select("id").eq("auth_id", authId).maybeSingle();
-
-    if (userError || !userRecord) throw new Error("User not found");
+    const { postId, content } = body;
 
     const { data, error } = await supabaseAdmin
       .from("forum_comments")
-      .insert({ post_id: postId, content, author_id: userRecord.id })
+      .insert({ post_id: postId, content, author_id: me.id }) // author = caller
       .select(`*, author:users(first_name, last_name, child_username, role, avatar)`)
       .single();
 
@@ -47,7 +46,7 @@ export async function POST(req: Request) {
       .maybeSingle();
 
     const postAuthorAuthId = (post?.author as any)?.auth_id;
-    if (postAuthorAuthId && postAuthorAuthId !== authId) {
+    if (postAuthorAuthId && postAuthorAuthId !== me.authId) {
       const name = (data as any)?.author?.first_name || (data as any)?.author?.child_username || "Quelqu'un";
       notify({
         userId: postAuthorAuthId,
