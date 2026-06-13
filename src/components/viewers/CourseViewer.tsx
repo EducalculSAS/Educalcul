@@ -685,7 +685,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                      )
                    ) : currentLesson.blocks && currentLesson.blocks.length > 0 ? (
                      <div ref={contentRef} className="space-y-6">
-                       {currentLesson.blocks.map((block) => {
+                       {(() => { let exerciseCount = 0; return currentLesson.blocks.map((block) => {
                          if (block.type === "text" || block.type === "table" || block.type === "graph") {
                            if (!block.content?.trim()) return null;
                            return (
@@ -706,6 +706,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                            );
                          }
                          if (block.type === "exercise" && block.exercise) {
+                           exerciseCount++;
                            return (
                              <InlineMiniExercises
                                key={block.id}
@@ -713,15 +714,23 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                                exercises={[block.exercise]}
                                level={(course as any).level}
                                compact
+                               startNumber={exerciseCount}
                              />
                            );
                          }
                          return null;
-                       })}
+                       }); })()}
                      </div>
                    ) : (
                      <>
-                       <div ref={contentRef} dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(currentLesson.content || "")) }} />
+                       <div ref={contentRef}>
+                         {renderLessonContentWithInlineExercises(
+                           currentLesson.content || "",
+                           currentLesson.exercises || [],
+                           currentLesson.id,
+                           (course as any).level
+                         )}
+                       </div>
                        {currentLesson.image_url && (
                          <img
                            src={currentLesson.image_url}
@@ -733,14 +742,22 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                    )}
                 </div>
 
-                {/* Interactive mini-exercises (legacy lessons without blocks) */}
-                {!currentLesson.blocks && currentLesson.exercises && currentLesson.exercises.length > 0 && (
-                  <InlineMiniExercises
-                    lessonId={currentLesson.id}
-                    exercises={currentLesson.exercises}
-                    level={(course as any).level}
-                  />
-                )}
+                {/* Interactive mini-exercices restants (non placés en ligne dans le contenu) */}
+                {!currentLesson.blocks && currentLesson.exercises && currentLesson.exercises.length > 0 && (() => {
+                  const inlineIds = new Set(
+                    [...(currentLesson.content || "").matchAll(/data-exercise-id="([^"]+)"/g)].map((m) => m[1])
+                  );
+                  const remaining = currentLesson.exercises.filter((ex) => !inlineIds.has(ex.id));
+                  if (remaining.length === 0) return null;
+                  return (
+                    <InlineMiniExercises
+                      lessonId={currentLesson.id}
+                      exercises={remaining}
+                      level={(course as any).level}
+                      startNumber={inlineIds.size + 1}
+                    />
+                  );
+                })()}
               </div>
             ) : (
               <div className="text-center text-gray-400 py-32">
@@ -822,15 +839,65 @@ interface ExerciseState {
   mode: "text" | "draw";
 }
 
+// Découpe le HTML d'une leçon autour des placeholders
+// <div class="lesson-exercise" data-exercise-id="ex-1"></div> insérés par l'IA,
+// et insère le mini-exercice interactif correspondant à cet endroit précis.
+function renderLessonContentWithInlineExercises(
+  content: string,
+  exercises: Exercise[],
+  lessonId: string,
+  level?: string
+) {
+  const regex = /<div[^>]*class="[^"]*lesson-exercise[^"]*"[^>]*data-exercise-id="([^"]*)"[^>]*>\s*<\/div>/g;
+  const parts: { html?: string; exerciseId?: string }[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(content)) !== null) {
+    if (match.index > lastIndex) parts.push({ html: content.slice(lastIndex, match.index) });
+    parts.push({ exerciseId: match[1] });
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < content.length) parts.push({ html: content.slice(lastIndex) });
+  if (parts.length === 0) parts.push({ html: content });
+
+  let exerciseCount = 0;
+  return parts.map((part, idx) => {
+    if (part.exerciseId) {
+      const ex = exercises.find((e) => e.id === part.exerciseId);
+      if (!ex) return null;
+      exerciseCount++;
+      return (
+        <InlineMiniExercises
+          key={`ex-${idx}`}
+          lessonId={lessonId}
+          exercises={[ex]}
+          level={level}
+          compact
+          startNumber={exerciseCount}
+        />
+      );
+    }
+    const html = (part.html || "").trim();
+    if (!html) return null;
+    return (
+      <div
+        key={`html-${idx}`}
+        dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(part.html || "")) }}
+      />
+    );
+  });
+}
+
 interface InlineMiniExercisesProps {
   lessonId: string;
   exercises: Exercise[];
   level?: string;
   compact?: boolean;
   title?: string;
+  startNumber?: number;
 }
 
-function InlineMiniExercises({ lessonId, exercises, level, compact, title }: InlineMiniExercisesProps) {
+function InlineMiniExercises({ lessonId, exercises, level, compact, title, startNumber }: InlineMiniExercisesProps) {
   const [states, setStates] = useState<Record<string, ExerciseState>>({});
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -957,7 +1024,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title }: Inl
                     color: "#fff",
                   }}
                 >
-                  {idx + 1}
+                  {(startNumber ?? 1) + idx}
                 </div>
                 <div className="flex-1">
                   <div
@@ -985,7 +1052,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title }: Inl
                     }}
                   >
                     <Lightbulb className="w-3.5 h-3.5" />
-                    {s.showHint ? "Masquer l'indice" : "Indice 💡"}
+                    {s.showHint ? "Masquer l'indice" : "Indice"}
                   </button>
                   {s.showHint && (
                     <div

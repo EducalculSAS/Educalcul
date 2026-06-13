@@ -36,6 +36,23 @@ body {
   overflow-x: hidden;
 }
 
+/* ── Listes déroulantes <select> dans le thème ───── */
+select {
+  accent-color: var(--greek-blue);
+}
+select option {
+  background-color: #ffffff;
+  color: var(--text-dark);
+}
+select option:checked {
+  background-color: var(--greek-blue);
+  color: #ffffff;
+}
+select option:hover,
+select option:focus {
+  background-color: rgba(197, 161, 72, 0.15);
+}
+
 /* ── Décalage global navbar fixe 64px ───────────── */
 main,
 .page-main {
@@ -485,6 +502,17 @@ main,
   to   { opacity: 1; transform: translateY(0)   scale(1);    }
 }
 .animate-chat-open { animation: chatOpen 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+@keyframes progressIndeterminate {
+  0%   { transform: translateX(-100%) scaleX(0.4); }
+  50%  { transform: translateX(20%) scaleX(0.6); }
+  100% { transform: translateX(100%) scaleX(0.4); }
+}
+.animate-progress-indeterminate {
+  width: 100%;
+  transform-origin: left;
+  animation: progressIndeterminate 1.4s ease-in-out infinite;
+}
 
 /* Math tables (value / sign / variation tables) */
 .math-table { border-collapse: collapse; margin: 1rem auto; font-size: 0.95rem; }

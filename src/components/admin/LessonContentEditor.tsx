@@ -55,7 +55,7 @@ export default function LessonContentEditor({
 
   // Lazily migrate legacy content/image_url/exercises into blocks on first render
   useEffect(() => {
-    if (!lesson.blocks) {
+    if (!lesson.blocks || lesson.blocks.length === 0) {
       onUpdate({ blocks: migrateLessonToBlocks(lesson) });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

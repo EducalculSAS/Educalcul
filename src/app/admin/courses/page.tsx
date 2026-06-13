@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import PageLoader from "@/components/PageLoader";
+import ThemedSelect from "@/components/admin/ThemedSelect";
 import {
   BookOpen, Search, Plus, Edit, Trash2, XCircle, X, Loader2,
   Image as ImageIcon, Sparkles, Eye, Folder as FolderIcon,
@@ -17,7 +18,7 @@ import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AIGeneratorModal, { AIGenerateParams, AIGenerateProgress } from "@/components/admin/AIGeneratorModal";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
-import { SCHOOL_LEVELS } from "@/lib/constants";
+import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
 
 interface Course {
@@ -41,6 +42,7 @@ interface Folder {
   color: string;
   grade_level: string | null;
   icon?: string | null;
+  is_system?: boolean;
 }
 
 const FOLDER_COLORS = [
@@ -56,7 +58,26 @@ const FOLDER_COLORS = [
   "#64748b", // Slate
   "#166534", // Vert foncé
   "#78350f", // Marron
+  "#06b6d4", // Cyan
+  "#d946ef", // Fuchsia
+  "#0ea5e9", // Sky
+  "#f43f5e", // Rose
 ];
+
+function Num123Icon({ size = 24, ...props }: any) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <text x="12" y="16.5" textAnchor="middle" fontSize="12" fontWeight="bold" fill="currentColor" fillOpacity="1" stroke="none">
+        123
+      </text>
+    </svg>
+  );
+}
 
 const FOLDER_ICONS = [
   { name: "folder", Icon: FolderIcon },
@@ -75,6 +96,7 @@ const FOLDER_ICONS = [
   { name: "numbers", Icon: Hash },
   { name: "table", Icon: Table2 },
   { name: "exponent", Icon: Superscript },
+  { name: "123", Icon: Num123Icon },
 ];
 
 const getFolderIcon = (iconName?: string | null) => {
@@ -87,10 +109,14 @@ export default function AdminCoursesPage() {
   // Navigation State
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<Folder[]>([]);
+  // Niveau imposé par l'espace de publication courant (dossier de niveau parent)
+  const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
 
   // Data State
   const [courses, setCourses] = useState<Course[]>([]);
   const [folders, setFolders] = useState<Folder[]>([]);
+  const [allFolderCounts, setAllFolderCounts] = useState<{ id: number; parent_id: number | null }[]>([]);
+  const [allCourses, setAllCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -286,6 +312,12 @@ export default function AdminCoursesPage() {
 
       setFolders(foldersData || []);
       setCourses(filteredCourses);
+      setAllCourses(coursesData as Course[]);
+
+      const { data: allFoldersData } = await supabase
+        .from("course_folders")
+        .select("id, parent_id");
+      setAllFolderCounts(allFoldersData || []);
 
       // Update breadcrumbs
       if (currentFolderId !== null) {
@@ -310,7 +342,7 @@ export default function AdminCoursesPage() {
       while (currentId !== null) {
         const { data } = await supabase
           .from("course_folders")
-          .select("id, name, parent_id, status, color")
+          .select("id, name, parent_id, status, color, grade_level, is_system")
           .eq("id", currentId)
           .single();
 
@@ -389,7 +421,7 @@ export default function AdminCoursesPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          grade_level: params.level || "6eme",
+          grade_level: currentFolderLevel || params.level || "6eme",
           subject: params.topic,
           type: "cours_complet",
           page_count: params.count?.toString() || "2",
@@ -462,7 +494,7 @@ export default function AdminCoursesPage() {
         title: courseTitle,
         description: courseDescription,
         subject: params.topic,
-        level: params.level || "6eme",
+        level: currentFolderLevel || params.level || "6eme",
         status: "draft",
         thumbnail_url: "",
         folder_id: currentFolderId,
@@ -527,7 +559,7 @@ export default function AdminCoursesPage() {
         title: "",
         description: "",
         subject: "Algèbre",
-        level: "6eme",
+        level: currentFolderLevel || "6eme",
         status: "draft",
         thumbnail_url: "",
         folder_id: currentFolderId, // Default to current folder
@@ -539,6 +571,17 @@ export default function AdminCoursesPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const norm = formData.title.trim().toLowerCase();
+    const folderConflict = folders.some((f) => f.name.trim().toLowerCase() === norm);
+    const courseConflict = courses.some(
+      (c) => c.id !== currentCourse?.id && c.title.trim().toLowerCase() === norm
+    );
+    if (folderConflict || courseConflict) {
+      alert("Un dossier ou un cours porte déjà ce nom à cet emplacement.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -637,7 +680,18 @@ export default function AdminCoursesPage() {
 
   const handleSaveFolder = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!folderFormData.name.trim()) return;
+    const name = folderFormData.name.trim();
+    if (!name) return;
+
+    const norm = name.toLowerCase();
+    const folderConflict = folders.some(
+      (f) => f.id !== editingFolder?.id && f.name.trim().toLowerCase() === norm
+    );
+    const courseConflict = courses.some((c) => c.title.trim().toLowerCase() === norm);
+    if (folderConflict || courseConflict) {
+      alert("Un dossier ou un cours porte déjà ce nom à cet emplacement.");
+      return;
+    }
 
     try {
       if (editingFolder) {
@@ -647,7 +701,7 @@ export default function AdminCoursesPage() {
             name: folderFormData.name,
             status: folderFormData.status,
             color: folderFormData.color,
-            grade_level: folderFormData.grade_level,
+            grade_level: null,
             icon: folderFormData.icon || null,
           })
           .eq("id", editingFolder.id);
@@ -659,7 +713,7 @@ export default function AdminCoursesPage() {
           parent_id: currentFolderId,
           status: folderFormData.status,
           color: folderFormData.color,
-          grade_level: folderFormData.grade_level,
+          grade_level: null,
           icon: folderFormData.icon || null,
         });
 
@@ -817,6 +871,10 @@ export default function AdminCoursesPage() {
     }
   };
 
+  const filteredFolders = folders.filter((folder) =>
+    folder.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const filteredCourses = courses.filter((course) => {
     const searchLower = searchTerm.toLowerCase();
     return (
@@ -848,8 +906,8 @@ export default function AdminCoursesPage() {
                 setFolderFormData({
                   name: "",
                   status: "draft",
-                  color: FOLDER_COLORS[0],
-                  grade_level: "6eme",
+                  color: breadcrumbs[0]?.color || FOLDER_COLORS[0],
+                  grade_level: currentFolderLevel || "6eme",
                   icon: "",
                 });
                 setIsFolderModalOpen(true);
@@ -886,7 +944,7 @@ export default function AdminCoursesPage() {
       {/* Navigation & Breadcrumbs */}
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
         <button
-          onClick={() => setCurrentFolderId(null)}
+          onClick={() => { setCurrentFolderId(null); setSearchTerm(""); }}
           onDragOver={(e) => {
             e.preventDefault();
             setDragOverBreadcrumb("root");
@@ -911,7 +969,7 @@ export default function AdminCoursesPage() {
           >
             <ChevronRight size={14} className="text-gray-400" />
             <button
-              onClick={() => setCurrentFolderId(folder.id)}
+              onClick={() => { setCurrentFolderId(folder.id); setSearchTerm(""); }}
               onDragOver={(e) => {
                 e.preventDefault();
                 setDragOverBreadcrumb(folder.id);
@@ -944,20 +1002,21 @@ export default function AdminCoursesPage() {
               placeholder="Rechercher un cours..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none"
             />
           </div>
-          <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0">
-            <select
+          <div className="flex gap-2 flex-wrap">
+            <ThemedSelect
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-            >
-              <option value="all">Tous les statuts</option>
-              <option value="published">Publié</option>
-              <option value="draft">Brouillon</option>
-              <option value="archived">Archivé</option>
-            </select>
+              onChange={setStatusFilter}
+              options={[
+                { value: "all", label: "Tous les statuts" },
+                { value: "published", label: "Publié" },
+                { value: "draft", label: "Brouillon" },
+                { value: "archived", label: "Archivé" },
+              ]}
+              className="min-w-[160px]"
+            />
           </div>
         </div>
       </div>
@@ -975,7 +1034,7 @@ export default function AdminCoursesPage() {
         )}
 
         {/* Empty State */}
-        {!loading && folders.length === 0 && filteredCourses.length === 0 && (
+        {!loading && filteredFolders.length === 0 && filteredCourses.length === 0 && (
           <div className="col-span-full py-12 text-center text-gray-500 bg-white rounded-xl border border-[rgba(197,161,72,0.25)] border-dashed">
             <div className="flex flex-col items-center justify-center">
               <FolderIcon size={48} className="text-gray-200 mb-2" />
@@ -992,7 +1051,7 @@ export default function AdminCoursesPage() {
 
         {/* Folders List */}
         {!loading &&
-          folders.map((folder) => {
+          filteredFolders.map((folder) => {
             const FolderCardIcon = getFolderIcon(folder.icon);
             return (
             <div
@@ -1002,7 +1061,7 @@ export default function AdminCoursesPage() {
               onDragOver={(e) => handleDragOver(e, folder.id)}
               onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, folder.id)}
-              onClick={() => setCurrentFolderId(folder.id)}
+              onClick={() => { setCurrentFolderId(folder.id); setSearchTerm(""); }}
               className={`bg-white rounded-2xl p-6 shadow-sm border transition-all group cursor-pointer relative overflow-hidden flex flex-col items-center justify-center text-center aspect-[4/3]
               ${
                 dragOverFolderId === folder.id
@@ -1029,16 +1088,18 @@ export default function AdminCoursesPage() {
                 >
                   <Edit size={14} />
                 </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDeleteFolder(folder);
-                  }}
-                  className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                  title="Supprimer"
-                >
-                  <Trash2 size={14} />
-                </button>
+                {!folder.is_system && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteFolder(folder);
+                    }}
+                    className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Supprimer"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                )}
               </div>
 
               <div
@@ -1053,13 +1114,26 @@ export default function AdminCoursesPage() {
               <h3 className="font-bold text-gray-800 text-lg mb-1 truncate w-full px-2">
                 {folder.name}
               </h3>
-              <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
-                {folder.status === "published"
-                  ? "Publié"
-                  : folder.status === "archived"
-                  ? "Archivé"
-                  : "Brouillon"}
-              </p>
+              {!folder.is_system && (
+                <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
+                  {folder.status === "published"
+                    ? "Publié"
+                    : folder.status === "archived"
+                    ? "Archivé"
+                    : "Brouillon"}
+                </p>
+              )}
+              {(() => {
+                const subCount = currentFolderId === null ? 0 : allFolderCounts.filter((f) => f.parent_id === folder.id).length;
+                const itemCount = allCourses.filter((c) => c.folder_id === folder.id).length;
+                if (subCount === 0 && itemCount === 0) return null;
+                const parts = [];
+                if (subCount > 0) parts.push(`${subCount} dossier${subCount > 1 ? "s" : ""}`);
+                if (itemCount > 0) parts.push(`${itemCount} cours`);
+                return (
+                  <p className="text-xs text-gray-400 mt-1">{parts.join(" · ")}</p>
+                );
+              })()}
             </div>
             );
           })}
@@ -1207,13 +1281,19 @@ export default function AdminCoursesPage() {
                       </div>
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-1.5">Niveau scolaire</label>
-                        <select
-                          value={formData.level}
-                          onChange={(e) => setFormData({ ...formData, level: e.target.value })}
-                          className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
-                        >
-                          {SCHOOL_LEVELS.map((level) => (<option key={level.value} value={level.value}>{level.label}</option>))}
-                        </select>
+                        {modalMode === "create" && currentFolderLevel ? (
+                          <div className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl bg-blue-50 font-semibold text-[var(--greek-blue)]">
+                            {getLevelLabel(currentFolderLevel)}
+                          </div>
+                        ) : (
+                          <select
+                            value={formData.level}
+                            onChange={(e) => setFormData({ ...formData, level: e.target.value })}
+                            className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
+                          >
+                            {SCHOOL_LEVELS.map((level) => (<option key={level.value} value={level.value}>{level.label}</option>))}
+                          </select>
+                        )}
                       </div>
                     </div>
                     <div>
@@ -1351,28 +1431,6 @@ export default function AdminCoursesPage() {
                   className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                   placeholder="Ex: Chapitre 1"
                 />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Niveau du dossier
-                </label>
-                <select
-                  value={folderFormData.grade_level}
-                  onChange={(e) =>
-                    setFolderFormData({
-                      ...folderFormData,
-                      grade_level: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
-                >
-                  <option value="all">Tous niveaux</option>
-                  {SCHOOL_LEVELS.map((level) => (
-                    <option key={level.value} value={level.value}>
-                      {level.label}
-                    </option>
-                  ))}
-                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -1538,7 +1596,15 @@ function NotificationModal({
 
   return (
     <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md overflow-hidden animate-fade-bounce">
+      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md overflow-hidden animate-fade-bounce relative">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fermer"
+          className="group absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 transition-colors z-10"
+        >
+          <X size={20} className="transition-transform group-hover:scale-125" />
+        </button>
         <div className="px-8 pt-8 pb-4 flex flex-col items-center text-center">
           <div
             className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
@@ -1565,13 +1631,6 @@ function NotificationModal({
             }}
           >
             {ctaLabel}
-          </button>
-          <button
-            type="button"
-            onClick={onClose}
-            className="w-full py-2.5 rounded-xl font-medium text-gray-500 hover:bg-gray-100 transition-colors text-sm"
-          >
-            Fermer
           </button>
         </div>
       </div>

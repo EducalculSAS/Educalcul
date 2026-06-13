@@ -191,7 +191,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
   };
 
   const updateLesson = (chapterId: string, lessonId: string, updates: Partial<Lesson>) => {
-    setChapters(chapters.map(c => {
+    setChapters(prev => prev.map(c => {
       if (c.id === chapterId) {
         return {
           ...c,

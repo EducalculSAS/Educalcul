@@ -47,7 +47,7 @@ async function getRole(authId: string): Promise<string | null> {
   }
 }
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
 
@@ -74,3 +74,5 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: ["/api/admin/:path*"],
 };
+
+export default proxy;

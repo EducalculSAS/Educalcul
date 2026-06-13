@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { Map, Marker } from "react-map-gl/maplibre";
-import { MapPin, Mail, Clock } from "lucide-react";
+import { MapPin, Mail, Clock, MapPinOff } from "lucide-react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 interface UserMarker {
@@ -58,6 +59,21 @@ function spreadOverlaps(users: UserMarker[]): UserMarker[] {
 
 export default function UserMap({ users }: { users: UserMarker[] }) {
   const spread = spreadOverlaps(users);
+  const [mapFailed, setMapFailed] = useState(false);
+
+  if (mapFailed) {
+    return (
+      <div
+        id="user-map-container"
+        className="h-full w-full rounded-[20px] overflow-hidden border border-[rgba(197,161,72,0.25)] shadow-sm relative flex flex-col items-center justify-center gap-2 bg-gray-50 text-gray-400"
+      >
+        <MapPinOff size={32} />
+        <p className="text-sm font-medium">Carte indisponible</p>
+        <p className="text-xs">{users.length} position{users.length !== 1 ? "s" : ""} non affichée{users.length !== 1 ? "s" : ""}</p>
+      </div>
+    );
+  }
+
   return (
     <div
       id="user-map-container"
@@ -68,6 +84,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
         style={{ width: "100%", height: "100%" }}
         mapStyle={MAP_STYLE}
         attributionControl={false}
+        onError={() => setMapFailed(true)}
       >
         {spread.map(user => (
           <Marker

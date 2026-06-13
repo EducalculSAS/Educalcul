@@ -86,6 +86,27 @@ async function callOpenRouter(
       return null;
     }
 
+    if (status === 402) {
+      // Crédits insuffisants pour le max_tokens demandé : on retente avec
+      // le nombre de tokens que le compte peut effectivement payer.
+      const affordMatch = text.match(/can only afford (\d+)/);
+      const afford = affordMatch ? parseInt(affordMatch[1], 10) : null;
+      if (afford && maxTokens && afford < maxTokens && afford > 500) {
+        console.warn(`[llm] ${model} 402 (crédits insuffisants), retry avec max_tokens=${afford}`);
+        const retry = await callOpenRouterModel(model, msgs, temp, afford, reasoning);
+        if (retry.ok) {
+          try {
+            const parsed = JSON.parse(retry.text);
+            const msg = parsed?.choices?.[0]?.message;
+            const content = msg?.content ?? msg?.reasoning ?? parsed?.choices?.[0]?.text ?? null;
+            if (content) return content.trim();
+            return retry.text.trim();
+          } catch { return retry.text.trim(); }
+        }
+        console.error(`[llm] ${model} retry error ${retry.status}: ${retry.text.slice(0, 400)}`);
+      }
+    }
+
     console.error(`[llm] ${model} error ${status}: ${text.slice(0, 400)}`);
     return null;
   }
@@ -144,6 +165,40 @@ function escapeControlCharsInStrings(raw: string): string {
   return out;
 }
 
+/** Échappe les guillemets non-échappés présents à l'intérieur des chaînes JSON
+ * (ex: l'IA écrit un texte contenant des `"` littéraux, qui terminent la chaîne
+ * prématurément). Heuristique : un `"` n'est considéré comme la fin réelle de
+ * la chaîne que s'il est suivi (après espaces) par `,`, `:`, `}`, `]` ou la fin. */
+function escapeUnescapedQuotesInStrings(raw: string): string {
+  let out = "";
+  let inString = false;
+  let escaped = false;
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i];
+    if (!inString) {
+      out += ch;
+      if (ch === '"') inString = true;
+      continue;
+    }
+    if (escaped) { out += ch; escaped = false; continue; }
+    if (ch === "\\") { out += ch; escaped = true; continue; }
+    if (ch === '"') {
+      let j = i + 1;
+      while (j < raw.length && /\s/.test(raw[j])) j++;
+      const next = raw[j];
+      if (next === undefined || next === "," || next === ":" || next === "}" || next === "]") {
+        inString = false;
+        out += ch;
+      } else {
+        out += '\\"';
+      }
+      continue;
+    }
+    out += ch;
+  }
+  return out;
+}
+
 function parseJSON(raw: string): unknown {
   try { return JSON.parse(raw); }
   catch {
@@ -152,7 +207,13 @@ function parseJSON(raw: string): unknown {
       try { return JSON.parse(escapeControlCharsInStrings(raw)); }
       catch {
         try { return JSON.parse(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"))); }
-        catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+        catch {
+          try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw))); }
+          catch {
+            try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")))); }
+            catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+          }
+        }
       }
     }
   }

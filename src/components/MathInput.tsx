@@ -97,6 +97,21 @@ function applyKeyboardTheme() {
       border: 1px solid rgba(197,161,72,0.3);
       border-radius: 8px;
     }
+    /* Place les boutons clavier virtuel / menu en bas à droite du champ */
+    math-field {
+      position: relative;
+    }
+    math-field::part(virtual-keyboard-toggle),
+    math-field::part(menu-toggle) {
+      position: absolute;
+      bottom: 8px;
+    }
+    math-field::part(virtual-keyboard-toggle) {
+      right: 8px;
+    }
+    math-field::part(menu-toggle) {
+      right: 36px;
+    }
   `;
   document.head.appendChild(style);
 }
@@ -144,6 +159,8 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     mf.style.padding = "10px 12px";
     mf.style.fontSize = "1.125rem";
     mf.style.background = "transparent";
+    mf.style.fontFamily = "var(--font-display)";
+    mf.style.minHeight = "48px";
     mf.style.setProperty("--smart-fence-color", "var(--greek-blue)");
     mf.style.setProperty("--caret-color", "var(--greek-blue)");
     mf.style.setProperty("--selection-background-color", "rgba(197,161,72,0.25)");
@@ -182,11 +199,27 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       }
     };
     mf.addEventListener("keydown", keydownHandler, true);
+
+    // Au premier clic/focus, sélectionne tout pour que l'utilisateur puisse
+    // directement remplacer le contenu existant en tapant.
+    const focusHandler = () => {
+      if (mf.value.length > 0) {
+        mf.value = "";
+        onChange("");
+      }
+      const ph = placeholderRef.current;
+      if (ph) ph.style.display = "none";
+    };
+    mf.addEventListener("focus", focusHandler);
+    mf.addEventListener("blur", updatePlaceholder);
+
     updatePlaceholder();
 
     return () => {
       mf.removeEventListener("input", handler);
       mf.removeEventListener("keydown", keydownHandler, true);
+      mf.removeEventListener("focus", focusHandler);
+      mf.removeEventListener("blur", updatePlaceholder);
       container.removeChild(mf);
       mfRef.current = null;
     };
@@ -228,7 +261,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       {placeholder && (
         <div
           ref={placeholderRef}
-          className="absolute left-0 top-0 px-3 py-[10px] text-lg text-[var(--text-muted)]/60 pointer-events-none select-none"
+          className="absolute left-0 top-1/2 -translate-y-1/2 px-3 text-lg text-[var(--text-muted)]/60 pointer-events-none select-none font-[family-name:var(--font-display)]"
         >
           {placeholder}
         </div>

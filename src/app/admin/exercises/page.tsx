@@ -41,7 +41,9 @@ import {
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
-import { SCHOOL_LEVELS } from "@/lib/constants";
+import PageLoader from "@/components/PageLoader";
+import ThemedSelect from "@/components/admin/ThemedSelect";
+import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { EXERCISE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 
@@ -56,7 +58,26 @@ const FOLDER_COLORS = [
   "#84cc16", // Lime
   "#166534", // Vert foncé
   "#78350f", // Marron
+  "#06b6d4", // Cyan
+  "#d946ef", // Fuchsia
+  "#0ea5e9", // Sky
+  "#f43f5e", // Rose
 ];
+
+function Num123Icon({ size = 24, ...props }: any) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <text x="12" y="16.5" textAnchor="middle" fontSize="12" fontWeight="bold" fill="currentColor" fillOpacity="1" stroke="none">
+        123
+      </text>
+    </svg>
+  );
+}
 
 const FOLDER_ICONS = [
   { name: "folder", Icon: Folder },
@@ -75,6 +96,7 @@ const FOLDER_ICONS = [
   { name: "numbers", Icon: Hash },
   { name: "table", Icon: Table2 },
   { name: "exponent", Icon: Superscript },
+  { name: "123", Icon: Num123Icon },
 ];
 
 const getFolderIcon = (iconName?: string | null) => {
@@ -127,6 +149,7 @@ interface ExerciseFolder {
   status: "published" | "draft" | "archived";
   grade_level: string | null;
   icon?: string | null;
+  is_system?: boolean;
 }
 
 interface ExerciseFormData {
@@ -152,12 +175,15 @@ export default function AdminExercisesPage() {
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [courses, setCourses] = useState<Course[]>([]);
   const [folders, setFolders] = useState<ExerciseFolder[]>([]);
+  const [allFolderCounts, setAllFolderCounts] = useState<{ id: number; parent_id: number | null }[]>([]);
+  const [allExercises, setAllExercises] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Folder navigation state
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<ExerciseFolder[]>([]);
+  const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
 
   // Drag and drop state
   const [draggedExerciseId, setDraggedExerciseId] = useState<string | null>(
@@ -318,6 +344,12 @@ export default function AdminExercisesPage() {
 
       setFolders(foldersData || []);
       setExercises(filteredData as Exercise[]);
+      setAllExercises(data as Exercise[]);
+
+      const { data: allFoldersData } = await supabase
+        .from("exercise_folders")
+        .select("id, parent_id");
+      setAllFolderCounts(allFoldersData || []);
 
       // Update breadcrumbs
       if (currentFolderId !== null) {
@@ -340,7 +372,7 @@ export default function AdminExercisesPage() {
       while (currentId !== null) {
         const { data } = await supabase
           .from("exercise_folders")
-          .select("id, name, parent_id, color, status")
+          .select("id, name, parent_id, color, status, grade_level, is_system")
           .eq("id", currentId)
           .single();
 
@@ -462,7 +494,18 @@ export default function AdminExercisesPage() {
 
   const handleSaveFolder = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!folderFormData.name.trim()) return;
+    const folderName = folderFormData.name.trim();
+    if (!folderName) return;
+
+    const normFolder = folderName.toLowerCase();
+    const folderConflict = folders.some(
+      (f) => f.id !== editingFolder?.id && f.name.trim().toLowerCase() === normFolder
+    );
+    const exerciseConflict = exercises.some((ex) => ex.title.trim().toLowerCase() === normFolder);
+    if (folderConflict || exerciseConflict) {
+      alert("Un dossier ou un exercice porte déjà ce nom à cet emplacement.");
+      return;
+    }
 
     try {
       if (editingFolder) {
@@ -472,7 +515,7 @@ export default function AdminExercisesPage() {
             name: folderFormData.name,
             status: folderFormData.status,
             color: folderFormData.color,
-            grade_level: folderFormData.grade_level,
+            grade_level: null,
             icon: folderFormData.icon || null,
           })
           .eq("id", editingFolder.id);
@@ -484,7 +527,7 @@ export default function AdminExercisesPage() {
           parent_id: currentFolderId,
           status: folderFormData.status,
           color: folderFormData.color,
-          grade_level: folderFormData.grade_level,
+          grade_level: null,
           icon: folderFormData.icon || null,
         });
 
@@ -654,7 +697,7 @@ export default function AdminExercisesPage() {
           metadata?.difficulty_level ||
           "medium",
         type: metadata?.type || "standard",
-        level: params.level || metadata?.level || "6eme",
+        level: currentFolderLevel || params.level || metadata?.level || "6eme",
         grading_type: metadata?.grading_type || "ai",
         status: "draft",
         thumbnail_url: "",
@@ -680,6 +723,17 @@ export default function AdminExercisesPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const normTitle = formData.title.trim().toLowerCase();
+    const folderConflict = folders.some((f) => f.name.trim().toLowerCase() === normTitle);
+    const exerciseConflict = exercises.some(
+      (ex) => ex.id !== editingExercise?.id && ex.title.trim().toLowerCase() === normTitle
+    );
+    if (folderConflict || exerciseConflict) {
+      alert("Un dossier ou un exercice porte déjà ce nom à cet emplacement.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -736,7 +790,7 @@ export default function AdminExercisesPage() {
       folder_id: "",
       difficulty_level: "medium",
       type: "standard",
-      level: "6eme",
+      level: currentFolderLevel || "6eme",
       grading_type: "auto",
       status: "draft",
       thumbnail_url: "",
@@ -855,6 +909,10 @@ export default function AdminExercisesPage() {
         ex.question.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
+  const filteredFolders = folders.filter((folder) =>
+    folder.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="space-y-6">
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
@@ -876,8 +934,8 @@ export default function AdminExercisesPage() {
                 setFolderFormData({
                   name: "",
                   status: "draft",
-                  color: FOLDER_COLORS[0],
-                  grade_level: "6eme",
+                  color: breadcrumbs[0]?.color || FOLDER_COLORS[0],
+                  grade_level: currentFolderLevel || "6eme",
                   icon: "",
                 });
                 setIsFolderModalOpen(true);
@@ -914,7 +972,7 @@ export default function AdminExercisesPage() {
       {/* Breadcrumbs */}
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
         <button
-          onClick={() => setCurrentFolderId(null)}
+          onClick={() => { setCurrentFolderId(null); setSearchQuery(""); }}
           onDragOver={(e) => {
             e.preventDefault();
             setDragOverBreadcrumb("root");
@@ -939,7 +997,7 @@ export default function AdminExercisesPage() {
           >
             <ChevronRight size={14} className="text-gray-400" />
             <button
-              onClick={() => setCurrentFolderId(folder.id)}
+              onClick={() => { setCurrentFolderId(folder.id); setSearchQuery(""); }}
               onDragOver={(e) => {
                 e.preventDefault();
                 setDragOverBreadcrumb(folder.id);
@@ -975,45 +1033,44 @@ export default function AdminExercisesPage() {
               placeholder="Rechercher un exercice..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none"
             />
           </div>
 
-          <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0">
-            <select
+          <div className="flex gap-2 flex-wrap">
+            <ThemedSelect
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-            >
-              <option value="all">Tous les statuts</option>
-              <option value="published">Publié</option>
-              <option value="draft">Brouillon</option>
-              <option value="archived">Archivé</option>
-            </select>
+              onChange={setStatusFilter}
+              options={[
+                { value: "all", label: "Tous les statuts" },
+                { value: "published", label: "Publié" },
+                { value: "draft", label: "Brouillon" },
+                { value: "archived", label: "Archivé" },
+              ]}
+              className="min-w-[160px]"
+            />
 
-            <select
+            <ThemedSelect
               value={difficultyFilter}
-              onChange={(e) => setDifficultyFilter(e.target.value)}
-              className="px-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-            >
-              <option value="all">Toutes difficultés</option>
-              <option value="easy">Facile</option>
-              <option value="medium">Moyen</option>
-              <option value="hard">Difficile</option>
-            </select>
+              onChange={setDifficultyFilter}
+              options={[
+                { value: "all", label: "Toutes difficultés" },
+                { value: "easy", label: "Facile" },
+                { value: "medium", label: "Moyen" },
+                { value: "hard", label: "Difficile" },
+              ]}
+              className="min-w-[160px]"
+            />
 
-            <select
+            <ThemedSelect
               value={courseFilter}
-              onChange={(e) => setCourseFilter(e.target.value)}
-              className="px-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
-            >
-              <option value="all">Tous les cours</option>
-              {courses.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.title}
-                </option>
-              ))}
-            </select>
+              onChange={setCourseFilter}
+              options={[
+                { value: "all", label: "Tous les cours" },
+                ...courses.map((c) => ({ value: c.id, label: c.title })),
+              ]}
+              className="w-48 max-w-[12rem]"
+            />
           </div>
         </div>
       </div>
@@ -1021,20 +1078,13 @@ export default function AdminExercisesPage() {
       {/* Exercises Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {loading ? (
-          [...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-4 animate-pulse h-64"
-            >
-              <div className="h-32 bg-gray-200 rounded-lg mb-4"></div>
-              <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-            </div>
-          ))
+          <div className="col-span-full">
+            <PageLoader />
+          </div>
         ) : (
           <>
             {/* Folders */}
-            {folders.map((folder) => {
+            {filteredFolders.map((folder) => {
               const FolderCardIcon = getFolderIcon(folder.icon);
               return (
               <div
@@ -1044,7 +1094,7 @@ export default function AdminExercisesPage() {
                 onDragOver={(e) => handleDragOver(e, folder.id)}
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, folder.id)}
-                onClick={() => setCurrentFolderId(folder.id)}
+                onClick={() => { setCurrentFolderId(folder.id); setSearchQuery(""); }}
                 className={`bg-white rounded-2xl p-6 shadow-sm border transition-all group cursor-pointer relative overflow-hidden flex flex-col items-center justify-center text-center aspect-[4/3]
                   ${
                     dragOverFolderId === folder.id
@@ -1071,16 +1121,18 @@ export default function AdminExercisesPage() {
                   >
                     <Edit size={14} />
                   </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDeleteFolder(folder);
-                    }}
-                    className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                    title="Supprimer"
-                  >
-                    <Trash2 size={14} />
-                  </button>
+                  {!folder.is_system && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteFolder(folder);
+                      }}
+                      className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                      title="Supprimer"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  )}
                 </div>
 
                 <div
@@ -1095,13 +1147,26 @@ export default function AdminExercisesPage() {
                 <h3 className="font-bold text-gray-800 text-lg mb-1 truncate w-full px-2">
                   {folder.name}
                 </h3>
-                <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
-                  {folder.status === "published"
-                    ? "Publié"
-                    : folder.status === "archived"
-                    ? "Archivé"
-                    : "Brouillon"}
-                </p>
+                {!folder.is_system && (
+                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
+                    {folder.status === "published"
+                      ? "Publié"
+                      : folder.status === "archived"
+                      ? "Archivé"
+                      : "Brouillon"}
+                  </p>
+                )}
+                {(() => {
+                  const subCount = currentFolderId === null ? 0 : allFolderCounts.filter((f) => f.parent_id === folder.id).length;
+                  const itemCount = allExercises.filter((ex) => ex.folder_id === folder.id).length;
+                  if (subCount === 0 && itemCount === 0) return null;
+                  const parts = [];
+                  if (subCount > 0) parts.push(`${subCount} dossier${subCount > 1 ? "s" : ""}`);
+                  if (itemCount > 0) parts.push(`${itemCount} exercice${itemCount > 1 ? "s" : ""}`);
+                  return (
+                    <p className="text-xs text-gray-400 mt-1">{parts.join(" · ")}</p>
+                  );
+                })()}
               </div>
               );
             })}
@@ -1193,7 +1258,7 @@ export default function AdminExercisesPage() {
               </div>
             ))}
 
-            {filteredExercises.length === 0 && folders.length === 0 && (
+            {filteredExercises.length === 0 && filteredFolders.length === 0 && (
               <div className="col-span-full text-center py-12 text-gray-500">
                 Aucun contenu dans ce dossier
               </div>
@@ -1247,28 +1312,6 @@ export default function AdminExercisesPage() {
                   className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                   placeholder="Ex: Mathématiques"
                 />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Niveau du dossier
-                </label>
-                <select
-                  value={folderFormData.grade_level}
-                  onChange={(e) =>
-                    setFolderFormData({
-                      ...folderFormData,
-                      grade_level: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
-                >
-                  <option value="all">Tous niveaux</option>
-                  {SCHOOL_LEVELS.map((level) => (
-                    <option key={level.value} value={level.value}>
-                      {level.label}
-                    </option>
-                  ))}
-                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -1495,6 +1538,11 @@ export default function AdminExercisesPage() {
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Niveau scolaire</label>
+                      {!editingExercise && currentFolderLevel ? (
+                        <div className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl bg-blue-50 font-semibold text-[var(--greek-blue)]">
+                          {getLevelLabel(currentFolderLevel)}
+                        </div>
+                      ) : (
                       <select
                         value={formData.level}
                         onChange={(e) => setFormData({ ...formData, level: e.target.value })}
@@ -1502,6 +1550,7 @@ export default function AdminExercisesPage() {
                       >
                         {SCHOOL_LEVELS.map((level) => (<option key={level.value} value={level.value}>{level.label}</option>))}
                       </select>
+                      )}
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Difficulté</label>

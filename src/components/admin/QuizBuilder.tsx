@@ -312,7 +312,7 @@ export default function QuizBuilder({
         <div className="space-y-6" ref={contentRef}>
           {questions.map((question, index) => (
             <div
-              key={question.id}
+              key={question.id || `question-${index}`}
               draggable
               onDragStart={() => setDraggedQuestion(index)}
               onDragOver={(e) => e.preventDefault()}

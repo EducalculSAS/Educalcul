@@ -45,3 +45,19 @@ export const SCHOOL_LEVEL_GROUPS = [
 export function getLevelLabel(value: string): string {
   return SCHOOL_LEVELS.find((l) => l.value === value)?.label ?? value;
 }
+
+/**
+ * Détermine le niveau "imposé" par l'espace de publication courant : le niveau
+ * du dossier le plus proche (en remontant vers la racine) qui a un niveau
+ * spécifique défini (différent de "all"). Retourne null si on est à la racine
+ * ou dans un dossier "Tous niveaux".
+ */
+export function getEffectiveFolderLevel(
+  breadcrumbs: { grade_level?: string | null }[]
+): string | null {
+  for (let i = breadcrumbs.length - 1; i >= 0; i--) {
+    const level = breadcrumbs[i]?.grade_level;
+    if (level && level !== "all") return level;
+  }
+  return null;
+}

@@ -48,29 +48,13 @@ export async function POST(request: Request) {
       ? "Vocabulaire ACADÉMIQUE : terminologie mathématique précise et rigoureuse, formulations formelles, style de manuel universitaire."
       : "Vocabulaire STANDARD : registre scolaire usuel, équilibre entre rigueur et accessibilité.";
 
-  const exercisesSchemaSnippet = includeExercises
-    ? `,
-          "exercises": [
-            {
-              "id": "ex-1",
-              "question": "Énoncé clair (peut contenir du LaTeX inline avec $...$)",
-              "type": "short_answer",
-              "answer": "réponse exacte attendue (normalisée, simple)",
-              "hint": "Indice utile sans donner la réponse",
-              "explanation": "Explication courte de la solution avec les étapes"
-            }
-          ]`
-    : "";
-
   const exercisesInstruction = includeExercises
     ? `═══ MINI-EXERCICES (OBLIGATOIRES) ═══
-• Chaque leçon doit contenir 2 à 3 mini-exercices interactifs dans le tableau "exercises".
-• Type unique supporté : "short_answer" (réponse courte texte).
-• La "answer" doit être une chaîne courte et normalisée (ex: "5/4", "12", "x=3"). Évite les espaces inutiles.
-• Fournis un "hint" pédagogique et une "explanation" courte avec les étapes.
-• Les exercices doivent porter sur le contenu spécifique de la leçon.`
+• Chaque leçon doit contenir 3 à 6 mini-exercices interactifs dans le tableau "exercises", au format : { "id": "ex-1", "question": "Énoncé clair (peut contenir du LaTeX inline avec $...$)", "type": "short_answer", "answer": "réponse exacte attendue (normalisée, simple, ex: \\"5/4\\", \\"12\\", \\"x=3\\")", "hint": "Indice utile sans donner la réponse", "explanation": "Explication courte de la solution avec les étapes" }.
+• RÉPARTIS DANS LE COURS (pas regroupés à la fin) : dès qu'une notion/définition/méthode est expliquée dans "content", insère IMMÉDIATEMENT APRÈS un placeholder <div class="lesson-exercise" data-exercise-id="ex-1"></div> qui référence l'exercice correspondant par son "id", pour une application immédiate.
+• Chaque placeholder doit correspondre à un "id" présent dans "exercises".`
     : `═══ MINI-EXERCICES ═══
-• N'inclus PAS de tableau "exercises" dans les leçons (ou laisse-le vide).`;
+• Laisse le tableau "exercises" vide ([]) et n'insère aucun placeholder "lesson-exercise".`;
 
   const programmeBlock = getProgrammePromptBlock(grade_level);
 
@@ -90,13 +74,18 @@ ${programmeBlock ? programmeBlock + "\n" : ""}
 • Chaque leçon doit inclure : théorie, exemples détaillés étape par étape, contre-exemples, erreurs fréquentes, exercices d'application résolus.
 • duration = ${durationPerLesson} minutes pour chaque leçon.
 
-═══ STRUCTURE D'UNE LEÇON MODÈLE ═══
+═══ PÉDAGOGIE ═══
+Commence toujours par une définition claire, avec un exemple simple, en expliquant au maximum. Utilise une méthodologie "pas à pas", interactive et ludique. Chaque méthode d'exercice doit être expliquée clairement, simplement, et idéalement illustrée d'un mini-exercice d'application direct. Ne parle jamais d'une notion mathématique hors-programme, et n'utilise pas en début de chapitre une notion difficile ou une notion qui ne sera vue qu'en fin de chapitre. Illustre ton contenu avec des schémas simples, des graphiques ou tableaux pour les fonctions.
+
+⚠️ DÈS QU'UNE NOTION, UNE DÉFINITION OU UNE MÉTHODE EST EXPLIQUÉE dans "content", insère IMMÉDIATEMENT APRÈS un placeholder <div class="lesson-exercise" data-exercise-id="ex-N"></div> référençant un exercice du tableau "exercises", pour que l'élève s'exerce avant de passer à la suite. Ne regroupe PAS tous les exercices à la fin : répartis-les tout au long du "content", juste après chaque notion vue.
+
+═══ STRUCTURE D'UNE LEÇON MODÈLE (chaque point = une section du "content", suivie d'un placeholder exercice si une notion vient d'être introduite) ═══
 1. Introduction et contexte (pourquoi ce concept est important)
-2. Définition(s) formelle(s) avec explications accessibles
-3. Propriétés et théorèmes avec démonstrations ou justifications
-4. Exemples progressifs (simple → complexe) avec TOUTES les étapes de calcul
+2. Définition(s) formelle(s) avec explications accessibles → placeholder exercice d'application immédiate
+3. Propriétés et théorèmes avec démonstrations ou justifications → placeholder exercice
+4. Exemples progressifs (simple → complexe) avec TOUTES les étapes de calcul → placeholder exercice après chaque exemple
 5. Contre-exemples et pièges courants à éviter
-6. Méthode de résolution pas à pas
+6. Méthode de résolution pas à pas → placeholder exercice
 7. Exercices d'application résolus (au moins 2)
 8. Points-clés à retenir (résumé en bullets)
 
@@ -106,9 +95,12 @@ ${programmeBlock ? programmeBlock + "\n" : ""}
 • Inline : $formule$ — Bloc : $$formule$$
 • N'utilise JAMAIS de retour à la ligne littéral à l'intérieur d'une chaîne JSON : écris le HTML sur une seule ligne (utilise <br> ou des balises pour la mise en forme, pas de \\n).
 • DOUBLE-ÉCHAPPE les backslashes JSON : \\\\frac{a}{b} → donne \\frac{a}{b} dans le rendu
+• N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z dans \\frac, \\sqrt, \\infty, \\theta, etc.) — n'écris JAMAIS de caractères cyrilliques ou non-latins à l'intérieur d'une formule $...$ ou $$...$$.
+• Rédige UNIQUEMENT en français correct : relis chaque phrase, n'utilise aucun mot d'une autre langue (espagnol, anglais, etc.) ni de mot inventé/déformé.
+• Chaque formule $...$ ou $$...$$ doit être correctement fermée AVANT toute balise HTML (<td>, </tr>, etc.) : ne mélange jamais du HTML à l'intérieur d'une formule LaTeX.
 
 ═══ TABLEAUX & GRAPHIQUES (à utiliser SI PERTINENT, sans en abuser) ═══
-• Si la notion s'y prête (étude de fonction, signe, variations, tableau de valeurs, etc.), insère DIRECTEMENT dans le "content" HTML un tableau au format :
+• Si la notion s'y prête (étude de fonction, signe, variations, tableau de valeurs, etc.), insère DIRECTEMENT dans "content" un tableau au format :
   <table class="math-table math-table-sign"><thead><tr><th>x</th>...</tr></thead><tbody><tr><td>...</td></tr></tbody></table>
   (classes possibles : math-table-value, math-table-sign, math-table-variation). Utilise ↗, ↘, +, -, 0, ∞, ‖ pour les signes/variations.
 • Pour une courbe simple (fonction affine, second degré, etc.), insère un placeholder de graphique au format :
@@ -206,19 +198,22 @@ Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
     {
       "title": "Titre précis de la leçon",
       "type": "text",
-      "content": "Contenu HTML très riche (600-1200 mots minimum)",
-      "duration": ${durationPerLesson}${exercisesSchemaSnippet}
+      "content": "Contenu HTML très riche (600-1200 mots), avec des placeholders <div class=\\"lesson-exercise\\" data-exercise-id=\\"ex-N\\"></div> insérés juste après chaque notion/définition/méthode",
+      "duration": ${durationPerLesson},
+      "exercises": [
+        { "id": "ex-1", "question": "Énoncé (LaTeX inline $...$ possible)", "type": "short_answer", "answer": "réponse courte normalisée", "hint": "Indice", "explanation": "Explication avec étapes" }
+      ]
     }
   ]
 }`;
 
           const chapterUser = `Rédige le chapitre "${chapterTitle}" du cours "${courseTitle}" (niveau ${grade_level}).
-Le tableau "lessons" doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s), chacune ${durationPerLesson} minutes, 600-1200 mots minimum.
-${includeExercises ? `Chaque leçon doit inclure 2-3 mini-exercices interactifs (type "short_answer") dans le tableau "exercises".` : `N'inclus pas de mini-exercices.`}
+Le tableau "lessons" doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s), chacune ${durationPerLesson} minutes.
+Chaque leçon doit avoir un "content" HTML riche (600-1200 mots au total), ${includeExercises ? `et un tableau "exercises" de 3 à 6 mini-exercices (type "short_answer"), avec un placeholder <div class="lesson-exercise" data-exercise-id="..."></div> inséré dans "content" juste après chaque notion expliquée` : `et un tableau "exercises" vide`}.
 ${additional_info ? `Instructions spécifiques de l'enseignant : ${additional_info}` : ""}
 Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
 
-          const chapterData = (await generateStructuredContent(chapterUser, chapterSystem, 0.65)) as {
+          const chapterData = (await generateStructuredContent(chapterUser, chapterSystem, 0.65, 16000)) as {
             title?: string;
             lessons?: unknown[];
           };
