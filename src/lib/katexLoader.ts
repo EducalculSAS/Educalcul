@@ -2,6 +2,26 @@
 
 import katex from "katex";
 import "katex/dist/katex.min.css";
+import DOMPurify from "dompurify";
+
+/**
+ * Nettoie le HTML avant injection (anti-XSS) tout en conservant le rendu KaTeX,
+ * les graphiques SVG et la mise en forme du cours.
+ * - Client : DOMPurify (autorise HTML + SVG + MathML, retire scripts, on*, javascript:).
+ * - SSR (pas de DOM) : repli minimal retirant les vecteurs principaux ; le client re-nettoie.
+ */
+export function sanitizeHtml(html: string): string {
+  if (typeof window !== "undefined" && (DOMPurify as any)?.sanitize) {
+    return DOMPurify.sanitize(html, {
+      USE_PROFILES: { html: true, svg: true, svgFilters: true, mathMl: true },
+      ADD_ATTR: ["target"],
+    });
+  }
+  return html
+    .replace(/<\s*script[\s\S]*?<\s*\/\s*script\s*>/gi, "")
+    .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+    .replace(/javascript:/gi, "");
+}
 
 /**
  * Pré-rend tout le LaTeX dans une chaîne HTML avant de l'injecter dans le DOM.
@@ -43,7 +63,8 @@ export function renderLatexInHTML(html: string): string {
     } catch { return match; }
   });
 
-  return result;
+  // Nettoyage anti-XSS après le rendu LaTeX (conserve KaTeX/SVG/MathML).
+  return sanitizeHtml(result);
 }
 
 // Fonctions gardées pour compatibilité (no-op)
