@@ -28,7 +28,12 @@ export async function GET(request: Request) {
     if (parentId === "all") {
       // Do nothing, fetch all folders
     } else if (parentId && parentId !== "null") {
-      query = query.eq("parent_id", Number(parentId));
+      // Valide que parent_id est bien un entier (sinon Postgres renvoie une 500).
+      const pid = Number(parentId);
+      if (!Number.isInteger(pid)) {
+        return NextResponse.json({ error: "Invalid parent_id" }, { status: 400 });
+      }
+      query = query.eq("parent_id", pid);
     } else {
       query = query.is("parent_id", null);
     }
