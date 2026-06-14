@@ -71,11 +71,21 @@ export async function GET(req: Request) {
 // POST: Save a new activity
 export async function POST(req: Request) {
   try {
+    // ✓ SÉCURITÉ : exiger une session valide et empêcher l'écriture de la
+    // progression d'un autre utilisateur (IDOR). Cette route n'est PAS couverte
+    // par le middleware (/api/child/*), elle doit donc s'authentifier elle-même.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await req.json();
     const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status, scorePercent, passed, lessonsCompleted, lessonCount, lastLessonId, lastChapterIndex, lastLessonIndex } = body;
 
     if (!type || !userId || !itemId) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    if (!(await canActOnAuthId(me, userId))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     // 1. Resolve Auth UUID to internal BIGINT ID

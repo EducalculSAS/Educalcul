@@ -44,17 +44,18 @@ export async function POST(req: Request) {
           // Return success anyway if payment is confirmed, but log the error
           // The user can contact support if subscription is not active
           // Or we could implement a retry mechanism
+          // Ne pas renvoyer l'objet `session` complet (PII : e-mail, client
+          // Stripe, montants) — le client n'a besoin que du statut.
           return NextResponse.json(
-            { 
-              status: 'success', 
-              session, 
-              warning: 'Payment successful but database update failed. Please contact support.' 
+            {
+              status: 'success',
+              warning: 'Payment successful but database update failed. Please contact support.'
             }
           );
         }
       }
 
-      return NextResponse.json({ status: 'success', session });
+      return NextResponse.json({ status: 'success' });
     } else {
       return NextResponse.json(
         { status: 'pending', message: 'Payment not completed' },

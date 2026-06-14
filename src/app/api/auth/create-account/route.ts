@@ -38,8 +38,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
 
-    // ✓ SECURITY: Validate role
-    if (!["parent", "child", "admin"].includes(role)) {
+    // ✓ SECURITY (élévation de privilèges) : l'inscription publique ne peut JAMAIS
+    // créer un compte admin. Les comptes admin sont provisionnés hors de ce flux.
+    if (!["parent", "child"].includes(role)) {
       return NextResponse.json({ error: "Invalid role" }, { status: 400 });
     }
 
