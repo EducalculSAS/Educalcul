@@ -2,6 +2,7 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 
 export async function POST(
@@ -12,6 +13,13 @@ export async function POST(
     // Require a valid session: the AI grader costs money — no anonymous calls.
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    // Limite anti-abus (la correction IA coûte des crédits)
+    const cfg = RATE_LIMITS["ai:grade"];
+    const rl = rateLimitWithBackoff(`ai:grade:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de corrections, réessaie plus tard." }, { status: 429 });
+    }
 
     const { id } = await params;
     const body = await req.json();
@@ -180,7 +188,10 @@ export async function POST(
     // /api/child/exercises/[id]/progress, qui résolvent correctement l'auth_id
     // vers l'id interne et utilisent un upsert sur (user_id, exercise_id).
     if (id !== "preview") {
-      fetch(`${req.headers.get("origin") || ""}/api/child/check-badges`, {
+      // Origine serveur réelle (et non l'en-tête Origin du client, falsifiable :
+      // on ne veut pas envoyer le jeton de l'utilisateur vers un hôte arbitraire).
+      const selfOrigin = new URL(req.url).origin;
+      fetch(`${selfOrigin}/api/child/check-badges`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

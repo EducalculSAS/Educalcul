@@ -3,9 +3,13 @@ import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser } from '@/lib/apiAuth';
 import { computeCustomPlan } from '@/lib/customPlanPricing';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 export async function POST(req: Request) {
   try {
+    // URL de base de confiance (config serveur) — jamais l'en-tête Origin du
+    // client, qui peut être falsifié (open redirect via les URLs Stripe).
+    const baseUrl = getSiteUrl();
     let { planId, userId, email, referralCode, isNewSignup, customConfig } = await req.json();
 
     if ((!planId && !customConfig) || !email) {
@@ -76,10 +80,10 @@ export async function POST(req: Request) {
           status: 'active',
           current_period_start: new Date().toISOString(),
         }, { onConflict: 'user_id' });
-        return NextResponse.json({ url: `${req.headers.get('origin')}/parent/subscription?success=1` });
+        return NextResponse.json({ url: `${baseUrl}/parent/subscription?success=1` });
       }
       // For new signups on free plan, redirect with success so account gets created
-      return NextResponse.json({ url: `${req.headers.get('origin')}/parent/subscription?new=true&success=1&session_id=free` });
+      return NextResponse.json({ url: `${baseUrl}/parent/subscription?new=true&success=1&session_id=free` });
     }
 
     // Resolve discount from referral code or pending reward
@@ -136,7 +140,7 @@ export async function POST(req: Request) {
       quantity: 1,
     };
 
-    const origin = req.headers.get('origin');
+    const origin = baseUrl;
     const sessionData: any = {
       payment_method_types: ['card'],
       line_items: [lineItem],

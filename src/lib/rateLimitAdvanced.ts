@@ -118,6 +118,7 @@ export const RATE_LIMITS = {
   'ai:tutor': { maxAttempts: 30, windowMs: 60 * 60 * 1000, name: 'AI Tutor' },
   'ai:edit': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'AI Edit' },
   'ai:generate': { maxAttempts: 15, windowMs: 60 * 60 * 1000, name: 'AI Generate' },
+  'ai:grade': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'AI Grading' },
   
   // File upload
   'upload:file': { maxAttempts: 50, windowMs: 60 * 60 * 1000, name: 'File upload' },

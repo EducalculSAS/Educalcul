@@ -2,6 +2,7 @@
 import { gradeAnswer } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(
   req: Request,
@@ -11,6 +12,13 @@ export async function POST(
     // Require a valid session: the AI grader costs money — no anonymous calls.
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    // Limite anti-abus (la correction IA coûte des crédits)
+    const cfg = RATE_LIMITS["ai:grade"];
+    const rl = rateLimitWithBackoff(`ai:grade:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de corrections, réessaie plus tard." }, { status: 429 });
+    }
 
     const { id } = await params;
     const body = await req.json();
