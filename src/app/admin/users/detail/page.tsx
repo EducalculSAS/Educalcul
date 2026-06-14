@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { supabase } from "@/lib/supabaseClient";
+import { SCHOOL_LEVELS } from "@/lib/constants";
+import ThemedSelect from "@/components/admin/ThemedSelect";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -218,7 +220,7 @@ showToast("success", "Profil mis à jour");
 
       {/* Header */}
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div className="flex flex-col gap-4">
           <div className="flex items-start gap-4 min-w-0">
             <button onClick={() => router.push("/admin/users")} className="p-2 text-[var(--greek-blue)] hover:bg-blue-50 rounded-xl transition-colors shrink-0 mt-1">
               <ArrowLeft size={20} />
@@ -229,21 +231,20 @@ showToast("success", "Profil mis à jour");
               </div>
               {isBanned && <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center"><Ban className="w-3 h-3 text-white" /></div>}
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-1">
                 {roleBadge(user.role)}
                 {isBanned && <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 flex items-center gap-1"><Ban className="w-3 h-3" />Banni</span>}
               </div>
-              {/* Name wraps on long names */}
-              <h1 className="text-xl md:text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] break-words leading-tight">
+              <h1 className="text-xl lg:text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] truncate leading-tight">
                 {user.first_name} {user.last_name}
               </h1>
-              <p className="text-gray-500 text-sm mt-0.5 break-all">{user.email}</p>
+              <p className="text-gray-500 text-sm mt-0.5 truncate">{user.email}</p>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="flex flex-wrap gap-2 shrink-0">
+          <div className="flex flex-wrap gap-2">
             <button onClick={() => { setEditForm({ first_name: user.first_name || "", last_name: user.last_name || "", email: user.email || "", role: user.role, status: user.status, grade_level: user.grade_level || "", password: "" }); setShowEditModal(true); }}
               className="flex items-center gap-2 px-4 py-2 border border-[var(--greek-blue)] text-[var(--greek-blue)] rounded-xl text-sm font-semibold hover:bg-blue-50 transition-colors">
               <Edit size={14} /> Modifier
@@ -559,7 +560,13 @@ showToast("success", "Profil mis à jour");
                   </select>
                 </div>
               </div>
-              {editForm.role === "child" && <div><label className={labelCls}>Niveau</label><input value={editForm.grade_level} onChange={e => setEditForm({ ...editForm, grade_level: e.target.value })} className={inputCls} placeholder="6eme..." /></div>}
+              {editForm.role === "child" && <div><label className={labelCls}>Niveau</label>
+                <ThemedSelect
+                  value={editForm.grade_level}
+                  onChange={(v) => setEditForm({ ...editForm, grade_level: v })}
+                  options={SCHOOL_LEVELS.map(l => ({ value: l.value, label: l.label }))}
+                />
+              </div>}
               <div className="flex justify-end gap-3 pt-2">
                 <button onClick={() => setShowEditModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
                 <button onClick={saveEdit} disabled={actionLoading} className="flex items-center gap-2 px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-50">

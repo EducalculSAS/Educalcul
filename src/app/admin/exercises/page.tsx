@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
 import ExerciseGeneratorModal, { ExerciseGenParams, AIGenerateProgress } from "@/components/admin/ExerciseGeneratorModal";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
@@ -181,7 +182,7 @@ export default function AdminExercisesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Folder navigation state
-  const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_exercises_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<ExerciseFolder[]>([]);
   const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
 
@@ -250,20 +251,21 @@ export default function AdminExercisesPage() {
       setFormData({
         title: data.title || "",
         description: data.description || "",
-        course_id: "",
-        difficulty_level: "medium",
+        course_id: data.course_id || "",
+        difficulty_level: data.difficulty_level || "medium",
         type: data.type || "standard",
         level: data.level || "6eme",
-        grading_type: "auto",
+        grading_type: data.grading_type || "auto",
         status: data.status || "draft",
         thumbnail_url: data.thumbnail_url || "",
-        folder_id: "",
+        folder_id: data.folder_id || "",
         time_limit: data.time_limit || 0,
         time_limit_minutes: data.time_limit_minutes || 0,
         min_score_percent: data.min_score_percent || 0,
         max_attempts: data.max_attempts || 0,
         content_json: data.content_json || [],
       });
+      setEditingExercise(data.id ? ({ id: data.id } as Exercise) : null);
       setIsModalOpen(true);
     } catch (err: any) { alert(err.message); }
   };

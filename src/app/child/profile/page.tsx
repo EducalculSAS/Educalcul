@@ -12,6 +12,7 @@ import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
+import { getSimpleLevelLabel } from "@/lib/constants";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -176,7 +177,7 @@ export default function ChildProfilePage() {
         {/* ── Stats rapides ── */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { icon: School,   label: "Niveau",       value: user.grade_level || "—", color: "#3b82f6" },
+            { icon: School,   label: "Niveau",       value: user.grade_level ? getSimpleLevelLabel(user.grade_level) : "—", color: "#3b82f6" },
             { icon: Trophy,   label: "Trophées",     value: "0",                    color: "var(--greek-gold)" },
             { icon: BookOpen, label: "Cours suivis", value: `${activities.courses.length}`, color: "#a855f7" },
             { icon: Brain,    label: "Exercices",    value: `${activities.exercises.length}`, color: "#10b981" },

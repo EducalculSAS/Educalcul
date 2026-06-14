@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect } from "react";
+import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
 import {
   Calculator,
@@ -27,7 +28,7 @@ export default function ChildExercisesPage() {
   const [allFolders, setAllFolders] = useState<any[]>([]);
   const [exerciseProgress, setExerciseProgress] = useState<Record<string, { status: string; score: number; attempts: number }>>({});
 
-  const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_exercises_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
 
   useEffect(() => {
@@ -117,6 +118,18 @@ export default function ChildExercisesPage() {
       setCurrentFolderId(breadcrumbs[index].id);
     }
   };
+
+  // Reconstruct breadcrumbs from the persisted folder id once folders are loaded
+  useEffect(() => {
+    if (allFolders.length === 0 || currentFolderId === null) return;
+    const path: { id: number; name: string }[] = [];
+    let f = allFolders.find((x) => x.id === currentFolderId);
+    while (f) {
+      path.unshift({ id: f.id, name: f.name });
+      f = f.parent_id ? allFolders.find((x) => x.id === f.parent_id) : undefined;
+    }
+    setBreadcrumbs(path);
+  }, [allFolders, currentFolderId]);
 
   const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
   const currentExercises = allExercises.filter(ex => (ex.folder_id ?? null) === currentFolderId);

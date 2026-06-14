@@ -10,6 +10,7 @@ import {
   X, Eye, Ban, Download, FileText, Table,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import PageLoader from "@/components/PageLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 
 interface User {
@@ -533,7 +534,7 @@ export default function AdminUsersPage() {
             </thead>
             <tbody className="divide-y divide-gray-50">
               {loading ? (
-                <tr><td colSpan={6} className="py-12 text-center text-gray-400"><Loader2 className="w-6 h-6 animate-spin mx-auto mb-2" />Chargement...</td></tr>
+                <tr><td colSpan={6} className="py-12"><PageLoader /></td></tr>
               ) : filteredUsers.length === 0 ? (
                 <tr><td colSpan={6} className="py-12 text-center text-gray-400">Aucun utilisateur trouvé</td></tr>
               ) : filteredUsers.map(user => {

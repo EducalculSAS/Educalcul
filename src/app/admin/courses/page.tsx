@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
 import PageLoader from "@/components/PageLoader";
 import ThemedSelect from "@/components/admin/ThemedSelect";
@@ -107,7 +108,7 @@ const getFolderIcon = (iconName?: string | null) => {
 export default function AdminCoursesPage() {
   const confirm = useConfirm();
   // Navigation State
-  const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_courses_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<Folder[]>([]);
   // Niveau imposé par l'espace de publication courant (dossier de niveau parent)
   const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
@@ -160,10 +161,16 @@ export default function AdminCoursesPage() {
         level: data.level || "6eme",
         status: data.status || "draft",
         thumbnail_url: data.thumbnail_url || "",
-        folder_id: null,
+        folder_id: data.folder_id ?? currentFolderId,
         content_json: data.content_json || [],
       });
-      setCurrentCourse(null);
+      if (data.id) {
+        setCurrentCourse({ id: data.id } as Course);
+        setModalMode("edit");
+      } else {
+        setCurrentCourse(null);
+        setModalMode("create");
+      }
       setIsModalOpen(true);
     } catch (err: any) { alert(err.message); }
     e.target.value = "";

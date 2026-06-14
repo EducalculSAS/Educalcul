@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
-import AIEditModal from "./AIEditModal";
+import AISectionEditModal from "./AISectionEditModal";
+import AIAddContentModal from "./AIAddContentModal";
 import LessonContentEditor from "./LessonContentEditor";
 import SingleBlockEditor from "./SingleBlockEditor";
 import { deriveLegacyFields } from "@/lib/lessonBlocks";
@@ -56,8 +57,18 @@ interface CourseBuilderProps {
 
 export default function CourseBuilder({ initialContent, onChange, level }: CourseBuilderProps) {
   const confirm = useConfirm();
-  const [chapters, setChapters] = useState<Chapter[]>(initialContent || []);
-  const [isAiEditModalOpen, setIsAiEditModalOpen] = useState(false);
+  // Normalise : un chapitre a toujours un tableau "lessons" (un chapitre vide
+  // ou généré sans leçons pouvait avoir lessons === undefined → crash).
+  const [chapters, setChapters] = useState<Chapter[]>(
+    (initialContent || []).map((c) => ({ ...c, lessons: c.lessons || [] }))
+  );
+  const [isAiAddModalOpen, setIsAiAddModalOpen] = useState(false);
+  // Cible d'une édition IA ciblée (une leçon ou un chapitre précis)
+  const [aiEditTarget, setAiEditTarget] = useState<
+    | { scope: "chapter"; chapterId: string }
+    | { scope: "lesson"; chapterId: string; lessonId: string }
+    | null
+  >(null);
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(new Set());
   const [uploadingLesson, setUploadingLesson] = useState<string | null>(null);
   const [draggedChapter, setDraggedChapter] = useState<number | null>(null);
@@ -81,6 +92,47 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
       if (from === to || to < 0 || to >= c.lessons.length) return c;
       return { ...c, lessons: reorder(c.lessons, from, to) };
     }));
+  };
+
+  // Déplace une leçon vers un autre chapitre (ajoutée à la fin de la cible).
+  const moveLessonToChapter = (fromChapterId: string, lessonId: string, toChapterId: string) => {
+    if (fromChapterId === toChapterId) return;
+    setChapters(prev => {
+      const lesson = prev.find(c => c.id === fromChapterId)?.lessons.find(l => l.id === lessonId);
+      if (!lesson) return prev;
+      return prev.map(c => {
+        if (c.id === fromChapterId) return { ...c, lessons: c.lessons.filter(l => l.id !== lessonId) };
+        if (c.id === toChapterId) return { ...c, lessons: [...c.lessons, lesson] };
+        return c;
+      });
+    });
+    // On déplie le chapitre cible pour que la leçon déplacée reste visible.
+    setExpandedChapters(prev => new Set(prev).add(toChapterId));
+  };
+
+  // Insère un élément dans un tableau selon une position ("start" | "end" | id existant).
+  const insertAt = <T extends { id: string }>(arr: T[], item: T, position: string): T[] => {
+    const copy = [...arr];
+    if (position === "start") copy.unshift(item);
+    else if (position === "end") copy.push(item);
+    else {
+      const i = copy.findIndex(x => x.id === position);
+      if (i >= 0) copy.splice(i + 1, 0, item);
+      else copy.push(item);
+    }
+    return copy;
+  };
+
+  const addChapterFromAI = (chapter: Chapter, position: string) => {
+    setChapters(prev => insertAt(prev, chapter, position));
+    setExpandedChapters(prev => new Set(prev).add(chapter.id));
+  };
+
+  const addLessonFromAI = (lesson: Lesson, chapterId: string, position: string) => {
+    setChapters(prev => prev.map(c =>
+      c.id === chapterId ? { ...c, lessons: insertAt(c.lessons, lesson, position) } : c
+    ));
+    setExpandedChapters(prev => new Set(prev).add(chapterId));
   };
 
   const handleLessonFileUpload = async (
@@ -265,11 +317,11 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setIsAiEditModalOpen(true)}
+            onClick={() => setIsAiAddModalOpen(true)}
             className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm font-medium"
           >
             <Sparkles size={16} />
-            Modifier avec l'IA
+            Ajouter avec l'IA
           </button>
           <button
             type="button"
@@ -282,15 +334,44 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
         </div>
       </div>
 
-      {isAiEditModalOpen && (
-        <AIEditModal
-          type="course"
+      {isAiAddModalOpen && (
+        <AIAddContentModal
           level={level}
-          content={chapters}
-          onApply={(updated) => setChapters(updated)}
-          onClose={() => setIsAiEditModalOpen(false)}
+          chapters={chapters}
+          onAddChapter={addChapterFromAI}
+          onAddLesson={addLessonFromAI}
+          onClose={() => setIsAiAddModalOpen(false)}
         />
       )}
+
+      {aiEditTarget?.scope === "chapter" && (() => {
+        const chapter = chapters.find((c) => c.id === aiEditTarget.chapterId);
+        if (!chapter) return null;
+        return (
+          <AISectionEditModal
+            scope="chapter"
+            level={level}
+            section={chapter}
+            onApply={(updated) => updateChapter(chapter.id, updated)}
+            onClose={() => setAiEditTarget(null)}
+          />
+        );
+      })()}
+
+      {aiEditTarget?.scope === "lesson" && (() => {
+        const chapter = chapters.find((c) => c.id === aiEditTarget.chapterId);
+        const lesson = chapter?.lessons.find((l) => l.id === aiEditTarget.lessonId);
+        if (!chapter || !lesson) return null;
+        return (
+          <AISectionEditModal
+            scope="lesson"
+            level={level}
+            section={lesson}
+            onApply={(updated) => updateLesson(chapter.id, lesson.id, updated)}
+            onClose={() => setAiEditTarget(null)}
+          />
+        );
+      })()}
 
       {chapters.length === 0 ? (
         <div className="text-center py-12 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
@@ -351,6 +432,15 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                 </div>
                 <button
                   type="button"
+                  onClick={() => setAiEditTarget({ scope: "chapter", chapterId: chapter.id })}
+                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
+                  title="Modifier ce chapitre avec l'IA"
+                >
+                  <Sparkles size={14} />
+                  <span className="hidden sm:inline">IA</span>
+                </button>
+                <button
+                  type="button"
                   onClick={() => removeChapter(chapter.id)}
                   className="text-gray-400 hover:text-red-500 transition-colors"
                 >
@@ -361,7 +451,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
               {/* Lessons List */}
               {expandedChapters.has(chapter.id) && (
                 <div className="p-4 space-y-4 bg-white">
-                  {chapter.lessons.map((lesson, lIndex) => (
+                  {(chapter.lessons || []).map((lesson, lIndex) => (
                     <div
                       key={lesson.id}
                       className="flex flex-col sm:flex-row gap-3 p-4 border border-[rgba(197,161,72,0.25)] rounded-lg hover:border-blue-100 transition-colors group"
@@ -379,7 +469,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                         <button
                           type="button"
                           onClick={() => moveLesson(chapter.id, lIndex, lIndex + 1)}
-                          disabled={lIndex === chapter.lessons.length - 1}
+                          disabled={lIndex === (chapter.lessons || []).length - 1}
                           className="hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
                           title="Descendre"
                         >
@@ -425,16 +515,45 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                                   min="0"
                                 />
                               </div>
+
+                              {chapters.length > 1 && (
+                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                  <span className="text-xs uppercase whitespace-nowrap">Chapitre</span>
+                                  <select
+                                    value={chapter.id}
+                                    onChange={(e) => moveLessonToChapter(chapter.id, lesson.id, e.target.value)}
+                                    className="text-sm border border-[rgba(197,161,72,0.25)] rounded-lg text-gray-600 focus:ring-blue-500 focus:border-blue-500 px-2 py-1.5 max-w-[180px]"
+                                    title="Déplacer cette leçon vers un autre chapitre"
+                                  >
+                                    {chapters.map((c, i) => (
+                                      <option key={c.id} value={c.id}>
+                                        {`Ch. ${i + 1}${c.title ? ` — ${c.title}` : ""}`}
+                                      </option>
+                                    ))}
+                                  </select>
+                                </div>
+                              )}
                             </div>
                           </div>
 
-                          <button
-                            type="button"
-                            onClick={() => removeLesson(chapter.id, lesson.id)}
-                            className="text-gray-300 hover:text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex-shrink-0"
-                          >
-                            <Trash2 size={16} />
-                          </button>
+                          <div className="flex items-center gap-2 flex-shrink-0">
+                            <button
+                              type="button"
+                              onClick={() => setAiEditTarget({ scope: "lesson", chapterId: chapter.id, lessonId: lesson.id })}
+                              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
+                              title="Modifier cette leçon avec l'IA"
+                            >
+                              <Sparkles size={14} />
+                              <span className="hidden sm:inline">IA</span>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => removeLesson(chapter.id, lesson.id)}
+                              className="text-gray-300 hover:text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
                         </div>
 
                         {/* Content Editor based on Type */}

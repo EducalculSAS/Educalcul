@@ -66,7 +66,9 @@ export default function AIEditModal({
         );
 
       for (const item of data.items || []) {
+        if (!item || typeof item !== "object") continue;
         const { after_id, parent_id, level, ...rest } = item;
+        if (!rest.id) continue; // item invalide (sans id) : on l'ignore
 
         // Détecte un item "enfant" (leçon/bloc) même si l'IA n'a pas correctement
         // renseigné "level" : un item enfant n'a PAS de tableau childKey (ex: "lessons").
@@ -85,7 +87,10 @@ export default function AIEditModal({
           if (!Array.isArray(parent[childKey])) parent[childKey] = [];
           const cidx = parent[childKey].findIndex((c: any) => c?.id === rest.id);
           if (cidx >= 0) {
-            parent[childKey][cidx] = rest;
+            // Fusion (et non remplacement) : si l'IA n'a renvoyé qu'une partie
+            // des champs (ex: juste le titre), on conserve les champs existants
+            // (content, blocks, exercises...) pour ne pas vider la leçon/le bloc.
+            parent[childKey][cidx] = { ...parent[childKey][cidx], ...rest };
           } else if (after_id === null) {
             parent[childKey].unshift(rest);
           } else {
@@ -96,7 +101,7 @@ export default function AIEditModal({
           continue;
         }
 
-        // Item au niveau parent (chapitre/page) ou quiz (question) : remplacement complet.
+        // Item au niveau parent (chapitre/page) ou quiz (question).
         const idx = merged.findIndex((it: any) => it?.id === rest.id);
         if (idx >= 0) {
           // Filet de sécurité : si l'IA a omis des sous-éléments existants
@@ -108,7 +113,9 @@ export default function AIEditModal({
               rest[childKey] = [...rest[childKey], ...missing];
             }
           }
-          merged[idx] = rest;
+          // Fusion (et non remplacement) pour préserver les champs non renvoyés
+          // par l'IA (titre, lessons/blocks si absents...).
+          merged[idx] = { ...merged[idx], ...rest };
         } else if (after_id === null) {
           merged.unshift(rest);
         } else {

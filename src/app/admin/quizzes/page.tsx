@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { QUIZ_JSON_TEMPLATE } from "@/lib/jsonTemplates";
@@ -165,7 +166,7 @@ export default function AdminQuizzesPage() {
   const [difficultyFilter, setDifficultyFilter] = useState("all");
 
   // Folder navigation state
-  const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_quizzes_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<QuizFolder[]>([]);
   const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
 
@@ -203,20 +204,20 @@ export default function AdminQuizzesPage() {
       setFormData({
         title: data.title || "",
         description: data.description || "",
-        course_id: "",
-        folder_id: "",
+        course_id: data.course_id || "",
+        folder_id: data.folder_id || "",
         time_limit_minutes: data.time_limit_minutes || data.time_limit || 0,
         min_score_percent: data.min_score_percent || 0,
         difficulty_level: data.difficulty_level || "medium",
         type: data.type || "standard",
         level: data.level || "6eme",
-        grading_type: "auto",
+        grading_type: data.grading_type || "auto",
         max_attempts: data.max_attempts || 0,
         status: data.status || "draft",
         thumbnail_filename: "",
         content_json: data.content_json || [],
       });
-      setEditingQuiz(null);
+      setEditingQuiz(data.id ? ({ id: data.id } as Quiz) : null);
       setIsModalOpen(true);
     } catch (err: any) { alert(err.message); }
   };

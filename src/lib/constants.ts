@@ -46,6 +46,15 @@ export function getLevelLabel(value: string): string {
   return SCHOOL_LEVELS.find((l) => l.value === value)?.label ?? value;
 }
 
+/** Libellé simplifié pour l'espace enfant : pas de détail "spé maths" / "maths expertes" etc. */
+export function getSimpleLevelLabel(value: string): string {
+  if (!value) return value;
+  if (value === "2nde") return "Seconde";
+  if (value.startsWith("1ere-generale")) return "Première";
+  if (value.startsWith("terminale-generale")) return "Terminale";
+  return getLevelLabel(value);
+}
+
 /**
  * Détermine le niveau "imposé" par l'espace de publication courant : le niveau
  * du dossier le plus proche (en remontant vers la racine) qui a un niveau

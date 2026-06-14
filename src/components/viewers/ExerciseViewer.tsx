@@ -20,7 +20,7 @@ import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
-import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
+import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import MathInput, { MathInputHandle } from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import "katex/dist/katex.min.css";
@@ -453,6 +453,12 @@ export default function ExerciseViewer({
     mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [currentPageIndex]);
+
+  // Rend les graphiques interactifs après affichage de la page
+  useEffect(() => {
+    const t = setTimeout(() => enhanceMathGraphs(document.body), 200);
+    return () => clearTimeout(t);
+  }, [currentPageIndex, contentVisible]);
 
   const handleBlockAnswerChange = (blockId: string, value: any) => {
     if (submittedBlocks.has(blockId)) return;

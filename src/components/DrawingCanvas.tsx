@@ -15,7 +15,6 @@ export default function DrawingCanvas({
   initialData?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isDrawing, setIsDrawing] = useState(false);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
   const [tool, setTool] = useState<"pen" | "eraser">("pen");
   const toolRef = useRef(tool);
@@ -25,6 +24,14 @@ export default function DrawingCanvas({
   penColorRef.current = penColor;
   const historyRef = useRef<string[]>([]);
   const [canUndo, setCanUndo] = useState(false);
+
+  const isDrawingRef = useRef(false);
+  const lastPointRef = useRef<{ x: number; y: number } | null>(null);
+  const strokeMovedRef = useRef(false);
+  const lastTapTimeRef = useRef(0);
+  // Une fois qu'un stylet (Apple Pencil) a été utilisé, on ignore le tactile
+  // (doigt/paume) pour éviter que la main posée sur l'écran ne dessine.
+  const penUsedRef = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -39,11 +46,10 @@ export default function DrawingCanvas({
     context.lineWidth = 2;
     setCtx(context);
 
-    // Fill with white background initially to prevent transparent background
+    // Fond blanc initial (évite un fond transparent)
     context.fillStyle = "#FFFFFF";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Load initial data if it's an image
     if (initialData && initialData.startsWith("data:image")) {
       const img = new Image();
       img.onload = () => {
@@ -51,7 +57,7 @@ export default function DrawingCanvas({
       };
       img.src = initialData;
     }
-  }, []); // Only run once on mount
+  }, []); // Au montage uniquement
 
   const pushHistory = () => {
     const canvas = canvasRef.current;
@@ -61,59 +67,107 @@ export default function DrawingCanvas({
     setCanUndo(true);
   };
 
-  const startDrawing = (e: any) => {
-    if (disabled || !ctx || !canvasRef.current) return;
-    pushHistory();
-    const { x, y } = getCoordinates(e);
-    if (toolRef.current === "eraser") {
-      ctx.strokeStyle = "#FFFFFF";
-      ctx.lineWidth = 20;
-    } else {
-      ctx.strokeStyle = penColorRef.current;
-      ctx.lineWidth = 2;
-    }
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    setIsDrawing(true);
-  };
-
-  const draw = (e: any) => {
-    if (!isDrawing || disabled || !ctx || !canvasRef.current) return;
-    const { x, y } = getCoordinates(e);
-    ctx.lineTo(x, y);
-    ctx.stroke();
-  };
-
-  const stopDrawing = () => {
-    if (!isDrawing || disabled || !ctx || !canvasRef.current) return;
-    ctx.closePath();
-    setIsDrawing(false);
-    onChange(canvasRef.current.toDataURL("image/png"));
-  };
-
-  // Convertit les coordonnées de l'événement (CSS px) en coordonnées du canvas
-  // (résolution interne) pour éviter le décalage du trait sur mobile/tactile.
-  const getCoordinates = (e: any) => {
+  // Convertit des coordonnées écran (CSS px) en coordonnées internes du canvas.
+  const getCoordinates = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current!;
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
-
-    let clientX: number;
-    let clientY: number;
-    if (e.nativeEvent instanceof MouseEvent) {
-      clientX = e.nativeEvent.clientX;
-      clientY = e.nativeEvent.clientY;
-    } else {
-      const touch = e.nativeEvent.touches[0] || e.nativeEvent.changedTouches[0];
-      clientX = touch.clientX;
-      clientY = touch.clientY;
-    }
-
     return {
       x: (clientX - rect.left) * scaleX,
       y: (clientY - rect.top) * scaleY,
     };
+  };
+
+  // Épaisseur du trait selon la pression du stylet (sensibilité à l'appui).
+  const lineWidthFor = (pressure: number) => {
+    if (toolRef.current === "eraser") return 24;
+    const p = pressure > 0 ? pressure : 0.5; // souris/doigt : pression neutre
+    return 1 + p * 2.8; // ~1 (léger) à ~3.8 (appuyé)
+  };
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (disabled || !ctx || !canvasRef.current) return;
+    // Rejet de la paume : on ignore le tactile si un stylet est en usage.
+    if (e.pointerType === "touch" && penUsedRef.current) return;
+    if (e.pointerType === "pen") penUsedRef.current = true;
+
+    e.preventDefault();
+    try {
+      canvasRef.current.setPointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+    const { x, y } = getCoordinates(e.clientX, e.clientY);
+    lastPointRef.current = { x, y };
+    isDrawingRef.current = true;
+    strokeMovedRef.current = false;
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDrawingRef.current || disabled || !ctx) return;
+    e.preventDefault();
+
+    // Premier déplacement du trait : on sauvegarde pour pouvoir annuler.
+    if (!strokeMovedRef.current) {
+      strokeMovedRef.current = true;
+      pushHistory();
+    }
+
+    ctx.strokeStyle = toolRef.current === "eraser" ? "#FFFFFF" : penColorRef.current;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    // getCoalescedEvents() renvoie TOUS les points intermédiaires que le
+    // navigateur a regroupés : indispensable pour que les traits rapides du
+    // stylet ne « sautent » pas (sinon ça écrit pas / ça fait des angles).
+    const native = e.nativeEvent as PointerEvent;
+    const events: PointerEvent[] =
+      typeof native.getCoalescedEvents === "function"
+        ? native.getCoalescedEvents()
+        : [native];
+
+    for (const ev of events) {
+      const { x, y } = getCoordinates(ev.clientX, ev.clientY);
+      const prev = lastPointRef.current;
+      if (!prev) {
+        lastPointRef.current = { x, y };
+        continue;
+      }
+      ctx.lineWidth = lineWidthFor(ev.pressure);
+      ctx.beginPath();
+      ctx.moveTo(prev.x, prev.y);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      lastPointRef.current = { x, y };
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (disabled || !canvasRef.current) return;
+    if (!isDrawingRef.current) return;
+    isDrawingRef.current = false;
+    try {
+      canvasRef.current.releasePointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+
+    if (strokeMovedRef.current) {
+      // Vrai trait dessiné
+      onChange(canvasRef.current.toDataURL("image/png"));
+    } else {
+      // Aucun déplacement = simple tap. Deux taps rapides = double-tap :
+      // on change d'outil (stylo ↔ gomme), comme le double-tap de l'Apple Pencil.
+      const now = Date.now();
+      if (now - lastTapTimeRef.current < 320) {
+        setTool((t) => (t === "pen" ? "eraser" : "pen"));
+        lastTapTimeRef.current = 0;
+      } else {
+        lastTapTimeRef.current = now;
+      }
+    }
+    lastPointRef.current = null;
   };
 
   const undo = () => {
@@ -134,26 +188,23 @@ export default function DrawingCanvas({
   const clearCanvas = () => {
     if (disabled || !ctx || !canvasRef.current) return;
     pushHistory();
-    // Fill with white instead of clearing to transparency
     ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     onChange("");
   };
 
   return (
-    <div className="relative border border-[var(--greek-gold)] overflow-hidden bg-white">
+    <div className="relative border border-[var(--greek-gold)] overflow-hidden bg-white select-none">
       <canvas
         ref={canvasRef}
         width={800}
         height={400}
-        className="w-full h-[300px] touch-none cursor-crosshair bg-white"
-        onMouseDown={startDrawing}
-        onMouseMove={draw}
-        onMouseUp={stopDrawing}
-        onMouseLeave={stopDrawing}
-        onTouchStart={startDrawing}
-        onTouchMove={draw}
-        onTouchEnd={stopDrawing}
+        className="w-full h-[300px] touch-none select-none cursor-crosshair bg-white"
+        style={{ touchAction: "none", WebkitUserSelect: "none", userSelect: "none" }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
       />
       {!disabled && (
         <div className="absolute top-2 left-2 flex items-center gap-1.5 p-1 bg-white/80 rounded-full shadow border border-[rgba(197,161,72,0.3)]">
@@ -184,7 +235,7 @@ export default function DrawingCanvas({
                 ? "bg-[var(--greek-blue)] border-[var(--greek-blue)] text-white"
                 : "bg-white/80 border-[rgba(197,161,72,0.3)] text-[var(--text-dark)] hover:bg-[var(--greek-gold)]/10"
             }`}
-            title={tool === "eraser" ? "Repasser en stylo" : "Gomme"}
+            title={tool === "eraser" ? "Repasser en stylo" : "Gomme (ou double-tap au stylet)"}
           >
             <Eraser className="w-4 h-4" />
           </button>

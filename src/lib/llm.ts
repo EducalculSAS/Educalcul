@@ -238,7 +238,8 @@ RÈGLES pour le feedback :
 5. Sois encourageant même en cas d'erreur, sans être condescendant.
 6. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
 7. score = 0 si incorrect, ${maxPoints} si correct.
-8. Le feedback doit être complet mais clair : généralement 3 à 6 phrases, plus si la résolution étape par étape le nécessite. Utilise des sauts de ligne (\\n) entre les étapes pour la lisibilité.`;
+8. Le feedback doit être complet mais clair : généralement 3 à 6 phrases, plus si la résolution étape par étape le nécessite. Utilise des sauts de ligne (\\n) entre les étapes pour la lisibilité.
+9. FORMATE TOUTE expression mathématique en LaTeX entre $...$ (ex: $f(x) = x^2 + 6x + 4$, $(x+3)^2 - 5$, $\\frac{1}{2}$). N'écris JAMAIS de caractères Unicode comme ², ³, √, ½ ou × : utilise toujours LaTeX ($x^2$, $\\sqrt{x}$, $\\frac{1}{2}$, $\\times$).`;
 
   const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
   const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 800, false);
@@ -265,7 +266,8 @@ RÈGLES pour le feedback :
 6. Sois encourageant même en cas d'erreur, sans être condescendant.
 7. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
 8. score = 0 si incorrect, ${maxPoints} si correct.
-9. Le feedback doit être complet mais clair : généralement 3 à 6 phrases, plus si la résolution étape par étape le nécessite. Utilise des sauts de ligne (\\n) entre les étapes pour la lisibilité.`;
+9. Le feedback doit être complet mais clair : généralement 3 à 6 phrases, plus si la résolution étape par étape le nécessite. Utilise des sauts de ligne (\\n) entre les étapes pour la lisibilité.
+10. FORMATE TOUTE expression mathématique en LaTeX entre $...$ (ex: $f(x) = x^2 + 6x + 4$, $(x+3)^2 - 5$, $\\frac{1}{2}$). N'écris JAMAIS de caractères Unicode comme ², ³, √, ½ ou × : utilise toujours LaTeX.`;
 
   const userText = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nVoici la réponse de l'élève sous forme d'image (dessin/écriture manuscrite). Analyse-la.\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
 

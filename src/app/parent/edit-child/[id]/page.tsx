@@ -16,21 +16,6 @@ import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { AVATARS } from "@/lib/constants";
 
-const GRADE_LEVELS = [
-  "CP",
-  "CE1",
-  "CE2",
-  "CM1",
-  "CM2",
-  "6ème",
-  "5ème",
-  "4ème",
-  "3ème",
-  "2nde",
-  "1ère",
-  "Terminale",
-];
-
 export default function EditChildPage() {
   const router = useRouter();
   const params = useParams();
@@ -117,7 +102,6 @@ export default function EditChildPage() {
         first_name: formData.firstName,
         last_name: formData.lastName,
         child_username: formData.username,
-        grade_level: formData.gradeLevel,
         avatar: formData.avatar,
       };
 
@@ -286,19 +270,15 @@ export default function EditChildPage() {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Niveau scolaire
               </label>
-              <select
+              <input
+                type="text"
+                disabled
                 value={formData.gradeLevel}
-                onChange={(e) =>
-                  setFormData({ ...formData, gradeLevel: e.target.value })
-                }
-                className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
-              >
-                {GRADE_LEVELS.map((level) => (
-                  <option key={level} value={level}>
-                    {level}
-                  </option>
-                ))}
-              </select>
+                className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Le niveau scolaire ne peut être modifié que par un administrateur, sur demande.
+              </p>
             </div>
 
             <div>

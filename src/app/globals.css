@@ -36,6 +36,15 @@ body {
   overflow-x: hidden;
 }
 
+/* ── Empêche le zoom automatique iOS au focus des champs (font-size < 16px) ── */
+@media (max-width: 768px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
 /* ── Listes déroulantes <select> dans le thème ───── */
 select {
   accent-color: var(--greek-blue);
@@ -526,9 +535,45 @@ main,
 .math-table-sign td, .math-table-variation td { font-size: 1.1rem; }
 
 /* Math graphs */
-.math-graph { display: flex; justify-content: center; margin: 1rem auto; }
-.math-graph svg { max-width: 100%; height: auto; }
-.math-graph .graph-axis { stroke: #9ca3af; stroke-width: 1; }
-.math-graph .graph-grid { stroke: #e5e7eb; stroke-width: 0.5; }
-.math-graph .graph-curve { stroke: #1d4ed8; stroke-width: 2; fill: none; }
-.math-graph .graph-label { font-size: 10px; fill: #6b7280; font-family: sans-serif; }
+.math-graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 1.25rem auto;
+  max-width: 520px;
+  padding: 0.75rem 0.75rem 0.5rem;
+  background: linear-gradient(180deg, #ffffff, var(--greek-cream, #faf7f2));
+  border: 1px solid rgba(197, 161, 72, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(15, 30, 58, 0.06);
+}
+.math-graph svg { max-width: 100%; height: auto; cursor: crosshair; }
+.math-graph .g-frame { fill: #ffffff; stroke: rgba(197, 161, 72, 0.25); stroke-width: 1; }
+.math-graph .g-grid { stroke: rgba(15, 30, 58, 0.07); stroke-width: 1; }
+.math-graph .g-tick { stroke: rgba(15, 30, 58, 0.35); stroke-width: 1; }
+.math-graph .g-axis { stroke: rgba(15, 30, 58, 0.55); stroke-width: 1.5; }
+.math-graph .g-curve {
+  stroke: var(--greek-blue, #0f1e3a);
+  stroke-width: 2.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.math-graph .g-axlabel {
+  font-size: 11px;
+  fill: #6b7280;
+  font-family: var(--font-body, "Inter", sans-serif);
+}
+.math-graph .g-caption {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--greek-blue, #0f1e3a);
+  font-family: var(--font-display, serif);
+}
+/* Curseur interactif au survol */
+.math-graph .g-cursor { transition: opacity 0.1s ease; pointer-events: none; }
+.math-graph .g-cursor-line { stroke: var(--greek-gold, #c5a148); stroke-width: 1; stroke-dasharray: 4 3; }
+.math-graph .g-cursor-dot { fill: var(--greek-gold, #c5a148); stroke: #fff; stroke-width: 1.5; }
+.math-graph .g-cursor-bg { fill: var(--greek-blue, #0f1e3a); opacity: 0.92; }
+.math-graph .g-cursor-text { fill: #fff; font-size: 11px; font-weight: 600; font-family: var(--font-body, "Inter", sans-serif); }

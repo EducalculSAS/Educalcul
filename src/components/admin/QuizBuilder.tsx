@@ -17,7 +17,8 @@ import {
   Loader2,
 } from "lucide-react";
 
-import AIEditModal from "./AIEditModal";
+import AISectionEditModal from "./AISectionEditModal";
+import AIAddQuizModal from "./AIAddQuizModal";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 
 export interface Question {
@@ -59,9 +60,24 @@ export default function QuizBuilder({
   };
 
   // AI Edit State
-  const [isAiEditModalOpen, setIsAiEditModalOpen] = useState(false);
+  const [isAiAddModalOpen, setIsAiAddModalOpen] = useState(false);
+  const [aiEditQuestionId, setAiEditQuestionId] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState("cm1");
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const addQuestionFromAI = (question: Question, position: string) => {
+    setQuestions((prev) => {
+      const copy = [...prev];
+      if (position === "start") copy.unshift(question);
+      else if (position === "end") copy.push(question);
+      else {
+        const i = copy.findIndex((q) => q.id === position);
+        if (i >= 0) copy.splice(i + 1, 0, question);
+        else copy.push(question);
+      }
+      return copy;
+    });
+  };
 
   // Load KaTeX for Math rendering
   useEffect(() => {
@@ -270,11 +286,11 @@ export default function QuizBuilder({
           </select>
           <button
             type="button"
-            onClick={() => setIsAiEditModalOpen(true)}
+            onClick={() => setIsAiAddModalOpen(true)}
             className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm font-medium"
           >
             <Sparkles size={16} />
-            Modifier avec l'IA
+            Ajouter avec l'IA
           </button>
           <button
             type="button"
@@ -287,15 +303,28 @@ export default function QuizBuilder({
         </div>
       </div>
 
-      {isAiEditModalOpen && (
-        <AIEditModal
-          type="quiz"
+      {isAiAddModalOpen && (
+        <AIAddQuizModal
           level={selectedLevel}
-          content={questions}
-          onApply={(updated) => setQuestions(updated)}
-          onClose={() => setIsAiEditModalOpen(false)}
+          questions={questions}
+          onAddQuestion={addQuestionFromAI}
+          onClose={() => setIsAiAddModalOpen(false)}
         />
       )}
+
+      {aiEditQuestionId && (() => {
+        const question = questions.find((q) => q.id === aiEditQuestionId);
+        if (!question) return null;
+        return (
+          <AISectionEditModal
+            scope="question"
+            level={selectedLevel}
+            section={question}
+            onApply={(updated) => updateQuestion(question.id, updated)}
+            onClose={() => setAiEditQuestionId(null)}
+          />
+        );
+      })()}
 
       {questions.length === 0 ? (
         <div className="text-center py-12 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
@@ -506,13 +535,24 @@ export default function QuizBuilder({
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => removeQuestion(question.id)}
-                  className="text-gray-400 hover:text-red-500 transition-colors"
-                >
-                  <Trash2 size={18} />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setAiEditQuestionId(question.id)}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
+                    title="Modifier cette question avec l'IA"
+                  >
+                    <Sparkles size={14} />
+                    <span className="hidden sm:inline">IA</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => removeQuestion(question.id)}
+                    className="text-gray-400 hover:text-red-500 transition-colors"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                </div>
               </div>
             </div>
           ))}

@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import {
   Play,
   CheckCircle,
@@ -27,7 +27,7 @@ import { Chapter, Lesson, Exercise } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
-import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
+import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import MathInput from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 
@@ -53,7 +53,10 @@ interface CourseViewerProps {
 export default function CourseViewer({ course, onComplete, onChapterComplete, onBack, reviewMode }: CourseViewerProps) {
   const { setPageContext, pageContext } = useAITutor();
   
-  const chapters = course.content_json || [];
+  const chapters = useMemo(
+    () => (course.content_json || []).map((c) => ({ ...c, lessons: c.lessons || [] })),
+    [course.content_json]
+  );
   const courseId = (course as any).id;
   const isPreviewCourse = !courseId || courseId === "preview";
 
@@ -149,6 +152,12 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   }, [course.title, currentChapterIndex, currentLessonIndex, setPageContext, chapters]);
 
   // KaTeX pré-rendu via renderLatexInHTML — pas besoin de useLayoutEffect
+
+  // Rend les graphiques interactifs (curseur + coordonnées au survol)
+  useEffect(() => {
+    const t = setTimeout(() => enhanceMathGraphs(document.body), 120);
+    return () => clearTimeout(t);
+  }, [currentChapterIndex, currentLessonIndex]);
 
   // Remove existing highlights
   const clearHighlights = () => {
@@ -395,7 +404,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   }
 
   if (courseCompleted) {
-    const totalLessons = chapters.reduce((acc, c) => acc + c.lessons.length, 0);
+    const totalLessons = chapters.reduce((acc, c) => acc + (c.lessons?.length || 0), 0);
     const timeTotal = getAccumulatedSeconds();
     const mins = Math.floor(timeTotal / 60);
     const courseFull = course as any;
@@ -482,7 +491,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     );
   }
 
-  const totalLessons = chapters.reduce((acc, c) => acc + c.lessons.length, 0);
+  const totalLessons = chapters.reduce((acc, c) => acc + (c.lessons?.length || 0), 0);
   const progressPct = totalLessons > 0 ? Math.round((completedLessons.size / totalLessons) * 100) : 0;
   const r = 17;
   const circ = 2 * Math.PI * r;
@@ -1120,7 +1129,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     type="button"
                     onClick={() => handleVerify(ex)}
                     disabled={!s.input.trim() || isGrading}
-                    className="self-end px-5 py-2.5 rounded-xl font-bold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+                    className="self-end min-w-[150px] justify-center whitespace-nowrap px-5 py-2.5 rounded-xl font-bold text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
                     style={{ background: "var(--greek-blue)" }}
                   >
                     {isGrading ? (
@@ -1146,7 +1155,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     <p className="font-semibold text-sm">Pas tout à fait…</p>
                     {s.feedback && (
                       <div
-                        className="text-xs mt-1.5 opacity-90 leading-relaxed"
+                        className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
                         dangerouslySetInnerHTML={{
                           __html: renderLatexInHTML(s.feedback),
                         }}
@@ -1202,7 +1211,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     <p className="font-bold text-sm">Excellent ! ✨</p>
                     {s.feedback && (
                       <div
-                        className="text-sm mt-1.5 opacity-90 leading-relaxed"
+                        className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
                         dangerouslySetInnerHTML={{
                           __html: renderLatexInHTML(s.feedback),
                         }}
@@ -1230,9 +1239,12 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                       Correction
                     </span>
                   </div>
-                  <p className="text-sm text-gray-700 mb-2">
+                  <p className="text-sm text-gray-700 mb-2 latex-content">
                     <span className="font-semibold">Réponse :</span>{" "}
-                    <span style={{ color: "var(--greek-blue)" }}>{ex.answer}</span>
+                    <span
+                      style={{ color: "var(--greek-blue)" }}
+                      dangerouslySetInnerHTML={{ __html: renderLatexInHTML(ex.answer || "") }}
+                    />
                   </p>
                   <button
                     type="button"

@@ -19,7 +19,8 @@ import {
   Loader2,
 } from "lucide-react";
 
-import AIEditModal from "./AIEditModal";
+import AISectionEditModal from "./AISectionEditModal";
+import AIAddExerciseModal from "./AIAddExerciseModal";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 
 export interface Block {
@@ -86,9 +87,37 @@ export default function ExerciseBuilder({
   };
 
   // AI Edit State
-  const [isAiEditModalOpen, setIsAiEditModalOpen] = useState(false);
+  const [isAiAddModalOpen, setIsAiAddModalOpen] = useState(false);
+  const [aiEditTarget, setAiEditTarget] = useState<
+    | { scope: "page"; pageId: string }
+    | { scope: "block"; pageId: string; blockId: string }
+    | null
+  >(null);
   const [selectedLevel, setSelectedLevel] = useState("cm1");
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // Insertion d'un élément à une position ("start" | "end" | id existant).
+  const insertAt = <T extends { id: string }>(arr: T[], item: T, position: string): T[] => {
+    const copy = [...arr];
+    if (position === "start") copy.unshift(item);
+    else if (position === "end") copy.push(item);
+    else {
+      const i = copy.findIndex((x) => x.id === position);
+      if (i >= 0) copy.splice(i + 1, 0, item);
+      else copy.push(item);
+    }
+    return copy;
+  };
+
+  const addPageFromAI = (page: Page, position: string) => {
+    setPages((prev) => insertAt(prev, page, position));
+    setExpandedPages((prev) => new Set(prev).add(page.id));
+  };
+
+  const addBlockFromAI = (block: Block, pageId: string, position: string) => {
+    setPages((prev) => prev.map((p) => (p.id === pageId ? { ...p, blocks: insertAt(p.blocks, block, position) } : p)));
+    setExpandedPages((prev) => new Set(prev).add(pageId));
+  };
 
   // Load KaTeX for Math rendering
   useEffect(() => {
@@ -331,12 +360,12 @@ export default function ExerciseBuilder({
             <option value="terminale">Terminale</option>
           </select>
           <button
-            onClick={() => setIsAiEditModalOpen(true)}
+            onClick={() => setIsAiAddModalOpen(true)}
             className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white text-sm rounded-lg hover:bg-purple-600 transition-colors"
             type="button"
           >
             <Sparkles size={16} />
-            Modifier avec l'IA
+            Ajouter avec l'IA
           </button>
           <button
             onClick={addPage}
@@ -349,15 +378,44 @@ export default function ExerciseBuilder({
         </div>
       </div>
 
-      {isAiEditModalOpen && (
-        <AIEditModal
-          type="exercise"
+      {isAiAddModalOpen && (
+        <AIAddExerciseModal
           level={selectedLevel}
-          content={pages}
-          onApply={(updated) => setPages(updated)}
-          onClose={() => setIsAiEditModalOpen(false)}
+          pages={pages}
+          onAddPage={addPageFromAI}
+          onAddBlock={addBlockFromAI}
+          onClose={() => setIsAiAddModalOpen(false)}
         />
       )}
+
+      {aiEditTarget?.scope === "page" && (() => {
+        const page = pages.find((p) => p.id === aiEditTarget.pageId);
+        if (!page) return null;
+        return (
+          <AISectionEditModal
+            scope="page"
+            level={selectedLevel}
+            section={page}
+            onApply={(updated) => updatePage(page.id, updated)}
+            onClose={() => setAiEditTarget(null)}
+          />
+        );
+      })()}
+
+      {aiEditTarget?.scope === "block" && (() => {
+        const page = pages.find((p) => p.id === aiEditTarget.pageId);
+        const block = page?.blocks.find((b) => b.id === aiEditTarget.blockId);
+        if (!page || !block) return null;
+        return (
+          <AISectionEditModal
+            scope="block"
+            level={selectedLevel}
+            section={block}
+            onApply={(updated) => updateBlock(page.id, block.id, updated)}
+            onClose={() => setAiEditTarget(null)}
+          />
+        );
+      })()}
 
       {pages.length === 0 ? (
         <div className="text-center py-8 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
@@ -409,6 +467,15 @@ export default function ExerciseBuilder({
                     placeholder="Titre de la page"
                   />
                 </div>
+                <button
+                  onClick={() => setAiEditTarget({ scope: "page", pageId: page.id })}
+                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
+                  type="button"
+                  title="Modifier cette page avec l'IA"
+                >
+                  <Sparkles size={14} />
+                  <span className="hidden sm:inline">IA</span>
+                </button>
                 <button
                   onClick={() => removePage(page.id)}
                   className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded"
@@ -476,8 +543,16 @@ export default function ExerciseBuilder({
                             </select>
                           </div>
                           <button
+                            onClick={() => setAiEditTarget({ scope: "block", pageId: page.id, blockId: block.id })}
+                            className="ml-2 flex items-center gap-1 px-2 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
+                            type="button"
+                            title="Modifier ce bloc avec l'IA"
+                          >
+                            <Sparkles size={14} />
+                          </button>
+                          <button
                             onClick={() => removeBlock(page.id, block.id)}
-                            className="ml-2 p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded"
+                            className="ml-1 p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded"
                             type="button"
                           >
                             <Trash2 size={16} />

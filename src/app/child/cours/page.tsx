@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
 import { BookOpen, Play, CheckCircle, Clock, Folder as FolderIcon, ChevronRight, Home, ArrowLeft } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
@@ -14,7 +15,7 @@ export default function ChildCoursesPage() {
   const [isRendering, setIsRendering] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
   
-  const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_cours_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
   const [courseProgress, setCourseProgress] = useState<Record<string, { status: string; pct: number }>>({});
 
@@ -92,6 +93,18 @@ export default function ChildCoursesPage() {
 
     fetchEverything();
   }, []);
+
+  // Reconstruct breadcrumbs from the persisted folder id once folders are loaded
+  useEffect(() => {
+    if (allFolders.length === 0 || currentFolderId === null) return;
+    const path: { id: number; name: string }[] = [];
+    let f = allFolders.find((x) => x.id === currentFolderId);
+    while (f) {
+      path.unshift({ id: f.id, name: f.name });
+      f = f.parent_id ? allFolders.find((x) => x.id === f.parent_id) : undefined;
+    }
+    setBreadcrumbs(path);
+  }, [allFolders, currentFolderId]);
 
   // Handle LaTeX rendering whenever target items change
   const currentCourses = allCourses.filter(c => (c.folder_id ?? null) === currentFolderId);

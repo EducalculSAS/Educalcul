@@ -18,7 +18,7 @@ import Link from "next/link";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
-import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
+import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 
 
 interface QuizViewerProps {
@@ -235,6 +235,12 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   useEffect(() => {
     mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
     window.scrollTo({ top: 0, behavior: "auto" });
+  }, [currentQuestionIndex]);
+
+  // Rend les graphiques interactifs après affichage
+  useEffect(() => {
+    const t = setTimeout(() => enhanceMathGraphs(document.body), 200);
+    return () => clearTimeout(t);
   }, [currentQuestionIndex]);
 
   const handleSelectOption = (option: string) => {
