@@ -579,23 +579,18 @@ export default function UserDetailPage() {
                 {(editForm.role === "child") && (
                   <div>
                     <label className={labelCls}>Niveau</label>
-                    {/* Saisie libre MAIS avec autocomplétion des codes valides, pour
-                        éviter de stocker un libellé qui ne correspond à aucun niveau. */}
-                    <input
+                    {/* Menu déroulant : on ne stocke QUE des codes valides
+                        (évite les libellés invalides qui cassent l'affichage). */}
+                    <select
                       value={editForm.grade_level}
                       onChange={e => setEditForm({ ...editForm, grade_level: e.target.value })}
                       className={inputCls}
-                      placeholder="ex : 1ere-generale-maths"
-                      list="grade-levels-list"
-                    />
-                    <datalist id="grade-levels-list">
+                    >
+                      <option value="">— Choisir un niveau —</option>
                       {SCHOOL_LEVELS.map(l => (
                         <option key={l.value} value={l.value}>{l.label}</option>
                       ))}
-                    </datalist>
-                    <p className="text-xs text-gray-400 mt-1">
-                      Utilise un code valide (ex : <code>1ere-generale-maths</code>) — l'autocomplétion t'aide.
-                    </p>
+                    </select>
                   </div>
                 )}
               </div>
