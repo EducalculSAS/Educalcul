@@ -49,9 +49,16 @@ export async function GET(request: Request) {
       
       if (error) throw error;
       
+      // Le niveau de l'élève peut être stocké sous forme de CODE
+      // ("1ere-generale-maths") ou de LIBELLÉ saisi à la main par un admin
+      // ("Première (spé maths)"). On accepte donc une correspondance par
+      // grade_level OU par nom du dossier (qui est le libellé).
+      const lvl = level.toLowerCase().trim();
       const filteredData = data?.filter((folder) => {
         if (!folder.grade_level || folder.grade_level === "all") return true;
-        return folder.grade_level.toLowerCase() === level.toLowerCase();
+        const gl = String(folder.grade_level).toLowerCase().trim();
+        const nm = String(folder.name || "").toLowerCase().trim();
+        return gl === lvl || nm === lvl;
       });
 
       return NextResponse.json(filteredData);

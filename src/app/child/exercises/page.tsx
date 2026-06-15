@@ -55,9 +55,12 @@ export default function ChildExercisesPage() {
           foldersData = await folderRes.json();
           setAllFolders(foldersData);
         }
+        const lvl = String(level || "").toLowerCase().trim();
         const lf = (foldersData || []).find(
-          (f: any) => f.parent_id == null && f.grade_level && level &&
-            String(f.grade_level).toLowerCase() === String(level).toLowerCase()
+          (f: any) => f.parent_id == null && lvl && (
+            String(f.grade_level || "").toLowerCase().trim() === lvl ||
+            String(f.name || "").toLowerCase().trim() === lvl
+          )
         );
         setLevelFolderId(lf?.id ?? null);
 

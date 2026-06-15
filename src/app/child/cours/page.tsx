@@ -48,9 +48,12 @@ export default function ChildCoursesPage() {
 
         // Dossier de niveau de l'élève (racine virtuelle) : dossier racine dont
         // le grade_level correspond exactement au niveau de l'élève.
+        const lvl = String(level || "").toLowerCase().trim();
         const lf = (foldersData || []).find(
-          (f: any) => f.parent_id == null && f.grade_level && level &&
-            String(f.grade_level).toLowerCase() === String(level).toLowerCase()
+          (f: any) => f.parent_id == null && lvl && (
+            String(f.grade_level || "").toLowerCase().trim() === lvl ||
+            String(f.name || "").toLowerCase().trim() === lvl
+          )
         );
         setLevelFolderId(lf?.id ?? null);
 
