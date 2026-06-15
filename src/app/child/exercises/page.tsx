@@ -29,6 +29,7 @@ export default function ChildExercisesPage() {
   const [exerciseProgress, setExerciseProgress] = useState<Record<string, { status: string; score: number; attempts: number }>>({});
 
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_exercises_folder");
+  const [levelFolderId, setLevelFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
 
   useEffect(() => {
@@ -49,18 +50,23 @@ export default function ChildExercisesPage() {
         // Fetch ALL Folders for this level
         const folderUrl = `/api/child/folders?type=exercise${level ? `&level=${level}` : ""}&parent_id=all`;
         const folderRes = await fetch(folderUrl);
+        let foldersData: any[] = [];
         if (folderRes.ok) {
-          setAllFolders(await folderRes.json());
+          foldersData = await folderRes.json();
+          setAllFolders(foldersData);
         }
+        const lf = (foldersData || []).find(
+          (f: any) => f.parent_id == null && f.grade_level && level &&
+            String(f.grade_level).toLowerCase() === String(level).toLowerCase()
+        );
+        setLevelFolderId(lf?.id ?? null);
 
-        // Fetch ALL published exercises
+        // Fetch ALL published exercises (cloisonnement par dossier, pas de
+        // refiltrage par niveau qui masquait des exos dans les sous-dossiers).
         const exRes = await fetch("/api/admin/exercises?status=published");
         if (exRes.ok) {
           const allPublishedExercises = await exRes.json();
           let filtered = allPublishedExercises || [];
-          if (level) {
-            filtered = filtered.filter((ex: any) => ex.level?.toLowerCase() === level.toLowerCase());
-          }
           setAllExercises(filtered);
 
           // Load progress from DB (fallback to localStorage)
@@ -119,20 +125,24 @@ export default function ChildExercisesPage() {
     }
   };
 
-  // Reconstruct breadcrumbs from the persisted folder id once folders are loaded
+  // Reconstruct breadcrumbs (on s'arrête au dossier de niveau, racine virtuelle).
   useEffect(() => {
-    if (allFolders.length === 0 || currentFolderId === null) return;
+    if (allFolders.length === 0 || currentFolderId === null) {
+      setBreadcrumbs([]);
+      return;
+    }
     const path: { id: number; name: string }[] = [];
     let f = allFolders.find((x) => x.id === currentFolderId);
-    while (f) {
+    while (f && f.id !== levelFolderId) {
       path.unshift({ id: f.id, name: f.name });
       f = f.parent_id ? allFolders.find((x) => x.id === f.parent_id) : undefined;
     }
     setBreadcrumbs(path);
-  }, [allFolders, currentFolderId]);
+  }, [allFolders, currentFolderId, levelFolderId]);
 
-  const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
-  const currentExercises = allExercises.filter(ex => (ex.folder_id ?? null) === currentFolderId);
+  const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
+  const currentFolders = allFolders.filter(f => f.parent_id === displayParentId);
+  const currentExercises = allExercises.filter(ex => (ex.folder_id ?? null) === displayParentId);
 
   if (loading && allExercises.length === 0 && allFolders.length === 0) {
     return (

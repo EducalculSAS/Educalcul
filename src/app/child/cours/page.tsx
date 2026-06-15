@@ -16,6 +16,9 @@ export default function ChildCoursesPage() {
   const gridRef = useRef<HTMLDivElement>(null);
   
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_cours_folder");
+  // Dossier "racine" = le dossier de niveau de l'élève. On n'affiche jamais les
+  // dossiers de niveau eux-mêmes : la racine montre directement leur contenu.
+  const [levelFolderId, setLevelFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
   const [courseProgress, setCourseProgress] = useState<Record<string, { status: string; pct: number }>>({});
 
@@ -37,18 +40,27 @@ export default function ChildCoursesPage() {
         // Fetch ALL Folders
         const folderUrl = `/api/child/folders?type=course${level ? `&level=${level}` : ""}&parent_id=all`;
         const folderRes = await fetch(folderUrl);
+        let foldersData: any[] = [];
         if (folderRes.ok) {
-          setAllFolders(await folderRes.json());
+          foldersData = await folderRes.json();
+          setAllFolders(foldersData);
         }
 
-        // Fetch ALL published courses
+        // Dossier de niveau de l'élève (racine virtuelle) : dossier racine dont
+        // le grade_level correspond exactement au niveau de l'élève.
+        const lf = (foldersData || []).find(
+          (f: any) => f.parent_id == null && f.grade_level && level &&
+            String(f.grade_level).toLowerCase() === String(level).toLowerCase()
+        );
+        setLevelFolderId(lf?.id ?? null);
+
+        // Fetch ALL published courses (on ne refiltre PAS par niveau : la
+        // hiérarchie de dossiers fait déjà le cloisonnement, et le filtre par
+        // niveau masquait à tort des cours dans les sous-dossiers).
         const response = await fetch("/api/admin/courses?status=published");
         if (response.ok) {
           const allPublishedCourses = await response.json();
           let filtered = allPublishedCourses || [];
-          if (level) {
-            filtered = filtered.filter((c: any) => c.level?.toLowerCase() === level.toLowerCase());
-          }
           setAllCourses(filtered);
 
           // Load progress from DB (fallback to localStorage) for each course
@@ -94,21 +106,27 @@ export default function ChildCoursesPage() {
     fetchEverything();
   }, []);
 
-  // Reconstruct breadcrumbs from the persisted folder id once folders are loaded
+  // Reconstruct breadcrumbs from the persisted folder id once folders are loaded.
+  // On s'arrête au dossier de niveau (la racine virtuelle) : il n'apparaît pas.
   useEffect(() => {
-    if (allFolders.length === 0 || currentFolderId === null) return;
+    if (allFolders.length === 0 || currentFolderId === null) {
+      setBreadcrumbs([]);
+      return;
+    }
     const path: { id: number; name: string }[] = [];
     let f = allFolders.find((x) => x.id === currentFolderId);
-    while (f) {
+    while (f && f.id !== levelFolderId) {
       path.unshift({ id: f.id, name: f.name });
       f = f.parent_id ? allFolders.find((x) => x.id === f.parent_id) : undefined;
     }
     setBreadcrumbs(path);
-  }, [allFolders, currentFolderId]);
+  }, [allFolders, currentFolderId, levelFolderId]);
 
-  // Handle LaTeX rendering whenever target items change
-  const currentCourses = allCourses.filter(c => (c.folder_id ?? null) === currentFolderId);
-  const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
+  // À la racine (currentFolderId null), on affiche le contenu du dossier de
+  // niveau de l'élève (et non les dossiers de niveau eux-mêmes).
+  const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
+  const currentCourses = allCourses.filter(c => (c.folder_id ?? null) === displayParentId);
+  const currentFolders = allFolders.filter(f => f.parent_id === displayParentId);
 
   useEffect(() => {
     if (loading || currentCourses.length === 0) return;

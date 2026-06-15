@@ -15,6 +15,7 @@ export default function ChildQuizPage() {
   const [quizProgress, setQuizProgress] = useState<Record<string, { status: string; score: number; attempts: number }>>({});
 
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_quiz_folder");
+  const [levelFolderId, setLevelFolderId] = useState<number | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
 
   useEffect(() => {
@@ -35,18 +36,23 @@ export default function ChildQuizPage() {
         // Fetch ALL Folders
         const folderUrl = `/api/child/folders?type=quiz${level ? `&level=${level}` : ""}&parent_id=all`;
         const folderRes = await fetch(folderUrl);
+        let foldersData: any[] = [];
         if (folderRes.ok) {
-          setAllFolders(await folderRes.json());
+          foldersData = await folderRes.json();
+          setAllFolders(foldersData);
         }
+        const lf = (foldersData || []).find(
+          (f: any) => f.parent_id == null && f.grade_level && level &&
+            String(f.grade_level).toLowerCase() === String(level).toLowerCase()
+        );
+        setLevelFolderId(lf?.id ?? null);
 
-        // Fetch ALL published quizzes
+        // Fetch ALL published quizzes (cloisonnement par dossier, pas de
+        // refiltrage par niveau qui masquait des quiz dans les sous-dossiers).
         const exRes = await fetch("/api/admin/quizzes?status=published");
         if (exRes.ok) {
           const allPublishedQuizzes = await exRes.json();
           let filtered = allPublishedQuizzes || [];
-          if (level) {
-            filtered = filtered.filter((q: any) => q.level?.toLowerCase() === level.toLowerCase());
-          }
           setAllQuizzes(filtered);
 
           // Load progress from DB (fallback to localStorage)
@@ -105,20 +111,24 @@ export default function ChildQuizPage() {
     }
   };
 
-  // Reconstruct breadcrumbs from the persisted folder id once folders are loaded
+  // Reconstruct breadcrumbs (on s'arrête au dossier de niveau, racine virtuelle).
   useEffect(() => {
-    if (allFolders.length === 0 || currentFolderId === null) return;
+    if (allFolders.length === 0 || currentFolderId === null) {
+      setBreadcrumbs([]);
+      return;
+    }
     const path: { id: number; name: string }[] = [];
     let f = allFolders.find((x) => x.id === currentFolderId);
-    while (f) {
+    while (f && f.id !== levelFolderId) {
       path.unshift({ id: f.id, name: f.name });
       f = f.parent_id ? allFolders.find((x) => x.id === f.parent_id) : undefined;
     }
     setBreadcrumbs(path);
-  }, [allFolders, currentFolderId]);
+  }, [allFolders, currentFolderId, levelFolderId]);
 
-  const currentQuizzes = allQuizzes.filter(q => (q.folder_id ?? null) === currentFolderId);
-  const currentFolders = allFolders.filter(f => f.parent_id === currentFolderId);
+  const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
+  const currentQuizzes = allQuizzes.filter(q => (q.folder_id ?? null) === displayParentId);
+  const currentFolders = allFolders.filter(f => f.parent_id === displayParentId);
 
   if (loading && allQuizzes.length === 0 && allFolders.length === 0) {
     return (
