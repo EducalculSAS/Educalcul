@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { avatarUrl } from "@/lib/avatarUrl";
+import { SCHOOL_LEVELS } from "@/lib/constants";
 import PageLoader from "@/components/PageLoader";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -578,7 +579,23 @@ export default function UserDetailPage() {
                 {(editForm.role === "child") && (
                   <div>
                     <label className={labelCls}>Niveau</label>
-                    <input value={editForm.grade_level} onChange={e => setEditForm({ ...editForm, grade_level: e.target.value })} className={inputCls} placeholder="6eme, 5eme..." />
+                    {/* Saisie libre MAIS avec autocomplétion des codes valides, pour
+                        éviter de stocker un libellé qui ne correspond à aucun niveau. */}
+                    <input
+                      value={editForm.grade_level}
+                      onChange={e => setEditForm({ ...editForm, grade_level: e.target.value })}
+                      className={inputCls}
+                      placeholder="ex : 1ere-generale-maths"
+                      list="grade-levels-list"
+                    />
+                    <datalist id="grade-levels-list">
+                      {SCHOOL_LEVELS.map(l => (
+                        <option key={l.value} value={l.value}>{l.label}</option>
+                      ))}
+                    </datalist>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Utilise un code valide (ex : <code>1ere-generale-maths</code>) — l'autocomplétion t'aide.
+                    </p>
                   </div>
                 )}
               </div>
