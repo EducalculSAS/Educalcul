@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
+import { useSmoothPercent } from "./useSmoothPercent";
 import type { AIGenerateProgress } from "./ExerciseGeneratorModal";
 
 export interface QuizGenParams {
@@ -36,6 +37,7 @@ export default function QuizGeneratorModal({
   defaultLevel,
 }: QuizGeneratorModalProps) {
   const [isGenerating, setIsGenerating] = useState(false);
+  const smoothPct = useSmoothPercent(progress?.current ?? 0, progress?.total ?? 0, isGenerating);
   const [courses, setCourses] = useState<{ id: string; title: string }[]>([]);
   const [params, setParams] = useState<QuizGenParams>({
     linkedCourseId: null,
@@ -129,13 +131,13 @@ export default function QuizGeneratorModal({
                 <div className="w-full max-w-md">
                   <div className="flex justify-between text-xs font-bold text-[var(--greek-blue)] mb-1.5">
                     <span>Progression</span>
-                    <span>{Math.round((progress.current / progress.total) * 100)}%</span>
+                    <span>{Math.round(smoothPct)}%</span>
                   </div>
                   <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
                     <div
-                      className="h-full rounded-full transition-all duration-500 ease-out"
+                      className="h-full rounded-full"
                       style={{
-                        width: `${Math.max(4, Math.round((progress.current / progress.total) * 100))}%`,
+                        width: `${Math.max(3, smoothPct)}%`,
                         background: "linear-gradient(to right, var(--greek-blue), var(--greek-gold))",
                       }}
                     />

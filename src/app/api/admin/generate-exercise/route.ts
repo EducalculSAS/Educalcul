@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
       };
 
       try {
-        send({ type: "progress", step: "outline", current: 0, total: batches.length, message: "Préparation de l'exercice..." });
+        send({ type: "progress", step: "outline", current: 0, total: batches.length, message: "Élaboration du plan de l'exercice..." });
 
         let courseContext = "";
         if (linkedCourseId) {
@@ -67,6 +67,23 @@ export async function POST(req: NextRequest) {
 
         const programmeBlock = getProgrammePromptBlock(level);
 
+        // ── PLAN : répartit le contenu en angles DISTINCTS (un par question) pour
+        // que les lots, générés en parallèle, ne se répètent pas (comme les cours). ──
+        let angles: string[] = [];
+        if (totalQuestions > 1) {
+          try {
+            const planSystem = `Tu es un concepteur d'évaluations en mathématiques (niveau ${level}).
+Propose EXACTEMENT ${totalQuestions} angles/sous-thèmes de questions DISTINCTS et COMPLÉMENTAIRES sur "${subject}" (domaine ${subjectArea || "Mathématiques"}), difficulté ${difficulty}, SANS aucun recoupement entre eux.${instructions && String(instructions).trim() ? " Couvre EXACTEMENT le programme de l'enseignant fourni, notion par notion." : ""}
+Réponds UNIQUEMENT en JSON : { "angles": ["angle 1", "angle 2", ...] } avec ${totalQuestions} angles courts et précis.`;
+            const planUser = `Sujet : ${subject}\nNiveau : ${level}${instructions && String(instructions).trim() ? `\nProgramme de l'enseignant :\n${String(instructions).trim()}` : ""}`;
+            const plan = (await generateStructuredContent(planUser, planSystem, 0.5)) as { angles?: string[] };
+            angles = (plan?.angles || []).filter((a): a is string => !!a && !!a.trim()).slice(0, totalQuestions);
+          } catch { angles = []; }
+        }
+        // Offsets cumulés pour assigner une tranche d'angles à chaque lot.
+        const offsets: number[] = [];
+        { let acc = 0; for (const c of batches) { offsets.push(acc); acc += c; } }
+
         send({
           type: "progress",
           step: "chapter",
@@ -77,6 +94,8 @@ export async function POST(req: NextRequest) {
 
         let completed = 0;
         const results = await Promise.all(batches.map(async (count, batchIndex) => {
+          const myAngles = angles.slice(offsets[batchIndex], offsets[batchIndex] + count);
+          const otherAngles = angles.filter((_, i) => i < offsets[batchIndex] || i >= offsets[batchIndex] + count);
           const isFirst = batchIndex === 0;
           const firstBlockHint =
             isFirst && exerciseType === "contextual"
@@ -134,7 +153,11 @@ Niveau : ${level}
 Difficulté : ${difficulty}
 Domaine : ${subjectArea || "Mathématiques"}
 Cette partie doit contenir ${count} question(s) (sur un total de ${totalQuestions} pour l'exercice entier, réparti en ${batches.length} partie(s)).
-${instructions && String(instructions).trim() ? `
+${myAngles.length ? `
+═══ ANGLES ASSIGNÉS À CETTE PARTIE (un angle par question, dans cet ordre) ═══
+${myAngles.map((a, idx) => `${idx + 1}. ${a}`).join("\n")}
+${otherAngles.length ? `NE TRAITE PAS ces angles (réservés aux autres parties) : ${otherAngles.join(" ; ")}.\n` : ""}RÈGLE ANTI-RÉPÉTITION : chaque question porte sur un angle DISTINCT ci-dessus, aucune redite avec les autres parties.
+` : ""}${instructions && String(instructions).trim() ? `
 ═══ ⚠️ INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT — À RESPECTER À LA LETTRE ═══
 Ces consignes PRIMENT sur tout choix par défaut. Génère les questions en couvrant EXACTEMENT les notions/contenus demandés ci-dessous, sans rien ajouter hors-programme ni omettre :
 «««
