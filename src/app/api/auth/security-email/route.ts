@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   try {
     const authHeader = req.headers.get("Authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Non autorisÃ©" }, { status: 401 });
+      return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
     }
     const token = authHeader.slice(7);
     const { data: { user }, error } = await supabaseAdmin.auth.getUser(token);
@@ -42,13 +42,13 @@ export async function POST(req: NextRequest) {
         tmpl = emailChangedEmail(firstName, newEmail || toEmail);
         break;
       case "method_linked":
-        tmpl = signInMethodLinkedEmail(firstName, method || "MÃ©thode inconnue");
+        tmpl = signInMethodLinkedEmail(firstName, method || "Méthode inconnue");
         break;
       case "method_removed":
-        tmpl = signInMethodRemovedEmail(firstName, method || "MÃ©thode inconnue");
+        tmpl = signInMethodRemovedEmail(firstName, method || "Méthode inconnue");
         break;
       default:
-        return NextResponse.json({ error: "Ã‰vÃ©nement inconnu" }, { status: 400 });
+        return NextResponse.json({ error: "Événement inconnu" }, { status: 400 });
     }
 
     await sendEmail({ toEmail, toName: firstName, ...tmpl });

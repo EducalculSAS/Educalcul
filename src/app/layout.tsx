@@ -4,6 +4,7 @@ import { ToastProvider } from "@/components/Toast";
 import { ConfirmProvider } from "@/components/ConfirmDialog";
 import CookieBanner from "@/components/CookieBanner";
 import JsonLd from "@/components/JsonLd";
+import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 
 const BASE = "https://educalcul.com";
 

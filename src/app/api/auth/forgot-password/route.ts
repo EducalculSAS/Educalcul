@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { buildEmailHtml, EMAIL_BASE_URL } from "@/lib/emailTemplates";
@@ -40,12 +40,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   }
 
-  // RÃ©cupÃ©rer le prÃ©nom
+  // Récupérer le prénom
   const { data: profile } = await supabaseAdmin
     .from("users").select("first_name").eq("auth_id", foundId).maybeSingle();
   const firstName = profile?.first_name || authUser.user.user_metadata?.first_name || "Utilisateur";
 
-  // GÃ©nÃ©rer le lien de reset (utilise l'email principal du compte)
+  // Générer le lien de reset (utilise l'email principal du compte)
   const { data: linkData, error: linkErr } = await supabaseAdmin.auth.admin.generateLink({
     type: "recovery",
     email: authUser.user.email,
@@ -57,28 +57,28 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   }
 
-  // Envoyer Ã  l'email entrÃ© par l'utilisateur (pas forcÃ©ment l'email principal)
+  // Envoyer à l'email entré par l'utilisateur (pas forcément l'email principal)
   const result = await sendEmail({
     toEmail: entered,
     toName: firstName,
-    subject: "RÃ©initialisation de votre mot de passe",
-    textPart: `Bonjour ${firstName},\n\nRÃ©initialisez votre mot de passe :\n${linkData.properties.action_link}\n\nLien valable 1h.\n\nL'Ã©quipe Educalcul`,
+    subject: "Réinitialisation de votre mot de passe",
+    textPart: `Bonjour ${firstName},\n\nRéinitialisez votre mot de passe :\n${linkData.properties.action_link}\n\nLien valable 1h.\n\nL'équipe Educalcul`,
     htmlPart: buildEmailHtml({
-      title: "RÃ©initialisation du mot de passe",
-      preheader: "RÃ©initialisez votre mot de passe Educalcul",
+      title: "Réinitialisation du mot de passe",
+      preheader: "Réinitialisez votre mot de passe Educalcul",
       body: `
         <p style="margin:0 0 16px;">Bonjour <strong>${firstName}</strong>,</p>
-        <p style="margin:0 0 16px;">Vous avez demandÃ© la rÃ©initialisation de votre mot de passe Educalcul.</p>
-        <p style="margin:0 0 24px;font-size:13px;color:#6b7280;">Ce lien est valable <strong>1 heure</strong> et ne peut Ãªtre utilisÃ© qu'une seule fois.</p>
+        <p style="margin:0 0 16px;">Vous avez demandé la réinitialisation de votre mot de passe Educalcul.</p>
+        <p style="margin:0 0 24px;font-size:13px;color:#6b7280;">Ce lien est valable <strong>1 heure</strong> et ne peut être utilisé qu'une seule fois.</p>
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 0 20px;">
           <tr>
             <td style="background:#fffbeb;border-left:3px solid #c5a148;padding:14px 18px;border-radius:0 8px 8px 0;">
-              <p style="margin:0;font-size:13px;color:#92400e;">Si vous n'avez pas demandÃ© cette rÃ©initialisation, ignorez cet email.</p>
+              <p style="margin:0;font-size:13px;color:#92400e;">Si vous n'avez pas demandé cette réinitialisation, ignorez cet email.</p>
             </td>
           </tr>
         </table>
       `,
-      cta: { label: "RÃ©initialiser mon mot de passe", url: linkData.properties.action_link },
+      cta: { label: "Réinitialiser mon mot de passe", url: linkData.properties.action_link },
     }),
   });
 
@@ -88,4 +88,3 @@ export async function POST(req: Request) {
 
   return NextResponse.json({ success: true });
 }
-

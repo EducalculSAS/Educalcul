@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { emailTemplate } from "@/lib/emailTemplates";
 
-// GET â€” list all templates
+// GET — list all templates
 export async function GET() {
   const { data, error } = await supabaseAdmin
     .from("email_templates")
@@ -14,7 +14,7 @@ export async function GET() {
   return NextResponse.json(data);
 }
 
-// POST â€” create campaign template
+// POST — create campaign template
 export async function POST(req: Request) {
   const { name, subject, body, target, schedule } = await req.json();
   if (!name || !subject || !body)
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
   return NextResponse.json(data);
 }
 
-// PATCH â€” update template (subject + body)
+// PATCH — update template (subject + body)
 export async function PATCH(req: Request) {
   const { id, name, subject, body, target, schedule } = await req.json();
   if (!id) return NextResponse.json({ error: "ID requis" }, { status: 400 });
@@ -51,12 +51,12 @@ export async function PATCH(req: Request) {
   return NextResponse.json(data);
 }
 
-// DELETE â€” only if is_deletable
+// DELETE — only if is_deletable
 export async function DELETE(req: Request) {
   const { id } = await req.json();
   const { data: tmpl } = await supabaseAdmin.from("email_templates").select("is_deletable").eq("id", id).single();
   if (!tmpl?.is_deletable)
-    return NextResponse.json({ error: "Ce template systÃ¨me ne peut pas Ãªtre supprimÃ©" }, { status: 403 });
+    return NextResponse.json({ error: "Ce template système ne peut pas être supprimé" }, { status: 403 });
 
   const { error } = await supabaseAdmin.from("email_templates").delete().eq("id", id);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

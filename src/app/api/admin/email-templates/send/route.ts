@@ -14,11 +14,11 @@ export async function POST(req: Request) {
       .single();
     if (tmplErr || !tmpl) return NextResponse.json({ error: "Template introuvable" }, { status: 404 });
 
-    // RÃ©soudre les destinataires
+    // Résoudre les destinataires
     let users: { email: string; first_name: string | null }[] = [];
 
     if (target === "custom_email" && customEmail) {
-      // Adresse personnalisÃ©e â€” pas forcÃ©ment un user du site
+      // Adresse personnalisée — pas forcément un user du site
       users = [{ email: customEmail.trim(), first_name: null }];
     } else if (target === "specific_user" && selectedUserId) {
       const { data: u } = await supabaseAdmin
@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       if (result.success) sent++; else failed++;
     }
 
-    // Mettre Ã  jour last_sent_at et sent_count
+    // Mettre à jour last_sent_at et sent_count
     await supabaseAdmin.from("email_templates").update({
       last_sent_at: new Date().toISOString(),
       sent_count: (tmpl.sent_count || 0) + sent,

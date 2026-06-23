@@ -15,17 +15,19 @@ export default function UpdatePassword() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if we have a session, if not redirect to login
-    // The password reset link should sign the user in automatically
-    const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      if (!session) {
-        router.push("/auth/connexion");
-      }
+    // Le lien de récupération établit la session à partir du fragment de l'URL
+    // (#access_token…) de façon ASYNCHRONE. On écoute l'événement d'auth et on
+    // ne redirige vers la connexion qu'après un délai si AUCUNE session n'est
+    // détectée — sinon on redirigeait trop tôt (course de chargement).
+    const { data: sub } = supabase.auth.onAuthStateChange(() => {});
+    const timeout = setTimeout(async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) router.push("/auth/connexion");
+    }, 2500);
+    return () => {
+      sub.subscription.unsubscribe();
+      clearTimeout(timeout);
     };
-    checkSession();
   }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {

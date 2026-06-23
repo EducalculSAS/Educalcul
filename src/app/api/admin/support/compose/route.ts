@@ -11,7 +11,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
     }
 
-    // 1. CrÃ©er le ticket support (marquÃ© comme initiÃ© par l'admin)
+    // 1. Créer le ticket support (marqué comme initié par l'admin)
     const { data: ticket, error: ticketErr } = await supabaseAdmin
       .from("support_tickets")
       .insert({
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         user_email: toEmail,
         user_name: toName || toEmail,
         subject,
-        message: `[Message de l'Ã©quipe Educalcul]\n\n${message}`,
+        message: `[Message de l'équipe Educalcul]\n\n${message}`,
         status: "Ouvert",
         priority: "normal",
         is_archived: false,
@@ -28,10 +28,10 @@ export async function POST(req: Request) {
       .single();
 
     if (ticketErr || !ticket) {
-      return NextResponse.json({ error: ticketErr?.message || "Erreur crÃ©ation ticket" }, { status: 500 });
+      return NextResponse.json({ error: ticketErr?.message || "Erreur création ticket" }, { status: 500 });
     }
 
-    // 2. Ajouter la rÃ©ponse admin initiale dans ticket_replies
+    // 2. Ajouter la réponse admin initiale dans ticket_replies
     await supabaseAdmin.from("ticket_replies").insert({
       ticket_id: ticket.id,
       admin_name: "Equipe Educalcul",
@@ -44,11 +44,11 @@ export async function POST(req: Request) {
     // 3. Envoyer l'email
     const htmlBody = `
       <p>Bonjour <strong>${toName || toEmail}</strong>,</p>
-      <p>Vous avez reÃ§u un message de l'Ã©quipe Educalcul :</p>
+      <p>Vous avez reçu un message de l'équipe Educalcul :</p>
       <blockquote style="margin:16px 0;padding:14px 18px;border-left:3px solid #c5a148;background:#fffbeb;color:#374151;border-radius:0 8px 8px 0;">
         ${message.replace(/\n/g, "<br>")}
       </blockquote>
-      <p style="font-size:13px;color:#6b7280;">Vous pouvez rÃ©pondre Ã  ce message directement depuis votre espace Educalcul.</p>
+      <p style="font-size:13px;color:#6b7280;">Vous pouvez répondre à ce message directement depuis votre espace Educalcul.</p>
     `;
 
     await sendEmail({
