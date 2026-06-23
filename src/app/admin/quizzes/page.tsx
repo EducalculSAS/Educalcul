@@ -1409,6 +1409,7 @@ export default function AdminQuizzesPage() {
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
           progress={aiProgress}
+          defaultLevel={currentFolderLevel || undefined}
         />
       )}
 

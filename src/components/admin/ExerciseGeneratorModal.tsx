@@ -36,6 +36,8 @@ interface ExerciseGeneratorModalProps {
   onGenerate: (params: ExerciseGenParams) => void;
   onClose: () => void;
   progress?: AIGenerateProgress | null;
+  /** Niveau scolaire du dossier courant (pré-sélection). */
+  defaultLevel?: string;
 }
 
 const SUBJECT_AREAS = [
@@ -52,6 +54,7 @@ export default function ExerciseGeneratorModal({
   onGenerate,
   onClose,
   progress,
+  defaultLevel,
 }: ExerciseGeneratorModalProps) {
   const [step, setStep] = useState<1 | 2>(1);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -61,7 +64,7 @@ export default function ExerciseGeneratorModal({
     linkedCourseId: null,
     linkedCourseTitle: null,
     subject: "",
-    level: "6eme",
+    level: defaultLevel || "6eme",
     difficulty: "medium",
     questionCount: 5,
     subjectArea: "Algèbre",

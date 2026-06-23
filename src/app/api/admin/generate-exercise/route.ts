@@ -134,7 +134,13 @@ Niveau : ${level}
 Difficulté : ${difficulty}
 Domaine : ${subjectArea || "Mathématiques"}
 Cette partie doit contenir ${count} question(s) (sur un total de ${totalQuestions} pour l'exercice entier, réparti en ${batches.length} partie(s)).
-${instructions ? `Instructions supplémentaires : ${instructions}` : ""}${courseContext}`;
+${instructions && String(instructions).trim() ? `
+═══ ⚠️ INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT — À RESPECTER À LA LETTRE ═══
+Ces consignes PRIMENT sur tout choix par défaut. Génère les questions en couvrant EXACTEMENT les notions/contenus demandés ci-dessous, sans rien ajouter hors-programme ni omettre :
+«««
+${String(instructions).trim()}
+»»»
+` : ""}${courseContext}`;
 
           const generated = (await generateStructuredContent(userPrompt, systemPrompt, 0.7)) as any;
 

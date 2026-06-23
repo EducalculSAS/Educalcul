@@ -1439,6 +1439,7 @@ export default function AdminExercisesPage() {
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
           progress={aiProgress}
+          defaultLevel={currentFolderLevel || undefined}
         />
       )}
 

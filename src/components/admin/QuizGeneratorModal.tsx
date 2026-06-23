@@ -25,12 +25,15 @@ interface QuizGeneratorModalProps {
   onGenerate: (params: QuizGenParams) => void;
   onClose: () => void;
   progress?: AIGenerateProgress | null;
+  /** Niveau scolaire du dossier courant (pré-sélection). */
+  defaultLevel?: string;
 }
 
 export default function QuizGeneratorModal({
   onGenerate,
   onClose,
   progress,
+  defaultLevel,
 }: QuizGeneratorModalProps) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [courses, setCourses] = useState<{ id: string; title: string }[]>([]);
@@ -38,7 +41,7 @@ export default function QuizGeneratorModal({
     linkedCourseId: null,
     linkedCourseTitle: null,
     subject: "",
-    level: "6eme",
+    level: defaultLevel || "6eme",
     questionCount: 7,
     difficulty: "medium",
     instructions: "",

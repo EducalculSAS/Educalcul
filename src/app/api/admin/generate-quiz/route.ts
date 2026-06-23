@@ -114,7 +114,13 @@ Génère exactement ${count} question(s) dans "questions". Chaque question doit 
 Niveau : ${level}
 Difficulté : ${difficulty}
 Cette partie doit contenir ${count} question(s) (sur un total de ${totalQuestions} pour le quiz entier, réparti en ${batches.length} partie(s)). Évite les répétitions avec les autres parties.
-${instructions ? `Instructions supplémentaires : ${instructions}` : ""}${courseContext}`;
+${instructions && String(instructions).trim() ? `
+═══ ⚠️ INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT — À RESPECTER À LA LETTRE ═══
+Ces consignes PRIMENT sur tout choix par défaut. Génère les questions en couvrant EXACTEMENT les notions/contenus demandés ci-dessous, sans rien ajouter hors-programme ni omettre :
+«««
+${String(instructions).trim()}
+»»»
+` : ""}${courseContext}`;
 
           const generated = (await generateStructuredContent(userPrompt, systemPrompt, 0.7)) as any;
 
