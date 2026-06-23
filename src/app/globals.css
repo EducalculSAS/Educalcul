@@ -1,12 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Force la piste de scrollbar à toujours être réservée — évite le décalage de
-   mise en page entre les pages scrollables et les pages courtes */
-html {
-  overflow-y: scroll;
-}
-
 :root {
   --greek-blue: #0f1e3a;
   --greek-blue-mid: #1a3a6e;
@@ -25,8 +19,10 @@ html {
   --nav-h: 64px;
 }
 
+/* Pas de gouttière réservée : la barre de défilement n'apparaît QUE si la page
+   dépasse l'écran. Le header fixe s'étend ainsi jusqu'au bord droit. */
 html {
-  scrollbar-gutter: stable;
+  background-color: var(--greek-cream);
 }
 
 body {
@@ -34,6 +30,30 @@ body {
   background-color: var(--greek-cream);
   color: var(--text-dark);
   overflow-x: hidden;
+}
+
+/* ── Barres de défilement thématisées (évite la bande blanche par défaut) ──
+   Piste TRANSPARENTE (se fond dans le fond, crème ou navy) + curseur doré fin. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--greek-blue) transparent;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--greek-blue);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--greek-blue-mid);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /* ── Empêche le zoom automatique iOS au focus des champs (font-size < 16px) ── */
