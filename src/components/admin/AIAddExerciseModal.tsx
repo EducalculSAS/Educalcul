@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, X, Plus } from "lucide-react";
 import PageLoader from "@/components/PageLoader";
+import { useSmoothPercent } from "./useSmoothPercent";
 import type { Page, Block } from "./ExerciseBuilder";
 
 /**
@@ -30,6 +31,7 @@ export default function AIAddExerciseModal({
   const [error, setError] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const [done, setDone] = useState(false);
+  const smoothPct = useSmoothPercent(done ? 1 : 0, 1, loading || done, 9000);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -127,11 +129,11 @@ export default function AIAddExerciseModal({
               <p className="text-sm font-semibold text-gray-700 mb-1">
                 {done ? "Terminé !" : kind === "page" ? "Création de la page..." : "Création du bloc..."}
               </p>
-              <p className="text-xs text-gray-400 mb-4">{elapsed}s écoulées</p>
+              <p className="text-xs text-gray-400 mb-4">{elapsed}s écoulées · {Math.round(smoothPct)}%</p>
               <div className="w-full max-w-xs h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className={done ? "h-full rounded-full transition-all duration-300 ease-out" : "h-full rounded-full animate-progress-indeterminate"}
-                  style={{ width: done ? "100%" : undefined, background: "linear-gradient(to right, var(--greek-blue), var(--greek-gold))" }}
+                  className="h-full rounded-full"
+                  style={{ width: `${Math.max(3, smoothPct)}%`, background: "linear-gradient(to right, var(--greek-blue), var(--greek-gold))" }}
                 />
               </div>
             </div>
