@@ -44,6 +44,26 @@ export default function ChildCalendarPage() {
     })();
   }, [router, loadEvents]);
 
+  // Téléchargement .ics via fetch authentifié (le wrapper global ajoute le JWT) :
+  // l'auth_id ne circule plus dans l'URL.
+  const exportIcs = async (oId: number) => {
+    try {
+      const res = await fetch(`/api/calendar/export?ownerId=${oId}`);
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "educalcul-calendrier.ics";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      /* ignore */
+    }
+  };
+
   const handleDayClick = (date: string) => {
     setSelectedEvent(null);
     setSelectedDate(date);
@@ -130,12 +150,12 @@ export default function ChildCalendarPage() {
           </div>
           <div className="flex gap-2">
             {authId && ownerId && (
-              <a
-                href={`/api/calendar/export?token=${authId}&ownerId=${ownerId}`}
+              <button
+                onClick={() => exportIcs(ownerId)}
                 className="flex items-center gap-2 text-sm font-medium px-3 py-2 rounded-[10px] border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.08)] transition-colors"
               >
                 <Download className="w-4 h-4" /> Exporter (.ics)
-              </a>
+              </button>
             )}
             <button
               onClick={() => { setSelectedEvent(null); setSelectedDate(new Date().toISOString().slice(0, 10)); setModalOpen(true); }}

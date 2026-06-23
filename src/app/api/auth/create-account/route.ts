@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomBytes } from "crypto";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { validateEmail, validateName, validateString } from "@/lib/validation";
@@ -59,9 +60,10 @@ export async function POST(req: NextRequest) {
 
     // Si pas d'auth existant -> créer l'utilisateur Supabase Auth (flow email/password)
     if (!authUserId) {
+      // Mot de passe temporaire cryptographiquement sûr (l'utilisateur définira
+      // le sien via le magic link). Math.random() n'est pas adapté aux secrets.
       const actualPassword =
-        password ||
-        Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+        password || randomBytes(24).toString("base64url");
 
       const { data: authData, error: authError } =
         await supabaseAdmin.auth.admin.createUser({

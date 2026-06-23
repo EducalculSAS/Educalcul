@@ -112,6 +112,7 @@ export const RATE_LIMITS = {
   
   // Public endpoints - moderate
   'contact:form': { maxAttempts: 5, windowMs: 60 * 60 * 1000, name: 'Contact form' },
+  'waitlist:join': { maxAttempts: 10, windowMs: 60 * 60 * 1000, name: 'Waitlist' },
   'support:ticket': { maxAttempts: 10, windowMs: 60 * 60 * 1000, name: 'Support ticket' },
   
   // AI endpoints - strict (expensive)

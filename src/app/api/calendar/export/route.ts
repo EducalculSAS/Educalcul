@@ -1,26 +1,32 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { generateIcs } from "@/lib/ics";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
-// GET /api/calendar/export?token=<auth_uuid>&ownerId=<id>
-// `token` must match the auth_id of either the owner or their parent.
+// GET /api/calendar/export?ownerId=<id>
+// Identité via JWT (header Authorization), comme le reste de l'API : on ne fait
+// plus circuler l'auth_id en clair dans l'URL (fuite via logs/referrer).
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const token = searchParams.get("token");
-    const ownerIdParam = searchParams.get("ownerId");
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    if (!token || !ownerIdParam) {
-      return NextResponse.json({ error: "Missing token or ownerId" }, { status: 400 });
+    const { searchParams } = new URL(req.url);
+    const ownerIdParam = searchParams.get("ownerId");
+    if (!ownerIdParam) {
+      return NextResponse.json({ error: "Missing ownerId" }, { status: 400 });
     }
     const ownerId = Number(ownerIdParam);
+    if (!Number.isInteger(ownerId)) {
+      return NextResponse.json({ error: "Invalid ownerId" }, { status: 400 });
+    }
 
     const { data: requester } = await supabaseAdmin
       .from("users")
       .select("id, role, parent_id, school_zone")
-      .eq("auth_id", token)
+      .eq("auth_id", me.authId)
       .maybeSingle();
-    if (!requester) return NextResponse.json({ error: "Invalid token" }, { status: 403 });
+    if (!requester) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     let allowed = requester.id === ownerId;
     if (!allowed && requester.role === "parent") {

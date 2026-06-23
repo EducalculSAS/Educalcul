@@ -16,12 +16,15 @@ export async function POST(req: Request) {
     const { data: user } = await supabaseAdmin.from("users").select("id").eq("auth_id", authId).single();
     if (!user) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    // Verify user owns these badges
+    // Verify user owns these badges. On ne garde que des entiers valides et
+    // des badges réellement possédés (le reste est ignoré silencieusement).
     const { data: owned } = await supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", user.id);
     const ownedIds = new Set((owned || []).map(b => b.badge_id));
-    const valid = badgeIds.slice(0, 3).filter(id => !id || ownedIds.has(id));
+    const valid = badgeIds
+      .slice(0, 3)
+      .filter((id) => Number.isInteger(id) && ownedIds.has(id));
 
-    await supabaseAdmin.from("users").update({ featured_badges: badgeIds.slice(0, 3) }).eq("id", user.id);
+    await supabaseAdmin.from("users").update({ featured_badges: valid }).eq("id", user.id);
     return NextResponse.json({ success: true });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });

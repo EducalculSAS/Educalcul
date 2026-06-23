@@ -1,65 +1,121 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { supabaseAdmin } from "@/lib/supabaseClient";
-import { Mail, Users, Trash2, Download, RefreshCw, Search, Calendar } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Trophy, Users, Gift, Trash2, Download, RefreshCw, Search, Crown, Check, X, Pencil } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 
-interface WaitlistEntry {
+interface Entry {
   id: number;
+  position: number;
   email: string;
+  display_name: string | null;
+  referral_code: string;
+  referred_by: string | null;
+  referral_count: number;
+  signup_ip: string | null;
   created_at: string;
+}
+interface Stats {
+  total: number;
+  totalReferrals: number;
+  topReferrer: { name: string | null; count: number } | null;
 }
 
 export default function AdminLandingPage() {
   const confirm = useConfirm();
-  const [entries, setEntries] = useState<WaitlistEntry[]>([]);
-  const [filtered, setFiltered] = useState<WaitlistEntry[]>([]);
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [stats, setStats] = useState<Stats>({ total: 0, totalReferrals: 0, topReferrer: null });
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [deleting, setDeleting] = useState<number | null>(null);
+  const [sortBy, setSortBy] = useState<"position" | "referrals">("position");
+  const [busy, setBusy] = useState<number | null>(null);
+  const [editId, setEditId] = useState<number | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editRefs, setEditRefs] = useState("");
   const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
-
-  useEffect(() => { fetchEntries(); }, []);
-
-  useEffect(() => {
-    const q = search.toLowerCase();
-    setFiltered(q ? entries.filter(e => e.email.toLowerCase().includes(q)) : entries);
-  }, [search, entries]);
-
-  const fetchEntries = async () => {
-    setLoading(true);
-    const { data, error } = await supabaseAdmin
-      .from("waitlist")
-      .select("*")
-      .order("created_at", { ascending: false });
-    if (!error) {
-      setEntries(data || []);
-      setFiltered(data || []);
-    }
-    setLoading(false);
-  };
 
   const showToast = (type: "success" | "error", text: string) => {
     setToast({ type, text });
     setTimeout(() => setToast(null), 3000);
   };
 
-  const deleteEntry = async (id: number) => {
-    if (!(await confirm("Supprimer cet email de la waitlist ?"))) return;
-    setDeleting(id);
-    const { error } = await supabaseAdmin.from("waitlist").delete().eq("id", id);
-    if (error) showToast("error", "Erreur lors de la suppression");
-    else {
-      showToast("success", "Email supprimé");
-      setEntries(prev => prev.filter(e => e.id !== id));
+  const fetchEntries = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/admin/waitlist-signups");
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      setEntries(data.entries || []);
+      setStats(data.stats || { total: 0, totalReferrals: 0, topReferrer: null });
+    } catch {
+      showToast("error", "Erreur de chargement");
     }
-    setDeleting(null);
+    setLoading(false);
+  };
+
+  useEffect(() => { fetchEntries(); }, []);
+
+  // IP apparaissant plusieurs fois = cluster potentiellement frauduleux.
+  const dupIps = useMemo(() => {
+    const counts: Record<string, number> = {};
+    entries.forEach(e => { if (e.signup_ip) counts[e.signup_ip] = (counts[e.signup_ip] || 0) + 1; });
+    return new Set(Object.entries(counts).filter(([, n]) => n > 1).map(([ip]) => ip));
+  }, [entries]);
+
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase().trim();
+    let list = q
+      ? entries.filter(e =>
+          e.email.toLowerCase().includes(q) ||
+          (e.display_name || "").toLowerCase().includes(q) ||
+          e.referral_code.toLowerCase().includes(q))
+      : [...entries];
+    if (sortBy === "referrals") list.sort((a, b) => b.referral_count - a.referral_count || a.position - b.position);
+    else list.sort((a, b) => a.position - b.position);
+    return list;
+  }, [entries, search, sortBy]);
+
+  const startEdit = (e: Entry) => {
+    setEditId(e.id);
+    setEditName(e.display_name || "");
+    setEditRefs(String(e.referral_count));
+  };
+
+  const saveEdit = async (id: number) => {
+    setBusy(id);
+    try {
+      const res = await fetch(`/api/admin/waitlist-signups/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ display_name: editName, referral_count: Number(editRefs) }),
+      });
+      if (!res.ok) throw new Error();
+      setEntries(prev => prev.map(e => e.id === id ? { ...e, display_name: editName, referral_count: Number(editRefs) } : e));
+      showToast("success", "Modifié");
+      setEditId(null);
+    } catch {
+      showToast("error", "Erreur");
+    }
+    setBusy(null);
+  };
+
+  const deleteEntry = async (id: number) => {
+    if (!(await confirm("Retirer cette personne de la liste d'attente ?"))) return;
+    setBusy(id);
+    try {
+      const res = await fetch(`/api/admin/waitlist-signups/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error();
+      setEntries(prev => prev.filter(e => e.id !== id).map((e, i) => ({ ...e, position: i + 1 })));
+      showToast("success", "Supprimé");
+    } catch {
+      showToast("error", "Erreur");
+    }
+    setBusy(null);
   };
 
   const exportCSV = () => {
-    const csv = ["Email,Date inscription", ...filtered.map(e =>
-      `${e.email},${new Date(e.created_at).toLocaleString("fr-FR")}`
+    const csv = ["Position,Nom,Email,Code,Filleuls,Parraine par,Date", ...filtered.map(e =>
+      `${e.position},"${e.display_name || ""}",${e.email},${e.referral_code},${e.referral_count},${e.referred_by || ""},${new Date(e.created_at).toLocaleString("fr-FR")}`
     )].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
@@ -72,64 +128,46 @@ export default function AdminLandingPage() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      {/* Toast */}
       {toast && (
-        <div className={`fixed top-6 right-6 z-50 px-5 py-3 rounded-xl shadow-lg font-semibold text-white transition-all ${
-          toast.type === "success" ? "bg-green-500" : "bg-red-500"
-        }`}>
+        <div className={`fixed top-6 right-6 z-50 px-5 py-3 rounded-xl shadow-lg font-semibold text-white ${toast.type === "success" ? "bg-green-500" : "bg-red-500"}`}>
           {toast.text}
         </div>
       )}
 
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2 flex items-center gap-3">
-          <Mail className="w-8 h-8 text-[var(--greek-gold)]" />
-          Landing Page — Waitlist
-        </h1>
-        <p className="text-gray-500">Gérez les inscrits à la liste d'attente de la landing page.</p>
+      <div className="mb-8 flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2 flex items-center gap-3">
+            <Trophy className="w-8 h-8 text-[var(--greek-gold)]" />
+            Liste d'attente — Classement
+          </h1>
+          <p className="text-gray-500">Gérez les inscrits, le parrainage et le classement du site de lancement.</p>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={fetchEntries} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] font-semibold hover:bg-[var(--greek-cream)] transition-colors">
+            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} /> Actualiser
+          </button>
+          <button onClick={exportCSV} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--greek-blue)] text-white font-semibold hover:opacity-90 transition-opacity">
+            <Download className="w-4 h-4" /> CSV
+          </button>
+        </div>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-5 shadow-sm flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
-            <Users className="w-6 h-6 text-[var(--greek-blue)]" />
-          </div>
-          <div>
-            <p className="text-2xl font-bold text-[var(--greek-blue)]">{entries.length}</p>
-            <p className="text-sm text-gray-400">Total inscrits</p>
-          </div>
+          <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center"><Users className="w-6 h-6 text-[var(--greek-blue)]" /></div>
+          <div><p className="text-2xl font-bold text-[var(--greek-blue)]">{stats.total}</p><p className="text-sm text-gray-400">Total inscrits</p></div>
         </div>
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-5 shadow-sm flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-yellow-50 flex items-center justify-center">
-            <Calendar className="w-6 h-6 text-[var(--greek-gold)]" />
-          </div>
-          <div>
-            <p className="text-2xl font-bold text-[var(--greek-blue)]">
-              {entries.filter(e => {
-                const d = new Date(e.created_at);
-                const now = new Date();
-                return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
-              }).length}
-            </p>
-            <p className="text-sm text-gray-400">Ce mois-ci</p>
-          </div>
+          <div className="w-12 h-12 rounded-xl bg-yellow-50 flex items-center justify-center"><Gift className="w-6 h-6 text-[var(--greek-gold)]" /></div>
+          <div><p className="text-2xl font-bold text-[var(--greek-blue)]">{stats.totalReferrals}</p><p className="text-sm text-gray-400">Parrainages</p></div>
         </div>
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-5 shadow-sm flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center">
-            <Calendar className="w-6 h-6 text-green-600" />
-          </div>
+          <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center"><Crown className="w-6 h-6 text-[var(--greek-bronze)]" /></div>
           <div>
-            <p className="text-2xl font-bold text-[var(--greek-blue)]">
-              {entries.filter(e => {
-                const d = new Date(e.created_at);
-                const now = new Date();
-                const week = new Date(now.getTime() - 7 * 86400000);
-                return d >= week;
-              }).length}
-            </p>
-            <p className="text-sm text-gray-400">Cette semaine</p>
+            <p className="text-lg font-bold text-[var(--greek-blue)] truncate max-w-[160px]">{stats.topReferrer?.name || "—"}</p>
+            <p className="text-sm text-gray-400">Top parrain {stats.topReferrer ? `(${stats.topReferrer.count})` : ""}</p>
           </div>
         </div>
       </div>
@@ -137,86 +175,84 @@ export default function AdminLandingPage() {
       {/* Toolbar */}
       <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 border-b border-[rgba(197,161,72,0.15)]">
-          <div className="relative flex-1 max-w-sm">
+          <div className="relative flex-1 max-w-sm w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Rechercher un email..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[var(--greek-blue)]"
-            />
+            <input type="text" placeholder="Rechercher nom, email, code..." value={search} onChange={e => setSearch(e.target.value)}
+              className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[var(--greek-blue)]" />
           </div>
-          <div className="flex gap-2">
-            <button
-              onClick={fetchEntries}
-              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-            >
-              <RefreshCw className="w-4 h-4" /> Actualiser
-            </button>
-            <button
-              onClick={exportCSV}
-              className="flex items-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-colors"
-            >
-              <Download className="w-4 h-4" /> Exporter CSV
-            </button>
+          <div className="flex gap-1 text-sm">
+            <button onClick={() => setSortBy("position")} className={`px-3 py-1.5 rounded-lg font-semibold ${sortBy === "position" ? "bg-[var(--greek-blue)] text-white" : "text-gray-500 hover:bg-gray-100"}`}>Par position</button>
+            <button onClick={() => setSortBy("referrals")} className={`px-3 py-1.5 rounded-lg font-semibold ${sortBy === "referrals" ? "bg-[var(--greek-blue)] text-white" : "text-gray-500 hover:bg-gray-100"}`}>Par filleuls</button>
           </div>
         </div>
 
         {/* Table */}
-        {loading ? (
-          <div className="flex justify-center py-16">
-            <RefreshCw className="w-6 h-6 animate-spin text-[var(--greek-gold)]" />
-          </div>
-        ) : filtered.length === 0 ? (
-          <div className="text-center py-16 text-gray-400">
-            <Mail className="w-12 h-12 mx-auto mb-3 opacity-20" />
-            <p>{search ? "Aucun résultat pour cette recherche." : "Aucun inscrit pour l'instant."}</p>
-          </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-[rgba(197,161,72,0.15)] bg-gray-50">
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-500">#</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-500">Email</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-500">Date d'inscription</th>
-                  <th className="text-right py-3 px-4 text-sm font-bold text-gray-500">Actions</th>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-gray-400 border-b border-[rgba(197,161,72,0.12)]">
+                <th className="px-4 py-3 font-semibold">#</th>
+                <th className="px-4 py-3 font-semibold">Nom</th>
+                <th className="px-4 py-3 font-semibold">Email</th>
+                <th className="px-4 py-3 font-semibold">Code</th>
+                <th className="px-4 py-3 font-semibold">Filleuls</th>
+                <th className="px-4 py-3 font-semibold">Parrainé par</th>
+                <th className="px-4 py-3 font-semibold">IP</th>
+                <th className="px-4 py-3 font-semibold">Date</th>
+                <th className="px-4 py-3 font-semibold text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {loading ? (
+                <tr><td colSpan={9} className="px-4 py-12 text-center text-gray-400">Chargement…</td></tr>
+              ) : filtered.length === 0 ? (
+                <tr><td colSpan={9} className="px-4 py-12 text-center text-gray-400">Aucun inscrit.</td></tr>
+              ) : filtered.map(e => (
+                <tr key={e.id} className="border-b border-[rgba(197,161,72,0.08)] hover:bg-[var(--greek-cream)]/40">
+                  <td className="px-4 py-3 font-bold text-[var(--greek-blue)]">{e.position}</td>
+                  <td className="px-4 py-3">
+                    {editId === e.id ? (
+                      <input value={editName} onChange={ev => setEditName(ev.target.value)} className="w-28 px-2 py-1 border border-gray-200 rounded-lg" />
+                    ) : (e.display_name || <span className="text-gray-300">—</span>)}
+                  </td>
+                  <td className="px-4 py-3 text-gray-600">{e.email}</td>
+                  <td className="px-4 py-3"><span className="px-2 py-0.5 rounded-md bg-[var(--greek-cream)] text-[var(--greek-bronze)] font-mono text-xs font-bold">{e.referral_code}</span></td>
+                  <td className="px-4 py-3">
+                    {editId === e.id ? (
+                      <input type="number" min={0} value={editRefs} onChange={ev => setEditRefs(ev.target.value)} className="w-16 px-2 py-1 border border-gray-200 rounded-lg" />
+                    ) : (
+                      <span className="inline-flex items-center gap-1 font-semibold text-[var(--greek-blue)]">{e.referral_count} 👥</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-gray-500 font-mono text-xs">{e.referred_by || "—"}</td>
+                  <td className="px-4 py-3 font-mono text-xs">
+                    {e.signup_ip ? (
+                      <span className={dupIps.has(e.signup_ip) ? "px-1.5 py-0.5 rounded bg-red-50 text-red-600 font-bold" : "text-gray-400"} title={dupIps.has(e.signup_ip) ? "IP partagée par plusieurs comptes" : ""}>
+                        {e.signup_ip}
+                      </span>
+                    ) : <span className="text-gray-300">—</span>}
+                  </td>
+                  <td className="px-4 py-3 text-gray-500 whitespace-nowrap">{new Date(e.created_at).toLocaleDateString("fr-FR")}</td>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center justify-end gap-1.5">
+                      {editId === e.id ? (
+                        <>
+                          <button disabled={busy === e.id} onClick={() => saveEdit(e.id)} className="p-1.5 rounded-lg bg-green-500 text-white hover:bg-green-600" title="Enregistrer"><Check className="w-4 h-4" /></button>
+                          <button onClick={() => setEditId(null)} className="p-1.5 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300" title="Annuler"><X className="w-4 h-4" /></button>
+                        </>
+                      ) : (
+                        <>
+                          <button onClick={() => startEdit(e)} className="p-1.5 rounded-lg text-[var(--greek-blue)] hover:bg-[var(--greek-cream)]" title="Modifier"><Pencil className="w-4 h-4" /></button>
+                          <button disabled={busy === e.id} onClick={() => deleteEntry(e.id)} className="p-1.5 rounded-lg text-red-500 hover:bg-red-50" title="Supprimer"><Trash2 className="w-4 h-4" /></button>
+                        </>
+                      )}
+                    </div>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {filtered.map((entry, i) => (
-                  <tr key={entry.id} className="border-b border-[rgba(197,161,72,0.1)] hover:bg-[var(--greek-cream)] transition-colors">
-                    <td className="py-3 px-4 text-sm text-gray-400">{i + 1}</td>
-                    <td className="py-3 px-4">
-                      <span className="font-medium text-[var(--greek-blue)]">{entry.email}</span>
-                    </td>
-                    <td className="py-3 px-4 text-sm text-gray-500">
-                      {new Date(entry.created_at).toLocaleString("fr-FR", {
-                        day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit"
-                      })}
-                    </td>
-                    <td className="py-3 px-4 text-right">
-                      <button
-                        onClick={() => deleteEntry(entry.id)}
-                        disabled={deleting === entry.id}
-                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
-                      >
-                        {deleting === entry.id
-                          ? <RefreshCw className="w-4 h-4 animate-spin" />
-                          : <Trash2 className="w-4 h-4" />}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="text-xs text-gray-400 text-right p-3">
-              {filtered.length} résultat{filtered.length > 1 ? "s" : ""}
-              {search ? ` pour "${search}"` : ""}
-            </p>
-          </div>
-        )}
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

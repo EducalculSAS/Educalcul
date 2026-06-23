@@ -26,8 +26,35 @@ export interface IpGeo {
 export async function getIpGeo(request: Request): Promise<IpGeo> {
   const h = request.headers;
   const ip = getClientIp(request);
+  const isLocal = !ip || ip === "127.0.0.1" || ip === "::1";
 
-  // 1. Vercel headers (exact, gratuit, prioritaire si dispo)
+  // 1. IPinfo (plus précis, si un token est configuré)
+  const ipinfoToken = process.env.IPINFO_TOKEN;
+  if (ipinfoToken && !isLocal) {
+    try {
+      const geo = await fetch(
+        `https://ipinfo.io/${ip}/json?token=${ipinfoToken}`,
+        { signal: AbortSignal.timeout(4000), headers: { Accept: "application/json" } }
+      ).then(r => r.json());
+      if (geo?.loc) {
+        const [lat, lng] = String(geo.loc).split(",").map(Number);
+        if (Number.isFinite(lat) && Number.isFinite(lng)) {
+          return {
+            ip,
+            available: true,
+            latitude: lat,
+            longitude: lng,
+            city: geo.city || undefined,
+            country: (COUNTRY_NAMES[geo.country] ?? geo.country) || undefined,
+          };
+        }
+      }
+    } catch {
+      // tombe sur les sources suivantes
+    }
+  }
+
+  // 2. Vercel headers (exact, gratuit, prioritaire si dispo)
   const vercelLat = h.get("x-vercel-ip-latitude");
   const vercelLng = h.get("x-vercel-ip-longitude");
   if (vercelLat && vercelLng) {
@@ -43,8 +70,8 @@ export async function getIpGeo(request: Request): Promise<IpGeo> {
     };
   }
 
-  // 2. IP géoloc côté serveur (OVH, AWS, DigitalOcean, etc.)
-  if (!ip || ip === "127.0.0.1" || ip === "::1") {
+  // 3. IP géoloc côté serveur (OVH, AWS, DigitalOcean, etc.)
+  if (isLocal) {
     return { ip, available: false };
   }
 

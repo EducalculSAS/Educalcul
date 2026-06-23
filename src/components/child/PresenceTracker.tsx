@@ -1,59 +1,53 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function PresenceTracker() {
   const router = useRouter();
+  const lastPing = useRef(0);
 
   useEffect(() => {
-    const track = async () => {
+    // Re-résout présence + géolocalisation (throttle 25s pour éviter le spam).
+    const ping = async (force = false) => {
+      if (!force && Date.now() - lastPing.current < 25000) return;
+      lastPing.current = Date.now();
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
-
-      // Vérif ban — lit directement le statut
-      const { data: user } = await supabase
-        .from("users")
-        .select("status, ban_reason")
-        .eq("auth_id", session.user.id)
-        .maybeSingle();
-
-      if (user?.status === "inactive" || user?.ban_reason) {
-        router.push("/auth/banned");
-        return;
-      }
-
-      // Détecter le device type simple côté client
       const ua = navigator.userAgent;
       const device_type = /Mobi|Android|iPhone|iPad/i.test(ua) ? "mobile" : "desktop";
-
-      // Appel API centralisé — gère login_count, login_streak, last_login_date + history
-      await fetch("/api/user/track-login", {
+      fetch("/api/user/track-login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-        },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
         body: JSON.stringify({ device_type, user_agent: ua }),
-      });
+      }).catch(() => {});
     };
 
-    track();
-
-    // Refresh last_active_at every 2 minutes
-    const interval = setInterval(async () => {
+    const checkBanAndTrack = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        await supabase
-          .from("users")
-          .update({ last_active_at: new Date().toISOString() })
-          .eq("auth_id", session.user.id);
-      }
-    }, 120000);
+      if (!session) return;
+      const { data: user } = await supabase
+        .from("users").select("status, ban_reason").eq("auth_id", session.user.id).maybeSingle();
+      if (user?.status === "inactive" || user?.ban_reason) { router.push("/auth/banned"); return; }
+      ping(true);
+    };
 
-    return () => clearInterval(interval);
-  }, []);
+    checkBanAndTrack();
+
+    // Re-résout dès que l'app revient au premier plan (l'utilisateur a pu se
+    // déplacer entre-temps) + filet toutes les 2 min.
+    const onVisible = () => { if (document.visibilityState === "visible") ping(); };
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("focus", onVisible);
+    const interval = setInterval(() => ping(true), 120000);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("focus", onVisible);
+    };
+  }, [router]);
 
   return null;
 }

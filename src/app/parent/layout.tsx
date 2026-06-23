@@ -84,15 +84,34 @@ export default function ParentLayout({
 
     checkUser();
 
-    // Refresh last_active_at every 2 minutes
-    const interval = setInterval(async () => {
+    // Rafraîchit présence + géolocalisation en rappelant track-login (re-résout
+    // l'IP) : au retour sur l'app (focus/onglet visible, throttle 25s) et en
+    // filet toutes les 2 min — la position suit même sans recharger l'app.
+    let lastPing = 0;
+    const ping = async (force = false) => {
+      if (!force && Date.now() - lastPing < 25000) return;
+      lastPing = Date.now();
       const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        await supabase.from("users").update({ last_active_at: new Date().toISOString() }).eq("auth_id", session.user.id);
-      }
-    }, 120000);
+      if (!session) return;
+      const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
+      const device_type = /Mobi|Android|iPhone|iPad/i.test(ua) ? "mobile" : "desktop";
+      fetch("/api/user/track-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
+        body: JSON.stringify({ device_type, user_agent: ua }),
+      }).catch(() => {});
+    };
 
-    return () => clearInterval(interval);
+    const onVisible = () => { if (document.visibilityState === "visible") ping(); };
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("focus", onVisible);
+    const interval = setInterval(() => ping(true), 120000);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("focus", onVisible);
+    };
   }, [router]);
 
   if (loading) {

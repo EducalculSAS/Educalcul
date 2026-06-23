@@ -49,6 +49,7 @@ export default function AdminSidebar() {
     { name: "Juridique", href: "/admin/juridique", icon: Scale },
     { name: "Programmes", href: "/admin/programmes", icon: GraduationCap },
     { name: "Calendrier", href: "/admin/calendar", icon: Calendar },
+    { name: "Liste d'attente", href: "/admin/landing", icon: Trophy },
     { name: "Profil", href: "/admin/profile", icon: User },
   ];
 

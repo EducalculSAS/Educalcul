@@ -1,10 +1,19 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 export async function POST(req: Request) {
   try {
-    const { code, newUserAuthId } = await req.json();
-    if (!code || !newUserAuthId) return NextResponse.json({ error: "Params manquants" }, { status: 400 });
+    // L'identité provient TOUJOURS du JWT vérifié, jamais du corps de la requête.
+    // Sans cela, n'importe qui pouvait gonfler `current_uses` (épuiser des codes)
+    // et accorder des réductions à un parrain arbitraire.
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const { code } = await req.json();
+    if (!code || typeof code !== "string") {
+      return NextResponse.json({ error: "Params manquants" }, { status: 400 });
+    }
 
     // Resolve referral code
     const { data: refCode, error: refErr } = await supabaseAdmin
@@ -22,19 +31,25 @@ export async function POST(req: Request) {
     if (refCode.max_uses !== null && refCode.current_uses >= refCode.max_uses)
       return NextResponse.json({ error: "Code épuisé" }, { status: 400 });
 
-    // Resolve new user DB id
-    const { data: newUser } = await supabaseAdmin
-      .from("users")
-      .select("id")
-      .eq("auth_id", newUserAuthId)
-      .maybeSingle();
+    // On ne peut pas utiliser son propre code de parrainage.
+    if (refCode.owner_user_id && refCode.owner_user_id === me.id) {
+      return NextResponse.json({ error: "Vous ne pouvez pas utiliser votre propre code" }, { status: 400 });
+    }
 
-    if (!newUser) return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
+    // Idempotence : un utilisateur ne peut utiliser un code de parrainage qu'une fois.
+    const { data: alreadyUsed } = await supabaseAdmin
+      .from("referral_uses")
+      .select("id")
+      .eq("used_by_user_id", me.id)
+      .maybeSingle();
+    if (alreadyUsed) {
+      return NextResponse.json({ error: "Vous avez déjà utilisé un code de parrainage" }, { status: 400 });
+    }
 
     // Record use
     await supabaseAdmin.from("referral_uses").insert({
       referral_code_id: refCode.id,
-      used_by_user_id: newUser.id,
+      used_by_user_id: me.id,
     });
 
     // Increment current_uses

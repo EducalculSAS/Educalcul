@@ -27,12 +27,15 @@ const ROLE_COLOR: Record<string, string> = {
 // Style Carto Voyager — beau, sans API key
 const MAP_STYLE = "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
 
-// Évite que plusieurs utilisateurs au même endroit (même ville/IP) se superposent :
-// décale chaque marqueur partageant des coordonnées arrondies sur un petit cercle.
+// Évite que plusieurs utilisateurs au même endroit (même ville/IP) se superposent.
+// On applique un TRÈS petit décalage géographique (quelques dizaines de mètres) :
+// assez pour les distinguer quand on zoome, mais assez petit pour qu'ils se
+// regroupent (« stack ») quand on dézoome. L'ancien rayon (0.04° ≈ 4 km) étalait
+// les points sur toute une ville.
 function spreadOverlaps(users: UserMarker[]): UserMarker[] {
   const groups = new globalThis.Map<string, UserMarker[]>();
   for (const u of users) {
-    const key = `${u.lat.toFixed(2)},${u.lng.toFixed(2)}`;
+    const key = `${u.lat.toFixed(4)},${u.lng.toFixed(4)}`;
     const group = groups.get(key);
     if (group) group.push(u);
     else groups.set(key, [u]);
@@ -44,7 +47,8 @@ function spreadOverlaps(users: UserMarker[]): UserMarker[] {
       result.push(group[0]);
       continue;
     }
-    const radius = 0.04 + group.length * 0.005;
+    // ~0.00012° ≈ 13 m, +3 m par point du cluster.
+    const radius = 0.00012 + group.length * 0.00003;
     group.forEach((u, i) => {
       const angle = (2 * Math.PI * i) / group.length;
       result.push({

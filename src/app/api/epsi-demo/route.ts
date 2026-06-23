@@ -1,6 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomUUID } from "crypto";
 import { chatWithAI } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+
+const DEMO_COOKIE = "epsi_demo_id";
+
+// Identifiant de démo stable par navigateur (cookie httpOnly). On ne se base plus
+// sur l'IP : celle-ci change (4G, autre lieu) et est partagée (NAT) ou falsifiable
+// via X-Forwarded-For, ce qui bloquait des utilisateurs légitimes ou laissait
+// contourner la limite. Le cookie suit l'appareil quel que soit le réseau.
+function readDemoId(req: NextRequest): string | null {
+  const id = req.cookies.get(DEMO_COOKIE)?.value;
+  return id && /^[0-9a-f-]{36}$/i.test(id) ? id : null;
+}
+
+function attachDemoId(res: NextResponse, id: string) {
+  res.cookies.set(DEMO_COOKIE, id, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365,
+  });
+  return res;
+}
 
 const SYSTEM_PROMPT = `Tu es EpsiAI, assistant de mathematiques de la plateforme Educalcul (CP a la Terminale).
 Tu utilises la methode socratique : tu poses des questions et donnes des indices.
@@ -28,14 +51,6 @@ EXEMPLES CORRECTS :
 EXEMPLE INTERDIT :
 - "Exact, donc 47 = 6 x 7 + 5, essaie 53..." <- interdit, tu as revele la reponse`;
 
-function getIP(req: NextRequest): string {
-  return (
-    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-    req.headers.get("x-real-ip") ||
-    "unknown"
-  );
-}
-
 /** Supprime les blocs de raisonnement interne que certains modèles laissent dans leur réponse */
 function cleanReply(text: string): string {
   text = text.replace(/<think(?:ing)?[\s\S]*?<\/think(?:ing)?>/gi, "");
@@ -58,34 +73,39 @@ function cleanReply(text: string): string {
 const DEMO_LIMIT = 3;
 
 export async function GET(req: NextRequest) {
-  const ip = getIP(req);
-  const { data } = await supabaseAdmin
-    .from("epsi_demo_usage")
-    .select("count")
-    .eq("ip", ip)
-    .maybeSingle();
-  const count = data?.count ?? 0;
-  return NextResponse.json({ count, remaining: DEMO_LIMIT - count, limitReached: count >= DEMO_LIMIT });
+  const id = readDemoId(req);
+  let count = 0;
+  if (id) {
+    const { data } = await supabaseAdmin
+      .from("epsi_demo_usage")
+      .select("count")
+      .eq("ip", id)
+      .maybeSingle();
+    count = data?.count ?? 0;
+  }
+  const res = NextResponse.json({ count, remaining: DEMO_LIMIT - count, limitReached: count >= DEMO_LIMIT });
+  // Émet l'identifiant dès la première visite pour qu'il soit stable ensuite.
+  return attachDemoId(res, id ?? randomUUID());
 }
 
 export async function POST(req: NextRequest) {
   try {
-    const ip = getIP(req);
+    const id = readDemoId(req) ?? randomUUID();
 
-    // Vérif IP dans Supabase
+    // Compteur par navigateur (clé = cookie), enregistré dans Supabase.
     const { data: existing } = await supabaseAdmin
       .from("epsi_demo_usage")
       .select("count")
-      .eq("ip", ip)
+      .eq("ip", id)
       .maybeSingle();
 
     if (existing && existing.count >= DEMO_LIMIT) {
-      return NextResponse.json({ error: "demo_limit" }, { status: 403 });
+      return attachDemoId(NextResponse.json({ error: "demo_limit" }, { status: 403 }), id);
     }
 
     const { messages } = await req.json();
     if (!Array.isArray(messages) || messages.length === 0) {
-      return NextResponse.json({ error: "Messages requis" }, { status: 400 });
+      return attachDemoId(NextResponse.json({ error: "Messages requis" }, { status: 400 }), id);
     }
 
     const raw = await chatWithAI(messages, SYSTEM_PROMPT, 0.7, 200);
@@ -93,11 +113,11 @@ export async function POST(req: NextRequest) {
     const newCount = (existing?.count ?? 0) + 1;
 
     // Upsert : insert ou incrémente le compteur
-    await supabaseAdmin.from("epsi_demo_usage").upsert({ ip, count: newCount });
+    await supabaseAdmin.from("epsi_demo_usage").upsert({ ip: id, count: newCount });
 
     const limitReached = newCount >= DEMO_LIMIT;
 
-    return NextResponse.json({ reply, limitReached });
+    return attachDemoId(NextResponse.json({ reply, limitReached }), id);
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     console.error("[epsi-demo]", msg);
