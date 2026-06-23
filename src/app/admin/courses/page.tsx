@@ -31,6 +31,7 @@ interface Course {
   thumbnail_url: string | null;
   status: "published" | "draft" | "archived";
   folder_id: number | null;
+  estimated_time: number | null;
   content_json: Chapter[] | null;
   created_at: string;
 }
@@ -143,6 +144,7 @@ export default function AdminCoursesPage() {
     folder_id: null as number | null,
     content_json: [] as Chapter[],
   });
+  const [estimatedTime, setEstimatedTime] = useState(15);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
@@ -560,8 +562,10 @@ export default function AdminCoursesPage() {
         folder_id: course.folder_id || null,
         content_json: course.content_json || [],
       });
+      setEstimatedTime((course as any).estimated_time ?? 15);
     } else {
       setCurrentCourse(null);
+      setEstimatedTime(15);
       setFormData({
         title: "",
         description: "",
@@ -609,6 +613,7 @@ export default function AdminCoursesPage() {
         status: formData.status as "published" | "draft" | "archived",
         thumbnail_url: formData.thumbnail_url,
         folder_id: formData.folder_id,
+        estimated_time: estimatedTime,
         content_json: formData.content_json,
       };
 
@@ -1301,6 +1306,16 @@ export default function AdminCoursesPage() {
                             {SCHOOL_LEVELS.map((level) => (<option key={level.value} value={level.value}>{level.label}</option>))}
                           </select>
                         )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Durée estimée</label>
+                        <select
+                          value={estimatedTime}
+                          onChange={(e) => setEstimatedTime(parseInt(e.target.value))}
+                          className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
+                        >
+                          {[5, 10, 15, 20, 30, 45, 60, 90].map((m) => (<option key={m} value={m}>{m} min</option>))}
+                        </select>
                       </div>
                     </div>
                     <div>

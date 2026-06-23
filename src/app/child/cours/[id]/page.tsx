@@ -335,7 +335,7 @@ export default function CourseDetailPage() {
                     <span className="flex items-center gap-2">
                       <Clock className="w-4 h-4" /> Durée estimée
                     </span>
-                    <span className="font-bold">15 min</span>
+                    <span className="font-bold">{course?.estimated_time || 15} min</span>
                   </div>
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">
                     <span className="flex items-center gap-2">

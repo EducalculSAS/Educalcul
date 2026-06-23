@@ -74,6 +74,7 @@ export async function POST(request: Request) {
       level,
       max_attempts,
       grading_type,
+      estimated_time,
     } = body;
 
     const { data, error } = await supabaseAdmin
@@ -92,6 +93,7 @@ export async function POST(request: Request) {
         difficulty_level: difficulty_level || "medium",
         max_attempts: max_attempts || 0,
         grading_type: grading_type || "auto",
+        estimated_time: estimated_time ?? 15,
       })
       .select()
       .single();
@@ -150,6 +152,7 @@ export async function PUT(request: Request) {
     if (has("type")) updatePayload.type = type;
     if (has("difficulty_level")) updatePayload.difficulty_level = difficulty_level;
     if (has("level")) updatePayload.level = level;
+    if (has("estimated_time")) updatePayload.estimated_time = body.estimated_time ?? 15;
     if (has("max_attempts")) updatePayload.max_attempts = max_attempts;
     if (has("grading_type")) updatePayload.grading_type = grading_type;
 

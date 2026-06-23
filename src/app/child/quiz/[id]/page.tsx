@@ -374,7 +374,7 @@ export default function QuizDetailPage() {
                       <Clock className="w-4 h-4" /> {quiz.time_limit_minutes ? "Limite de temps" : "Temps estimé"}
                     </span>
                     <span className={`font-bold ${quiz.time_limit_minutes ? "text-red-500" : ""}`}>
-                      {quiz.time_limit_minutes ? `${quiz.time_limit_minutes} min` : "10 min"}
+                      {quiz.time_limit_minutes ? `${quiz.time_limit_minutes} min` : `${quiz.estimated_time || 15} min`}
                     </span>
                   </div>
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">

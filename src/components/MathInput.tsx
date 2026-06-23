@@ -405,6 +405,12 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     container.appendChild(mf);
     mfRef.current = mf;
 
+    // Désactive les raccourcis "lettres → symbole" de MathLive (ex. "or" → ∨,
+    // "and" → ∧, "pi" → π) : au clavier physique l'élève veut taper des lettres
+    // littérales. À faire APRÈS le montage dans le DOM (le setter exige que le
+    // mathfield soit monté). Les symboles restent dispo via le clavier virtuel.
+    try { mf.inlineShortcuts = {}; } catch { /* mathfield pas encore prêt */ }
+
     // Le placeholder ("Ta réponse…") ne s'affiche que si le champ est vide ET
     // non focalisé (curseur absent). Tant que le curseur clignote dedans, on
     // le masque, même après avoir tout effacé.

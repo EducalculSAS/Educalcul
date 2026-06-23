@@ -217,6 +217,7 @@ export default function AdminQuizzesPage() {
         thumbnail_filename: "",
         content_json: data.content_json || [],
       });
+      setQuizEstimatedTime(data.estimated_time ?? 15);
       setEditingQuiz(data.id ? ({ id: data.id } as Quiz) : null);
       setIsModalOpen(true);
     } catch (err: any) { alert(err.message); }
@@ -241,6 +242,7 @@ export default function AdminQuizzesPage() {
     thumbnail_filename: "",
     content_json: [] as Question[],
   });
+  const [quizEstimatedTime, setQuizEstimatedTime] = useState(15);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
 
@@ -679,6 +681,7 @@ export default function AdminQuizzesPage() {
       const body = {
         ...formData,
         id: editingQuiz?.id,
+        estimated_time: quizEstimatedTime,
         // Ensure numbers are numbers
         time_limit_minutes: formData.time_limit_minutes
           ? parseInt(String(formData.time_limit_minutes))
@@ -1540,6 +1543,16 @@ export default function AdminQuizzesPage() {
                           </button>
                         ))}
                       </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Durée estimée</label>
+                      <select
+                        value={quizEstimatedTime}
+                        onChange={(e) => setQuizEstimatedTime(parseInt(e.target.value))}
+                        className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
+                      >
+                        {[5, 10, 15, 20, 30, 45, 60, 90].map((m) => (<option key={m} value={m}>{m} min</option>))}
+                      </select>
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Statut</label>

@@ -52,6 +52,7 @@ export async function POST(request: Request) {
       thumbnail_url,
       folder_id,
       content_json,
+      estimated_time,
     } = body;
 
     const { data, error } = await supabaseAdmin
@@ -65,6 +66,7 @@ export async function POST(request: Request) {
         thumbnail_url,
         folder_id: folder_id || null,
         content_json: content_json || [],
+        estimated_time: estimated_time ?? 15,
         is_published: status === "published",
       })
       .select()
@@ -117,6 +119,7 @@ export async function PUT(request: Request) {
     }
     if (has("thumbnail_url")) updatePayload.thumbnail_url = thumbnail_url;
     if (has("folder_id")) updatePayload.folder_id = folder_id || null;
+    if (has("estimated_time")) updatePayload.estimated_time = body.estimated_time ?? 15;
     if (has("content_json")) updatePayload.content_json = content_json || [];
 
     const { data, error } = await supabaseAdmin

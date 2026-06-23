@@ -195,6 +195,7 @@ export async function POST(request: Request) {
       content_json,
       time_limit,
       max_attempts,
+      estimated_time,
     } = body;
 
     // If content_json is empty or not provided, create a sensible default based on exercise type
@@ -272,6 +273,7 @@ export async function POST(request: Request) {
         content_json: finalContentJson,
         time_limit: time_limit || null,
         max_attempts: max_attempts || null,
+        estimated_time: estimated_time ?? 15,
       })
       .select()
       .single();
@@ -388,6 +390,7 @@ export async function PUT(request: Request) {
     if (hasContentKey) updatePayload.content_json = finalContentJson;
     if (has("time_limit")) updatePayload.time_limit = time_limit || null;
     if (has("time_limit_minutes")) updatePayload.time_limit_minutes = body.time_limit_minutes || null;
+    if (has("estimated_time")) updatePayload.estimated_time = body.estimated_time ?? 15;
     if (has("min_score_percent")) updatePayload.min_score_percent = body.min_score_percent || null;
     if (has("max_attempts")) updatePayload.max_attempts = max_attempts || null;
 

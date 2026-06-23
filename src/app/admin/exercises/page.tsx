@@ -128,6 +128,7 @@ interface Exercise {
   thumbnail_url: string | null;
   time_limit: number | null;
   time_limit_minutes: number | null;
+  estimated_time: number | null;
   min_score_percent: number | null;
   max_attempts: number | null;
   created_at: string;
@@ -166,6 +167,7 @@ interface ExerciseFormData {
   thumbnail_url: string;
   time_limit: number;
   time_limit_minutes: number;
+  estimated_time?: number;
   min_score_percent: number;
   max_attempts: number;
   content_json: Page[];
@@ -229,6 +231,7 @@ export default function AdminExercisesPage() {
     thumbnail_url: "",
     time_limit: 0,
     time_limit_minutes: 0,
+    estimated_time: 15,
     min_score_percent: 0,
     max_attempts: 0,
     content_json: [] as Page[],
@@ -621,6 +624,7 @@ export default function AdminExercisesPage() {
       thumbnail_url: exercise.thumbnail_url || "",
       time_limit: exercise.time_limit || 0,
       time_limit_minutes: exercise.time_limit_minutes || 0,
+      estimated_time: exercise.estimated_time ?? 15,
       min_score_percent: exercise.min_score_percent || 0,
       max_attempts: exercise.max_attempts || 0,
       content_json: exercise.content_json || [],
@@ -843,6 +847,7 @@ export default function AdminExercisesPage() {
       thumbnail_url: exercise.thumbnail_url || "",
       time_limit: exercise.time_limit || 0,
       time_limit_minutes: exercise.time_limit_minutes || 0,
+      estimated_time: exercise.estimated_time ?? 15,
       min_score_percent: exercise.min_score_percent || 0,
       max_attempts: exercise.max_attempts || 0,
       content_json: exercise.content_json || [],
@@ -1564,6 +1569,18 @@ export default function AdminExercisesPage() {
                           </button>
                         ))}
                       </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Durée estimée</label>
+                      <select
+                        value={formData.estimated_time ?? 15}
+                        onChange={(e) => setFormData({ ...formData, estimated_time: parseInt(e.target.value) })}
+                        className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
+                      >
+                        {[5, 10, 15, 20, 30, 45, 60, 90].map((m) => (
+                          <option key={m} value={m}>{m} min</option>
+                        ))}
+                      </select>
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Statut</label>
