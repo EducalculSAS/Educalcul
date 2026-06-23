@@ -102,6 +102,9 @@ Commence toujours par une définition claire, avec un exemple simple, en expliqu
 7. Exercices d'application résolus (au moins 2)
 8. Points-clés à retenir (résumé en bullets)
 
+═══ DÉMONSTRATIONS (OBLIGATOIRE si listées au programme) ═══
+Si le programme de l'enseignant mentionne une rubrique « Démonstrations » (ou des preuves à connaître), tu DOIS RÉDIGER CHAQUE DÉMONSTRATION INTÉGRALEMENT : preuve complète, rigoureuse, étape par étape, dans une section dédiée (<h4>Démonstration : …</h4>) de la leçon concernée. Ne te contente jamais d'énoncer le résultat ou de dire « on peut démontrer que » — écris la preuve en entier.
+
 ═══ FORMAT HTML + LATEX ═══
 • HTML : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>
 • LaTeX OBLIGATOIRE pour toutes les formules mathématiques.
@@ -142,13 +145,17 @@ ${contextBlock}
 
 ${teacherDirective}
 
+═══ RÉPARTITION DU CONTENU (ANTI-RÉPÉTITION) ═══
+Découpe le sujet en chapitres aux PÉRIMÈTRES DISTINCTS et COMPLÉMENTAIRES : chaque notion n'est traitée que dans UN seul chapitre. Pour chaque chapitre, précise dans "scope" la liste EXACTE des notions/contenus qu'il couvre (et lui seul).
+Tu dois répartir l'INTÉGRALITÉ du programme demandé entre les chapitres SANS rien oublier ni dupliquer : les Contenus, les Capacités attendues, les Démonstrations, les Exemples d'algorithme et les Approfondissements éventuels doivent TOUS être assignés à un chapitre via son "scope".
+
 ═══ JSON STRICT ═══
 Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
 {
   "title": "Titre complet et précis du cours",
   "description": "Description pédagogique détaillée (3-4 phrases)",
   "chapters": [
-    { "title": "Titre du chapitre 1" }
+    { "title": "Titre du chapitre 1", "scope": "Notions précises traitées dans CE chapitre uniquement (distinctes des autres), incl. les démonstrations et algorithmes assignés à ce chapitre" }
   ]
 }
 Le tableau "chapters" doit contenir EXACTEMENT ${nbChapitres} chapitre(s), avec une progression pédagogique cohérente (du plus simple au plus complexe).`;
@@ -159,19 +166,21 @@ ${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIR
         const outline = (await generateStructuredContent(outlineUser, outlineSystem, 0.6)) as {
           title?: string;
           description?: string;
-          chapters?: { title?: string }[];
+          chapters?: { title?: string; scope?: string }[];
         };
 
         const courseTitle = outline?.title || subject;
         const courseDescription = outline?.description || "";
-        let chapterTitles = (outline?.chapters || [])
-          .map((c) => c?.title)
-          .filter((t): t is string => !!t)
+        const rawChapters = (outline?.chapters || [])
+          .filter((c) => !!c?.title)
           .slice(0, nbChapitres);
+        let chapterTitles = rawChapters.map((c) => c!.title as string);
+        const chapterScopes = rawChapters.map((c) => c?.scope || "");
 
         // Sécurité : si l'IA n'a pas renvoyé assez de chapitres, on complète
         while (chapterTitles.length < nbChapitres) {
           chapterTitles.push(`${subject} — partie ${chapterTitles.length + 1}`);
+          chapterScopes.push("");
         }
 
         send({
@@ -201,7 +210,10 @@ ${contextBlock}
 • Cours : "${courseTitle}"
 • ${courseDescription}
 • Ce chapitre (${i + 1}/${chapterTitles.length}) : "${chapterTitle}"
-• Ensemble des chapitres du cours : ${chapterTitles.map((t, idx) => `${idx + 1}. ${t}`).join(", ")} — évite les répétitions inutiles entre chapitres.
+${chapterScopes[i] ? `• ⚠️ PÉRIMÈTRE DE CE CHAPITRE (traite UNIQUEMENT ces notions) : ${chapterScopes[i]}` : ""}
+• Périmètre des AUTRES chapitres — NE LES RÉ-EXPLIQUE PAS, n'empiète pas dessus :
+${chapterTitles.map((t, idx) => idx === i ? null : `   ${idx + 1}. ${t}${chapterScopes[idx] ? ` → ${chapterScopes[idx]}` : ""}`).filter(Boolean).join("\n")}
+• RÈGLE ANTI-RÉPÉTITION STRICTE : ne traite QUE les notions de TON périmètre. Si une notion relève d'un autre chapitre, fais-y au plus une brève référence sans la redévelopper. Ne réintroduis pas les définitions/propriétés déjà attribuées à un autre chapitre.
 
 ${lessonFormatBlock}
 
