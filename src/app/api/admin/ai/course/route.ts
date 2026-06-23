@@ -68,6 +68,19 @@ ${programmeBlock ? programmeBlock + "\n" : ""}
 • ${styleInstruction}
 • ${languageInstruction}`;
 
+  // Instructions de l'enseignant = AUTORITÉ MAXIMALE. Placées en évidence pour
+  // que l'IA couvre exactement le programme/contenu demandé.
+  const teacherDirective = (additional_info && String(additional_info).trim())
+    ? `═══ ⚠️ INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT — À RESPECTER À LA LETTRE ═══
+Ces consignes PRIMENT sur tout choix par défaut. Tu DOIS couvrir EXACTEMENT les notions, contenus, capacités attendues et démonstrations listés ci-dessous — sans rien ajouter hors-programme, sans rien omettre. Organise le cours et les chapitres pour traiter précisément, point par point, ce programme :
+
+«««
+${String(additional_info).trim()}
+»»»
+
+Vérifie en fin de rédaction que CHAQUE notion citée ci-dessus apparaît bien dans le cours.`
+    : "";
+
   const lessonFormatBlock = `═══ EXIGENCES DE LONGUEUR (NON NÉGOCIABLES) ═══
 • Chaque leçon doit contenir MINIMUM 600 mots, idéalement 800-1200 mots.
 • Le chapitre doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s).
@@ -127,6 +140,8 @@ Ta mission : élaborer le PLAN d'un cours magistral COMPLET sur "${subject}".
 
 ${contextBlock}
 
+${teacherDirective}
+
 ═══ JSON STRICT ═══
 Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
 {
@@ -139,7 +154,7 @@ Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
 Le tableau "chapters" doit contenir EXACTEMENT ${nbChapitres} chapitre(s), avec une progression pédagogique cohérente (du plus simple au plus complexe).`;
 
         const outlineUser = `Crée le plan d'un cours de mathématiques sur "${subject}" pour le niveau ${grade_level}, avec ${nbChapitres} chapitre(s).
-${additional_info ? `Instructions spécifiques de l'enseignant : ${additional_info}` : ""}`;
+${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT ci-dessus : couvre exactement le programme demandé, notion par notion." : ""}`;
 
         const outline = (await generateStructuredContent(outlineUser, outlineSystem, 0.6)) as {
           title?: string;
@@ -190,6 +205,8 @@ ${contextBlock}
 
 ${lessonFormatBlock}
 
+${teacherDirective}
+
 ═══ JSON STRICT ═══
 Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
 {
@@ -210,7 +227,7 @@ Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
           const chapterUser = `Rédige le chapitre "${chapterTitle}" du cours "${courseTitle}" (niveau ${grade_level}).
 Le tableau "lessons" doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s), chacune ${durationPerLesson} minutes.
 Chaque leçon doit avoir un "content" HTML riche (600-1200 mots au total), ${includeExercises ? `et un tableau "exercises" de 3 à 6 mini-exercices (type "short_answer"), avec un placeholder <div class="lesson-exercise" data-exercise-id="..."></div> inséré dans "content" juste après chaque notion expliquée` : `et un tableau "exercises" vide`}.
-${additional_info ? `Instructions spécifiques de l'enseignant : ${additional_info}` : ""}
+${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT ci-dessus : couvre exactement le programme demandé, notion par notion." : ""}
 Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
 
           const chapterData = (await generateStructuredContent(chapterUser, chapterSystem, 0.65, 16000)) as {

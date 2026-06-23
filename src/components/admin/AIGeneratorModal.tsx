@@ -44,6 +44,31 @@ interface AIGeneratorModalProps {
   onGenerate: (params: AIGenerateParams) => void;
   onClose: () => void;
   progress?: AIGenerateProgress | null;
+  /** Niveau scolaire du dossier courant (pré-sélection). */
+  defaultLevel?: string;
+}
+
+// Carte d'un groupe de champs. DÉFINIE AU NIVEAU MODULE (pas dans le composant) :
+// sinon elle est recréée à chaque frappe → React remonte le sous-arbre → perte
+// du focus et retour en haut du formulaire.
+function Card({
+  icon,
+  label,
+  children,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl p-4 hover:border-[var(--greek-gold)]/40 transition-colors">
+      <label className="flex items-center gap-2 text-xs font-bold text-[var(--greek-blue)] uppercase tracking-wider mb-3">
+        {icon}
+        {label}
+      </label>
+      {children}
+    </div>
+  );
 }
 
 const SUBJECT_AREAS = [
@@ -59,10 +84,10 @@ const SUBJECT_AREAS = [
 
 const DURATIONS = [20, 30, 45, 60];
 
-export default function AIGeneratorModal({ type, onGenerate, onClose, progress }: AIGeneratorModalProps) {
+export default function AIGeneratorModal({ type, onGenerate, onClose, progress, defaultLevel }: AIGeneratorModalProps) {
   const [params, setParams] = useState<AIGenerateParams>({
     topic: "",
-    level: "6eme",
+    level: defaultLevel || "6eme",
     count: type === "course" ? 2 : 5,
     difficulty: "medium",
     instructions: "",
@@ -119,25 +144,6 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress }
 
   const navy = "var(--greek-blue)";
   const gold = "var(--greek-gold)";
-
-  // Reusable card wrapper for each field group
-  const Card = ({
-    icon,
-    label,
-    children,
-  }: {
-    icon: React.ReactNode;
-    label: string;
-    children: React.ReactNode;
-  }) => (
-    <div className="bg-white border border-gray-200 rounded-2xl p-4 hover:border-[var(--greek-gold)]/40 transition-colors">
-      <label className="flex items-center gap-2 text-xs font-bold text-[var(--greek-blue)] uppercase tracking-wider mb-3">
-        {icon}
-        {label}
-      </label>
-      {children}
-    </div>
-  );
 
   const difficultyOptions = [
     { id: "easy", label: "Facile", color: "#10b981" },

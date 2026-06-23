@@ -1555,6 +1555,7 @@ export default function AdminCoursesPage() {
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
           progress={aiProgress}
+          defaultLevel={currentFolderLevel || undefined}
         />
       )}
 
