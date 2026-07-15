@@ -182,7 +182,13 @@ ${String(instructions).trim()}
         results.sort((a, b) => a.batchIndex - b.batchIndex);
 
         const first = results[0]?.generated || {};
-        const blocks = results.flatMap((r) => r.generated?.blocks || []);
+        // Chaque lot génère ses ids indépendamment (ex: "block-1", "block-2") en
+        // suivant l'exemple du prompt → collisions garanties une fois les lots
+        // fusionnés. On renumérote pour garantir l'unicité (sinon éditer un bloc
+        // dans l'éditeur en modifie un autre partageant le même id).
+        const blocks = results
+          .flatMap((r) => r.generated?.blocks || [])
+          .map((b: any, i: number) => ({ ...b, id: `block-${i + 1}` }));
 
         send({
           type: "done",

@@ -793,7 +793,7 @@ export default function AdminExercisesPage() {
       title: "",
       description: "",
       course_id: "",
-      folder_id: "",
+      folder_id: currentFolderId || "",
       difficulty_level: "medium",
       type: "standard",
       level: currentFolderLevel || "6eme",

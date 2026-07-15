@@ -161,7 +161,13 @@ ${String(instructions).trim()}
         results.sort((a, b) => a.batchIndex - b.batchIndex);
 
         const first = results[0]?.generated || {};
-        const questions = results.flatMap((r) => r.generated?.questions || []);
+        // Chaque lot génère ses ids indépendamment (ex: "q-1", "q-2") en suivant
+        // l'exemple du prompt → collisions garanties une fois les lots fusionnés.
+        // On renumérote pour garantir l'unicité (sinon éditer une question dans
+        // l'éditeur en modifie une autre partageant le même id).
+        const questions = results
+          .flatMap((r) => r.generated?.questions || [])
+          .map((q: any, i: number) => ({ ...q, id: `q-${i + 1}` }));
 
         send({
           type: "done",

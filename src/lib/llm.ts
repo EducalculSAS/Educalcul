@@ -3,7 +3,7 @@
  */
 
 const OR_URL      = "https://openrouter.ai/api/v1/chat/completions";
-const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-v4-flash";
+const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-chat-v3-0324";
 const OR_FALLBACK_MODEL = process.env.OPENROUTER_FALLBACK_MODEL || "deepseek/deepseek-chat-v3-0324";
 const OR_KEY      = process.env.OPENROUTER_API_KEY || "";
 
