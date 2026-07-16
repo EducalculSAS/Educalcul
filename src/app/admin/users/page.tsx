@@ -12,6 +12,8 @@ import {
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/PageLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 
 interface User {
   id: string;
@@ -384,15 +386,22 @@ export default function AdminUsersPage() {
   }, []);
 
   const fetchUsers = async (silent = false) => {
-    if (!silent) setLoading(true);
+    const cacheKey = `users:${roleFilter}:${statusFilter}`;
+    const cached = getAdminCache<any[]>(cacheKey);
+    if (!silent) {
+      if (cached) { setUsers(cached); setLoading(false); }
+      else setLoading(true);
+    }
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) { if (!silent) setLoading(false); return; }
+    if (!session) { if (!silent && !cached) setLoading(false); return; }
     let url = `/api/admin/users?userId=${session.user.id}`;
     if (roleFilter !== "all") url += `&role=${roleFilter}`;
     if (statusFilter !== "all") url += `&status=${statusFilter}`;
     const res = await fetch(url);
     const data = await res.json();
-    setUsers(Array.isArray(data) ? data : []);
+    const list = Array.isArray(data) ? data : [];
+    setUsers(list);
+    setAdminCache(cacheKey, list);
     if (!silent) setLoading(false);
   };
 
@@ -413,6 +422,7 @@ export default function AdminUsersPage() {
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || "Erreur");
       setShowFormModal(false);
+      invalidateAdminCache("users:");
       fetchUsers();
     } catch (err: any) { alert(err.message); }
     finally { setSubmitting(false); }
@@ -431,6 +441,7 @@ export default function AdminUsersPage() {
     setBanDays(null);
     setBanTarget(null);
     setSubmitting(false);
+    invalidateAdminCache("users:");
     fetchUsers(true);
   };
 
@@ -439,6 +450,7 @@ export default function AdminUsersPage() {
     setSubmitting(true);
     const res = await fetch(`/api/admin/users?auth_id=${deleteTarget.auth_id}&userId=${currentAuthId}`, { method: "DELETE" });
     if (res.ok) setUsers(users.filter(u => u.id !== deleteTarget.id));
+    invalidateAdminCache("users:");
     setShowDeleteModal(false);
     setDeleteTarget(null);
     setSubmitting(false);
@@ -453,17 +465,12 @@ export default function AdminUsersPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 relative overflow-hidden">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="min-w-0">
-            <h1 className="text-2xl md:text-3xl font-bold text-[var(--greek-blue)] mb-1 font-[family-name:var(--font-display)] flex items-center gap-3 flex-wrap">
-              <Users className="text-[var(--greek-gold)] flex-shrink-0" size={28} />
-              <span>Gestion des Utilisateurs</span>
-            </h1>
-            <p className="text-[var(--greek-bronze)] text-sm">Gérez les comptes parents, élèves et administrateurs</p>
-          </div>
-          <div className="flex items-center gap-2 flex-shrink-0">
+      <AdminPageHeader
+        icon={Users}
+        title="Gestion des Utilisateurs"
+        subtitle="Gérez les comptes parents, élèves et administrateurs"
+        actions={
+          <>
             <button onClick={() => { setExportTarget(filteredUsers); setShowExportModal(true); }}
               className="flex items-center gap-2 px-4 py-2.5 border border-[rgba(197,161,72,0.35)] text-[var(--greek-blue)] rounded-xl hover:bg-[rgba(197,161,72,0.06)] transition-colors font-semibold text-sm"
               title="Exporter les utilisateurs">
@@ -474,9 +481,9 @@ export default function AdminUsersPage() {
               className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold text-sm">
               <Plus size={18} /> <span className="hidden sm:inline">Nouvel Utilisateur</span><span className="sm:hidden">Nouveau</span>
             </button>
-          </div>
-        </div>
-      </div>
+          </>
+        }
+      />
 
       {/* Map */}
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-4 sm:p-6 relative z-0 overflow-hidden">

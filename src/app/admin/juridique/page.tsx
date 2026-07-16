@@ -8,6 +8,7 @@ import {
 import PageLoader from "@/components/PageLoader";
 import type { LegalPageData, LegalSection } from "@/components/LegalPageRenderer";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 const PAGES = [
   { slug: "mentions-legales", label: "Mentions Légales",         icon: Scale,    href: "/mentions-legales",           color: "blue"   },
@@ -106,32 +107,29 @@ export default function AdminJuridique() {
   return (
     <div className="space-y-6">
 
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-            <Scale className="text-[var(--greek-gold)]" size={30} />
-            Pages Juridiques
-          </h1>
-          <p className="text-[var(--greek-bronze)] mt-1">Modifiez le contenu des pages légales directement depuis l&apos;interface</p>
-        </div>
-        <div className="flex items-center gap-3">
-          {page && (
-            <a href={PAGES.find(p => p.slug === activeSlug)?.href} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 border border-[rgba(197,161,72,0.4)] rounded-xl text-sm font-semibold text-[var(--greek-blue)] hover:bg-gray-50 transition-colors">
-              <Eye size={16} /> Voir la page
-            </a>
-          )}
-          <button
-            onClick={savePage}
-            disabled={saving || loading}
-            className="flex items-center gap-2 px-6 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold disabled:opacity-50"
-          >
-            {saving ? <RefreshCw size={16} className="animate-spin" /> : <Save size={16} />}
-            {saving ? "Sauvegarde..." : "Sauvegarder"}
-          </button>
-        </div>
-      </div>
+      <AdminPageHeader
+        icon={Scale}
+        title="Pages Juridiques"
+        subtitle="Modifiez le contenu des pages légales directement depuis l'interface"
+        actions={
+          <>
+            {page && (
+              <a href={PAGES.find(p => p.slug === activeSlug)?.href} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 border border-[rgba(197,161,72,0.4)] rounded-xl text-sm font-semibold text-[var(--greek-blue)] hover:bg-gray-50 transition-colors">
+                <Eye size={16} /> Voir la page
+              </a>
+            )}
+            <button
+              onClick={savePage}
+              disabled={saving || loading}
+              className="flex items-center gap-2 px-6 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold disabled:opacity-50"
+            >
+              {saving ? <RefreshCw size={16} className="animate-spin" /> : <Save size={16} />}
+              {saving ? "Sauvegarde..." : "Sauvegarder"}
+            </button>
+          </>
+        }
+      />
 
       {/* Page tabs */}
       <div className="flex flex-wrap gap-2">

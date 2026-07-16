@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -15,6 +15,8 @@ import {
   Sparkles,
   Pencil,
   Keyboard,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import { supabase } from "@/lib/supabaseClient";
@@ -24,6 +26,24 @@ import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph"
 import MathInput, { MathInputHandle } from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import "katex/dist/katex.min.css";
+
+// Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
+// élèves (association / mise en ordre) reste stable entre deux rendus tant
+// que l'exercice n'a pas changé, sans avoir à le persister séparément.
+function seededShuffle<T>(arr: T[], seed: string): T[] {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  const rand = () => {
+    h = (h * 1664525 + 1013904223) >>> 0;
+    return h / 4294967296;
+  };
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
 
 interface ExerciseViewerProps {
   exercise: {
@@ -70,6 +90,34 @@ export default function ExerciseViewer({
 }: ExerciseViewerProps) {
   const pages = exercise.content_json || [];
   const { pageContext, setPageContext } = useAITutor();
+
+  // Affichage mélangé (stable) des blocs "association" (choix de droite) et
+  // "mise en ordre" (éléments à réordonner), calculé une fois par exercice.
+  const shuffledRightOptions = useMemo(() => {
+    const map: Record<string, string[]> = {};
+    pages.forEach((p) =>
+      p.blocks.forEach((b) => {
+        if (b.type === "matching" && b.pairs) {
+          map[b.id] = seededShuffle(b.pairs.map((pr) => pr.right), b.id);
+        }
+      })
+    );
+    return map;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exercise.id]);
+
+  const shuffledOrderingItems = useMemo(() => {
+    const map: Record<string, string[]> = {};
+    pages.forEach((p) =>
+      p.blocks.forEach((b) => {
+        if (b.type === "ordering" && b.items) {
+          map[b.id] = seededShuffle(b.items, b.id);
+        }
+      })
+    );
+    return map;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exercise.id]);
 
   // Nouvelle tentative : on efface la progression locale précédente
   useEffect(() => {
@@ -476,7 +524,12 @@ export default function ExerciseViewer({
       for (const block of page.blocks) {
         if (["text", "image"].includes(block.type)) continue;
 
-        const answer = answers[block.id];
+        // "Mise en ordre" : si l'élève n'a jamais touché aux flèches, son
+        // "answer" implicite est l'ordre mélangé affiché à l'écran — pas
+        // une absence de réponse.
+        const answer =
+          answers[block.id] ??
+          (block.type === "ordering" ? shuffledOrderingItems[block.id] : undefined);
         let isCorrect = false;
         let points = block.points || 0;
 
@@ -486,7 +539,7 @@ export default function ExerciseViewer({
           continue;
         }
 
-        if (block.type === "text_input" || exercise.grading_type === "ai") {
+        if (["text_input", "coding"].includes(block.type) || exercise.grading_type === "ai") {
           try {
             const exerciseId = exercise.id || "preview";
             const res = await fetch(`/api/child/exercises/${exerciseId}/grade`, {
@@ -517,7 +570,7 @@ export default function ExerciseViewer({
               String(block.correctAnswer).toLowerCase().trim();
           }
         } else {
-          if (block.type === "multiple_choice") {
+          if (block.type === "multiple_choice" || block.type === "qcm") {
             const correct = Array.isArray(block.correctAnswer)
               ? block.correctAnswer
               : [block.correctAnswer];
@@ -527,6 +580,27 @@ export default function ExerciseViewer({
               correct.every((a: any) => selected.includes(a));
           } else if (["single_choice", "true_false"].includes(block.type)) {
             isCorrect = answer === block.correctAnswer;
+          } else if (block.type === "fill_in_the_blank") {
+            const given: string[] = Array.isArray(answer) ? answer : [];
+            const expected = block.blanks || [];
+            isCorrect =
+              expected.length > 0 &&
+              expected.every((exp, i) => {
+                const alts = exp.split("|").map((s) => s.trim().toLowerCase());
+                return alts.includes(String(given[i] ?? "").trim().toLowerCase());
+              });
+          } else if (block.type === "matching") {
+            const given: string[] = Array.isArray(answer) ? answer : [];
+            const pairs = block.pairs || [];
+            isCorrect =
+              pairs.length > 0 && pairs.every((p, i) => given[i] === p.right);
+          } else if (block.type === "ordering") {
+            const given: string[] = Array.isArray(answer) ? answer : [];
+            const expected = block.items || [];
+            isCorrect =
+              expected.length > 0 &&
+              given.length === expected.length &&
+              expected.every((item, i) => given[i] === item);
           }
         }
 
@@ -768,7 +842,19 @@ export default function ExerciseViewer({
                   )}
                 </div>
 
-                {block.content && (
+                {block.content && block.type === "image" && (
+                  <div className="mb-6">
+                    {block.mediaType === "video" ? (
+                      <video src={block.content} controls className="max-h-96 rounded-lg border bg-black" />
+                    ) : block.mediaType === "audio" ? (
+                      <audio src={block.content} controls className="w-full max-w-md" />
+                    ) : (
+                      <img src={block.content} alt={block.title || ""} className="max-h-96 object-contain rounded-lg border bg-gray-50" />
+                    )}
+                  </div>
+                )}
+
+                {block.content && block.type !== "fill_in_the_blank" && block.type !== "image" && (
                   <div
                     className="prose max-w-none mb-6 text-gray-600 prose-headings:text-[var(--greek-blue)] prose-a:text-[var(--greek-blue)]"
                     dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(block.content || "")) }}
@@ -902,7 +988,7 @@ export default function ExerciseViewer({
                     </div>
                   )}
 
-                  {block.type === "multiple_choice" && (
+                  {(block.type === "multiple_choice" || block.type === "qcm") && (
                     <div className="space-y-2">
                       {block.options?.map((option, idx) => {
                         const currentSelected = Array.isArray(answer)
@@ -945,6 +1031,162 @@ export default function ExerciseViewer({
                           </button>
                         );
                       })}
+                    </div>
+                  )}
+
+                  {block.type === "fill_in_the_blank" && (
+                    <div className="text-lg leading-loose text-gray-800">
+                      {(() => {
+                        const parts = (block.content || "").split(/(\{\{\d+\}\})/g);
+                        const blankAnswers: string[] = Array.isArray(answer) ? answer : [];
+                        let blankIdx = -1;
+                        return parts.map((part, i) => {
+                          const m = part.match(/^\{\{(\d+)\}\}$/);
+                          if (m) {
+                            blankIdx++;
+                            const idx = blankIdx;
+                            const val = blankAnswers[idx] || "";
+                            const expected = block.blanks?.[idx];
+                            let cls = "border-gray-300 focus:border-[var(--greek-blue)]";
+                            if (isSubmitted && expected !== undefined) {
+                              const alts = expected.split("|").map((s) => s.trim().toLowerCase());
+                              const ok = alts.includes(String(val).trim().toLowerCase());
+                              cls = ok
+                                ? "border-green-500 bg-green-50 text-green-700"
+                                : "border-red-500 bg-red-50 text-red-700";
+                            }
+                            return (
+                              <input
+                                key={i}
+                                type="text"
+                                disabled={isSubmitted}
+                                value={val}
+                                onChange={(e) => {
+                                  const next = [...blankAnswers];
+                                  next[idx] = e.target.value;
+                                  handleBlockAnswerChange(block.id, next);
+                                }}
+                                className={`inline-block mx-1 w-28 text-center border-b-2 bg-transparent focus:outline-none px-1 ${cls}`}
+                              />
+                            );
+                          }
+                          return (
+                            <span
+                              key={i}
+                              dangerouslySetInnerHTML={{ __html: renderLatexInHTML(part) }}
+                            />
+                          );
+                        });
+                      })()}
+                    </div>
+                  )}
+
+                  {block.type === "matching" && (
+                    <div className="space-y-2">
+                      {(block.pairs || []).map((pair, i) => {
+                        const selected: string[] = Array.isArray(answer) ? answer : [];
+                        const val = selected[i] || "";
+                        let cls = "border-gray-300";
+                        if (isSubmitted) {
+                          cls = val === pair.right ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
+                        }
+                        return (
+                          <div key={i} className="flex items-center gap-3">
+                            <span className="flex-1 text-sm font-medium text-gray-700">{pair.left}</span>
+                            <ArrowRight size={14} className="text-gray-300 shrink-0" />
+                            <select
+                              disabled={isSubmitted}
+                              value={val}
+                              onChange={(e) => {
+                                const next = [...selected];
+                                next[i] = e.target.value;
+                                handleBlockAnswerChange(block.id, next);
+                              }}
+                              className={`flex-1 border-2 rounded-lg text-sm p-2 bg-white focus:outline-none ${cls}`}
+                            >
+                              <option value="">Choisir...</option>
+                              {(shuffledRightOptions[block.id] || []).map((opt, j) => (
+                                <option key={j} value={opt}>{opt}</option>
+                              ))}
+                            </select>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {block.type === "ordering" && (
+                    <div className="space-y-2">
+                      {(() => {
+                        const current: string[] =
+                          Array.isArray(answer) && answer.length
+                            ? answer
+                            : shuffledOrderingItems[block.id] || block.items || [];
+                        return current.map((item, i) => {
+                          const correctItem = block.items?.[i];
+                          let cls = "border-gray-200 bg-white";
+                          if (isSubmitted) {
+                            cls = item === correctItem ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
+                          }
+                          return (
+                            <div key={item + i} className={`flex items-center gap-2 p-2.5 border-2 rounded-lg ${cls}`}>
+                              <span className="text-xs font-bold text-gray-400 w-5">{i + 1}.</span>
+                              <span className="flex-1 text-sm text-gray-700">{item}</span>
+                              <button
+                                disabled={isSubmitted || i === 0}
+                                onClick={() => {
+                                  const next = [...current];
+                                  [next[i - 1], next[i]] = [next[i], next[i - 1]];
+                                  handleBlockAnswerChange(block.id, next);
+                                }}
+                                type="button"
+                                className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-20"
+                              >
+                                <ArrowUp size={14} />
+                              </button>
+                              <button
+                                disabled={isSubmitted || i === current.length - 1}
+                                onClick={() => {
+                                  const next = [...current];
+                                  [next[i], next[i + 1]] = [next[i + 1], next[i]];
+                                  handleBlockAnswerChange(block.id, next);
+                                }}
+                                type="button"
+                                className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-20"
+                              >
+                                <ArrowDown size={14} />
+                              </button>
+                            </div>
+                          );
+                        });
+                      })()}
+                    </div>
+                  )}
+
+                  {block.type === "coding" && (
+                    <div className="relative">
+                      <textarea
+                        disabled={isSubmitted}
+                        value={typeof answer === "string" ? answer : ""}
+                        onChange={(e) => handleBlockAnswerChange(block.id, e.target.value)}
+                        className={`w-full min-h-[140px] font-mono text-sm border rounded-lg p-3 focus:outline-none ${
+                          isSubmitted
+                            ? isCorrect
+                              ? "border-green-500 bg-green-50"
+                              : "border-red-500 bg-red-50"
+                            : "border-gray-300 focus:border-[var(--greek-blue)]"
+                        }`}
+                        placeholder="Écris ton algorithme / code ici..."
+                        spellCheck={false}
+                      />
+                      {exercise.grading_type === "ai" && !isSubmitted && (
+                        <div
+                          className="absolute right-3 bottom-3 text-[var(--greek-blue)]/50 pointer-events-none"
+                          title="Correction par IA"
+                        >
+                          <Sparkles className="w-5 h-5" />
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

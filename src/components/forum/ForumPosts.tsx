@@ -49,7 +49,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     setLoading(true);
     const { data } = await supabase
       .from("forum_posts")
-      .select("*, author:users(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color), comments:forum_comments(count)")
+      .select("*, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color), comments:forum_comments(count)")
       .eq("category_id", categoryId)
       .order("is_pinned", { ascending: false })
       .order("created_at", { ascending: false });

@@ -9,6 +9,7 @@ import {
   TrendingUp, Copy, Check, GripVertical,
 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Plan {
@@ -295,23 +296,22 @@ export default function AdminSubscriptionsPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* ── Page header ── */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-            <CreditCard className="text-[var(--greek-gold)]" size={30} />
-            Abonnements & Parrainage
-          </h1>
-          <p className="text-[var(--greek-bronze)] mt-1">Gérez les plans, les tarifs et les codes de parrainage</p>
-        </div>
-        <button
-          onClick={() => tab === "plans" ? openPlanModal() : tab === "promos" ? openRefModal() : undefined}
-          className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" ? "invisible" : ""}`}
-        >
-          <Plus size={18} />
-          {tab === "plans" ? "Nouveau plan" : "Nouveau code promo"}
-        </button>
+    <div className="space-y-6">
+      <div className="mb-8">
+        <AdminPageHeader
+          icon={CreditCard}
+          title="Abonnements & Parrainage"
+          subtitle="Gérez les plans, les tarifs et les codes de parrainage"
+          actions={
+            <button
+              onClick={() => tab === "plans" ? openPlanModal() : tab === "promos" ? openRefModal() : undefined}
+              className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" ? "invisible" : ""}`}
+            >
+              <Plus size={18} />
+              {tab === "plans" ? "Nouveau plan" : "Nouveau code promo"}
+            </button>
+          }
+        />
       </div>
 
       {/* ── Stats row ── */}

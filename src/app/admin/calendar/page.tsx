@@ -7,6 +7,7 @@ import AppAdminLoader from "@/components/AppAdminLoader";
 import { getEventTypeMeta, EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
 import { ZONE_OPTIONS, getZoneLabel } from "@/lib/calendarZones";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 const ADMIN_EVENT_TYPE_OPTIONS = [
   ...EVENT_TYPE_OPTIONS,
@@ -129,20 +130,19 @@ export default function AdminCalendarPage() {
   if (loading) return <div className="min-h-[60vh] flex items-center justify-center"><AppAdminLoader /></div>;
 
   return (
-    <div className="max-w-5xl mx-auto py-6">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-[var(--greek-blue)] flex items-center gap-3">
-          <Calendar className="w-7 h-7 text-[var(--greek-gold)]" />
-          Calendrier — Événements globaux
-        </h1>
-        <button onClick={openCreate} className="btn-primary-greek flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold">
-          <Plus className="w-4 h-4" /> Nouvel événement
-        </button>
+    <div className="space-y-6">
+      <div>
+        <AdminPageHeader
+          icon={Calendar}
+          title="Calendrier — Événements globaux"
+          subtitle="Ces événements (vacances scolaires, dates importantes...) apparaissent automatiquement dans les calendriers de tous les parents et élèves, filtrés selon leur zone scolaire."
+          actions={
+            <button onClick={openCreate} className="btn-primary-greek flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold">
+              <Plus className="w-4 h-4" /> Nouvel événement
+            </button>
+          }
+        />
       </div>
-
-      <p className="text-sm text-gray-500 mb-4">
-        Ces événements (vacances scolaires, dates importantes...) apparaissent automatiquement dans les calendriers de tous les parents et élèves, filtrés selon leur zone scolaire.
-      </p>
 
       <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-1">
         {[{ value: "all", label: "Toutes" }, ...ZONE_OPTIONS.filter(z => z.value !== "all")].map(opt => (

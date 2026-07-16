@@ -35,12 +35,15 @@ interface QuizBuilderProps {
   initialQuestions: Question[];
   onChange: (questions: Question[]) => void;
   onMetadataChange?: (metadata: any) => void;
+  /** Niveau scolaire du quiz, déjà choisi plus haut dans le formulaire. */
+  level?: string;
 }
 
 export default function QuizBuilder({
   initialQuestions,
   onChange,
   onMetadataChange,
+  level,
 }: QuizBuilderProps) {
   const confirm = useConfirm();
   const [questions, setQuestions] = useState<Question[]>(
@@ -62,7 +65,7 @@ export default function QuizBuilder({
   // AI Edit State
   const [isAiAddModalOpen, setIsAiAddModalOpen] = useState(false);
   const [aiEditQuestionId, setAiEditQuestionId] = useState<string | null>(null);
-  const [selectedLevel, setSelectedLevel] = useState("cm1");
+  const effectiveLevel = level || "6eme";
   const contentRef = useRef<HTMLDivElement>(null);
 
   const addQuestionFromAI = (question: Question, position: string) => {
@@ -266,24 +269,6 @@ export default function QuizBuilder({
           Questions ({questions.length})
         </h3>
         <div className="flex gap-2">
-          <select
-            value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
-            className="px-3 py-2 bg-white border border-[rgba(197,161,72,0.25)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
-          >
-            <option value="cp">CP</option>
-            <option value="ce1">CE1</option>
-            <option value="ce2">CE2</option>
-            <option value="cm1">CM1</option>
-            <option value="cm2">CM2</option>
-            <option value="6eme">6ème</option>
-            <option value="5eme">5ème</option>
-            <option value="4eme">4ème</option>
-            <option value="3eme">3ème</option>
-            <option value="2nde">2nde</option>
-            <option value="1ere">1ère</option>
-            <option value="terminale">Terminale</option>
-          </select>
           <button
             type="button"
             onClick={() => setIsAiAddModalOpen(true)}
@@ -305,7 +290,7 @@ export default function QuizBuilder({
 
       {isAiAddModalOpen && (
         <AIAddQuizModal
-          level={selectedLevel}
+          level={effectiveLevel}
           questions={questions}
           onAddQuestion={addQuestionFromAI}
           onClose={() => setIsAiAddModalOpen(false)}
@@ -318,7 +303,7 @@ export default function QuizBuilder({
         return (
           <AISectionEditModal
             scope="question"
-            level={selectedLevel}
+            level={effectiveLevel}
             section={question}
             onApply={(updated) => updateQuestion(question.id, updated)}
             onClose={() => setAiEditQuestionId(null)}

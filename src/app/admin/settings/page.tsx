@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import PageLoader from "@/components/PageLoader";
 import { Settings, Eye, EyeOff, Copy, Check, Save, Loader2, RefreshCw } from "lucide-react";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 export default function AdminSettingsPage() {
   const [groups, setGroups] = useState<Record<string, any>>({});
@@ -60,23 +61,18 @@ export default function AdminSettingsPage() {
         </div>
       )}
 
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-              <Settings className="text-[var(--greek-gold)]" size={30} />
-              Paramètres & Clés API
-            </h1>
-            <p className="text-[var(--greek-bronze)] mt-1">Variables d'environnement — dev uniquement</p>
-          </div>
+      <AdminPageHeader
+        icon={Settings}
+        title="Paramètres & Clés API"
+        subtitle="Variables d'environnement — dev uniquement"
+        actions={
           <button onClick={fetchSettings} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
             <RefreshCw size={14} /> Rafraîchir
           </button>
-        </div>
-        <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800 font-medium">
-          ⚠️ Ces clés sont sensibles. Cette page est réservée au développement — désactivez-la en production.
-        </div>
+        }
+      />
+      <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800 font-medium">
+        ⚠️ Ces clés sont sensibles. Cette page est réservée au développement — désactivez-la en production.
       </div>
 
       {loading ? (

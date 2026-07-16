@@ -6,6 +6,8 @@ import { supabase } from "@/lib/supabaseClient";
 import ExerciseGeneratorModal, { ExerciseGenParams, AIGenerateProgress } from "@/components/admin/ExerciseGeneratorModal";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import {
   Plus,
   Search,
@@ -107,7 +109,7 @@ const getFolderIcon = (iconName?: string | null) => {
 
 const EXERCISE_TYPES = [
   { value: "standard", label: "Standard (Calcul/Réponse libre)" },
-  { value: "qcm", label: "QCM (Choix unique/multiple)" },
+  { value: "qcm", label: "QCM" },
   { value: "fill_in_the_blank", label: "Texte à trous" },
   { value: "matching", label: "Association / Relier" },
   { value: "ordering", label: "Mise en ordre" },
@@ -288,6 +290,22 @@ export default function AdminExercisesPage() {
     fetchContents();
   }, [statusFilter, courseFilter, difficultyFilter, currentFolderId]);
 
+  // Contenu créé/modifié ailleurs (autre onglet, autre appareil) : on
+  // rafraîchit silencieusement (sans spinner) quand l'onglet redevient actif,
+  // et périodiquement en arrière-plan tant qu'il l'est déjà.
+  useEffect(() => {
+    const onVisible = () => { if (document.visibilityState === "visible") fetchContents(true); };
+    document.addEventListener("visibilitychange", onVisible);
+    const interval = setInterval(() => {
+      if (document.visibilityState === "visible") fetchContents(true);
+    }, 20000);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisible);
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statusFilter, courseFilter, difficultyFilter, currentFolderId]);
+
   const fetchInitialData = async () => {
     try {
       const coursesRes = await fetch("/api/admin/courses");
@@ -299,8 +317,24 @@ export default function AdminExercisesPage() {
     }
   };
 
-  const fetchContents = async () => {
-    setLoading(true);
+  const fetchContents = async (silent = false) => {
+    const cacheKey = `exercises:${currentFolderId}:${statusFilter}:${courseFilter}:${difficultyFilter}`;
+    const cached = getAdminCache<{
+      folders: ExerciseFolder[]; exercises: Exercise[]; allExercises: Exercise[]; allFolderCounts: { id: number; parent_id: number | null }[];
+    }>(cacheKey);
+    if (!silent) {
+      if (cached) {
+        // Affiche instantanément la dernière version connue — pas d'écran de
+        // chargement — pendant qu'une requête fraîche part en arrière-plan.
+        setFolders(cached.folders);
+        setExercises(cached.exercises);
+        setAllExercises(cached.allExercises);
+        setAllFolderCounts(cached.allFolderCounts);
+        setLoading(false);
+      } else {
+        setLoading(true);
+      }
+    }
     try {
       // 1. Fetch Folders
       let folderQuery = supabase
@@ -356,6 +390,13 @@ export default function AdminExercisesPage() {
         .select("id, parent_id");
       setAllFolderCounts(allFoldersData || []);
 
+      setAdminCache(cacheKey, {
+        folders: foldersData || [],
+        exercises: filteredData as Exercise[],
+        allExercises: data as Exercise[],
+        allFolderCounts: allFoldersData || [],
+      });
+
       // Update breadcrumbs
       if (currentFolderId !== null) {
         updateBreadcrumbs(currentFolderId);
@@ -365,7 +406,7 @@ export default function AdminExercisesPage() {
     } catch (error: any) {
       console.error("Error fetching contents:", error?.message || error);
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   };
 
@@ -455,6 +496,7 @@ export default function AdminExercisesPage() {
         });
 
         if (!response.ok) throw new Error("Failed to move exercise");
+        invalidateAdminCache("exercises:");
         fetchContents();
       } else if (folderId) {
         if (targetFolderId !== null && Number(folderId) === targetFolderId)
@@ -470,6 +512,7 @@ export default function AdminExercisesPage() {
           .eq("id", Number(folderId));
 
         if (error) throw error;
+        invalidateAdminCache("exercises:");
         fetchContents();
       }
     } catch (error) {
@@ -548,6 +591,7 @@ export default function AdminExercisesPage() {
       });
       setEditingFolder(null);
       setIsFolderModalOpen(false);
+      invalidateAdminCache("exercises:");
       fetchContents();
     } catch (error: any) {
       console.error("Error saving folder:", error);
@@ -573,6 +617,7 @@ export default function AdminExercisesPage() {
         .eq("id", folder.id);
 
       if (error) throw error;
+      invalidateAdminCache("exercises:");
       fetchContents();
     } catch (error) {
       console.error("Error deleting folder:", error);
@@ -777,6 +822,7 @@ export default function AdminExercisesPage() {
         throw new Error(result.error || "Une erreur est survenue");
 
       setIsModalOpen(false);
+      invalidateAdminCache("exercises:");
       fetchContents();
       resetForm();
     } catch (error: unknown) {
@@ -922,19 +968,12 @@ export default function AdminExercisesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
-          <div>
-            <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-              <GraduationCap className="text-[var(--greek-gold)]" size={32} />
-              Gestion des Exercices
-            </h1>
-            <p className="text-[var(--greek-bronze)] text-lg">
-              Gérez les exercices et leur contenu
-            </p>
-          </div>
-          <div className="flex gap-2 flex-wrap">
+      <AdminPageHeader
+        icon={GraduationCap}
+        title="Gestion des Exercices"
+        subtitle="Gérez les exercices et leur contenu"
+        actions={
+          <>
             <button
               onClick={() => {
                 setEditingFolder(null);
@@ -972,9 +1011,9 @@ export default function AdminExercisesPage() {
               <Plus size={20} />
               Nouvel Exercice
             </button>
-          </div>
-        </div>
-      </div>
+          </>
+        }
+      />
 
       {/* Breadcrumbs */}
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
@@ -1659,6 +1698,7 @@ export default function AdminExercisesPage() {
                   </h3>
                   <ExerciseBuilder
                     initialContent={formData.content_json || []}
+                    level={formData.level}
                     onChange={(content) => setFormData({ ...formData, content_json: content })}
                     onMetadataChange={(metadata) => {
                       setFormData((prev) => ({

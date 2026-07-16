@@ -44,7 +44,7 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
     setLoading(true);
     const { data } = await supabase
       .from("forum_posts")
-      .select(`*, author:users(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges), category:forum_categories(name), comments:forum_comments(id, content, created_at, author:users(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges))`)
+      .select(`*, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges), category:forum_categories(name), comments:forum_comments(id, content, created_at, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges))`)
       .eq("id", postId)
       .single();
     if (data?.comments) data.comments.sort((a: any, b: any) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());

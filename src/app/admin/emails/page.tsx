@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { buildEmailHtml } from "@/lib/emailTemplates";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 interface EmailTemplate {
   id: number;
@@ -277,22 +278,19 @@ export default function AdminEmailsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--greek-blue)] flex items-center gap-3">
-            <Mail className="w-8 h-8 text-[var(--greek-gold)]" />
-            Emails
-          </h1>
-          <p className="text-[var(--greek-bronze)] mt-0.5">Gérez les templates et envoyez des campagnes aux utilisateurs</p>
-        </div>
-        <button
-          onClick={() => setCreateOpen(true)}
-          className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-sm"
-        >
-          <Plus className="w-4 h-4" /> Nouveau
-        </button>
-      </div>
+      <AdminPageHeader
+        icon={Mail}
+        title="Emails"
+        subtitle="Gérez les templates et envoyez des campagnes aux utilisateurs"
+        actions={
+          <button
+            onClick={() => setCreateOpen(true)}
+            className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-sm"
+          >
+            <Plus className="w-4 h-4" /> Nouveau
+          </button>
+        }
+      />
 
       {loading ? (
         <PageLoader />

@@ -6,6 +6,7 @@ import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 interface ProgrammePdf {
   id: string;
@@ -123,7 +124,7 @@ export default function AdminProgrammesPage() {
   if (loading) return <AppAdminLoader />;
 
   return (
-    <div className="space-y-6 max-w-4xl">
+    <div className="space-y-6">
       {/* Notification */}
       {notification && (
         <div className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-4 rounded-2xl shadow-xl text-sm font-semibold transition-all ${notification.type === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
@@ -132,16 +133,11 @@ export default function AdminProgrammesPage() {
         </div>
       )}
 
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-        <h1 className="text-3xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] flex items-center gap-3 mb-1">
-          <GraduationCap className="text-[var(--greek-gold)]" size={30} />
-          Programmes officiels
-        </h1>
-        <p className="text-[var(--greek-bronze)]">
-          Dépose les PDFs officiels par niveau pour les rendre consultables sur la page publique des programmes.
-        </p>
-      </div>
+      <AdminPageHeader
+        icon={GraduationCap}
+        title="Programmes officiels"
+        subtitle="Dépose les PDFs officiels par niveau pour les rendre consultables sur la page publique des programmes."
+      />
 
       {/* Upload form */}
       <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-6 mb-8">

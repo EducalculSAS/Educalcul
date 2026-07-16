@@ -102,8 +102,9 @@ export function isAllowedFileExtension(filename: string, allowedExtensions: Set<
 export function isValidUrlPath(path: string): boolean {
   // Reject paths with .. or absolute paths
   if (path.includes('..') || path.startsWith('/')) return false;
-  // Allow only alphanumeric, underscore, hyphen
-  return /^[a-zA-Z0-9_-]+$/.test(path);
+  // Allow alphanumeric, underscore, hyphen, and "/" as a subfolder separator
+  // (each segment still restricted to the same safe character set).
+  return /^[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$/.test(path);
 }
 
 /**

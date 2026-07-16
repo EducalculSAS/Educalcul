@@ -10,6 +10,7 @@ import {
   ChevronRight, Clock,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 const ROLE_LABEL: Record<string, string> = { parent: "Parent", child: "Élève", admin: "Admin" };
 const ROLE_COLOR: Record<string, string> = {
@@ -48,34 +49,29 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6">
 
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-            <Shield className="text-[var(--greek-gold)]" size={30} />
-            Tableau de bord
-          </h1>
-          <p className="text-[var(--greek-bronze)] mt-0.5">
-            Vue d'ensemble de la plateforme
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          {lastUpdated && (
-            <span className="text-xs text-gray-400 flex items-center gap-1">
-              <Clock size={12} />
-              {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
-            </span>
-          )}
-          <button
-            onClick={() => load(true)}
-            disabled={refreshing}
-            className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
-          >
-            <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
-            <span className="hidden sm:inline">Actualiser</span>
-          </button>
-        </div>
-      </div>
+      <AdminPageHeader
+        icon={Shield}
+        title="Tableau de bord"
+        subtitle="Vue d'ensemble de la plateforme"
+        actions={
+          <>
+            {lastUpdated && (
+              <span className="text-xs text-gray-400 flex items-center gap-1">
+                <Clock size={12} />
+                {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+              </span>
+            )}
+            <button
+              onClick={() => load(true)}
+              disabled={refreshing}
+              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
+            >
+              <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
+              <span className="hidden sm:inline">Actualiser</span>
+            </button>
+          </>
+        }
+      />
 
       {/* Alerts row */}
       {(counts.open_tickets > 0 || counts.pending_reports > 0) && (

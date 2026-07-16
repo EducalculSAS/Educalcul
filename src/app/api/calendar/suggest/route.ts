@@ -3,7 +3,9 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAI } from "@/lib/llm";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 
-// POST: parent asks AI to suggest a revision schedule for a child, based on weak subjects
+// POST: parent asks AI to suggest a math revision schedule for a child,
+// based on ALL of the child's activity — exercises, quizzes, course
+// progress, and time spent — not just exercise attempts.
 export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
@@ -30,40 +32,93 @@ export async function POST(req: Request) {
       .maybeSingle();
     if (!child) return NextResponse.json({ error: "Child not found" }, { status: 404 });
 
+    // ── Exercices (titre = sujet précis de maths, "subject" n'est pas renseigné) ──
     const { data: exerciseAttempts } = await supabaseAdmin
       .from("user_exercise_attempts")
-      .select("is_correct, exercise:exercises(subject, title)")
+      .select("is_correct, attempted_at, exercise:exercises(title, difficulty_level)")
       .eq("user_id", childIdNum)
-      .order("created_at", { ascending: false })
+      .order("attempted_at", { ascending: false })
       .limit(100);
 
+    // ── Quiz : mêmes sujets, taux de réussite + temps passé par quiz ──
+    const { data: quizAttempts } = await supabaseAdmin
+      .from("user_quiz_attempts")
+      .select("score, total_questions, time_spent_seconds, completed_at, quiz:quizzes(title)")
+      .eq("user_id", childIdNum)
+      .order("completed_at", { ascending: false })
+      .limit(50);
+
+    // ── Cours consultés ──
+    const { data: courseProgress } = await supabaseAdmin
+      .from("user_course_progress")
+      .select("created_at, course:courses(title)")
+      .eq("user_id", childIdNum)
+      .order("created_at", { ascending: false })
+      .limit(20);
+
+    // ── Temps passé sur la plateforme (30 derniers jours) ──
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const { data: sessions } = await supabaseAdmin
+      .from("user_sessions")
+      .select("duration_seconds, login_at")
+      .eq("user_id", childIdNum)
+      .gte("login_at", thirtyDaysAgo);
+    const totalSessionMinutes = Math.round(
+      (sessions || []).reduce((sum, s) => sum + (s.duration_seconds || 0), 0) / 60
+    );
+    const quizMinutes = Math.round(
+      (quizAttempts || []).reduce((sum, q) => sum + (q.time_spent_seconds || 0), 0) / 60
+    );
+
+    // ── Sujets faibles, à partir des titres d'exercices ET de quiz (ce sont
+    // les seuls libellés fiables ici — "subject" n'est jamais renseigné) ──
     const subjectStats: Record<string, { correct: number; total: number }> = {};
     for (const a of exerciseAttempts || []) {
       const exercise = Array.isArray(a.exercise) ? a.exercise[0] : a.exercise;
-      const subject = exercise?.subject || exercise?.title;
+      const subject = exercise?.title;
       if (!subject) continue;
       if (!subjectStats[subject]) subjectStats[subject] = { correct: 0, total: 0 };
       subjectStats[subject].total++;
       if (a.is_correct) subjectStats[subject].correct++;
+    }
+    for (const q of quizAttempts || []) {
+      const quiz = Array.isArray(q.quiz) ? q.quiz[0] : q.quiz;
+      const title = quiz?.title;
+      if (!title || !q.total_questions) continue;
+      if (!subjectStats[title]) subjectStats[title] = { correct: 0, total: 0 };
+      subjectStats[title].total += q.total_questions;
+      subjectStats[title].correct += q.score || 0;
     }
 
     const weakSubjects = Object.entries(subjectStats)
       .map(([subject, s]) => ({ subject, rate: s.correct / s.total, total: s.total }))
       .filter(s => s.total >= 3)
       .sort((a, b) => a.rate - b.rate)
-      .slice(0, 3);
+      .slice(0, 5);
+
+    const coursesSeen = Array.from(
+      new Set((courseProgress || []).map((c: any) => (Array.isArray(c.course) ? c.course[0]?.title : c.course?.title)).filter(Boolean))
+    ).slice(0, 8);
 
     const today = new Date().toISOString().slice(0, 10);
 
-    const systemPrompt = `Tu es un assistant pédagogique qui crée des programmes de révision pour un élève de niveau ${child.grade_level || "collège/lycée"}.
+    const systemPrompt = `Tu es un assistant pédagogique spécialisé EXCLUSIVEMENT en MATHÉMATIQUES pour Educalcul, une plateforme française de maths du CP à la Terminale, niveau de l'élève : ${child.grade_level || "collège/lycée"}.
+Ta seule mission : proposer un programme de RÉVISION DE MATHÉMATIQUES personnalisé. Tu ne dois JAMAIS proposer une séance sur une autre matière (français, histoire, SVT, langues...), même si les libellés fournis te semblent ambigus — ce sont TOUJOURS des sujets de mathématiques (titres d'exercices/quiz de la plateforme), reformule-les si besoin en un titre de révision de maths clair et court.
 Réponds UNIQUEMENT avec un JSON valide, sans texte autour, au format :
 {"events":[{"title":"...","description":"...","start_date":"YYYY-MM-DD","end_date":"YYYY-MM-DD ou null"}]}
-Propose entre 3 et 6 séances de révision réparties sur les 2 prochaines semaines, à partir du ${today}, ciblant en priorité les sujets faibles fournis. Les titres doivent être courts (ex: "Révision : Fractions").`;
+Propose entre 3 et 6 séances de révision de maths réparties sur les 2 prochaines semaines, à partir du ${today}, ciblant en priorité les sujets faibles fournis. Adapte l'intensité au temps déjà investi par l'élève (s'il passe déjà beaucoup de temps, propose des séances plus courtes et ciblées). Les titres doivent être courts (ex: "Révision : Fractions").`;
 
-    const userPrompt = `Sujets où l'élève a le plus de difficultés (taux de réussite) :
-${weakSubjects.length > 0 ? weakSubjects.map(s => `- ${s.subject} : ${Math.round(s.rate * 100)}% de réussite sur ${s.total} exercices`).join("\n") : "Aucune donnée précise disponible, propose un programme de révision générale équilibré."}
+    const userPrompt = `Activité de l'élève sur la plateforme (30 derniers jours) :
+- Temps de connexion total : ${totalSessionMinutes} min
+- Temps passé sur les quiz : ${quizMinutes} min
+- Exercices tentés : ${exerciseAttempts?.length || 0}
+- Quiz passés : ${quizAttempts?.length || 0}
+- Cours consultés : ${coursesSeen.length > 0 ? coursesSeen.join(", ") : "aucun"}
 
-Génère le programme de révision au format JSON demandé.`;
+Sujets de maths où l'élève a le plus de difficultés (taux de réussite) :
+${weakSubjects.length > 0 ? weakSubjects.map(s => `- ${s.subject} : ${Math.round(s.rate * 100)}% de réussite sur ${s.total} question(s)/exercice(s)`).join("\n") : "Aucune donnée précise disponible, propose un programme de révision de maths générale équilibré pour son niveau."}
+
+Génère le programme de révision de mathématiques au format JSON demandé.`;
 
     const aiResponse = await chatWithAI(
       [{ role: "user", content: userPrompt }],

@@ -45,8 +45,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "File too large (max 20 MB)" }, { status: 413 });
     }
 
-    // ✓ HIGH PRIORITY FIX: Folder validation - prevent directory traversal
-    const folder = rawFolder.replace(/[^a-zA-Z0-9_-]/g, "") || "uploads";
+    // ✓ HIGH PRIORITY FIX: Folder validation - prevent directory traversal.
+    // Sanitize each path SEGMENT individually (not the whole string) so that
+    // legitimate subfolders like "uploads/course_images" keep their "/"
+    // separators — a previous version stripped "/" entirely, which silently
+    // collapsed every subfolder upload into a single flat folder name.
+    const folder =
+      rawFolder
+        .split("/")
+        .map((seg) => seg.replace(/[^a-zA-Z0-9_-]/g, ""))
+        .filter((seg) => seg.length > 0)
+        .join("/") || "uploads";
     if (!isValidUrlPath(folder)) {
       return NextResponse.json({ error: "Invalid folder name" }, { status: 400 });
     }

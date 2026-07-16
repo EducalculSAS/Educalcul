@@ -17,6 +17,8 @@ import {
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import AIGeneratorModal, { AIGenerateParams, AIGenerateProgress } from "@/components/admin/AIGeneratorModal";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
@@ -210,6 +212,22 @@ export default function AdminCoursesPage() {
     fetchContents();
   }, [currentFolderId, statusFilter]);
 
+  // Contenu créé/modifié ailleurs (autre onglet, autre appareil) : on
+  // rafraîchit silencieusement (sans spinner) quand l'onglet redevient actif,
+  // et périodiquement en arrière-plan tant qu'il l'est déjà.
+  useEffect(() => {
+    const onVisible = () => { if (document.visibilityState === "visible") fetchContents(true); };
+    document.addEventListener("visibilitychange", onVisible);
+    const interval = setInterval(() => {
+      if (document.visibilityState === "visible") fetchContents(true);
+    }, 20000);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisible);
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentFolderId, statusFilter]);
+
   // Handle LaTeX rendering for the course grid
   useEffect(() => {
     if (loading || courses.length === 0) return;
@@ -269,8 +287,22 @@ export default function AdminCoursesPage() {
   }, [loading, courses, searchTerm]);
 
   // Fetch folders and courses for the current directory
-  const fetchContents = async () => {
-    setLoading(true);
+  const fetchContents = async (silent = false) => {
+    const cacheKey = `courses:${currentFolderId}:${statusFilter}`;
+    const cached = getAdminCache<{
+      folders: Folder[]; courses: Course[]; allCourses: Course[]; allFolderCounts: { id: number; parent_id: number | null }[];
+    }>(cacheKey);
+    if (!silent) {
+      if (cached) {
+        setFolders(cached.folders);
+        setCourses(cached.courses);
+        setAllCourses(cached.allCourses);
+        setAllFolderCounts(cached.allFolderCounts);
+        setLoading(false);
+      } else {
+        setLoading(true);
+      }
+    }
     try {
       // 1. Fetch Folders
       let folderQuery = supabase
@@ -328,6 +360,13 @@ export default function AdminCoursesPage() {
         .select("id, parent_id");
       setAllFolderCounts(allFoldersData || []);
 
+      setAdminCache(cacheKey, {
+        folders: foldersData || [],
+        courses: filteredCourses,
+        allCourses: coursesData as Course[],
+        allFolderCounts: allFoldersData || [],
+      });
+
       // Update breadcrumbs
       if (currentFolderId !== null) {
         updateBreadcrumbs(currentFolderId);
@@ -337,7 +376,7 @@ export default function AdminCoursesPage() {
     } catch (error: any) {
       console.error("Error fetching contents:", error?.message || error);
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   };
 
@@ -634,6 +673,7 @@ export default function AdminCoursesPage() {
       }
 
       // Refresh list
+      invalidateAdminCache("courses:");
       fetchContents();
       setIsModalOpen(false);
     } catch (error: unknown) {
@@ -683,6 +723,7 @@ export default function AdminCoursesPage() {
         .delete()
         .eq("id", folder.id);
       if (error) throw error;
+      invalidateAdminCache("courses:");
       fetchContents();
     } catch (error) {
       console.error("Error deleting folder:", error);
@@ -741,6 +782,7 @@ export default function AdminCoursesPage() {
       });
       setEditingFolder(null);
       setIsFolderModalOpen(false);
+      invalidateAdminCache("courses:");
       fetchContents();
     } catch (error: any) {
       console.error("Error saving folder:", error);
@@ -812,6 +854,7 @@ export default function AdminCoursesPage() {
         });
 
         if (!response.ok) throw new Error("Failed to move course");
+        invalidateAdminCache("courses:");
         fetchContents();
       } else if (folderId) {
         if (targetFolderId !== null && Number(folderId) === targetFolderId)
@@ -827,6 +870,7 @@ export default function AdminCoursesPage() {
           .eq("id", Number(folderId));
 
         if (error) throw error;
+        invalidateAdminCache("courses:");
         fetchContents();
       }
     } catch (error) {
@@ -898,20 +942,12 @@ export default function AdminCoursesPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
-          <div>
-            <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-              <BookOpen className="text-[var(--greek-gold)]" size={32} />
-              Gestion des Cours
-            </h1>
-            <p className="text-[var(--greek-bronze)] text-lg">
-              Organisez vos cours dans des dossiers et sous-dossiers
-            </p>
-          </div>
-          <div className="flex gap-2 flex-wrap">
+      <AdminPageHeader
+        icon={BookOpen}
+        title="Gestion des Cours"
+        subtitle="Organisez vos cours dans des dossiers et sous-dossiers"
+        actions={
+          <>
             <button
               onClick={() => {
                 setEditingFolder(null);
@@ -949,9 +985,9 @@ export default function AdminCoursesPage() {
               <Plus size={20} />
               Nouveau Cours
             </button>
-          </div>
-        </div>
-      </div>
+          </>
+        }
+      />
 
       {/* Navigation & Breadcrumbs */}
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">

@@ -33,7 +33,7 @@ function PublicProfile() {
   useEffect(() => {
     (async () => {
       const { data: u } = await supabase
-        .from("users")
+        .from("user_public_profiles")
         .select("id, first_name, last_name, child_username, avatar, equipped_border, name_color, featured_badges, role, grade_level")
         .eq("id", id)
         .maybeSingle();

@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { User, Save, Eye, Crown, Shield } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 const ADMIN_AVATAR = "/logo.png";
 
@@ -113,7 +114,7 @@ export default function AdminProfilePage() {
   if (loading) return <PageLoader className="min-h-screen" />;
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-5xl">
+    <div className="space-y-6">
       <style jsx global>{`
         /* === BORDER PREVIEW CLASSES (applied directly in admin profile) === */
         @keyframes adm-glow {
@@ -160,18 +161,12 @@ export default function AdminProfilePage() {
         .text-basic { color:#333 !important; }
       `}</style>
 
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden mb-8">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-            <Crown className="text-[var(--greek-gold)]" size={32} />
-            Mon Profil Admin
-          </h1>
-          <p className="text-[var(--greek-bronze)] text-lg">
-            Gérez votre apparence publique sur la plateforme.
-          </p>
-        </div>
+      <div className="mb-8">
+        <AdminPageHeader
+          icon={Crown}
+          title="Mon Profil Admin"
+          subtitle="Gérez votre apparence publique sur la plateforme."
+        />
       </div>
 
       {message && (

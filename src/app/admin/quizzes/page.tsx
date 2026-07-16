@@ -8,6 +8,8 @@ import { QUIZ_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import QuizGeneratorModal, { QuizGenParams } from "@/components/admin/QuizGeneratorModal";
 import type { AIGenerateProgress } from "@/components/admin/ExerciseGeneratorModal";
 import QuizBuilder, { Question } from "@/components/admin/QuizBuilder";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import { useConfirm } from "@/components/ConfirmDialog";
 import {
   Plus,
@@ -259,6 +261,22 @@ export default function AdminQuizzesPage() {
     fetchContents();
   }, [statusFilter, courseFilter, difficultyFilter, currentFolderId]);
 
+  // Contenu créé/modifié ailleurs (autre onglet, autre appareil) : on
+  // rafraîchit silencieusement (sans spinner) quand l'onglet redevient actif,
+  // et périodiquement en arrière-plan tant qu'il l'est déjà.
+  useEffect(() => {
+    const onVisible = () => { if (document.visibilityState === "visible") fetchContents(true); };
+    document.addEventListener("visibilitychange", onVisible);
+    const interval = setInterval(() => {
+      if (document.visibilityState === "visible") fetchContents(true);
+    }, 20000);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisible);
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statusFilter, courseFilter, difficultyFilter, currentFolderId]);
+
   const fetchInitialData = async () => {
     try {
       const coursesRes = await fetch("/api/admin/courses");
@@ -270,8 +288,22 @@ export default function AdminQuizzesPage() {
     }
   };
 
-  const fetchContents = async () => {
-    setLoading(true);
+  const fetchContents = async (silent = false) => {
+    const cacheKey = `quizzes:${currentFolderId}:${statusFilter}:${courseFilter}:${difficultyFilter}`;
+    const cached = getAdminCache<{
+      folders: QuizFolder[]; quizzes: Quiz[]; allQuizzes: Quiz[]; allFolderCounts: { id: number; parent_id: number | null }[];
+    }>(cacheKey);
+    if (!silent) {
+      if (cached) {
+        setFolders(cached.folders);
+        setQuizzes(cached.quizzes);
+        setAllQuizzes(cached.allQuizzes);
+        setAllFolderCounts(cached.allFolderCounts);
+        setLoading(false);
+      } else {
+        setLoading(true);
+      }
+    }
     try {
       // 1. Fetch Folders
       let folderQuery = supabase.from("quiz_folders").select("*").order("name");
@@ -328,6 +360,13 @@ export default function AdminQuizzesPage() {
         .select("id, parent_id");
       setAllFolderCounts(allFoldersData || []);
 
+      setAdminCache(cacheKey, {
+        folders: foldersData || [],
+        quizzes: filteredData,
+        allQuizzes: data as Quiz[],
+        allFolderCounts: allFoldersData || [],
+      });
+
       // Update breadcrumbs
       if (currentFolderId !== null) {
         updateBreadcrumbs(currentFolderId);
@@ -337,7 +376,7 @@ export default function AdminQuizzesPage() {
     } catch (error: any) {
       console.error("Error fetching contents:", error?.message || error);
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   };
 
@@ -427,6 +466,7 @@ export default function AdminQuizzesPage() {
         });
 
         if (!response.ok) throw new Error("Failed to move quiz");
+        invalidateAdminCache("quizzes:");
         fetchContents();
       } else if (folderId) {
         if (targetFolderId !== null && Number(folderId) === targetFolderId)
@@ -442,6 +482,7 @@ export default function AdminQuizzesPage() {
           .eq("id", Number(folderId));
 
         if (error) throw error;
+        invalidateAdminCache("quizzes:");
         fetchContents();
       }
     } catch (error) {
@@ -520,6 +561,7 @@ export default function AdminQuizzesPage() {
       });
       setEditingFolder(null);
       setIsFolderModalOpen(false);
+      invalidateAdminCache("quizzes:");
       fetchContents();
     } catch (error: any) {
       console.error("Error saving folder:", error);
@@ -545,6 +587,7 @@ export default function AdminQuizzesPage() {
         .eq("id", folder.id);
 
       if (error) throw error;
+      invalidateAdminCache("quizzes:");
       fetchContents();
     } catch (error) {
       console.error("Error deleting folder:", error);
@@ -708,6 +751,7 @@ export default function AdminQuizzesPage() {
         throw new Error(result.error || "Une erreur est survenue");
 
       setIsModalOpen(false);
+      invalidateAdminCache("quizzes:");
       fetchContents();
       setFormData({
         title: "",
@@ -863,19 +907,12 @@ export default function AdminQuizzesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
-          <div>
-            <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-              <FileText className="text-[var(--greek-gold)]" size={32} />
-              Gestion des Quiz
-            </h1>
-            <p className="text-[var(--greek-bronze)] text-lg">
-              Gérez les quiz, les questions et leur organisation
-            </p>
-          </div>
-          <div className="flex gap-2 flex-wrap">
+      <AdminPageHeader
+        icon={FileText}
+        title="Gestion des Quiz"
+        subtitle="Gérez les quiz, les questions et leur organisation"
+        actions={
+          <>
             <button
               onClick={() => {
                 setEditingFolder(null);
@@ -932,9 +969,9 @@ export default function AdminQuizzesPage() {
               <Plus size={20} />
               Nouveau Quiz
             </button>
-          </div>
-        </div>
-      </div>
+          </>
+        }
+      />
 
       {/* Breadcrumbs */}
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
@@ -1633,6 +1670,7 @@ export default function AdminQuizzesPage() {
                   </h3>
                   <QuizBuilder
                     initialQuestions={formData.content_json || []}
+                    level={formData.level}
                     onChange={(questions) => setFormData({ ...formData, content_json: questions })}
                     onMetadataChange={(metadata) => {
                       setFormData((prev) => ({

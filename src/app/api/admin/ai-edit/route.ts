@@ -42,7 +42,16 @@ Réponds UNIQUEMENT avec ce JSON, sans texte avant/après :
 }`;
 }
 
-const EX_BLOCK_SCHEMA = `Un "block" a les champs : "id", "type" (text|image|single_choice|multiple_choice|true_false|text_input), "title", "content" (énoncé/HTML), "points" (nombre), "options" (tableau de chaînes, pour les QCM), "correctAnswer" (chaîne, ou tableau pour multiple_choice), "explanation".`;
+const EX_BLOCK_SCHEMA = `Un "block" a les champs communs : "id", "type", "title", "content" (énoncé/HTML), "points" (nombre), "explanation". Selon "type" :
+• "text" : pas de champ supplémentaire (content = HTML).
+• "image" : c'est un bloc MÉDIA (image/vidéo/audio) — content contient l'URL du fichier déjà téléversé par l'enseignant ; ne génère JAMAIS toi-même un bloc "image" (tu ne peux pas fournir de fichier), ne le modifie que si on te demande explicitement de changer son titre/légende.
+• "qcm" (type à utiliser pour toute question à choix) : "options" (tableau de chaînes), "correctAnswer" TOUJOURS un tableau de chaînes — une seule entrée s'il n'y a qu'une bonne réponse, plusieurs sinon — chaque valeur doit être identique à une entrée de "options". Les anciens types "single_choice"/"multiple_choice" sont équivalents : si tu modifies un bloc existant de ce type, garde son "type" d'origine inchangé.
+• "true_false" : "correctAnswer" = "true" ou "false" (chaîne).
+• "text_input" : "correctAnswer" (chaîne, réponse exacte attendue).
+• "fill_in_the_blank" : "content" contient des jetons {{1}}, {{2}}... à la place des mots manquants ; "blanks" (tableau de chaînes) donne, DANS L'ORDRE, la réponse attendue pour chaque trou (alternatives séparées par "|").
+• "matching" : "pairs" (tableau d'objets {"left": "...", "right": "..."}) — éléments à associer.
+• "ordering" : "items" (tableau de chaînes) DANS LEUR ORDRE CORRECT — l'élève les verra mélangés et devra les remettre dans cet ordre.
+• "coding" : "content" décrit l'algorithme/code à écrire, "correctAnswer" contient une solution de référence (pseudo-code ou code) utilisée par l'IA pour corriger (pas d'exécution réelle).`;
 const QUIZ_Q_SCHEMA = `Une "question" a les champs : "id", "text" (énoncé), "type" (single_choice|multiple_choice|true_false|text_input), "points" (nombre), "options" (tableau de chaînes), "correctAnswer" (chaîne, ou tableau pour multiple_choice), "explanation".`;
 
 function buildPrompts(
@@ -222,7 +231,7 @@ Pour tout nouvel id de page/bloc, génère une chaîne unique du type "page-xxxx
 ${FORMAT_RULES}
 
 ${patchFormatTwoLevel("page", "block", "blocks")}
-Un "block" complet a les champs : id, type, title, content, points, correctAnswer, explanation, options... Une "page" complète a : id, title, blocks[].`;
+${EX_BLOCK_SCHEMA} Une "page" complète a : id, title, blocks[].`;
 
     const user = `Structure actuelle de l'exercice (JSON) :\n${JSON.stringify(content)}\n\nDemande de modification : ${instruction}`;
     return { system, user, maxTokens: 12000 };

@@ -7,10 +7,93 @@ export const maxDuration = 120;
 
 const BATCH_SIZE = 3;
 
+// Type d'exercice (choisi par l'admin) → type de bloc réellement généré.
+// C'est ce mapping qui manquait : avant, l'IA produisait toujours des blocs
+// "text_input" quel que soit le type sélectionné dans le formulaire.
+const BLOCK_TYPE_SCHEMAS: Record<string, { example: string; instruction: (count: number) => string }> = {
+  standard: {
+    example: `{
+      "id": "block-1",
+      "type": "text_input",
+      "title": "Consigne explicite de la question",
+      "content": "Texte optionnel d'aide ou reformulation",
+      "points": 2,
+      "correctAnswer": "réponse attendue",
+      "explanation": "explication de la correction"
+    }`,
+    instruction: (count) => `Génère exactement ${count} question(s) de type "text_input" (réponse libre) dans "blocks".`,
+  },
+  qcm: {
+    example: `{
+      "id": "block-1",
+      "type": "qcm",
+      "title": "Consigne explicite de la question",
+      "content": "Énoncé de la question",
+      "points": 2,
+      "options": ["Option A", "Option B", "Option C", "Option D"],
+      "correctAnswer": ["Option A"],
+      "explanation": "explication de la correction"
+    }`,
+    instruction: (count) => `Génère exactement ${count} question(s) de type "qcm" dans "blocks" (4 options plausibles). "correctAnswer" est TOUJOURS un tableau — une seule bonne réponse la plupart du temps (ex: ["Option A"]), mais plusieurs si pertinent (ex: ["Option A", "Option C"]). Chaque valeur du tableau doit être identique à l'une des chaînes de "options".`,
+  },
+  fill_in_the_blank: {
+    example: `{
+      "id": "block-1",
+      "type": "fill_in_the_blank",
+      "title": "Consigne explicite de la question",
+      "content": "Texte de la phrase avec des trous, ex: 3 + 5 = {{1}} et 5 - 2 = {{2}}",
+      "points": 2,
+      "blanks": ["8", "3"],
+      "explanation": "explication de la correction"
+    }`,
+    instruction: (count) => `Génère exactement ${count} question(s) de type "fill_in_the_blank" dans "blocks". Le champ "content" contient le texte avec des jetons {{1}}, {{2}}... à la place des mots/valeurs manquants (au moins 1 trou, 3 maximum par question) ; "blanks" contient, DANS L'ORDRE, la réponse attendue pour chaque trou (alternatives acceptées séparées par "|", ex: "8|huit").`,
+  },
+  matching: {
+    example: `{
+      "id": "block-1",
+      "type": "matching",
+      "title": "Consigne explicite de la question",
+      "content": "Relie chaque expression à sa valeur simplifiée",
+      "points": 3,
+      "pairs": [
+        { "left": "Élément à relier", "right": "Correspondance exacte" },
+        { "left": "Élément à relier", "right": "Correspondance exacte" }
+      ],
+      "explanation": "explication de la correction"
+    }`,
+    instruction: (count) => `Génère exactement ${count} question(s) de type "matching" dans "blocks". Chaque question a "pairs" : un tableau de 3 à 5 paires {left, right} à associer (ex: expression ↔ résultat, terme ↔ définition).`,
+  },
+  ordering: {
+    example: `{
+      "id": "block-1",
+      "type": "ordering",
+      "title": "Consigne explicite de la question",
+      "content": "Remets les étapes dans le bon ordre",
+      "points": 2,
+      "items": ["Étape 1 (dans le bon ordre)", "Étape 2", "Étape 3"],
+      "explanation": "explication de la correction"
+    }`,
+    instruction: (count) => `Génère exactement ${count} question(s) de type "ordering" dans "blocks". "items" contient 3 à 5 éléments (étapes d'une résolution, valeurs à ranger, etc.) DANS LEUR ORDRE CORRECT — l'élève les verra mélangés et devra les remettre dans cet ordre.`,
+  },
+  coding: {
+    example: `{
+      "id": "block-1",
+      "type": "coding",
+      "title": "Consigne explicite de la question",
+      "content": "Décris précisément l'algorithme ou le code à écrire",
+      "points": 3,
+      "correctAnswer": "Pseudo-code ou code de référence attendu, avec les étapes clés",
+      "explanation": "explication de la correction"
+    }`,
+    instruction: (count) => `Génère exactement ${count} question(s) de type "coding" dans "blocks". "content" décrit précisément l'algorithme/le code à écrire ; "correctAnswer" contient une solution de référence (pseudo-code ou code) qui servira de base à la correction par IA — pas de code réellement exécuté, la correction jugera la démarche et la logique.`,
+  },
+};
+
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const {
     exerciseType,
+    blockType,
     linkedCourseId,
     subject,
     level,
@@ -26,6 +109,8 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+
+  const schema = BLOCK_TYPE_SCHEMAS[blockType as string] || BLOCK_TYPE_SCHEMAS.standard;
 
   const totalQuestions = questionCount || 5;
   const batches: number[] = [];
@@ -115,7 +200,7 @@ Tu DOIS répondre UNIQUEMENT avec un objet JSON valide respectant exactement cet
 {
   "title": "Titre de l'exercice",
   "description": "Description courte",
-  "type": "standard",
+  "type": "${blockType || "standard"}",
   "grading_type": "ai",
   "difficulty_level": "${difficulty}",
   "time_limit": 20,
@@ -126,15 +211,7 @@ Tu DOIS répondre UNIQUEMENT avec un objet JSON valide respectant exactement cet
         ? `{ "id": "block-intro", "type": "text", "content": "<p>Texte d'introduction et mise en situation...</p>" },`
         : ""
     }
-    {
-      "id": "block-1",
-      "type": "text_input",
-      "title": "Consigne explicite de la question",
-      "content": "Texte optionnel d'aide ou reformulation",
-      "points": 2,
-      "correctAnswer": "réponse attendue",
-      "explanation": "explication de la correction"
-    }
+    ${schema.example}
   ]
 }
 
@@ -146,7 +223,7 @@ Tu DOIS répondre UNIQUEMENT avec un objet JSON valide respectant exactement cet
   <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
 • N'insère ces éléments QUE quand ils apportent une vraie valeur pédagogique pour ce type d'exercice.
 
-Génère exactement ${count} question(s) de type "text_input" dans "blocks". Réponds UNIQUEMENT avec le JSON, sans markdown ni explication.`;
+${schema.instruction(count)} Réponds UNIQUEMENT avec le JSON, sans markdown ni explication.`;
 
           const userPrompt = `Sujet : ${subject}
 Niveau : ${level}
@@ -203,7 +280,7 @@ ${String(instructions).trim()}
             metadata: {
               title: first.title,
               description: first.description,
-              type: first.type || "standard",
+              type: blockType || first.type || "standard",
               grading_type: first.grading_type || "ai",
               difficulty_level: first.difficulty_level || difficulty,
               level,

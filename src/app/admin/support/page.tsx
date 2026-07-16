@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/PageLoader";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import {
   Inbox,
   Archive,
@@ -312,24 +313,14 @@ export default function SupportPage() {
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pattern-grid-lg pointer-events-none"></div>
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-[var(--greek-blue)] mb-2 font-[family-name:var(--font-display)] flex items-center gap-3">
-              <Mail className="text-[var(--greek-gold)]" size={32} />
-              Support & Tickets
-            </h1>
-            <p className="text-[var(--greek-bronze)] text-lg">
-              Gérez les demandes de support et les tickets utilisateurs
-            </p>
-          </div>
-
-          {/* Tabs */}
-          {!selectedTicket && (
-            <div className="flex items-center gap-4">
+    <div className="space-y-6">
+      <AdminPageHeader
+        icon={Mail}
+        title="Support & Tickets"
+        subtitle="Gérez les demandes de support et les tickets utilisateurs"
+        actions={
+          !selectedTicket && (
+            <>
               <div className="flex bg-gray-50 rounded-xl p-1 border border-[rgba(197,161,72,0.25)]">
                 <button
                   onClick={() => setViewMode("active")}
@@ -365,10 +356,10 @@ export default function SupportPage() {
                   Purger anciens
                 </button>
               )}
-            </div>
-          )}
-        </div>
-      </div>
+            </>
+          )
+        }
+      />
 
       {/* Notification */}
       {notification && (

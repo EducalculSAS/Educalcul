@@ -93,7 +93,7 @@ export async function POST(
     if (
       exercise.grading_type === "ai" ||
       isImage ||
-      (targetBlock && targetBlock.type === "text_input")
+      (targetBlock && ["text_input", "coding"].includes(targetBlock.type))
     ) {
       // --- AI GRADING (IA) ---
       console.log(

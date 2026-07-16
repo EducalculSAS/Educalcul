@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Trophy, Users, Gift, Trash2, Download, RefreshCw, Search, Crown, Check, X, Pencil } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 interface Entry {
   id: number;
@@ -127,30 +128,29 @@ export default function AdminLandingPage() {
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="space-y-6">
       {toast && (
         <div className={`fixed top-6 right-6 z-50 px-5 py-3 rounded-xl shadow-lg font-semibold text-white ${toast.type === "success" ? "bg-green-500" : "bg-red-500"}`}>
           {toast.text}
         </div>
       )}
 
-      {/* Header */}
-      <div className="mb-8 flex items-center justify-between flex-wrap gap-3">
-        <div>
-          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2 flex items-center gap-3">
-            <Trophy className="w-8 h-8 text-[var(--greek-gold)]" />
-            Liste d'attente — Classement
-          </h1>
-          <p className="text-gray-500">Gérez les inscrits, le parrainage et le classement du site de lancement.</p>
-        </div>
-        <div className="flex gap-2">
-          <button onClick={fetchEntries} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] font-semibold hover:bg-[var(--greek-cream)] transition-colors">
-            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} /> Actualiser
-          </button>
-          <button onClick={exportCSV} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--greek-blue)] text-white font-semibold hover:opacity-90 transition-opacity">
-            <Download className="w-4 h-4" /> CSV
-          </button>
-        </div>
+      <div className="mb-8">
+        <AdminPageHeader
+          icon={Trophy}
+          title="Liste d'attente — Classement"
+          subtitle="Gérez les inscrits, le parrainage et le classement du site de lancement."
+          actions={
+            <>
+              <button onClick={fetchEntries} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] font-semibold hover:bg-[var(--greek-cream)] transition-colors">
+                <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} /> Actualiser
+              </button>
+              <button onClick={exportCSV} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--greek-blue)] text-white font-semibold hover:opacity-90 transition-opacity">
+                <Download className="w-4 h-4" /> CSV
+              </button>
+            </>
+          }
+        />
       </div>
 
       {/* Stats */}

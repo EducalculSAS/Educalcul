@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import PageLoader from "@/components/PageLoader";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import {
   Users, BookOpen, MessageSquare, TrendingUp, Activity,
   BarChart2, UserPlus, CreditCard, Dumbbell, Gift, RefreshCw, Clock,
@@ -55,35 +56,32 @@ export default function ReportsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-            <BarChart2 className="text-[var(--greek-gold)]" size={30} />
-            Rapports & Analytics
-          </h1>
-          <p className="text-[var(--greek-bronze)] mt-1">Vue d'ensemble des performances et de l'activité</p>
-        </div>
-        <div className="flex items-center gap-3 shrink-0">
-          {lastUpdated && (
-            <div className="text-right hidden sm:block">
-              <p className="text-xs text-gray-400 flex items-center gap-1 justify-end">
-                <Clock size={11} />
-                {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
-              </p>
-              <p className="text-xs text-gray-300">actualisation dans {countdown}s</p>
-            </div>
-          )}
-          <button
-            onClick={() => fetchData(true)}
-            disabled={refreshing}
-            className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
-          >
-            <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
-            <span className="hidden sm:inline">Actualiser</span>
-          </button>
-        </div>
-      </div>
+      <AdminPageHeader
+        icon={BarChart2}
+        title="Rapports & Analytics"
+        subtitle="Vue d'ensemble des performances et de l'activité"
+        actions={
+          <>
+            {lastUpdated && (
+              <div className="text-right hidden sm:block">
+                <p className="text-xs text-gray-400 flex items-center gap-1 justify-end">
+                  <Clock size={11} />
+                  {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+                </p>
+                <p className="text-xs text-gray-300">actualisation dans {countdown}s</p>
+              </div>
+            )}
+            <button
+              onClick={() => fetchData(true)}
+              disabled={refreshing}
+              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
+            >
+              <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
+              <span className="hidden sm:inline">Actualiser</span>
+            </button>
+          </>
+        }
+      />
 
       {/* Stats row 1 — Utilisateurs */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

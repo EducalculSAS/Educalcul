@@ -12,34 +12,130 @@ import {
   FileText,
   Image as ImageIcon,
   CheckCircle2,
+  CheckSquare,
   List,
   ArrowRightLeft,
+  ArrowUpDown,
+  AlignLeft,
+  Code2,
+  ToggleLeft,
   Type,
   Sparkles,
   Loader2,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
 
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddExerciseModal from "./AIAddExerciseModal";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 
+export type BlockType =
+  | "text"
+  | "image" // Média (image/vidéo/audio) — le nom de clé est conservé pour compat avec le contenu existant
+  | "qcm"
+  | "single_choice" // legacy, conservé en lecture pour le contenu déjà publié
+  | "multiple_choice" // legacy, conservé en lecture pour le contenu déjà publié
+  | "true_false"
+  | "text_input"
+  | "fill_in_the_blank"
+  | "matching"
+  | "ordering"
+  | "coding";
+
 export interface Block {
   id: string;
-  type:
-    | "text"
-    | "image"
-    | "single_choice"
-    | "multiple_choice"
-    | "true_false"
-    | "text_input";
+  type: BlockType;
   title: string;
-  content?: string; // HTML for text, URL for image
+  content?: string; // HTML for text/questions, URL for image/media, texte à trous avec {{1}}, {{2}}... pour fill_in_the_blank
+
+  // Média (type "image") : nature du fichier uploadé, pour savoir comment le rendre
+  mediaType?: "image" | "video" | "audio";
 
   // Question specific
   points?: number;
-  options?: string[];
-  correctAnswer?: string | string[];
+  options?: string[]; // qcm / single_choice / multiple_choice
+  correctAnswer?: string | string[]; // qcm : toujours un tableau (une ou plusieurs bonnes réponses)
   explanation?: string;
+
+  // Texte à trous : une réponse attendue par blanc, dans l'ordre d'apparition
+  // des jetons {{1}}, {{2}}... dans `content`. Alternatives séparées par "|".
+  blanks?: string[];
+
+  // Association / Relier : paires à relier (le "right" affiché est mélangé côté élève)
+  pairs?: { left: string; right: string }[];
+
+  // Mise en ordre : éléments dans leur ORDRE CORRECT (mélangés à l'affichage élève)
+  items?: string[];
+}
+
+// Types encore proposés à la création — single_choice/multiple_choice restent
+// gérés en LECTURE (contenu déjà publié) mais ne sont plus proposés : "qcm"
+// les remplace (une case à cocher par option détermine les bonnes réponses).
+export const BLOCK_TYPE_META: Partial<Record<BlockType, { label: string; icon: typeof FileText; description: string }>> = {
+  text: { label: "Texte", icon: AlignLeft, description: "Paragraphe explicatif, sans question" },
+  image: { label: "Média (image / vidéo / audio)", icon: ImageIcon, description: "Fichier à téléverser ou glisser" },
+  text_input: { label: "Réponse libre", icon: Type, description: "Calcul / réponse courte, corrigée par IA" },
+  qcm: { label: "QCM", icon: CheckSquare, description: "Une ou plusieurs bonnes réponses, cochées dans les options" },
+  true_false: { label: "Vrai / Faux", icon: ToggleLeft, description: "Affirmation à valider" },
+  fill_in_the_blank: { label: "Texte à trous", icon: List, description: "Compléter un texte avec des mots manquants" },
+  matching: { label: "Association", icon: ArrowRightLeft, description: "Relier des éléments entre eux" },
+  ordering: { label: "Mise en ordre", icon: ArrowUpDown, description: "Remettre des éléments dans le bon ordre" },
+  coding: { label: "Code / Algo", icon: Code2, description: "Écrire un algorithme ou du code, corrigé par IA" },
+};
+
+// Liste type-safe des types proposés à la création (pickers), dans l'ordre
+// d'affichage — dérivée des clés réellement présentes dans BLOCK_TYPE_META.
+export const CREATABLE_BLOCK_TYPES = Object.keys(BLOCK_TYPE_META) as BlockType[];
+
+// Libellés pour les anciens types qui peuvent encore exister en base (contenu
+// déjà publié) mais qu'on ne propose plus à la création.
+const LEGACY_BLOCK_LABELS: Partial<Record<BlockType, string>> = {
+  single_choice: "QCM (ancien format — choix unique)",
+  multiple_choice: "QCM (ancien format — choix multiple)",
+};
+
+// Normalise correctAnswer en tableau, que le bloc soit "qcm" (toujours un
+// tableau) ou un ancien "single_choice" (chaîne unique historique).
+export function correctAnswersArray(block: Block): string[] {
+  return Array.isArray(block.correctAnswer)
+    ? block.correctAnswer
+    : block.correctAnswer
+    ? [block.correctAnswer]
+    : [];
+}
+
+// Défauts sensés par type — utilisés à la création d'un bloc pour que l'admin
+// n'ait jamais à reconfigurer un bloc vide avant de pouvoir travailler dessus.
+function defaultBlockFields(type: BlockType): Partial<Block> {
+  switch (type) {
+    case "qcm":
+    case "single_choice":
+    case "multiple_choice":
+      return { content: "", options: ["Option 1", "Option 2"], correctAnswer: ["Option 1"] };
+    case "true_false":
+      return { content: "", correctAnswer: "true" };
+    case "text_input":
+      return { content: "", correctAnswer: "" };
+    case "fill_in_the_blank":
+      return { content: "Complète : 3 + 5 = {{1}}", blanks: ["8"] };
+    case "matching":
+      return {
+        content: "",
+        pairs: [
+          { left: "Élément 1", right: "Correspondance 1" },
+          { left: "Élément 2", right: "Correspondance 2" },
+        ],
+      };
+    case "ordering":
+      return { content: "", items: ["Étape 1", "Étape 2", "Étape 3"] };
+    case "coding":
+      return { content: "", correctAnswer: "" };
+    case "image":
+      return { content: "" };
+    default:
+      return { content: "" };
+  }
 }
 
 export interface Page {
@@ -52,18 +148,24 @@ interface ExerciseBuilderProps {
   initialContent: Page[];
   onChange: (content: Page[]) => void;
   onMetadataChange?: (metadata: any) => void;
+  /** Niveau scolaire de l'exercice, déjà choisi plus haut dans le formulaire. */
+  level?: string;
 }
 
 export default function ExerciseBuilder({
   initialContent,
   onChange,
   onMetadataChange,
+  level,
 }: ExerciseBuilderProps) {
   const confirm = useConfirm();
   const [pages, setPages] = useState<Page[]>(initialContent || []);
   const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set());
   const [draggedPage, setDraggedPage] = useState<number | null>(null);
   const [draggedBlock, setDraggedBlock] = useState<{ pageId: string; index: number } | null>(null);
+  const [addBlockMenuFor, setAddBlockMenuFor] = useState<string | null>(null);
+  const [uploadingBlockId, setUploadingBlockId] = useState<string | null>(null);
+  const [uploadErrorBlockId, setUploadErrorBlockId] = useState<string | null>(null);
   useDragAutoScroll(draggedPage !== null || draggedBlock !== null);
 
   const reorder = <T,>(arr: T[], from: number, to: number): T[] => {
@@ -93,7 +195,7 @@ export default function ExerciseBuilder({
     | { scope: "block"; pageId: string; blockId: string }
     | null
   >(null);
-  const [selectedLevel, setSelectedLevel] = useState("cm1");
+  const effectiveLevel = level || "6eme";
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Insertion d'un élément à une position ("start" | "end" | id existant).
@@ -212,15 +314,13 @@ export default function ExerciseBuilder({
     setExpandedPages(newExpanded);
   };
 
-  const addBlock = (pageId: string) => {
+  const addBlock = (pageId: string, type: BlockType) => {
     const newBlock: Block = {
       id: crypto.randomUUID(),
-      type: "text",
-      title: "Nouveau bloc",
-      content: "",
-      points: 1,
-      options: ["Option 1", "Option 2"],
-      correctAnswer: "Option 1",
+      type,
+      title: type === "text" ? "" : "Nouvelle question",
+      points: type === "text" || type === "image" ? undefined : 1,
+      ...defaultBlockFields(type),
     };
     setPages(
       pages.map((p) => {
@@ -230,6 +330,7 @@ export default function ExerciseBuilder({
         return p;
       })
     );
+    setAddBlockMenuFor(null);
   };
 
   const updateBlock = (
@@ -264,6 +365,29 @@ export default function ExerciseBuilder({
         return p;
       })
     );
+  };
+
+  const uploadMedia = async (pageId: string, blockId: string, file: File) => {
+    setUploadingBlockId(blockId);
+    setUploadErrorBlockId(null);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("folder", "uploads/exercise_media");
+      const res = await fetch("/api/admin/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Échec de l'upload");
+      const mediaType = file.type.startsWith("video")
+        ? "video"
+        : file.type.startsWith("audio")
+        ? "audio"
+        : "image";
+      updateBlock(pageId, blockId, { content: data.url, mediaType });
+    } catch {
+      setUploadErrorBlockId(blockId);
+    } finally {
+      setUploadingBlockId(null);
+    }
   };
 
   const addOption = (pageId: string, blockId: string) => {
@@ -341,24 +465,6 @@ export default function ExerciseBuilder({
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-900">Contenu de l'exercice</h3>
         <div className="flex gap-2">
-          <select
-            value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
-            className="px-3 py-2 bg-white border border-[rgba(197,161,72,0.25)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
-          >
-            <option value="cp">CP</option>
-            <option value="ce1">CE1</option>
-            <option value="ce2">CE2</option>
-            <option value="cm1">CM1</option>
-            <option value="cm2">CM2</option>
-            <option value="6eme">6ème</option>
-            <option value="5eme">5ème</option>
-            <option value="4eme">4ème</option>
-            <option value="3eme">3ème</option>
-            <option value="2nde">2nde</option>
-            <option value="1ere">1ère</option>
-            <option value="terminale">Terminale</option>
-          </select>
           <button
             onClick={() => setIsAiAddModalOpen(true)}
             className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white text-sm rounded-lg hover:bg-purple-600 transition-colors"
@@ -380,7 +486,7 @@ export default function ExerciseBuilder({
 
       {isAiAddModalOpen && (
         <AIAddExerciseModal
-          level={selectedLevel}
+          level={effectiveLevel}
           pages={pages}
           onAddPage={addPageFromAI}
           onAddBlock={addBlockFromAI}
@@ -394,7 +500,7 @@ export default function ExerciseBuilder({
         return (
           <AISectionEditModal
             scope="page"
-            level={selectedLevel}
+            level={effectiveLevel}
             section={page}
             onApply={(updated) => updatePage(page.id, updated)}
             onClose={() => setAiEditTarget(null)}
@@ -409,7 +515,7 @@ export default function ExerciseBuilder({
         return (
           <AISectionEditModal
             scope="block"
-            level={selectedLevel}
+            level={effectiveLevel}
             section={block}
             onApply={(updated) => updateBlock(page.id, block.id, updated)}
             onClose={() => setAiEditTarget(null)}
@@ -523,23 +629,24 @@ export default function ExerciseBuilder({
                             />
                             <select
                               value={block.type}
-                              onChange={(e) =>
+                              onChange={(e) => {
+                                const newType = e.target.value as BlockType;
+                                if (newType === block.type) return;
                                 updateBlock(page.id, block.id, {
-                                  type: e.target.value as Block["type"],
-                                })
-                              }
+                                  type: newType,
+                                  ...defaultBlockFields(newType),
+                                });
+                              }}
                               className="border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                             >
-                              <option value="text">Texte</option>
-                              <option value="image">Image</option>
-                              <option value="single_choice">
-                                Choix unique
-                              </option>
-                              <option value="multiple_choice">
-                                Choix multiple
-                              </option>
-                              <option value="true_false">Vrai / Faux</option>
-                              <option value="text_input">Réponse libre</option>
+                              {!CREATABLE_BLOCK_TYPES.includes(block.type) && (
+                                <option value={block.type}>
+                                  {LEGACY_BLOCK_LABELS[block.type] || block.type}
+                                </option>
+                              )}
+                              {CREATABLE_BLOCK_TYPES.map((t) => (
+                                <option key={t} value={t}>{BLOCK_TYPE_META[t]!.label}</option>
+                              ))}
                             </select>
                           </div>
                           <button
@@ -563,15 +670,25 @@ export default function ExerciseBuilder({
                         <div className="space-y-3">
                           {/* Common Question Text for all question types */}
                           {[
+                            "qcm",
                             "single_choice",
                             "multiple_choice",
                             "true_false",
                             "text_input",
+                            "fill_in_the_blank",
+                            "matching",
+                            "ordering",
+                            "coding",
                           ].includes(block.type) && (
                             <div className="space-y-1">
                               <label className="text-xs font-medium text-gray-500 uppercase">
-                                Énoncé
+                                {block.type === "fill_in_the_blank" ? "Texte à trous" : "Énoncé"}
                               </label>
+                              {block.type === "fill_in_the_blank" && (
+                                <p className="text-xs text-gray-400">
+                                  Utilise <code className="bg-gray-100 px-1 rounded">{"{{1}}"}</code>, <code className="bg-gray-100 px-1 rounded">{"{{2}}"}</code>... à la place des mots manquants.
+                                </p>
+                              )}
                               <ContentInsertToolbar
                                 onInsert={(html) =>
                                   updateBlock(page.id, block.id, {
@@ -587,7 +704,15 @@ export default function ExerciseBuilder({
                                   })
                                 }
                                 className="w-full h-24 border-[rgba(197,161,72,0.25)] rounded-lg text-sm p-3"
-                                placeholder="Posez votre question ici..."
+                                placeholder={
+                                  block.type === "fill_in_the_blank"
+                                    ? "Complète : 3 + 5 = {{1}}"
+                                    : block.type === "coding"
+                                    ? "Décris l'algorithme à écrire..."
+                                    : block.type === "matching" || block.type === "ordering"
+                                    ? "Consigne (optionnelle)..."
+                                    : "Posez votre question ici..."
+                                }
                               />
                               {(block.content?.includes("$$") ||
                                 block.content?.includes("\\")) && (
@@ -637,63 +762,115 @@ export default function ExerciseBuilder({
                           )}
 
                           {block.type === "image" && (
-                            <div>
-                              <input
-                                type="text"
-                                value={block.content}
-                                onChange={(e) =>
-                                  updateBlock(page.id, block.id, {
-                                    content: e.target.value,
-                                  })
-                                }
-                                className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm mb-2"
-                                placeholder="URL de l'image"
-                              />
-                              {block.content && (
-                                <img
-                                  src={block.content}
-                                  alt="Preview"
-                                  className="h-32 object-contain border rounded bg-gray-50"
-                                />
-                              )}
-                            </div>
-                          )}
-
-                          {(block.type === "single_choice" ||
-                            block.type === "multiple_choice") && (
                             <div className="space-y-2">
-                              <label className="text-sm font-medium text-gray-700">
-                                Options
-                              </label>
-                              {block.options?.map((option, optIndex) => (
-                                <div
-                                  key={optIndex}
-                                  className="flex items-center gap-2"
-                                >
-                                  <input
-                                    type="text"
-                                    value={option}
-                                    onChange={(e) =>
-                                      updateOption(
-                                        page.id,
-                                        block.id,
-                                        optIndex,
-                                        e.target.value
-                                      )
-                                    }
-                                    className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
-                                  />
+                              {block.content ? (
+                                <div className="relative inline-block">
+                                  {block.mediaType === "video" ? (
+                                    <video src={block.content} controls className="h-40 rounded-lg border bg-black" />
+                                  ) : block.mediaType === "audio" ? (
+                                    <audio src={block.content} controls className="w-64" />
+                                  ) : (
+                                    <img src={block.content} alt="Preview" className="h-40 object-contain border rounded-lg bg-gray-50" />
+                                  )}
                                   <button
-                                    onClick={() =>
-                                      removeOption(page.id, block.id, optIndex)
-                                    }
-                                    className="p-1 text-gray-400 hover:text-red-500"
                                     type="button"
+                                    onClick={() => updateBlock(page.id, block.id, { content: "", mediaType: undefined })}
+                                    className="absolute -top-2 -right-2 p-1 bg-white rounded-full shadow border text-gray-500 hover:text-red-500"
+                                    title="Retirer le fichier"
                                   >
                                     <Trash2 size={14} />
                                   </button>
                                 </div>
-                              ))}
+                              ) : (
+                                <label
+                                  onDragOver={(e) => e.preventDefault()}
+                                  onDrop={(e) => {
+                                    e.preventDefault();
+                                    const file = e.dataTransfer.files?.[0];
+                                    if (file) uploadMedia(page.id, block.id, file);
+                                  }}
+                                  className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-[rgba(197,161,72,0.4)] rounded-lg py-8 cursor-pointer hover:border-[var(--greek-blue)] hover:bg-[var(--greek-blue)]/5 transition-colors text-center"
+                                >
+                                  <ImageIcon size={22} className="text-gray-400" />
+                                  <span className="text-sm text-gray-500">
+                                    {uploadingBlockId === block.id
+                                      ? "Envoi en cours..."
+                                      : "Clique pour choisir un fichier, ou glisse-le ici"}
+                                  </span>
+                                  <span className="text-xs text-gray-400">Image, vidéo (mp4/webm) ou audio (mp3/wav)</span>
+                                  <input
+                                    type="file"
+                                    accept="image/*,video/mp4,video/webm,audio/mpeg,audio/wav,audio/ogg"
+                                    className="hidden"
+                                    disabled={uploadingBlockId === block.id}
+                                    onChange={(e) => {
+                                      const file = e.target.files?.[0];
+                                      if (file) uploadMedia(page.id, block.id, file);
+                                    }}
+                                  />
+                                </label>
+                              )}
+                              {uploadErrorBlockId === block.id && (
+                                <p className="text-xs text-red-500">Échec de l'envoi du fichier. Réessaie (max 20 Mo).</p>
+                              )}
+                            </div>
+                          )}
+
+                          {["qcm", "single_choice", "multiple_choice"].includes(block.type) && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-gray-700">
+                                Options — coche la/les bonne(s) réponse(s)
+                              </label>
+                              {block.options?.map((option, optIndex) => {
+                                const correct = correctAnswersArray(block);
+                                const isChecked = correct.includes(option);
+                                return (
+                                  <div
+                                    key={optIndex}
+                                    className="flex items-center gap-2"
+                                  >
+                                    <input
+                                      type="checkbox"
+                                      checked={isChecked}
+                                      onChange={(e) => {
+                                        const next = e.target.checked
+                                          ? [...correct, option]
+                                          : correct.filter((c) => c !== option);
+                                        updateBlock(page.id, block.id, { correctAnswer: next });
+                                      }}
+                                      className="w-4 h-4 shrink-0 accent-[var(--greek-blue)]"
+                                      title="Bonne réponse"
+                                    />
+                                    <input
+                                      type="text"
+                                      value={option}
+                                      onChange={(e) => {
+                                        // Si l'option cochée est renommée, on met à jour correctAnswer en conséquence.
+                                        const wasCorrect = correct.includes(option);
+                                        updateOption(page.id, block.id, optIndex, e.target.value);
+                                        if (wasCorrect) {
+                                          updateBlock(page.id, block.id, {
+                                            correctAnswer: correct.map((c) => (c === option ? e.target.value : c)),
+                                          });
+                                        }
+                                      }}
+                                      className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                    />
+                                    <button
+                                      onClick={() => {
+                                        removeOption(page.id, block.id, optIndex);
+                                        updateBlock(page.id, block.id, {
+                                          correctAnswer: correct.filter((c) => c !== option),
+                                        });
+                                      }}
+                                      className="p-1 text-gray-400 hover:text-red-500"
+                                      type="button"
+                                    >
+                                      <Trash2 size={14} />
+                                    </button>
+                                  </div>
+                                );
+                              })}
                               <button
                                 onClick={() => addOption(page.id, block.id)}
                                 className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
@@ -701,32 +878,6 @@ export default function ExerciseBuilder({
                               >
                                 <Plus size={14} /> Ajouter une option
                               </button>
-
-                              <label className="block text-sm font-medium text-gray-700 mt-2">
-                                Réponse correcte
-                              </label>
-                              <input
-                                type="text"
-                                value={
-                                  Array.isArray(block.correctAnswer)
-                                    ? block.correctAnswer.join(",")
-                                    : block.correctAnswer
-                                }
-                                onChange={(e) =>
-                                  updateBlock(page.id, block.id, {
-                                    correctAnswer:
-                                      block.type === "multiple_choice"
-                                        ? e.target.value.split(",")
-                                        : e.target.value,
-                                  })
-                                }
-                                className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
-                                placeholder={
-                                  block.type === "multiple_choice"
-                                    ? "Option 1,Option 2"
-                                    : "Option 1"
-                                }
-                              />
                             </div>
                           )}
 
@@ -780,6 +931,194 @@ export default function ExerciseBuilder({
                             </div>
                           )}
 
+                          {block.type === "coding" && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-gray-700">
+                                Solution de référence (utilisée par l'IA pour corriger)
+                              </label>
+                              <textarea
+                                value={(block.correctAnswer as string) || ""}
+                                onChange={(e) =>
+                                  updateBlock(page.id, block.id, {
+                                    correctAnswer: e.target.value,
+                                  })
+                                }
+                                className="w-full h-24 border-[rgba(197,161,72,0.25)] rounded-lg text-sm p-3 font-mono"
+                                placeholder="Algorithme / code attendu, ou description de la démarche correcte..."
+                              />
+                            </div>
+                          )}
+
+                          {block.type === "fill_in_the_blank" && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-gray-700">
+                                Réponses attendues (une par trou, dans l'ordre)
+                              </label>
+                              {(block.blanks || []).map((blank, i) => (
+                                <div key={i} className="flex items-center gap-2">
+                                  <span className="text-xs font-bold text-gray-400 w-6">{`{{${i + 1}}}`}</span>
+                                  <input
+                                    type="text"
+                                    value={blank}
+                                    onChange={(e) => {
+                                      const next = [...(block.blanks || [])];
+                                      next[i] = e.target.value;
+                                      updateBlock(page.id, block.id, { blanks: next });
+                                    }}
+                                    className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                    placeholder="Réponse attendue (alternatives séparées par |)"
+                                  />
+                                  <button
+                                    onClick={() => {
+                                      const next = (block.blanks || []).filter((_, j) => j !== i);
+                                      updateBlock(page.id, block.id, { blanks: next });
+                                    }}
+                                    className="p-1 text-gray-400 hover:text-red-500"
+                                    type="button"
+                                  >
+                                    <Trash2 size={14} />
+                                  </button>
+                                </div>
+                              ))}
+                              <button
+                                onClick={() =>
+                                  updateBlock(page.id, block.id, {
+                                    blanks: [...(block.blanks || []), ""],
+                                  })
+                                }
+                                className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
+                                type="button"
+                              >
+                                <Plus size={14} /> Ajouter un trou
+                              </button>
+                            </div>
+                          )}
+
+                          {block.type === "matching" && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-gray-700">
+                                Paires à relier
+                              </label>
+                              {(block.pairs || []).map((pair, i) => (
+                                <div key={i} className="flex items-center gap-2">
+                                  <input
+                                    type="text"
+                                    value={pair.left}
+                                    onChange={(e) => {
+                                      const next = [...(block.pairs || [])];
+                                      next[i] = { ...next[i], left: e.target.value };
+                                      updateBlock(page.id, block.id, { pairs: next });
+                                    }}
+                                    className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                    placeholder="Élément"
+                                  />
+                                  <ArrowRightLeft size={14} className="text-gray-300 shrink-0" />
+                                  <input
+                                    type="text"
+                                    value={pair.right}
+                                    onChange={(e) => {
+                                      const next = [...(block.pairs || [])];
+                                      next[i] = { ...next[i], right: e.target.value };
+                                      updateBlock(page.id, block.id, { pairs: next });
+                                    }}
+                                    className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                    placeholder="Correspondance"
+                                  />
+                                  <button
+                                    onClick={() => {
+                                      const next = (block.pairs || []).filter((_, j) => j !== i);
+                                      updateBlock(page.id, block.id, { pairs: next });
+                                    }}
+                                    className="p-1 text-gray-400 hover:text-red-500"
+                                    type="button"
+                                  >
+                                    <Trash2 size={14} />
+                                  </button>
+                                </div>
+                              ))}
+                              <button
+                                onClick={() =>
+                                  updateBlock(page.id, block.id, {
+                                    pairs: [...(block.pairs || []), { left: "", right: "" }],
+                                  })
+                                }
+                                className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
+                                type="button"
+                              >
+                                <Plus size={14} /> Ajouter une paire
+                              </button>
+                            </div>
+                          )}
+
+                          {block.type === "ordering" && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-gray-700">
+                                Éléments, dans leur ordre CORRECT
+                              </label>
+                              {(block.items || []).map((item, i) => (
+                                <div key={i} className="flex items-center gap-2">
+                                  <span className="text-xs font-bold text-gray-400 w-5">{i + 1}.</span>
+                                  <input
+                                    type="text"
+                                    value={item}
+                                    onChange={(e) => {
+                                      const next = [...(block.items || [])];
+                                      next[i] = e.target.value;
+                                      updateBlock(page.id, block.id, { items: next });
+                                    }}
+                                    className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                    placeholder="Étape / élément"
+                                  />
+                                  <button
+                                    disabled={i === 0}
+                                    onClick={() => {
+                                      const next = [...(block.items || [])];
+                                      [next[i - 1], next[i]] = [next[i], next[i - 1]];
+                                      updateBlock(page.id, block.id, { items: next });
+                                    }}
+                                    className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-30"
+                                    type="button"
+                                  >
+                                    <ArrowUp size={14} />
+                                  </button>
+                                  <button
+                                    disabled={i === (block.items?.length || 0) - 1}
+                                    onClick={() => {
+                                      const next = [...(block.items || [])];
+                                      [next[i], next[i + 1]] = [next[i + 1], next[i]];
+                                      updateBlock(page.id, block.id, { items: next });
+                                    }}
+                                    className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-30"
+                                    type="button"
+                                  >
+                                    <ArrowDown size={14} />
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      const next = (block.items || []).filter((_, j) => j !== i);
+                                      updateBlock(page.id, block.id, { items: next });
+                                    }}
+                                    className="p-1 text-gray-400 hover:text-red-500"
+                                    type="button"
+                                  >
+                                    <Trash2 size={14} />
+                                  </button>
+                                </div>
+                              ))}
+                              <button
+                                onClick={() =>
+                                  updateBlock(page.id, block.id, {
+                                    items: [...(block.items || []), ""],
+                                  })
+                                }
+                                className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
+                                type="button"
+                              >
+                                <Plus size={14} /> Ajouter un élément
+                              </button>
+                            </div>
+                          )}
+
                           <div className="flex items-center gap-2 mt-2">
                             <label className="text-xs text-gray-500">
                               Points:
@@ -799,14 +1138,41 @@ export default function ExerciseBuilder({
                       </div>
                     ))}
 
-                    <button
-                      onClick={() => addBlock(page.id)}
-                      className="w-full py-2 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-lg text-gray-500 hover:border-[var(--greek-blue)] hover:text-[var(--greek-blue)] transition-colors flex items-center justify-center gap-2"
-                      type="button"
-                    >
-                      <Plus size={16} />
-                      Ajouter un bloc
-                    </button>
+                    {addBlockMenuFor === page.id ? (
+                      <div className="border-2 border-[var(--greek-blue)]/30 rounded-lg p-3 bg-white">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-bold text-gray-500 uppercase">Quel type de question ?</span>
+                          <button onClick={() => setAddBlockMenuFor(null)} type="button" className="text-xs text-gray-400 hover:text-gray-600">Annuler</button>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                          {CREATABLE_BLOCK_TYPES.map((t) => {
+                            const meta = BLOCK_TYPE_META[t]!;
+                            const Icon = meta.icon;
+                            return (
+                              <button
+                                key={t}
+                                type="button"
+                                onClick={() => addBlock(page.id, t)}
+                                title={meta.description}
+                                className="flex items-center gap-2 p-2.5 border border-[rgba(197,161,72,0.25)] rounded-lg text-left hover:border-[var(--greek-blue)] hover:bg-[var(--greek-blue)]/5 transition-colors"
+                              >
+                                <Icon size={16} className="text-[var(--greek-blue)] shrink-0" />
+                                <span className="text-xs font-medium text-gray-700">{meta.label}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => setAddBlockMenuFor(page.id)}
+                        className="w-full py-2 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-lg text-gray-500 hover:border-[var(--greek-blue)] hover:text-[var(--greek-blue)] transition-colors flex items-center justify-center gap-2"
+                        type="button"
+                      >
+                        <Plus size={16} />
+                        Ajouter un bloc
+                      </button>
+                    )}
                   </div>
                 </div>
               )}

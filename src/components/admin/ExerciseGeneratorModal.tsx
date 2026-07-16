@@ -21,8 +21,23 @@ export interface AIGenerateProgress {
   chapters: string[];
 }
 
+export type GenBlockType = "standard" | "qcm" | "fill_in_the_blank" | "matching" | "ordering" | "coding";
+
+// Le type choisi ici détermine RÉELLEMENT le type de bloc généré par l'IA
+// (avant, ce champ n'existait pas et l'IA produisait toujours des blocs
+// "réponse libre" quel que soit le type d'exercice sélectionné).
+export const BLOCK_TYPE_OPTIONS: { value: GenBlockType; label: string; description: string }[] = [
+  { value: "standard", label: "Réponse libre", description: "Calcul ou réponse courte, corrigée par IA" },
+  { value: "qcm", label: "QCM", description: "Choix parmi plusieurs options (une ou plusieurs bonnes réponses)" },
+  { value: "fill_in_the_blank", label: "Texte à trous", description: "Compléter une phrase avec les mots manquants" },
+  { value: "matching", label: "Association", description: "Relier des éléments entre eux" },
+  { value: "ordering", label: "Mise en ordre", description: "Remettre des éléments dans le bon ordre" },
+  { value: "coding", label: "Code / Algo", description: "Écrire un algorithme, corrigé par IA" },
+];
+
 export interface ExerciseGenParams {
   exerciseType: "simple" | "contextual";
+  blockType: GenBlockType;
   linkedCourseId: string | null;
   linkedCourseTitle: string | null;
   subject: string;
@@ -63,6 +78,7 @@ export default function ExerciseGeneratorModal({
   const [courses, setCourses] = useState<{ id: string; title: string }[]>([]);
   const [params, setParams] = useState<ExerciseGenParams>({
     exerciseType: "simple",
+    blockType: "standard",
     linkedCourseId: null,
     linkedCourseTitle: null,
     subject: "",
@@ -276,6 +292,31 @@ export default function ExerciseGeneratorModal({
                   className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white"
                   placeholder="Ex: Les équations du premier degré"
                 />
+              </div>
+
+              {/* Type de question générée */}
+              <div>
+                <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                  Type de question
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {BLOCK_TYPE_OPTIONS.map((opt) => (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      title={opt.description}
+                      onClick={() => setParams({ ...params, blockType: opt.value })}
+                      style={{
+                        background: params.blockType === opt.value ? "var(--greek-blue)" : "#fff",
+                        color: params.blockType === opt.value ? "#fff" : "var(--greek-blue)",
+                        borderColor: params.blockType === opt.value ? "var(--greek-blue)" : "rgba(197,161,72,0.25)",
+                      }}
+                      className="px-3 py-2.5 text-xs font-bold rounded-xl border-2 transition-all text-left"
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
