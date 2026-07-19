@@ -449,7 +449,11 @@ export default function AdminUsersPage() {
     if (!deleteTarget) return;
     setSubmitting(true);
     const res = await fetch(`/api/admin/users?auth_id=${deleteTarget.auth_id}&userId=${currentAuthId}`, { method: "DELETE" });
-    if (res.ok) setUsers(users.filter(u => u.id !== deleteTarget.id));
+    if (res.ok) {
+      setUsers(users.filter(u => u.id !== deleteTarget.id));
+      const json = await res.json().catch(() => null);
+      if (json?.warning) alert(json.warning);
+    }
     invalidateAdminCache("users:");
     setShowDeleteModal(false);
     setDeleteTarget(null);

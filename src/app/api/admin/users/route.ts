@@ -343,24 +343,25 @@ export async function DELETE(request: Request) {
       }
     }
 
-    // Delete from Auth (best effort - may fail with scoped API keys)
+    // Delete from Auth. Retried once — a transient failure here previously left
+    // "ghost" auth.users rows with no public.users profile behind (silently, since
+    // this only logged a warning). Now surfaced to the caller if it still fails.
     console.log(`[DELETE USER] Deleting from Supabase Auth`);
-    const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id);
-
+    let { error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id);
     if (authError) {
-      console.warn(`[DELETE USER] Could not delete auth user (non-critical):`, authError.message);
-      // Continue anyway - database is already fully cleaned, user is effectively deleted
-      // Scoped API keys may not have deleteUser permission - this is acceptable
+      console.warn(`[DELETE USER] Auth deletion failed, retrying once:`, authError.message);
+      ({ error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id));
     }
-
-    console.log(`[DELETE USER] User successfully deleted from database`);
+    if (authError) {
+      console.error(`[DELETE USER] Auth deletion still failing for ${auth_id} (${userData?.email}):`, authError.message);
+    }
 
     // Manually delete from public.users
     const { error: dbError } = await supabaseAdmin
       .from("users")
       .delete()
       .eq("auth_id", auth_id);
-    
+
     if (dbError) {
       console.error(`[DELETE USER] DB deletion error for ${auth_id}:`, dbError);
       // Log but don't fail - auth user is already deleted
@@ -376,7 +377,13 @@ export async function DELETE(request: Request) {
     }, request);
 
     console.log(`[DELETE USER] Successfully completed deletion for auth_id: ${auth_id}`);
-    return NextResponse.json({ success: true, message: "User deleted successfully" });
+    return NextResponse.json({
+      success: true,
+      message: "User deleted successfully",
+      warning: authError
+        ? "Le profil a été supprimé mais le compte de connexion (Supabase Auth) n'a pas pu l'être — contacte le support technique."
+        : undefined,
+    });
   } catch (error: any) {
     console.error(`[DELETE USER] Unexpected error:`, error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
