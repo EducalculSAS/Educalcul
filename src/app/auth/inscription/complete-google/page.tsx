@@ -69,8 +69,14 @@ export default function CompleteGoogleProfile() {
 
     setSaving(true);
 
-    // Ajouter le mot de passe au compte Google
-    const { error: pwErr } = await supabase.auth.updateUser({ password });
+    // Ajouter le mot de passe au compte Google + les métadonnées attendues par
+    // le webhook Stripe (qui créera le profil une fois le paiement confirmé —
+    // les métadonnées Google brutes ne sont pas dans notre format first_name/
+    // last_name/role).
+    const { error: pwErr } = await supabase.auth.updateUser({
+      password,
+      data: { first_name: firstName.trim(), last_name: lastName.trim(), role: ROLE },
+    });
     if (pwErr) {
       setError("Impossible de définir le mot de passe : " + pwErr.message);
       setSaving(false); return;

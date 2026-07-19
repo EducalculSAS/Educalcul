@@ -24,6 +24,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    // ✓ SECURITY: this endpoint used to trust ANY sessionId at face value —
+    // meaning a crafted request could create a full account without ever
+    // paying. For real Stripe checkouts, account creation now happens
+    // exclusively in the webhook (checkout.session.completed), which Stripe's
+    // signature guarantees is genuine. This route only remains for the free
+    // plan, which has no payment to fake in the first place.
+    if (sessionId !== "free") {
+      return NextResponse.json(
+        { error: "Ce flux d'inscription n'est plus utilisé pour les abonnements payants." },
+        { status: 400 }
+      );
+    }
+
     // ✓ HIGH PRIORITY FIX: Validate input lengths
     const validatedFirstName = validateName(firstName);
     const validatedLastName = validateName(lastName || "");

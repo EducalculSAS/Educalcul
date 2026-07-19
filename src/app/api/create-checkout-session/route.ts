@@ -1,29 +1,104 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
-import { getAuthenticatedUser } from '@/lib/apiAuth';
+import { getAuthenticatedUser, getAuthIdentityOnly } from '@/lib/apiAuth';
 import { computeCustomPlan } from '@/lib/customPlanPricing';
 import { getSiteUrl } from '@/lib/siteUrl';
+import { validateEmail, validateName } from '@/lib/validation';
+import { rateLimitWithBackoff, RATE_LIMITS } from '@/lib/rateLimitAdvanced';
+
+// Crée (ou réutilise) le compte Supabase Auth d'un nouvel inscrit, AVANT tout
+// paiement — mais aucune ligne public.users n'est créée ici : c'est le webhook
+// Stripe (checkout.session.completed) qui la crée, uniquement une fois le
+// paiement confirmé. Tant que ça n'arrive pas, ce compte n'a aucun profil et
+// donc aucun accès réel à l'app (RLS bloque tout sans ligne public.users).
+async function createOrResumePendingSignup(params: {
+  email: string; firstName: string; lastName: string; password: string;
+}): Promise<{ authId: string } | { error: string }> {
+  const { email, firstName, lastName, password } = params;
+
+  const { data: existingProfile } = await supabaseAdmin
+    .from('users')
+    .select('id')
+    .eq('email', email)
+    .maybeSingle();
+  if (existingProfile) {
+    return { error: 'Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.' };
+  }
+
+  const { data: created, error: createError } = await supabaseAdmin.auth.admin.createUser({
+    email,
+    password,
+    email_confirm: true,
+    user_metadata: { first_name: firstName, last_name: lastName, role: 'parent' },
+  });
+
+  if (!createError && created.user) {
+    return { authId: created.user.id };
+  }
+
+  // Email déjà présent côté Auth mais sans profil = inscription abandonnée
+  // avant paiement (ex: fermeture de l'onglet sur la page Stripe). On reprend
+  // ce compte au lieu de bloquer l'utilisateur qui retente son inscription.
+  const isDuplicate = /already.*registered|already.*exists/i.test(createError?.message || '');
+  if (!isDuplicate) {
+    return { error: createError?.message || 'Could not create account' };
+  }
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE;
+  const lookupRes = await fetch(`${url}/auth/v1/admin/users?email=${encodeURIComponent(email)}`, {
+    headers: { apikey: key!, Authorization: `Bearer ${key}` },
+  });
+  const lookupJson = await lookupRes.json().catch(() => null);
+  const existingAuthUser = Array.isArray(lookupJson?.users) ? lookupJson.users[0] : lookupJson?.[0];
+  if (!existingAuthUser?.id) {
+    return { error: 'Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.' };
+  }
+
+  // Vérifie encore une fois qu'il n'a réellement aucun profil (paranoïa anti-race).
+  const { data: recheckProfile } = await supabaseAdmin
+    .from('users')
+    .select('id')
+    .eq('auth_id', existingAuthUser.id)
+    .maybeSingle();
+  if (recheckProfile) {
+    return { error: 'Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.' };
+  }
+
+  const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(existingAuthUser.id, {
+    password,
+    user_metadata: { first_name: firstName, last_name: lastName, role: 'parent' },
+  });
+  if (updateError) return { error: updateError.message };
+
+  return { authId: existingAuthUser.id };
+}
 
 export async function POST(req: Request) {
   try {
     // URL de base de confiance (config serveur) — jamais l'en-tête Origin du
     // client, qui peut être falsifié (open redirect via les URLs Stripe).
     const baseUrl = getSiteUrl();
-    let { planId, userId, email, referralCode, isNewSignup, customConfig } = await req.json();
+    let {
+      planId, userId, email, referralCode, isNewSignup, customConfig,
+      firstName, lastName, password,
+    } = await req.json();
 
     if ((!planId && !customConfig) || !email) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Existing-user actions must be bound to the authenticated caller; new
-    // signups have no account/session yet so they pass through unauthenticated.
+    // Existing-user actions must be bound to the authenticated caller.
     if (!isNewSignup) {
       const me = await getAuthenticatedUser(req);
       if (!me) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
       userId = me.authId;
     } else {
-      userId = userId || '';
+      // Déjà authentifié (ex: inscription via Google, compte Auth déjà créé
+      // par l'OAuth callback, mais sans profil public.users tant que non payé).
+      const identity = await getAuthIdentityOnly(req);
+      userId = identity?.authId || '';
     }
 
     let plan: any = null;
@@ -84,6 +159,36 @@ export async function POST(req: Request) {
       }
       // For new signups on free plan, redirect with success so account gets created
       return NextResponse.json({ url: `${baseUrl}/parent/subscription?new=true&success=1&session_id=free` });
+    }
+
+    // Paid plan + new signup, not already authenticated (classic email/password
+    // form, as opposed to Google) → create the pending Auth account NOW, so its
+    // id can travel in the Stripe session metadata. No public.users row yet —
+    // the webhook creates it once Stripe confirms the payment.
+    if (isNewSignup && !userId) {
+      const validatedFirstName = validateName(firstName);
+      const validatedLastName = validateName(lastName || '');
+      if (!validatedFirstName || !password || !validateEmail(email)) {
+        return NextResponse.json({ error: 'Missing or invalid signup fields' }, { status: 400 });
+      }
+
+      const ip = req.headers.get('x-forwarded-for') ?? 'unknown';
+      const rlConfig = RATE_LIMITS['auth:signup'];
+      const rl = rateLimitWithBackoff(`auth:signup:${ip}`, rlConfig.maxAttempts, rlConfig.windowMs);
+      if (!rl.allowed) {
+        return NextResponse.json({ error: 'Trop de tentatives d\'inscription, réessaie plus tard.' }, { status: 429 });
+      }
+
+      const result = await createOrResumePendingSignup({
+        email: email.trim().toLowerCase(),
+        firstName: validatedFirstName,
+        lastName: validatedLastName || '',
+        password,
+      });
+      if ('error' in result) {
+        return NextResponse.json({ error: result.error }, { status: 400 });
+      }
+      userId = result.authId;
     }
 
     // Resolve discount from referral code or pending reward

@@ -103,6 +103,9 @@ export default function SelectPlan() {
           planId: plan.id,
           isNewSignup: true,
           email,
+          firstName: updatedData.firstName,
+          lastName: updatedData.lastName,
+          password: updatedData.password,
           referralCode: referralStatus === "valid" ? referralCode.trim().toUpperCase() : null,
         }),
       });

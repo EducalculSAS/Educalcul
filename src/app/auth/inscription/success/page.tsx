@@ -8,7 +8,7 @@ import { CheckCircle, Loader2, AlertCircle, Mail } from "lucide-react";
 function SuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [status, setStatus] = useState<"loading" | "email_sent" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "email_sent" | "error" | "delayed">("loading");
   const [message, setMessage] = useState("Création de votre compte en cours...");
   const [errorMsg, setErrorMsg] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -16,6 +16,13 @@ function SuccessContent() {
   useEffect(() => {
     const sessionId = searchParams.get("session_id");
     if (!sessionId) { router.replace("/auth/inscription"); return; }
+
+    const cleanup = () => {
+      sessionStorage.removeItem("educalcul_signup_data");
+      sessionStorage.removeItem("educalcul_selected_plan");
+      sessionStorage.removeItem("educalcul_signup_mode");
+      sessionStorage.removeItem("educalcul_pending_role");
+    };
 
     const run = async () => {
       try {
@@ -29,45 +36,55 @@ function SuccessContent() {
         const signupData = JSON.parse(stored);
         setUserEmail(signupData.email || "");
 
+        // Plan gratuit : pas de paiement Stripe réel à confirmer, le compte
+        // est créé directement (rien à frauder sur un plan à 0€).
+        if (sessionId === "free") {
+          const { data: { user: currentUser } } = await supabase.auth.getUser();
+          setMessage("Création de votre compte...");
+
+          const res = await fetch("/api/auth/create-account", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...signupData, sessionId, existingAuthId: currentUser?.id || null }),
+          });
+          const result = await res.json();
+          if (!res.ok) {
+            setStatus("error");
+            setErrorMsg(result.error || "Erreur lors de la création du compte.");
+            return;
+          }
+          cleanup();
+          if (result.requireEmailConfirm) { setStatus("email_sent"); return; }
+          setMessage("Redirection vers votre espace...");
+          setTimeout(() => router.replace("/parent/dashboard"), 800);
+          return;
+        }
+
+        // Paiement Stripe réel : le compte est créé par le webhook, une fois
+        // le paiement confirmé côté Stripe — on attend juste que ça arrive.
+        setMessage("Paiement confirmé, finalisation de votre compte...");
+        const deadline = Date.now() + 20000;
+        let ready = false;
+        while (Date.now() < deadline) {
+          const res = await fetch(`/api/auth/signup-status?email=${encodeURIComponent(signupData.email)}`);
+          const json = await res.json().catch(() => null);
+          if (json?.ready) { ready = true; break; }
+          await new Promise(r => setTimeout(r, 1500));
+        }
+
+        if (!ready) {
+          setStatus("delayed");
+          return;
+        }
+
         const { data: { user: currentUser } } = await supabase.auth.getUser();
-
-        setMessage("Création de votre compte...");
-
-        const res = await fetch("/api/auth/create-account", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...signupData,
-            sessionId,
-            existingAuthId: currentUser?.id || null,
-          }),
-        });
-
-        const result = await res.json();
-
-        if (!res.ok) {
-          setStatus("error");
-          setErrorMsg(result.error || "Erreur lors de la création du compte.");
-          return;
+        if (!currentUser && signupData.password) {
+          await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
         }
 
-        // Nettoyer sessionStorage
-        sessionStorage.removeItem("educalcul_signup_data");
-        sessionStorage.removeItem("educalcul_selected_plan");
-        sessionStorage.removeItem("educalcul_signup_mode");
-        sessionStorage.removeItem("educalcul_pending_role");
-
-        // Email de confirmation envoyé → afficher le message
-        if (result.requireEmailConfirm) {
-          setStatus("email_sent");
-          return;
-        }
-
-        // Google (déjà connecté) → dashboard direct
+        cleanup();
         setMessage("Redirection vers votre espace...");
-        const dashboardPath = signupData.role === "child" ? "/child/dashboard" : "/parent/dashboard";
-        setTimeout(() => router.replace(dashboardPath), 800);
-
+        setTimeout(() => router.replace("/parent/dashboard"), 800);
       } catch (err: any) {
         setStatus("error");
         setErrorMsg(err?.message || "Une erreur inattendue est survenue.");
@@ -90,6 +107,27 @@ function SuccessContent() {
             className="px-6 py-2 bg-[var(--greek-blue)] text-white rounded-xl font-bold hover:opacity-90"
           >
             Recommencer l&apos;inscription
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (status === "delayed") {
+    return (
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl shadow border border-[rgba(197,161,72,0.25)] p-8 text-center">
+          <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Paiement bien reçu</h2>
+          <p className="text-gray-500 text-sm mb-6">
+            La finalisation de votre compte prend un peu plus de temps que prévu. Vous allez recevoir un email de confirmation
+            dans les prochaines minutes — vous pourrez alors vous connecter avec {userEmail || "votre email"}.
+          </p>
+          <button
+            onClick={() => router.push("/auth/connexion")}
+            className="px-6 py-2 bg-[var(--greek-blue)] text-white rounded-xl font-bold hover:opacity-90"
+          >
+            Aller à la connexion
           </button>
         </div>
       </div>

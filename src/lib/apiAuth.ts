@@ -50,6 +50,39 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
   return { authId: data.user.id, id: row.id, role: row.role, parent_id: row.parent_id };
 }
 
+/**
+ * Validates the Bearer token and returns the raw Supabase Auth identity,
+ * WITHOUT requiring a public.users profile row to already exist. Use only for
+ * the narrow case of a signed-in Supabase Auth user who has no profile yet
+ * (e.g. Google sign-up before payment finalizes the account) — everywhere
+ * else, prefer getAuthenticatedUser.
+ */
+export async function getAuthIdentityOnly(req: Request): Promise<{ authId: string; email: string | null } | null> {
+  const header = req.headers.get("authorization");
+  if (!header) return null;
+  const token = header.replace(/^Bearer\s+/i, "").trim();
+  if (!token) return null;
+
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) return null;
+  } catch {
+    return null;
+  }
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseAnonKey) return null;
+
+  const supabaseUser = createClient(supabaseUrl, supabaseAnonKey, {
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+
+  const { data, error } = await supabaseUser.auth.getUser();
+  if (error || !data?.user) return null;
+  return { authId: data.user.id, email: data.user.email || null };
+}
+
 export async function requireRole(req: Request, roles: string[]): Promise<AuthenticatedUser | null> {
   const user = await getAuthenticatedUser(req);
   if (!user || !roles.includes(user.role)) return null;

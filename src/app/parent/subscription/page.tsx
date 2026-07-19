@@ -381,47 +381,57 @@ function SubscriptionPageContent() {
 
     (async () => {
       try {
-        // NEW SIGNUP FLOW - Create account after payment
+        // NEW SIGNUP FLOW
         if (isNewSignup && signupData) {
-          // Récupérer la session courante (Google signup = déjà connecté via OAuth)
-          const { data: { user: currentUser } } = await supabase.auth.getUser();
-
-          const createUserRes = await fetch("/api/auth/create-account", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              ...signupData,
-              sessionId,
-              existingAuthId: currentUser?.id || null,
-            }),
-          });
-
-          if (createUserRes.ok) {
-            // Auto-connexion si email/password (Google est déjà connecté)
-            if (signupData.password && !currentUser) {
-              const signInEmail = signupData.role === "child"
-                ? `${signupData.childUsername?.replace(/\s+/g, "").toLowerCase()}@educalcul.user`
-                : signupData.email;
-              await supabase.auth.signInWithPassword({
-                email: signInEmail,
-                password: signupData.password,
-              });
-            }
-
+          const cleanup = () => {
             sessionStorage.removeItem("educalcul_signup_data");
             sessionStorage.removeItem("educalcul_selected_plan");
             sessionStorage.removeItem("educalcul_signup_mode");
             sessionStorage.removeItem("educalcul_pending_role");
+          };
 
-            const dashboardPath = signupData.role === "parent" ? "/parent/dashboard" : "/child/dashboard";
-            router.replace(dashboardPath);
-            return;
-          } else {
-            const err = await createUserRes.json().catch(() => ({}));
-            console.error("Failed to create account:", err);
-            // Ne pas tomber dans le flow normal — rester sur la page avec erreur
+          // Plan gratuit : rien à frauder, le compte est créé directement.
+          if (sessionId === "free") {
+            const { data: { user: currentUser } } = await supabase.auth.getUser();
+            const createUserRes = await fetch("/api/auth/create-account", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ ...signupData, sessionId, existingAuthId: currentUser?.id || null }),
+            });
+            if (createUserRes.ok) {
+              if (signupData.password && !currentUser) {
+                await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
+              }
+              cleanup();
+              router.replace("/parent/dashboard");
+            } else {
+              console.error("Failed to create account:", await createUserRes.json().catch(() => ({})));
+            }
             return;
           }
+
+          // Paiement Stripe réel : le webhook crée le compte une fois le
+          // paiement confirmé — on attend juste que ce soit fait.
+          let ready = false;
+          const deadline = Date.now() + 20000;
+          while (Date.now() < deadline) {
+            const res = await fetch(`/api/auth/signup-status?email=${encodeURIComponent(signupData.email)}`);
+            const json = await res.json().catch(() => null);
+            if (json?.ready) { ready = true; break; }
+            await new Promise(r => setTimeout(r, 1500));
+          }
+          if (!ready) {
+            toastError("Paiement reçu — la finalisation prend plus de temps que prévu, vérifiez vos emails dans quelques minutes.");
+            return;
+          }
+
+          const { data: { user: currentUser } } = await supabase.auth.getUser();
+          if (!currentUser && signupData.password) {
+            await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
+          }
+          cleanup();
+          router.replace("/parent/dashboard");
+          return;
         }
 
         // NORMAL FLOW
@@ -458,6 +468,9 @@ function SubscriptionPageContent() {
             planId,
             isNewSignup: true,
             email: signupData.email,
+            firstName: signupData.firstName,
+            lastName: signupData.lastName,
+            password: signupData.password,
             referralCode: signupData.referralCode || undefined,
           }),
         });

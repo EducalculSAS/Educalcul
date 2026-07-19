@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
-import { buildEmailHtml, EMAIL_BASE_URL } from "@/lib/emailTemplates";
+import { buildEmailHtml, EMAIL_BASE_URL, welcomeEmail } from "@/lib/emailTemplates";
 import { notify } from "@/lib/notify";
 import Stripe from "stripe";
 
@@ -48,6 +48,53 @@ export async function POST(req: Request) {
         const planId = session.metadata?.planId;   // numeric plan id as string
 
         if (!userId || !planId) break;
+
+        // ── Nouvel inscrit : le profil public.users n'existe pas encore — le
+        // compte Auth a été créé AVANT paiement (create-checkout-session) mais
+        // sans profil, pour qu'il n'ait aucun accès tant que Stripe n'a pas
+        // confirmé le paiement. C'est ICI, et seulement ici, qu'il est créé. ──
+        if (session.metadata?.isNewSignup === "true") {
+          const { data: existingProfile } = await supabaseAdmin
+            .from("users")
+            .select("id")
+            .eq("auth_id", userId)
+            .maybeSingle();
+
+          if (!existingProfile) {
+            const { data: authUser } = await supabaseAdmin.auth.admin.getUserById(userId);
+            const meta = authUser?.user?.user_metadata || {};
+            const profileEmail = authUser?.user?.email || session.customer_details?.email || "";
+
+            const { error: insertError } = await supabaseAdmin.from("users").insert({
+              auth_id: userId,
+              first_name: meta.first_name || "",
+              last_name: meta.last_name || "",
+              email: profileEmail,
+              role: meta.role === "child" ? "child" : "parent",
+              status: "active",
+              cgu_accepted_at: new Date().toISOString(),
+            });
+
+            if (insertError) {
+              console.error("[webhook] Could not create profile for new signup:", insertError.message);
+              // Ne pas break ici : on tente quand même d'enregistrer l'abonnement plus
+              // bas si jamais le profil existe déjà (contrainte unique déjà passée).
+            } else if (profileEmail) {
+              try {
+                const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
+                  type: "magiclink",
+                  email: profileEmail,
+                  options: { redirectTo: "https://educalcul.com/auth/callback" },
+                });
+                const confirmUrl = linkData?.properties?.action_link || "https://educalcul.com/parent/dashboard";
+                const tmpl = welcomeEmail(meta.first_name || "", confirmUrl);
+                sendEmail({ toEmail: profileEmail, toName: `${meta.first_name || ""} ${meta.last_name || ""}`.trim(), ...tmpl }).catch(console.error);
+              } catch (e) {
+                console.warn("[webhook] Could not send welcome email:", e);
+              }
+            }
+          }
+        }
 
         // Get Stripe subscription details
         let periodEnd: string | null = null;
