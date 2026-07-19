@@ -155,12 +155,16 @@ export async function POST(req: Request) {
       // ── Subscription updated (renewal, upgrade, downgrade) ──────────────
       case "customer.subscription.updated": {
         const sub = event.data.object as Stripe.Subscription;
-        await supabaseAdmin.from("subscriptions").update({
+        // Depuis l'API Stripe 2025-07-30 ("basil"), current_period_end n'est
+        // plus sur l'objet subscription mais sur chaque item de facturation.
+        const rawPeriodEnd = (sub as any).current_period_end ?? sub.items?.data?.[0]?.current_period_end;
+        const update: Record<string, any> = {
           status: sub.status === "active" ? "active" : sub.status,
-          current_period_end: new Date((sub as any).current_period_end * 1000).toISOString(),
           cancel_at_period_end: sub.cancel_at_period_end,
           updated_at: new Date().toISOString(),
-        }).eq("stripe_subscription_id", sub.id);
+        };
+        if (rawPeriodEnd) update.current_period_end = new Date(rawPeriodEnd * 1000).toISOString();
+        await supabaseAdmin.from("subscriptions").update(update).eq("stripe_subscription_id", sub.id);
         break;
       }
 

@@ -22,6 +22,7 @@ function SuccessContent() {
       sessionStorage.removeItem("educalcul_selected_plan");
       sessionStorage.removeItem("educalcul_signup_mode");
       sessionStorage.removeItem("educalcul_pending_role");
+      sessionStorage.removeItem("educalcul_pending_auth_id");
     };
 
     const run = async () => {
@@ -62,11 +63,22 @@ function SuccessContent() {
 
         // Paiement Stripe réel : le compte est créé par le webhook, une fois
         // le paiement confirmé côté Stripe — on attend juste que ça arrive.
+        // On vérifie par authId (fiable) plutôt que par email : l'email
+        // affiché sur la page Stripe est modifiable par le payeur et peut
+        // différer de l'email réel du compte.
         setMessage("Paiement confirmé, finalisation de votre compte...");
+        const pendingAuthId = sessionStorage.getItem("educalcul_pending_auth_id");
+        const { data: { user: liveUser } } = await supabase.auth.getUser();
+        const statusQuery = pendingAuthId
+          ? `authId=${encodeURIComponent(pendingAuthId)}`
+          : liveUser
+          ? `authId=${encodeURIComponent(liveUser.id)}`
+          : `email=${encodeURIComponent(signupData.email)}`;
+
         const deadline = Date.now() + 20000;
         let ready = false;
         while (Date.now() < deadline) {
-          const res = await fetch(`/api/auth/signup-status?email=${encodeURIComponent(signupData.email)}`);
+          const res = await fetch(`/api/auth/signup-status?${statusQuery}`);
           const json = await res.json().catch(() => null);
           if (json?.ready) { ready = true; break; }
           await new Promise(r => setTimeout(r, 1500));

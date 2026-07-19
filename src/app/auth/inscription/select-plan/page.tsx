@@ -112,6 +112,7 @@ export default function SelectPlan() {
 
       const data = await res.json();
       if (data.url) {
+        if (data.authId) sessionStorage.setItem("educalcul_pending_auth_id", data.authId);
         window.location.href = data.url;
       } else {
         setError(data.error || "Erreur lors de la création de la session de paiement.");

@@ -301,7 +301,11 @@ export async function POST(req: Request) {
         .eq('id', userRow.id);
     }
 
-    return NextResponse.json({ sessionId: session.id, url: session.url });
+    // authId renvoyé pour les nouveaux inscrits : c'est l'identifiant fiable
+    // à utiliser pour vérifier la création du compte après paiement — l'email
+    // affiché sur la page Stripe reste modifiable par le payeur et ne doit
+    // jamais servir de clé de recherche.
+    return NextResponse.json({ sessionId: session.id, url: session.url, authId: isNewSignup ? userId : undefined });
   } catch (error: any) {
     console.error('Stripe error:', error);
     return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });

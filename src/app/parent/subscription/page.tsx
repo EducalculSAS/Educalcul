@@ -388,6 +388,7 @@ function SubscriptionPageContent() {
             sessionStorage.removeItem("educalcul_selected_plan");
             sessionStorage.removeItem("educalcul_signup_mode");
             sessionStorage.removeItem("educalcul_pending_role");
+            sessionStorage.removeItem("educalcul_pending_auth_id");
           };
 
           // Plan gratuit : rien à frauder, le compte est créé directement.
@@ -411,11 +412,20 @@ function SubscriptionPageContent() {
           }
 
           // Paiement Stripe réel : le webhook crée le compte une fois le
-          // paiement confirmé — on attend juste que ce soit fait.
+          // paiement confirmé — on attend juste que ce soit fait. On vérifie
+          // par authId (fiable), pas par email (modifiable sur la page Stripe).
+          const pendingAuthId = sessionStorage.getItem("educalcul_pending_auth_id");
+          const { data: { user: liveUserForStatus } } = await supabase.auth.getUser();
+          const statusQuery = pendingAuthId
+            ? `authId=${encodeURIComponent(pendingAuthId)}`
+            : liveUserForStatus
+            ? `authId=${encodeURIComponent(liveUserForStatus.id)}`
+            : `email=${encodeURIComponent(signupData.email)}`;
+
           let ready = false;
           const deadline = Date.now() + 20000;
           while (Date.now() < deadline) {
-            const res = await fetch(`/api/auth/signup-status?email=${encodeURIComponent(signupData.email)}`);
+            const res = await fetch(`/api/auth/signup-status?${statusQuery}`);
             const json = await res.json().catch(() => null);
             if (json?.ready) { ready = true; break; }
             await new Promise(r => setTimeout(r, 1500));
@@ -477,6 +487,7 @@ function SubscriptionPageContent() {
 
         const data = await response.json();
         if (data.url) {
+          if (data.authId) sessionStorage.setItem("educalcul_pending_auth_id", data.authId);
           window.location.href = data.url;
         } else {
           console.error("Error creating checkout session:", data.error);
