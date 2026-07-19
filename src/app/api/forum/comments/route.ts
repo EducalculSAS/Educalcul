@@ -3,6 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { notify } from "@/lib/notify";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { stripHtml } from "@/lib/stripHtml";
 
 export async function GET(req: Request) {
   try {
@@ -39,7 +40,7 @@ export async function POST(req: Request) {
 
     const { data, error } = await supabaseAdmin
       .from("forum_comments")
-      .insert({ post_id: postId, content, author_id: me.id }) // author = caller
+      .insert({ post_id: postId, content: stripHtml(content), author_id: me.id }) // author = caller
       .select(`*, author:users(first_name, last_name, child_username, role, avatar)`)
       .single();
 

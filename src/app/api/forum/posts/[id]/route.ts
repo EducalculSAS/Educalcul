@@ -1,6 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { stripHtml } from "@/lib/stripHtml";
 
 // Returns the authenticated user if they are the author of post `id` or an admin.
 async function authorOrAdmin(req: Request, postId: string) {
@@ -60,8 +61,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
     const body = await req.json();
     const updates: any = {};
-    if (body.title !== undefined) updates.title = body.title;
-    if (body.content !== undefined) updates.content = body.content;
+    if (body.title !== undefined) updates.title = stripHtml(body.title);
+    if (body.content !== undefined) updates.content = stripHtml(body.content);
     // Pin/lock are moderation actions: admins only.
     if (body.is_pinned !== undefined && auth.me.role === "admin") updates.is_pinned = body.is_pinned;
     if (body.is_locked !== undefined && auth.me.role === "admin") updates.is_locked = body.is_locked;

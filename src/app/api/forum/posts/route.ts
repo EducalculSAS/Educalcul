@@ -2,6 +2,7 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { stripHtml } from "@/lib/stripHtml";
 
 
 export async function GET(req: Request) {
@@ -48,8 +49,8 @@ export async function POST(req: Request) {
     const { data, error } = await supabaseAdmin
       .from("forum_posts")
       .insert({
-        title,
-        content,
+        title: stripHtml(title),
+        content: stripHtml(content),
         category_id: categoryId,
         author_id: me.id, // author is always the authenticated caller
       })
