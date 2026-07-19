@@ -1,6 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 
 export async function GET(req: Request) {
@@ -34,6 +35,12 @@ export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const config = RATE_LIMITS["forum:post"];
+    const rl = rateLimitWithBackoff(`forum:post:${me.authId}`, config.maxAttempts, config.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de sujets créés, réessaie plus tard." }, { status: 429 });
+    }
 
     const body = await req.json();
     const { title, content, categoryId } = body;

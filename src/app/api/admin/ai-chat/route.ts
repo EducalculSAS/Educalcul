@@ -1,8 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { AI } from "@/lib/ai-service";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const config = RATE_LIMITS["ai:admin"];
+    const rl = rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de générations IA, réessaie dans quelques minutes." }, { status: 429 });
+    }
+
     const body = await req.json();
     const { messages, type, level } = body;
 

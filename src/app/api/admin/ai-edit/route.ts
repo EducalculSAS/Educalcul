@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export const maxDuration = 120;
 
@@ -256,6 +257,13 @@ Ici, chaque élément de "items" est une QUESTION complète (id, text, type, poi
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const config = RATE_LIMITS["ai:admin"];
+    const rl = rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
+    if (!rl.allowed) {
+      return Response.json({ error: "Trop de générations IA, réessaie dans quelques minutes." }, { status: 429 });
+    }
+
     const { type, instruction, content, level } = await req.json();
 
     if (!type || !instruction || content === undefined) {

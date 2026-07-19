@@ -120,6 +120,11 @@ export const RATE_LIMITS = {
   'ai:edit': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'AI Edit' },
   'ai:generate': { maxAttempts: 15, windowMs: 60 * 60 * 1000, name: 'AI Generate' },
   'ai:grade': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'AI Grading' },
+
+  // Admin AI endpoints - generous (production tool, only reachable by an
+  // authenticated admin via proxy.ts). Not meant to throttle normal usage —
+  // just a backstop against a compromised token or a runaway client bug.
+  'ai:admin': { maxAttempts: 300, windowMs: 60 * 60 * 1000, name: 'Admin AI generation' },
   
   // File upload
   'upload:file': { maxAttempts: 50, windowMs: 60 * 60 * 1000, name: 'File upload' },

@@ -19,6 +19,13 @@ export async function POST(request: Request) {
       );
     }
 
+    if (typeof password !== "string" || password.length < 8) {
+      return NextResponse.json(
+        { error: "Le mot de passe doit contenir au moins 8 caractères" },
+        { status: 400 }
+      );
+    }
+
     // Child accounts only live on the internal username domain.
     if (!/^[a-zA-Z0-9._-]+@educalcul\.user$/.test(email)) {
       return NextResponse.json({ error: "Invalid child email" }, { status: 400 });

@@ -1,13 +1,21 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export const maxDuration = 120;
 
 const BATCH_SIZE = 4;
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+  const config = RATE_LIMITS["ai:admin"];
+  const rl = rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Trop de générations IA, réessaie dans quelques minutes." }, { status: 429 });
+  }
+
   const body = await req.json();
   const {
     linkedCourseId,
