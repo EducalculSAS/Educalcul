@@ -70,12 +70,10 @@ export async function POST(request: Request) {
       // Create new auth user
       action = "created";
       const email = `${childUser.child_username}@educalcul.user`;
-      
-      // Check if user with this email already exists (edge case)
-      const { data: existingAuth } = await supabaseAdmin.from('auth.users').select('id').eq('email', email).maybeSingle();
-       // Wait, we can't select from auth.users directly via API usually unless we use RPC or admin listUsers.
-       // admin.createUser will fail if exists.
 
+      // Si un compte Auth existe déjà avec cet email, createUser échoue et
+      // l'erreur est propagée ci-dessous (pas de pré-vérification nécessaire :
+      // auth.users n'est pas interrogeable via l'API PostgREST).
       const { data: newUser, error: createError } = await supabaseAdmin.auth.admin.createUser({
         email: email,
         password: password,
