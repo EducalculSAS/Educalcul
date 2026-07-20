@@ -71,4 +71,12 @@ function getAdminClient(): SupabaseClient {
   return (globalThis as any)[ADMIN_KEY];
 }
 
-export const supabaseAdmin: SupabaseClient = getAdminClient();
+// Lazy proxy: the admin client is only created on first real use, so a missing
+// SUPABASE_SERVICE_ROLE breaks admin operations — not every public page.
+export const supabaseAdmin: SupabaseClient = new Proxy({} as SupabaseClient, {
+  get(_target, prop) {
+    const client = getAdminClient() as any;
+    const value = client[prop];
+    return typeof value === "function" ? value.bind(client) : value;
+  },
+});
