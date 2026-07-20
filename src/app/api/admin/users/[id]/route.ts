@@ -1,8 +1,13 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Défense en profondeur : proxy.ts garde déjà /api/admin/*, mais cette route
+    // expose/modifie N'IMPORTE quel compte (bannissement, reset mot de passe,
+    // édition). On revérifie donc le rôle admin ici même.
+    if (!(await requireRole(req, ["admin"]))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
     const { data: user, error } = await supabaseAdmin.from("users").select("*").eq("id", id).single();
     if (error || !user) return NextResponse.json({ error: "User not found" }, { status: 404 });
@@ -36,6 +41,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    if (!(await requireRole(req, ["admin"]))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
     const { first_name, last_name, email, role, status, grade_level } = await req.json();
     const { data, error } = await supabaseAdmin.from("users").update({ first_name, last_name, email, role, status, grade_level }).eq("id", id).select().single();
@@ -48,6 +54,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    if (!(await requireRole(req, ["admin"]))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
     const { action, payload } = await req.json();
     const { data: user } = await supabaseAdmin.from("users").select("id, auth_id, email, status").eq("id", id).single();
