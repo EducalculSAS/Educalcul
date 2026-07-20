@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, BookOpen, ExternalLink, ArrowRight, FileText, GraduationCap } from "lucide-react";
+import { ChevronDown, BookOpen, ExternalLink, ArrowRight, GraduationCap } from "lucide-react";
 import { PROGRAMMES_NATIONAUX, ProgrammeEntry } from "@/lib/programmes-nationaux";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
@@ -149,7 +149,7 @@ function LevelCard({ prog, color, isOpen, onToggle, dbPdf, isMine }: { prog: Pro
                 {pdfs.map((pdf) => (
                   <a
                     key={pdf.url}
-                    href={pdf.url}
+                    href={dbPdf?.file_url || pdf.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl transition-colors hover:opacity-80 mr-2"
@@ -160,19 +160,6 @@ function LevelCard({ prog, color, isOpen, onToggle, dbPdf, isMine }: { prog: Pro
                     <ExternalLink size={12} style={{ color: "var(--text-muted)" }} />
                   </a>
                 ))}
-                {dbPdf && (
-                  <a
-                    href={dbPdf.file_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl transition-colors hover:opacity-80 mt-2"
-                    style={{ background: "rgba(34,197,94,0.1)", color: "var(--greek-blue)", border: "1px solid rgba(34,197,94,0.25)" }}
-                  >
-                    <FileText size={14} />
-                    PDF téléchargé par l&apos;admin
-                    <ExternalLink size={12} style={{ color: "var(--text-muted)" }} />
-                  </a>
-                )}
               </div>
             )}
           </div>
@@ -313,7 +300,7 @@ export default function ProgrammesPage() {
             ].map((lvl, i, arr) => (
               <div key={i} className="flex items-center">
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-2 h-2 rounded-full" style={{ background: lvl.color, opacity: 0.9 }} />
+                  <div className="w-2 h-2 rounded-full" style={{ background: "rgba(255,255,255,0.4)" }} />
                   <span className="text-[9px] font-semibold hidden sm:block" style={{ color: "rgba(255,255,255,0.35)" }}>{lvl.label}</span>
                 </div>
                 {i < arr.length - 1 && (
