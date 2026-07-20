@@ -281,34 +281,6 @@ export default function ProgrammesPage() {
               ))}
             </select>
           </div>
-
-          {/* Barre de progression niveaux */}
-          <div className="flex items-center justify-center gap-0 max-w-2xl mx-auto">
-            {[
-              { label: "CP", color: "#22c55e" },
-              { label: "CE1", color: "#22c55e" },
-              { label: "CE2", color: "#22c55e" },
-              { label: "CM1", color: "#22c55e" },
-              { label: "CM2", color: "#22c55e" },
-              { label: "6e", color: "#60a5fa" },
-              { label: "5e", color: "#60a5fa" },
-              { label: "4e", color: "#60a5fa" },
-              { label: "3e", color: "#60a5fa" },
-              { label: "2nde", color: "var(--greek-gold)" },
-              { label: "1re", color: "var(--greek-gold)" },
-              { label: "Tle", color: "#f472b6" },
-            ].map((lvl, i, arr) => (
-              <div key={i} className="flex items-center">
-                <div className="flex flex-col items-center gap-1">
-                  <div className="w-2 h-2 rounded-full" style={{ background: "rgba(255,255,255,0.4)" }} />
-                  <span className="text-[9px] font-semibold hidden sm:block" style={{ color: "rgba(255,255,255,0.35)" }}>{lvl.label}</span>
-                </div>
-                {i < arr.length - 1 && (
-                  <div className="w-4 sm:w-7 h-px mx-0.5" style={{ background: "rgba(255,255,255,0.1)" }} />
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
