@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import {
-  Check, Star, Sparkles, AlertCircle, Loader2, Gift, CheckCircle,
+  Check, Star, Sparkles, AlertCircle, Loader2, Gift, CheckCircle, ArrowRight,
 } from "lucide-react";
 
 interface Plan {
@@ -20,10 +20,54 @@ interface Plan {
   sort_order: number;
 }
 
+/* ─── Feature rows (mêmes que la page /tarifs) ─── */
+const FEATURE_ROWS: { key: string; label: string }[] = [
+  { key: "max_children", label: "Enfants" },
+  { key: "access_level_exercises", label: "Niveaux scolaires" },
+  { key: "ai_access", label: "IA EpsiAI" },
+  { key: "ai_daily_limit", label: "Questions IA / jour" },
+];
+
+function formatVal(key: string, val: boolean | number | string | null): { label: string; included: boolean } {
+  if (val === false || val === null || val === 0 || val === "none") return { label: "", included: false };
+  if (val === true) return { label: "Inclus", included: true };
+  if (key === "max_children") return { label: Number(val) === -1 ? "Illimité" : `${val} enfant${Number(val) > 1 ? "s" : ""}`, included: true };
+  if (key === "ai_daily_limit") return { label: Number(val) === -1 ? "Illimité" : `${val} / jour`, included: true };
+  if (key === "ai_access") {
+    if (val === "unlimited") return { label: "Illimité", included: true };
+    if (val === "limited") return { label: "Limité", included: true };
+    return { label: "", included: false };
+  }
+  if (key === "access_level_exercises") {
+    if (val === "all") return { label: "CP → Terminale", included: true };
+    if (val === "college") return { label: "CP → 3ème", included: true };
+    if (val === "basic") return { label: "CP → 6ème", included: true };
+    return { label: String(val), included: true };
+  }
+  return { label: String(val), included: true };
+}
+
+const intervalLabel = (i: string) => {
+  switch (i) {
+    case "year": return "/an";
+    case "semester": return "/semestre";
+    case "quarter": return "/trimestre";
+    default: return "/mois";
+  }
+};
+
+const INTERVAL_LABELS: { id: string; label: string }[] = [
+  { id: "month", label: "Mensuel" },
+  { id: "quarter", label: "Trimestriel" },
+  { id: "semester", label: "Semestriel" },
+  { id: "year", label: "Annuel" },
+];
+
 export default function SelectPlan() {
   const router = useRouter();
   const [plans, setPlans] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
+  const [interval, setInterval] = useState<string>("month");
   const [processingPlanId, setProcessingPlanId] = useState<string | number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [referralCode, setReferralCode] = useState("");
@@ -85,7 +129,6 @@ export default function SelectPlan() {
     setError(null);
 
     try {
-      // Mettre à jour le code de parrainage dans signupData
       const currentData = signupData || {};
       const updatedData = {
         ...currentData,
@@ -124,8 +167,11 @@ export default function SelectPlan() {
     }
   };
 
-  const intervalLabel = (i: string) =>
-    i === "year" ? "/an" : i === "week" ? "/sem." : "/mois";
+  const freePlans = plans.filter((p) => Number(p.price) === 0);
+  const paidForInterval = plans.filter((p) => Number(p.price) > 0 && p.billing_interval === interval);
+  // Les formules gratuites n'ont pas d'intervalle de facturation pertinent : on les
+  // affiche à la suite quel que soit l'onglet sélectionné.
+  const visiblePlans = [...paidForInterval, ...freePlans];
 
   if (loading) {
     return (
@@ -139,7 +185,7 @@ export default function SelectPlan() {
   return (
     <div className="w-full bg-[var(--greek-cream)] py-12">
       <div className="max-w-5xl mx-auto px-4">
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <h1 className="font-[family-name:var(--font-display)] text-3xl text-[var(--greek-blue)] font-bold mb-2">
             Choisir votre formule
           </h1>
@@ -153,109 +199,135 @@ export default function SelectPlan() {
           </div>
         )}
 
-        {/* Plans */}
-        <div className={`grid gap-6 mb-10 ${plans.length <= 2 ? "md:grid-cols-2 max-w-2xl mx-auto" : "md:grid-cols-3"}`}>
-          {plans.map((plan, idx) => {
-            const features = typeof plan.features === "string"
-              ? JSON.parse(plan.features)
-              : plan.features || {};
-            const featureList: string[] = Array.isArray(features)
-              ? features
-              : [
-                  features.max_children && `${features.max_children} enfant(s)`,
-                  features.detailed_reports && "Rapports détaillés",
-                  features.priority_support && "Support prioritaire",
-                  features.offline_access && "Accès hors-ligne",
-                  features.custom_avatars && "Avatars personnalisés",
-                ].filter(Boolean) as string[];
-
-            const isPopular = idx === 1;
-            const isProcessing = processingPlanId === plan.id;
-
-            return (
-              <div
-                key={plan.id}
-                className={`relative flex flex-col bg-white rounded-2xl transition-all duration-200 shadow-sm ${
-                  isPopular
-                    ? "border-2 border-[var(--greek-gold)] shadow-md"
-                    : "border border-[rgba(197,161,72,0.25)]"
-                }`}
+        {/* Sélecteur de période — identique à /tarifs */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-xl" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
+            {INTERVAL_LABELS.map((it) => (
+              <button
+                key={it.id}
+                onClick={() => setInterval(it.id)}
+                className="px-4 py-2 rounded-lg text-xs font-bold transition-all font-[family-name:var(--font-display)]"
+                style={interval === it.id
+                  ? { background: "var(--greek-blue)", color: "#fff" }
+                  : { background: "transparent", color: "var(--greek-blue)" }}
               >
-                {isPopular && (
-                  <div className="absolute top-0 right-0 bg-[var(--greek-gold)] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-2xl flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-current" /> POPULAIRE
-                  </div>
-                )}
-
-                <div className="p-6 bg-gray-50 rounded-t-2xl border-b border-[rgba(197,161,72,0.15)] text-center">
-                  {plan.promo_description && (
-                    <div className="flex items-center justify-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-2">
-                      <Sparkles className="w-3 h-3" /> {plan.promo_description}
-                    </div>
-                  )}
-                  <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-1">{plan.name}</h3>
-                  {plan.description && <p className="text-gray-500 text-sm">{plan.description}</p>}
-                </div>
-
-                <div className="flex-grow p-6">
-                  <div className="text-center mb-4">
-                    <div className="text-4xl font-bold text-[var(--greek-blue)]">
-                      {plan.price === 0 ? "Gratuit" : `${plan.price} €`}
-                    </div>
-                    {plan.price > 0 && (
-                      <span className="text-gray-400 text-sm">{intervalLabel(plan.billing_interval)}</span>
-                    )}
-                    {/* Affichage du prix réduit si code parrainage valide */}
-                    {referralStatus === "valid" && plan.price > 0 && (
-                      <div className="mt-1 text-sm text-green-600 font-semibold">
-                        Prix avec remise appliqué au paiement
-                      </div>
-                    )}
-                  </div>
-
-                  {plan.trial_days > 0 && (
-                    <div className="text-center text-sm text-green-600 font-semibold mb-4 flex items-center justify-center gap-1">
-                      <Check className="w-4 h-4" /> {plan.trial_days} jours d&apos;essai gratuit
-                    </div>
-                  )}
-
-                  <div className="space-y-2">
-                    {featureList.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                        <Check className="w-4 h-4 text-[var(--greek-gold)] shrink-0" />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="p-4 border-t border-[rgba(197,161,72,0.15)]">
-                  <button
-                    onClick={() => handleSelectPlan(plan)}
-                    disabled={!!processingPlanId}
-                    className={`w-full py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${
-                      isPopular
-                        ? "bg-[var(--greek-gold)] text-white hover:opacity-90 shadow-md"
-                        : "bg-[var(--greek-blue)] text-white hover:opacity-90"
-                    } disabled:opacity-50`}
-                  >
-                    {isProcessing ? (
-                      <><Loader2 className="w-4 h-4 animate-spin" /> Chargement...</>
-                    ) : plan.price === 0 ? (
-                      "Commencer gratuitement"
-                    ) : plan.trial_days > 0 ? (
-                      `Essai gratuit · Payer`
-                    ) : (
-                      `Payer ${plan.price} €${intervalLabel(plan.billing_interval)}`
-                    )}
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+                {it.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Code de parrainage — uniquement pour Google (email/password le saisit sur la page inscription) */}
+        {/* Cartes de plans — style /tarifs */}
+        {visiblePlans.length === 0 ? (
+          <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour cette période.</p>
+        ) : (
+          <div className={`grid grid-cols-1 gap-8 mb-10 ${visiblePlans.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : visiblePlans.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
+            {visiblePlans.map((plan, idx) => {
+              const features = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
+              const popular = visiblePlans.length > 1 && idx === 1;
+              const isProcessing = processingPlanId === plan.id;
+              const isFree = Number(plan.price) === 0;
+
+              return (
+                <div
+                  key={plan.id}
+                  style={{
+                    position: "relative",
+                    zIndex: popular ? 10 : 1,
+                    transform: popular ? "scale(1.04)" : undefined,
+                  }}
+                >
+                  <div
+                    className="relative flex flex-col bg-white rounded-2xl h-full"
+                    style={{
+                      border: popular ? "2px solid var(--greek-gold)" : "1px solid var(--greek-border)",
+                      boxShadow: popular ? "0 8px 40px rgba(197,161,72,0.18)" : "0 2px 12px rgba(15,30,58,0.05)",
+                    }}
+                  >
+                    {popular && (
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                        <div className="px-4 py-1.5 rounded-full text-xs font-bold bg-[var(--greek-gold)] text-black shadow-md flex items-center gap-1.5">
+                          <Star className="w-3 h-3 fill-current" /> Populaire
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)]">
+                      {plan.promo_description && (
+                        <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-3">
+                          <Sparkles className="w-3 h-3" />{plan.promo_description}
+                        </div>
+                      )}
+                      {plan.trial_days > 0 && (
+                        <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200 mb-3">
+                          {plan.trial_days} jours d&apos;essai gratuit
+                        </div>
+                      )}
+                      <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">{plan.name}</h3>
+                      {plan.description && <p className="text-sm text-[var(--text-muted)]">{plan.description}</p>}
+                    </div>
+
+                    <div className="px-7 py-6 text-center border-b border-[var(--greek-border)]">
+                      <div className="flex items-end justify-center gap-1">
+                        <span className="font-[family-name:var(--font-display)] text-4xl font-bold text-[var(--greek-blue)]">
+                          {isFree ? "Gratuit" : `${plan.price}€`}
+                        </span>
+                        {!isFree && (
+                          <span className="text-sm text-[var(--text-muted)] mb-1.5">{intervalLabel(plan.billing_interval)}</span>
+                        )}
+                      </div>
+                      {referralStatus === "valid" && !isFree && (
+                        <div className="mt-2 text-xs text-green-600 font-semibold">Remise appliquée au paiement</div>
+                      )}
+                    </div>
+
+                    <div className="px-7 py-6 flex-grow flex flex-col">
+                      <ul className="space-y-2.5 mb-6">
+                        {FEATURE_ROWS.map((row) => {
+                          const { label, included } = formatVal(row.key, features?.[row.key]);
+                          if (!included) return null;
+                          return (
+                            <li key={row.key} className="flex items-center gap-3">
+                              <div className="w-5 h-5 rounded-full bg-[rgba(197,161,72,0.12)] flex items-center justify-center flex-shrink-0">
+                                <Check className="w-3 h-3 text-[var(--greek-gold)]" />
+                              </div>
+                              <span className="text-sm text-[var(--text-dark)] flex-1">{row.label}</span>
+                              {label !== "Inclus" && (
+                                <span className="text-xs font-semibold text-[var(--greek-gold)]">{label}</span>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      <button
+                        onClick={() => handleSelectPlan(plan)}
+                        disabled={!!processingPlanId}
+                        className="mt-auto w-full py-3 px-4 rounded-xl font-bold text-sm text-center transition-all hover:-translate-y-0.5 hover:shadow-md font-[family-name:var(--font-display)] disabled:opacity-50 disabled:hover:translate-y-0"
+                        style={popular
+                          ? { background: "var(--greek-gold)", color: "#fff" }
+                          : { background: "var(--greek-blue)", color: "#fff" }
+                        }
+                      >
+                        {isProcessing ? (
+                          <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
+                        ) : isFree ? (
+                          <>Commencer gratuitement <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
+                        ) : plan.trial_days > 0 ? (
+                          <>Essai gratuit · Payer <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
+                        ) : (
+                          <>Payer {plan.price}€{intervalLabel(plan.billing_interval)} <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Code de parrainage — uniquement pour Google */}
         {isGoogleSignup && <div className="max-w-sm mx-auto mb-8">
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-5 shadow-sm">
             <label className="block text-[var(--greek-blue)] font-bold mb-3 text-sm flex items-center gap-2">
@@ -301,7 +373,7 @@ export default function SelectPlan() {
             onClick={() => router.push("/auth/inscription")}
             className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
           >
-            ← Retour à l'inscription
+            ← Retour à l&apos;inscription
           </button>
         </div>
       </div>
