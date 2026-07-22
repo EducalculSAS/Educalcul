@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Check, Star, Sparkles, ArrowRight, Loader2 } from "lucide-react";
+import { useState, useEffect, type DragEvent } from "react";
+import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save } from "lucide-react";
 import {
   childrenCost, aiMultiplier, configPrice,
   DEFAULT_CUSTOM_PRICING,
@@ -18,6 +18,18 @@ export interface ChooserPlan {
   trial_days: number;
   promo_description: string | null;
   features: Record<string, any>;
+}
+
+/** Mode admin optionnel : glisser les fiches (réordonner / changer de période)
+ * + éditer le forfait sur-mesure inline + bouton Sauvegarder. */
+export interface PlanChooserAdmin {
+  onReorder: (draggedId: string | number, targetId: string | number) => void;
+  onMoveInterval: (draggedId: string | number, interval: string) => void;
+  pricing: PricingCustomConfig;
+  onPricingChange: (p: PricingCustomConfig) => void;
+  dirty: boolean;
+  saving: boolean;
+  onSave: () => void;
 }
 
 /* ─── Feature rows (identiques à /tarifs) ─── */
@@ -56,24 +68,71 @@ const intervalLabel = (i: string) => {
   }
 };
 
+/* ─── Valeur numérique éditable au clic (mode admin) ─── */
+function EditableNumber({ value, onChange, className, suffix = "€" }: {
+  value: number; onChange: (v: number) => void; className?: string; suffix?: string;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [v, setV] = useState(String(value));
+  useEffect(() => { setV(String(value)); }, [value]);
+  if (editing) {
+    return (
+      <input
+        type="number" step="0.01" min="0" autoFocus value={v}
+        onChange={e => setV(e.target.value)}
+        onBlur={() => { setEditing(false); onChange(Math.max(0, Math.round((Number(v) || 0) * 100) / 100)); }}
+        onKeyDown={e => { if (e.key === "Enter") (e.target as HTMLInputElement).blur(); }}
+        onClick={e => e.stopPropagation()}
+        className="w-20 px-1.5 py-0.5 rounded border border-[var(--greek-gold)] text-sm text-[var(--greek-blue)] bg-white outline-none"
+      />
+    );
+  }
+  return (
+    <button type="button" onClick={e => { e.stopPropagation(); setEditing(true); }}
+      title="Cliquer pour modifier"
+      className={`underline decoration-dotted decoration-[var(--greek-gold)] underline-offset-2 hover:text-[var(--greek-gold)] transition-colors ${className || ""}`}>
+      {value.toFixed(2)}{suffix}
+    </button>
+  );
+}
+
 /* ─── Plan card (style /tarifs) ─── */
-function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent }: {
+function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }: {
   plan: ChooserPlan;
   popular: boolean;
   cta: string;
   onChoose: () => void;
   processing: boolean;
   isCurrent: boolean;
+  drag?: {
+    onDragStart: () => void;
+    onDragEnd: () => void;
+    onDragOver: (e: DragEvent) => void;
+    onDrop: () => void;
+    over: boolean;
+  };
 }) {
   const features = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
   const isFree = Number(plan.price) === 0;
   return (
-    <div style={{ position: "relative", zIndex: popular ? 10 : 1, transform: popular ? "scale(1.04)" : undefined }}>
+    <div
+      style={{ position: "relative", zIndex: popular ? 10 : 1, transform: popular ? "scale(1.04)" : undefined }}
+      draggable={!!drag}
+      onDragStart={drag?.onDragStart}
+      onDragEnd={drag?.onDragEnd}
+      onDragOver={drag?.onDragOver}
+      onDrop={drag?.onDrop}
+    >
       <div className="relative flex flex-col bg-white rounded-2xl h-full"
         style={{
-          border: popular ? "2px solid var(--greek-gold)" : isCurrent ? "2px solid var(--greek-blue)" : "1px solid var(--greek-border)",
+          border: drag?.over ? "2px dashed var(--greek-gold)" : popular ? "2px solid var(--greek-gold)" : isCurrent ? "2px solid var(--greek-blue)" : "1px solid var(--greek-border)",
           boxShadow: popular ? "0 8px 40px rgba(197,161,72,0.18)" : "0 2px 12px rgba(15,30,58,0.05)",
         }}>
+        {drag && (
+          <div className="absolute top-3 left-3 text-gray-300" title="Glisser pour réordonner / changer de période">
+            <GripVertical className="w-4 h-4" />
+          </div>
+        )}
         {popular && (
           <div className="absolute -top-4 left-1/2 -translate-x-1/2">
             <div className="px-4 py-1.5 rounded-full text-xs font-bold bg-[var(--greek-gold)] text-black shadow-md flex items-center gap-1.5">
@@ -151,15 +210,20 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent }: {
   );
 }
 
-/* ─── Toggle (style /tarifs) ─── */
-function Toggle({ label, sub, price, value, onChange }: { label: string; sub?: string; price: number; value: boolean; onChange: (v: boolean) => void }) {
+/* ─── Toggle (style /tarifs) ; prix éditable en mode admin ─── */
+function Toggle({ label, sub, price, value, onChange, onPriceChange }: {
+  label: string; sub?: string; price: number; value: boolean;
+  onChange: (v: boolean) => void; onPriceChange?: (p: number) => void;
+}) {
   return (
     <div className="flex items-center justify-between gap-4 px-5 py-3.5 rounded-xl"
       style={{ background: "#fff", border: `1.5px solid ${value ? "rgba(197,161,72,0.5)" : "var(--greek-border)"}` }}>
       <div className="min-w-0">
         <span className="text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>{label}</span>
         {sub && <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{sub}</p>}
-        <span className="text-xs font-semibold ml-1" style={{ color: "var(--greek-gold)" }}>+{price.toFixed(2)}€</span>
+        <span className="text-xs font-semibold ml-1" style={{ color: "var(--greek-gold)" }}>
+          +{onPriceChange ? <EditableNumber value={price} onChange={onPriceChange} className="text-xs font-semibold" /> : `${price.toFixed(2)}€`}
+        </span>
       </div>
       <button type="button" onClick={() => onChange(!value)}
         className="relative w-11 h-6 rounded-full transition-colors flex-shrink-0"
@@ -171,12 +235,13 @@ function Toggle({ label, sub, price, value, onChange }: { label: string; sub?: s
   );
 }
 
-/* ─── Configurateur "Sur mesure" (style /tarifs) ─── */
-function Configurator({ onChoose, processing, ctaLabel, pricing }: {
+/* ─── Configurateur "Sur mesure" ; éditable en mode admin ─── */
+function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
   onChoose: (c: CustomPlanConfig) => void;
   processing: boolean;
   ctaLabel: string;
   pricing: PricingCustomConfig;
+  edit?: { onPricingChange: (p: PricingCustomConfig) => void };
 }) {
   const [cfg, setCfg] = useState<CustomPlanConfig>({ children: 1, ai: "none", reports: false, support: false, avatars: false, quiz: false });
   const n = Math.max(1, cfg.children);
@@ -185,6 +250,9 @@ function Configurator({ onChoose, processing, ctaLabel, pricing }: {
   const aiOption = pricing.ai_options.find(o => o.id === cfg.ai) ?? pricing.ai_options[0];
   const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
   const aiIdx = pricing.ai_options.findIndex(o => o.id === cfg.ai);
+
+  const setToggle = (key: "reports" | "quiz" | "avatars" | "support", p: number) =>
+    edit?.onPricingChange({ ...pricing, toggles: { ...pricing.toggles, [key]: p } });
 
   return (
     <div className="grid md:grid-cols-5 gap-8 items-start">
@@ -202,7 +270,11 @@ function Configurator({ onChoose, processing, ctaLabel, pricing }: {
               style={{ border: "1.5px solid var(--greek-border)", color: "var(--greek-blue)" }} />
             <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
               <div>1er enfant inclus</div>
-              <div>Plus d&apos;enfants → IA plus chère</div>
+              {edit ? (
+                <div>Max enfants : <EditableNumber value={pricing.max_children} suffix="" onChange={(v) => edit.onPricingChange({ ...pricing, max_children: Math.max(1, Math.floor(v)) })} /></div>
+              ) : (
+                <div>Plus d&apos;enfants → IA plus chère</div>
+              )}
             </div>
           </div>
         </div>
@@ -232,16 +304,31 @@ function Configurator({ onChoose, processing, ctaLabel, pricing }: {
               </button>
             ))}
           </div>
-          {n > 1 && cfg.ai !== "none" && (
+          {edit && (
+            <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {pricing.ai_options.map((o, i) => (
+                <div key={o.id} className="flex items-center justify-between gap-1 px-2.5 py-1.5 rounded-lg bg-white border border-[var(--greek-border)] text-xs">
+                  <span className="font-semibold text-[var(--greek-blue)]">{o.label}</span>
+                  <EditableNumber value={o.basePrice} className="text-xs font-semibold text-[var(--greek-gold)]"
+                    onChange={(v) => {
+                      const ai = [...pricing.ai_options];
+                      ai[i] = { ...ai[i], basePrice: v };
+                      edit.onPricingChange({ ...pricing, ai_options: ai });
+                    }} />
+                </div>
+              ))}
+            </div>
+          )}
+          {!edit && n > 1 && cfg.ai !== "none" && (
             <p className="text-xs mt-1.5" style={{ color: "rgba(197,161,72,0.8)" }}>⚠ Le prix de l&apos;IA augmente avec le nombre d&apos;enfants</p>
           )}
         </div>
 
         <div className="space-y-2.5">
-          <Toggle label="Rapports hebdomadaires" sub="Résumé email chaque semaine" price={pricing.toggles.reports} value={cfg.reports} onChange={v => setCfg(c => ({ ...c, reports: v }))} />
-          <Toggle label="Quiz" sub="Accès à tous les quiz et évaluations" price={pricing.toggles.quiz} value={cfg.quiz} onChange={v => setCfg(c => ({ ...c, quiz: v }))} />
-          <Toggle label="Avatars & cosmétiques" sub="Contours et couleurs de nom exclusifs" price={pricing.toggles.avatars} value={cfg.avatars} onChange={v => setCfg(c => ({ ...c, avatars: v }))} />
-          <Toggle label="Support prioritaire" sub="Réponse garantie sous 4h en semaine" price={pricing.toggles.support} value={cfg.support} onChange={v => setCfg(c => ({ ...c, support: v }))} />
+          <Toggle label="Rapports hebdomadaires" sub="Résumé email chaque semaine" price={pricing.toggles.reports} value={cfg.reports} onChange={v => setCfg(c => ({ ...c, reports: v }))} onPriceChange={edit ? (p) => setToggle("reports", p) : undefined} />
+          <Toggle label="Quiz" sub="Accès à tous les quiz et évaluations" price={pricing.toggles.quiz} value={cfg.quiz} onChange={v => setCfg(c => ({ ...c, quiz: v }))} onPriceChange={edit ? (p) => setToggle("quiz", p) : undefined} />
+          <Toggle label="Avatars & cosmétiques" sub="Contours et couleurs de nom exclusifs" price={pricing.toggles.avatars} value={cfg.avatars} onChange={v => setCfg(c => ({ ...c, avatars: v }))} onPriceChange={edit ? (p) => setToggle("avatars", p) : undefined} />
+          <Toggle label="Support prioritaire" sub="Réponse garantie sous 4h en semaine" price={pricing.toggles.support} value={cfg.support} onChange={v => setCfg(c => ({ ...c, support: v }))} onPriceChange={edit ? (p) => setToggle("support", p) : undefined} />
         </div>
       </div>
 
@@ -257,8 +344,13 @@ function Configurator({ onChoose, processing, ctaLabel, pricing }: {
             {`Sur mesure · ${cfg.children} enfant${cfg.children > 1 ? "s" : ""}`}
           </p>
           <div className="space-y-1.5 mb-6 text-xs border-t border-white/10 pt-4">
-            <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
-              <span>Base personnalisée</span><span>{pricing.base_price.toFixed(2)}€</span>
+            <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.55)" }}>
+              <span>Base personnalisée</span>
+              <span className="text-white">
+                {edit
+                  ? <EditableNumber value={pricing.base_price} className="text-white" onChange={(v) => edit.onPricingChange({ ...pricing, base_price: v })} />
+                  : `${pricing.base_price.toFixed(2)}€`}
+              </span>
             </div>
             {n > 1 && (
               <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
@@ -271,15 +363,17 @@ function Configurator({ onChoose, processing, ctaLabel, pricing }: {
               </div>
             )}
           </div>
-          <button onClick={() => onChoose(cfg)} disabled={processing}
-            className="w-full py-3.5 rounded-xl font-bold text-sm text-center transition-all font-[family-name:var(--font-display)] disabled:opacity-50 hover:-translate-y-0.5"
-            style={{ background: "var(--greek-gold)", color: "#fff" }}>
-            {processing ? (
-              <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
-            ) : (
-              <>{ctaLabel} <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
-            )}
-          </button>
+          {!edit && (
+            <button onClick={() => onChoose(cfg)} disabled={processing}
+              className="w-full py-3.5 rounded-xl font-bold text-sm text-center transition-all font-[family-name:var(--font-display)] disabled:opacity-50 hover:-translate-y-0.5"
+              style={{ background: "var(--greek-gold)", color: "#fff" }}>
+              {processing ? (
+                <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
+              ) : (
+                <>{ctaLabel} <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
+              )}
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -298,6 +392,7 @@ export default function PlanChooser({
   showCustom = true,
   labels = DEFAULT_PRICING_CONFIG,
   customPricing = DEFAULT_CUSTOM_PRICING,
+  admin,
 }: {
   plans: ChooserPlan[];
   onChoosePlan: (plan: ChooserPlan) => void;
@@ -309,9 +404,15 @@ export default function PlanChooser({
   showCustom?: boolean;
   labels?: PricingLabels;
   customPricing?: PricingCustomConfig;
+  admin?: PlanChooserAdmin;
 }) {
   const [tab, setTab] = useState<"familles" | "custom">("familles");
   const [billing, setBilling] = useState<string>("month");
+  const [draggedId, setDraggedId] = useState<string | number | null>(null);
+  const [overId, setOverId] = useState<string | number | null>(null);
+  const [overInterval, setOverInterval] = useState<string | null>(null);
+
+  const effectivePricing = admin ? admin.pricing : customPricing;
 
   const intervalTabs = [
     { id: "month", label: labels.intervals.month },
@@ -331,6 +432,12 @@ export default function PlanChooser({
 
   return (
     <div>
+      {admin && (
+        <p className="text-xs text-gray-400 mb-4 flex items-center gap-1.5">
+          <GripVertical className="w-3.5 h-3.5" /> Glissez les fiches pour les réordonner, ou déposez-les sur un onglet de période (Mensuel/Annuel…) pour changer leur période. Cliquez une valeur du sur-mesure pour la modifier.
+        </p>
+      )}
+
       {/* Onglets principaux */}
       <div className="flex justify-center mb-12">
         <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-2xl" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
@@ -346,13 +453,19 @@ export default function PlanChooser({
 
       {tab === "familles" && (
         <>
-          {/* Onglets de période */}
+          {/* Onglets de période (= zones de dépôt en mode admin) */}
           <div className="flex justify-center mb-10">
             <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-xl" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
               {intervalTabs.map(it => (
-                <button key={it.id} onClick={() => setBilling(it.id)}
+                <button key={it.id}
+                  onClick={() => setBilling(it.id)}
+                  onDragOver={admin ? (e) => { e.preventDefault(); setOverInterval(it.id); } : undefined}
+                  onDragLeave={admin ? () => setOverInterval(null) : undefined}
+                  onDrop={admin ? () => { if (draggedId != null) admin.onMoveInterval(draggedId, it.id); setOverInterval(null); setDraggedId(null); } : undefined}
                   className="px-4 py-2 rounded-lg text-xs font-bold transition-all font-[family-name:var(--font-display)]"
-                  style={billing === it.id ? { background: "var(--greek-blue)", color: "#fff" } : { background: "transparent", color: "var(--greek-blue)" }}>
+                  style={overInterval === it.id
+                    ? { background: "var(--greek-gold)", color: "#fff" }
+                    : billing === it.id ? { background: "var(--greek-blue)", color: "#fff" } : { background: "transparent", color: "var(--greek-blue)" }}>
                   {it.label}
                 </button>
               ))}
@@ -360,7 +473,7 @@ export default function PlanChooser({
           </div>
 
           {list.length === 0 ? (
-            <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour cette période.</p>
+            <p className="text-center text-[var(--text-muted)] py-20">Aucun plan dans cette période. Glissez-en un ici depuis une autre période.</p>
           ) : (
             <div className={`grid grid-cols-1 gap-8 ${list.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : list.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
               {list.map((plan, idx) => (
@@ -372,6 +485,13 @@ export default function PlanChooser({
                   onChoose={() => onChoosePlan(plan)}
                   processing={processingKey === plan.id}
                   isCurrent={currentPlanId != null && String(currentPlanId) === String(plan.id)}
+                  drag={admin ? {
+                    onDragStart: () => setDraggedId(plan.id),
+                    onDragEnd: () => { setDraggedId(null); setOverId(null); },
+                    onDragOver: (e) => { e.preventDefault(); setOverId(plan.id); },
+                    onDrop: () => { if (draggedId != null && draggedId !== plan.id) admin.onReorder(draggedId, plan.id); setOverId(null); setDraggedId(null); },
+                    over: overId === plan.id && draggedId !== plan.id,
+                  } : undefined}
                 />
               ))}
             </div>
@@ -383,9 +503,31 @@ export default function PlanChooser({
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] mb-2">Composez votre formule</h2>
-            <p className="text-[var(--text-muted)] text-sm">Ajustez les options, le prix se met à jour automatiquement.</p>
+            <p className="text-[var(--text-muted)] text-sm">
+              {admin ? "Cliquez une valeur (prix de base, paliers IA, options) pour la modifier." : "Ajustez les options, le prix se met à jour automatiquement."}
+            </p>
           </div>
-          <Configurator onChoose={onChooseCustom} processing={processingKey === "custom"} ctaLabel={customCtaLabel} pricing={customPricing} />
+          <Configurator
+            onChoose={onChooseCustom}
+            processing={processingKey === "custom"}
+            ctaLabel={customCtaLabel}
+            pricing={effectivePricing}
+            edit={admin ? { onPricingChange: admin.onPricingChange } : undefined}
+          />
+        </div>
+      )}
+
+      {/* Barre de sauvegarde (mode admin, forfait sur-mesure) */}
+      {admin && admin.dirty && (
+        <div className="sticky bottom-4 mt-8 flex justify-center">
+          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl shadow-xl bg-white border border-[var(--greek-gold)]">
+            <span className="text-sm font-semibold text-[var(--greek-blue)]">Modifications non enregistrées</span>
+            <button onClick={admin.onSave} disabled={admin.saving}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 transition-colors disabled:opacity-50 text-sm">
+              {admin.saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+              Sauvegarder
+            </button>
+          </div>
         </div>
       )}
     </div>

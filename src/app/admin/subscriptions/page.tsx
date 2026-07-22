@@ -10,8 +10,8 @@ import {
 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import PricingConfigEditor from "@/components/admin/PricingConfigEditor";
-import type { ChooserPlan } from "@/components/PlanChooser";
+import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
+import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Plan {
@@ -19,7 +19,7 @@ interface Plan {
   name: string;
   description: string | null;
   price: number;
-  billing_interval: "month" | "year" | "one_time";
+  billing_interval: string;
   duration_months: number | null;
   trial_days: number | null;
   promo_description: string | null;
@@ -78,7 +78,11 @@ function discountLabel(type: string, value: number) {
 // ── Component ─────────────────────────────────────────────────────────────
 export default function AdminSubscriptionsPage() {
   const confirm = useConfirm();
-  const [tab, setTab] = useState<"plans" | "apercu" | "promos" | "parrainage">("plans");
+  const [tab, setTab] = useState<"plans" | "promos" | "parrainage">("plans");
+  // Config d'affichage des tarifs (libellés + forfait sur-mesure) — éditée via l'aperçu.
+  const [pricingConfig, setPricingConfig] = useState<PricingConfig>(DEFAULT_PRICING_CONFIG);
+  const [pricingDirty, setPricingDirty] = useState(false);
+  const [pricingSaving, setPricingSaving] = useState(false);
 
   // Plans state
   const [plans, setPlans] = useState<Plan[]>([]);
@@ -118,7 +122,7 @@ export default function AdminSubscriptionsPage() {
     setCodesLoading(false);
   };
 
-  useEffect(() => { fetchPlans(); fetchCodes(); }, []);
+  useEffect(() => { fetchPlans(); fetchCodes(); fetchPricingConfig(); }, []);
 
   const showToast = (type: "success" | "error", text: string) => {
     setToast({ type, text });
@@ -230,6 +234,50 @@ export default function AdminSubscriptionsPage() {
     if (res.ok) fetchPlans();
   };
 
+  // ── Aperçu interactif : config sur-mesure + glisser les fiches ─────────────
+  const fetchPricingConfig = async () => {
+    try {
+      const res = await fetch("/api/admin/pricing-config");
+      if (res.ok) setPricingConfig(await res.json());
+    } catch { /* défauts déjà en place */ }
+  };
+
+  const previewReorder = async (fromId: string | number, targetId: string | number) => {
+    const from = plans.find(p => String(p.id) === String(fromId));
+    const to = plans.find(p => String(p.id) === String(targetId));
+    if (!from || !to) return;
+    const next = plans.map(p => {
+      if (p.id === from.id) return { ...p, sort_order: to.sort_order };
+      if (p.id === to.id) return { ...p, sort_order: from.sort_order };
+      return p;
+    }).sort((a, b) => a.sort_order - b.sort_order);
+    setPlans(next);
+    await Promise.all([
+      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: from.id, sort_order: to.sort_order }) }),
+      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: to.id, sort_order: from.sort_order }) }),
+    ]);
+    showToast("success", "Ordre mis à jour");
+  };
+
+  const previewMoveInterval = async (id: string | number, interval: string) => {
+    const plan = plans.find(p => String(p.id) === String(id));
+    if (!plan || plan.billing_interval === interval) return;
+    setPlans(plans.map(p => p.id === plan.id ? { ...p, billing_interval: interval } : p));
+    await fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: plan.id, billing_interval: interval }) });
+    showToast("success", "Période mise à jour");
+  };
+
+  const savePricing = async () => {
+    setPricingSaving(true);
+    try {
+      const res = await fetch("/api/admin/pricing-config", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(pricingConfig) });
+      const data = await res.json();
+      if (res.ok) { setPricingConfig(data); setPricingDirty(false); showToast("success", "Forfait sur-mesure enregistré"); }
+      else showToast("error", data.error || "Échec de l'enregistrement");
+    } catch { showToast("error", "Une erreur est survenue"); }
+    finally { setPricingSaving(false); }
+  };
+
   // ── Referral CRUD ─────────────────────────────────────────────────────────
   const openRefModal = (code: ReferralCode | null = null) => {
     setEditingCode(code);
@@ -307,7 +355,7 @@ export default function AdminSubscriptionsPage() {
           actions={
             <button
               onClick={() => tab === "plans" ? openPlanModal() : tab === "promos" ? openRefModal() : undefined}
-              className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" || tab === "apercu" ? "invisible" : ""}`}
+              className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" ? "invisible" : ""}`}
             >
               <Plus size={18} />
               {tab === "plans" ? "Nouveau plan" : "Nouveau code promo"}
@@ -340,7 +388,6 @@ export default function AdminSubscriptionsPage() {
       <div className="flex gap-1 p-1 bg-gray-100 rounded-xl w-fit mb-6">
         {([
           { key: "plans",      label: "Plans d'abonnement" },
-          { key: "apercu",     label: "Aperçu & config" },
           { key: "promos",     label: "Codes promo" },
           { key: "parrainage", label: "Parrainage" },
         ] as const).map(({ key, label }) => (
@@ -528,16 +575,33 @@ export default function AdminSubscriptionsPage() {
             </div>
             </>
           )}
-        </>
-      )}
 
-      {/* ════════════════ APERÇU & CONFIG TAB ════════════════ */}
-      {tab === "apercu" && (
-        <>
-          <p className="text-xs text-gray-400 mb-4">
-            Modifiez les libellés des catégories et le forfait sur mesure. L&apos;ordre et les noms des plans se gèrent dans l&apos;onglet « Plans d&apos;abonnement ». Les changements s&apos;appliquent immédiatement côté client après enregistrement.
-          </p>
-          <PricingConfigEditor plans={plans.filter(p => p.is_active) as unknown as ChooserPlan[]} />
+          {/* ── Vrai aperçu interactif (ce que voient les clients) ── */}
+          <div className="mt-14 pt-10 border-t border-[rgba(197,161,72,0.25)]">
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Aperçu client (interactif)</h2>
+              <p className="text-sm text-gray-500 mt-1">Vue exacte du site. Glissez les fiches pour les réordonner ou changer leur période, et cliquez les valeurs du sur-mesure pour les modifier.</p>
+            </div>
+            <div className="bg-[var(--greek-cream)] rounded-2xl border border-[rgba(197,161,72,0.25)] p-6">
+              <PlanChooser
+                plans={plans.filter(p => p.is_active) as unknown as ChooserPlan[]}
+                onChoosePlan={() => {}}
+                onChooseCustom={() => {}}
+                planCta={() => "Choisir"}
+                customCtaLabel="S'abonner"
+                labels={pricingConfig}
+                admin={{
+                  onReorder: previewReorder,
+                  onMoveInterval: previewMoveInterval,
+                  pricing: pricingConfig.custom,
+                  onPricingChange: (custom) => { setPricingConfig(pc => ({ ...pc, custom })); setPricingDirty(true); },
+                  dirty: pricingDirty,
+                  saving: pricingSaving,
+                  onSave: savePricing,
+                }}
+              />
+            </div>
+          </div>
         </>
       )}
 
