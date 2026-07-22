@@ -9,258 +9,17 @@ import {
   AlertTriangle,
   Download,
   Loader2,
-  Sparkles,
   Gift,
   Copy,
   CheckCheck,
   Users,
-  ArrowRight,
 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/components/Toast";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { useRouter, useSearchParams } from "next/navigation";
-
-/* ─── Feature rows (mirroring /tarifs) ─── */
-const FEATURE_ROWS: { key: string; label: string }[] = [
-  { key: "max_children",           label: "Enfants" },
-  { key: "access_level_exercises", label: "Niveaux scolaires" },
-  { key: "ai_access",              label: "IA EpsiAI" },
-  { key: "ai_daily_limit",         label: "Questions IA / jour" },
-  { key: "quiz_access",            label: "Quiz & évaluations" },
-  { key: "detailed_reports",       label: "Rapports hebdomadaires" },
-  { key: "custom_avatars",         label: "Avatars & cosmétiques" },
-  { key: "priority_support",       label: "Support prioritaire" },
-];
-
-function formatVal(key: string, val: boolean | number | string | null | undefined): { label: string; included: boolean } {
-  if (val === false || val === null || val === undefined || val === 0 || val === "none") return { label: "", included: false };
-  if (val === true) return { label: "Inclus", included: true };
-  if (key === "max_children") return { label: Number(val) === -1 ? "Illimité" : `${val} enfant${Number(val) > 1 ? "s" : ""}`, included: true };
-  if (key === "ai_daily_limit") return { label: Number(val) === -1 ? "Illimité" : `${val} / jour`, included: true };
-  if (key === "ai_access") {
-    if (val === "unlimited") return { label: "Illimité", included: true };
-    if (val === "limited") return { label: "Limité", included: true };
-    return { label: "", included: false };
-  }
-  if (key === "access_level_exercises") {
-    if (val === "all") return { label: "CP → Terminale", included: true };
-    if (val === "college") return { label: "CP → 3ème", included: true };
-    if (val === "basic") return { label: "CP → 6ème", included: true };
-    return { label: String(val), included: true };
-  }
-  return { label: String(val), included: true };
-}
-
-const intervalLabel = (i: string) => {
-  switch (i) {
-    case "year": return "/an";
-    case "semester": return "/semestre";
-    case "quarter": return "/trimestre";
-    default: return "/mois";
-  }
-};
-
-/* ─── Configurateur "Sur mesure" (mirroring /tarifs) ─── */
-const AI_OPTIONS = [
-  { id: "none",  label: "Aucune",     daily: 0,   basePrice: 0    },
-  { id: "15",    label: "15/j",       daily: 15,  basePrice: 0.99 },
-  { id: "30",    label: "30/j",       daily: 30,  basePrice: 1.99 },
-  { id: "60",    label: "60/j",       daily: 60,  basePrice: 3.49 },
-  { id: "120",   label: "120/j",      daily: 120, basePrice: 5.99 },
-  { id: "unlim", label: "Illimitée",  daily: -1,  basePrice: 8.99 },
-] as const;
-type AIId = "none" | "15" | "30" | "60" | "120" | "unlim";
-
-const CUSTOM_BASE_PRICE = 14.99;
-
-function childrenCost(n: number): number {
-  if (n <= 1) return 0;
-  const x = n - 1;
-  return Math.round((0.5 * x + 0.25 * x * x) * 100) / 100;
-}
-
-function aiMultiplier(n: number): number {
-  return Math.min(1 + (n - 1) * 0.35, 4.0);
-}
-
-interface ConfigState {
-  children: number;
-  ai: AIId;
-  reports: boolean;
-  support: boolean;
-  avatars: boolean;
-  quiz: boolean;
-}
-
-function configPrice(c: ConfigState): number {
-  let p = CUSTOM_BASE_PRICE;
-  const n = Math.max(1, c.children);
-  p += childrenCost(n);
-  const aiBase = AI_OPTIONS.find(o => o.id === c.ai)!.basePrice;
-  p += Math.round(aiBase * aiMultiplier(n) * 100) / 100;
-  if (c.reports) p += 0.99;
-  if (c.support) p += 1.49;
-  if (c.avatars) p += 0.99;
-  if (c.quiz)    p += 0.99;
-  return Math.round(p * 100) / 100;
-}
-
-function configFeatures(c: ConfigState) {
-  const ai = AI_OPTIONS.find(o => o.id === c.ai)!;
-  const n = Math.max(1, c.children);
-  return {
-    max_children: n,
-    access_level_exercises: "all",
-    ai_access: c.ai === "none" ? "none" : c.ai === "unlim" ? "unlimited" : "limited",
-    ai_daily_limit: c.ai === "none" ? 0 : ai.daily,
-    detailed_reports: c.reports,
-    custom_avatars: c.avatars,
-    priority_support: c.support,
-    quiz_access: c.quiz,
-  };
-}
-
-function Toggle({ label, sub, price, value, onChange }: { label: string; sub?: string; price: number; value: boolean; onChange: (v: boolean) => void }) {
-  return (
-    <div className="flex items-center justify-between gap-4 px-5 py-3.5 rounded-xl"
-      style={{ background: "#fff", border: `1.5px solid ${value ? "rgba(197,161,72,0.5)" : "var(--greek-border)"}` }}>
-      <div className="min-w-0">
-        <span className="text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>{label}</span>
-        {sub && <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{sub}</p>}
-        <span className="text-xs font-semibold ml-1" style={{ color: "var(--greek-gold)" }}>+{price.toFixed(2)}€</span>
-      </div>
-      <button type="button" onClick={() => onChange(!value)}
-        className="relative w-11 h-6 rounded-full transition-colors flex-shrink-0"
-        style={{ background: value ? "var(--greek-gold)" : "rgba(15,30,58,0.12)" }}>
-        <span className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform"
-          style={{ transform: value ? "translateX(20px)" : "translateX(0)" }} />
-      </button>
-    </div>
-  );
-}
-
-function Configurator({ onSubscribe, processing }: { onSubscribe: (cfg: ConfigState) => void; processing: boolean }) {
-  const [cfg, setCfg] = useState<ConfigState>({
-    children: 1, ai: "none",
-    reports: false, support: false, avatars: false, quiz: false,
-  });
-  const n = Math.max(1, cfg.children);
-  const mult = aiMultiplier(n);
-  const total = configPrice(cfg);
-  const aiOption = AI_OPTIONS.find(o => o.id === cfg.ai)!;
-  const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
-  const aiIdx = AI_OPTIONS.findIndex(o => o.id === cfg.ai);
-
-  return (
-    <div className="grid md:grid-cols-5 gap-8 items-start bg-white rounded-2xl p-7" style={{ border: "1px solid var(--greek-border)" }}>
-      <div className="md:col-span-3 space-y-6">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>Nombre d&apos;enfants</p>
-            {n > 1 && <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
-              +{childrenCost(n).toFixed(2)}€
-            </span>}
-          </div>
-          <div className="flex items-center gap-3">
-            <input
-              type="number" min={1} max={999} value={cfg.children}
-              onChange={e => setCfg(c => ({ ...c, children: Math.max(1, parseInt(e.target.value) || 1) }))}
-              className="w-28 px-4 py-2.5 rounded-xl text-sm font-bold text-center border outline-none focus:border-[var(--greek-blue)]"
-              style={{ border: "1.5px solid var(--greek-border)", color: "var(--greek-blue)" }}
-            />
-            <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              <div>1er enfant inclus</div>
-              <div>Plus d&apos;enfants → IA plus chère</div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>IA EpsiAI</p>
-            {cfg.ai !== "none" && (
-              <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
-                +{aiActualPrice.toFixed(2)}€
-                {n > 1 && (
-                  <span className="ml-1 font-normal" style={{ color: "var(--text-muted)" }}>
-                    (×{mult.toFixed(2)} pour {n} enfants)
-                  </span>
-                )}
-              </span>
-            )}
-          </div>
-          <div className="relative">
-            <div className="flex rounded-xl overflow-hidden" style={{ border: "1.5px solid var(--greek-border)" }}>
-              {AI_OPTIONS.map((o, i) => (
-                <button key={o.id} onClick={() => setCfg(c => ({ ...c, ai: o.id }))}
-                  className="flex-1 py-2.5 text-center transition-all"
-                  style={{
-                    background: i <= aiIdx ? "var(--greek-blue)" : "#fff",
-                    color: i <= aiIdx ? (i === aiIdx ? "var(--greek-gold)" : "rgba(255,255,255,0.6)") : "var(--text-muted)",
-                    fontSize: "0.7rem",
-                    fontWeight: 600,
-                    borderRight: i < AI_OPTIONS.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none",
-                  }}>
-                  {o.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          {n > 1 && cfg.ai !== "none" && (
-            <p className="text-xs mt-1.5" style={{ color: "rgba(197,161,72,0.8)" }}>
-              ⚠ Le prix de l&apos;IA augmente avec le nombre d&apos;enfants
-            </p>
-          )}
-        </div>
-
-        <div className="space-y-2.5">
-          <Toggle label="Rapports hebdomadaires" sub="Résumé email chaque semaine" price={0.99} value={cfg.reports} onChange={v => setCfg(c => ({ ...c, reports: v }))} />
-          <Toggle label="Quiz" sub="Accès à tous les quiz et évaluations" price={0.99} value={cfg.quiz} onChange={v => setCfg(c => ({ ...c, quiz: v }))} />
-          <Toggle label="Avatars &amp; cosmétiques" sub="Contours et couleurs de nom exclusifs" price={0.99} value={cfg.avatars} onChange={v => setCfg(c => ({ ...c, avatars: v }))} />
-          <Toggle label="Support prioritaire" sub="Réponse garantie sous 4h en semaine" price={1.49} value={cfg.support} onChange={v => setCfg(c => ({ ...c, support: v }))} />
-        </div>
-      </div>
-
-      <div className="md:col-span-2">
-        <div className="rounded-2xl p-7 sticky top-24" style={{ background: "var(--greek-blue)" }}>
-          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "rgba(197,161,72,0.7)" }}>Votre formule</p>
-          <div className="flex items-end gap-1 mb-1">
-            <span className="font-[family-name:var(--font-display)] text-5xl font-bold text-white">{total.toFixed(2)}€</span>
-            <span className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.45)" }}>/mois</span>
-          </div>
-          <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>
-            {`Sur mesure · ${cfg.children} enfant${cfg.children > 1 ? "s" : ""}`}
-          </p>
-          <div className="space-y-1.5 mb-6 text-xs border-t border-white/10 pt-4">
-            <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
-              <span>Base personnalisée</span>
-              <span>{CUSTOM_BASE_PRICE.toFixed(2)}€</span>
-            </div>
-            {n > 1 && (
-              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <span>{n} enfants</span>
-                <span>+{childrenCost(n).toFixed(2)}€</span>
-              </div>
-            )}
-            {cfg.ai !== "none" && (
-              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <span>IA {AI_OPTIONS.find(o => o.id === cfg.ai)!.label}</span>
-                <span>+{aiActualPrice.toFixed(2)}€</span>
-              </div>
-            )}
-          </div>
-          <button onClick={() => onSubscribe(cfg)} disabled={processing}
-            className="w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all font-[family-name:var(--font-display)] disabled:opacity-60 hover:-translate-y-0.5"
-            style={{ background: "var(--greek-gold)", color: "#fff" }}>
-            {processing ? "Chargement..." : "S'abonner"}
-            {!processing && <ArrowRight className="w-4 h-4" />}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
+import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 
 interface SubscriptionPlan {
   id: number;
@@ -291,7 +50,6 @@ function SubscriptionPageContent() {
   const [pendingDiscount, setPendingDiscount] = useState(0);
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
   const [signupData, setSignupData] = useState<any>(null);
-  const [tab, setTab] = useState<"solo" | "famille" | "custom">("solo");
   const [customProcessing, setCustomProcessing] = useState(false);
 
   useEffect(() => {
@@ -364,14 +122,6 @@ function SubscriptionPageContent() {
 
     fetchAll();
   }, [isNewSignup, router]);
-
-  // Default tab = the family the user's current plan belongs to
-  useEffect(() => {
-    if (!currentPlan?.plan_id || plans.length === 0) return;
-    const current = plans.find(p => String(p.id) === String(currentPlan.plan_id));
-    if (current?.name?.toLowerCase().includes("famil")) setTab("famille");
-    else if (current?.name?.toLowerCase().includes("solo")) setTab("solo");
-  }, [currentPlan, plans]);
 
   // Sync subscription after Stripe checkout
   useEffect(() => {
@@ -528,7 +278,7 @@ function SubscriptionPageContent() {
     }
   };
 
-  const handleSubscribeCustom = async (cfg: ConfigState) => {
+  const handleSubscribeCustom = async (cfg: CustomPlanConfig) => {
     if (!user) {
       router.push("/auth/connexion?redirect=/parent/subscription");
       return;
@@ -722,134 +472,15 @@ function SubscriptionPageContent() {
             </div>
           )
         ) : (
-          <>
-          {/* Tabs Solo / Famille / Sur mesure */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-            {([
-              { id: "solo", label: "Solo" },
-              { id: "famille", label: "Famille" },
-              { id: "custom", label: "Sur mesure" },
-            ] as const).map(t => (
-              <button
-                key={t.id}
-                onClick={() => setTab(t.id)}
-                className="px-5 py-2.5 rounded-xl text-sm font-bold font-[family-name:var(--font-display)] transition-all"
-                style={tab === t.id
-                  ? { background: "var(--greek-blue)", color: "#fff" }
-                  : { background: "#fff", color: "var(--greek-blue)", border: "1px solid var(--greek-border)" }
-                }
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-
-          {tab === "custom" ? (
-            <div className="mb-12">
-              <Configurator onSubscribe={handleSubscribeCustom} processing={customProcessing} />
-            </div>
-          ) : (
-          // NORMAL FLOW - Show all intervals for the selected tab, current plan first
-          <div className={`grid gap-8 mb-12 ${plans.length <= 2 ? "md:grid-cols-2" : plans.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-4"}`}>
-            {plans
-              .filter(p => p.name.toLowerCase().includes(tab === "solo" ? "solo" : "famil"))
-              .sort((a, b) => {
-                const order = ["month", "quarter", "semester", "year"];
-                const aCurrent = String(currentPlan?.plan_id) === String(a.id) ? 0 : 1;
-                const bCurrent = String(currentPlan?.plan_id) === String(b.id) ? 0 : 1;
-                if (aCurrent !== bCurrent) return aCurrent - bCurrent;
-                return order.indexOf(a.billing_interval) - order.indexOf(b.billing_interval);
-              })
-              .map((plan) => {
-              const isCurrent = String(currentPlan?.plan_id) === String(plan.id);
-              return (
-                <div
-                  key={plan.id}
-                  className={`relative flex flex-col bg-white rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                    isCurrent ? "ring-2 ring-[var(--greek-gold)]" : ""
-                  }`}
-                  style={{
-                    border: isCurrent ? "2px solid var(--greek-gold)" : "1px solid var(--greek-border)",
-                    boxShadow: isCurrent ? "0 8px 40px rgba(197,161,72,0.18)" : "0 2px 12px rgba(15,30,58,0.05)",
-                  }}
-                >
-                  {isCurrent && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <div className="px-4 py-1.5 rounded-full text-xs font-bold bg-[var(--greek-gold)] text-black shadow-md flex items-center gap-1.5">
-                        <Sparkles className="w-3 h-3 fill-current" /> Abonnement actuel
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)]">
-                    {plan.promo_description && (
-                      <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-3">
-                        <Sparkles className="w-3 h-3" />{plan.promo_description}
-                      </div>
-                    )}
-                    {plan.trial_days > 0 && (
-                      <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200 mb-3">
-                        {plan.trial_days} jours d'essai gratuit
-                      </div>
-                    )}
-                    <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">{plan.name}</h3>
-                    {plan.description && <p className="text-sm text-[var(--text-muted)]">{plan.description}</p>}
-                  </div>
-
-                  <div className="px-7 py-6 text-center border-b border-[var(--greek-border)]">
-                    <div className="flex items-end justify-center gap-1">
-                      <span className="font-[family-name:var(--font-display)] text-4xl font-bold text-[var(--greek-blue)]">
-                        {Number(plan.price) === 0 ? "Gratuit" : `${plan.price}€`}
-                      </span>
-                      {Number(plan.price) > 0 && (
-                        <span className="text-sm text-[var(--text-muted)] mb-1.5">{intervalLabel(plan.billing_interval)}</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="px-7 py-6 flex-grow flex flex-col">
-                    <ul className="space-y-2.5 mb-6">
-                      {FEATURE_ROWS.map(row => {
-                        const { label, included } = formatVal(row.key, plan.features?.[row.key]);
-                        if (!included) return null;
-                        return (
-                          <li key={row.key} className="flex items-center gap-3">
-                            <div className="w-5 h-5 rounded-full bg-[rgba(197,161,72,0.12)] flex items-center justify-center flex-shrink-0">
-                              <Check className="w-3 h-3 text-[var(--greek-gold)]" />
-                            </div>
-                            <span className="text-sm text-[var(--text-dark)] flex-1">{row.label}</span>
-                            {label !== "Inclus" && (
-                              <span className="text-xs font-semibold text-[var(--greek-gold)]">{label}</span>
-                            )}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <button
-                      onClick={() => handleSubscribe(plan.id)}
-                      disabled={isCurrent}
-                      className="w-full mt-auto py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all font-[family-name:var(--font-display)] disabled:opacity-100"
-                      style={isCurrent
-                        ? { background: "rgba(197,161,72,0.10)", color: "var(--greek-gold)", cursor: "default" }
-                        : { background: "var(--greek-blue)", color: "white" }
-                      }
-                    >
-                      {isCurrent ? "Abonnement actuel" : processingPlanId === plan.id ? "Chargement..." : (
-                        <>{plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"} <ArrowRight className="w-4 h-4" /></>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-            {plans.filter(p => p.name.toLowerCase().includes(tab === "solo" ? "solo" : "famil")).length === 0 && !loading && (
-              <div className="col-span-full text-center py-12 text-gray-400">
-                Aucun plan disponible pour le moment.
-              </div>
-            )}
-          </div>
-          )}
-          </>
+          <PlanChooser
+            plans={plans as unknown as ChooserPlan[]}
+            onChoosePlan={(plan) => handleSubscribe(Number(plan.id))}
+            onChooseCustom={handleSubscribeCustom}
+            planCta={(plan) => Number(plan.price) === 0 ? "Choisir" : plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"}
+            customCtaLabel="S'abonner"
+            processingKey={customProcessing ? "custom" : processingPlanId}
+            currentPlanId={currentPlan?.plan_id ?? null}
+          />
         )}
 
         {/* Billing History (only for normal flow) */}
