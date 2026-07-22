@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser, getAuthIdentityOnly } from '@/lib/apiAuth';
 import { computeCustomPlan } from '@/lib/customPlanPricing';
+import { normalizePricingConfig } from '@/lib/pricingConfig';
 import { getSiteUrl } from '@/lib/siteUrl';
 import { validateEmail, validateName } from '@/lib/validation';
 import { rateLimitWithBackoff, RATE_LIMITS } from '@/lib/rateLimitAdvanced';
@@ -105,8 +106,16 @@ export async function POST(req: Request) {
 
     if (customConfig) {
       // SECURITY: never trust a client-supplied price/features. Recompute the
-      // custom plan authoritatively from the raw config server-side.
-      const computed = computeCustomPlan(customConfig.config ?? customConfig);
+      // custom plan authoritatively from the raw config server-side, using the
+      // pricing parameters loaded from the DB (editable in admin) — never from
+      // client-supplied pricing.
+      const { data: cfgRow } = await supabaseAdmin
+        .from('app_settings')
+        .select('value')
+        .eq('key', 'pricing_config')
+        .maybeSingle();
+      const pricing = normalizePricingConfig(cfgRow?.value).custom;
+      const computed = computeCustomPlan(customConfig.config ?? customConfig, pricing);
       if (!computed) {
         return NextResponse.json({ error: 'Invalid custom configuration' }, { status: 400 });
       }

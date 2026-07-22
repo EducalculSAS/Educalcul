@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { Check, Star, Sparkles, ArrowRight, Loader2 } from "lucide-react";
 import {
-  AI_OPTIONS, CUSTOM_BASE_PRICE, MAX_CHILDREN,
   childrenCost, aiMultiplier, configPrice,
-  type CustomPlanConfig, type AIId,
+  DEFAULT_CUSTOM_PRICING,
+  type CustomPlanConfig, type AIId, type PricingCustomConfig,
 } from "@/lib/customPlanPricing";
+import { DEFAULT_PRICING_CONFIG, type PricingLabels } from "@/lib/pricingConfig";
 
 export interface ChooserPlan {
   id: number | string;
@@ -54,13 +55,6 @@ const intervalLabel = (i: string) => {
     default: return "/mois";
   }
 };
-
-const INTERVAL_LABELS: { id: string; label: string }[] = [
-  { id: "month", label: "Mensuel" },
-  { id: "quarter", label: "Trimestriel" },
-  { id: "semester", label: "Semestriel" },
-  { id: "year", label: "Annuel" },
-];
 
 /* ─── Plan card (style /tarifs) ─── */
 function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent }: {
@@ -178,14 +172,19 @@ function Toggle({ label, sub, price, value, onChange }: { label: string; sub?: s
 }
 
 /* ─── Configurateur "Sur mesure" (style /tarifs) ─── */
-function Configurator({ onChoose, processing, ctaLabel }: { onChoose: (c: CustomPlanConfig) => void; processing: boolean; ctaLabel: string }) {
+function Configurator({ onChoose, processing, ctaLabel, pricing }: {
+  onChoose: (c: CustomPlanConfig) => void;
+  processing: boolean;
+  ctaLabel: string;
+  pricing: PricingCustomConfig;
+}) {
   const [cfg, setCfg] = useState<CustomPlanConfig>({ children: 1, ai: "none", reports: false, support: false, avatars: false, quiz: false });
   const n = Math.max(1, cfg.children);
   const mult = aiMultiplier(n);
-  const total = configPrice(cfg);
-  const aiOption = AI_OPTIONS.find(o => o.id === cfg.ai)!;
+  const total = configPrice(cfg, pricing);
+  const aiOption = pricing.ai_options.find(o => o.id === cfg.ai) ?? pricing.ai_options[0];
   const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
-  const aiIdx = AI_OPTIONS.findIndex(o => o.id === cfg.ai);
+  const aiIdx = pricing.ai_options.findIndex(o => o.id === cfg.ai);
 
   return (
     <div className="grid md:grid-cols-5 gap-8 items-start">
@@ -197,8 +196,8 @@ function Configurator({ onChoose, processing, ctaLabel }: { onChoose: (c: Custom
             {n > 1 && <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>+{childrenCost(n).toFixed(2)}€</span>}
           </div>
           <div className="flex items-center gap-3">
-            <input type="number" min={1} max={MAX_CHILDREN} value={cfg.children}
-              onChange={e => setCfg(c => ({ ...c, children: Math.min(MAX_CHILDREN, Math.max(1, parseInt(e.target.value) || 1)) }))}
+            <input type="number" min={1} max={pricing.max_children} value={cfg.children}
+              onChange={e => setCfg(c => ({ ...c, children: Math.min(pricing.max_children, Math.max(1, parseInt(e.target.value) || 1)) }))}
               className="w-28 px-4 py-2.5 rounded-xl text-sm font-bold text-center border outline-none focus:border-[var(--greek-blue)]"
               style={{ border: "1.5px solid var(--greek-border)", color: "var(--greek-blue)" }} />
             <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
@@ -220,14 +219,14 @@ function Configurator({ onChoose, processing, ctaLabel }: { onChoose: (c: Custom
             )}
           </div>
           <div className="flex rounded-xl overflow-hidden" style={{ border: "1.5px solid var(--greek-border)" }}>
-            {AI_OPTIONS.map((o, i) => (
+            {pricing.ai_options.map((o, i) => (
               <button key={o.id} onClick={() => setCfg(c => ({ ...c, ai: o.id as AIId }))}
                 className="flex-1 py-2.5 text-center transition-all"
                 style={{
                   background: i <= aiIdx ? "var(--greek-blue)" : "#fff",
                   color: i <= aiIdx ? (i === aiIdx ? "var(--greek-gold)" : "rgba(255,255,255,0.6)") : "var(--text-muted)",
                   fontSize: "0.7rem", fontWeight: 600,
-                  borderRight: i < AI_OPTIONS.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none",
+                  borderRight: i < pricing.ai_options.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none",
                 }}>
                 {o.label}
               </button>
@@ -239,10 +238,10 @@ function Configurator({ onChoose, processing, ctaLabel }: { onChoose: (c: Custom
         </div>
 
         <div className="space-y-2.5">
-          <Toggle label="Rapports hebdomadaires" sub="Résumé email chaque semaine" price={0.99} value={cfg.reports} onChange={v => setCfg(c => ({ ...c, reports: v }))} />
-          <Toggle label="Quiz" sub="Accès à tous les quiz et évaluations" price={0.99} value={cfg.quiz} onChange={v => setCfg(c => ({ ...c, quiz: v }))} />
-          <Toggle label="Avatars & cosmétiques" sub="Contours et couleurs de nom exclusifs" price={0.99} value={cfg.avatars} onChange={v => setCfg(c => ({ ...c, avatars: v }))} />
-          <Toggle label="Support prioritaire" sub="Réponse garantie sous 4h en semaine" price={1.49} value={cfg.support} onChange={v => setCfg(c => ({ ...c, support: v }))} />
+          <Toggle label="Rapports hebdomadaires" sub="Résumé email chaque semaine" price={pricing.toggles.reports} value={cfg.reports} onChange={v => setCfg(c => ({ ...c, reports: v }))} />
+          <Toggle label="Quiz" sub="Accès à tous les quiz et évaluations" price={pricing.toggles.quiz} value={cfg.quiz} onChange={v => setCfg(c => ({ ...c, quiz: v }))} />
+          <Toggle label="Avatars & cosmétiques" sub="Contours et couleurs de nom exclusifs" price={pricing.toggles.avatars} value={cfg.avatars} onChange={v => setCfg(c => ({ ...c, avatars: v }))} />
+          <Toggle label="Support prioritaire" sub="Réponse garantie sous 4h en semaine" price={pricing.toggles.support} value={cfg.support} onChange={v => setCfg(c => ({ ...c, support: v }))} />
         </div>
       </div>
 
@@ -259,7 +258,7 @@ function Configurator({ onChoose, processing, ctaLabel }: { onChoose: (c: Custom
           </p>
           <div className="space-y-1.5 mb-6 text-xs border-t border-white/10 pt-4">
             <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
-              <span>Base personnalisée</span><span>{CUSTOM_BASE_PRICE.toFixed(2)}€</span>
+              <span>Base personnalisée</span><span>{pricing.base_price.toFixed(2)}€</span>
             </div>
             {n > 1 && (
               <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
@@ -297,6 +296,8 @@ export default function PlanChooser({
   processingKey = null,
   currentPlanId,
   showCustom = true,
+  labels = DEFAULT_PRICING_CONFIG,
+  customPricing = DEFAULT_CUSTOM_PRICING,
 }: {
   plans: ChooserPlan[];
   onChoosePlan: (plan: ChooserPlan) => void;
@@ -306,13 +307,22 @@ export default function PlanChooser({
   processingKey?: string | number | null;
   currentPlanId?: string | number | null;
   showCustom?: boolean;
+  labels?: PricingLabels;
+  customPricing?: PricingCustomConfig;
 }) {
   const [tab, setTab] = useState<"familles" | "custom">("familles");
   const [billing, setBilling] = useState<string>("month");
 
+  const intervalTabs = [
+    { id: "month", label: labels.intervals.month },
+    { id: "quarter", label: labels.intervals.quarter },
+    { id: "semester", label: labels.intervals.semester },
+    { id: "year", label: labels.intervals.year },
+  ];
+
   const TABS = [
-    { id: "familles" as const, label: "Pour les familles" },
-    ...(showCustom ? [{ id: "custom" as const, label: "Sur mesure" }] : []),
+    { id: "familles" as const, label: labels.tabs.familles },
+    ...(showCustom ? [{ id: "custom" as const, label: labels.tabs.custom }] : []),
   ];
 
   const freePlans = plans.filter(p => Number(p.price) === 0);
@@ -339,7 +349,7 @@ export default function PlanChooser({
           {/* Onglets de période */}
           <div className="flex justify-center mb-10">
             <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-xl" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
-              {INTERVAL_LABELS.map(it => (
+              {intervalTabs.map(it => (
                 <button key={it.id} onClick={() => setBilling(it.id)}
                   className="px-4 py-2 rounded-lg text-xs font-bold transition-all font-[family-name:var(--font-display)]"
                   style={billing === it.id ? { background: "var(--greek-blue)", color: "#fff" } : { background: "transparent", color: "var(--greek-blue)" }}>
@@ -375,7 +385,7 @@ export default function PlanChooser({
             <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] mb-2">Composez votre formule</h2>
             <p className="text-[var(--text-muted)] text-sm">Ajustez les options, le prix se met à jour automatiquement.</p>
           </div>
-          <Configurator onChoose={onChooseCustom} processing={processingKey === "custom"} ctaLabel={customCtaLabel} />
+          <Configurator onChoose={onChooseCustom} processing={processingKey === "custom"} ctaLabel={customCtaLabel} pricing={customPricing} />
         </div>
       )}
     </div>

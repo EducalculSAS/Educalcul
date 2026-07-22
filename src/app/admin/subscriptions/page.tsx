@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import PricingConfigEditor from "@/components/admin/PricingConfigEditor";
+import type { ChooserPlan } from "@/components/PlanChooser";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Plan {
@@ -76,7 +78,7 @@ function discountLabel(type: string, value: number) {
 // ── Component ─────────────────────────────────────────────────────────────
 export default function AdminSubscriptionsPage() {
   const confirm = useConfirm();
-  const [tab, setTab] = useState<"plans" | "promos" | "parrainage">("plans");
+  const [tab, setTab] = useState<"plans" | "apercu" | "promos" | "parrainage">("plans");
 
   // Plans state
   const [plans, setPlans] = useState<Plan[]>([]);
@@ -305,7 +307,7 @@ export default function AdminSubscriptionsPage() {
           actions={
             <button
               onClick={() => tab === "plans" ? openPlanModal() : tab === "promos" ? openRefModal() : undefined}
-              className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" ? "invisible" : ""}`}
+              className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" || tab === "apercu" ? "invisible" : ""}`}
             >
               <Plus size={18} />
               {tab === "plans" ? "Nouveau plan" : "Nouveau code promo"}
@@ -338,6 +340,7 @@ export default function AdminSubscriptionsPage() {
       <div className="flex gap-1 p-1 bg-gray-100 rounded-xl w-fit mb-6">
         {([
           { key: "plans",      label: "Plans d'abonnement" },
+          { key: "apercu",     label: "Aperçu & config" },
           { key: "promos",     label: "Codes promo" },
           { key: "parrainage", label: "Parrainage" },
         ] as const).map(({ key, label }) => (
@@ -525,6 +528,16 @@ export default function AdminSubscriptionsPage() {
             </div>
             </>
           )}
+        </>
+      )}
+
+      {/* ════════════════ APERÇU & CONFIG TAB ════════════════ */}
+      {tab === "apercu" && (
+        <>
+          <p className="text-xs text-gray-400 mb-4">
+            Modifiez les libellés des catégories et le forfait sur mesure. L&apos;ordre et les noms des plans se gèrent dans l&apos;onglet « Plans d&apos;abonnement ». Les changements s&apos;appliquent immédiatement côté client après enregistrement.
+          </p>
+          <PricingConfigEditor plans={plans.filter(p => p.is_active) as unknown as ChooserPlan[]} />
         </>
       )}
 

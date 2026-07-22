@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { AlertCircle, Loader2, Gift, CheckCircle } from "lucide-react";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
+import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 
 interface Plan extends ChooserPlan {
   is_active: boolean;
@@ -26,6 +27,7 @@ export default function SelectPlan() {
   const [referralValidating, setReferralValidating] = useState(false);
   const [signupData, setSignupData] = useState<any>(null);
   const [isGoogleSignup, setIsGoogleSignup] = useState(false);
+  const [pricingConfig, setPricingConfig] = useState<PricingConfig>(DEFAULT_PRICING_CONFIG);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("educalcul_signup_data");
@@ -54,6 +56,11 @@ export default function SelectPlan() {
         setLoading(false);
       })
       .catch(() => setLoading(false));
+
+    fetch("/api/pricing-config")
+      .then((r) => r.json())
+      .then((cfg) => cfg && setPricingConfig(cfg))
+      .catch(() => {});
   }, [router]);
 
   const validateReferral = async (code: string) => {
@@ -168,6 +175,8 @@ export default function SelectPlan() {
           planCta={planCta}
           customCtaLabel="Choisir cette formule"
           processingKey={processingKey}
+          labels={pricingConfig}
+          customPricing={pricingConfig.custom}
         />
 
         {/* Code de parrainage — uniquement pour Google */}

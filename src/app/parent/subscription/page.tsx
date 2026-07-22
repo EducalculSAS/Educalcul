@@ -20,6 +20,7 @@ import AppAdminLoader from "@/components/AppAdminLoader";
 import { useRouter, useSearchParams } from "next/navigation";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
+import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 
 interface SubscriptionPlan {
   id: number;
@@ -51,6 +52,7 @@ function SubscriptionPageContent() {
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
   const [signupData, setSignupData] = useState<any>(null);
   const [customProcessing, setCustomProcessing] = useState(false);
+  const [pricingConfig, setPricingConfig] = useState<PricingConfig>(DEFAULT_PRICING_CONFIG);
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -93,6 +95,8 @@ function SubscriptionPageContent() {
           const plansData = await plansRes.json();
           setPlans((plansData || []).filter((p: SubscriptionPlan) => p.is_active));
         }
+
+        fetch("/api/pricing-config").then(r => r.json()).then(cfg => cfg && setPricingConfig(cfg)).catch(() => {});
 
         const subRes = await fetch(`/api/parent/subscription-details?userId=${user.id}`);
         const subData = await subRes.json();
@@ -481,6 +485,8 @@ function SubscriptionPageContent() {
               customCtaLabel="S'abonner"
               processingKey={customProcessing ? "custom" : processingPlanId}
               currentPlanId={currentPlan?.plan_id ?? null}
+              labels={pricingConfig}
+              customPricing={pricingConfig.custom}
             />
           </div>
         )}
