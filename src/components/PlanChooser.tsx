@@ -9,12 +9,34 @@ import {
 } from "@/lib/customPlanPricing";
 
 // Fonctionnalités qu'une option peut déverrouiller (pour le menu admin).
+// Regroupées par thème. Celles déjà consommées par l'app fonctionnent tout de
+// suite ; les autres sont des drapeaux prêts à être câblés quand la
+// fonctionnalité sera développée.
 const FEATURE_CHOICES: { key: string; label: string }[] = [
   { key: "", label: "Aucun effet (prix seul)" },
+  // Exercices
+  { key: "exercises_simple", label: "Exercices — niveau simple" },
+  { key: "exercises_intermediaire", label: "Exercices — niveau intermédiaire" },
+  { key: "exercises_avance", label: "Exercices — niveau avancé" },
+  { key: "exercises_all_levels", label: "Exercices — tous les niveaux" },
+  { key: "ai_correction", label: "Correction IA des exercices" },
+  // Quiz
+  { key: "quiz_access", label: "Accès aux quiz" },
+  { key: "quiz_full", label: "Intégralité des quiz" },
+  { key: "quiz_exams", label: "Examens blancs / évaluations" },
+  // Suivi
   { key: "detailed_reports", label: "Rapports hebdomadaires" },
-  { key: "priority_support", label: "Support prioritaire" },
+  { key: "advanced_stats", label: "Statistiques détaillées" },
+  { key: "unlimited_history", label: "Historique illimité" },
+  { key: "certificates", label: "Certificats de réussite" },
+  // Contenu
+  { key: "courses_premium", label: "Cours premium" },
+  { key: "printable_worksheets", label: "Fiches imprimables (PDF)" },
+  { key: "offline_access", label: "Accès hors-ligne" },
+  // Cosmétique & confort
   { key: "custom_avatars", label: "Avatars & cosmétiques" },
-  { key: "quiz_access", label: "Quiz & évaluations" },
+  { key: "priority_support", label: "Support prioritaire" },
+  { key: "no_ads", label: "Sans publicité" },
 ];
 import { DEFAULT_PRICING_CONFIG, type PricingLabels } from "@/lib/pricingConfig";
 
