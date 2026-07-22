@@ -3,7 +3,7 @@ export const CGU_VERSION = "2.0 — Mai 2026";
 export const CGU_SECTIONS = [
   {
     title: "1. Présentation du service",
-    content: `Educalcul est une plateforme éducative française dédiée à l'apprentissage des mathématiques pour les élèves de CP à Terminale. Le service comprend : des cours interactifs avec formules LaTeX, des exercices corrigés par intelligence artificielle, des quiz, un forum d'entraide, un assistant IA (Athéna), un système de badges et de progression, ainsi qu'un espace parent pour suivre les enfants.`,
+    content: `Educalcul est une plateforme éducative française dédiée à l'apprentissage des mathématiques pour les élèves de CP à Terminale. Le service comprend : des cours interactifs avec formules LaTeX, des exercices corrigés par intelligence artificielle, des quiz, un forum d'entraide, un assistant IA (Epsi), un système de badges et de progression, ainsi qu'un espace parent pour suivre les enfants.`,
   },
   {
     title: "2. Comptes et responsabilités",
@@ -15,7 +15,7 @@ export const CGU_SECTIONS = [
   },
   {
     title: "4. Intelligence artificielle",
-    content: `Le service intègre un assistant IA (Athéna) pour guider les élèves, ainsi qu'une IA de correction automatique des exercices. L'IA ne se substitue pas à un enseignant professionnel. Les réponses peuvent contenir des imprécisions. La génération de contenu pédagogique (cours, exercices, quiz) par IA est réservée aux administrateurs. L'utilisation de l'IA est limitée selon votre plan d'abonnement.`,
+    content: `Le service intègre un assistant IA (Epsi) pour guider les élèves, ainsi qu'une IA de correction automatique des exercices. L'IA ne se substitue pas à un enseignant professionnel. Les réponses peuvent contenir des imprécisions. La génération de contenu pédagogique (cours, exercices, quiz) par IA est réservée aux administrateurs. L'utilisation de l'IA est limitée selon votre plan d'abonnement.`,
   },
   {
     title: "5. Données personnelles et cookies",

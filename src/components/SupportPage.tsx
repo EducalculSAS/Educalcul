@@ -68,7 +68,7 @@ const BOT_FALLBACK = "Je n'ai pas de réponse précise à cette question. N'hés
 
 const BOT_WELCOME: BotMsg = {
   from: "bot",
-  text: "Bonjour ! Je suis **Athéna**, votre assistante support. Je peux répondre à vos questions fréquentes. Pour un suivi personnalisé, ouvrez un ticket avec le bouton ci-dessus.",
+  text: "Bonjour ! Je suis **Espi**, votre assistante support. Je peux répondre à vos questions fréquentes. Pour un suivi personnalisé, ouvrez un ticket avec le bouton ci-dessus.",
 };
 
 function SupportChatbot() {
@@ -101,7 +101,7 @@ function SupportChatbot() {
       {/* Floating button */}
       <button
         onClick={() => setOpen(v => !v)}
-        aria-label="Support Athéna"
+        aria-label="Support Espi"
         className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl bg-[var(--greek-blue)] hover:bg-blue-800 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
       >
         {open ? <X className="w-6 h-6 text-white" /> : (
@@ -124,7 +124,7 @@ function SupportChatbot() {
                 <Star className="w-4 h-4 text-[var(--greek-blue)] fill-current" />
               </div>
               <div>
-                <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm tracking-wider">ATHÉNA</p>
+                <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm tracking-wider">ESPI</p>
                 <p className="text-white/50 text-[9px] font-black uppercase tracking-widest">Assistante Support</p>
               </div>
             </div>

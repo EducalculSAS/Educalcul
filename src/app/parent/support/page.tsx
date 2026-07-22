@@ -38,7 +38,7 @@ const BOT_RULES: { patterns: RegExp[]; answer: string }[] = [
 
 const BOT_FALLBACK = "Je n'ai pas de réponse précise à cette question. Notre équipe sera ravie de vous aider via un message !";
 
-const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Athéna**, votre assistante support. Posez-moi votre question ou choisissez un sujet ci-dessous." };
+const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Espi**, votre assistante support. Posez-moi votre question ou choisissez un sujet ci-dessous." };
 
 function SupportChatbot() {
   const [open, setOpen] = useState(false);
@@ -62,7 +62,7 @@ function SupportChatbot() {
 
   return (
     <>
-      <button onClick={() => setOpen(v => !v)} aria-label="Support Athéna"
+      <button onClick={() => setOpen(v => !v)} aria-label="Support Espi"
         className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl bg-[var(--greek-blue)] hover:bg-blue-800 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 group">
         {open ? <X className="w-6 h-6 text-white" /> : (
           <>
@@ -80,7 +80,7 @@ function SupportChatbot() {
                 <Star className="w-4 h-4 text-[var(--greek-blue)] fill-current" />
               </div>
               <div>
-                <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm tracking-wider">ATHÉNA</p>
+                <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm tracking-wider">ESPI</p>
                 <p className="text-white/50 text-[9px] font-black uppercase tracking-widest">Assistante Support</p>
               </div>
             </div>

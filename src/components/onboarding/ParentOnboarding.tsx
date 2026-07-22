@@ -142,7 +142,7 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
               </p>
             </div>
             <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl p-5 max-w-md text-left space-y-2">
-              {["Suivez la progression de vos enfants en temps réel", "Cours, exercices et quiz corrigés par IA", "Assistant Athéna disponible selon votre plan"].map((t, i) => (
+              {["Suivez la progression de vos enfants en temps réel", "Cours, exercices et quiz corrigés par IA", "Assistant Epsi disponible selon votre plan"].map((t, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-gray-700">
                   <CheckCircle className="w-4 h-4 text-[var(--greek-gold)] shrink-0" />
                   {t}
