@@ -270,7 +270,7 @@ export default function AITutor() {
       <button
         ref={floatBtnRef}
         onClick={() => { setOpen((v) => !v); setMinimized(false); setHasOpened(true); }}
-        aria-label="Ouvrir Espi"
+        aria-label="Ouvrir Epsi"
         className={`fixed bottom-[88px] right-4 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 select-none group
           ${open ? "scale-90" : "hover:scale-110 hover:-translate-y-1"}
           ${!hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}
@@ -311,9 +311,9 @@ export default function AITutor() {
         >
           {/* ── Header ── */}
           <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ borderBottom: "1px solid rgba(197,161,72,0.15)", background: "rgba(255,255,255,0.03)" }}>
-            <Image src="/logoAI.png" alt="Espi" width={28} height={28} className="object-contain flex-shrink-0" />
+            <Image src="/logoAI.png" alt="Epsi" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
-              <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Espi</p>
+              <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
               <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Tutrice IA · Maths</p>
             </div>
             <button onClick={() => { setMessages([WELCOME]); saveMessages([WELCOME]); }}
