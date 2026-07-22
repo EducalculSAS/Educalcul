@@ -1,12 +1,21 @@
 "use client";
 
 import { useState, useEffect, type DragEvent } from "react";
-import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save } from "lucide-react";
+import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2 } from "lucide-react";
 import {
   childrenCost, aiMultiplier, configPrice,
   DEFAULT_CUSTOM_PRICING,
-  type CustomPlanConfig, type AIId, type PricingCustomConfig,
+  type CustomPlanConfig, type AIId, type PricingCustomConfig, type PricingOption,
 } from "@/lib/customPlanPricing";
+
+// Fonctionnalités qu'une option peut déverrouiller (pour le menu admin).
+const FEATURE_CHOICES: { key: string; label: string }[] = [
+  { key: "", label: "Aucun effet (prix seul)" },
+  { key: "detailed_reports", label: "Rapports hebdomadaires" },
+  { key: "priority_support", label: "Support prioritaire" },
+  { key: "custom_avatars", label: "Avatars & cosmétiques" },
+  { key: "quiz_access", label: "Quiz & évaluations" },
+];
 import { DEFAULT_PRICING_CONFIG, type PricingLabels } from "@/lib/pricingConfig";
 
 export interface ChooserPlan {
@@ -210,27 +219,72 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }:
   );
 }
 
-/* ─── Toggle (style /tarifs) ; prix éditable en mode admin ─── */
-function Toggle({ label, sub, price, value, onChange, onPriceChange }: {
-  label: string; sub?: string; price: number; value: boolean;
-  onChange: (v: boolean) => void; onPriceChange?: (p: number) => void;
+/* ─── Texte éditable au clic (mode admin) ─── */
+function EditableText({ value, onChange, className }: { value: string; onChange: (v: string) => void; className?: string }) {
+  const [editing, setEditing] = useState(false);
+  const [v, setV] = useState(value);
+  useEffect(() => { setV(value); }, [value]);
+  if (editing) {
+    return (
+      <input autoFocus value={v}
+        onChange={e => setV(e.target.value)}
+        onBlur={() => { setEditing(false); onChange(v.trim() || value); }}
+        onKeyDown={e => { if (e.key === "Enter") (e.target as HTMLInputElement).blur(); }}
+        onClick={e => e.stopPropagation()}
+        className="px-1.5 py-0.5 rounded border border-[var(--greek-gold)] text-sm text-[var(--greek-blue)] bg-white outline-none" />
+    );
+  }
+  return (
+    <button type="button" onClick={e => { e.stopPropagation(); setEditing(true); }} title="Cliquer pour modifier"
+      className={`underline decoration-dotted decoration-[var(--greek-gold)] underline-offset-2 hover:text-[var(--greek-gold)] transition-colors text-left ${className || ""}`}>
+      {value}
+    </button>
+  );
+}
+
+/* ─── Ligne d'option (style /tarifs) ; éditable/supprimable en mode admin ─── */
+function OptionRow({ option, selected, onToggle, edit }: {
+  option: PricingOption;
+  selected: boolean;
+  onToggle: (v: boolean) => void;
+  edit?: { onChange: (patch: Partial<PricingOption>) => void; onDelete: () => void };
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 px-5 py-3.5 rounded-xl"
-      style={{ background: "#fff", border: `1.5px solid ${value ? "rgba(197,161,72,0.5)" : "var(--greek-border)"}` }}>
-      <div className="min-w-0">
-        <span className="text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>{label}</span>
-        {sub && <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{sub}</p>}
-        <span className="text-xs font-semibold ml-1" style={{ color: "var(--greek-gold)" }}>
-          +{onPriceChange ? <EditableNumber value={price} onChange={onPriceChange} className="text-xs font-semibold" /> : `${price.toFixed(2)}€`}
-        </span>
+    <div className="rounded-xl" style={{ background: "#fff", border: `1.5px solid ${selected ? "rgba(197,161,72,0.5)" : "var(--greek-border)"}` }}>
+      <div className="flex items-center justify-between gap-4 px-5 py-3.5">
+        <div className="min-w-0">
+          <span className="text-sm font-semibold block" style={{ color: "var(--greek-blue)" }}>
+            {edit ? <EditableText value={option.label} className="text-sm font-semibold" onChange={(v) => edit.onChange({ label: v })} /> : option.label}
+          </span>
+          {option.sub && <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{option.sub}</p>}
+          <span className="text-xs font-semibold ml-0.5" style={{ color: "var(--greek-gold)" }}>
+            +{edit ? <EditableNumber value={option.price} onChange={(p) => edit.onChange({ price: p })} className="text-xs font-semibold" /> : `${option.price.toFixed(2)}€`}
+          </span>
+        </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          {edit && (
+            <button type="button" onClick={edit.onDelete} title="Supprimer l'option"
+              className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors">
+              <Trash2 className="w-4 h-4" />
+            </button>
+          )}
+          <button type="button" onClick={() => onToggle(!selected)}
+            className="relative w-11 h-6 rounded-full transition-colors"
+            style={{ background: selected ? "var(--greek-gold)" : "rgba(15,30,58,0.12)" }}>
+            <span className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform"
+              style={{ transform: selected ? "translateX(20px)" : "translateX(0)" }} />
+          </button>
+        </div>
       </div>
-      <button type="button" onClick={() => onChange(!value)}
-        className="relative w-11 h-6 rounded-full transition-colors flex-shrink-0"
-        style={{ background: value ? "var(--greek-gold)" : "rgba(15,30,58,0.12)" }}>
-        <span className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform"
-          style={{ transform: value ? "translateX(20px)" : "translateX(0)" }} />
-      </button>
+      {edit && (
+        <div className="px-5 pb-3 -mt-1">
+          <label className="text-[11px] text-gray-400 mr-2">Déverrouille :</label>
+          <select value={option.feature} onChange={e => edit.onChange({ feature: e.target.value })}
+            className="text-xs border border-[var(--greek-border)] rounded-lg px-2 py-1 bg-white text-[var(--greek-blue)] outline-none">
+            {FEATURE_CHOICES.map(f => <option key={f.key} value={f.key}>{f.label}</option>)}
+          </select>
+        </div>
+      )}
     </div>
   );
 }
@@ -243,7 +297,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
   pricing: PricingCustomConfig;
   edit?: { onPricingChange: (p: PricingCustomConfig) => void };
 }) {
-  const [cfg, setCfg] = useState<CustomPlanConfig>({ children: 1, ai: "none", reports: false, support: false, avatars: false, quiz: false });
+  const [cfg, setCfg] = useState<CustomPlanConfig>({ children: 1, ai: "none", options: {} });
   const n = Math.max(1, cfg.children);
   const mult = aiMultiplier(n);
   const total = configPrice(cfg, pricing);
@@ -251,8 +305,18 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
   const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
   const aiIdx = pricing.ai_options.findIndex(o => o.id === cfg.ai);
 
-  const setToggle = (key: "reports" | "quiz" | "avatars" | "support", p: number) =>
-    edit?.onPricingChange({ ...pricing, toggles: { ...pricing.toggles, [key]: p } });
+  const updateOption = (idx: number, patch: Partial<PricingOption>) => {
+    const opts = [...pricing.options];
+    opts[idx] = { ...opts[idx], ...patch };
+    edit?.onPricingChange({ ...pricing, options: opts });
+  };
+  const deleteOption = (idx: number) => {
+    edit?.onPricingChange({ ...pricing, options: pricing.options.filter((_, i) => i !== idx) });
+  };
+  const addOption = () => {
+    const id = "opt_" + Math.random().toString(36).slice(2, 8);
+    edit?.onPricingChange({ ...pricing, options: [...pricing.options, { id, label: "Nouvelle option", price: 0.99, feature: "" }] });
+  };
 
   return (
     <div className="grid md:grid-cols-5 gap-8 items-start">
@@ -325,10 +389,21 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
         </div>
 
         <div className="space-y-2.5">
-          <Toggle label="Rapports hebdomadaires" sub="Résumé email chaque semaine" price={pricing.toggles.reports} value={cfg.reports} onChange={v => setCfg(c => ({ ...c, reports: v }))} onPriceChange={edit ? (p) => setToggle("reports", p) : undefined} />
-          <Toggle label="Quiz" sub="Accès à tous les quiz et évaluations" price={pricing.toggles.quiz} value={cfg.quiz} onChange={v => setCfg(c => ({ ...c, quiz: v }))} onPriceChange={edit ? (p) => setToggle("quiz", p) : undefined} />
-          <Toggle label="Avatars & cosmétiques" sub="Contours et couleurs de nom exclusifs" price={pricing.toggles.avatars} value={cfg.avatars} onChange={v => setCfg(c => ({ ...c, avatars: v }))} onPriceChange={edit ? (p) => setToggle("avatars", p) : undefined} />
-          <Toggle label="Support prioritaire" sub="Réponse garantie sous 4h en semaine" price={pricing.toggles.support} value={cfg.support} onChange={v => setCfg(c => ({ ...c, support: v }))} onPriceChange={edit ? (p) => setToggle("support", p) : undefined} />
+          {pricing.options.map((opt, i) => (
+            <OptionRow
+              key={opt.id}
+              option={opt}
+              selected={!!cfg.options[opt.id]}
+              onToggle={v => setCfg(c => ({ ...c, options: { ...c.options, [opt.id]: v } }))}
+              edit={edit ? { onChange: (patch) => updateOption(i, patch), onDelete: () => deleteOption(i) } : undefined}
+            />
+          ))}
+          {edit && (
+            <button type="button" onClick={addOption}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 border-dashed border-[var(--greek-border)] text-sm font-semibold text-[var(--greek-blue)] hover:border-[var(--greek-gold)] hover:text-[var(--greek-gold)] transition-colors">
+              <Plus className="w-4 h-4" /> Ajouter une option
+            </button>
+          )}
         </div>
       </div>
 

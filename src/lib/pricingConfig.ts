@@ -3,7 +3,7 @@
 // types + valeurs par défaut + normalisation — aucun accès base, donc
 // importable côté client comme côté serveur.
 
-import { DEFAULT_CUSTOM_PRICING, type PricingCustomConfig, type AIId } from "./customPlanPricing";
+import { DEFAULT_CUSTOM_PRICING, type PricingCustomConfig, type PricingOption, type AIId } from "./customPlanPricing";
 
 export interface PricingLabels {
   tabs: { familles: string; custom: string };
@@ -22,6 +22,43 @@ export const DEFAULT_PRICING_CONFIG: PricingConfig = {
 
 const AI_IDS: AIId[] = ["none", "15", "30", "60", "120", "unlim"];
 
+const num = (v: any, fallback: number) => {
+  const n = Number(v);
+  return Number.isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : fallback;
+};
+const str = (v: any, fallback: string, max = 80) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : fallback);
+const slug = (v: any) => String(v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+
+/** Ancien format `toggles` (objet) → nouvelle liste `options`. */
+function migrateToggles(toggles: any): PricingOption[] {
+  return DEFAULT_CUSTOM_PRICING.options.map(def => ({
+    ...def,
+    price: num(toggles?.[def.id], def.price),
+  }));
+}
+
+function normalizeOptions(raw: any): PricingOption[] {
+  if (Array.isArray(raw)) {
+    const seen = new Set<string>();
+    const out: PricingOption[] = [];
+    for (const o of raw) {
+      if (!o || typeof o !== "object") continue;
+      let id = slug(o.id) || slug(o.label) || `opt${out.length + 1}`;
+      while (seen.has(id)) id = `${id}_`;
+      seen.add(id);
+      out.push({
+        id,
+        label: str(o.label, "Option"),
+        sub: typeof o.sub === "string" ? o.sub.trim().slice(0, 120) : undefined,
+        price: num(o.price, 0),
+        feature: slug(o.feature),
+      });
+    }
+    return out;
+  }
+  return DEFAULT_CUSTOM_PRICING.options;
+}
+
 /** Complète/nettoie une config brute (DB ou formulaire) avec les valeurs par défaut. */
 export function normalizePricingConfig(raw: any): PricingConfig {
   const d = DEFAULT_PRICING_CONFIG;
@@ -30,26 +67,26 @@ export function normalizePricingConfig(raw: any): PricingConfig {
   const intervals = r.intervals || {};
   const custom = r.custom || {};
 
-  const num = (v: any, fallback: number) => {
-    const n = Number(v);
-    return Number.isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : fallback;
-  };
-  const str = (v: any, fallback: string) => (typeof v === "string" && v.trim() ? v.trim().slice(0, 60) : fallback);
-
-  // AI options : on garde l'ordre canonique et on ne fait varier que label/basePrice/daily.
+  // AI options : ordre canonique, seuls label/basePrice/daily varient.
   const rawAi: any[] = Array.isArray(custom.ai_options) ? custom.ai_options : [];
   const ai_options = AI_IDS.map((id) => {
     const def = DEFAULT_CUSTOM_PRICING.ai_options.find(o => o.id === id)!;
     const found = rawAi.find((o) => o?.id === id) || {};
     return {
       id,
-      label: str(found.label, def.label),
+      label: str(found.label, def.label, 40),
       daily: Number.isFinite(Number(found.daily)) ? Number(found.daily) : def.daily,
       basePrice: num(found.basePrice, def.basePrice),
     };
   });
 
-  const t = custom.toggles || {};
+  // Options : nouvelle liste, ou migration depuis l'ancien `toggles`.
+  const options = Array.isArray(custom.options)
+    ? normalizeOptions(custom.options)
+    : custom.toggles
+    ? migrateToggles(custom.toggles)
+    : DEFAULT_CUSTOM_PRICING.options;
+
   return {
     tabs: {
       familles: str(tabs.familles, d.tabs.familles),
@@ -65,12 +102,7 @@ export function normalizePricingConfig(raw: any): PricingConfig {
       base_price: num(custom.base_price, d.custom.base_price),
       max_children: Math.min(999, Math.max(1, Math.floor(Number(custom.max_children) || d.custom.max_children))),
       ai_options,
-      toggles: {
-        reports: num(t.reports, d.custom.toggles.reports),
-        quiz: num(t.quiz, d.custom.toggles.quiz),
-        avatars: num(t.avatars, d.custom.toggles.avatars),
-        support: num(t.support, d.custom.toggles.support),
-      },
+      options,
     },
   };
 }
