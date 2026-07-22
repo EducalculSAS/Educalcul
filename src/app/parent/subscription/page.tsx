@@ -472,15 +472,17 @@ function SubscriptionPageContent() {
             </div>
           )
         ) : (
-          <PlanChooser
-            plans={plans as unknown as ChooserPlan[]}
-            onChoosePlan={(plan) => handleSubscribe(Number(plan.id))}
-            onChooseCustom={handleSubscribeCustom}
-            planCta={(plan) => Number(plan.price) === 0 ? "Choisir" : plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"}
-            customCtaLabel="S'abonner"
-            processingKey={customProcessing ? "custom" : processingPlanId}
-            currentPlanId={currentPlan?.plan_id ?? null}
-          />
+          <div className="mb-16">
+            <PlanChooser
+              plans={plans as unknown as ChooserPlan[]}
+              onChoosePlan={(plan) => handleSubscribe(Number(plan.id))}
+              onChooseCustom={handleSubscribeCustom}
+              planCta={(plan) => Number(plan.price) === 0 ? "Choisir" : plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"}
+              customCtaLabel="S'abonner"
+              processingKey={customProcessing ? "custom" : processingPlanId}
+              currentPlanId={currentPlan?.plan_id ?? null}
+            />
+          </div>
         )}
 
         {/* Billing History (only for normal flow) */}
