@@ -7,6 +7,7 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { validateString } from "@/lib/validation";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { SUPPORT_SYSTEM_PROMPT } from "@/lib/supportChatPrompt";
 
 interface Message {
   role: "user" | "assistant";
@@ -68,6 +69,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const messages: Message[] = body.messages ?? [];
     const context: AITutorPageContext = body.context ?? { page: "other" };
+    const isSupportMode = context.page === "support";
 
     // ✓ Rate limiting on expensive AI endpoint, keyed on the real user.
     const config = RATE_LIMITS["ai:tutor"];
@@ -79,15 +81,19 @@ export async function POST(req: Request) {
       );
     }
 
-    // ── Subscription gate (mandatory) ──────────────────────────────────────
-    const access = await checkAIAccess(me.authId);
-    if (!access.allowed) {
-      return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
+    // ── Subscription gate — pas de restriction en mode support : l'aide au
+    // compte/support doit rester accessible à tous, contrairement au tuteur
+    // de maths qui est une fonctionnalité payante. ─────────────────────────
+    if (!isSupportMode) {
+      const access = await checkAIAccess(me.authId);
+      if (!access.allowed) {
+        return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
+      }
     }
     // Record usage without blocking the AI response (fire-and-forget)
     supabaseAdmin
       .from("user_ai_interactions")
-      .insert({ user_id: me.id, feature_type: "ai_tutor" })
+      .insert({ user_id: me.id, feature_type: isSupportMode ? "ai_support" : "ai_tutor" })
       .then(undefined, (e) => console.error("[ai-tutor] usage log failed:", e?.message));
     // ──────────────────────────────────────────────────────────────────────
 
@@ -102,7 +108,7 @@ export async function POST(req: Request) {
     }
     const trimmed = lastUserMessages.slice(firstUser);
 
-    const systemPrompt = buildSystemPrompt(context);
+    const systemPrompt = isSupportMode ? SUPPORT_SYSTEM_PROMPT : buildSystemPrompt(context);
 
     try {
       const message = await chatWithAI(trimmed, systemPrompt, 0.65, 800);

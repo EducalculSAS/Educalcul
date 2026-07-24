@@ -13,10 +13,19 @@ interface Message {
   content: string;
 }
 
-const WELCOME: Message = {
+const WELCOME_DEFAULT: Message = {
   role: "assistant",
   content: "Salut ! Comment puis-je t'aider ?",
 };
+
+// Mode support (page /child/support) : mêmes mots que le bot support parent.
+const WELCOME_SUPPORT: Message = {
+  role: "assistant",
+  content: "Bonjour ! Je suis **Epsi**, votre assistante d'aide rapide. Posez-moi votre question ou choisissez un sujet ci-dessous.",
+};
+
+const SUPPORT_QUICK_SUGGESTIONS = ["Mot de passe oublié", "Gérer mon abonnement", "Ajouter un enfant", "Signaler un bug"];
+const DEFAULT_QUICK_SUGGESTIONS = ["Je ne comprends pas", "Donne-moi un indice"];
 
 
 function renderContent(text: string) {
@@ -33,6 +42,8 @@ function renderContent(text: string) {
 export default function AITutor() {
   const { pageContext } = useAITutor();
   const sub = useSubscription();
+  const isSupportMode = pageContext.page === "support";
+  const WELCOME = isSupportMode ? WELCOME_SUPPORT : WELCOME_DEFAULT;
 
   const [open, setOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
@@ -76,8 +87,9 @@ export default function AITutor() {
     if (pageContext.exerciseTitle) return `exercise-${pageContext.exerciseTitle}`;
     if (pageContext.courseTitle) return `course-${pageContext.courseTitle}`;
     if (pageContext.quizTitle) return `quiz-${pageContext.quizTitle}`;
+    if (isSupportMode) return "support";
     return "default";
-  }, [pageContext.exerciseTitle, pageContext.courseTitle, pageContext.quizTitle]);
+  }, [pageContext.exerciseTitle, pageContext.courseTitle, pageContext.quizTitle, isSupportMode]);
 
   // Save messages to localStorage
   const saveMessages = useCallback((msgs: Message[]) => {
@@ -251,19 +263,19 @@ export default function AITutor() {
         aria-label="Ouvrir Epsi"
         className={`fixed bottom-[88px] right-4 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 select-none group
           ${open ? "scale-90" : "hover:scale-110 hover:-translate-y-1"}
-          ${!hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}
+          ${!isSupportMode && !hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}
         `}
         style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}
       >
-        {!hasOpened && !sub.loading && sub.features.ai_access !== "none" && (
+        {!isSupportMode && !hasOpened && !sub.loading && sub.features.ai_access !== "none" && (
           <span className="absolute inset-0 rounded-full border-2 border-[var(--greek-gold)] animate-ping opacity-60" />
         )}
-        {!sub.loading && sub.features.ai_access === "limited" && !open && (
+        {!isSupportMode && !sub.loading && sub.features.ai_access === "limited" && !open && (
           <span className="absolute -top-1 -right-1 w-5 h-5 bg-[var(--greek-gold)] rounded-full text-[10px] font-black text-[var(--greek-blue)] flex items-center justify-center shadow">
             {aiRemaining(sub)}
           </span>
         )}
-        {!sub.loading && sub.features.ai_access === "none" && !open && (
+        {!isSupportMode && !sub.loading && sub.features.ai_access === "none" && !open && (
           <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center shadow">
             <Lock className="w-3 h-3 text-white" />
           </span>
@@ -292,7 +304,7 @@ export default function AITutor() {
             <Image src="/logoAI.png" alt="Epsi" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
-              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Tutrice IA · Maths</p>
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{isSupportMode ? "Assistante IA" : "Tutrice IA · Maths"}</p>
             </div>
             <button onClick={() => { setMessages([WELCOME]); saveMessages([WELCOME]); }}
               className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
@@ -369,7 +381,7 @@ export default function AITutor() {
               {/* ── Quick suggestions ── */}
               {messages.length <= 2 && (
                 <div className="px-3 pb-2 flex flex-wrap gap-1.5 shrink-0">
-                  {["Je ne comprends pas", "Donne-moi un indice"].map((s) => (
+                  {(isSupportMode ? SUPPORT_QUICK_SUGGESTIONS : DEFAULT_QUICK_SUGGESTIONS).map((s) => (
                     <button key={s}
                       onClick={() => { setInput(s); setTimeout(() => inputRef.current?.focus(), 50); }}
                       className="text-[10px] font-black px-3 py-1.5 rounded-full transition-all"
@@ -380,8 +392,8 @@ export default function AITutor() {
                 </div>
               )}
 
-              {/* ── Input or upgrade ── */}
-              {sub.features.ai_access === "none" ? (
+              {/* ── Input or upgrade — le mode support reste accessible à tous ── */}
+              {!isSupportMode && sub.features.ai_access === "none" ? (
                 <div className="px-3 pb-3 pt-2 shrink-0" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
                   <div className="rounded-2xl p-4 text-center" style={{ background: "rgba(197,161,72,0.07)", border: "1px solid rgba(197,161,72,0.2)" }}>
                     <Lock className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--greek-gold)" }} />

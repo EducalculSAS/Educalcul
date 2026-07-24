@@ -70,13 +70,10 @@ function SupportChatbot() {
     <>
       {/* ── Floating button — même DA que le tuteur Epsi (enfant) ── */}
       <button onClick={() => setOpen(v => !v)} aria-label="Ouvrir Epsi"
-        className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
+        className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1"
         style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}>
         {open ? <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.8)" }} /> : (
-          <>
-            <Image src="/logoAI.png" alt="Epsi" width={30} height={30} className="object-contain" />
-            <span className="absolute bottom-full right-0 mb-3 whitespace-nowrap bg-[var(--greek-blue)] text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest pointer-events-none">Aide rapide</span>
-          </>
+          <Image src="/logoAI.png" alt="Epsi" width={30} height={30} className="object-contain" />
         )}
       </button>
 
@@ -87,7 +84,7 @@ function SupportChatbot() {
             <Image src="/logoAI.png" alt="Epsi" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
-              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Assistante IA · Parents</p>
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Assistante IA</p>
             </div>
             <button onClick={() => setMessages([BOT_WELCOME])} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Nouvelle conversation">
               <RotateCcw className="w-3.5 h-3.5" />

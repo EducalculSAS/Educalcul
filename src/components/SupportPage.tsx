@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { MessageCircle, Plus, CheckCircle, Clock, AlertCircle, X, Send, ChevronDown, ChevronUp } from "lucide-react";
+import { useAITutor } from "@/contexts/AITutorContext";
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: any }> = {
   "Ouvert":    { label: "Ouvert",    color: "bg-blue-100 text-blue-700",    icon: Clock },
@@ -37,6 +38,16 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
   const [userInfo, setUserInfo] = useState<any>(null);
   const [replyText, setReplyText] = useState<Record<number, string>>({});
   const [sending, setSending] = useState<number | null>(null);
+  const { setPageContext, clearContext } = useAITutor();
+
+  // Bascule le widget Epsi global (bas droite) en "mode support" — plus de
+  // tuteur maths, mêmes limites/textes que le bot support parent — uniquement
+  // pendant qu'on est sur cette page.
+  useEffect(() => {
+    if (role !== "child") return;
+    setPageContext({ page: "support" });
+    return () => clearContext();
+  }, [role, setPageContext, clearContext]);
 
   useEffect(() => {
     (async () => {

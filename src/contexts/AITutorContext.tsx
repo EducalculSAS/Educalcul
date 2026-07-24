@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
 
 export interface AITutorPageContext {
-  page: "dashboard" | "cours" | "cours_detail" | "exercises" | "exercise_detail" | "quiz" | "quiz_detail" | "forum" | "badges" | "profile" | "other";
+  page: "dashboard" | "cours" | "cours_detail" | "exercises" | "exercise_detail" | "quiz" | "quiz_detail" | "forum" | "badges" | "profile" | "support" | "other";
   
   // Course context
   courseTitle?: string;
