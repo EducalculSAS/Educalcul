@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
-import { MessageSquare, Send, Loader2, ChevronDown, ChevronUp, Mail, Star, X, RotateCcw, Plus } from "lucide-react";
+import { MessageSquare, Send, Loader2, ChevronDown, ChevronUp, Mail, X, RotateCcw, Plus } from "lucide-react";
 
 interface Reply {
   id: number;
@@ -22,102 +23,126 @@ interface Ticket {
   replies: Reply[];
 }
 
-// ── Support Chatbot ───────────────────────────────────────────────────────────
+// ── Support Chatbot (assistant IA réel — OpenRouter, cf. /api/parent/support-chat) ──
 interface BotMsg { from: "bot" | "user"; text: string }
 
-const BOT_RULES: { patterns: RegExp[]; answer: string }[] = [
-  { patterns: [/mot.de.passe|oubli|connexion|connect/i], answer: "Si vous avez oublié votre mot de passe, rendez-vous sur la page de connexion et cliquez sur « Mot de passe oublié ». Un lien de réinitialisation vous sera envoyé par e-mail." },
-  { patterns: [/abonnement|tarif|prix|paiement|facture|plan/i], answer: "Vous pouvez gérer votre abonnement depuis **Mes paramètres → Abonnement**. Pour toute question de facturation, notre équipe peut vous aider via un ticket." },
-  { patterns: [/enfant|compte enfant|profil enfant|ajouter/i], answer: "Pour ajouter un profil enfant, allez dans **Mes enfants → Ajouter un enfant**. Chaque enfant dispose d'un identifiant unique pour se connecter." },
-  { patterns: [/exercice|quiz|cours|contenu|module/i], answer: "Les exercices, quiz et cours sont accessibles selon votre niveau d'abonnement. Si un contenu n'est pas disponible, vérifiez votre plan dans **Abonnements**." },
-  { patterns: [/bug|erreur|problème|plante|marche pas|fonctionne pas/i], answer: "Désolé pour ce problème ! Essayez d'abord de vider le cache de votre navigateur et de vous reconnecter. Si le problème persiste, l'équipe peut vous aider." },
-  { patterns: [/badge|récompense|trophée/i], answer: "Les badges sont attribués automatiquement selon les progrès (connexions consécutives, exercices réussis…). La page **Mes Trophées** les liste tous." },
-  { patterns: [/supprimer|annuler.*compte|désactiver/i], answer: "Pour supprimer ou désactiver votre compte, contactez notre équipe avec l'objet « Suppression de compte ». Votre demande sera traitée sous 48h." },
-  { patterns: [/délai|réponse|attente|rapide|urgent/i], answer: "Notre équipe répond généralement sous 24h (jours ouvrés). Pour les demandes urgentes, précisez-le dans votre message." },
-];
-
-const BOT_FALLBACK = "Je n'ai pas de réponse précise à cette question. Notre équipe sera ravie de vous aider via un message !";
-
-const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Epsi**, votre assistante support. Posez-moi votre question ou choisissez un sujet ci-dessous." };
+const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Epsi**, votre assistante d'aide rapide. Posez-moi votre question ou choisissez un sujet ci-dessous." };
 
 function SupportChatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<BotMsg[]>([BOT_WELCOME]);
   const [input, setInput] = useState("");
+  const [sending, setSending] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (open) setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 80);
   }, [messages, open]);
 
-  const sendMessage = (text?: string) => {
+  const sendMessage = async (text?: string) => {
     const txt = (text || input).trim();
-    if (!txt) return;
-    const rule = BOT_RULES.find(r => r.patterns.some(p => p.test(txt)));
-    setMessages(prev => [...prev, { from: "user", text: txt }, { from: "bot", text: rule ? rule.answer : BOT_FALLBACK }]);
+    if (!txt || sending) return;
+    const history = [...messages, { from: "user" as const, text: txt }];
+    setMessages(history);
     setInput("");
+    setSending(true);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const res = await fetch("/api/parent/support-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${session?.access_token}` },
+        body: JSON.stringify({
+          messages: history.map(m => ({ role: m.from === "user" ? "user" : "assistant", content: m.text })),
+        }),
+      });
+      const data = await res.json();
+      setMessages(prev => [...prev, { from: "bot", text: data.message || "Désolée, je n'ai pas pu répondre. Notre équipe peut vous aider via un ticket." }]);
+    } catch {
+      setMessages(prev => [...prev, { from: "bot", text: "Désolée, une erreur est survenue. Notre équipe peut vous aider via un ticket." }]);
+    } finally {
+      setSending(false);
+    }
   };
 
-  const renderBotText = (text: string) => text.split(/\*\*(.*?)\*\*/g).map((p, i) => i % 2 === 1 ? <strong key={i} className="font-bold">{p}</strong> : p);
+  const renderBotText = (text: string) => text.split(/\*\*(.*?)\*\*/g).map((p, i) => i % 2 === 1 ? <strong key={i} className="font-black" style={{ color: "var(--greek-gold)" }}>{p}</strong> : p);
 
   return (
     <>
-      <button onClick={() => setOpen(v => !v)} aria-label="Support Epsi"
-        className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl bg-[var(--greek-blue)] hover:bg-blue-800 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 group">
-        {open ? <X className="w-6 h-6 text-white" /> : (
+      {/* ── Floating button — même DA que le tuteur Epsi (enfant) ── */}
+      <button onClick={() => setOpen(v => !v)} aria-label="Ouvrir Epsi"
+        className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
+        style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}>
+        {open ? <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.8)" }} /> : (
           <>
-            <Star className="w-7 h-7 text-[var(--greek-gold)] fill-current" />
+            <Image src="/logoAI.png" alt="Epsi" width={30} height={30} className="object-contain" />
             <span className="absolute bottom-full right-0 mb-3 whitespace-nowrap bg-[var(--greek-blue)] text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest pointer-events-none">Aide rapide</span>
           </>
         )}
       </button>
 
       {open && (
-        <div className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-sm bg-white rounded-3xl shadow-2xl border border-[rgba(197,161,72,0.25)] flex flex-col overflow-hidden" style={{ height: 440 }}>
-          <div className="bg-[var(--greek-blue)] px-5 py-3.5 flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-[var(--greek-gold)] flex items-center justify-center shrink-0">
-                <Star className="w-4 h-4 text-[var(--greek-blue)] fill-current" />
-              </div>
-              <div>
-                <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm tracking-wider">EPSI</p>
-                <p className="text-white/50 text-[9px] font-black uppercase tracking-widest">Assistante Support</p>
-              </div>
+        <div className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-sm rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+          style={{ height: 440, background: "#0d1829", border: "1px solid rgba(197,161,72,0.25)" }}>
+          <div className="flex items-center gap-3 px-4 py-3.5 shrink-0" style={{ borderBottom: "1px solid rgba(197,161,72,0.15)", background: "rgba(255,255,255,0.03)" }}>
+            <Image src="/logoAI.png" alt="Epsi" width={28} height={28} className="object-contain flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Assistante IA · Parents</p>
             </div>
-            <div className="flex gap-1">
-              <button onClick={() => setMessages([BOT_WELCOME])} className="text-white/50 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-all"><RotateCcw className="w-3.5 h-3.5" /></button>
-              <button onClick={() => setOpen(false)} className="text-white/50 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-all"><X className="w-4 h-4" /></button>
-            </div>
+            <button onClick={() => setMessages([BOT_WELCOME])} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Nouvelle conversation">
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+            <button onClick={() => setOpen(false)} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Fermer">
+              <X className="w-4 h-4" />
+            </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-white">
+          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3" style={{ scrollbarWidth: "none" }}>
             {messages.map((msg, i) => (
               <div key={i} className={`flex gap-2 ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-                {msg.from === "bot" && <div className="w-6 h-6 rounded-lg bg-[var(--greek-gold)] flex items-center justify-center shrink-0 mt-0.5"><Star className="w-3 h-3 text-[var(--greek-blue)] fill-current" /></div>}
-                <div className={`max-w-[82%] text-sm px-3.5 py-2.5 rounded-2xl leading-relaxed ${msg.from === "user" ? "bg-[var(--greek-blue)] text-white rounded-br-sm font-medium" : "bg-[var(--greek-cream)] text-gray-700 rounded-bl-sm border border-[rgba(197,161,72,0.2)]"}`}>
+                {msg.from === "bot" && <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0 mt-1" />}
+                <div className="max-w-[82%] text-sm px-3.5 py-2.5 rounded-2xl leading-relaxed"
+                  style={msg.from === "user"
+                    ? { background: "var(--greek-gold)", color: "#fff", borderBottomRightRadius: 4 }
+                    : { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }}>
                   {renderBotText(msg.text)}
                 </div>
               </div>
             ))}
+            {sending && (
+              <div className="flex items-center gap-2">
+                <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0" />
+                <div className="px-3.5 py-2.5 rounded-2xl" style={{ background: "rgba(255,255,255,0.07)" }}>
+                  <span className="flex gap-1 items-center h-3.5">
+                    {[0, 1, 2].map(j => <span key={j} className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
+                  </span>
+                </div>
+              </div>
+            )}
             <div ref={bottomRef} />
           </div>
 
           {messages.length <= 1 && (
-            <div className="px-4 pb-2 flex flex-wrap gap-1.5 shrink-0">
+            <div className="px-3 pb-2 flex flex-wrap gap-1.5 shrink-0">
               {["Mot de passe oublié", "Gérer mon abonnement", "Ajouter un enfant", "Signaler un bug"].map(q => (
-                <button key={q} onClick={() => sendMessage(q)} className="text-[10px] bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-gold)] text-[var(--greek-blue)] font-bold px-2.5 py-1 rounded-full transition-all">{q}</button>
+                <button key={q} onClick={() => sendMessage(q)} className="text-[10px] font-black px-3 py-1.5 rounded-full transition-all"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.2)", color: "rgba(197,161,72,0.8)" }}>
+                  {q}
+                </button>
               ))}
             </div>
           )}
 
-          <div className="px-4 pb-4 pt-2 border-t border-[rgba(197,161,72,0.15)] shrink-0">
-            <div className="flex gap-2 items-center bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] focus-within:border-[var(--greek-gold)] rounded-2xl px-3 py-2 transition-all">
-              <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter") sendMessage(); }}
-                placeholder="Votre question…" className="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 outline-none" />
-              <button onClick={() => sendMessage()} disabled={!input.trim()} className="w-8 h-8 bg-[var(--greek-blue)] text-white rounded-xl flex items-center justify-center hover:bg-blue-800 disabled:opacity-30 transition-all shrink-0">
-                <Send className="w-3.5 h-3.5" />
-              </button>
-            </div>
+          <div className="px-3 py-3 shrink-0 flex gap-2" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
+            <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter") sendMessage(); }}
+              disabled={sending}
+              placeholder="Votre question…" className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none disabled:opacity-50"
+              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)" }} />
+            <button onClick={() => sendMessage()} disabled={!input.trim() || sending}
+              className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all hover:-translate-y-0.5 disabled:opacity-40"
+              style={{ background: "var(--greek-gold)" }}>
+              <Send className="w-3.5 h-3.5 text-white" />
+            </button>
           </div>
         </div>
       )}
