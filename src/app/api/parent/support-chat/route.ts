@@ -3,7 +3,7 @@ import { chatWithAI } from "@/lib/llm";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { SUPPORT_SYSTEM_PROMPT } from "@/lib/supportChatPrompt";
+import { buildSupportSystemPrompt } from "@/lib/supportChatPrompt";
 
 interface Message {
   role: "user" | "assistant";
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     if (!trimmed.length) return NextResponse.json({ message: "Pose-moi ta question !" });
 
     try {
-      const message = await chatWithAI(trimmed, SUPPORT_SYSTEM_PROMPT, 0.6, 400);
+      const message = await chatWithAI(trimmed, buildSupportSystemPrompt("parent"), 0.6, 400);
       return NextResponse.json({ message });
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : String(error);

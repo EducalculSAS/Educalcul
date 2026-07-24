@@ -7,7 +7,7 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { validateString } from "@/lib/validation";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { SUPPORT_SYSTEM_PROMPT } from "@/lib/supportChatPrompt";
+import { buildSupportSystemPrompt } from "@/lib/supportChatPrompt";
 
 interface Message {
   role: "user" | "assistant";
@@ -108,7 +108,7 @@ export async function POST(req: Request) {
     }
     const trimmed = lastUserMessages.slice(firstUser);
 
-    const systemPrompt = isSupportMode ? SUPPORT_SYSTEM_PROMPT : buildSystemPrompt(context);
+    const systemPrompt = isSupportMode ? buildSupportSystemPrompt("child") : buildSystemPrompt(context);
 
     try {
       const message = await chatWithAI(trimmed, systemPrompt, 0.65, 800);
