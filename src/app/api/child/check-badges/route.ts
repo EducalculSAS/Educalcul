@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
+import { notify } from "@/lib/notify";
 
 // ── Tier thresholds per category ────────────────────────────────────────────
 // Returns the tier level (0 = nothing, 1 = first badge, 2 = second, etc.)
@@ -192,6 +193,9 @@ export async function POST(req: Request) {
     const toAward = (allBadges || []).filter(b => !earnedIds.has(b.id) && (stats[b.requirement_type] ?? 0) >= b.requirement_value);
     if (toAward.length > 0) {
       await supabaseAdmin.from("user_badges").insert(toAward.map(b => ({ user_id: userId, badge_id: b.id })));
+      for (const b of toAward) {
+        notify({ userId: authId, type: "badge", title: `Nouveau badge : ${b.name}`, body: b.description || undefined, link: "/child/badges" });
+      }
     }
 
     // ── Cross-category cosmetics check ─────────────────────────────────────

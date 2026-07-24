@@ -15,6 +15,9 @@ export async function POST(req: Request) {
     const me = await requireRole(req, ["parent"]);
     if (!me) return NextResponse.json({ message: null, blocked: true, reason: "Unauthorized" }, { status: 401 });
 
+    // Garde-fou anti-abus généreux : la vraie limite ressentie par
+    // l'utilisateur est la relance vers un ticket après 5 messages
+    // (ci-dessous), pas ce plafond technique.
     const config = RATE_LIMITS["ai:parent-support"];
     const rl = await rateLimitWithBackoff(`ai:parent-support:${me.authId}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
@@ -29,8 +32,13 @@ export async function POST(req: Request) {
     const trimmed = messages.filter(m => m.role === "user" || m.role === "assistant").slice(-8);
     if (!trimmed.length) return NextResponse.json({ message: "Pose-moi ta question !" });
 
+    const userTurnCount = trimmed.filter(m => m.role === "user").length;
+
     try {
-      const message = await chatWithAI(trimmed, buildSupportSystemPrompt("parent"), 0.6, 400);
+      // Température basse : un bot support doit être fiable/factuel plutôt
+      // que créatif, et suit mieux les instructions de formatage strictes
+      // (relance vers un ticket après 5 messages).
+      const message = await chatWithAI(trimmed, buildSupportSystemPrompt("parent", userTurnCount), 0.3, 400);
       return NextResponse.json({ message });
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : String(error);

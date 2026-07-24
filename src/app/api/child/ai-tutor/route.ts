@@ -72,8 +72,10 @@ export async function POST(req: Request) {
     const isSupportMode = context.page === "support";
 
     // ✓ Rate limiting on expensive AI endpoint, keyed on the real user.
-    const config = RATE_LIMITS["ai:tutor"];
-    const rl = await rateLimitWithBackoff(`ai:tutor:${me.authId}`, config.maxAttempts, config.windowMs);
+    // Bucket séparé pour le mode support : une conversation support ne doit
+    // jamais entamer le quota du vrai tuteur de maths, ni l'inverse.
+    const config = RATE_LIMITS[isSupportMode ? "ai:child-support" : "ai:tutor"];
+    const rl = await rateLimitWithBackoff(`${isSupportMode ? "ai:child-support" : "ai:tutor"}:${me.authId}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { message: null, blocked: true, reason: "Too many AI requests. Please wait before trying again." },
@@ -107,11 +109,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Pose-moi une question ! 💡" });
     }
     const trimmed = lastUserMessages.slice(firstUser);
+    const userTurnCount = trimmed.filter(m => m.role === "user").length;
 
-    const systemPrompt = isSupportMode ? buildSupportSystemPrompt("child") : buildSystemPrompt(context);
+    const systemPrompt = isSupportMode ? buildSupportSystemPrompt("child", userTurnCount) : buildSystemPrompt(context);
 
     try {
-      const message = await chatWithAI(trimmed, systemPrompt, 0.65, 800);
+      // Mode support : température basse pour un ton factuel/fiable et un
+      // meilleur respect du formatage imposé (relance vers un ticket).
+      const message = await chatWithAI(trimmed, systemPrompt, isSupportMode ? 0.3 : 0.65, 800);
       return NextResponse.json({ message });
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);

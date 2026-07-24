@@ -63,7 +63,13 @@ export const RATE_LIMITS = {
   
   // AI endpoints - strict (expensive)
   'ai:tutor': { maxAttempts: 30, windowMs: 60 * 60 * 1000, name: 'AI Tutor' },
-  'ai:parent-support': { maxAttempts: 30, windowMs: 60 * 60 * 1000, name: 'Parent support chat' },
+  // Plafond technique large et invisible en usage normal — la vraie limite
+  // ressentie est la relance vers un ticket après 5 messages (voir
+  // buildSupportSystemPrompt). Bucket séparé du tuteur maths pour qu'une
+  // conversation support n'entame jamais le quota de vraies questions de
+  // maths de l'enfant, et vice versa.
+  'ai:parent-support': { maxAttempts: 40, windowMs: 60 * 60 * 1000, name: 'Parent support chat' },
+  'ai:child-support': { maxAttempts: 40, windowMs: 60 * 60 * 1000, name: 'Child support chat' },
   'ai:edit': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'AI Edit' },
   'ai:generate': { maxAttempts: 15, windowMs: 60 * 60 * 1000, name: 'AI Generate' },
   'ai:grade': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'AI Grading' },

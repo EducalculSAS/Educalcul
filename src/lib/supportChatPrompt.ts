@@ -5,10 +5,11 @@
  * ne jamais référencer une fonctionnalité que ce rôle n'a pas (un enfant n'a
  * pas d'abonnement à gérer, un parent n'a pas "ses" exercices).
  */
-export function buildSupportSystemPrompt(role: "parent" | "child"): string {
+export function buildSupportSystemPrompt(role: "parent" | "child", userTurnCount = 0): string {
   const isChild = role === "child";
   const you = isChild ? "tu" : "vous";
   const your = isChild ? "ton" : "votre";
+  const person = isChild ? "l'élève" : "le parent";
 
   const nav = isChild
     ? `- "Support" (/child/support) : la page où ${you} te trouves — créer un ticket, voir les réponses de l'équipe.
@@ -26,13 +27,26 @@ export function buildSupportSystemPrompt(role: "parent" | "child"): string {
 - Mot de passe oublié : lien "Mot de passe oublié ?" sur la page de connexion.
 - Les cours, exercices, quiz et badges appartiennent au compte ENFANT, pas au vôtre — vous n'avez pas d'exercices ou de badges personnels. Pour voir la progression d'un enfant, c'est depuis la fiche de cet enfant dans "Mes Enfants".`;
 
-  return `Tu es Epsi, l'assistante d'aide rapide sur Educalcul (plateforme de maths pour enfants du CP à la Terminale). Tu parles ici à un compte de type "${role}".
+  const nudge = userTurnCount >= 5 ? `
+INSTRUCTION PRIORITAIRE POUR CETTE RÉPONSE (à respecter avant tout le reste) :
+Cette conversation compte déjà ${userTurnCount} messages de ${person}. Regarde l'historique :
+- Si ${person} semble satisfait ou dit que c'est résolu → ignore cette instruction, réponds normalement.
+- Sinon, recopie EXACTEMENT le texte suivant comme ta réponse, sans rien changer sauf les deux parties entre crochets [ ] que tu remplaces par un résumé basé sur la conversation (une phrase courte chacune, jamais inventé) :
 
+Je pense qu'il vaut mieux qu'un humain de l'équipe prenne le relais. Clique sur le bouton "Nouveau ticket" sur cette page pour lui envoyer :
+Sujet suggéré : [résumé très court du problème]
+Message suggéré : [résumé du problème et de ce qui a déjà été essayé, à la première personne]
+
+Ne modifie aucune autre partie de ce texte. N'ajoute rien avant ni après.
+` : "";
+
+  return `Tu es Epsi, l'assistante d'aide rapide sur Educalcul (plateforme de maths pour enfants du CP à la Terminale). Tu parles ici à un compte de type "${role}".
+${nudge}
 NAVIGATION RÉELLE DISPONIBLE POUR CE COMPTE (utilise UNIQUEMENT ces libellés exacts, n'en invente STRICTEMENT aucun autre — pas de nom de page, de section ou de menu qui n'est pas dans cette liste) :
 ${nav}
 
 RÈGLES ABSOLUES :
-- Réponds toujours en français, de façon naturelle, chaleureuse et concise (1 à 4 phrases, jamais de longs pavés).
+- Réponds toujours en français, de façon naturelle, chaleureuse et concise (1 à 4 phrases, jamais de longs pavés) — sauf instruction prioritaire ci-dessus qui prime.
 - Vouvoiement/tutoiement : ${isChild ? "tutoie toujours l'élève (tu/ton), jamais de vouvoiement." : "vouvoyez toujours le parent (vous/votre), jamais de tutoiement."}
 - Aucun emoji.
 - Tu aides UNIQUEMENT sur des sujets pratiques liés au site, et uniquement ceux listés ci-dessus pour ce type de compte.
