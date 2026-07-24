@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { validateEmail, validateString, validateName, isValidUUID } from "@/lib/validation";
+import { validateEmail, validateString, isValidUUID } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 
@@ -62,12 +62,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    if (userName) {
-      const validatedName = validateName(userName);
-      if (!validatedName) {
-        return NextResponse.json({ error: "Invalid name" }, { status: 400 });
-      }
-    }
+    // Simple display field for the admin dashboard — identity is already
+    // bound to the authenticated userId above, so only length-cap it (real
+    // names can contain digits, e.g. "Ruben2").
+    const validatedUserName = validateString(userName, 200) || "";
 
     const validatedSubject = validateString(subject, 500);
     if (!validatedSubject || validatedSubject.length < 5) {
@@ -84,7 +82,7 @@ export async function POST(req: Request) {
       .insert({
         user_id: userId || null,
         user_email: userEmail || "",
-        user_name: userName || "",
+        user_name: validatedUserName,
         subject: validatedSubject,
         message: validatedMessage,
         priority: priority === "high" ? "high" : "normal",

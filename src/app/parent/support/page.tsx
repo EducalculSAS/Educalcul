@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { MessageSquare, Send, Loader2, ChevronDown, ChevronUp, Mail, Star, X, RotateCcw } from "lucide-react";
+import { MessageSquare, Send, Loader2, ChevronDown, ChevronUp, Mail, Star, X, RotateCcw, Plus } from "lucide-react";
 
 interface Reply {
   id: number;
@@ -127,6 +127,9 @@ function SupportChatbot() {
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+const inputCls = "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
+const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5";
+
 export default function ParentSupportPage() {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
@@ -134,6 +137,12 @@ export default function ParentSupportPage() {
   const [replyText, setReplyText] = useState<Record<number, string>>({});
   const [sending, setSending] = useState<number | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
+
+  // Nouveau ticket
+  const [showForm, setShowForm] = useState(false);
+  const [newForm, setNewForm] = useState({ subject: "", message: "", priority: "normal" });
+  const [submitting, setSubmitting] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
 
   const fetchTickets = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -146,6 +155,37 @@ export default function ParentSupportPage() {
   };
 
   useEffect(() => { fetchTickets(); }, []);
+
+  const submitNewTicket = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const { data: { session } } = await supabase.auth.getSession();
+    const user = session?.user;
+    if (!session || !user) { setSubmitting(false); return; }
+    const { data: profile } = await supabase.from("users").select("first_name, last_name, email").eq("auth_id", user.id).maybeSingle();
+    const res = await fetch("/api/support", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
+      body: JSON.stringify({
+        userEmail: profile?.email || user.email,
+        userName: `${profile?.first_name || ""} ${profile?.last_name || ""}`.trim(),
+        subject: newForm.subject,
+        message: newForm.message,
+        priority: newForm.priority,
+      }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      setToast("Ticket envoyé ! Un admin vous répondra bientôt.");
+      setShowForm(false);
+      setNewForm({ subject: "", message: "", priority: "normal" });
+      fetchTickets();
+    } else {
+      setToast(`Erreur : ${data.error || "Envoi impossible"}`);
+    }
+    setSubmitting(false);
+    setTimeout(() => setToast(null), 4000);
+  };
 
   const toggleTicket = (id: number) => {
     setOpenTicketIds(prev => {
@@ -178,21 +218,65 @@ export default function ParentSupportPage() {
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
+      {toast && (
+        <div className={`fixed bottom-6 right-6 z-[60] px-5 py-3 rounded-2xl shadow-xl text-sm font-semibold text-white ${toast.startsWith("Erreur") ? "bg-red-600" : "bg-green-600"}`}>
+          {toast}
+        </div>
+      )}
+
       <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
         <div className="max-w-3xl mx-auto relative z-10">
           <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
             <MessageSquare className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
-            MES MESSAGES
+            SUPPORT
           </h1>
           <p className="text-xl opacity-90 flex items-center gap-3">
-            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">SUPPORT</span>
+            <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">MES MESSAGES</span>
             <span>Vos échanges avec l'équipe Educalcul</span>
           </p>
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 pb-12">
+      <div className="max-w-3xl mx-auto px-4 pb-12 space-y-6">
+        {!showForm ? (
+          <button onClick={() => setShowForm(true)}
+            className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--greek-blue)] text-white rounded-2xl font-bold hover:bg-blue-800 transition-colors shadow-sm">
+            <Plus size={18} /> Nouveau ticket
+          </button>
+        ) : (
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau ticket</h2>
+              <button onClick={() => setShowForm(false)} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"><X size={16} /></button>
+            </div>
+            <form onSubmit={submitNewTicket} className="space-y-4">
+              <div>
+                <label className={labelCls}>Sujet *</label>
+                <input value={newForm.subject} onChange={e => setNewForm({ ...newForm, subject: e.target.value })} className={inputCls} placeholder="Ex : Je n'arrive pas à accéder à mon abonnement" required />
+              </div>
+              <div>
+                <label className={labelCls}>Message *</label>
+                <textarea value={newForm.message} onChange={e => setNewForm({ ...newForm, message: e.target.value })} className={inputCls + " h-32 resize-none"} placeholder="Décrivez votre problème en détail..." required />
+              </div>
+              <div>
+                <label className={labelCls}>Priorité</label>
+                <select value={newForm.priority} onChange={e => setNewForm({ ...newForm, priority: e.target.value })} className={inputCls}>
+                  <option value="low">Faible — pas urgent</option>
+                  <option value="normal">Normal</option>
+                  <option value="high">Urgent</option>
+                </select>
+              </div>
+              <div className="flex justify-end gap-3 pt-2">
+                <button type="button" onClick={() => setShowForm(false)} className="px-5 py-2.5 text-gray-600 hover:bg-gray-100 rounded-xl font-semibold text-sm transition-colors">Annuler</button>
+                <button type="submit" disabled={submitting} className="flex items-center gap-2 px-6 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl font-bold text-sm hover:bg-blue-800 transition-colors disabled:opacity-50">
+                  {submitting ? "Envoi..." : <><Send size={14} /> Envoyer</>}
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
         {loading ? (
           <div className="flex justify-center py-16"><Loader2 className="w-8 h-8 animate-spin text-[var(--greek-blue)]" /></div>
         ) : tickets.length === 0 ? (

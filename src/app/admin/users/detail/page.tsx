@@ -91,6 +91,8 @@ function UserDetailContent() {
   // Expand sections
   const [showPosts, setShowPosts] = useState(false);
   const [showComments, setShowComments] = useState(false);
+  const [showAttempts, setShowAttempts] = useState(false);
+  const [showTickets, setShowTickets] = useState(false);
   const [plans, setPlans] = useState<any[]>([]);
   const [selectedPlanId, setSelectedPlanId] = useState<string>("");
   const [savingPlan, setSavingPlan] = useState(false);
@@ -202,7 +204,10 @@ showToast("success", "Profil mis à jour");
   if (loading) return <PageLoader />;
   if (!data) return <div className="p-6 text-red-500">Utilisateur introuvable.</div>;
 
-  const { user, stats, subscription, children, notifications, badges, forum_posts, forum_comments, reports } = data;
+  const {
+    user, stats, subscription, children, notifications, badges, forum_posts, forum_comments, reports,
+    exercise_attempts = [], quiz_attempts = [], course_progress = [], support_tickets = [],
+  } = data;
   const isChild = user.role === "child";
   const isParent = user.role === "parent";
   const isBanned = user.status === "inactive";
@@ -430,6 +435,99 @@ showToast("success", "Profil mis à jour");
               ))}
             </div>
           )}
+
+          {/* Détail des tentatives — exercices / quiz / cours */}
+          {isChild && (
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
+              <button onClick={() => setShowAttempts(!showAttempts)} className="w-full flex items-center justify-between">
+                <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                  <Trophy className="w-4 h-4" />Détail des tentatives ({exercise_attempts.length + quiz_attempts.length + course_progress.length})
+                </h2>
+                {showAttempts ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
+              </button>
+              {showAttempts && (
+                <div className="mt-4 space-y-5">
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Exercices ({exercise_attempts.length})</p>
+                    {exercise_attempts.length > 0 ? (
+                      <div className="space-y-1.5">
+                        {exercise_attempts.map((a: any) => (
+                          <div key={a.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
+                            <div className="min-w-0">
+                              <p className="font-semibold text-gray-700 truncate">{a.exercises?.title || "Exercice supprimé"}</p>
+                              <p className="text-xs text-gray-400">{new Date(a.completed_at || a.attempted_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}</p>
+                            </div>
+                            <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                              {a.score}/{a.total_points} ({a.score_percent}%)
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : <p className="text-xs text-gray-400 italic">Aucune tentative</p>}
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Quiz ({quiz_attempts.length})</p>
+                    {quiz_attempts.length > 0 ? (
+                      <div className="space-y-1.5">
+                        {quiz_attempts.map((a: any) => (
+                          <div key={a.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
+                            <div className="min-w-0">
+                              <p className="font-semibold text-gray-700 truncate">{a.quizzes?.title || "Quiz supprimé"}</p>
+                              <p className="text-xs text-gray-400">{new Date(a.completed_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}</p>
+                            </div>
+                            <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                              {a.score}/{a.total_points} ({a.score_percent}%)
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : <p className="text-xs text-gray-400 italic">Aucune tentative</p>}
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Cours ({course_progress.length})</p>
+                    {course_progress.length > 0 ? (
+                      <div className="space-y-1.5">
+                        {course_progress.map((c: any) => (
+                          <div key={c.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
+                            <div className="min-w-0">
+                              <p className="font-semibold text-gray-700 truncate">{c.courses?.title || "Cours supprimé"}</p>
+                              <p className="text-xs text-gray-400">Chapitre {c.chapter_index + 1} · {c.completed_at ? new Date(c.completed_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }) : "en cours"}</p>
+                            </div>
+                            <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${c.status === "completed" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"}`}>
+                              {c.status === "completed" ? "Terminé" : "En cours"}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : <p className="text-xs text-gray-400 italic">Aucune progression</p>}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Tickets support */}
+          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
+            <button onClick={() => setShowTickets(!showTickets)} className="w-full flex items-center justify-between">
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><MessageCircle className="w-4 h-4" />Tickets support ({support_tickets.length})</h2>
+              {showTickets ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
+            </button>
+            {showTickets && (
+              <div className="mt-3 space-y-2">
+                {support_tickets.length > 0 ? support_tickets.map((t: any) => (
+                  <div key={t.id} className="flex items-center justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
+                    <div className="min-w-0">
+                      <p className="font-semibold text-gray-700 truncate">{t.subject}</p>
+                      <p className="text-xs text-gray-400">{new Date(t.created_at).toLocaleDateString("fr-FR")}</p>
+                    </div>
+                    <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${t.status === "Résolu" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"}`}>
+                      {t.status}{t.priority === "high" ? " · Urgent" : ""}
+                    </span>
+                  </div>
+                )) : <p className="text-sm text-gray-400 italic">Aucun ticket</p>}
+              </div>
+            )}
+          </div>
 
           {/* Messages admin (notifications) */}
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">

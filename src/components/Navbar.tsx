@@ -227,13 +227,6 @@ export default function Navbar() {
                       <Users className="w-4 h-4" /> Mes Enfants
                     </Link>
                     <Link
-                      href="/parent/support"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <MessageSquare className="w-4 h-4" /> Mes messages
-                    </Link>
-                    <Link
                       href="/parent/subscription"
                       className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
                       onClick={() => setIsOpen(false)}
