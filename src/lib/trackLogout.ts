@@ -8,5 +8,7 @@ export async function trackLogout() {
       method: "POST",
       headers: { Authorization: `Bearer ${session.access_token}` },
     });
-  } catch {}
+  } catch (e) {
+    console.error("Failed to track logout:", e);
+  }
 }

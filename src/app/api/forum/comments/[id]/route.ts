@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 
@@ -23,6 +24,6 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     if (error) throw error;
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function POST(req: Request) {
@@ -33,6 +34,6 @@ export async function POST(req: Request) {
       description: data.description,
     });
   } catch (err: any) {
-    return NextResponse.json({ valid: false, error: err.message });
+    return NextResponse.json({ valid: false, error: sanitizeErrorMessage(err.message) });
   }
 }

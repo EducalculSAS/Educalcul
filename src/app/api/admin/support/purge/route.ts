@@ -1,9 +1,15 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
 
 export async function DELETE(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     // 1. Delete replies for archived tickets first (if cascade is not set, though cascade is better)
     // To be safe, we can rely on cascade if configured, but let's try to find IDs first.
 
@@ -14,7 +20,7 @@ export async function DELETE(request: Request) {
       .eq("is_archived", true);
 
     if (findError)
-      return NextResponse.json({ error: findError.message }, { status: 500 });
+      return NextResponse.json({ error: sanitizeErrorMessage(findError.message) }, { status: 500 });
 
     if (!archivedTickets || archivedTickets.length === 0) {
       return NextResponse.json({ deletedCount: 0 });
@@ -30,7 +36,7 @@ export async function DELETE(request: Request) {
 
     if (repliesError)
       return NextResponse.json(
-        { error: repliesError.message },
+        { error: sanitizeErrorMessage(repliesError.message) },
         { status: 500 }
       );
 
@@ -41,10 +47,10 @@ export async function DELETE(request: Request) {
       .in("id", ticketIds);
 
     if (deleteError)
-      return NextResponse.json({ error: deleteError.message }, { status: 500 });
+      return NextResponse.json({ error: sanitizeErrorMessage(deleteError.message) }, { status: 500 });
 
     return NextResponse.json({ deletedCount: count });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

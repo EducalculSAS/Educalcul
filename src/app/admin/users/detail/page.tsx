@@ -7,11 +7,12 @@ import {
   ArrowLeft, Shield, Baby, Ban, MessageCircle, KeyRound, Trash2,
   CheckCircle, AlertTriangle, Send, X, Loader2, Clock, Edit, Bell,
   CreditCard, User as UserIcon, Trophy, MessageSquare,
-  Flag, ChevronDown, ChevronUp, Save,
+  Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { supabase } from "@/lib/supabaseClient";
 import { SCHOOL_LEVELS } from "@/lib/constants";
+import { validatePassword } from "@/lib/validation";
 import ThemedSelect from "@/components/admin/ThemedSelect";
 
 const roleBadge = (r: string) => {
@@ -71,6 +72,7 @@ function UserDetailContent() {
   const [editForm, setEditForm] = useState<any>({});
   const [showResetModal, setShowResetModal] = useState(false);
   const [newPassword, setNewPassword] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
   const [showMessageModal, setShowMessageModal] = useState(false);
   const [msgForm, setMsgForm] = useState({ title: "", content: "", type: "message" });
   const [showBanModal, setShowBanModal] = useState(false);
@@ -589,13 +591,24 @@ showToast("success", "Profil mis à jour");
             <div className="p-8 space-y-4">
               <p className="text-sm text-gray-600">Définir un nouveau mot de passe pour <strong>{user?.first_name} {user?.last_name}</strong>.</p>
               <div><label className={labelCls}>Nouveau mot de passe *</label>
-                <input type="text" value={newPassword} onChange={e => setNewPassword(e.target.value)} className={inputCls + " font-mono"} placeholder="Minimum 6 caractères" />
+                <div className="relative">
+                  <input
+                    type={showNewPassword ? "text" : "password"}
+                    value={newPassword}
+                    onChange={e => setNewPassword(e.target.value)}
+                    className={inputCls + " font-mono pr-10"}
+                    placeholder="Minimum 10 caractères"
+                  />
+                  <button type="button" onClick={() => setShowNewPassword(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                    {showNewPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
               </div>
               <div className="flex justify-end gap-3 pt-2">
                 <button onClick={() => setShowResetModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
                 <button
                   onClick={async () => {
-                    if (!newPassword.trim() || newPassword.length < 6) return;
+                    if (validatePassword(newPassword)) return;
                     setActionLoading(true);
                     await fetch("/api/admin/users", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ userId: currentAuthId, id: data.user.id, auth_id: data.user.auth_id, password: newPassword }) });
                     showToast("success", "Mot de passe mis à jour");
@@ -603,7 +616,7 @@ showToast("success", "Profil mis à jour");
                     setNewPassword("");
                     setActionLoading(false);
                   }}
-                  disabled={!newPassword.trim() || newPassword.length < 6 || actionLoading}
+                  disabled={!!validatePassword(newPassword) || actionLoading}
                   className="flex items-center gap-2 px-7 py-2.5 bg-purple-500 text-white font-bold rounded-xl hover:bg-purple-600 transition-colors disabled:opacity-50">
                   {actionLoading && <Loader2 size={14} className="animate-spin" />}<KeyRound size={14} /> Appliquer
                 </button>

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createClient } from "@supabase/supabase-js";
 import { getIpGeo } from "@/lib/ipGeo";
@@ -75,6 +76,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, is_new_day: isNewDay });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }

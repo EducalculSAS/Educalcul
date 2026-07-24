@@ -5,6 +5,7 @@ import { sendEmail } from "@/lib/mailer";
 import { buildEmailHtml, EMAIL_BASE_URL, welcomeEmail } from "@/lib/emailTemplates";
 import { notify } from "@/lib/notify";
 import Stripe from "stripe";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 async function getUserByCustomerId(customerId: string) {
   const { data } = await supabaseAdmin
@@ -35,7 +36,7 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
   } catch (err: any) {
     console.error("Webhook signature failed:", err.message);
-    return NextResponse.json({ error: err.message }, { status: 400 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || String(err)) }, { status: 400 });
   }
 
   try {
@@ -247,7 +248,7 @@ export async function POST(req: Request) {
     }
   } catch (err: any) {
     console.error("Webhook handler error:", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || String(err)) }, { status: 500 });
   }
 
   return NextResponse.json({ received: true });

@@ -5,6 +5,7 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { validateEmail, validateName, validateString } from "@/lib/validation";
 import { sendEmail } from "@/lib/mailer";
 import { welcomeEmail } from "@/lib/emailTemplates";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 export async function POST(req: NextRequest) {
   try {
@@ -52,9 +53,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
 
-    // ✓ SECURITY (élévation de privilèges) : l'inscription publique ne peut JAMAIS
-    // créer un compte admin. Les comptes admin sont provisionnés hors de ce flux.
-    if (!["parent", "child"].includes(role)) {
+    // ✓ SECURITY (élévation de privilèges + comptes orphelins) : l'inscription
+    // publique ne crée que des comptes "parent". Un compte "child" doit
+    // toujours être créé par un parent authentifié via /api/create-child
+    // (qui exige un parent_id et un email interne @educalcul.user) — accepter
+    // "child" ici permettrait de créer des comptes enfants sans parent,
+    // rattachés à un vrai email, en contournant le modèle du produit.
+    // Les comptes admin sont provisionnés hors de ce flux.
+    if (role !== "parent") {
       return NextResponse.json({ error: "Invalid role" }, { status: 400 });
     }
 
@@ -163,7 +169,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error("Account creation error:", error);
     return NextResponse.json(
-      { error: error?.message || "Erreur interne" },
+      { error: sanitizeErrorMessage(error?.message || "Erreur interne") },
       { status: 500 }
     );
   }

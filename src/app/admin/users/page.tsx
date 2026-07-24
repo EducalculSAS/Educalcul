@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 import {
   Users, Search, Plus, Trash2, CheckCircle, XCircle,
   Loader2, Shield, User as UserIcon, Baby, Globe, MapPin,
-  X, Eye, Ban, Download, FileText, Table,
+  X, Eye, EyeOff, Ban, Download, FileText, Table,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/PageLoader";
@@ -127,9 +127,18 @@ function downloadCSV(users: User[], filename: string, loginHistory?: LoginEvent[
   URL.revokeObjectURL(url);
 }
 
+// Échappe toute valeur avant interpolation HTML : ces données (nom, ville,
+// pays...) sont saisies par des utilisateurs non-admin et sont injectées via
+// document.write dans une fenêtre de même origine que l'admin — sans
+// échappement, un utilisateur pourrait exécuter du script dans ce contexte.
+function esc(v: any): string {
+  if (v === null || v === undefined) return "";
+  return String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
+}
+
 function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): string {
   const NAVY = "#1a3a5c", GOLD = "#c5a148";
-  const d = (v: any) => v ? new Date(v).toLocaleString("fr-FR") : "—";
+  const d = (v: any) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "—";
   const single = users.length === 1;
   const u = users[0];
 
@@ -144,10 +153,10 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
         ${loginHistory.map((h, i) => `<tr>
           <td style="color:#888">${loginHistory.length - i}</td>
           <td>${d(h.logged_at)}</td>
-          <td style="font-family:monospace;font-size:10px">${h.ip || "—"}</td>
-          <td>${h.city || "—"}</td>
-          <td>${h.country || "—"}</td>
-          <td>${h.device_type || "—"}</td>
+          <td style="font-family:monospace;font-size:10px">${esc(h.ip) || "—"}</td>
+          <td>${esc(h.city) || "—"}</td>
+          <td>${esc(h.country) || "—"}</td>
+          <td>${esc(h.device_type) || "—"}</td>
           <td style="font-size:10px">${h.latitude ? `${h.latitude.toFixed(4)}, ${h.longitude?.toFixed(4)}` : "—"}</td>
         </tr>`).join("")}
       </tbody>
@@ -171,7 +180,7 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
         ["Inscription", d(u.created_at)],
         ["Total connexions", loginHistory ? String(loginHistory.length) : "—"],
         ["Localisation (IP)", u.latitude && u.longitude ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "—"],
-      ].map(([k, v]) => `<tr><td class="label">${k}</td><td class="value">${v}</td></tr>`).join("")}
+      ].map(([k, v]) => `<tr><td class="label">${esc(k)}</td><td class="value">${esc(v) || "—"}</td></tr>`).join("")}
     </table>
     ${historySection}` : `
     <table class="main-table">
@@ -180,11 +189,11 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
       </tr></thead>
       <tbody>
         ${users.map(u => `<tr>
-          <td>${u.first_name} ${u.last_name}</td>
-          <td>${u.email}</td>
-          <td>${u.role}</td>
-          <td>${u.status}</td>
-          <td>${u.last_login_city || "—"}</td>
+          <td>${esc(u.first_name)} ${esc(u.last_name)}</td>
+          <td>${esc(u.email)}</td>
+          <td>${esc(u.role)}</td>
+          <td>${esc(u.status)}</td>
+          <td>${esc(u.last_login_city) || "—"}</td>
           <td>${d(u.created_at)}</td>
         </tr>`).join("")}
       </tbody>
@@ -222,8 +231,8 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
       <img src="/logo.png" alt="Educalcul"/>
       <div>
         <div class="brand">EDUCALCUL</div>
-        <div class="header-title">${title}</div>
-        <div class="header-sub">${single ? `${u.first_name} ${u.last_name} — ${u.email}` : `${users.length} utilisateurs — ${new Date().toLocaleDateString("fr-FR")}`}</div>
+        <div class="header-title">${esc(title)}</div>
+        <div class="header-sub">${single ? `${esc(u.first_name)} ${esc(u.last_name)} — ${esc(u.email)}` : `${users.length} utilisateurs — ${new Date().toLocaleDateString("fr-FR")}`}</div>
       </div>
     </div>
     <div class="bar"></div>
@@ -356,6 +365,7 @@ export default function AdminUsersPage() {
   // Create
   const [showFormModal, setShowFormModal] = useState(false);
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" });
+  const [showFormPassword, setShowFormPassword] = useState(false);
 
   // Ban
   const [showBanModal, setShowBanModal] = useState(false);
@@ -632,7 +642,20 @@ export default function AdminUsersPage() {
                 <div><label className={labelCls}>Nom</label><input required value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} className={inputCls} /></div>
               </div>
               <div><label className={labelCls}>Email</label><input type="email" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} className={inputCls} /></div>
-              <div><label className={labelCls}>Mot de passe *</label><input type="text" required value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} className={inputCls + " font-mono"} /></div>
+              <div><label className={labelCls}>Mot de passe *</label>
+                <div className="relative">
+                  <input
+                    type={showFormPassword ? "text" : "password"}
+                    required
+                    value={form.password}
+                    onChange={e => setForm({ ...form, password: e.target.value })}
+                    className={inputCls + " font-mono pr-10"}
+                  />
+                  <button type="button" onClick={() => setShowFormPassword(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                    {showFormPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-4">
                 <div><label className={labelCls}>Rôle</label>
                   <select value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} className={inputCls}>

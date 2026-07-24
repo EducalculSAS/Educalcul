@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -154,9 +155,43 @@ export async function POST(
           score = 0;
         }
       }
-    } else {
-      // Manual Logic (Keep existing)
-      if (targetBlock) {
+    } else if (targetBlock) {
+      // Correction manuelle serveur — réplique exactement la logique déjà
+      // affichée côté client, mais évaluée ici à partir des données de la
+      // base (jamais envoyées au navigateur avant la soumission).
+      const type = targetBlock.type;
+      if (type === "multiple_choice" || type === "qcm") {
+        const correct = Array.isArray(targetBlock.correctAnswer)
+          ? targetBlock.correctAnswer
+          : [targetBlock.correctAnswer];
+        const selected = Array.isArray(answer) ? answer : [answer];
+        isCorrect =
+          correct.length === selected.length &&
+          correct.every((a: any) => selected.includes(a));
+      } else if (type === "single_choice" || type === "true_false") {
+        isCorrect = answer === targetBlock.correctAnswer;
+      } else if (type === "fill_in_the_blank") {
+        const given: string[] = Array.isArray(answer) ? answer : [];
+        const expected: string[] = targetBlock.blanks || [];
+        isCorrect =
+          expected.length > 0 &&
+          expected.every((exp: string, i: number) => {
+            const alts = exp.split("|").map((s) => s.trim().toLowerCase());
+            return alts.includes(String(given[i] ?? "").trim().toLowerCase());
+          });
+      } else if (type === "matching") {
+        const given: string[] = Array.isArray(answer) ? answer : [];
+        const pairs = targetBlock.pairs || [];
+        isCorrect =
+          pairs.length > 0 && pairs.every((p: any, i: number) => given[i] === p.right);
+      } else if (type === "ordering") {
+        const given: string[] = Array.isArray(answer) ? answer : [];
+        const expected: string[] = targetBlock.items || [];
+        isCorrect =
+          expected.length > 0 &&
+          given.length === expected.length &&
+          expected.every((item: string, i: number) => given[i] === item);
+      } else {
         const expected = targetBlock.correctAnswer;
         if (Array.isArray(expected)) {
           const ansArr = Array.isArray(answer) ? answer : [answer];
@@ -166,21 +201,32 @@ export async function POST(
         } else {
           isCorrect = answer === expected;
         }
-        score = isCorrect ? maxPoints : 0;
-        feedback = isCorrect ? "Correct !" : "Incorrect.";
-      } else {
-        const expected = exercise.correct_answer?.trim().toLowerCase();
-        const actual =
-          typeof answer === "string" ? answer.trim().toLowerCase() : "";
-
-        if (expected && actual === expected) {
-          score = exercise.points || 10;
-          isCorrect = true;
-          feedback = "Correct !";
-        } else {
-          feedback = "Incorrect. Essayez encore.";
-        }
       }
+      score = isCorrect ? maxPoints : 0;
+      feedback = isCorrect ? "Correct !" : "Incorrect.";
+    } else {
+      const expected = exercise.correct_answer?.trim().toLowerCase();
+      const actual =
+        typeof answer === "string" ? answer.trim().toLowerCase() : "";
+
+      if (expected && actual === expected) {
+        score = exercise.points || 10;
+        isCorrect = true;
+        feedback = "Correct !";
+      } else {
+        feedback = "Incorrect. Essayez encore.";
+      }
+    }
+
+    // Révélation sûre à renvoyer APRÈS correction, pour l'écran de correction —
+    // jamais envoyée avant que l'élève ait soumis sa réponse.
+    let reveal: any = undefined;
+    if (targetBlock) {
+      const type = targetBlock.type;
+      if (type === "matching") reveal = { pairs: targetBlock.pairs };
+      else if (type === "ordering") reveal = { items: targetBlock.items };
+      else if (type === "fill_in_the_blank") reveal = { blanks: targetBlock.blanks };
+      else reveal = { correctAnswer: targetBlock.correctAnswer };
     }
 
     // 3. Trigger badge check (fire and forget) — la persistance de la tentative
@@ -206,9 +252,10 @@ export async function POST(
       max_score: maxPoints,
       is_correct: isCorrect,
       feedback,
+      reveal,
     });
   } catch (error: any) {
     console.error("Error grading exercise:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

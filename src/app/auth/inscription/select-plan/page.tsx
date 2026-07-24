@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getPendingSignupPassword, clearPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { AlertCircle, Loader2, Gift, CheckCircle } from "lucide-react";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
@@ -33,7 +34,11 @@ export default function SelectPlan() {
     const stored = sessionStorage.getItem("educalcul_signup_data");
     const signupMode = sessionStorage.getItem("educalcul_signup_mode");
 
-    if (!stored && signupMode !== "google") {
+    // Le mot de passe n'est jamais persisté en sessionStorage (voir
+    // pendingSignupPassword.ts) : s'il a été perdu (rechargement de page,
+    // navigation directe), on renvoie l'utilisateur ressaisir ses infos
+    // plutôt que de tenter une création de compte sans mot de passe.
+    if ((!stored || (signupMode === "email" && !getPendingSignupPassword())) && signupMode !== "google") {
       router.push("/auth/inscription");
       return;
     }
@@ -106,7 +111,7 @@ export default function SelectPlan() {
           email,
           firstName: updatedData.firstName,
           lastName: updatedData.lastName,
-          password: updatedData.password,
+          password: getPendingSignupPassword(),
           referralCode: rc,
           ...body,
         }),
@@ -114,6 +119,9 @@ export default function SelectPlan() {
 
       const data = await res.json();
       if (data.url) {
+        // Le compte est créé côté serveur à ce stade : le mot de passe n'a
+        // plus besoin de rester en mémoire.
+        clearPendingSignupPassword();
         if (data.authId) sessionStorage.setItem("educalcul_pending_auth_id", data.authId);
         window.location.href = data.url;
       } else {

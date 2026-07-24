@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAI } from "@/lib/llm";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
@@ -108,6 +109,6 @@ Sois précis, bienveillant et basé uniquement sur les données réelles. Si les
       stats: { totalEx, correctEx, successRate, avgQuizScore, totalQuiz: quizzes?.length || 0, totalCourses: courseProgress?.length || 0 },
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }

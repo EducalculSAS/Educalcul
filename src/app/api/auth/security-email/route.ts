@@ -1,4 +1,5 @@
 ﻿import { NextRequest, NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import {
@@ -54,7 +55,7 @@ export async function POST(req: NextRequest) {
     await sendEmail({ toEmail, toName: firstName, ...tmpl });
     return NextResponse.json({ success: true });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }
 

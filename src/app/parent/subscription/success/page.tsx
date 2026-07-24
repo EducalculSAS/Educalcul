@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { supabase } from '@/lib/supabaseClient';
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -19,10 +20,15 @@ function SuccessContent() {
 
     const verifySession = async () => {
       try {
+        // Un tout nouvel inscrit n'a pas encore de session à ce stade (le
+        // compte a été créé côté serveur pendant le checkout) : on envoie le
+        // token si on en a un, sans en dépendre.
+        const { data: { session: authSession } } = await supabase.auth.getSession();
         const response = await fetch('/api/verify-checkout-session', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            ...(authSession ? { Authorization: `Bearer ${authSession.access_token}` } : {}),
           },
           body: JSON.stringify({ sessionId }),
         });

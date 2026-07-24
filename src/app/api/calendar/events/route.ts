@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -83,7 +84,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ events: data || [], globalEvents: globalEvents || [], schoolZone: ownerZone });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
@@ -132,6 +133,6 @@ export async function POST(req: Request) {
     if (error) throw error;
     return NextResponse.json({ event: data });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

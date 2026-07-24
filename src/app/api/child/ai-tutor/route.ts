@@ -6,6 +6,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { validateString } from "@/lib/validation";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 interface Message {
   role: "user" | "assistant";
@@ -109,9 +110,8 @@ export async function POST(req: Request) {
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
       console.error("❌ AI Tutor Error:", message);
-      // Retourner l'erreur réelle pour diagnostic
       return NextResponse.json(
-        { message: `[Erreur IA] ${message || "Inconnu"}` },
+        { message: `[Erreur IA] ${sanitizeErrorMessage(message)}` },
         { status: 200 }
       );
     }
@@ -119,7 +119,7 @@ export async function POST(req: Request) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("❌ ai-tutor error:", message);
     return NextResponse.json(
-      { message: `[Erreur] ${message || "Inconnu"}` },
+      { message: `[Erreur] ${sanitizeErrorMessage(message)}` },
       { status: 200 }
     );
   }

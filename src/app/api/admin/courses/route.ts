@@ -1,5 +1,7 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { NextResponse } from "next/server";
+import { requireRole } from "@/lib/apiAuth";
 
 export async function GET(request: Request) {
   try {
@@ -30,18 +32,22 @@ export async function GET(request: Request) {
     const { data, error } = await query;
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json(data);
   } catch (error: any) {
     console.error("Error fetching courses:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await request.json();
     const {
       title,
@@ -73,18 +79,22 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true, course: data });
   } catch (error: any) {
     console.error("Error creating course:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function PUT(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await request.json();
     const {
       id,
@@ -130,18 +140,22 @@ export async function PUT(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true, course: data });
   } catch (error: any) {
     console.error("Error updating course:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function DELETE(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 
@@ -155,11 +169,11 @@ export async function DELETE(request: Request) {
     const { error } = await supabaseAdmin.from("courses").delete().eq("id", id);
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

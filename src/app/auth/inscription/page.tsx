@@ -5,6 +5,8 @@ import PasswordStrength from "@/components/PasswordStrength";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getSiteUrl } from "@/lib/siteUrl";
+import { setPendingSignupPassword } from "@/lib/pendingSignupPassword";
+import { validatePassword } from "@/lib/validation";
 import {
   Mail, Lock, User, AlertCircle, CheckCircle,
   Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff,
@@ -115,8 +117,8 @@ export default function Inscription() {
     }
     if (s === 1) {
       if (!email.trim())          return "Veuillez entrer votre email.";
-      if (!password)              return "Veuillez choisir un mot de passe.";
-      if (password.length < 6)   return "Le mot de passe doit contenir au moins 6 caractères.";
+      const pwError = validatePassword(password);
+      if (pwError) return pwError;
       if (password !== confirmPassword) return "Les mots de passe ne correspondent pas.";
     }
     return null;
@@ -175,9 +177,13 @@ export default function Inscription() {
       const checkData = await checkRes.json();
       if (!checkData.valid) { setError(checkData.error || "Email déjà utilisé."); setLoading(false); return; }
 
+      // Le mot de passe ne va jamais dans sessionStorage (lisible par toute
+      // XSS pour la durée de l'onglet) : il reste en mémoire JS le temps de
+      // la navigation vers select-plan, qui l'utilise pour créer le compte.
+      setPendingSignupPassword(password);
       sessionStorage.setItem("educalcul_signup_data", JSON.stringify({
         role: ROLE, firstName: firstName.trim(), lastName: lastName.trim(),
-        email: email.trim(), password,
+        email: email.trim(),
         referralCode: referralCode.trim() || null,
         referralStatus, cguAcceptedAt: new Date().toISOString(),
       }));

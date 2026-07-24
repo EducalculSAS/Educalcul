@@ -13,6 +13,7 @@ import {
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { AVATARS, SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
+import { validatePassword } from "@/lib/validation";
 
 export default function AddChildPage() {
   const router = useRouter();
@@ -68,8 +69,9 @@ export default function AddChildPage() {
       return;
     }
 
-    if (formData.password.length < 6) {
-      setError("Le mot de passe doit contenir au moins 6 caractères.");
+    const pwError = validatePassword(formData.password);
+    if (pwError) {
+      setError(pwError);
       setLoading(false);
       return;
     }

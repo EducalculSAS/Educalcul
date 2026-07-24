@@ -1,12 +1,18 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { notify } from "@/lib/notify";
 import { buildEmailHtml } from "@/lib/emailTemplates";
+import { requireRole } from "@/lib/apiAuth";
 
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
     const body = await request.json();
     const { message, user_email, user_name, subject, is_public } = body;
@@ -27,7 +33,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         replied_at: new Date().toISOString()
       });
 
-    if (replyError) return NextResponse.json({ error: replyError.message }, { status: 500 });
+    if (replyError) return NextResponse.json({ error: sanitizeErrorMessage(replyError.message) }, { status: 500 });
 
     // 2. Update updated_at only (status change is manual)
     const { error: updateError } = await supabaseAdmin
@@ -35,7 +41,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       .update({ updated_at: new Date().toISOString() })
       .eq('id', id);
 
-    if (updateError) return NextResponse.json({ error: updateError.message }, { status: 500 });
+    if (updateError) return NextResponse.json({ error: sanitizeErrorMessage(updateError.message) }, { status: 500 });
 
     // 3. Envoyer email UNIQUEMENT pour les tickets publics (contact form)
     if (is_public && user_email) {
@@ -71,6 +77,6 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

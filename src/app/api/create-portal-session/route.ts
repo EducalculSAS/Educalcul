@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser } from '@/lib/apiAuth';
 import { getSiteUrl } from '@/lib/siteUrl';
+import { sanitizeErrorMessage } from '@/lib/safeError';
 
 export async function POST(req: Request) {
   try {
@@ -50,7 +51,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('Stripe Portal error:', error);
     return NextResponse.json(
-      { error: error.message || 'Internal Server Error' },
+      { error: sanitizeErrorMessage(error?.message || String(error)) },
       { status: 500 }
     );
   }

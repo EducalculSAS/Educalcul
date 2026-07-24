@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 
@@ -64,7 +65,7 @@ export async function GET(req: Request) {
       courses: courses || [],
     });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
@@ -101,6 +102,46 @@ export async function POST(req: Request) {
 
     const internalId = userData.id;
 
+    // Défense en profondeur : la note détaillée par bloc est déjà corrigée
+    // côté serveur (voir /api/child/exercises|quizzes/[id]/grade), mais rien
+    // n'empêche un client d'appeler cette route directement avec un score
+    // inventé. On borne le score au maximum réel de l'exercice/quiz et on
+    // recalcule le pourcentage / la réussite à partir de ce score borné —
+    // le client ne peut donc jamais déclarer plus que 100%, ni "réussi" avec
+    // un score qui n'atteint pas le seuil.
+    let safeScore = Math.max(0, Number(score) || 0);
+    let safeScorePercent: number | null = null;
+    let safePassed: boolean | null = null;
+
+    if ((type === "exercise" || type === "quiz") && status === "completed") {
+      const table = type === "exercise" ? "exercises" : "quizzes";
+      const { data: item } = await supabaseAdmin
+        .from(table)
+        .select("content_json, min_score_percent")
+        .eq("id", itemId)
+        .maybeSingle();
+
+      let maxPoints = 0;
+      if (type === "exercise" && Array.isArray(item?.content_json)) {
+        item.content_json.forEach((p: any) =>
+          (p.blocks || []).forEach((b: any) => (maxPoints += b.points || 0))
+        );
+      } else if (type === "quiz" && Array.isArray(item?.content_json)) {
+        item.content_json.forEach((q: any) => (maxPoints += q.points || 1));
+      }
+
+      if (maxPoints > 0) {
+        safeScore = Math.min(safeScore, maxPoints);
+        safeScorePercent = Math.round((safeScore / maxPoints) * 100);
+      } else {
+        // Pas de barème connu (contenu vide/legacy) : on ne peut pas borner
+        // le score, on se limite à borner le pourcentage déclaré.
+        safeScorePercent = Math.min(100, Math.max(0, Math.round(Number(scorePercent) || 0)));
+      }
+      const threshold = item?.min_score_percent || 0;
+      safePassed = threshold > 0 ? safeScorePercent >= threshold : true;
+    }
+
     let result;
     if (type === "exercise") {
       let attemptsHistory: any[] = [];
@@ -112,21 +153,21 @@ export async function POST(req: Request) {
           .eq("exercise_id", itemId)
           .maybeSingle();
         attemptsHistory = [...(existing?.attempts_history || []), {
-          score: score || 0,
+          score: safeScore,
           total_points: totalPoints || 0,
-          score_percent: scorePercent ?? null,
-          passed: passed ?? null,
+          score_percent: safeScorePercent,
+          passed: safePassed,
           completed_at: new Date().toISOString(),
         }];
       }
       result = await supabaseAdmin.from("user_exercise_attempts").upsert({
         user_id: internalId,
         exercise_id: itemId,
-        score: score || 0,
+        score: safeScore,
         total_points: totalPoints || 0,
         status: status || 'in_progress',
-        score_percent: scorePercent ?? null,
-        passed: passed ?? null,
+        score_percent: safeScorePercent,
+        passed: safePassed,
         completed_at: new Date().toISOString(),
         ...(status === "completed" ? { attempts_history: attemptsHistory } : {}),
       }, { onConflict: 'user_id, exercise_id' });
@@ -140,22 +181,22 @@ export async function POST(req: Request) {
           .eq("quiz_id", itemId)
           .maybeSingle();
         attemptsHistory = [...(existing?.attempts_history || []), {
-          score: score || 0,
+          score: safeScore,
           total_points: totalPoints || 0,
-          score_percent: scorePercent ?? null,
-          passed: passed ?? null,
+          score_percent: safeScorePercent,
+          passed: safePassed,
           completed_at: new Date().toISOString(),
         }];
       }
       result = await supabaseAdmin.from("user_quiz_attempts").upsert({
         user_id: internalId,
         quiz_id: itemId,
-        score: score || 0,
+        score: safeScore,
         total_points: totalPoints || 0,
         time_spent_seconds: timeSpent || 0,
         status: status || 'in_progress',
-        score_percent: scorePercent ?? null,
-        passed: passed ?? null,
+        score_percent: safeScorePercent,
+        passed: safePassed,
         completed_at: new Date().toISOString(),
         ...(status === "completed" ? { attempts_history: attemptsHistory } : {}),
       }, { onConflict: 'user_id, quiz_id' });
@@ -182,6 +223,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error("Error saving activity:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

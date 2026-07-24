@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 
@@ -230,6 +231,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ awarded: toAward.length, newCosmetics, progress: cosmeticProgress, tiers });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }

@@ -7,6 +7,10 @@ import { requireRole } from "@/lib/apiAuth";
 
 export async function GET(req: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     

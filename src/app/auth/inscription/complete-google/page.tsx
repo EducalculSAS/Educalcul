@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { User, Mail, Lock, AlertCircle, Loader2, CheckCircle } from "lucide-react";
 import PasswordStrength from "@/components/PasswordStrength";
+import { validatePassword } from "@/lib/validation";
 
 const ROLE = "parent" as const;
 
@@ -63,8 +64,8 @@ export default function CompleteGoogleProfile() {
     if (!firstName.trim() || !lastName.trim()) {
       setError("Prénom et nom sont obligatoires."); return;
     }
-    if (!password) { setError("Le mot de passe est obligatoire."); return; }
-    if (password.length < 6) { setError("Le mot de passe doit contenir au moins 6 caractères."); return; }
+    const pwError = validatePassword(password);
+    if (pwError) { setError(pwError); return; }
     if (password !== confirmPassword) { setError("Les mots de passe ne correspondent pas."); return; }
 
     setSaving(true);
@@ -92,12 +93,14 @@ export default function CompleteGoogleProfile() {
       }).catch(console.error);
     }
 
+    // Le mot de passe a déjà été appliqué au compte ci-dessus (updateUser) :
+    // inutile — et risqué — de le repersister ici, create-checkout-session
+    // ne s'en sert jamais pour un compte déjà authentifié via Google.
     const signupData = {
       role: ROLE,
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       email,
-      password,
       referralCode: null,
       referralStatus: "idle",
     };
@@ -187,7 +190,7 @@ export default function CompleteGoogleProfile() {
                   type="password" value={password} onChange={e => setPassword(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none transition-all"
                   style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)", color: "var(--greek-blue)" }}
-                  placeholder="6 caractères minimum" required
+                  placeholder="10 caractères minimum" required
                   onFocus={e => (e.currentTarget.style.borderColor = "var(--greek-blue)")}
                   onBlur={e => (e.currentTarget.style.borderColor = "rgba(197,161,72,0.25)")}
                 />

@@ -18,6 +18,7 @@ import {
   Phone,
 } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
+import { validatePassword } from "@/lib/validation";
 import Image from "next/image";
 import { avatarUrl } from "@/lib/avatarUrl";
 
@@ -315,11 +316,9 @@ export default function ParentProfilePage() {
     setSaving(true);
     setMessage(null);
 
-    if (passwordData.newPassword.length < 6) {
-      setMessage({
-        type: "error",
-        text: "Le mot de passe doit contenir au moins 6 caractères.",
-      });
+    const pwError = validatePassword(passwordData.newPassword);
+    if (pwError) {
+      setMessage({ type: "error", text: pwError });
       setSaving(false);
       return;
     }

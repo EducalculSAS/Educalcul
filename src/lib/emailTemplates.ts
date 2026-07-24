@@ -1,3 +1,5 @@
+import { escapeHtml } from "@/lib/validation";
+
 // URL de base — utilisée pour les liens et le logo dans les emails envoyés
 export const EMAIL_BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://educalcul.com";
 
@@ -196,7 +198,7 @@ export function passwordChangedEmail(firstName: string) {
       title: "Mot de passe modifié",
       preheader: "Votre mot de passe a été mis à jour",
       body: `
-        <p style="margin:0 0 16px;">Bonjour <strong>${firstName}</strong>,</p>
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
         <p style="margin:0 0 16px;">Votre mot de passe Educalcul vient d'être modifié avec succès.</p>
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:20px 0;">
           <tr>
@@ -221,7 +223,7 @@ export function emailChangedEmail(firstName: string, newEmail: string) {
       title: "Adresse email modifiée",
       preheader: "Votre adresse email a été mise à jour",
       body: `
-        <p style="margin:0 0 16px;">Bonjour <strong>${firstName}</strong>,</p>
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
         <p style="margin:0 0 20px;">Votre adresse email Educalcul a été modifiée avec succès.</p>
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 0 20px;">
           <tr>
@@ -251,7 +253,7 @@ export function signInMethodLinkedEmail(firstName: string, method: string) {
       title: "Méthode de connexion ajoutée",
       preheader: `${method} lié à votre compte`,
       body: `
-        <p style="margin:0 0 16px;">Bonjour <strong>${firstName}</strong>,</p>
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
         <p style="margin:0 0 20px;">Une nouvelle méthode de connexion a été liée à votre compte.</p>
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 0 20px;">
           <tr>
@@ -282,7 +284,7 @@ export function signInMethodRemovedEmail(firstName: string, method: string) {
       title: "Méthode de connexion retirée",
       preheader: `${method} retiré de votre compte`,
       body: `
-        <p style="margin:0 0 16px;">Bonjour <strong>${firstName}</strong>,</p>
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
         <p style="margin:0 0 20px;"><strong>${method}</strong> a été retiré de votre compte Educalcul.</p>
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
           <tr>
@@ -305,7 +307,7 @@ export function welcomeEmail(firstName: string, confirmUrl: string) {
       title: "Bienvenue sur Educalcul",
       preheader: "Confirmez votre compte pour commencer",
       body: `
-        <p style="margin:0 0 16px;">Bonjour <strong>${firstName}</strong>,</p>
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
         <p style="margin:0 0 16px;">Votre inscription et votre paiement ont bien été enregistrés.</p>
         <p style="margin:0 0 24px;">Il ne reste qu'une étape — confirmez votre adresse email pour accéder à votre espace et commencer à suivre la progression de vos enfants.</p>
         <p style="margin:0;font-size:12px;color:#9ca3af;">Ce lien est valable <strong>24 heures</strong>.</p>

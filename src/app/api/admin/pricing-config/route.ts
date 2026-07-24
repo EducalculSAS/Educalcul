@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { normalizePricingConfig } from "@/lib/pricingConfig";
@@ -37,6 +38,6 @@ export async function PUT(req: Request) {
     .from("app_settings")
     .upsert({ key: "pricing_config", value: clean, updated_at: new Date().toISOString() }, { onConflict: "key" });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return NextResponse.json(clean);
 }

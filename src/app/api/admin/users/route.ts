@@ -2,11 +2,10 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-import { validateEmail, validateName, isValidRole, isValidUUID, validateString } from "@/lib/validation";
+import { validateEmail, validateName, isValidRole, isValidUUID, validateString, validatePassword } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function GET(request: Request) {
-    console.log("[route] GET /api/admin/users appelé");  // ← ajoute ça
   try {
     // ✓ SECURITY: Require admin authentication
     const admin = await requireRole(request, ["admin"]);
@@ -67,8 +66,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    if (!password || password.length < 8) {
-      return NextResponse.json({ error: "Password must be at least 8 characters" }, { status: 400 });
+    const pwError = validatePassword(password);
+    if (pwError) {
+      return NextResponse.json({ error: pwError }, { status: 400 });
     }
 
     const validatedFirstName = validateName(firstName);
@@ -206,7 +206,13 @@ export async function PUT(request: Request) {
       },
     };
     if (email) authUpdates.email = email;
-    if (password && password.length >= 8) authUpdates.password = password;
+    if (password) {
+      const pwError = validatePassword(password);
+      if (pwError) {
+        return NextResponse.json({ error: pwError }, { status: 400 });
+      }
+      authUpdates.password = password;
+    }
 
     const { error: authError } = await supabaseAdmin.auth.admin.updateUserById(
       auth_id,

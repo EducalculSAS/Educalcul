@@ -119,16 +119,26 @@ function exportCSV(data: any) {
   URL.revokeObjectURL(url);
 }
 
+// Échappe toute valeur avant interpolation HTML : ces données (nom, ville,
+// titre de sujet forum, contenu de notification...) sont saisies par des
+// utilisateurs non-admin et sont injectées via document.write dans une
+// fenêtre de même origine que l'admin — sans échappement, un utilisateur
+// pourrait exécuter du script dans le contexte admin (XSS stocké).
+function esc(v: any): string {
+  if (v === null || v === undefined) return "";
+  return String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
+}
+
 function exportPDF(data: any) {
   const { user, stats, subscription, children, badges, notifications, forum_posts, forum_comments, login_history } = data;
   const history: any[] = login_history ?? [];
-  const d = (v: any) => v ? new Date(v).toLocaleString("fr-FR") : "—";
+  const d = (v: any) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "—";
 
   const section = (title: string, rows: [string, string][]) => `
     <div class="section">
-      <h2>${title}</h2>
+      <h2>${esc(title)}</h2>
       <table>
-        ${rows.map(([k, v]) => `<tr><td class="label">${k}</td><td class="value">${v || "—"}</td></tr>`).join("")}
+        ${rows.map(([k, v]) => `<tr><td class="label">${esc(k)}</td><td class="value">${esc(v) || "—"}</td></tr>`).join("")}
       </table>
     </div>`;
 
@@ -136,7 +146,7 @@ function exportPDF(data: any) {
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
-  <title>Profil — ${user.first_name} ${user.last_name}</title>
+  <title>Profil — ${esc(user.first_name)} ${esc(user.last_name)}</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -204,12 +214,12 @@ function exportPDF(data: any) {
     <div class="logo-wrap"><img src="/logo.png" alt="Educalcul" /></div>
     <div class="header-info">
       <div class="brand">EDUCALCUL — Fiche Utilisateur</div>
-      <div class="header-title">${user.first_name ?? ""} ${user.last_name ?? ""}</div>
-      <div class="header-sub">${user.email ?? ""}</div>
+      <div class="header-title">${esc(user.first_name)} ${esc(user.last_name)}</div>
+      <div class="header-sub">${esc(user.email)}</div>
       <div class="header-meta">
-        <span class="badge badge-${user.role}">${user.role === "parent" ? "Parent" : user.role === "child" ? "Élève" : "Admin"}</span>
+        <span class="badge badge-${user.role === "parent" ? "parent" : user.role === "child" ? "child" : "admin"}">${user.role === "parent" ? "Parent" : user.role === "child" ? "Élève" : "Admin"}</span>
         <span class="badge badge-${user.status === "active" ? "active" : "inactive"}">${user.status === "active" ? "Actif" : "Inactif"}</span>
-        ${user.grade_level ? `<span class="badge badge-active">${user.grade_level}</span>` : ""}
+        ${user.grade_level ? `<span class="badge badge-active">${esc(user.grade_level)}</span>` : ""}
       </div>
     </div>
   </div>
@@ -262,12 +272,12 @@ function exportPDF(data: any) {
         <tr style="background:${i % 2 === 0 ? "#fff" : "#f8f6f0"}">
           <td style="padding:5px 8px;color:#aaa">${history.length - i}</td>
           <td style="padding:5px 8px">${d(h.logged_at)}</td>
-          <td style="padding:5px 8px;font-family:monospace;font-size:9px">${h.ip || "—"}</td>
-          <td style="padding:5px 8px">${h.city || "—"}</td>
-          <td style="padding:5px 8px">${h.country || "—"}</td>
-          <td style="padding:5px 8px">${h.device_type || "—"}</td>
+          <td style="padding:5px 8px;font-family:monospace;font-size:9px">${esc(h.ip) || "—"}</td>
+          <td style="padding:5px 8px">${esc(h.city) || "—"}</td>
+          <td style="padding:5px 8px">${esc(h.country) || "—"}</td>
+          <td style="padding:5px 8px">${esc(h.device_type) || "—"}</td>
           <td style="padding:5px 8px;font-size:9px">${h.latitude ? `${h.latitude.toFixed(3)}, ${h.longitude?.toFixed(3)}` : "—"}</td>
-          <td style="padding:5px 8px;font-size:9px">${h.logged_out_at ? `${d(h.logged_out_at)}${h.logout_city ? ` (${h.logout_city})` : ""}` : "—"}</td>
+          <td style="padding:5px 8px;font-size:9px">${h.logged_out_at ? `${d(h.logged_out_at)}${h.logout_city ? ` (${esc(h.logout_city)})` : ""}` : "—"}</td>
         </tr>`).join("")}
       </tbody>
     </table>
@@ -289,7 +299,7 @@ function exportPDF(data: any) {
   <div class="section">
     <h2>Badges & Trophées</h2>
     <div class="badges">
-      ${badges.map((b: any) => `<span class="badge-item">${b.badge?.name ?? ""}</span>`).join("")}
+      ${badges.map((b: any) => `<span class="badge-item">${esc(b.badge?.name)}</span>`).join("")}
     </div>
   </div>` : ""}
 
@@ -301,7 +311,7 @@ function exportPDF(data: any) {
     <table>
       <tr><td class="label">Sujets créés</td><td class="value">${forum_posts?.length ?? 0}</td></tr>
       <tr><td class="label">Commentaires</td><td class="value">${forum_comments?.length ?? 0}</td></tr>
-      ${forum_posts?.slice(0, 3).map((p: any) => `<tr><td class="label" style="opacity:.6;padding-left:8px">• ${new Date(p.created_at).toLocaleDateString("fr-FR")}</td><td class="value">${p.title}</td></tr>`).join("") ?? ""}
+      ${forum_posts?.slice(0, 3).map((p: any) => `<tr><td class="label" style="opacity:.6;padding-left:8px">• ${esc(new Date(p.created_at).toLocaleDateString("fr-FR"))}</td><td class="value">${esc(p.title)}</td></tr>`).join("") ?? ""}
     </table>
   </div>` : ""}
 
@@ -309,9 +319,9 @@ function exportPDF(data: any) {
   <div class="section">
     <h2>Historique des actions admin</h2>
     ${notifications.slice(0, 10).map((n: any) => `
-    <div class="notif notif-${n.type || "message"}">
-      <span class="notif-date">${new Date(n.created_at).toLocaleDateString("fr-FR")}</span>
-      <strong>${n.title}</strong><br/><span style="opacity:.8">${n.content}</span>
+    <div class="notif notif-${["ban", "warning", "message", "info"].includes(n.type) ? n.type : "message"}">
+      <span class="notif-date">${esc(new Date(n.created_at).toLocaleDateString("fr-FR"))}</span>
+      <strong>${esc(n.title)}</strong><br/><span style="opacity:.8">${esc(n.content)}</span>
     </div>`).join("")}
   </div>` : ""}
 

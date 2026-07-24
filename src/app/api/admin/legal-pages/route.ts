@@ -1,16 +1,26 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
-export async function GET() {
+export async function GET(req: Request) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { data, error } = await supabaseAdmin
     .from("legal_pages")
     .select("*")
     .order("slug");
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return NextResponse.json(data || []);
 }
 
 export async function PUT(req: Request) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const body = await req.json();
   const { slug, title, subtitle, sections } = body;
 
@@ -23,6 +33,6 @@ export async function PUT(req: Request) {
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return NextResponse.json(data);
 }

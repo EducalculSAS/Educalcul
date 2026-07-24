@@ -1,6 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 export async function POST(request: Request) {
   try {
@@ -105,7 +106,7 @@ export async function POST(request: Request) {
   } catch (error: any) {
     console.error("Error in update-child-auth:", error);
     return NextResponse.json(
-      { error: error.message || "Internal server error" },
+      { error: sanitizeErrorMessage(error?.message || "Internal server error") },
       { status: 500 }
     );
   }

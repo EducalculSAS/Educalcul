@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { Lock, CheckCircle, AlertCircle } from "lucide-react";
+import { validatePassword } from "@/lib/validation";
 
 export default function UpdatePassword() {
   const [password, setPassword] = useState("");
@@ -19,8 +20,12 @@ export default function UpdatePassword() {
     // (#access_token…) de façon ASYNCHRONE. On écoute l'événement d'auth et on
     // ne redirige vers la connexion qu'après un délai si AUCUNE session n'est
     // détectée — sinon on redirigeait trop tôt (course de chargement).
-    const { data: sub } = supabase.auth.onAuthStateChange(() => {});
+    let sessionSeen = false;
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) sessionSeen = true;
+    });
     const timeout = setTimeout(async () => {
+      if (sessionSeen) return;
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) router.push("/auth/connexion");
     }, 2500);
@@ -39,9 +44,10 @@ export default function UpdatePassword() {
       return;
     }
 
-    if (password.length < 6) {
+    const pwError = validatePassword(password);
+    if (pwError) {
       setStatus("error");
-      setMessage("Le mot de passe doit contenir au moins 6 caractères.");
+      setMessage(pwError);
       return;
     }
 

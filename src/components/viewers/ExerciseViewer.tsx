@@ -73,6 +73,7 @@ interface ExerciseViewerProps {
     submittedBlocks?: string[];
     results?: Record<string, boolean>;
     aiFeedback?: Record<string, string>;
+    revealed?: Record<string, any>;
     score?: number;
     blockModes?: Record<string, "text" | "draw">;
   } | null;
@@ -93,12 +94,19 @@ export default function ExerciseViewer({
 
   // Affichage mélangé (stable) des blocs "association" (choix de droite) et
   // "mise en ordre" (éléments à réordonner), calculé une fois par exercice.
+  // Les valeurs déjà mélangées (matchingOptions/shuffledItems) viennent de
+  // l'API quand la réponse correcte a été retirée (élève, avant soumission).
+  // pairs/items complets ne sont présents qu'en contexte admin (builder/aperçu).
   const shuffledRightOptions = useMemo(() => {
     const map: Record<string, string[]> = {};
     pages.forEach((p) =>
       p.blocks.forEach((b) => {
-        if (b.type === "matching" && b.pairs) {
-          map[b.id] = seededShuffle(b.pairs.map((pr) => pr.right), b.id);
+        if (b.type === "matching") {
+          if (b.pairs && b.pairs.every((pr) => pr.right !== undefined)) {
+            map[b.id] = seededShuffle(b.pairs.map((pr) => pr.right), b.id);
+          } else if (b.matchingOptions) {
+            map[b.id] = b.matchingOptions;
+          }
         }
       })
     );
@@ -110,8 +118,12 @@ export default function ExerciseViewer({
     const map: Record<string, string[]> = {};
     pages.forEach((p) =>
       p.blocks.forEach((b) => {
-        if (b.type === "ordering" && b.items) {
-          map[b.id] = seededShuffle(b.items, b.id);
+        if (b.type === "ordering") {
+          if (b.items) {
+            map[b.id] = seededShuffle(b.items, b.id);
+          } else if (b.shuffledItems) {
+            map[b.id] = b.shuffledItems;
+          }
         }
       })
     );
@@ -129,6 +141,7 @@ export default function ExerciseViewer({
     setSubmittedBlocks(new Set());
     setResults({});
     setAiFeedback({});
+    setRevealed({});
     setScore(0);
     setBlockModes({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -142,11 +155,6 @@ export default function ExerciseViewer({
       const saved = localStorage.getItem(`exercise-${exercise.id}-page`);
       const pageCount = (exercise.content_json?.length || 0);
       const index = saved ? Math.min(parseInt(saved, 10), pageCount - 1) : 0;
-      console.log(`[ExerciseViewer] Loading page index for ${exercise.id}:`, {
-        saved,
-        pageCount,
-        loadedIndex: index,
-      });
       return index;
     } catch (e) {
       console.error("Failed to load page index:", e);
@@ -161,12 +169,9 @@ export default function ExerciseViewer({
       if (exercise.id) {
         try {
           localStorage.setItem(`exercise-${exercise.id}-page`, index.toString());
-          console.log(`[ExerciseViewer] Saved page index: exercise=${exercise.id}, page=${index}`);
         } catch (e) {
           console.error("Failed to save page index:", e);
         }
-      } else {
-        console.warn("[ExerciseViewer] No exercise.id available");
       }
       return index;
     });
@@ -177,6 +182,7 @@ export default function ExerciseViewer({
     submittedBlocks: string[];
     results: Record<string, boolean>;
     aiFeedback: Record<string, string>;
+    revealed: Record<string, any>;
     score: number;
     exerciseCompleted: boolean;
     blockModes: Record<string, "text" | "draw">;
@@ -205,6 +211,11 @@ export default function ExerciseViewer({
   const [aiFeedback, setAiFeedback] = useState<Record<string, string>>(
     () => (reviewMode ? initialProgress?.aiFeedback : loadProgress()?.aiFeedback) || {}
   );
+  // Réponse correcte, révélée par le serveur uniquement après soumission de
+  // chaque bloc — jamais présente dans le contenu initial envoyé à l'élève.
+  const [revealed, setRevealed] = useState<Record<string, any>>(
+    () => (reviewMode ? initialProgress?.revealed : loadProgress()?.revealed) || {}
+  );
   const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : loadProgress()?.score) || 0);
   const [exerciseCompleted, setExerciseCompleted] = useState(
     () => (reviewMode ? true : loadProgress()?.exerciseCompleted) || false
@@ -227,6 +238,7 @@ export default function ExerciseViewer({
           submittedBlocks: Array.from(submittedBlocks),
           results,
           aiFeedback,
+          revealed,
           score,
           exerciseCompleted,
           blockModes,
@@ -235,7 +247,7 @@ export default function ExerciseViewer({
     } catch (e) {
       console.error("Failed to save exercise progress:", e);
     }
-  }, [answers, submittedBlocks, results, aiFeedback, score, exerciseCompleted, blockModes, exercise.id]);
+  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, exercise.id]);
 
   // Charge la progression depuis la base de données (survit à une déconnexion / changement d'appareil)
   const userIdRef = useRef<string | null>(null);
@@ -262,6 +274,7 @@ export default function ExerciseViewer({
           setSubmittedBlocks(new Set(p.submittedBlocks || []));
           setResults(p.results || {});
           setAiFeedback(p.aiFeedback || {});
+          setRevealed(p.revealed || {});
           setScore(p.score || 0);
           setExerciseCompleted(p.exerciseCompleted || data?.status === "completed" || false);
           setBlockModes(p.blockModes || {});
@@ -307,6 +320,7 @@ export default function ExerciseViewer({
               submittedBlocks: Array.from(submittedBlocks),
               results,
               aiFeedback,
+              revealed,
               score,
               exerciseCompleted,
               blockModes,
@@ -329,7 +343,7 @@ export default function ExerciseViewer({
     return () => {
       if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
     };
-  }, [answers, submittedBlocks, results, aiFeedback, score, exerciseCompleted, blockModes, exercise.id]);
+  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, exercise.id]);
 
   const currentPage = pages[currentPageIndex];
   const mainScrollRef = useRef<HTMLDivElement>(null);
@@ -418,14 +432,6 @@ export default function ExerciseViewer({
     };
 
     setPageContext(newContext as any);
-
-    console.log("✅ AI Tutor context initialized in ExerciseViewer:", {
-      title: exercise.title,
-      hasQuestion: !!questionText,
-      questionLength: questionText?.length || 0,
-      type: exercise.type,
-      fullContext: newContext,
-    });
   }, [exercise.id, exercise.title, setPageContext]);
 
   // Update AI Tutor context with current student answers
@@ -518,7 +524,9 @@ export default function ExerciseViewer({
     let totalScore = 0;
     const newResults: Record<string, boolean> = {};
     const newAiFeedback: Record<string, string> = {};
+    const newRevealed: Record<string, any> = {};
     const newSubmitted = new Set<string>();
+    const exerciseId = exercise.id || "preview";
 
     for (const page of pages) {
       for (const block of page.blocks) {
@@ -539,69 +547,39 @@ export default function ExerciseViewer({
           continue;
         }
 
-        if (["text_input", "coding"].includes(block.type) || exercise.grading_type === "ai") {
-          try {
-            const exerciseId = exercise.id || "preview";
-            const res = await fetch(`/api/child/exercises/${exerciseId}/grade`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                block_id: block.id,
-                answer: answer,
-                question: block.content,
-                correctAnswer: block.correctAnswer,
-                explanation: block.explanation,
-                level: exercise.level || "6eme", // Passing level for tailored feedback
-                points: block.points,
-              }),
-            });
-            const data = await res.json();
-            isCorrect = data.is_correct;
-            if (data.feedback) {
-              newAiFeedback[block.id] = data.feedback;
-            }
-            if (data.score !== undefined) {
-              points = data.score;
-            }
-          } catch (e) {
-            console.error(e);
-            isCorrect =
-              String(answer).toLowerCase().trim() ===
-              String(block.correctAnswer).toLowerCase().trim();
+        // La correction se fait toujours côté serveur (à partir des données
+        // enregistrées en base) : le client ne connaît jamais la réponse
+        // correcte avant d'avoir soumis la sienne.
+        try {
+          const res = await fetch(`/api/child/exercises/${exerciseId}/grade`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              block_id: block.id,
+              answer: answer,
+              // Uniquement utilisés en mode "preview" (aperçu admin, contenu
+              // pas encore enregistré) — ignorés par le serveur sinon.
+              question: block.content,
+              correctAnswer: block.correctAnswer,
+              explanation: block.explanation,
+              level: exercise.level || "6eme",
+              points: block.points,
+            }),
+          });
+          const data = await res.json();
+          isCorrect = !!data.is_correct;
+          if (data.feedback) {
+            newAiFeedback[block.id] = data.feedback;
           }
-        } else {
-          if (block.type === "multiple_choice" || block.type === "qcm") {
-            const correct = Array.isArray(block.correctAnswer)
-              ? block.correctAnswer
-              : [block.correctAnswer];
-            const selected = Array.isArray(answer) ? answer : [answer];
-            isCorrect =
-              correct.length === selected.length &&
-              correct.every((a: any) => selected.includes(a));
-          } else if (["single_choice", "true_false"].includes(block.type)) {
-            isCorrect = answer === block.correctAnswer;
-          } else if (block.type === "fill_in_the_blank") {
-            const given: string[] = Array.isArray(answer) ? answer : [];
-            const expected = block.blanks || [];
-            isCorrect =
-              expected.length > 0 &&
-              expected.every((exp, i) => {
-                const alts = exp.split("|").map((s) => s.trim().toLowerCase());
-                return alts.includes(String(given[i] ?? "").trim().toLowerCase());
-              });
-          } else if (block.type === "matching") {
-            const given: string[] = Array.isArray(answer) ? answer : [];
-            const pairs = block.pairs || [];
-            isCorrect =
-              pairs.length > 0 && pairs.every((p, i) => given[i] === p.right);
-          } else if (block.type === "ordering") {
-            const given: string[] = Array.isArray(answer) ? answer : [];
-            const expected = block.items || [];
-            isCorrect =
-              expected.length > 0 &&
-              given.length === expected.length &&
-              expected.every((item, i) => given[i] === item);
+          if (data.reveal) {
+            newRevealed[block.id] = data.reveal;
           }
+          if (data.score !== undefined) {
+            points = data.score;
+          }
+        } catch (e) {
+          console.error(e);
+          newAiFeedback[block.id] = "Erreur de correction, réessaie.";
         }
 
         newResults[block.id] = isCorrect;
@@ -614,6 +592,7 @@ export default function ExerciseViewer({
 
     setResults(newResults);
     setAiFeedback(newAiFeedback);
+    setRevealed(newRevealed);
     setSubmittedBlocks(newSubmitted);
     setScore(totalScore);
     setIsValidating(false);
@@ -962,7 +941,7 @@ export default function ExerciseViewer({
                           "border-gray-200 hover:bg-[var(--greek-gold)]/10";
 
                         if (isSubmitted) {
-                          if (option === block.correctAnswer)
+                          if (option === revealed[block.id]?.correctAnswer)
                             btnClass =
                               "bg-green-50 border-green-500 text-green-700";
                           else if (isSelected)
@@ -999,9 +978,12 @@ export default function ExerciseViewer({
                         let btnClass =
                           "border-gray-200 hover:bg-[var(--greek-gold)]/10";
                         if (isSubmitted) {
-                          const correctArr = Array.isArray(block.correctAnswer)
-                            ? block.correctAnswer
-                            : [block.correctAnswer];
+                          const revealedAnswer = revealed[block.id]?.correctAnswer;
+                          const correctArr = Array.isArray(revealedAnswer)
+                            ? revealedAnswer
+                            : revealedAnswer !== undefined
+                            ? [revealedAnswer]
+                            : [];
                           if (correctArr.includes(option))
                             btnClass =
                               "bg-green-50 border-green-500 text-green-700";
@@ -1046,10 +1028,10 @@ export default function ExerciseViewer({
                             blankIdx++;
                             const idx = blankIdx;
                             const val = blankAnswers[idx] || "";
-                            const expected = block.blanks?.[idx];
+                            const expected = revealed[block.id]?.blanks?.[idx];
                             let cls = "border-gray-300 focus:border-[var(--greek-blue)]";
                             if (isSubmitted && expected !== undefined) {
-                              const alts = expected.split("|").map((s) => s.trim().toLowerCase());
+                              const alts = String(expected).split("|").map((s: string) => s.trim().toLowerCase());
                               const ok = alts.includes(String(val).trim().toLowerCase());
                               cls = ok
                                 ? "border-green-500 bg-green-50 text-green-700"
@@ -1088,7 +1070,8 @@ export default function ExerciseViewer({
                         const val = selected[i] || "";
                         let cls = "border-gray-300";
                         if (isSubmitted) {
-                          cls = val === pair.right ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
+                          const correctRight = revealed[block.id]?.pairs?.[i]?.right;
+                          cls = val === correctRight ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
                         }
                         return (
                           <div key={i} className="flex items-center gap-3">
@@ -1123,7 +1106,7 @@ export default function ExerciseViewer({
                             ? answer
                             : shuffledOrderingItems[block.id] || block.items || [];
                         return current.map((item, i) => {
-                          const correctItem = block.items?.[i];
+                          const correctItem = revealed[block.id]?.items?.[i];
                           let cls = "border-gray-200 bg-white";
                           if (isSubmitted) {
                             cls = item === correctItem ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";

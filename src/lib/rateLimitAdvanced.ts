@@ -125,7 +125,14 @@ export const RATE_LIMITS = {
   // authenticated admin via proxy.ts). Not meant to throttle normal usage —
   // just a backstop against a compromised token or a runaway client bug.
   'ai:admin': { maxAttempts: 300, windowMs: 60 * 60 * 1000, name: 'Admin AI generation' },
-  
+
+  // Démo publique (page epsi) - plafond large PAR IP, en complément (pas en
+  // remplacement) du compteur par cookie qui reste la limite principale de
+  // 3 messages. L'IP n'est délibérément pas utilisée comme identifiant
+  // principal (NAT partagé, spoofable, change de réseau) — seulement comme
+  // garde-fou grossier contre un script qui régénère des cookies en boucle.
+  'epsi:demo': { maxAttempts: 30, windowMs: 60 * 60 * 1000, name: 'EPSI demo' },
+
   // File upload
   'upload:file': { maxAttempts: 50, windowMs: 60 * 60 * 1000, name: 'File upload' },
   

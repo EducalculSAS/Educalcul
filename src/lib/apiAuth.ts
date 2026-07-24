@@ -41,11 +41,17 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
 
   const { data: row } = await supabaseAdmin
     .from("users")
-    .select("id, role, parent_id")
+    .select("id, role, parent_id, status, ban_reason")
     .eq("auth_id", data.user.id)
     .maybeSingle();
 
   if (!row) return null;
+
+  // Un compte banni garde un JWT Supabase valide jusqu'à expiration : le
+  // blocage ne peut pas reposer uniquement sur un redirect côté client
+  // (contournable via un appel direct à l'API). On coupe l'accès ici, au
+  // point d'entrée commun à toutes les routes authentifiées.
+  if (row.status === "inactive" || row.ban_reason) return null;
 
   return { authId: data.user.id, id: row.id, role: row.role, parent_id: row.parent_id };
 }

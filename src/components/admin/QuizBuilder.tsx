@@ -20,6 +20,7 @@ import {
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddQuizModal from "./AIAddQuizModal";
 import ContentInsertToolbar from "./ContentInsertToolbar";
+import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 
 export interface Question {
   id: string;
@@ -82,56 +83,25 @@ export default function QuizBuilder({
     });
   };
 
-  // Load KaTeX for Math rendering
+  // Charge KaTeX une seule fois, partagé entre tous les builders montés
+  // (voir ensureKatexAutoRenderLoaded — évite d'accumuler/retirer des
+  // scripts globaux à chaque montage/démontage de builder).
   useEffect(() => {
-    // Inject KaTeX CSS
-    const link = document.createElement("link");
-    link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-    link.rel = "stylesheet";
-    link.integrity =
-      "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
-    link.crossOrigin = "anonymous";
-    document.head.appendChild(link);
-
-    // Inject KaTeX JS
-    const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
-    script.integrity =
-      "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8";
-    script.crossOrigin = "anonymous";
-    script.defer = true;
-    document.head.appendChild(script);
-
-    // Inject Auto-render extension
-    const autoRenderScript = document.createElement("script");
-    autoRenderScript.src =
-      "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js";
-    autoRenderScript.integrity =
-      "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05";
-    autoRenderScript.crossOrigin = "anonymous";
-    autoRenderScript.defer = true;
-
-    autoRenderScript.onload = () => {
-      if (contentRef.current && (window as any).renderMathInElement) {
-        (window as any).renderMathInElement(contentRef.current, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "\\[", right: "\\]", display: true },
-          ],
-          throwOnError: false,
-        });
-      }
-    };
-    document.head.appendChild(autoRenderScript);
-
-    return () => {
-      if (document.head.contains(link)) document.head.removeChild(link);
-      if (document.head.contains(script)) document.head.removeChild(script);
-      if (document.head.contains(autoRenderScript))
-        document.head.removeChild(autoRenderScript);
-    };
+    ensureKatexAutoRenderLoaded()
+      .then(() => {
+        if (contentRef.current && (window as any).renderMathInElement) {
+          (window as any).renderMathInElement(contentRef.current, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false },
+              { left: "\\(", right: "\\)", display: false },
+              { left: "\\[", right: "\\]", display: true },
+            ],
+            throwOnError: false,
+          });
+        }
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   // Re-run math rendering when questions change

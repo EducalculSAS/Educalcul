@@ -1,6 +1,21 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 
+// Retire les champs qui révèlent la réponse correcte avant de renvoyer un quiz
+// à un lecteur non-admin (élève) : content_json contient correctAnswer/explanation
+// en clair pour chaque question, nécessaires uniquement à la correction serveur.
+function stripAnswers(quiz: any) {
+  if (!quiz?.content_json || !Array.isArray(quiz.content_json)) return quiz;
+  return {
+    ...quiz,
+    content_json: quiz.content_json.map((q: any) => {
+      const { correctAnswer, explanation, ...safe } = q;
+      return safe;
+    }),
+  };
+}
 
 export async function GET(request: Request) {
   try {
@@ -8,6 +23,8 @@ export async function GET(request: Request) {
     const status = searchParams.get("status");
     const id = searchParams.get("id");
     const courseId = searchParams.get("course_id");
+    const me = await getAuthenticatedUser(request);
+    const isAdmin = me?.role === "admin";
 
     if (id) {
       const { data, error } = await supabaseAdmin
@@ -21,9 +38,9 @@ export async function GET(request: Request) {
         .single();
 
       if (error) {
-        return NextResponse.json({ error: error.message }, { status: 400 });
+        return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
       }
-      return NextResponse.json(data);
+      return NextResponse.json(isAdmin ? data : stripAnswers(data));
     }
 
     let query = supabaseAdmin
@@ -47,18 +64,22 @@ export async function GET(request: Request) {
     const { data, error } = await query;
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
-    return NextResponse.json(data);
+    return NextResponse.json(isAdmin ? data : (data || []).map(stripAnswers));
   } catch (error: any) {
     console.error("Error fetching quizzes:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await request.json();
     const {
       title,
@@ -99,18 +120,22 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true, quiz: data });
   } catch (error: any) {
     console.error("Error creating quiz:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function PUT(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await request.json();
     const {
       id,
@@ -164,18 +189,22 @@ export async function PUT(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true, quiz: data });
   } catch (error: any) {
     console.error("Error updating quiz:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function DELETE(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 
@@ -189,11 +218,11 @@ export async function DELETE(request: Request) {
     const { error } = await supabaseAdmin.from("quizzes").delete().eq("id", id);
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

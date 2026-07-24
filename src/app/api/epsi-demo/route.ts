@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 import { chatWithAI } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 const DEMO_COOKIE = "epsi_demo_id";
 
@@ -90,6 +91,15 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    // Garde-fou grossier par IP : empêche un script d'effacer son cookie en
+    // boucle pour contourner indéfiniment la limite de 3 messages/navigateur.
+    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const ipConfig = RATE_LIMITS["epsi:demo"];
+    const ipLimit = rateLimitWithBackoff(`epsi:demo:${ip}`, ipConfig.maxAttempts, ipConfig.windowMs);
+    if (!ipLimit.allowed) {
+      return NextResponse.json({ error: "demo_limit" }, { status: 429 });
+    }
+
     const id = readDemoId(req) ?? randomUUID();
 
     // Compteur par navigateur (clé = cookie), enregistré dans Supabase.

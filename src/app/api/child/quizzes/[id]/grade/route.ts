@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { gradeAnswer } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -22,46 +23,77 @@ export async function POST(
 
     const { id } = await params;
     const body = await req.json();
-    const {
-      question,
-      correctAnswer,
-      answer,
-      explanation,
-      level,
-      points,
-    } = body;
+    const { question_id, answer, level } = body;
 
-    let maxPoints = points || 1;
+    let targetQuestion: any = null;
+    let maxPoints = 1;
+
+    if (id === "preview") {
+      // Prévisualisation admin : les données de la question viennent du corps
+      // (pas encore enregistrées en base), on leur fait confiance ici.
+      const { question, correctAnswer, explanation, points } = body;
+      targetQuestion = { text: question, correctAnswer, explanation, points: points || 1, type: "text_input" };
+      maxPoints = points || 1;
+    } else {
+      const { data: quiz, error: qzError } = await supabaseAdmin
+        .from("quizzes")
+        .select("content_json")
+        .eq("id", id)
+        .single();
+      if (qzError || !quiz) {
+        return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
+      }
+      const questions: any[] = Array.isArray(quiz.content_json) ? quiz.content_json : [];
+      targetQuestion = questions.find((q) => q.id === question_id) || null;
+      if (!targetQuestion) {
+        return NextResponse.json({ error: "Question not found" }, { status: 404 });
+      }
+      maxPoints = targetQuestion.points || 1;
+    }
+
     let score = 0;
     let isCorrect = false;
     let feedback = "";
 
-    // --- AI GRADING (IA) ---
-    console.log("🤖 AI Grading requested for Quiz Question:", id);
+    if (targetQuestion.type === "text_input") {
+      // --- AI GRADING (IA) ---
+      try {
+        const gradingResult = await gradeAnswer(
+          targetQuestion.text,
+          targetQuestion.correctAnswer,
+          answer,
+          targetQuestion.explanation,
+          level || "6ème",
+          maxPoints
+        );
+        isCorrect = gradingResult.is_correct;
+        score = gradingResult.score;
+        feedback = gradingResult.feedback;
+      } catch (e) {
+        console.error("❌ AI Grading Failed:", e);
+        const answerText = typeof answer === "string" ? answer : JSON.stringify(answer);
+        const expected = typeof targetQuestion.correctAnswer === "string"
+          ? targetQuestion.correctAnswer
+          : JSON.stringify(targetQuestion.correctAnswer);
 
-    try {
-      const gradingResult = await gradeAnswer(
-        question,
-        correctAnswer,
-        answer,
-        explanation,
-        level || "6ème",
-        maxPoints
-      );
-      isCorrect = gradingResult.is_correct;
-      score = gradingResult.score;
-      feedback = gradingResult.feedback;
-    } catch (e) {
-      console.error("❌ AI Grading Failed:", e);
-      // Fallback: Simple string matching
-      const answerText = typeof answer === "string" ? answer : JSON.stringify(answer);
-      const expected = typeof correctAnswer === "string" ? correctAnswer : JSON.stringify(correctAnswer);
-      
-      isCorrect = answerText.toLowerCase().trim() === expected.toLowerCase().trim();
+        isCorrect = answerText.toLowerCase().trim() === expected.toLowerCase().trim();
+        score = isCorrect ? maxPoints : 0;
+        feedback = isCorrect
+          ? "Correct (Correction automatique de secours)"
+          : "Incorrect (Correction automatique de secours)";
+      }
+    } else if (targetQuestion.type === "multiple_choice") {
+      const correct = Array.isArray(targetQuestion.correctAnswer)
+        ? targetQuestion.correctAnswer
+        : [targetQuestion.correctAnswer];
+      const selected = Array.isArray(answer) ? answer : [answer];
+      isCorrect = correct.length === selected.length && correct.every((a: any) => selected.includes(String(a)));
       score = isCorrect ? maxPoints : 0;
-      feedback = isCorrect
-        ? "Correct (Correction automatique de secours)"
-        : "Incorrect (Correction automatique de secours)";
+      feedback = isCorrect ? "Correct !" : "Incorrect.";
+    } else {
+      isCorrect = String(answer) === String(targetQuestion.correctAnswer);
+      score = isCorrect ? maxPoints : 0;
+      feedback = isCorrect ? "Correct !" : "Incorrect.";
     }
 
     return NextResponse.json({
@@ -69,9 +101,10 @@ export async function POST(
       max_score: maxPoints,
       is_correct: isCorrect,
       feedback,
+      reveal: { correctAnswer: targetQuestion.correctAnswer, explanation: targetQuestion.explanation },
     });
   } catch (error: any) {
     console.error("Error grading quiz question:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

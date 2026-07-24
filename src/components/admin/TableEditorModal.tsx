@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X, Plus, Minus, Sparkles, Loader2 } from "lucide-react";
+import { renderLatexInHTML } from "@/lib/katexLoader";
 
 type TableType = "value" | "sign" | "variation" | "generic";
 
@@ -234,12 +235,13 @@ export default function TableEditorModal({
           <div
             className="latex-content overflow-x-auto"
             dangerouslySetInnerHTML={{
-              __html:
+              __html: renderLatexInHTML(
                 `<table class="math-table math-table-${tableType}"><thead><tr>${headers
                   .map((h) => `<th>${h}</th>`)
                   .join("")}</tr></thead><tbody>${rows
                   .map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`)
-                  .join("")}</tbody></table>`,
+                  .join("")}</tbody></table>`
+              ),
             }}
           />
         </div>

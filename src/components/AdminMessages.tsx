@@ -31,17 +31,27 @@ export default function AdminMessages() {
 
   useEffect(() => {
     (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-      const { data: userData } = await supabase.from("users").select("id").eq("auth_id", user.id).maybeSingle();
-      if (!userData) return;
-      const { data } = await supabase.from("admin_notifications").select("*").eq("user_id", userData.id).eq("is_read", false).order("created_at", { ascending: false });
-      setNotifs(data || []);
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+        const { data: userData, error: userError } = await supabase.from("users").select("id").eq("auth_id", user.id).maybeSingle();
+        if (userError) throw userError;
+        if (!userData) return;
+        const { data, error } = await supabase.from("admin_notifications").select("*").eq("user_id", userData.id).eq("is_read", false).order("created_at", { ascending: false });
+        if (error) throw error;
+        setNotifs(data || []);
+      } catch (e) {
+        console.error("Failed to load admin notifications:", e);
+      }
     })();
   }, []);
 
   const dismiss = async (id: number) => {
-    await supabase.from("admin_notifications").update({ is_read: true }).eq("id", id);
+    const { error } = await supabase.from("admin_notifications").update({ is_read: true }).eq("id", id);
+    if (error) {
+      console.error("Failed to dismiss notification:", error);
+      return;
+    }
     setNotifs(n => n.filter(x => x.id !== id));
   };
 

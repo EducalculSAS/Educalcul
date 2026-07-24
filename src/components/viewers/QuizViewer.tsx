@@ -43,6 +43,7 @@ interface QuizViewerProps {
     answers?: Record<number, any>;
     questionResults?: Record<number, boolean>;
     questionFeedbacks?: Record<number, string>;
+    revealed?: Record<number, { correctAnswer?: string | string[]; explanation?: string }>;
     score?: number;
   } | null;
 }
@@ -66,6 +67,11 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   const [questionFeedbacks, setQuestionFeedbacks] = useState<
     Record<number, string>
   >(() => (reviewMode ? initialProgress?.questionFeedbacks : undefined) || {});
+  // Réponse correcte / explication, révélées par le serveur uniquement après
+  // soumission de chaque question (jamais présentes dans le contenu initial).
+  const [revealed, setRevealed] = useState<
+    Record<number, { correctAnswer?: string | string[]; explanation?: string }>
+  >(() => (reviewMode ? initialProgress?.revealed : undefined) || {});
   const contentRef = useRef<HTMLDivElement>(null);
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
@@ -143,7 +149,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   }, []);
 
   // Sauvegarde la progression détaillée (réponses, résultats, feedback) en base
-  const saveDetailedProgress = async (status: 'in_progress' | 'completed', extra?: { results?: Record<number, boolean>; feedbacks?: Record<number, string>; finalScore?: number }) => {
+  const saveDetailedProgress = async (status: 'in_progress' | 'completed', extra?: { results?: Record<number, boolean>; feedbacks?: Record<number, string>; revealed?: Record<number, any>; finalScore?: number }) => {
     const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
     if (isPreview || reviewMode) return;
     const { data: { session } } = await supabase.auth.getSession();
@@ -158,6 +164,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             answers,
             questionResults: extra?.results ?? questionResults,
             questionFeedbacks: extra?.feedbacks ?? questionFeedbacks,
+            revealed: extra?.revealed ?? revealed,
             score: extra?.finalScore ?? score,
             status,
           },
@@ -186,6 +193,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
           if (p?.answers) setAnswers(p.answers);
           if (p?.questionResults) setQuestionResults(p.questionResults);
           if (p?.questionFeedbacks) setQuestionFeedbacks(p.questionFeedbacks);
+          if (p?.revealed) setRevealed(p.revealed);
           setScore(p?.score || 0);
           setIsAnswerSubmitted(true);
           if (openCorrection) {
@@ -274,6 +282,8 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     let totalScore = 0;
     const newResults: Record<number, boolean> = {};
     const newFeedbacks: Record<number, string> = {};
+    const newRevealed: Record<number, any> = {};
+    const quizId = (quiz as any).id || "preview";
 
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
@@ -285,32 +295,31 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
         continue;
       }
 
-      if (q.type === "text_input") {
-        try {
-          const response = await fetch("/api/child/quizzes/preview/grade", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              question: q.text,
-              correctAnswer: q.correctAnswer,
-              answer: answer,
-              explanation: q.explanation,
-              level: quiz.level || "6eme", // Passing level for tailored feedback
-              points: q.points,
-            }),
-          });
-          const data = await response.json();
-          isCorrect = data.is_correct;
-          if (data.feedback) newFeedbacks[i] = data.feedback;
-        } catch (e) {
-          isCorrect = String(answer).toLowerCase().trim() === String(q.correctAnswer).toLowerCase().trim();
-        }
-      } else if (q.type === "multiple_choice") {
-        const correct = Array.isArray(q.correctAnswer) ? q.correctAnswer : [q.correctAnswer];
-        const selected = Array.isArray(answer) ? answer : [answer];
-        isCorrect = correct.length === selected.length && correct.every(a => selected.includes(String(a)));
-      } else {
-        isCorrect = String(answer) === String(q.correctAnswer);
+      // La correction se fait toujours côté serveur : le client ne connaît
+      // jamais la réponse correcte avant d'avoir soumis la sienne.
+      try {
+        const response = await fetch(`/api/child/quizzes/${quizId}/grade`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            question_id: q.id,
+            answer,
+            level: quiz.level || "6eme",
+            // Uniquement utilisé en mode "preview" (aperçu admin, contenu pas
+            // encore enregistré) — ignoré par le serveur pour un vrai quiz.
+            question: q.text,
+            correctAnswer: q.correctAnswer,
+            explanation: q.explanation,
+            points: q.points,
+          }),
+        });
+        const data = await response.json();
+        isCorrect = !!data.is_correct;
+        if (data.feedback) newFeedbacks[i] = data.feedback;
+        if (data.reveal) newRevealed[i] = data.reveal;
+      } catch (e) {
+        console.error("Failed to grade quiz question", e);
+        newFeedbacks[i] = "Erreur de correction, réessaie.";
       }
 
       newResults[i] = isCorrect;
@@ -320,6 +329,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     setScore(totalScore);
     setQuestionResults(newResults);
     setQuestionFeedbacks(newFeedbacks);
+    setRevealed(newRevealed);
     setIsAnswerSubmitted(true);
     setIsValidating(false);
     setQuizCompleted(true);
@@ -330,7 +340,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     const thr = (quiz as any).min_score_percent || 0;
     const didPass = thr > 0 ? pct >= thr : true;
     saveProgress('completed', totalScore, pct, didPass);
-    saveDetailedProgress('completed', { results: newResults, feedbacks: newFeedbacks, finalScore: totalScore });
+    saveDetailedProgress('completed', { results: newResults, feedbacks: newFeedbacks, revealed: newRevealed, finalScore: totalScore });
 
     if (onComplete) {
       const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);
@@ -563,10 +573,10 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                       {questionFeedbacks[currentQuestionIndex] ? (
                         <div className="mb-1">{questionFeedbacks[currentQuestionIndex]}</div>
                       ) : null}
-                      {!questionFeedbacks[currentQuestionIndex] && (
+                      {!questionFeedbacks[currentQuestionIndex] && revealed[currentQuestionIndex]?.correctAnswer && (
                         <span>
                           Réponse attendue :{" "}
-                          {currentQuestion.correctAnswer as string}
+                          {revealed[currentQuestionIndex]!.correctAnswer as string}
                         </span>
                       )}
                     </div>
@@ -595,9 +605,12 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                   }
 
                   if (isAnswerSubmitted) {
-                    const correct = Array.isArray(currentQuestion.correctAnswer)
-                      ? currentQuestion.correctAnswer
-                      : [currentQuestion.correctAnswer];
+                    const revealedAnswer = revealed[currentQuestionIndex]?.correctAnswer;
+                    const correct = Array.isArray(revealedAnswer)
+                      ? revealedAnswer
+                      : revealedAnswer !== undefined
+                      ? [revealedAnswer]
+                      : [];
                     const isCorrectOption = correct.includes(option);
 
                     if (isCorrectOption) {
@@ -631,11 +644,11 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             )}
           </div>
 
-          {/* Explanation */}
-          {currentQuestion.explanation && (
+          {/* Explanation — révélée par le serveur uniquement après soumission */}
+          {isAnswerSubmitted && revealed[currentQuestionIndex]?.explanation && (
             <>
               {/* En mode révision : toujours visible. Sinon : bouton toggle */}
-              {!showReview && isAnswerSubmitted && (
+              {!showReview && (
                 <button
                   onClick={() => setShowExplanation(v => !v)}
                   className="mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--greek-blue)] hover:text-blue-800 transition-colors"
@@ -651,7 +664,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                     Explication
                   </div>
                   <div className="text-[var(--greek-bronze)] prose prose-sm max-w-none">
-                    <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(currentQuestion.explanation || "")) }} />
+                    <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(revealed[currentQuestionIndex]?.explanation || "")) }} />
                   </div>
                 </div>
               )}

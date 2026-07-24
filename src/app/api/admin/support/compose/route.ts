@@ -1,10 +1,16 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { buildEmailHtml } from "@/lib/emailTemplates";
+import { requireRole } from "@/lib/apiAuth";
 
 export async function POST(req: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { subject, message, toEmail, toName, userId } = await req.json();
 
     if (!subject || !message || !toEmail) {
@@ -28,7 +34,7 @@ export async function POST(req: Request) {
       .single();
 
     if (ticketErr || !ticket) {
-      return NextResponse.json({ error: ticketErr?.message || "Erreur création ticket" }, { status: 500 });
+      return NextResponse.json({ error: sanitizeErrorMessage(ticketErr?.message || "Erreur création ticket") }, { status: 500 });
     }
 
     // 2. Ajouter la réponse admin initiale dans ticket_replies
@@ -61,7 +67,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, ticketId: ticket.id });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }
 

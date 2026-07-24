@@ -1,10 +1,16 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
 
 // GET Single Ticket + Replies
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
 
     // Get Ticket
@@ -14,7 +20,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       .eq('id', id)
       .single();
 
-    if (ticketError) return NextResponse.json({ error: ticketError.message }, { status: 500 });
+    if (ticketError) return NextResponse.json({ error: sanitizeErrorMessage(ticketError.message) }, { status: 500 });
     if (!ticket) return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
 
     // Get Replies
@@ -24,17 +30,21 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       .eq('ticket_id', id)
       .order('replied_at', { ascending: true });
 
-    if (repliesError) return NextResponse.json({ error: repliesError.message }, { status: 500 });
+    if (repliesError) return NextResponse.json({ error: sanitizeErrorMessage(repliesError.message) }, { status: 500 });
 
     return NextResponse.json({ ticket, replies });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 // UPDATE Ticket (Status, Assign, Archive, Restore)
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
     const body = await request.json();
     const { action, status, assigned_to } = body;
@@ -67,17 +77,21 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
       .update(updates)
       .eq('id', id);
 
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 // DELETE Ticket (Permanent)
 export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
 
     // Check if archived
@@ -87,7 +101,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
         .eq('id', id)
         .single();
 
-    if (checkError) return NextResponse.json({ error: checkError.message }, { status: 500 });
+    if (checkError) return NextResponse.json({ error: sanitizeErrorMessage(checkError.message) }, { status: 500 });
     if (!ticket || !ticket.is_archived) {
         return NextResponse.json({ error: "Cannot delete non-archived or non-existent ticket" }, { status: 400 });
     }
@@ -100,7 +114,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
         .delete()
         .eq('ticket_id', id);
     
-    if (repliesError) return NextResponse.json({ error: repliesError.message }, { status: 500 });
+    if (repliesError) return NextResponse.json({ error: sanitizeErrorMessage(repliesError.message) }, { status: 500 });
 
     // Delete ticket
     const { error: deleteError } = await supabaseAdmin
@@ -108,10 +122,10 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
         .delete()
         .eq('id', id);
 
-    if (deleteError) return NextResponse.json({ error: deleteError.message }, { status: 500 });
+    if (deleteError) return NextResponse.json({ error: sanitizeErrorMessage(deleteError.message) }, { status: 500 });
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

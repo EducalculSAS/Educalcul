@@ -1,21 +1,31 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { emailTemplate } from "@/lib/emailTemplates";
+import { requireRole } from "@/lib/apiAuth";
 
 // GET — list all templates
-export async function GET() {
+export async function GET(req: Request) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { data, error } = await supabaseAdmin
     .from("email_templates")
     .select("*")
     .order("type")
     .order("created_at");
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return NextResponse.json(data);
 }
 
 // POST — create campaign template
 export async function POST(req: Request) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { name, subject, body, target, schedule } = await req.json();
   if (!name || !subject || !body)
     return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
@@ -25,12 +35,16 @@ export async function POST(req: Request) {
     .insert({ name, subject, body, target: target || "all", schedule: schedule || null, type: "campaign", is_deletable: true })
     .select()
     .single();
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return NextResponse.json(data);
 }
 
 // PATCH — update template (subject + body)
 export async function PATCH(req: Request) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { id, name, subject, body, target, schedule } = await req.json();
   if (!id) return NextResponse.json({ error: "ID requis" }, { status: 400 });
 
@@ -47,19 +61,23 @@ export async function PATCH(req: Request) {
     .eq("id", id)
     .select()
     .single();
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return NextResponse.json(data);
 }
 
 // DELETE — only if is_deletable
 export async function DELETE(req: Request) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { id } = await req.json();
   const { data: tmpl } = await supabaseAdmin.from("email_templates").select("is_deletable").eq("id", id).single();
   if (!tmpl?.is_deletable)
     return NextResponse.json({ error: "Ce template système ne peut pas être supprimé" }, { status: 403 });
 
   const { error } = await supabaseAdmin.from("email_templates").delete().eq("id", id);
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return NextResponse.json({ success: true });
 }
 

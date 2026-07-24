@@ -1,10 +1,16 @@
 import { NextResponse } from 'next/server';
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from '@/lib/supabaseClient';
+import { requireRole } from "@/lib/apiAuth";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString();
 
     const [
@@ -57,6 +63,6 @@ export async function GET() {
       },
     });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { requireRole } from "@/lib/apiAuth";
 
 export const maxDuration = 120;
 
@@ -91,6 +93,10 @@ const BLOCK_TYPE_SCHEMAS: Record<string, { example: string; instruction: (count:
 };
 
 export async function POST(req: NextRequest) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const ip = req.headers.get("x-forwarded-for") ?? "unknown";
   const config = RATE_LIMITS["ai:admin"];
   const rl = rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
@@ -298,8 +304,8 @@ ${String(instructions).trim()}
           },
         });
       } catch (error: any) {
-        console.error("❌ Erreur génération exercice IA:", error.message);
-        send({ type: "error", message: error.message || "Erreur de génération" });
+        console.error("❌ Erreur génération exercice IA:", error);
+        send({ type: "error", message: sanitizeErrorMessage(error?.message || "Erreur de génération") });
       } finally {
         controller.close();
       }

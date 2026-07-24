@@ -36,12 +36,17 @@ async function getAuthUserId(token: string): Promise<string | null> {
 async function getRole(authId: string): Promise<string | null> {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?auth_id=eq.${encodeURIComponent(authId)}&select=role`,
+      `${SUPABASE_URL}/rest/v1/users?auth_id=eq.${encodeURIComponent(authId)}&select=role,status,ban_reason`,
       { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
     );
     if (!res.ok) return null;
     const rows = await res.json();
-    return rows?.[0]?.role || null;
+    const row = rows?.[0];
+    if (!row) return null;
+    // Même garde qu'apiAuth.ts : un JWT valide ne suffit pas si le compte a
+    // été banni depuis son émission.
+    if (row.status === "inactive" || row.ban_reason) return null;
+    return row.role || null;
   } catch {
     return null;
   }
@@ -59,13 +64,18 @@ export async function proxy(req: NextRequest) {
   const authId = await getAuthUserId(token);
   if (!authId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  // Published-content reads and avatar uploads: any authenticated user
+  // getRole() renvoie null aussi bien pour "profil introuvable" que pour
+  // "compte banni" : dans les deux cas l'accès doit être refusé, y compris
+  // aux endpoints normalement ouverts à tout utilisateur authentifié.
+  const role = await getRole(authId);
+  if (!role) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  // Published-content reads and avatar uploads: any authenticated, non-banned user
   const isUserLevel =
     (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
     (method === "POST" && pathname === "/api/admin/upload");
   if (isUserLevel) return NextResponse.next();
 
-  const role = await getRole(authId);
   if (role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   return NextResponse.next();

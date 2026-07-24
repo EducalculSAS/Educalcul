@@ -1,23 +1,15 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-
-async function resolveAdmin(authId: string) {
-  const { data } = await supabaseAdmin
-    .from("users")
-    .select("id, role")
-    .eq("auth_id", authId)
-    .maybeSingle();
-  return data && data.role === "admin" ? data : null;
-}
+import { requireRole } from "@/lib/apiAuth";
 
 // GET: list all global events (vacances, événements globaux...)
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const userId = searchParams.get("userId");
-    if (!userId) return NextResponse.json({ error: "Missing userId" }, { status: 400 });
-
-    const admin = await resolveAdmin(userId);
+    // Vérifie le rôle à partir du Bearer token du VRAI appelant — un
+    // userId fourni par le client (query param) ne prouve rien sur son
+    // identité, ce n'était qu'une déclaration non vérifiée.
+    const admin = await requireRole(req, ["admin"]);
     if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     const { data, error } = await supabaseAdmin
@@ -28,21 +20,21 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ events: data || [] });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 // POST: create a global event
 export async function POST(req: Request) {
   try {
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
     const body = await req.json();
-    const { userId, title, description, event_type, start_date, end_date, zone } = body;
-    if (!userId || !title || !start_date) {
+    const { title, description, event_type, start_date, end_date, zone } = body;
+    if (!title || !start_date) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
-
-    const admin = await resolveAdmin(userId);
-    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     const { data, error } = await supabaseAdmin
       .from("global_calendar_events")
@@ -61,6 +53,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ event: data });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

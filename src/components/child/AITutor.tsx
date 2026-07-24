@@ -193,28 +193,7 @@ export default function AITutor() {
     setInput("");
     setLoading(true);
 
-    console.log("📤 Sending message to AI:", {
-      userMessage: input.trim().slice(0, 50),
-      messagesCount: history.length,
-      exerciseTitle: pageContext.exerciseTitle,
-    });
-
     try {
-      // Log context BEFORE sending - with full details
-      console.log("📤 Sending to AI Tutor - FULL CONTEXT:", {
-        page: pageContext.page,
-        exerciseTitle: pageContext.exerciseTitle,
-        exerciseQuestion: pageContext.exerciseQuestion?.slice(0, 150) || "NO QUESTION",
-        exerciseType: pageContext.exerciseType,
-        courseTitle: pageContext.courseTitle,
-        courseSubject: pageContext.courseSubject,
-        courseLevel: pageContext.courseLevel,
-        hasQuestion: !!pageContext.exerciseQuestion,
-        questionLength: pageContext.exerciseQuestion?.length || 0,
-        hasUserAnswer: !!pageContext.userAnswer,
-        entireContext: pageContext, // Log the entire context object
-      });
-
       const res = await fetch("/api/child/ai-tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...(authId ? { "x-user-auth-id": authId } : {}) },
@@ -236,7 +215,6 @@ export default function AITutor() {
         ...history,
         { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
       ];
-      console.log("💾 Saving messages:", { count: newMessages.length });
       setMessages(newMessages as any);
       saveMessages(newMessages as any);
     } catch (error) {
@@ -363,11 +341,14 @@ export default function AITutor() {
                     {msg.role === "assistant" && (
                       <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0 mt-1" />
                     )}
-                    <div className="max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed"
+                    <div className="max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap"
                       style={msg.role === "assistant"
                         ? { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }
                         : { background: "var(--greek-gold)", color: "#fff", borderBottomRightRadius: 4 }}>
-                      {renderContent(msg.content)}
+                      {/* Le rendu HTML/LaTeX ne s'applique qu'aux réponses de
+                          l'IA : un message élève reste du texte brut (JSX
+                          l'échappe automatiquement), pas de surface XSS. */}
+                      {msg.role === "assistant" ? renderContent(msg.content) : msg.content}
                     </div>
                   </div>
                 ))}

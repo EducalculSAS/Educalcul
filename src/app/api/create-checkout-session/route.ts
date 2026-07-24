@@ -7,6 +7,7 @@ import { normalizePricingConfig } from '@/lib/pricingConfig';
 import { getSiteUrl } from '@/lib/siteUrl';
 import { validateEmail, validateName } from '@/lib/validation';
 import { rateLimitWithBackoff, RATE_LIMITS } from '@/lib/rateLimitAdvanced';
+import { sanitizeErrorMessage } from '@/lib/safeError';
 
 // Crée (ou réutilise) le compte Supabase Auth d'un nouvel inscrit, AVANT tout
 // paiement — mais aucune ligne public.users n'est créée ici : c'est le webhook
@@ -43,7 +44,7 @@ async function createOrResumePendingSignup(params: {
   // ce compte au lieu de bloquer l'utilisateur qui retente son inscription.
   const isDuplicate = /already.*registered|already.*exists/i.test(createError?.message || '');
   if (!isDuplicate) {
-    return { error: createError?.message || 'Could not create account' };
+    return { error: sanitizeErrorMessage(createError?.message || 'Could not create account') };
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -71,7 +72,7 @@ async function createOrResumePendingSignup(params: {
     password,
     user_metadata: { first_name: firstName, last_name: lastName, role: 'parent' },
   });
-  if (updateError) return { error: updateError.message };
+  if (updateError) return { error: sanitizeErrorMessage(updateError.message) };
 
   return { authId: existingAuthUser.id };
 }
@@ -135,7 +136,8 @@ export async function POST(req: Request) {
         .single();
 
       if (customErr || !customPlan) {
-        return NextResponse.json({ error: customErr?.message || 'Could not create custom plan' }, { status: 500 });
+        console.error('[create-checkout-session] custom plan creation error:', customErr);
+        return NextResponse.json({ error: sanitizeErrorMessage(customErr?.message || 'Could not create custom plan') }, { status: 500 });
       }
       plan = customPlan;
       planId = customPlan.id;
@@ -317,6 +319,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ sessionId: session.id, url: session.url, authId: isNewSignup ? userId : undefined });
   } catch (error: any) {
     console.error('Stripe error:', error);
-    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || String(error)) }, { status: 500 });
   }
 }

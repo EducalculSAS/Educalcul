@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
+import { validatePassword } from "@/lib/validation";
 
 export async function POST(request: Request) {
   try {
@@ -19,11 +21,9 @@ export async function POST(request: Request) {
       );
     }
 
-    if (typeof password !== "string" || password.length < 8) {
-      return NextResponse.json(
-        { error: "Le mot de passe doit contenir au moins 8 caractères" },
-        { status: 400 }
-      );
+    const pwError = validatePassword(password);
+    if (pwError) {
+      return NextResponse.json({ error: pwError }, { status: 400 });
     }
 
     // Child accounts only live on the internal username domain.
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Error creating user:", error);
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ user: data.user }, { status: 200 });

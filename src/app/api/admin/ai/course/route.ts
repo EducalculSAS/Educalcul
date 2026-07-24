@@ -1,11 +1,17 @@
 import { generateStructuredContent } from "@/lib/llm";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { requireRole } from "@/lib/apiAuth";
 
 export const maxDuration = 300; // 5 min — génération de cours complète
 
 export async function POST(request: Request) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(request, ["admin"]);
+  if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
   const ip = request.headers.get("x-forwarded-for") ?? "unknown";
   const config = RATE_LIMITS["ai:admin"];
   const rl = rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
@@ -279,8 +285,8 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
           course: { title: courseTitle, description: courseDescription },
         });
       } catch (error: any) {
-        console.error("❌ Erreur génération cours IA:", error.message);
-        send({ type: "error", message: error.message || "Erreur de génération" });
+        console.error("❌ Erreur génération cours IA:", error);
+        send({ type: "error", message: sanitizeErrorMessage(error?.message || "Erreur de génération") });
       } finally {
         controller.close();
       }

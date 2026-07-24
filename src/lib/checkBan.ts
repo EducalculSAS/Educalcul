@@ -19,6 +19,8 @@ export async function isBanned(onBanned: () => void): Promise<boolean> {
       onBanned();
       return true;
     }
-  } catch {}
+  } catch (e) {
+    console.error("Failed to check ban status:", e);
+  }
   return false;
 }

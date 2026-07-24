@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -35,7 +36,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ synced: true, status: newStatus, cancel_at_period_end: stripeSub.cancel_at_period_end });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }
 
@@ -76,6 +77,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, plan_id: planId });
   } catch (err: any) {
     console.error("sync-subscription error:", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }

@@ -1,6 +1,60 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 
+// Mélange déterministe (seedé par une chaîne), miroir de celui utilisé côté
+// client (ExerciseViewer) pour l'affichage — garantit un ordre stable.
+function seededShuffle<T>(arr: T[], seed: string): T[] {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  const rand = () => {
+    h = (h * 1664525 + 1013904223) >>> 0;
+    return h / 4294967296;
+  };
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+// Retire les champs qui révèlent la réponse correcte d'un bloc avant de
+// renvoyer l'exercice à un lecteur non-admin (élève). Pour "matching"/"ordering",
+// le client a besoin d'une liste mélangée à afficher : on la fournit déjà
+// mélangée côté serveur (matchingOptions / shuffledItems) sans jamais exposer
+// la correspondance/l'ordre correct.
+function stripBlockAnswers(block: any) {
+  const { correctAnswer, blanks, ...rest } = block;
+  if (block.type === "matching" && Array.isArray(block.pairs)) {
+    const { pairs, ...safe } = rest;
+    return {
+      ...safe,
+      pairs: pairs.map((p: any) => ({ left: p.left })),
+      matchingOptions: seededShuffle(pairs.map((p: any) => p.right), block.id || ""),
+    };
+  }
+  if (block.type === "ordering" && Array.isArray(block.items)) {
+    const { items, ...safe } = rest;
+    return {
+      ...safe,
+      shuffledItems: seededShuffle(items, block.id || ""),
+    };
+  }
+  return rest;
+}
+
+function stripAnswers(exercise: any) {
+  if (!exercise?.content_json || !Array.isArray(exercise.content_json)) return exercise;
+  return {
+    ...exercise,
+    content_json: exercise.content_json.map((page: any) => ({
+      ...page,
+      blocks: Array.isArray(page.blocks) ? page.blocks.map(stripBlockAnswers) : page.blocks,
+    })),
+  };
+}
 
 export async function GET(request: Request) {
   try {
@@ -8,6 +62,8 @@ export async function GET(request: Request) {
     const status = searchParams.get("status");
     const id = searchParams.get("id");
     const courseId = searchParams.get("course_id");
+    const me = await getAuthenticatedUser(request);
+    const isAdmin = me?.role === "admin";
 
     if (id) {
       let { data, error } = await supabaseAdmin
@@ -26,7 +82,7 @@ export async function GET(request: Request) {
 
       if (error) {
         console.error("Error fetching single exercise:", error);
-        return NextResponse.json({ error: error.message }, { status: 400 });
+        return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
       }
       
       if (!data) {
@@ -85,8 +141,8 @@ export async function GET(request: Request) {
           type: data.type,
         });
       }
-      
-      return NextResponse.json(data);
+
+      return NextResponse.json(isAdmin ? data : stripAnswers(data));
     }
 
     let query = supabaseAdmin
@@ -115,7 +171,7 @@ export async function GET(request: Request) {
 
     if (error) {
       console.error("Error fetching exercises:", error);
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     // Ensure content_json is filled for all exercises
@@ -172,15 +228,19 @@ export async function GET(request: Request) {
       return exercise;
     });
 
-    return NextResponse.json(processedData);
+    return NextResponse.json(isAdmin ? processedData : processedData.map(stripAnswers));
   } catch (error: any) {
     console.error("Error fetching exercises:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await request.json();
     const {
       title,
@@ -279,18 +339,22 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true, exercise: data });
   } catch (error: any) {
     console.error("Error creating exercise:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function PUT(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await request.json();
     const {
       id,
@@ -402,18 +466,22 @@ export async function PUT(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true, exercise: data });
   } catch (error: any) {
     console.error("Error updating exercise:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }
 
 export async function DELETE(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 
@@ -430,11 +498,11 @@ export async function DELETE(request: Request) {
       .eq("id", id);
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

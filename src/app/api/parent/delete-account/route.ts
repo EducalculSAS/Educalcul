@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe } from "@/lib/stripe";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 export async function DELETE(req: Request) {
   try {
@@ -58,7 +59,7 @@ export async function DELETE(req: Request) {
     });
     if (rpcError) {
       console.error("[delete-account] RPC error:", rpcError);
-      return NextResponse.json({ error: rpcError.message }, { status: 500 });
+      return NextResponse.json({ error: sanitizeErrorMessage(rpcError.message) }, { status: 500 });
     }
     console.log("[delete-account] public.users deleted via RPC");
 
@@ -81,7 +82,7 @@ export async function DELETE(req: Request) {
       const { error: retryError } = await supabaseAdmin.auth.admin.deleteUser(parentAuthId);
       if (retryError) {
         console.error("[delete-account] Retry failed:", retryError.message);
-        return NextResponse.json({ error: retryError.message }, { status: 500 });
+        return NextResponse.json({ error: sanitizeErrorMessage(retryError.message) }, { status: 500 });
       }
     }
     console.log("[delete-account] Parent auth deleted successfully");
@@ -89,6 +90,6 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error("[delete-account] Unexpected error:", error);
-    return NextResponse.json({ error: error.message || "Erreur interne" }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || "Erreur interne") }, { status: 500 });
   }
 }

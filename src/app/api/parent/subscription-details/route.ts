@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser } from '@/lib/apiAuth';
+import { sanitizeErrorMessage } from '@/lib/safeError';
 
 export async function GET(req: Request) {
   try {
@@ -152,7 +153,7 @@ export async function GET(req: Request) {
   } catch (error: any) {
     console.error('API error:', error);
     return NextResponse.json(
-      { error: error.message || 'Internal Server Error' },
+      { error: sanitizeErrorMessage(error?.message || String(error)) },
       { status: 500 }
     );
   }

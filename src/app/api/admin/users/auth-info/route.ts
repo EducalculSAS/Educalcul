@@ -1,10 +1,16 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
 // Initialize Supabase Admin Client
 
 export async function GET(request: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(request, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 
@@ -16,7 +22,7 @@ export async function GET(request: Request) {
 
     if (error) {
        console.error("Error fetching auth user:", error);
-       return NextResponse.json({ error: error.message }, { status: 400 });
+       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
     if (!user) {
@@ -53,6 +59,6 @@ export async function GET(request: Request) {
 
   } catch (error: any) {
     console.error("Error in auth-info API:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

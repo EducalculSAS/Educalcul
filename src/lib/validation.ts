@@ -113,3 +113,25 @@ export function isValidUrlPath(path: string): boolean {
 export function isValidRole(role: any, allowedRoles: string[] = ['parent', 'child', 'admin']): boolean {
   return typeof role === 'string' && allowedRoles.includes(role);
 }
+
+/**
+ * Validate password strength: at least 10 characters, with a mix of letters
+ * and digits (or symbols). Returns an error message in French, or null if valid.
+ */
+export function validatePassword(password: any): string | null {
+  if (typeof password !== 'string' || password.length === 0) {
+    return "Le mot de passe est requis.";
+  }
+  if (password.length < 10) {
+    return "Le mot de passe doit contenir au moins 10 caractères.";
+  }
+  if (password.length > 128) {
+    return "Le mot de passe est trop long.";
+  }
+  const hasLetter = /[a-zA-ZÀ-ÿ]/.test(password);
+  const hasDigitOrSymbol = /[0-9!-\/:-@\[-`{-~]/.test(password);
+  if (!hasLetter || !hasDigitOrSymbol) {
+    return "Le mot de passe doit contenir des lettres et au moins un chiffre ou un symbole.";
+  }
+  return null;
+}

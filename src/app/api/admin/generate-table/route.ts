@@ -1,7 +1,13 @@
 import { NextRequest } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
+import { requireRole } from "@/lib/apiAuth";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 export async function POST(req: NextRequest) {
+  // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
   const { description, type, level } = await req.json();
 
   if (!description) {
@@ -32,6 +38,7 @@ Chaque sous-tableau de "rows" doit avoir le même nombre de colonnes que "header
     }
     return Response.json({ headers, rows });
   } catch (e: any) {
-    return Response.json({ error: e.message || "Erreur de génération" }, { status: 500 });
+    console.error("❌ Erreur génération tableau IA:", e);
+    return Response.json({ error: sanitizeErrorMessage(e?.message || "Erreur de génération") }, { status: 500 });
   }
 }

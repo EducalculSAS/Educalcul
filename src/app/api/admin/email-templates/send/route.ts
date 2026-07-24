@@ -1,10 +1,16 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { emailTemplate } from "@/lib/emailTemplates";
+import { requireRole } from "@/lib/apiAuth";
 
 export async function POST(req: Request) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { templateId, target, specificEmail, selectedUserId, customEmail } = await req.json();
 
     const { data: tmpl, error: tmplErr } = await supabaseAdmin
@@ -65,7 +71,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, sent, failed, total: users.length });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }
 

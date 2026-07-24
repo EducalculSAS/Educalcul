@@ -17,16 +17,22 @@ export default function ReportsPage() {
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [countdown, setCountdown] = useState(REFRESH_SEC);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(async (silent = false) => {
     if (silent) setRefreshing(true); else setLoading(true);
     try {
       const r = await fetch(`/api/admin/reports?t=${Date.now()}`, { cache: "no-store" });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const d = await r.json();
       setData(d);
       setLastUpdated(new Date());
       setCountdown(REFRESH_SEC);
-    } catch {}
+      setError(null);
+    } catch (e) {
+      console.error("Failed to refresh reports:", e);
+      setError("Échec du dernier rafraîchissement — les données affichées peuvent être obsolètes.");
+    }
     finally { setLoading(false); setRefreshing(false); }
   }, []);
 
@@ -82,6 +88,12 @@ export default function ReportsPage() {
           </>
         }
       />
+
+      {error && (
+        <div className="bg-amber-50 border border-amber-200 text-amber-700 text-sm px-4 py-2.5 rounded-xl">
+          {error}
+        </div>
+      )}
 
       {/* Stats row 1 — Utilisateurs */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

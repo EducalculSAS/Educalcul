@@ -23,6 +23,7 @@ import AIGeneratorModal, { AIGenerateParams, AIGenerateProgress } from "@/compon
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
+import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 
 interface Course {
   id: string;
@@ -233,34 +234,8 @@ export default function AdminCoursesPage() {
     if (loading || courses.length === 0) return;
 
     const loadKatex = async () => {
-      if (!document.getElementById("katex-css")) {
-        const link = document.createElement("link");
-        link.id = "katex-css";
-        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-        link.rel = "stylesheet";
-        link.integrity = "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
-        link.crossOrigin = "anonymous";
-        document.head.appendChild(link);
-      }
-
-      const loadScript = (src: string, integrity: string): Promise<void> => {
-        return new Promise((resolve, reject) => {
-          if ((window as any).katex && src.includes("katex.min.js")) return resolve();
-          if ((window as any).renderMathInElement && src.includes("auto-render.min.js")) return resolve();
-          const script = document.createElement("script");
-          script.src = src;
-          script.integrity = integrity;
-          script.crossOrigin = "anonymous";
-          script.async = true;
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error(`Failed to load ${src}`));
-          document.head.appendChild(script);
-        });
-      };
-
       try {
-        await loadScript("https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js", "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8");
-        await loadScript("https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js", "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05");
+        await ensureKatexAutoRenderLoaded();
         renderMath();
       } catch (err) { console.error(err); }
     };

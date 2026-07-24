@@ -1,24 +1,18 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-
-async function resolveAdmin(authId: string) {
-  const { data } = await supabaseAdmin
-    .from("users")
-    .select("id, role")
-    .eq("auth_id", authId)
-    .maybeSingle();
-  return data && data.role === "admin" ? data : null;
-}
+import { sanitizeErrorMessage } from "@/lib/safeError";
+import { requireRole } from "@/lib/apiAuth";
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Vérifie le rôle à partir du Bearer token du VRAI appelant — un userId
+    // fourni par le client ne prouve rien sur son identité.
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
     const { id } = await params;
     const body = await req.json();
-    const { userId, title, description, event_type, start_date, end_date, zone } = body;
-    if (!userId) return NextResponse.json({ error: "Missing userId" }, { status: 400 });
-
-    const admin = await resolveAdmin(userId);
-    if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    const { title, description, event_type, start_date, end_date, zone } = body;
 
     const updates: Record<string, any> = { updated_at: new Date().toISOString() };
     if (title !== undefined) updates.title = title;
@@ -38,25 +32,24 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
     return NextResponse.json({ event: data });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("[admin/calendar-events PATCH] error:", error);
+    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || String(error)) }, { status: 500 });
   }
 }
 
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = await params;
-    const { searchParams } = new URL(req.url);
-    const userId = searchParams.get("userId");
-    if (!userId) return NextResponse.json({ error: "Missing userId" }, { status: 400 });
-
-    const admin = await resolveAdmin(userId);
+    const admin = await requireRole(req, ["admin"]);
     if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+    const { id } = await params;
 
     const { error } = await supabaseAdmin.from("global_calendar_events").delete().eq("id", id);
     if (error) throw error;
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("[admin/calendar-events DELETE] error:", error);
+    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || String(error)) }, { status: 500 });
   }
 }

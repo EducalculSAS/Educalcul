@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { requireRole } from "@/lib/apiAuth";
 
 // Protégé par le proxy /api/admin/* (rôle admin requis).
 
 // PATCH — éditer le nom affiché et/ou ajuster le nombre de filleuls.
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
     const pid = Number(id);
     if (!Number.isInteger(pid)) return NextResponse.json({ error: "Invalid id" }, { status: 400 });
@@ -31,13 +37,17 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     if (error) throw error;
     return NextResponse.json({ entry: data });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }
 
 // DELETE — retirer une inscription de la waitlist.
 export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(_req, ["admin"]);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
     const pid = Number(id);
     if (!Number.isInteger(pid)) return NextResponse.json({ error: "Invalid id" }, { status: 400 });
@@ -46,6 +56,6 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
     if (error) throw error;
     return NextResponse.json({ success: true });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }

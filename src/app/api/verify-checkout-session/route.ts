@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
+import { getAuthenticatedUser } from '@/lib/apiAuth';
+import { sanitizeErrorMessage } from '@/lib/safeError';
 
 export async function POST(req: Request) {
   try {
@@ -19,6 +21,18 @@ export async function POST(req: Request) {
       // Update user subscription in database
       const userId = session.metadata?.userId;
       const planId = session.metadata?.planId;
+
+      // Le compte est créé côté serveur au moment du checkout (voir
+      // create-checkout-session) mais le client ne se connecte qu'APRÈS ce
+      // retour Stripe — donc pas de session pour un tout nouvel inscrit. On
+      // exige une session dès qu'elle existe, et dans ce cas elle doit
+      // correspondre au compte visé par CE paiement (ou être admin) : un
+      // sessionId Stripe connu ne suffit plus, seul, à déclencher une
+      // resynchro pour un autre compte que le sien.
+      const me = await getAuthenticatedUser(req);
+      if (me && userId && me.authId !== userId && me.role !== 'admin') {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+      }
 
       if (userId && planId) {
         // Update or insert subscription using Admin Client to bypass RLS
@@ -65,7 +79,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('Stripe error:', error);
     return NextResponse.json(
-      { error: error.message || 'Internal Server Error' },
+      { error: sanitizeErrorMessage(error?.message || String(error)) },
       { status: 500 }
     );
   }

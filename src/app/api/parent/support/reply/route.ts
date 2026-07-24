@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function POST(req: NextRequest) {
@@ -40,7 +41,7 @@ export async function POST(req: NextRequest) {
       replied_at: new Date().toISOString(),
     }).select().single();
 
-    if (replyErr) return NextResponse.json({ error: replyErr.message }, { status: 500 });
+    if (replyErr) return NextResponse.json({ error: sanitizeErrorMessage(replyErr.message) }, { status: 500 });
 
     // Mettre à jour le statut du ticket
     await supabaseAdmin.from("support_tickets")
@@ -49,6 +50,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, reply });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }

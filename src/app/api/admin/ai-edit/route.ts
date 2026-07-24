@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { requireRole } from "@/lib/apiAuth";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 export const maxDuration = 120;
 
@@ -257,6 +259,10 @@ Ici, chaque élément de "items" est une QUESTION complète (id, text, type, poi
 
 export async function POST(req: NextRequest) {
   try {
+    // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
+    const admin = await requireRole(req, ["admin"]);
+    if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["ai:admin"];
     const rl = rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
@@ -307,7 +313,7 @@ export async function POST(req: NextRequest) {
       deleted: Array.isArray(result.deleted) ? result.deleted : [],
     });
   } catch (e: any) {
-    console.error("❌ Erreur ai-edit:", e.message);
-    return Response.json({ error: e.message || "Erreur de modification" }, { status: 500 });
+    console.error("❌ Erreur ai-edit:", e);
+    return Response.json({ error: sanitizeErrorMessage(e?.message || "Erreur de modification") }, { status: 500 });
   }
 }
