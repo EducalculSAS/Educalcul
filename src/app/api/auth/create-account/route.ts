@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
     // ✓ HIGH PRIORITY FIX: Advanced rate limiting with backoff
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["auth:signup"];
-    const rl = rateLimitWithBackoff(`auth:signup:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`auth:signup:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       const message = rl.blocked 
         ? "Too many signup attempts. Please try again in 1 hour." 

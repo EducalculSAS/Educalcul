@@ -185,7 +185,7 @@ export async function POST(req: Request) {
 
       const ip = req.headers.get('x-forwarded-for') ?? 'unknown';
       const rlConfig = RATE_LIMITS['auth:signup'];
-      const rl = rateLimitWithBackoff(`auth:signup:${ip}`, rlConfig.maxAttempts, rlConfig.windowMs);
+      const rl = await rateLimitWithBackoff(`auth:signup:${ip}`, rlConfig.maxAttempts, rlConfig.windowMs);
       if (!rl.allowed) {
         return NextResponse.json({ error: 'Trop de tentatives d\'inscription, réessaie plus tard.' }, { status: 429 });
       }

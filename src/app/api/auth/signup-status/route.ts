@@ -25,7 +25,7 @@ export async function GET(req: Request) {
 
   const ip = req.headers.get("x-forwarded-for") ?? "unknown";
   const config = RATE_LIMITS["auth:resolve-username"];
-  const rl = rateLimitWithBackoff(`signup-status:${ip}`, config.maxAttempts, config.windowMs);
+  const rl = await rateLimitWithBackoff(`signup-status:${ip}`, config.maxAttempts, config.windowMs);
   if (!rl.allowed) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }

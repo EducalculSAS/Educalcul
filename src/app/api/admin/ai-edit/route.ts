@@ -265,7 +265,7 @@ export async function POST(req: NextRequest) {
 
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["ai:admin"];
-    const rl = rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return Response.json({ error: "Trop de générations IA, réessaie dans quelques minutes." }, { status: 429 });
     }

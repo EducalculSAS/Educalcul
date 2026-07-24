@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     // Rate limiting pour éviter le spam de la table d'attente.
     const ip = getClientIp(req) ?? "unknown";
     const config = RATE_LIMITS["waitlist:join"];
-    const rl = rateLimitWithBackoff(`waitlist:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`waitlist:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "Trop de tentatives. Réessayez plus tard." },

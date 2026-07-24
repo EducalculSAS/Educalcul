@@ -35,6 +35,8 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
   const [toast, setToast] = useState<string | null>(null);
   const [form, setForm] = useState({ subject: "", message: "", priority: "normal" });
   const [userInfo, setUserInfo] = useState<any>(null);
+  const [replyText, setReplyText] = useState<Record<number, string>>({});
+  const [sending, setSending] = useState<number | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -81,6 +83,21 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
       setTimeout(() => setToast(null), 5000);
     }
     setSubmitting(false);
+  };
+
+  const handleReply = async (ticketId: number) => {
+    const msg = replyText[ticketId]?.trim();
+    if (!msg || !userInfo) return;
+    setSending(ticketId);
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) { setSending(null); return; }
+    const res = await fetch("/api/parent/support/reply", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
+      body: JSON.stringify({ ticketId, message: msg }),
+    });
+    if (res.ok) { setReplyText(prev => ({ ...prev, [ticketId]: "" })); fetchTickets(userInfo.authId); }
+    setSending(null);
   };
 
   return (
@@ -190,23 +207,43 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Votre message</p>
                           <p className="text-sm text-gray-700 whitespace-pre-wrap">{ticket.message}</p>
                         </div>
-                        {/* Réponses admin */}
+                        {/* Réponses */}
                         {replies.length > 0 && (
                           <div className="space-y-3">
-                            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Réponses de l'équipe</p>
                             {replies.map((r: any) => (
-                              <div key={r.id} className="bg-[var(--greek-blue)]/5 border border-[var(--greek-blue)]/10 rounded-xl p-4">
-                                <div className="flex items-center justify-between mb-2">
-                                  <span className="text-xs font-bold text-[var(--greek-blue)]">{r.admin_name || "Support Educalcul"}</span>
-                                  <span className="text-xs text-gray-400">{new Date(r.replied_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                              <div key={r.id} className={`flex ${r.is_admin ? "justify-start" : "justify-end"}`}>
+                                <div className={`max-w-[85%] rounded-xl p-4 ${r.is_admin ? "bg-[var(--greek-blue)]/5 border border-[var(--greek-blue)]/10" : "bg-[var(--greek-blue)] text-white"}`}>
+                                  <div className="flex items-center justify-between gap-3 mb-2">
+                                    <span className={`text-xs font-bold ${r.is_admin ? "text-[var(--greek-blue)]" : "text-white/80"}`}>{r.is_admin ? (r.admin_name || "Support Educalcul") : "Vous"}</span>
+                                    <span className={`text-xs ${r.is_admin ? "text-gray-400" : "text-white/60"}`}>{new Date(r.replied_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                                  </div>
+                                  <p className={`text-sm whitespace-pre-wrap ${r.is_admin ? "text-gray-700" : "text-white"}`}>{r.reply_message}</p>
                                 </div>
-                                <p className="text-sm text-gray-700 whitespace-pre-wrap">{r.reply_message}</p>
                               </div>
                             ))}
                           </div>
                         )}
-                        {replies.length === 0 && ticket.status === "open" && (
+                        {replies.length === 0 && (ticket.status === "open" || ticket.status === "Ouvert") && (
                           <p className="text-xs text-gray-400 italic text-center py-2">En attente de réponse de notre équipe...</p>
+                        )}
+
+                        {/* Répondre */}
+                        {ticket.status !== "Résolu" && ticket.status !== "resolved" && (
+                          <div className="flex gap-2 items-end pt-2 border-t border-gray-100">
+                            <textarea
+                              value={replyText[ticket.id] || ""}
+                              onChange={e => setReplyText(prev => ({ ...prev, [ticket.id]: e.target.value }))}
+                              onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleReply(ticket.id); } }}
+                              placeholder="Votre réponse..."
+                              rows={2}
+                              className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-sm resize-none focus:outline-none focus:border-[var(--greek-blue)] bg-white"
+                            />
+                            <button onClick={() => handleReply(ticket.id)}
+                              disabled={sending === ticket.id || !replyText[ticket.id]?.trim()}
+                              className="p-3 bg-[var(--greek-blue)] text-white rounded-xl hover:opacity-90 disabled:opacity-40 shrink-0">
+                              <Send className="w-5 h-5" />
+                            </button>
+                          </div>
                         )}
                       </div>
                     )}

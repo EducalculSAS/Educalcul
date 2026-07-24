@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     // ✓ HIGH PRIORITY FIX: Add rate limiting
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["contact:form"];
-    const rl = rateLimitWithBackoff(`contact:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`contact:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "Too many submissions. Please try again later." },

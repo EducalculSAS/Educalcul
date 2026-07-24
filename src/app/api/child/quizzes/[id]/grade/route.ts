@@ -16,7 +16,7 @@ export async function POST(
 
     // Limite anti-abus (la correction IA coûte des crédits)
     const cfg = RATE_LIMITS["ai:grade"];
-    const rl = rateLimitWithBackoff(`ai:grade:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    const rl = await rateLimitWithBackoff(`ai:grade:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
     if (!rl.allowed) {
       return NextResponse.json({ error: "Trop de corrections, réessaie plus tard." }, { status: 429 });
     }

@@ -16,7 +16,7 @@ export async function GET(req: Request) {
       .from("support_tickets")
       .select(`
         id, subject, message, status, priority, created_at, updated_at,
-        replies:ticket_replies(id, admin_name, reply_message, replied_at)
+        replies:ticket_replies(id, admin_name, author_name, reply_message, is_admin, replied_at)
       `)
       .eq("user_id", userId)
       .order("created_at", { ascending: false });
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     // ✓ HIGH PRIORITY FIX: Add rate limiting
     const rateLimitKey = userId;
     const config = RATE_LIMITS["support:ticket"];
-    const rl = rateLimitWithBackoff(`support:${rateLimitKey}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`support:${rateLimitKey}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "Too many support tickets. Please wait before submitting again." },

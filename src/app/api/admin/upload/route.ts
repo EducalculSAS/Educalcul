@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     // ✓ HIGH PRIORITY FIX: Rate limiting on file upload
     const ip = request.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["upload:file"];
-    const rl = rateLimitWithBackoff(`upload:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`upload:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "Too many uploads. Please try again later." },

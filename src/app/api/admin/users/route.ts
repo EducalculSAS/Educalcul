@@ -53,7 +53,7 @@ export async function POST(request: Request) {
 
     // ✓ SECURITY: Rate limiting on user creation
     const ip = request.headers.get("x-forwarded-for") ?? "unknown";
-    const rl = rateLimitWithBackoff(`admin:user-create:${ip}`, 10, 60000); // 10 per minute
+    const rl = await rateLimitWithBackoff(`admin:user-create:${ip}`, 10, 60000); // 10 per minute
     if (!rl.allowed) {
       return NextResponse.json({ error: "Too many requests" }, { status: 429 });
     }

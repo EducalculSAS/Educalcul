@@ -1,102 +1,48 @@
 /**
  * Advanced rate limiting with different strategies per endpoint
  * Prevents brute force, DoS, and API abuse
+ *
+ * Backed by the `rate_limits` table + `check_rate_limit` Postgres function
+ * (atomic, row-locked) rather than in-process memory: on Vercel serverless,
+ * each invocation can land on a different instance with its own memory, so
+ * an in-memory counter does not actually limit anything across requests.
  */
-
-interface RateLimitEntry {
-  count: number;
-  resetAt: number;
-  blocked?: boolean;
-  blockedUntil?: number;
-}
-
-const attempts = new Map<string, RateLimitEntry>();
-
-const CLEANUP_INTERVAL = 60000; // 1 minute
-let lastCleanup = Date.now();
-
-/**
- * Clean up expired entries
- */
-function cleanup() {
-  const now = Date.now();
-  if (now - lastCleanup < CLEANUP_INTERVAL) return;
-  
-  for (const [key, entry] of attempts.entries()) {
-    if (now > entry.resetAt && (!entry.blockedUntil || now > entry.blockedUntil)) {
-      attempts.delete(key);
-    }
-  }
-  
-  lastCleanup = now;
-}
+import { supabaseAdmin } from "./supabaseClient";
 
 /**
  * Rate limit with exponential backoff
  */
-export function rateLimitWithBackoff(
+export async function rateLimitWithBackoff(
   key: string,
   maxAttempts = 5,
   windowMs = 15 * 60 * 1000, // 15 min
   maxFailures = 10, // After this many resets, block for longer
   blockDurationMs = 60 * 60 * 1000 // 1 hour block
-): { allowed: boolean; remaining: number; resetIn: number; blocked?: boolean; blockedUntil?: number } {
-  cleanup();
-  
-  const now = Date.now();
-  const entry = attempts.get(key) || { count: 0, resetAt: now + windowMs };
-  
-  // Check if user is blocked
-  if (entry.blocked && entry.blockedUntil && now < entry.blockedUntil) {
-    return {
-      allowed: false,
-      remaining: 0,
-      resetIn: entry.blockedUntil - now,
-      blocked: true,
-      blockedUntil: entry.blockedUntil,
-    };
+): Promise<{ allowed: boolean; remaining: number; resetIn: number; blocked?: boolean; blockedUntil?: number }> {
+  const { data, error } = await supabaseAdmin.rpc("check_rate_limit", {
+    p_key: key,
+    p_max_attempts: maxAttempts,
+    p_window_ms: windowMs,
+    p_max_failures: maxFailures,
+    p_block_duration_ms: blockDurationMs,
+  });
+
+  const row = data?.[0];
+  if (error || !row) {
+    // Fail open: an unreachable DB shouldn't take the whole app down, but
+    // this silently disables rate-limiting until the underlying issue is
+    // fixed, so it's logged loudly.
+    console.error("[rateLimitWithBackoff] DB error, failing open:", error?.message);
+    return { allowed: true, remaining: maxAttempts, resetIn: windowMs };
   }
-  
-  // Reset block if time passed
-  if (entry.blocked && entry.blockedUntil && now >= entry.blockedUntil) {
-    entry.blocked = false;
-    entry.blockedUntil = undefined;
-  }
-  
-  // Check if in current window
-  if (now > entry.resetAt) {
-    entry.count = 1;
-    entry.resetAt = now + windowMs;
-    attempts.set(key, entry);
-    return { allowed: true, remaining: maxAttempts - 1, resetIn: windowMs };
-  }
-  
-  // If exceeding max attempts
-  if (entry.count >= maxAttempts) {
-    // Count total resets
-    const resetCount = Math.floor(Date.now() / windowMs) - Math.floor(entry.resetAt / windowMs);
-    
-    // Block if too many failures
-    if (resetCount >= maxFailures) {
-      entry.blocked = true;
-      entry.blockedUntil = now + blockDurationMs;
-      attempts.set(key, entry);
-      
-      return {
-        allowed: false,
-        remaining: 0,
-        resetIn: entry.blockedUntil - now,
-        blocked: true,
-        blockedUntil: entry.blockedUntil,
-      };
-    }
-    
-    return { allowed: false, remaining: 0, resetIn: entry.resetAt - now };
-  }
-  
-  entry.count++;
-  attempts.set(key, entry);
-  return { allowed: true, remaining: maxAttempts - entry.count, resetIn: entry.resetAt - now };
+
+  return {
+    allowed: row.allowed,
+    remaining: row.remaining,
+    resetIn: Number(row.reset_in),
+    blocked: row.blocked,
+    blockedUntil: row.blocked_until ? new Date(row.blocked_until).getTime() : undefined,
+  };
 }
 
 /**
@@ -158,6 +104,6 @@ export function getRateLimitConfig(endpointKey: string) {
 /**
  * Reset rate limit for a key (e.g., after successful auth)
  */
-export function resetRateLimit(key: string) {
-  attempts.delete(key);
+export async function resetRateLimit(key: string) {
+  await supabaseAdmin.from("rate_limits").delete().eq("key", key);
 }

@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
     // boucle pour contourner indéfiniment la limite de 3 messages/navigateur.
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
     const ipConfig = RATE_LIMITS["epsi:demo"];
-    const ipLimit = rateLimitWithBackoff(`epsi:demo:${ip}`, ipConfig.maxAttempts, ipConfig.windowMs);
+    const ipLimit = await rateLimitWithBackoff(`epsi:demo:${ip}`, ipConfig.maxAttempts, ipConfig.windowMs);
     if (!ipLimit.allowed) {
       return NextResponse.json({ error: "demo_limit" }, { status: 429 });
     }

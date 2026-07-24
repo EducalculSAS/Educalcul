@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     // ✓ HIGH PRIORITY FIX: Add rate limiting
     const ip = request.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["auth:resolve-username"];
-    const rl = rateLimitWithBackoff(`resolve-username:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`resolve-username:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },

@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     // ✓ HIGH PRIORITY FIX: Add rate limiting
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["auth:validate-email"];
-    const rl = rateLimitWithBackoff(`validate-signup:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`validate-signup:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json({
         valid: false,

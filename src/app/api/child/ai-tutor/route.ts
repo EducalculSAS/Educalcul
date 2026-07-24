@@ -71,7 +71,7 @@ export async function POST(req: Request) {
 
     // ✓ Rate limiting on expensive AI endpoint, keyed on the real user.
     const config = RATE_LIMITS["ai:tutor"];
-    const rl = rateLimitWithBackoff(`ai:tutor:${me.authId}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`ai:tutor:${me.authId}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
         { message: null, blocked: true, reason: "Too many AI requests. Please wait before trying again." },

@@ -5,6 +5,7 @@ import { sendEmail } from "@/lib/mailer";
 import { notify } from "@/lib/notify";
 import { buildEmailHtml } from "@/lib/emailTemplates";
 import { requireRole } from "@/lib/apiAuth";
+import { supportLinkForAuthId } from "@/lib/supportLink";
 
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -43,7 +44,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
     if (updateError) return NextResponse.json({ error: sanitizeErrorMessage(updateError.message) }, { status: 500 });
 
-    // 3. Envoyer email UNIQUEMENT pour les tickets publics (contact form)
+    // 3. Envoyer email UNIQUEMENT pour les tickets publics (contact form) —
+    // les utilisateurs connectés voient déjà la réponse via la cloche de notif.
     if (is_public && user_email) {
       // Charger le template depuis la DB
       const { data: tmpl } = await supabaseAdmin.from("email_templates").select("subject,body").eq("key", "support_reply").single();
@@ -66,13 +68,16 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       if (!result.success) {
         console.error("Email non envoyé:", result.error);
       }
+    }
 
-      // Notification in-app si l'utilisateur a un compte
-      const { data: ticketData } = await supabaseAdmin
-        .from("support_tickets").select("user_id").eq("id", id).maybeSingle();
-      if (ticketData?.user_id) {
-        notify({ userId: ticketData.user_id, type: "support_reply", title: "Réponse à votre message", body: message.slice(0, 80), link: "/parent/support" });
-      }
+    // Notification in-app si l'utilisateur a un compte — indépendant du statut
+    // "public" du ticket : un ticket privé (créé depuis /support par un
+    // utilisateur connecté) doit aussi déclencher la cloche.
+    const { data: ticketData } = await supabaseAdmin
+      .from("support_tickets").select("user_id").eq("id", id).maybeSingle();
+    if (ticketData?.user_id) {
+      const link = await supportLinkForAuthId(ticketData.user_id);
+      notify({ userId: ticketData.user_id, type: "support_reply", title: "Réponse à votre message", body: message.slice(0, 80), link });
     }
 
     return NextResponse.json({ success: true });

@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const config = RATE_LIMITS["forum:post"];
-    const rl = rateLimitWithBackoff(`forum:post:${me.authId}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`forum:post:${me.authId}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json({ error: "Trop de sujets créés, réessaie plus tard." }, { status: 429 });
     }

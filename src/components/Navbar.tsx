@@ -122,7 +122,7 @@ export default function Navbar() {
 
         {/* Cloche + burger */}
         <div className="flex items-center gap-2">
-          {user && firstName && <NotificationBell />}
+          {user && firstName && isAppPage && <NotificationBell />}
           <button
             className="p-2 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
             style={{color:"rgba(255,255,255,0.7)"}}

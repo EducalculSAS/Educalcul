@@ -4,6 +4,8 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { buildEmailHtml } from "@/lib/emailTemplates";
 import { requireRole } from "@/lib/apiAuth";
+import { notify } from "@/lib/notify";
+import { supportLinkForAuthId } from "@/lib/supportLink";
 
 export async function POST(req: Request) {
   try {
@@ -57,13 +59,20 @@ export async function POST(req: Request) {
       <p style="font-size:13px;color:#6b7280;">Vous pouvez répondre à ce message directement depuis votre espace Educalcul.</p>
     `;
 
+    const link = await supportLinkForAuthId(userId);
+
     await sendEmail({
       toEmail,
       toName: toName || toEmail,
       subject,
       textPart: message,
-      htmlPart: buildEmailHtml({ title: subject, body: htmlBody, cta: { label: "Voir le message", url: `https://project-fz32e2.vercel.app/parent/support` } }),
+      htmlPart: buildEmailHtml({ title: subject, body: htmlBody, cta: { label: "Voir le message", url: `https://project-fz32e2.vercel.app${link}` } }),
     });
+
+    // Notification in-app si l'utilisateur a un compte
+    if (userId) {
+      notify({ userId, type: "message", title: subject, body: message.slice(0, 80), link });
+    }
 
     return NextResponse.json({ success: true, ticketId: ticket.id });
   } catch (err: any) {

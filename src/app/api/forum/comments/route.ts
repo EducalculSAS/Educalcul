@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const config = RATE_LIMITS["forum:comment"];
-    const rl = rateLimitWithBackoff(`forum:comment:${me.authId}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(`forum:comment:${me.authId}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json({ error: "Trop de commentaires, réessaie plus tard." }, { status: 429 });
     }
@@ -50,19 +50,21 @@ export async function POST(req: Request) {
     // Notifier l'auteur du post si différent du commentateur
     const { data: post } = await supabaseAdmin
       .from("forum_posts")
-      .select("title, author:users!author_id(auth_id)")
+      .select("category_id, author:users!author_id(auth_id, role)")
       .eq("id", postId)
       .maybeSingle();
 
-    const postAuthorAuthId = (post?.author as any)?.auth_id;
+    const postAuthor = (post?.author as any);
+    const postAuthorAuthId = postAuthor?.auth_id;
     if (postAuthorAuthId && postAuthorAuthId !== me.authId) {
       const name = (data as any)?.author?.first_name || (data as any)?.author?.child_username || "Quelqu'un";
+      const base = postAuthor?.role === "child" ? "/child/forum" : "/parent/forum";
       notify({
         userId: postAuthorAuthId,
         type: "forum_reply",
         title: `${name} a répondu à votre post`,
         body: content?.slice(0, 80),
-        link: `/child/forum/${postId}`,
+        link: `${base}?view=thread&categoryId=${post?.category_id}&postId=${postId}`,
       });
     }
 

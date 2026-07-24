@@ -13,8 +13,8 @@ export async function POST(req: Request) {
   // Rate limit (per IP + per target email) to prevent reset-email bombing.
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
   const cfg = RATE_LIMITS["auth:forgot-password"];
-  const rlIp = rateLimitWithBackoff(`forgot:ip:${ip}`, cfg.maxAttempts, cfg.windowMs);
-  const rlEmail = rateLimitWithBackoff(`forgot:email:${entered}`, cfg.maxAttempts, cfg.windowMs);
+  const rlIp = await rateLimitWithBackoff(`forgot:ip:${ip}`, cfg.maxAttempts, cfg.windowMs);
+  const rlEmail = await rateLimitWithBackoff(`forgot:email:${entered}`, cfg.maxAttempts, cfg.windowMs);
   if (!rlIp.allowed || !rlEmail.allowed) {
     // Generic success to avoid revealing anything; just don't send another mail.
     return NextResponse.json({ success: true });
