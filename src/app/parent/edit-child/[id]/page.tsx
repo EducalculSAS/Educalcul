@@ -232,7 +232,7 @@ export default function EditChildPage() {
       const toggleRes = await fetch("/api/parent/toggle-child-2fa", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ childId }),
+        body: JSON.stringify({ childId, verificationToken: verifyData.token }),
       });
       const toggleData = await toggleRes.json();
       if (!toggleRes.ok) throw new Error(toggleData.error || "Erreur");

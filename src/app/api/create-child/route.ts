@@ -3,12 +3,19 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { validatePassword, isValidEmail } from "@/lib/validation";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(request: Request) {
   try {
     const requester = await requireRole(request, ["parent", "admin"]);
     if (!requester) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const config = RATE_LIMITS["child-account:mutate"];
+    const rl = await rateLimitWithBackoff(`create-child:${requester.id}`, config.maxAttempts, config.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de tentatives, réessaie dans quelques minutes." }, { status: 429 });
     }
 
     const body = await request.json();

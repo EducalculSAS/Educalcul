@@ -13,15 +13,20 @@ export async function GET(req: Request) {
     if (!token) return NextResponse.json({ error: "Lien invalide" }, { status: 400 });
 
     const tokenHash = createHash("sha256").update(token).digest("hex");
-    const { data: request } = await supabaseAdmin
+    // Marque le token comme utilisé atomiquement (évite qu'un double-clic ou
+    // une requête dupliquée ne passe deux fois avant l'écriture).
+    const { data: claimed } = await supabaseAdmin
       .from("data_export_requests")
-      .select("id, user_id, expires_at")
+      .update({ downloaded_at: new Date().toISOString() })
       .eq("token_hash", tokenHash)
+      .is("downloaded_at", null)
+      .select("id, user_id, expires_at")
       .maybeSingle();
 
-    if (!request || new Date(request.expires_at) < new Date()) {
-      return NextResponse.json({ error: "Ce lien a expiré. Refais une demande depuis ton profil." }, { status: 400 });
+    if (!claimed || new Date(claimed.expires_at) < new Date()) {
+      return NextResponse.json({ error: "Ce lien est invalide, a déjà été utilisé, ou a expiré. Refais une demande depuis ton profil." }, { status: 400 });
     }
+    const request = claimed;
 
     const { data: parent } = await supabaseAdmin
       .from("users")
@@ -42,8 +47,6 @@ export async function GET(req: Request) {
           .eq("user_id", parent.auth_id)
           .maybeSingle()
       : { data: null };
-
-    await supabaseAdmin.from("data_export_requests").update({ downloaded_at: new Date().toISOString() }).eq("id", request.id);
 
     const { auth_id: _authId, ...parentPublic } = parent || {};
     const json = JSON.stringify({ exported_at: new Date().toISOString(), parent: parentPublic, children: children || [], subscription: subscription || null }, null, 2);

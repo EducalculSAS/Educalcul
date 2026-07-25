@@ -4,6 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { runGradePromotion, undoLastGradePromotion } from "@/lib/gradePromotionRun";
 import { auditLog, AuditAction } from "@/lib/auditLog";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 const SETTINGS_KEY = "grade_promotion";
 const DATE_RE = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/; // MM-DD
@@ -53,6 +54,12 @@ export async function POST(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
+  const config = RATE_LIMITS["grade-promotion:run"];
+  const rl = await rateLimitWithBackoff(`grade-promotion:run:${admin.id}`, config.maxAttempts, config.windowMs);
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Trop de tentatives rapprochées, réessaie dans quelques minutes." }, { status: 429 });
+  }
+
   const result = await runGradePromotion(admin.id);
 
   const current = await getConfig();
@@ -73,6 +80,12 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+
+  const config = RATE_LIMITS["grade-promotion:run"];
+  const rl = await rateLimitWithBackoff(`grade-promotion:undo:${admin.id}`, config.maxAttempts, config.windowMs);
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Trop de tentatives rapprochées, réessaie dans quelques minutes." }, { status: 429 });
+  }
 
   try {
     const result = await undoLastGradePromotion();

@@ -23,12 +23,13 @@ export default function GradePromotionPanel() {
   const [showUndoConfirm, setShowUndoConfirm] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
-  const load = async () => {
+  const authHeaders = async (extra?: Record<string, string>) => {
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
-    const res = await fetch("/api/admin/grade-promotion", {
-      headers: { Authorization: `Bearer ${session.access_token}` },
-    });
+    return { Authorization: `Bearer ${session?.access_token || ""}`, ...extra };
+  };
+
+  const load = async () => {
+    const res = await fetch("/api/admin/grade-promotion", { headers: await authHeaders() });
     const data = await res.json();
     if (res.ok) {
       setDate(data.date);
@@ -46,7 +47,7 @@ export default function GradePromotionPanel() {
     try {
       const res = await fetch("/api/admin/grade-promotion", {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: await authHeaders({ "Content-Type": "application/json" }),
         body: JSON.stringify({ date }),
       });
       const data = await res.json();
@@ -65,7 +66,7 @@ export default function GradePromotionPanel() {
     setRunning(true);
     setMessage(null);
     try {
-      const res = await fetch("/api/admin/grade-promotion", { method: "POST" });
+      const res = await fetch("/api/admin/grade-promotion", { method: "POST", headers: await authHeaders() });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setLastRunYear(new Date().getFullYear());
@@ -86,7 +87,7 @@ export default function GradePromotionPanel() {
     setUndoing(true);
     setMessage(null);
     try {
-      const res = await fetch("/api/admin/grade-promotion", { method: "DELETE" });
+      const res = await fetch("/api/admin/grade-promotion", { method: "DELETE", headers: await authHeaders() });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setMessage({ type: "success", text: `${data.restored} compte(s) restauré(s) à leur niveau précédent.` });

@@ -2,17 +2,39 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { hashTwoFactorValue } from "@/lib/twoFactor";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 // La 2FA d'un compte enfant est gérée par le parent, pas par l'enfant
-// lui-même (aucun code de vérification requis ici — le parent est déjà
-// authentifié et n'agit que sur ses propres enfants).
+// lui-même. Le parent doit avoir vérifié un code envoyé à SON email juste
+// avant (voir /api/auth/2fa/send-code + verify-code) — verificationToken est
+// le jeton de session 2FA renvoyé par verify-code, vérifié ici pour que la
+// vérification par code soit réellement appliquée côté serveur, pas juste
+// dans l'UI.
 export async function POST(req: Request) {
   try {
     const parent = await requireRole(req, ["parent"]);
     if (!parent) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const { childId } = await req.json();
+    const config = RATE_LIMITS["child-account:mutate"];
+    const rl = await rateLimitWithBackoff(`toggle-child-2fa:${parent.id}`, config.maxAttempts, config.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de tentatives, réessaie dans quelques minutes." }, { status: 429 });
+    }
+
+    const { childId, verificationToken } = await req.json();
     if (!childId) return NextResponse.json({ error: "childId manquant" }, { status: 400 });
+    if (!verificationToken) return NextResponse.json({ error: "Vérification par code requise" }, { status: 400 });
+
+    const { data: session } = await supabaseAdmin
+      .from("two_factor_sessions")
+      .select("expires_at")
+      .eq("user_id", parent.id)
+      .eq("token_hash", hashTwoFactorValue(verificationToken))
+      .maybeSingle();
+    if (!session || new Date(session.expires_at) < new Date()) {
+      return NextResponse.json({ error: "Vérification expirée, recommence." }, { status: 400 });
+    }
 
     const { data: child } = await supabaseAdmin
       .from("users")

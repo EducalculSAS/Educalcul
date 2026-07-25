@@ -8,6 +8,9 @@ const SETTINGS_KEY = "grade_promotion";
 // requête avec CRON_SECRET dans l'en-tête Authorization — toute autre requête
 // est rejetée.
 export async function GET(req: Request) {
+  if (!process.env.CRON_SECRET) {
+    return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 500 });
+  }
   const auth = req.headers.get("authorization");
   if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
