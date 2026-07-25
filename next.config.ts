@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const securityHeaders = [
   // Prevent DNS prefetching
@@ -14,7 +15,7 @@ const securityHeaders = [
   // ✓ CRITICAL FIX: Content-Security-Policy to prevent XSS
   {
     key: "Content-Security-Policy",
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co https://js.stripe.com https://m.stripe.network https://api.openrouter.ai https://basemaps.cartocdn.com https://*.basemaps.cartocdn.com; frame-src https://js.stripe.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self' blob:",
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co https://js.stripe.com https://m.stripe.network https://api.openrouter.ai https://basemaps.cartocdn.com https://*.basemaps.cartocdn.com https://*.ingest.de.sentry.io https://*.ingest.sentry.io; frame-src https://js.stripe.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self' blob:",
   },
   // ✓ CRITICAL FIX: HSTS - enforce HTTPS
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
@@ -65,4 +66,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  org: "educalcul",
+  project: "javascript-nextjs",
+  silent: true,
+  widenClientFileUpload: true,
+});
