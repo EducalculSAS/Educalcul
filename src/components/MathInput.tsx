@@ -29,25 +29,6 @@ function buildMatrixLatex(n: number): string {
   return `\\begin{pmatrix}${rows}\\end{pmatrix}`;
 }
 
-// Environnement utilisé pour les réponses multi-lignes : "array{l}" aligne
-// chaque ligne à gauche (contrairement à "aligned", pensé pour aligner des
-// équations sur des points "&" et qui centrait/décalait chaque ligne).
-const MULTILINE_ENV_START = "\\begin{array}{l}";
-const MULTILINE_ENV_RE = /^\\begin\{array\}\{l\}([\s\S]*)\\end\{array\}$/;
-
-/** Repasse en contenu simple dès qu'il ne reste plus qu'une seule ligne dans
- * le tableau multi-lignes. Un tableau réduit à une seule ligne est un état
- * transitoire fragile : un Retour arrière sur sa dernière ligne pouvait
- * effacer tout le contenu au lieu de simplement fusionner la ligne. */
-function unwrapIfSingleRow(mf: MathfieldElement) {
-  const m = mf.value.match(MULTILINE_ENV_RE);
-  if (!m) return;
-  if (!m[1].includes("\\\\")) {
-    mf.value = m[1];
-    mf.executeCommand("moveToMathfieldEnd");
-  }
-}
-
 let keyboardThemeApplied = false;
 function applyKeyboardTheme() {
   if (keyboardThemeApplied) return;
@@ -441,29 +422,25 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     };
 
     const handler = () => {
-      unwrapIfSingleRow(mf);
       onChange(mf.value);
       updatePlaceholder();
     };
     mf.addEventListener("input", handler);
 
-    // Permet de faire "Entrée" pour passer à la ligne suivante (réponse multi-lignes).
-    // Une fois le contenu déjà multi-lignes, on ne fait STRICTEMENT RIEN ici :
-    // MathLive gère nativement "Entrée" dans ce cas (addRowAfter, avec son
-    // propre suivi contentWillChange/contentDidChange, undo, etc.) — c'est ce
-    // même chemin natif qu'emprunte le clavier virtuel, d'où son comportement
-    // parfait. Court-circuiter cette logique (comme le faisait l'ancien code,
-    // qui appelait executeCommand directement) désynchronisait cet état interne
-    // et causait des comportements erratiques (saut de ligne, suppression totale
-    // au Retour arrière). On n'intercepte donc que la toute première "Entrée",
-    // pour transformer le contenu plat initial en tableau multi-lignes.
+    // Permet de faire "Entrée" pour passer à la ligne suivante (réponse
+    // multi-lignes). "addRowAfter" gère nativement les deux cas : sur du
+    // contenu plat, il coupe au niveau du curseur et crée lui-même un
+    // environnement "\displaylines{...}" (voir parentArray() dans
+    // mathlive.js) ; une fois dans cet environnement, il y ajoute une
+    // nouvelle ligne. Reproduire cette création manuellement (par
+    // concaténation de chaîne) est fragile : MathLive normalise/supprime les
+    // lignes vides en fin de chaîne au moment du parsing, ce qui égarait le
+    // curseur hors de l'environnement. Laisser l'API le faire évite ce piège.
     const keydownHandler = (e: KeyboardEvent) => {
       if (e.key !== "Enter" || e.shiftKey) return;
-      if (mf.value.startsWith(MULTILINE_ENV_START)) return;
       e.preventDefault();
       e.stopPropagation();
-      mf.value = `${MULTILINE_ENV_START}${mf.value}\\\\\\end{array}`;
-      mf.executeCommand("moveToMathfieldEnd");
+      mf.executeCommand("addRowAfter");
       onChange(mf.value);
       updatePlaceholder();
     };
