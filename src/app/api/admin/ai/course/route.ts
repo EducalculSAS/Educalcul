@@ -9,6 +9,42 @@ import {
   normalizeGeneratedCourseChapter,
 } from "@/lib/aiCourseContent";
 
+type GeneratedCourseLesson = {
+  id?: string;
+  title?: string;
+  type?: string;
+  content?: string;
+  duration?: number;
+  exercises?: unknown[];
+} & Record<string, unknown>;
+
+type GeneratedCourseChapter = {
+  title?: string;
+  lessons?: GeneratedCourseLesson[];
+} & Record<string, unknown>;
+
+function isValidGeneratedCourseLesson(lesson: unknown): lesson is GeneratedCourseLesson {
+  if (typeof lesson !== "object" || lesson === null) return false;
+  const candidate = lesson as GeneratedCourseLesson;
+  if (typeof candidate.title !== "string" || candidate.title.trim().length === 0) return false;
+  if (typeof candidate.content !== "string" || candidate.content.trim().length === 0) return false;
+  if (typeof candidate.duration !== "number" || candidate.duration <= 0) return false;
+  return true;
+}
+
+function cleanupGeneratedCourseChapter(chapter: GeneratedCourseChapter, expectedLessonCount: number): GeneratedCourseChapter {
+  if (!chapter || !Array.isArray(chapter.lessons)) {
+    return { ...chapter, lessons: [] };
+  }
+
+  const validLessons = chapter.lessons.filter(isValidGeneratedCourseLesson);
+  if (validLessons.length >= expectedLessonCount) {
+    return { ...chapter, lessons: validLessons.slice(0, expectedLessonCount) };
+  }
+
+  return { ...chapter, lessons: validLessons };
+}
+
 export const maxDuration = 300; // 5 min — génération de cours complète
 
 export async function POST(request: Request) {
@@ -117,6 +153,9 @@ Vérifie en fin de rédaction que CHAQUE notion citée ci-dessus apparaît bien 
 • Le chapitre doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s).
 • Chaque leçon doit inclure : théorie, exemples détaillés étape par étape, contre-exemples, erreurs fréquentes, exercices d'application résolus.
 • duration = ${durationPerLesson} minutes pour chaque leçon.
+• Ne génère jamais plus ou moins de leçons que demandé. Si une leçon n'a pas de titre, de contenu ou de durée valide, considère-la invalide et ne la crée pas.
+• Si une représentation visuelle est utile (fractions, signes, variations, droites, aires), insère au moins un tableau ou un SVG explicatif sobre dans le chapitre.
+• Si includeExercises est vrai, chaque leçon doit avoir 3 à 6 mini-exercices réels dans "exercises" ; ne laisse jamais ce tableau vide.
 
 ═══ PÉDAGOGIE ═══
 ${AI_COURSE_PEDAGOGY_RULES}
@@ -298,6 +337,8 @@ Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
             const chapterUser = `Rédige le chapitre "${chapterTitle}" du cours "${courseTitle}" (niveau ${grade_level}).
 Le tableau "lessons" doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s), chacune ${durationPerLesson} minutes.
 Chaque leçon doit avoir un "content" HTML riche (600-1200 mots au total), ${includeExercises ? `et un tableau "exercises" de 3 à 6 mini-exercices (type "short_answer"), avec un placeholder <div class="lesson-exercise" data-exercise-id="..."></div> inséré dans "content" juste après chaque notion expliquée` : `et un tableau "exercises" vide`}.
+Ne génère jamais de leçons vides ou incomplètes : chaque leçon doit avoir un titre, un contenu et une durée valides.
+Si includeExercises est vrai, ne laisse jamais le tableau "exercises" vide et assure-toi que chaque placeholder corresponde à un "id" réel.
 ${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT ci-dessus : couvre exactement le programme demandé, notion par notion." : ""}
 Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
 
@@ -306,12 +347,24 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
               lessons?: Array<{ content?: string } & Record<string, unknown>>;
             };
 
-            const chapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
+            const rawChapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
               chapterUser,
               chapterSystem,
               0.65,
               28000,
             )) as GeneratedChapter);
+            let chapterData = cleanupGeneratedCourseChapter(rawChapterData, lessonsPerChapter);
+
+            if ((chapterData.lessons?.length || 0) < lessonsPerChapter) {
+              const retryHint = `La réponse précédente ne respectait pas le nombre exact de leçons attendues ou contenait des leçons vides. Tu dois maintenant renvoyer un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides, chacune ayant un titre, un contenu et une durée.`;
+              const retryChapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
+                `${chapterUser}\n\n${retryHint}`,
+                chapterSystem,
+                0.65,
+                28000,
+              )) as GeneratedChapter);
+              chapterData = cleanupGeneratedCourseChapter(retryChapterData, lessonsPerChapter);
+            }
 
             completed++;
             send({

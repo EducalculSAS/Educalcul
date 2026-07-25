@@ -13,6 +13,7 @@ export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX ═══
 • N'utilise JAMAIS de retour à la ligne littéral à l'intérieur des chaînes JSON.
 • DOUBLE-ÉCHAPPE les backslashes JSON : \\\\\\\\frac{a}{b} → donne \\\\frac{a}{b} dans le rendu.
 • N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z).
+• Pour une formule propre, utilise toujours du LaTeX standard : $\\frac{a}{b}$, $\\sqrt{x}$, $x^2$, $x_n$. N'utilise pas de symboles Unicode comme ², ³, √, ±, × ou ÷ dans une formule.
 • Rédige UNIQUEMENT en français correct.
 • Pour mettre en valeur une définition, une mise en garde ou un résultat, utilise <blockquote class="course-callout course-callout-note">...</blockquote> ou <span class="course-emphasis">...</span> hors formule.
 • Pour un avertissement, utilise <blockquote class="course-callout course-callout-warning">...</blockquote>.
@@ -25,6 +26,7 @@ export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
 • Avant le premier exercice, il doit toujours y avoir au moins une explication ou un exemple guidé.
 • Ne place jamais un placeholder d'exercice au début d'une leçon.
 • Les exercices doivent vérifier une notion déjà expliquée juste avant.
+• Une leçon incomplète ou vide est inacceptable : chaque leçon doit être complète avec titre, contenu et durée.
 • N'utilise jamais d'exemples issus de la physique, de la chimie, de la biologie, de l'informatique ou d'autres matières, sauf demande explicite de l'enseignant.
 • Privilégie des exemples purement mathématiques, concrets et adaptés au niveau.
 • Pour les fractions, les aires, les proportions ou les décompositions, privilégie des représentations visuelles colorées et sobres plutôt que des analogies hors-mathématiques.
