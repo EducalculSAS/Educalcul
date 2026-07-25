@@ -9,6 +9,7 @@ import {
   Loader2,
   AlertCircle,
   CheckCircle,
+  RotateCcw,
 } from "lucide-react";
 import { useRouter, useParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
@@ -30,7 +31,12 @@ export default function EditChildPage() {
   const [originalUsername, setOriginalUsername] = useState("");
   const [originalEmail, setOriginalEmail] = useState("");
   const [twoFAEnabled, setTwoFAEnabled] = useState(false);
+  const [twoFAStep, setTwoFAStep] = useState<"idle" | "code">("idle");
+  const [twoFACode, setTwoFACode] = useState("");
+  const [sendingTwoFACode, setSendingTwoFACode] = useState(false);
+  const [twoFACooldown, setTwoFACooldown] = useState(0);
   const [togglingTwoFA, setTogglingTwoFA] = useState(false);
+  const [twoFAError, setTwoFAError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -174,20 +180,68 @@ export default function EditChildPage() {
     }
   };
 
-  const toggleTwoFA = async () => {
-    setTogglingTwoFA(true);
-    setError(null);
+  const sendTwoFACode = async () => {
+    setSendingTwoFACode(true);
+    setTwoFAError(null);
     try {
-      const res = await fetch("/api/parent/toggle-child-2fa", {
+      const res = await fetch("/api/auth/2fa/send-code", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Impossible d'envoyer le code.");
+      setTwoFACooldown(60);
+    } catch (err: any) {
+      setTwoFAError(err.message || "Une erreur est survenue.");
+    } finally {
+      setSendingTwoFACode(false);
+    }
+  };
+
+  const startTwoFAFlow = () => {
+    setTwoFAStep("code");
+    setTwoFACode("");
+    setTwoFAError(null);
+    sendTwoFACode();
+  };
+
+  const cancelTwoFAFlow = () => {
+    setTwoFAStep("idle");
+    setTwoFACode("");
+    setTwoFAError(null);
+  };
+
+  useEffect(() => {
+    if (twoFACooldown <= 0) return;
+    const t = setTimeout(() => setTwoFACooldown(c => c - 1), 1000);
+    return () => clearTimeout(t);
+  }, [twoFACooldown]);
+
+  const confirmTwoFAToggle = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setTogglingTwoFA(true);
+    setTwoFAError(null);
+    try {
+      // Le code est envoyé au PARENT (compte actuellement authentifié), pas à
+      // l'enfant — c'est le parent qui gère la 2FA de ses enfants.
+      const verifyRes = await fetch("/api/auth/2fa/verify-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: twoFACode }),
+      });
+      const verifyData = await verifyRes.json();
+      if (!verifyRes.ok) throw new Error(verifyData.error || "Code incorrect.");
+
+      const toggleRes = await fetch("/api/parent/toggle-child-2fa", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ childId }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Erreur");
-      setTwoFAEnabled(data.enabled);
+      const toggleData = await toggleRes.json();
+      if (!toggleRes.ok) throw new Error(toggleData.error || "Erreur");
+
+      setTwoFAEnabled(toggleData.enabled);
+      setTwoFAStep("idle");
+      setTwoFACode("");
     } catch (err: any) {
-      setError(err.message || "Une erreur est survenue.");
+      setTwoFAError(err.message || "Une erreur est survenue.");
     } finally {
       setTogglingTwoFA(false);
     }
@@ -358,27 +412,78 @@ export default function EditChildPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between p-4 border border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
-              <div>
-                <p className="text-sm font-medium text-gray-700">Authentification à deux facteurs</p>
-                <p className="text-xs text-gray-500 mt-0.5">
-                  {twoFAEnabled ? "Activée" : "Désactivée"} — un code sera demandé par email à la connexion de l'enfant.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={toggleTwoFA}
-                disabled={togglingTwoFA}
-                role="switch"
-                aria-checked={twoFAEnabled}
-                className="relative w-12 h-6 rounded-full transition-colors disabled:opacity-50 shrink-0"
-                style={{ background: twoFAEnabled ? "var(--greek-blue)" : "#d1d5db" }}
-              >
-                <span
-                  className="absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-all"
-                  style={{ left: twoFAEnabled ? "calc(100% - 22px)" : "2px" }}
-                />
-              </button>
+            <div className="p-4 border border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
+              {twoFAStep === "idle" ? (
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-gray-700">Authentification à deux facteurs</p>
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      {twoFAEnabled ? "Activée" : "Désactivée"} — un code sera demandé par email à la connexion de l'enfant.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={startTwoFAFlow}
+                    role="switch"
+                    aria-checked={twoFAEnabled}
+                    className="relative w-12 h-6 rounded-full transition-colors shrink-0"
+                    style={{ background: twoFAEnabled ? "var(--greek-blue)" : "#d1d5db" }}
+                  >
+                    <span
+                      className="absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-all"
+                      style={{ left: twoFAEnabled ? "calc(100% - 22px)" : "2px" }}
+                    />
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <p className="text-sm text-gray-600">
+                    Un code à 6 chiffres a été envoyé à ton adresse email (parent). Entre-le pour {twoFAEnabled ? "désactiver" : "activer"} la 2FA de {formData.firstName}.
+                  </p>
+                  {twoFAError && (
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium bg-red-50 text-red-700">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      {twoFAError}
+                    </div>
+                  )}
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={6}
+                    value={twoFACode}
+                    onChange={e => setTwoFACode(e.target.value.replace(/\D/g, ""))}
+                    className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-lg text-center text-xl tracking-[0.4em] font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    placeholder="000000"
+                  />
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={confirmTwoFAToggle}
+                      disabled={togglingTwoFA || twoFACode.length !== 6}
+                      className="flex-1 inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
+                    >
+                      {togglingTwoFA ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={cancelTwoFAFlow}
+                      disabled={togglingTwoFA}
+                      className="px-4 py-2.5 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-50"
+                    >
+                      Annuler
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={sendTwoFACode}
+                    disabled={sendingTwoFACode || twoFACooldown > 0}
+                    className="w-full flex items-center justify-center gap-2 text-xs font-semibold text-[var(--greek-gold)] transition-opacity disabled:opacity-40"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                    {twoFACooldown > 0 ? `Renvoyer le code (${twoFACooldown}s)` : sendingTwoFACode ? "Envoi…" : "Renvoyer le code"}
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="pt-4 flex justify-end">
