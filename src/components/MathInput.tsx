@@ -29,6 +29,25 @@ function buildMatrixLatex(n: number): string {
   return `\\begin{pmatrix}${rows}\\end{pmatrix}`;
 }
 
+// Environnement utilisé pour les réponses multi-lignes : "array{l}" aligne
+// chaque ligne à gauche (contrairement à "aligned", pensé pour aligner des
+// équations sur des points "&" et qui centrait/décalait chaque ligne).
+const MULTILINE_ENV_START = "\\begin{array}{l}";
+const MULTILINE_ENV_RE = /^\\begin\{array\}\{l\}([\s\S]*)\\end\{array\}$/;
+
+/** Repasse en contenu simple dès qu'il ne reste plus qu'une seule ligne dans
+ * le tableau multi-lignes. Un tableau réduit à une seule ligne est un état
+ * transitoire fragile : un Retour arrière sur sa dernière ligne pouvait
+ * effacer tout le contenu au lieu de simplement fusionner la ligne. */
+function unwrapIfSingleRow(mf: MathfieldElement) {
+  const m = mf.value.match(MULTILINE_ENV_RE);
+  if (!m) return;
+  if (!m[1].includes("\\\\")) {
+    mf.value = m[1];
+    mf.executeCommand("moveToMathfieldEnd");
+  }
+}
+
 let keyboardThemeApplied = false;
 function applyKeyboardTheme() {
   if (keyboardThemeApplied) return;
@@ -422,6 +441,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     };
 
     const handler = () => {
+      unwrapIfSingleRow(mf);
       onChange(mf.value);
       updatePlaceholder();
     };
@@ -432,8 +452,8 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
         e.stopPropagation();
-        if (!mf.value.startsWith("\\begin{aligned}")) {
-          mf.value = `\\begin{aligned}${mf.value}\\\\\\end{aligned}`;
+        if (!mf.value.startsWith(MULTILINE_ENV_START)) {
+          mf.value = `${MULTILINE_ENV_START}${mf.value}\\\\\\end{array}`;
           mf.executeCommand("moveToMathfieldEnd");
         } else {
           mf.executeCommand("addRowAfter");
