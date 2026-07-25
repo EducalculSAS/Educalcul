@@ -38,18 +38,31 @@ const getYouTubeId = (url: string) => {
   return (match && match[2].length === 11) ? match[2] : null;
 };
 
-/** Texte propre d'une sélection contenant du LaTeX rendu par KaTeX. KaTeX
- * génère pour chaque formule à la fois le rendu visuel (.katex-html) ET une
- * copie cachée pour les lecteurs d'écran (.katex-mathml, un arbre MathML avec
- * un noeud par symbole) — Selection.toString() parcourt les deux, ce qui
- * produit un texte dupliqué avec un retour à la ligne par symbole. On retire
- * la copie cachée avant d'extraire le texte, puis on aplatit les retours à la
- * ligne restants (un par élément de bloc traversé) en simples espaces. */
+/** Texte propre d'une sélection contenant du LaTeX rendu par KaTeX. Chaque
+ * formule KaTeX contient déjà sa source LaTeX d'origine dans une annotation
+ * cachée pour les lecteurs d'écran (<annotation encoding="application/x-tex">) ;
+ * on remplace tout l'élément .katex par "$latex$" (ou "$$latex$$" en mode
+ * bloc) pour renvoyer à l'IA la même notation que dans le cours plutôt que le
+ * texte visuel reconstitué (qui, en plus de dupliquer le rendu visuel et
+ * l'annotation d'accessibilité en un texte illisible, perd la structure des
+ * formules — une fraction ou un exposant n'a pas de forme textuelle fidèle). */
 function getCleanSelectionText(range: Range): string {
   const fragment = range.cloneContents();
-  fragment.querySelectorAll(".katex-mathml").forEach((el) => el.remove());
   const container = document.createElement("div");
   container.appendChild(fragment);
+  container.querySelectorAll(".katex").forEach((katexEl) => {
+    const tex = katexEl
+      .querySelector('annotation[encoding="application/x-tex"]')
+      ?.textContent?.trim();
+    if (tex) {
+      const isDisplay = !!katexEl.closest(".katex-display");
+      katexEl.replaceWith(document.createTextNode(isDisplay ? `$$${tex}$$` : `$${tex}$`));
+    } else {
+      // Repli (sélection partielle d'une formule, annotation absente) : on
+      // retire au moins la copie cachée pour éviter le texte dupliqué.
+      katexEl.querySelectorAll(".katex-mathml").forEach((el) => el.remove());
+    }
+  });
   return (container.textContent || "").replace(/\s+/g, " ").trim();
 }
 
