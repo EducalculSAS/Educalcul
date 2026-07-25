@@ -7,7 +7,7 @@ import {
   ArrowLeft, Shield, Baby, Ban, MessageCircle, KeyRound, Trash2,
   CheckCircle, AlertTriangle, Send, X, Loader2, Clock, Edit, Bell,
   CreditCard, User as UserIcon, Trophy, MessageSquare,
-  Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff,
+  Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff, ShieldCheck,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { supabase } from "@/lib/supabaseClient";
@@ -260,6 +260,11 @@ showToast("success", "Profil mis à jour");
               className="flex items-center gap-2 px-4 py-2 border border-purple-300 text-purple-600 rounded-xl text-sm font-semibold hover:bg-purple-50 transition-colors">
               <KeyRound size={14} /> Reset MDP
             </button>
+            {user.role !== "admin" && (
+              <button onClick={() => doAction("toggle_2fa")} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
+                <ShieldCheck size={14} /> {user.two_factor_enabled ? "Désactiver la 2FA" : "Activer la 2FA"}
+              </button>
+            )}
             <button onClick={() => setShowMessageModal(true)} className="flex items-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-semibold hover:bg-blue-800 transition-colors shadow-sm">
               <MessageCircle size={14} /> Message
             </button>
