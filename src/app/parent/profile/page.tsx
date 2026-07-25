@@ -16,6 +16,7 @@ import {
   Bell,
   LogOut,
   Phone,
+  Download,
 } from "lucide-react";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { validatePassword } from "@/lib/validation";
@@ -735,6 +736,34 @@ export default function ParentProfilePage() {
                 </label>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Export des données (RGPD) */}
+        <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center">
+            <Download className="w-5 h-5 mr-2" />
+            Mes données
+          </h2>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-gray-600">Télécharge une copie de tes données et de celles de tes enfants (format JSON).</p>
+            <button
+              onClick={async () => {
+                const { data: { session } } = await supabase.auth.getSession();
+                if (!session) return;
+                const res = await fetch("/api/parent/export-data", { headers: { Authorization: `Bearer ${session.access_token}` } });
+                const blob = await res.blob();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `educalcul-donnees-${new Date().toISOString().slice(0, 10)}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+              }}
+              className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:opacity-90 transition-colors font-medium shadow-sm shrink-0"
+            >
+              Télécharger mes données
+            </button>
           </div>
         </div>
 

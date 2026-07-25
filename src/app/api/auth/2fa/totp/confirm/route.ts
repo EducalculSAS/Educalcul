@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { verifyTotp } from "@/lib/totp";
+import { verifyTotp, generateBackupCodes } from "@/lib/totp";
 import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
 
 // Confirme la configuration TOTP en attente (voir /totp/setup) : valide le
@@ -61,7 +61,14 @@ export async function POST(req: Request) {
     });
     if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
 
-    return NextResponse.json({ success: true, token, expiresAt });
+    // Codes de secours (usage unique) — affichés une seule fois ici, en cas
+    // de perte de l'appareil d'authentification.
+    const backupCodes = generateBackupCodes();
+    await supabaseAdmin.from("two_factor_backup_codes").insert(
+      backupCodes.map(code => ({ user_id: user.id, code_hash: hashTwoFactorValue(code) }))
+    );
+
+    return NextResponse.json({ success: true, token, expiresAt, backupCodes });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
-import { runGradePromotion } from "@/lib/gradePromotionRun";
+import { runGradePromotion, undoLastGradePromotion } from "@/lib/gradePromotionRun";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 
 const SETTINGS_KEY = "grade_promotion";
@@ -20,7 +20,15 @@ async function getConfig() {
 export async function GET(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
-  return NextResponse.json(await getConfig());
+
+  const { data: lastRun } = await supabaseAdmin
+    .from("grade_promotion_runs")
+    .select("id, run_at, undone_at")
+    .order("run_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  return NextResponse.json({ ...(await getConfig()), lastRun: lastRun || null });
 }
 
 export async function PUT(req: Request) {
@@ -45,7 +53,7 @@ export async function POST(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
-  const result = await runGradePromotion();
+  const result = await runGradePromotion(admin.id);
 
   const current = await getConfig();
   await supabaseAdmin
@@ -60,4 +68,24 @@ export async function POST(req: Request) {
   }, req);
 
   return NextResponse.json({ success: true, ...result });
+}
+
+export async function DELETE(req: Request) {
+  const admin = await requireRole(req, ["admin"]);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+
+  try {
+    const result = await undoLastGradePromotion();
+
+    await auditLog({
+      action: AuditAction.USER_UPDATED,
+      adminId: admin.id,
+      targetType: "grade_promotion_undo",
+      details: result,
+    }, req);
+
+    return NextResponse.json({ success: true, ...result });
+  } catch (err: any) {
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 400 });
+  }
 }

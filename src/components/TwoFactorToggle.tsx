@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
+import TwoFactorSessions from "@/components/TwoFactorSessions";
 
 /** Section "Authentification à deux facteurs" — utilisée dans les 3 pages profil. */
 export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boolean }) {
@@ -190,6 +191,8 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
           </button>
         </form>
       )}
+
+      <TwoFactorSessions />
     </div>
   );
 }

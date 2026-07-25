@@ -2,16 +2,25 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { ChevronDown, ChevronUp, GraduationCap, Loader2, CheckCircle, AlertCircle, X } from "lucide-react";
+import { ChevronDown, ChevronUp, GraduationCap, Loader2, CheckCircle, AlertCircle, X, RotateCcw } from "lucide-react";
+
+interface LastRun {
+  id: number;
+  run_at: string;
+  undone_at: string | null;
+}
 
 export default function GradePromotionPanel() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [date, setDate] = useState("09-01");
   const [lastRunYear, setLastRunYear] = useState<number | null>(null);
+  const [lastRun, setLastRun] = useState<LastRun | null>(null);
   const [saving, setSaving] = useState(false);
   const [running, setRunning] = useState(false);
+  const [undoing, setUndoing] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showUndoConfirm, setShowUndoConfirm] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   const load = async () => {
@@ -24,6 +33,7 @@ export default function GradePromotionPanel() {
     if (res.ok) {
       setDate(data.date);
       setLastRunYear(data.lastRunYear);
+      setLastRun(data.lastRun);
     }
     setLoading(false);
   };
@@ -61,14 +71,34 @@ export default function GradePromotionPanel() {
       setLastRunYear(new Date().getFullYear());
       setMessage({
         type: "success",
-        text: `${data.advanced} enfant(s) avancé(s) de niveau. ${data.needsManualChoice} élève(s) en Seconde devront choisir leur spécialité à leur prochaine connexion.`,
+        text: `${data.advanced} enfant(s) avancé(s) de niveau, ${data.graduated} diplômé(s), ${data.needsManualChoice} élève(s) en Seconde devront choisir leur spécialité à leur prochaine connexion.`,
       });
+      load();
     } catch (err: any) {
       setMessage({ type: "error", text: err.message || "Erreur." });
     } finally {
       setRunning(false);
     }
   };
+
+  const undoLast = async () => {
+    setShowUndoConfirm(false);
+    setUndoing(true);
+    setMessage(null);
+    try {
+      const res = await fetch("/api/admin/grade-promotion", { method: "DELETE" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setMessage({ type: "success", text: `${data.restored} compte(s) restauré(s) à leur niveau précédent.` });
+      load();
+    } catch (err: any) {
+      setMessage({ type: "error", text: err.message || "Erreur." });
+    } finally {
+      setUndoing(false);
+    }
+  };
+
+  const canUndo = lastRun && !lastRun.undone_at;
 
   return (
     <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden mb-6">
@@ -91,7 +121,7 @@ export default function GradePromotionPanel() {
           ) : (
             <>
               <p className="text-sm text-gray-600 mb-4">
-                Chaque année à la date choisie, tous les comptes enfant avancent automatiquement d'un niveau (CP → CE1 → … → Seconde, et Première → Terminale sur la même spécialité). Les élèves en Seconde devront choisir leur spécialité maths eux-mêmes, via un popup obligatoire à leur prochaine connexion.
+                Chaque année à la date choisie, tous les comptes enfant avancent automatiquement d'un niveau (CP → CE1 → … → Seconde, et Première → Terminale sur la même spécialité). Les élèves en Seconde devront choisir leur spécialité maths eux-mêmes, via un popup obligatoire à leur prochaine connexion. Les élèves déjà en Terminale sont marqués diplômés.
               </p>
 
               {message && (
@@ -126,6 +156,16 @@ export default function GradePromotionPanel() {
                 >
                   {running ? "Passage en cours..." : "Déclencher maintenant"}
                 </button>
+                {canUndo && (
+                  <button
+                    onClick={() => setShowUndoConfirm(true)}
+                    disabled={undoing}
+                    className="px-4 py-2 border border-red-300 text-red-600 rounded-lg text-sm font-semibold hover:bg-red-50 transition-colors disabled:opacity-50 flex items-center gap-1.5"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    {undoing ? "Annulation..." : "Annuler le dernier passage"}
+                  </button>
+                )}
               </div>
 
               {lastRunYear && (
@@ -144,11 +184,29 @@ export default function GradePromotionPanel() {
               <button onClick={() => setShowConfirm(false)} className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
             </div>
             <p className="text-sm text-gray-600 mb-6">
-              Tous les comptes enfant vont avancer d'un niveau immédiatement, quelle que soit la date configurée. Cette action ne peut pas être annulée automatiquement. Continuer ?
+              Tous les comptes enfant vont avancer d'un niveau immédiatement, quelle que soit la date configurée. Une annulation reste possible juste après (bouton "Annuler le dernier passage"). Continuer ?
             </p>
             <div className="flex justify-end gap-2">
               <button onClick={() => setShowConfirm(false)} className="px-4 py-2 text-gray-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">Annuler</button>
               <button onClick={runNow} className="px-4 py-2 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition-colors">Confirmer</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showUndoConfirm && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.55)" }}>
+          <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-6 border border-[rgba(197,161,72,0.25)]">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-bold text-[var(--greek-blue)]">Annuler le dernier passage</h3>
+              <button onClick={() => setShowUndoConfirm(false)} className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
+            </div>
+            <p className="text-sm text-gray-600 mb-6">
+              Tous les comptes touchés par le dernier passage de classe reviennent à leur niveau précédent. Les choix de spécialité déjà faits entre-temps par des élèves ne seront pas défaits. Continuer ?
+            </p>
+            <div className="flex justify-end gap-2">
+              <button onClick={() => setShowUndoConfirm(false)} className="px-4 py-2 text-gray-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">Annuler</button>
+              <button onClick={undoLast} className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors">Confirmer</button>
             </div>
           </div>
         </div>

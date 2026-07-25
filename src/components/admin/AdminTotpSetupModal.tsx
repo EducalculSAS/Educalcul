@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import QRCode from "qrcode";
 import { supabase } from "@/lib/supabaseClient";
-import { ShieldCheck, Loader2, AlertCircle, Copy, Check } from "lucide-react";
+import { ShieldCheck, Loader2, AlertCircle, Copy, Check, KeyRound } from "lucide-react";
 
 /**
  * Popup obligatoire forçant tout admin sans TOTP configuré à en configurer
@@ -20,6 +20,8 @@ export default function AdminTotpSetupModal() {
   const [loadingSecret, setLoadingSecret] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [backupCodes, setBackupCodes] = useState<string[] | null>(null);
+  const [savedBackupCodes, setSavedBackupCodes] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -76,7 +78,7 @@ export default function AdminTotpSetupModal() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Code incorrect.");
       window.localStorage.setItem("edu_2fa_token", data.token);
-      setNeedsSetup(false);
+      setBackupCodes(data.backupCodes || null);
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue.");
     } finally {
@@ -92,6 +94,39 @@ export default function AdminTotpSetupModal() {
   };
 
   if (!checked || !needsSetup) return null;
+
+  if (backupCodes) {
+    return (
+      <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.55)" }}>
+        <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-8 border border-[rgba(197,161,72,0.25)]">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(197,161,72,0.12)" }}>
+              <KeyRound className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />
+            </div>
+            <h2 className="text-xl font-bold text-[var(--greek-blue)]">Codes de secours</h2>
+          </div>
+          <p className="text-sm text-gray-600 mb-4">
+            Note ces codes dans un endroit sûr. Chacun ne peut être utilisé qu'une fois, pour te connecter si tu perds l'accès à ton appareil.
+          </p>
+          <div className="grid grid-cols-2 gap-2 mb-5 p-4 rounded-lg bg-gray-50 border border-gray-200 font-mono text-sm text-gray-700">
+            {backupCodes.map(c => <div key={c}>{c}</div>)}
+          </div>
+          <label className="flex items-center gap-2 mb-4 text-sm text-gray-600">
+            <input type="checkbox" checked={savedBackupCodes} onChange={e => setSavedBackupCodes(e.target.checked)} />
+            J'ai noté ces codes dans un endroit sûr.
+          </label>
+          <button
+            type="button"
+            disabled={!savedBackupCodes}
+            onClick={() => setNeedsSetup(false)}
+            className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
+          >
+            Terminer
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.55)" }}>

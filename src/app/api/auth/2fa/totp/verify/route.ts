@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { verifyTotp } from "@/lib/totp";
+import { verifyTotp, looksLikeBackupCode } from "@/lib/totp";
 import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
 
 // Vérifie un code TOTP au login (une fois la configuration déjà confirmée)
@@ -37,7 +37,18 @@ export async function POST(req: Request) {
       .maybeSingle();
     if (!totp?.confirmed_at) return NextResponse.json({ error: "TOTP non configuré." }, { status: 400 });
 
-    if (!verifyTotp(totp.secret, code)) {
+    let usedBackupCode = false;
+    if (looksLikeBackupCode(code)) {
+      const { data: backupCode } = await supabaseAdmin
+        .from("two_factor_backup_codes")
+        .select("id, code_hash")
+        .eq("user_id", user.id)
+        .is("used_at", null);
+      const match = (backupCode || []).find(b => b.code_hash === hashTwoFactorValue(code.trim().toUpperCase()));
+      if (!match) return NextResponse.json({ error: "Code de secours incorrect ou déjà utilisé." }, { status: 400 });
+      await supabaseAdmin.from("two_factor_backup_codes").update({ used_at: new Date().toISOString() }).eq("id", match.id);
+      usedBackupCode = true;
+    } else if (!verifyTotp(totp.secret, code)) {
       return NextResponse.json({ error: "Code incorrect." }, { status: 400 });
     }
 
@@ -52,7 +63,7 @@ export async function POST(req: Request) {
     });
     if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
 
-    return NextResponse.json({ success: true, token, expiresAt });
+    return NextResponse.json({ success: true, token, expiresAt, usedBackupCode });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }

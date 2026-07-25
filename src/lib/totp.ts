@@ -64,3 +64,19 @@ export function buildOtpauthUrl(secret: string, accountLabel: string, issuer = "
   const params = new URLSearchParams({ secret, issuer, algorithm: "SHA1", digits: String(DIGITS), period: String(STEP_SECONDS) });
   return `otpauth://totp/${label}?${params.toString()}`;
 }
+
+/** Codes de secours à usage unique (perte du téléphone/app d'authentification). */
+export function generateBackupCodes(count = 8): string[] {
+  const codes: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const bytes = randomBytes(5);
+    const hex = bytes.toString("hex").toUpperCase();
+    codes.push(`${hex.slice(0, 5)}-${hex.slice(5, 10)}`);
+  }
+  return codes;
+}
+
+/** Un code de secours a ce format ("XXXXX-XXXXX"), contrairement à un code TOTP à 6 chiffres. */
+export function looksLikeBackupCode(value: string): boolean {
+  return /^[0-9A-F]{5}-[0-9A-F]{5}$/i.test(value.trim());
+}

@@ -120,21 +120,29 @@ function TwoFactorVerifyContent() {
             </label>
             <input
               type="text"
-              inputMode="numeric"
+              inputMode={method === "totp" ? "text" : "numeric"}
               autoFocus
-              maxLength={6}
+              maxLength={method === "totp" ? 11 : 6}
               value={code}
-              onChange={e => setCode(e.target.value.replace(/\D/g, ""))}
-              className="w-full px-4 py-3 rounded-xl text-center text-2xl tracking-[0.5em] font-mono transition-all outline-none"
+              onChange={e => {
+                const raw = e.target.value;
+                setCode(method === "totp" ? raw.replace(/[^0-9A-Za-z-]/g, "").toUpperCase() : raw.replace(/\D/g, ""));
+              }}
+              className="w-full px-4 py-3 rounded-xl text-center text-2xl tracking-[0.3em] font-mono transition-all outline-none"
               style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)", color: "var(--greek-blue)" }}
               placeholder="000000"
               required
             />
+            {method === "totp" && (
+              <p className="text-xs mt-1.5" style={{ color: "var(--text-muted)" }}>
+                Ou un code de secours (format XXXXX-XXXXX) si tu n'as plus accès à ton appli.
+              </p>
+            )}
           </div>
 
           <button
             type="submit"
-            disabled={loading || code.length !== 6}
+            disabled={loading || (method === "totp" ? code.length < 6 : code.length !== 6)}
             className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
             style={{ background: "var(--greek-blue)", boxShadow: "0 4px 16px rgba(15,30,58,0.25)" }}
           >
