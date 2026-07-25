@@ -1,3 +1,4 @@
+import katex from "katex";
 import { generateStructuredContent } from "@/lib/llm";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
@@ -29,7 +30,63 @@ function isValidGeneratedCourseLesson(lesson: unknown): lesson is GeneratedCours
   if (typeof candidate.title !== "string" || candidate.title.trim().length === 0) return false;
   if (typeof candidate.content !== "string" || candidate.content.trim().length === 0) return false;
   if (typeof candidate.duration !== "number" || candidate.duration <= 0) return false;
+  if (hasBadLatexSyntax(candidate.content)) return false;
   return true;
+}
+
+function stripMathRegions(html: string): string {
+  return html
+    .replace(/\$\$[\s\S]*?\$\$/g, "")
+    .replace(/\$[^\$\r\n]*\$/g, "")
+    .replace(/\\\([\s\S]*?\\\)/g, "")
+    .replace(/\\\[[\s\S]*?\\\]/g, "");
+}
+
+function extractMathBlocks(html: string): string[] {
+  const blocks: string[] = [];
+  html.replace(/\$\$([\s\S]*?)\$\$/g, (_, math) => {
+    blocks.push(math);
+    return _;
+  });
+  html.replace(/\$([^\$\r\n]+?)\$/g, (_, math) => {
+    blocks.push(math);
+    return _;
+  });
+  html.replace(/\\\[([\s\S]*?)\\\]/g, (_, math) => {
+    blocks.push(math);
+    return _;
+  });
+  html.replace(/\\\(([\s\S]*?)\\\)/g, (_, math) => {
+    blocks.push(math);
+    return _;
+  });
+  return blocks;
+}
+
+function isRenderableMath(math: string): boolean {
+  try {
+    katex.renderToString(math.trim(), { throwOnError: true, strict: false });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+const BARE_LATEX_COMMAND_RE = /\\(?:frac|sqrt|vec|cos|sin|tan|log|ln|exp|lim|sum|prod|int|left|right|cdot|times|le|ge|infty|pm|to|approx|text|alpha|beta|gamma|delta|theta|phi|pi|angle|subset|subseteq|supset|supseteq|cup|cap|in|forall|exists|neg|perp|parallel|ldots|cdots|dots|mathbb|mathcal|mathbf|mathrm|mathit|overrightarrow|underline|bar|hat|dot|ddot)\b/;
+const BARE_LATEX_ENV_RE = /\\(?:begin|end)\{(cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|matrix|aligned)\}/;
+
+function hasBadLatexSyntax(html: string): boolean {
+  const stripped = stripMathRegions(html);
+  if (BARE_LATEX_COMMAND_RE.test(stripped)) return true;
+  if (BARE_LATEX_ENV_RE.test(stripped)) return true;
+  if (/\$/.test(stripped)) return true;
+  if (/\$\$\$(?=\s|<|$)/.test(html)) return true;
+  const mathBlocks = extractMathBlocks(html);
+  return mathBlocks.some((block) => !isRenderableMath(block));
+}
+
+function normalizeLessonContent(content: string): string {
+  return content.replace(/\$\$\$(?=\s|<|$)/g, "$$");
 }
 
 function cleanupGeneratedCourseChapter(chapter: GeneratedCourseChapter, expectedLessonCount: number): GeneratedCourseChapter {
@@ -37,7 +94,14 @@ function cleanupGeneratedCourseChapter(chapter: GeneratedCourseChapter, expected
     return { ...chapter, lessons: [] };
   }
 
-  const validLessons = chapter.lessons.filter(isValidGeneratedCourseLesson);
+  const validLessons = chapter.lessons
+    .map((lesson) =>
+      typeof lesson.content === "string"
+        ? { ...lesson, content: normalizeLessonContent(lesson.content) }
+        : lesson,
+    )
+    .filter(isValidGeneratedCourseLesson);
+
   if (validLessons.length >= expectedLessonCount) {
     return { ...chapter, lessons: validLessons.slice(0, expectedLessonCount) };
   }

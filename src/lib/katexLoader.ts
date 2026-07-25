@@ -92,7 +92,11 @@ export function renderLatexInHTML(html: string): string {
       return openDollars % 2 === 0 ? `$$${match}$$` : match;
     },
   );
-
+ 
+  // 0.5. Nettoyage des délimiteurs mal formés courants qui surviennent
+  // lorsque l'IA ajoute un dollar en trop après un bloc $$...$$.
+  result = result.replace(/\$\$\$(?=\s|<|$)/g, "$$");
+ 
   // 1. Display math : $$...$$
   result = result.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) =>
     safeRenderMath(math, true),
