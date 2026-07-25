@@ -13,7 +13,7 @@ import {
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { AVATARS, SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
-import { validatePassword } from "@/lib/validation";
+import { validatePassword, isValidEmail } from "@/lib/validation";
 
 export default function AddChildPage() {
   const router = useRouter();
@@ -25,6 +25,7 @@ export default function AddChildPage() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    email: "",
     username: "",
     password: "",
     passwordConfirm: "",
@@ -69,6 +70,12 @@ export default function AddChildPage() {
       return;
     }
 
+    if (!isValidEmail(formData.email)) {
+      setError("Adresse email invalide.");
+      setLoading(false);
+      return;
+    }
+
     const pwError = validatePassword(formData.password);
     if (pwError) {
       setError(pwError);
@@ -83,29 +90,24 @@ export default function AddChildPage() {
     }
 
     try {
-      // 1. Create Auth User (This is tricky in client-side Supabase without auto-login)
-      // Workaround: We use a secondary 'users' table for child profiles without real Auth for now,
-      // OR we assume the parent can create a user.
-      // However, creating a user usually logs them in.
-      // For this demo, we will insert into public.users and simulate an auth entry if possible,
-      // or just rely on the public.users table for the child logic as per the PHP version
-      // which seemed to just insert into 'users' table (which might be the public one).
+      // Check username uniqueness (seulement si un pseudo a été renseigné)
+      if (formData.username) {
+        const { data: existingUser } = await supabase
+          .from("users")
+          .select("id")
+          .eq("child_username", formData.username)
+          .maybeSingle();
 
-      // Check username uniqueness
-      const { data: existingUser } = await supabase
-        .from("users")
-        .select("id")
-        .eq("child_username", formData.username)
-        .maybeSingle();
-
-      if (existingUser) {
-        setError("Ce nom d'utilisateur est déjà pris.");
-        setLoading(false);
-        return;
+        if (existingUser) {
+          setError("Ce nom d'utilisateur est déjà pris.");
+          setLoading(false);
+          return;
+        }
       }
 
-      // Create Auth User via API (server-side to avoid auto-login)
-      const email = `${formData.username}@educalcul.user`;
+      // Create Auth User via API (server-side to avoid auto-login) — vraie
+      // adresse email de l'enfant, plus d'adresse interne factice.
+      const email = formData.email;
 
       const response = await fetch("/api/create-child", {
         method: "POST",
@@ -137,7 +139,8 @@ export default function AddChildPage() {
         parent_id: parentId,
         first_name: formData.firstName,
         last_name: formData.lastName,
-        child_username: formData.username,
+        email: formData.email,
+        child_username: formData.username || null,
         grade_level: formData.gradeLevel,
         avatar: formData.avatar,
         role: "child",
@@ -150,6 +153,7 @@ export default function AddChildPage() {
       setFormData({
         firstName: "",
         lastName: "",
+        email: "",
         username: "",
         password: "",
         passwordConfirm: "",
@@ -239,11 +243,28 @@ export default function AddChildPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Nom d'utilisateur (Pseudo)
+                Email de l'enfant
+              </label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Utilisé pour la connexion et pour recevoir les notifications de l'enfant.
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Nom d'utilisateur (Pseudo) — optionnel
               </label>
               <input
                 type="text"
-                required
                 pattern="[a-zA-Z0-9_]+"
                 title="Lettres, chiffres et underscores uniquement"
                 value={formData.username}
@@ -253,7 +274,7 @@ export default function AddChildPage() {
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
               <p className="text-xs text-gray-500 mt-1">
-                Sera utilisé pour la connexion de l'enfant.
+                Permet aussi de se connecter avec ce pseudo en plus de l'email.
               </p>
             </div>
 

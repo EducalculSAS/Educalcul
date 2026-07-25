@@ -2,6 +2,7 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { isValidEmail } from "@/lib/validation";
 
 export async function POST(request: Request) {
   try {
@@ -12,13 +13,16 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { childId, password, newUsername } = body;
+    const { childId, password, newEmail } = body;
 
-    if (!childId || (!password && !newUsername)) {
+    if (!childId || (!password && !newEmail)) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
+    }
+    if (newEmail && !isValidEmail(newEmail)) {
+      return NextResponse.json({ error: "Adresse email invalide" }, { status: 400 });
     }
 
     // 1. Verify the requester owns the child (admins may manage any child)
@@ -47,8 +51,8 @@ export async function POST(request: Request) {
       // Update existing auth user password and/or email
       const updates: { password?: string; email?: string; email_confirm?: boolean } = {};
       if (password) updates.password = password;
-      if (newUsername) {
-        updates.email = `${newUsername}@educalcul.user`;
+      if (newEmail) {
+        updates.email = newEmail;
         updates.email_confirm = true;
       }
 
@@ -70,7 +74,10 @@ export async function POST(request: Request) {
     if (!authUserId && password) {
       // Create new auth user
       action = "created";
-      const email = `${childUser.child_username}@educalcul.user`;
+      const email = newEmail || childUser.email;
+      if (!email || !isValidEmail(email)) {
+        return NextResponse.json({ error: "Email de l'enfant manquant ou invalide" }, { status: 400 });
+      }
 
       // Si un compte Auth existe déjà avec cet email, createUser échoue et
       // l'erreur est propagée ci-dessous (pas de pré-vérification nécessaire :

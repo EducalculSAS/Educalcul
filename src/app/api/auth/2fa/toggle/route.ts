@@ -15,8 +15,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Paramètre invalide" }, { status: 400 });
     }
 
-    if (me.role === "admin" && !enabled) {
-      return NextResponse.json({ error: "L'authentification à deux facteurs est obligatoire pour les comptes administrateur." }, { status: 403 });
+    if (me.role === "admin") {
+      return NextResponse.json({ error: "Les comptes administrateur utilisent le TOTP (voir /api/auth/2fa/totp/*), pas ce commutateur." }, { status: 403 });
     }
 
     const { error } = await supabaseAdmin.from("users").update({ two_factor_enabled: enabled }).eq("id", me.id);

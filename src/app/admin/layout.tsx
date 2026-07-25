@@ -43,6 +43,22 @@ export default function AdminLayout({
         return;
       }
 
+      // TOTP confirmé mais pas encore vérifié sur cet appareil pour cette
+      // session (ex: navigation directe/logo en plein flux de vérification) :
+      // on bloque l'accès à TOUTE page /admin/* tant que ce n'est pas fait,
+      // pas seulement la redirection post-login initiale.
+      const totpRes = await fetch("/api/auth/2fa/totp/status", {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+      const totpData = await totpRes.json();
+      if (totpRes.ok && totpData.confirmed) {
+        const token = window.localStorage.getItem("edu_2fa_token");
+        if (!token) {
+          router.push(`/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`);
+          return;
+        }
+      }
+
       setLoading(false);
     };
 

@@ -144,14 +144,34 @@ export async function POST(req: Request) {
 
     const { action, payload } = await req.json();
     const { data: user } = await supabaseAdmin.from("users")
-      .select("id, auth_id, email, status")
+      .select("id, auth_id, email, status, role, two_factor_enabled")
       .eq("id", id)
       .single();
-    
+
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
+    if (action === "toggle_2fa") {
+      // Réservé parent/enfant — les admins passent exclusivement par le TOTP
+      // (voir /api/auth/2fa/totp/*), pas par ce commutateur email.
+      if (user.role === "admin") {
+        return NextResponse.json({ error: "Les comptes admin utilisent le TOTP, pas ce commutateur." }, { status: 400 });
+      }
+      const enabled = !user.two_factor_enabled;
+      await supabaseAdmin.from("users").update({ two_factor_enabled: enabled }).eq("id", id);
+
+      await auditLog({
+        action: AuditAction.TWO_FACTOR_TOGGLED_BY_ADMIN,
+        adminId: admin.id,
+        targetUserId: user.id,
+        targetType: "user",
+        targetId: String(id),
+        details: { enabled },
+      }, req);
+
+      return NextResponse.json({ success: true, enabled });
+    }
     if (action === "ban") {
       const banDays = payload?.banDays || null;
       const banUntil = banDays ? new Date(Date.now() + banDays * 24 * 60 * 60 * 1000).toISOString() : null;

@@ -7,6 +7,7 @@ import {
   Trophy, Ban, MessageCircle,
   KeyRound, Trash2, CheckCircle, AlertTriangle, Send, X, Loader2,
   Clock, Edit, Bell, CreditCard, Save, User as UserIcon, Download, FileText, Table,
+  ShieldCheck,
 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { avatarUrl } from "@/lib/avatarUrl";
@@ -537,6 +538,11 @@ export default function UserDetailPage() {
             <button onClick={() => doAction("reset_password")} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
               <KeyRound size={15} /> Reset MDP
             </button>
+            {user.role !== "admin" && (
+              <button onClick={() => doAction("toggle_2fa")} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
+                <ShieldCheck size={15} /> {user.two_factor_enabled ? "Désactiver la 2FA" : "Activer la 2FA"}
+              </button>
+            )}
             <button onClick={handleDelete} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 text-red-500 border border-red-200 rounded-xl text-sm font-semibold hover:bg-red-50 transition-colors">
               <Trash2 size={15} /> Supprimer
             </button>

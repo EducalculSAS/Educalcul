@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
-import { validatePassword } from "@/lib/validation";
+import { validatePassword, isValidEmail } from "@/lib/validation";
 
 export async function POST(request: Request) {
   try {
@@ -26,9 +26,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: pwError }, { status: 400 });
     }
 
-    // Child accounts only live on the internal username domain.
-    if (!/^[a-zA-Z0-9._-]+@educalcul\.user$/.test(email)) {
-      return NextResponse.json({ error: "Invalid child email" }, { status: 400 });
+    // Les comptes enfant utilisent désormais une vraie adresse email (pour
+    // recevoir les codes 2FA et notifications), plus l'ancien domaine interne.
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Adresse email invalide" }, { status: 400 });
     }
 
     // Create user — role is always forced to "child", whatever the client sent.

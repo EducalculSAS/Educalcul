@@ -15,6 +15,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { AVATARS } from "@/lib/constants";
+import { isValidEmail } from "@/lib/validation";
 
 export default function EditChildPage() {
   const router = useRouter();
@@ -27,10 +28,12 @@ export default function EditChildPage() {
   const [success, setSuccess] = useState<string | null>(null);
   const [parentId, setParentId] = useState<string | null>(null);
   const [originalUsername, setOriginalUsername] = useState("");
+  const [originalEmail, setOriginalEmail] = useState("");
 
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    email: "",
     username: "",
     password: "", // Optional
     gradeLevel: "CP",
@@ -75,9 +78,11 @@ export default function EditChildPage() {
       }
 
       setOriginalUsername(childData.child_username || "");
+      setOriginalEmail(childData.email || "");
       setFormData({
         firstName: childData.first_name,
         lastName: childData.last_name,
+        email: childData.email || "",
         username: childData.child_username,
         password: "", // Don't show existing password
         gradeLevel: childData.grade_level || "CP",
@@ -94,6 +99,12 @@ export default function EditChildPage() {
     setError(null);
     setSuccess(null);
 
+    if (!isValidEmail(formData.email)) {
+      setError("Adresse email invalide.");
+      setSaving(false);
+      return;
+    }
+
     try {
       // Check username uniqueness if changed
       // (Implementation skipped for brevity, ideally check if username changed and exists)
@@ -101,6 +112,7 @@ export default function EditChildPage() {
       const updateData: any = {
         first_name: formData.firstName,
         last_name: formData.lastName,
+        email: formData.email,
         child_username: formData.username,
         avatar: formData.avatar,
       };
@@ -119,9 +131,9 @@ export default function EditChildPage() {
 
       if (updateError) throw updateError;
 
-      // Handle Password Update / Username (auth email) change / Auth Creation via API
-      const usernameChanged = formData.username !== originalUsername;
-      if ((formData.password && formData.password.length > 0) || usernameChanged) {
+      // Handle Password Update / Email (auth email) change / Auth Creation via API
+      const emailChanged = formData.email !== originalEmail;
+      if ((formData.password && formData.password.length > 0) || emailChanged) {
         const {
           data: { user },
         } = await supabase.auth.getUser();
@@ -134,7 +146,7 @@ export default function EditChildPage() {
           body: JSON.stringify({
             childId,
             password: formData.password || undefined,
-            newUsername: usernameChanged ? formData.username : undefined,
+            newEmail: emailChanged ? formData.email : undefined,
             parentAuthId: user?.id,
           }),
         });
@@ -228,6 +240,24 @@ export default function EditChildPage() {
                   className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Email de l'enfant
+              </label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Utilisé pour la connexion et pour recevoir les notifications de l'enfant.
+              </p>
             </div>
 
             <div>
