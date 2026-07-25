@@ -470,6 +470,7 @@ export default function AdminCoursesPage() {
 
       let courseTitle = params.topic;
       let courseDescription = "";
+      let generationWarning: string | null = null;
       const chapters: any[] = [];
       let total = params.count || 1;
 
@@ -509,6 +510,7 @@ export default function AdminCoursesPage() {
           } else if (event.type === "done") {
             courseTitle = event.course?.title || courseTitle;
             courseDescription = event.course?.description || courseDescription;
+            generationWarning = event.warning || null;
           }
         }
       }
@@ -525,12 +527,20 @@ export default function AdminCoursesPage() {
       });
 
       setIsAiModalOpen(false);
-      setNotification({
-        variant: "success",
-        title: "Cours généré !",
-        subtitle:
-          "Le contenu a été importé dans le formulaire. Complétez les détails et publiez.",
-      });
+      setNotification(
+        generationWarning
+          ? {
+              variant: "error",
+              title: "Cours généré partiellement",
+              subtitle: generationWarning,
+            }
+          : {
+              variant: "success",
+              title: "Cours généré !",
+              subtitle:
+                "Le contenu a été importé dans le formulaire. Complétez les détails et publiez.",
+            },
+      );
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Erreur IA inconnue";

@@ -114,12 +114,35 @@ main,
     @apply font-semibold text-[var(--greek-blue)];
   }
 
+  /* La numérotation des figures repart à 1 à chaque leçon. */
+  .prose {
+    counter-reset: educalcul-figure;
+  }
+
   .course-figure {
     @apply my-6 flex flex-col items-center justify-center gap-2;
+    counter-increment: educalcul-figure;
+  }
+
+  /* Un SVG généré sans width/height explicites s'étirait à la taille du
+     conteneur (schéma occupant toute la page). On le borne ici, une bonne
+     fois pour toutes, quel que soit le SVG produit. */
+  .course-figure svg,
+  .course-figure img {
+    @apply block h-auto w-full;
+    max-width: min(100%, 22rem);
+    max-height: 18rem;
   }
 
   .course-figure figcaption {
     @apply text-center text-sm text-[var(--greek-bronze)] italic;
+  }
+
+  /* Numérotation automatique : elle reste juste même si une figure est
+     ajoutée, déplacée ou supprimée lors d'une modification du cours. */
+  .course-figure figcaption::before {
+    content: "Figure " counter(educalcul-figure) " — ";
+    @apply font-semibold not-italic text-[var(--greek-blue)];
   }
 
   .katex-fallback {

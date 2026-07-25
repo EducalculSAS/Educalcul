@@ -1,3 +1,5 @@
+import { repairLatex, stripFigureNumberPrefix } from "@/lib/latexRepair";
+
 const EXERCISE_PLACEHOLDER_RE =
   /<div[^>]*class="[^"]*lesson-exercise[^"]*"[^>]*>\s*<\/div>/i;
 const LEAD_BLOCK_RE = /<(h1|h2|h3|h4|p|ul|ol|blockquote|table|figure)\b/i;
@@ -15,9 +17,17 @@ export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX ═══
   - <blockquote class="course-callout course-callout-warning"> pour une mise en garde.
   - <span class="course-emphasis"> pour un mot-clé important (hors formule).
   - <table class="math-table math-table-sign|math-table-variation|math-table-value"> pour un tableau de signes/variations/valeurs.
-  - <figure class="course-figure"> contenant un <svg> inline sobre pour un schéma (fractions, aires, décomposition).
   - <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div> pour la courbe d'une fonction.
-• Utilise un de ces outils visuels dans CHAQUE leçon dès que la notion s'y prête (étude de fonction → graphique, signe/variation → tableau, fraction/aire → figure SVG) : ce sont des atouts pédagogiques forts, pas des options à éviter.`;
+  - <figure class="course-figure"> avec un <svg> inline sobre pour un schéma (fractions, aires, décomposition, géométrie).
+• Utilise un de ces outils visuels dans CHAQUE leçon dès que la notion s'y prête (étude de fonction → graphique, signe/variation → tableau, fraction/aire/géométrie → figure SVG) : ce sont des atouts pédagogiques forts, pas des options à éviter.
+
+═══ SCHÉMAS SVG (règles strictes) ═══
+• Format EXACT à respecter :
+  <figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img"><!-- formes --></svg><figcaption>Description courte de ce que montre le schéma</figcaption></figure>
+• L'attribut viewBox est OBLIGATOIRE (par ex. "0 0 200 160") et toutes les coordonnées doivent rester à l'intérieur. N'écris JAMAIS d'attribut width/height en pixels sur le <svg> : sans viewBox, le schéma s'étire et occupe toute la page.
+• Une <figcaption> est OBLIGATOIRE et décrit ce que la figure montre.
+• N'écris JAMAIS le numéro de la figure dans la légende ("Figure 1 —") : la numérotation est ajoutée automatiquement et se met à jour toute seule.
+• Garde le trait fin (stroke-width entre 1 et 2), 2 à 4 couleurs sobres, et des étiquettes lisibles (font-size ≈ 10 à 14 dans le repère du viewBox).`;
 
 export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
 • Commence toujours par une définition claire, puis un exemple simple, puis un développement pas à pas.
@@ -41,31 +51,10 @@ export function normalizeCourseLessonContent(html: string): string {
   return trimmed;
 }
 
-// ═══ Réparation automatique du LaTeX ═══
-// Plutôt que de rejeter (et perdre) une leçon par ailleurs correcte à cause
-// d'une formule mal délimitée, on répare les deux erreurs les plus courantes
-// avant de valider : un environnement (système, matrice) laissé sans $...$,
-// et une commande simple (\frac{...}, \sqrt{...}...) écrite hors formule.
-const BARE_ENV_RE =
-  /(\\left\s*(?:\\\{|[(\[.|])\s*)?\\begin\{(cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|matrix|aligned)\}[\s\S]*?\\end\{\2\}(\s*\\right\s*(?:\\\}|[)\].|]))?/g;
-
-const BARE_LATEX_CMD_WITH_ARGS_RE =
-  /\\(?:frac|sqrt|vec|overrightarrow|underline|bar|hat|dot|ddot|mathbb|mathcal|mathbf|mathrm|mathit)\{[^{}<>]*\}(?:\{[^{}<>]*\})?/g;
-
-function isInsideDollars(before: string): boolean {
-  return (before.match(/\$/g) || []).length % 2 !== 0;
-}
-
-export function repairLatex(html: string): string {
-  if (!html) return html;
-  let result = html.replace(BARE_ENV_RE, (match, _left, _env, _right, offset, full) =>
-    isInsideDollars(full.slice(0, offset)) ? match : `$$${match}$$`,
-  );
-  result = result.replace(BARE_LATEX_CMD_WITH_ARGS_RE, (match, offset, full) =>
-    isInsideDollars(full.slice(0, offset)) ? match : `$${match}$`,
-  );
-  return result;
-}
+// La réparation LaTeX vit dans latexRepair.ts : elle est partagée avec le
+// rendu côté client (katexLoader.ts), pour que les cours déjà enregistrés
+// avant ce correctif s'affichent proprement eux aussi.
+export { repairLatex, stripFigureNumberPrefix };
 
 // ═══ Réparation automatique des placeholders d'exercices ═══
 // Au lieu de rejeter toute la leçon quand les placeholders "lesson-exercise"
@@ -107,7 +96,7 @@ export function normalizeGeneratedCourseChapter<
       ...lesson,
       content:
         typeof lesson.content === "string"
-          ? normalizeCourseLessonContent(repairLatex(lesson.content))
+          ? normalizeCourseLessonContent(stripFigureNumberPrefix(repairLatex(lesson.content)))
           : lesson.content,
     })),
   };

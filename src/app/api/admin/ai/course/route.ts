@@ -329,7 +329,7 @@ ${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIR
         });
 
         let completed = 0;
-        await Promise.all(
+        const chapterResults = await Promise.allSettled(
           chapterTitles.map(async (chapterTitle, i) => {
             const chapterSystem = `Tu es un expert pédagogue en mathématiques pour Educalcul, une plateforme éducative française.
 Ta mission : rédiger un chapitre COMPLET, RIGOUREUX et APPROFONDI d'un cours magistral, comme un manuel scolaire de référence.
@@ -439,12 +439,33 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
                 lessons: chapterData?.lessons || [],
               },
             });
+            return true;
           }),
         );
+
+        // Un chapitre en échec ne doit pas emporter tout le cours : avec
+        // Promise.all, la première erreur rejetait l'ensemble et le cours
+        // n'arrivait qu'avec les chapitres déjà émis (d'où "2 chapitres
+        // demandés, 1 seul reçu"). On isole donc chaque chapitre et on
+        // signale précisément ceux qui ont échoué, une fois les autres livrés.
+        const failed = chapterResults
+          .map((r, idx) => (r.status === "rejected" ? chapterTitles[idx] : null))
+          .filter(Boolean) as string[];
+
+        if (failed.length === chapterTitles.length) {
+          throw new Error(
+            `Aucun chapitre n'a pu être généré. Réessaie, éventuellement avec moins de leçons par chapitre.`,
+          );
+        }
 
         send({
           type: "done",
           course: { title: courseTitle, description: courseDescription },
+          ...(failed.length > 0
+            ? {
+                warning: `${failed.length} chapitre(s) n'ont pas pu être générés et sont absents : ${failed.join(", ")}. Les autres ont bien été créés — tu peux relancer la génération ou les ajouter à la main.`,
+              }
+            : {}),
         });
       } catch (error: unknown) {
         console.error("❌ Erreur génération cours IA:", error);

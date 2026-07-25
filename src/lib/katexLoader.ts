@@ -3,6 +3,7 @@
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import DOMPurify from "dompurify";
+import { repairLatex, stripFigureNumberPrefix } from "@/lib/latexRepair";
 
 /**
  * Nettoie le HTML avant injection (anti-XSS) tout en conservant le rendu KaTeX,
@@ -31,12 +32,6 @@ export function sanitizeHtml(html: string): string {
     .replace(/javascript:/gi, "");
 }
 
-/** Environnements LaTeX de type "grille" que l'IA écrit parfois sans les
- * entourer de $...$/$$...$$ (systèmes d'équations, matrices) : sans ce filet
- * de sécurité, ils s'affichent en texte brut (\begin{cases}...) au lieu
- * d'être rendus. */
-const BARE_ENV_RE =
-  /(\\left\s*(?:\\\{|[(\[.|])\s*)?\\begin\{(cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|matrix|aligned)\}[\s\S]*?\\end\{\2\}(\s*\\right\s*(?:\\\}|[)\].|]))?/g;
 
 /** Rendu KaTeX d'une formule avec repli propre : si la source est invalide
  * (souvent parce que l'IA a mélangé une balise HTML dans la formule), on
@@ -79,44 +74,37 @@ function safeRenderMath(math: string, displayMode: boolean): string {
 export function renderLatexInHTML(html: string): string {
   if (!html) return html;
 
-  // 0. Filet de sécurité : encadre les environnements type "cases"/"array"
-  // laissés sans délimiteurs $...$/$$...$$ par l'IA, pour qu'ils soient
-  // traités par les passes suivantes au lieu de rester en texte brut.
-  let result = html.replace(
-    BARE_ENV_RE,
-    (match, _left, _env, _right, offset, full) => {
-      const before = full.slice(0, offset);
-      const openDollars = (before.match(/\$/g) || []).length;
-      // Un nombre pair de "$" avant ce point signifie qu'on N'EST PAS déjà
-      // à l'intérieur d'un bloc $...$/$$...$$ — dans ce cas, on encadre.
-      return openDollars % 2 === 0 ? `$$${match}$$` : match;
-    },
-  );
- 
-  // 0.5. Nettoyage des délimiteurs mal formés courants qui surviennent
-  // lorsque l'IA ajoute un dollar en trop après un bloc $$...$$.
-  result = result.replace(/\$\$\$(?=\s|<|$)/g, "$$");
- 
+  // 0. Réparation en amont (formules sans délimiteur, $$ non refermé…).
+  // Appliquée aussi à l'affichage — et pas seulement à la génération — pour
+  // que les cours déjà enregistrés avant ce correctif s'affichent proprement.
+  let result = stripFigureNumberPrefix(repairLatex(html));
+
   // 1. Display math : $$...$$
-  result = result.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) =>
-    safeRenderMath(math, true),
+  // [^<>] : une formule ne peut JAMAIS traverser une balise HTML. Sans cette
+  // contrainte, un $$ non refermé « cherchait » sa fermeture plusieurs
+  // paragraphes plus loin et avalait tout le HTML intermédiaire, produisant
+  // un mélange illisible de morceaux rendus et de LaTeX brut.
+  result = result.replace(/\$\$([^<>]*?)\$\$/g, (match, math) =>
+    math.trim() ? safeRenderMath(math, true) : match,
   );
 
-  // 2. Inline math : $...$ (on évite $$...$$ déjà traités)
-  result = result.replace(/\$([^\$\r\n]+?)\$/g, (match, math) => {
-    if (!math.trim()) return match;
-    return safeRenderMath(math, false);
-  });
+  // 2. Inline math : $...$ (les $$...$$ sont déjà traités)
+  result = result.replace(/\$([^$<>\r\n]+?)\$/g, (match, math) =>
+    math.trim() ? safeRenderMath(math, false) : match,
+  );
 
   // 3. \(...\) inline
-  result = result.replace(/\\\(([\s\S]+?)\\\)/g, (match, math) =>
+  result = result.replace(/\\\(([^<>]+?)\\\)/g, (match, math) =>
     safeRenderMath(math, false),
   );
 
   // 4. \[...\] display
-  result = result.replace(/\\\[([\s\S]+?)\\\]/g, (match, math) =>
+  result = result.replace(/\\\[([^<>]+?)\\\]/g, (match, math) =>
     safeRenderMath(math, true),
   );
+
+  // 5. Filet final : un délimiteur resté orphelin ne doit jamais s'afficher.
+  result = result.replace(/\$\$/g, "");
 
   // Nettoyage anti-XSS après le rendu LaTeX (conserve KaTeX/SVG/MathML).
   return sanitizeHtml(result);
