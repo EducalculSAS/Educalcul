@@ -15,6 +15,14 @@ export function sanitizeHtml(html: string): string {
     return DOMPurify.sanitize(html, {
       USE_PROFILES: { html: true, svg: true, svgFilters: true, mathMl: true },
       ADD_ATTR: ["target"],
+      // Le profil mathMl de DOMPurify ne whitelist pas <semantics>/<annotation>
+      // (les dépaquette en gardant leur texte, aplati) : KaTeX les utilise
+      // pourtant pour embarquer la source LaTeX d'origine de chaque formule
+      // (<annotation encoding="application/x-tex">), dont on a besoin pour
+      // reconstruire du "$latex$" propre quand l'élève sélectionne du texte
+      // contenant une formule (cf. getCleanSelectionText dans CourseViewer).
+      // Contenu inerte (texte brut, aucun attribut sensible) : sans risque.
+      ADD_TAGS: ["semantics", "annotation"],
     });
   }
   return html
