@@ -6,7 +6,12 @@ export interface GradePromotionResult {
   needsManualChoice: number;
 }
 
-/** Fait avancer tous les comptes enfant d'un niveau (voir NEXT_GRADE). */
+/**
+ * Fait avancer tous les comptes enfant d'un niveau (voir NEXT_GRADE). Les
+ * élèves en Seconde ne peuvent pas être avancés automatiquement (choix de
+ * spécialité maths) : on les marque needs_grade_choice=true, ce qui déclenche
+ * un choix obligatoire à leur prochaine connexion (voir ChildGradeChoiceModal).
+ */
 export async function runGradePromotion(): Promise<GradePromotionResult> {
   const { data: children } = await supabaseAdmin
     .from("users")
@@ -22,6 +27,7 @@ export async function runGradePromotion(): Promise<GradePromotionResult> {
       await supabaseAdmin.from("users").update({ grade_level: next }).eq("id", child.id);
       advanced++;
     } else if (child.grade_level === "2nde") {
+      await supabaseAdmin.from("users").update({ needs_grade_choice: true }).eq("id", child.id);
       needsManualChoice++;
     }
   }

@@ -61,7 +61,7 @@ export default function GradePromotionPanel() {
       setLastRunYear(new Date().getFullYear());
       setMessage({
         type: "success",
-        text: `${data.advanced} enfant(s) avancé(s) de niveau. ${data.needsManualChoice} en Seconde nécessitent un choix de spécialité manuel.`,
+        text: `${data.advanced} enfant(s) avancé(s) de niveau. ${data.needsManualChoice} élève(s) en Seconde devront choisir leur spécialité à leur prochaine connexion.`,
       });
     } catch (err: any) {
       setMessage({ type: "error", text: err.message || "Erreur." });
@@ -91,7 +91,7 @@ export default function GradePromotionPanel() {
           ) : (
             <>
               <p className="text-sm text-gray-600 mb-4">
-                Chaque année à la date choisie, tous les comptes enfant avancent automatiquement d'un niveau (CP → CE1 → … → Seconde, et Première → Terminale sur la même spécialité). Les élèves en Seconde nécessitent un choix manuel de spécialité maths et ne sont pas avancés automatiquement.
+                Chaque année à la date choisie, tous les comptes enfant avancent automatiquement d'un niveau (CP → CE1 → … → Seconde, et Première → Terminale sur la même spécialité). Les élèves en Seconde devront choisir leur spécialité maths eux-mêmes, via un popup obligatoire à leur prochaine connexion.
               </p>
 
               {message && (
