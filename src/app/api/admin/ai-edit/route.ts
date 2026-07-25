@@ -9,6 +9,7 @@ export const maxDuration = 120;
 const TABLE_GRAPH_RULES = `═══ TABLEAUX & GRAPHIQUES ═══
 • Tableau (signes/variations/valeurs) : <table class="math-table math-table-sign|math-table-variation|math-table-value"><thead><tr><th>x</th>...</tr></thead><tbody><tr><td>...</td></tr></tbody></table>. Utilise ↗, ↘, +, -, 0, ∞, ‖.
 • Courbe simple : <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
+• Pour une représentation colorée utile (fractions, partages, aires, décompositions), tu peux aussi intégrer un <svg> inline simple, avec 2 à 5 couleurs sobres, des contours nets et une légende courte.
 • N'en ajoute que si pertinent et demandé ou utile pour la notion.`;
 
 const FORMAT_RULES = `═══ FORMAT ═══
@@ -17,6 +18,12 @@ const FORMAT_RULES = `═══ FORMAT ═══
 • N'utilise JAMAIS de retour à la ligne littéral à l'intérieur des chaînes JSON.
 • DOUBLE-ÉCHAPPE les backslashes JSON : \\\\frac{a}{b} → donne \\frac{a}{b} dans le rendu.
 • N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z) — n'écris JAMAIS de caractères cyrilliques ou non-latins à l'intérieur d'une formule $...$ ou $$...$$, et ne mélange jamais du HTML à l'intérieur d'une formule.
+• Toute commande LaTeX commençant par un antislash (\\frac, \\sqrt, \\vec, \\cos, \\sin, \\begin, \\end, \\left, \\right, etc.) doit être strictement à l'intérieur de $...$ ou $$...$$.
+• Ne laisse jamais une formule “nue” dans un paragraphe : une équation, une matrice, une projection, une norme ou une décomposition se met dans un bloc de formule dédié.
+• Pour une suite de calculs, sépare les étapes en plusieurs paragraphes ou listes avec une formule à chaque étape, au lieu d’un long bloc de prose.
+• N'utilise jamais d'exemple hors mathématiques (physique, chimie, biologie, informatique, etc.) sauf demande explicite.
+• Avant le premier exercice, il doit toujours y avoir une explication ou un exemple guidé ; ne commence jamais une leçon par une question.
+• Pour les mises en valeur, privilégie <blockquote class="course-callout course-callout-note">...</blockquote> ou <blockquote class="course-callout course-callout-warning">...</blockquote> hors formules, et <span class="course-emphasis">...</span> pour les mots-clés.
 ${TABLE_GRAPH_RULES}`;
 
 const PATCH_FORMAT = `═══ FORMAT DE RÉPONSE (TRÈS IMPORTANT) ═══
@@ -31,7 +38,11 @@ Réponds UNIQUEMENT avec ce JSON, sans texte avant/après :
 
 // Format de réponse à DEUX NIVEAUX (chapitre/leçon ou page/bloc) — permet de ne renvoyer
 // QUE la leçon/le bloc modifié(e) sans réécrire tout le chapitre/la page parente.
-function patchFormatTwoLevel(parentLabel: string, childLabel: string, parentField: string) {
+function patchFormatTwoLevel(
+  parentLabel: string,
+  childLabel: string,
+  parentField: string,
+) {
   return `═══ FORMAT DE RÉPONSE (TRÈS IMPORTANT) ═══
 Modification LOCALISÉE et RAPIDE : ne touche QUE ce que l'enseignant a explicitement demandé, et renvoie l'élément AU NIVEAU LE PLUS PRÉCIS POSSIBLE.
 • Si la demande ne concerne QU'UN(E) SEUL(E) ${childLabel} (ex: renommer son titre, corriger son contenu), renvoie UNIQUEMENT cet(te) ${childLabel} avec "level": "${childLabel}", son "id" existant, et "parent_id": l'id du ${parentLabel} qui le/la contient. NE RENVOIE PAS le ${parentLabel} entier ni ses autres ${childLabel}s.
@@ -59,16 +70,30 @@ const QUIZ_Q_SCHEMA = `Une "question" a les champs : "id", "text" (énoncé), "t
 
 function buildPrompts(
   type:
-    | "course" | "exercise" | "quiz"
-    | "lesson" | "chapter" | "add_lesson" | "add_chapter"
-    | "page" | "block" | "add_page" | "add_block"
-    | "question" | "add_question",
+    | "course"
+    | "exercise"
+    | "quiz"
+    | "lesson"
+    | "chapter"
+    | "add_lesson"
+    | "add_chapter"
+    | "page"
+    | "block"
+    | "add_page"
+    | "add_block"
+    | "question"
+    | "add_question",
   instruction: string,
   content: unknown,
-  level?: string
+  level?: string,
 ) {
   // ── Exercices : édition / création d'une page ou d'un bloc ──
-  if (type === "page" || type === "add_page" || type === "block" || type === "add_block") {
+  if (
+    type === "page" ||
+    type === "add_page" ||
+    type === "block" ||
+    type === "add_block"
+  ) {
     const lvl = level || "6ème";
     const base = `Tu es un expert pédagogue en mathématiques pour Educalcul (plateforme éducative française), niveau "${lvl}".`;
     if (type === "page") {
@@ -261,35 +286,66 @@ export async function POST(req: NextRequest) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
     const admin = await requireRole(req, ["admin"]);
-    if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+    if (!admin)
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
 
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["ai:admin"];
-    const rl = await rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
+    const rl = await rateLimitWithBackoff(
+      `ai:admin:${ip}`,
+      config.maxAttempts,
+      config.windowMs,
+    );
     if (!rl.allowed) {
-      return Response.json({ error: "Trop de générations IA, réessaie dans quelques minutes." }, { status: 429 });
+      return Response.json(
+        { error: "Trop de générations IA, réessaie dans quelques minutes." },
+        { status: 429 },
+      );
     }
 
     const { type, instruction, content, level } = await req.json();
 
     if (!type || !instruction || content === undefined) {
-      return Response.json({ error: "Champs manquants (type, instruction, content)" }, { status: 400 });
+      return Response.json(
+        { error: "Champs manquants (type, instruction, content)" },
+        { status: 400 },
+      );
     }
 
-    const { system, user, maxTokens } = buildPrompts(type, instruction, content, level);
-    const result = (await generateStructuredContent(user, system, 0.5, maxTokens)) as any;
+    const { system, user, maxTokens } = buildPrompts(
+      type,
+      instruction,
+      content,
+      level,
+    );
+    const result = (await generateStructuredContent(
+      user,
+      system,
+      0.5,
+      maxTokens,
+    )) as any;
 
     // Édition ciblée / création : l'IA renvoie un objet unique (leçon, chapitre,
     // page, bloc ou question).
     const SINGLE_TYPES = [
-      "lesson", "chapter", "add_lesson", "add_chapter",
-      "page", "block", "add_page", "add_block",
-      "question", "add_question",
+      "lesson",
+      "chapter",
+      "add_lesson",
+      "add_chapter",
+      "page",
+      "block",
+      "add_page",
+      "add_block",
+      "question",
+      "add_question",
     ];
     if (SINGLE_TYPES.includes(type)) {
       // Certaines IA encapsulent dans { item: {...} } ou { lesson/page/...: {...} }
       const item =
-        result && typeof result === "object" && !Array.isArray(result) && result.id
+        result &&
+        typeof result === "object" &&
+        !Array.isArray(result) &&
+        result.id
           ? result
           : result?.item || result?.[type];
       if (!item || typeof item !== "object" || !item.id) {
@@ -305,7 +361,11 @@ export async function POST(req: NextRequest) {
     // Ne garde que les items exploitables (objet avec un id) pour éviter
     // d'injecter des leçons/blocs vides côté client.
     const items = result.items.filter(
-      (it: any) => it && typeof it === "object" && typeof it.id === "string" && it.id.length > 0
+      (it: any) =>
+        it &&
+        typeof it === "object" &&
+        typeof it.id === "string" &&
+        it.id.length > 0,
     );
 
     return Response.json({
@@ -314,6 +374,9 @@ export async function POST(req: NextRequest) {
     });
   } catch (e: any) {
     console.error("❌ Erreur ai-edit:", e);
-    return Response.json({ error: sanitizeErrorMessage(e?.message || "Erreur de modification") }, { status: 500 });
+    return Response.json(
+      { error: sanitizeErrorMessage(e?.message || "Erreur de modification") },
+      { status: 500 },
+    );
   }
 }

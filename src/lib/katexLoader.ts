@@ -11,7 +11,7 @@ import DOMPurify from "dompurify";
  * - SSR (pas de DOM) : repli minimal retirant les vecteurs principaux ; le client re-nettoie.
  */
 export function sanitizeHtml(html: string): string {
-  if (typeof window !== "undefined" && (DOMPurify as any)?.sanitize) {
+  if (typeof window !== "undefined" && "sanitize" in DOMPurify) {
     return DOMPurify.sanitize(html, {
       USE_PROFILES: { html: true, svg: true, svgFilters: true, mathMl: true },
       ADD_ATTR: ["target"],
@@ -46,7 +46,11 @@ const BARE_ENV_RE =
 function safeRenderMath(math: string, displayMode: boolean): string {
   const trimmed = math.trim();
   const tryRender = (src: string) =>
-    katex.renderToString(src, { displayMode, throwOnError: true, strict: false });
+    katex.renderToString(src, {
+      displayMode,
+      throwOnError: true,
+      strict: false,
+    });
   try {
     return tryRender(trimmed);
   } catch {
@@ -62,7 +66,9 @@ function safeRenderMath(math: string, displayMode: boolean): string {
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
-    return `<span style="font-family:monospace">${escaped}</span>`;
+    return displayMode
+      ? `<div class="katex-fallback katex-fallback-display">${escaped}</div>`
+      : `<span class="katex-fallback">${escaped}</span>`;
   }
 }
 
@@ -76,16 +82,21 @@ export function renderLatexInHTML(html: string): string {
   // 0. Filet de sécurité : encadre les environnements type "cases"/"array"
   // laissés sans délimiteurs $...$/$$...$$ par l'IA, pour qu'ils soient
   // traités par les passes suivantes au lieu de rester en texte brut.
-  let result = html.replace(BARE_ENV_RE, (match, _left, _env, _right, offset, full) => {
-    const before = full.slice(0, offset);
-    const openDollars = (before.match(/\$/g) || []).length;
-    // Un nombre pair de "$" avant ce point signifie qu'on N'EST PAS déjà
-    // à l'intérieur d'un bloc $...$/$$...$$ — dans ce cas, on encadre.
-    return openDollars % 2 === 0 ? `$$${match}$$` : match;
-  });
+  let result = html.replace(
+    BARE_ENV_RE,
+    (match, _left, _env, _right, offset, full) => {
+      const before = full.slice(0, offset);
+      const openDollars = (before.match(/\$/g) || []).length;
+      // Un nombre pair de "$" avant ce point signifie qu'on N'EST PAS déjà
+      // à l'intérieur d'un bloc $...$/$$...$$ — dans ce cas, on encadre.
+      return openDollars % 2 === 0 ? `$$${match}$$` : match;
+    },
+  );
 
   // 1. Display math : $$...$$
-  result = result.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => safeRenderMath(math, true));
+  result = result.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) =>
+    safeRenderMath(math, true),
+  );
 
   // 2. Inline math : $...$ (on évite $$...$$ déjà traités)
   result = result.replace(/\$([^\$\r\n]+?)\$/g, (match, math) => {
@@ -94,19 +105,31 @@ export function renderLatexInHTML(html: string): string {
   });
 
   // 3. \(...\) inline
-  result = result.replace(/\\\(([\s\S]+?)\\\)/g, (match, math) => safeRenderMath(math, false));
+  result = result.replace(/\\\(([\s\S]+?)\\\)/g, (match, math) =>
+    safeRenderMath(math, false),
+  );
 
   // 4. \[...\] display
-  result = result.replace(/\\\[([\s\S]+?)\\\]/g, (match, math) => safeRenderMath(math, true));
+  result = result.replace(/\\\[([\s\S]+?)\\\]/g, (match, math) =>
+    safeRenderMath(math, true),
+  );
 
   // Nettoyage anti-XSS après le rendu LaTeX (conserve KaTeX/SVG/MathML).
   return sanitizeHtml(result);
 }
 
 // Fonctions gardées pour compatibilité (no-op)
-export function ensureKaTeX(): Promise<void> { return Promise.resolve(); }
-export function renderKaTeX(_container: HTMLElement | null) { /* no-op — utilise renderLatexInHTML */ }
-export function renderKaTeXAsync(_container: HTMLElement | null): Promise<void> { return Promise.resolve(); }
+export function ensureKaTeX(): Promise<void> {
+  return Promise.resolve();
+}
+export function renderKaTeX(_container: HTMLElement | null) {
+  /* no-op — utilise renderLatexInHTML */
+}
+export function renderKaTeXAsync(
+  _container: HTMLElement | null,
+): Promise<void> {
+  return Promise.resolve();
+}
 
 /**
  * Charge une seule fois (CSS + katex.min.js + auto-render.min.js du CDN) les
@@ -120,7 +143,9 @@ let katexAutoRenderPromise: Promise<void> | null = null;
 
 export function ensureKatexAutoRenderLoaded(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
-  if ((window as any).renderMathInElement) return Promise.resolve();
+  if (typeof (window as Window & { renderMathInElement?: unknown }).renderMathInElement === "function") {
+    return Promise.resolve();
+  }
   if (katexAutoRenderPromise) return katexAutoRenderPromise;
 
   katexAutoRenderPromise = new Promise((resolve, reject) => {
@@ -128,19 +153,27 @@ export function ensureKatexAutoRenderLoaded(): Promise<void> {
       const link = document.createElement("link");
       link.id = "katex-css";
       link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-      link.integrity = "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
+      link.href =
+        "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
+      link.integrity =
+        "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
       link.crossOrigin = "anonymous";
       document.head.appendChild(link);
     }
 
-    const loadScript = (id: string, src: string, integrity: string): Promise<void> =>
+    const loadScript = (
+      id: string,
+      src: string,
+      integrity: string,
+    ): Promise<void> =>
       new Promise((res, rej) => {
         if (document.getElementById(id)) {
           // Déjà en cours de chargement (ou chargé) par un appel précédent.
           const existing = document.getElementById(id) as HTMLScriptElement;
           existing.addEventListener("load", () => res());
-          existing.addEventListener("error", () => rej(new Error(`Failed to load ${src}`)));
+          existing.addEventListener("error", () =>
+            rej(new Error(`Failed to load ${src}`)),
+          );
           return;
         }
         const script = document.createElement("script");
@@ -157,14 +190,14 @@ export function ensureKatexAutoRenderLoaded(): Promise<void> {
     loadScript(
       "katex-js",
       "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
-      "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8",
     )
       .then(() =>
         loadScript(
           "katex-auto-render",
           "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js",
-          "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        )
+          "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05",
+        ),
       )
       .then(() => resolve())
       .catch(reject);
