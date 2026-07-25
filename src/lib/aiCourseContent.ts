@@ -14,6 +14,7 @@ export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX ═══
 • Dans le JSON, échappe les backslashes deux fois pour que le rendu final affiche correctement les formules : le contenu final doit rester du LaTeX classique comme \frac{a}{b}, \sqrt{x}, x^2, x_n.
 • N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z).
 • Pour une formule propre, utilise toujours du LaTeX standard : $\\frac{a}{b}$, $\\sqrt{x}$, $x^2$, $x_n$. N'utilise pas de symboles Unicode comme ², ³, √, ±, × ou ÷ dans une formule.
+• Ne génère PAS d'attributs style inline ou de balises <span> contenant des styles. Utilise uniquement les classes du site Educalcul : course-callout, course-emphasis, math-table, course-figure, math-graph-placeholder.
 • Rédige UNIQUEMENT en français correct.
 • Pour mettre en valeur une définition, une mise en garde ou un résultat, utilise <blockquote class="course-callout course-callout-note">...</blockquote> ou <span class="course-emphasis">...</span> hors formule.
 • Pour un avertissement, utilise <blockquote class="course-callout course-callout-warning">...</blockquote>.

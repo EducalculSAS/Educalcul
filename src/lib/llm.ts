@@ -122,8 +122,97 @@ function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = f
 function extractJSON(text: string): string {
   const block = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
   if (block) return block[1];
-  const obj = text.match(/\{[\s\S]*\}/);
-  return obj ? obj[0] : text;
+
+  const start = text.indexOf("{");
+  if (start === -1) return text;
+
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i];
+
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+
+    if (ch === "\\") {
+      escaped = true;
+      continue;
+    }
+
+    if (ch === '"') {
+      inString = !inString;
+      continue;
+    }
+
+    if (inString) continue;
+    if (ch === "{") depth++;
+    if (ch === "}") {
+      depth--;
+      if (depth === 0) {
+        return text.slice(start, i + 1);
+      }
+    }
+  }
+
+  return text.slice(start);
+}
+
+function normalizeJsonString(raw: string): string {
+  let out = "";
+  let inString = false;
+  let escaped = false;
+
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i];
+
+    if (!inString) {
+      out += ch;
+      if (ch === '"') inString = true;
+      continue;
+    }
+
+    if (escaped) {
+      if ('"\\/bfnrtu'.includes(ch)) {
+        out += "\\" + ch;
+      } else {
+        out += "\\\\" + ch;
+      }
+      escaped = false;
+      continue;
+    }
+
+    if (ch === "\\") {
+      escaped = true;
+      continue;
+    }
+
+    if (ch === '"') {
+      inString = false;
+      out += ch;
+      continue;
+    }
+
+    if (ch === "\n") {
+      out += "\\n";
+      continue;
+    }
+    if (ch === "\r") {
+      out += "\\r";
+      continue;
+    }
+    if (ch === "\t") {
+      out += "\\t";
+      continue;
+    }
+
+    out += ch;
+  }
+
+  if (escaped) out += "\\\\";
+  return out;
 }
 
 /** Échappe les retours à la ligne / tabulations littéraux à l'intérieur des chaînes JSON */
@@ -185,16 +274,19 @@ function escapeUnescapedQuotesInStrings(raw: string): string {
 function parseJSON(raw: string): unknown {
   try { return JSON.parse(raw); }
   catch {
-    try { return JSON.parse(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")); }
+    try { return JSON.parse(normalizeJsonString(raw)); }
     catch {
-      try { return JSON.parse(escapeControlCharsInStrings(raw)); }
+      try { return JSON.parse(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")); }
       catch {
-        try { return JSON.parse(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"))); }
+        try { return JSON.parse(escapeControlCharsInStrings(raw)); }
         catch {
-          try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw))); }
+          try { return JSON.parse(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"))); }
           catch {
-            try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")))); }
-            catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+            try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw))); }
+            catch {
+              try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")))); }
+              catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+            }
           }
         }
       }
@@ -212,7 +304,8 @@ async function repairStructuredJSON(
   const repairSystem = `${systemPrompt}
 
 Ta réponse précédente n'était pas du JSON valide.
-Tu dois maintenant corriger cette sortie et renvoyer UNIQUEMENT le JSON valide final, sans texte autour, sans markdown, sans explication.`;
+Tu dois maintenant corriger cette sortie et renvoyer UNIQUEMENT le JSON valide final, sans texte autour, sans markdown, sans explication.
+Conserve exactement le même contenu mathématique et les mêmes balises HTML que possible ; corrige seulement l'échappement JSON et les erreurs de format.`;
 
   const repairUser = `Demande initiale :
 ${prompt}

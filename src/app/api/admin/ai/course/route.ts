@@ -45,6 +45,46 @@ function cleanupGeneratedCourseChapter(chapter: GeneratedCourseChapter, expected
   return { ...chapter, lessons: validLessons };
 }
 
+function getLessonExerciseIds(lesson: GeneratedCourseLesson): string[] {
+  if (!Array.isArray(lesson.exercises)) return [];
+  return lesson.exercises
+    .map((exercise) => {
+      if (typeof exercise !== "object" || exercise === null) return "";
+      const candidate = exercise as Record<string, unknown>;
+      return typeof candidate.id === "string" ? candidate.id : "";
+    })
+    .filter(Boolean);
+}
+
+function getLessonPlaceholderIds(content: string | undefined): string[] {
+  if (typeof content !== "string") return [];
+  return Array.from(
+    content.matchAll(
+      /<div[^>]*class=(?:"[^"]*lesson-exercise[^"]*"|'[^']*lesson-exercise[^']*')[^>]*data-exercise-id=(?:"([^"]*)"|'([^']*)')[^>]*><\/div>/g,
+    ),
+  ).map((match) => match[1] || match[2] || "").filter(Boolean);
+}
+
+function hasValidLessonExercises(lesson: GeneratedCourseLesson, includeExercises: boolean): boolean {
+  const ids = getLessonExerciseIds(lesson);
+  const placeholders = getLessonPlaceholderIds(lesson.content);
+
+  if (includeExercises) {
+    if (ids.length < 3 || ids.length > 6) return false;
+    if (placeholders.length !== ids.length) return false;
+    return ids.every((id) => placeholders.includes(id));
+  }
+
+  return ids.length === 0 && placeholders.length === 0;
+}
+
+function chapterExercisesAreValid(chapter: GeneratedCourseChapter, includeExercises: boolean): boolean {
+  if (!chapter || !Array.isArray(chapter.lessons)) return false;
+  return chapter.lessons.every((lesson) =>
+    isValidGeneratedCourseLesson(lesson) && hasValidLessonExercises(lesson, includeExercises),
+  );
+}
+
 export const maxDuration = 300; // 5 min — génération de cours complète
 
 export async function POST(request: Request) {
@@ -88,13 +128,20 @@ export async function POST(request: Request) {
     );
   }
 
-  const nbChapitres = page_count ? parseInt(page_count) : 4;
-  const lessonsPerChapter = lessons_per_chapter
-    ? parseInt(lessons_per_chapter)
-    : 3;
-  const durationPerLesson = duration_per_lesson
-    ? parseInt(duration_per_lesson)
-    : 30;
+  const clampNumber = (
+    value: string | number | undefined,
+    fallback: number,
+    min: number,
+    max: number,
+  ) => {
+    const parsed = typeof value === "string" ? parseInt(value, 10) : typeof value === "number" ? value : NaN;
+    if (!Number.isFinite(parsed)) return fallback;
+    return Math.min(max, Math.max(min, parsed));
+  };
+ 
+  const nbChapitres = clampNumber(page_count, 4, 1, 8);
+  const lessonsPerChapter = clampNumber(lessons_per_chapter, 3, 1, 6);
+  const durationPerLesson = clampNumber(duration_per_lesson, 30, 5, 90);
   const includeExercises = include_exercises !== false;
   const style: "balanced" | "theory_heavy" | "practice_heavy" =
     content_style || "balanced";
@@ -359,6 +406,19 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
               const retryHint = `La réponse précédente ne respectait pas le nombre exact de leçons attendues ou contenait des leçons vides. Tu dois maintenant renvoyer un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides, chacune ayant un titre, un contenu et une durée.`;
               const retryChapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
                 `${chapterUser}\n\n${retryHint}`,
+                chapterSystem,
+                0.65,
+                28000,
+              )) as GeneratedChapter);
+              chapterData = cleanupGeneratedCourseChapter(retryChapterData, lessonsPerChapter);
+            }
+
+            if (!chapterExercisesAreValid(chapterData, includeExercises)) {
+              const exerciseRetryHint = includeExercises
+                ? `La réponse précédente n'a pas créé des mini-exercices correctement ou n'a pas inséré les placeholders correspondants. Chaque leçon doit contenir 3 à 6 mini-exercices réels dans "exercises", et chaque exercice doit être cité immédiatement après une notion/exemple par un placeholder exact <div class="lesson-exercise" data-exercise-id="ex-N"></div>. Renvoie un chapitre JSON valide avec ${lessonsPerChapter} leçon(s) contenant des exercices valides et des placeholders correspondants.`
+                : `La réponse précédente ne devait pas contenir d'exercices ni de placeholders. Renvoie un chapitre JSON valide avec ${lessonsPerChapter} leçon(s) et un tableau "exercises" vide pour chaque leçon.`;
+              const retryChapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
+                `${chapterUser}\n\n${exerciseRetryHint}`,
                 chapterSystem,
                 0.65,
                 28000,
