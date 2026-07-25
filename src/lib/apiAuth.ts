@@ -54,11 +54,20 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
   // point d'entrée commun à toutes les routes authentifiées.
   if (row.status === "inactive" || row.ban_reason) return null;
 
-  // 2FA obligatoire pour les admins, optionnelle (opt-in) pour parent/enfant.
-  // Le JWT Supabase seul ne suffit pas ici : le code de vérification par
-  // email crée une session 2FA séparée (table two_factor_sessions), dont le
-  // jeton doit être présent et valide dans l'en-tête X-2FA-Token.
-  const requires2FA = row.role === "admin" || row.two_factor_enabled;
+  // 2FA optionnelle (opt-in) pour parent/enfant (email). Pour les admins,
+  // le TOTP (Google Authenticator) n'est exigé qu'une fois sa configuration
+  // confirmée — tant qu'il ne l'est pas, l'admin passe (un popup côté client
+  // le pousse à configurer, voir AdminTotpSetupModal) pour éviter un
+  // chicken-and-egg qui bloquerait tout accès avant la première config.
+  let requires2FA = row.two_factor_enabled;
+  if (row.role === "admin") {
+    const { data: totp } = await supabaseAdmin
+      .from("two_factor_totp")
+      .select("confirmed_at")
+      .eq("user_id", row.id)
+      .maybeSingle();
+    requires2FA = !!totp?.confirmed_at;
+  }
   if (requires2FA) {
     const twoFAToken = req.headers.get("x-2fa-token");
     if (!twoFAToken) return null;

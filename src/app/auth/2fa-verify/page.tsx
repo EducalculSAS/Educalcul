@@ -10,6 +10,7 @@ function TwoFactorVerifyContent() {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/";
 
+  const [method, setMethod] = useState<"email" | "totp" | null>(null);
   const [code, setCode] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -42,7 +43,20 @@ function TwoFactorVerifyContent() {
   useEffect(() => {
     if (sentOnce.current) return;
     sentOnce.current = true;
-    sendCode();
+    (async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) { router.push("/auth/connexion"); return; }
+      const res = await fetch("/api/auth/2fa/totp/status", {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+      const data = await res.json();
+      if (res.ok && data.role === "admin" && data.confirmed) {
+        setMethod("totp");
+      } else {
+        setMethod("email");
+        sendCode();
+      }
+    })();
   }, []);
 
   useEffect(() => {
@@ -58,7 +72,8 @@ function TwoFactorVerifyContent() {
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) { router.push("/auth/connexion"); return; }
-      const res = await fetch("/api/auth/2fa/verify-code", {
+      const endpoint = method === "totp" ? "/api/auth/2fa/totp/verify" : "/api/auth/2fa/verify-code";
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
         body: JSON.stringify({ code }),
@@ -84,7 +99,9 @@ function TwoFactorVerifyContent() {
           Vérification en deux étapes
         </h1>
         <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-          {sent ? "Un code à 6 chiffres a été envoyé par email." : "Envoi du code en cours…"}
+          {method === "totp"
+            ? "Ouvre ton appli d'authentification et entre le code affiché."
+            : sent ? "Un code à 6 chiffres a été envoyé par email." : "Envoi du code en cours…"}
         </p>
       </div>
 

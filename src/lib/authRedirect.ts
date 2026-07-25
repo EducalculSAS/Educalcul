@@ -26,6 +26,26 @@ export async function getPublicUser(
 }
 
 /**
+ * Interroge /api/auth/2fa/totp/status (passe par le service role côté
+ * serveur : two_factor_totp est verrouillée par RLS sans policy, illisible
+ * directement depuis le client anon/authenticated).
+ */
+async function isAdminTotpConfirmedClient(supabase: SupabaseClient): Promise<boolean> {
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return false;
+    const res = await fetch("/api/auth/2fa/totp/status", {
+      headers: { Authorization: `Bearer ${session.access_token}` },
+    });
+    if (!res.ok) return false;
+    const data = await res.json();
+    return !!data.confirmed;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Retourne le chemin dashboard selon le rôle.
  */
 export function getDashboardPath(role: string | null | undefined): string {
@@ -58,12 +78,17 @@ export async function resolveAuthDestination(
 
   const dashboard = getDashboardPath(user.role);
 
-  // 2FA obligatoire pour les admins, opt-in pour parent/enfant (voir
-  // src/lib/twoFactor.ts). Un jeton de session 2FA déjà présent et non expiré
-  // sur cet appareil dispense de repasser par la vérification — l'exactitude
-  // réelle du jeton est de toute façon revérifiée côté serveur à chaque appel
-  // API (src/lib/apiAuth.ts), ceci n'est qu'un raccourci d'UX.
-  const requires2FA = user.role === "admin" || !!user.two_factor_enabled;
+  // 2FA opt-in par email pour parent/enfant. Pour les admins, TOTP (Google
+  // Authenticator) une fois sa configuration confirmée seulement — voir
+  // src/lib/twoFactor.ts et /auth/2fa-verify (qui gère les deux méthodes).
+  // Un jeton de session 2FA déjà présent et non expiré sur cet appareil
+  // dispense de repasser par la vérification — l'exactitude réelle du jeton
+  // est de toute façon revérifiée côté serveur à chaque appel API
+  // (src/lib/apiAuth.ts), ceci n'est qu'un raccourci d'UX.
+  let requires2FA = !!user.two_factor_enabled;
+  if (user.role === "admin") {
+    requires2FA = await isAdminTotpConfirmedClient(supabase);
+  }
   if (requires2FA) {
     const token = typeof window !== "undefined" ? window.localStorage.getItem("edu_2fa_token") : null;
     if (!token) return `/auth/2fa-verify?redirect=${encodeURIComponent(dashboard)}`;

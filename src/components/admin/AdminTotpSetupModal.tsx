@@ -1,0 +1,157 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import QRCode from "qrcode";
+import { supabase } from "@/lib/supabaseClient";
+import { ShieldCheck, Loader2, AlertCircle, Copy, Check } from "lucide-react";
+
+/**
+ * Popup obligatoire forçant tout admin sans TOTP configuré à en configurer
+ * un avant de pouvoir continuer. Se ferme définitivement (plus jamais
+ * affiché) une fois la config confirmée — pas de "plus tard".
+ */
+export default function AdminTotpSetupModal() {
+  const [checked, setChecked] = useState(false);
+  const [needsSetup, setNeedsSetup] = useState(false);
+  const [secret, setSecret] = useState<string | null>(null);
+  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
+  const [code, setCode] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [loadingSecret, setLoadingSecret] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) { setChecked(true); return; }
+        const res = await fetch("/api/auth/2fa/totp/status", {
+          headers: { Authorization: `Bearer ${session.access_token}` },
+        });
+        const data = await res.json();
+        if (res.ok && data.role === "admin" && !data.confirmed) {
+          setNeedsSetup(true);
+        }
+      } catch {
+        // silencieux : mieux vaut ne pas bloquer l'admin si le check échoue
+      } finally {
+        setChecked(true);
+      }
+    })();
+  }, []);
+
+  const startSetup = async () => {
+    setLoadingSecret(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/auth/2fa/totp/setup", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur");
+      setSecret(data.secret);
+      const dataUrl = await QRCode.toDataURL(data.otpauthUrl, { width: 220, margin: 1 });
+      setQrDataUrl(dataUrl);
+    } catch (err: any) {
+      setError(err.message || "Une erreur est survenue.");
+    } finally {
+      setLoadingSecret(false);
+    }
+  };
+
+  useEffect(() => {
+    if (needsSetup && !secret) startSetup();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [needsSetup]);
+
+  const confirmCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setConfirming(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/auth/2fa/totp/confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Code incorrect.");
+      window.localStorage.setItem("edu_2fa_token", data.token);
+      setNeedsSetup(false);
+    } catch (err: any) {
+      setError(err.message || "Une erreur est survenue.");
+    } finally {
+      setConfirming(false);
+    }
+  };
+
+  const copySecret = async () => {
+    if (!secret) return;
+    await navigator.clipboard.writeText(secret);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  if (!checked || !needsSetup) return null;
+
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.55)" }}>
+      <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-8 border border-[rgba(197,161,72,0.25)]">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(197,161,72,0.12)" }}>
+            <ShieldCheck className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />
+          </div>
+          <h2 className="text-xl font-bold text-[var(--greek-blue)]">Configure la 2FA</h2>
+        </div>
+        <p className="text-sm text-gray-600 mb-5">
+          Les comptes administrateur doivent utiliser une application d'authentification (Google Authenticator, Authy…) pour se connecter.
+        </p>
+
+        {error && (
+          <div className="flex items-center gap-2 px-3 py-2 mb-4 rounded-lg text-sm font-medium bg-red-50 text-red-700">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            {error}
+          </div>
+        )}
+
+        {loadingSecret ? (
+          <div className="flex justify-center py-8">
+            <Loader2 className="w-6 h-6 animate-spin text-gray-400" />
+          </div>
+        ) : qrDataUrl && secret ? (
+          <>
+            <div className="flex justify-center mb-4">
+              <img src={qrDataUrl} alt="QR code TOTP" className="rounded-lg border border-[rgba(197,161,72,0.25)]" />
+            </div>
+            <div className="flex items-center justify-between gap-2 px-3 py-2 mb-5 rounded-lg bg-gray-50 border border-gray-200">
+              <code className="text-xs font-mono text-gray-600 break-all">{secret}</code>
+              <button type="button" onClick={copySecret} className="shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
+                {copied ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}
+              </button>
+            </div>
+
+            <form onSubmit={confirmCode} className="space-y-3">
+              <input
+                type="text"
+                inputMode="numeric"
+                autoFocus
+                maxLength={6}
+                value={code}
+                onChange={e => setCode(e.target.value.replace(/\D/g, ""))}
+                className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-lg text-center text-xl tracking-[0.4em] font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                placeholder="000000"
+                required
+              />
+              <button
+                type="submit"
+                disabled={confirming || code.length !== 6}
+                className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
+              >
+                {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer et activer"}
+              </button>
+            </form>
+          </>
+        ) : null}
+      </div>
+    </div>
+  );
+}

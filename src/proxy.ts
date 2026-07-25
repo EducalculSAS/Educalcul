@@ -61,8 +61,23 @@ async function getRole(authId: string): Promise<{ role: string; id: number } | n
   }
 }
 
-// 2FA obligatoire pour tout compte admin (voir src/lib/apiAuth.ts, même
-// logique dupliquée ici en défense en profondeur pour /api/admin/*).
+// TOTP admin confirmé ? (voir src/lib/apiAuth.ts, même logique dupliquée ici
+// en défense en profondeur pour /api/admin/*). Tant que la config TOTP n'est
+// pas confirmée, aucune session 2FA n'est exigée (cf. commentaire jumeau).
+async function isAdminTotpConfirmed(userId: number): Promise<boolean> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/two_factor_totp?user_id=eq.${userId}&select=confirmed_at`,
+      { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
+    );
+    if (!res.ok) return false;
+    const rows = await res.json();
+    return !!rows?.[0]?.confirmed_at;
+  } catch {
+    return false;
+  }
+}
+
 async function has2FASession(userId: number, req: NextRequest): Promise<boolean> {
   const token = req.headers.get("x-2fa-token");
   if (!token) return false;
@@ -107,8 +122,8 @@ export async function proxy(req: NextRequest) {
 
   if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  // 2FA obligatoire pour tout compte admin.
-  if (!(await has2FASession(user.id, req))) {
+  // 2FA (TOTP) obligatoire une fois la configuration confirmée seulement.
+  if (await isAdminTotpConfirmed(user.id) && !(await has2FASession(user.id, req))) {
     return NextResponse.json({ error: "2FA required" }, { status: 401 });
   }
 

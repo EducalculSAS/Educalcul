@@ -7,7 +7,7 @@ import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { User, Save, Eye, Crown, Shield } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import TwoFactorToggle from "@/components/TwoFactorToggle";
+import AdminTotpCard from "@/components/admin/AdminTotpCard";
 
 const ADMIN_AVATAR = "/logo.png";
 
@@ -383,7 +383,7 @@ export default function AdminProfilePage() {
           </div>
 
           <div className="mt-6">
-            <TwoFactorToggle mandatory />
+            <AdminTotpCard />
           </div>
         </div>
 
