@@ -8,6 +8,7 @@ import {
   AI_COURSE_FORMAT_RULES,
   AI_COURSE_PEDAGOGY_RULES,
   normalizeGeneratedCourseChapter,
+  repairLessonExercisePlaceholders,
 } from "@/lib/aiCourseContent";
 
 type GeneratedCourseLesson = {
@@ -24,43 +25,21 @@ type GeneratedCourseChapter = {
   lessons?: GeneratedCourseLesson[];
 } & Record<string, unknown>;
 
+// Un lesson est "valide" si ses champs de base sont là. Les problèmes de
+// LaTeX ne sont plus un motif de rejet de la leçon entière : normalizeGeneratedCourseChapter
+// répare déjà les erreurs de délimitation les plus courantes (repairLatex),
+// et le rendu client (katexLoader.ts) dégrade proprement toute formule encore
+// mal formée (texte brut lisible, jamais d'erreur technique affichée). Rejeter
+// toute la leçon pour une seule formule imparfaite perdait un contenu par
+// ailleurs correct et déclenchait des relances en cascade, parfois jusqu'à
+// l'échec complet de la génération.
 function isValidGeneratedCourseLesson(lesson: unknown): lesson is GeneratedCourseLesson {
   if (typeof lesson !== "object" || lesson === null) return false;
   const candidate = lesson as GeneratedCourseLesson;
   if (typeof candidate.title !== "string" || candidate.title.trim().length === 0) return false;
   if (typeof candidate.content !== "string" || candidate.content.trim().length === 0) return false;
   if (typeof candidate.duration !== "number" || candidate.duration <= 0) return false;
-  if (hasBadLatexSyntax(candidate.content)) return false;
   return true;
-}
-
-function stripMathRegions(html: string): string {
-  return html
-    .replace(/\$\$[\s\S]*?\$\$/g, "")
-    .replace(/\$[^\$\r\n]*\$/g, "")
-    .replace(/\\\([\s\S]*?\\\)/g, "")
-    .replace(/\\\[[\s\S]*?\\\]/g, "");
-}
-
-function extractMathBlocks(html: string): string[] {
-  const blocks: string[] = [];
-  html.replace(/\$\$([\s\S]*?)\$\$/g, (_, math) => {
-    blocks.push(math);
-    return _;
-  });
-  html.replace(/\$([^\$\r\n]+?)\$/g, (_, math) => {
-    blocks.push(math);
-    return _;
-  });
-  html.replace(/\\\[([\s\S]*?)\\\]/g, (_, math) => {
-    blocks.push(math);
-    return _;
-  });
-  html.replace(/\\\(([\s\S]*?)\\\)/g, (_, math) => {
-    blocks.push(math);
-    return _;
-  });
-  return blocks;
 }
 
 function isRenderableMath(math: string): boolean {
@@ -72,21 +51,17 @@ function isRenderableMath(math: string): boolean {
   }
 }
 
-const BARE_LATEX_COMMAND_RE = /\\(?:frac|sqrt|vec|cos|sin|tan|log|ln|exp|lim|sum|prod|int|left|right|cdot|times|le|ge|infty|pm|to|approx|text|alpha|beta|gamma|delta|theta|phi|pi|angle|subset|subseteq|supset|supseteq|cup|cap|in|forall|exists|neg|perp|parallel|ldots|cdots|dots|mathbb|mathcal|mathbf|mathrm|mathit|overrightarrow|underline|bar|hat|dot|ddot)\b/;
-const BARE_LATEX_ENV_RE = /\\(?:begin|end)\{(cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|matrix|aligned)\}/;
-
-function hasBadLatexSyntax(html: string): boolean {
-  const stripped = stripMathRegions(html);
-  if (BARE_LATEX_COMMAND_RE.test(stripped)) return true;
-  if (BARE_LATEX_ENV_RE.test(stripped)) return true;
-  if (/\$/.test(stripped)) return true;
-  if (/\$\$\$(?=\s|<|$)/.test(html)) return true;
-  const mathBlocks = extractMathBlocks(html);
-  return mathBlocks.some((block) => !isRenderableMath(block));
-}
-
-function normalizeLessonContent(content: string): string {
-  return content.replace(/\$\$\$(?=\s|<|$)/g, "$$");
+/** Log un avertissement (sans jamais rejeter la leçon) si une formule $...$/$$...$$
+ * reste illisible pour KaTeX après réparation — utile pour surveiller la
+ * fréquence réelle du problème sans dégrader la génération pour l'élève. */
+function warnIfUnrenderableMath(title: string, html: string): void {
+  const blocks: string[] = [];
+  html.replace(/\$\$([\s\S]*?)\$\$/g, (_, math) => { blocks.push(math); return _; });
+  html.replace(/\$([^\$\r\n]+?)\$/g, (_, math) => { blocks.push(math); return _; });
+  const bad = blocks.filter((b) => b.trim() && !isRenderableMath(b));
+  if (bad.length > 0) {
+    console.warn(`[course-ai] Formule(s) LaTeX non rendue(s) par KaTeX dans "${title}" (repli texte brut côté client) :`, bad);
+  }
 }
 
 function cleanupGeneratedCourseChapter(chapter: GeneratedCourseChapter, expectedLessonCount: number): GeneratedCourseChapter {
@@ -94,19 +69,15 @@ function cleanupGeneratedCourseChapter(chapter: GeneratedCourseChapter, expected
     return { ...chapter, lessons: [] };
   }
 
-  const validLessons = chapter.lessons
-    .map((lesson) =>
-      typeof lesson.content === "string"
-        ? { ...lesson, content: normalizeLessonContent(lesson.content) }
-        : lesson,
-    )
-    .filter(isValidGeneratedCourseLesson);
+  const validLessons = chapter.lessons.filter(isValidGeneratedCourseLesson).map((lesson) => {
+    if (typeof lesson.content === "string") {
+      warnIfUnrenderableMath(lesson.title || "?", lesson.content);
+      return { ...lesson, content: repairLessonExercisePlaceholders(lesson.content, getLessonExerciseIds(lesson)) };
+    }
+    return lesson;
+  });
 
-  if (validLessons.length >= expectedLessonCount) {
-    return { ...chapter, lessons: validLessons.slice(0, expectedLessonCount) };
-  }
-
-  return { ...chapter, lessons: validLessons };
+  return { ...chapter, lessons: validLessons.slice(0, expectedLessonCount) };
 }
 
 function getLessonExerciseIds(lesson: GeneratedCourseLesson): string[] {
@@ -120,33 +91,15 @@ function getLessonExerciseIds(lesson: GeneratedCourseLesson): string[] {
     .filter(Boolean);
 }
 
-function getLessonPlaceholderIds(content: string | undefined): string[] {
-  if (typeof content !== "string") return [];
-  return Array.from(
-    content.matchAll(
-      /<div[^>]*class=(?:"[^"]*lesson-exercise[^"]*"|'[^']*lesson-exercise[^']*')[^>]*data-exercise-id=(?:"([^"]*)"|'([^']*)')[^>]*><\/div>/g,
-    ),
-  ).map((match) => match[1] || match[2] || "").filter(Boolean);
-}
-
-function hasValidLessonExercises(lesson: GeneratedCourseLesson, includeExercises: boolean): boolean {
-  const ids = getLessonExerciseIds(lesson);
-  const placeholders = getLessonPlaceholderIds(lesson.content);
-
-  if (includeExercises) {
-    if (ids.length < 3 || ids.length > 6) return false;
-    if (placeholders.length !== ids.length) return false;
-    return ids.every((id) => placeholders.includes(id));
-  }
-
-  return ids.length === 0 && placeholders.length === 0;
-}
-
+/** Seule règle dure qui reste sur les exercices : si includeExercises est
+ * vrai, chaque leçon doit avoir AU MOINS un exercice. Le nombre exact
+ * (3 à 6 dans la consigne) et la correspondance avec les placeholders ne
+ * sont plus des motifs de rejet — repairLessonExercisePlaceholders répare
+ * déjà les décalages (placeholder manquant ajouté, orphelin retiré). */
 function chapterExercisesAreValid(chapter: GeneratedCourseChapter, includeExercises: boolean): boolean {
-  if (!chapter || !Array.isArray(chapter.lessons)) return false;
-  return chapter.lessons.every((lesson) =>
-    isValidGeneratedCourseLesson(lesson) && hasValidLessonExercises(lesson, includeExercises),
-  );
+  if (!chapter || !Array.isArray(chapter.lessons) || chapter.lessons.length === 0) return false;
+  if (!includeExercises) return true;
+  return chapter.lessons.every((lesson) => getLessonExerciseIds(lesson).length > 0);
 }
 
 export const maxDuration = 300; // 5 min — génération de cours complète
@@ -289,31 +242,6 @@ Commence toujours par une définition claire, avec un exemple simple, en expliqu
 Si le programme de l'enseignant mentionne une rubrique « Démonstrations » (ou des preuves à connaître), tu DOIS RÉDIGER CHAQUE DÉMONSTRATION INTÉGRALEMENT : preuve complète, rigoureuse, étape par étape, dans une section dédiée (<h4>Démonstration : …</h4>) de la leçon concernée. Ne te contente jamais d'énoncer le résultat ou de dire « on peut démontrer que » — écris la preuve en entier.
 
 ${AI_COURSE_FORMAT_RULES}
-
-═══ FORMAT HTML + LATEX ═══
-• HTML : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>
-• LaTeX OBLIGATOIRE pour toutes les formules mathématiques.
-• Inline : $formule$ — Bloc : $$formule$$
-• AUCUNE formule LaTeX ne doit JAMAIS apparaître sans être entourée de $...$ ou $$...$$ — y compris les systèmes d'équations, matrices, ou toute commande commençant par un backslash (\\left, \\begin, \\frac, \\sqrt...). Toute commande LaTeX commençant par un antislash (\\frac, \\sqrt, \\vec, \\cos, \\sin, \\begin, \\end, \\left, \\right, etc.) doit être strictement à l'intérieur de $...$ ou $$...$$.
-• Un système d'équations s'écrit TOUJOURS avec l'environnement "cases", entièrement à l'intérieur d'un bloc $$...$$, par exemple : $$\\begin{cases} y = x^2 - 3x + 2 \\\\ y = 2x - 1 \\end{cases}$$ — jamais \\left\\{ \\begin{array}...\\right. et jamais de LaTeX hors de $ ou $$.
-• Ne laisse jamais une formule “nue” dans un paragraphe : une équation, une matrice, une projection, une norme ou une décomposition se met dans un bloc de formule dédié.
-• Pour une suite de calculs, sépare les étapes en plusieurs paragraphes ou listes avec une formule à chaque étape, au lieu d’un long bloc de prose.
-• N'utilise JAMAIS de retour à la ligne littéral à l'intérieur d'une chaîne JSON : écris le HTML sur une seule ligne (utilise <br> ou des balises pour la mise en forme, pas de \\n).
-• DOUBLE-ÉCHAPPE les backslashes JSON : \\\\frac{a}{b} → donne \\frac{a}{b} dans le rendu
-• N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z dans \\frac, \\sqrt, \\infty, \\theta, etc.) — n'écris JAMAIS de caractères cyrilliques ou non-latins à l'intérieur d'une formule $...$ ou $$...$$.
-• Rédige UNIQUEMENT en français correct : relis chaque phrase, n'utilise aucun mot d'une autre langue (espagnol, anglais, etc.) ni de mot inventé/déformé.
-• Chaque formule $...$ ou $$...$$ doit être correctement fermée AVANT toute balise HTML (<td>, </tr>, etc.) : ne mélange JAMAIS du HTML à l'intérieur d'une formule LaTeX, et n'entoure JAMAIS un bloc $...$/$$...$$ avec une balise de style — la balise de style doit toujours être ENTIÈREMENT en dehors des signes $.
-• Pour mettre en valeur un mot ou une phrase importante (définition clé, mise en garde, résultat à retenir), tu PEUX utiliser <strong>, ou <span class="course-emphasis">texte</span> autour de texte normal UNIQUEMENT — jamais autour ou à l'intérieur d'une formule $...$/$$...$$. Pour encadrer un passage entier (définition, propriété, remarque importante), utilise <blockquote class="course-callout course-callout-note">texte</blockquote>.
-
-═══ TABLEAUX & GRAPHIQUES (à utiliser SI PERTINENT, sans en abuser) ═══
-• Si la notion s'y prête (étude de fonction, signe, variations, tableau de valeurs, etc.), insère DIRECTEMENT dans "content" un tableau au format :
-  <table class="math-table math-table-sign"><thead><tr><th>x</th>...</tr></thead><tbody><tr><td>...</td></tr></tbody></table>
-  (classes possibles : math-table-value, math-table-sign, math-table-variation). Utilise ↗, ↘, +, -, 0, ∞, ‖ pour les signes/variations.
-• Pour une courbe simple (fonction affine, second degré, etc.), insère un placeholder de graphique au format :
-  <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
-  (un seul par leçon maximum, uniquement si visualiser la courbe aide vraiment à comprendre).
-• Pour une représentation colorée utile (fractions, partages, aires, décompositions), tu peux aussi intégrer un <svg> inline simple, avec 2 à 5 couleurs sobres, des contours nets et une légende courte.
-• N'insère ces éléments QUE quand ils apportent une vraie valeur pédagogique — la majorité des leçons n'en ont pas besoin.
 
 ${exercisesInstruction}`;
 
@@ -466,35 +394,32 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
             )) as GeneratedChapter);
             let chapterData = cleanupGeneratedCourseChapter(rawChapterData, lessonsPerChapter);
 
-            if ((chapterData.lessons?.length || 0) < lessonsPerChapter) {
-              const retryHint = `La réponse précédente ne respectait pas le nombre exact de leçons attendues ou contenait des leçons vides. Tu dois maintenant renvoyer un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides, chacune ayant un titre, un contenu et une durée.`;
+            // Une seule relance, si le nombre de leçons ou les exercices ne
+            // sont pas conformes. Au-delà, on publie le meilleur résultat
+            // obtenu plutôt que de faire échouer tout le cours : une leçon
+            // manquante ou un exercice en moins n'empêche pas de publier les
+            // autres, et le rendu client dégrade déjà proprement toute
+            // formule mal formée résiduelle (jamais d'erreur affichée).
+            const needsRetry =
+              (chapterData.lessons?.length || 0) < lessonsPerChapter ||
+              !chapterExercisesAreValid(chapterData, includeExercises);
+            if (needsRetry) {
+              const retryHint = `La réponse précédente ne respectait pas exactement ce qui était demandé (nombre de leçons, leçons vides, ou mini-exercices manquants). Renvoie un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides (titre, contenu, durée)${includeExercises ? ", chacune avec 3 à 6 mini-exercices réels dans \"exercises\" et leurs placeholders correspondants dans \"content\"" : ""}.`;
               const retryChapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
                 `${chapterUser}\n\n${retryHint}`,
                 chapterSystem,
                 0.65,
                 28000,
               )) as GeneratedChapter);
-              chapterData = cleanupGeneratedCourseChapter(retryChapterData, lessonsPerChapter);
+              const retried = cleanupGeneratedCourseChapter(retryChapterData, lessonsPerChapter);
+              // On garde la relance seulement si elle fait mieux que le premier essai.
+              if ((retried.lessons?.length || 0) >= (chapterData.lessons?.length || 0)) {
+                chapterData = retried;
+              }
             }
 
-            if (!chapterExercisesAreValid(chapterData, includeExercises)) {
-              const exerciseRetryHint = includeExercises
-                ? `La réponse précédente n'a pas créé des mini-exercices correctement ou n'a pas inséré les placeholders correspondants. Chaque leçon doit contenir 3 à 6 mini-exercices réels dans "exercises", et chaque exercice doit être cité immédiatement après une notion/exemple par un placeholder exact <div class="lesson-exercise" data-exercise-id="ex-N"></div>. Renvoie un chapitre JSON valide avec ${lessonsPerChapter} leçon(s) contenant des exercices valides et des placeholders correspondants.`
-                : `La réponse précédente ne devait pas contenir d'exercices ni de placeholders. Renvoie un chapitre JSON valide avec ${lessonsPerChapter} leçon(s) et un tableau "exercises" vide pour chaque leçon.`;
-              const retryChapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
-                `${chapterUser}\n\n${exerciseRetryHint}`,
-                chapterSystem,
-                0.65,
-                28000,
-              )) as GeneratedChapter);
-              chapterData = cleanupGeneratedCourseChapter(retryChapterData, lessonsPerChapter);
-            }
-
-            const finalLessonCount = chapterData.lessons?.length || 0;
-            if (finalLessonCount < lessonsPerChapter || !chapterExercisesAreValid(chapterData, includeExercises)) {
-             throw new Error(
-               `Le chapitre "${chapterTitle}" n'a pas pu être généré correctement : ${finalLessonCount} leçon(s) valides au lieu de ${lessonsPerChapter}, ou les exercices/placements ne sont pas conformes.`,
-             );
+            if ((chapterData.lessons?.length || 0) === 0) {
+              throw new Error(`Le chapitre "${chapterTitle}" n'a produit aucune leçon valide.`);
             }
 
             completed++;

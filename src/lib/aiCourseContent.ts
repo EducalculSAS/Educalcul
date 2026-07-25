@@ -3,39 +3,28 @@ const EXERCISE_PLACEHOLDER_RE =
 const LEAD_BLOCK_RE = /<(h1|h2|h3|h4|p|ul|ol|blockquote|table|figure)\b/i;
 
 export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX ═══
-• HTML autorisé pour le contenu : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>, <figure>, <svg>.
-• LaTeX obligatoire pour toutes les formules : inline $...$, bloc $$...$$.
-• N'écris JAMAIS de formule hors de $...$ ou $$...$$, et ne mélange JAMAIS du HTML à l'intérieur d'une formule.
-• Toute commande LaTeX commençant par un antislash (\\frac, \\sqrt, \\vec, \\cos, \\sin, \\begin, \\end, \\left, \\right, etc.) doit être strictement à l'intérieur de $...$ ou $$...$$.
-• Si tu dois écrire un système, une matrice ou un environnement \\\\begin/\\\\end, enveloppe-le toujours dans $$...$$ et garde-le seul dans son bloc.
-• Ne laisse jamais une formule “nue” dans un paragraphe : une équation, une matrice, une projection, une norme ou une décomposition se met dans un bloc de formule dédié.
-• Pour une suite de calculs, sépare les étapes en plusieurs paragraphes ou listes avec une formule à chaque étape, au lieu d’un long bloc de prose.
-• N'utilise JAMAIS de retour à la ligne littéral à l'intérieur des chaînes JSON.
-• Dans le JSON, échappe les backslashes deux fois pour que le rendu final affiche correctement les formules : le contenu final doit rester du LaTeX classique comme \frac{a}{b}, \sqrt{x}, x^2, x_n.
-• N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z).
-• Pour une formule propre, utilise toujours du LaTeX standard : $\\frac{a}{b}$, $\\sqrt{x}$, $x^2$, $x_n$. N'utilise pas de symboles Unicode comme ², ³, √, ±, × ou ÷ dans une formule.
-• Ne génère PAS d'attributs style inline ou de balises <span> contenant des styles. Utilise uniquement les classes du site Educalcul : course-callout, course-emphasis, math-table, course-figure, math-graph-placeholder.
-• Rédige UNIQUEMENT en français correct.
-• Pour mettre en valeur une définition, une mise en garde ou un résultat, utilise <blockquote class="course-callout course-callout-note">...</blockquote> ou <span class="course-emphasis">...</span> hors formule.
-• Pour un avertissement, utilise <blockquote class="course-callout course-callout-warning">...</blockquote>.
-• Pour un tableau de valeurs / signes / variations, utilise <table class="math-table math-table-sign|math-table-variation|math-table-value">...</table>.
-• Pour un schéma coloré utile (fractions, aires, décomposition, comparaison), tu peux utiliser un <figure class="course-figure"> contenant un SVG inline simple avec quelques couleurs sobres.
-• Pour un graphique mathématique utile, utilise un placeholder <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div> plutôt qu'une image ou un dessin texte.
-• Vise à intégrer une représentation visuelle pédagogique par leçon lorsque la notion le permet : tableau, graphique ou SVG explicatif.
-• N'utilise de couleur que si elle clarifie réellement la notion.`;
+• HTML autorisé : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>, <figure>, <svg>.
+• LaTeX obligatoire pour toute formule : inline $...$, bloc $$...$$. Aucune commande commençant par un antislash (\\frac, \\sqrt, \\vec, \\begin, \\left...) ne doit JAMAIS apparaître hors d'un bloc $...$/$$...$$.
+• Un système d'équations ou une matrice s'écrit avec \\begin{cases}/\\begin{array} et reste TOUJOURS entièrement à l'intérieur d'un seul bloc $$...$$.
+• Ne mélange jamais du HTML à l'intérieur d'une formule, et n'entoure jamais un bloc $.../$$...$$ d'une balise de style.
+• Dans le JSON, échappe les backslashes deux fois (\\\\frac{a}{b}) pour que le rendu final affiche du LaTeX classique (\\frac{a}{b}).
+• N'utilise que des commandes LaTeX standards en lettres latines — jamais de symboles Unicode (², ³, √, ±, ×, ÷, ≠) à la place d'une commande LaTeX.
+• Rédige uniquement en français correct.
+• Classes disponibles pour la mise en forme (jamais d'attribut style inline) :
+  - <blockquote class="course-callout course-callout-note"> pour une définition/remarque importante.
+  - <blockquote class="course-callout course-callout-warning"> pour une mise en garde.
+  - <span class="course-emphasis"> pour un mot-clé important (hors formule).
+  - <table class="math-table math-table-sign|math-table-variation|math-table-value"> pour un tableau de signes/variations/valeurs.
+  - <figure class="course-figure"> contenant un <svg> inline sobre pour un schéma (fractions, aires, décomposition).
+  - <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div> pour la courbe d'une fonction.
+• Utilise un de ces outils visuels dans CHAQUE leçon dès que la notion s'y prête (étude de fonction → graphique, signe/variation → tableau, fraction/aire → figure SVG) : ce sont des atouts pédagogiques forts, pas des options à éviter.`;
 
 export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
 • Commence toujours par une définition claire, puis un exemple simple, puis un développement pas à pas.
-• Avant le premier exercice, il doit toujours y avoir au moins une explication ou un exemple guidé.
-• Ne place jamais un placeholder d'exercice au début d'une leçon.
-• Les exercices doivent vérifier une notion déjà expliquée juste avant.
-• Tu peux utiliser les outils visuels du cours : tableaux, graphiques, figures, encadrés et placeholders quand cela clarifie vraiment la notion. Fais-le avec sobriété mathématique.
-• Les mêmes outils sont aussi utiles dans les exercices et les quiz : un tableau de signe dans l'énoncé, un graphique dans l'explication, une figure colorée pour une fraction.
-• Pour chaque leçon, si possible, inclue au moins un tableau, un graphique de fonction ou une illustration SVG sobre pour rendre la notion plus visuelle.
-• Une leçon incomplète ou vide est inacceptable : chaque leçon doit être complète avec titre, contenu et durée.
-• N'utilise jamais d'exemples issus de la physique, de la chimie, de la biologie, de l'informatique ou d'autres matières, sauf demande explicite de l'enseignant.
-• Privilégie des exemples purement mathématiques, concrets et adaptés au niveau.
-• Pour les fractions, les aires, les proportions ou les décompositions, privilégie des représentations visuelles colorées et sobres plutôt que des analogies hors-mathématiques.
+• Avant le premier exercice, il doit toujours y avoir au moins une explication ou un exemple guidé — jamais de placeholder d'exercice en tout début de leçon.
+• Chaque exercice vérifie une notion déjà expliquée juste avant lui.
+• Une leçon incomplète ou vide est inacceptable : chaque leçon a un titre, un contenu et une durée.
+• N'utilise jamais d'exemples issus de la physique, de la chimie, de la biologie ou de l'informatique, sauf demande explicite de l'enseignant : uniquement des exemples mathématiques concrets et adaptés au niveau.
 • Garde un ton scolaire, clair et rigoureux.`;
 
 export function normalizeCourseLessonContent(html: string): string {
@@ -52,6 +41,62 @@ export function normalizeCourseLessonContent(html: string): string {
   return trimmed;
 }
 
+// ═══ Réparation automatique du LaTeX ═══
+// Plutôt que de rejeter (et perdre) une leçon par ailleurs correcte à cause
+// d'une formule mal délimitée, on répare les deux erreurs les plus courantes
+// avant de valider : un environnement (système, matrice) laissé sans $...$,
+// et une commande simple (\frac{...}, \sqrt{...}...) écrite hors formule.
+const BARE_ENV_RE =
+  /(\\left\s*(?:\\\{|[(\[.|])\s*)?\\begin\{(cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|matrix|aligned)\}[\s\S]*?\\end\{\2\}(\s*\\right\s*(?:\\\}|[)\].|]))?/g;
+
+const BARE_LATEX_CMD_WITH_ARGS_RE =
+  /\\(?:frac|sqrt|vec|overrightarrow|underline|bar|hat|dot|ddot|mathbb|mathcal|mathbf|mathrm|mathit)\{[^{}<>]*\}(?:\{[^{}<>]*\})?/g;
+
+function isInsideDollars(before: string): boolean {
+  return (before.match(/\$/g) || []).length % 2 !== 0;
+}
+
+export function repairLatex(html: string): string {
+  if (!html) return html;
+  let result = html.replace(BARE_ENV_RE, (match, _left, _env, _right, offset, full) =>
+    isInsideDollars(full.slice(0, offset)) ? match : `$$${match}$$`,
+  );
+  result = result.replace(BARE_LATEX_CMD_WITH_ARGS_RE, (match, offset, full) =>
+    isInsideDollars(full.slice(0, offset)) ? match : `$${match}$`,
+  );
+  return result;
+}
+
+// ═══ Réparation automatique des placeholders d'exercices ═══
+// Au lieu de rejeter toute la leçon quand les placeholders "lesson-exercise"
+// ne correspondent pas exactement aux exercices déclarés, on répare : les
+// exercices sans placeholder en reçoivent un en fin de contenu, et les
+// placeholders sans exercice correspondant sont retirés.
+export function repairLessonExercisePlaceholders(
+  content: string,
+  exerciseIds: string[],
+): string {
+  if (typeof content !== "string") return content;
+  const placeholderRe =
+    /<div[^>]*class=(?:"[^"]*lesson-exercise[^"]*"|'[^']*lesson-exercise[^']*')[^>]*data-exercise-id=(?:"([^"]*)"|'([^']*)')[^>]*><\/div>/g;
+
+  const foundIds = new Set<string>();
+  let result = content.replace(placeholderRe, (match, id1, id2) => {
+    const id = id1 || id2;
+    if (!id || !exerciseIds.includes(id)) return ""; // placeholder orphelin : retiré
+    foundIds.add(id);
+    return match;
+  });
+
+  const missing = exerciseIds.filter((id) => !foundIds.has(id));
+  if (missing.length > 0) {
+    result += missing
+      .map((id) => `<div class="lesson-exercise" data-exercise-id="${id}"></div>`)
+      .join("");
+  }
+  return result;
+}
+
 export function normalizeGeneratedCourseChapter<
   T extends { lessons?: Array<{ content?: string } & Record<string, unknown>> },
 >(chapter: T): T {
@@ -62,7 +107,7 @@ export function normalizeGeneratedCourseChapter<
       ...lesson,
       content:
         typeof lesson.content === "string"
-          ? normalizeCourseLessonContent(lesson.content)
+          ? normalizeCourseLessonContent(repairLatex(lesson.content))
           : lesson.content,
     })),
   };
