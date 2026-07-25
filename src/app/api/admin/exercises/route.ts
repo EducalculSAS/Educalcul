@@ -2,6 +2,7 @@
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
+import { auditLog, AuditAction } from "@/lib/auditLog";
 
 // Mélange déterministe (seedé par une chaîne), miroir de celui utilisé côté
 // client (ExerciseViewer) pour l'affichage — garantit un ordre stable.
@@ -342,6 +343,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    await auditLog({
+      action: data.is_published ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_CREATED,
+      adminId: admin.id,
+      targetType: "exercise",
+      targetId: String(data.id),
+      details: { title: data.title, status: data.status },
+    }, request);
+
     return NextResponse.json({ success: true, exercise: data });
   } catch (error: any) {
     console.error("Error creating exercise:", error);
@@ -469,6 +478,14 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    await auditLog({
+      action: has("status") && data.is_published ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_UPDATED,
+      adminId: admin.id,
+      targetType: "exercise",
+      targetId: String(id),
+      details: { title: data.title, status: data.status, updatedFields: Object.keys(updatePayload) },
+    }, request);
+
     return NextResponse.json({ success: true, exercise: data });
   } catch (error: any) {
     console.error("Error updating exercise:", error);
@@ -492,6 +509,12 @@ export async function DELETE(request: Request) {
       );
     }
 
+    const { data: existing } = await supabaseAdmin
+      .from("exercises")
+      .select("title")
+      .eq("id", id)
+      .maybeSingle();
+
     const { error } = await supabaseAdmin
       .from("exercises")
       .delete()
@@ -500,6 +523,14 @@ export async function DELETE(request: Request) {
     if (error) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
+
+    await auditLog({
+      action: AuditAction.CONTENT_DELETED,
+      adminId: admin.id,
+      targetType: "exercise",
+      targetId: id,
+      details: { title: existing?.title ?? null },
+    }, request);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {

@@ -2,6 +2,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
+import { auditLog, AuditAction } from "@/lib/auditLog";
 
 export async function GET(request: Request) {
   try {
@@ -82,6 +83,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    await auditLog({
+      action: data.status === "published" ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_CREATED,
+      adminId: admin.id,
+      targetType: "course",
+      targetId: String(data.id),
+      details: { title: data.title, status: data.status },
+    }, request);
+
     return NextResponse.json({ success: true, course: data });
   } catch (error: any) {
     console.error("Error creating course:", error);
@@ -143,6 +152,14 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    await auditLog({
+      action: has("status") && status === "published" ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_UPDATED,
+      adminId: admin.id,
+      targetType: "course",
+      targetId: String(id),
+      details: { title: data.title, status: data.status, updatedFields: Object.keys(updatePayload) },
+    }, request);
+
     return NextResponse.json({ success: true, course: data });
   } catch (error: any) {
     console.error("Error updating course:", error);
@@ -166,11 +183,25 @@ export async function DELETE(request: Request) {
       );
     }
 
+    const { data: existing } = await supabaseAdmin
+      .from("courses")
+      .select("title")
+      .eq("id", id)
+      .maybeSingle();
+
     const { error } = await supabaseAdmin.from("courses").delete().eq("id", id);
 
     if (error) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
+
+    await auditLog({
+      action: AuditAction.CONTENT_DELETED,
+      adminId: admin.id,
+      targetType: "course",
+      targetId: id,
+      details: { title: existing?.title ?? null },
+    }, request);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {

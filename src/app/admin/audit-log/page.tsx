@@ -15,6 +15,8 @@ const ACTION_LABELS: Record<string, string> = {
   ADMIN_MESSAGE: "Message envoyé",
   PASSWORD_RESET: "Mot de passe réinitialisé",
   SUBSCRIPTION_CHANGED: "Abonnement modifié",
+  CONTENT_CREATED: "Contenu créé",
+  CONTENT_UPDATED: "Contenu modifié",
   CONTENT_PUBLISHED: "Contenu publié",
   CONTENT_DELETED: "Contenu supprimé",
   FORUM_POST_DELETED: "Sujet forum supprimé",

@@ -2,6 +2,7 @@
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
+import { auditLog, AuditAction } from "@/lib/auditLog";
 
 // Retire les champs qui révèlent la réponse correcte avant de renvoyer un quiz
 // à un lecteur non-admin (élève) : content_json contient correctAnswer/explanation
@@ -123,6 +124,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    await auditLog({
+      action: data.status === "published" ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_CREATED,
+      adminId: admin.id,
+      targetType: "quiz",
+      targetId: String(data.id),
+      details: { title: data.title, status: data.status },
+    }, request);
+
     return NextResponse.json({ success: true, quiz: data });
   } catch (error: any) {
     console.error("Error creating quiz:", error);
@@ -192,6 +201,14 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    await auditLog({
+      action: has("status") && status === "published" ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_UPDATED,
+      adminId: admin.id,
+      targetType: "quiz",
+      targetId: String(id),
+      details: { title: data.title, status: data.status, updatedFields: Object.keys(updatePayload) },
+    }, request);
+
     return NextResponse.json({ success: true, quiz: data });
   } catch (error: any) {
     console.error("Error updating quiz:", error);
@@ -215,11 +232,25 @@ export async function DELETE(request: Request) {
       );
     }
 
+    const { data: existing } = await supabaseAdmin
+      .from("quizzes")
+      .select("title")
+      .eq("id", id)
+      .maybeSingle();
+
     const { error } = await supabaseAdmin.from("quizzes").delete().eq("id", id);
 
     if (error) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
+
+    await auditLog({
+      action: AuditAction.CONTENT_DELETED,
+      adminId: admin.id,
+      targetType: "quiz",
+      targetId: id,
+      details: { title: existing?.title ?? null },
+    }, request);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
