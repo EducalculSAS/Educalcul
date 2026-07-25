@@ -69,14 +69,14 @@ async function callMistral(
   if (ok) {
     try {
       const parsed = JSON.parse(text);
+      const finishReason = parsed?.choices?.[0]?.finish_reason;
+      if (finishReason === "length") {
+        console.warn(`[llm] ${MISTRAL_MODEL} hit max_tokens (maxTokens=${maxTokens})`);
+        throw new Error("Réponse IA tronquée (max_tokens atteint) — réessaie avec un contenu plus court, ou réessaie simplement.");
+      }
       const msg = parsed?.choices?.[0]?.message;
       const content = extractMistralText(msg?.content) || (typeof msg?.content === "string" ? msg.content : "");
       if (content) return content.trim();
-      const finishReason = parsed?.choices?.[0]?.finish_reason;
-      if (finishReason === "length") {
-        console.warn(`[llm] ${MISTRAL_MODEL} hit max_tokens`);
-        throw new Error("Réponse IA tronquée (max_tokens atteint).");
-      }
       return text.trim();
     } catch (e) {
       if (e instanceof Error && e.message.includes("tronquée")) throw e;
