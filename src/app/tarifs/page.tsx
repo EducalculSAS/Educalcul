@@ -439,7 +439,7 @@ function ComparisonTable({ items, onRemove }: { items: CompareItem[]; onRemove: 
 /* ─── Configurator ─── */
 
 // Options IA (prix de base, multipliés ensuite par le nb d'enfants)
-// Limites généreuses : le coût réel par message (modèles DeepSeek) est très faible,
+// Limites généreuses : le coût réel par message (Mistral Small) est très faible,
 // on garde donc une marge minime pour favoriser l'usage.
 const AI_OPTIONS = [
   { id: "none",  label: "Aucune",     daily: 0,   basePrice: 0    },

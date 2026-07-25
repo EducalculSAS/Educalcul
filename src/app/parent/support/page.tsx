@@ -23,7 +23,7 @@ interface Ticket {
   replies: Reply[];
 }
 
-// ── Support Chatbot (assistant IA réel — OpenRouter, cf. /api/parent/support-chat) ──
+// ── Support Chatbot (assistant IA réel — Mistral, cf. /api/parent/support-chat) ──
 interface BotMsg { from: "bot" | "user"; text: string }
 
 const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Epsi**, votre assistante d'aide rapide. Posez-moi votre question ou choisissez un sujet ci-dessous." };
