@@ -38,6 +38,21 @@ const getYouTubeId = (url: string) => {
   return (match && match[2].length === 11) ? match[2] : null;
 };
 
+/** Texte propre d'une sélection contenant du LaTeX rendu par KaTeX. KaTeX
+ * génère pour chaque formule à la fois le rendu visuel (.katex-html) ET une
+ * copie cachée pour les lecteurs d'écran (.katex-mathml, un arbre MathML avec
+ * un noeud par symbole) — Selection.toString() parcourt les deux, ce qui
+ * produit un texte dupliqué avec un retour à la ligne par symbole. On retire
+ * la copie cachée avant d'extraire le texte, puis on aplatit les retours à la
+ * ligne restants (un par élément de bloc traversé) en simples espaces. */
+function getCleanSelectionText(range: Range): string {
+  const fragment = range.cloneContents();
+  fragment.querySelectorAll(".katex-mathml").forEach((el) => el.remove());
+  const container = document.createElement("div");
+  container.appendChild(fragment);
+  return (container.textContent || "").replace(/\s+/g, " ").trim();
+}
+
 interface CourseViewerProps {
   course: {
     title: string;
@@ -178,13 +193,13 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
       const selection = window.getSelection();
       if (!selection || !contentRef.current) return;
 
-      const text = selection.toString().trim();
-      if (text.length <= 5) return;
-
       // Check selection is inside course content
       if (!selection.rangeCount) return;
       const range = selection.getRangeAt(0);
       if (!contentRef.current.contains(range.commonAncestorContainer)) return;
+
+      const text = getCleanSelectionText(range);
+      if (text.length <= 5) return;
 
       const rect = range.getBoundingClientRect();
       rangeRef.current = range.cloneRange();
