@@ -38,6 +38,8 @@ export function sanitizeHtml(html: string): string {
 const BARE_ENV_RE =
   /(\\left\s*(?:\\\{|[(\[.|])\s*)?\\begin\{(cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|matrix|aligned)\}[\s\S]*?\\end\{\2\}(\s*\\right\s*(?:\\\}|[)\].|]))?/g;
 
+const BARE_LATEX_COMMAND_RE = /(^|[\s>\[(\[{;:,])((?:\\(?:frac|sqrt|vec|cos|sin|tan|log|ln|exp|lim|sum|prod|int|left|right|cdot|times|le|ge|infty|pm|to|approx|text|alpha|beta|gamma|delta|theta|phi|pi|angle|subset|subseteq|supset|supseteq|cup|cap|in|forall|exists|neg|perp|parallel|ldots|cdots|dots|mathbb|mathcal|mathbf|mathrm|mathit|overrightarrow|underline|bar|hat|dot|ddot)[^$<>\n\r]*))/g;
+
 /** Rendu KaTeX d'une formule avec repli propre : si la source est invalide
  * (souvent parce que l'IA a mélangé une balise HTML dans la formule), on
  * retire les balises et on retente, puis en dernier recours on affiche le
@@ -92,6 +94,13 @@ export function renderLatexInHTML(html: string): string {
       return openDollars % 2 === 0 ? `$$${match}$$` : match;
     },
   );
+
+  // 0.5. Filet additionnel : si l'IA a écrit des commandes LaTeX sans les
+  // encadrer de $...$, on tente de les entourer automatiquement pour éviter
+  // qu'elles n'apparaissent en texte brut dans le rendu final.
+  result = result.replace(BARE_LATEX_COMMAND_RE, (_, prefix, expr) => {
+    return `${prefix}$${expr.trim()}$`;
+  });
 
   // 1. Display math : $$...$$
   result = result.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) =>

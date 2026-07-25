@@ -207,6 +207,9 @@ ${programmeBlock ? programmeBlock + "\n" : ""}${typeInstruction}
 Domaine : ${subjectArea || "Mathématiques"}.
 Difficulté : ${difficulty}.
 
+Utilise systématiquement LaTeX pour toutes les expressions mathématiques : inline $...$, bloc $$...$$. N'utilise pas de symboles Unicode dans les formules ; écris plutôt $\\frac{a}{b}$, $\\sqrt{x}$, $x^2$, $x_n$.
+N'utilise jamais de retour à la ligne littéral à l'intérieur des chaînes JSON : si tu veux séparer des paragraphes, emploie <p>...</p> ou <br>.
+
 ${firstBlockHint}
 ${isFirst ? `Donne aussi un titre et une description globale pour l'exercice complet (qui contiendra ${totalQuestions} questions au total, réparties en plusieurs parties).` : `Ne te préoccupe pas du titre/description globaux, concentre-toi uniquement sur les questions de cette partie.`}
 
@@ -235,6 +238,8 @@ Tu DOIS répondre UNIQUEMENT avec un objet JSON valide respectant exactement cet
   (classes possibles : math-table-value, math-table-sign, math-table-variation). Utilise ↗, ↘, +, -, 0, ∞, ‖ pour les signes/variations.
 • Pour une courbe simple, insère un placeholder de graphique au format :
   <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
+• Pour une représentation colorée utile, tu peux aussi intégrer un <svg> inline simple, avec 2 à 5 couleurs sobres, des contours nets et une légende courte.
+• Les explications de correction peuvent aussi contenir des tableaux ou des graphiques simples si cela aide la compréhension.
 • N'insère ces éléments QUE quand ils apportent une vraie valeur pédagogique pour ce type d'exercice.
 
 ${schema.instruction(count)} Réponds UNIQUEMENT avec le JSON, sans markdown ni explication.`;

@@ -9,8 +9,9 @@ export const maxDuration = 120;
 const TABLE_GRAPH_RULES = `═══ TABLEAUX & GRAPHIQUES ═══
 • Tableau (signes/variations/valeurs) : <table class="math-table math-table-sign|math-table-variation|math-table-value"><thead><tr><th>x</th>...</tr></thead><tbody><tr><td>...</td></tr></tbody></table>. Utilise ↗, ↘, +, -, 0, ∞, ‖.
 • Courbe simple : <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
-• Pour une représentation colorée utile (fractions, partages, aires, décompositions), tu peux aussi intégrer un <svg> inline simple, avec 2 à 5 couleurs sobres, des contours nets et une légende courte.
-• N'en ajoute que si pertinent et demandé ou utile pour la notion.`;
+• Pour un schéma coloré utile (fractions, partages, aires, décompositions), tu peux aussi intégrer un <svg> inline simple, avec 2 à 5 couleurs sobres, des contours nets et une légende courte.
+• Si tu utilises un graphique, privilégie le style sobre du site Educalcul : fond clair, contours nets, texte lisible.
+• N'en ajoute que si pertinents pour la notion ou la question demandée.`;
 
 const FORMAT_RULES = `═══ FORMAT ═══
 • HTML pour le contenu : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>.

@@ -19,6 +19,7 @@ export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX ═══
 • Pour un avertissement, utilise <blockquote class="course-callout course-callout-warning">...</blockquote>.
 • Pour un tableau de valeurs / signes / variations, utilise <table class="math-table math-table-sign|math-table-variation|math-table-value">...</table>.
 • Pour un schéma coloré utile (fractions, aires, décomposition, comparaison), tu peux utiliser un <figure class="course-figure"> contenant un SVG inline simple avec quelques couleurs sobres.
+• Pour un graphique mathématique utile, utilise un placeholder <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div> plutôt qu'une image ou un dessin texte.
 • N'utilise de couleur que si elle clarifie réellement la notion.`;
 
 export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
@@ -27,6 +28,7 @@ export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
 • Ne place jamais un placeholder d'exercice au début d'une leçon.
 • Les exercices doivent vérifier une notion déjà expliquée juste avant.
 • Tu peux utiliser les outils visuels du cours : tableaux, graphiques, figures, encadrés et placeholders quand cela clarifie vraiment la notion. Fais-le avec sobriété mathématique.
+• Les mêmes outils sont aussi utiles dans les exercices et les quiz : un tableau de signe dans l'énoncé, un graphique dans l'explication, une figure colorée pour une fraction.
 • Une leçon incomplète ou vide est inacceptable : chaque leçon doit être complète avec titre, contenu et durée.
 • N'utilise jamais d'exemples issus de la physique, de la chimie, de la biologie, de l'informatique ou d'autres matières, sauf demande explicite de l'enseignant.
 • Privilégie des exemples purement mathématiques, concrets et adaptés au niveau.
