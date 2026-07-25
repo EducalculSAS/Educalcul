@@ -490,6 +490,13 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
               chapterData = cleanupGeneratedCourseChapter(retryChapterData, lessonsPerChapter);
             }
 
+            const finalLessonCount = chapterData.lessons?.length || 0;
+            if (finalLessonCount < lessonsPerChapter || !chapterExercisesAreValid(chapterData, includeExercises)) {
+             throw new Error(
+               `Le chapitre "${chapterTitle}" n'a pas pu être généré correctement : ${finalLessonCount} leçon(s) valides au lieu de ${lessonsPerChapter}, ou les exercices/placements ne sont pas conformes.`,
+             );
+            }
+
             completed++;
             send({
               type: "progress",

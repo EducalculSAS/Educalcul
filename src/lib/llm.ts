@@ -466,8 +466,8 @@ export async function generateStructuredContent(
         return parseJSON(extractJSON(forced));
       } catch {
         const snippet = text.slice(0, 200).replace(/\s+/g, " ").trim();
-        console.warn(`[llm] Impossible de récupérer du JSON structuré après plusieurs tentatives. Réponse brute : ${snippet}`);
-        return {};
+        console.warn(`[llm] Impossible de récupérer du JSON structuré après plusieurs tentatives. Réponse brute : ${snippet} ; last repair output: ${forced.slice(0, 200).replace(/\s+/g, " ").trim()}`);
+        throw new Error("JSON invalide reçu de l'IA : impossible de générer un JSON structuré valide malgré les tentatives de réparation.");
       }
     }
   }
