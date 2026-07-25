@@ -35,7 +35,10 @@ function renderContent(text: string) {
   // 2. Pré-rendre tout le LaTeX
   const withLatex = renderLatexInHTML(processed);
   // 3. Gras markdown
-  const withBold = withLatex.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-black" style="color:var(--greek-blue)">$1</strong>');
+  // Pas de couleur forcée : la bulle assistante a un fond sombre, et
+  // "--greek-blue" (bleu marine, pensé pour du texte sur fond clair) y devient
+  // quasi illisible. Le gras hérite donc la couleur du message.
+  const withBold = withLatex.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-black">$1</strong>');
   return <span dangerouslySetInnerHTML={{ __html: withBold }} />;
 }
 
