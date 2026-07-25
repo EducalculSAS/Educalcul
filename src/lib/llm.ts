@@ -20,15 +20,25 @@ type MessageContentPart =
 function extractMistralText(content: unknown): string {
   if (typeof content === "string") return content;
   if (Array.isArray(content)) {
-    const textChunks = content
-      .filter(
-        (item): item is { type: "text"; text: string } =>
-          typeof item === "object" && item !== null &&
-          (item as { type?: unknown }).type === "text" &&
-          typeof (item as { text?: unknown }).text === "string",
-      )
-      .map((item) => item.text);
-    if (textChunks.length) return textChunks.join("").trim();
+    const chunks = content.flatMap((item) => {
+      if (typeof item !== "object" || item === null) return [];
+      const maybeType = (item as { type?: unknown }).type;
+      if (maybeType === "text" && typeof (item as { text?: unknown }).text === "string") {
+        return [(item as { text: string }).text];
+      }
+      if (maybeType === "json" && (item as { json?: unknown }).json !== undefined) {
+        const json = (item as { json: unknown }).json;
+        return [typeof json === "string" ? json : JSON.stringify(json)];
+      }
+      return [];
+    });
+    if (chunks.length) return chunks.join("").trim();
+  }
+  if (typeof content === "object" && content !== null) {
+    if ((content as { json?: unknown }).json !== undefined) {
+      const json = (content as { json: unknown }).json;
+      return typeof json === "string" ? json : JSON.stringify(json);
+    }
   }
   return "";
 }
@@ -84,8 +94,11 @@ async function callMistral(
         throw new Error("Réponse IA tronquée (max_tokens atteint) — réessaie avec un contenu plus court, ou réessaie simplement.");
       }
       const msg = parsed?.choices?.[0]?.message;
-      const content = extractMistralText(msg?.content) || (typeof msg?.content === "string" ? msg.content : "");
+      const content = extractMistralText(msg?.content);
       if (content) return content.trim();
+      if (msg?.content && typeof msg.content === "object") {
+        return JSON.stringify(msg.content).trim();
+      }
       return text.trim();
     } catch (e) {
       if (e instanceof Error && e.message.includes("tronquée")) throw e;
@@ -303,9 +316,11 @@ async function repairStructuredJSON(
 ): Promise<string> {
   const repairSystem = `${systemPrompt}
 
+TU ES UN ASSISTANT JSON.
 Ta réponse précédente n'était pas du JSON valide.
-Tu dois maintenant corriger cette sortie et renvoyer UNIQUEMENT le JSON valide final, sans texte autour, sans markdown, sans explication.
-Conserve exactement le même contenu mathématique et les mêmes balises HTML que possible ; corrige seulement l'échappement JSON et les erreurs de format.`;
+Tu dois maintenant renvoyer UNIQUEMENT un OBJET JSON valide, sans texte avant ni après, sans balises markdown, sans explication.
+Conserve exactement le même contenu mathématique et les mêmes balises HTML que possible ; corrige seulement l'échappement JSON et les erreurs de format.
+Si le texte invalide ne contient pas encore de JSON, reconstruis-le comme un JSON valide correspondant à la demande initiale.`;
 
   const repairUser = `Demande initiale :
 ${prompt}
@@ -402,6 +417,32 @@ RÈGLES pour le feedback :
 }
 
 /** Générer un cours/exercice/quiz structuré → JSON parsé */
+async function forceStructuredJSON(
+  prompt: string,
+  systemPrompt: string,
+  maxTokens: number,
+): Promise<string> {
+  const forceSystem = `${systemPrompt}
+
+TU ES UN ASSISTANT JSON.
+Réponds UNIQUEMENT par un OBJET JSON parfaitement valide, sans texte avant ni après, sans markdown, sans explication.`;
+
+  const forceUser = `${prompt}
+
+IMPORTANT : renvoie uniquement le JSON valide attendu. Ne mets aucun texte d'accompagnement. Si tu ne peux pas, renvoie un objet vide valide : {}`;
+
+  return dispatch(
+    [
+      { role: "system", content: forceSystem },
+      { role: "user", content: forceUser },
+    ],
+    0,
+    maxTokens,
+    false,
+    true,
+  );
+}
+
 export async function generateStructuredContent(
   prompt: string, systemPrompt: string, temperature = 0.7, maxTokens = 8000
 ): Promise<unknown> {
@@ -416,14 +457,18 @@ export async function generateStructuredContent(
   try {
     return parseJSON(extracted);
   } catch {
-    const repaired = await repairStructuredJSON(extracted, systemPrompt, prompt, temperature, maxTokens);
+    const repaired = await repairStructuredJSON(text, systemPrompt, prompt, temperature, maxTokens);
     try {
       return parseJSON(extractJSON(repaired));
-    } catch (repairError) {
-      const snippet = extracted.slice(0, 200).replace(/\s+/g, " ").trim();
-      throw new Error(
-        `JSON invalide reçu de l'IA : ${(repairError as Error).message}. Début de réponse : ${snippet || "[vide]"}`
-      );
+    } catch {
+      const forced = await forceStructuredJSON(prompt, systemPrompt, maxTokens);
+      try {
+        return parseJSON(extractJSON(forced));
+      } catch {
+        const snippet = text.slice(0, 200).replace(/\s+/g, " ").trim();
+        console.warn(`[llm] Impossible de récupérer du JSON structuré après plusieurs tentatives. Réponse brute : ${snippet}`);
+        return {};
+      }
     }
   }
 }
