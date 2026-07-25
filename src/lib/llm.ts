@@ -29,7 +29,7 @@ function extractMistralText(content: unknown): string {
 }
 
 async function callMistralModel(
-  model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false
+  model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false, jsonMode = false
 ): Promise<{ ok: boolean; text: string; status: number }> {
   const body: any = {
     model,
@@ -38,6 +38,10 @@ async function callMistralModel(
     reasoning_effort: reasoning ? "high" : "none",
   };
   if (maxTokens) body.max_tokens = maxTokens;
+  // JSON garanti syntaxiquement valide côté serveur Mistral — élimine les
+  // erreurs de parsing (guillemets non échappés, etc.) à la source plutôt
+  // que d'essayer de réparer un texte mal formé après coup.
+  if (jsonMode) body.response_format = { type: "json_object" };
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 240_000); // 4 min max
@@ -62,9 +66,9 @@ async function callMistralModel(
 }
 
 async function callMistral(
-  msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false
+  msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false
 ): Promise<string> {
-  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning);
+  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning, jsonMode);
 
   if (ok) {
     try {
@@ -87,7 +91,7 @@ async function callMistral(
   if (status === 429) {
     console.warn(`[llm] ${MISTRAL_MODEL} rate-limited, nouvelle tentative dans 1.5s`);
     await new Promise(r => setTimeout(r, 1500));
-    const retry = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning);
+    const retry = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning, jsonMode);
     if (retry.ok) {
       try {
         const parsed = JSON.parse(retry.text);
@@ -104,8 +108,8 @@ async function callMistral(
   throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
 }
 
-function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false) {
-  return callMistral(msgs, temp, maxTokens, reasoning);
+function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false) {
+  return callMistral(msgs, temp, maxTokens, reasoning, jsonMode);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -216,7 +220,7 @@ RÈGLES pour le feedback :
 9. FORMATE TOUTE expression mathématique en LaTeX entre $...$ (ex: $f(x) = x^2 + 6x + 4$, $(x+3)^2 - 5$, $\\frac{1}{2}$). N'écris JAMAIS de caractères Unicode comme ², ³, √, ½ ou × : utilise toujours LaTeX ($x^2$, $\\sqrt{x}$, $\\frac{1}{2}$, $\\times$).`;
 
   const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
-  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 800, false);
+  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 800, false, true);
   const r = parseJSON(extractJSON(text)) as any;
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
@@ -256,7 +260,7 @@ RÈGLES pour le feedback :
     },
   ];
 
-  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, 0.2, 800, false);
+  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, 0.2, 800, false, true);
   if (!ok) {
     console.error(`[llm] vision ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`);
     throw new Error("Le modèle de vision IA est indisponible. Réessaie dans quelques secondes.");
@@ -275,7 +279,8 @@ export async function generateStructuredContent(
     [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
     temperature,
     maxTokens,
-    false
+    false,
+    true
   );
   return parseJSON(extractJSON(text));
 }

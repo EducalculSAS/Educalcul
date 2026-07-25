@@ -256,7 +256,7 @@ Chaque leçon doit avoir un "content" HTML riche (600-1200 mots au total), ${inc
 ${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT ci-dessus : couvre exactement le programme demandé, notion par notion." : ""}
 Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
 
-          const chapterData = (await generateStructuredContent(chapterUser, chapterSystem, 0.65, 16000)) as {
+          const chapterData = (await generateStructuredContent(chapterUser, chapterSystem, 0.65, 28000)) as {
             title?: string;
             lessons?: unknown[];
           };
