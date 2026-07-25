@@ -54,20 +54,12 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
   // point d'entrée commun à toutes les routes authentifiées.
   if (row.status === "inactive" || row.ban_reason) return null;
 
-  // 2FA optionnelle (opt-in) pour parent/enfant (email). Pour les admins,
-  // le TOTP (Google Authenticator) n'est exigé qu'une fois sa configuration
-  // confirmée — tant qu'il ne l'est pas, l'admin passe (un popup côté client
-  // le pousse à configurer, voir AdminTotpSetupModal) pour éviter un
-  // chicken-and-egg qui bloquerait tout accès avant la première config.
-  let requires2FA = row.two_factor_enabled;
-  if (row.role === "admin") {
-    const { data: totp } = await supabaseAdmin
-      .from("two_factor_totp")
-      .select("confirmed_at")
-      .eq("user_id", row.id)
-      .maybeSingle();
-    requires2FA = !!totp?.confirmed_at;
-  }
+  // 2FA optionnelle (opt-in) pour parent/enfant (email). Obligatoire dès la
+  // création du compte pour les admins (TOTP) — /totp/setup, /confirm et
+  // /status utilisent getAuthIdentityOnly (pas ce gate), donc un admin peut
+  // toujours configurer son TOTP même bloqué ici partout ailleurs : pas de
+  // chicken-and-egg, et pas de fenêtre où un admin reste sans 2FA.
+  const requires2FA = row.role === "admin" || row.two_factor_enabled;
   if (requires2FA) {
     const twoFAToken = req.headers.get("x-2fa-token");
     if (!twoFAToken) return null;

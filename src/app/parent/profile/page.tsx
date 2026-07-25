@@ -640,6 +640,44 @@ export default function ParentProfilePage() {
 
         <TwoFactorToggle />
 
+        {/* Notification Preferences */}
+        <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
+            <Bell className="w-5 h-5 mr-2" />
+            Notifications
+          </h2>
+
+          <div className="space-y-4">
+            {([
+              { key: "notif_weekly_reports", label: "Rapports hebdomadaires", desc: "Recevoir le résumé des progrès de vos enfants" },
+              { key: "notif_offers_news", label: "Offres et nouveautés", desc: "Recevoir nos actualités et promotions" },
+            ] as const).map(({ key, label, desc }) => (
+              <div key={key} className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-gray-800">{label}</p>
+                  <p className="text-sm text-gray-500">{desc}</p>
+                </div>
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    checked={notifications[key]}
+                    onChange={async () => {
+                      const updated = { ...notifications, [key]: !notifications[key] };
+                      setNotifications(updated);
+                      const { data: { user: u } } = await supabase.auth.getUser();
+                      if (u) {
+                        supabase.from("users").update({ [key]: updated[key] }).eq("auth_id", u.id).then(() => {});
+                      }
+                    }}
+                  />
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[rgba(197,161,72,0.25)] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Linked Accounts Card */}
         <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
           <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
@@ -702,44 +740,6 @@ export default function ParentProfilePage() {
             )}
           </div>
         </div>
-        {/* Notification Preferences */}
-        <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-          <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-            <Bell className="w-5 h-5 mr-2" />
-            Notifications
-          </h2>
-
-          <div className="space-y-4">
-            {([
-              { key: "notif_weekly_reports", label: "Rapports hebdomadaires", desc: "Recevoir le résumé des progrès de vos enfants" },
-              { key: "notif_offers_news", label: "Offres et nouveautés", desc: "Recevoir nos actualités et promotions" },
-            ] as const).map(({ key, label, desc }) => (
-              <div key={key} className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-gray-800">{label}</p>
-                  <p className="text-sm text-gray-500">{desc}</p>
-                </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="sr-only peer"
-                    checked={notifications[key]}
-                    onChange={async () => {
-                      const updated = { ...notifications, [key]: !notifications[key] };
-                      setNotifications(updated);
-                      const { data: { user: u } } = await supabase.auth.getUser();
-                      if (u) {
-                        supabase.from("users").update({ [key]: updated[key] }).eq("auth_id", u.id).then(() => {});
-                      }
-                    }}
-                  />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[rgba(197,161,72,0.25)] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Export des données (RGPD) */}
         <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
           <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center">
