@@ -160,7 +160,7 @@ Vérifie en fin de rédaction que CHAQUE notion citée ci-dessus apparaît bien 
 ═══ PÉDAGOGIE ═══
 ${AI_COURSE_PEDAGOGY_RULES}
 
-Commence toujours par une définition claire, avec un exemple simple, en expliquant au maximum. Utilise une méthodologie "pas à pas", interactive et ludique. Chaque méthode d'exercice doit être expliquée clairement, simplement, et idéalement illustrée d'un mini-exercice d'application direct. Ne parle jamais d'une notion mathématique hors-programme, et n'utilise pas en début de chapitre une notion difficile ou une notion qui ne sera vue qu'en fin de chapitre. Illustre ton contenu avec des schémas simples, des graphiques ou tableaux pour les fonctions.
+Commence toujours par une définition claire, avec un exemple simple, en expliquant au maximum. Utilise une méthodologie "pas à pas", interactive et ludique. Chaque méthode d'exercice doit être expliquée clairement, simplement, et idéalement illustrée d'un mini-exercice d'application direct. Ne parle jamais d'une notion mathématique hors-programme, et n'utilise pas en début de chapitre une notion difficile ou une notion qui ne sera vue qu'en fin de chapitre. Utilise les outils visuels du cours : tableaux, graphiques, figures, encadrés et placeholders, lorsque cela clarifie la notion. Le design doit rester sobre et mathématique.
 
 ⚠️ DÈS QU'UNE NOTION, UNE DÉFINITION OU UNE MÉTHODE EST EXPLIQUÉE dans "content", insère IMMÉDIATEMENT APRÈS un placeholder <div class="lesson-exercise" data-exercise-id="ex-N"></div> référençant un exercice du tableau "exercises", pour que l'élève s'exerce avant de passer à la suite. Ne regroupe PAS tous les exercices à la fin : répartis-les tout au long du "content", juste après chaque notion vue.
 

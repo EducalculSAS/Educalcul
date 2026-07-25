@@ -11,7 +11,7 @@ export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX ═══
 • Ne laisse jamais une formule “nue” dans un paragraphe : une équation, une matrice, une projection, une norme ou une décomposition se met dans un bloc de formule dédié.
 • Pour une suite de calculs, sépare les étapes en plusieurs paragraphes ou listes avec une formule à chaque étape, au lieu d’un long bloc de prose.
 • N'utilise JAMAIS de retour à la ligne littéral à l'intérieur des chaînes JSON.
-• DOUBLE-ÉCHAPPE les backslashes JSON : \\\\\\\\frac{a}{b} → donne \\\\frac{a}{b} dans le rendu.
+• Dans le JSON, échappe les backslashes deux fois pour que le rendu final affiche correctement les formules : le contenu final doit rester du LaTeX classique comme \frac{a}{b}, \sqrt{x}, x^2, x_n.
 • N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z).
 • Pour une formule propre, utilise toujours du LaTeX standard : $\\frac{a}{b}$, $\\sqrt{x}$, $x^2$, $x_n$. N'utilise pas de symboles Unicode comme ², ³, √, ±, × ou ÷ dans une formule.
 • Rédige UNIQUEMENT en français correct.
@@ -26,6 +26,7 @@ export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
 • Avant le premier exercice, il doit toujours y avoir au moins une explication ou un exemple guidé.
 • Ne place jamais un placeholder d'exercice au début d'une leçon.
 • Les exercices doivent vérifier une notion déjà expliquée juste avant.
+• Tu peux utiliser les outils visuels du cours : tableaux, graphiques, figures, encadrés et placeholders quand cela clarifie vraiment la notion. Fais-le avec sobriété mathématique.
 • Une leçon incomplète ou vide est inacceptable : chaque leçon doit être complète avec titre, contenu et durée.
 • N'utilise jamais d'exemples issus de la physique, de la chimie, de la biologie, de l'informatique ou d'autres matières, sauf demande explicite de l'enseignant.
 • Privilégie des exemples purement mathématiques, concrets et adaptés au niveau.
