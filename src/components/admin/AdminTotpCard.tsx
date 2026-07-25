@@ -31,12 +31,12 @@ export default function AdminTotpCard() {
         Authentification à deux facteurs
       </h2>
       <p className="text-sm text-gray-600 mb-4">
-        Obligatoire pour les comptes administrateur via une application d'authentification (Google Authenticator, Authy…).
+        Ajoute un code de vérification à chaque nouvelle connexion, en plus du mot de passe. Obligatoire pour les comptes administrateur.
       </p>
       <div className="flex items-center justify-between">
         <span className={`text-sm font-semibold flex items-center gap-1.5 ${confirmed ? "text-green-700" : "text-gray-500"}`}>
           {confirmed && <CheckCircle className="w-4 h-4" />}
-          {confirmed ? "Configurée" : "Non configurée"}
+          {confirmed ? "Activée" : "Désactivée"}
         </span>
         {!confirmed && (
           <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-amber-50 text-amber-700">Configuration requise</span>

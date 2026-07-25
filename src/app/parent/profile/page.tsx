@@ -51,6 +51,7 @@ export default function ParentProfilePage() {
   });
 
   const [passwordData, setPasswordData] = useState({
+    currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
@@ -317,6 +318,12 @@ export default function ParentProfilePage() {
     setSaving(true);
     setMessage(null);
 
+    if (!passwordData.currentPassword) {
+      setMessage({ type: "error", text: "Entrez votre mot de passe actuel." });
+      setSaving(false);
+      return;
+    }
+
     const pwError = validatePassword(passwordData.newPassword);
     if (pwError) {
       setMessage({ type: "error", text: pwError });
@@ -334,6 +341,20 @@ export default function ParentProfilePage() {
     }
 
     try {
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      if (!currentUser?.email) throw new Error("Session invalide.");
+
+      // Vérifie le mot de passe actuel avant tout changement.
+      const { error: verifyError } = await supabase.auth.signInWithPassword({
+        email: currentUser.email,
+        password: passwordData.currentPassword,
+      });
+      if (verifyError) {
+        setMessage({ type: "error", text: "Mot de passe actuel incorrect." });
+        setSaving(false);
+        return;
+      }
+
       const { error } = await supabase.auth.updateUser({
         password: passwordData.newPassword,
       });
@@ -354,7 +375,7 @@ export default function ParentProfilePage() {
         type: "success",
         text: "Mot de passe mis à jour avec succès.",
       });
-      setPasswordData({ newPassword: "", confirmPassword: "" });
+      setPasswordData({ currentPassword: "", newPassword: "", confirmPassword: "" });
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error
@@ -544,6 +565,24 @@ export default function ParentProfilePage() {
           </h2>
 
           <form onSubmit={handlePasswordUpdate} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Mot de passe actuel
+              </label>
+              <input
+                type="password"
+                value={passwordData.currentPassword}
+                onChange={(e) =>
+                  setPasswordData({
+                    ...passwordData,
+                    currentPassword: e.target.value,
+                  })
+                }
+                className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="••••••"
+              />
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Nouveau mot de passe

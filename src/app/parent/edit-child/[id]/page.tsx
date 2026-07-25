@@ -29,6 +29,8 @@ export default function EditChildPage() {
   const [parentId, setParentId] = useState<string | null>(null);
   const [originalUsername, setOriginalUsername] = useState("");
   const [originalEmail, setOriginalEmail] = useState("");
+  const [twoFAEnabled, setTwoFAEnabled] = useState(false);
+  const [togglingTwoFA, setTogglingTwoFA] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -79,6 +81,7 @@ export default function EditChildPage() {
 
       setOriginalUsername(childData.child_username || "");
       setOriginalEmail(childData.email || "");
+      setTwoFAEnabled(!!childData.two_factor_enabled);
       setFormData({
         firstName: childData.first_name,
         lastName: childData.last_name,
@@ -168,6 +171,25 @@ export default function EditChildPage() {
       setError(err.message || "Erreur lors de la mise à jour.");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const toggleTwoFA = async () => {
+    setTogglingTwoFA(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/parent/toggle-child-2fa", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ childId }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur");
+      setTwoFAEnabled(data.enabled);
+    } catch (err: any) {
+      setError(err.message || "Une erreur est survenue.");
+    } finally {
+      setTogglingTwoFA(false);
     }
   };
 
@@ -307,7 +329,7 @@ export default function EditChildPage() {
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed"
               />
               <p className="text-xs text-gray-500 mt-1">
-                Le niveau scolaire ne peut être modifié que par un administrateur, sur demande.
+                Le niveau scolaire passe automatiquement à la classe supérieure chaque année. En sortie de Seconde, un choix de spécialité est nécessaire et sera fait par un administrateur.
               </p>
             </div>
 
@@ -334,6 +356,29 @@ export default function EditChildPage() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div className="flex items-center justify-between p-4 border border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
+              <div>
+                <p className="text-sm font-medium text-gray-700">Authentification à deux facteurs</p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  {twoFAEnabled ? "Activée" : "Désactivée"} — un code sera demandé par email à la connexion de l'enfant.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={toggleTwoFA}
+                disabled={togglingTwoFA}
+                role="switch"
+                aria-checked={twoFAEnabled}
+                className="relative w-12 h-6 rounded-full transition-colors disabled:opacity-50 shrink-0"
+                style={{ background: twoFAEnabled ? "var(--greek-blue)" : "#d1d5db" }}
+              >
+                <span
+                  className="absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-all"
+                  style={{ left: twoFAEnabled ? "calc(100% - 22px)" : "2px" }}
+                />
+              </button>
             </div>
 
             <div className="pt-4 flex justify-end">

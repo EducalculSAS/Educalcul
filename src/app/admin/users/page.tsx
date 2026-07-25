@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import PageLoader from "@/components/PageLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GradePromotionPanel from "@/components/admin/GradePromotionPanel";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 
 interface User {
@@ -498,6 +499,8 @@ export default function AdminUsersPage() {
           </>
         }
       />
+
+      <GradePromotionPanel />
 
       {/* Map */}
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-4 sm:p-6 relative z-0 overflow-hidden">
