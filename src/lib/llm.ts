@@ -21,8 +21,13 @@ function extractMistralText(content: unknown): string {
   if (typeof content === "string") return content;
   if (Array.isArray(content)) {
     const textChunks = content
-      .filter((c: any) => c?.type === "text" && typeof c.text === "string")
-      .map((c: any) => c.text);
+      .filter(
+        (item): item is { type: "text"; text: string } =>
+          typeof item === "object" && item !== null &&
+          (item as { type?: unknown }).type === "text" &&
+          typeof (item as { text?: unknown }).text === "string",
+      )
+      .map((item) => item.text);
     if (textChunks.length) return textChunks.join("").trim();
   }
   return "";
@@ -31,7 +36,7 @@ function extractMistralText(content: unknown): string {
 async function callMistralModel(
   model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false, jsonMode = false
 ): Promise<{ ok: boolean; text: string; status: number }> {
-  const body: any = {
+  const body: Record<string, unknown> = {
     model,
     messages: msgs,
     temperature: temp,
@@ -197,6 +202,38 @@ function parseJSON(raw: string): unknown {
   }
 }
 
+async function repairStructuredJSON(
+  raw: string,
+  systemPrompt: string,
+  prompt: string,
+  temperature: number,
+  maxTokens: number
+): Promise<string> {
+  const repairSystem = `${systemPrompt}
+
+Ta réponse précédente n'était pas du JSON valide.
+Tu dois maintenant corriger cette sortie et renvoyer UNIQUEMENT le JSON valide final, sans texte autour, sans markdown, sans explication.`;
+
+  const repairUser = `Demande initiale :
+${prompt}
+
+Sortie invalide à corriger :
+${raw}
+
+Retourne uniquement le JSON valide correspondant à la demande initiale.`;
+
+  return dispatch(
+    [
+      { role: "system", content: repairSystem },
+      { role: "user", content: repairUser },
+    ],
+    Math.min(temperature, 0.2),
+    maxTokens,
+    false,
+    true
+  );
+}
+
 // ── Exports publics ───────────────────────────────────────────────────────────
 
 /** Corriger une réponse élève */
@@ -221,7 +258,7 @@ RÈGLES pour le feedback :
 
   const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
   const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 800, false, true);
-  const r = parseJSON(extractJSON(text)) as any;
+  const r = parseJSON(extractJSON(text)) as { is_correct?: boolean; score?: number; feedback?: string };
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
 
@@ -267,7 +304,7 @@ RÈGLES pour le feedback :
   }
   const parsed = JSON.parse(text);
   const content = extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
-  const r = parseJSON(extractJSON(content)) as any;
+  const r = parseJSON(extractJSON(content)) as { is_correct?: boolean; score?: number; feedback?: string };
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
 
@@ -282,7 +319,20 @@ export async function generateStructuredContent(
     false,
     true
   );
-  return parseJSON(extractJSON(text));
+  const extracted = extractJSON(text);
+  try {
+    return parseJSON(extracted);
+  } catch {
+    const repaired = await repairStructuredJSON(extracted, systemPrompt, prompt, temperature, maxTokens);
+    try {
+      return parseJSON(extractJSON(repaired));
+    } catch (repairError) {
+      const snippet = extracted.slice(0, 200).replace(/\s+/g, " ").trim();
+      throw new Error(
+        `JSON invalide reçu de l'IA : ${(repairError as Error).message}. Début de réponse : ${snippet || "[vide]"}`
+      );
+    }
+  }
 }
 
 /** Chatbot tuteur IA — reasoning activé (Mistral Small, mode reasoning) */
