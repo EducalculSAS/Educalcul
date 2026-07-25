@@ -123,11 +123,13 @@ Si le programme de l'enseignant mentionne une rubrique « Démonstrations » (ou
 • HTML : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>
 • LaTeX OBLIGATOIRE pour toutes les formules mathématiques.
 • Inline : $formule$ — Bloc : $$formule$$
+• AUCUNE formule LaTeX ne doit JAMAIS apparaître sans être entourée de $...$ ou $$...$$ — y compris les systèmes d'équations, matrices, ou toute commande commençant par un backslash (\\left, \\begin, \\frac, \\sqrt...). Un système d'équations s'écrit TOUJOURS avec l'environnement "cases", entièrement à l'intérieur d'un bloc $$...$$, par exemple : $$\\begin{cases} y = x^2 - 3x + 2 \\\\ y = 2x - 1 \\end{cases}$$ — jamais \\left\\{ \\begin{array}...\\right. et jamais de LaTeX hors de $ ou $$.
 • N'utilise JAMAIS de retour à la ligne littéral à l'intérieur d'une chaîne JSON : écris le HTML sur une seule ligne (utilise <br> ou des balises pour la mise en forme, pas de \\n).
 • DOUBLE-ÉCHAPPE les backslashes JSON : \\\\frac{a}{b} → donne \\frac{a}{b} dans le rendu
 • N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z dans \\frac, \\sqrt, \\infty, \\theta, etc.) — n'écris JAMAIS de caractères cyrilliques ou non-latins à l'intérieur d'une formule $...$ ou $$...$$.
 • Rédige UNIQUEMENT en français correct : relis chaque phrase, n'utilise aucun mot d'une autre langue (espagnol, anglais, etc.) ni de mot inventé/déformé.
-• Chaque formule $...$ ou $$...$$ doit être correctement fermée AVANT toute balise HTML (<td>, </tr>, etc.) : ne mélange jamais du HTML à l'intérieur d'une formule LaTeX.
+• Chaque formule $...$ ou $$...$$ doit être correctement fermée AVANT toute balise HTML (<td>, </tr>, etc.) : ne mélange JAMAIS du HTML à l'intérieur d'une formule LaTeX, et n'entoure JAMAIS un bloc $...$/$$...$$ avec une balise de style — la balise de style doit toujours être ENTIÈREMENT en dehors des signes $.
+• Pour mettre en valeur un mot ou une phrase importante (définition clé, mise en garde, résultat à retenir), tu PEUX utiliser <strong>, ou <span style="color:#B8331B">texte</span> (rouge sobre) autour de texte normal UNIQUEMENT — jamais autour ou à l'intérieur d'une formule $...$/$$...$$. Pour encadrer un passage entier (définition, propriété, remarque importante), utilise <blockquote>texte</blockquote>.
 
 ═══ TABLEAUX & GRAPHIQUES (à utiliser SI PERTINENT, sans en abuser) ═══
 • Si la notion s'y prête (étude de fonction, signe, variations, tableau de valeurs, etc.), insère DIRECTEMENT dans "content" un tableau au format :

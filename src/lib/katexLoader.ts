@@ -23,6 +23,41 @@ export function sanitizeHtml(html: string): string {
     .replace(/javascript:/gi, "");
 }
 
+/** Environnements LaTeX de type "grille" que l'IA écrit parfois sans les
+ * entourer de $...$/$$...$$ (systèmes d'équations, matrices) : sans ce filet
+ * de sécurité, ils s'affichent en texte brut (\begin{cases}...) au lieu
+ * d'être rendus. */
+const BARE_ENV_RE =
+  /(\\left\s*(?:\\\{|[(\[.|])\s*)?\\begin\{(cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|matrix|aligned)\}[\s\S]*?\\end\{\2\}(\s*\\right\s*(?:\\\}|[)\].|]))?/g;
+
+/** Rendu KaTeX d'une formule avec repli propre : si la source est invalide
+ * (souvent parce que l'IA a mélangé une balise HTML dans la formule), on
+ * retire les balises et on retente, puis en dernier recours on affiche le
+ * texte brut nettoyé — jamais le message d'erreur technique de KaTeX (rouge,
+ * illisible pour un élève) ni le HTML qui a fuité dedans. */
+function safeRenderMath(math: string, displayMode: boolean): string {
+  const trimmed = math.trim();
+  const tryRender = (src: string) =>
+    katex.renderToString(src, { displayMode, throwOnError: true, strict: false });
+  try {
+    return tryRender(trimmed);
+  } catch {
+    const cleaned = trimmed.replace(/<[^>]*>/g, "").trim();
+    if (cleaned && cleaned !== trimmed) {
+      try {
+        return tryRender(cleaned);
+      } catch {
+        /* repli ci-dessous */
+      }
+    }
+    const escaped = (cleaned || trimmed)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return `<span style="font-family:monospace">${escaped}</span>`;
+  }
+}
+
 /**
  * Pré-rend tout le LaTeX dans une chaîne HTML avant de l'injecter dans le DOM.
  * Approche la plus fiable : pas de DOM traversal, pas de timing issues.
@@ -30,38 +65,31 @@ export function sanitizeHtml(html: string): string {
 export function renderLatexInHTML(html: string): string {
   if (!html) return html;
 
-  // 1. Display math : $$...$$
-  let result = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => {
-    try {
-      return katex.renderToString(math.trim(), { displayMode: true, throwOnError: false });
-    } catch {
-      return match;
-    }
+  // 0. Filet de sécurité : encadre les environnements type "cases"/"array"
+  // laissés sans délimiteurs $...$/$$...$$ par l'IA, pour qu'ils soient
+  // traités par les passes suivantes au lieu de rester en texte brut.
+  let result = html.replace(BARE_ENV_RE, (match, _left, _env, _right, offset, full) => {
+    const before = full.slice(0, offset);
+    const openDollars = (before.match(/\$/g) || []).length;
+    // Un nombre pair de "$" avant ce point signifie qu'on N'EST PAS déjà
+    // à l'intérieur d'un bloc $...$/$$...$$ — dans ce cas, on encadre.
+    return openDollars % 2 === 0 ? `$$${match}$$` : match;
   });
+
+  // 1. Display math : $$...$$
+  result = result.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => safeRenderMath(math, true));
 
   // 2. Inline math : $...$ (on évite $$...$$ déjà traités)
   result = result.replace(/\$([^\$\r\n]+?)\$/g, (match, math) => {
     if (!math.trim()) return match;
-    try {
-      return katex.renderToString(math.trim(), { displayMode: false, throwOnError: false });
-    } catch {
-      return match;
-    }
+    return safeRenderMath(math, false);
   });
 
   // 3. \(...\) inline
-  result = result.replace(/\\\(([\s\S]+?)\\\)/g, (match, math) => {
-    try {
-      return katex.renderToString(math.trim(), { displayMode: false, throwOnError: false });
-    } catch { return match; }
-  });
+  result = result.replace(/\\\(([\s\S]+?)\\\)/g, (match, math) => safeRenderMath(math, false));
 
   // 4. \[...\] display
-  result = result.replace(/\\\[([\s\S]+?)\\\]/g, (match, math) => {
-    try {
-      return katex.renderToString(math.trim(), { displayMode: true, throwOnError: false });
-    } catch { return match; }
-  });
+  result = result.replace(/\\\[([\s\S]+?)\\\]/g, (match, math) => safeRenderMath(math, true));
 
   // Nettoyage anti-XSS après le rendu LaTeX (conserve KaTeX/SVG/MathML).
   return sanitizeHtml(result);
