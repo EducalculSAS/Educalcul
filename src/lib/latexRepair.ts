@@ -87,6 +87,30 @@ function dropUnmatchedDelimiters(text: string): string {
   return result;
 }
 
+/** Ajoute les accolades fermantes manquantes d'un contenu LaTeX (l'IA tronque
+ * parfois une formule en oubliant de refermer \boxed{...} ou un \vec{...}
+ * final). Les accolades échappées (\{ \}) sont des symboles littéraux et ne
+ * comptent pas comme groupement. */
+function balanceBraces(math: string): string {
+  const forCounting = math.replace(/\\[{}]/g, "");
+  let depth = 0;
+  for (const ch of forCounting) {
+    if (ch === "{") depth++;
+    else if (ch === "}") depth = Math.max(0, depth - 1);
+  }
+  return depth > 0 ? math + "}".repeat(depth) : math;
+}
+
+/** Répare un segment déjà identifié comme mathématique (délimiteurs $/$$
+ * inclus) : rééquilibre ses accolades sans toucher au reste. */
+function repairMathSegment(seg: string): string {
+  const isDisplay = seg.startsWith("$$");
+  const delim = isDisplay ? "$$" : "$";
+  const inner = seg.slice(delim.length, seg.length - delim.length);
+  const balanced = balanceBraces(inner);
+  return balanced === inner ? seg : `${delim}${balanced}${delim}`;
+}
+
 /** Vrai si le segment (hors math) ressemble à une formule entière plutôt
  * qu'à une phrase : il contient au moins une commande LaTeX et très peu de
  * mots de prose. */
@@ -115,14 +139,36 @@ function wrapInlineCommands(segment: string): string {
   return result;
 }
 
+/**
+ * Normalise les défauts de délimiteurs propres à un segment généré sur
+ * plusieurs lignes : un retour à la ligne brut au milieu d'une phrase casse
+ * l'appariement $...$ (l'IA l'utilise parfois par erreur, alors que les
+ * paragraphes sont déjà séparés par des balises <p>), et un "$$" est parfois
+ * écrit là où une seule formule inline ($...$) était visiblement voulue —
+ * reconnaissable au fait qu'il ne couvre pas tout le segment (une vraie
+ * formule affichée $$...$$ occupe tout le contenu d'un bloc HTML, jamais
+ * seulement une portion au milieu d'une phrase).
+ */
+function normalizeStraySegment(raw: string): string {
+  let text = raw.replace(/\s+/g, " ");
+  const trimmed = text.trim();
+  const isWholeSegmentDisplay =
+    trimmed.startsWith("$$") && trimmed.endsWith("$$") && trimmed.length > 4;
+  if (!isWholeSegmentDisplay) {
+    text = text.replace(/\${2,}/g, "$");
+  }
+  text = text.replace(/\$ \$/g, "$");
+  return text;
+}
+
 /** Répare un segment de texte brut (déjà isolé de tout balisage HTML). */
 function repairTextSegment(raw: string): string {
   if (!raw.trim()) return raw;
-  const text = dropUnmatchedDelimiters(raw.replace(/\$\$\$+/g, "$$"));
+  const text = dropUnmatchedDelimiters(normalizeStraySegment(raw).replace(/\$\$\$+/g, "$$"));
 
   return splitMathSegments(text)
     .map(({ text: seg, isMath }) => {
-      if (isMath) return seg;
+      if (isMath) return repairMathSegment(seg);
       if (!ANY_LATEX_CMD_RE.test(seg)) return seg;
       if (looksLikeWholeFormula(seg)) {
         const lead = seg.match(/^\s*/)?.[0] ?? "";
@@ -147,6 +193,115 @@ export function repairLatex(html: string): string {
     .split(/(<[^>]*>)/)
     .map((part) => (part.startsWith("<") && part.endsWith(">") ? part : repairTextSegment(part)))
     .join("");
+}
+
+const GREEK_LOWER: Record<string, string> = {
+  alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ε", varepsilon: "ε",
+  zeta: "ζ", eta: "η", theta: "θ", vartheta: "ϑ", iota: "ι", kappa: "κ",
+  lambda: "λ", mu: "μ", nu: "ν", xi: "ξ", pi: "π", rho: "ρ", sigma: "σ",
+  tau: "τ", upsilon: "υ", phi: "φ", varphi: "φ", chi: "χ", psi: "ψ", omega: "ω",
+};
+const GREEK_UPPER: Record<string, string> = {
+  Gamma: "Γ", Delta: "Δ", Theta: "Θ", Lambda: "Λ", Xi: "Ξ", Pi: "Π",
+  Sigma: "Σ", Phi: "Φ", Psi: "Ψ", Omega: "Ω",
+};
+const SUB_MAP: Record<string, string> = {
+  "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄", "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
+  "+": "₊", "-": "₋", "=": "₌", "(": "₍", ")": "₎",
+  a: "ₐ", e: "ₑ", h: "ₕ", i: "ᵢ", j: "ⱼ", k: "ₖ", l: "ₗ", m: "ₘ", n: "ₙ",
+  o: "ₒ", p: "ₚ", r: "ᵣ", s: "ₛ", t: "ₜ", u: "ᵤ", v: "ᵥ", x: "ₓ",
+};
+const SUP_MAP: Record<string, string> = {
+  "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹",
+  "+": "⁺", "-": "⁻", "=": "⁼", "(": "⁽", ")": "⁾", n: "ⁿ", i: "ⁱ",
+};
+
+/** Convertit chaque caractère de `body` via `map` ; renvoie null si un seul
+ * caractère n'a pas d'équivalent unicode (mieux vaut garder l'original que
+ * de le tronquer). */
+function toScript(body: string, map: Record<string, string>): string | null {
+  let out = "";
+  for (const ch of body) {
+    const mapped = map[ch];
+    if (!mapped) return null;
+    out += mapped;
+  }
+  return out;
+}
+
+/**
+ * Convertit une formule LaTeX en texte brut lisible (sans aucun HTML) :
+ * utilisé pour les libellés à l'intérieur d'un <text> SVG. Un <text> SVG ne
+ * peut afficher que des glyphes de texte brut — jamais les <span> imbriqués
+ * que produit KaTeX (mise en page HTML/CSS) — donc y injecter du HTML KaTeX
+ * ne fonctionne pas et le libellé disparaît ou s'affiche déformé.
+ */
+export function mathToPlainText(math: string): string {
+  let s = math.trim();
+  s = s.replace(/\\(?:left|right)\b\s*/g, "");
+  // \vec{X}, \overrightarrow{X}... -> X (la flèche est déjà dessinée dans le schéma)
+  s = s.replace(
+    /\\(?:vec|overrightarrow|overline|underline|hat|widehat|widetilde|dot|ddot|bar)\{([^{}]*)\}/g,
+    "$1",
+  );
+  // \text{...}, \mathrm{...}, \operatorname{...} -> contenu brut
+  s = s.replace(
+    /\\(?:text|mathrm|mathbf|mathit|mathsf|mathbb|mathcal|textbf|textit|operatorname)\{([^{}]*)\}/g,
+    "$1",
+  );
+  s = s.replace(/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2");
+  s = s.replace(/\\sqrt\{([^{}]*)\}/g, "√($1)");
+  s = s.replace(/\\\|/g, "‖");
+  const SYMS: [RegExp, string][] = [
+    [/\\cdot\b/g, "·"], [/\\times\b/g, "×"], [/\\div\b/g, "÷"], [/\\pm\b/g, "±"], [/\\mp\b/g, "∓"],
+    [/\\leq\b|\\le\b/g, "≤"], [/\\geq\b|\\ge\b/g, "≥"], [/\\neq\b|\\ne\b/g, "≠"],
+    [/\\infty\b/g, "∞"], [/\\approx\b/g, "≈"], [/\\equiv\b/g, "≡"],
+    [/\\perp\b/g, "⊥"], [/\\parallel\b/g, "∥"], [/\\angle\b/g, "∠"], [/\\circ\b/g, "°"],
+    [/\\rightarrow\b|\\to\b/g, "→"], [/\\Rightarrow\b/g, "⇒"], [/\\leftrightarrow\b/g, "↔"],
+    [/\\in\b/g, "∈"], [/\\forall\b/g, "∀"], [/\\exists\b/g, "∃"],
+    [/\\quad\b|\\qquad\b/g, " "],
+  ];
+  for (const [re, rep] of SYMS) s = s.replace(re, rep);
+  // Commande restante : lettre grecque connue, sinon son nom tel quel
+  // (mieux vaut afficher "log" que de faire disparaître le texte).
+  s = s.replace(
+    /\\([A-Za-z]+)/g,
+    (_m, name: string) => GREEK_LOWER[name] ?? GREEK_UPPER[name] ?? name,
+  );
+  s = s.replace(/\^\{([^{}]*)\}|\^([0-9A-Za-z+\-=()])/g, (_m, g1: string, g2: string) => {
+    const body = g1 ?? g2;
+    return toScript(body, SUP_MAP) ?? body;
+  });
+  s = s.replace(/_\{([^{}]*)\}|_([0-9A-Za-z+\-=()])/g, (_m, g1: string, g2: string) => {
+    const body = g1 ?? g2;
+    return toScript(body, SUB_MAP) ?? body;
+  });
+  s = s.replace(/[{}]/g, "");
+  return s.trim();
+}
+
+function escapeSvgText(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/**
+ * Rend en texte brut (jamais en HTML KaTeX) toutes les formules $...$/$$...$$
+ * contenues dans un bloc <svg>...</svg>. À appeler avant le rendu KaTeX
+ * normal, pour qu'aucune formule à l'intérieur d'un schéma ne reçoive du
+ * HTML qu'un <text> SVG ne peut pas afficher.
+ */
+export function renderMathAsPlainTextInSvg(svgHtml: string): string {
+  let result = svgHtml;
+  result = result.replace(/\$\$([^<>]*?)\$\$/g, (m, math) =>
+    math.trim() ? escapeSvgText(mathToPlainText(math)) : m,
+  );
+  result = result.replace(/\$([^$<>\r\n]+?)\$/g, (m, math) =>
+    math.trim() ? escapeSvgText(mathToPlainText(math)) : m,
+  );
+  result = result.replace(/\\\(([^<>]+?)\\\)/g, (m, math) => escapeSvgText(mathToPlainText(math)));
+  result = result.replace(/\\\[([^<>]+?)\\\]/g, (m, math) => escapeSvgText(mathToPlainText(math)));
+  result = result.replace(/\$\$/g, "");
+  return result;
 }
 
 /** Retire un préfixe « Figure 3 — » / « Fig. 2 : » d'une légende : la

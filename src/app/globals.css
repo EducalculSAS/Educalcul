@@ -1192,3 +1192,152 @@ main,
   font-weight: 600;
   font-family: var(--font-body, "Inter", sans-serif);
 }
+
+/* Curseur de paramètre (graphique interactif) */
+.g-param-control {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--greek-blue, #0f1e3a);
+}
+.g-param-control label {
+  white-space: nowrap;
+  font-weight: 600;
+}
+.g-param-value {
+  font-variant-numeric: tabular-nums;
+}
+.g-param-slider {
+  flex: 1;
+  accent-color: var(--greek-gold, #c5a148);
+  cursor: pointer;
+}
+
+/* Démonstrations révélées étape par étape (cf. courseSteps.ts) */
+.course-steps {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.course-step {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(197, 161, 72, 0.3);
+  background: #fff;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(15, 30, 58, 0.06);
+}
+.course-step-hidden {
+  display: none;
+}
+@keyframes courseStepEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.course-step-enter {
+  animation: courseStepEnter 0.25s ease-out;
+}
+.course-step-reveal-btn {
+  align-self: flex-start;
+  border-radius: 9999px;
+  background: var(--greek-blue, #0f1e3a);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(15, 30, 58, 0.1);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.course-step-reveal-btn:hover {
+  opacity: 0.9;
+}
+
+/* Schéma vectoriel manipulable (cf. interactiveVectors.ts) */
+.course-interactive-vectors-figure {
+  background: linear-gradient(180deg, #ffffff, var(--greek-cream, #faf7f2));
+  border: 1px solid rgba(197, 161, 72, 0.3);
+  border-radius: 16px;
+  padding: 0.75rem 0.75rem 0.5rem;
+  box-shadow: 0 4px 16px rgba(15, 30, 58, 0.06);
+}
+.course-interactive-vectors-figure .iv-svg {
+  max-width: min(100%, 22rem);
+  max-height: 18rem;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.iv-vec {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.iv-vec-u {
+  stroke: #e53e3e;
+}
+.iv-vec-v {
+  stroke: #3182ce;
+}
+.iv-arrowhead-u {
+  fill: #e53e3e;
+}
+.iv-arrowhead-v {
+  fill: #3182ce;
+}
+.iv-proj {
+  stroke: #38a169;
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+.iv-origin {
+  fill: var(--greek-blue, #0f1e3a);
+}
+.iv-label {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-body, "Inter", sans-serif);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.iv-label-u {
+  fill: #e53e3e;
+}
+.iv-label-v {
+  fill: #3182ce;
+}
+.iv-handle {
+  fill: #fff;
+  stroke: var(--greek-blue, #0f1e3a);
+  stroke-width: 1.5;
+  cursor: grab;
+  touch-action: none;
+}
+.iv-handle:active {
+  cursor: grabbing;
+}
+.iv-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1rem;
+  margin-top: 0.4rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgba(197, 161, 72, 0.4);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--greek-blue, #0f1e3a);
+  font-variant-numeric: tabular-nums;
+}
+

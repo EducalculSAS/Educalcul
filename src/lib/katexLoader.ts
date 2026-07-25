@@ -3,7 +3,11 @@
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import DOMPurify from "dompurify";
-import { repairLatex, stripFigureNumberPrefix } from "@/lib/latexRepair";
+import {
+  repairLatex,
+  stripFigureNumberPrefix,
+  renderMathAsPlainTextInSvg,
+} from "@/lib/latexRepair";
 
 /**
  * Nettoie le HTML avant injection (anti-XSS) tout en conservant le rendu KaTeX,
@@ -78,6 +82,15 @@ export function renderLatexInHTML(html: string): string {
   // Appliquée aussi à l'affichage — et pas seulement à la génération — pour
   // que les cours déjà enregistrés avant ce correctif s'affichent proprement.
   let result = stripFigureNumberPrefix(repairLatex(html));
+
+  // 0bis. Un <text> SVG ne peut afficher que des glyphes bruts — jamais les
+  // <span> imbriqués que produit KaTeX (mise en page HTML/CSS). Injecter du
+  // HTML KaTeX dedans le fait disparaître ou s'afficher déformé. On rend
+  // donc les formules d'un schéma en texte lisible avant le rendu KaTeX
+  // normal, pour qu'il ne leur reste plus aucun $ à traiter.
+  result = result.replace(/<svg[\s\S]*?<\/svg>/g, (svgBlock) =>
+    renderMathAsPlainTextInSvg(svgBlock),
+  );
 
   // 1. Display math : $$...$$
   // [^<>] : une formule ne peut JAMAIS traverser une balise HTML. Sans cette
