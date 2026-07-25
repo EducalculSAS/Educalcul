@@ -21,6 +21,7 @@ import AppAdminLoader from "@/components/AppAdminLoader";
 import { validatePassword } from "@/lib/validation";
 import Image from "next/image";
 import { avatarUrl } from "@/lib/avatarUrl";
+import TwoFactorToggle from "@/components/TwoFactorToggle";
 
 export default function ParentProfilePage() {
   const router = useRouter();
@@ -595,6 +596,8 @@ export default function ParentProfilePage() {
             </div>
           </form>
         </div>
+
+        <TwoFactorToggle />
 
         {/* Linked Accounts Card */}
         <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">

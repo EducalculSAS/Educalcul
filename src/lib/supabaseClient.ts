@@ -33,12 +33,19 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
         typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
       if (url.startsWith("/api/")) {
         const { data: { session } } = await getPublicClient().auth.getSession();
-        if (session?.access_token) {
+        const twoFAToken = window.localStorage.getItem("edu_2fa_token");
+        if (session?.access_token || twoFAToken) {
           const headers = new Headers(
             init?.headers ?? (input instanceof Request ? input.headers : undefined)
           );
-          if (!headers.has("Authorization")) {
+          if (session?.access_token && !headers.has("Authorization")) {
             headers.set("Authorization", `Bearer ${session.access_token}`);
+          }
+          // Jeton de session 2FA (voir src/lib/twoFactor.ts) — distinct du JWT
+          // Supabase, requis en plus par apiAuth.ts pour les comptes qui ont
+          // activé la 2FA (obligatoire pour les admins).
+          if (twoFAToken && !headers.has("X-2FA-Token")) {
+            headers.set("X-2FA-Token", twoFAToken);
           }
           init = { ...init, headers };
         }

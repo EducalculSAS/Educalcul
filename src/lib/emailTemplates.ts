@@ -215,6 +215,60 @@ export function passwordChangedEmail(firstName: string) {
   };
 }
 
+export function twoFactorCodeEmail(firstName: string, code: string) {
+  return {
+    subject: `${code} — votre code de connexion Educalcul`,
+    textPart: `Bonjour ${firstName},\n\nVotre code de vérification est : ${code}\n\nIl expire dans 10 minutes. Si vous n'êtes pas à l'origine de cette tentative de connexion, ignorez cet email et changez votre mot de passe.\n\nL'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Code de vérification",
+      preheader: `Votre code : ${code}`,
+      body: `
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
+        <p style="margin:0 0 20px;">Voici votre code de vérification pour terminer la connexion à votre compte Educalcul :</p>
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 0 20px;">
+          <tr>
+            <td align="center" style="background:#f8f6ef;border:1px solid rgba(197,161,72,0.3);border-radius:10px;padding:20px;">
+              <p style="margin:0;font-size:32px;font-weight:700;letter-spacing:8px;color:#1a3a5c;font-family:monospace;">${escapeHtml(code)}</p>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:0 0 16px;font-size:13px;color:#6b7280;">Ce code expire dans 10 minutes.</p>
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+          <tr>
+            <td style="background:#fffbeb;border-left:3px solid #c5a148;padding:14px 18px;border-radius:0 8px 8px 0;">
+              <p style="margin:0;font-size:13px;color:#92400e;">Vous n'êtes pas à l'origine de cette tentative ? <a href="${EMAIL_BASE_URL}/contact" style="color:#92400e;font-weight:600;">Contactez-nous</a> et changez votre mot de passe.</p>
+            </td>
+          </tr>
+        </table>
+      `,
+    }),
+  };
+}
+
+export function twoFactorToggledEmail(firstName: string, enabled: boolean) {
+  return {
+    subject: enabled ? "Authentification à deux facteurs activée" : "Authentification à deux facteurs désactivée",
+    textPart: `Bonjour ${firstName},\n\nL'authentification à deux facteurs vient d'être ${enabled ? "activée" : "désactivée"} sur votre compte Educalcul.\n\nSi vous n'êtes pas à l'origine de cette action, contactez-nous sur ${EMAIL_BASE_URL}/contact\n\nL'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: enabled ? "2FA activée" : "2FA désactivée",
+      preheader: `L'authentification à deux facteurs a été ${enabled ? "activée" : "désactivée"}`,
+      body: `
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
+        <p style="margin:0 0 16px;">L'authentification à deux facteurs vient d'être <strong>${enabled ? "activée" : "désactivée"}</strong> sur votre compte Educalcul.</p>
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:20px 0;">
+          <tr>
+            <td style="background:#fffbeb;border-left:3px solid #c5a148;padding:14px 18px;border-radius:0 8px 8px 0;">
+              <p style="margin:0;font-size:13px;color:#92400e;line-height:1.6;"><strong>Ce n'est pas vous ?</strong><br />
+              Contactez-nous immédiatement depuis <a href="${EMAIL_BASE_URL}/contact" style="color:#92400e;font-weight:600;">la page Contact</a> pour sécuriser votre compte.</p>
+            </td>
+          </tr>
+        </table>
+      `,
+      cta: { label: "Accéder à mon compte", url: `${EMAIL_BASE_URL}/auth/connexion` },
+    }),
+  };
+}
+
 export function emailChangedEmail(firstName: string, newEmail: string) {
   return {
     subject: "Votre adresse email a été modifiée",

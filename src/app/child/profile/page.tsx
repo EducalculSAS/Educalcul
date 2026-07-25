@@ -13,6 +13,7 @@ import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getSimpleLevelLabel } from "@/lib/constants";
+import TwoFactorToggle from "@/components/TwoFactorToggle";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -281,6 +282,8 @@ export default function ChildProfilePage() {
           </div>
           </div>
         </div>
+
+        <TwoFactorToggle />
 
         {/* ── Danger zone ── */}
         <div className="rounded-2xl p-6 border border-red-200 bg-red-50">

@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Middleware tourne en runtime Edge : pas d'accès au module Node "crypto",
+// on utilise donc SubtleCrypto (identique en résultat à
+// src/lib/twoFactor.ts#hashTwoFactorValue qui utilise createHash côté Node).
+async function sha256Hex(value: string): Promise<string> {
+  const data = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
 // ✓ SECURITY: Note - SERVICE_KEY is only used here for role checking
 // Consider creating a restricted role in Supabase with only SELECT on users.role
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -33,10 +42,10 @@ async function getAuthUserId(token: string): Promise<string | null> {
 }
 
 // ✓ SECURITY IMPROVEMENT: Reduced scope - only fetch role, no other sensitive data
-async function getRole(authId: string): Promise<string | null> {
+async function getRole(authId: string): Promise<{ role: string; id: number } | null> {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?auth_id=eq.${encodeURIComponent(authId)}&select=role,status,ban_reason`,
+      `${SUPABASE_URL}/rest/v1/users?auth_id=eq.${encodeURIComponent(authId)}&select=id,role,status,ban_reason`,
       { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
     );
     if (!res.ok) return null;
@@ -46,9 +55,29 @@ async function getRole(authId: string): Promise<string | null> {
     // Même garde qu'apiAuth.ts : un JWT valide ne suffit pas si le compte a
     // été banni depuis son émission.
     if (row.status === "inactive" || row.ban_reason) return null;
-    return row.role || null;
+    return row.role ? { role: row.role, id: row.id } : null;
   } catch {
     return null;
+  }
+}
+
+// 2FA obligatoire pour tout compte admin (voir src/lib/apiAuth.ts, même
+// logique dupliquée ici en défense en profondeur pour /api/admin/*).
+async function has2FASession(userId: number, req: NextRequest): Promise<boolean> {
+  const token = req.headers.get("x-2fa-token");
+  if (!token) return false;
+  try {
+    const tokenHash = await sha256Hex(token);
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/two_factor_sessions?user_id=eq.${userId}&token_hash=eq.${tokenHash}&select=expires_at`,
+      { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
+    );
+    if (!res.ok) return false;
+    const rows = await res.json();
+    const row = rows?.[0];
+    return !!row && new Date(row.expires_at) > new Date();
+  } catch {
+    return false;
   }
 }
 
@@ -67,8 +96,8 @@ export async function proxy(req: NextRequest) {
   // getRole() renvoie null aussi bien pour "profil introuvable" que pour
   // "compte banni" : dans les deux cas l'accès doit être refusé, y compris
   // aux endpoints normalement ouverts à tout utilisateur authentifié.
-  const role = await getRole(authId);
-  if (!role) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const user = await getRole(authId);
+  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   // Published-content reads and avatar uploads: any authenticated, non-banned user
   const isUserLevel =
@@ -76,7 +105,12 @@ export async function proxy(req: NextRequest) {
     (method === "POST" && pathname === "/api/admin/upload");
   if (isUserLevel) return NextResponse.next();
 
-  if (role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+  // 2FA obligatoire pour tout compte admin.
+  if (!(await has2FASession(user.id, req))) {
+    return NextResponse.json({ error: "2FA required" }, { status: 401 });
+  }
 
   return NextResponse.next();
 }

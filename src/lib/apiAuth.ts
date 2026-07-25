@@ -1,5 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createClient } from "@supabase/supabase-js";
+import { hashTwoFactorValue } from "@/lib/twoFactor";
 
 export interface AuthenticatedUser {
   authId: string;
@@ -41,7 +42,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
 
   const { data: row } = await supabaseAdmin
     .from("users")
-    .select("id, role, parent_id, status, ban_reason")
+    .select("id, role, parent_id, status, ban_reason, two_factor_enabled")
     .eq("auth_id", data.user.id)
     .maybeSingle();
 
@@ -52,6 +53,23 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
   // (contournable via un appel direct à l'API). On coupe l'accès ici, au
   // point d'entrée commun à toutes les routes authentifiées.
   if (row.status === "inactive" || row.ban_reason) return null;
+
+  // 2FA obligatoire pour les admins, optionnelle (opt-in) pour parent/enfant.
+  // Le JWT Supabase seul ne suffit pas ici : le code de vérification par
+  // email crée une session 2FA séparée (table two_factor_sessions), dont le
+  // jeton doit être présent et valide dans l'en-tête X-2FA-Token.
+  const requires2FA = row.role === "admin" || row.two_factor_enabled;
+  if (requires2FA) {
+    const twoFAToken = req.headers.get("x-2fa-token");
+    if (!twoFAToken) return null;
+    const { data: session } = await supabaseAdmin
+      .from("two_factor_sessions")
+      .select("expires_at")
+      .eq("user_id", row.id)
+      .eq("token_hash", hashTwoFactorValue(twoFAToken))
+      .maybeSingle();
+    if (!session || new Date(session.expires_at) < new Date()) return null;
+  }
 
   return { authId: data.user.id, id: row.id, role: row.role, parent_id: row.parent_id };
 }

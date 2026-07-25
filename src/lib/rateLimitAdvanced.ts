@@ -55,6 +55,8 @@ export const RATE_LIMITS = {
   'auth:validate-email': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Email validation' },
   'auth:resolve-username': { maxAttempts: 30, windowMs: 60 * 1000, name: 'Username resolution' },
   'auth:forgot-password': { maxAttempts: 5, windowMs: 60 * 60 * 1000, name: 'Password reset' },
+  '2fa:send': { maxAttempts: 5, windowMs: 15 * 60 * 1000, name: '2FA code send' },
+  '2fa:verify': { maxAttempts: 8, windowMs: 15 * 60 * 1000, name: '2FA code verify' },
   
   // Public endpoints - moderate
   'contact:form': { maxAttempts: 5, windowMs: 60 * 60 * 1000, name: 'Contact form' },

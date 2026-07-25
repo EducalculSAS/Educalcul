@@ -6,6 +6,7 @@ export type AuthUser = {
   status: string | null;
   ban_reason: string | null;
   first_name: string | null;
+  two_factor_enabled: boolean | null;
 };
 
 /**
@@ -18,7 +19,7 @@ export async function getPublicUser(
 ): Promise<AuthUser | null> {
   const { data } = await supabase
     .from("users")
-    .select("role, status, ban_reason, first_name")
+    .select("role, status, ban_reason, first_name, two_factor_enabled")
     .eq("auth_id", authId)
     .maybeSingle();
   return data ?? null;
@@ -55,7 +56,20 @@ export async function resolveAuthDestination(
   // Ligne créée par le trigger sans first_name = inscription non terminée
   if (!user.first_name) return "incomplete";
 
-  return getDashboardPath(user.role);
+  const dashboard = getDashboardPath(user.role);
+
+  // 2FA obligatoire pour les admins, opt-in pour parent/enfant (voir
+  // src/lib/twoFactor.ts). Un jeton de session 2FA déjà présent et non expiré
+  // sur cet appareil dispense de repasser par la vérification — l'exactitude
+  // réelle du jeton est de toute façon revérifiée côté serveur à chaque appel
+  // API (src/lib/apiAuth.ts), ceci n'est qu'un raccourci d'UX.
+  const requires2FA = user.role === "admin" || !!user.two_factor_enabled;
+  if (requires2FA) {
+    const token = typeof window !== "undefined" ? window.localStorage.getItem("edu_2fa_token") : null;
+    if (!token) return `/auth/2fa-verify?redirect=${encodeURIComponent(dashboard)}`;
+  }
+
+  return dashboard;
 }
 
 /**

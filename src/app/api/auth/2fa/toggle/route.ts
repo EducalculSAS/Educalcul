@@ -1,0 +1,36 @@
+import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sendEmail } from "@/lib/mailer";
+import { twoFactorToggledEmail } from "@/lib/emailTemplates";
+
+export async function POST(req: Request) {
+  try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const { enabled } = await req.json();
+    if (typeof enabled !== "boolean") {
+      return NextResponse.json({ error: "Paramètre invalide" }, { status: 400 });
+    }
+
+    if (me.role === "admin" && !enabled) {
+      return NextResponse.json({ error: "L'authentification à deux facteurs est obligatoire pour les comptes administrateur." }, { status: 403 });
+    }
+
+    const { error } = await supabaseAdmin.from("users").update({ two_factor_enabled: enabled }).eq("id", me.id);
+    if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+
+    const { data: user } = await supabaseAdmin.from("users").select("first_name, email").eq("id", me.id).maybeSingle();
+    if (user?.email) {
+      const tmpl = twoFactorToggledEmail(user.first_name || "là", enabled);
+      sendEmail({ toEmail: user.email, toName: user.first_name || "Utilisateur", ...tmpl })
+        .then(undefined, (e) => console.error("[2fa/toggle] email non envoyé:", e?.message));
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (err: any) {
+    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  }
+}
