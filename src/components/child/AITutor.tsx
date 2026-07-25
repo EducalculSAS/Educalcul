@@ -42,6 +42,23 @@ function renderContent(text: string) {
   return <span dangerouslySetInnerHTML={{ __html: withBold }} />;
 }
 
+/** Messages élève : même rendu LaTeX que les réponses de l'IA (utile quand
+ * l'élève cite un passage du cours via "sélectionner + expliquer", qui
+ * contient des $...$), mais sans jamais interpréter le reste du message comme
+ * du HTML. On découpe donc le texte en segments $...$/$$...$$ (rendus en
+ * KaTeX) et segments de texte brut (échappés) — échapper AVANT de repérer les
+ * formules casserait celles contenant "<"/">" (ex. $a<0$), puisque ces
+ * caractères font partie de la source LaTeX à faire lire à KaTeX. */
+function renderUserContent(text: string) {
+  const escapeHtml = (s: string) =>
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[^$\r\n]+?\$)/g);
+  const html = parts
+    .map((part) => (/^\$/.test(part) ? renderLatexInHTML(part) : escapeHtml(part)))
+    .join("");
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
 export default function AITutor() {
   const { pageContext } = useAITutor();
   const sub = useSubscription();
@@ -360,10 +377,11 @@ export default function AITutor() {
                       style={msg.role === "assistant"
                         ? { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }
                         : { background: "var(--greek-gold)", color: "#fff", borderBottomRightRadius: 4 }}>
-                      {/* Le rendu HTML/LaTeX ne s'applique qu'aux réponses de
-                          l'IA : un message élève reste du texte brut (JSX
-                          l'échappe automatiquement), pas de surface XSS. */}
-                      {msg.role === "assistant" ? renderContent(msg.content) : msg.content}
+                      {/* Un message élève passe par renderUserContent, qui échappe
+                          d'abord le HTML avant de rendre le LaTeX — donc pas de
+                          surface XSS, mais un passage cité en $...$ (ex. via
+                          "sélectionner + expliquer") s'affiche bien en formule. */}
+                      {msg.role === "assistant" ? renderContent(msg.content) : renderUserContent(msg.content)}
                     </div>
                   </div>
                 ))}
