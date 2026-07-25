@@ -447,20 +447,25 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     };
     mf.addEventListener("input", handler);
 
-    // Permet de faire "Entrée" pour passer à la ligne suivante (réponse multi-lignes)
+    // Permet de faire "Entrée" pour passer à la ligne suivante (réponse multi-lignes).
+    // Une fois le contenu déjà multi-lignes, on ne fait STRICTEMENT RIEN ici :
+    // MathLive gère nativement "Entrée" dans ce cas (addRowAfter, avec son
+    // propre suivi contentWillChange/contentDidChange, undo, etc.) — c'est ce
+    // même chemin natif qu'emprunte le clavier virtuel, d'où son comportement
+    // parfait. Court-circuiter cette logique (comme le faisait l'ancien code,
+    // qui appelait executeCommand directement) désynchronisait cet état interne
+    // et causait des comportements erratiques (saut de ligne, suppression totale
+    // au Retour arrière). On n'intercepte donc que la toute première "Entrée",
+    // pour transformer le contenu plat initial en tableau multi-lignes.
     const keydownHandler = (e: KeyboardEvent) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (!mf.value.startsWith(MULTILINE_ENV_START)) {
-          mf.value = `${MULTILINE_ENV_START}${mf.value}\\\\\\end{array}`;
-          mf.executeCommand("moveToMathfieldEnd");
-        } else {
-          mf.executeCommand("addRowAfter");
-        }
-        onChange(mf.value);
-        updatePlaceholder();
-      }
+      if (e.key !== "Enter" || e.shiftKey) return;
+      if (mf.value.startsWith(MULTILINE_ENV_START)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      mf.value = `${MULTILINE_ENV_START}${mf.value}\\\\\\end{array}`;
+      mf.executeCommand("moveToMathfieldEnd");
+      onChange(mf.value);
+      updatePlaceholder();
     };
     mf.addEventListener("keydown", keydownHandler, true);
 
