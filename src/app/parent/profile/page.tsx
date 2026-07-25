@@ -32,6 +32,7 @@ export default function ParentProfilePage() {
   const [hasActiveSubscription, setHasActiveSubscription] = useState(false);
   const [childrenCount, setChildrenCount] = useState(0);
   const [saving, setSaving] = useState(false);
+  const [exportingData, setExportingData] = useState(false);
   const [googleLinked, setGoogleLinked] = useState(false);
   const [message, setMessage] = useState<{
     type: "success" | "error";
@@ -746,23 +747,27 @@ export default function ParentProfilePage() {
             Mes données
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-600">Télécharge une copie de tes données et de celles de tes enfants (format JSON).</p>
+            <p className="text-sm text-gray-600">Reçois par email un lien pour télécharger une copie de tes données et de celles de tes enfants (format JSON, lien valable 24h).</p>
             <button
               onClick={async () => {
-                const { data: { session } } = await supabase.auth.getSession();
-                if (!session) return;
-                const res = await fetch("/api/parent/export-data", { headers: { Authorization: `Bearer ${session.access_token}` } });
-                const blob = await res.blob();
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = `educalcul-donnees-${new Date().toISOString().slice(0, 10)}.json`;
-                a.click();
-                URL.revokeObjectURL(url);
+                setExportingData(true);
+                try {
+                  const { data: { session } } = await supabase.auth.getSession();
+                  if (!session) return;
+                  const res = await fetch("/api/parent/export-data", { method: "POST", headers: { Authorization: `Bearer ${session.access_token}` } });
+                  const data = await res.json();
+                  if (!res.ok) throw new Error(data.error);
+                  setMessage({ type: "success", text: "Un email avec le lien de téléchargement vient de t'être envoyé." });
+                } catch (err: any) {
+                  setMessage({ type: "error", text: err.message || "Erreur lors de l'envoi." });
+                } finally {
+                  setExportingData(false);
+                }
               }}
-              className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:opacity-90 transition-colors font-medium shadow-sm shrink-0"
+              disabled={exportingData}
+              className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:opacity-90 transition-colors font-medium shadow-sm shrink-0 disabled:opacity-50"
             >
-              Télécharger mes données
+              {exportingData ? "Envoi..." : "Demander mes données"}
             </button>
           </div>
         </div>

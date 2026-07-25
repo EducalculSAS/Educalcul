@@ -353,6 +353,23 @@ export function signInMethodRemovedEmail(firstName: string, method: string) {
   };
 }
 
+export function dataExportRequestEmail(firstName: string, downloadUrl: string) {
+  return {
+    subject: "Tes données Educalcul sont prêtes",
+    textPart: `Bonjour ${firstName},\n\nVoici le lien pour télécharger tes données (lien valable 24h) :\n\n${downloadUrl}\n\nSi tu n'es pas à l'origine de cette demande, ignore cet email.\n\nL'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Tes données Educalcul",
+      preheader: "Lien de téléchargement de tes données",
+      body: `
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
+        <p style="margin:0 0 16px;">Comme demandé, voici le lien pour télécharger une copie de tes données (ton compte et ceux de tes enfants), au format JSON.</p>
+        <p style="margin:0;font-size:12px;color:#9ca3af;">Ce lien est valable <strong>24 heures</strong> et à usage personnel. Si tu n'es pas à l'origine de cette demande, ignore cet email.</p>
+      `,
+      cta: { label: "Télécharger mes données", url: downloadUrl },
+    }),
+  };
+}
+
 export function welcomeEmail(firstName: string, confirmUrl: string) {
   return {
     subject: "Confirmez votre compte Educalcul",
