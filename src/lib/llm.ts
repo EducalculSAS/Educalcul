@@ -1,38 +1,41 @@
-﻿/**
- * Educalcul — Couche transport IA via OpenRouter
+/**
+ * Educalcul — Couche transport IA via l'API Mistral directe (endpoint régional
+ * EU — les données ne quittent jamais l'UE/EEE, voir docs.mistral.ai/studio-api/regional-inference).
  */
 
-const OR_URL      = "https://openrouter.ai/api/v1/chat/completions";
-const OR_MODEL    = process.env.OPENROUTER_MODEL   || "deepseek/deepseek-chat-v3-0324";
-const OR_FALLBACK_MODEL = process.env.OPENROUTER_FALLBACK_MODEL || "deepseek/deepseek-chat-v3-0324";
-const OR_KEY      = process.env.OPENROUTER_API_KEY || "";
+const MISTRAL_URL   = "https://api.eu.mistral.ai/v1/chat/completions";
+const MISTRAL_MODEL = process.env.MISTRAL_MODEL || "mistral-small-latest";
+const MISTRAL_KEY   = process.env.MISTRAL_API_KEY || "";
 
 type Message = { role: "user" | "assistant" | "system"; content: string | MessageContentPart[] };
 type MessageContentPart =
   | { type: "text"; text: string }
-  | { type: "image_url"; image_url: { url: string } };
+  | { type: "image_url"; image_url: string };
 
-const OR_VISION_MODEL = process.env.OPENROUTER_VISION_MODEL || "qwen/qwen2.5-vl-72b-instruct";
+// ── Mistral (texte) ──────────────────────────────────────────────────────────
 
-// ── Providers ─────────────────────────────────────────────────────────────────
+/** Le contenu peut être une simple chaîne, ou (reasoning activé) une liste de
+ * chunks {type:"thinking"|"text", ...} — on ne garde que le texte final,
+ * jamais la trace de raisonnement (pas destinée à être montrée à l'élève). */
+function extractMistralText(content: unknown): string {
+  if (typeof content === "string") return content;
+  if (Array.isArray(content)) {
+    const textChunks = content
+      .filter((c: any) => c?.type === "text" && typeof c.text === "string")
+      .map((c: any) => c.text);
+    if (textChunks.length) return textChunks.join("").trim();
+  }
+  return "";
+}
 
-// Modèles de fallback si le principal est rate-limité (dans l'ordre de préférence)
-const FALLBACK_MODELS = [
-  OR_MODEL,
-  OR_FALLBACK_MODEL,
-  "deepseek/deepseek-chat",
-];
-
-async function callOpenRouterModel(
+async function callMistralModel(
   model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false
 ): Promise<{ ok: boolean; text: string; status: number }> {
   const body: any = {
     model,
     messages: msgs,
     temperature: temp,
-    // Route to the highest-throughput provider for this model (same model =
-    // same quality, just faster generation). Keep fallbacks on for reliability.
-    provider: { sort: "throughput", allow_fallbacks: true },
+    reasoning_effort: reasoning ? "high" : "none",
   };
   if (maxTokens) body.max_tokens = maxTokens;
 
@@ -41,13 +44,11 @@ async function callOpenRouterModel(
 
   let resp: Response;
   try {
-    resp = await fetch(OR_URL, {
+    resp = await fetch(MISTRAL_URL, {
       method: "POST",
       headers: {
         "Content-Type":  "application/json",
-        "Authorization": `Bearer ${OR_KEY}`,
-        "HTTP-Referer":  "https://educalcul.com",
-        "X-Title":       "Educalcul",
+        "Authorization": `Bearer ${MISTRAL_KEY}`,
       },
       body: JSON.stringify(body),
       signal: controller.signal,
@@ -60,78 +61,51 @@ async function callOpenRouterModel(
   return { ok: resp.ok, text, status: resp.status };
 }
 
-async function callOpenRouter(
+async function callMistral(
   msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false
 ): Promise<string> {
-  const rateLimited: string[] = [];
+  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning);
 
-  async function tryModel(model: string): Promise<string | null> {
-    const { ok, text, status } = await callOpenRouterModel(model, msgs, temp, maxTokens, reasoning);
-
-    if (ok) {
-      try {
-        const parsed = JSON.parse(text);
-        const msg = parsed?.choices?.[0]?.message;
-        const content = msg?.content ?? msg?.reasoning ?? parsed?.choices?.[0]?.text ?? null;
-        if (content) return content.trim();
-        const finishReason = parsed?.choices?.[0]?.finish_reason;
-        if (finishReason === "length") { console.warn(`[llm] ${model} hit max_tokens`); return null; }
-        return text.trim();
-      } catch { return text.trim(); }
-    }
-
-    if (status === 429 || status === 503) {
-      console.warn(`[llm] ${model} rate-limited (${status}), queued for retry`);
-      rateLimited.push(model);
-      return null;
-    }
-
-    if (status === 402) {
-      // Crédits insuffisants pour le max_tokens demandé : on retente avec
-      // le nombre de tokens que le compte peut effectivement payer.
-      const affordMatch = text.match(/can only afford (\d+)/);
-      const afford = affordMatch ? parseInt(affordMatch[1], 10) : null;
-      if (afford && maxTokens && afford < maxTokens && afford > 500) {
-        console.warn(`[llm] ${model} 402 (crédits insuffisants), retry avec max_tokens=${afford}`);
-        const retry = await callOpenRouterModel(model, msgs, temp, afford, reasoning);
-        if (retry.ok) {
-          try {
-            const parsed = JSON.parse(retry.text);
-            const msg = parsed?.choices?.[0]?.message;
-            const content = msg?.content ?? msg?.reasoning ?? parsed?.choices?.[0]?.text ?? null;
-            if (content) return content.trim();
-            return retry.text.trim();
-          } catch { return retry.text.trim(); }
-        }
-        console.error(`[llm] ${model} retry error ${retry.status}: ${retry.text.slice(0, 400)}`);
+  if (ok) {
+    try {
+      const parsed = JSON.parse(text);
+      const msg = parsed?.choices?.[0]?.message;
+      const content = extractMistralText(msg?.content) || (typeof msg?.content === "string" ? msg.content : "");
+      if (content) return content.trim();
+      const finishReason = parsed?.choices?.[0]?.finish_reason;
+      if (finishReason === "length") {
+        console.warn(`[llm] ${MISTRAL_MODEL} hit max_tokens`);
+        throw new Error("Réponse IA tronquée (max_tokens atteint).");
       }
+      return text.trim();
+    } catch (e) {
+      if (e instanceof Error && e.message.includes("tronquée")) throw e;
+      return text.trim();
     }
-
-    console.error(`[llm] ${model} error ${status}: ${text.slice(0, 400)}`);
-    return null;
   }
 
-  // 1ère passe : tous les modèles
-  for (const model of FALLBACK_MODELS) {
-    const result = await tryModel(model);
-    if (result) return result;
-  }
-
-  // 2ème passe : retenter les modèles rate-limités avec un court délai
-  if (rateLimited.length > 0) {
+  if (status === 429) {
+    console.warn(`[llm] ${MISTRAL_MODEL} rate-limited, nouvelle tentative dans 1.5s`);
     await new Promise(r => setTimeout(r, 1500));
-    for (const model of rateLimited) {
-      console.log(`[llm] retrying rate-limited model: ${model}`);
-      const result = await tryModel(model);
-      if (result) return result;
+    const retry = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning);
+    if (retry.ok) {
+      try {
+        const parsed = JSON.parse(retry.text);
+        const msg = parsed?.choices?.[0]?.message;
+        const content = extractMistralText(msg?.content) || (typeof msg?.content === "string" ? msg.content : "");
+        if (content) return content.trim();
+        return retry.text.trim();
+      } catch { return retry.text.trim(); }
     }
+    console.error(`[llm] ${MISTRAL_MODEL} retry error ${retry.status}: ${retry.text.slice(0, 400)}`);
   }
 
-  throw new Error("Tous les modèles IA sont indisponibles. Réessaie dans quelques secondes.");
+  console.error(`[llm] ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`);
+  throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
 }
 
 function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false) {
-  return callOpenRouter(msgs, temp, maxTokens, reasoning);
+  return callMistral(msgs, temp, maxTokens, reasoning);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -277,18 +251,18 @@ RÈGLES pour le feedback :
       role: "user",
       content: [
         { type: "text", text: userText },
-        { type: "image_url", image_url: { url: imageDataUrl } },
+        { type: "image_url", image_url: imageDataUrl },
       ],
     },
   ];
 
-  const { ok, text, status } = await callOpenRouterModel(OR_VISION_MODEL, msgs, 0.2, 800);
+  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, 0.2, 800, false);
   if (!ok) {
-    console.error(`[llm] vision model ${OR_VISION_MODEL} error ${status}: ${text.slice(0, 400)}`);
+    console.error(`[llm] vision ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`);
     throw new Error("Le modèle de vision IA est indisponible. Réessaie dans quelques secondes.");
   }
   const parsed = JSON.parse(text);
-  const content = parsed?.choices?.[0]?.message?.content ?? "";
+  const content = extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
   const r = parseJSON(extractJSON(content)) as any;
   return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
 }
@@ -301,12 +275,12 @@ export async function generateStructuredContent(
     [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
     temperature,
     maxTokens,
-    false  // reasoning désactivé : DeepSeek ne le supporte pas via OpenRouter
+    false
   );
   return parseJSON(extractJSON(text));
 }
 
-/** Chatbot tuteur IA — reasoning DÉSACTIVÉ pour la rapidité */
+/** Chatbot tuteur IA — reasoning activé (Mistral Small, mode reasoning) */
 export async function chatWithAI(
   messages: Array<{ role: "user" | "assistant"; content: string }>,
   systemPrompt: string,
@@ -316,7 +290,7 @@ export async function chatWithAI(
   return (await dispatch(
     [{ role: "system", content: systemPrompt }, ...messages.map(m => ({ role: m.role as "user"|"assistant", content: m.content }))],
     temperature, maxTokens,
-    false  // ← reasoning désactivé : réponses instantanées pour l'élève
+    true
   )).trim();
 }
 
