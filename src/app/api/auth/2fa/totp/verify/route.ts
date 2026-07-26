@@ -5,6 +5,7 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { verifyTotp, looksLikeBackupCode } from "@/lib/totp";
 import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
+import { auditLog, AuditAction } from "@/lib/auditLog";
 
 // Vérifie un code TOTP au login (une fois la configuration déjà confirmée)
 // et mint une session 2FA, comme /2fa/verify-code pour le flux email.
@@ -45,10 +46,14 @@ export async function POST(req: Request) {
         .eq("user_id", user.id)
         .is("used_at", null);
       const match = (backupCode || []).find(b => b.code_hash === hashTwoFactorValue(code.trim().toUpperCase()));
-      if (!match) return NextResponse.json({ error: "Code de secours incorrect ou déjà utilisé." }, { status: 400 });
+      if (!match) {
+        await auditLog({ action: AuditAction.TWO_FACTOR_FAILED, adminId: user.id, details: { method: "totp-backup-code" } }, req);
+        return NextResponse.json({ error: "Code de secours incorrect ou déjà utilisé." }, { status: 400 });
+      }
       await supabaseAdmin.from("two_factor_backup_codes").update({ used_at: new Date().toISOString() }).eq("id", match.id);
       usedBackupCode = true;
     } else if (!verifyTotp(totp.secret, code)) {
+      await auditLog({ action: AuditAction.TWO_FACTOR_FAILED, adminId: user.id, details: { method: "totp" } }, req);
       return NextResponse.json({ error: "Code incorrect." }, { status: 400 });
     }
 
@@ -62,6 +67,11 @@ export async function POST(req: Request) {
       user_agent: req.headers.get("user-agent") || null,
     });
     if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
+
+    await auditLog(
+      { action: AuditAction.TWO_FACTOR_VERIFIED, adminId: user.id, details: { method: usedBackupCode ? "totp-backup-code" : "totp" } },
+      req,
+    );
 
     return NextResponse.json({ success: true, token, expiresAt, usedBackupCode });
   } catch (err: any) {

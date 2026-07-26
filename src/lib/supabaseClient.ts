@@ -28,9 +28,9 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
   (window as any)[FETCH_PATCH_KEY] = true;
   const originalFetch = window.fetch.bind(window);
   window.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+    let url = "";
     try {
-      const url =
-        typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
+      url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
       if (url.startsWith("/api/")) {
         const { data: { session } } = await getPublicClient().auth.getSession();
         const twoFAToken = window.localStorage.getItem("edu_2fa_token");
@@ -53,7 +53,25 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
     } catch {
       // Never block a request because token retrieval failed.
     }
-    return originalFetch(input as any, init);
+    const response = await originalFetch(input as any, init);
+    // Un jeton 2FA présent en localStorage mais expiré/révoqué (TTL admin de
+    // 4h) laisse admin/layout.tsx croire la 2FA validée (il ne vérifie que la
+    // PRÉSENCE du jeton, pas sa validité) : la page s'affiche, puis chaque
+    // appel /api/admin/* échoue en 401 sans qu'aucun code ne redirige vers la
+    // re-vérification — d'où le "Erreur de chargement." qui forçait une
+    // déconnexion complète. On intercepte ici, au point d'entrée commun à
+    // tous les appels admin, pour renvoyer proprement vers /auth/2fa-verify.
+    if (
+      response.status === 401 &&
+      url.startsWith("/api/admin/") &&
+      window.location.pathname.startsWith("/admin")
+    ) {
+      window.localStorage.removeItem("edu_2fa_token");
+      window.location.href = `/auth/2fa-verify?redirect=${encodeURIComponent(
+        window.location.pathname,
+      )}`;
+    }
+    return response;
   }) as typeof fetch;
 }
 

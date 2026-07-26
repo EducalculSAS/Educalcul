@@ -4,6 +4,7 @@ import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
+import { auditLog, AuditAction } from "@/lib/auditLog";
 
 export async function POST(req: Request) {
   try {
@@ -47,6 +48,7 @@ export async function POST(req: Request) {
 
     if (hashTwoFactorValue(code.trim()) !== pending.code_hash) {
       await supabaseAdmin.from("two_factor_codes").update({ attempts: pending.attempts + 1 }).eq("id", pending.id);
+      await auditLog({ action: AuditAction.TWO_FACTOR_FAILED, adminId: user.id, details: { method: "email" } }, req);
       return NextResponse.json({ error: "Code incorrect." }, { status: 400 });
     }
 
@@ -63,6 +65,8 @@ export async function POST(req: Request) {
       user_agent: req.headers.get("user-agent") || null,
     });
     if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
+
+    await auditLog({ action: AuditAction.TWO_FACTOR_VERIFIED, adminId: user.id, details: { method: "email" } }, req);
 
     return NextResponse.json({ success: true, token, expiresAt });
   } catch (err: any) {

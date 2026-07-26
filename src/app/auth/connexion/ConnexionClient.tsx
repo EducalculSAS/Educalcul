@@ -76,6 +76,15 @@ export default function ConnexionClient() {
         }
       }
       const { data, error: authError } = await supabase.auth.signInWithPassword({ email, password });
+      // Journalise la tentative (réussie ou non) sans bloquer/retarder la
+      // connexion — un échec de mot de passe n'était visible nulle part
+      // avant ce correctif, y compris en cas d'activité suspecte sur un
+      // compte (codes 2FA reçus sans tentative de connexion volontaire).
+      fetch("/api/auth/log-login-attempt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, success: !authError }),
+      }).catch(() => {});
       if (authError) throw authError;
       if (data.user) {
         const dest = await resolveAuthDestination(supabase, data.user.id);

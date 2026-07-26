@@ -28,12 +28,25 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const load = useCallback(async (silent = false) => {
     if (!silent) setLoading(true); else setRefreshing(true);
     try {
       const res = await fetch(`/api/admin/stats?t=${Date.now()}`, { cache: "no-store" });
-      if (res.ok) { setData(await res.json()); setLastUpdated(new Date()); }
+      if (res.ok) {
+        setData(await res.json());
+        setLastUpdated(new Date());
+        setLoadError(null);
+      } else if (res.status === 401) {
+        // Le fetch patché de supabaseClient.ts redirige déjà vers la
+        // re-vérification 2FA dans ce cas — rien de plus à faire ici.
+        setLoadError("Session expirée, redirection…");
+      } else {
+        setLoadError(`Erreur serveur (${res.status}).`);
+      }
+    } catch {
+      setLoadError("Impossible de contacter le serveur.");
     } finally {
       setLoading(false); setRefreshing(false);
     }
@@ -42,7 +55,7 @@ export default function AdminDashboard() {
   useEffect(() => { load(); }, [load]);
 
   if (loading) return <PageLoader />;
-  if (!data) return <div className="p-6 text-red-500">Erreur de chargement.</div>;
+  if (!data) return <div className="p-6 text-red-500">{loadError || "Erreur de chargement."}</div>;
 
   const { counts, recent } = data;
 

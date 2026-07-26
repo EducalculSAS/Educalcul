@@ -25,6 +25,11 @@ const ACTION_LABELS: Record<string, string> = {
   EMAIL_TEMPLATE_UPDATED: "Modèle email modifié",
   REFERRAL_CODE_CREATED: "Code de parrainage créé",
   TWO_FACTOR_TOGGLED_BY_ADMIN: "2FA modifiée (par un admin)",
+  LOGIN_SUCCESS: "Connexion réussie",
+  LOGIN_FAILED: "Connexion échouée",
+  TWO_FACTOR_CODE_SENT: "Code 2FA envoyé",
+  TWO_FACTOR_VERIFIED: "2FA vérifiée",
+  TWO_FACTOR_FAILED: "Code 2FA incorrect",
 };
 
 function userLabel(u: { first_name?: string; last_name?: string; email?: string } | null): string {
@@ -83,7 +88,10 @@ export default function AuditLogPage() {
                   <td className="px-4 py-3 text-gray-500 whitespace-nowrap">
                     {new Date(e.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
                   </td>
-                  <td className="px-4 py-3 font-medium text-[var(--greek-blue)]">{ACTION_LABELS[e.action] || e.action}</td>
+                  <td className="px-4 py-3 font-medium text-[var(--greek-blue)]">
+                    {ACTION_LABELS[e.action] || e.action}
+                    {e.details?.method && <span className="ml-1 font-normal text-gray-400">({e.details.method})</span>}
+                  </td>
                   <td className="px-4 py-3 text-gray-700">{userLabel(e.admin)}</td>
                   <td className="px-4 py-3 text-gray-700">{e.target ? userLabel(e.target) : (e.target_type || "—")}</td>
                   <td className="px-4 py-3 text-gray-400 font-mono text-xs">{e.ip_address}</td>
