@@ -116,6 +116,10 @@ function repairMathSegment(seg: string): string {
   const original = seg.slice(delim.length, seg.length - delim.length);
   let destrayed = original.includes("$") ? original.replace(/\$+/g, " \\quad ") : original;
   destrayed = destrayed.replace(/\\([()])/g, "");
+  // L'IA écrit parfois l'entité HTML &lt;/&gt; au lieu de \lt/\gt à
+  // l'intérieur d'une formule déjà bien délimitée (souvent en mélangeant les
+  // deux dans le même tableau) — KaTeX ne connaît pas "&lt;" comme symbole.
+  destrayed = destrayed.replace(/&lt;/g, " \\lt ").replace(/&gt;/g, " \\gt ");
   const balanced = balanceBraces(destrayed);
   return balanced === original ? seg : `${delim}${balanced}${delim}`;
 }
