@@ -50,9 +50,13 @@ type BlockingQualityIssue = {
   excerpt?: string;
 };
 
-const MAX_QUALITY_REVIEW_PASSES = 1;
+// Boucle jusqu'à 0 anomalie plutôt que de s'arrêter après une seule
+// correction : plusieurs anomalies simultanées dans un même chapitre ne sont
+// pas toujours toutes résolues en un seul appel IA. La boucle s'arrête dès
+// que bestIssues.length === 0 (souvent avant d'atteindre ce plafond).
+const MAX_QUALITY_REVIEW_PASSES = 4;
 const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1700;
-const QUALITY_REVIEW_TIMEOUT_MS = 45_000;
+const QUALITY_REVIEW_TIMEOUT_MS = 45_000 * MAX_QUALITY_REVIEW_PASSES;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -602,7 +606,13 @@ Renvoie uniquement le chapitre JSON complet corrigé avec la même structure {"t
   return best;
 }
 
-export const maxDuration = 300; // plafond de sécurité uniquement ; il ne ralentit pas la génération
+// Plafond de sécurité uniquement ; il ne ralentit pas la génération, il
+// coupe seulement la requête si elle dépasse cette durée. Relevé à 800s pour
+// laisser de la marge aux 4 passes de correction par chapitre. 800s est le
+// maximum autorisé par Vercel avec Fluid Compute (Pro/Enterprise) ; sur un
+// plan qui ne le permet pas, Vercel plafonnera silencieusement à sa propre
+// limite (ex: 300s sur Hobby/Pro sans Fluid Compute) au déploiement.
+export const maxDuration = 800;
 
 export async function POST(request: Request) {
   // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
