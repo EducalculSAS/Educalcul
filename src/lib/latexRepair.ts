@@ -46,6 +46,45 @@ const CMD_WITH_ARGS_RE = new RegExp(
 
 const CMD_SYMBOL_RE = new RegExp(`\\\\(?:${CMD_SYMBOLS})\\b`, "g");
 
+/**
+ * Corrige les commandes LaTeX doublement échappées par l'IA.
+ *
+ * Exemple après lecture du JSON :
+ *   \\overrightarrow{AB}
+ * devient :
+ *   \overrightarrow{AB}
+ *
+ * On ne touche qu'aux doubles antislashs placés devant une commande LaTeX
+ * connue. Les vrais retours à la ligne `\\` utilisés dans aligned, matrix,
+ * cases, etc. restent donc intacts.
+ */
+function normalizeDoubleEscapedLatexCommands(text: string): string {
+  const commandNames = [
+    CMD_WITH_ARGS,
+    CMD_SYMBOLS,
+    "left",
+    "right",
+    "begin",
+    "end",
+  ].join("|");
+
+  const doubleEscapedCommand = new RegExp(
+    `\\\\\\\\(?=(?:${commandNames})\\b)`,
+    "g",
+  );
+
+  let result = text;
+
+  // Répare aussi les textes qui auraient été échappés plusieurs fois.
+  for (let pass = 0; pass < 3; pass++) {
+    const repaired = result.replace(doubleEscapedCommand, "\\");
+    if (repaired === result) break;
+    result = repaired;
+  }
+
+  return result;
+}
+
 /** Mots de prose française (≥ 3 lettres, hors commande LaTeX). Sert à
  * distinguer « ce segment est une formule » de « ce segment est une phrase
  * qui contient une formule ». */
@@ -59,7 +98,8 @@ function splitMathSegments(text: string): { text: string; isMath: boolean }[] {
   let last = 0;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
-    if (m.index > last) out.push({ text: text.slice(last, m.index), isMath: false });
+    if (m.index > last)
+      out.push({ text: text.slice(last, m.index), isMath: false });
     out.push({ text: m[0], isMath: true });
     last = m.index + m[0].length;
   }
@@ -114,7 +154,9 @@ function repairMathSegment(seg: string): string {
   const isDisplay = seg.startsWith("$$");
   const delim = isDisplay ? "$$" : "$";
   const original = seg.slice(delim.length, seg.length - delim.length);
-  let destrayed = original.includes("$") ? original.replace(/\$+/g, " \\quad ") : original;
+  let destrayed = original.includes("$")
+    ? original.replace(/\$+/g, " \\quad ")
+    : original;
   destrayed = destrayed.replace(/\\([()])/g, "");
   // L'IA écrit parfois l'entité HTML &lt;/&gt; au lieu de \lt/\gt à
   // l'intérieur d'une formule déjà bien délimitée (souvent en mélangeant les
@@ -141,7 +183,10 @@ function wrapInlineCommands(segment: string): string {
   // Commandes-symboles : on les regroupe avec les caractères mathématiques
   // adjacents (chiffres, opérateurs, parenthèses) pour éviter "$\quad$ (2)".
   result = result.replace(
-    new RegExp(`(?:\\\\(?:${CMD_SYMBOLS})\\b[\\s]*)+[\\s0-9()+\\-*/=.,^_|]*`, "g"),
+    new RegExp(
+      `(?:\\\\(?:${CMD_SYMBOLS})\\b[\\s]*)+[\\s0-9()+\\-*/=.,^_|]*`,
+      "g",
+    ),
     (m) => {
       const trimmed = m.trimEnd();
       if (!trimmed) return m;
@@ -177,7 +222,9 @@ function normalizeStraySegment(raw: string): string {
 /** Répare un segment de texte brut (déjà isolé de tout balisage HTML). */
 function repairTextSegment(raw: string): string {
   if (!raw.trim()) return raw;
-  const text = dropUnmatchedDelimiters(normalizeStraySegment(raw).replace(/\$\$\$+/g, "$$"));
+  const text = dropUnmatchedDelimiters(
+    normalizeStraySegment(raw).replace(/\$\$\$+/g, "$$"),
+  );
 
   return splitMathSegments(text)
     .map(({ text: seg, isMath }) => {
@@ -249,33 +296,113 @@ function escapeStrayAngleBrackets(html: string): string {
  */
 export function repairLatex(html: string): string {
   if (!html) return html;
+
+  const normalized = normalizeDoubleEscapedLatexCommands(html);
+
   return escapeStrayAngleBrackets(
-    mergeStrayComparison(convertOperatorInsideSinglePair(html)),
+    mergeStrayComparison(convertOperatorInsideSinglePair(normalized)),
   )
     .split(/(<[^>]*>)/)
-    .map((part) => (part.startsWith("<") && part.endsWith(">") ? part : repairTextSegment(part)))
+    .map((part) =>
+      part.startsWith("<") && part.endsWith(">")
+        ? part
+        : repairTextSegment(part),
+    )
     .join("");
 }
 
 const GREEK_LOWER: Record<string, string> = {
-  alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ε", varepsilon: "ε",
-  zeta: "ζ", eta: "η", theta: "θ", vartheta: "ϑ", iota: "ι", kappa: "κ",
-  lambda: "λ", mu: "μ", nu: "ν", xi: "ξ", pi: "π", rho: "ρ", sigma: "σ",
-  tau: "τ", upsilon: "υ", phi: "φ", varphi: "φ", chi: "χ", psi: "ψ", omega: "ω",
+  alpha: "α",
+  beta: "β",
+  gamma: "γ",
+  delta: "δ",
+  epsilon: "ε",
+  varepsilon: "ε",
+  zeta: "ζ",
+  eta: "η",
+  theta: "θ",
+  vartheta: "ϑ",
+  iota: "ι",
+  kappa: "κ",
+  lambda: "λ",
+  mu: "μ",
+  nu: "ν",
+  xi: "ξ",
+  pi: "π",
+  rho: "ρ",
+  sigma: "σ",
+  tau: "τ",
+  upsilon: "υ",
+  phi: "φ",
+  varphi: "φ",
+  chi: "χ",
+  psi: "ψ",
+  omega: "ω",
 };
 const GREEK_UPPER: Record<string, string> = {
-  Gamma: "Γ", Delta: "Δ", Theta: "Θ", Lambda: "Λ", Xi: "Ξ", Pi: "Π",
-  Sigma: "Σ", Phi: "Φ", Psi: "Ψ", Omega: "Ω",
+  Gamma: "Γ",
+  Delta: "Δ",
+  Theta: "Θ",
+  Lambda: "Λ",
+  Xi: "Ξ",
+  Pi: "Π",
+  Sigma: "Σ",
+  Phi: "Φ",
+  Psi: "Ψ",
+  Omega: "Ω",
 };
 const SUB_MAP: Record<string, string> = {
-  "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄", "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
-  "+": "₊", "-": "₋", "=": "₌", "(": "₍", ")": "₎",
-  a: "ₐ", e: "ₑ", h: "ₕ", i: "ᵢ", j: "ⱼ", k: "ₖ", l: "ₗ", m: "ₘ", n: "ₙ",
-  o: "ₒ", p: "ₚ", r: "ᵣ", s: "ₛ", t: "ₜ", u: "ᵤ", v: "ᵥ", x: "ₓ",
+  "0": "₀",
+  "1": "₁",
+  "2": "₂",
+  "3": "₃",
+  "4": "₄",
+  "5": "₅",
+  "6": "₆",
+  "7": "₇",
+  "8": "₈",
+  "9": "₉",
+  "+": "₊",
+  "-": "₋",
+  "=": "₌",
+  "(": "₍",
+  ")": "₎",
+  a: "ₐ",
+  e: "ₑ",
+  h: "ₕ",
+  i: "ᵢ",
+  j: "ⱼ",
+  k: "ₖ",
+  l: "ₗ",
+  m: "ₘ",
+  n: "ₙ",
+  o: "ₒ",
+  p: "ₚ",
+  r: "ᵣ",
+  s: "ₛ",
+  t: "ₜ",
+  u: "ᵤ",
+  v: "ᵥ",
+  x: "ₓ",
 };
 const SUP_MAP: Record<string, string> = {
-  "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹",
-  "+": "⁺", "-": "⁻", "=": "⁼", "(": "⁽", ")": "⁾", n: "ⁿ", i: "ⁱ",
+  "0": "⁰",
+  "1": "¹",
+  "2": "²",
+  "3": "³",
+  "4": "⁴",
+  "5": "⁵",
+  "6": "⁶",
+  "7": "⁷",
+  "8": "⁸",
+  "9": "⁹",
+  "+": "⁺",
+  "-": "⁻",
+  "=": "⁼",
+  "(": "⁽",
+  ")": "⁾",
+  n: "ⁿ",
+  i: "ⁱ",
 };
 
 /** Convertit chaque caractère de `body` via `map` ; renvoie null si un seul
@@ -320,12 +447,27 @@ export function mathToPlainText(math: string): string {
   // alphabétique) et s'affichent comme du charabia dans le schéma.
   s = s.replace(/\\[!,;: ]/g, "");
   const SYMS: [RegExp, string][] = [
-    [/\\cdot\b/g, "·"], [/\\times\b/g, "×"], [/\\div\b/g, "÷"], [/\\pm\b/g, "±"], [/\\mp\b/g, "∓"],
-    [/\\leq\b|\\le\b/g, "≤"], [/\\geq\b|\\ge\b/g, "≥"], [/\\neq\b|\\ne\b/g, "≠"],
-    [/\\infty\b/g, "∞"], [/\\approx\b/g, "≈"], [/\\equiv\b/g, "≡"],
-    [/\\perp\b/g, "⊥"], [/\\parallel\b/g, "∥"], [/\\angle\b/g, "∠"], [/\\circ\b/g, "°"],
-    [/\\rightarrow\b|\\to\b/g, "→"], [/\\Rightarrow\b/g, "⇒"], [/\\leftrightarrow\b/g, "↔"],
-    [/\\in\b/g, "∈"], [/\\forall\b/g, "∀"], [/\\exists\b/g, "∃"],
+    [/\\cdot\b/g, "·"],
+    [/\\times\b/g, "×"],
+    [/\\div\b/g, "÷"],
+    [/\\pm\b/g, "±"],
+    [/\\mp\b/g, "∓"],
+    [/\\leq\b|\\le\b/g, "≤"],
+    [/\\geq\b|\\ge\b/g, "≥"],
+    [/\\neq\b|\\ne\b/g, "≠"],
+    [/\\infty\b/g, "∞"],
+    [/\\approx\b/g, "≈"],
+    [/\\equiv\b/g, "≡"],
+    [/\\perp\b/g, "⊥"],
+    [/\\parallel\b/g, "∥"],
+    [/\\angle\b/g, "∠"],
+    [/\\circ\b/g, "°"],
+    [/\\rightarrow\b|\\to\b/g, "→"],
+    [/\\Rightarrow\b/g, "⇒"],
+    [/\\leftrightarrow\b/g, "↔"],
+    [/\\in\b/g, "∈"],
+    [/\\forall\b/g, "∀"],
+    [/\\exists\b/g, "∃"],
     [/\\quad\b|\\qquad\b/g, " "],
   ];
   for (const [re, rep] of SYMS) s = s.replace(re, rep);
@@ -335,14 +477,20 @@ export function mathToPlainText(math: string): string {
     /\\([A-Za-z]+)/g,
     (_m, name: string) => GREEK_LOWER[name] ?? GREEK_UPPER[name] ?? name,
   );
-  s = s.replace(/\^\{([^{}]*)\}|\^([0-9A-Za-z+\-=()])/g, (_m, g1: string, g2: string) => {
-    const body = g1 ?? g2;
-    return toScript(body, SUP_MAP) ?? body;
-  });
-  s = s.replace(/_\{([^{}]*)\}|_([0-9A-Za-z+\-=()])/g, (_m, g1: string, g2: string) => {
-    const body = g1 ?? g2;
-    return toScript(body, SUB_MAP) ?? body;
-  });
+  s = s.replace(
+    /\^\{([^{}]*)\}|\^([0-9A-Za-z+\-=()])/g,
+    (_m, g1: string, g2: string) => {
+      const body = g1 ?? g2;
+      return toScript(body, SUP_MAP) ?? body;
+    },
+  );
+  s = s.replace(
+    /_\{([^{}]*)\}|_([0-9A-Za-z+\-=()])/g,
+    (_m, g1: string, g2: string) => {
+      const body = g1 ?? g2;
+      return toScript(body, SUB_MAP) ?? body;
+    },
+  );
   s = s.replace(/[{}]/g, "");
   return s.trim();
 }
@@ -365,8 +513,12 @@ export function renderMathAsPlainTextInSvg(svgHtml: string): string {
   result = result.replace(/\$([^$<>\r\n]+?)\$/g, (m, math) =>
     math.trim() ? escapeSvgText(mathToPlainText(math)) : m,
   );
-  result = result.replace(/\\\(([^<>]+?)\\\)/g, (m, math) => escapeSvgText(mathToPlainText(math)));
-  result = result.replace(/\\\[([^<>]+?)\\\]/g, (m, math) => escapeSvgText(mathToPlainText(math)));
+  result = result.replace(/\\\(([^<>]+?)\\\)/g, (m, math) =>
+    escapeSvgText(mathToPlainText(math)),
+  );
+  result = result.replace(/\\\[([^<>]+?)\\\]/g, (m, math) =>
+    escapeSvgText(mathToPlainText(math)),
+  );
   result = result.replace(/\$\$/g, "");
   return result;
 }
@@ -384,7 +536,10 @@ export function normalizeSvgArrowMarkers(svgHtml: string): string {
   if (!svgHtml.includes("<marker")) return svgHtml;
   return svgHtml.replace(/<marker\b([^>]*)>/g, (match, attrs: string) => {
     if (/\bmarkerUnits\s*=/.test(attrs)) {
-      return match.replace(/\bmarkerUnits\s*=\s*"[^"]*"/, 'markerUnits="userSpaceOnUse"');
+      return match.replace(
+        /\bmarkerUnits\s*=\s*"[^"]*"/,
+        'markerUnits="userSpaceOnUse"',
+      );
     }
     return `<marker${attrs} markerUnits="userSpaceOnUse">`;
   });
