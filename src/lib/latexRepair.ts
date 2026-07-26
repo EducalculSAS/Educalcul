@@ -314,6 +314,11 @@ export function mathToPlainText(math: string): string {
   s = s.replace(/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2");
   s = s.replace(/\\sqrt\{([^{}]*)\}/g, "√($1)");
   s = s.replace(/\\\|/g, "‖");
+  // Espacements purement typographiques (\! \, \; \: \<espace>) : aucun
+  // contenu textuel, on les retire — sinon ils restent tels quels (aucune
+  // des règles suivantes ne reconnaît un backslash suivi d'un symbole non
+  // alphabétique) et s'affichent comme du charabia dans le schéma.
+  s = s.replace(/\\[!,;: ]/g, "");
   const SYMS: [RegExp, string][] = [
     [/\\cdot\b/g, "·"], [/\\times\b/g, "×"], [/\\div\b/g, "÷"], [/\\pm\b/g, "±"], [/\\mp\b/g, "∓"],
     [/\\leq\b|\\le\b/g, "≤"], [/\\geq\b|\\ge\b/g, "≥"], [/\\neq\b|\\ne\b/g, "≠"],
