@@ -40,6 +40,18 @@ function TwoFactorVerifyContent() {
     }
   };
 
+  // Décoy pour les comptes admin (2FA par application, jamais par email) :
+  // l'écran doit rester indiscernable du flux email pour quiconque tenterait
+  // de se connecter à un compte admin — aucun email n'est réellement envoyé.
+  const fakeResend = () => {
+    setSending(true);
+    setTimeout(() => {
+      setSending(false);
+      setSent(true);
+      setCooldown(60);
+    }, 600);
+  };
+
   useEffect(() => {
     if (sentOnce.current) return;
     sentOnce.current = true;
@@ -100,11 +112,9 @@ function TwoFactorVerifyContent() {
           Vérification en deux étapes
         </h1>
         <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-          {method === "totp"
-            ? "Entrez le code de votre application d'authentification."
-            : sent
-              ? "Un code à 6 chiffres a été envoyé par email."
-              : "Envoi du code en cours…"}
+          {sent || method === "totp"
+            ? "Un code à 6 chiffres a été envoyé par email."
+            : "Envoi du code en cours…"}
         </p>
       </div>
 
@@ -145,18 +155,16 @@ function TwoFactorVerifyContent() {
           </button>
         </form>
 
-        {method !== "totp" && (
-          <button
-            type="button"
-            onClick={sendCode}
-            disabled={sending || cooldown > 0}
-            className="w-full flex items-center justify-center gap-2 mt-4 text-xs font-semibold transition-opacity disabled:opacity-40"
-            style={{ color: "var(--greek-gold)" }}
-          >
-            <RotateCcw className="w-3 h-3" />
-            {cooldown > 0 ? `Renvoyer le code (${cooldown}s)` : sending ? "Envoi…" : "Renvoyer le code"}
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={method === "totp" ? fakeResend : sendCode}
+          disabled={sending || cooldown > 0}
+          className="w-full flex items-center justify-center gap-2 mt-4 text-xs font-semibold transition-opacity disabled:opacity-40"
+          style={{ color: "var(--greek-gold)" }}
+        >
+          <RotateCcw className="w-3 h-3" />
+          {cooldown > 0 ? `Renvoyer le code (${cooldown}s)` : sending ? "Envoi…" : "Renvoyer le code"}
+        </button>
       </div>
     </div>
   );
