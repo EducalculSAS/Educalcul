@@ -242,7 +242,8 @@ export type CourseQualityIssueCode =
   | "answer_conclusion_mismatch"
   | "likely_semantic_contradiction"
   | "latex_required_repair"
-  | "unwrapped_math_notation";
+  | "unwrapped_math_notation"
+  | "hand_drawn_curve_svg";
 
 export type CourseQualityIssue = {
   severity: CourseQualityIssueSeverity;
@@ -270,6 +271,28 @@ function textOutsideMathAndTags(value: string): string {
     .replace(/<[^>]*>/g, " ")
     .replace(/\$\$[\s\S]*?\$\$/g, " ")
     .replace(/\$[^$\r\n]*?\$/g, " ");
+}
+
+// Un SVG dessiné à la main (course-figure) qui trace une courbe lisse (2+
+// segments de courbe de Bézier Q/C dans un même <path>) est presque toujours
+// une tentative de tracer une fonction à la main — imprécis et interdit par
+// la règle du prompt, qui impose math-graph-placeholder pour toute courbe.
+// Détection structurelle (nombre de commandes de courbe), pas liée à une
+// fonction ou un thème précis.
+const COURSE_FIGURE_RE = /<figure\s+class="course-figure"[\s\S]*?<\/figure>/g;
+const SVG_PATH_D_RE = /<path\b[^>]*\bd="([^"]*)"/g;
+
+function containsHandDrawnCurveFigure(html: string): boolean {
+  const figures = html.match(COURSE_FIGURE_RE) || [];
+  for (const figure of figures) {
+    let pathMatch: RegExpExecArray | null;
+    SVG_PATH_D_RE.lastIndex = 0;
+    while ((pathMatch = SVG_PATH_D_RE.exec(figure))) {
+      const curveSegments = (pathMatch[1].match(/[QqCc]/g) || []).length;
+      if (curveSegments >= 2) return true;
+    }
+  }
+  return false;
 }
 
 function issueExcerpt(value: string): string {
@@ -397,6 +420,18 @@ export function auditGeneratedCourseChapter(
       }
     }
     inspectGeneratedString(lesson.content, `${lessonPath}.content`, issues);
+    if (
+      typeof lesson.content === "string" &&
+      containsHandDrawnCurveFigure(lesson.content)
+    ) {
+      issues.push({
+        severity: "error",
+        code: "hand_drawn_curve_svg",
+        path: `${lessonPath}.content`,
+        message:
+          "Un course-figure dessine une courbe lisse à la main (SVG) au lieu d'utiliser math-graph-placeholder.",
+      });
+    }
 
     if (!Array.isArray(lesson.exercises)) return;
     lesson.exercises.forEach((exercise, exerciseIndex) => {

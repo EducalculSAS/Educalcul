@@ -1049,15 +1049,16 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
               message: `Chapitre ${i + 1}/${chapterTitles.length} terminé : ${chapterTitle}`,
             });
 
+            const sentChapter = {
+              title: chapterData?.title || chapterTitle,
+              lessons: chapterData?.lessons || [],
+            };
             send({
               type: "chapter",
               index: i,
-              chapter: {
-                title: chapterData?.title || chapterTitle,
-                lessons: chapterData?.lessons || [],
-              },
+              chapter: sentChapter,
             });
-            return true;
+            return sentChapter as GeneratedCourseChapter;
           }),
         );
 
@@ -1086,6 +1087,75 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
             `Aucun chapitre n'a pu être généré. Réessaie, éventuellement avec moins de leçons par chapitre.`,
           );
         }
+
+        // ── Étape 3 : vérification finale du cours entier ──
+        // Chaque chapitre a déjà pu passer par une correction ciblée dès sa
+        // propre génération, mais uniquement si une anomalie était détectée à
+        // CE moment-là (mode balanced) ou toujours (mode strict). Cette passe
+        // finale relit l'ÉTAT DÉFINITIF de chaque chapitre une dernière fois
+        // (LaTeX non rendu, figure dessinée à la main au lieu d'un graphique,
+        // notation mathématique échappée au LaTeX, etc.) et corrige ce qui
+        // reste, avant de livrer le cours — jamais de correction silencieuse
+        // en cas d'échec, le meilleur contenu disponible est conservé.
+        const finalTotal = chapterTitles.length + 1;
+        send({
+          type: "progress",
+          step: "final-check",
+          current: chapterTitles.length,
+          total: finalTotal,
+          message: "Vérification finale du cours...",
+        });
+
+        for (let i = 0; i < chapterResults.length; i++) {
+          const result = chapterResults[i];
+          if (result.status !== "fulfilled" || !result.value) continue;
+          const chapterData = result.value;
+          const remainingIssues = getChapterBlockingIssues(
+            chapterData,
+            lessonsPerChapter,
+            includeExercises,
+          );
+          if (remainingIssues.length === 0) continue;
+
+          try {
+            const corrected = await withTimeout(
+              reviewGeneratedCourseChapter({
+                chapter: chapterData,
+                expectedLessonCount: lessonsPerChapter,
+                includeExercises,
+                courseTitle,
+                chapterTitle: chapterTitles[i],
+                gradeLevel: String(grade_level),
+                contextBlock,
+                teacherDirective,
+                generate,
+              }),
+              QUALITY_REVIEW_TIMEOUT_MS,
+              `La vérification finale de "${chapterTitles[i]}"`,
+            );
+            send({
+              type: "chapter",
+              index: i,
+              chapter: {
+                title: corrected?.title || chapterTitles[i],
+                lessons: corrected?.lessons || chapterData.lessons || [],
+              },
+            });
+          } catch (finalReviewError) {
+            console.warn(
+              `[course-ai] Vérification finale interrompue pour "${chapterTitles[i]}". Le chapitre déjà livré est conservé.`,
+              finalReviewError,
+            );
+          }
+        }
+
+        send({
+          type: "progress",
+          step: "final-check",
+          current: finalTotal,
+          total: finalTotal,
+          message: "Vérification finale terminée.",
+        });
 
         send({
           type: "done",
