@@ -7,6 +7,7 @@ import {
   repairLatex,
   stripFigureNumberPrefix,
   renderMathAsPlainTextInSvg,
+  normalizeSvgArrowMarkers,
 } from "@/lib/latexRepair";
 
 /**
@@ -89,7 +90,7 @@ export function renderLatexInHTML(html: string): string {
   // donc les formules d'un schéma en texte lisible avant le rendu KaTeX
   // normal, pour qu'il ne leur reste plus aucun $ à traiter.
   result = result.replace(/<svg[\s\S]*?<\/svg>/g, (svgBlock) =>
-    renderMathAsPlainTextInSvg(svgBlock),
+    normalizeSvgArrowMarkers(renderMathAsPlainTextInSvg(svgBlock)),
   );
 
   // 1. Display math : $$...$$

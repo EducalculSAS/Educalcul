@@ -117,6 +117,9 @@ main,
   /* La numérotation des figures repart à 1 à chaque leçon. */
   .prose {
     counter-reset: educalcul-figure;
+    /* Un mot/identifiant trop long (pseudo-code, longue formule KaTeX en
+       ligne...) ne doit jamais pousser le contenu hors de sa colonne. */
+    overflow-wrap: break-word;
   }
 
   .course-figure {
@@ -1096,6 +1099,9 @@ main,
   border-collapse: collapse;
   margin: 1rem auto;
   font-size: 0.95rem;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
 }
 .math-table th,
 .math-table td {
@@ -1111,6 +1117,14 @@ main,
 .math-table-sign td,
 .math-table-variation td {
   font-size: 1.1rem;
+}
+
+/* Une formule affichée (KaTeX displayMode) trop large pour sa colonne défile
+   horizontalement au lieu de déborder de la page. */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
 }
 
 /* Math graphs */
@@ -1339,5 +1353,23 @@ main,
   font-weight: 600;
   color: var(--greek-blue, #0f1e3a);
   font-variant-numeric: tabular-nums;
+}
+.iv-reset-btn,
+.g-reset-btn {
+  display: block;
+  margin: 0.6rem auto 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--greek-blue, #0f1e3a);
+  border: 1px solid rgba(197, 161, 72, 0.5);
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.iv-reset-btn:hover,
+.g-reset-btn:hover {
+  background: rgba(197, 161, 72, 0.12);
 }
 

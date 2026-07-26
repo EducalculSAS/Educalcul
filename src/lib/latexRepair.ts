@@ -102,13 +102,22 @@ function balanceBraces(math: string): string {
 }
 
 /** Répare un segment déjà identifié comme mathématique (délimiteurs $/$$
- * inclus) : rééquilibre ses accolades sans toucher au reste. */
+ * inclus) : retire les $ isolés qui traînent à l'intérieur (l'IA enchaîne
+ * parfois plusieurs lignes de calcul dans un même $$...$$ en les séparant
+ * par un $ au lieu d'un simple espace — un $ ne peut de toute façon jamais
+ * être un délimiteur valide une fois qu'on est déjà à l'intérieur d'une
+ * formule), retire un \(/\) redondant imbriqué par erreur dans un $...$ déjà
+ * ouvert (\( et \) sont des délimiteurs de CHANGEMENT de mode, invalides une
+ * fois déjà en mode math — pas des parenthèses littérales), puis rééquilibre
+ * les accolades. */
 function repairMathSegment(seg: string): string {
   const isDisplay = seg.startsWith("$$");
   const delim = isDisplay ? "$$" : "$";
-  const inner = seg.slice(delim.length, seg.length - delim.length);
-  const balanced = balanceBraces(inner);
-  return balanced === inner ? seg : `${delim}${balanced}${delim}`;
+  const original = seg.slice(delim.length, seg.length - delim.length);
+  let destrayed = original.includes("$") ? original.replace(/\$+/g, " \\quad ") : original;
+  destrayed = destrayed.replace(/\\([()])/g, "");
+  const balanced = balanceBraces(destrayed);
+  return balanced === original ? seg : `${delim}${balanced}${delim}`;
 }
 
 /** Vrai si le segment (hors math) ressemble à une formule entière plutôt
@@ -182,6 +191,53 @@ function repairTextSegment(raw: string): string {
 }
 
 /**
+ * Convertit le < ou > brut resté À L'INTÉRIEUR d'un $...$ déjà bien formé
+ * ("$d = ... \\approx 2.683 < 3$") en \\lt/\\gt. Contrairement à
+ * mergeStrayComparison (deux $...$ à fusionner), ici il n'y a qu'UNE seule
+ * paire $...$ dès le départ : le rendu final exclut < et > du contenu d'une
+ * formule (pour qu'un $ ne traverse jamais une balise), donc l'opérateur brut
+ * y resterait invisible/non rendu sinon. N'agit que si aucun autre $/<>
+ * n'entoure la paire, pour ne jamais risquer d'avaler une vraie balise HTML.
+ */
+function convertOperatorInsideSinglePair(html: string): string {
+  return html.replace(
+    /\$([^$<>]*)([<>])([^$<>]*)\$/g,
+    (_m, before: string, op: string, after: string) =>
+      `$${before}${op === "<" ? "\\lt" : "\\gt"}${after}$`,
+  );
+}
+
+/**
+ * Fusionne "$A$ < B$" ou "$A$ > B$" en "$A \\lt B$" : l'IA referme parfois une
+ * formule juste avant un opérateur de comparaison au lieu de l'y inclure
+ * ("$\\sqrt{2}$ < 4$" au lieu de "$\\sqrt{2} < 4$"), ce qui laisse un < nu et
+ * un $ orphelin. On fusionne en une seule formule ET on convertit l'opérateur
+ * en \\lt/\\gt (jamais un < ou > brut) : le rendu final exclut délibérément
+ * < et > du contenu d'une formule (pour qu'un $ ne traverse jamais une
+ * balise), donc un < littéral y resterait tout aussi invisible/non rendu.
+ */
+function mergeStrayComparison(html: string): string {
+  return html.replace(
+    /\$([^$<>]+)\$(\s*)([<>])(\s*)([^$<>]*?)\$/g,
+    (_m, a: string, s1: string, op: string, s2: string, b: string) =>
+      `$${a}${s1}${op === "<" ? "\\lt" : "\\gt"}${s2}${b}$`,
+  );
+}
+
+/**
+ * Échappe un '<' nu utilisé comme opérateur mathématique en prose ("Si d < r")
+ * plutôt que comme début de balise. Un '<' n'ouvre une vraie balise que s'il
+ * est suivi d'une lettre, d'un '/' ou d'un '!' (commentaire/doctype) : dans
+ * tous les autres cas (espace, chiffre, lettre grecque échappée...) c'est
+ * un signe "inférieur à" resté hors LaTeX. Non échappé, il est indiscernable
+ * d'un début de balise pour repairLatex et casse tout le découpage HTML qui
+ * suit — d'où les blocs de texte brut/écrasés observés en aval.
+ */
+function escapeStrayAngleBrackets(html: string): string {
+  return html.replace(/<(?![a-zA-Z/!])/g, "&lt;");
+}
+
+/**
  * Répare le LaTeX d'un contenu HTML de leçon.
  * Le HTML est découpé sur les balises : chaque segment de texte est traité
  * indépendamment, ce qui garantit qu'une formule ne peut jamais « déborder »
@@ -189,7 +245,9 @@ function repairTextSegment(raw: string): string {
  */
 export function repairLatex(html: string): string {
   if (!html) return html;
-  return html
+  return escapeStrayAngleBrackets(
+    mergeStrayComparison(convertOperatorInsideSinglePair(html)),
+  )
     .split(/(<[^>]*>)/)
     .map((part) => (part.startsWith("<") && part.endsWith(">") ? part : repairTextSegment(part)))
     .join("");
@@ -302,6 +360,25 @@ export function renderMathAsPlainTextInSvg(svgHtml: string): string {
   result = result.replace(/\\\[([^<>]+?)\\\]/g, (m, math) => escapeSvgText(mathToPlainText(math)));
   result = result.replace(/\$\$/g, "");
   return result;
+}
+
+/**
+ * Force une taille de flèche fixe pour les <marker> d'un schéma SVG.
+ * Par défaut, markerUnits="strokeWidth" (comportement par défaut du SVG) :
+ * la flèche grossit avec le stroke-width de la ligne à laquelle elle est
+ * attachée. Un vecteur dessiné avec stroke-width="2" donne donc une flèche
+ * DEUX FOIS plus grande que prévu — d'où les triangles énormes observés.
+ * userSpaceOnUse fixe la taille de la flèche dans le même repère que le
+ * reste du schéma, indépendamment de l'épaisseur du trait.
+ */
+export function normalizeSvgArrowMarkers(svgHtml: string): string {
+  if (!svgHtml.includes("<marker")) return svgHtml;
+  return svgHtml.replace(/<marker\b([^>]*)>/g, (match, attrs: string) => {
+    if (/\bmarkerUnits\s*=/.test(attrs)) {
+      return match.replace(/\bmarkerUnits\s*=\s*"[^"]*"/, 'markerUnits="userSpaceOnUse"');
+    }
+    return `<marker${attrs} markerUnits="userSpaceOnUse">`;
+  });
 }
 
 /** Retire un préfixe « Figure 3 — » / « Fig. 2 : » d'une légende : la

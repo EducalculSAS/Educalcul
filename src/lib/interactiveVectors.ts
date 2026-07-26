@@ -113,7 +113,9 @@ function buildMarkup(cfg: InteractiveVectorConfig): string {
     <span>&theta; = ${fmt(d.angleDeg)}&deg;</span>
   </div>`;
 
-  return svg + panel;
+  const resetButton = `<button type="button" class="iv-reset-btn">Réinitialiser</button>`;
+
+  return svg + panel + resetButton;
 }
 
 /** Remplace les placeholders <div class="course-interactive-vectors" ...></div>
@@ -163,6 +165,7 @@ export function enhanceInteractiveVectors(root: ParentNode | null | undefined) {
     } catch {
       return;
     }
+    const initialCfg: InteractiveVectorConfig = { ...cfg };
 
     const viewBoxParts = cfg.viewBox.split(/\s+/).map(Number);
     const [vbX, vbY, vbW, vbH] = viewBoxParts.length === 4 ? viewBoxParts : [0, 0, 300, 200];
@@ -232,5 +235,14 @@ export function enhanceInteractiveVectors(root: ParentNode | null | undefined) {
     });
 
     svg.style.touchAction = "none";
+
+    const resetButton = svg.parentElement?.querySelector<HTMLButtonElement>(".iv-reset-btn");
+    resetButton?.addEventListener("click", () => {
+      cfg.ux = initialCfg.ux;
+      cfg.uy = initialCfg.uy;
+      cfg.vx = initialCfg.vx;
+      cfg.vy = initialCfg.vy;
+      redraw();
+    });
   });
 }

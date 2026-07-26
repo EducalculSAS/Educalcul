@@ -194,7 +194,8 @@ export function renderMathGraphPlaceholders(html: string): string {
         `<div class="g-param-control">` +
         `<label>$${param}$ = <span class="g-param-value">${paramDefault}</span></label>` +
         `<input type="range" class="g-param-slider" min="${paramMin}" max="${paramMax}" step="0.1" value="${paramDefault}" />` +
-        `</div>`;
+        `</div>` +
+        `<button type="button" class="g-reset-btn">Réinitialiser</button>`;
       return (
         `<figure class="math-graph math-graph-interactive" data-function="${label}" ` +
         `data-expr="${exprAttr}" data-xmin="${safeXMin}" data-xmax="${safeXMax}" ` +
@@ -302,8 +303,7 @@ function wireGraphParamSlider(figure: HTMLElement) {
   const xMax = parseFloat(figure.dataset.xmax || "5");
   if (!expr || !param) return;
 
-  slider.addEventListener("input", () => {
-    const value = parseFloat(slider.value);
+  const applyValue = (value: number) => {
     if (valueLabel) valueLabel.textContent = String(value);
     const { svg, error } = buildGraphSvg(expr, xMin, xMax, 240, { [param]: value });
     if (error || !svg) return;
@@ -315,6 +315,14 @@ function wireGraphParamSlider(figure: HTMLElement) {
     if (!newSvg) return;
     oldSvg.replaceWith(newSvg);
     wireGraphCursor(newSvg);
+  };
+
+  slider.addEventListener("input", () => applyValue(parseFloat(slider.value)));
+
+  const resetButton = figure.querySelector<HTMLButtonElement>(".g-reset-btn");
+  resetButton?.addEventListener("click", () => {
+    slider.value = slider.defaultValue;
+    applyValue(parseFloat(slider.defaultValue));
   });
 }
 
