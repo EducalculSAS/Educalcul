@@ -29,8 +29,14 @@ function fmt(n: number): string {
 
 function ticks(min: number, max: number, step: number): number[] {
   const out: number[] = [];
+  if (!isFinite(min) || !isFinite(max) || !isFinite(step) || step <= 0) {
+    return out;
+  }
   const start = Math.ceil(min / step) * step;
-  for (let v = start; v <= max + step * 1e-6; v += step) {
+  // Filet de sécurité : quel que soit le cas limite qui produirait un pas
+  // quasi nul face à une plage normale, on ne pousse jamais plus de
+  // graduations qu'un graphique ne peut en afficher utilement.
+  for (let v = start, i = 0; v <= max + step * 1e-6 && i < 200; v += step, i++) {
     out.push(Math.round(v / step) * step);
   }
   return out;
@@ -47,6 +53,96 @@ export type GraphVector = {
 
 const VECTOR_COLORS = ["#e53e3e", "#3182ce", "#38a169", "#805ad5", "#dd6b20"];
 
+// mathjs n'utilise pas les noms mathématiques usuels pour certaines fonctions
+// (ln → log, arcsin/arccos/arctan → asin/acos/atan, casse différente...).
+// Sans alias, compile() lève "Undefined function" et le graphique entier
+// disparaît silencieusement — aucune erreur visible, juste 0 graphique
+// affiché — quel que soit le type de fonction tracée, pas seulement le
+// logarithme. Liste volontairement large (toutes les fonctions usuelles
+// d'un programme de lycée/prépa), triée du nom le plus long au plus court
+// pour qu'un alias plus spécifique (ex: "arcsinh") soit reconnu avant un
+// alias plus court qu'il contient (ex: "arcsin", "sin").
+const MATHJS_FUNCTION_NAME_MAP: [string, string][] = [
+  ["arcsinh", "asinh"],
+  ["arccosh", "acosh"],
+  ["arctanh", "atanh"],
+  ["arccsch", "acsch"],
+  ["arcsech", "asech"],
+  ["arccoth", "acoth"],
+  ["arcsin", "asin"],
+  ["arccos", "acos"],
+  ["arctan", "atan"],
+  ["arccsc", "acsc"],
+  ["arcsec", "asec"],
+  ["arccot", "acot"],
+  ["arcctg", "acot"],
+  ["cotan", "cot"],
+  ["cotg", "cot"],
+  ["ctg", "cot"],
+  ["ln", "log"],
+  ["log10", "log10"],
+  ["log2", "log2"],
+  ["log1p", "log1p"],
+  ["expm1", "expm1"],
+  ["asinh", "asinh"],
+  ["acosh", "acosh"],
+  ["atanh", "atanh"],
+  ["sinh", "sinh"],
+  ["cosh", "cosh"],
+  ["tanh", "tanh"],
+  ["asin", "asin"],
+  ["acos", "acos"],
+  ["atan", "atan"],
+  ["acsc", "acsc"],
+  ["asec", "asec"],
+  ["acot", "acot"],
+  ["csc", "csc"],
+  ["sec", "sec"],
+  ["cot", "cot"],
+  ["sin", "sin"],
+  ["cos", "cos"],
+  ["tan", "tan"],
+  ["cbrt", "cbrt"],
+  ["sqrt", "sqrt"],
+  ["sign", "sign"],
+  ["floor", "floor"],
+  ["ceil", "ceil"],
+  ["round", "round"],
+  ["exp", "exp"],
+  ["abs", "abs"],
+  ["log", "log"],
+].sort((a, b) => b[0].length - a[0].length) as [string, string][];
+
+const MATHJS_FUNCTION_ALIAS_RE = new RegExp(
+  `\\b(${MATHJS_FUNCTION_NAME_MAP.map(([alias]) => alias).join("|")})\\s*\\(`,
+  "gi",
+);
+
+function normalizeExprForMathjs(expr: string): string {
+  let out = expr.replace(MATHJS_FUNCTION_ALIAS_RE, (_match, name: string) => {
+    const canonical =
+      MATHJS_FUNCTION_NAME_MAP.find(
+        ([alias]) => alias.toLowerCase() === name.toLowerCase(),
+      )?.[1] ?? name;
+    return `${canonical}(`;
+  });
+
+  // Barres de valeur absolue |...| : mathjs ne les comprend pas (| est
+  // l'opérateur "ou" binaire) et rejette toute l'expression. Conversion en
+  // abs(...), paire par paire — ne gère pas l'imbrication de barres, un cas
+  // extrêmement rare pour une courbe de fonction.
+  out = out.replace(/\|([^|]+)\|/g, "abs($1)");
+
+  // "x(...)" — une variable directement suivie d'une parenthèse est comprise
+  // par mathjs comme un appel de fonction ("x n'est pas une fonction"), pas
+  // comme une multiplication implicite x·(...). On insère le "*" manquant,
+  // uniquement quand "x" n'est pas la fin d'un nom de fonction plus long (ex:
+  // "max(" ne doit jamais devenir "ma*x(").
+  out = out.replace(/(^|[^A-Za-z_])x\(/g, "$1x*(");
+
+  return out;
+}
+
 export function buildGraphSvg(
   expr: string,
   xMin: number,
@@ -57,7 +153,7 @@ export function buildGraphSvg(
 ) {
   let compiled;
   try {
-    compiled = compile(expr);
+    compiled = compile(normalizeExprForMathjs(expr));
   } catch {
     return { svg: "", error: "Expression invalide." };
   }
@@ -97,7 +193,13 @@ export function buildGraphSvg(
     if (ty > yMax) yMax = ty;
   }
 
-  if (yMin === yMax) {
+  // Une identité mathématique (ex: sin(x)^2 + cos(x)^2) est constante en
+  // théorie, mais l'arrondi flottant produit des valeurs infinitésimalement
+  // différentes selon x — l'égalité stricte yMin === yMax ne matche alors
+  // jamais, niceStep() reçoit une plage quasi nulle et ticks() part dans une
+  // boucle qui pousse des millions de graduations jusqu'à planter toute la
+  // requête (RangeError), pour n'importe quelle fonction quasi constante.
+  if (Math.abs(yMax - yMin) < 1e-9) {
     yMin -= 1;
     yMax += 1;
   }

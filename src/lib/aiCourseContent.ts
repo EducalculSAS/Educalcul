@@ -243,7 +243,9 @@ export type CourseQualityIssueCode =
   | "likely_semantic_contradiction"
   | "latex_required_repair"
   | "unwrapped_math_notation"
-  | "hand_drawn_curve_svg";
+  | "hand_drawn_curve_svg"
+  | "glued_text_word_boundary"
+  | "raw_unicode_math_symbol";
 
 export type CourseQualityIssue = {
   severity: CourseQualityIssueSeverity;
@@ -265,6 +267,21 @@ const CONTROL_CHARACTER_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
 // thème du cours (règle générale, pas liée à une notion précise).
 const UNWRAPPED_MATH_RE =
   /[A-Za-z][\^_]-?[A-Za-z0-9]|[αβγδεζηθικλμνξπρστφχψωΓΔΘΛΞΠΣΦΨΩ][A-Za-z0-9(]/;
+
+// Détecte un connecteur français collé sans espace à un chiffre ou une
+// variable (ex: "0pour0", "pourx") — signe qu'une formule mal délimitée a
+// fusionné avec la prose environnante. Vérifie l'orthographe/l'espacement du
+// français, pas une notion mathématique précise : s'applique à tout thème.
+const GLUED_FRENCH_CONNECTOR_RE =
+  /[0-9](?:pour|donc|soit|avec|alors)|(?:pour|donc|soit|avec|alors)[0-9]|(?:pour|donc|soit|avec|alors)[a-z]\b/i;
+
+// Symboles mathématiques Unicode littéraux, explicitement interdits par la
+// règle du prompt ("N'utilise pas ², √, ±, ×, ÷, ≠...") mais jamais vérifiés
+// jusqu'ici côté code : signe qu'une formule (souvent une fin de $...$ fermée
+// trop tôt) a laissé du LaTeX non converti derrière elle, quel que soit le
+// thème du cours.
+const RAW_UNICODE_MATH_SYMBOL_RE =
+  /[²³¹⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉₊₋⁺⁻√±×÷≠]/;
 
 function textOutsideMathAndTags(value: string): string {
   return value
@@ -370,6 +387,26 @@ function inspectGeneratedString(
       path,
       message:
         "Une notation mathématique (exposant/indice/lettre grecque) apparaît hors d'un délimiteur $...$.",
+      excerpt: issueExcerpt(value),
+    });
+  }
+  if (GLUED_FRENCH_CONNECTOR_RE.test(value)) {
+    issues.push({
+      severity: "error",
+      code: "glued_text_word_boundary",
+      path,
+      message:
+        "Un connecteur français est collé sans espace à un chiffre ou une variable (formule mal délimitée fusionnée avec la prose).",
+      excerpt: issueExcerpt(value),
+    });
+  }
+  if (RAW_UNICODE_MATH_SYMBOL_RE.test(value)) {
+    issues.push({
+      severity: "error",
+      code: "raw_unicode_math_symbol",
+      path,
+      message:
+        "Un symbole mathématique Unicode littéral (², √, ±, ×, ÷, ≠, exposant/indice Unicode...) apparaît au lieu du LaTeX attendu.",
       excerpt: issueExcerpt(value),
     });
   }
