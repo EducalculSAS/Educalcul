@@ -4,45 +4,72 @@ const EXERCISE_PLACEHOLDER_RE =
   /<div[^>]*class="[^"]*lesson-exercise[^"]*"[^>]*>\s*<\/div>/i;
 const LEAD_BLOCK_RE = /<(h1|h2|h3|h4|p|ul|ol|blockquote|table|figure)\b/i;
 
-export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX ═══
-• HTML autorisé : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>, <figure>, <svg>.
-• LaTeX obligatoire pour toute formule : inline $...$, bloc $$...$$. Aucune commande commençant par un antislash (\\frac, \\sqrt, \\vec, \\begin, \\left...) ne doit JAMAIS apparaître hors d'un bloc $...$/$$...$$.
-• Un système d'équations ou une matrice s'écrit avec \\begin{cases}/\\begin{array} et reste TOUJOURS entièrement à l'intérieur d'un seul bloc $$...$$.
-• Ne mélange jamais du HTML à l'intérieur d'une formule, et n'entoure jamais un bloc $.../$$...$$ d'une balise de style.
-• Dans le JSON, échappe les backslashes deux fois (\\\\frac{a}{b}) pour que le rendu final affiche du LaTeX classique (\\frac{a}{b}).
-• N'utilise que des commandes LaTeX standards en lettres latines — jamais de symboles Unicode (², ³, √, ±, ×, ÷, ≠) à la place d'une commande LaTeX.
-• Rédige uniquement en français correct.
-• Classes disponibles pour la mise en forme (jamais d'attribut style inline) :
-  - <blockquote class="course-callout course-callout-note"> pour une définition/remarque importante.
-  - <blockquote class="course-callout course-callout-warning"> pour une mise en garde.
-  - <span class="course-emphasis"> pour un mot-clé important (hors formule).
-  - <table class="math-table math-table-sign|math-table-variation|math-table-value"> pour un tableau de signes/variations/valeurs.
-  - <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div> pour la courbe d'une fonction.
-  - Si la leçon porte sur une famille de fonctions dépendant d'un paramètre (ex. $y = mx + p$, $y = ax^2$...), rends le graphique manipulable en ajoutant data-param="m" data-param-min="-3" data-param-max="3" data-param-default="1" sur le même <div class="math-graph-placeholder"> (le paramètre doit apparaître comme variable dans data-function, ex. data-function="m*x + 2") : l'élève fait alors varier m avec un curseur et voit la courbe bouger en direct — utilise-le dès que la notion s'y prête, c'est un vrai atout pédagogique.
-  - <figure class="course-figure"> avec un <svg> inline sobre pour un schéma (fractions, aires, décomposition, géométrie).
-  - <div class="course-steps"><div class="course-step">...</div><div class="course-step">...</div>...</div> pour une démonstration/preuve à plusieurs étapes : chaque <div class="course-step"> est une étape (avec son texte et ses formules), et l'élève les révèle une par une avec un bouton "Étape suivante" au lieu de tout voir d'un coup. Utilise-le pour TOUTE démonstration de 3 étapes ou plus.
-  - <div class="course-interactive-vectors" data-ox="150" data-oy="150" data-ux="220" data-uy="80" data-vx="260" data-vy="150" data-ulabel="u" data-vlabel="v" data-show-projection="true" data-caption="Fais glisser u et v et observe le produit scalaire."></div> pour un schéma à deux vecteurs $\\vec{u}$, $\\vec{v}$ que l'élève peut glisser à la souris : le produit scalaire, les normes et l'angle se recalculent en direct sous le schéma (et la projection de u sur v si data-show-projection="true"). Coordonnées dans un repère 0–300×0–200, origine au centre environ.
-• ⚠️ RÈGLE GÉNÉRALE OBLIGATOIRE (quel que soit le thème du cours) : le cours ENTIER doit contenir AU MOINS un élément visuel non-textuel parmi ceux listés ci-dessus (tableau, graphique, figure SVG, schéma vectoriel interactif) — jamais un cours composé uniquement de texte/formules/callouts/étapes. Avant de finaliser, identifie la notion la plus centrale du cours et demande-toi quel outil de cette liste la rend concrète — il y en a toujours un qui convient. Un cours sans aucun de ces éléments est un cours raté, même si le texte et les formules sont corrects.
-• Utilise un de ces outils visuels dans CHAQUE leçon dès que la notion s'y prête (étude de fonction → graphique, signe/variation → tableau, fraction/aire/géométrie → figure SVG) : ce sont des atouts pédagogiques forts, pas des options à éviter.
-• ⚠️ Dès que le cours étudie une FAMILLE DE FONCTIONS (signe, variations, racines, sommet/extremum, forme de la courbe...) — quel que soit son type (second degré, affine, autre polynôme, exponentielle...) — le graphique <div class="math-graph-placeholder"> de cette fonction est OBLIGATOIRE dans au moins une leçon, typiquement celle où sa forme/son comportement est décrit. Un tableau de signes SANS jamais montrer la courbe correspondante est incomplet : le tableau donne le signe, le graphique montre pourquoi visuellement — les deux se complètent, aucun ne remplace l'autre.
-• La courbe d'une fonction (parabole, droite affine, exponentielle...) passe TOUJOURS par <div class="math-graph-placeholder">, JAMAIS par un <svg> dessiné à la main : c'est le seul moyen qu'elle ait le même rendu (axes, graduations, grille) que partout ailleurs dans le cours.
-• Sur l'ensemble d'un chapitre, varie réellement les outils visuels (tableau, graphique, figure SVG, schéma vectoriel interactif, callout) au lieu de répéter le même — un chapitre qui n'utilise qu'un seul type d'élément (par exemple uniquement des figures et des schémas interactifs, sans jamais de tableau) manque de diversité pédagogique, même si chaque élément pris isolément est correct. Réserve les callouts aux points vraiment importants (définition clé, mise en garde) : ne mets pas systématiquement chaque remarque dans un callout.
-• Chaque outil visuel doit rester UTILE, jamais systématique : n'en ajoute pas juste pour "cocher la case diversité". Un tableau de signes n'a de sens que s'il y a effectivement un signe à étudier ; un schéma vectoriel interactif n'a de sens que pour manipuler des vecteurs. Pose-toi la question à chaque fois : "cet outil aide-t-il vraiment à comprendre CETTE notion précise ?" — sinon, du texte et une formule suffisent.
-• Le schéma vectoriel interactif (course-interactive-vectors) et les démonstrations à révélation (course-steps) sont volontairement immersifs : n'en mets pas plus d'un ou deux par chapitre au total (pas un par leçon). Au-delà, l'élève passe plus de temps à cliquer/glisser qu'à apprendre — réserve-les au(x) moment(s) clé(s) du chapitre.
+export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX — CONTRAT STRICT ═══
+• Retourne uniquement les champs JSON demandés par le schéma. N'ajoute jamais de bloc Markdown autour du JSON.
+• HTML autorisé dans content : <h3>, <h4>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <span>, <blockquote>, <table>, <thead>, <tbody>, <tr>, <th>, <td>, <figure>, <figcaption>, <svg>, <defs>, <marker>, <path>, <line>, <polyline>, <polygon>, <circle>, <rect>, <text>, <div>.
+• Chaque balise HTML ouverte doit être fermée. Il est interdit d'ouvrir un nouveau <p> avant d'avoir fermé le précédent.
+• Ne mets jamais de HTML à l'intérieur d'une formule LaTeX.
 
-═══ SCHÉMAS SVG (règles strictes) ═══
-• Format EXACT à respecter :
-  <figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img"><!-- formes --></svg><figcaption>Description courte de ce que montre le schéma</figcaption></figure>
-• L'attribut viewBox est OBLIGATOIRE (par ex. "0 0 200 160") et toutes les coordonnées doivent rester à l'intérieur. N'écris JAMAIS d'attribut width/height en pixels sur le <svg> : sans viewBox, le schéma s'étire et occupe toute la page.
-• Une <figcaption> est OBLIGATOIRE et décrit ce que la figure montre.
-• N'écris JAMAIS le numéro de la figure dans la légende ("Figure 1 —") : la numérotation est ajoutée automatiquement et se met à jour toute seule.
-• Garde le trait fin (stroke-width entre 1 et 2), 2 à 4 couleurs sobres, et des étiquettes lisibles (font-size ≈ 10 à 14 dans le repère du viewBox).
-• Dans un <text> du SVG, écris les étiquettes en LaTeX normal ($\\vec{v}$, $D_1$...) comme partout ailleurs : elles sont automatiquement converties en texte lisible à l'affichage (un <text> SVG ne peut pas afficher la mise en forme HTML d'une formule).
-• Flèche de vecteur : recopie EXACTEMENT ce marker (ne change que markerWidth/markerHeight si besoin d'une flèche plus petite, jamais la valeur de markerUnits) :
-  <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="CURRENT_COLOR"/></marker>
-  Sans markerUnits="userSpaceOnUse", la flèche grossit avec le stroke-width de la ligne et devient un énorme triangle disproportionné — c'est l'erreur la plus fréquente, ne l'omets jamais.
-• Étiquettes (texte) : place-les TOUJOURS à côté d'un élément, jamais dessus. Décale un label d'au moins 10 à 15 unités perpendiculairement à la ligne/l'arc qu'il désigne (jamais sur le trait, jamais dans l'arc d'un angle). Avant de finaliser le schéma, vérifie mentalement qu'aucune étiquette ne chevauche une ligne, une autre étiquette ou l'arc d'un angle — un schéma surchargé où deux textes se superposent est un schéma raté.
-• Reste sobre : 3 à 5 éléments étiquetés maximum par schéma (deux vecteurs + leurs normes + l'angle, par exemple). Un schéma qui essaie de tout montrer à la fois (vecteurs + normes + angle + projection + légendes multiples) devient illisible : préfère plusieurs schémas simples à un seul schéma surchargé.`;
+═══ DÉLIMITEURS MATHÉMATIQUES ═══
+• Toute expression mathématique est obligatoirement délimitée : $...$ en ligne ou $$...$$ en bloc.
+• Une formule commencée dans une balise HTML doit être fermée dans cette même balise. Aucun $ ou $$ ne traverse un </p>, </li>, </div>, </td>, </blockquote> ou toute autre balise.
+• Chaque formule possède exactement une paire de délimiteurs. N'écris jamais \\$, \\$$, $$$, $= isolé, =$ isolé, ni un $ à l'intérieur d'un bloc $$...$$.
+• Une formule courte dans une phrase utilise $...$. Une formule longue ou un calcul utilise un <p> séparé contenant un unique bloc $$...$$.
+• N'écris jamais plusieurs blocs $$...$$ dans le même <p>.
+
+═══ ANTISLASHS ET JSON ═══
+• Écris une seule commande LaTeX logique : \\frac{a}{b}, \\sqrt{x}, \\vec{u}, \\overrightarrow{AB}, \\cos(x), \\begin{aligned}.
+• Le sérialiseur JSON gère l'échappement technique. Ne double jamais volontairement une commande et ne produis jamais \\\\frac, \\\\vec, \\\\overrightarrow, \\\\cos, \\\\left, \\\\text, \\\\begin ou \\\\end.
+• Les seuls doubles antislashs logiques autorisés sont les fins de ligne \\\\ à l'intérieur d'un environnement aligned, cases, array ou matrix.
+• N'utilise jamais \\text{cos}, \\text{sin}, \\text{tan}, \\text{ln}, \\text{π}. Utilise exclusivement \\cos, \\sin, \\tan, \\ln et \\pi.
+• N'utilise pas de symboles mathématiques Unicode à la place du LaTeX : écris ^{2}, \\sqrt{}, \\pm, \\times, \\div, \\neq, \\leq, \\geq.
+
+═══ CALCULS SUR PLUSIEURS LIGNES ═══
+• Un système, une matrice ou un calcul de plusieurs lignes reste entièrement dans un seul bloc $$...$$.
+• Format obligatoire pour un calcul développé :
+  <p>$$\\begin{aligned}
+  A &= B + C \\\\
+  &= D + E \\\\
+  &= F
+  \\end{aligned}$$</p>
+• N'utilise jamais des barres verticales seules sur des lignes différentes. Pour une norme, écris \\left\\|\\overrightarrow{AB}\\right\\| dans la même formule.
+• Pour une aire de triangle, forme recommandée : $$\\mathcal{A}=\\frac{1}{2}\\left\\|\\overrightarrow{AB}\\right\\|\\left\\|\\overrightarrow{AC}\\right\\|\\sin(\\widehat{A})$$.
+
+═══ AUTOCONTRÔLE AVANT LA RÉPONSE ═══
+• Vérifie chaque content caractère par caractère avant de répondre.
+• Vérifie que le nombre de $ simples hors blocs $$ est pair.
+• Vérifie que le nombre de $$ est pair.
+• Vérifie qu'aucune commande \\frac, \\sqrt, \\vec, \\overrightarrow, \\cdot, \\cos, \\sin, \\tan, \\left, \\right, \\hat, \\widehat, \\text, \\begin ou \\end n'apparaît hors de $...$ ou $$...$$.
+• Vérifie qu'aucune formule ne contient de délimiteur $ interne.
+• Vérifie que chaque réponse d'exercice correspond exactement au calcul de l'explication.
+• Si une formule est trop complexe pour être écrite sans ambiguïté, simplifie sa présentation au lieu de fragmenter ses délimiteurs.
+
+═══ MISE EN FORME PÉDAGOGIQUE ═══
+• Rédige uniquement en français correct.
+• Classes disponibles, sans attribut style inline :
+  - <blockquote class="course-callout course-callout-note"> pour une définition ou remarque importante.
+  - <blockquote class="course-callout course-callout-warning"> pour une mise en garde.
+  - <span class="course-emphasis"> pour un mot-clé important hors formule.
+  - <table class="math-table math-table-sign|math-table-variation|math-table-value"> pour un tableau mathématique.
+  - <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div> pour une courbe.
+  - Pour une famille paramétrée, ajoute data-param, data-param-min, data-param-max et data-param-default.
+  - <figure class="course-figure"> avec un <svg> inline sobre pour un schéma géométrique.
+  - <div class="course-steps"><div class="course-step">...</div></div> pour toute démonstration de trois étapes ou plus.
+• Dans chaque <div class="course-step">, mets l'explication dans un <p> et chaque formule longue dans un autre <p> contenant un seul $$...$$.
+• <div class="course-interactive-vectors" data-ox="150" data-oy="150" data-ux="220" data-uy="80" data-vx="260" data-vy="150" data-ulabel="u" data-vlabel="v" data-show-projection="true" data-caption="Fais glisser u et v et observe le produit scalaire."></div> permet un schéma vectoriel interactif.
+• Le cours entier contient au moins un élément visuel utile parmi tableau, graphique, figure SVG ou schéma interactif.
+• Une famille de fonctions étudiée graphiquement doit contenir au moins un math-graph-placeholder.
+• Une courbe de fonction passe toujours par math-graph-placeholder, jamais par un SVG dessiné à la main.
+• Varie les outils visuels sans en ajouter artificiellement. Limite course-interactive-vectors et course-steps à un ou deux par chapitre.
+
+═══ SCHÉMAS SVG — RÈGLES STRICTES ═══
+• Format exact : <figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img"><!-- formes --></svg><figcaption>Description courte</figcaption></figure>.
+• viewBox et figcaption sont obligatoires. N'ajoute jamais width ou height en pixels.
+• Ne numérote jamais la légende : la numérotation est automatique.
+• Utilise stroke-width entre 1 et 2, deux à quatre couleurs sobres et des étiquettes lisibles.
+• Dans un <text> SVG, les étiquettes mathématiques restent sous la forme $\\vec{v}$, $D_1$, etc.
+• Marker de flèche exact : <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="CURRENT_COLOR"/></marker>.
+• Place chaque étiquette à côté de l'élément, jamais sur un trait ou un arc. Garde trois à cinq éléments étiquetés maximum par schéma.`;
 
 export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
 • Commence toujours par une définition claire, puis un exemple simple, puis un développement pas à pas.
@@ -95,7 +122,9 @@ export function repairLessonExercisePlaceholders(
   const missing = exerciseIds.filter((id) => !foundIds.has(id));
   if (missing.length > 0) {
     result += missing
-      .map((id) => `<div class="lesson-exercise" data-exercise-id="${id}"></div>`)
+      .map(
+        (id) => `<div class="lesson-exercise" data-exercise-id="${id}"></div>`,
+      )
       .join("");
   }
   return result;
@@ -111,7 +140,9 @@ export function normalizeGeneratedCourseChapter<
       ...lesson,
       content:
         typeof lesson.content === "string"
-          ? normalizeCourseLessonContent(stripFigureNumberPrefix(repairLatex(lesson.content)))
+          ? normalizeCourseLessonContent(
+              stripFigureNumberPrefix(repairLatex(lesson.content)),
+            )
           : lesson.content,
     })),
   };

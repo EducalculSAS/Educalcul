@@ -1,314 +1,277 @@
 /**
- * Réparation du LaTeX produit par l'IA dans les contenus de cours.
+ * Réparation défensive du LaTeX produit par l'IA dans les contenus HTML.
  *
- * Deux familles de défauts sont corrigées ici, parce qu'elles cassaient le
- * rendu de manière très visible côté élève :
+ * Objectifs :
+ * - conserver les formules déjà valides ;
+ * - corriger les antislashs et dollars sur-échappés ;
+ * - empêcher un délimiteur mathématique de traverser une balise HTML ;
+ * - remettre en mode math les commandes LaTeX laissées en texte brut ;
+ * - rester idempotent : repairLatex(repairLatex(x)) === repairLatex(x).
  *
- * 1. Formule laissée SANS délimiteur ($...$ / $$...$$). L'IA écrit parfois
- *    "a(x_0 + ka) + c = 0 \implies ..." ou "\quad (2)" en texte brut : la
- *    commande LaTeX s'affichait telle quelle dans le cours.
- *
- * 2. Délimiteur $$ non refermé dans le même bloc HTML. Le $$ ouvrait dans un
- *    <p> et « cherchait » sa fermeture plusieurs paragraphes plus loin : tout
- *    le HTML intermédiaire était avalé comme si c'était de la formule, ce qui
- *    produisait un mélange illisible (des morceaux rendus en math, d'autres
- *    en texte brut, et un $$ orphelin affiché).
- *
- * Ces fonctions sont volontairement pures et sans dépendance : elles sont
- * utilisées à la génération (pour stocker du contenu propre) ET à l'affichage
- * (pour réparer les cours déjà enregistrés avant ce correctif).
+ * Aucun réparateur heuristique ne peut reconstituer avec certitude une formule
+ * dont le modèle a supprimé du contenu. Cette fonction privilégie donc un
+ * rendu lisible et sûr, sans avaler le HTML voisin.
  */
 
-/** Commandes LaTeX prenant un ou deux arguments entre accolades. */
 const CMD_WITH_ARGS =
-  "frac|dfrac|tfrac|sqrt|vec|overrightarrow|overline|underline|bar|hat|dot|ddot|widehat|widetilde|binom|text|textbf|textit|mathbb|mathcal|mathbf|mathrm|mathit|mathsf|operatorname";
+  "frac|dfrac|tfrac|sqrt|vec|overrightarrow|overline|underline|bar|hat|dot|ddot|widehat|widetilde|binom|boxed|cancel|text|textbf|textit|mathbb|mathcal|mathbf|mathrm|mathit|mathsf|operatorname";
 
-/** Commandes LaTeX « symboles » sans argument. */
 const CMD_SYMBOLS =
   "quad|qquad|implies|impliedby|iff|to|mapsto|times|div|cdot|cdots|ldots|dots|vdots|ddots|le|leq|ge|geq|neq|ne|pm|mp|infty|approx|equiv|sim|propto|forall|exists|nexists|in|notin|subset|subseteq|supset|supseteq|cup|cap|emptyset|varnothing|perp|parallel|angle|circ|deg|alpha|beta|gamma|delta|epsilon|varepsilon|zeta|eta|theta|vartheta|iota|kappa|lambda|mu|nu|xi|pi|rho|sigma|tau|upsilon|phi|varphi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Phi|Psi|Omega|rightarrow|leftarrow|Rightarrow|Leftarrow|leftrightarrow|Leftrightarrow|langle|rangle|lfloor|rfloor|lceil|rceil|sum|prod|int|lim|log|ln|exp|sin|cos|tan|arcsin|arccos|arctan|sinh|cosh|tanh|min|max|gcd|bmod|pmod";
 
 const ENV_NAMES =
-  "cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|Bmatrix|matrix|aligned|align|gathered|split";
+  "cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|Bmatrix|matrix|aligned|align|alignedat|gathered|split";
 
-const ANY_LATEX_CMD_RE = new RegExp(
-  `\\\\(?:${CMD_WITH_ARGS}|${CMD_SYMBOLS}|left|right|begin|end)\\b`,
-);
-
-const ENV_BLOCK_RE = new RegExp(
-  `(?:\\\\left\\s*(?:\\\\\\{|[(\\[.|])\\s*)?\\\\begin\\{(${ENV_NAMES})\\}[\\s\\S]*?\\\\end\\{\\1\\}(?:\\s*\\\\right\\s*(?:\\\\\\}|[)\\].|]))?`,
-  "g",
-);
-
-const CMD_WITH_ARGS_RE = new RegExp(
-  `\\\\(?:${CMD_WITH_ARGS})\\s*\\{[^{}]*\\}(?:\\s*\\{[^{}]*\\})?`,
-  "g",
-);
-
-const CMD_SYMBOL_RE = new RegExp(`\\\\(?:${CMD_SYMBOLS})\\b`, "g");
-
-/**
- * Corrige les commandes LaTeX doublement échappées par l'IA.
- *
- * Exemple après lecture du JSON :
- *   \\overrightarrow{AB}
- * devient :
- *   \overrightarrow{AB}
- *
- * On ne touche qu'aux doubles antislashs placés devant une commande LaTeX
- * connue. Les vrais retours à la ligne `\\` utilisés dans aligned, matrix,
- * cases, etc. restent donc intacts.
- */
-function normalizeDoubleEscapedLatexCommands(text: string): string {
-  const commandNames = [
-    CMD_WITH_ARGS,
-    CMD_SYMBOLS,
-    "left",
-    "right",
-    "begin",
-    "end",
-  ].join("|");
-
-  const doubleEscapedCommand = new RegExp(
-    `\\\\\\\\(?=(?:${commandNames})\\b)`,
-    "g",
-  );
-
-  let result = text;
-
-  // Répare aussi les textes qui auraient été échappés plusieurs fois.
-  for (let pass = 0; pass < 3; pass++) {
-    const repaired = result.replace(doubleEscapedCommand, "\\");
-    if (repaired === result) break;
-    result = repaired;
-  }
-
-  return result;
-}
-
-/** Mots de prose française (≥ 3 lettres, hors commande LaTeX). Sert à
- * distinguer « ce segment est une formule » de « ce segment est une phrase
- * qui contient une formule ». */
+const ALL_COMMANDS = `${CMD_WITH_ARGS}|${CMD_SYMBOLS}|left|right|begin|end`;
+const ANY_LATEX_CMD_RE = new RegExp(`\\\\(?:${ALL_COMMANDS})\\b`);
+const LATEX_CMD_GLOBAL_RE = new RegExp(`\\\\(?:${ALL_COMMANDS})\\b`, "g");
 const PROSE_WORD_RE = /(?<!\\)\b[A-Za-zÀ-ÿ]{3,}\b/g;
 
-/** Découpe un texte en alternant hors-math / math, en respectant les
- * délimiteurs $$...$$ puis $...$. Renvoie les segments avec un drapeau. */
-function splitMathSegments(text: string): { text: string; isMath: boolean }[] {
-  const out: { text: string; isMath: boolean }[] = [];
-  const re = /\$\$[\s\S]*?\$\$|\$[^$\r\n]*?\$/g;
-  let last = 0;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > last)
-      out.push({ text: text.slice(last, m.index), isMath: false });
-    out.push({ text: m[0], isMath: true });
-    last = m.index + m[0].length;
-  }
-  if (last < text.length) out.push({ text: text.slice(last), isMath: false });
-  return out;
+function normalizeControlCharacters(text: string): string {
+  return text
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
+    .replace(/\r\n?/g, "\n");
 }
 
-/** Retire les délimiteurs $$ ou $ restés orphelins (non refermés) dans un
- * segment de texte, pour qu'ils ne s'affichent jamais tels quels. */
-function dropUnmatchedDelimiters(text: string): string {
-  let result = text;
-  // $$ orphelin : nombre impair d'occurrences → on retire la dernière.
-  const dd = result.match(/\$\$/g);
-  if (dd && dd.length % 2 === 1) {
-    const idx = result.lastIndexOf("$$");
-    result = result.slice(0, idx) + result.slice(idx + 2);
-  }
-  // $ simple orphelin (après retrait des $$ appariés).
-  const withoutPairs = result.replace(/\$\$[\s\S]*?\$\$/g, "");
-  const singles = withoutPairs.match(/\$/g);
-  if (singles && singles.length % 2 === 1) {
-    const idx = result.lastIndexOf("$");
-    result = result.slice(0, idx) + result.slice(idx + 1);
-  }
-  return result;
+/** Ramène 2 à 8 antislashs à un seul devant une commande connue. */
+function normalizeEscapedCommands(text: string): string {
+  const re = new RegExp(`\\\\{2,8}(?=(?:${ALL_COMMANDS})\\b)`, "g");
+  return text.replace(re, "\\");
 }
 
-/** Ajoute les accolades fermantes manquantes d'un contenu LaTeX (l'IA tronque
- * parfois une formule en oubliant de refermer \boxed{...} ou un \vec{...}
- * final). Les accolades échappées (\{ \}) sont des symboles littéraux et ne
- * comptent pas comme groupement. */
+/** Les modèles écrivent parfois \\$ pour tenter d'échapper le JSON. */
+function normalizeEscapedDollars(text: string): string {
+  return text
+    .replace(/\\+\$\$/g, "$$")
+    .replace(/\\+\$/g, "$")
+    .replace(/\${3,}/g, "$$");
+}
+
+function normalizeCommonCommandMistakes(text: string): string {
+  return text
+    .replace(/\\text\s*\{\s*[πΠ]\s*\}/g, "\\pi")
+    .replace(
+      /\\text\s*\{\s*(cos|sin|tan|ln|log|exp)\s*\}/gi,
+      (_m, fn: string) => `\\${fn.toLowerCase()}`,
+    )
+    .replace(
+      /\\operatorname\s*\{\s*(cos|sin|tan|ln|log|exp)\s*\}/gi,
+      (_m, fn: string) => `\\${fn.toLowerCase()}`,
+    )
+    .replace(/\\text\s*\{\s*([α-ωΑ-Ω])\s*\}/g, "$1")
+    .replace(/\\([()\[\]])/g, "$1");
+}
+
 function balanceBraces(math: string): string {
-  const forCounting = math.replace(/\\[{}]/g, "");
+  const src = math.replace(/\\[{}]/g, "");
   let depth = 0;
-  for (const ch of forCounting) {
+  for (const ch of src) {
     if (ch === "{") depth++;
     else if (ch === "}") depth = Math.max(0, depth - 1);
   }
   return depth > 0 ? math + "}".repeat(depth) : math;
 }
 
-/** Répare un segment déjà identifié comme mathématique (délimiteurs $/$$
- * inclus) : retire les $ isolés qui traînent à l'intérieur (l'IA enchaîne
- * parfois plusieurs lignes de calcul dans un même $$...$$ en les séparant
- * par un $ au lieu d'un simple espace — un $ ne peut de toute façon jamais
- * être un délimiteur valide une fois qu'on est déjà à l'intérieur d'une
- * formule), retire un \(/\) redondant imbriqué par erreur dans un $...$ déjà
- * ouvert (\( et \) sont des délimiteurs de CHANGEMENT de mode, invalides une
- * fois déjà en mode math — pas des parenthèses littérales), puis rééquilibre
- * les accolades. */
-function repairMathSegment(seg: string): string {
-  const isDisplay = seg.startsWith("$$");
-  const delim = isDisplay ? "$$" : "$";
-  const original = seg.slice(delim.length, seg.length - delim.length);
-  let destrayed = original.includes("$")
-    ? original.replace(/\$+/g, " \\quad ")
-    : original;
-  destrayed = destrayed.replace(/\\([()])/g, "");
-  // L'IA écrit parfois l'entité HTML &lt;/&gt; au lieu de \lt/\gt à
-  // l'intérieur d'une formule déjà bien délimitée (souvent en mélangeant les
-  // deux dans le même tableau) — KaTeX ne connaît pas "&lt;" comme symbole.
-  destrayed = destrayed.replace(/&lt;/g, " \\lt ").replace(/&gt;/g, " \\gt ");
-  const balanced = balanceBraces(destrayed);
-  return balanced === original ? seg : `${delim}${balanced}${delim}`;
+function normalizeMathBody(body: string): string {
+  let result = normalizeCommonCommandMistakes(normalizeEscapedCommands(body));
+  result = result.replace(/&lt;/g, " \\lt ").replace(/&gt;/g, " \\gt ");
+  result = result.replace(/(^|[^\\])<(?![A-Za-z/!])/g, "$1\\lt ");
+  result = result.replace(/(^|[^\\])>/g, "$1\\gt ");
+  result = result.replace(/\$+/g, " \\quad ");
+  result = result.replace(/[ \t]+/g, " ").trim();
+  return balanceBraces(result);
 }
 
-/** Vrai si le segment (hors math) ressemble à une formule entière plutôt
- * qu'à une phrase : il contient au moins une commande LaTeX et très peu de
- * mots de prose. */
+type MathPart = { text: string; isMath: boolean; display?: boolean };
+
+/** Parse les dollars sans autoriser une formule à dépasser le nœud texte. */
+function splitMathSegments(text: string): MathPart[] {
+  const out: MathPart[] = [];
+  let plain = "";
+  let math = "";
+  let mode: "plain" | "inline" | "display" = "plain";
+
+  const flushPlain = () => {
+    if (plain) out.push({ text: plain, isMath: false });
+    plain = "";
+  };
+  const flushMath = (closed: boolean) => {
+    if (!math && !closed) return;
+    out.push({ text: math, isMath: true, display: mode === "display" });
+    math = "";
+  };
+
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] !== "$") {
+      if (mode === "plain") plain += text[i];
+      else math += text[i];
+      continue;
+    }
+
+    const isDouble = text[i + 1] === "$";
+    if (mode === "plain") {
+      flushPlain();
+      mode = isDouble ? "display" : "inline";
+      if (isDouble) i++;
+      continue;
+    }
+
+    if ((mode === "display" && isDouble) || (mode === "inline" && !isDouble)) {
+      flushMath(true);
+      mode = "plain";
+      if (isDouble) i++;
+      continue;
+    }
+
+    // Dollar d'un autre type à l'intérieur d'une formule : séparateur erroné.
+    math += " \\quad ";
+    if (isDouble) i++;
+  }
+
+  if (mode === "plain") flushPlain();
+  else flushMath(false); // on ferme localement un délimiteur orphelin
+  return out;
+}
+
 function looksLikeWholeFormula(segment: string): boolean {
   if (!ANY_LATEX_CMD_RE.test(segment)) return false;
-  const withoutCommands = segment.replace(/\\[A-Za-z]+/g, " ");
-  const proseWords = withoutCommands.match(PROSE_WORD_RE) || [];
-  return proseWords.length <= 1;
-}
-
-/** Enveloppe dans $...$ les commandes LaTeX isolées d'un segment de prose. */
-function wrapInlineCommands(segment: string): string {
-  let result = segment.replace(ENV_BLOCK_RE, (m) => `$$${m}$$`);
-  result = result.replace(CMD_WITH_ARGS_RE, (m) => `$${m}$`);
-  // Commandes-symboles : on les regroupe avec les caractères mathématiques
-  // adjacents (chiffres, opérateurs, parenthèses) pour éviter "$\quad$ (2)".
-  result = result.replace(
-    new RegExp(
-      `(?:\\\\(?:${CMD_SYMBOLS})\\b[\\s]*)+[\\s0-9()+\\-*/=.,^_|]*`,
-      "g",
-    ),
-    (m) => {
-      const trimmed = m.trimEnd();
-      if (!trimmed) return m;
-      const trailing = m.slice(trimmed.length);
-      return `$${trimmed}$${trailing}`;
-    },
-  );
-  return result;
+  const withoutCommands = segment.replace(LATEX_CMD_GLOBAL_RE, " ");
+  const words = withoutCommands.match(PROSE_WORD_RE) || [];
+  const hasEquationSignal =
+    /[=+*/^_]|\\(?:frac|sqrt|vec|overrightarrow|begin|cos|sin|tan)\b/.test(
+      segment,
+    );
+  return hasEquationSignal && words.length <= 2;
 }
 
 /**
- * Normalise les défauts de délimiteurs propres à un segment généré sur
- * plusieurs lignes : un retour à la ligne brut au milieu d'une phrase casse
- * l'appariement $...$ (l'IA l'utilise parfois par erreur, alors que les
- * paragraphes sont déjà séparés par des balises <p>), et un "$$" est parfois
- * écrit là où une seule formule inline ($...$) était visiblement voulue —
- * reconnaissable au fait qu'il ne couvre pas tout le segment (une vraie
- * formule affichée $$...$$ occupe tout le contenu d'un bloc HTML, jamais
- * seulement une portion au milieu d'une phrase).
+ * Détecte une suffixe mathématique brut dans un texte, par exemple
+ * "En développant : = \\vec{u} \\cdot \\vec{v}".
  */
-function normalizeStraySegment(raw: string): string {
-  let text = raw.replace(/\s+/g, " ");
-  const trimmed = text.trim();
-  const isWholeSegmentDisplay =
-    trimmed.startsWith("$$") && trimmed.endsWith("$$") && trimmed.length > 4;
-  if (!isWholeSegmentDisplay) {
-    text = text.replace(/\${2,}/g, "$");
+function wrapRawMathSuffix(segment: string): string {
+  if (!ANY_LATEX_CMD_RE.test(segment)) return segment;
+  if (looksLikeWholeFormula(segment)) return `$${segment.trim()}$`;
+
+  const commandIndex = segment.search(ANY_LATEX_CMD_RE);
+  if (commandIndex < 0) return segment;
+
+  // Cherche le séparateur de prose le plus proche avant la première commande.
+  const before = segment.slice(0, commandIndex);
+  const candidates = [
+    before.lastIndexOf(":"),
+    before.lastIndexOf(";"),
+    before.lastIndexOf("\n"),
+  ];
+  const boundary = Math.max(...candidates);
+  if (boundary >= 0) {
+    const head = segment.slice(0, boundary + 1);
+    let tail = segment.slice(boundary + 1).trim();
+    if (/^(?:=|[-+()]|[A-Za-z0-9])/.test(tail) && ANY_LATEX_CMD_RE.test(tail)) {
+      return `${head} $${normalizeMathBody(tail)}$`;
+    }
   }
-  text = text.replace(/\$ \$/g, "$");
-  return text;
+
+  // En dernier recours, enveloppe une séquence commande + expression jusqu'à
+  // la fin du nœud texte, sans toucher à la prose qui précède.
+  const start = Math.max(segment.lastIndexOf(" ", commandIndex - 1) + 1, 0);
+  const head = segment.slice(0, start);
+  const tail = segment.slice(start).trim();
+  return tail ? `${head}$${normalizeMathBody(tail)}$` : segment;
 }
 
-/** Répare un segment de texte brut (déjà isolé de tout balisage HTML). */
-function repairTextSegment(raw: string): string {
+/** Regroupe en une formule unique la partie située après un deux-points quand
+ * elle est manifestement mathématique. Cela répare les longues identités que
+ * le modèle a fragmentées en une succession de `$...$`, `\$` et commandes
+ * brutes. */
+function coalesceMathAfterColon(text: string): string {
+  const colon = text.lastIndexOf(":");
+  if (colon < 0) return text;
+
+  const head = text.slice(0, colon + 1);
+  const tail = text.slice(colon + 1).trim();
+  if (!tail || (tail.startsWith("$") && tail.endsWith("$"))) return text;
+
+  const commandCount = (tail.match(LATEX_CMD_GLOBAL_RE) || []).length;
+  const mathSignal =
+    /[=+*/^_]|\\(?:frac|sqrt|vec|overrightarrow|cos|sin|tan|left|begin)\b/.test(
+      tail,
+    );
+  if (commandCount === 0 || !mathSignal) return text;
+
+  const body = normalizeMathBody(tail.replace(/\$+/g, " "));
+  return body ? `${head} $${body}$` : text;
+}
+
+function repairTextNode(raw: string): string {
   if (!raw.trim()) return raw;
-  const text = dropUnmatchedDelimiters(
-    normalizeStraySegment(raw).replace(/\$\$\$+/g, "$$"),
-  );
+  let text = normalizeControlCharacters(raw);
+  text = normalizeEscapedDollars(text);
+  text = normalizeEscapedCommands(text);
+  text = normalizeCommonCommandMistakes(text);
+  text = text.replace(/\$\s+\$/g, "$");
+  text = coalesceMathAfterColon(text);
 
-  return splitMathSegments(text)
-    .map(({ text: seg, isMath }) => {
-      if (isMath) return repairMathSegment(seg);
-      if (!ANY_LATEX_CMD_RE.test(seg)) return seg;
-      if (looksLikeWholeFormula(seg)) {
-        const lead = seg.match(/^\s*/)?.[0] ?? "";
-        const tail = seg.match(/\s*$/)?.[0] ?? "";
-        const core = seg.trim();
-        return core ? `${lead}$${core}$${tail}` : seg;
-      }
-      return wrapInlineCommands(seg);
-    })
-    .join("");
+  const parts = splitMathSegments(text);
+  const rendered = parts.map((part) => {
+    if (part.isMath) {
+      const body = normalizeMathBody(part.text);
+      if (!body) return "";
+      const delim = part.display ? "$$" : "$";
+      return `${delim}${body}${delim}`;
+    }
+    return wrapRawMathSuffix(part.text);
+  });
+
+  // Deux formules inline consécutives ne doivent jamais fabriquer par
+  // concaténation un faux délimiteur display `$$`.
+  return rendered.reduce((acc, current) => {
+    if (!current) return acc;
+    return acc.endsWith("$") && current.startsWith("$")
+      ? `${acc} ${current}`
+      : acc + current;
+  }, "");
 }
 
-/**
- * Convertit le < ou > brut resté À L'INTÉRIEUR d'un $...$ déjà bien formé
- * ("$d = ... \\approx 2.683 < 3$") en \\lt/\\gt. Contrairement à
- * mergeStrayComparison (deux $...$ à fusionner), ici il n'y a qu'UNE seule
- * paire $...$ dès le départ : le rendu final exclut < et > du contenu d'une
- * formule (pour qu'un $ ne traverse jamais une balise), donc l'opérateur brut
- * y resterait invisible/non rendu sinon. N'agit que si aucun autre $/<>
- * n'entoure la paire, pour ne jamais risquer d'avaler une vraie balise HTML.
- */
-function convertOperatorInsideSinglePair(html: string): string {
-  return html.replace(
-    /\$([^$<>]*)([<>])([^$<>]*)\$/g,
-    (_m, before: string, op: string, after: string) =>
-      `$${before}${op === "<" ? "\\lt" : "\\gt"}${after}$`,
-  );
-}
-
-/**
- * Fusionne "$A$ < B$" ou "$A$ > B$" en "$A \\lt B$" : l'IA referme parfois une
- * formule juste avant un opérateur de comparaison au lieu de l'y inclure
- * ("$\\sqrt{2}$ < 4$" au lieu de "$\\sqrt{2} < 4$"), ce qui laisse un < nu et
- * un $ orphelin. On fusionne en une seule formule ET on convertit l'opérateur
- * en \\lt/\\gt (jamais un < ou > brut) : le rendu final exclut délibérément
- * < et > du contenu d'une formule (pour qu'un $ ne traverse jamais une
- * balise), donc un < littéral y resterait tout aussi invisible/non rendu.
- */
-function mergeStrayComparison(html: string): string {
-  return html.replace(
-    /\$([^$<>]+)\$(\s*)([<>])(\s*)([^$<>]*?)\$/g,
-    (_m, a: string, s1: string, op: string, s2: string, b: string) =>
-      `$${a}${s1}${op === "<" ? "\\lt" : "\\gt"}${s2}${b}$`,
-  );
-}
-
-/**
- * Échappe un '<' nu utilisé comme opérateur mathématique en prose ("Si d < r")
- * plutôt que comme début de balise. Un '<' n'ouvre une vraie balise que s'il
- * est suivi d'une lettre, d'un '/' ou d'un '!' (commentaire/doctype) : dans
- * tous les autres cas (espace, chiffre, lettre grecque échappée...) c'est
- * un signe "inférieur à" resté hors LaTeX. Non échappé, il est indiscernable
- * d'un début de balise pour repairLatex et casse tout le découpage HTML qui
- * suit — d'où les blocs de texte brut/écrasés observés en aval.
- */
 function escapeStrayAngleBrackets(html: string): string {
   return html.replace(/<(?![a-zA-Z/!])/g, "&lt;");
 }
 
+/** Ferme un <p> implicitement lorsqu'un nouveau <p> commence. */
+function repairNestedParagraphs(html: string): string {
+  let previous = "";
+  let result = html;
+  for (let i = 0; i < 4 && result !== previous; i++) {
+    previous = result;
+    result = result.replace(
+      /<p([^>]*)>((?:(?!<\/p>)[\s\S])*?)<p([^>]*)>/gi,
+      (_m, a: string, body: string, b: string) => `<p${a}>${body}</p><p${b}>`,
+    );
+  }
+  return result;
+}
+
 /**
- * Répare le LaTeX d'un contenu HTML de leçon.
- * Le HTML est découpé sur les balises : chaque segment de texte est traité
- * indépendamment, ce qui garantit qu'une formule ne peut jamais « déborder »
- * d'un bloc HTML sur le suivant.
+ * Répare le LaTeX sans laisser les délimiteurs traverser les balises HTML.
  */
 export function repairLatex(html: string): string {
   if (!html) return html;
 
-  const normalized = normalizeDoubleEscapedLatexCommands(html);
+  const normalized = repairNestedParagraphs(
+    normalizeCommonCommandMistakes(
+      normalizeEscapedDollars(
+        normalizeEscapedCommands(normalizeControlCharacters(html)),
+      ),
+    ),
+  );
 
-  return escapeStrayAngleBrackets(
-    mergeStrayComparison(convertOperatorInsideSinglePair(normalized)),
-  )
+  const repaired = normalized
     .split(/(<[^>]*>)/)
     .map((part) =>
-      part.startsWith("<") && part.endsWith(">")
-        ? part
-        : repairTextSegment(part),
+      part.startsWith("<") && part.endsWith(">") ? part : repairTextNode(part),
     )
     .join("");
+
+  return escapeStrayAngleBrackets(repaired);
 }
 
 const GREEK_LOWER: Record<string, string> = {
