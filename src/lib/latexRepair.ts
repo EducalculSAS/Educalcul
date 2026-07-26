@@ -13,6 +13,14 @@
  * rendu lisible et sûr, sans avaler le HTML voisin.
  */
 
+// Une balise HTML peut contenir un ">" littéral dans une valeur d'attribut
+// entre guillemets (ex: data-caption="...$x > 4$...") — un simple [^>]* s'arrête
+// sur ce ">" interne et coupe la balise au milieu, ce qui fait passer le reste
+// de l'attribut (et la vraie balise fermante) pour un nœud de texte, où le
+// réparateur LaTeX convertit alors ce ">" de fermeture en "\gt" littéral. Ce
+// motif saute les valeurs entre guillemets sans s'arrêter sur leur contenu.
+const HTML_TAG_RE_SOURCE = `<(?:"[^"]*"|'[^']*'|[^>"'])*>`;
+
 const CMD_WITH_ARGS =
   "frac|dfrac|tfrac|sqrt|vec|overrightarrow|overline|underline|bar|hat|dot|ddot|widehat|widetilde|binom|boxed|cancel|text|textbf|textit|mathbb|mathcal|mathbf|mathrm|mathit|mathsf|operatorname";
 
@@ -704,7 +712,7 @@ function normalizeParagraphStructure(html: string): string {
     "table",
     "ul",
   ]);
-  const tokens = html.split(/(<\/?[A-Za-z][^>]*>)/g);
+  const tokens = html.split(new RegExp(`(<\\/?[A-Za-z](?:"[^"]*"|'[^']*'|[^>"'])*>)`, "g"));
   let paragraphOpen = false;
   let result = "";
 
@@ -760,7 +768,7 @@ export function repairLatex(html: string): string {
   );
 
   const repaired = normalized
-    .split(/(<[^>]*>)/)
+    .split(new RegExp(`(${HTML_TAG_RE_SOURCE})`))
     .map((part) =>
       part.startsWith("<") && part.endsWith(">") ? part : repairTextNode(part),
     )
