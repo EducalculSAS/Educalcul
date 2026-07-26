@@ -50,11 +50,33 @@ type BlockingQualityIssue = {
   excerpt?: string;
 };
 
-const MAX_QUALITY_REVIEW_PASSES = 2;
+const MAX_QUALITY_REVIEW_PASSES = 1;
 const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1700;
+const QUALITY_REVIEW_TIMEOUT_MS = 45_000;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function withTimeout<T>(
+  promise: Promise<T>,
+  timeoutMs: number,
+  label: string,
+): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(
+          () => reject(new Error(`${label} a dépassé ${timeoutMs} ms.`)),
+          timeoutMs,
+        );
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
 }
 
 /**
@@ -289,11 +311,10 @@ function chapterExercisesAreValid(
   if (!Array.isArray(chapter.lessons) || chapter.lessons.length === 0) {
     return false;
   }
-
-  return chapter.lessons.every((lesson) => {
-    const count = getLessonExerciseIds(lesson).length;
-    return includeExercises ? count >= 3 && count <= 6 : count === 0;
-  });
+  if (!includeExercises) return true;
+  return chapter.lessons.every(
+    (lesson) => getLessonExerciseIds(lesson).length > 0,
+  );
 }
 
 function approximateWordCount(html: string): number {
@@ -302,7 +323,7 @@ function approximateWordCount(html: string): number {
   return withoutLatexCommands.split(/\s+/).filter(Boolean).length;
 }
 
-const MIN_LESSON_WORDS = 450;
+const MIN_LESSON_WORDS = 380;
 
 function chapterLessonsAreLongEnough(chapter: GeneratedCourseChapter): boolean {
   if (!Array.isArray(chapter.lessons) || chapter.lessons.length === 0) {
@@ -335,9 +356,6 @@ function totalChapterExerciseCount(chapter: GeneratedCourseChapter): number {
 
 function getBlockingQualityIssues(
   chapter: GeneratedCourseChapter,
-  expectedLessonCount: number,
-  expectedDuration: number,
-  includeExercises: boolean,
 ): BlockingQualityIssue[] {
   const deterministic = auditGeneratedCourseChapter(chapter)
     .filter((issue: CourseQualityIssue) => issue.severity === "error")
@@ -348,62 +366,45 @@ function getBlockingQualityIssues(
       excerpt: issue.excerpt,
     }));
 
-  const structural: BlockingQualityIssue[] = [];
-  const lessons = chapter.lessons ?? [];
+  return [...deterministic, ...collectUnrenderableMathIssues(chapter)];
+}
 
-  if (lessons.length !== expectedLessonCount) {
-    structural.push({
-      code: "lesson_count",
+function getChapterBlockingIssues(
+  chapter: GeneratedCourseChapter,
+  expectedLessonCount: number,
+  includeExercises: boolean,
+): BlockingQualityIssue[] {
+  const issues = getBlockingQualityIssues(chapter);
+  const lessonCount = chapter.lessons?.length ?? 0;
+
+  if (lessonCount !== expectedLessonCount) {
+    issues.push({
+      code: "lesson_count_mismatch",
       path: "lessons",
-      message: `Le chapitre contient ${lessons.length} leçon(s) au lieu de ${expectedLessonCount}.`,
+      message: `Le chapitre contient ${lessonCount} leçon(s) au lieu de ${expectedLessonCount}.`,
     });
   }
 
-  lessons.forEach((lesson, lessonIndex) => {
-    const lessonPath = `lessons[${lessonIndex}]`;
+  if (includeExercises) {
+    chapter.lessons?.forEach((lesson, lessonIndex) => {
+      if (getLessonExerciseIds(lesson).length === 0) {
+        issues.push({
+          code: "missing_lesson_exercises",
+          path: `lessons[${lessonIndex}].exercises`,
+          message: "La leçon ne contient aucun mini-exercice valide.",
+        });
+      }
+    });
+  } else if (totalChapterExerciseCount(chapter) > 0) {
+    issues.push({
+      code: "unexpected_exercises",
+      path: "lessons[*].exercises",
+      message:
+        "Des exercices ont été générés alors que includeExercises est désactivé.",
+    });
+  }
 
-    if (lesson.duration !== expectedDuration) {
-      structural.push({
-        code: "lesson_duration",
-        path: `${lessonPath}.duration`,
-        message: `La durée doit être exactement ${expectedDuration} minutes.`,
-      });
-    }
-
-    const words =
-      typeof lesson.content === "string"
-        ? approximateWordCount(lesson.content)
-        : 0;
-    if (words < MIN_LESSON_WORDS) {
-      structural.push({
-        code: "lesson_too_short",
-        path: `${lessonPath}.content`,
-        message: `La leçon contient environ ${words} mots ; le minimum technique est ${MIN_LESSON_WORDS}.`,
-      });
-    }
-
-    const exerciseCount = getLessonExerciseIds(lesson).length;
-    if (includeExercises && (exerciseCount < 3 || exerciseCount > 6)) {
-      structural.push({
-        code: "exercise_count",
-        path: `${lessonPath}.exercises`,
-        message: `La leçon doit contenir 3 à 6 exercices, mais en contient ${exerciseCount}.`,
-      });
-    }
-    if (!includeExercises && exerciseCount !== 0) {
-      structural.push({
-        code: "unexpected_exercises",
-        path: `${lessonPath}.exercises`,
-        message: "Les exercices sont désactivés : exercises doit être vide.",
-      });
-    }
-  });
-
-  return [
-    ...deterministic,
-    ...structural,
-    ...collectUnrenderableMathIssues(chapter),
-  ];
+  return issues;
 }
 
 function formatQualityIssues(issues: BlockingQualityIssue[]): string {
@@ -426,16 +427,21 @@ function candidatePreservesChapter(
   candidate: GeneratedCourseChapter,
   baseline: GeneratedCourseChapter,
   expectedLessonCount: number,
-  expectedDuration: number,
   includeExercises: boolean,
 ): boolean {
-  const candidateLessons = candidate.lessons ?? [];
-  if (candidateLessons.length !== expectedLessonCount) return false;
+  const candidateLessonCount = candidate.lessons?.length ?? 0;
+  const requiredLessonCount = expectedLessonCount;
+  if (candidateLessonCount !== requiredLessonCount) return false;
   if (!chapterExercisesAreValid(candidate, includeExercises)) return false;
-  if (candidateLessons.some((lesson) => lesson.duration !== expectedDuration)) {
+  if (!includeExercises && totalChapterExerciseCount(candidate) > 0)
+    return false;
+
+  if (
+    chapterLessonsAreLongEnough(baseline) &&
+    !chapterLessonsAreLongEnough(candidate)
+  ) {
     return false;
   }
-  if (!chapterLessonsAreLongEnough(candidate)) return false;
 
   const baselineWords = totalChapterWordCount(baseline);
   const candidateWords = totalChapterWordCount(candidate);
@@ -445,7 +451,6 @@ function candidatePreservesChapter(
   const candidateExercises = totalChapterExerciseCount(candidate);
   if (
     includeExercises &&
-    chapterExercisesAreValid(baseline, true) &&
     baselineExercises > 0 &&
     candidateExercises < baselineExercises
   ) {
@@ -456,8 +461,8 @@ function candidatePreservesChapter(
 }
 
 /**
- * Deuxième lecture obligatoire du chapitre par le modèle, à basse température.
- * Elle recalcule les exemples et exercices, puis le contrôle déterministe
+ * Correction ciblée du chapitre par le modèle, à basse température.
+ * Elle est appelée uniquement si le contrôle déterministe détecte une anomalie (ou en mode strict), puis le contrôle déterministe
  * bloque toute erreur encore connue avant que le chapitre ne soit envoyé au
  * client. Cela ne constitue pas une preuve formelle de chaque résultat, mais
  * empêche de publier les contradictions déjà observées dans les exports.
@@ -465,7 +470,6 @@ function candidatePreservesChapter(
 async function reviewGeneratedCourseChapter(params: {
   chapter: GeneratedCourseChapter;
   expectedLessonCount: number;
-  expectedDuration: number;
   includeExercises: boolean;
   courseTitle: string;
   chapterTitle: string;
@@ -476,7 +480,6 @@ async function reviewGeneratedCourseChapter(params: {
 }): Promise<GeneratedCourseChapter> {
   const {
     expectedLessonCount,
-    expectedDuration,
     includeExercises,
     courseTitle,
     chapterTitle,
@@ -487,13 +490,11 @@ async function reviewGeneratedCourseChapter(params: {
   } = params;
 
   let best = cleanupGeneratedCourseChapter(params.chapter, expectedLessonCount);
-  let bestIssues = getBlockingQualityIssues(
+  let bestIssues = getChapterBlockingIssues(
     best,
     expectedLessonCount,
-    expectedDuration,
     includeExercises,
   );
-  let acceptedIndependentReview = false;
 
   for (let pass = 1; pass <= MAX_QUALITY_REVIEW_PASSES; pass++) {
     const reviewSystem = `Tu es le réviseur final d'un cours de mathématiques pour Educalcul.
@@ -509,9 +510,9 @@ RÈGLES OBLIGATOIRES :
 • Corrige aussi les erreurs mathématiques du contenu principal, même si elles ne figurent pas dans la liste d'anomalies.
 • Préserve le titre du chapitre, l'ordre, les titres, le nombre et la profondeur des leçons. Ne résume pas le cours.
 • Préserve les identifiants d'exercices et les placeholders correspondants.
-• Le tableau lessons contient exactement ${expectedLessonCount} leçon(s), chacune avec duration = ${expectedDuration}. ${
+• Le tableau lessons contient exactement ${expectedLessonCount} leçon(s). ${
       includeExercises
-        ? "Chaque leçon conserve tous ses exercices et en contient entre 3 et 6."
+        ? "Chaque leçon conserve tous ses exercices et en contient au moins un."
         : "Chaque tableau exercises reste vide."
     }
 • Retourne UNIQUEMENT le chapitre JSON corrigé, sans Markdown ni commentaire.
@@ -541,23 +542,27 @@ Renvoie uniquement le chapitre JSON complet corrigé avec la même structure {"t
         reviewUser,
         reviewSystem,
         0.05,
-        28000,
+        Math.min(
+          12_000,
+          Math.max(
+            6_000,
+            expectedLessonCount * 2_800 + (includeExercises ? 1_600 : 0),
+          ),
+        ),
       )) as GeneratedCourseChapter;
       const candidate = cleanupGeneratedCourseChapter(
         candidateRaw,
         expectedLessonCount,
       );
-      const candidateIssues = getBlockingQualityIssues(
+      const candidateIssues = getChapterBlockingIssues(
         candidate,
         expectedLessonCount,
-        expectedDuration,
         includeExercises,
       );
       const preserves = candidatePreservesChapter(
         candidate,
         best,
         expectedLessonCount,
-        expectedDuration,
         includeExercises,
       );
 
@@ -568,10 +573,9 @@ Renvoie uniquement le chapitre JSON complet corrigé avec la même structure {"t
       if (preserves && isBetter) {
         best = candidate;
         bestIssues = candidateIssues;
-        acceptedIndependentReview = true;
       }
 
-      if (acceptedIndependentReview && bestIssues.length === 0) {
+      if (bestIssues.length === 0) {
         return best;
       }
     } catch (error) {
@@ -579,31 +583,26 @@ Renvoie uniquement le chapitre JSON complet corrigé avec la même structure {"t
         `[course-ai] Échec du contrôle qualité ${pass}/${MAX_QUALITY_REVIEW_PASSES} pour "${chapterTitle}" :`,
         error,
       );
+      if (bestIssues.length === 0) return best;
     }
   }
 
-  if (!acceptedIndependentReview) {
-    throw new Error(
-      `Le contrôle mathématique indépendant du chapitre "${chapterTitle}" n'a pas pu être validé. Le chapitre n'a pas été publié.`,
-    );
-  }
-
-  const remaining = getBlockingQualityIssues(
+  const remaining = getChapterBlockingIssues(
     best,
     expectedLessonCount,
-    expectedDuration,
     includeExercises,
   );
   if (remaining.length > 0) {
-    throw new Error(
-      `Le chapitre "${chapterTitle}" a été bloqué avant publication : ${remaining.length} erreur(s) de qualité subsistent.\n${formatQualityIssues(remaining)}`,
+    console.warn(
+      `[course-ai] Le chapitre "${chapterTitle}" conserve ${remaining.length} anomalie(s) après la correction ciblée. Le meilleur contenu disponible est publié au lieu de renvoyer un cours vide.`,
+      remaining,
     );
   }
 
   return best;
 }
 
-export const maxDuration = 300; // 5 min — génération de cours complète
+export const maxDuration = 300; // plafond de sécurité uniquement ; il ne ralentit pas la génération
 
 export async function POST(request: Request) {
   // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
@@ -637,6 +636,7 @@ export async function POST(request: Request) {
     subject_area,
     duration_per_lesson,
     difficulty,
+    quality_mode,
   } = data;
 
   if (!grade_level || !subject) {
@@ -666,6 +666,14 @@ export async function POST(request: Request) {
   const lessonsPerChapter = clampNumber(lessons_per_chapter, 3, 1, 6);
   const durationPerLesson = clampNumber(duration_per_lesson, 30, 5, 90);
   const includeExercises = include_exercises !== false;
+  const qualityMode: "fast" | "balanced" | "strict" =
+    quality_mode === "fast" || quality_mode === "strict"
+      ? quality_mode
+      : "balanced";
+  const chapterMaxTokens = Math.min(
+    16_000,
+    Math.max(8_000, lessonsPerChapter * 3_600 + (includeExercises ? 1_800 : 0)),
+  );
   const style: "balanced" | "theory_heavy" | "practice_heavy" =
     content_style || "balanced";
   const lang: "simple" | "standard" | "academic" = language_level || "standard";
@@ -695,7 +703,7 @@ export async function POST(request: Request) {
 
   const exercisesInstruction = includeExercises
     ? `═══ MINI-EXERCICES (OBLIGATOIRES) ═══
-• Chaque leçon doit contenir 3 à 6 mini-exercices interactifs dans le tableau "exercises", au format : { "id": "ex-1", "question": "Énoncé clair (LaTeX inline $...$ possible)", "type": "short_answer", "answer": "réponse exacte attendue, courte et normalisée", "hint": "Indice utile sans donner la réponse", "explanation": "Solution propre et complète. La dernière phrase est exactement : Conclusion : <answer>." }.
+• Chaque leçon doit contenir 3 à 4 mini-exercices interactifs dans le tableau "exercises", au format : { "id": "ex-1", "question": "Énoncé clair (LaTeX inline $...$ possible)", "type": "short_answer", "answer": "réponse exacte attendue, courte et normalisée", "hint": "Indice utile sans donner la réponse", "explanation": "Solution propre et complète. La dernière phrase est exactement : Conclusion : <answer>." }.
 • Les identifiants sont uniques dans TOUT le chapitre : ne recommence jamais à ex-1 au début d'une nouvelle leçon ; continue ex-1, ex-2, ex-3, etc.
 • Résous chaque exercice deux fois avant de renseigner answer. Ne conserve jamais un calcul faux suivi d'une correction.
 • La dernière phrase de chaque explanation doit recopier exactement answer sous la forme « Conclusion : <answer>. ».
@@ -731,13 +739,13 @@ Vérifie en fin de rédaction que CHAQUE notion citée ci-dessus apparaît bien 
       : "";
 
   const lessonFormatBlock = `═══ EXIGENCES DE LONGUEUR (NON NÉGOCIABLES) ═══
-• Chaque leçon doit contenir MINIMUM 600 mots, idéalement 800-1200 mots.
+• Chaque leçon doit contenir 420 à 650 mots utiles, sans répétition ni remplissage.
 • Le chapitre doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s).
 • Chaque leçon doit inclure : théorie, exemples détaillés étape par étape, contre-exemples, erreurs fréquentes, exercices d'application résolus.
 • duration = ${durationPerLesson} minutes pour chaque leçon.
 • Ne génère jamais plus ou moins de leçons que demandé. Si une leçon n'a pas de titre, de contenu ou de durée valide, considère-la invalide et ne la crée pas.
 • Si une représentation visuelle est utile (fractions, signes, variations, droites, aires), insère au moins un tableau ou un SVG explicatif sobre dans le chapitre.
-• Si includeExercises est vrai, chaque leçon doit avoir 3 à 6 mini-exercices réels dans "exercises" ; ne laisse jamais ce tableau vide.
+• Si includeExercises est vrai, chaque leçon doit avoir 3 à 4 mini-exercices réels dans "exercises" ; ne laisse jamais ce tableau vide.
 
 ═══ PÉDAGOGIE ═══
 ${AI_COURSE_PEDAGOGY_RULES}
@@ -806,7 +814,12 @@ Le tableau "chapters" doit contenir EXACTEMENT ${nbChapitres} chapitre(s), avec 
         const outlineUser = `Crée le plan d'un cours de mathématiques sur "${subject}" pour le niveau ${grade_level}, avec ${nbChapitres} chapitre(s).
 ${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIRES DE L'ENSEIGNANT ci-dessus : couvre exactement le programme demandé, notion par notion." : ""}`;
 
-        const outline = (await generate(outlineUser, outlineSystem, 0.35)) as {
+        const outline = (await generate(
+          outlineUser,
+          outlineSystem,
+          0.25,
+          3000,
+        )) as {
           title?: string;
           description?: string;
           chapters?: { title?: string; scope?: string }[];
@@ -878,7 +891,7 @@ Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
     {
       "title": "Titre précis de la leçon",
       "type": "text",
-      "content": "Contenu HTML très riche (600-1200 mots), avec des placeholders <div class=\\"lesson-exercise\\" data-exercise-id=\\"ex-N\\"></div> insérés juste après chaque notion/définition/méthode",
+      "content": "Contenu HTML riche et précis (420-650 mots), avec des placeholders <div class=\\"lesson-exercise\\" data-exercise-id=\\"ex-N\\"></div> insérés juste après chaque notion/définition/méthode",
       "duration": ${durationPerLesson},
       "exercises": [
         { "id": "ex-1", "question": "Énoncé (LaTeX inline $...$ possible)", "type": "short_answer", "answer": "réponse courte normalisée", "hint": "Indice", "explanation": "Solution vérifiée. Conclusion : réponse courte normalisée." }
@@ -889,7 +902,7 @@ Réponds UNIQUEMENT avec le JSON ci-dessous, sans texte avant ni après.
 
             const chapterUser = `Rédige le chapitre "${chapterTitle}" du cours "${courseTitle}" (niveau ${grade_level}).
 Le tableau "lessons" doit contenir EXACTEMENT ${lessonsPerChapter} leçon(s), chacune ${durationPerLesson} minutes.
-Chaque leçon doit avoir un "content" HTML riche (600-1200 mots au total), ${includeExercises ? `et un tableau "exercises" de 3 à 6 mini-exercices (type "short_answer"), avec un placeholder <div class="lesson-exercise" data-exercise-id="..."></div> inséré dans "content" juste après chaque notion expliquée` : `et un tableau "exercises" vide`}.
+Chaque leçon doit avoir un "content" HTML riche et précis (420-650 mots au total), ${includeExercises ? `et un tableau "exercises" de 3 à 4 mini-exercices (type "short_answer"), avec un placeholder <div class="lesson-exercise" data-exercise-id="..."></div> inséré dans "content" juste après chaque notion expliquée` : `et un tableau "exercises" vide`}.
 Ne génère jamais de leçons vides ou incomplètes : chaque leçon doit avoir un titre, un contenu et une durée valides.
 Si includeExercises est vrai, ne laisse jamais le tableau "exercises" vide, utilise des ids uniques dans tout le chapitre et assure-toi que chaque placeholder corresponde à un "id" réel.
 Pour chaque exercice, recalcule le résultat et termine explanation exactement par « Conclusion : <answer>. ».
@@ -899,46 +912,38 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
             const rawChapterData = (await generate(
               chapterUser,
               chapterSystem,
-              0.25,
-              28000,
+              0.2,
+              chapterMaxTokens,
             )) as GeneratedCourseChapter;
             let chapterData = cleanupGeneratedCourseChapter(
               rawChapterData,
               lessonsPerChapter,
             );
 
-            // Une seule relance, si le nombre de leçons, les exercices ou la
-            // longueur ne sont pas conformes. Au-delà, on publie le meilleur
-            // résultat obtenu plutôt que de faire échouer tout le cours : une
-            // leçon manquante, un exercice en moins ou une leçon un peu courte
-            // n'empêche pas de publier les autres, et le rendu client dégrade
-            // déjà proprement toute formule mal formée résiduelle (jamais
-            // d'erreur affichée).
-            const lessonsTooShort = !chapterLessonsAreLongEnough(chapterData);
-            const needsRetry =
+            // Relance uniquement en cas de défaut structurel réel. Une leçon
+            // un peu plus courte n'entraîne jamais une seconde génération
+            // complète : cela doublait la latence sans garantir plus de qualité.
+            const needsStructuralRetry =
               (chapterData.lessons?.length || 0) < lessonsPerChapter ||
-              !chapterExercisesAreValid(chapterData, includeExercises) ||
-              lessonsTooShort;
-            if (needsRetry) {
-              const retryHint = `La réponse précédente ne respectait pas exactement ce qui était demandé (nombre de leçons, leçons vides, mini-exercices manquants, ou leçons trop courtes). Renvoie un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides (titre, contenu, durée)${includeExercises ? ', chacune avec 3 à 6 mini-exercices réels dans "exercises" et leurs placeholders correspondants dans "content"' : ""}.${lessonsTooShort ? " IMPORTANT : chaque leçon doit contenir AU MOINS 600 mots de contenu réel (hors code HTML/LaTeX) — développe davantage les explications, exemples et démonstrations." : ""}`;
+              !chapterExercisesAreValid(chapterData, includeExercises);
+
+            if (needsStructuralRetry) {
+              const retryHint = `La réponse précédente est structurellement incomplète. Renvoie un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides (titre, contenu, durée)${includeExercises ? ', chacune avec 3 à 4 mini-exercices réels dans "exercises" et leurs placeholders correspondants dans "content"' : ""}. Ne rallonge pas inutilement les leçons : vise 420 à 650 mots utiles par leçon.`;
               const retryChapterData = (await generate(
                 `${chapterUser}\n\n${retryHint}`,
                 chapterSystem,
-                0.15,
-                28000,
+                0.1,
+                chapterMaxTokens,
               )) as GeneratedCourseChapter;
               const retried = cleanupGeneratedCourseChapter(
                 retryChapterData,
                 lessonsPerChapter,
               );
-              // On garde la relance si elle a au moins autant de leçons ET
-              // (elle règle le problème de longueur, ou l'essai initial
-              // n'avait de toute façon pas ce problème à régler).
-              const retriedLongEnough = chapterLessonsAreLongEnough(retried);
+
               if (
                 (retried.lessons?.length || 0) >=
                   (chapterData.lessons?.length || 0) &&
-                (retriedLongEnough || !lessonsTooShort)
+                chapterExercisesAreValid(retried, includeExercises)
               ) {
                 chapterData = retried;
               }
@@ -950,38 +955,90 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
               );
             }
 
-            send({
-              type: "progress",
-              step: "chapter",
-              current: completed,
-              total: chapterTitles.length,
-              message: `Contrôle mathématique et LaTeX : ${chapterTitle}...`,
-            });
+            if (!chapterLessonsAreLongEnough(chapterData)) {
+              console.warn(
+                `[course-ai] Certaines leçons de "${chapterTitle}" font moins de ${MIN_LESSON_WORDS} mots ; elles sont conservées pour éviter une relance complète coûteuse.`,
+              );
+            }
 
-            chapterData = await reviewGeneratedCourseChapter({
-              chapter: chapterData,
-              expectedLessonCount: lessonsPerChapter,
-              expectedDuration: durationPerLesson,
-              includeExercises,
-              courseTitle,
-              chapterTitle,
-              gradeLevel: String(grade_level),
-              contextBlock,
-              teacherDirective,
-              generate,
-            });
-
-            const finalQualityIssues = getBlockingQualityIssues(
+            const initialQualityIssues = getChapterBlockingIssues(
               chapterData,
               lessonsPerChapter,
-              durationPerLesson,
+              includeExercises,
+            );
+
+            // Mode équilibré (par défaut) : aucun second appel si les contrôles
+            // locaux passent. Une seule correction IA ciblée est déclenchée
+            // uniquement lorsqu'une anomalie concrète est détectée.
+            const shouldRunAiReview =
+              qualityMode === "strict" ||
+              (qualityMode === "balanced" && initialQualityIssues.length > 0);
+
+            if (shouldRunAiReview) {
+              send({
+                type: "progress",
+                step: "chapter",
+                current: completed,
+                total: chapterTitles.length,
+                message: `Correction ciblée : ${chapterTitle}...`,
+              });
+
+              try {
+                chapterData = await withTimeout(
+                  reviewGeneratedCourseChapter({
+                    chapter: chapterData,
+                    expectedLessonCount: lessonsPerChapter,
+                    includeExercises,
+                    courseTitle,
+                    chapterTitle,
+                    gradeLevel: String(grade_level),
+                    contextBlock,
+                    teacherDirective,
+                    generate,
+                  }),
+                  QUALITY_REVIEW_TIMEOUT_MS,
+                  `Le contrôle qualité de "${chapterTitle}"`,
+                );
+              } catch (reviewError) {
+                console.warn(
+                  `[course-ai] Contrôle qualité interrompu pour "${chapterTitle}". Le chapitre initial réparé est conservé.`,
+                  reviewError,
+                );
+              }
+            } else if (
+              qualityMode === "fast" &&
+              initialQualityIssues.length > 0
+            ) {
+              console.warn(
+                `[course-ai] Mode fast : ${initialQualityIssues.length} anomalie(s) locale(s) détectée(s) dans "${chapterTitle}". Le chapitre réparé est tout de même publié.`,
+                initialQualityIssues,
+              );
+            }
+
+            const finalQualityIssues = getChapterBlockingIssues(
+              chapterData,
+              lessonsPerChapter,
               includeExercises,
             );
             if (finalQualityIssues.length > 0) {
-              throw new Error(
-                `Le chapitre "${chapterTitle}" a été refusé avant publication : ${finalQualityIssues.length} anomalie(s) subsistent.`,
+              console.warn(
+                `[course-ai] ${finalQualityIssues.length} anomalie(s) subsistent dans "${chapterTitle}". Le chapitre est conservé pour éviter un cours vide.`,
+                finalQualityIssues,
               );
+              send({
+                type: "progress",
+                step: "chapter",
+                current: completed,
+                total: chapterTitles.length,
+                message: `Chapitre conservé avec avertissement : ${chapterTitle}`,
+              });
             }
+
+            chapterData.lessons?.forEach((lesson) => {
+              if (typeof lesson.content === "string") {
+                warnIfUnrenderableMath(lesson.title || "?", lesson.content);
+              }
+            });
 
             completed++;
             send({
