@@ -102,6 +102,29 @@ function chapterExercisesAreValid(chapter: GeneratedCourseChapter, includeExerci
   return chapter.lessons.every((lesson) => getLessonExerciseIds(lesson).length > 0);
 }
 
+/** Compte approximatif de mots d'un contenu HTML : retire les balises et les
+ * commandes LaTeX (qui gonflent artificiellement le nombre de "mots" sans
+ * ajouter de texte réellement lu par l'élève). */
+function approximateWordCount(html: string): number {
+  const withoutTags = html.replace(/<[^>]+>/g, " ");
+  const withoutLatexCommands = withoutTags.replace(/\\[a-zA-Z]+|\$/g, " ");
+  const words = withoutLatexCommands.split(/\s+/).filter(Boolean);
+  return words.length;
+}
+
+/** Le prompt demande un minimum de 600 mots par leçon, mais un modèle plus
+ * faible ne le respecte pas toujours de lui-même (observé : leçons à moins de
+ * 300-450 mots). Un contenu significativement en dessous du minimum déclenche
+ * la même relance qu'un problème structurel, quel que soit le thème du cours —
+ * ce n'est pas au prompt seul de garantir la longueur. */
+const MIN_LESSON_WORDS = 450;
+function chapterLessonsAreLongEnough(chapter: GeneratedCourseChapter): boolean {
+  if (!chapter || !Array.isArray(chapter.lessons) || chapter.lessons.length === 0) return false;
+  return chapter.lessons.every(
+    (lesson) => typeof lesson.content === "string" && approximateWordCount(lesson.content) >= MIN_LESSON_WORDS,
+  );
+}
+
 export const maxDuration = 300; // 5 min — génération de cours complète
 
 export async function POST(request: Request) {
@@ -394,17 +417,20 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
             )) as GeneratedChapter);
             let chapterData = cleanupGeneratedCourseChapter(rawChapterData, lessonsPerChapter);
 
-            // Une seule relance, si le nombre de leçons ou les exercices ne
-            // sont pas conformes. Au-delà, on publie le meilleur résultat
-            // obtenu plutôt que de faire échouer tout le cours : une leçon
-            // manquante ou un exercice en moins n'empêche pas de publier les
-            // autres, et le rendu client dégrade déjà proprement toute
-            // formule mal formée résiduelle (jamais d'erreur affichée).
+            // Une seule relance, si le nombre de leçons, les exercices ou la
+            // longueur ne sont pas conformes. Au-delà, on publie le meilleur
+            // résultat obtenu plutôt que de faire échouer tout le cours : une
+            // leçon manquante, un exercice en moins ou une leçon un peu courte
+            // n'empêche pas de publier les autres, et le rendu client dégrade
+            // déjà proprement toute formule mal formée résiduelle (jamais
+            // d'erreur affichée).
+            const lessonsTooShort = !chapterLessonsAreLongEnough(chapterData);
             const needsRetry =
               (chapterData.lessons?.length || 0) < lessonsPerChapter ||
-              !chapterExercisesAreValid(chapterData, includeExercises);
+              !chapterExercisesAreValid(chapterData, includeExercises) ||
+              lessonsTooShort;
             if (needsRetry) {
-              const retryHint = `La réponse précédente ne respectait pas exactement ce qui était demandé (nombre de leçons, leçons vides, ou mini-exercices manquants). Renvoie un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides (titre, contenu, durée)${includeExercises ? ", chacune avec 3 à 6 mini-exercices réels dans \"exercises\" et leurs placeholders correspondants dans \"content\"" : ""}.`;
+              const retryHint = `La réponse précédente ne respectait pas exactement ce qui était demandé (nombre de leçons, leçons vides, mini-exercices manquants, ou leçons trop courtes). Renvoie un chapitre JSON valide avec EXACTEMENT ${lessonsPerChapter} leçon(s) valides (titre, contenu, durée)${includeExercises ? ", chacune avec 3 à 6 mini-exercices réels dans \"exercises\" et leurs placeholders correspondants dans \"content\"" : ""}.${lessonsTooShort ? " IMPORTANT : chaque leçon doit contenir AU MOINS 600 mots de contenu réel (hors code HTML/LaTeX) — développe davantage les explications, exemples et démonstrations." : ""}`;
               const retryChapterData = normalizeGeneratedCourseChapter((await generateStructuredContent(
                 `${chapterUser}\n\n${retryHint}`,
                 chapterSystem,
@@ -412,8 +438,14 @@ Chaque leçon doit être un vrai cours magistral, pas un résumé.`;
                 28000,
               )) as GeneratedChapter);
               const retried = cleanupGeneratedCourseChapter(retryChapterData, lessonsPerChapter);
-              // On garde la relance seulement si elle fait mieux que le premier essai.
-              if ((retried.lessons?.length || 0) >= (chapterData.lessons?.length || 0)) {
+              // On garde la relance si elle a au moins autant de leçons ET
+              // (elle règle le problème de longueur, ou l'essai initial
+              // n'avait de toute façon pas ce problème à régler).
+              const retriedLongEnough = chapterLessonsAreLongEnough(retried);
+              if (
+                (retried.lessons?.length || 0) >= (chapterData.lessons?.length || 0) &&
+                (retriedLongEnough || !lessonsTooShort)
+              ) {
                 chapterData = retried;
               }
             }
