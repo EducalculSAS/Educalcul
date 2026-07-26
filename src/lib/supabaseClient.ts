@@ -57,19 +57,32 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
     // Un jeton 2FA présent en localStorage mais expiré/révoqué (TTL admin de
     // 4h) laisse admin/layout.tsx croire la 2FA validée (il ne vérifie que la
     // PRÉSENCE du jeton, pas sa validité) : la page s'affiche, puis chaque
-    // appel /api/admin/* échoue en 401 sans qu'aucun code ne redirige vers la
-    // re-vérification — d'où le "Erreur de chargement." qui forçait une
-    // déconnexion complète. On intercepte ici, au point d'entrée commun à
-    // tous les appels admin, pour renvoyer proprement vers /auth/2fa-verify.
+    // appel /api/admin/* échoue en 401. Plutôt que de renvoyer vers une page
+    // de re-vérification 2FA en pleine action (vécu comme un blocage confus),
+    // on déconnecte proprement et on renvoie vers la connexion : l'admin se
+    // reconnecte une fois, normalement, au lieu de re-suivre un flux 2FA isolé.
     if (
       response.status === 401 &&
       url.startsWith("/api/admin/") &&
       window.location.pathname.startsWith("/admin")
     ) {
       window.localStorage.removeItem("edu_2fa_token");
-      window.location.href = `/auth/2fa-verify?redirect=${encodeURIComponent(
-        window.location.pathname,
-      )}`;
+      getPublicClient().auth.signOut().finally(() => {
+        window.location.href = `/auth/connexion?redirect=${encodeURIComponent(
+          window.location.pathname,
+        )}`;
+      });
+    } else if (
+      response.status === 401 &&
+      url.startsWith("/api/") &&
+      !url.startsWith("/api/admin/") &&
+      !window.location.pathname.startsWith("/admin")
+    ) {
+      // Espace élève/parent : ne jamais déconnecter de force sur une simple
+      // session vieillissante — on laisse un composant applicatif (voir
+      // SessionStillHereModal) proposer de confirmer sa présence et de
+      // rafraîchir la session, sans interrompre l'action en cours.
+      window.dispatchEvent(new CustomEvent("edu:session-check-needed"));
     }
     return response;
   }) as typeof fetch;

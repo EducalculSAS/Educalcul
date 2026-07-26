@@ -3,6 +3,7 @@ import "./globals.css";
 import { ToastProvider } from "@/components/Toast";
 import { ConfirmProvider } from "@/components/ConfirmDialog";
 import CookieBanner from "@/components/CookieBanner";
+import SessionStillHereModal from "@/components/SessionStillHereModal";
 import JsonLd from "@/components/JsonLd";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 
@@ -177,6 +178,7 @@ export default function RootLayout({
           <ConfirmProvider>
             {children}
             <CookieBanner />
+            <SessionStillHereModal />
           </ConfirmProvider>
         </ToastProvider>
       </body>
