@@ -8,6 +8,7 @@ import {
   stripFigureNumberPrefix,
   renderMathAsPlainTextInSvg,
   normalizeSvgArrowMarkers,
+  mathToReadableText,
 } from "@/lib/latexRepair";
 
 /**
@@ -37,7 +38,6 @@ export function sanitizeHtml(html: string): string {
     .replace(/javascript:/gi, "");
 }
 
-
 /** Rendu KaTeX d'une formule avec repli propre : si la source est invalide
  * (souvent parce que l'IA a mélangé une balise HTML dans la formule), on
  * retire les balises et on retente, puis en dernier recours on affiche le
@@ -62,7 +62,12 @@ function safeRenderMath(math: string, displayMode: boolean): string {
         /* repli ci-dessous */
       }
     }
-    const escaped = (cleaned || trimmed)
+    // Dernier repli : ne jamais exposer une commande LaTeX brute à l'élève.
+    // On transforme la source invalide en texte Unicode lisible (fractions,
+    // racines, vecteurs, opérateurs...) puis on l'échappe pour le HTML.
+    const readable =
+      mathToReadableText(cleaned || trimmed) || "Formule illisible";
+    const escaped = readable
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
@@ -151,7 +156,10 @@ let katexAutoRenderPromise: Promise<void> | null = null;
 
 export function ensureKatexAutoRenderLoaded(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
-  if (typeof (window as Window & { renderMathInElement?: unknown }).renderMathInElement === "function") {
+  if (
+    typeof (window as Window & { renderMathInElement?: unknown })
+      .renderMathInElement === "function"
+  ) {
     return Promise.resolve();
   }
   if (katexAutoRenderPromise) return katexAutoRenderPromise;

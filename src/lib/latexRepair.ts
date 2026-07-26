@@ -17,7 +17,7 @@ const CMD_WITH_ARGS =
   "frac|dfrac|tfrac|sqrt|vec|overrightarrow|overline|underline|bar|hat|dot|ddot|widehat|widetilde|binom|boxed|cancel|text|textbf|textit|mathbb|mathcal|mathbf|mathrm|mathit|mathsf|operatorname";
 
 const CMD_SYMBOLS =
-  "quad|qquad|implies|impliedby|iff|to|mapsto|times|div|cdot|cdots|ldots|dots|vdots|ddots|le|leq|ge|geq|neq|ne|pm|mp|infty|approx|equiv|sim|propto|forall|exists|nexists|in|notin|subset|subseteq|supset|supseteq|cup|cap|emptyset|varnothing|perp|parallel|angle|circ|deg|alpha|beta|gamma|delta|epsilon|varepsilon|zeta|eta|theta|vartheta|iota|kappa|lambda|mu|nu|xi|pi|rho|sigma|tau|upsilon|phi|varphi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Phi|Psi|Omega|rightarrow|leftarrow|Rightarrow|Leftarrow|leftrightarrow|Leftrightarrow|langle|rangle|lfloor|rfloor|lceil|rceil|sum|prod|int|lim|log|ln|exp|sin|cos|tan|arcsin|arccos|arctan|sinh|cosh|tanh|min|max|gcd|bmod|pmod";
+  "quad|qquad|implies|impliedby|iff|to|mapsto|times|div|cdot|cdots|ldots|dots|vdots|ddots|le|leq|ge|geq|neq|ne|pm|mp|infty|approx|equiv|sim|propto|forall|exists|nexists|in|notin|subset|subseteq|supset|supseteq|cup|cap|emptyset|varnothing|perp|parallel|angle|circ|deg|alpha|beta|gamma|delta|epsilon|varepsilon|zeta|eta|theta|vartheta|iota|kappa|lambda|mu|nu|xi|pi|rho|sigma|tau|upsilon|phi|varphi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Phi|Psi|Omega|rightarrow|leftarrow|Rightarrow|Leftarrow|leftrightarrow|Leftrightarrow|langle|rangle|lfloor|rfloor|lceil|rceil|sum|prod|int|lim|log|ln|exp|sin|cos|tan|arcsin|arccos|arctan|sinh|cosh|tanh|min|max|gcd|bmod|pmod|lt|gt|blacksquare";
 
 const ENV_NAMES =
   "cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|Bmatrix|matrix|aligned|align|alignedat|gathered|split";
@@ -27,8 +27,41 @@ const ANY_LATEX_CMD_RE = new RegExp(`\\\\(?:${ALL_COMMANDS})\\b`);
 const LATEX_CMD_GLOBAL_RE = new RegExp(`\\\\(?:${ALL_COMMANDS})\\b`, "g");
 const PROSE_WORD_RE = /(?<!\\)\b[A-Za-zÀ-ÿ]{3,}\b/g;
 
-function normalizeControlCharacters(text: string): string {
+/**
+ * Récupère les commandes que JSON.parse a transformées en caractères de
+ * contrôle lorsqu'un modèle a oublié d'échapper son antislash dans le JSON
+ * brut : "\\text" peut devenir TAB + "ext", "\\frac" FORM-FEED +
+ * "rac", etc. Cette passe doit impérativement précéder la suppression des
+ * caractères de contrôle.
+ */
+function recoverCommandsFromJsonControlEscapes(text: string): string {
   return text
+    .replace(/\u0008egin(?=\s*\{)/g, "\\begin")
+    .replace(/\u0008ar(?=\s*\{)/g, "\\bar")
+    .replace(/\u0008eta\b/g, "\\beta")
+    .replace(/\u0008inom(?=\s*\{)/g, "\\binom")
+    .replace(/\u0008oxed(?=\s*\{)/g, "\\boxed")
+    .replace(/\u000Crac(?=\s*\{)/g, "\\frac")
+    .replace(/\text(?=\s*\{)/g, "\\text")
+    .replace(/\times\b/g, "\\times")
+    .replace(/\theta\b/g, "\\theta")
+    .replace(/\tfrac(?=\s*\{)/g, "\\tfrac")
+    .replace(/\tan\b/g, "\\tan")
+    .replace(/\to\b/g, "\\to")
+    .replace(/\right(?:arrow)?\b/g, (m) =>
+      m.endsWith("arrow") ? "\\rightarrow" : "\\right",
+    )
+    .replace(/\rho\b/g, "\\rho")
+    .replace(/\rangle\b/g, "\\rangle")
+    .replace(/\rfloor\b/g, "\\rfloor")
+    .replace(/\rceil\b/g, "\\rceil")
+    .replace(/\neq\b/g, "\n\\neq")
+    .replace(/\nexists\b/g, "\n\\nexists")
+    .replace(/\notin\b/g, "\n\\notin");
+}
+
+function normalizeControlCharacters(text: string): string {
+  return recoverCommandsFromJsonControlEscapes(text)
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
     .replace(/\r\n?/g, "\n");
 }
@@ -48,18 +81,415 @@ function normalizeEscapedDollars(text: string): string {
 }
 
 function normalizeCommonCommandMistakes(text: string): string {
-  return text
-    .replace(/\\text\s*\{\s*[πΠ]\s*\}/g, "\\pi")
+  return (
+    text
+      // Commandes dont le premier caractère a disparu après une mauvaise
+      // séquence d'échappement JSON (ex. TAB + ext{...} devenu ext{...}).
+      .replace(/(^|[^A-Za-z\\])ext\s*\{/g, "$1\\text{")
+      .replace(/(^|[^A-Za-z\\])rac\s*\{/g, "$1\\frac{")
+      .replace(
+        new RegExp(`(^|[^A-Za-z\\\\])egin\\s*\\{(${ENV_NAMES})\\}`, "g"),
+        "$1\\begin{$2}",
+      )
+      .replace(/(^|[^A-Za-z\\])ightarrow\b/g, "$1\\rightarrow")
+      .replace(/(^|[^A-Za-z\\])ight(?=\s*[)\]}.|])/g, "$1\\right")
+      .replace(/(^|[^A-Za-z\\])imes\b/g, "$1\\times")
+      .replace(/(^|[^A-Za-z\\])heta\b/g, "$1\\theta")
+      .replace(/\\text\s*\{\s*[πΠ]\s*\}/g, "\\pi")
+      .replace(
+        /\\text\s*\{\s*(cos|sin|tan|ln|log|exp)\s*\}/gi,
+        (_m, fn: string) => `\\${fn.toLowerCase()}`,
+      )
+      .replace(
+        /\\operatorname\s*\{\s*(cos|sin|tan|ln|log|exp)\s*\}/gi,
+        (_m, fn: string) => `\\${fn.toLowerCase()}`,
+      )
+      .replace(/\\text\s*\{\s*([α-ωΑ-Ω])\s*\}/g, "$1")
+      .replace(/\\([()\[\]])/g, "$1")
+  );
+}
+
+const PROSE_IN_MATH_IGNORE = new Set([
+  "sin",
+  "cos",
+  "tan",
+  "ln",
+  "log",
+  "exp",
+  "lim",
+  "min",
+  "max",
+  "mod",
+  "gcd",
+  "det",
+  "proj",
+  "arg",
+  "ker",
+]);
+
+/** Retire les constructions LaTeX connues avant de chercher de vrais mots de
+ * prose dans une formule. Une formule contenant « lorsque », « alors »,
+ * « vecteur », etc. ne doit pas être envoyée telle quelle à KaTeX : les
+ * espaces disparaissent et toute la phrase devient italique. */
+function containsNaturalLanguageInMath(body: string): boolean {
+  let probe = normalizeCommonCommandMistakes(body);
+  for (let pass = 0; pass < 5; pass++) {
+    const previous = probe;
+    probe = probe
+      .replace(
+        /\\(?:text|textbf|textit|mathrm|mathbf|mathit|mathsf|mathbb|mathcal|operatorname)\s*\{[^{}]*\}/g,
+        " ",
+      )
+      .replace(/\\(?:frac|dfrac|tfrac|binom)\s*\{[^{}]*\}\s*\{[^{}]*\}/g, " M ")
+      .replace(
+        /\\(?:sqrt|vec|overrightarrow|overline|underline|bar|hat|dot|ddot|widehat|widetilde|boxed|cancel)\s*\{[^{}]*\}/g,
+        " M ",
+      );
+    if (probe === previous) break;
+  }
+  probe = probe
+    .replace(/\\(?:begin|end)\s*\{[^{}]*\}/g, " ")
+    .replace(/\\[A-Za-z]+/g, " ")
+    .replace(/\b[A-Z]{2,}\b/g, " ");
+
+  const words = probe.match(/\b[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’\-]{2,}\b/g) || [];
+  return words.some((word) => !PROSE_IN_MATH_IGNORE.has(word.toLowerCase()));
+}
+
+type BracedValue = { value: string; end: number };
+
+function readBracedValue(source: string, start: number): BracedValue | null {
+  if (source[start] !== "{") return null;
+  let depth = 0;
+  for (let i = start; i < source.length; i++) {
+    if (source[i] === "\\") {
+      i++;
+      continue;
+    }
+    if (source[i] === "{") depth++;
+    else if (source[i] === "}") {
+      depth--;
+      if (depth === 0) return { value: source.slice(start + 1, i), end: i + 1 };
+    }
+  }
+  return null;
+}
+
+function replaceBracedCommand(
+  source: string,
+  command: string,
+  argCount: number,
+  replacer: (args: string[]) => string,
+): string {
+  const needle = `\\${command}`;
+  let result = source;
+  let from = 0;
+  while (from < result.length) {
+    const index = result.indexOf(needle, from);
+    if (index < 0) break;
+    const before = index > 0 ? result[index - 1] : "";
+    const afterName = result[index + needle.length] || "";
+    if (before === "\\" || /[A-Za-z]/.test(afterName)) {
+      from = index + needle.length;
+      continue;
+    }
+    let cursor = index + needle.length;
+    const args: string[] = [];
+    let end = cursor;
+    let valid = true;
+    for (let a = 0; a < argCount; a++) {
+      while (/\s/.test(result[cursor] || "")) cursor++;
+      const parsed = readBracedValue(result, cursor);
+      if (!parsed) {
+        valid = false;
+        break;
+      }
+      args.push(parsed.value);
+      cursor = parsed.end;
+      end = parsed.end;
+    }
+    if (!valid) {
+      from = index + needle.length;
+      continue;
+    }
+    result = result.slice(0, index) + replacer(args) + result.slice(end);
+    from = index + 1;
+  }
+  return result;
+}
+
+function needsParentheses(value: string): boolean {
+  return /[+\-=<>\s]/.test(value.trim());
+}
+
+/** Une commande LaTeX se termine soit devant une autre commande, soit devant
+ * un caractère non alphabétique, soit en fin de chaîne. `\\b` ne suffit pas :
+ * après avoir converti `\\vec{u}` en texte, `\\cdot\\vec{v}` peut devenir
+ * `\\cdot→v`, et certains moteurs concatènent alors accidentellement le nom
+ * de la commande avec le symbole suivant. */
+const COMMAND_END = String.raw`(?=\\\\|[^A-Za-z]|$)`;
+
+function replaceReadableSymbolCommands(source: string): string {
+  const entries: Array<[string, string]> = [
+    ["cdot", " · "],
+    ["times", " × "],
+    ["div", " ÷ "],
+    ["pm", " ± "],
+    ["mp", " ∓ "],
+    ["leq", " ≤ "],
+    ["le", " ≤ "],
+    ["geq", " ≥ "],
+    ["ge", " ≥ "],
+    ["neq", " ≠ "],
+    ["ne", " ≠ "],
+    ["lt", " < "],
+    ["gt", " > "],
+    ["approx", " ≈ "],
+    ["equiv", " ≡ "],
+    ["perp", " ⊥ "],
+    ["parallel", " ∥ "],
+    ["angle", "∠"],
+    ["circ", "°"],
+    ["deg", "°"],
+    ["rightarrow", " → "],
+    ["to", " → "],
+    ["leftarrow", " ← "],
+    ["Rightarrow", " ⇒ "],
+    ["Leftarrow", " ⇐ "],
+    ["leftrightarrow", " ⇔ "],
+    ["Leftrightarrow", " ⇔ "],
+    ["iff", " ⇔ "],
+    ["implies", " ⇒ "],
+    ["impliedby", " ⇐ "],
+    ["infty", "∞"],
+    ["notin", " ∉ "],
+    ["nexists", "∄"],
+    ["forall", "∀"],
+    ["exists", "∃"],
+    ["in", " ∈ "],
+    ["blacksquare", "■"],
+    ["quad", " "],
+    ["qquad", " "],
+  ];
+
+  let result = source.replace(/\\\|/g, "‖");
+  for (const [command, replacement] of entries) {
+    result = result.replace(
+      new RegExp(`\\\\${command}${COMMAND_END}`, "g"),
+      replacement,
+    );
+  }
+  result = result.replace(/\\[,;:! ]/g, "");
+  return result;
+}
+
+/**
+ * Repli lisible pour une formule mêlée à une phrase. Il garantit qu'aucun
+ * antislash LaTeX brut n'arrive à l'écran, même lorsque la source est trop
+ * ambiguë pour être reconstruite en plusieurs formules KaTeX fiables.
+ *
+ * On évite volontairement les accents combinés (`u⃗`, `Â`, etc.) : selon la
+ * police du navigateur ils peuvent devenir des carrés noirs. Les notations
+ * `→u`, `angle(A)` et `barre(x)` utilisent des glyphes largement supportés.
+ */
+export function mathToReadableText(math: string): string {
+  let s = normalizeCommonCommandMistakes(
+    normalizeEscapedCommands(normalizeControlCharacters(math)),
+  ).trim();
+
+  // Convertir les symboles AVANT les commandes à arguments évite qu'une
+  // séquence comme `\\vec{u}\\cdot\\vec{v}` devienne `→u\\cdot→v` puis soit
+  // lue comme une commande inconnue `cdot` collée au texte suivant.
+  s = replaceReadableSymbolCommands(s);
+  s = s.replace(/\\(?:left|right)(?=\\|[^A-Za-z]|$)\s*/g, "");
+  s = s
     .replace(
-      /\\text\s*\{\s*(cos|sin|tan|ln|log|exp)\s*\}/gi,
-      (_m, fn: string) => `\\${fn.toLowerCase()}`,
+      /\\(?:begin|end)\s*\{(?:cases|array|pmatrix|bmatrix|vmatrix|Vmatrix|Bmatrix|matrix|aligned|align|alignedat|gathered|split)\}/g,
+      " ",
+    )
+    .replace(/\\\\/g, " ; ")
+    .replace(/&/g, "");
+
+  for (let pass = 0; pass < 8; pass++) {
+    const previous = s;
+    for (const name of ["frac", "dfrac", "tfrac"]) {
+      s = replaceBracedCommand(s, name, 2, ([a, b]) => {
+        const left = mathToReadableText(a);
+        const right = mathToReadableText(b);
+        return `${needsParentheses(left) ? `(${left})` : left}/${needsParentheses(right) ? `(${right})` : right}`;
+      });
+    }
+    s = replaceBracedCommand(
+      s,
+      "binom",
+      2,
+      ([a, b]) => `C(${mathToReadableText(a)}, ${mathToReadableText(b)})`,
+    );
+    s = replaceBracedCommand(
+      s,
+      "sqrt",
+      1,
+      ([a]) => `√(${mathToReadableText(a)})`,
+    );
+    for (const name of [
+      "text",
+      "textbf",
+      "textit",
+      "mathrm",
+      "mathbf",
+      "mathit",
+      "mathsf",
+      "mathbb",
+      "mathcal",
+      "operatorname",
+      "boxed",
+      "cancel",
+    ]) {
+      s = replaceBracedCommand(s, name, 1, ([a]) => mathToReadableText(a));
+    }
+
+    // Glyphes robustes : aucune marque combinée susceptible d'afficher □.
+    s = replaceBracedCommand(s, "vec", 1, ([a]) => `→${mathToReadableText(a)}`);
+    s = replaceBracedCommand(
+      s,
+      "overrightarrow",
+      1,
+      ([a]) => `→${mathToReadableText(a)}`,
+    );
+    s = replaceBracedCommand(
+      s,
+      "hat",
+      1,
+      ([a]) => `angle(${mathToReadableText(a)})`,
+    );
+    s = replaceBracedCommand(
+      s,
+      "widehat",
+      1,
+      ([a]) => `angle(${mathToReadableText(a)})`,
+    );
+    s = replaceBracedCommand(
+      s,
+      "bar",
+      1,
+      ([a]) => `barre(${mathToReadableText(a)})`,
+    );
+    s = replaceBracedCommand(
+      s,
+      "overline",
+      1,
+      ([a]) => `barre(${mathToReadableText(a)})`,
+    );
+    s = replaceBracedCommand(s, "underline", 1, ([a]) => mathToReadableText(a));
+    s = replaceBracedCommand(
+      s,
+      "dot",
+      1,
+      ([a]) => `point(${mathToReadableText(a)})`,
+    );
+    s = replaceBracedCommand(
+      s,
+      "ddot",
+      1,
+      ([a]) => `deux-points(${mathToReadableText(a)})`,
+    );
+    if (s === previous) break;
+  }
+
+  s = replaceReadableSymbolCommands(s);
+
+  s = s.replace(/\\([A-Za-z]+)/g, (_m, name: string) => {
+    const lower: Record<string, string> = {
+      alpha: "α",
+      beta: "β",
+      gamma: "γ",
+      delta: "δ",
+      epsilon: "ε",
+      varepsilon: "ε",
+      zeta: "ζ",
+      eta: "η",
+      theta: "θ",
+      vartheta: "ϑ",
+      iota: "ι",
+      kappa: "κ",
+      lambda: "λ",
+      mu: "μ",
+      nu: "ν",
+      xi: "ξ",
+      pi: "π",
+      rho: "ρ",
+      sigma: "σ",
+      tau: "τ",
+      upsilon: "υ",
+      phi: "φ",
+      varphi: "φ",
+      chi: "χ",
+      psi: "ψ",
+      omega: "ω",
+    };
+    const upper: Record<string, string> = {
+      Gamma: "Γ",
+      Delta: "Δ",
+      Theta: "Θ",
+      Lambda: "Λ",
+      Xi: "Ξ",
+      Pi: "Π",
+      Sigma: "Σ",
+      Phi: "Φ",
+      Psi: "Ψ",
+      Omega: "Ω",
+    };
+    const knownFunction: Record<string, string> = {
+      sin: "sin",
+      cos: "cos",
+      tan: "tan",
+      arcsin: "arcsin",
+      arccos: "arccos",
+      arctan: "arctan",
+      sinh: "sinh",
+      cosh: "cosh",
+      tanh: "tanh",
+      ln: "ln",
+      log: "log",
+      exp: "exp",
+      lim: "lim",
+      min: "min",
+      max: "max",
+      gcd: "gcd",
+      bmod: "mod",
+      pmod: "mod",
+      sum: "somme",
+      prod: "produit",
+      int: "intégrale",
+    };
+    // Entourer une commande inconnue d'espaces empêche `\\cdot\\vec{v}` de
+    // finir sous la forme illisible `cdotvecv` si une commande hors liste
+    // traverse malgré tout les passes précédentes.
+    return lower[name] ?? upper[name] ?? knownFunction[name] ?? ` ${name} `;
+  });
+
+  s = s
+    .replace(
+      /\^\{([^{}]*)\}|\^([0-9A-Za-z+\-=()])/g,
+      (_m, a: string, b: string) => {
+        const value = a ?? b;
+        return toScript(value, SUP_MAP) ?? `^${value}`;
+      },
     )
     .replace(
-      /\\operatorname\s*\{\s*(cos|sin|tan|ln|log|exp)\s*\}/gi,
-      (_m, fn: string) => `\\${fn.toLowerCase()}`,
+      /_\{([^{}]*)\}|_([0-9A-Za-z+\-=()])/g,
+      (_m, a: string, b: string) => {
+        const value = a ?? b;
+        return toScript(value, SUB_MAP) ?? `_${value}`;
+      },
     )
-    .replace(/\\text\s*\{\s*([α-ωΑ-Ω])\s*\}/g, "$1")
-    .replace(/\\([()\[\]])/g, "$1");
+    .replace(/[{}]/g, "")
+    .replace(/\s*([=+×·≤≥≠<>⊥∥])\s*/g, " $1 ")
+    .replace(/\s+([,.;:)])/g, "$1")
+    .replace(/([([])\s+/g, "$1")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+  return s;
 }
 
 function balanceBraces(math: string): string {
@@ -150,6 +580,8 @@ function looksLikeWholeFormula(segment: string): boolean {
  */
 function wrapRawMathSuffix(segment: string): string {
   if (!ANY_LATEX_CMD_RE.test(segment)) return segment;
+  if (containsNaturalLanguageInMath(segment))
+    return mathToReadableText(segment);
   if (looksLikeWholeFormula(segment)) return `$${segment.trim()}$`;
 
   const commandIndex = segment.search(ANY_LATEX_CMD_RE);
@@ -216,6 +648,10 @@ function repairTextNode(raw: string): string {
     if (part.isMath) {
       const body = normalizeMathBody(part.text);
       if (!body) return "";
+      // Une phrase placée par erreur entre dollars ne doit jamais devenir une
+      // longue ligne mathématique italique sans espaces. On privilégie un
+      // repli Unicode lisible plutôt qu'une reconstruction hasardeuse.
+      if (containsNaturalLanguageInMath(body)) return mathToReadableText(body);
       const delim = part.display ? "$$" : "$";
       return `${delim}${body}${delim}`;
     }
@@ -236,17 +672,76 @@ function escapeStrayAngleBrackets(html: string): string {
   return html.replace(/<(?![a-zA-Z/!])/g, "&lt;");
 }
 
-/** Ferme un <p> implicitement lorsqu'un nouveau <p> commence. */
-function repairNestedParagraphs(html: string): string {
-  let previous = "";
-  let result = html;
-  for (let i = 0; i < 4 && result !== previous; i++) {
-    previous = result;
-    result = result.replace(
-      /<p([^>]*)>((?:(?!<\/p>)[\s\S])*?)<p([^>]*)>/gi,
-      (_m, a: string, body: string, b: string) => `<p${a}>${body}</p><p${b}>`,
-    );
+/** Normalise uniquement la structure des paragraphes. Le navigateur ferait
+ * une partie de ce travail implicitement, mais le faire avant la réparation
+ * empêche les nœuds texte orphelins et les </p> surnuméraires de perturber le
+ * découpage des formules. */
+function normalizeParagraphStructure(html: string): string {
+  const blockTags = new Set([
+    "address",
+    "article",
+    "aside",
+    "blockquote",
+    "div",
+    "dl",
+    "fieldset",
+    "figure",
+    "footer",
+    "form",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "header",
+    "hr",
+    "main",
+    "nav",
+    "ol",
+    "pre",
+    "section",
+    "table",
+    "ul",
+  ]);
+  const tokens = html.split(/(<\/?[A-Za-z][^>]*>)/g);
+  let paragraphOpen = false;
+  let result = "";
+
+  for (const token of tokens) {
+    const match = token.match(/^<\s*(\/?)\s*([A-Za-z0-9:-]+)/);
+    if (!match) {
+      result += token;
+      continue;
+    }
+    const closing = match[1] === "/";
+    const name = match[2].toLowerCase();
+    const selfClosing =
+      /\/\s*>$/.test(token) ||
+      ["br", "hr", "img", "input", "meta", "link"].includes(name);
+
+    if (name === "p") {
+      if (closing) {
+        if (paragraphOpen) {
+          result += "</p>";
+          paragraphOpen = false;
+        }
+      } else {
+        if (paragraphOpen) result += "</p>";
+        result += token;
+        paragraphOpen = !selfClosing;
+      }
+      continue;
+    }
+
+    if (paragraphOpen && blockTags.has(name)) {
+      result += "</p>";
+      paragraphOpen = false;
+    }
+    result += token;
   }
+
+  if (paragraphOpen) result += "</p>";
   return result;
 }
 
@@ -256,7 +751,7 @@ function repairNestedParagraphs(html: string): string {
 export function repairLatex(html: string): string {
   if (!html) return html;
 
-  const normalized = repairNestedParagraphs(
+  const normalized = normalizeParagraphStructure(
     normalizeCommonCommandMistakes(
       normalizeEscapedDollars(
         normalizeEscapedCommands(normalizeControlCharacters(html)),
@@ -389,73 +884,95 @@ function toScript(body: string, map: Record<string, string>): string | null {
  * ne fonctionne pas et le libellé disparaît ou s'affiche déformé.
  */
 export function mathToPlainText(math: string): string {
-  let s = math.trim();
-  s = s.replace(/\\(?:left|right)\b\s*/g, "");
-  // \vec{X}, \overrightarrow{X}... -> X (la flèche est déjà dessinée dans le schéma)
-  s = s.replace(
-    /\\(?:vec|overrightarrow|overline|underline|hat|widehat|widetilde|dot|ddot|bar)\{([^{}]*)\}/g,
-    "$1",
-  );
-  // \text{...}, \mathrm{...}, \operatorname{...} -> contenu brut
-  s = s.replace(
-    /\\(?:text|mathrm|mathbf|mathit|mathsf|mathbb|mathcal|textbf|textit|operatorname)\{([^{}]*)\}/g,
-    "$1",
-  );
-  s = s.replace(/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2");
-  s = s.replace(/\\sqrt\{([^{}]*)\}/g, "√($1)");
-  s = s.replace(/\\\|/g, "‖");
-  // Espacements purement typographiques (\! \, \; \: \<espace>) : aucun
-  // contenu textuel, on les retire — sinon ils restent tels quels (aucune
-  // des règles suivantes ne reconnaît un backslash suivi d'un symbole non
-  // alphabétique) et s'affichent comme du charabia dans le schéma.
-  s = s.replace(/\\[!,;: ]/g, "");
-  const SYMS: [RegExp, string][] = [
-    [/\\cdot\b/g, "·"],
-    [/\\times\b/g, "×"],
-    [/\\div\b/g, "÷"],
-    [/\\pm\b/g, "±"],
-    [/\\mp\b/g, "∓"],
-    [/\\leq\b|\\le\b/g, "≤"],
-    [/\\geq\b|\\ge\b/g, "≥"],
-    [/\\neq\b|\\ne\b/g, "≠"],
-    [/\\infty\b/g, "∞"],
-    [/\\approx\b/g, "≈"],
-    [/\\equiv\b/g, "≡"],
-    [/\\perp\b/g, "⊥"],
-    [/\\parallel\b/g, "∥"],
-    [/\\angle\b/g, "∠"],
-    [/\\circ\b/g, "°"],
-    [/\\rightarrow\b|\\to\b/g, "→"],
-    [/\\Rightarrow\b/g, "⇒"],
-    [/\\leftrightarrow\b/g, "↔"],
-    [/\\in\b/g, "∈"],
-    [/\\forall\b/g, "∀"],
-    [/\\exists\b/g, "∃"],
-    [/\\quad\b|\\qquad\b/g, " "],
-  ];
-  for (const [re, rep] of SYMS) s = s.replace(re, rep);
-  // Commande restante : lettre grecque connue, sinon son nom tel quel
-  // (mieux vaut afficher "log" que de faire disparaître le texte).
-  s = s.replace(
-    /\\([A-Za-z]+)/g,
-    (_m, name: string) => GREEK_LOWER[name] ?? GREEK_UPPER[name] ?? name,
-  );
+  let s = normalizeCommonCommandMistakes(
+    normalizeEscapedCommands(normalizeControlCharacters(math)),
+  ).trim();
+
+  // Comme pour mathToReadableText, traiter les opérateurs avant les commandes
+  // à arguments empêche la concaténation `\\cdotv` après retrait de \\vec{v}.
+  s = replaceReadableSymbolCommands(s);
+  s = s.replace(/\\(?:left|right)(?=\\|[^A-Za-z]|$)\s*/g, "");
+
+  // Dans un SVG, la flèche du vecteur est normalement déjà dessinée par le
+  // schéma : on garde uniquement le libellé brut, sans HTML KaTeX.
+  for (let pass = 0; pass < 6; pass++) {
+    const previous = s;
+    for (const name of [
+      "vec",
+      "overrightarrow",
+      "overline",
+      "underline",
+      "hat",
+      "widehat",
+      "widetilde",
+      "dot",
+      "ddot",
+      "bar",
+      "text",
+      "mathrm",
+      "mathbf",
+      "mathit",
+      "mathsf",
+      "mathbb",
+      "mathcal",
+      "textbf",
+      "textit",
+      "operatorname",
+    ]) {
+      s = replaceBracedCommand(s, name, 1, ([a]) => mathToPlainText(a));
+    }
+    for (const name of ["frac", "dfrac", "tfrac"]) {
+      s = replaceBracedCommand(
+        s,
+        name,
+        2,
+        ([a, b]) => `${mathToPlainText(a)}/${mathToPlainText(b)}`,
+      );
+    }
+    s = replaceBracedCommand(s, "sqrt", 1, ([a]) => `√(${mathToPlainText(a)})`);
+    if (s === previous) break;
+  }
+
+  s = replaceReadableSymbolCommands(s);
+  s = s.replace(/\\([A-Za-z]+)/g, (_m, name: string) => {
+    const functions: Record<string, string> = {
+      sin: "sin",
+      cos: "cos",
+      tan: "tan",
+      arcsin: "arcsin",
+      arccos: "arccos",
+      arctan: "arctan",
+      ln: "ln",
+      log: "log",
+      exp: "exp",
+      lim: "lim",
+      min: "min",
+      max: "max",
+    };
+    return (
+      GREEK_LOWER[name] ?? GREEK_UPPER[name] ?? functions[name] ?? ` ${name} `
+    );
+  });
   s = s.replace(
     /\^\{([^{}]*)\}|\^([0-9A-Za-z+\-=()])/g,
     (_m, g1: string, g2: string) => {
       const body = g1 ?? g2;
-      return toScript(body, SUP_MAP) ?? body;
+      return toScript(body, SUP_MAP) ?? `^${body}`;
     },
   );
   s = s.replace(
     /_\{([^{}]*)\}|_([0-9A-Za-z+\-=()])/g,
     (_m, g1: string, g2: string) => {
       const body = g1 ?? g2;
-      return toScript(body, SUB_MAP) ?? body;
+      return toScript(body, SUB_MAP) ?? `_${body}`;
     },
   );
-  s = s.replace(/[{}]/g, "");
-  return s.trim();
+  s = s
+    .replace(/[{}]/g, "")
+    .replace(/\s*([=+×·≤≥≠<>⊥∥])\s*/g, " $1 ")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+  return s;
 }
 
 function escapeSvgText(s: string): string {

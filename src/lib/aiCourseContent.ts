@@ -4,45 +4,68 @@ const EXERCISE_PLACEHOLDER_RE =
   /<div[^>]*class="[^"]*lesson-exercise[^"]*"[^>]*>\s*<\/div>/i;
 const LEAD_BLOCK_RE = /<(h1|h2|h3|h4|p|ul|ol|blockquote|table|figure)\b/i;
 
-export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX — CONTRAT STRICT ═══
-• Retourne uniquement les champs JSON demandés par le schéma. N'ajoute jamais de bloc Markdown autour du JSON.
-• HTML autorisé dans content : <h3>, <h4>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <span>, <blockquote>, <table>, <thead>, <tbody>, <tr>, <th>, <td>, <figure>, <figcaption>, <svg>, <defs>, <marker>, <path>, <line>, <polyline>, <polygon>, <circle>, <rect>, <text>, <div>.
-• Chaque balise HTML ouverte doit être fermée. Il est interdit d'ouvrir un nouveau <p> avant d'avoir fermé le précédent.
-• Ne mets jamais de HTML à l'intérieur d'une formule LaTeX.
+export const AI_COURSE_FORMAT_RULES = String.raw`═══ FORMAT HTML + LATEX — CONTRAT STRICT ═══
+• Retourne uniquement le JSON conforme au schéma demandé. N'ajoute jamais de Markdown, de commentaire ni de texte avant ou après le JSON.
+• HTML autorisé dans content : <h3>, <h4>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <span>, <blockquote>, <table>, <thead>, <tbody>, <tr>, <th>, <td>, <figure>, <figcaption>, <svg>, <defs>, <marker>, <path>, <line>, <polyline>, <polygon>, <circle>, <rect>, <text>, <div>, <pre>, <code>.
+• Ferme chaque balise HTML. N'ouvre jamais un nouveau <p> avant d'avoir fermé le précédent. N'écris jamais un </p> sans <p> correspondant.
+• Ne mets jamais de balise HTML à l'intérieur d'une formule LaTeX.
+
+═══ RÈGLE CRITIQUE : ANTISLASHS DANS LE JSON BRUT ═══
+• Tu produis du JSON brut. Dans une CHAÎNE JSON, chaque antislash LaTeX logique doit obligatoirement être échappé par un second antislash.
+• Exemple exact de JSON brut valide : "content":"<p>La norme est $\\sqrt{x^2+y^2}$.</p>"
+• Après JSON.parse, l'application reçoit alors : <p>La norme est $\sqrt{x^2+y^2}$.</p>
+• Dans le JSON brut, écris donc toujours \\frac, \\sqrt, \\vec, \\overrightarrow, \\cos, \\sin, \\text, \\begin, \\end, etc.
+• N'écris JAMAIS un seul antislash brut devant une commande. Par exemple, \text devient une tabulation suivie de « ext », \frac devient un caractère de contrôle suivi de « rac », et \begin devient un caractère de contrôle suivi de « egin » après le décodage JSON.
+• Ne sur-échappe pas non plus : dans le JSON brut, \\\\frac est interdit, car l'application recevrait deux antislashs réels avant frac.
+• Exception pour un saut de ligne LaTeX logique dans aligned/cases/array/matrix : le LaTeX final doit contenir \\, donc le JSON brut doit contenir exactement \\\\.
+• Exemple exact de JSON brut valide pour plusieurs lignes : "content":"<p>$$\\begin{aligned}A&=B+C\\\\&=D\\end{aligned}$$</p>"
+• Avant de répondre, inspecte les chaînes JSON : aucune séquence LaTeX ne doit commencer par un antislash unique.
 
 ═══ DÉLIMITEURS MATHÉMATIQUES ═══
-• Toute expression mathématique est obligatoirement délimitée : $...$ en ligne ou $$...$$ en bloc.
-• Une formule commencée dans une balise HTML doit être fermée dans cette même balise. Aucun $ ou $$ ne traverse un </p>, </li>, </div>, </td>, </blockquote> ou toute autre balise.
-• Chaque formule possède exactement une paire de délimiteurs. N'écris jamais \\$, \\$$, $$$, $= isolé, =$ isolé, ni un $ à l'intérieur d'un bloc $$...$$.
-• Une formule courte dans une phrase utilise $...$. Une formule longue ou un calcul utilise un <p> séparé contenant un unique bloc $$...$$.
-• N'écris jamais plusieurs blocs $$...$$ dans le même <p>.
+• Toute expression mathématique est délimitée par $...$ en ligne ou $$...$$ en bloc.
+• Une formule commencée dans une balise HTML est fermée dans cette même balise. Aucun $ ou $$ ne traverse un </p>, </li>, </div>, </td>, </blockquote> ou une autre balise.
+• Chaque formule possède exactement une paire de délimiteurs. N'écris jamais \\$, \\$$, $$$, un $ isolé, ni un $ à l'intérieur d'un bloc $$...$$.
+• Une formule courte dans une phrase utilise $...$. Une formule longue utilise exactement <p>$$...$$</p>.
+• N'écris jamais plusieurs blocs $$...$$ dans le même <p>, ni un bloc $$...$$ directement entre deux balises sans son propre <p>.
 
-═══ ANTISLASHS ET JSON ═══
-• Écris une seule commande LaTeX logique : \\frac{a}{b}, \\sqrt{x}, \\vec{u}, \\overrightarrow{AB}, \\cos(x), \\begin{aligned}.
-• Le sérialiseur JSON gère l'échappement technique. Ne double jamais volontairement une commande et ne produis jamais \\\\frac, \\\\vec, \\\\overrightarrow, \\\\cos, \\\\left, \\\\text, \\\\begin ou \\\\end.
-• Les seuls doubles antislashs logiques autorisés sont les fins de ligne \\\\ à l'intérieur d'un environnement aligned, cases, array ou matrix.
-• N'utilise jamais \\text{cos}, \\text{sin}, \\text{tan}, \\text{ln}, \\text{π}. Utilise exclusivement \\cos, \\sin, \\tan, \\ln et \\pi.
-• N'utilise pas de symboles mathématiques Unicode à la place du LaTeX : écris ^{2}, \\sqrt{}, \\pm, \\times, \\div, \\neq, \\leq, \\geq.
+═══ PROSE HORS DES FORMULES ═══
+• Les phrases françaises restent hors des délimiteurs mathématiques. Seules les expressions mathématiques sont entre dollars.
+• MAUVAIS : <p>$Si x > 0, alors f est positive.$</p>
+• CORRECT : <p>Si $x > 0$, alors $f$ est positive.</p>
+• MAUVAIS : <blockquote>$La projection de \\vec{v} sur \\vec{u} est nulle.$</blockquote>
+• CORRECT : <blockquote>La projection de $\\vec{v}$ sur $\\vec{u}$ est nulle.</blockquote>
+• Dans une formule, \\text{...} est réservé à un connecteur très court comme \\text{donc}, \\text{soit} ou \\text{avec}. N'y place jamais une phrase entière.
+• N'utilise jamais \\text{cos}, \\text{sin}, \\text{tan}, \\text{ln} ou \\text{π}. Utilise \\cos, \\sin, \\tan, \\ln et \\pi.
+• Utilise le LaTeX pour les symboles : ^{2}, \\sqrt{}, \\pm, \\times, \\div, \\neq, \\leq, \\geq et ^{\\circ}. N'utilise pas ², √, ±, ×, ÷, ≠ ou le symbole degré brut dans une formule.
 
 ═══ CALCULS SUR PLUSIEURS LIGNES ═══
-• Un système, une matrice ou un calcul de plusieurs lignes reste entièrement dans un seul bloc $$...$$.
-• Format obligatoire pour un calcul développé :
-  <p>$$\\begin{aligned}
-  A &= B + C \\\\
-  &= D + E \\\\
+• Un système, une matrice ou un calcul développé reste entièrement dans un seul bloc $$...$$.
+• Structure obligatoire, telle qu'elle doit apparaître APRÈS JSON.parse :
+  <p>$$\begin{aligned}
+  A &= B + C \\
+  &= D + E \\
   &= F
-  \\end{aligned}$$</p>
-• N'utilise jamais des barres verticales seules sur des lignes différentes. Pour une norme, écris \\left\\|\\overrightarrow{AB}\\right\\| dans la même formule.
-• Pour une aire de triangle, forme recommandée : $$\\mathcal{A}=\\frac{1}{2}\\left\\|\\overrightarrow{AB}\\right\\|\\left\\|\\overrightarrow{AC}\\right\\|\\sin(\\widehat{A})$$.
+  \end{aligned}$$</p>
+• Dans le JSON brut, chaque commande ci-dessus utilise deux antislashs et chaque fin de ligne en utilise quatre.
+• N'utilise jamais des barres verticales isolées sur plusieurs lignes. Une norme s'écrit dans une seule formule : \\left\\|\\overrightarrow{AB}\\right\\|.
+• Aire d'un triangle : <p>$$\\mathcal{A}=\\frac{1}{2}\\left\\|\\overrightarrow{AB}\\right\\|\\left\\|\\overrightarrow{AC}\\right\\|\\sin(\\widehat{A})$$</p>.
 
-═══ AUTOCONTRÔLE AVANT LA RÉPONSE ═══
-• Vérifie chaque content caractère par caractère avant de répondre.
-• Vérifie que le nombre de $ simples hors blocs $$ est pair.
-• Vérifie que le nombre de $$ est pair.
-• Vérifie qu'aucune commande \\frac, \\sqrt, \\vec, \\overrightarrow, \\cdot, \\cos, \\sin, \\tan, \\left, \\right, \\hat, \\widehat, \\text, \\begin ou \\end n'apparaît hors de $...$ ou $$...$$.
-• Vérifie qu'aucune formule ne contient de délimiteur $ interne.
-• Vérifie que chaque réponse d'exercice correspond exactement au calcul de l'explication.
-• Si une formule est trop complexe pour être écrite sans ambiguïté, simplifie sa présentation au lieu de fragmenter ses délimiteurs.
+═══ AUTOCONTRÔLE LATEX + HTML ═══
+• Vérifie chaque content avant de répondre : toutes les balises sont équilibrées, chaque $/$$ est fermé localement et aucune formule ne traverse une balise.
+• Vérifie qu'aucune commande \\frac, \\sqrt, \\vec, \\overrightarrow, \\cdot, \\cos, \\sin, \\tan, \\left, \\right, \\hat, \\widehat, \\text, \\begin ou \\end ne se trouve hors de $...$ ou $$...$$.
+• Recherche et élimine obligatoirement les fragments cassés ext{, rac{, egin{, imes, heta et ight : ils indiquent un antislash JSON manquant.
+• Si une formule est trop complexe, simplifie sa présentation au lieu de fragmenter les délimiteurs.
+
+═══ EXACTITUDE DES EXERCICES ═══
+• Résous chaque exercice deux fois indépendamment avant de remplir answer.
+• answer doit être exactement compatible avec le dernier résultat de explanation et avec hint.
+• Si answer contient des mathématiques, utilise du LaTeX délimité par $...$ et le même échappement JSON que dans content ; jamais de symbole mathématique Unicode brut.
+• La dernière phrase de CHAQUE explanation doit avoir exactement la forme « Conclusion : <answer>. » et recopier le contenu de answer sans changer la valeur ni la notation. Exemple : answer = "$\\frac{1}{2}$" implique une fin « Conclusion : $\\frac{1}{2}$. ».
+• Vérifie les signes, les normes, les racines, les coordonnées, les projections, les distances et les simplifications.
+• Les mots « erreur », « recalculons », « correction », « en fait » et « réponse correcte » sont interdits dans une explication finale.
+• Ne conserve jamais un premier calcul faux suivi d'une autocorrection. Réécris entièrement l'explication avec une seule solution propre.
+• Pour une affirmation vrai/faux ou oui/non, le texte de answer doit correspondre sans ambiguïté à la phrase « Conclusion » de explanation.
+• Avant de produire le JSON, compare mécaniquement chaque answer avec sa phrase « Conclusion » : elles doivent être identiques après suppression des seuls délimiteurs $ et de la ponctuation finale.
 
 ═══ MISE EN FORME PÉDAGOGIQUE ═══
 • Rédige uniquement en français correct.
@@ -58,18 +81,17 @@ export const AI_COURSE_FORMAT_RULES = `═══ FORMAT HTML + LATEX — CONTRAT
 • Dans chaque <div class="course-step">, mets l'explication dans un <p> et chaque formule longue dans un autre <p> contenant un seul $$...$$.
 • <div class="course-interactive-vectors" data-ox="150" data-oy="150" data-ux="220" data-uy="80" data-vx="260" data-vy="150" data-ulabel="u" data-vlabel="v" data-show-projection="true" data-caption="Fais glisser u et v et observe le produit scalaire."></div> permet un schéma vectoriel interactif.
 • Le cours entier contient au moins un élément visuel utile parmi tableau, graphique, figure SVG ou schéma interactif.
-• Une famille de fonctions étudiée graphiquement doit contenir au moins un math-graph-placeholder.
-• Une courbe de fonction passe toujours par math-graph-placeholder, jamais par un SVG dessiné à la main.
+• Une famille de fonctions étudiée graphiquement contient au moins un math-graph-placeholder. Une courbe passe toujours par ce composant, jamais par un SVG dessiné à la main.
 • Varie les outils visuels sans en ajouter artificiellement. Limite course-interactive-vectors et course-steps à un ou deux par chapitre.
 
 ═══ SCHÉMAS SVG — RÈGLES STRICTES ═══
 • Format exact : <figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img"><!-- formes --></svg><figcaption>Description courte</figcaption></figure>.
 • viewBox et figcaption sont obligatoires. N'ajoute jamais width ou height en pixels.
 • Ne numérote jamais la légende : la numérotation est automatique.
-• Utilise stroke-width entre 1 et 2, deux à quatre couleurs sobres et des étiquettes lisibles.
+• Utilise stroke-width entre 1 et 2, deux à quatre couleurs sobres et trois à cinq éléments étiquetés maximum.
 • Dans un <text> SVG, les étiquettes mathématiques restent sous la forme $\\vec{v}$, $D_1$, etc.
-• Marker de flèche exact : <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="CURRENT_COLOR"/></marker>.
-• Place chaque étiquette à côté de l'élément, jamais sur un trait ou un arc. Garde trois à cinq éléments étiquetés maximum par schéma.`;
+• Marker exact : <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="CURRENT_COLOR"/></marker>.
+• Place chaque étiquette à côté de l'élément, jamais sur un trait ou un arc.`;
 
 export const AI_COURSE_PEDAGOGY_RULES = `═══ PÉDAGOGIE ═══
 • Commence toujours par une définition claire, puis un exemple simple, puis un développement pas à pas.
@@ -130,20 +152,350 @@ export function repairLessonExercisePlaceholders(
   return result;
 }
 
-export function normalizeGeneratedCourseChapter<
-  T extends { lessons?: Array<{ content?: string } & Record<string, unknown>> },
->(chapter: T): T {
+type GeneratedExerciseLike = Record<string, unknown> & {
+  id?: unknown;
+  question?: unknown;
+  hint?: unknown;
+  answer?: unknown;
+  explanation?: unknown;
+};
+
+type GeneratedLessonLike = Record<string, unknown> & {
+  id?: unknown;
+  title?: unknown;
+  content?: unknown;
+  duration?: unknown;
+  exercises?: GeneratedExerciseLike[];
+};
+
+type GeneratedChapterLike = Record<string, unknown> & {
+  id?: unknown;
+  title?: unknown;
+  lessons?: GeneratedLessonLike[];
+};
+
+function repairGeneratedString(value: unknown): unknown {
+  return typeof value === "string" ? repairLatex(value) : value;
+}
+
+/**
+ * Nettoie le contenu généré AVANT stockage : contenu principal, champs des
+ * exercices et placeholders. La même réparation reste appliquée à
+ * l'affichage par katexLoader.ts pour les anciens cours.
+ */
+export function normalizeGeneratedCourseChapter<T extends GeneratedChapterLike>(
+  chapter: T,
+): T {
   if (!chapter || !Array.isArray(chapter.lessons)) return chapter;
+
+  const normalizedLessons = chapter.lessons.map((lesson) => {
+    const exercises = Array.isArray(lesson.exercises)
+      ? lesson.exercises.map((exercise) => ({
+          ...exercise,
+          question: repairGeneratedString(exercise.question),
+          hint: repairGeneratedString(exercise.hint),
+          answer: repairGeneratedString(exercise.answer),
+          explanation: repairGeneratedString(exercise.explanation),
+        }))
+      : lesson.exercises;
+
+    let content =
+      typeof lesson.content === "string"
+        ? normalizeCourseLessonContent(
+            stripFigureNumberPrefix(repairLatex(lesson.content)),
+          )
+        : lesson.content;
+
+    if (typeof content === "string" && Array.isArray(exercises)) {
+      const exerciseIds = exercises
+        .map((exercise) => exercise.id)
+        .filter((id): id is string => typeof id === "string" && id.length > 0);
+      content = repairLessonExercisePlaceholders(content, exerciseIds);
+    }
+
+    return {
+      ...lesson,
+      content,
+      exercises,
+    };
+  });
+
   return {
     ...chapter,
-    lessons: chapter.lessons.map((lesson) => ({
-      ...lesson,
-      content:
-        typeof lesson.content === "string"
-          ? normalizeCourseLessonContent(
-              stripFigureNumberPrefix(repairLatex(lesson.content)),
-            )
-          : lesson.content,
-    })),
-  };
+    lessons: normalizedLessons,
+  } as T;
+}
+
+export type CourseQualityIssueSeverity = "error" | "warning";
+
+export type CourseQualityIssueCode =
+  | "missing_lesson_field"
+  | "missing_exercise_field"
+  | "duplicate_exercise_id"
+  | "self_correction"
+  | "broken_json_latex_escape"
+  | "control_character"
+  | "missing_answer_conclusion"
+  | "answer_conclusion_mismatch"
+  | "likely_semantic_contradiction"
+  | "latex_required_repair";
+
+export type CourseQualityIssue = {
+  severity: CourseQualityIssueSeverity;
+  code: CourseQualityIssueCode;
+  path: string;
+  message: string;
+  excerpt?: string;
+};
+
+const SELF_CORRECTION_RE =
+  /\b(?:erreur|recalculons|recalcul|correction|en fait|réponse correcte)\b/i;
+const BROKEN_JSON_LATEX_RE =
+  /(^|[^A-Za-z\\])(?:ext|rac|egin|imes|heta|ight)\s*\{/i;
+const CONTROL_CHARACTER_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
+
+function issueExcerpt(value: string): string {
+  const compact = value.replace(/\s+/g, " ").trim();
+  return compact.length <= 220 ? compact : `${compact.slice(0, 217)}...`;
+}
+
+function stripComparableMarkup(value: string): string {
+  return repairLatex(value)
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\$+/g, "")
+    .replace(/\\(?:left|right)\b/g, "")
+    .replace(/\\dfrac\b|\\tfrac\b/g, "\\frac")
+    .replace(/[\s\u00A0]+/g, "")
+    .replace(/[.!?;:]+$/g, "")
+    .toLowerCase();
+}
+
+function extractConclusion(explanation: string): string | null {
+  const match = explanation.match(
+    /(?:^|[.!?]\s*|<p[^>]*>\s*)Conclusion\s*:\s*([\s\S]*?)(?:<\/p>|\s*$)/i,
+  );
+  return match?.[1]?.trim() || null;
+}
+
+function inspectGeneratedString(
+  value: unknown,
+  path: string,
+  issues: CourseQualityIssue[],
+): void {
+  if (typeof value !== "string") return;
+  if (CONTROL_CHARACTER_RE.test(value)) {
+    issues.push({
+      severity: "error",
+      code: "control_character",
+      path,
+      message:
+        "La chaîne contient un caractère de contrôle issu d'un antislash JSON non échappé.",
+      excerpt: issueExcerpt(value),
+    });
+  }
+  if (BROKEN_JSON_LATEX_RE.test(value)) {
+    issues.push({
+      severity: "error",
+      code: "broken_json_latex_escape",
+      path,
+      message:
+        "La chaîne contient un fragment de commande LaTeX cassé (ext/rac/egin/imes/heta/ight).",
+      excerpt: issueExcerpt(value),
+    });
+  }
+  if (SELF_CORRECTION_RE.test(value)) {
+    issues.push({
+      severity: "error",
+      code: "self_correction",
+      path,
+      message:
+        "La réponse contient une autocorrection ; elle doit être régénérée proprement.",
+      excerpt: issueExcerpt(value),
+    });
+  }
+  if (repairLatex(value) !== value) {
+    issues.push({
+      severity: "warning",
+      code: "latex_required_repair",
+      path,
+      message: "Le réparateur a dû modifier cette chaîne LaTeX/HTML.",
+      excerpt: issueExcerpt(value),
+    });
+  }
+}
+
+/**
+ * Audit déterministe avant insertion en base. Il ne prétend pas démontrer la
+ * justesse mathématique d'un raisonnement arbitraire ; il bloque en revanche
+ * les familles d'erreurs observées : antislash JSON cassé, autocorrection,
+ * champs absents, conclusions différentes de answer et contradictions
+ * oui/non ou nul/non-nul très explicites.
+ */
+export function auditGeneratedCourseChapter(
+  chapter: GeneratedChapterLike,
+): CourseQualityIssue[] {
+  const issues: CourseQualityIssue[] = [];
+  if (!chapter || !Array.isArray(chapter.lessons)) {
+    return [
+      {
+        severity: "error",
+        code: "missing_lesson_field",
+        path: "chapter.lessons",
+        message: "Le chapitre ne contient pas de tableau lessons.",
+      },
+    ];
+  }
+
+  const seenExerciseIds = new Set<string>();
+
+  chapter.lessons.forEach((lesson, lessonIndex) => {
+    const lessonPath = `lessons[${lessonIndex}]`;
+    for (const [field, value] of [
+      ["title", lesson.title],
+      ["content", lesson.content],
+      ["duration", lesson.duration],
+    ] as const) {
+      if (
+        value === undefined ||
+        value === null ||
+        (typeof value === "string" && !value.trim())
+      ) {
+        issues.push({
+          severity: "error",
+          code: "missing_lesson_field",
+          path: `${lessonPath}.${field}`,
+          message: `Le champ ${field} de la leçon est manquant ou vide.`,
+        });
+      }
+    }
+    inspectGeneratedString(lesson.content, `${lessonPath}.content`, issues);
+
+    if (!Array.isArray(lesson.exercises)) return;
+    lesson.exercises.forEach((exercise, exerciseIndex) => {
+      const exercisePath = `${lessonPath}.exercises[${exerciseIndex}]`;
+      const id = typeof exercise.id === "string" ? exercise.id.trim() : "";
+      if (!id) {
+        issues.push({
+          severity: "error",
+          code: "missing_exercise_field",
+          path: `${exercisePath}.id`,
+          message: "L'exercice n'a pas d'identifiant.",
+        });
+      } else if (seenExerciseIds.has(id)) {
+        issues.push({
+          severity: "error",
+          code: "duplicate_exercise_id",
+          path: `${exercisePath}.id`,
+          message: `L'identifiant ${id} est dupliqué dans le chapitre.`,
+        });
+      } else {
+        seenExerciseIds.add(id);
+      }
+
+      for (const field of ["question", "answer", "explanation"] as const) {
+        const value = exercise[field];
+        if (typeof value !== "string" || !value.trim()) {
+          issues.push({
+            severity: "error",
+            code: "missing_exercise_field",
+            path: `${exercisePath}.${field}`,
+            message: `Le champ ${field} de l'exercice est manquant ou vide.`,
+          });
+        }
+      }
+
+      for (const field of [
+        "question",
+        "hint",
+        "answer",
+        "explanation",
+      ] as const) {
+        inspectGeneratedString(
+          exercise[field],
+          `${exercisePath}.${field}`,
+          issues,
+        );
+      }
+
+      if (
+        typeof exercise.answer === "string" &&
+        typeof exercise.explanation === "string"
+      ) {
+        const conclusion = extractConclusion(exercise.explanation);
+        if (!conclusion) {
+          issues.push({
+            severity: "error",
+            code: "missing_answer_conclusion",
+            path: `${exercisePath}.explanation`,
+            message:
+              "L'explication doit finir par « Conclusion : <answer>. » pour permettre un contrôle déterministe.",
+            excerpt: issueExcerpt(exercise.explanation),
+          });
+        } else if (
+          stripComparableMarkup(conclusion) !==
+          stripComparableMarkup(exercise.answer)
+        ) {
+          issues.push({
+            severity: "error",
+            code: "answer_conclusion_mismatch",
+            path: exercisePath,
+            message:
+              "La conclusion de l'explication ne correspond pas exactement à answer.",
+            excerpt: `answer=${issueExcerpt(exercise.answer)} ; conclusion=${issueExcerpt(conclusion)}`,
+          });
+        }
+
+        const answer = stripComparableMarkup(exercise.answer);
+        const explanation = stripComparableMarkup(exercise.explanation);
+        const answerSaysZeroOrOrthogonal =
+          /(?:^|[^a-z])(?:0|nul|orthogonal)/.test(answer);
+        const explanationSaysNonZero =
+          /(?:neq0|≠0|estpositif|estnégatif|nonorthogonal|nesontpasorthogonaux)/.test(
+            explanation,
+          );
+        const answerSaysYes = /^(?:oui|vrai)/.test(answer);
+        const answerSaysNo = /^(?:non|faux)/.test(answer);
+        const explanationSaysNo =
+          /(?:conclusion:)?(?:non|faux)|nesontpas|n'estpas/.test(explanation);
+        const explanationSaysYes =
+          /(?:conclusion:)?(?:oui|vrai)|sontorthogonaux|estvérifiée/.test(
+            explanation,
+          );
+
+        if (
+          (answerSaysZeroOrOrthogonal && explanationSaysNonZero) ||
+          (answerSaysYes && explanationSaysNo) ||
+          (answerSaysNo && explanationSaysYes)
+        ) {
+          issues.push({
+            severity: "error",
+            code: "likely_semantic_contradiction",
+            path: exercisePath,
+            message:
+              "answer et explanation semblent se contredire explicitement.",
+            excerpt: `answer=${issueExcerpt(exercise.answer)} ; explanation=${issueExcerpt(exercise.explanation)}`,
+          });
+        }
+      }
+    });
+  });
+
+  return issues;
+}
+
+export function assertGeneratedCourseChapterQuality(
+  chapter: GeneratedChapterLike,
+): void {
+  const errors = auditGeneratedCourseChapter(chapter).filter(
+    (issue) => issue.severity === "error",
+  );
+  if (errors.length === 0) return;
+
+  const summary = errors
+    .slice(0, 12)
+    .map((issue) => `${issue.path}: ${issue.message}`)
+    .join("\n");
+  throw new Error(
+    `Cours IA refusé : ${errors.length} erreur(s) de qualité détectée(s).\n${summary}`,
+  );
 }
