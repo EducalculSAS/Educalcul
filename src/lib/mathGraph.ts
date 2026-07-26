@@ -36,12 +36,24 @@ function ticks(min: number, max: number, step: number): number[] {
   return out;
 }
 
+export type GraphVector = {
+  x: number;
+  y: number;
+  fromX?: number;
+  fromY?: number;
+  label?: string;
+  color?: string;
+};
+
+const VECTOR_COLORS = ["#e53e3e", "#3182ce", "#38a169", "#805ad5", "#dd6b20"];
+
 export function buildGraphSvg(
   expr: string,
   xMin: number,
   xMax: number,
   samples = 240,
   scope: Record<string, number> = {},
+  vectors: GraphVector[] = [],
 ) {
   let compiled;
   try {
@@ -71,6 +83,20 @@ export function buildGraphSvg(
     return { svg: "", error: "Impossible d'évaluer cette fonction sur cet intervalle." };
   }
 
+  const resolvedVectors = vectors.map((v, i) => ({
+    ...v,
+    fromX: v.fromX ?? 0,
+    fromY: v.fromY ?? 0,
+    color: v.color || VECTOR_COLORS[i % VECTOR_COLORS.length],
+  }));
+  for (const v of resolvedVectors) {
+    const ty = v.fromY + v.y;
+    if (v.fromY < yMin) yMin = v.fromY;
+    if (v.fromY > yMax) yMax = v.fromY;
+    if (ty < yMin) yMin = ty;
+    if (ty > yMax) yMax = ty;
+  }
+
   if (yMin === yMax) {
     yMin -= 1;
     yMax += 1;
@@ -91,6 +117,18 @@ export function buildGraphSvg(
   const yTicks = ticks(yMin, yMax, yStep);
 
   const el: string[] = [];
+
+  // Marqueurs de flèche (un par couleur de vecteur utilisée)
+  if (resolvedVectors.length > 0) {
+    const uniqueColors = Array.from(new Set(resolvedVectors.map((v) => v.color)));
+    const markers = uniqueColors
+      .map((color) => {
+        const colorId = color.replace(/[^a-zA-Z0-9]/g, "");
+        return `<marker id="arrow-${colorId}" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="${color}"/></marker>`;
+      })
+      .join("");
+    el.push(`<defs>${markers}</defs>`);
+  }
 
   // Cadre du graphe
   el.push(
@@ -126,6 +164,40 @@ export function buildGraphSvg(
     .join(" ");
   el.push(`<path class="g-curve" d="${path}" />`);
 
+  // Vecteurs éventuels (une flèche par vecteur, étiquette décalée du trait)
+  for (const v of resolvedVectors) {
+    const colorId = v.color.replace(/[^a-zA-Z0-9]/g, "");
+    const x1 = sx(v.fromX);
+    const y1 = sy(v.fromY);
+    const x2 = sx(v.fromX + v.x);
+    const y2 = sy(v.fromY + v.y);
+    el.push(
+      `<line class="g-vector" x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="${v.color}" marker-end="url(#arrow-${colorId})" />`,
+    );
+    if (v.label) {
+      // Décale l'étiquette perpendiculairement au trait ET un peu au-delà de
+      // la pointe, pour qu'elle ne soit jamais posée sur la flèche ; l'ancrage
+      // s'adapte à la direction pour éviter qu'elle ne sorte du cadre.
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len;
+      const uy = dy / len;
+      const nx = -uy;
+      const ny = ux;
+      const along = 6;
+      const offset = 14;
+      let lx = x2 + ux * along + nx * offset;
+      let ly = y2 + uy * along + ny * offset;
+      lx = Math.min(WIDTH - PAD_R - 4, Math.max(PAD_L + 4, lx));
+      ly = Math.min(PAD_T + plotH - 4, Math.max(PAD_T + 10, ly));
+      const anchor = nx > 0.25 ? "start" : nx < -0.25 ? "end" : "middle";
+      el.push(
+        `<text class="g-vector-label" x="${lx.toFixed(2)}" y="${ly.toFixed(2)}" fill="${v.color}" text-anchor="${anchor}">${v.label}</text>`,
+      );
+    }
+  }
+
   // Données pour l'interactivité (échantillonnées pour rester légères)
   const downs: [number, number][] = [];
   const stepN = Math.max(1, Math.floor(points.length / 160));
@@ -159,6 +231,35 @@ export function renderMathGraphPlaceholders(html: string): string {
       const paramMinMatch = match.match(/data-param-min="([^"]*)"/);
       const paramMaxMatch = match.match(/data-param-max="([^"]*)"/);
       const paramDefaultMatch = match.match(/data-param-default="([^"]*)"/);
+      const captionMatch = match.match(/data-caption="([^"]*)"/);
+      const vectorsMatch =
+        match.match(/data-vectors='([^']*)'/) ||
+        match.match(/data-vectors="([^"]*)"/);
+
+      let graphVectors: GraphVector[] = [];
+      if (vectorsMatch) {
+        try {
+          const raw = JSON.parse(
+            vectorsMatch[1].replace(/&quot;/g, '"').replace(/&#39;/g, "'"),
+          );
+          if (Array.isArray(raw)) {
+            graphVectors = raw
+              .filter(
+                (v) => typeof v?.x === "number" && typeof v?.y === "number",
+              )
+              .map((v) => ({
+                x: v.x,
+                y: v.y,
+                fromX: typeof v.fromX === "number" ? v.fromX : undefined,
+                fromY: typeof v.fromY === "number" ? v.fromY : undefined,
+                label: typeof v.label === "string" ? v.label : undefined,
+                color: typeof v.color === "string" ? v.color : undefined,
+              }));
+          }
+        } catch {
+          graphVectors = [];
+        }
+      }
 
       const expr = fnMatch ? fnMatch[1].replace(/^f\(x\)\s*=\s*/, "") : "x";
       const xMin = xminMatch ? parseFloat(xminMatch[1]) : -5;
@@ -180,13 +281,18 @@ export function renderMathGraphPlaceholders(html: string): string {
         safeXMax,
         240,
         hasParam ? { [param]: paramDefault } : {},
+        graphVectors,
       );
       if (error || !svg) return "";
       const label = (fnMatch ? fnMatch[1] : `f(x) = ${expr}`).replace(/"/g, "");
       const exprAttr = expr.replace(/"/g, "&quot;");
-      // La légende est en LaTeX ($...$) pour s'afficher comme les autres formules
-      // (rendu ensuite par renderLatexInHTML qui s'exécute après).
-      const caption = `<figcaption class="g-caption">$${label}$</figcaption>`;
+      // Si l'IA fournit data-caption (description pédagogique du tracé), on
+      // l'affiche en légende numérotée ; sinon on retombe sur la formule seule
+      // en LaTeX ($...$), rendu ensuite par renderLatexInHTML.
+      const captionText = captionMatch
+        ? captionMatch[1].replace(/&quot;/g, '"')
+        : `$${label}$`;
+      const caption = `<figcaption class="g-caption">${captionText}</figcaption>`;
       if (!hasParam) {
         return `<figure class="math-graph" data-function="${label}">${svg}${caption}</figure>`;
       }

@@ -1140,6 +1140,9 @@ main,
   border: 1px solid rgba(197, 161, 72, 0.3);
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(15, 30, 58, 0.06);
+  /* Partage le compteur avec .course-figure : toutes les figures d'une leçon
+     (statiques ou interactives) sont numérotées dans le même ordre séquentiel. */
+  counter-increment: educalcul-figure;
 }
 .math-graph svg {
   max-width: 100%;
@@ -1180,6 +1183,18 @@ main,
   font-weight: 600;
   color: var(--greek-blue, #0f1e3a);
   font-family: var(--font-display, serif);
+}
+.math-graph .g-caption::before {
+  content: "Figure " counter(educalcul-figure) " — ";
+}
+.math-graph .g-vector {
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.math-graph .g-vector-label {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-body, "Inter", sans-serif);
 }
 /* Curseur interactif au survol */
 .math-graph .g-cursor {
@@ -1278,83 +1293,6 @@ main,
   opacity: 0.9;
 }
 
-/* Schéma vectoriel manipulable (cf. interactiveVectors.ts) */
-.course-interactive-vectors-figure {
-  background: linear-gradient(180deg, #ffffff, var(--greek-cream, #faf7f2));
-  border: 1px solid rgba(197, 161, 72, 0.3);
-  border-radius: 16px;
-  padding: 0.75rem 0.75rem 0.5rem;
-  box-shadow: 0 4px 16px rgba(15, 30, 58, 0.06);
-}
-.course-interactive-vectors-figure .iv-svg {
-  max-width: min(100%, 22rem);
-  max-height: 18rem;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-.iv-vec {
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
-.iv-vec-u {
-  stroke: #e53e3e;
-}
-.iv-vec-v {
-  stroke: #3182ce;
-}
-.iv-arrowhead-u {
-  fill: #e53e3e;
-}
-.iv-arrowhead-v {
-  fill: #3182ce;
-}
-.iv-proj {
-  stroke: #38a169;
-  stroke-width: 2;
-  stroke-dasharray: 4 3;
-}
-.iv-origin {
-  fill: var(--greek-blue, #0f1e3a);
-}
-.iv-label {
-  font-size: 13px;
-  font-weight: 600;
-  font-family: var(--font-body, "Inter", sans-serif);
-  text-anchor: middle;
-  dominant-baseline: middle;
-}
-.iv-label-u {
-  fill: #e53e3e;
-}
-.iv-label-v {
-  fill: #3182ce;
-}
-.iv-handle {
-  fill: #fff;
-  stroke: var(--greek-blue, #0f1e3a);
-  stroke-width: 1.5;
-  cursor: grab;
-  touch-action: none;
-}
-.iv-handle:active {
-  cursor: grabbing;
-}
-.iv-panel {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.4rem 1rem;
-  margin-top: 0.4rem;
-  padding-top: 0.5rem;
-  border-top: 1px dashed rgba(197, 161, 72, 0.4);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--greek-blue, #0f1e3a);
-  font-variant-numeric: tabular-nums;
-}
-.iv-reset-btn,
 .g-reset-btn {
   display: block;
   margin: 0.6rem auto 0;
@@ -1368,7 +1306,6 @@ main,
   cursor: pointer;
   transition: background 0.15s ease;
 }
-.iv-reset-btn:hover,
 .g-reset-btn:hover {
   background: rgba(197, 161, 72, 0.12);
 }

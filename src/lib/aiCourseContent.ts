@@ -37,6 +37,7 @@ export const AI_COURSE_FORMAT_RULES = String.raw`═══ FORMAT HTML + LATEX �
 • Dans une formule, \\text{...} est réservé à un connecteur très court comme \\text{donc}, \\text{soit} ou \\text{avec}. N'y place jamais une phrase entière.
 • N'utilise jamais \\text{cos}, \\text{sin}, \\text{tan}, \\text{ln} ou \\text{π}. Utilise \\cos, \\sin, \\tan, \\ln et \\pi.
 • Utilise le LaTeX pour les symboles : ^{2}, \\sqrt{}, \\pm, \\times, \\div, \\neq, \\leq, \\geq et ^{\\circ}. N'utilise pas ², √, ±, ×, ÷, ≠ ou le symbole degré brut dans une formule.
+• ⚠️ AUCUNE notation mathématique en texte brut, même dans une formule qui semble « simple » : un exposant, un indice, une lettre grecque ou une fonction doivent TOUJOURS être dans $...$ avec la syntaxe LaTeX complète, jamais en caractères ASCII tels quels. MAUVAIS : e^-λt, T_env, T0, x^2. CORRECT : $e^{-\\lambda t}$, $T_{\\text{env}}$, $T_0$, $x^2$. Repère spécifiquement les symboles ^, _ et les lettres grecques (λ, π, θ, Δ...) écrits hors des délimiteurs $...$ : ils indiquent toujours une formule qui a échappé au LaTeX et doit être corrigée avant de répondre.
 
 ═══ CALCULS SUR PLUSIEURS LIGNES ═══
 • Un système, une matrice ou un calcul développé reste entièrement dans un seul bloc $$...$$.
@@ -74,15 +75,17 @@ export const AI_COURSE_FORMAT_RULES = String.raw`═══ FORMAT HTML + LATEX �
   - <blockquote class="course-callout course-callout-warning"> pour une mise en garde.
   - <span class="course-emphasis"> pour un mot-clé important hors formule.
   - <table class="math-table math-table-sign|math-table-variation|math-table-value"> pour un tableau mathématique.
-  - <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div> pour une courbe.
+  - <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5" data-caption="Parabole de f, sommet en x=1."></div> pour TOUTE courbe de fonction (tracé exact et interactif au survol).
   - Pour une famille paramétrée, ajoute data-param, data-param-min, data-param-max et data-param-default.
-  - <figure class="course-figure"> avec un <svg> inline sobre pour un schéma géométrique.
+  - data-caption est recommandé sur math-graph-placeholder : une phrase courte décrivant ce que montre la courbe (numérotée automatiquement « Figure N — » comme les autres figures).
+  - Pour superposer un ou plusieurs vecteurs sur CE graphique (utile dès qu'un vecteur, une tangente, un déplacement ou une force se lit sur un repère), ajoute data-vectors='[{"x":2,"y":3,"label":"$\\vec{u}$","color":"#e53e3e"}]' (JSON, une entrée par vecteur). x/y = composantes ; fromX/fromY = origine du vecteur (0,0 par défaut) ; label toujours en LaTeX ($...$) ; color une couleur différente par vecteur pour les distinguer. Le composant place déjà l'étiquette à côté de la flèche, jamais dessus : ne recalcule pas sa position toi-même.
+  - <figure class="course-figure"> avec un <svg> inline sobre pour un schéma STATIQUE qui n'est PAS une courbe de fonction : diagramme circulaire/camembert (ex. proportions d'une fraction), figure géométrique (triangle, cercle, repère avec points), schéma d'énoncé.
+  - ⚠️ Dès qu'il s'agit de tracer le graphe d'une fonction (droite, parabole, exponentielle, trigonométrique, tangente...), c'est TOUJOURS math-graph-placeholder, JAMAIS un <path>/<polyline> dessiné à la main : un tracé à la main est systématiquement imprécis ou visuellement faux. course-figure sert uniquement aux schémas qui ne sont pas une courbe.
   - <div class="course-steps"><div class="course-step">...</div></div> pour toute démonstration de trois étapes ou plus.
 • Dans chaque <div class="course-step">, mets l'explication dans un <p> et chaque formule longue dans un autre <p> contenant un seul $$...$$.
-• <div class="course-interactive-vectors" data-ox="150" data-oy="150" data-ux="220" data-uy="80" data-vx="260" data-vy="150" data-ulabel="u" data-vlabel="v" data-show-projection="true" data-caption="Fais glisser u et v et observe le produit scalaire."></div> permet un schéma vectoriel interactif.
-• Le cours entier contient au moins un élément visuel utile parmi tableau, graphique, figure SVG ou schéma interactif.
+• Le cours entier contient au moins un élément visuel utile parmi tableau, graphique, figure SVG ou schéma interactif — quel que soit le thème : choisis toujours l'outil adapté à LA notion réellement enseignée dans CE cours (une fraction se prête à un camembert, une étude de fonction à un math-graph-placeholder, une figure géométrique à un course-figure), jamais un outil arbitraire plaqué sans lien avec le contenu.
 • Une famille de fonctions étudiée graphiquement contient au moins un math-graph-placeholder. Une courbe passe toujours par ce composant, jamais par un SVG dessiné à la main.
-• Varie les outils visuels sans en ajouter artificiellement. Limite course-interactive-vectors et course-steps à un ou deux par chapitre.
+• Varie les outils visuels sans en ajouter artificiellement. Limite course-steps à un ou deux par chapitre.
 
 ═══ SCHÉMAS SVG — RÈGLES STRICTES ═══
 • Format exact : <figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img"><!-- formes --></svg><figcaption>Description courte</figcaption></figure>.
@@ -238,7 +241,8 @@ export type CourseQualityIssueCode =
   | "missing_answer_conclusion"
   | "answer_conclusion_mismatch"
   | "likely_semantic_contradiction"
-  | "latex_required_repair";
+  | "latex_required_repair"
+  | "unwrapped_math_notation";
 
 export type CourseQualityIssue = {
   severity: CourseQualityIssueSeverity;
@@ -253,6 +257,20 @@ const SELF_CORRECTION_RE =
 const BROKEN_JSON_LATEX_RE =
   /(^|[^A-Za-z\\])(?:ext|rac|egin|imes|heta|ight)\s*\{/i;
 const CONTROL_CHARACTER_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
+
+// Détecte une notation mathématique (exposant/indice ASCII ou lettre grecque
+// suivie d'une variable) écrite hors de tout délimiteur $...$/$$...$$ — signe
+// qu'une formule a échappé au LaTeX (ex: "e^-λt", "T_env"), quel que soit le
+// thème du cours (règle générale, pas liée à une notion précise).
+const UNWRAPPED_MATH_RE =
+  /[A-Za-z][\^_]-?[A-Za-z0-9]|[αβγδεζηθικλμνξπρστφχψωΓΔΘΛΞΠΣΦΨΩ][A-Za-z0-9(]/;
+
+function textOutsideMathAndTags(value: string): string {
+  return value
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\$\$[\s\S]*?\$\$/g, " ")
+    .replace(/\$[^$\r\n]*?\$/g, " ");
+}
 
 function issueExcerpt(value: string): string {
   const compact = value.replace(/\s+/g, " ").trim();
@@ -319,6 +337,16 @@ function inspectGeneratedString(
       code: "latex_required_repair",
       path,
       message: "Le réparateur a dû modifier cette chaîne LaTeX/HTML.",
+      excerpt: issueExcerpt(value),
+    });
+  }
+  if (UNWRAPPED_MATH_RE.test(textOutsideMathAndTags(value))) {
+    issues.push({
+      severity: "error",
+      code: "unwrapped_math_notation",
+      path,
+      message:
+        "Une notation mathématique (exposant/indice/lettre grecque) apparaît hors d'un délimiteur $...$.",
       excerpt: issueExcerpt(value),
     });
   }

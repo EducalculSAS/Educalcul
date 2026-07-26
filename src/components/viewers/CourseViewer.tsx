@@ -29,7 +29,6 @@ import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import { enhanceCourseSteps } from "@/lib/courseSteps";
-import { renderInteractiveVectorPlaceholders, enhanceInteractiveVectors } from "@/lib/interactiveVectors";
 import MathInput from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 
@@ -189,7 +188,6 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     const t = setTimeout(() => {
       enhanceMathGraphs(document.body);
       enhanceCourseSteps(document.body);
-      enhanceInteractiveVectors(document.body);
     }, 120);
     return () => clearTimeout(t);
   }, [currentChapterIndex, currentLessonIndex]);
@@ -706,7 +704,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                      )
                    ) : currentLesson.type === 'table' || currentLesson.type === 'graph' ? (
                      currentLesson.content?.trim() ? (
-                       <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderInteractiveVectorPlaceholders(renderMathGraphPlaceholders(currentLesson.content))) }} />
+                       <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(currentLesson.content)) }} />
                      ) : (
                        <p className="text-gray-400 italic">Contenu non disponible.</p>
                      )
@@ -735,7 +733,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                            return (
                              <div
                                key={block.id}
-                               dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderInteractiveVectorPlaceholders(renderMathGraphPlaceholders(block.content || ""))) }}
+                               dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(block.content || "")) }}
                              />
                            );
                          }
@@ -926,7 +924,7 @@ function renderLessonContentWithInlineExercises(
     return (
       <div
         key={`html-${idx}`}
-        dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderInteractiveVectorPlaceholders(renderMathGraphPlaceholders(part.html || ""))) }}
+        dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(part.html || "")) }}
       />
     );
   });
