@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { QUIZ_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import QuizGeneratorModal, { QuizGenParams } from "@/components/admin/QuizGeneratorModal";
-import type { AIGenerateProgress } from "@/components/admin/ExerciseGeneratorModal";
+import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import QuizBuilder, { Question } from "@/components/admin/QuizBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
@@ -24,6 +24,7 @@ import {
   Home,
   ImageIcon,
   XCircle,
+  CheckCircle,
   FileText,
   BookOpen,
   BrainCircuit,
@@ -251,7 +252,19 @@ export default function AdminQuizzesPage() {
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
-  const [aiProgress, setAiProgress] = useState<AIGenerateProgress | null>(null);
+  const [aiSuccess, setAiSuccess] = useState<string | null>(null);
+  const { startGeneration, onContentCreated } = useContentGenerations();
+
+  // Une génération lancée depuis cette page (ou une autre, ou avant un
+  // rechargement) rafraîchit la liste dès qu'elle aboutit à un quiz créé.
+  useEffect(() => {
+    return onContentCreated("quiz", () => {
+      invalidateAdminCache("quizzes:");
+      fetchContents(true);
+      setAiSuccess("Quiz généré et enregistré directement en brouillon.");
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onContentCreated]);
 
   useEffect(() => {
     fetchInitialData();
@@ -624,83 +637,23 @@ export default function AdminQuizzesPage() {
     }
   };
 
-  const handleAiGenerate = async (params: QuizGenParams) => {
-    setAiError(null);
-    setAiProgress({ current: 0, total: 0, message: "Préparation du quiz...", chapters: [] });
-    try {
-      const response = await fetch("/api/admin/generate-quiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(params),
-      });
-
-      if (!response.ok || !response.body) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.message || data.error || "Generation failed");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      let result: any = null;
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
-        for (const line of lines) {
-          if (!line.trim()) continue;
-          const evt = JSON.parse(line);
-          if (evt.type === "progress") {
-            setAiProgress((prev) => {
-              const chapters = evt.step === "chapter" && evt.current > 0
-                ? [...(prev?.chapters || []), evt.message].slice(-evt.total)
-                : (prev?.chapters || []);
-              return { current: evt.current, total: evt.total, message: evt.message, chapters };
-            });
-          } else if (evt.type === "done") {
-            result = evt.data;
-          } else if (evt.type === "error") {
-            throw new Error(evt.message || "Erreur de génération");
-          }
-        }
-      }
-
-      if (!result) throw new Error("Aucune donnée générée");
-
-      const content = result.content;
-      const metadata = result.metadata;
-
-      setFormData({
-        title: metadata?.title || `Quiz : ${params.subject}`,
-        description: metadata?.description || "",
-        course_id: params.linkedCourseId || "",
-        folder_id: currentFolderId || "",
-        time_limit_minutes: metadata?.time_limit || 10,
-        min_score_percent: metadata?.min_score_percent || 0,
-        difficulty_level:
-          params.difficulty || metadata?.difficulty_level || "medium",
-        type: metadata?.type || "standard",
-        level: currentFolderLevel || params.level || metadata?.level || "6eme",
-        grading_type: metadata?.grading_type || "auto",
-        max_attempts: metadata?.max_attempts || 0,
-        status: "draft",
-        thumbnail_filename: "",
-        content_json: content || [],
-      });
-
-      setIsAiModalOpen(false);
-      setEditingQuiz(null);
-      setIsModalOpen(true);
-    } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : "Erreur IA inconnue";
-      setAiError(errorMessage);
-    } finally {
-      setAiProgress(null);
-    }
+  // Génération en arrière-plan (même architecture que les cours/exercices) :
+  // ferme le formulaire immédiatement et laisse le widget global (haut à
+  // droite) suivre la progression — plus d'étape de validation manuelle, le
+  // quiz final s'enregistre directement en brouillon.
+  const handleAiGenerate = (params: QuizGenParams) => {
+    setIsAiModalOpen(false);
+    startGeneration("quiz", {
+      linkedCourseId: params.linkedCourseId || null,
+      subject: params.subject,
+      level: currentFolderLevel || params.level || "6eme",
+      difficulty: params.difficulty,
+      questionCount: params.questionCount,
+      instructions: params.instructions,
+      folder_id: currentFolderId || null,
+    }).then((id) => {
+      if (!id) setAiError("Impossible de démarrer la génération. Réessaie.");
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -1422,6 +1375,24 @@ export default function AdminQuizzesPage() {
         </div>
       )}
 
+      {/* Inline AI success */}
+      {aiSuccess && (
+        <div className="px-4 py-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-sm flex items-start gap-2">
+          <CheckCircle size={18} className="flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="font-semibold">Quiz généré</p>
+            <p className="opacity-90">{aiSuccess}</p>
+          </div>
+          <button
+            onClick={() => setAiSuccess(null)}
+            className="text-emerald-700 hover:text-emerald-900"
+            aria-label="Fermer"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       {/* Inline AI error */}
       {aiError && (
         <div className="px-4 py-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-start gap-2">
@@ -1445,7 +1416,6 @@ export default function AdminQuizzesPage() {
         <QuizGeneratorModal
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
-          progress={aiProgress}
           defaultLevel={currentFolderLevel || undefined}
         />
       )}

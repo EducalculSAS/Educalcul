@@ -52,7 +52,7 @@ import {
 import AIGeneratorModal, {
   AIGenerateParams,
 } from "@/components/admin/AIGeneratorModal";
-import { useCourseGenerations } from "@/contexts/CourseGenerationsContext";
+import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import {
   SCHOOL_LEVELS,
@@ -245,12 +245,12 @@ export default function AdminCoursesPage() {
   // AI States
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isRendering, setIsRendering] = useState(false);
-  const { startGeneration, onCourseCreated } = useCourseGenerations();
+  const { startGeneration, onContentCreated } = useContentGenerations();
 
   // Une génération lancée depuis cette page (ou une autre, ou avant un
   // rechargement) rafraîchit la liste dès qu'elle aboutit à un cours créé.
   useEffect(() => {
-    return onCourseCreated(() => {
+    return onContentCreated("course", () => {
       invalidateAdminCache("courses:");
       fetchContents(true);
       setNotification({
@@ -260,7 +260,7 @@ export default function AdminCoursesPage() {
       });
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onCourseCreated]);
+  }, [onContentCreated]);
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Notification Modal State (replaces alert())
@@ -482,7 +482,7 @@ export default function AdminCoursesPage() {
   };
 
   // Génération en arrière-plan : le vrai travail tourne côté serveur (survit
-  // au reload/à la fermeture de la page) via CourseGenerationsContext. Cette
+  // au reload/à la fermeture de la page) via ContentGenerationsContext. Cette
   // fonction se contente de démarrer la génération et de fermer le
   // formulaire — plus d'étape de validation manuelle, le cours final
   // s'enregistre directement en brouillon.
@@ -490,10 +490,10 @@ export default function AdminCoursesPage() {
     // Fermé IMMÉDIATEMENT (avant même d'attendre la réponse du serveur) :
     // sinon AIGeneratorModal reste monté le temps de l'appel réseau et
     // affiche sa propre vue de chargement (ancienne modale, avec sa croix)
-    // pendant cette fraction de seconde avant que CourseGenerationFullModal
+    // pendant cette fraction de seconde avant que ContentGenerationFullModal
     // ne prenne le relais.
     setIsAiModalOpen(false);
-    startGeneration({
+    startGeneration("course", {
       grade_level: currentFolderLevel || params.level || "6eme",
       subject: params.topic,
       page_count: params.count?.toString() || "2",
@@ -1706,10 +1706,7 @@ export default function AdminCoursesPage() {
           onAction={() => {
             const wasSuccess = notification.variant === "success";
             setNotification(null);
-            if (wasSuccess) {
-              setModalMode("create");
-              setIsModalOpen(true);
-            } else {
+            if (!wasSuccess) {
               setIsAiModalOpen(true);
             }
           }}
@@ -1739,7 +1736,7 @@ function NotificationModal({
   const isSuccess = variant === "success";
   const Icon = isSuccess ? CheckCircle : AlertTriangle;
   const accent = isSuccess ? "#10b981" : "#ef4444";
-  const ctaLabel = isSuccess ? "Continuer" : "Réessayer";
+  const ctaLabel = isSuccess ? "Fermer" : "Réessayer";
 
   return (
     <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">

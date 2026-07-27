@@ -1,10 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Loader2, CheckCircle2, XCircle, X } from "lucide-react";
-import { useCourseGenerations, type CourseGeneration } from "@/contexts/CourseGenerationsContext";
+import { ChevronDown, Loader2, CheckCircle2, XCircle, X, BookOpen, PencilLine, ListChecks } from "lucide-react";
+import { useContentGenerations, type ContentGeneration, type ContentKind } from "@/contexts/ContentGenerationsContext";
 import { useSmoothPercentByKey } from "./useSmoothPercent";
-import CourseGenerationFullModal from "./CourseGenerationFullModal";
+import ContentGenerationFullModal from "./ContentGenerationFullModal";
+
+const KIND_ICON: Record<ContentKind, React.ElementType> = {
+  course: BookOpen,
+  exercise: PencilLine,
+  quiz: ListChecks,
+};
+const KIND_FALLBACK_LABEL: Record<ContentKind, string> = {
+  course: "Cours",
+  exercise: "Exercice",
+  quiz: "Quiz",
+};
 
 function GenerationRow({
   generation,
@@ -12,7 +23,7 @@ function GenerationRow({
   onCancel,
   onDismiss,
 }: {
-  generation: CourseGeneration;
+  generation: ContentGeneration;
   onFocus: () => void;
   onCancel: () => void;
   onDismiss: () => void;
@@ -29,6 +40,7 @@ function GenerationRow({
     generation.progress.total,
     isActive,
   );
+  const Icon = KIND_ICON[generation.kind];
 
   return (
     <div
@@ -36,8 +48,11 @@ function GenerationRow({
       onClick={onFocus}
     >
       <div className="flex items-center justify-between gap-2">
-        <span className="text-sm font-medium text-gray-800 truncate">
-          {(generation.params.subject as string) || "Cours"}
+        <span className="flex items-center gap-1.5 text-sm font-medium text-gray-800 truncate min-w-0">
+          <Icon size={13} className="text-[var(--greek-gold)] flex-shrink-0" />
+          <span className="truncate">
+            {(generation.params.subject as string) || KIND_FALLBACK_LABEL[generation.kind]}
+          </span>
         </span>
         <div className="flex items-center gap-1 flex-shrink-0">
           {generation.status === "done" && <CheckCircle2 size={14} className="text-emerald-500" />}
@@ -94,12 +109,12 @@ function GenerationRow({
 
 /**
  * Pastille persistante en haut à droite, visible sur tout l'admin : liste
- * les générations de cours en cours (ou tout juste finies) même après un
- * rechargement de page, puisque le travail tourne côté serveur. Cliquer sur
- * une ligne rouvre sa modale complète (voir CourseGenerationFullModal).
+ * les générations (cours, exercices, quiz) en cours ou tout juste finies,
+ * même après un rechargement de page, puisque le travail tourne côté
+ * serveur. Cliquer sur une ligne rouvre sa modale complète.
  */
-export default function CourseGenerationsWidget() {
-  const { generations, focusedId, focus, cancelGeneration, dismiss } = useCourseGenerations();
+export default function ContentGenerationsWidget() {
+  const { generations, focusedId, focus, cancelGeneration, dismiss } = useContentGenerations();
   const [open, setOpen] = useState(false);
 
   const active = generations.filter(
@@ -148,7 +163,7 @@ export default function CourseGenerationsWidget() {
         </div>
       </div>
 
-      {focusedId && <CourseGenerationFullModal />}
+      {focusedId && <ContentGenerationFullModal />}
     </>
   );
 }

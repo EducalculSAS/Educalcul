@@ -3,29 +3,19 @@ import { generateStructuredContent } from "@/lib/llm";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import {
+  AI_COURSE_FORMAT_RULES,
+  auditAnyContentDeep,
+  repairAnyContentDeep,
+  type CourseQualityIssue,
+} from "@/lib/aiCourseContent";
 
 export const maxDuration = 120;
 
-const TABLE_GRAPH_RULES = `═══ TABLEAUX & GRAPHIQUES ═══
-• Tableau (signes/variations/valeurs) : <table class="math-table math-table-sign|math-table-variation|math-table-value"><thead><tr><th>x</th>...</tr></thead><tbody><tr><td>...</td></tr></tbody></table>. Utilise ↗, ↘, +, -, 0, ∞, ‖.
-• Courbe simple : <div class="math-graph-placeholder" data-function="x^2 - 2*x + 1" data-xmin="-5" data-xmax="5"></div>
-• Pour un schéma coloré utile (fractions, partages, aires, décompositions), tu peux aussi intégrer un <svg> inline simple, avec 2 à 5 couleurs sobres, des contours nets et une légende courte.
-• Si tu utilises un graphique, privilégie le style sobre du site Educalcul : fond clair, contours nets, texte lisible.
-• N'en ajoute que si pertinents pour la notion ou la question demandée.`;
-
-const FORMAT_RULES = `═══ FORMAT ═══
-• HTML pour le contenu : <h3>, <h4>, <p>, <ul>/<li>, <strong>, <em>, <blockquote>, <table>.
-• LaTeX pour les formules : inline $...$, bloc $$...$$.
-• N'utilise JAMAIS de retour à la ligne littéral à l'intérieur des chaînes JSON.
-• DOUBLE-ÉCHAPPE les backslashes JSON : \\\\frac{a}{b} → donne \\frac{a}{b} dans le rendu.
-• N'utilise QUE des commandes LaTeX standards (lettres latines a-z/A-Z) — n'écris JAMAIS de caractères cyrilliques ou non-latins à l'intérieur d'une formule $...$ ou $$...$$, et ne mélange jamais du HTML à l'intérieur d'une formule.
-• Toute commande LaTeX commençant par un antislash (\\frac, \\sqrt, \\vec, \\cos, \\sin, \\begin, \\end, \\left, \\right, etc.) doit être strictement à l'intérieur de $...$ ou $$...$$.
-• Ne laisse jamais une formule “nue” dans un paragraphe : une équation, une matrice, une projection, une norme ou une décomposition se met dans un bloc de formule dédié.
-• Pour une suite de calculs, sépare les étapes en plusieurs paragraphes ou listes avec une formule à chaque étape, au lieu d’un long bloc de prose.
-• N'utilise jamais d'exemple hors mathématiques (physique, chimie, biologie, informatique, etc.) sauf demande explicite.
-• Avant le premier exercice, il doit toujours y avoir une explication ou un exemple guidé ; ne commence jamais une leçon par une question.
-• Pour les mises en valeur, privilégie <blockquote class="course-callout course-callout-note">...</blockquote> ou <blockquote class="course-callout course-callout-warning">...</blockquote> hors formules, et <span class="course-emphasis">...</span> pour les mots-clés.
-${TABLE_GRAPH_RULES}`;
+// Mêmes règles de format/LaTeX/figures que la génération de cours/exercices/
+// quiz (voir aiCourseContent.ts) — une modification de chapitre/leçon/bloc ne
+// doit pas suivre un contrat plus permissif que la génération d'origine.
+const FORMAT_RULES = AI_COURSE_FORMAT_RULES;
 
 const PATCH_FORMAT = `═══ FORMAT DE RÉPONSE (TRÈS IMPORTANT) ═══
 Modification LOCALISÉE et RAPIDE : ne touche QUE ce que l'enseignant a explicitement demandé. Si la demande porte sur un seul élément (ex: renommer une leçon, corriger une question), ne renvoie QUE cet élément — n'en profite pas pour réécrire ou "améliorer" d'autres éléments non demandés.
@@ -352,7 +342,17 @@ export async function POST(req: NextRequest) {
       if (!item || typeof item !== "object" || !item.id) {
         throw new Error("Réponse IA invalide");
       }
-      return Response.json({ item });
+      // Même filet de sécurité que la génération : répare le LaTeX et
+      // signale (sans bloquer, une édition ciblée doit rester rapide) toute
+      // anomalie déterministe (auto-correction, symbole Unicode brut, courbe
+      // dessinée à la main...) détectée dans l'élément renvoyé.
+      const repairedItem = repairAnyContentDeep(item);
+      const editIssues: CourseQualityIssue[] = [];
+      auditAnyContentDeep(repairedItem, type, editIssues);
+      if (editIssues.some((i) => i.severity === "error")) {
+        console.warn(`[ai-edit] Anomalies détectées sur "${type}" :`, editIssues);
+      }
+      return Response.json({ item: repairedItem });
     }
 
     if (!result || !Array.isArray(result.items)) {
@@ -361,13 +361,20 @@ export async function POST(req: NextRequest) {
 
     // Ne garde que les items exploitables (objet avec un id) pour éviter
     // d'injecter des leçons/blocs vides côté client.
-    const items = result.items.filter(
-      (it: any) =>
-        it &&
-        typeof it === "object" &&
-        typeof it.id === "string" &&
-        it.id.length > 0,
+    const items = repairAnyContentDeep(
+      result.items.filter(
+        (it: any) =>
+          it &&
+          typeof it === "object" &&
+          typeof it.id === "string" &&
+          it.id.length > 0,
+      ),
     );
+    const editIssues: CourseQualityIssue[] = [];
+    auditAnyContentDeep(items, type, editIssues);
+    if (editIssues.some((i) => i.severity === "error")) {
+      console.warn(`[ai-edit] Anomalies détectées sur "${type}" :`, editIssues);
+    }
 
     return Response.json({
       items,

@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
-import ExerciseGeneratorModal, { ExerciseGenParams, AIGenerateProgress } from "@/components/admin/ExerciseGeneratorModal";
+import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
+import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
@@ -21,6 +22,7 @@ import {
   Home,
   ImageIcon,
   XCircle,
+  CheckCircle,
   BookOpen,
   Zap,
   GraduationCap,
@@ -278,9 +280,20 @@ export default function AdminExercisesPage() {
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [aiProgress, setAiProgress] = useState<AIGenerateProgress | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
+  const [aiSuccess, setAiSuccess] = useState<string | null>(null);
+  const { startGeneration, onContentCreated } = useContentGenerations();
+
+  // Une génération lancée depuis cette page (ou une autre, ou avant un
+  // rechargement) rafraîchit la liste dès qu'elle aboutit à un exercice créé.
+  useEffect(() => {
+    return onContentCreated("exercise", () => {
+      invalidateAdminCache("exercises:");
+      fetchContents(true);
+      setAiSuccess("Exercice généré et enregistré directement en brouillon.");
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onContentCreated]);
 
   useEffect(() => {
     fetchInitialData();
@@ -679,97 +692,26 @@ export default function AdminExercisesPage() {
     window.open("/child/exercises/preview", "_blank");
   };
 
-  const handleAiGenerate = async (params: ExerciseGenParams) => {
-    setIsGenerating(true);
-    setAiError(null);
-    setAiProgress({ current: 0, total: 0, message: "Préparation de l'exercice...", chapters: [] });
-
-    try {
-      const response = await fetch("/api/admin/generate-exercise", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(params),
-      });
-
-      if (!response.ok || !response.body) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.message || data.error || "Generation failed");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      let result: any = null;
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
-        for (const line of lines) {
-          if (!line.trim()) continue;
-          const evt = JSON.parse(line);
-          if (evt.type === "progress") {
-            setAiProgress((prev) => ({
-              current: evt.current,
-              total: evt.total,
-              message: evt.message,
-              chapters: prev?.chapters || [],
-            }));
-            if (evt.step === "chapter" && evt.current > 0) {
-              setAiProgress((prev) => ({
-                current: evt.current,
-                total: evt.total,
-                message: evt.message,
-                chapters: [...(prev?.chapters || []), evt.message].slice(-evt.total),
-              }));
-            }
-          } else if (evt.type === "done") {
-            result = evt.data;
-          } else if (evt.type === "error") {
-            throw new Error(evt.message || "Erreur de génération");
-          }
-        }
-      }
-
-      if (!result) throw new Error("Aucune donnée générée");
-
-      const content = result.content;
-      const metadata = result.metadata;
-
-      setFormData({
-        title: metadata?.title || `Exercice : ${params.subject}`,
-        description: metadata?.description || "",
-        course_id: params.linkedCourseId || "",
-        folder_id: currentFolderId || "",
-        difficulty_level:
-          (params.difficulty as "easy" | "medium" | "hard") ||
-          metadata?.difficulty_level ||
-          "medium",
-        type: metadata?.type || "standard",
-        level: currentFolderLevel || params.level || metadata?.level || "6eme",
-        grading_type: metadata?.grading_type || "ai",
-        status: "draft",
-        thumbnail_url: "",
-        time_limit: metadata?.time_limit || 0,
-        time_limit_minutes: metadata?.time_limit_minutes || 0,
-        min_score_percent: metadata?.min_score_percent || 0,
-        max_attempts: metadata?.max_attempts || 0,
-        content_json: content || [],
-      });
-
-      setIsAiModalOpen(false);
-      setEditingExercise(null);
-      setIsModalOpen(true);
-    } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : "Erreur IA inconnue";
-      setAiError(errorMessage);
-    } finally {
-      setIsGenerating(false);
-      setAiProgress(null);
-    }
+  // Génération en arrière-plan (même architecture que les cours) : ferme le
+  // formulaire immédiatement et laisse le widget global (haut à droite)
+  // suivre la progression — plus d'étape de validation manuelle, l'exercice
+  // final s'enregistre directement en brouillon.
+  const handleAiGenerate = (params: ExerciseGenParams) => {
+    setIsAiModalOpen(false);
+    startGeneration("exercise", {
+      exerciseType: params.exerciseType,
+      blockType: params.blockType,
+      linkedCourseId: params.linkedCourseId || null,
+      subject: params.subject,
+      level: currentFolderLevel || params.level || "6eme",
+      difficulty: params.difficulty,
+      questionCount: params.questionCount,
+      subjectArea: params.subjectArea,
+      instructions: params.instructions,
+      folder_id: currentFolderId || null,
+    }).then((id) => {
+      if (!id) setAiError("Impossible de démarrer la génération. Réessaie.");
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -1454,6 +1396,24 @@ export default function AdminExercisesPage() {
         </div>
       )}
 
+      {/* Inline AI success */}
+      {aiSuccess && (
+        <div className="px-4 py-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-sm flex items-start gap-2">
+          <CheckCircle size={18} className="flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="font-semibold">Exercice généré</p>
+            <p className="opacity-90">{aiSuccess}</p>
+          </div>
+          <button
+            onClick={() => setAiSuccess(null)}
+            className="text-emerald-700 hover:text-emerald-900"
+            aria-label="Fermer"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       {/* Inline AI error */}
       {aiError && (
         <div className="px-4 py-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-start gap-2">
@@ -1477,7 +1437,6 @@ export default function AdminExercisesPage() {
         <ExerciseGeneratorModal
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
-          progress={aiProgress}
           defaultLevel={currentFolderLevel || undefined}
         />
       )}

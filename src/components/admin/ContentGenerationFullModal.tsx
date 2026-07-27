@@ -1,18 +1,24 @@
 "use client";
 
 import { BrainCircuit, Minus, Sparkles } from "lucide-react";
-import { useCourseGenerations } from "@/contexts/CourseGenerationsContext";
+import { useContentGenerations, type ContentKind } from "@/contexts/ContentGenerationsContext";
 import { useSmoothPercentByKey } from "./useSmoothPercent";
 
+const KIND_LABEL: Record<ContentKind, { noun: string; created: string }> = {
+  course: { noun: "cours", created: "Le cours a été enregistré directement en brouillon" },
+  exercise: { noun: "exercice", created: "L'exercice a été enregistré directement en brouillon" },
+  quiz: { noun: "quiz", created: "Le quiz a été enregistré directement en brouillon" },
+};
+
 /**
- * Vue "plein écran" d'UNE génération de cours en cours, pilotée par le
- * contexte global (survit au reload puisque le vrai travail tourne en
- * arrière-plan côté serveur). La croix ne ferme jamais la génération : elle
- * la réduit dans le widget en haut à droite. Seul le bouton "Annuler"
- * l'arrête réellement.
+ * Vue "plein écran" d'UNE génération (cours, exercice ou quiz) en cours,
+ * pilotée par le contexte global (survit au reload puisque le vrai travail
+ * tourne en arrière-plan côté serveur). La croix ne ferme jamais la
+ * génération : elle la réduit dans le widget en haut à droite. Seul le
+ * bouton "Annuler" l'arrête réellement.
  */
-export default function CourseGenerationFullModal() {
-  const { generations, focusedId, minimize, cancelGeneration, dismiss } = useCourseGenerations();
+export default function ContentGenerationFullModal() {
+  const { generations, focusedId, minimize, cancelGeneration, dismiss } = useContentGenerations();
   const generation = generations.find((g) => g.id === focusedId);
   const smoothPct = useSmoothPercentByKey(
     generation?.id ?? null,
@@ -23,6 +29,7 @@ export default function CourseGenerationFullModal() {
 
   if (!generation) return null;
 
+  const label = KIND_LABEL[generation.kind];
   const isFinished = ["done", "error", "cancelled"].includes(generation.status);
   const chapterTitles = generation.progress.chapterTitles || [];
   const doneChapters = generation.progress.chapters || {};
@@ -41,7 +48,7 @@ export default function CourseGenerationFullModal() {
             </div>
             <div className="min-w-0">
               <h3 className="text-xl font-bold font-[family-name:var(--font-display)] tracking-wide truncate">
-                {(generation.params.subject as string) || "Génération de cours"}
+                {(generation.params.subject as string) || `Génération de ${label.noun}`}
               </h3>
               <p className="text-blue-100 text-sm opacity-90">
                 {isFinished ? "Terminé" : "Génération en cours — continue même si tu quittes cette fenêtre"}
@@ -82,10 +89,10 @@ export default function CourseGenerationFullModal() {
           ) : generation.status === "done" ? (
             <>
               <h4 className="text-xl font-bold text-emerald-700 mb-2 font-[family-name:var(--font-display)]">
-                Cours créé !
+                {generation.kind === "course" ? "Cours créé !" : generation.kind === "exercise" ? "Exercice créé !" : "Quiz créé !"}
               </h4>
               <p className="text-gray-600 text-center max-w-md">
-                Le cours a été enregistré directement en brouillon — retrouve-le dans la liste.
+                {label.created} — retrouve-le dans la liste.
               </p>
               {generation.error && (
                 <p className="text-amber-600 text-sm text-center max-w-md mt-3">{generation.error}</p>
@@ -101,7 +108,7 @@ export default function CourseGenerationFullModal() {
                 {generation.status === "cancel_requested" ? "Annulation en cours..." : "Création en cours..."}
               </h4>
               <p className="text-gray-500 text-center max-w-md mb-6">
-                {generation.progress.message || "Notre IA pédagogique compose votre cours avec soin."}
+                {generation.progress.message || `Notre IA pédagogique compose ton ${label.noun} avec soin.`}
               </p>
 
               {generation.progress.total > 0 && (

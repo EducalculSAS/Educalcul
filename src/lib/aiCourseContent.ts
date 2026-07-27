@@ -624,3 +624,62 @@ export function assertGeneratedCourseChapterQuality(
     `Cours IA refusé : ${errors.length} erreur(s) de qualité détectée(s).\n${summary}`,
   );
 }
+
+// ═══ Contrôles génériques réutilisables (cours, exercices, quiz) ═══
+// Les exercices et quiz autonomes n'ont pas la structure chapitres/leçons
+// d'un cours (blocs hétérogènes selon le type : qcm, fill_in_the_blank,
+// matching, ordering...). Plutôt que de modéliser chaque forme, ces
+// fonctions parcourent RÉCURSIVEMENT n'importe quelle structure JSON générée
+// et appliquent les mêmes contrôles déterministes (auto-correction visible,
+// symboles Unicode bruts, texte collé, notation échappée, courbe dessinée à
+// la main, LaTeX à réparer) à chaque chaîne trouvée — mêmes règles pour tout
+// type de contenu, sans dupliquer la logique par forme de bloc.
+
+export { inspectGeneratedString, containsHandDrawnCurveFigure };
+
+export function auditAnyContentDeep(
+  value: unknown,
+  path: string,
+  issues: CourseQualityIssue[],
+): void {
+  if (typeof value === "string") {
+    inspectGeneratedString(value, path, issues);
+    if (containsHandDrawnCurveFigure(value)) {
+      issues.push({
+        severity: "error",
+        code: "hand_drawn_curve_svg",
+        path,
+        message:
+          "Un course-figure dessine une courbe lisse à la main (SVG) au lieu d'utiliser math-graph-placeholder.",
+      });
+    }
+    return;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => auditAnyContentDeep(item, `${path}[${index}]`, issues));
+    return;
+  }
+  if (value && typeof value === "object") {
+    for (const [key, item] of Object.entries(value)) {
+      auditAnyContentDeep(item, path ? `${path}.${key}` : key, issues);
+    }
+  }
+}
+
+/** Répare le LaTeX de chaque chaîne trouvée, en profondeur, sans changer la forme de l'objet. */
+export function repairAnyContentDeep<T>(value: T): T {
+  if (typeof value === "string") {
+    return repairLatex(value) as unknown as T;
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => repairAnyContentDeep(item)) as unknown as T;
+  }
+  if (value && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const [key, item] of Object.entries(value)) {
+      out[key] = repairAnyContentDeep(item);
+    }
+    return out as unknown as T;
+  }
+  return value;
+}

@@ -444,13 +444,13 @@ IMPORTANT : renvoie uniquement le JSON valide attendu. Ne mets aucun texte d'acc
 }
 
 export async function generateStructuredContent(
-  prompt: string, systemPrompt: string, temperature = 0.7, maxTokens = 8000, reasoning = false
+  prompt: string, systemPrompt: string, temperature = 0.7, maxTokens = 8000
 ): Promise<unknown> {
   const text = await dispatch(
     [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
     temperature,
     maxTokens,
-    reasoning,
+    false,
     true
   );
   const extracted = extractJSON(text);
