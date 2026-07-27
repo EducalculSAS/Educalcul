@@ -25,6 +25,7 @@ export function sanitizeHtml(html: string): string {
         "data-param-max",
         "data-param-default",
         "data-caption",
+        "data-vectors",
         "data-exercise-id",
         "data-ox",
         "data-oy",

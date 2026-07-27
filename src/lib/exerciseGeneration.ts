@@ -21,6 +21,9 @@ import {
   topicAnglesSchema,
 } from "@/lib/ai/schemas";
 import { compileStructuredExerciseDraft } from "@/lib/ai/compiler";
+import {
+  sanitizeStructuredExerciseDraft,
+} from "@/lib/ai/pedagogy";
 
 const BATCH_SIZE = 3;
 
@@ -131,47 +134,46 @@ function keepCompleteExerciseQuestions(
   };
 }
 
-function exerciseTypeRules(blockType: string): string {
-  const questionOnly = `Le champ prompt contient uniquement l'énoncé ou la consigne à montrer à l'élève.
-Il ne contient jamais la réponse, la correction, une conclusion ni un rappel qui résout directement la question.
-Une question directe se termine par « ? ». Une démonstration ou une consigne peut être formulée à l'impératif.`;
+function exerciseTypeRules(blockType: string, count: number): string {
+  const common = `Chaque question possède toujours les clés :
+{
+  "prompt": RICH_TEXT,
+  "content": RICH_TEXT,
+  "answer": RICH_TEXT,
+  "explanation": RICH_TEXT,
+  "points": 2,
+  "options": [],
+  "correct_option_indexes": [],
+  "accepted_answers": [],
+  "pairs": [],
+  "items": []
+}`;
 
   switch (blockType) {
     case "qcm":
-      return `${questionOnly}
-Chaque question contient exactement : prompt, explanation, points, options et correct_option_indexes.
-options contient exactement 4 propositions distinctes, sans préfixe A., B., C. ou D.
-correct_option_indexes contient les index 0-based des bonnes propositions, généralement un seul index.
-Le texte de prompt ne recopie aucune option.`;
+      return `${common}
+Pour chaque question : options contient exactement 4 RICH_TEXT plausibles ; correct_option_indexes contient les index 0-based des bonnes options, généralement un seul index. answer peut reprendre la bonne option.`;
     case "true_false":
-      return `${questionOnly}
-Chaque question contient exactement : prompt, explanation, points et correct_option_indexes.
-Le prompt est une affirmation à juger. correct_option_indexes vaut [0] pour Vrai ou [1] pour Faux.`;
+      return `${common}
+Chaque question est une affirmation à juger. options reste vide. correct_option_indexes vaut [0] pour Vrai ou [1] pour Faux. answer contient le mot Vrai ou Faux.`;
     case "fill_in_the_blank":
-      return `${questionOnly}
-Chaque question contient exactement : prompt, content, explanation, points et accepted_answers.
-content contient 1 à 3 jetons textuels {{1}}, {{2}}, {{3}} dans cet ordre.
-accepted_answers contient un tableau d'alternatives par trou, par exemple [[RICH_TEXT],[RICH_TEXT,RICH_TEXT]].
-Les jetons {{n}} restent dans un élément text.`;
+      return `${common}
+Le champ content contient 1 à 3 jetons textuels {{1}}, {{2}}, {{3}}. accepted_answers est un tableau par trou ; chaque trou contient un tableau de RICH_TEXT acceptés, par exemple [[RICH_TEXT],[RICH_TEXT,RICH_TEXT]]. answer résume toutes les réponses. Les jetons {{n}} restent dans un élément text.`;
     case "matching":
-      return `${questionOnly}
-Chaque question contient exactement : prompt, explanation, points et pairs.
-pairs contient 3 à 5 objets {"left":RICH_TEXT,"right":RICH_TEXT}, sans doublon.`;
+      return `${common}
+Chaque question contient 3 à 5 paires dans pairs : [{"left":RICH_TEXT,"right":RICH_TEXT}]. Les autres tableaux restent vides.`;
     case "ordering":
-      return `${questionOnly}
-Chaque question contient exactement : prompt, explanation, points et items.
-items contient 3 à 5 éléments déjà rangés dans l'ordre correct.`;
+      return `${common}
+Chaque question contient 3 à 5 éléments dans items, déjà dans leur ordre correct. Les autres tableaux restent vides.`;
     case "coding":
-      return `${questionOnly}
-Chaque question contient exactement : prompt, answer, explanation et points.
-answer contient une solution de référence. Aucun HTML ni bloc de code Markdown.`;
-    case "standard":
+      return `${common}
+Le prompt et content décrivent l'algorithme ou le code demandé. answer contient une solution de référence structurée en texte et mathématiques. Aucun HTML ni bloc de code Markdown.`;
     default:
-      return `${questionOnly}
-Chaque question contient exactement : prompt, answer, explanation et points.
-answer contient uniquement la réponse exacte attendue ; explanation contient la méthode et se termine par la même conclusion.`;
+      return `${common}
+Il s'agit d'une réponse libre courte. answer contient la réponse exacte attendue.`;
   }
 }
+
 function buildExerciseSystemPrompt(options: {
   level: string;
   subject: string;
@@ -198,27 +200,39 @@ ${STRUCTURED_MATH_OUTPUT_RULES}
 
 ${RICH_TEXT_SCHEMA_PROMPT}
 
-${exerciseTypeRules(options.blockType)}
+${exerciseTypeRules(options.blockType, options.count)}
 
 Structure JSON exacte :
 {
   "title": "Titre global en texte brut",
   "description": "Description globale en texte brut",
   "introduction": [RICH_TEXT],
-  "questions": [QUESTIONS_STRUCTURÉES]
+  "questions": [QUESTIONS_STRUCTURÉES_AVEC_RESOURCES]
 }
 
 RÈGLES :
-• questions contient exactement ${options.count} question(s).
+• questions contient exactement ${options.count} question(s), distinctes et progressives.
+• prompt contient uniquement l'énoncé ou la consigne à afficher à l'élève. N'y écris jamais la réponse, la correction, un résultat déjà calculé ni une phrase d'explication.
+• ${options.exerciseType === "simple"
+  ? options.blockType === "fill_in_the_blank"
+    ? "Pour un texte à trous, content contient seulement le texte à compléter avec les jetons {{1}}, {{2}}, {{3}} ; prompt contient la consigne courte."
+    : 'Pour un exercice simple, content vaut exactement {"parts":[]} : toutes les données utiles sont dans prompt, sans réponse.' 
+  : "Pour un exercice contextuel, content contient uniquement les données ou le support commun nécessaires à la question, jamais la réponse ni la correction."}
+• Chaque question contient resources, tableau de 0 à 2 ressources structurées. Utilise uniquement table, sign_table, variation_table, graph ou figure.
+• Utilise une ressource seulement lorsqu'elle sert réellement la question : lecture de courbe, tableau à interpréter, schéma, diagramme ou données.
+• Une courbe mathématique utilise exclusivement graph/mathGraph. Une figure SVG sert uniquement aux schémas, camemberts, diagrammes, aires, fractions, frises ou processus ; jamais à tracer une courbe.
+• Les ressources sont autorisées dans tous les types d'exercices.
+• answer contient uniquement la réponse finale attendue, sans recopier l'énoncé.
+• explanation donne une solution propre, cohérente avec answer, sans autocorrection visible.
+• Une question évalue une notion principale et comporte au maximum deux sous-questions, sauf demande explicite de l'enseignant.
 • ${options.firstBatch && options.exerciseType === "contextual"
   ? "introduction contient 1 à 2 paragraphes RICH_TEXT de mise en situation."
   : "introduction est exactement []."}
 • ${options.firstBatch
   ? `title et description décrivent l'exercice complet de ${options.totalQuestions} questions.`
-  : "title et description restent courts et décrivent le même contenu global."}
+  : "title et description peuvent être des chaînes vides."}
 • Aucun id n'est produit : le serveur crée des ids uniques.
 • Recalcule toutes les réponses et explications. Ne conserve jamais de texte d'autocorrection.
-• Ne répète jamais une réponse ou une correction dans prompt.
 • Réponds uniquement avec le JSON demandé.`;
 }
 
@@ -337,24 +351,30 @@ ${courseContext}`;
         let raw = await generate(
           userPrompt,
           systemPrompt,
-          exerciseDraftSchema(count, blockType),
+          exerciseDraftSchema(count),
           0.25,
           9_000,
           false,
         );
-        let draft = normalizeStructuredExerciseDraft(raw, count, blockType);
+        let draft = sanitizeStructuredExerciseDraft(
+          normalizeStructuredExerciseDraft(raw, count),
+          { blockType, exerciseType },
+        );
         const firstScore = exerciseDraftScore(draft, count, blockType);
         const firstComplete = keepCompleteExerciseQuestions(draft, blockType, count);
         if (firstComplete.questions.length < count) {
           raw = await generate(
             `${userPrompt}\n\nLa réponse précédente était incomplète ou contenait des questions structurellement inutilisables. Renvoie exactement ${count} questions complètes du type ${blockType}, sans HTML, sans $, sans ids, avec toutes les options/réponses/paires/éléments requis par le schéma.`,
             systemPrompt,
-            exerciseDraftSchema(count, blockType),
+            exerciseDraftSchema(count),
             0.08,
             9_000,
             false,
           );
-          const retry = normalizeStructuredExerciseDraft(raw, count, blockType);
+          const retry = sanitizeStructuredExerciseDraft(
+            normalizeStructuredExerciseDraft(raw, count),
+            { blockType, exerciseType },
+          );
           if (exerciseDraftScore(retry, count, blockType) >= firstScore) {
             draft = retry;
           }
@@ -371,11 +391,7 @@ ${courseContext}`;
           label: `exercice ${subject}, partie ${batchIndex + 1}`,
           enableModelRepair: true,
         });
-        draft = keepCompleteExerciseQuestions(
-          normalizeStructuredExerciseDraft(repaired.value, count, blockType),
-          blockType,
-          count,
-        );
+        draft = repaired.value;
         if (repaired.report.invalidBefore > 0) {
           console.info(
             `[exercise-ai] Partie ${batchIndex + 1}: ${repaired.report.invalidBefore} formule(s) invalides, ${repaired.report.repairedByModel} corrigée(s), ${repaired.report.fallbackCount} repli(s).`,
@@ -395,12 +411,17 @@ ${courseContext}`;
 
     results.sort((a, b) => a.batchIndex - b.batchIndex);
     const first = results[0]?.draft;
-    const combined: StructuredExerciseDraft = {
-      title: first?.title || `Exercice : ${subject}`,
-      description: first?.description || "",
-      introduction: first?.introduction || [],
-      questions: results.flatMap((result) => result.draft.questions).slice(0, totalQuestions),
-    };
+    const combined = sanitizeStructuredExerciseDraft(
+      {
+        title: first?.title || `Exercice : ${subject}`,
+        description: first?.description || "",
+        introduction: first?.introduction || [],
+        questions: results
+          .flatMap((result) => result.draft.questions)
+          .slice(0, totalQuestions),
+      },
+      { blockType, exerciseType },
+    );
 
     if (combined.questions.length === 0) {
       throw new Error("Aucune question valide n'a été générée.");

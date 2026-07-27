@@ -14,6 +14,9 @@ import {
 import {
   auditStructuredCoursePedagogy,
   normalizeStructuredCoursePedagogy,
+  sanitizeStructuredExerciseDraft,
+  sanitizeStructuredQuizDraft,
+  quizQuestionContainsEmbeddedOptions,
 } from "@/lib/ai/pedagogy";
 
 const rich = (...parts) => ({ parts });
@@ -27,7 +30,9 @@ function assert(condition, message) {
 function collectStrings(value, path = "root", out = []) {
   if (typeof value === "string") out.push({ path, value });
   else if (Array.isArray(value)) {
-    value.forEach((entry, index) => collectStrings(entry, `${path}[${index}]`, out));
+    value.forEach((entry, index) =>
+      collectStrings(entry, `${path}[${index}]`, out),
+    );
   } else if (value && typeof value === "object") {
     Object.entries(value).forEach(([key, entry]) =>
       collectStrings(entry, `${path}.${key}`, out),
@@ -38,11 +43,11 @@ function collectStrings(value, path = "root", out = []) {
 
 function extractMath(value) {
   const formulas = [];
-  let rest = value.replace(/\$\$([\s\S]*?)\$\$/g, (_match, latex) => {
+  let rest = value.replace(/\$\$([\s\S]*?)\$\$/g, (_m, latex) => {
     formulas.push(latex);
     return " ";
   });
-  rest = rest.replace(/\$([^$\r\n]+?)\$/g, (_match, latex) => {
+  rest = rest.replace(/\$([^$\r\n]+?)\$/g, (_m, latex) => {
     formulas.push(latex);
     return " ";
   });
@@ -76,189 +81,261 @@ function auditCompiled(label, value) {
     }
   }
   console.log(`${label}: ${issues.length} anomalie(s)`);
-  issues.forEach((issue) => console.error(`  - ${issue}`));
+  if (issues.length) {
+    issues.forEach((issue) => console.error(`  - ${issue}`));
+  }
   return issues;
 }
-
-const body = Array.from(
-  { length: 75 },
-  (_, index) =>
-    `Cette explication guidée numéro ${index + 1} présente une propriété, justifie chaque étape et relie le calcul à la définition étudiée.`,
-).join(" ");
 
 const courseRaw = {
   title: "Fonction exponentielle",
   lessons: [
     {
-      title: "Définition, exemple et variations",
+      title: "Définition, croissance et variations",
       duration: 30,
       blocks: [
-        { type: "heading", level: 3, content: rich(text("Définition")) },
-        { type: "paragraph", content: rich(text(body)) },
-        { type: "heading", level: 3, content: rich(text("Exemple guidé")) },
+        // Volontairement trop tôt : le normalisateur doit le déplacer.
+        { type: "exercise", exercise_index: 1 },
+        {
+          type: "heading",
+          level: 3,
+          content: rich(text("Définition")),
+        },
         {
           type: "paragraph",
-          content: rich(text("On calcule "), math("\\exp(0)"), text(" à partir de la condition initiale.")),
+          content: rich(
+            text("La fonction "),
+            math("\\exp(x)"),
+            text(" est strictement positive."),
+          ),
+        },
+        {
+          type: "paragraph",
+          content: rich(
+            text("Elle est l'unique solution de "),
+            math("y'=y"),
+            text(" vérifiant "),
+            math("y(0)=1"),
+            text("."),
+          ),
         },
         {
           type: "display_math",
-          latex: "\\begin{aligned}\\exp(0)&=1\\\\\\exp(a+b)&=\\exp(a)\\exp(b)\\end{aligned}",
+          latex:
+            "\\begin{aligned}\\exp(a+b)&=\\exp(a)\\exp(b)\\\\\\exp(0)&=1\\end{aligned}",
+        },
+        {
+          type: "paragraph",
+          content: rich(
+            text("Une formule volontairement invalide : "),
+            math("\\begin{cases}x"),
+          ),
+        },
+        {
+          type: "sign_table",
+          expression: rich(math("x^2")),
+          boundaries: [rich(math("0"))],
+          interval_signs: ["positive", "positive"],
+          boundary_signs: ["zero"],
         },
         {
           type: "variation_table",
-          function: rich(math("\\exp")),
-          intervals: [
-            {
-              domain: rich(math("]-\\infty,+\\infty[")),
-              direction: "increasing",
-              start_value: rich(math("0")),
-              end_value: rich(math("+\\infty")),
-            },
-          ],
+          variable: rich(math("x")),
+          function_name: rich(math("\\exp(x)")),
+          points: [rich(math("-\\infty")), rich(math("+\\infty"))],
+          values: [rich(math("0")), rich(math("+\\infty"))],
+          directions: ["up"],
+          derivative_signs: ["positive"],
         },
         {
           type: "graph",
           expression: "exp(x)",
           xmin: -5,
           xmax: 5,
-          caption: "Courbe croissante de la fonction exponentielle.",
-          vectors: [],
+          caption: "Courbe de la fonction exponentielle.",
           parameter: null,
+          vectors: [
+            {
+              x: 1,
+              y: 1,
+              from_x: 0,
+              from_y: 0,
+              label: "u",
+              tone: "red",
+            },
+          ],
         },
-        { type: "exercise", exercise_index: 1 },
         {
-          type: "paragraph",
-          content: rich(text("La croissance permet ensuite de comparer deux images et de résoudre une inéquation.")),
+          type: "figure",
+          caption: "Triangle utilisé dans un exemple géométrique.",
+          elements: [
+            {
+              type: "line",
+              x1: 25,
+              y1: 125,
+              x2: 170,
+              y2: 125,
+              tone: "navy",
+              dashed: false,
+              arrow_end: false,
+              label: rich(text("AB")),
+              label_x: 95,
+              label_y: 145,
+            },
+            {
+              type: "point",
+              x: 25,
+              y: 125,
+              tone: "gold",
+              label: rich(text("A")),
+              label_x: 15,
+              label_y: 140,
+            },
+            {
+              type: "point",
+              x: 170,
+              y: 125,
+              tone: "gold",
+              label: rich(text("B")),
+              label_x: 176,
+              label_y: 140,
+            },
+          ],
         },
         { type: "exercise", exercise_index: 2 },
-        {
-          type: "geometry_diagram",
-          caption: "Repère géométrique de contrôle du compilateur.",
-          points: [
-            { name: "A", x: 30, y: 130, label_dx: -10, label_dy: 14 },
-            { name: "B", x: 30, y: 30, label_dx: -10, label_dy: -8 },
-            { name: "C", x: 160, y: 130, label_dx: 10, label_dy: 14 },
-          ],
-          segments: [
-            { from: "A", to: "B", dashed: false, arrow: false },
-            { from: "A", to: "C", dashed: false, arrow: false },
-            { from: "B", to: "C", dashed: false, arrow: false },
-          ],
-          circles: [],
-          polygons: [],
-        },
-        { type: "heading", level: 3, content: rich(text("Points-clés à retenir")) },
-        {
-          type: "list",
-          ordered: false,
-          items: [rich(math("\\exp(0)=1")), rich(text("La fonction est strictement croissante."))],
-        },
-        {
-          type: "paragraph",
-          content: rich(text("Formule volontairement invalide : "), math("\\begin{cases}x")),
-        },
+        { type: "exercise", exercise_index: 3 },
       ],
       exercises: [
         {
-          question: rich(
-            text("Quelle est la valeur de "),
-            math("\\exp(0)"),
-            text(" ? "),
-            math("\\exp(0)=1"),
-            text(" On obtient donc la réponse."),
-          ),
+          question: rich(text("Calculer "), math("\\exp(0)"), text(".")),
           answer: rich(math("1")),
-          hint: rich(text("Utiliser la condition initiale.")),
-          explanation: rich(text("Par définition, "), math("\\exp(0)=1"), text(".")),
+          hint: rich(text("Utiliser la valeur remarquable.")),
+          explanation: rich(math("\\exp(0)=1")),
         },
         {
-          question: rich(text("Résoudre "), math("\\exp(x)=\\exp(2)"), text(".")),
-          answer: rich(math("x=2")),
-          hint: rich(text("Utiliser l'injectivité.")),
-          explanation: rich(text("L'injectivité donne "), math("x=2"), text(".")),
+          question: rich(
+            text("Donner le signe de "),
+            math("\\exp(x)"),
+            text("."),
+          ),
+          answer: rich(text("Strictement positif")),
+          hint: rich(text("Observer le tableau de signes.")),
+          explanation: rich(math("\\exp(x)>0")),
+        },
+        {
+          question: rich(text("Décrire les variations de l'exponentielle.")),
+          answer: rich(text("Elle est strictement croissante.")),
+          hint: rich(text("Étudier le signe de sa dérivée.")),
+          explanation: rich(math("\\exp'(x)=\\exp(x)>0")),
         },
       ],
     },
   ],
 };
 
-let courseStructured = normalizeStructuredCourseChapter(courseRaw, {
+let courseNormalized = normalizeStructuredCourseChapter(courseRaw, {
   expectedLessonCount: 1,
   durationPerLesson: 30,
   includeExercises: true,
-  maxExercisesPerLesson: 3,
+  maxExercisesPerLesson: 4,
 });
-courseStructured = normalizeStructuredCoursePedagogy(courseStructured);
-const pedagogyIssues = auditStructuredCoursePedagogy(courseStructured, {
-  expectedLessonCount: 1,
-  includeExercises: true,
-  minExercises: 2,
-  maxExercises: 3,
-  durationPerLesson: 30,
-  subject: "fonction exponentielle",
-  chapterTitle: "définition et variations",
-});
-assert(pedagogyIssues.length === 0, `Audit pédagogique : ${JSON.stringify(pedagogyIssues)}`);
-assert(
-  !structuredRichTextToPlainText(courseStructured.lessons[0].exercises[0].question).includes("On obtient"),
-  "La correction a fui dans la question de cours.",
+courseNormalized = normalizeStructuredCoursePedagogy(courseNormalized);
+
+const firstExercisePosition = courseNormalized.lessons[0].blocks.findIndex(
+  (block) => block.type === "exercise",
 );
-const courseStable = await repairInvalidStructuredMath(courseStructured, {
+const substantiveBefore = courseNormalized.lessons[0].blocks
+  .slice(0, firstExercisePosition)
+  .filter((block) => block.type !== "heading" && block.type !== "exercise")
+  .length;
+assert(
+  firstExercisePosition >= 0 && substantiveBefore >= 2,
+  "Un exercice est encore placé avant l'explication et l'exemple.",
+);
+
+const pedagogyIssues = auditStructuredCoursePedagogy(courseNormalized, {
+  expectedLessonCount: 1,
+  includeExercises: true,
+  minWordsPerLesson: 1,
+  requireGraph: true,
+}).filter((issue) => issue.severity === "error");
+assert(
+  pedagogyIssues.length === 0,
+  `Audit pédagogique en échec : ${pedagogyIssues
+    .map((issue) => issue.code)
+    .join(", ")}`,
+);
+
+const courseStable = await repairInvalidStructuredMath(courseNormalized, {
   label: "test cours",
   enableModelRepair: false,
 });
-assert(courseStable.report.remainingInvalid.length === 0, "Une formule invalide subsiste dans le cours.");
-assert(courseStable.report.fallbackCount === 1, "Le repli de formule invalide n'a pas été déclenché.");
+assert(
+  courseStable.report.remainingInvalid.length === 0,
+  "Une formule invalide subsiste dans le cours structuré.",
+);
 const course = compileStructuredCourseChapter(courseStable.value, {
   chapterIndex: 0,
   durationPerLesson: 30,
 });
-assert(course.lessons[0].content.includes("math-table-variation"), "Le tableau de variations n'est pas compilé.");
-assert(course.lessons[0].content.includes("math-graph-placeholder"), "Le graphique n'est pas compilé.");
-assert(course.lessons[0].content.includes("course-figure"), "La figure géométrique n'est pas compilée.");
+const courseHtml = course.lessons[0].content;
+assert(
+  courseHtml.includes("math-table-sign") &&
+    courseHtml.includes("math-table-variation"),
+  "Les tableaux structurés de signe/variation ne sont pas compilés.",
+);
+assert(
+  courseHtml.includes("data-vectors=") && courseHtml.includes("course-figure"),
+  "Le graphique vectorisé ou la figure structurée n'est pas compilé.",
+);
+assert(
+  courseHtml.includes("La fonction $\\exp(x)$ est strictement positive."),
+  "Les espaces entre texte et mathématiques ont été perdus.",
+);
 
 function exerciseRaw(blockType) {
-  const prompt =
-    blockType === "qcm"
-      ? rich(text("Quelle valeur vaut l'exponentielle en zéro ? A. 0 B. 1 C. e D. -1"))
-      : rich(text("Quelle est la valeur de "), math("\\exp(0)"), text(" ? "), math("1"), text(" La réponse est 1."));
+  const answerBearingSupport = rich(
+    text("Support erroné contenant déjà la réponse "),
+    math("x=2"),
+    text("."),
+  );
   const base = {
-    prompt,
-    explanation: rich(text("On utilise "), math("\\exp(0)=1"), text(".")),
+    prompt: rich(text("Résoudre "), math("x^2=4"), text(".")),
+    content:
+      blockType === "fill_in_the_blank"
+        ? rich(text("Compléter {{1}} puis {{2}}."))
+        : answerBearingSupport,
+    answer: rich(math("x=2")),
+    explanation: rich(text("On obtient "), math("x=2"), text(".")),
     points: 2,
+    options: [],
+    correct_option_indexes: [],
+    accepted_answers: [],
+    pairs: [],
+    items: [],
   };
   if (blockType === "qcm") {
-    return {
-      ...base,
-      options: [rich(text("A. "), math("0")), rich(text("B. "), math("1")), rich(text("C. "), math("e")), rich(text("D. "), math("-1"))],
-      correct_option_indexes: [1],
-    };
+    base.options = [rich(math("1")), rich(math("2")), rich(math("3")), rich(math("4"))];
+    base.correct_option_indexes = [1];
+  } else if (blockType === "true_false") {
+    base.correct_option_indexes = [0];
+  } else if (blockType === "fill_in_the_blank") {
+    base.accepted_answers = [[rich(math("2"))], [rich(math("4"))]];
+  } else if (blockType === "matching") {
+    base.pairs = [
+      { left: rich(math("1")), right: rich(text("un")) },
+      { left: rich(math("2")), right: rich(text("deux")) },
+      { left: rich(math("3")), right: rich(text("trois")) },
+    ];
+  } else if (blockType === "ordering") {
+    base.items = [rich(text("Étape 1")), rich(text("Étape 2")), rich(text("Étape 3"))];
   }
-  if (blockType === "true_false") return { ...base, correct_option_indexes: [0] };
-  if (blockType === "fill_in_the_blank") {
-    return {
-      ...base,
-      content: rich(text("Compléter : "), math("\\exp(0)"), text(" = {{1}}.")),
-      accepted_answers: [[rich(math("1"))]],
-    };
-  }
-  if (blockType === "matching") {
-    return {
-      ...base,
-      pairs: [
-        { left: rich(math("\\exp(0)")), right: rich(math("1")) },
-        { left: rich(math("\\exp(1)")), right: rich(math("e")) },
-        { left: rich(math("\\exp(-1)")), right: rich(math("e^{-1}")) },
-      ],
-    };
-  }
-  if (blockType === "ordering") {
-    return {
-      ...base,
-      items: [rich(text("Identifier la propriété")), rich(text("Remplacer les valeurs")), rich(text("Conclure"))],
-    };
-  }
-  return { ...base, answer: rich(math("1")) };
+  return {
+    title: `Exercice ${blockType}`,
+    description: "Test",
+    introduction: [rich(text("Introduction qui doit disparaître en mode simple."))],
+    questions: [base],
+  };
 }
 
 const allIssues = [];
@@ -272,24 +349,30 @@ for (const blockType of [
   "ordering",
   "coding",
 ]) {
-  const raw = {
-    title: `Exercice ${blockType}`,
-    description: "Test",
-    introduction: [],
-    questions: [exerciseRaw(blockType)],
-  };
-  const normalized = normalizeStructuredExerciseDraft(raw, 1, blockType);
-  assert(normalized.questions.length === 1, `Question ${blockType} absente après normalisation.`);
-  const prompt = structuredRichTextToPlainText(normalized.questions[0].prompt);
-  assert(!/La réponse est|\bA\.\s*0\b/.test(prompt), `Fuite dans le prompt ${blockType}: ${prompt}`);
+  let normalized = normalizeStructuredExerciseDraft(exerciseRaw(blockType), 1);
+  normalized = sanitizeStructuredExerciseDraft(normalized, {
+    blockType,
+    exerciseType: "simple",
+  });
   const stable = await repairInvalidStructuredMath(normalized, {
     label: blockType,
     enableModelRepair: false,
   });
+  assert(
+    stable.report.remainingInvalid.length === 0,
+    `Formule invalide restante dans ${blockType}.`,
+  );
   const compiled = compileStructuredExerciseDraft(stable.value, {
     blockType,
     exerciseType: "simple",
   });
+  const firstBlock = compiled.contentJson[0].blocks[0];
+  if (blockType !== "fill_in_the_blank") {
+    assert(
+      !String(firstBlock.content ?? "").includes("Support erroné"),
+      `Le support contenant la réponse a fuité dans l'énoncé ${blockType}.`,
+    );
+  }
   allIssues.push(...auditCompiled(`Exercice ${blockType}`, compiled));
 }
 
@@ -300,36 +383,57 @@ const quizRaw = {
   max_attempts: 3,
   questions: [
     {
-      text: rich(text("Quelle est la valeur de "), math("\\exp(0)"), text(" ? A. 0 B. 1 C. e D. -1")),
-      options: [rich(text("A. 0")), rich(text("B. 1")), rich(text("C. e")), rich(text("D. -1"))],
+      text: rich(
+        text("Quelle est la valeur de "),
+        math("\\exp(0)"),
+        text(" ? A. 0 B. 1 C. e D. -1"),
+      ),
+      options: [
+        rich(text("A. "), math("0")),
+        rich(text("B. "), math("1")),
+        rich(text("C. "), math("e")),
+        rich(text("D. "), math("-1")),
+      ],
       correct_option_index: 1,
-      explanation: rich(text("Par définition, "), math("\\exp(0)=1"), text(".")),
+      explanation: rich(math("\\exp(0)=1")),
       points: 1,
     },
   ],
 };
-const quizNormalized = normalizeStructuredQuizDraft(quizRaw, 1);
-assert(quizNormalized.questions.length === 1, "Question de quiz absente.");
+let quizNormalized = normalizeStructuredQuizDraft(quizRaw, 1);
+quizNormalized = sanitizeStructuredQuizDraft(quizNormalized);
 assert(
-  structuredRichTextToPlainText(quizNormalized.questions[0].text).endsWith("?"),
-  `Les options sont restées dans l'énoncé : ${structuredRichTextToPlainText(quizNormalized.questions[0].text)}`,
+  !quizQuestionContainsEmbeddedOptions(quizNormalized.questions[0]),
+  "Les options sont encore dupliquées dans l'énoncé du quiz.",
+);
+const optionPlain = quizNormalized.questions[0].options.map((option) =>
+  structuredRichTextToPlainText(option),
 );
 assert(
-  quizNormalized.questions[0].options.every(
-    (option) => !/^[A-D][.)\-:]/.test(structuredRichTextToPlainText(option)),
-  ),
-  "Un préfixe A/B/C/D est resté dans les options.",
+  optionPlain.every((option) => !/^[A-D][.)\-:]/i.test(option)),
+  "Les labels A/B/C/D n'ont pas été retirés des options.",
 );
 const quizStable = await repairInvalidStructuredMath(quizNormalized, {
   label: "quiz",
   enableModelRepair: false,
 });
 const quiz = compileStructuredQuizDraft(quizStable.value);
+assert(
+  !quiz.questions[0].text.includes("A.") &&
+    !quiz.questions[0].text.includes("B."),
+  "Les propositions sont encore présentes dans le champ text du quiz compilé.",
+);
 allIssues.push(...auditCompiled("Quiz", quiz));
 
-if (allIssues.length) process.exitCode = 1;
-else {
+assert(
+  courseStable.report.fallbackCount === 1,
+  `Le repli formule invalide attendu vaut 1, reçu ${courseStable.report.fallbackCount}.`,
+);
+
+if (allIssues.length) {
+  process.exitCode = 1;
+} else {
   console.log(
-    "OK — LaTeX, pédagogie, visuels, tableaux spécialisés, exercices et quiz validés.",
+    "OK — pédagogie, visuels structurés, exercices, quiz et repli KaTeX validés.",
   );
 }

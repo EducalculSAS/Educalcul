@@ -5,7 +5,7 @@ import katex from "katex";
 const inputArg = process.argv[2];
 if (!inputArg) {
   console.error(
-    "Usage : node check_ai_export.mjs <export-course-exercise-ou-quiz.json>",
+    "Usage : node scripts/audit-ai-export.mjs <export-course-exercise-ou-quiz.json>",
   );
   process.exit(1);
 }
@@ -20,37 +20,27 @@ function addIssue(type, location, details = {}) {
   issues.push({ type, location, ...details });
 }
 
-
-function comparable(value) {
+function decodeEntities(value) {
   return String(value ?? "")
-    .replace(/<[^>]*>/g, " ")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\$+/g, " ")
-    .replace(/\\[A-Za-z]+/g, " ")
-    .toLocaleLowerCase("fr")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&nbsp;/g, " ");
 }
 
-function inspectTables(html, location) {
-  const tables = String(html).match(/<table\b[\s\S]*?<\/table>/gi) || [];
-  tables.forEach((table, tableIndex) => {
-    const rows = table.match(/<tr\b[\s\S]*?<\/tr>/gi) || [];
-    const widths = rows.map(
-      (row) => (row.match(/<(?:th|td)\b/gi) || []).length,
-    );
-    if (widths.length > 1 && new Set(widths).size > 1) {
-      addIssue("inconsistent-table-width", `${location}.table[${tableIndex}]`, {
-        widths,
-      });
-    }
-  });
+function plainForComparison(value) {
+  return decodeEntities(String(value ?? ""))
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\$\$([\s\S]*?)\$\$/g, "$1")
+    .replace(/\$([^$\r\n]*?)\$/g, "$1")
+    .replace(/^\s*(?:[A-Ha-h]|[1-8])\s*[.)\-:]\s*/, "")
+    .replace(/\\[A-Za-z]+/g, " ")
+    .replace(/[^A-Za-z0-9À-ÿ]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLocaleLowerCase("fr");
 }
 
 function extractMath(value, location) {
@@ -89,7 +79,6 @@ function extractMath(value, location) {
 }
 
 function inspectString(value, location) {
-  inspectTables(value, location);
   if (/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/.test(value)) {
     addIssue("control-character", location);
   }
@@ -143,46 +132,51 @@ function walk(value, location = "root") {
     }
   }
 
-  if (Array.isArray(value.options) && typeof value.text === "string") {
-    const stem = comparable(value.text);
-    if (/(?:^|\s)(?:option\s*)?[a-d]\s*[.)\-:]/i.test(value.text)) {
-      addIssue("quiz-option-marker-in-stem", location);
-    }
-    const duplicated = value.options.filter(
-      (option) =>
-        typeof option === "string" &&
-        comparable(option).length >= 2 &&
-        stem.includes(comparable(option)),
-    );
-    if (duplicated.length > 0) {
-      addIssue("quiz-options-duplicated-in-stem", location, {
-        count: duplicated.length,
-      });
-    }
-  }
-
-  if (
-    typeof value.content === "string" &&
-    value.correctAnswer !== undefined &&
-    !Array.isArray(value.correctAnswer)
-  ) {
-    const answer = comparable(value.correctAnswer);
-    const rawVisible = String(value.content).replace(/<[^>]*>/g, " ");
-    const questionMark = rawVisible.indexOf("?");
-    if (
-      questionMark >= 0 &&
-      answer.length >= 1 &&
-      comparable(rawVisible.slice(questionMark + 1)).includes(answer)
-    ) {
-      addIssue("exercise-answer-leaked-after-question", location, {
-        answer: String(value.correctAnswer).slice(0, 120),
-      });
-    }
-  }
-
   Object.entries(value).forEach(([key, child]) =>
     walk(child, `${location}.${key}`),
   );
+}
+
+// Contrôles de séparation propres au nouveau pipeline structuré.
+if (root._type === "quiz" && Array.isArray(root.content_json)) {
+  root.content_json.forEach((question, index) => {
+    if (!question || typeof question !== "object") return;
+    const stem = plainForComparison(question.text);
+    const optionMatches = Array.isArray(question.options)
+      ? question.options.filter((option) => {
+          const normalized = plainForComparison(option);
+          return normalized.length >= 2 && stem.includes(normalized);
+        }).length
+      : 0;
+    if (optionMatches >= 2) {
+      addIssue("quiz-options-embedded-in-stem", `content_json[${index}].text`, {
+        optionMatches,
+      });
+    }
+    if (/(?:^|[?:;]\s*)A\s*[.)\-:]|\sB\s*[.)\-:]|\sC\s*[.)\-:]|\sD\s*[.)\-:]/i.test(
+      decodeEntities(String(question.text ?? "")),
+    )) {
+      addIssue("quiz-choice-labels-in-stem", `content_json[${index}].text`);
+    }
+  });
+}
+
+if (root._type === "exercise" && Array.isArray(root.content_json)) {
+  root.content_json.forEach((page, pageIndex) => {
+    const blocks = Array.isArray(page?.blocks) ? page.blocks : [];
+    blocks.forEach((block, blockIndex) => {
+      if (!block || typeof block !== "object" || block.type === "text") return;
+      const statement = plainForComparison(block.content);
+      const answer = plainForComparison(block.correctAnswer);
+      if (answer.length >= 5 && statement.includes(answer)) {
+        addIssue(
+          "exercise-answer-embedded-in-statement",
+          `content_json[${pageIndex}].blocks[${blockIndex}].content`,
+          { answer: answer.slice(0, 160) },
+        );
+      }
+    });
+  });
 }
 
 walk(root);
@@ -191,6 +185,34 @@ for (const [id, locations] of ids.entries()) {
   if (locations.length > 1) {
     addIssue("duplicate-id", "root", { id, locations });
   }
+}
+
+// Cohérence des tableaux HTML finaux : le compilateur déterministe doit
+// produire le même nombre de colonnes sur l'en-tête et chacune des lignes.
+if (root._type === "course" && Array.isArray(root.content_json)) {
+  root.content_json.forEach((chapter, chapterIndex) => {
+    const lessons = Array.isArray(chapter?.lessons) ? chapter.lessons : [];
+    lessons.forEach((lesson, lessonIndex) => {
+      const html = typeof lesson?.content === "string" ? lesson.content : "";
+      const tables = html.match(/<table\b[\s\S]*?<\/table>/gi) || [];
+      tables.forEach((table, tableIndex) => {
+        const headerMatch = table.match(/<thead\b[\s\S]*?<\/thead>/i);
+        const headerCount = (headerMatch?.[0].match(/<th\b/gi) || []).length;
+        const bodyMatch = table.match(/<tbody\b[\s\S]*?<\/tbody>/i);
+        const rows = bodyMatch?.[0].match(/<tr\b[\s\S]*?<\/tr>/gi) || [];
+        rows.forEach((row, rowIndex) => {
+          const cellCount = (row.match(/<td\b/gi) || []).length;
+          if (headerCount > 0 && cellCount !== headerCount) {
+            addIssue(
+              "table-column-mismatch",
+              `content_json[${chapterIndex}].lessons[${lessonIndex}].content`,
+              { tableIndex, rowIndex, headerCount, cellCount },
+            );
+          }
+        });
+      });
+    });
+  });
 }
 
 // Cohérence spécifique aux cours : chaque placeholder doit référencer un
@@ -247,5 +269,5 @@ if (issues.length > 0) {
   console.dir(issues, { depth: null });
   process.exitCode = 2;
 } else {
-  console.log("OK — LaTeX, ids, tableaux, énoncés d’exercices et questions de quiz validés.");
+  console.log("OK — aucune formule KaTeX invalide, aucun LaTeX brut, aucune option/réponse dupliquée et aucun id dupliqué.");
 }

@@ -42,6 +42,20 @@ const richText: JsonSchema = {
   ...noExtra,
 };
 
+const optionalRichText: JsonSchema = {
+  type: "object",
+  properties: {
+    parts: {
+      type: "array",
+      minItems: 0,
+      maxItems: 30,
+      items: { oneOf: [textPart, mathPart] },
+    },
+  },
+  required: ["parts"],
+  ...noExtra,
+};
+
 const paragraphBlock: JsonSchema = {
   type: "object",
   properties: {
@@ -122,30 +136,42 @@ const tableBlock: JsonSchema = {
   ...noExtra,
 };
 
+const signValueSchema: JsonSchema = {
+  type: "string",
+  enum: ["negative", "zero", "positive", "undefined"],
+};
+
 const signTableBlock: JsonSchema = {
   type: "object",
   properties: {
     type: { type: "string", enum: ["sign_table"] },
     expression: richText,
-    entries: {
+    boundaries: {
+      type: "array",
+      minItems: 1,
+      maxItems: 6,
+      items: richText,
+    },
+    interval_signs: {
       type: "array",
       minItems: 2,
-      maxItems: 9,
-      items: {
-        type: "object",
-        properties: {
-          domain: richText,
-          sign: {
-            type: "string",
-            enum: ["negative", "zero", "positive", "undefined"],
-          },
-        },
-        required: ["domain", "sign"],
-        ...noExtra,
-      },
+      maxItems: 7,
+      items: signValueSchema,
+    },
+    boundary_signs: {
+      type: "array",
+      minItems: 1,
+      maxItems: 6,
+      items: signValueSchema,
     },
   },
-  required: ["type", "expression", "entries"],
+  required: [
+    "type",
+    "expression",
+    "boundaries",
+    "interval_signs",
+    "boundary_signs",
+  ],
   ...noExtra,
 };
 
@@ -153,130 +179,59 @@ const variationTableBlock: JsonSchema = {
   type: "object",
   properties: {
     type: { type: "string", enum: ["variation_table"] },
-    function: richText,
-    intervals: {
+    variable: richText,
+    function_name: richText,
+    points: {
+      type: "array",
+      minItems: 2,
+      maxItems: 7,
+      items: richText,
+    },
+    values: {
+      type: "array",
+      minItems: 2,
+      maxItems: 7,
+      items: richText,
+    },
+    directions: {
       type: "array",
       minItems: 1,
       maxItems: 6,
-      items: {
-        type: "object",
-        properties: {
-          domain: richText,
-          direction: {
-            type: "string",
-            enum: ["increasing", "decreasing", "constant"],
-          },
-          start_value: richText,
-          end_value: richText,
-        },
-        required: ["domain", "direction", "start_value", "end_value"],
-        ...noExtra,
-      },
+      items: { type: "string", enum: ["up", "down", "constant"] },
+    },
+    derivative_signs: {
+      type: "array",
+      minItems: 1,
+      maxItems: 6,
+      items: signValueSchema,
     },
   },
-  required: ["type", "function", "intervals"],
+  required: [
+    "type",
+    "variable",
+    "function_name",
+    "points",
+    "values",
+    "directions",
+    "derivative_signs",
+  ],
   ...noExtra,
 };
 
 const graphVector: JsonSchema = {
   type: "object",
   properties: {
-    x: { type: "number" },
-    y: { type: "number" },
-    from_x: { type: "number" },
-    from_y: { type: "number" },
-    label: { type: "string", minLength: 1, maxLength: 12 },
-  },
-  required: ["x", "y", "from_x", "from_y", "label"],
-  ...noExtra,
-};
-
-const geometryDiagramBlock: JsonSchema = {
-  type: "object",
-  properties: {
-    type: { type: "string", enum: ["geometry_diagram"] },
-    caption: { type: "string", minLength: 1, maxLength: 300 },
-    points: {
-      type: "array",
-      minItems: 2,
-      maxItems: 8,
-      items: {
-        type: "object",
-        properties: {
-          name: { type: "string", minLength: 1, maxLength: 8 },
-          x: { type: "number", minimum: 8, maximum: 192 },
-          y: { type: "number", minimum: 8, maximum: 152 },
-          label_dx: { type: "number", minimum: -30, maximum: 30 },
-          label_dy: { type: "number", minimum: -30, maximum: 30 },
-        },
-        required: ["name", "x", "y", "label_dx", "label_dy"],
-        ...noExtra,
-      },
-    },
-    segments: {
-      type: "array",
-      minItems: 1,
-      maxItems: 12,
-      items: {
-        type: "object",
-        properties: {
-          from: { type: "string", minLength: 1, maxLength: 8 },
-          to: { type: "string", minLength: 1, maxLength: 8 },
-          dashed: { type: "boolean" },
-          arrow: { type: "boolean" },
-        },
-        required: ["from", "to", "dashed", "arrow"],
-        ...noExtra,
-      },
-    },
-    circles: {
-      type: "array",
-      minItems: 0,
-      maxItems: 4,
-      items: {
-        type: "object",
-        properties: {
-          center: { type: "string", minLength: 1, maxLength: 8 },
-          radius: { type: "number", minimum: 4, maximum: 75 },
-        },
-        required: ["center", "radius"],
-        ...noExtra,
-      },
-    },
-    polygons: {
-      type: "array",
-      minItems: 0,
-      maxItems: 4,
-      items: {
-        type: "object",
-        properties: {
-          points: {
-            type: "array",
-            minItems: 3,
-            maxItems: 8,
-            items: { type: "string", minLength: 1, maxLength: 8 },
-          },
-          filled: { type: "boolean" },
-        },
-        required: ["points", "filled"],
-        ...noExtra,
-      },
+    x: { type: "number", minimum: -100, maximum: 100 },
+    y: { type: "number", minimum: -100, maximum: 100 },
+    from_x: { type: "number", minimum: -100, maximum: 100 },
+    from_y: { type: "number", minimum: -100, maximum: 100 },
+    label: { type: "string", maxLength: 20 },
+    tone: {
+      type: "string",
+      enum: ["navy", "gold", "blue", "green", "red", "gray"],
     },
   },
-  required: ["type", "caption", "points", "segments", "circles", "polygons"],
-  ...noExtra,
-};
-
-const fractionModelBlock: JsonSchema = {
-  type: "object",
-  properties: {
-    type: { type: "string", enum: ["fraction_model"] },
-    shape: { type: "string", enum: ["bar", "circle"] },
-    numerator: { type: "integer", minimum: 0, maximum: 20 },
-    denominator: { type: "integer", minimum: 1, maximum: 20 },
-    caption: { type: "string", minLength: 1, maxLength: 300 },
-  },
-  required: ["type", "shape", "numerator", "denominator", "caption"],
+  required: ["x", "y", "from_x", "from_y", "label", "tone"],
   ...noExtra,
 };
 
@@ -288,12 +243,6 @@ const graphBlock: JsonSchema = {
     xmin: { type: "number" },
     xmax: { type: "number" },
     caption: { type: "string", minLength: 1, maxLength: 300 },
-    vectors: {
-      type: "array",
-      minItems: 0,
-      maxItems: 4,
-      items: graphVector,
-    },
     parameter: {
       oneOf: [
         { type: "null" },
@@ -310,9 +259,186 @@ const graphBlock: JsonSchema = {
         },
       ],
     },
+    vectors: {
+      type: "array",
+      minItems: 0,
+      maxItems: 5,
+      items: graphVector,
+    },
   },
-  required: ["type", "expression", "xmin", "xmax", "caption", "vectors", "parameter"],
+  required: [
+    "type",
+    "expression",
+    "xmin",
+    "xmax",
+    "caption",
+    "parameter",
+    "vectors",
+  ],
   ...noExtra,
+};
+
+const figureTone: JsonSchema = {
+  type: "string",
+  enum: ["navy", "gold", "blue", "green", "red", "gray"],
+};
+
+const figureLabelProperties = {
+  tone: figureTone,
+  label: optionalRichText,
+  label_x: { type: "number", minimum: 0, maximum: 200 },
+  label_y: { type: "number", minimum: 0, maximum: 160 },
+};
+
+const figureLine: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["line"] },
+    x1: { type: "number", minimum: 0, maximum: 200 },
+    y1: { type: "number", minimum: 0, maximum: 160 },
+    x2: { type: "number", minimum: 0, maximum: 200 },
+    y2: { type: "number", minimum: 0, maximum: 160 },
+    dashed: { type: "boolean" },
+    arrow_end: { type: "boolean" },
+    ...figureLabelProperties,
+  },
+  required: [
+    "type",
+    "x1",
+    "y1",
+    "x2",
+    "y2",
+    "dashed",
+    "arrow_end",
+    "tone",
+    "label",
+    "label_x",
+    "label_y",
+  ],
+  ...noExtra,
+};
+
+const figurePoint: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["point"] },
+    x: { type: "number", minimum: 0, maximum: 200 },
+    y: { type: "number", minimum: 0, maximum: 160 },
+    ...figureLabelProperties,
+  },
+  required: ["type", "x", "y", "tone", "label", "label_x", "label_y"],
+  ...noExtra,
+};
+
+const figureCircle: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["circle"] },
+    cx: { type: "number", minimum: 0, maximum: 200 },
+    cy: { type: "number", minimum: 0, maximum: 160 },
+    r: { type: "number", minimum: 2, maximum: 80 },
+    filled: { type: "boolean" },
+    ...figureLabelProperties,
+  },
+  required: [
+    "type",
+    "cx",
+    "cy",
+    "r",
+    "filled",
+    "tone",
+    "label",
+    "label_x",
+    "label_y",
+  ],
+  ...noExtra,
+};
+
+const figurePolygon: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["polygon"] },
+    points: {
+      type: "array",
+      minItems: 3,
+      maxItems: 8,
+      items: {
+        type: "object",
+        properties: {
+          x: { type: "number", minimum: 0, maximum: 200 },
+          y: { type: "number", minimum: 0, maximum: 160 },
+        },
+        required: ["x", "y"],
+        ...noExtra,
+      },
+    },
+    filled: { type: "boolean" },
+    ...figureLabelProperties,
+  },
+  required: [
+    "type",
+    "points",
+    "filled",
+    "tone",
+    "label",
+    "label_x",
+    "label_y",
+  ],
+  ...noExtra,
+};
+
+const figureArc: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["arc"] },
+    cx: { type: "number", minimum: 0, maximum: 200 },
+    cy: { type: "number", minimum: 0, maximum: 160 },
+    r: { type: "number", minimum: 2, maximum: 80 },
+    start_angle: { type: "number", minimum: -360, maximum: 360 },
+    end_angle: { type: "number", minimum: -360, maximum: 360 },
+    ...figureLabelProperties,
+  },
+  required: [
+    "type",
+    "cx",
+    "cy",
+    "r",
+    "start_angle",
+    "end_angle",
+    "tone",
+    "label",
+    "label_x",
+    "label_y",
+  ],
+  ...noExtra,
+};
+
+const figureBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["figure"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    elements: {
+      type: "array",
+      minItems: 1,
+      maxItems: 12,
+      items: {
+        oneOf: [
+          figureLine,
+          figurePoint,
+          figureCircle,
+          figurePolygon,
+          figureArc,
+        ],
+      },
+    },
+  },
+  required: ["type", "caption", "elements"],
+  ...noExtra,
+};
+
+const learningResourceBlock: JsonSchema = {
+  oneOf: [tableBlock, signTableBlock, variationTableBlock, graphBlock, figureBlock],
 };
 
 const exerciseRefBlock: JsonSchema = {
@@ -322,37 +448,6 @@ const exerciseRefBlock: JsonSchema = {
     exercise_index: { type: "integer", minimum: 1, maximum: 8 },
   },
   required: ["type", "exercise_index"],
-  ...noExtra,
-};
-
-const interactiveVectorsBlock: JsonSchema = {
-  type: "object",
-  properties: {
-    type: { type: "string", enum: ["interactive_vectors"] },
-    u_label: { type: "string", minLength: 1, maxLength: 10 },
-    v_label: { type: "string", minLength: 1, maxLength: 10 },
-    show_projection: { type: "boolean" },
-    caption: { type: "string", minLength: 1, maxLength: 300 },
-    ox: { type: "number", minimum: 0, maximum: 300 },
-    oy: { type: "number", minimum: 0, maximum: 200 },
-    ux: { type: "number", minimum: 0, maximum: 300 },
-    uy: { type: "number", minimum: 0, maximum: 200 },
-    vx: { type: "number", minimum: 0, maximum: 300 },
-    vy: { type: "number", minimum: 0, maximum: 200 },
-  },
-  required: [
-    "type",
-    "u_label",
-    "v_label",
-    "show_projection",
-    "caption",
-    "ox",
-    "oy",
-    "ux",
-    "uy",
-    "vx",
-    "vy",
-  ],
   ...noExtra,
 };
 
@@ -410,11 +505,9 @@ const courseBlock: JsonSchema = {
     signTableBlock,
     variationTableBlock,
     graphBlock,
-    geometryDiagramBlock,
-    fractionModelBlock,
+    figureBlock,
     exerciseRefBlock,
     stepsBlock,
-    interactiveVectorsBlock,
   ],
 };
 
@@ -508,103 +601,81 @@ export function courseChapterSchema(options: {
   };
 }
 
-const baseExerciseProperties: Record<string, JsonSchema> = {
-  prompt: richText,
-  explanation: richText,
-  points: { type: "integer", minimum: 1, maximum: 20 },
+const genericExerciseQuestion: JsonSchema = {
+  type: "object",
+  properties: {
+    prompt: richText,
+    content: optionalRichText,
+    answer: richText,
+    explanation: richText,
+    points: { type: "integer", minimum: 1, maximum: 20 },
+    options: {
+      type: "array",
+      minItems: 0,
+      maxItems: 8,
+      items: richText,
+    },
+    correct_option_indexes: {
+      type: "array",
+      minItems: 0,
+      maxItems: 8,
+      items: { type: "integer", minimum: 0, maximum: 7 },
+    },
+    accepted_answers: {
+      type: "array",
+      minItems: 0,
+      maxItems: 5,
+      items: {
+        type: "array",
+        minItems: 1,
+        maxItems: 5,
+        items: richText,
+      },
+    },
+    pairs: {
+      type: "array",
+      minItems: 0,
+      maxItems: 10,
+      items: {
+        type: "object",
+        properties: { left: richText, right: richText },
+        required: ["left", "right"],
+        ...noExtra,
+      },
+    },
+    items: {
+      type: "array",
+      minItems: 0,
+      maxItems: 12,
+      items: richText,
+    },
+    resources: {
+      type: "array",
+      minItems: 0,
+      maxItems: 2,
+      items: learningResourceBlock,
+    },
+  },
+  required: [
+    "prompt",
+    "content",
+    "answer",
+    "explanation",
+    "points",
+    "options",
+    "correct_option_indexes",
+    "accepted_answers",
+    "pairs",
+    "items",
+    "resources",
+  ],
+  ...noExtra,
 };
 
-function exerciseQuestionSchema(blockType: string): JsonSchema {
-  const base = {
-    type: "object",
-    properties: { ...baseExerciseProperties },
-    required: ["prompt", "explanation", "points"],
-    ...noExtra,
-  } as JsonSchema & {
-    properties: Record<string, JsonSchema>;
-    required: string[];
-  };
-
-  switch (blockType) {
-    case "qcm":
-      base.properties.options = {
-        type: "array",
-        minItems: 4,
-        maxItems: 4,
-        items: richText,
-      };
-      base.properties.correct_option_indexes = {
-        type: "array",
-        minItems: 1,
-        maxItems: 4,
-        items: { type: "integer", minimum: 0, maximum: 3 },
-      };
-      base.required.push("options", "correct_option_indexes");
-      break;
-    case "true_false":
-      base.properties.correct_option_indexes = {
-        type: "array",
-        minItems: 1,
-        maxItems: 1,
-        items: { type: "integer", minimum: 0, maximum: 1 },
-      };
-      base.required.push("correct_option_indexes");
-      break;
-    case "fill_in_the_blank":
-      base.properties.content = richText;
-      base.properties.accepted_answers = {
-        type: "array",
-        minItems: 1,
-        maxItems: 3,
-        items: {
-          type: "array",
-          minItems: 1,
-          maxItems: 5,
-          items: richText,
-        },
-      };
-      base.required.push("content", "accepted_answers");
-      break;
-    case "matching":
-      base.properties.pairs = {
-        type: "array",
-        minItems: 3,
-        maxItems: 5,
-        items: {
-          type: "object",
-          properties: { left: richText, right: richText },
-          required: ["left", "right"],
-          ...noExtra,
-        },
-      };
-      base.required.push("pairs");
-      break;
-    case "ordering":
-      base.properties.items = {
-        type: "array",
-        minItems: 3,
-        maxItems: 5,
-        items: richText,
-      };
-      base.required.push("items");
-      break;
-    case "coding":
-    case "standard":
-    default:
-      base.properties.answer = richText;
-      base.required.push("answer");
-      break;
-  }
-  return base;
-}
-
-export function exerciseDraftSchema(
-  questionCount: number,
-  blockType = "standard",
-): JsonSchemaContract {
+export function exerciseDraftSchema(questionCount: number): JsonSchemaContract {
   return {
-    name: `educalcul_exercise_${blockType}`,
-    description: `Exercice Educalcul structuré de type ${blockType}.`,
+    name: "educalcul_exercise_draft",
+    description: "Exercice Educalcul structuré, commun à tous les types de questions.",
     schema: {
       type: "object",
       properties: {
@@ -620,7 +691,7 @@ export function exerciseDraftSchema(
           type: "array",
           minItems: questionCount,
           maxItems: questionCount,
-          items: exerciseQuestionSchema(blockType),
+          items: genericExerciseQuestion,
         },
       },
       required: ["title", "description", "introduction", "questions"],
@@ -642,8 +713,14 @@ const quizQuestion: JsonSchema = {
     correct_option_index: { type: "integer", minimum: 0, maximum: 3 },
     explanation: richText,
     points: { type: "integer", minimum: 1, maximum: 20 },
+    resources: {
+      type: "array",
+      minItems: 0,
+      maxItems: 1,
+      items: learningResourceBlock,
+    },
   },
-  required: ["text", "options", "correct_option_index", "explanation", "points"],
+  required: ["text", "options", "correct_option_index", "explanation", "points", "resources"],
   ...noExtra,
 };
 

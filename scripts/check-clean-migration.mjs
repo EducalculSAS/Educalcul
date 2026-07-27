@@ -33,6 +33,7 @@ const required = [
   "src/lib/ai/schemas.ts",
   "src/lib/ai/structuredContent.ts",
   "src/lib/ai/compiler.ts",
+  "src/lib/ai/pedagogy.ts",
   "src/lib/ai/runtime.ts",
   "src/app/api/admin/ai-edit/route.ts",
 ];

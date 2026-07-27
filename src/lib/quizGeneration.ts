@@ -21,6 +21,10 @@ import {
   topicAnglesSchema,
 } from "@/lib/ai/schemas";
 import { compileStructuredQuizDraft } from "@/lib/ai/compiler";
+import {
+  quizQuestionContainsEmbeddedOptions,
+  sanitizeStructuredQuizDraft,
+} from "@/lib/ai/pedagogy";
 
 const BATCH_SIZE = 4;
 
@@ -52,41 +56,33 @@ function buildBatches(total: number): number[] {
   return batches;
 }
 
-function comparableText(value: string): string {
-  return value
-    .toLocaleLowerCase("fr")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
-function quizStemLeaksOptions(question: StructuredQuizQuestion): boolean {
-  const stem = comparableText(structuredRichTextToPlainText(question.text));
-  if (!stem) return true;
-  const rawStem = structuredRichTextToPlainText(question.text);
-  if (/(?:^|\s)(?:option\s*)?[A-Da-d]\s*[.)\-:]/.test(rawStem)) return true;
-  return question.options.some((option) => {
-    const candidate = comparableText(structuredRichTextToPlainText(option));
-    return candidate.length >= 2 && stem.includes(candidate);
+function richTextContainsRawMath(value: { parts: Array<{ type: string; value?: string }> }): boolean {
+  return value.parts.some((part) => {
+    if (part.type !== "text") return false;
+    const text = part.value || "";
+    return /(?:[A-Za-z][A-Za-z0-9_]*\s*\([^)]*\)\s*[=<>≤≥]|[A-Za-z]\s*['′]\s*=|\b(?:exp|ln|lim|sqrt|sin|cos|tan)\s*\(|\b[A-Za-z]_[A-Za-z0-9]+\b|\d+\s*[/×*^]\s*[A-Za-z0-9]|[=≤≥<>]\s*[A-Za-z0-9])/i.test(text);
   });
 }
 
 function isCompleteQuizQuestion(question: StructuredQuizQuestion): boolean {
   const options = question.options.map((option) =>
-    comparableText(structuredRichTextToPlainText(option)),
+    structuredRichTextToPlainText(option).trim().toLocaleLowerCase("fr"),
   );
   return (
     question.text.parts.length > 0 &&
-    !quizStemLeaksOptions(question) &&
     question.options.length === 4 &&
     options.every(Boolean) &&
     new Set(options).size === 4 &&
     question.correctOptionIndex >= 0 &&
     question.correctOptionIndex < question.options.length &&
-    question.explanation.parts.length > 0
+    question.explanation.parts.length > 0 &&
+    !quizQuestionContainsEmbeddedOptions(question) &&
+    !richTextContainsRawMath(question.text) &&
+    !question.options.some(richTextContainsRawMath) &&
+    !richTextContainsRawMath(question.explanation)
   );
 }
+
 function quizDraftScore(draft: StructuredQuizDraft, expectedCount: number): number {
   const complete = draft.questions.filter(isCompleteQuizQuestion).length;
   return complete * 100 + Math.min(draft.questions.length, expectedCount);
@@ -134,21 +130,26 @@ Structure JSON exacte :
       "options": [RICH_TEXT, RICH_TEXT, RICH_TEXT, RICH_TEXT],
       "correct_option_index": 0,
       "explanation": RICH_TEXT,
-      "points": 1
+      "points": 1,
+      "resources": []
     }
   ]
 }
 
 RÈGLES :
-• questions contient exactement ${options.count} question(s).
+• questions contient exactement ${options.count} question(s), distinctes et progressives.
+• Le champ text contient uniquement le tronc commun de la question. Il ne contient JAMAIS les quatre propositions, aucune lettre A/B/C/D et aucune copie des options.
+• Chaque élément de options contient uniquement le texte de la proposition, sans préfixe A., B., C., D., 1., 2., etc.
 • Chaque question a exactement 4 options, une seule réponse correcte et correct_option_index est un entier 0, 1, 2 ou 3.
-• Le champ text contient uniquement la question : il ne contient jamais les propositions, jamais A./B./C./D. et ne recopie aucune option.
-• Les options ne commencent jamais par A., B., C. ou D. : le serveur gère leur affichage.
-• Les distracteurs sont plausibles, distincts et issus d'erreurs fréquentes.
-• L'explication recalcule la réponse et explique aussi pourquoi les distracteurs sont faux lorsque c'est utile.
+• Chaque question contient resources, tableau de 0 ou 1 ressource structurée parmi table, sign_table, variation_table, graph ou figure.
+• Les quiz peuvent demander de lire une courbe, un tableau, un camembert, un diagramme ou un schéma. Toute courbe mathématique utilise exclusivement graph/mathGraph ; figure/SVG est réservé aux schémas et diagrammes, jamais aux courbes.
+• Toute écriture mathématique dans text, options et explanation doit être un objet math dans RICH_TEXT. Interdiction d'écrire exp(x), y' = y, N(t), ln(2)/lambda ou une égalité mathématique en texte brut.
+• Les symboles, variables, nombres dans une formule, dérivées, limites, fractions, intervalles et équations sont toujours placés dans un part {"type":"math","latex":"..."}.
+• Les distracteurs sont plausibles, distincts et issus d'erreurs fréquentes, mais ils ne sont jamais des variantes purement typographiques de la bonne réponse.
+• L'explication recalcule la réponse, nomme clairement le raisonnement correct et explique les distracteurs lorsque c'est utile. Elle ne contient aucune autocorrection visible.
 • ${options.firstBatch
   ? `title et description concernent le quiz complet de ${options.totalQuestions} questions.`
-  : "title et description restent courts et décrivent le même contenu global."}
+  : "title et description peuvent être des chaînes vides."}
 • Aucun id n'est produit : le serveur génère q-1, q-2, etc.
 • Aucun HTML, aucun Markdown et aucun délimiteur $.
 • Réponds uniquement avec le JSON demandé.`;
@@ -267,19 +268,23 @@ ${courseContext}`;
           8_000,
           false,
         );
-        let draft = normalizeStructuredQuizDraft(raw, count);
+        let draft = sanitizeStructuredQuizDraft(
+          normalizeStructuredQuizDraft(raw, count),
+        );
         const firstScore = quizDraftScore(draft, count);
         const firstComplete = keepCompleteQuizQuestions(draft, count);
         if (firstComplete.questions.length < count) {
           raw = await generate(
-            `${userPrompt}\n\nLa sortie précédente était incomplète ou contenait une question inutilisable. Renvoie exactement ${count} questions complètes, chacune avec exactement 4 options distinctes, un correct_option_index valide et une explication, sans HTML, sans $ et sans ids.`,
+            `${userPrompt}\n\nLa sortie précédente était incomplète ou contenait une question inutilisable. Renvoie exactement ${count} questions complètes, chacune avec exactement 4 options distinctes, un correct_option_index valide et une explication, sans HTML, sans $ et sans ids. Toute écriture mathématique doit être dans un part math, y compris dans les options et explications.`,
             systemPrompt,
             quizDraftSchema(count),
             0.08,
             8_000,
             false,
           );
-          const retry = normalizeStructuredQuizDraft(raw, count);
+          const retry = sanitizeStructuredQuizDraft(
+            normalizeStructuredQuizDraft(raw, count),
+          );
           if (quizDraftScore(retry, count) >= firstScore) draft = retry;
         }
         draft = keepCompleteQuizQuestions(draft, count);
@@ -294,10 +299,7 @@ ${courseContext}`;
           label: `quiz ${subject}, partie ${batchIndex + 1}`,
           enableModelRepair: true,
         });
-        draft = keepCompleteQuizQuestions(
-          normalizeStructuredQuizDraft(repaired.value, count),
-          count,
-        );
+        draft = repaired.value;
         if (repaired.report.invalidBefore > 0) {
           console.info(
             `[quiz-ai] Partie ${batchIndex + 1}: ${repaired.report.invalidBefore} formule(s) invalides, ${repaired.report.repairedByModel} corrigée(s), ${repaired.report.fallbackCount} repli(s).`,
@@ -317,13 +319,15 @@ ${courseContext}`;
 
     results.sort((a, b) => a.batchIndex - b.batchIndex);
     const first = results[0]?.draft;
-    const combined: StructuredQuizDraft = {
+    const combined = sanitizeStructuredQuizDraft({
       title: first?.title || `Quiz : ${subject}`,
       description: first?.description || "",
       timeLimit: first?.timeLimit || 10,
       maxAttempts: first?.maxAttempts || 3,
-      questions: results.flatMap((result) => result.draft.questions).slice(0, totalQuestions),
-    };
+      questions: results
+        .flatMap((result) => result.draft.questions)
+        .slice(0, totalQuestions),
+    });
 
     if (combined.questions.length === 0) {
       throw new Error("Aucune question valide n'a été générée.");
