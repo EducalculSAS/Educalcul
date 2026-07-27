@@ -3,6 +3,7 @@ import { generateStructuredContent } from "@/lib/llm";
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { auditLog, AuditAction } from "@/lib/auditLog";
+import { createLlmStartGate } from "@/lib/backgroundGeneration";
 import {
   AI_COURSE_FORMAT_RULES,
   AI_COURSE_PEDAGOGY_RULES,
@@ -121,56 +122,6 @@ async function withTimeout<T>(
   }
 }
 
-/**
- * Espace uniquement le DÉMARRAGE des requêtes Mistral. Les requêtes déjà
- * lancées continuent en parallèle, mais on évite un burst de 4 à 8 appels à
- * la même milliseconde, qui déclenche facilement une 429 sur le niveau gratuit.
- * La valeur peut être surchargée avec MISTRAL_MIN_REQUEST_INTERVAL_MS.
- * `checkCancelled` est appelé avant chaque démarrage réel de requête : une
- * génération annulée n'émet plus jamais un nouvel appel IA, même si des
- * tâches parallèles sont encore en file d'attente sur ce gate partagé.
- */
-function createLlmStartGate(
-  minIntervalMs: number,
-  checkCancelled: () => Promise<boolean>,
-): GenerateStructured {
-  let queue: Promise<void> = Promise.resolve();
-  let lastStartAt = 0;
-
-  return async (userPrompt, systemPrompt, temperature, maxTokens, reasoning = false) => {
-    let release!: () => void;
-    const previous = queue;
-    queue = new Promise<void>((resolve) => {
-      release = resolve;
-    });
-
-    await previous;
-    const elapsed = Date.now() - lastStartAt;
-    const waitMs = Math.max(0, minIntervalMs - elapsed);
-    if (waitMs > 0) await sleep(waitMs);
-    lastStartAt = Date.now();
-    release();
-
-    if (await checkCancelled()) {
-      throw new GenerationCancelledError();
-    }
-
-    // Raisonnement réservé à la CORRECTION (voir reviewGeneratedCourseChapter),
-    // jamais à la rédaction initiale : c'est là que le modèle vérifie
-    // vraiment ses calculs/réponses étape par étape avant de répondre, là où
-    // ça compte le plus, sans ralentir le gros du volume de génération.
-    // Confirmé compatible avec le modèle actuellement configuré
-    // (labs-leanstral-1-5-1) et le mode JSON forcé utilisé ici — la trace de
-    // raisonnement elle-même n'est jamais exposée (extractMistralText, llm.ts).
-    return generateStructuredContent(
-      userPrompt,
-      systemPrompt,
-      temperature,
-      maxTokens,
-      reasoning,
-    );
-  };
-}
 
 function isValidGeneratedCourseLesson(
   lesson: unknown,
