@@ -6,22 +6,59 @@ import { supabase } from "@/lib/supabaseClient";
 import PageLoader from "@/components/PageLoader";
 import ThemedSelect from "@/components/admin/ThemedSelect";
 import {
-  BookOpen, Search, Plus, Edit, Trash2, XCircle, X, Loader2,
-  Image as ImageIcon, Sparkles, Eye, Folder as FolderIcon,
-  FolderPlus, ChevronRight, Home, Download, Upload,
-  CheckCircle, AlertTriangle,
-  Calculator, Brain, Trophy, Star, Pencil, Ruler,
-  FlaskConical, Shapes, Pi, Puzzle,
-  LineChart, Hash, Table2, Superscript,
+  BookOpen,
+  Search,
+  Plus,
+  Edit,
+  Trash2,
+  XCircle,
+  X,
+  Loader2,
+  Image as ImageIcon,
+  Sparkles,
+  Eye,
+  Folder as FolderIcon,
+  FolderPlus,
+  ChevronRight,
+  Home,
+  Download,
+  Upload,
+  CheckCircle,
+  AlertTriangle,
+  Calculator,
+  Brain,
+  Trophy,
+  Star,
+  Pencil,
+  Ruler,
+  FlaskConical,
+  Shapes,
+  Pi,
+  Puzzle,
+  LineChart,
+  Hash,
+  Table2,
+  Superscript,
 } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
-import AIGeneratorModal, { AIGenerateParams, AIGenerateProgress } from "@/components/admin/AIGeneratorModal";
+import {
+  getAdminCache,
+  setAdminCache,
+  invalidateAdminCache,
+} from "@/lib/adminCache";
+import AIGeneratorModal, {
+  AIGenerateParams,
+} from "@/components/admin/AIGeneratorModal";
+import { useCourseGenerations } from "@/contexts/CourseGenerationsContext";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
-import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
+import {
+  SCHOOL_LEVELS,
+  getLevelLabel,
+  getEffectiveFolderLevel,
+} from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 
@@ -71,13 +108,17 @@ const FOLDER_COLORS = [
 
 function Num123Icon({ size = 24, ...props }: any) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      {...props}
-    >
-      <text x="12" y="16.5" textAnchor="middle" fontSize="12" fontWeight="bold" fill="currentColor" fillOpacity="1" stroke="none">
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <text
+        x="12"
+        y="16.5"
+        textAnchor="middle"
+        fontSize="12"
+        fontWeight="bold"
+        fill="currentColor"
+        fillOpacity="1"
+        stroke="none"
+      >
         123
       </text>
     </svg>
@@ -112,7 +153,9 @@ const getFolderIcon = (iconName?: string | null) => {
 export default function AdminCoursesPage() {
   const confirm = useConfirm();
   // Navigation State
-  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_courses_folder");
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId(
+    "admin_courses_folder",
+  );
   const [breadcrumbs, setBreadcrumbs] = useState<Folder[]>([]);
   // Niveau imposé par l'espace de publication courant (dossier de niveau parent)
   const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
@@ -120,7 +163,9 @@ export default function AdminCoursesPage() {
   // Data State
   const [courses, setCourses] = useState<Course[]>([]);
   const [folders, setFolders] = useState<Folder[]>([]);
-  const [allFolderCounts, setAllFolderCounts] = useState<{ id: number; parent_id: number | null }[]>([]);
+  const [allFolderCounts, setAllFolderCounts] = useState<
+    { id: number; parent_id: number | null }[]
+  >([]);
   const [allCourses, setAllCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -158,7 +203,10 @@ export default function AdminCoursesPage() {
     if (!file) return;
     try {
       const data = await importFromJSONFile(file);
-      if (data._type && data._type !== "course") { alert("Ce fichier n'est pas un cours."); return; }
+      if (data._type && data._type !== "course") {
+        alert("Ce fichier n'est pas un cours.");
+        return;
+      }
       setFormData({
         title: data.title || "",
         description: data.description || "",
@@ -177,7 +225,9 @@ export default function AdminCoursesPage() {
         setModalMode("create");
       }
       setIsModalOpen(true);
-    } catch (err: any) { alert(err.message); }
+    } catch (err: any) {
+      alert(err.message);
+    }
     e.target.value = "";
   };
 
@@ -194,20 +244,31 @@ export default function AdminCoursesPage() {
 
   // AI States
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [aiProgress, setAiProgress] = useState<AIGenerateProgress | null>(null);
   const [isRendering, setIsRendering] = useState(false);
+  const { startGeneration, onCourseCreated } = useCourseGenerations();
+
+  // Une génération lancée depuis cette page (ou une autre, ou avant un
+  // rechargement) rafraîchit la liste dès qu'elle aboutit à un cours créé.
+  useEffect(() => {
+    return onCourseCreated(() => {
+      invalidateAdminCache("courses:");
+      fetchContents(true);
+      setNotification({
+        variant: "success",
+        title: "Cours généré !",
+        subtitle: "Le cours a été créé et enregistré directement en brouillon.",
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onCourseCreated]);
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Notification Modal State (replaces alert())
-  const [notification, setNotification] = useState<
-    | {
-        variant: "success" | "error";
-        title: string;
-        subtitle: string;
-      }
-    | null
-  >(null);
+  const [notification, setNotification] = useState<{
+    variant: "success" | "error";
+    title: string;
+    subtitle: string;
+  } | null>(null);
 
   useEffect(() => {
     fetchContents();
@@ -217,7 +278,9 @@ export default function AdminCoursesPage() {
   // rafraîchit silencieusement (sans spinner) quand l'onglet redevient actif,
   // et périodiquement en arrière-plan tant qu'il l'est déjà.
   useEffect(() => {
-    const onVisible = () => { if (document.visibilityState === "visible") fetchContents(true); };
+    const onVisible = () => {
+      if (document.visibilityState === "visible") fetchContents(true);
+    };
     document.addEventListener("visibilitychange", onVisible);
     const interval = setInterval(() => {
       if (document.visibilityState === "visible") fetchContents(true);
@@ -237,7 +300,9 @@ export default function AdminCoursesPage() {
       try {
         await ensureKatexAutoRenderLoaded();
         renderMath();
-      } catch (err) { console.error(err); }
+      } catch (err) {
+        console.error(err);
+      }
     };
 
     const renderMath = () => {
@@ -246,10 +311,10 @@ export default function AdminCoursesPage() {
         try {
           (window as any).renderMathInElement(gridRef.current, {
             delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false}
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false },
             ],
-            throwOnError: false
+            throwOnError: false,
           });
         } finally {
           setTimeout(() => setIsRendering(false), 50);
@@ -265,7 +330,10 @@ export default function AdminCoursesPage() {
   const fetchContents = async (silent = false) => {
     const cacheKey = `courses:${currentFolderId}:${statusFilter}`;
     const cached = getAdminCache<{
-      folders: Folder[]; courses: Course[]; allCourses: Course[]; allFolderCounts: { id: number; parent_id: number | null }[];
+      folders: Folder[];
+      courses: Course[];
+      allCourses: Course[];
+      allFolderCounts: { id: number; parent_id: number | null }[];
     }>(cacheKey);
     if (!silent) {
       if (cached) {
@@ -322,7 +390,7 @@ export default function AdminCoursesPage() {
         filteredCourses = filteredCourses.filter((c) => !c.folder_id);
       } else {
         filteredCourses = filteredCourses.filter(
-          (c) => c.folder_id === currentFolderId
+          (c) => c.folder_id === currentFolderId,
         );
       }
 
@@ -413,147 +481,27 @@ export default function AdminCoursesPage() {
     }
   };
 
+  // Génération en arrière-plan : le vrai travail tourne côté serveur (survit
+  // au reload/à la fermeture de la page) via CourseGenerationsContext. Cette
+  // fonction se contente de démarrer la génération et de fermer le
+  // formulaire — plus d'étape de validation manuelle, le cours final
+  // s'enregistre directement en brouillon.
   const handleAiGenerate = async (params: AIGenerateParams) => {
-    setIsGenerating(true);
-    setAiProgress({ current: 0, total: params.count || 1, message: "Initialisation...", chapters: [] });
-
-    const processChapter = (chapter: any) => ({
-      id: crypto.randomUUID(),
-      title: chapter.title,
-      lessons: (chapter.lessons || []).map((lesson: any) => ({
-        id: crypto.randomUUID(),
-        title: lesson.title,
-        type: lesson.type || "text",
-        content: lesson.content || "",
-        duration: lesson.duration || params.durationPerLesson || 30,
-        exercises: Array.isArray(lesson.exercises)
-          ? lesson.exercises.map((ex: any, idx: number) => ({
-              id: ex.id || `ex-${idx + 1}`,
-              question: ex.question || "",
-              type: "short_answer" as const,
-              answer: ex.answer || "",
-              hint: ex.hint || undefined,
-              explanation: ex.explanation || undefined,
-            }))
-          : [],
-      })),
+    await startGeneration({
+      grade_level: currentFolderLevel || params.level || "6eme",
+      subject: params.topic,
+      page_count: params.count?.toString() || "2",
+      difficulty: params.difficulty || "medium",
+      additional_info: params.instructions || "",
+      lessons_per_chapter: params.lessonsPerChapter,
+      content_style: params.contentStyle,
+      include_exercises: params.includeExercises,
+      language_level: params.languageLevel,
+      subject_area: params.subjectArea,
+      duration_per_lesson: params.durationPerLesson,
+      folder_id: currentFolderId,
     });
-
-    try {
-      const response = await fetch("/api/admin/ai/course", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          grade_level: currentFolderLevel || params.level || "6eme",
-          subject: params.topic,
-          type: "cours_complet",
-          page_count: params.count?.toString() || "2",
-          difficulty: params.difficulty || "medium",
-          additional_info: params.instructions || "",
-          lessons_per_chapter: params.lessonsPerChapter,
-          content_style: params.contentStyle,
-          include_exercises: params.includeExercises,
-          language_level: params.languageLevel,
-          subject_area: params.subjectArea,
-          duration_per_lesson: params.durationPerLesson,
-        }),
-      });
-
-      if (!response.ok || !response.body) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.message || data.error || "Generation failed");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-
-      let courseTitle = params.topic;
-      let courseDescription = "";
-      let generationWarning: string | null = null;
-      const chapters: any[] = [];
-      let total = params.count || 1;
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
-
-        for (const line of lines) {
-          if (!line.trim()) continue;
-          const event = JSON.parse(line);
-
-          if (event.type === "progress") {
-            setAiProgress((prev) => ({
-              current: event.current,
-              total: event.total,
-              message: event.message,
-              chapters: prev?.chapters || [],
-            }));
-            total = event.total;
-          } else if (event.type === "outline") {
-            courseTitle = event.title || courseTitle;
-            courseDescription = event.description || "";
-          } else if (event.type === "chapter") {
-            chapters[event.index] = processChapter(event.chapter);
-            setAiProgress((prev) => ({
-              current: event.index + 1,
-              total: prev?.total || total,
-              message: prev?.message || "",
-              chapters: [...(prev?.chapters || []), event.chapter.title],
-            }));
-          } else if (event.type === "error") {
-            throw new Error(event.message);
-          } else if (event.type === "done") {
-            courseTitle = event.course?.title || courseTitle;
-            courseDescription = event.course?.description || courseDescription;
-            generationWarning = event.warning || null;
-          }
-        }
-      }
-
-      setFormData({
-        title: courseTitle,
-        description: courseDescription,
-        subject: params.topic,
-        level: currentFolderLevel || params.level || "6eme",
-        status: "draft",
-        thumbnail_url: "",
-        folder_id: currentFolderId,
-        content_json: chapters.filter(Boolean),
-      });
-
-      setIsAiModalOpen(false);
-      setNotification(
-        generationWarning
-          ? {
-              variant: "error",
-              title: "Cours généré partiellement",
-              subtitle: generationWarning,
-            }
-          : {
-              variant: "success",
-              title: "Cours généré !",
-              subtitle:
-                "Le contenu a été importé dans le formulaire. Complétez les détails et publiez.",
-            },
-      );
-    } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.message : "Erreur IA inconnue";
-      setIsAiModalOpen(false);
-      setNotification({
-        variant: "error",
-        title: "Erreur de génération",
-        subtitle: errorMessage,
-      });
-    } finally {
-      setIsGenerating(false);
-      setAiProgress(null);
-    }
+    setIsAiModalOpen(false);
   };
 
   const handlePreview = (course: Course) => {
@@ -564,10 +512,10 @@ export default function AdminCoursesPage() {
       level: course.level || "6eme",
       content_json: course.content_json || [],
     };
-    
+
     // Save to localStorage so children windows can access it (even if unsaved)
     localStorage.setItem("course_preview_data", JSON.stringify(previewData));
-    
+
     // Open preview in a new window (using the real student route)
     window.open("/child/cours/preview", "_blank");
   };
@@ -608,9 +556,12 @@ export default function AdminCoursesPage() {
     e.preventDefault();
 
     const norm = formData.title.trim().toLowerCase();
-    const folderConflict = folders.some((f) => f.name.trim().toLowerCase() === norm);
+    const folderConflict = folders.some(
+      (f) => f.name.trim().toLowerCase() === norm,
+    );
     const courseConflict = courses.some(
-      (c) => c.id !== currentCourse?.id && c.title.trim().toLowerCase() === norm
+      (c) =>
+        c.id !== currentCourse?.id && c.title.trim().toLowerCase() === norm,
     );
     if (folderConflict || courseConflict) {
       alert("Un dossier ou un cours porte déjà ce nom à cet emplacement.");
@@ -673,7 +624,7 @@ export default function AdminCoursesPage() {
   const handleDelete = async (course: Course) => {
     if (
       !(await confirm(
-        `Êtes-vous sûr de vouloir supprimer le cours "${course.title}" ?`
+        `Êtes-vous sûr de vouloir supprimer le cours "${course.title}" ?`,
       ))
     )
       return;
@@ -699,7 +650,11 @@ export default function AdminCoursesPage() {
   };
 
   const handleDeleteFolder = async (folder: Folder) => {
-    if (!(await confirm(`Supprimer le dossier "${folder.name}" et tout son contenu ?`)))
+    if (
+      !(await confirm(
+        `Supprimer le dossier "${folder.name}" et tout son contenu ?`,
+      ))
+    )
       return;
 
     try {
@@ -723,9 +678,11 @@ export default function AdminCoursesPage() {
 
     const norm = name.toLowerCase();
     const folderConflict = folders.some(
-      (f) => f.id !== editingFolder?.id && f.name.trim().toLowerCase() === norm
+      (f) => f.id !== editingFolder?.id && f.name.trim().toLowerCase() === norm,
     );
-    const courseConflict = courses.some((c) => c.title.trim().toLowerCase() === norm);
+    const courseConflict = courses.some(
+      (c) => c.title.trim().toLowerCase() === norm,
+    );
     if (folderConflict || courseConflict) {
       alert("Un dossier ou un cours porte déjà ce nom à cet emplacement.");
       return;
@@ -773,7 +730,7 @@ export default function AdminCoursesPage() {
       console.error("Error saving folder:", error);
       alert(
         "Erreur lors de l'enregistrement du dossier: " +
-          (error?.message || JSON.stringify(error))
+          (error?.message || JSON.stringify(error)),
       );
     }
   };
@@ -801,7 +758,7 @@ export default function AdminCoursesPage() {
   // by walking up the parent chain of the candidate target.
   const isSelfOrDescendant = async (
     folderId: number,
-    candidateId: number | null
+    candidateId: number | null,
   ): Promise<boolean> => {
     let currentId: number | null = candidateId;
     let guard = 0;
@@ -822,7 +779,7 @@ export default function AdminCoursesPage() {
   // into the target folder (null = root).
   const moveDroppedItem = async (
     e: React.DragEvent,
-    targetFolderId: number | null
+    targetFolderId: number | null,
   ) => {
     const courseId = e.dataTransfer.getData("courseId");
     const folderId = e.dataTransfer.getData("folderId");
@@ -846,7 +803,9 @@ export default function AdminCoursesPage() {
           return;
         // Prevent cycles: target must not be the folder itself or a descendant
         if (await isSelfOrDescendant(Number(folderId), targetFolderId)) {
-          alert("Impossible de déplacer un dossier dans lui-même ou un de ses sous-dossiers");
+          alert(
+            "Impossible de déplacer un dossier dans lui-même ou un de ses sous-dossiers",
+          );
           return;
         }
         const { error } = await supabase
@@ -875,7 +834,7 @@ export default function AdminCoursesPage() {
 
   const handleBreadcrumbDrop = async (
     e: React.DragEvent,
-    targetFolderId: number | null
+    targetFolderId: number | null,
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -913,7 +872,7 @@ export default function AdminCoursesPage() {
   };
 
   const filteredFolders = folders.filter((folder) =>
-    folder.name.toLowerCase().includes(searchTerm.toLowerCase())
+    folder.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const filteredCourses = courses.filter((course) => {
@@ -977,7 +936,10 @@ export default function AdminCoursesPage() {
       {/* Navigation & Breadcrumbs */}
       <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
         <button
-          onClick={() => { setCurrentFolderId(null); setSearchTerm(""); }}
+          onClick={() => {
+            setCurrentFolderId(null);
+            setSearchTerm("");
+          }}
           onDragOver={(e) => {
             e.preventDefault();
             setDragOverBreadcrumb("root");
@@ -1002,7 +964,10 @@ export default function AdminCoursesPage() {
           >
             <ChevronRight size={14} className="text-gray-400" />
             <button
-              onClick={() => { setCurrentFolderId(folder.id); setSearchTerm(""); }}
+              onClick={() => {
+                setCurrentFolderId(folder.id);
+                setSearchTerm("");
+              }}
               onDragOver={(e) => {
                 e.preventDefault();
                 setDragOverBreadcrumb(folder.id);
@@ -1055,9 +1020,9 @@ export default function AdminCoursesPage() {
       </div>
 
       {/* Content Grid */}
-      <div 
+      <div
         ref={gridRef}
-        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 transition-opacity duration-300 ${isRendering ? "opacity-0" : "opacity-100"}`}
       >
         {/* Loading State */}
         {loading && (
@@ -1067,107 +1032,125 @@ export default function AdminCoursesPage() {
         )}
 
         {/* Empty State */}
-        {!loading && filteredFolders.length === 0 && filteredCourses.length === 0 && (
-          <div className="col-span-full py-12 text-center text-gray-500 bg-white rounded-xl border border-[rgba(197,161,72,0.25)] border-dashed">
-            <div className="flex flex-col items-center justify-center">
-              <FolderIcon size={48} className="text-gray-200 mb-2" />
-              <p>Ce dossier est vide</p>
-              <button
-                onClick={() => setIsFolderModalOpen(true)}
-                className="mt-4 text-[var(--greek-blue)] font-medium hover:underline"
-              >
-                Créer un dossier
-              </button>
+        {!loading &&
+          filteredFolders.length === 0 &&
+          filteredCourses.length === 0 && (
+            <div className="col-span-full py-12 text-center text-gray-500 bg-white rounded-xl border border-[rgba(197,161,72,0.25)] border-dashed">
+              <div className="flex flex-col items-center justify-center">
+                <FolderIcon size={48} className="text-gray-200 mb-2" />
+                <p>Ce dossier est vide</p>
+                <button
+                  onClick={() => setIsFolderModalOpen(true)}
+                  className="mt-4 text-[var(--greek-blue)] font-medium hover:underline"
+                >
+                  Créer un dossier
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {/* Folders List */}
         {!loading &&
           filteredFolders.map((folder) => {
             const FolderCardIcon = getFolderIcon(folder.icon);
             return (
-            <div
-              key={`folder-${folder.id}`}
-              draggable
-              onDragStart={(e) => handleFolderDragStart(e, folder.id)}
-              onDragOver={(e) => handleDragOver(e, folder.id)}
-              onDragLeave={handleDragLeave}
-              onDrop={(e) => handleDrop(e, folder.id)}
-              onClick={() => { setCurrentFolderId(folder.id); setSearchTerm(""); }}
-              className={`bg-white rounded-2xl p-6 shadow-sm border transition-all group cursor-pointer relative overflow-hidden flex flex-col items-center justify-center text-center aspect-[4/3]
+              <div
+                key={`folder-${folder.id}`}
+                draggable
+                onDragStart={(e) => handleFolderDragStart(e, folder.id)}
+                onDragOver={(e) => handleDragOver(e, folder.id)}
+                onDragLeave={handleDragLeave}
+                onDrop={(e) => handleDrop(e, folder.id)}
+                onClick={() => {
+                  setCurrentFolderId(folder.id);
+                  setSearchTerm("");
+                }}
+                className={`bg-white rounded-2xl p-6 shadow-sm border transition-all group cursor-pointer relative overflow-hidden flex flex-col items-center justify-center text-center aspect-[4/3]
               ${
                 dragOverFolderId === folder.id
                   ? "border-[var(--greek-blue)] ring-2 ring-[var(--greek-blue)]/20 bg-blue-50"
                   : "border-[rgba(197,161,72,0.25)] hover:shadow-lg hover:-translate-y-1"
               }`}
-            >
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setEditingFolder(folder);
-                    setFolderFormData({
-                      name: folder.name,
-                      status: folder.status,
-                      color: folder.color || FOLDER_COLORS[0],
-                      grade_level: folder.grade_level || "6eme",
-                      icon: folder.icon || "",
-                    });
-                    setIsFolderModalOpen(true);
-                  }}
-                  className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
-                  title="Modifier"
-                >
-                  <Edit size={14} />
-                </button>
-                {!folder.is_system && (
+              >
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleDeleteFolder(folder);
+                      setEditingFolder(folder);
+                      setFolderFormData({
+                        name: folder.name,
+                        status: folder.status,
+                        color: folder.color || FOLDER_COLORS[0],
+                        grade_level: folder.grade_level || "6eme",
+                        icon: folder.icon || "",
+                      });
+                      setIsFolderModalOpen(true);
                     }}
-                    className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                    title="Supprimer"
+                    className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
+                    title="Modifier"
                   >
-                    <Trash2 size={14} />
+                    <Edit size={14} />
                   </button>
-                )}
-              </div>
+                  {!folder.is_system && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteFolder(folder);
+                      }}
+                      className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                      title="Supprimer"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  )}
+                </div>
 
-              <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
-                style={{
-                  backgroundColor: `${folder.color || "#3b82f6"}15`,
-                  color: folder.color || "#3b82f6",
-                }}
-              >
-                <FolderCardIcon size={32} fill="currentColor" fillOpacity={0.2} />
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+                  style={{
+                    backgroundColor: `${folder.color || "#3b82f6"}15`,
+                    color: folder.color || "#3b82f6",
+                  }}
+                >
+                  <FolderCardIcon
+                    size={32}
+                    fill="currentColor"
+                    fillOpacity={0.2}
+                  />
+                </div>
+                <h3 className="font-bold text-gray-800 text-lg mb-1 truncate w-full px-2">
+                  {folder.name}
+                </h3>
+                {!folder.is_system && (
+                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
+                    {folder.status === "published"
+                      ? "Publié"
+                      : folder.status === "archived"
+                        ? "Archivé"
+                        : "Brouillon"}
+                  </p>
+                )}
+                {(() => {
+                  const subCount =
+                    currentFolderId === null
+                      ? 0
+                      : allFolderCounts.filter((f) => f.parent_id === folder.id)
+                          .length;
+                  const itemCount = allCourses.filter(
+                    (c) => c.folder_id === folder.id,
+                  ).length;
+                  if (subCount === 0 && itemCount === 0) return null;
+                  const parts = [];
+                  if (subCount > 0)
+                    parts.push(`${subCount} dossier${subCount > 1 ? "s" : ""}`);
+                  if (itemCount > 0) parts.push(`${itemCount} cours`);
+                  return (
+                    <p className="text-xs text-gray-400 mt-1">
+                      {parts.join(" · ")}
+                    </p>
+                  );
+                })()}
               </div>
-              <h3 className="font-bold text-gray-800 text-lg mb-1 truncate w-full px-2">
-                {folder.name}
-              </h3>
-              {!folder.is_system && (
-                <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
-                  {folder.status === "published"
-                    ? "Publié"
-                    : folder.status === "archived"
-                    ? "Archivé"
-                    : "Brouillon"}
-                </p>
-              )}
-              {(() => {
-                const subCount = currentFolderId === null ? 0 : allFolderCounts.filter((f) => f.parent_id === folder.id).length;
-                const itemCount = allCourses.filter((c) => c.folder_id === folder.id).length;
-                if (subCount === 0 && itemCount === 0) return null;
-                const parts = [];
-                if (subCount > 0) parts.push(`${subCount} dossier${subCount > 1 ? "s" : ""}`);
-                if (itemCount > 0) parts.push(`${itemCount} cours`);
-                return (
-                  <p className="text-xs text-gray-400 mt-1">{parts.join(" · ")}</p>
-                );
-              })()}
-            </div>
             );
           })}
 
@@ -1194,7 +1177,11 @@ export default function AdminCoursesPage() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/5">
-                    <img src="/logo.png" alt="Educalcul" className="w-12 h-12 object-contain opacity-20" />
+                    <img
+                      src="/logo.png"
+                      alt="Educalcul"
+                      className="w-12 h-12 object-contain opacity-20"
+                    />
                   </div>
                 )}
                 <div className="absolute top-2 right-2">
@@ -1238,7 +1225,9 @@ export default function AdminCoursesPage() {
                       <Edit size={18} />
                     </button>
                     <button
-                      onClick={() => exportAsJSON(course, "course", course.title)}
+                      onClick={() =>
+                        exportAsJSON(course, "course", course.title)
+                      }
                       className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
                       title="Exporter JSON"
                     >
@@ -1267,39 +1256,65 @@ export default function AdminCoursesPage() {
               <div className="flex items-center gap-3">
                 <BookOpen size={22} className="text-[var(--greek-gold)]" />
                 <h3 className="text-lg font-bold font-[family-name:var(--font-display)]">
-                  {modalMode === "create" ? "Ajouter un cours" : "Modifier le cours"}
+                  {modalMode === "create"
+                    ? "Ajouter un cours"
+                    : "Modifier le cours"}
                 </h3>
               </div>
-              <button onClick={() => setIsModalOpen(false)} className="group p-2 text-white/70 hover:text-white transition-colors relative z-10" aria-label="Fermer">
-                <X size={22} className="transition-transform group-hover:scale-125" />
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="group p-2 text-white/70 hover:text-white transition-colors relative z-10"
+                aria-label="Fermer"
+              >
+                <X
+                  size={22}
+                  className="transition-transform group-hover:scale-125"
+                />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
+            <form
+              onSubmit={handleSubmit}
+              className="flex-1 flex flex-col overflow-hidden"
+            >
               <div className="flex-1 overflow-y-auto">
                 {/* Section 1: Informations */}
                 <div className="p-6 border-b border-[rgba(197,161,72,0.25)]">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">1</span>
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">
+                      1
+                    </span>
                     Informations générales
                   </h4>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Titre du cours</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Titre du cours
+                      </label>
                       <input
-                        type="text" required
+                        type="text"
+                        required
                         value={formData.title}
-                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, title: e.target.value })
+                        }
                         className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
                         placeholder="Ex: Les fractions (CM1)"
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Domaine</label>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                          Domaine
+                        </label>
                         <select
                           value={formData.subject}
-                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              subject: e.target.value,
+                            })
+                          }
                           className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
                         >
                           <option value="Algèbre">Algèbre</option>
@@ -1313,7 +1328,9 @@ export default function AdminCoursesPage() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Niveau scolaire</label>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                          Niveau scolaire
+                        </label>
                         {modalMode === "create" && currentFolderLevel ? (
                           <div className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl bg-blue-50 font-semibold text-[var(--greek-blue)]">
                             {getLevelLabel(currentFolderLevel)}
@@ -1321,29 +1338,53 @@ export default function AdminCoursesPage() {
                         ) : (
                           <select
                             value={formData.level}
-                            onChange={(e) => setFormData({ ...formData, level: e.target.value })}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                level: e.target.value,
+                              })
+                            }
                             className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
                           >
-                            {SCHOOL_LEVELS.map((level) => (<option key={level.value} value={level.value}>{level.label}</option>))}
+                            {SCHOOL_LEVELS.map((level) => (
+                              <option key={level.value} value={level.value}>
+                                {level.label}
+                              </option>
+                            ))}
                           </select>
                         )}
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Durée estimée</label>
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                          Durée estimée
+                        </label>
                         <select
                           value={estimatedTime}
-                          onChange={(e) => setEstimatedTime(parseInt(e.target.value))}
+                          onChange={(e) =>
+                            setEstimatedTime(parseInt(e.target.value))
+                          }
                           className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
                         >
-                          {[5, 10, 15, 20, 30, 45, 60, 90].map((m) => (<option key={m} value={m}>{m} min</option>))}
+                          {[5, 10, 15, 20, 30, 45, 60, 90].map((m) => (
+                            <option key={m} value={m}>
+                              {m} min
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Description
+                      </label>
                       <textarea
                         value={formData.description}
-                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            description: e.target.value,
+                          })
+                        }
                         rows={2}
                         className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50 resize-none"
                         placeholder="Description courte du cours..."
@@ -1355,30 +1396,61 @@ export default function AdminCoursesPage() {
                 {/* Section 2: Paramètres */}
                 <div className="p-6 border-b border-[rgba(197,161,72,0.25)] bg-gray-50/50">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">2</span>
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">
+                      2
+                    </span>
                     Paramètres de publication
                   </h4>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Statut</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Statut
+                      </label>
                       <div className="flex gap-1.5">
-                        {[{ v: "draft", l: "Brouillon" }, { v: "published", l: "Publié" }, { v: "archived", l: "Archivé" }].map((s) => (
-                          <button key={s.v} type="button" onClick={() => setFormData({ ...formData, status: s.v as "draft" | "published" | "archived" })}
-                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-[rgba(197,161,72,0.25)] bg-white"}`}>
+                        {[
+                          { v: "draft", l: "Brouillon" },
+                          { v: "published", l: "Publié" },
+                          { v: "archived", l: "Archivé" },
+                        ].map((s) => (
+                          <button
+                            key={s.v}
+                            type="button"
+                            onClick={() =>
+                              setFormData({
+                                ...formData,
+                                status: s.v as
+                                  | "draft"
+                                  | "published"
+                                  | "archived",
+                              })
+                            }
+                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-[rgba(197,161,72,0.25)] bg-white"}`}
+                          >
                             {s.l}
                           </button>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Image de couverture</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Image de couverture
+                      </label>
                       <div className="flex items-center gap-3">
                         {formData.thumbnail_url && (
                           <div className="relative w-12 h-12 bg-gray-100 rounded-lg overflow-hidden border border-[rgba(197,161,72,0.25)] flex-shrink-0">
-                            <img src={formData.thumbnail_url} alt="Preview" className="w-full h-full object-cover" />
+                            <img
+                              src={formData.thumbnail_url}
+                              alt="Preview"
+                              className="w-full h-full object-cover"
+                            />
                             <button
                               type="button"
-                              onClick={() => setFormData((prev) => ({ ...prev, thumbnail_url: "" }))}
+                              onClick={() =>
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  thumbnail_url: "",
+                                }))
+                              }
                               className="absolute top-0.5 right-0.5 p-0.5 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
                             >
                               <XCircle size={13} />
@@ -1388,7 +1460,12 @@ export default function AdminCoursesPage() {
                         <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium flex-1 justify-center border border-dashed border-[rgba(197,161,72,0.25)]">
                           <ImageIcon size={16} />
                           {uploading ? "Upload..." : "Choisir"}
-                          <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileUpload}
+                            className="hidden"
+                          />
                         </label>
                       </div>
                     </div>
@@ -1398,12 +1475,16 @@ export default function AdminCoursesPage() {
                 {/* Section 3: Contenu */}
                 <div className="p-6">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">3</span>
+                    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">
+                      3
+                    </span>
                     Contenu du cours
                   </h4>
                   <CourseBuilder
                     initialContent={formData.content_json}
-                    onChange={(chapters) => setFormData({ ...formData, content_json: chapters })}
+                    onChange={(chapters) =>
+                      setFormData({ ...formData, content_json: chapters })
+                    }
                     level={formData.level}
                   />
                 </div>
@@ -1411,13 +1492,21 @@ export default function AdminCoursesPage() {
 
               {/* Footer */}
               <div className="flex justify-end gap-3 p-6 border-t border-[rgba(197,161,72,0.25)] bg-white flex-shrink-0">
-                <button type="button" onClick={() => setIsModalOpen(false)}
-                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-[rgba(197,161,72,0.25)]">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-[rgba(197,161,72,0.25)]"
+                >
                   Annuler
                 </button>
-                <button type="submit" disabled={isSubmitting}
-                  className="px-8 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)]/90 transition-colors disabled:opacity-50 flex items-center gap-2 shadow-md shadow-blue-900/20">
-                  {isSubmitting && <Loader2 className="animate-spin" size={16} />}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-8 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)]/90 transition-colors disabled:opacity-50 flex items-center gap-2 shadow-md shadow-blue-900/20"
+                >
+                  {isSubmitting && (
+                    <Loader2 className="animate-spin" size={16} />
+                  )}
                   {modalMode === "create" ? "Créer le cours" : "Sauvegarder"}
                 </button>
               </div>
@@ -1425,9 +1514,6 @@ export default function AdminCoursesPage() {
           </div>
         </div>
       )}
-
-
-
 
       {/* Create Folder Modal */}
       {isFolderModalOpen && (
@@ -1452,7 +1538,10 @@ export default function AdminCoursesPage() {
                 className="group p-2 text-gray-400 hover:text-gray-600 transition-colors relative z-10"
                 aria-label="Fermer"
               >
-                <X size={22} className="transition-transform group-hover:scale-125" />
+                <X
+                  size={22}
+                  className="transition-transform group-hover:scale-125"
+                />
               </button>
             </div>
             <form onSubmit={handleSaveFolder} className="p-6 space-y-4">
@@ -1575,7 +1664,6 @@ export default function AdminCoursesPage() {
           type="course"
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
-          progress={aiProgress}
           defaultLevel={currentFolderLevel || undefined}
         />
       )}
@@ -1584,7 +1672,9 @@ export default function AdminCoursesPage() {
         <ImportJsonModal
           onClose={() => setShowImportModal(false)}
           onFileLoaded={(file) => {
-            const fakeEvent = { target: { files: [file] } } as unknown as React.ChangeEvent<HTMLInputElement>;
+            const fakeEvent = {
+              target: { files: [file] },
+            } as unknown as React.ChangeEvent<HTMLInputElement>;
             handleImportCourse(fakeEvent);
             setShowImportModal(false);
           }}
@@ -1681,4 +1771,3 @@ function NotificationModal({
     </div>
   );
 }
-

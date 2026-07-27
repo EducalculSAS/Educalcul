@@ -6,6 +6,8 @@ import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import AdminSidebar from "@/components/AdminSidebar";
 import AdminTotpSetupModal from "@/components/admin/AdminTotpSetupModal";
+import { CourseGenerationsProvider } from "@/contexts/CourseGenerationsContext";
+import CourseGenerationsWidget from "@/components/admin/CourseGenerationsWidget";
 
 export default function AdminLayout({
   children,
@@ -74,13 +76,16 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[var(--greek-cream)] flex">
-      <AdminTotpSetupModal />
-      <AdminSidebar />
-      <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
-        {children}
+    <CourseGenerationsProvider>
+      <div className="min-h-screen bg-[var(--greek-cream)] flex">
+        <AdminTotpSetupModal />
+        <AdminSidebar />
+        <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
+          {children}
+        </div>
+        <CourseGenerationsWidget />
       </div>
-    </div>
+    </CourseGenerationsProvider>
   );
 }
 

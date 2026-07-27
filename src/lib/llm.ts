@@ -50,12 +50,9 @@ async function callMistralModel(
     model,
     messages: msgs,
     temperature: temp,
+    reasoning_effort: reasoning ? "high" : "none",
   };
   if (maxTokens) body.max_tokens = maxTokens;
-  // Certains modèles (ex: mistral-small-2506) rejettent l'appel dès que ce
-  // paramètre est présent, même avec la valeur "none" — on ne l'envoie donc
-  // que lorsqu'il est effectivement demandé, jamais par défaut.
-  if (reasoning) body.reasoning_effort = "high";
   // JSON garanti syntaxiquement valide côté serveur Mistral — élimine les
   // erreurs de parsing (guillemets non échappés, etc.) à la source plutôt
   // que d'essayer de réparer un texte mal formé après coup.
@@ -447,13 +444,13 @@ IMPORTANT : renvoie uniquement le JSON valide attendu. Ne mets aucun texte d'acc
 }
 
 export async function generateStructuredContent(
-  prompt: string, systemPrompt: string, temperature = 0.7, maxTokens = 8000, reasoning = false
+  prompt: string, systemPrompt: string, temperature = 0.7, maxTokens = 8000
 ): Promise<unknown> {
   const text = await dispatch(
     [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
     temperature,
     maxTokens,
-    reasoning,
+    false,
     true
   );
   const extracted = extractJSON(text);
@@ -483,13 +480,10 @@ export async function chatWithAI(
   temperature = 0.65,
   maxTokens = 700
 ): Promise<string> {
-  // reasoning_effort désactivé : mistral-small-2506 ne supporte pas ce
-  // paramètre du tout (contrairement à Small 4 / "-latest"), l'appel
-  // échouerait en 400 sinon. Voir MISTRAL_MODEL dans .env.local.
   return (await dispatch(
     [{ role: "system", content: systemPrompt }, ...messages.map(m => ({ role: m.role as "user"|"assistant", content: m.content }))],
     temperature, maxTokens,
-    false
+    true
   )).trim();
 }
 
