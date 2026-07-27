@@ -7,6 +7,7 @@ export type GenerateStructured = (
   temperature?: number,
   maxTokens?: number,
   reasoning?: boolean,
+  abortSignal?: AbortSignal,
 ) => Promise<unknown>;
 
 export class GenerationCancelledError extends Error {
@@ -62,7 +63,7 @@ export function createLlmStartGate(
 
     await previous;
     const elapsed = Date.now() - lastStartAt;
-    const waitMs = Math.max(0, minIntervalMs - elapsed);
+    const waitMs = minIntervalMs > 0 ? Math.max(0, minIntervalMs - elapsed) : 0;
     if (waitMs > 0) await sleep(waitMs);
     lastStartAt = Date.now();
     release();
@@ -71,7 +72,36 @@ export function createLlmStartGate(
       throw new GenerationCancelledError();
     }
 
-    return generateStructuredContent(userPrompt, systemPrompt, temperature, maxTokens, reasoning);
+    // Create a per-call AbortController so the generation can be aborted
+    // immediately when checkCancelled() becomes true.
+    const callController = new AbortController();
+
+    // Start a monitor that polls cancellation status and aborts the controller
+    // as soon as cancellation is requested. Poll interval is short for
+    // responsiveness.
+    let monitorActive = true;
+    (async () => {
+      try {
+        while (monitorActive && !callController.signal.aborted) {
+          if (await checkCancelled()) {
+            callController.abort();
+            break;
+          }
+          await sleep(200);
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+
+    try {
+      return await generateStructuredContent(userPrompt, systemPrompt, temperature, maxTokens, reasoning, callController.signal);
+    } finally {
+      monitorActive = false;
+      if (!callController.signal.aborted) {
+        try { callController.abort(); } catch {}
+      }
+    }
   };
 }
 

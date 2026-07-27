@@ -44,7 +44,7 @@ function extractMistralText(content: unknown): string {
 }
 
 async function callMistralModel(
-  model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false, jsonMode = false
+  model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false, jsonMode = false, abortSignal?: AbortSignal
 ): Promise<{ ok: boolean; text: string; status: number }> {
   const body: Record<string, unknown> = {
     model,
@@ -61,6 +61,18 @@ async function callMistralModel(
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 240_000); // 4 min max
 
+  // If an external abort signal is provided, link it to the local controller
+  let externalListener: (() => void) | undefined;
+  if (abortSignal) {
+    if (abortSignal.aborted) {
+      clearTimeout(timeout);
+      controller.abort();
+    } else {
+      externalListener = () => controller.abort();
+      abortSignal.addEventListener("abort", externalListener);
+    }
+  }
+
   let resp: Response;
   try {
     resp = await fetch(MISTRAL_URL, {
@@ -74,6 +86,7 @@ async function callMistralModel(
     });
   } finally {
     clearTimeout(timeout);
+    if (abortSignal && externalListener) abortSignal.removeEventListener("abort", externalListener);
   }
 
   const text = await resp.text();
@@ -81,9 +94,9 @@ async function callMistralModel(
 }
 
 async function callMistral(
-  msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false
+  msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false, abortSignal?: AbortSignal
 ): Promise<string> {
-  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning, jsonMode);
+  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning, jsonMode, abortSignal);
 
   if (ok) {
     try {
@@ -126,8 +139,8 @@ async function callMistral(
   throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
 }
 
-function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false) {
-  return callMistral(msgs, temp, maxTokens, reasoning, jsonMode);
+function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false, abortSignal?: AbortSignal) {
+  return callMistral(msgs, temp, maxTokens, reasoning, jsonMode, abortSignal);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -449,13 +462,15 @@ export async function generateStructuredContent(
   temperature = 0.7,
   maxTokens = 8000,
   reasoning = false,
+  abortSignal?: AbortSignal,
 ): Promise<unknown> {
   const text = await dispatch(
     [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
     temperature,
     maxTokens,
     reasoning,
-    true
+    true,
+    abortSignal
   );
   const extracted = extractJSON(text);
   try {
