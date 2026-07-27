@@ -57,6 +57,11 @@ type BlockingQualityIssue = {
 const MAX_QUALITY_REVIEW_PASSES = 4;
 const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1700;
 const QUALITY_REVIEW_TIMEOUT_MS = 45_000 * MAX_QUALITY_REVIEW_PASSES;
+// Le raisonnement (voir createLlmStartGate) consomme des tokens de
+// complétion avant la réponse finale (~800-1000 tokens observés sur un plan
+// de cours simple, potentiellement plus sur un chapitre complet) — cette
+// marge s'ajoute aux budgets dimensionnés pour le seul contenu.
+const REASONING_TOKEN_BUFFER = 10_000;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -107,11 +112,18 @@ function createLlmStartGate(minIntervalMs: number): GenerateStructured {
     lastStartAt = Date.now();
     release();
 
+    // Raisonnement activé pour la génération ET la correction : le modèle
+    // vérifie ses propres calculs/réponses étape par étape avant de répondre,
+    // au lieu de sortir directement une réponse. Confirmé compatible avec le
+    // modèle actuellement configuré (labs-leanstral-1-5-1) et avec le mode
+    // JSON forcé utilisé ici. La trace de raisonnement elle-même n'est
+    // jamais exposée (voir extractMistralText dans llm.ts).
     return generateStructuredContent(
       userPrompt,
       systemPrompt,
       temperature,
       maxTokens,
+      true,
     );
   };
 }
@@ -547,11 +559,11 @@ Renvoie uniquement le chapitre JSON complet corrigé avec la même structure {"t
         reviewSystem,
         0.05,
         Math.min(
-          12_000,
+          40_000,
           Math.max(
             6_000,
             expectedLessonCount * 2_800 + (includeExercises ? 1_600 : 0),
-          ),
+          ) + REASONING_TOKEN_BUFFER,
         ),
       )) as GeneratedCourseChapter;
       const candidate = cleanupGeneratedCourseChapter(
@@ -680,9 +692,14 @@ export async function POST(request: Request) {
     quality_mode === "fast" || quality_mode === "strict"
       ? quality_mode
       : "balanced";
+  // +REASONING_TOKEN_BUFFER : le raisonnement (voir createLlmStartGate) est
+  // compté comme des tokens de complétion, avant même la réponse finale — un
+  // budget dimensionné uniquement pour le contenu tronquerait la réponse
+  // avant qu'elle ne soit produite.
   const chapterMaxTokens = Math.min(
-    16_000,
-    Math.max(8_000, lessonsPerChapter * 3_600 + (includeExercises ? 1_800 : 0)),
+    40_000,
+    Math.max(8_000, lessonsPerChapter * 3_600 + (includeExercises ? 1_800 : 0)) +
+      REASONING_TOKEN_BUFFER,
   );
   const style: "balanced" | "theory_heavy" | "practice_heavy" =
     content_style || "balanced";
@@ -828,7 +845,7 @@ ${additional_info ? "⚠️ Respecte IMPÉRATIVEMENT les INSTRUCTIONS PRIORITAIR
           outlineUser,
           outlineSystem,
           0.25,
-          3000,
+          3000 + REASONING_TOKEN_BUFFER,
         )) as {
           title?: string;
           description?: string;
