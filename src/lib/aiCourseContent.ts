@@ -245,7 +245,8 @@ export type CourseQualityIssueCode =
   | "unwrapped_math_notation"
   | "hand_drawn_curve_svg"
   | "glued_text_word_boundary"
-  | "raw_unicode_math_symbol";
+  | "raw_unicode_math_symbol"
+  | "missing_graph_for_variation_table";
 
 export type CourseQualityIssue = {
   severity: CourseQualityIssueSeverity;
@@ -579,6 +580,30 @@ export function auditGeneratedCourseChapter(
       }
     });
   });
+
+  // Un tableau de variation (math-table-variation) décrit le comportement
+  // d'une fonction — c'est justement le cas où la règle du prompt impose un
+  // math-graph-placeholder ("toute famille de fonctions étudiée
+  // graphiquement"). Contrairement au SVG dessiné à la main (déjà détecté
+  // ci-dessus), cette anomalie n'avait aucun contrôle déterministe : la
+  // règle existait uniquement dans le prompt, jamais vérifiée côté code.
+  // Vérifié sur tout le CHAPITRE (pas leçon par leçon) : la leçon qui trace
+  // la courbe n'est pas forcément celle qui contient le tableau.
+  const chapterHtml = chapter.lessons
+    .map((lesson) => (typeof lesson.content === "string" ? lesson.content : ""))
+    .join("\n");
+  if (
+    /math-table-variation/.test(chapterHtml) &&
+    !/math-graph-placeholder/.test(chapterHtml)
+  ) {
+    issues.push({
+      severity: "error",
+      code: "missing_graph_for_variation_table",
+      path: "lessons[*].content",
+      message:
+        "Le chapitre contient un tableau de variation mais aucun math-graph-placeholder : la courbe correspondante n'est jamais montrée.",
+    });
+  }
 
   return issues;
 }
