@@ -64,7 +64,7 @@ function GenerationRow({
                 e.stopPropagation();
                 onCancel();
               }}
-              className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 transition-opacity"
+              className="text-gray-400 hover:text-red-500 transition-opacity"
               title="Annuler"
             >
               <X size={14} />
@@ -76,7 +76,7 @@ function GenerationRow({
                 e.stopPropagation();
                 onDismiss();
               }}
-              className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-gray-600 transition-opacity"
+              className="text-gray-400 hover:text-gray-600 transition-opacity"
               title="Retirer de la liste"
             >
               <X size={14} />

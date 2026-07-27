@@ -81,7 +81,7 @@ export type GenerationProgress = {
 // pas toujours toutes résolues en un seul appel IA. La boucle s'arrête dès
 // que bestIssues.length === 0 (souvent avant d'atteindre ce plafond).
 const MAX_QUALITY_REVIEW_PASSES = 4;
-const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1700;
+const DEFAULT_LLM_MIN_START_INTERVAL_MS = 0; // immediate start by default per admin preference
 const QUALITY_REVIEW_TIMEOUT_MS = 45_000 * MAX_QUALITY_REVIEW_PASSES;
 // Le raisonnement (voir createLlmStartGate) consomme des tokens de
 // complétion avant la réponse finale (~800-1000 tokens observés sur un plan

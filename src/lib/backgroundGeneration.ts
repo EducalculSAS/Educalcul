@@ -105,7 +105,7 @@ export function createLlmStartGate(
   };
 }
 
-export const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1700;
+export const DEFAULT_LLM_MIN_START_INTERVAL_MS = 0; // immediate start by default (admin requested)
 // Le raisonnement consomme des tokens de complétion avant la réponse finale —
 // marge ajoutée aux budgets des appels qui l'activent (passes de correction).
 export const REASONING_TOKEN_BUFFER = 10_000;
