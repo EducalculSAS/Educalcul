@@ -40,6 +40,7 @@ type GenerateStructured = (
   systemPrompt: string,
   temperature?: number,
   maxTokens?: number,
+  reasoning?: boolean,
 ) => Promise<unknown>;
 
 type BlockingQualityIssue = {
@@ -136,7 +137,7 @@ function createLlmStartGate(
   let queue: Promise<void> = Promise.resolve();
   let lastStartAt = 0;
 
-  return async (userPrompt, systemPrompt, temperature, maxTokens) => {
+  return async (userPrompt, systemPrompt, temperature, maxTokens, reasoning = false) => {
     let release!: () => void;
     const previous = queue;
     queue = new Promise<void>((resolve) => {
@@ -154,17 +155,19 @@ function createLlmStartGate(
       throw new GenerationCancelledError();
     }
 
-    // Raisonnement activé pour la génération ET la correction : le modèle
-    // vérifie ses propres calculs/réponses étape par étape avant de répondre,
-    // au lieu de sortir directement une réponse. Confirmé compatible avec le
-    // modèle actuellement configuré (labs-leanstral-1-5-1) et avec le mode
-    // JSON forcé utilisé ici. La trace de raisonnement elle-même n'est
-    // jamais exposée (voir extractMistralText dans llm.ts).
+    // Raisonnement réservé à la CORRECTION (voir reviewGeneratedCourseChapter),
+    // jamais à la rédaction initiale : c'est là que le modèle vérifie
+    // vraiment ses calculs/réponses étape par étape avant de répondre, là où
+    // ça compte le plus, sans ralentir le gros du volume de génération.
+    // Confirmé compatible avec le modèle actuellement configuré
+    // (labs-leanstral-1-5-1) et le mode JSON forcé utilisé ici — la trace de
+    // raisonnement elle-même n'est jamais exposée (extractMistralText, llm.ts).
     return generateStructuredContent(
       userPrompt,
       systemPrompt,
       temperature,
       maxTokens,
+      reasoning,
     );
   };
 }
@@ -604,6 +607,7 @@ Renvoie uniquement le chapitre JSON complet corrigé avec la même structure {"t
             expectedLessonCount * 2_800 + (includeExercises ? 1_600 : 0),
           ) + REASONING_TOKEN_BUFFER,
         ),
+        true, // raisonnement activé : c'est ici que la correction doit être fiable
       )) as GeneratedCourseChapter;
       const candidate = cleanupGeneratedCourseChapter(
         candidateRaw,

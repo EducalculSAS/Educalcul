@@ -2,7 +2,7 @@
 
 import { BrainCircuit, Minus, Sparkles } from "lucide-react";
 import { useCourseGenerations } from "@/contexts/CourseGenerationsContext";
-import { useSmoothPercent } from "./useSmoothPercent";
+import { useSmoothPercentByKey } from "./useSmoothPercent";
 
 /**
  * Vue "plein écran" d'UNE génération de cours en cours, pilotée par le
@@ -14,7 +14,8 @@ import { useSmoothPercent } from "./useSmoothPercent";
 export default function CourseGenerationFullModal() {
   const { generations, focusedId, minimize, cancelGeneration, dismiss } = useCourseGenerations();
   const generation = generations.find((g) => g.id === focusedId);
-  const smoothPct = useSmoothPercent(
+  const smoothPct = useSmoothPercentByKey(
+    generation?.id ?? null,
     generation?.progress.current ?? 0,
     generation?.progress.total ?? 0,
     !!generation && (generation.status === "pending" || generation.status === "running"),

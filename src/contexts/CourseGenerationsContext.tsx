@@ -160,9 +160,15 @@ export function CourseGenerationsProvider({ children }: { children: React.ReactN
 
   const minimize = useCallback(() => setFocusedId(null), []);
   const focus = useCallback((id: string) => setFocusedId(id), []);
+  // Supprime aussi côté serveur : sinon /active la retrouve à chaque
+  // rechargement de page et elle réapparaît dans le widget malgré le retrait.
   const dismiss = useCallback((id: string) => {
     setGenerations((prev) => prev.filter((g) => g.id !== id));
     setFocusedId((prev) => (prev === id ? null : prev));
+    (async () => {
+      const headers = await authHeaders();
+      await fetch(`/api/admin/ai/course/${id}`, { method: "DELETE", headers });
+    })();
   }, []);
 
   const onCourseCreated = useCallback((cb: (courseId: number) => void) => {

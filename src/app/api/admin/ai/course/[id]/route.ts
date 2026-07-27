@@ -57,3 +57,29 @@ export async function POST(
   }
   return Response.json({ success: true });
 }
+
+/**
+ * Retire une génération de la liste (widget) — supprime uniquement la ligne
+ * de suivi, jamais le cours déjà créé. Sans ça, un rechargement de page
+ * ré-affiche systématiquement une génération "retirée" côté client, puisque
+ * /active la retrouverait toujours en base.
+ */
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const admin = await requireRole(request, ["admin"]);
+  if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
+  const { id } = await params;
+  const { error } = await supabaseAdmin
+    .from("course_generations")
+    .delete()
+    .eq("id", id)
+    .eq("admin_id", admin.id);
+
+  if (error) {
+    return Response.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  }
+  return Response.json({ success: true });
+}

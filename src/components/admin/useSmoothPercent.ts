@@ -2,6 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type SmoothPercentState = {
+  maxPct: number;
+  stepStart: number;
+  lastCurrent: number;
+};
+
+// Stocke l'état d'animation HORS de React, par clé (id de génération) : une
+// génération de cours suivie dans le widget peut voir sa modale complète
+// démontée (minimisée) puis remontée (rouverte) plusieurs fois — un état
+// purement local au composant (useRef/useState) repart alors de zéro à
+// chaque remontage, ce qui fait paraître la barre "réinitialisée". Ce Map
+// survit tant que la page n'est pas rechargée, quel que soit le nombre de
+// fois où le composant qui l'utilise est monté/démonté.
+const persistedSmoothState = new Map<string, SmoothPercentState>();
+
 /**
  * Progression FLUIDE et continue pour les générations IA.
  * - Avance progressivement PENDANT chaque étape (au lieu de rester figée puis
@@ -83,6 +98,84 @@ export function useSmoothPercent(
     raf.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf.current);
   }, [active, current, total, stepMs]);
+
+  return pct;
+}
+
+/**
+ * Variante de useSmoothPercent dont l'état d'animation persiste par clé
+ * (typiquement l'id de génération) dans un Map hors-React — utile pour une
+ * modale qu'on peut minimiser/rouvrir (démontage/remontage du composant) :
+ * la progression continue de là où elle en était au lieu de repartir de 0.
+ * `key` = null désactive la persistance (comportement local classique).
+ */
+export function useSmoothPercentByKey(
+  key: string | null,
+  current: number,
+  total: number,
+  active: boolean,
+  stepMs = 22000
+): number {
+  const getState = (): SmoothPercentState => {
+    if (!key) return { maxPct: 0, stepStart: 0, lastCurrent: -1 };
+    let s = persistedSmoothState.get(key);
+    if (!s) {
+      s = { maxPct: 0, stepStart: 0, lastCurrent: -1 };
+      persistedSmoothState.set(key, s);
+    }
+    return s;
+  };
+
+  const [pct, setPct] = useState(() => getState().maxPct);
+  const raf = useRef<number>(0);
+  const lastKey = useRef<string | null>(null);
+
+  // Nouvelle génération suivie (clé différente) : initialise son état s'il
+  // n'existe pas encore, sans jamais réinitialiser une clé déjà en cours.
+  useEffect(() => {
+    if (lastKey.current === key) return;
+    lastKey.current = key;
+    const s = getState();
+    if (s.stepStart === 0) {
+      s.stepStart = typeof performance !== "undefined" ? performance.now() : Date.now();
+      s.lastCurrent = current;
+    }
+    setPct(s.maxPct);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+
+  useEffect(() => {
+    if (!active || !key) return;
+    const now = () => (typeof performance !== "undefined" ? performance.now() : Date.now());
+    const state = getState();
+
+    const tick = () => {
+      if (current !== state.lastCurrent) {
+        state.lastCurrent = current;
+        state.stepStart = now();
+      }
+
+      const asymptotic = (elapsedMs: number, horizonMs: number) =>
+        1 - horizonMs / (horizonMs + Math.max(0, elapsedMs));
+
+      let p: number;
+      if (total <= 0) {
+        p = asymptotic(now() - state.stepStart, stepMs * 3) * 90;
+      } else if (current >= total) {
+        p = 100;
+      } else {
+        const within = asymptotic(now() - state.stepStart, stepMs);
+        p = ((current + within) / total) * 100;
+      }
+
+      state.maxPct = Math.min(100, Math.max(state.maxPct, p));
+      setPct(state.maxPct);
+      raf.current = requestAnimationFrame(tick);
+    };
+
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+  }, [key, active, current, total, stepMs]);
 
   return pct;
 }

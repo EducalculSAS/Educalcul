@@ -486,8 +486,14 @@ export default function AdminCoursesPage() {
   // fonction se contente de démarrer la génération et de fermer le
   // formulaire — plus d'étape de validation manuelle, le cours final
   // s'enregistre directement en brouillon.
-  const handleAiGenerate = async (params: AIGenerateParams) => {
-    await startGeneration({
+  const handleAiGenerate = (params: AIGenerateParams) => {
+    // Fermé IMMÉDIATEMENT (avant même d'attendre la réponse du serveur) :
+    // sinon AIGeneratorModal reste monté le temps de l'appel réseau et
+    // affiche sa propre vue de chargement (ancienne modale, avec sa croix)
+    // pendant cette fraction de seconde avant que CourseGenerationFullModal
+    // ne prenne le relais.
+    setIsAiModalOpen(false);
+    startGeneration({
       grade_level: currentFolderLevel || params.level || "6eme",
       subject: params.topic,
       page_count: params.count?.toString() || "2",
@@ -500,8 +506,15 @@ export default function AdminCoursesPage() {
       subject_area: params.subjectArea,
       duration_per_lesson: params.durationPerLesson,
       folder_id: currentFolderId,
+    }).then((id) => {
+      if (!id) {
+        setNotification({
+          variant: "error",
+          title: "Erreur de génération",
+          subtitle: "Impossible de démarrer la génération. Réessaie.",
+        });
+      }
     });
-    setIsAiModalOpen(false);
   };
 
   const handlePreview = (course: Course) => {
