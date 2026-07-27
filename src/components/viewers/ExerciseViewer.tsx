@@ -960,7 +960,11 @@ export default function ExerciseViewer({
                             }
                             className={`w-full text-left p-3 rounded-lg border-2 transition-all ${btnClass}`}
                           >
-                            {option}
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: renderLatexInHTML(option),
+                              }}
+                            />
                           </button>
                         );
                       })}
@@ -1009,7 +1013,11 @@ export default function ExerciseViewer({
                             }}
                             className={`w-full text-left p-3 rounded-lg border-2 transition-all ${btnClass}`}
                           >
-                            {option}
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: renderLatexInHTML(option),
+                              }}
+                            />
                           </button>
                         );
                       })}
@@ -1075,7 +1083,12 @@ export default function ExerciseViewer({
                         }
                         return (
                           <div key={i} className="flex items-center gap-3">
-                            <span className="flex-1 text-sm font-medium text-gray-700">{pair.left}</span>
+                            <span
+                              className="flex-1 text-sm font-medium text-gray-700"
+                              dangerouslySetInnerHTML={{
+                                __html: renderLatexInHTML(pair.left),
+                              }}
+                            />
                             <ArrowRight size={14} className="text-gray-300 shrink-0" />
                             <select
                               disabled={isSubmitted}
@@ -1114,7 +1127,12 @@ export default function ExerciseViewer({
                           return (
                             <div key={item + i} className={`flex items-center gap-2 p-2.5 border-2 rounded-lg ${cls}`}>
                               <span className="text-xs font-bold text-gray-400 w-5">{i + 1}.</span>
-                              <span className="flex-1 text-sm text-gray-700">{item}</span>
+                              <span
+                                className="flex-1 text-sm text-gray-700"
+                                dangerouslySetInnerHTML={{
+                                  __html: renderLatexInHTML(item),
+                                }}
+                              />
                               <button
                                 disabled={isSubmitted || i === 0}
                                 onClick={() => {

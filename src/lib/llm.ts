@@ -1,3 +1,4 @@
+import type { JsonSchemaContract } from "@/lib/ai/schemas";
 /**
  * Educalcul — Couche transport IA via l'API Mistral directe (endpoint régional
  * EU — les données ne quittent jamais l'UE/EEE, voir docs.mistral.ai/studio-api/regional-inference).
@@ -44,7 +45,14 @@ function extractMistralText(content: unknown): string {
 }
 
 async function callMistralModel(
-  model: string, msgs: Message[], temp: number, maxTokens?: number, reasoning = false, jsonMode = false, abortSignal?: AbortSignal
+  model: string,
+  msgs: Message[],
+  temp: number,
+  maxTokens?: number,
+  reasoning = false,
+  jsonMode = false,
+  abortSignal?: AbortSignal,
+  jsonSchema?: JsonSchemaContract,
 ): Promise<{ ok: boolean; text: string; status: number }> {
   const body: Record<string, unknown> = {
     model,
@@ -53,10 +61,21 @@ async function callMistralModel(
     reasoning_effort: reasoning ? "high" : "none",
   };
   if (maxTokens) body.max_tokens = maxTokens;
-  // JSON garanti syntaxiquement valide côté serveur Mistral — élimine les
-  // erreurs de parsing (guillemets non échappés, etc.) à la source plutôt
-  // que d'essayer de réparer un texte mal formé après coup.
-  if (jsonMode) body.response_format = { type: "json_object" };
+  // Pour la génération de contenu, le schéma JSON est le contrat unique :
+  // le modèle ne peut ni ajouter du HTML ni déplacer les champs mathématiques.
+  if (jsonSchema) {
+    body.response_format = {
+      type: "json_schema",
+      json_schema: {
+        name: jsonSchema.name,
+        description: jsonSchema.description,
+        schema_definition: jsonSchema.schema,
+        strict: true,
+      },
+    };
+  } else if (jsonMode) {
+    body.response_format = { type: "json_object" };
+  }
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 240_000); // 4 min max
@@ -490,6 +509,98 @@ export async function generateStructuredContent(
       }
     }
   }
+}
+
+
+/**
+ * Génération contrainte par un JSON Schema Mistral. Les trois générateurs
+ * Educalcul utilisent exclusivement cette fonction. Si un modèle Labs ne
+ * prend pas encore en charge le schéma personnalisé, on repasse une seule
+ * fois en JSON mode avec le schéma inclus dans le prompt, puis les
+ * normalisateurs serveur appliquent le même contrat avant compilation.
+ */
+export async function generateStructuredContentWithSchema<T>(
+  prompt: string,
+  systemPrompt: string,
+  contract: JsonSchemaContract,
+  temperature = 0.2,
+  maxTokens = 8_000,
+  reasoning = false,
+  abortSignal?: AbortSignal,
+): Promise<T> {
+  const messages: Message[] = [
+    { role: "system", content: systemPrompt },
+    { role: "user", content: prompt },
+  ];
+
+  const parseResponse = (rawResponse: string): T => {
+    const envelope = JSON.parse(rawResponse) as {
+      choices?: Array<{
+        finish_reason?: string;
+        message?: { content?: unknown };
+      }>;
+    };
+    const choice = envelope.choices?.[0];
+    if (choice?.finish_reason === "length") {
+      throw new Error(
+        `Réponse IA tronquée (max_tokens=${maxTokens}). Réduis le volume demandé ou augmente le budget de sortie.`,
+      );
+    }
+    const content = extractMistralText(choice?.message?.content);
+    if (!content) throw new Error("Le modèle n'a renvoyé aucun contenu JSON.");
+    return parseJSON(extractJSON(content)) as T;
+  };
+
+  let response = await callMistralModel(
+    MISTRAL_MODEL,
+    messages,
+    temperature,
+    maxTokens,
+    reasoning,
+    false,
+    abortSignal,
+    contract,
+  );
+
+  if (response.ok) return parseResponse(response.text);
+
+  if (response.status === 429) {
+    await new Promise((resolve) => setTimeout(resolve, 1_700));
+    response = await callMistralModel(
+      MISTRAL_MODEL,
+      messages,
+      temperature,
+      maxTokens,
+      reasoning,
+      false,
+      abortSignal,
+      contract,
+    );
+    if (response.ok) return parseResponse(response.text);
+  }
+
+  // Certains modèles expérimentaux peuvent temporairement refuser
+  // response_format=json_schema. Le fallback reste structuré, mais n'est fait
+  // qu'une fois et ne réintroduit ni HTML ni LaTeX délimité.
+  if ([400, 403, 404, 422].includes(response.status)) {
+    console.warn(
+      `[llm] ${MISTRAL_MODEL} n'a pas accepté le JSON Schema (${response.status}); fallback JSON mode.`,
+    );
+    const schemaPrompt = `${systemPrompt}\n\nSCHÉMA JSON À RESPECTER STRICTEMENT :\n${JSON.stringify(contract.schema)}`;
+    return (await generateStructuredContent(
+      prompt,
+      schemaPrompt,
+      temperature,
+      maxTokens,
+      reasoning,
+      abortSignal,
+    )) as T;
+  }
+
+  console.error(
+    `[llm] ${MISTRAL_MODEL} schema error ${response.status}: ${response.text.slice(0, 500)}`,
+  );
+  throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
 }
 
 /** Chatbot tuteur IA — reasoning activé (Mistral Small, mode reasoning) */
