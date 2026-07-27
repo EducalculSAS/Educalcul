@@ -54,9 +54,27 @@ export type StructuredCourseBlock =
     }
   | {
       type: "table";
-      variant: "value" | "sign" | "variation";
+      variant: "value";
       headers: StructuredRichText[];
       rows: StructuredRichText[][];
+    }
+  | {
+      type: "sign_table";
+      expression: StructuredRichText;
+      entries: Array<{
+        domain: StructuredRichText;
+        sign: "negative" | "zero" | "positive" | "undefined";
+      }>;
+    }
+  | {
+      type: "variation_table";
+      function: StructuredRichText;
+      intervals: Array<{
+        domain: StructuredRichText;
+        direction: "increasing" | "decreasing" | "constant";
+        startValue: StructuredRichText;
+        endValue: StructuredRichText;
+      }>;
     }
   | {
       type: "graph";
@@ -64,12 +82,45 @@ export type StructuredCourseBlock =
       xmin: number;
       xmax: number;
       caption: string;
+      vectors: Array<{
+        x: number;
+        y: number;
+        fromX: number;
+        fromY: number;
+        label: string;
+      }>;
       parameter?: {
         name: string;
         min: number;
         max: number;
         default: number;
       };
+    }
+  | {
+      type: "geometry_diagram";
+      caption: string;
+      points: Array<{
+        name: string;
+        x: number;
+        y: number;
+        labelDx: number;
+        labelDy: number;
+      }>;
+      segments: Array<{
+        from: string;
+        to: string;
+        dashed: boolean;
+        arrow: boolean;
+      }>;
+      circles: Array<{ center: string; radius: number }>;
+      polygons: Array<{ points: string[]; filled: boolean }>;
+    }
+  | {
+      type: "fraction_model";
+      shape: "bar" | "circle";
+      numerator: number;
+      denominator: number;
+      caption: string;
     }
   | {
       type: "exercise";
@@ -203,27 +254,40 @@ export const COURSE_BLOCK_SCHEMA_PROMPT = `Les blocs autorisés dans une leçon 
 2. Paragraphe :
 {"type":"paragraph","content":RICH_TEXT}
 3. Formule affichée :
-{"type":"display_math","latex":"\\\\begin{aligned}a&=b\\\\\\\\c&=d\\\\end{aligned}"}
+{"type":"display_math","latex":"\\begin{aligned}a&=b\\\\c&=d\\end{aligned}"}
 4. Liste :
 {"type":"list","ordered":false,"items":[RICH_TEXT,RICH_TEXT]}
 5. Encadré :
 {"type":"callout","variant":"note","title":RICH_TEXT,"paragraphs":[RICH_TEXT]}
-variant vaut "note" ou "warning". Le champ title est toujours présent.
-6. Tableau :
+variant vaut "note" ou "warning".
+6. Tableau de valeurs ou de données uniquement :
 {"type":"table","variant":"value","headers":[RICH_TEXT,RICH_TEXT],"rows":[[RICH_TEXT,RICH_TEXT]]}
-variant vaut "value", "sign" ou "variation".
-7. Graphique de fonction :
-{"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Description courte sans LaTeX","parameter":null}
-Pour une famille paramétrée, remplace null par {"name":"a","min":-3,"max":3,"default":1} et utilise a dans expression.
-8. Emplacement d'exercice :
+Toutes les lignes ont exactement le même nombre de cellules que headers.
+7. Tableau de signes :
+{"type":"sign_table","expression":RICH_TEXT,"entries":[{"domain":RICH_TEXT,"sign":"negative"},{"domain":RICH_TEXT,"sign":"zero"},{"domain":RICH_TEXT,"sign":"positive"}]}
+sign vaut uniquement negative, zero, positive ou undefined.
+8. Tableau de variations :
+{"type":"variation_table","function":RICH_TEXT,"intervals":[{"domain":RICH_TEXT,"direction":"increasing","start_value":RICH_TEXT,"end_value":RICH_TEXT}]}
+direction vaut uniquement increasing, decreasing ou constant. Un tableau de variations exige aussi un bloc graph dans le chapitre.
+9. Graphique de fonction :
+{"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Description courte sans LaTeX","vectors":[],"parameter":null}
+Pour une famille paramétrée, remplace parameter par {"name":"a","min":-3,"max":3,"default":1} et utilise a dans expression.
+Pour superposer un vecteur sur le repère, utilise vectors : [{"x":2,"y":3,"from_x":0,"from_y":0,"label":"u"}].
+10. Figure géométrique statique, jamais une courbe de fonction :
+{"type":"geometry_diagram","caption":"Triangle ABC rectangle en A","points":[{"name":"A","x":30,"y":130,"label_dx":-12,"label_dy":14},{"name":"B","x":30,"y":30,"label_dx":-12,"label_dy":-8},{"name":"C","x":165,"y":130,"label_dx":10,"label_dy":14}],"segments":[{"from":"A","to":"B","dashed":false,"arrow":false},{"from":"A","to":"C","dashed":false,"arrow":false},{"from":"B","to":"C","dashed":false,"arrow":false}],"circles":[],"polygons":[]}
+Les coordonnées restent dans le repère 200 × 160. Deux à huit points, trois à cinq étiquettes utiles, aucun tracé de courbe.
+11. Modèle visuel de fraction :
+{"type":"fraction_model","shape":"bar","numerator":3,"denominator":4,"caption":"Trois quarts de l'unité sont colorés."}
+shape vaut bar ou circle, avec 0 <= numerator <= denominator <= 20.
+12. Emplacement d'exercice :
 {"type":"exercise","exercise_index":1}
 exercise_index est la position 1, 2, 3... de l'exercice dans le tableau exercises de CETTE leçon.
-9. Démonstration en étapes :
+13. Démonstration en étapes :
 {"type":"steps","steps":[{"title":RICH_TEXT,"blocks":[BLOCS]},{"title":RICH_TEXT,"blocks":[BLOCS]}]}
-Le champ title est toujours présent dans chaque étape.
-10. Vecteurs interactifs :
+Utilise steps pour toute démonstration de trois étapes ou plus.
+14. Vecteurs interactifs :
 {"type":"interactive_vectors","u_label":"u","v_label":"v","show_projection":true,"caption":"Description courte","ox":150,"oy":100,"ux":220,"uy":55,"vx":255,"vy":115}
-Ne crée aucun autre type de bloc.`;
+Ne crée aucun autre type de bloc. N'utilise jamais table avec variant sign ou variation : utilise sign_table ou variation_table.`;
 
 const ENTITY_MAP: Record<string, string> = {
   "&lt;": "<",
@@ -650,6 +714,125 @@ export function structuredRichTextToPlainText(value: StructuredRichText): string
     .trim();
 }
 
+function normalizeComparableText(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/&(?:lt|gt|amp|quot|#39);/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function truncateRichTextAtFirstQuestionMark(
+  value: StructuredRichText,
+): StructuredRichText {
+  const parts: StructuredRichTextPart[] = [];
+  for (const part of value.parts) {
+    if (part.type === "text") {
+      const index = part.value.indexOf("?");
+      if (index >= 0) {
+        const kept = part.value.slice(0, index + 1).trimEnd();
+        if (kept) parts.push({ type: "text", value: kept });
+        break;
+      }
+    }
+    parts.push(part);
+  }
+  return { parts: mergeAdjacentText(parts) };
+}
+
+
+function truncateRichTextAtChoiceMarker(
+  value: StructuredRichText,
+): StructuredRichText {
+  const parts: StructuredRichTextPart[] = [];
+  const marker = /(?:^|[\s:;])(?:option\s*)?[A-Da-d]\s*[.)\-:]\s*/;
+  for (const part of value.parts) {
+    if (part.type === "text") {
+      const match = marker.exec(part.value);
+      if (match?.index !== undefined) {
+        const kept = part.value.slice(0, match.index).trimEnd();
+        if (kept) parts.push({ type: "text", value: kept });
+        break;
+      }
+    }
+    parts.push(part);
+  }
+  return { parts: mergeAdjacentText(parts) };
+}
+
+function stripChoicePrefix(value: StructuredRichText): StructuredRichText {
+  const parts = value.parts.map((part) => ({ ...part }));
+  const firstText = parts.find(
+    (part): part is StructuredTextPart => part.type === "text",
+  );
+  if (firstText) {
+    firstText.value = firstText.value.replace(
+      /^\s*(?:(?:option|réponse)\s*)?[A-Da-d]\s*[.)\-:]\s*/,
+      "",
+    );
+  }
+  return {
+    parts: mergeAdjacentText(
+      parts.filter(
+        (part) => part.type === "math" || part.value.trim().length > 0,
+      ),
+    ),
+  };
+}
+
+function removeQuizOptionsFromStem(
+  value: StructuredRichText,
+  options: StructuredRichText[],
+): StructuredRichText {
+  const withoutMarkers = truncateRichTextAtChoiceMarker(value);
+  if (
+    structuredRichTextToPlainText(withoutMarkers) !==
+    structuredRichTextToPlainText(value)
+  ) {
+    return withoutMarkers;
+  }
+
+  const plain = structuredRichTextToPlainText(value);
+  const questionIndex = plain.indexOf("?");
+  if (questionIndex < 0) return value;
+  const tail = normalizeComparableText(plain.slice(questionIndex + 1));
+  if (!tail) return value;
+  const duplicatedOptions = options.filter((option) => {
+    const optionPlain = normalizeComparableText(
+      structuredRichTextToPlainText(option),
+    );
+    return optionPlain.length >= 1 && tail.includes(optionPlain);
+  }).length;
+  const markerCount =
+    plain.slice(questionIndex + 1).match(/(?:^|\s)[A-D][.)]/g)?.length ?? 0;
+  return duplicatedOptions > 0 || markerCount >= 2
+    ? truncateRichTextAtFirstQuestionMark(value)
+    : value;
+}
+
+function removeAnswerFromExercisePrompt(
+  prompt: StructuredRichText,
+  answer: StructuredRichText,
+): StructuredRichText {
+  const plain = structuredRichTextToPlainText(prompt);
+  const questionIndex = plain.indexOf("?");
+  if (questionIndex < 0) return prompt;
+  const tailRaw = plain.slice(questionIndex + 1);
+  const tail = normalizeComparableText(tailRaw);
+  const answerPlain = normalizeComparableText(
+    structuredRichTextToPlainText(answer),
+  );
+  const looksLikeCorrection =
+    /(?:la réponse|réponse|solution|on obtient|donc|ainsi|par conséquent|explication|conclusion)/i.test(
+      tailRaw,
+    );
+  return (answerPlain && tail.includes(answerPlain)) || looksLikeCorrection
+    ? truncateRichTextAtFirstQuestionMark(prompt)
+    : prompt;
+}
+
 function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock | null {
   if (depth > 4) return null;
   const raw = asRecord(value);
@@ -706,22 +889,110 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
       };
     }
     case "table": {
-      const variantRaw = stringValue(raw.variant).toLowerCase();
-      const variant =
-        variantRaw === "sign" || variantRaw === "variation" ? variantRaw : "value";
       const headers = Array.isArray(raw.headers)
-        ? raw.headers.map(normalizeStructuredRichText)
+        ? raw.headers
+            .map(normalizeStructuredRichText)
+            .filter((entry) => entry.parts.length > 0)
+            .slice(0, 8)
         : [];
+      const expectedColumns = headers.length;
       const rows = Array.isArray(raw.rows)
         ? raw.rows
             .filter(Array.isArray)
-            .map((row) => (row as unknown[]).map(normalizeStructuredRichText))
+            .map((row) =>
+              (row as unknown[])
+                .map(normalizeStructuredRichText)
+                .filter((entry) => entry.parts.length > 0)
+                .slice(0, expectedColumns || 8),
+            )
+            .filter((row) => row.length > 0)
+            .map((row) => {
+              if (expectedColumns === 0) return row;
+              const normalized = row.slice(0, expectedColumns);
+              while (normalized.length < expectedColumns) {
+                normalized.push({ parts: [{ type: "text", value: "—" }] });
+              }
+              return normalized;
+            })
+            .slice(0, 20)
         : [];
-      return { type: "table", variant, headers, rows };
+      return { type: "table", variant: "value", headers, rows };
+    }
+    case "sign_table": {
+      const entries = Array.isArray(raw.entries)
+        ? raw.entries
+            .map((entry) => {
+              const record = asRecord(entry);
+              if (!record) return null;
+              const domain = normalizeStructuredRichText(record.domain ?? record.interval);
+              const candidate = stringValue(record.sign).toLowerCase();
+              const sign =
+                candidate === "negative" ||
+                candidate === "zero" ||
+                candidate === "undefined"
+                  ? candidate
+                  : "positive";
+              return domain.parts.length > 0 ? { domain, sign } : null;
+            })
+            .filter(
+              (entry): entry is {
+                domain: StructuredRichText;
+                sign: "negative" | "zero" | "positive" | "undefined";
+              } => entry !== null,
+            )
+            .slice(0, 9)
+        : [];
+      return {
+        type: "sign_table",
+        expression: normalizeStructuredRichText(raw.expression ?? raw.function),
+        entries,
+      };
+    }
+    case "variation_table": {
+      const intervals = Array.isArray(raw.intervals)
+        ? raw.intervals
+            .map((entry) => {
+              const record = asRecord(entry);
+              if (!record) return null;
+              const domain = normalizeStructuredRichText(record.domain ?? record.interval);
+              const directionRaw = stringValue(record.direction).toLowerCase();
+              const direction =
+                directionRaw === "decreasing" || directionRaw === "constant"
+                  ? directionRaw
+                  : "increasing";
+              const startValue = normalizeStructuredRichText(
+                record.start_value ?? record.startValue ?? record.from,
+              );
+              const endValue = normalizeStructuredRichText(
+                record.end_value ?? record.endValue ?? record.to,
+              );
+              return domain.parts.length > 0 &&
+                startValue.parts.length > 0 &&
+                endValue.parts.length > 0
+                ? { domain, direction, startValue, endValue }
+                : null;
+            })
+            .filter(
+              (entry): entry is {
+                domain: StructuredRichText;
+                direction: "increasing" | "decreasing" | "constant";
+                startValue: StructuredRichText;
+                endValue: StructuredRichText;
+              } => entry !== null,
+            )
+            .slice(0, 6)
+        : [];
+      return {
+        type: "variation_table",
+        function: normalizeStructuredRichText(raw.function ?? raw.expression),
+        intervals,
+      };
     }
     case "graph": {
       const parameterRaw = asRecord(raw.parameter);
-      const name = sanitizeStructuredText(parameterRaw?.name).replace(/[^A-Za-z]/g, "").slice(0, 2);
+      const name = sanitizeStructuredText(parameterRaw?.name)
+        .replace(/[^A-Za-z]/g, "")
+        .slice(0, 2);
       const parameter = parameterRaw && name
         ? {
             name,
@@ -730,13 +1001,173 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
             default: finiteNumber(parameterRaw.default, 1),
           }
         : undefined;
+      const vectors = Array.isArray(raw.vectors)
+        ? raw.vectors
+            .map((value) => {
+              const vector = asRecord(value);
+              if (!vector) return null;
+              return {
+                x: finiteNumber(vector.x, 0),
+                y: finiteNumber(vector.y, 0),
+                fromX: finiteNumber(vector.from_x ?? vector.fromX, 0),
+                fromY: finiteNumber(vector.from_y ?? vector.fromY, 0),
+                label:
+                  sanitizeStructuredText(vector.label)
+                    .replace(/[^A-Za-z0-9_]/g, "")
+                    .slice(0, 12) || "u",
+              };
+            })
+            .filter(
+              (vector): vector is {
+                x: number;
+                y: number;
+                fromX: number;
+                fromY: number;
+                label: string;
+              } => vector !== null,
+            )
+            .slice(0, 4)
+        : [];
       return {
         type: "graph",
-        expression: sanitizeGraphExpression(raw.expression ?? raw.function ?? raw.data_function),
+        expression: sanitizeGraphExpression(
+          raw.expression ?? raw.function ?? raw.data_function,
+        ),
         xmin: finiteNumber(raw.xmin, -5),
         xmax: finiteNumber(raw.xmax, 5),
         caption: sanitizeStructuredText(raw.caption),
+        vectors,
         parameter,
+      };
+    }
+    case "geometry_diagram": {
+      const points = Array.isArray(raw.points)
+        ? raw.points
+            .map((value) => {
+              const point = asRecord(value);
+              if (!point) return null;
+              const name = sanitizeStructuredText(point.name)
+                .replace(/[^A-Za-z0-9]/g, "")
+                .slice(0, 8);
+              if (!name) return null;
+              return {
+                name,
+                x: clamp(finiteNumber(point.x, 100), 8, 192),
+                y: clamp(finiteNumber(point.y, 80), 8, 152),
+                labelDx: clamp(
+                  finiteNumber(point.label_dx ?? point.labelDx, 10),
+                  -30,
+                  30,
+                ),
+                labelDy: clamp(
+                  finiteNumber(point.label_dy ?? point.labelDy, -10),
+                  -30,
+                  30,
+                ),
+              };
+            })
+            .filter(
+              (point): point is {
+                name: string;
+                x: number;
+                y: number;
+                labelDx: number;
+                labelDy: number;
+              } => point !== null,
+            )
+            .slice(0, 8)
+        : [];
+      const pointNames = new Set(points.map((point) => point.name));
+      const segments = Array.isArray(raw.segments)
+        ? raw.segments
+            .map((value) => {
+              const segment = asRecord(value);
+              if (!segment) return null;
+              const from = sanitizeStructuredText(segment.from).slice(0, 8);
+              const to = sanitizeStructuredText(segment.to).slice(0, 8);
+              return pointNames.has(from) && pointNames.has(to) && from !== to
+                ? {
+                    from,
+                    to,
+                    dashed: segment.dashed === true,
+                    arrow: segment.arrow === true,
+                  }
+                : null;
+            })
+            .filter(
+              (segment): segment is {
+                from: string;
+                to: string;
+                dashed: boolean;
+                arrow: boolean;
+              } => segment !== null,
+            )
+            .slice(0, 12)
+        : [];
+      const circles = Array.isArray(raw.circles)
+        ? raw.circles
+            .map((value) => {
+              const circle = asRecord(value);
+              if (!circle) return null;
+              const center = sanitizeStructuredText(circle.center).slice(0, 8);
+              return pointNames.has(center)
+                ? {
+                    center,
+                    radius: clamp(finiteNumber(circle.radius, 30), 4, 75),
+                  }
+                : null;
+            })
+            .filter(
+              (circle): circle is { center: string; radius: number } =>
+                circle !== null,
+            )
+            .slice(0, 4)
+        : [];
+      const polygons = Array.isArray(raw.polygons)
+        ? raw.polygons
+            .map((value) => {
+              const polygon = asRecord(value);
+              if (!polygon || !Array.isArray(polygon.points)) return null;
+              const names = polygon.points
+                .map((entry) => sanitizeStructuredText(entry).slice(0, 8))
+                .filter((name) => pointNames.has(name))
+                .slice(0, 8);
+              return names.length >= 3
+                ? { points: names, filled: polygon.filled === true }
+                : null;
+            })
+            .filter(
+              (polygon): polygon is { points: string[]; filled: boolean } =>
+                polygon !== null,
+            )
+            .slice(0, 4)
+        : [];
+      return {
+        type: "geometry_diagram",
+        caption: sanitizeStructuredText(raw.caption),
+        points,
+        segments,
+        circles,
+        polygons,
+      };
+    }
+    case "fraction_model": {
+      const denominator = clamp(
+        Math.trunc(finiteNumber(raw.denominator, 2)),
+        1,
+        20,
+      );
+      const numerator = clamp(
+        Math.trunc(finiteNumber(raw.numerator, 1)),
+        0,
+        denominator,
+      );
+      return {
+        type: "fraction_model",
+        shape: stringValue(raw.shape).toLowerCase() === "circle" ? "circle" : "bar",
+        numerator,
+        denominator,
+        caption: sanitizeStructuredText(raw.caption),
       };
     }
     case "exercise":
@@ -812,9 +1243,16 @@ function sanitizeGraphExpression(value: unknown): string {
 
 function normalizeCourseExercise(value: unknown): StructuredCourseExercise {
   const raw = asRecord(value) ?? {};
+  const answer = normalizeStructuredRichText(
+    raw.answer ?? raw.correct_answer ?? raw.correctAnswer,
+  );
+  const question = removeAnswerFromExercisePrompt(
+    normalizeStructuredRichText(raw.question ?? raw.prompt),
+    answer,
+  );
   return {
-    question: normalizeStructuredRichText(raw.question ?? raw.prompt),
-    answer: normalizeStructuredRichText(raw.answer ?? raw.correct_answer ?? raw.correctAnswer),
+    question,
+    answer,
     hint: normalizeStructuredRichText(raw.hint),
     explanation: normalizeStructuredRichText(raw.explanation ?? raw.solution),
   };
@@ -885,11 +1323,17 @@ function normalizeAcceptedAnswers(value: unknown): StructuredRichText[][] {
     .filter((answers) => answers.length > 0);
 }
 
-function normalizeExerciseQuestion(value: unknown): StructuredExerciseQuestion | null {
+function normalizeExerciseQuestion(
+  value: unknown,
+  blockType = "standard",
+): StructuredExerciseQuestion | null {
   const raw = asRecord(value);
   if (!raw) return null;
   const options = Array.isArray(raw.options)
-    ? raw.options.map(normalizeStructuredRichText).filter((option) => option.parts.length > 0)
+    ? raw.options
+        .map(normalizeStructuredRichText)
+        .filter((option) => option.parts.length > 0)
+        .map(stripChoicePrefix)
     : [];
   const indexesRaw = Array.isArray(raw.correct_option_indexes)
     ? raw.correct_option_indexes
@@ -900,7 +1344,12 @@ function normalizeExerciseQuestion(value: unknown): StructuredExerciseQuestion |
         : [];
   const correctOptionIndexes = indexesRaw
     .map((index) => Math.trunc(finiteNumber(index, -1)))
-    .filter((index, position, array) => index >= 0 && index < options.length && array.indexOf(index) === position);
+    .filter(
+      (index, position, array) =>
+        index >= 0 &&
+        index < Math.max(options.length, 2) &&
+        array.indexOf(index) === position,
+    );
   const pairs = Array.isArray(raw.pairs)
     ? raw.pairs
         .map((pair) => {
@@ -908,31 +1357,82 @@ function normalizeExerciseQuestion(value: unknown): StructuredExerciseQuestion |
           if (!record) return null;
           const left = normalizeStructuredRichText(record.left);
           const right = normalizeStructuredRichText(record.right);
-          return left.parts.length > 0 && right.parts.length > 0 ? { left, right } : null;
+          return left.parts.length > 0 && right.parts.length > 0
+            ? { left, right }
+            : null;
         })
         .filter(
-          (pair): pair is { left: StructuredRichText; right: StructuredRichText } =>
-            pair !== null,
+          (pair): pair is {
+            left: StructuredRichText;
+            right: StructuredRichText;
+          } => pair !== null,
         )
     : [];
   const items = Array.isArray(raw.items)
-    ? raw.items.map(normalizeStructuredRichText).filter((item) => item.parts.length > 0)
+    ? raw.items
+        .map(normalizeStructuredRichText)
+        .filter((item) => item.parts.length > 0)
     : [];
 
-  const prompt = normalizeStructuredRichText(raw.prompt ?? raw.question ?? raw.title);
+  let answer = normalizeStructuredRichText(
+    raw.answer ?? raw.correct_answer ?? raw.correctAnswer,
+  );
+  if (answer.parts.length === 0 && blockType === "qcm") {
+    const correct = options[correctOptionIndexes[0] ?? -1];
+    if (correct) answer = correct;
+  }
+  if (answer.parts.length === 0 && blockType === "true_false") {
+    answer = {
+      parts: [
+        {
+          type: "text",
+          value: correctOptionIndexes[0] === 1 ? "Faux" : "Vrai",
+        },
+      ],
+    };
+  }
+  const acceptedAnswers = normalizeAcceptedAnswers(
+    raw.accepted_answers ?? raw.acceptedAnswers ?? raw.blanks,
+  );
+  if (answer.parts.length === 0 && blockType === "fill_in_the_blank") {
+    answer = {
+      parts: [
+        {
+          type: "text",
+          value: acceptedAnswers
+            .map((alternatives) =>
+              alternatives
+                .map(structuredRichTextToPlainText)
+                .filter(Boolean)
+                .join(" ou "),
+            )
+            .join(" ; "),
+        },
+      ],
+    };
+  }
+
+  let prompt = normalizeStructuredRichText(
+    raw.prompt ?? raw.question ?? raw.title,
+  );
   if (prompt.parts.length === 0) return null;
+  prompt =
+    blockType === "qcm"
+      ? removeQuizOptionsFromStem(prompt, options)
+      : removeAnswerFromExercisePrompt(prompt, answer);
 
   return {
     prompt,
-    content: normalizeStructuredRichText(raw.content ?? raw.support ?? raw.statement),
-    answer: normalizeStructuredRichText(raw.answer ?? raw.correct_answer ?? raw.correctAnswer),
+    content:
+      blockType === "fill_in_the_blank"
+        ? normalizeStructuredRichText(raw.content ?? raw.support ?? raw.statement)
+        : { parts: [] },
+    answer,
     explanation: normalizeStructuredRichText(raw.explanation ?? raw.solution),
     points: clamp(Math.trunc(finiteNumber(raw.points, 2)), 1, 20),
     options,
     correctOptionIndexes,
-    acceptedAnswers: normalizeAcceptedAnswers(
-      raw.accepted_answers ?? raw.acceptedAnswers ?? raw.blanks,
-    ),
+    acceptedAnswers,
     pairs,
     items,
   };
@@ -941,6 +1441,7 @@ function normalizeExerciseQuestion(value: unknown): StructuredExerciseQuestion |
 export function normalizeStructuredExerciseDraft(
   value: unknown,
   expectedQuestionCount: number,
+  blockType = "standard",
 ): StructuredExerciseDraft {
   const raw = asRecord(value) ?? {};
   const introductionRaw = Array.isArray(raw.introduction)
@@ -960,8 +1461,10 @@ export function normalizeStructuredExerciseDraft(
       .map(normalizeStructuredRichText)
       .filter((paragraph) => paragraph.parts.length > 0),
     questions: questionsRaw
-      .map(normalizeExerciseQuestion)
-      .filter((question): question is StructuredExerciseQuestion => question !== null)
+      .map((question) => normalizeExerciseQuestion(question, blockType))
+      .filter(
+        (question): question is StructuredExerciseQuestion => question !== null,
+      )
       .slice(0, expectedQuestionCount),
   };
 }
@@ -969,16 +1472,23 @@ export function normalizeStructuredExerciseDraft(
 function normalizeQuizQuestion(value: unknown): StructuredQuizQuestion | null {
   const raw = asRecord(value);
   if (!raw) return null;
-  const text = normalizeStructuredRichText(raw.text ?? raw.question ?? raw.prompt);
   const options = Array.isArray(raw.options)
-    ? raw.options.map(normalizeStructuredRichText).filter((option) => option.parts.length > 0)
+    ? raw.options
+        .map(normalizeStructuredRichText)
+        .filter((option) => option.parts.length > 0)
+        .map(stripChoicePrefix)
+        .slice(0, 4)
     : [];
+  let text = normalizeStructuredRichText(raw.text ?? raw.question ?? raw.prompt);
   if (text.parts.length === 0 || options.length < 2) return null;
+  text = removeQuizOptionsFromStem(text, options);
   return {
     text,
-    options: options.slice(0, 6),
+    options,
     correctOptionIndex: clamp(
-      Math.trunc(finiteNumber(raw.correct_option_index ?? raw.correctOptionIndex, 0)),
+      Math.trunc(
+        finiteNumber(raw.correct_option_index ?? raw.correctOptionIndex, 0),
+      ),
       0,
       options.length - 1,
     ),
@@ -1225,6 +1735,18 @@ export function structuredCourseWordCount(chapter: StructuredCourseChapter): num
         case "table":
           block.headers.forEach(visitRich);
           block.rows.flat().forEach(visitRich);
+          break;
+        case "sign_table":
+          visitRich(block.expression);
+          block.entries.forEach((entry) => visitRich(entry.domain));
+          break;
+        case "variation_table":
+          visitRich(block.function);
+          block.intervals.forEach((interval) => {
+            visitRich(interval.domain);
+            visitRich(interval.startValue);
+            visitRich(interval.endValue);
+          });
           break;
         case "steps":
           block.steps.forEach((step) => {

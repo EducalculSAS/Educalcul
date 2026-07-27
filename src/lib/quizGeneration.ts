@@ -52,12 +52,33 @@ function buildBatches(total: number): number[] {
   return batches;
 }
 
+function comparableText(value: string): string {
+  return value
+    .toLocaleLowerCase("fr")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function quizStemLeaksOptions(question: StructuredQuizQuestion): boolean {
+  const stem = comparableText(structuredRichTextToPlainText(question.text));
+  if (!stem) return true;
+  const rawStem = structuredRichTextToPlainText(question.text);
+  if (/(?:^|\s)(?:option\s*)?[A-Da-d]\s*[.)\-:]/.test(rawStem)) return true;
+  return question.options.some((option) => {
+    const candidate = comparableText(structuredRichTextToPlainText(option));
+    return candidate.length >= 2 && stem.includes(candidate);
+  });
+}
+
 function isCompleteQuizQuestion(question: StructuredQuizQuestion): boolean {
   const options = question.options.map((option) =>
-    structuredRichTextToPlainText(option).trim().toLocaleLowerCase("fr"),
+    comparableText(structuredRichTextToPlainText(option)),
   );
   return (
     question.text.parts.length > 0 &&
+    !quizStemLeaksOptions(question) &&
     question.options.length === 4 &&
     options.every(Boolean) &&
     new Set(options).size === 4 &&
@@ -66,7 +87,6 @@ function isCompleteQuizQuestion(question: StructuredQuizQuestion): boolean {
     question.explanation.parts.length > 0
   );
 }
-
 function quizDraftScore(draft: StructuredQuizDraft, expectedCount: number): number {
   const complete = draft.questions.filter(isCompleteQuizQuestion).length;
   return complete * 100 + Math.min(draft.questions.length, expectedCount);
@@ -122,11 +142,13 @@ Structure JSON exacte :
 RÈGLES :
 • questions contient exactement ${options.count} question(s).
 • Chaque question a exactement 4 options, une seule réponse correcte et correct_option_index est un entier 0, 1, 2 ou 3.
+• Le champ text contient uniquement la question : il ne contient jamais les propositions, jamais A./B./C./D. et ne recopie aucune option.
+• Les options ne commencent jamais par A., B., C. ou D. : le serveur gère leur affichage.
 • Les distracteurs sont plausibles, distincts et issus d'erreurs fréquentes.
 • L'explication recalcule la réponse et explique aussi pourquoi les distracteurs sont faux lorsque c'est utile.
 • ${options.firstBatch
   ? `title et description concernent le quiz complet de ${options.totalQuestions} questions.`
-  : "title et description peuvent être des chaînes vides."}
+  : "title et description restent courts et décrivent le même contenu global."}
 • Aucun id n'est produit : le serveur génère q-1, q-2, etc.
 • Aucun HTML, aucun Markdown et aucun délimiteur $.
 • Réponds uniquement avec le JSON demandé.`;
@@ -272,7 +294,10 @@ ${courseContext}`;
           label: `quiz ${subject}, partie ${batchIndex + 1}`,
           enableModelRepair: true,
         });
-        draft = repaired.value;
+        draft = keepCompleteQuizQuestions(
+          normalizeStructuredQuizDraft(repaired.value, count),
+          count,
+        );
         if (repaired.report.invalidBefore > 0) {
           console.info(
             `[quiz-ai] Partie ${batchIndex + 1}: ${repaired.report.invalidBefore} formule(s) invalides, ${repaired.report.repairedByModel} corrigée(s), ${repaired.report.fallbackCount} repli(s).`,

@@ -13,7 +13,6 @@ import {
   STRUCTURED_MATH_OUTPUT_RULES,
   normalizeStructuredCourseChapter,
   repairInvalidStructuredMath,
-  structuredCourseWordCount,
   type StructuredCourseChapter,
   type StructuredCourseExercise,
 } from "@/lib/ai/structuredContent";
@@ -26,6 +25,14 @@ import {
   type CompiledCourseChapter,
   type CompiledCourseLesson,
 } from "@/lib/ai/compiler";
+import {
+  STRUCTURED_COURSE_PEDAGOGY_RULES,
+  auditStructuredCoursePedagogy,
+  getLessonWordRange,
+  mergeBestCourseChapters,
+  normalizeStructuredCoursePedagogy,
+  type CoursePedagogyOptions,
+} from "@/lib/ai/pedagogy";
 
 export type CourseGenerationParams = {
   grade_level: string;
@@ -81,30 +88,6 @@ function cleanPlain(value: unknown, fallback = ""): string {
     : fallback;
 }
 
-function isCompleteCourseExercise(exercise: StructuredCourseExercise): boolean {
-  return (
-    exercise.question.parts.length > 0 &&
-    exercise.answer.parts.length > 0 &&
-    exercise.hint.parts.length > 0 &&
-    exercise.explanation.parts.length > 0
-  );
-}
-
-function hasEnoughStructuredLessons(
-  chapter: StructuredCourseChapter,
-  expectedLessons: number,
-  includeExercises: boolean,
-): boolean {
-  if (chapter.lessons.length !== expectedLessons) return false;
-  return chapter.lessons.every(
-    (lesson) =>
-      lesson.blocks.length > 0 &&
-      (!includeExercises ||
-        (lesson.exercises.length >= 3 &&
-          lesson.exercises.every(isCompleteCourseExercise))),
-  );
-}
-
 function styleInstruction(
   style: CourseGenerationParams["content_style"],
 ): string {
@@ -133,15 +116,17 @@ function exerciseSchema(includeExercises: boolean): string {
   if (!includeExercises) {
     return `Le tableau "exercises" de chaque leçon est exactement []. Aucun bloc de type "exercise" n'est présent.`;
   }
-  return `Chaque leçon contient 3 à 4 exercices. Un exercice respecte exactement :
+  return `Chaque leçon contient 2 à 3 mini-exercices. Un exercice respecte exactement :
 {
   "question": RICH_TEXT,
   "answer": RICH_TEXT,
   "hint": RICH_TEXT,
   "explanation": RICH_TEXT
 }
-Les exercices n'ont aucun id. Dans les blocs de la leçon, place un bloc {"type":"exercise","exercise_index":1}, puis 2, 3... juste après la notion correspondante. Chaque index est utilisé une seule fois.
-La réponse et la dernière conclusion de l'explication doivent être mathématiquement identiques. Ne conserve jamais une autocorrection du type « erreur », « recalculons », « en fait » ou « réponse correcte ».`;
+Les exercices n'ont aucun id. Dans les blocs de la leçon, place un bloc {"type":"exercise","exercise_index":1}, puis 2, 3... juste après l'explication ou l'exemple qui permet de le résoudre.
+Le premier exercice arrive après au moins deux blocs pédagogiques utiles. Ne place jamais deux blocs exercise consécutifs.
+Le champ question contient uniquement l'énoncé : jamais la réponse ni une partie de la correction.
+La réponse et la dernière conclusion de l'explication sont mathématiquement identiques. Ne conserve jamais une autocorrection du type « erreur », « recalculons », « en fait » ou « réponse correcte ».`;
 }
 
 function buildChapterSystemPrompt(options: {
@@ -189,15 +174,18 @@ ${RICH_TEXT_SCHEMA_PROMPT}
 
 ${COURSE_BLOCK_SCHEMA_PROMPT}
 
-═══ EXIGENCES PÉDAGOGIQUES ═══
+${STRUCTURED_COURSE_PEDAGOGY_RULES}
+
+═══ EXIGENCES DU CHAPITRE ═══
 • Retourne exactement ${options.lessonsPerChapter} leçon(s), chacune avec duration = ${options.durationPerLesson}.
-• Chaque leçon vise 420 à 650 mots utiles de contenu pédagogique, hors exercices.
-• Commence par une définition ou une mise en contexte claire, puis un exemple guidé, puis approfondis progressivement.
-• Une démonstration de 3 étapes ou plus utilise un bloc "steps".
-• Le chapitre contient au moins un vrai élément visuel structuré : "table", "graph" ou "interactive_vectors" quand la notion s'y prête.
-• Une famille de fonctions étudiée graphiquement utilise obligatoirement un bloc "graph".
+• Chaque leçon vise ${getLessonWordRange(options.durationPerLesson).target} mots utiles et contient entre ${getLessonWordRange(options.durationPerLesson).min} et ${getLessonWordRange(options.durationPerLesson).max} mots, hors exercices.
+• Chaque leçon contient au moins 7 blocs utiles. Elle comporte une section nommée « Exemple guidé », « Application guidée » ou « Méthode » avant le premier exercice, puis se termine par « Points-clés à retenir » ou « Synthèse ».
 • Aucune phrase complète ne doit être stockée dans un champ latex.
+• Un tableau de valeurs utilise table ; un tableau de signes utilise sign_table ; un tableau de variations utilise variation_table.
+• Une courbe de fonction utilise graph, jamais geometry_diagram.
 • Recalcule tous les exemples et tous les exercices avant de répondre.
+• N’introduis aucune réponse d’exercice dans son champ question.
+• Pour une étude de fonction, produis un graph et, si les variations sont étudiées, un variation_table cohérent avec ce graph.
 
 ${exerciseSchema(options.includeExercises)}
 
@@ -310,7 +298,7 @@ ${teacherDirective}`;
       24_000,
       Math.max(
         12_000,
-        lessonsPerChapter * 5_200 + (includeExercises ? 2_800 : 0),
+        lessonsPerChapter * 4_800 + (includeExercises ? 2_200 : 0),
       ),
     );
 
@@ -338,55 +326,80 @@ ${teacherDirective}`;
         const userPrompt = `Rédige maintenant le chapitre « ${chapterTitle} » du cours « ${courseTitle} ».
 Respecte exactement le format structuré demandé et le périmètre de ce chapitre.`;
 
+        const pedagogyOptions: CoursePedagogyOptions = {
+          expectedLessonCount: lessonsPerChapter,
+          includeExercises,
+          minExercises: includeExercises ? 2 : 0,
+          maxExercises: includeExercises ? 3 : 0,
+          durationPerLesson,
+          subject,
+          chapterTitle,
+        };
+
         let raw = await generate(
           userPrompt,
           systemPrompt,
           courseChapterSchema({
             lessonCount: lessonsPerChapter,
             includeExercises,
-            minExercises: 3,
-            maxExercises: 4,
+            minExercises: includeExercises ? 2 : 0,
+            maxExercises: includeExercises ? 3 : 0,
           }),
-          0.22,
+          0.2,
           chapterMaxTokens,
           false,
         );
-        let structured = normalizeStructuredCourseChapter(raw, {
-          expectedLessonCount: lessonsPerChapter,
-          durationPerLesson,
-          includeExercises,
-          maxExercisesPerLesson: 4,
-        });
-
-        if (
-          !hasEnoughStructuredLessons(
-            structured,
-            lessonsPerChapter,
+        let structured = normalizeStructuredCoursePedagogy(
+          normalizeStructuredCourseChapter(raw, {
+            expectedLessonCount: lessonsPerChapter,
+            durationPerLesson,
             includeExercises,
-          )
-        ) {
+            maxExercisesPerLesson: 3,
+          }),
+        );
+
+        const firstIssues = auditStructuredCoursePedagogy(
+          structured,
+          pedagogyOptions,
+        );
+        if (firstIssues.length > 0) {
+          const issueSummary = firstIssues
+            .slice(0, 16)
+            .map(
+              (issue, index) =>
+                `${index + 1}. ${issue.path} — ${issue.message}`,
+            )
+            .join("\n");
           raw = await generate(
-            `${userPrompt}\n\nLa sortie précédente était incomplète. Renvoie exactement ${lessonsPerChapter} leçons, chaque leçon avec des blocs structurés${includeExercises ? " et 3 à 4 exercices" : " et aucun exercice"}. Ne produis jamais de HTML ni de délimiteur $.`,
+            `${userPrompt}
+
+La sortie précédente présente les défauts suivants :
+${issueSummary}
+Renvoie une version complète qui corrige précisément ces défauts. Garde le même périmètre, exactement ${lessonsPerChapter} leçons${includeExercises ? ", 2 à 3 exercices par leçon et leurs emplacements après les explications" : " et aucun exercice"}.`,
             systemPrompt,
             courseChapterSchema({
               lessonCount: lessonsPerChapter,
               includeExercises,
-              minExercises: 3,
-              maxExercises: 4,
+              minExercises: includeExercises ? 2 : 0,
+              maxExercises: includeExercises ? 3 : 0,
             }),
             0.08,
             chapterMaxTokens,
             false,
           );
-          const retry = normalizeStructuredCourseChapter(raw, {
-            expectedLessonCount: lessonsPerChapter,
-            durationPerLesson,
-            includeExercises,
-            maxExercisesPerLesson: 4,
-          });
-          if (retry.lessons.length >= structured.lessons.length) {
-            structured = retry;
-          }
+          const retry = normalizeStructuredCoursePedagogy(
+            normalizeStructuredCourseChapter(raw, {
+              expectedLessonCount: lessonsPerChapter,
+              durationPerLesson,
+              includeExercises,
+              maxExercisesPerLesson: 3,
+            }),
+          );
+          structured = mergeBestCourseChapters(
+            structured,
+            retry,
+            pedagogyOptions,
+          );
         }
 
         if (structured.lessons.length === 0) {
@@ -398,17 +411,21 @@ Respecte exactement le format structuré demandé et le périmètre de ce chapit
           label: `cours ${courseTitle}, chapitre ${chapterTitle}`,
           enableModelRepair: quality_mode !== "fast",
         });
-        structured = repaired.value;
+        structured = normalizeStructuredCoursePedagogy(repaired.value);
         if (repaired.report.invalidBefore > 0) {
           console.info(
             `[course-ai] ${chapterTitle}: ${repaired.report.invalidBefore} formule(s) invalides, ${repaired.report.repairedByModel} corrigée(s), ${repaired.report.fallbackCount} repli(s).`,
           );
         }
 
-        const words = structuredCourseWordCount(structured);
-        if (words < lessonsPerChapter * 300) {
+        const remainingIssues = auditStructuredCoursePedagogy(
+          structured,
+          pedagogyOptions,
+        );
+        if (remainingIssues.length > 0) {
           console.warn(
-            `[course-ai] Chapitre « ${chapterTitle} » relativement court (${words} mots), conservé sans relance coûteuse.`,
+            `[course-ai] Chapitre « ${chapterTitle} » conservé avec ${remainingIssues.length} avertissement(s) pédagogique(s) après une seule relance ciblée.`,
+            remainingIssues,
           );
         }
 

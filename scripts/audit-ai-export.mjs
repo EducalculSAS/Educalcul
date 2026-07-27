@@ -20,6 +20,39 @@ function addIssue(type, location, details = {}) {
   issues.push({ type, location, ...details });
 }
 
+
+function comparable(value) {
+  return String(value ?? "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\$+/g, " ")
+    .replace(/\\[A-Za-z]+/g, " ")
+    .toLocaleLowerCase("fr")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function inspectTables(html, location) {
+  const tables = String(html).match(/<table\b[\s\S]*?<\/table>/gi) || [];
+  tables.forEach((table, tableIndex) => {
+    const rows = table.match(/<tr\b[\s\S]*?<\/tr>/gi) || [];
+    const widths = rows.map(
+      (row) => (row.match(/<(?:th|td)\b/gi) || []).length,
+    );
+    if (widths.length > 1 && new Set(widths).size > 1) {
+      addIssue("inconsistent-table-width", `${location}.table[${tableIndex}]`, {
+        widths,
+      });
+    }
+  });
+}
+
 function extractMath(value, location) {
   let rest = value;
   const patterns = [
@@ -56,6 +89,7 @@ function extractMath(value, location) {
 }
 
 function inspectString(value, location) {
+  inspectTables(value, location);
   if (/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/.test(value)) {
     addIssue("control-character", location);
   }
@@ -106,6 +140,43 @@ function walk(value, location = "root") {
           answer,
         });
       }
+    }
+  }
+
+  if (Array.isArray(value.options) && typeof value.text === "string") {
+    const stem = comparable(value.text);
+    if (/(?:^|\s)(?:option\s*)?[a-d]\s*[.)\-:]/i.test(value.text)) {
+      addIssue("quiz-option-marker-in-stem", location);
+    }
+    const duplicated = value.options.filter(
+      (option) =>
+        typeof option === "string" &&
+        comparable(option).length >= 2 &&
+        stem.includes(comparable(option)),
+    );
+    if (duplicated.length > 0) {
+      addIssue("quiz-options-duplicated-in-stem", location, {
+        count: duplicated.length,
+      });
+    }
+  }
+
+  if (
+    typeof value.content === "string" &&
+    value.correctAnswer !== undefined &&
+    !Array.isArray(value.correctAnswer)
+  ) {
+    const answer = comparable(value.correctAnswer);
+    const rawVisible = String(value.content).replace(/<[^>]*>/g, " ");
+    const questionMark = rawVisible.indexOf("?");
+    if (
+      questionMark >= 0 &&
+      answer.length >= 1 &&
+      comparable(rawVisible.slice(questionMark + 1)).includes(answer)
+    ) {
+      addIssue("exercise-answer-leaked-after-question", location, {
+        answer: String(value.correctAnswer).slice(0, 120),
+      });
     }
   }
 
@@ -176,5 +247,5 @@ if (issues.length > 0) {
   console.dir(issues, { depth: null });
   process.exitCode = 2;
 } else {
-  console.log("OK — aucune formule KaTeX invalide, aucun LaTeX brut et aucun id dupliqué.");
+  console.log("OK — LaTeX, ids, tableaux, énoncés d’exercices et questions de quiz validés.");
 }

@@ -94,15 +94,37 @@ function readableMathFallback(latex: string): string {
  * viewers. Seules les formules validées par KaTeX reçoivent des délimiteurs.
  * Une formule invalide devient du texte : aucun $ cassé ne peut être stocké. */
 export function compileStructuredRichText(value: StructuredRichText): string {
-  return value.parts
-    .map((part) => {
-      if (part.type === "text") return escapeHtml(part.value);
-      const latex = normalizeStructuredLatex(part.latex);
-      return isStructuredLatexValid(latex)
+  const compiled = value.parts.map((part) => {
+    if (part.type === "text") {
+      return {
+        html: escapeHtml(part.value),
+        source: part.value,
+      };
+    }
+    const latex = normalizeStructuredLatex(part.latex);
+    const readable = readableMathFallback(latex) || "Formule mathématique";
+    return {
+      html: isStructuredLatexValid(latex)
         ? `$${latex}$`
-        : escapeHtml(readableMathFallback(latex) || "Formule mathématique");
-    })
-    .join("");
+        : escapeHtml(readable),
+      source: readable,
+    };
+  });
+
+  let output = "";
+  compiled.forEach((part, index) => {
+    const previous = compiled[index - 1];
+    if (previous) {
+      const previousLast = previous.source.at(-1) || "";
+      const currentFirst = part.source[0] || "";
+      const alreadySeparated = /\s/.test(previousLast) || /\s/.test(currentFirst);
+      const punctuation = /^[,.;:!?%)\]}]/.test(currentFirst);
+      const opening = /[(\[{]$/.test(previousLast);
+      if (!alreadySeparated && !punctuation && !opening) output += " ";
+    }
+    output += part.html;
+  });
+  return output;
 }
 
 function compileDisplayMath(latex: string, fallbackText?: string): string {
@@ -112,6 +134,115 @@ function compileDisplayMath(latex: string, fallbackText?: string): string {
   }
   const fallback = sanitizeStructuredText(fallbackText) || readableMathFallback(normalized);
   return fallback ? `<p>${escapeHtml(fallback)}</p>` : "";
+}
+
+
+function signSymbol(
+  sign: "negative" | "zero" | "positive" | "undefined",
+): string {
+  if (sign === "negative") return "$-$";
+  if (sign === "zero") return "$0$";
+  if (sign === "undefined") return "non défini";
+  return "$+$";
+}
+
+function variationArrow(
+  direction: "increasing" | "decreasing" | "constant",
+): string {
+  if (direction === "decreasing") return "$\\searrow$";
+  if (direction === "constant") return "$\\rightarrow$";
+  return "$\\nearrow$";
+}
+
+function diagramId(value: string): string {
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash * 31 + value.charCodeAt(index)) >>> 0;
+  }
+  return `arrow-${hash.toString(36)}`;
+}
+
+function compileGeometryDiagram(
+  block: Extract<StructuredCourseBlock, { type: "geometry_diagram" }>,
+): string {
+  if (block.points.length < 2 || block.segments.length < 1) return "";
+  const pointMap = new Map(block.points.map((point) => [point.name, point]));
+  const marker = diagramId(block.caption || block.points.map((point) => point.name).join(""));
+  const polygons = block.polygons
+    .map((polygon) => {
+      const coordinates = polygon.points
+        .map((name) => pointMap.get(name))
+        .filter((point): point is { name: string; x: number; y: number; labelDx: number; labelDy: number } => Boolean(point))
+        .map((point) => `${point.x},${point.y}`)
+        .join(" ");
+      return coordinates.split(" ").length >= 3
+        ? `<polygon points="${coordinates}" fill="${polygon.filled ? "#dbeafe" : "none"}" stroke="#1e3a5f" stroke-width="1.5"/>`
+        : "";
+    })
+    .join("");
+  const circles = block.circles
+    .map((circle) => {
+      const center = pointMap.get(circle.center);
+      return center
+        ? `<circle cx="${center.x}" cy="${center.y}" r="${circle.radius}" fill="none" stroke="#1e3a5f" stroke-width="1.5"/>`
+        : "";
+    })
+    .join("");
+  const segments = block.segments
+    .map((segment) => {
+      const from = pointMap.get(segment.from);
+      const to = pointMap.get(segment.to);
+      if (!from || !to) return "";
+      return `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="#1e3a5f" stroke-width="1.5"${segment.dashed ? ' stroke-dasharray="5 4"' : ""}${segment.arrow ? ` marker-end="url(#${marker})"` : ""}/>`;
+    })
+    .join("");
+  const points = block.points
+    .map(
+      (point) =>
+        `<circle cx="${point.x}" cy="${point.y}" r="2.5" fill="#1e3a5f"/><text x="${point.x + point.labelDx}" y="${point.y + point.labelDy}" font-size="12" fill="#10213d">${escapeHtml(point.name)}</text>`,
+    )
+    .join("");
+  return `<figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${escapeAttribute(block.caption)}"><defs><marker id="${marker}" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#1e3a5f"/></marker></defs>${polygons}${circles}${segments}${points}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function sectorPath(
+  cx: number,
+  cy: number,
+  radius: number,
+  startAngle: number,
+  endAngle: number,
+): string {
+  const toPoint = (angle: number) => ({
+    x: cx + radius * Math.cos(angle),
+    y: cy + radius * Math.sin(angle),
+  });
+  const start = toPoint(startAngle);
+  const end = toPoint(endAngle);
+  const largeArc = endAngle - startAngle > Math.PI ? 1 : 0;
+  return `M ${cx} ${cy} L ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${radius} ${radius} 0 ${largeArc} 1 ${end.x.toFixed(2)} ${end.y.toFixed(2)} Z`;
+}
+
+function compileFractionModel(
+  block: Extract<StructuredCourseBlock, { type: "fraction_model" }>,
+): string {
+  const denominator = Math.max(1, Math.min(20, block.denominator));
+  const numerator = Math.max(0, Math.min(denominator, block.numerator));
+  let svg = "";
+  if (block.shape === "circle") {
+    const sectors = Array.from({ length: denominator }, (_, index) => {
+      const start = -Math.PI / 2 + (index * 2 * Math.PI) / denominator;
+      const end = -Math.PI / 2 + ((index + 1) * 2 * Math.PI) / denominator;
+      return `<path d="${sectorPath(100, 76, 58, start, end)}" fill="${index < numerator ? "#93c5fd" : "#ffffff"}" stroke="#1e3a5f" stroke-width="1.2"/>`;
+    }).join("");
+    svg = `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${escapeAttribute(block.caption)}">${sectors}</svg>`;
+  } else {
+    const width = 160 / denominator;
+    const cells = Array.from({ length: denominator }, (_, index) =>
+      `<rect x="${20 + index * width}" y="55" width="${width}" height="45" fill="${index < numerator ? "#93c5fd" : "#ffffff"}" stroke="#1e3a5f" stroke-width="1.2"/>`,
+    ).join("");
+    svg = `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${escapeAttribute(block.caption)}">${cells}</svg>`;
+  }
+  return `<figure class="course-figure">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function compileCourseBlock(
@@ -146,14 +277,11 @@ function compileCourseBlock(
       return `<blockquote class="course-callout course-callout-${variant}">${title}${paragraphs}</blockquote>`;
     }
     case "table": {
-      const variant =
-        block.variant === "sign" || block.variant === "variation"
-          ? block.variant
-          : "value";
       const headers = block.headers
         .map((header) => `<th>${compileStructuredRichText(header)}</th>`)
         .join("");
       const rows = block.rows
+        .filter((row) => row.length === block.headers.length)
         .map(
           (row) =>
             `<tr>${row
@@ -161,15 +289,57 @@ function compileCourseBlock(
               .join("")}</tr>`,
         )
         .join("");
-      if (!headers && !rows) return "";
-      return `<table class="math-table math-table-${variant}">${headers ? `<thead><tr>${headers}</tr></thead>` : ""}<tbody>${rows}</tbody></table>`;
+      if (!headers || !rows) return "";
+      return `<table class="math-table math-table-value"><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table>`;
+    }
+    case "sign_table": {
+      if (block.entries.length < 2) return "";
+      const domains = block.entries
+        .map((entry) => `<th>${compileStructuredRichText(entry.domain)}</th>`)
+        .join("");
+      const signs = block.entries
+        .map((entry) => `<td>${signSymbol(entry.sign)}</td>`)
+        .join("");
+      return `<table class="math-table math-table-sign"><thead><tr><th>${compileStructuredRichText(block.expression)}</th>${domains}</tr></thead><tbody><tr><th>Signe</th>${signs}</tr></tbody></table>`;
+    }
+    case "variation_table": {
+      if (block.intervals.length < 1) return "";
+      const headers = block.intervals
+        .map((interval) => `<th>${compileStructuredRichText(interval.domain)}</th>`)
+        .join("");
+      const variations = block.intervals
+        .map(
+          (interval) =>
+            `<td>${compileStructuredRichText(interval.startValue)} ${variationArrow(interval.direction)} ${compileStructuredRichText(interval.endValue)}</td>`,
+        )
+        .join("");
+      return `<table class="math-table math-table-variation"><thead><tr><th>${compileStructuredRichText(block.function)}</th>${headers}</tr></thead><tbody><tr><th>Variation</th>${variations}</tr></tbody></table>`;
     }
     case "graph": {
       const parameter = block.parameter
         ? ` data-param="${escapeAttribute(block.parameter.name)}" data-param-min="${block.parameter.min}" data-param-max="${block.parameter.max}" data-param-default="${block.parameter.default}"`
         : "";
-      return `<div class="math-graph-placeholder" data-function="${escapeAttribute(block.expression)}" data-xmin="${block.xmin}" data-xmax="${block.xmax}"${parameter} data-caption="${escapeAttribute(block.caption)}"></div>`;
+      const palette = ["#dc2626", "#2563eb", "#059669", "#7c3aed"];
+      const vectors = block.vectors.length
+        ? ` data-vectors='${escapeAttribute(
+            JSON.stringify(
+              block.vectors.map((vector, index) => ({
+                x: vector.x,
+                y: vector.y,
+                fromX: vector.fromX,
+                fromY: vector.fromY,
+                label: `$\\vec{${vector.label}}$`,
+                color: palette[index % palette.length],
+              })),
+            ),
+          )}'`
+        : "";
+      return `<div class="math-graph-placeholder" data-function="${escapeAttribute(block.expression)}" data-xmin="${block.xmin}" data-xmax="${block.xmax}"${parameter}${vectors} data-caption="${escapeAttribute(block.caption)}"></div>`;
     }
+    case "geometry_diagram":
+      return compileGeometryDiagram(block);
+    case "fraction_model":
+      return compileFractionModel(block);
     case "exercise": {
       const zeroBased = block.exerciseIndex - 1;
       const exerciseId = exerciseIds[zeroBased];
@@ -282,10 +452,9 @@ export function compileStructuredExerciseDraft(
     const title = `Question ${index + 1}`;
     const promptHtml = compileStructuredRichText(question.prompt);
     const supportHtml = compileStructuredRichText(question.content);
-    const statementHtml = [promptHtml, supportHtml]
-      .filter((entry) => entry.trim().length > 0)
-      .map((entry) => `<p>${entry}</p>`)
-      .join("\n");
+    const statementHtml = promptHtml.trim().length > 0
+      ? `<p>${promptHtml}</p>`
+      : "";
     const explanation = compileStructuredRichText(question.explanation);
     const answer = compileStructuredRichText(question.answer);
     const plainAnswer = structuredRichTextToPlainText(question.answer);

@@ -26,6 +26,10 @@ import {
   compileStructuredExerciseDraft,
   compileStructuredQuizDraft,
 } from "@/lib/ai/compiler";
+import {
+  STRUCTURED_COURSE_PEDAGOGY_RULES,
+  normalizeStructuredCoursePedagogy,
+} from "@/lib/ai/pedagogy";
 
 export const maxDuration = 120;
 
@@ -87,10 +91,8 @@ function inferExerciseBlockType(value: unknown, instruction: string): string {
   }
 
   const source = instruction.toLowerCase();
-  if (/vrai\s*\/\s*faux|vrai ou faux|true.?false/.test(source))
-    return "true_false";
-  if (/texte à trous|texte a trous|trou|compléter|completer/.test(source))
-    return "fill_in_the_blank";
+  if (/vrai\s*\/\s*faux|vrai ou faux|true.?false/.test(source)) return "true_false";
+  if (/texte à trous|texte a trous|trou|compléter|completer/.test(source)) return "fill_in_the_blank";
   if (/associer|association|apparier|matching/.test(source)) return "matching";
   if (/ordre|ordonner|classer|ordering/.test(source)) return "ordering";
   if (/code|algorithme|programmation/.test(source)) return "coding";
@@ -118,38 +120,51 @@ function courseSystem(options: {
 }): string {
   return `${commonSystem(options.level)}
 ${COURSE_BLOCK_SCHEMA_PROMPT}
+${STRUCTURED_COURSE_PEDAGOGY_RULES}
 Le chapitre contient exactement ${options.lessonCount} leçon(s).
-Chaque leçon a duration = ${options.duration}, 7 à 30 blocs utiles et vise environ 450 à 700 mots.
-${
-  options.includeExercises
-    ? "Chaque leçon contient exactement 3 mini-exercices et un bloc exercise pour chacun."
-    : "Chaque leçon a exercises = [] et aucun bloc exercise."
-}
+Chaque leçon a duration = ${options.duration}, au moins 7 blocs utiles et une longueur adaptée à sa durée.
+Chaque leçon contient une section explicitement nommée « Exemple guidé », « Application guidée » ou « Méthode » avant le premier exercice, puis une section finale « Points-clés à retenir » ou « Synthèse ».
+${options.includeExercises
+  ? "Chaque leçon contient 2 à 3 mini-exercices. Le champ question ne contient jamais la réponse. Un bloc exercise est placé juste après la notion et l'exemple qui permettent de le résoudre."
+  : "Chaque leçon a exercises = [] et aucun bloc exercise."}
+Pour une étude de fonction, un bloc graph est obligatoire. Un tableau de variations utilise variation_table et doit être cohérent avec le graph.
 Le serveur crée tous les identifiants.`;
 }
-
-function exerciseSystem(
-  level: string,
-  blockType: string,
-  questionCount: number,
-): string {
-  return `${commonSystem(level)}
+function exerciseSystem(level: string, blockType: string, questionCount: number): string {
+  const common = `${commonSystem(level)}
 Crée un exercice structuré contenant exactement ${questionCount} question(s).
-Chaque question possède prompt, content, answer, explanation, points, options, correct_option_indexes, accepted_answers, pairs et items.
-Type demandé : ${blockType}.
-• qcm : exactement 4 options, au moins un index correct ;
-• true_false : index [0] pour Vrai ou [1] pour Faux ;
-• fill_in_the_blank : content contient {{1}}, éventuellement {{2}} et {{3}}, avec accepted_answers correspondants ;
-• matching : 3 à 5 pairs ;
-• ordering : 3 à 5 items dans l'ordre correct ;
-• coding/standard : answer contient la solution attendue.
-Les tableaux non utilisés restent vides. Le serveur crée tous les identifiants.`;
+Le champ prompt contient uniquement l'énoncé : jamais la réponse, la correction ni les explications.
+Le serveur crée tous les identifiants.`;
+  if (blockType === "qcm") {
+    return `${common}
+Chaque question contient uniquement prompt, explanation, points, options et correct_option_indexes.
+Il y a exactement 4 options distinctes sans préfixe A./B./C./D., et le prompt ne recopie aucune option.`;
+  }
+  if (blockType === "true_false") {
+    return `${common}
+Chaque question contient uniquement prompt, explanation, points et correct_option_indexes. L'index 0 signifie Vrai et l'index 1 signifie Faux.`;
+  }
+  if (blockType === "fill_in_the_blank") {
+    return `${common}
+Chaque question contient uniquement prompt, content, explanation, points et accepted_answers. content contient {{1}}, éventuellement {{2}} et {{3}}, avec exactement un tableau de réponses acceptées par trou.`;
+  }
+  if (blockType === "matching") {
+    return `${common}
+Chaque question contient uniquement prompt, explanation, points et 3 à 5 pairs distinctes.`;
+  }
+  if (blockType === "ordering") {
+    return `${common}
+Chaque question contient uniquement prompt, explanation, points et 3 à 5 items déjà placés dans l'ordre correct.`;
+  }
+  return `${common}
+Chaque question contient uniquement prompt, answer, explanation et points. answer est la réponse exacte ; explanation se termine par la même conclusion.`;
 }
-
 function quizSystem(level: string, questionCount: number): string {
   return `${commonSystem(level)}
 Crée exactement ${questionCount} question(s) de quiz à choix unique.
-Chaque question a exactement 4 options plausibles, un correct_option_index entre 0 et 3, une explication et des points.
+Chaque question a exactement 4 options plausibles et distinctes, un correct_option_index entre 0 et 3, une explication et des points.
+Le champ text contient uniquement la question : jamais les options, jamais les préfixes A./B./C./D.
+Les options ne commencent jamais par A., B., C. ou D.
 Le serveur crée tous les identifiants.`;
 }
 
@@ -157,11 +172,12 @@ async function stabilizeCourse(
   raw: unknown,
   generate: Generate,
   lessonCount: number,
+  duration: number,
   includeExercises: boolean,
 ): Promise<StructuredCourseChapter> {
   const normalized = normalizeStructuredCourseChapter(raw, {
     expectedLessonCount: lessonCount,
-    durationPerLesson: 30,
+    durationPerLesson: duration,
     includeExercises,
     maxExercisesPerLesson: includeExercises ? 3 : 0,
   });
@@ -170,7 +186,9 @@ async function stabilizeCourse(
     label: "édition de cours",
     enableModelRepair: true,
   });
-  return repaired.value as StructuredCourseChapter;
+  return normalizeStructuredCoursePedagogy(
+    repaired.value as StructuredCourseChapter,
+  );
 }
 
 async function stabilizeExercise(
@@ -179,8 +197,11 @@ async function stabilizeExercise(
   questionCount: number,
   blockType: string,
 ): Promise<StructuredExerciseDraft> {
-  void blockType;
-  const normalized = normalizeStructuredExerciseDraft(raw, questionCount);
+  const normalized = normalizeStructuredExerciseDraft(
+    raw,
+    questionCount,
+    blockType,
+  );
   const repaired = await repairInvalidStructuredMath(normalized, {
     generate,
     label: "édition d'exercice",
@@ -206,8 +227,7 @@ async function stabilizeQuiz(
 export async function POST(request: NextRequest) {
   try {
     const admin = await requireRole(request, ["admin"]);
-    if (!admin)
-      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
     const ip = request.headers.get("x-forwarded-for") ?? "unknown";
     const config = RATE_LIMITS["ai:admin"];
@@ -289,7 +309,7 @@ export async function POST(request: NextRequest) {
       const contract = courseChapterSchema({
         lessonCount,
         includeExercises,
-        minExercises: includeExercises ? 3 : 0,
+        minExercises: includeExercises ? 2 : 0,
         maxExercises: includeExercises ? 3 : 0,
       });
       const user = `Demande : ${instruction}
@@ -306,6 +326,7 @@ Crée uniquement le chapitre structuré demandé. Pour une édition, conserve le
         raw,
         generate,
         lessonCount,
+        duration,
         includeExercises,
       );
       const compiled = compileStructuredCourseChapter(stable, {
@@ -315,8 +336,7 @@ Crée uniquement le chapitre structuré demandé. Pour une édition, conserve le
 
       if (type === "lesson" || type === "add_lesson") {
         const item = compiled.lessons[0];
-        if (type === "lesson" && typeof current.id === "string")
-          item.id = current.id;
+        if (type === "lesson" && typeof current.id === "string") item.id = current.id;
         return Response.json({ item });
       }
 
@@ -324,9 +344,7 @@ Crée uniquement le chapitre structuré demandé. Pour une édition, conserve le
         compiled.id = current.id;
         compiled.lessons = compiled.lessons.map((lesson, index) => {
           const old = asRecord(existingLessons[index]);
-          return typeof old.id === "string"
-            ? { ...lesson, id: old.id }
-            : lesson;
+          return typeof old.id === "string" ? { ...lesson, id: old.id } : lesson;
         });
       }
       return Response.json({ item: compiled });
@@ -358,7 +376,7 @@ Crée uniquement le chapitre structuré demandé. Pour une édition, conserve le
           : type === "add_page"
             ? 3
             : 1;
-      const contract = exerciseDraftSchema(questionCount);
+      const contract = exerciseDraftSchema(questionCount, blockType);
       const raw = await generate<unknown>(
         `Demande : ${instruction}
 Contexte actuel : ${JSON.stringify(content ?? {})}`,
@@ -367,35 +385,23 @@ Contexte actuel : ${JSON.stringify(content ?? {})}`,
         0.16,
         Math.min(18_000, 4_500 + questionCount * 2_800),
       );
-      const stable = await stabilizeExercise(
-        raw,
-        generate,
-        questionCount,
-        blockType,
-      );
+      const stable = await stabilizeExercise(raw, generate, questionCount, blockType);
       const compiled = compileStructuredExerciseDraft(stable, {
         blockType,
-        exerciseType:
-          type === "page" || type === "add_page" ? "contextual" : "simple",
+        exerciseType: type === "page" || type === "add_page" ? "contextual" : "simple",
       });
       const page = compiled.contentJson[0];
 
       if (type === "page" || type === "add_page") {
-        if (type === "page" && typeof current.id === "string")
-          page.id = current.id;
+        if (type === "page" && typeof current.id === "string") page.id = current.id;
         return Response.json({ item: page });
       }
 
-      const item =
-        page.blocks.find((entry) => entry.type !== "text") ?? page.blocks[0];
+      const item = page.blocks.find((entry) => entry.type !== "text") ?? page.blocks[0];
       if (!item) {
-        return Response.json(
-          { error: "Aucun bloc valide généré." },
-          { status: 422 },
-        );
+        return Response.json({ error: "Aucun bloc valide généré." }, { status: 422 });
       }
-      if (type === "block" && typeof current.id === "string")
-        item.id = current.id;
+      if (type === "block" && typeof current.id === "string") item.id = current.id;
       return Response.json({ item });
     }
 
@@ -413,13 +419,9 @@ Question actuelle ou contexte : ${JSON.stringify(content ?? {})}`,
     const compiled = compileStructuredQuizDraft(stable);
     const item = compiled.questions[0];
     if (!item) {
-      return Response.json(
-        { error: "Aucune question valide générée." },
-        { status: 422 },
-      );
+      return Response.json({ error: "Aucune question valide générée." }, { status: 422 });
     }
-    if (type === "question" && typeof current.id === "string")
-      item.id = current.id;
+    if (type === "question" && typeof current.id === "string") item.id = current.id;
     return Response.json({ item });
   } catch (error) {
     console.error("[ai-edit-structured]", error);
