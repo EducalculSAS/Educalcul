@@ -15,6 +15,7 @@ import {
   type StructuredCourseLesson,
 } from "@/lib/ai/structuredContent";
 import {
+  courseBlueprintAuditSchema,
   courseBlueprintSchema,
   courseChapterSchema,
 } from "@/lib/ai/schemas";
@@ -33,6 +34,8 @@ import {
 import { sanitizeStructuredResources } from "@/lib/ai/qualityGuard";
 import {
   CourseGenerationTelemetry,
+  auditCourseBlueprint,
+  auditCourseCoordination,
   createLessonJobs,
   deduplicateCourseChapters,
   lessonUsefulCharacterCount,
@@ -41,7 +44,11 @@ import {
   type CourseVisualFocus,
   type LessonJob,
 } from "@/lib/ai/coursePipeline";
-import { reviewCourseLesson } from "@/lib/ai/courseReview";
+import {
+  courseLessonUnstructuredMathFields,
+  replaceDuplicateCourseExercises,
+  reviewCourseLesson,
+} from "@/lib/ai/courseReview";
 
 export type CourseGenerationParams = {
   grade_level: string;
@@ -221,11 +228,47 @@ function coursePlanSummary(blueprint: CourseBlueprint): string {
         `Chapitre ${chapterIndex + 1}. ${chapter.title}\n${chapter.lessons
           .map(
             (lesson, lessonIndex) =>
-              `  ${chapterIndex + 1}.${lessonIndex + 1} ${lesson.title} — ${lesson.coreConcepts.join(" ; ")}`,
+              `  ${chapterIndex + 1}.${lessonIndex + 1} ${lesson.title}
+` +
+              `    Objectif : ${lesson.objective}
+` +
+              `    Propriétaire de : ${lesson.coreConcepts.join(" ; ")}
+` +
+              `    Sections réservées : ${lesson.requiredSections.join(" ; ")}
+` +
+              `    Exercices réservés : ${lesson.exerciseSkills.join(" ; ")}`,
           )
           .join("\n")}`,
     )
     .join("\n");
+}
+
+function lessonPositionContext(blueprint: CourseBlueprint, job: LessonJob): string {
+  const ordered = blueprint.chapters.flatMap((chapter, chapterIndex) =>
+    chapter.lessons.map((lesson, lessonIndex) => ({
+      chapterIndex,
+      lessonIndex,
+      lesson,
+    })),
+  );
+  const current = ordered.findIndex(
+    (entry) =>
+      entry.chapterIndex === job.chapterIndex && entry.lessonIndex === job.lessonIndex,
+  );
+  const previous = ordered
+    .slice(0, Math.max(0, current))
+    .map((entry) => `${entry.lesson.title} : ${entry.lesson.coreConcepts.join(" ; ")}`);
+  const next = ordered
+    .slice(current + 1)
+    .map((entry) => `${entry.lesson.title} : ${entry.lesson.coreConcepts.join(" ; ")}`);
+  return `CONTEXTE DE PROGRESSION :
+` +
+    `Déjà traité avant cette leçon :
+${formatList(previous, "• Rien : première leçon du cours.")}
+
+` +
+    `Réservé aux leçons suivantes :
+${formatList(next, "• Rien : dernière leçon du cours.")}`;
 }
 
 function buildLessonSystemPrompt(options: {
@@ -268,6 +311,14 @@ ${formatList(job.boundaries.allowedRecall, "• Aucun rappel développé.")}
 NOTIONS ATTRIBUÉES AUX AUTRES AGENTS — NE PAS LES DÉVELOPPER :
 ${formatList(job.boundaries.forbiddenDevelopments, "• Aucune.")}
 
+SECTIONS QUE LE PLAN T'ATTRIBUE — elles structurent la leçon :
+${formatList(job.lesson.requiredSections, "• Construire les sections à partir des notions propriétaires.")}
+
+COMPÉTENCES RÉSERVÉES AUX EXERCICES DE CETTE LEÇON :
+${formatList(job.lesson.exerciseSkills, "• Trois applications distinctes des notions propriétaires.")}
+
+${lessonPositionContext(blueprint, job)}
+
 ${options.programmeBlock}
 ${styleInstruction(options.style)}
 ${languageInstruction(options.language)}
@@ -281,6 +332,8 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • duration vaut exactement ${options.durationPerLesson}.
 • Budget visé pour la leçon : ${job.budget.targetMinWords} à ${job.budget.targetMaxWords} mots utiles, environ ${job.budget.targetMinChars} à ${job.budget.targetMaxChars} caractères pédagogiques. Ce budget est un plafond de densité, pas une invitation au remplissage.
 • Développe toutes les notions propriétaires avec définition, justification, méthode ou interprétation, puis arrête-toi lorsque l'objectif est couvert.
+• Les titres de sections suivent required_sections. Une section supplémentaire n'est permise que pour une unique synthèse finale.
+• Chaque exercice évalue une compétence différente de exercise_skills. Ne recycle jamais l'énoncé, les nombres ou la méthode d'un exercice visible dans la carte globale.
 • Chaque paragraphe apporte une information nouvelle. Interdits : répétitions, introductions générales, reformulations de synthèse multiples, historique décoratif et texte ajouté uniquement pour augmenter la longueur.
 • Un rappel autorisé reste bref. Une notion interdite n'est ni démontrée, ni étudiée, ni transformée en section. En cas de contradiction, la liste des notions propriétaires prime sur le titre ou le scope.
 • Progression : mise en contexte utile → construction de la notion → méthode ou justification → applications élève réparties → approfondissement utile → une seule synthèse.
@@ -430,6 +483,36 @@ function blockingIssues(
   return lessonIssues;
 }
 
+function asUnknownRecord(value: unknown): Record<string, unknown> | null {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : null;
+}
+
+function blueprintAuditMessages(raw: unknown): string[] {
+  const record = asUnknownRecord(raw);
+  const issues = Array.isArray(record?.issues) ? record.issues : [];
+  return issues.flatMap((item) => {
+    const issue = asUnknownRecord(item);
+    if (!issue) return [];
+    const location = typeof issue.location === "string" ? issue.location : "plan";
+    const message = typeof issue.message === "string" ? issue.message : "";
+    const suggestion = typeof issue.suggestion === "string" ? issue.suggestion : "";
+    if (!message) return [];
+    return [`${location} — ${message}${suggestion ? ` Correction attendue : ${suggestion}` : ""}`];
+  }).slice(0, 20);
+}
+
+function localBlueprintAuditMessages(
+  blueprint: CourseBlueprint,
+  subject: string,
+  includeExercises: boolean,
+): string[] {
+  return auditCourseBlueprint(blueprint, { subject, includeExercises })
+    .map((issue) => `${issue.location} — ${issue.message}`)
+    .slice(0, 30);
+}
+
 export async function runCourseGeneration(
   generationId: string,
   params: CourseGenerationParams,
@@ -516,13 +599,18 @@ Tu conçois EN UNE FOIS la carte complète d'un cours de mathématiques françai
 ${programmeBlock}
 
 Retourne exactement ${chapterCount} chapitres et exactement ${lessonsPerChapter} leçons par chapitre.
-Chaque leçon contient : title, objective, scope, core_concepts, prerequisite_recall, visual_focus et complexity.
+Chaque leçon contient : title, objective, scope, core_concepts, prerequisite_recall, required_sections, exercise_skills, forbidden_concepts, visual_focus et complexity.
 
 Règles impératives :
 • répartis les notions avant toute rédaction ;
 • une notion principale apparaît dans core_concepts d'UNE SEULE leçon ;
 • prerequisite_recall contient uniquement des notions déjà traitées avant cette leçon et qui pourront être rappelées en une phrase ;
+• les titres de chapitres et de leçons sont pédagogiques et spécifiques : interdiction de « partie 1 », « leçon 2 », « introduction » ou du sujet recopié comme titre ;
 • deux leçons ne doivent pas avoir le même objectif sous des formulations différentes ;
+• required_sections contient 3 à 6 sections précises, toutes différentes de celles des autres leçons ;
+• exercise_skills contient exactement 3 compétences d'exercices réellement différentes, réservées à cette leçon ;
+• forbidden_concepts énumère les notions proches qu'un rédacteur pourrait être tenté de développer mais qui appartiennent à d'autres leçons ou sont hors niveau ;
+• scope dit explicitement ce que la leçon couvre ET ce qu'elle ne couvre pas ;
 • progression conforme au programme et au niveau ;
 • aucune extension universitaire ou hors programme : pas d'exponentielle complexe, de formule d'Euler, d'analyse complexe, de série de Fourier ou de notion supérieure sauf demande explicite de l'enseignant et niveau compatible ;
 • n'ajoute pas de chapitre artificiel pour augmenter la longueur ;
@@ -534,6 +622,7 @@ Règles impératives :
 • visual_focus="figure" uniquement pour schémas, camemberts, diagrammes, géométrie ou processus ; jamais une courbe de fonction ;
 • visual_focus="none" lorsqu'aucun visuel n'apporte une vraie valeur ; toutes les leçons n'ont pas besoin d'un visuel ;
 • pour une étude de fonction, répartis définition/propriétés, variations, limites, convexité et applications entre les leçons au lieu de tout répéter partout ;
+• une notion propriétaire, une section imposée et une compétence d'exercice ne peuvent être attribuées qu'à une seule leçon ;
 • complexity vaut 1, 2 ou 3 selon la densité réelle ;
 • aucune formule, aucun HTML et aucun Markdown dans ce plan.
 
@@ -558,9 +647,9 @@ ${teacherDirective}`;
         blueprintUser,
         blueprintSystem,
         blueprintContract,
-        0.18,
+        0.12,
         blueprintMaxTokens,
-        false,
+        true,
       );
     } catch (error) {
       if (!isTruncationError(error)) throw error;
@@ -568,9 +657,9 @@ ${teacherDirective}`;
         `${blueprintUser}\nLe plan précédent était trop long. Garde exactement les quantités demandées et rends chaque scope et objective très concis.`,
         blueprintSystem,
         blueprintContract,
-        0.05,
+        0.03,
         Math.min(14_000, blueprintMaxTokens + 2_000),
-        false,
+        true,
       );
     }
 
@@ -586,36 +675,95 @@ ${teacherDirective}`;
       `${chapterCount} chapitre(s), ${totalLessonCount} leçon(s)`,
     );
 
+    const deterministicPlanIssues = localBlueprintAuditMessages(
+      blueprint,
+      subject,
+      shouldIncludeExercises,
+    );
+    let independentPlanIssues: string[] = [];
     telemetry.start("blueprint-review");
     try {
-      const reviewedBlueprintRaw = await generate(
-        `Plan à contrôler et corriger sans changer les quantités :\n${JSON.stringify(blueprint)}`,
-        `Tu es l'agent relecteur du plan global Educalcul.
+      const auditRaw = await generate(
+        `Plan à auditer sans le réécrire :\n${JSON.stringify(blueprint)}`,
+        `Tu es l'agent vérificateur indépendant du plan global Educalcul.
 Niveau : ${grade_level}. Sujet : ${subject}. Domaine : ${subject_area || "Mathématiques"}.
 ${programmeBlock}
 ${teacherDirective}
 
-Retourne le plan complet corrigé avec exactement ${chapterCount} chapitres et exactement ${lessonsPerChapter} leçons par chapitre.
-Vérifie : conformité stricte au programme, progression logique, absence de doublons entre objectifs, absence de notion universitaire ou hors niveau, attribution d'une notion principale à une seule leçon, et pertinence sémantique de visual_focus.
-Un sign_table n'est permis que pour une vraie étude de signe; jamais pour limites, croissance comparée, lien avec le logarithme, définition ou convexité. Utilise graph pour courbes/limites/asymptotes/convexité, variation_table pour variations/extrema, table pour propriétés/comparaisons, figure pour schémas non fonctionnels, et none si aucun visuel n'est utile.
-Supprime ou remplace toute extension hors programme, notamment exponentielle complexe, formule d'Euler, analyse complexe ou série de Fourier, sauf demande explicite et niveau compatible.
-Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.`,
-        blueprintContract,
+Tu ne rédiges pas le cours et tu ne réécris pas le plan. Tu signales uniquement les défauts précis.
+Vérifie obligatoirement :
+• titres pédagogiques spécifiques, jamais « partie 1 » ou « leçon 2 » ;
+• une progression logique où chaque notion principale a un seul propriétaire ;
+• objectifs, required_sections et exercise_skills distincts entre toutes les leçons ;
+• scope assez précis pour dire ce qui est couvert et exclu ;
+• prerequisite_recall uniquement vers des notions déjà traitées ;
+• forbidden_concepts pertinent et sans contradiction avec core_concepts ;
+• conformité stricte au programme et absence de notion hors niveau ;
+• visuel sémantiquement utile ;
+• aucun plan où une première leçon traite déjà tout le sujet.
+
+verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans se répéter.`,
+        courseBlueprintAuditSchema(),
         0,
-        Math.min(6_000, blueprintMaxTokens),
-        false,
+        2_200,
+        true,
       );
-      blueprint = normalizeCourseBlueprint(reviewedBlueprintRaw, {
+      independentPlanIssues = blueprintAuditMessages(auditRaw);
+      telemetry.end(
+        "blueprint-review",
+        independentPlanIssues.length > 0
+          ? `${independentPlanIssues.length} correction(s) demandée(s)`
+          : "plan validé par un agent indépendant",
+      );
+    } catch (error) {
+      telemetry.end("blueprint-review", "vérificateur indisponible, audit local conservé");
+      console.warn("[course-ai] Vérification indépendante du plan indisponible.", error);
+    }
+
+    const planFeedback = [...deterministicPlanIssues, ...independentPlanIssues]
+      .filter((message, index, all) => all.indexOf(message) === index)
+      .slice(0, 30);
+    if (planFeedback.length > 0) {
+      telemetry.start("blueprint-repair");
+      const repairedRaw = await generate(
+        `${blueprintUser}
+
+Le premier plan doit être entièrement repensé par le planificateur. Voici les défauts détectés :
+${planFeedback.map((message, index) => `${index + 1}. ${message}`).join("\n")}
+
+Retourne un nouveau plan complet, précis et non générique. Ne te contente pas de reformuler les mêmes leçons.`,
+        blueprintSystem,
+        blueprintContract,
+        0.04,
+        Math.min(14_000, blueprintMaxTokens + 2_000),
+        true,
+      );
+      blueprint = normalizeCourseBlueprint(repairedRaw, {
         subject,
         chapterCount,
         lessonsPerChapter,
         chapterRequiresGraph: (title, scope) =>
           topicRequiresFunctionGraph(subject, subject_area || "", title, scope),
       });
-      telemetry.end("blueprint-review", "plan validé par un second agent");
-    } catch (error) {
-      telemetry.end("blueprint-review", "relecteur indisponible, plan initial conservé");
-      console.warn("[course-ai] Relecture du plan indisponible; plan initial conservé.", error);
+      const remainingPlanIssues = localBlueprintAuditMessages(
+        blueprint,
+        subject,
+        shouldIncludeExercises,
+      );
+      telemetry.end(
+        "blueprint-repair",
+        remainingPlanIssues.length > 0
+          ? `${remainingPlanIssues.length} défaut(s) restant(s)`
+          : "plan corrigé par le planificateur",
+      );
+      if (remainingPlanIssues.length > 0) {
+        throw new Error(
+          `Le plan global reste insuffisamment précis après une correction :\n${remainingPlanIssues
+            .slice(0, 12)
+            .map((message, index) => `${index + 1}. ${message}`)
+            .join("\n")}`,
+        );
+      }
     }
 
     const jobs = createLessonJobs(blueprint, {
@@ -784,6 +932,8 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           telemetry.start(reviewLabel);
           let reviewed = lesson;
           let patchCount = 0;
+          let deletedExerciseCount = 0;
+          let unstructuredMathFields = courseLessonUnstructuredMathFields(lesson);
           try {
             const result = await reviewCourseLesson(lesson, {
               generate,
@@ -796,6 +946,8 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
             });
             reviewed = result.value;
             patchCount = result.report.patches;
+            deletedExerciseCount = result.report.deletedExercises;
+            unstructuredMathFields = result.report.unstructuredMathFields;
             if (result.report.warnings.length > 0) {
               console.warn(
                 `[course-ai] Relecteur ${job.lesson.title}: ${result.report.warnings.join(" | ")}`,
@@ -805,6 +957,12 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
             console.warn(
               `[course-ai] Relecteur indisponible pour « ${job.lesson.title} »; validations locales conservées.`,
               error,
+            );
+          }
+
+          if (unstructuredMathFields.length > 0) {
+            throw new Error(
+              `La leçon « ${job.lesson.title} » contient encore des mathématiques non délimitées dans : ${unstructuredMathFields.join(", ")}.`,
             );
           }
 
@@ -830,7 +988,7 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           const finalLesson = reviewedChapter.lessons[0];
           telemetry.end(
             reviewLabel,
-            `${patchCount} patch(es), ${repaired.report.fallbackCount} repli(s) KaTeX`,
+            `${patchCount} patch(es), ${deletedExerciseCount} exercice(s) supprimé(s), ${repaired.report.fallbackCount} repli(s) KaTeX`,
           );
           await queueProgress(
             `Leçon ${completedLessons + 1}/${totalLessonCount} vérifiée : ${job.lesson.title}`,
@@ -894,7 +1052,7 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
     const reviewedLessons = reviewResults.map(
       (result) => (result as PromiseFulfilledResult<StructuredCourseLesson>).value,
     );
-    const structuredChapters: StructuredCourseChapter[] = blueprint.chapters.map(
+    let structuredChapters: StructuredCourseChapter[] = blueprint.chapters.map(
       (chapter, chapterIndex) => ({
         title: chapter.title,
         lessons: jobs
@@ -904,6 +1062,40 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           .map(({ lesson }) => lesson as StructuredCourseLesson),
       }),
     );
+
+    const initialCoordinationIssues = auditCourseCoordination(
+      structuredChapters,
+      blueprint,
+    );
+    const duplicateExerciseIssues = initialCoordinationIssues.filter(
+      (issue) => issue.code === "duplicate_exercise",
+    );
+    if (duplicateExerciseIssues.length > 0) {
+      telemetry.start("coordination-review");
+      try {
+        const coordinated = await replaceDuplicateCourseExercises(
+          structuredChapters,
+          {
+            generate,
+            blueprint,
+            level: String(grade_level),
+            subject,
+            issues: duplicateExerciseIssues,
+          },
+        );
+        structuredChapters = coordinated.value;
+        telemetry.end(
+          "coordination-review",
+          `${coordinated.replacements} exercice(s) inter-leçons remplacé(s)`,
+        );
+      } catch (error) {
+        telemetry.end("coordination-review", "coordinateur indisponible");
+        console.warn(
+          "[course-ai] Le coordinateur final des exercices est indisponible.",
+          error,
+        );
+      }
+    }
 
     const deduplicated = deduplicateCourseChapters(structuredChapters);
     let finalStructuredChapters = deduplicated.chapters.map(
@@ -935,6 +1127,36 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
     } else if (deduplicated.removedBlocks > 0) {
       console.info(
         `[course-ai] ${deduplicated.removedBlocks} bloc(s) quasi identique(s) supprimé(s) entre les leçons.`,
+      );
+    }
+
+    const finalCoordinationIssues = auditCourseCoordination(
+      finalStructuredChapters,
+      blueprint,
+    );
+    const blockingCoordinationIssues = finalCoordinationIssues.filter(
+      (issue) =>
+        issue.code === "duplicate_exercise" || issue.code === "duplicate_content",
+    );
+    const coverageWarnings = finalCoordinationIssues.filter(
+      (issue) => issue.code === "missing_owned_concept",
+    );
+    if (coverageWarnings.length > 0) {
+      console.warn(
+        `[course-ai] Audit de couverture : ${coverageWarnings
+          .map((issue) => `${issue.first}: ${issue.message}`)
+          .join(" | ")}`,
+      );
+    }
+    if (blockingCoordinationIssues.length > 0) {
+      throw new Error(
+        `Le cours contient encore des répétitions inter-leçons avant enregistrement :\n${blockingCoordinationIssues
+          .slice(0, 10)
+          .map(
+            (issue, index) =>
+              `${index + 1}. ${issue.first} / ${issue.second} — ${issue.message}`,
+          )
+          .join("\n")}`,
       );
     }
 
@@ -1022,8 +1244,11 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
         thumbnail_url: "",
         folder_id: folder_id || null,
         content_json: contentJson,
-        estimated_time:
-          chapterCount * lessonsPerChapter * (durationPerLesson / 60),
+        estimated_time: finalStructuredChapters.reduce(
+          (total, chapter) =>
+            total + chapter.lessons.reduce((sum, lesson) => sum + lesson.duration, 0),
+          0,
+        ),
         is_published: false,
       })
       .select()
@@ -1039,7 +1264,7 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
       details: {
         title: courseRow.title,
         status: courseRow.status,
-        source: "ai_multi_agent_markdown_v2_6",
+        source: "ai_coordinated_planning_v2_7",
         useful_characters: actualUsefulCharacters,
         timings_ms: telemetry.summary(),
       },
