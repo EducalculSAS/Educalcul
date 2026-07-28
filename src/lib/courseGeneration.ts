@@ -638,36 +638,27 @@ ${teacherDirective}`;
       chapterCount,
       lessonsPerChapter,
     });
-    // Leanstral consomme une partie du budget dans son raisonnement. Un plan de
-    // six leçons dépassait régulièrement 4 500 tokens, provoquant un second
-    // appel coûteux. Le premier appel reçoit donc directement un budget sûr,
-    // tandis que le prompt et le schéma plafonnent la verbosité.
-    const blueprintMaxTokens = Math.min(
-      10_000,
-      Math.max(6_500, 3_000 + totalLessonCount * 500),
+    // Leanstral 1.5 accepte jusqu'à 128k tokens de sortie. Le blueprint est
+    // une petite structure JSON mais le raisonnement interne du modèle peut
+    // consommer une part importante de max_tokens. On lui donne donc, dès le
+    // premier appel, le plafond du modèle au lieu de relancer le même plan avec
+    // des budgets croissants. max_tokens reste un plafond, pas une longueur
+    // cible : le modèle s'arrête normalement dès que l'objet JSON est terminé.
+    const blueprintMaxTokens = envNumber(
+      "AI_COURSE_BLUEPRINT_MAX_TOKENS",
+      128_000,
+      12_000,
+      128_000,
     );
 
-    let rawBlueprint: unknown;
-    try {
-      rawBlueprint = await generate(
-        blueprintUser,
-        blueprintSystem,
-        blueprintContract,
-        0.12,
-        blueprintMaxTokens,
-        true,
-      );
-    } catch (error) {
-      if (!isTruncationError(error)) throw error;
-      rawBlueprint = await generate(
-        `${blueprintUser}\nLe plan précédent était trop long. Garde exactement les quantités demandées et rends chaque scope et objective très concis.`,
-        blueprintSystem,
-        blueprintContract,
-        0.05,
-        Math.min(10_000, blueprintMaxTokens + 2_000),
-        true,
-      );
-    }
+    const rawBlueprint = await generate(
+      blueprintUser,
+      blueprintSystem,
+      blueprintContract,
+      0.12,
+      blueprintMaxTokens,
+      true,
+    );
 
     let blueprint = normalizeCourseBlueprint(rawBlueprint, {
       subject,
@@ -711,7 +702,7 @@ Vérifie obligatoirement :
 verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans se répéter.`,
         courseBlueprintAuditSchema(),
         0.05,
-        3_000,
+        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 16_000, 3_000, 128_000),
         false,
       );
       independentPlanIssues = blueprintAuditMessages(auditRaw);
@@ -741,7 +732,7 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
         blueprintSystem,
         blueprintContract,
         0.08,
-        Math.min(10_000, blueprintMaxTokens + 2_000),
+        blueprintMaxTokens,
         true,
       );
       blueprint = normalizeCourseBlueprint(repairedRaw, {
