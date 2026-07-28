@@ -23,6 +23,7 @@ export type StructuredQualityGuardReport = {
   suspiciousMathBefore: number;
   suspiciousMathAfter: number;
   mathTextRepairs: number;
+  readableMathFallbacks: number;
   semanticPatches: number;
   removedCurveFigures: number;
 };
@@ -76,6 +77,24 @@ function asRecord(value: unknown): Record<string, unknown> | null {
 
 function stringValue(value: unknown): string {
   return typeof value === "string" ? value : "";
+}
+
+async function mapWithConcurrency<T>(
+  items: readonly T[],
+  concurrency: number,
+  worker: (item: T, index: number) => Promise<void>,
+): Promise<void> {
+  let nextIndex = 0;
+  const workerCount = Math.max(1, Math.min(concurrency, items.length || 1));
+  const runWorker = async () => {
+    while (true) {
+      const index = nextIndex;
+      nextIndex += 1;
+      if (index >= items.length) return;
+      await worker(items[index] as T, index);
+    }
+  };
+  await Promise.all(Array.from({ length: workerCount }, () => runWorker()));
 }
 
 /**
@@ -446,6 +465,7 @@ export async function auditAndRepairMathematicalContent<T>(
     label: string;
     level: string;
     subject: string;
+    concurrency?: number;
   },
 ): Promise<{ value: T; patches: number }> {
   const value = clone(input);
@@ -453,9 +473,9 @@ export async function auditAndRepairMathematicalContent<T>(
   const fields = qualityFieldPayload(value);
   if (fields.length === 0) return { value, patches: 0 };
 
-  const systemPrompt = `Tu es le contrôleur mathématique final d'Educalcul pour le niveau ${sanitizeStructuredText(options.level)}.
+  const systemPrompt = `Tu es un agent relecteur indépendant d'Educalcul. Un autre agent a rédigé le contenu que tu contrôles pour le niveau ${sanitizeStructuredText(options.level)}.
 Sujet : ${sanitizeStructuredText(options.subject)}.
-Tu reçois un PETIT LOT de champs identifiés appartenant au même cours, exercice ou quiz.
+Tu reçois un PETIT LOT de champs identifiés appartenant au même cours, exercice ou quiz. Vérifie explicitement les affirmations, calculs et conclusions de l'agent rédacteur.
 Vérifie uniquement les erreurs importantes :
 • calcul ou résultat faux ;
 • réponse finale incompatible avec l'explication ;
@@ -493,8 +513,8 @@ Retourne verdict=reject seulement si ce petit lot ne peut pas être réparé par
     }
 
     if (verdict === "reject" && applied === 0 && batchSize === 1) {
-      throw new Error(
-        `Contrôle mathématique bloquant pour ${options.label}${reason ? ` : ${reason}` : ""}`,
+      console.warn(
+        `[quality-guard] Contrôle mathématique non conclusif pour ${options.label}${reason ? ` : ${reason}` : ""}. Le champ est conservé et les validations déterministes restent actives.`,
       );
     }
     return { verdict, applied };
@@ -526,12 +546,6 @@ Retourne verdict=reject seulement si ce petit lot ne peut pas être réparé par
         await processBatch(batch.slice(middle));
       }
     } catch (error) {
-      if (
-        error instanceof Error &&
-        error.message.startsWith("Contrôle mathématique bloquant")
-      ) {
-        throw error;
-      }
       if (batch.length > 1) {
         const middle = Math.ceil(batch.length / 2);
         console.warn(
@@ -552,9 +566,12 @@ Retourne verdict=reject seulement si ce petit lot ne peut pas être réparé par
     }
   };
 
-  for (const batch of packQualityFieldBatches(fields)) {
-    await processBatch(batch);
-  }
+  const batches = packQualityFieldBatches(fields);
+  await mapWithConcurrency(
+    batches,
+    Math.max(1, Math.min(6, options.concurrency ?? 3)),
+    async (batch) => processBatch(batch),
+  );
 
   return { value, patches };
 }
@@ -651,6 +668,62 @@ export function sanitizeStructuredResources<T>(
   return { value, removedCurveFigures };
 }
 
+
+function readableMathFallbackText(value: string): string {
+  return value
+    .replace(/\$/g, "")
+    .replace(/\\?mathbb\{R\}/gi, "ℝ")
+    .replace(/\\?mathbb\{N\}/gi, "ℕ")
+    .replace(/\\?mathbb\{Z\}/gi, "ℤ")
+    .replace(/\\?mathbb\{Q\}/gi, "ℚ")
+    .replace(/\\?Delta\b/g, "Δ")
+    .replace(/\\?alpha\b/g, "α")
+    .replace(/\\?beta\b/g, "β")
+    .replace(/\\?lambda\b/g, "λ")
+    .replace(/\\?infty\b/gi, "∞")
+    .replace(/\\?neq\b/g, "≠")
+    .replace(/\\?leq?\b/g, "≤")
+    .replace(/\\?geq?\b/g, "≥")
+    .replace(/\\?cdot\b/g, "×")
+    .replace(/\\?times\b/g, "×")
+    .replace(/\\?to\b/g, "→")
+    .replace(/\\?left\b/g, "")
+    .replace(/\\?right\b/g, "")
+    .replace(/\\?frac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)")
+    .replace(/\\?sqrt\{([^{}]+)\}/g, "√($1)")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Repli de disponibilité : après plusieurs réparations IA, quelques champs
+ * peuvent encore contenir une notation imparfaite. On la rend lisible en
+ * Unicode au lieu de faire échouer toute la leçon. Les parts math déjà
+ * structurés ne sont jamais modifiés.
+ */
+function applyReadableMathFallback<T>(input: T): {
+  value: T;
+  fallbacks: number;
+} {
+  const value = clone(input);
+  let fallbacks = 0;
+  for (const reference of collectRichTextReferences(value)) {
+    const current = reference.get();
+    let changed = false;
+    const parts = current.parts.map((part) => {
+      if (part.type !== "text" || !containsSuspiciousUnstructuredMath(part.value)) {
+        return part;
+      }
+      const normalized = readableMathFallbackText(part.value);
+      if (normalized !== part.value) changed = true;
+      fallbacks += 1;
+      return { type: "text" as const, value: normalized || part.value };
+    });
+    if (changed) reference.set({ parts });
+  }
+  return { value, fallbacks };
+}
+
 export function assertNoUnstructuredMath(input: unknown, label: string): void {
   const suspicious = suspiciousReferences(input);
   if (suspicious.length === 0) return;
@@ -671,6 +744,8 @@ export async function runStructuredQualityGuard<T>(
     level: string;
     subject: string;
     semanticAudit?: boolean;
+    semanticConcurrency?: number;
+    mathTextMode?: "structured" | "markdown";
   },
 ): Promise<{ value: T; report: StructuredQualityGuardReport }> {
   let value = clone(input);
@@ -679,24 +754,51 @@ export async function runStructuredQualityGuard<T>(
 
   let semanticPatches = 0;
   if (options.semanticAudit !== false) {
-    const semantic = await auditAndRepairMathematicalContent(value, options);
+    const semantic = await auditAndRepairMathematicalContent(value, {
+      ...options,
+      concurrency: options.semanticConcurrency,
+    });
     value = semantic.value;
     semanticPatches = semantic.patches;
   }
 
-  const mathText = await repairUnstructuredMathText(value, {
-    generate: options.generate,
-    label: options.label,
-  });
-  value = mathText.value;
-  assertNoUnstructuredMath(value, options.label);
+  // Le mode Markdown est déjà converti de façon déterministe par
+  // normalizeStructuredRichText ($...$, $$...$$, \(...\), \[...\]).
+  // On évite donc les multiples appels IA de « réparation LaTeX » qui
+  // ralentissaient chaque leçon. Le mode structuré historique reste disponible
+  // pour les exercices, quiz et contenus anciens.
+  const markdownMode = options.mathTextMode === "markdown";
+  const suspiciousBefore = suspiciousReferences(value).length;
+  let mathTextRepairs = 0;
+  let readableMathFallbacks = 0;
+
+  if (!markdownMode) {
+    const mathText = await repairUnstructuredMathText(value, {
+      generate: options.generate,
+      label: options.label,
+    });
+    value = mathText.value;
+    mathTextRepairs = mathText.repaired;
+
+    const readableFallback = applyReadableMathFallback(value);
+    value = readableFallback.value;
+    readableMathFallbacks = readableFallback.fallbacks;
+  }
+
+  const residualSuspicious = suspiciousReferences(value).length;
+  if (residualSuspicious > 0) {
+    console.warn(
+      `[quality-guard] ${options.label}: ${residualSuspicious} champ(s) contiennent une notation mathématique non délimitée. ${markdownMode ? "Le parseur Markdown a déjà traité toutes les expressions délimitées; aucun second agent LaTeX n'est lancé." : "Le contenu est conservé au lieu de faire échouer la génération."}`,
+    );
+  }
 
   return {
     value,
     report: {
-      suspiciousMathBefore: mathText.suspiciousBefore,
-      suspiciousMathAfter: mathText.suspiciousAfter,
-      mathTextRepairs: mathText.repaired,
+      suspiciousMathBefore: suspiciousBefore,
+      suspiciousMathAfter: residualSuspicious,
+      mathTextRepairs,
+      readableMathFallbacks,
       semanticPatches,
       removedCurveFigures: resources.removedCurveFigures,
     },

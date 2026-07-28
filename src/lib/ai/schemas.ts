@@ -28,7 +28,7 @@ const mathPart: JsonSchema = {
   ...noExtra,
 };
 
-const richText: JsonSchema = {
+const structuredRichTextObject: JsonSchema = {
   type: "object",
   properties: {
     parts: {
@@ -42,18 +42,34 @@ const richText: JsonSchema = {
   ...noExtra,
 };
 
+// Les générateurs récents peuvent écrire les champs enrichis sous forme de
+// chaînes Markdown avec mathématiques délimitées par $...$ ou $$...$$. Le
+// normaliseur les transforme ensuite localement en parts text/math. On garde
+// l'ancien objet parts pour compatibilité avec les exercices et quiz existants.
+const richText: JsonSchema = {
+  oneOf: [
+    { type: "string", minLength: 1 },
+    structuredRichTextObject,
+  ],
+};
+
 const optionalRichText: JsonSchema = {
-  type: "object",
-  properties: {
-    parts: {
-      type: "array",
-      minItems: 0,
-      maxItems: 30,
-      items: { oneOf: [textPart, mathPart] },
+  oneOf: [
+    { type: "string" },
+    {
+      type: "object",
+      properties: {
+        parts: {
+          type: "array",
+          minItems: 0,
+          maxItems: 30,
+          items: { oneOf: [textPart, mathPart] },
+        },
+      },
+      required: ["parts"],
+      ...noExtra,
     },
-  },
-  required: ["parts"],
-  ...noExtra,
+  ],
 };
 
 const paragraphBlock: JsonSchema = {
