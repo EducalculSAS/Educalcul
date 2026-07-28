@@ -335,12 +335,58 @@ export function normalizeCourseBlueprint(
         let candidate = fallback;
         let suffix = 2;
         while (conceptOwners.has(canonical(candidate))) {
-          candidate = `${fallback} — approfondissement ${suffix}`;
+          candidate = `${fallback} — compétence spécifique ${suffix}`;
           suffix += 1;
         }
         conceptOwners.add(canonical(candidate));
         owned.push(candidate);
       }
+
+      // Un modèle peut proposer plusieurs formulations globales identiques
+      // (« propriétés », « applications », etc.). La propriété exclusive les
+      // transforme alors en rappels et peut laisser une seule notion à une
+      // leçon pourtant bien planifiée. Ce défaut de métadonnée ne doit jamais
+      // provoquer une seconde génération complète du blueprint. On complète
+      // localement avec des intitulés déjà présents dans le plan de la leçon
+      // (titre, sections et compétences), tout en conservant l'unicité globale.
+      if (owned.length < 2) {
+        const candidates = uniqueConcepts([
+          lesson.title,
+          ...lesson.requiredSections,
+          ...lesson.exerciseSkills,
+          lesson.objective,
+          lesson.scope,
+        ]);
+        for (const rawCandidate of candidates) {
+          const candidate = conciseConceptLabel(rawCandidate);
+          const key = canonical(candidate);
+          if (!key || conceptOwners.has(key) || owned.some((item) => canonical(item) === key)) {
+            continue;
+          }
+          conceptOwners.add(key);
+          owned.push(candidate);
+          if (owned.length >= 2) break;
+        }
+      }
+
+      if (owned.length < 2) {
+        const anchor = conciseConceptLabel(
+          lesson.requiredSections[0] ||
+            lesson.exerciseSkills[0] ||
+            lesson.objective ||
+            lesson.scope,
+        );
+        const base = `${lesson.title} — ${anchor || "compétence centrale"}`;
+        let candidate = base;
+        let suffix = 2;
+        while (conceptOwners.has(canonical(candidate))) {
+          candidate = `${base} ${suffix}`;
+          suffix += 1;
+        }
+        conceptOwners.add(canonical(candidate));
+        owned.push(candidate);
+      }
+
       lesson.coreConcepts = owned.slice(0, 7);
       lesson.prerequisiteRecall = uniqueConcepts([
         ...lesson.prerequisiteRecall,
@@ -365,6 +411,13 @@ export function normalizeCourseBlueprint(
     ),
     chapters,
   };
+}
+
+function conciseConceptLabel(value: string): string {
+  const text = cleanPlain(value);
+  if (!text) return "";
+  const words = text.split(/\s+/);
+  return words.length <= 16 ? text : words.slice(0, 16).join(" ");
 }
 
 function uniqueConcepts(values: string[]): string[] {

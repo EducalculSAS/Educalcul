@@ -651,6 +651,7 @@ Chaque leçon contient : title, objective, scope, core_concepts, prerequisite_re
 
 Règles impératives :
 • répartis les notions avant toute rédaction ;
+• core_concepts contient 2 à 4 notions ou compétences courtes et réellement propres à la leçon ;
 • une notion principale apparaît dans core_concepts d'UNE SEULE leçon ;
 • prerequisite_recall contient uniquement des notions déjà traitées avant cette leçon et qui pourront être rappelées en une phrase ;
 • les titres de chapitres et de leçons sont pédagogiques et spécifiques : interdiction de « partie 1 », « leçon 2 », « introduction » ou du sujet recopié comme titre ;
