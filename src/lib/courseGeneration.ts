@@ -48,6 +48,8 @@ import {
   courseLessonUnstructuredMathFields,
   replaceDuplicateCourseExercises,
   reviewCourseLesson,
+  verifyCourseGloballyForPublication,
+  verifyCourseLessonForPublication,
 } from "@/lib/ai/courseReview";
 
 export type CourseGenerationParams = {
@@ -345,6 +347,9 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
 • Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.
 • Recalcule chaque formule, exemple et exercice. Distingue minimum et infimum, implication et équivalence.
+• Ne confonds jamais fonction croissante, vitesse de croissance constante et convexité : si $f''>0$, la pente augmente.
+• Pour une application numérique, conserve la formule exacte, les unités et la même valeur arrondie dans answer et explanation.
+• Avant toute comparaison de constantes ou de bases, vérifie numériquement le rapport utilisé.
 • Pas de leçon supplémentaire, pas de préface hors JSON.
 
 ${exerciseSchema(options.includeExercises)}
@@ -579,6 +584,31 @@ export async function runCourseGeneration(
     10,
   );
   const reviewLimit = createTaskLimiter(reviewerConcurrency);
+  const publicationGateEnabled = process.env.AI_COURSE_PUBLICATION_GATE !== "0";
+  const publicationReviewMaxTokens = envNumber(
+    "AI_COURSE_PUBLICATION_REVIEW_MAX_TOKENS",
+    32_000,
+    8_000,
+    128_000,
+  );
+  const publicationRepairMaxTokens = envNumber(
+    "AI_COURSE_PUBLICATION_REPAIR_MAX_TOKENS",
+    32_000,
+    8_000,
+    128_000,
+  );
+  const globalPublicationReviewMaxTokens = envNumber(
+    "AI_COURSE_GLOBAL_REVIEW_MAX_TOKENS",
+    64_000,
+    12_000,
+    128_000,
+  );
+  const globalPublicationRepairMaxTokens = envNumber(
+    "AI_COURSE_GLOBAL_REPAIR_MAX_TOKENS",
+    48_000,
+    12_000,
+    128_000,
+  );
   const programmeBlock = getProgrammePromptBlock(String(grade_level));
   const teacherDirective = additional_info?.trim()
     ? `Instructions prioritaires de l'enseignant :\n${additional_info.trim()}`
@@ -1132,6 +1162,129 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
       );
     }
 
+    if (publicationGateEnabled) {
+      telemetry.start("publication-gate");
+      const publicationEntries = jobs.map((job) => ({
+        job,
+        lesson: finalStructuredChapters[job.chapterIndex]?.lessons[job.lessonIndex],
+      }));
+      const publicationResults = await mapSettledWithConcurrency(
+        publicationEntries,
+        reviewerConcurrency,
+        async ({ job, lesson }) => {
+          if (!lesson) {
+            throw new Error(`Leçon finale introuvable : ${job.lesson.title}.`);
+          }
+          if (await tracker.isCancelRequested()) {
+            throw new GenerationCancelledError();
+          }
+          const label = `publication-check c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
+          telemetry.start(label);
+          const checked = await verifyCourseLessonForPublication(lesson, {
+            generate,
+            courseTitle: blueprint.title,
+            chapterTitle: job.chapter.title,
+            lessonPlan: job.lesson,
+            boundaries: job.boundaries,
+            level: String(grade_level),
+            subject,
+            reviewMaxTokens: publicationReviewMaxTokens,
+            repairMaxTokens: publicationRepairMaxTokens,
+          });
+          if (checked.report.unresolved.length > 0) {
+            throw new Error(
+              `La leçon « ${job.lesson.title} » ne franchit pas la barrière de publication :\n${checked.report.unresolved
+                .slice(0, 12)
+                .map(
+                  (issue, index) =>
+                    `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
+                )
+                .join("\n")}`,
+            );
+          }
+          telemetry.end(
+            label,
+            `${checked.report.patches} patch(es), 0 erreur bloquante restante`,
+          );
+          return checked.value;
+        },
+      );
+
+      const publicationFailures = publicationResults
+        .map((result, index) =>
+          result.status === "rejected"
+            ? { job: publicationEntries[index]?.job, reason: result.reason }
+            : null,
+        )
+        .filter(
+          (entry): entry is { job: LessonJob; reason: unknown } => Boolean(entry?.job),
+        );
+      publicationFailures.forEach(({ job, reason }) => {
+        console.error(
+          `[course-ai] Barrière de publication refusée pour « ${job.lesson.title} » :`,
+          reason,
+        );
+      });
+      if (publicationFailures.length > 0) {
+        throw new Error(
+          `Le cours n'a pas été enregistré car ${publicationFailures.length} leçon(s) contiennent encore une erreur mathématique ou pédagogique bloquante : ${publicationFailures
+            .map(({ job }) => job.lesson.title)
+            .join(", ")}.`,
+        );
+      }
+
+      const checkedLessons = publicationResults.map(
+        (result) =>
+          (result as PromiseFulfilledResult<StructuredCourseLesson>).value,
+      );
+      finalStructuredChapters = blueprint.chapters.map((chapter, chapterIndex) => ({
+        title: chapter.title,
+        lessons: jobs
+          .map((job, index) => ({ job, lesson: checkedLessons[index] }))
+          .filter(({ job }) => job.chapterIndex === chapterIndex)
+          .sort((left, right) => left.job.lessonIndex - right.job.lessonIndex)
+          .map(({ lesson }) => normalizeStructuredCoursePedagogy({
+            title: chapter.title,
+            lessons: [lesson],
+          }).lessons[0] as StructuredCourseLesson),
+      }));
+      telemetry.end(
+        "publication-gate",
+        `${totalLessonCount} leçon(s) validée(s), mode fail-closed`,
+      );
+
+      telemetry.start("publication-global");
+      const globalCheck = await verifyCourseGloballyForPublication(
+        finalStructuredChapters,
+        {
+          generate,
+          blueprint,
+          level: String(grade_level),
+          subject,
+          reviewMaxTokens: globalPublicationReviewMaxTokens,
+          repairMaxTokens: globalPublicationRepairMaxTokens,
+        },
+      );
+      if (globalCheck.report.unresolved.length > 0) {
+        throw new Error(
+          `Le cours ne franchit pas le contrôle global de publication :\n${globalCheck.report.unresolved
+            .slice(0, 15)
+            .map(
+              (issue, index) =>
+                `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
+            )
+            .join("\n")}`,
+        );
+      }
+      finalStructuredChapters = globalCheck.value.map(
+        normalizeStructuredCoursePedagogy,
+      );
+      telemetry.end(
+        "publication-global",
+        `${globalCheck.report.patches} patch(es), cohérence inter-leçons validée`,
+      );
+    }
+
     const finalCoordinationIssues = auditCourseCoordination(
       finalStructuredChapters,
       blueprint,
@@ -1266,7 +1419,9 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
       details: {
         title: courseRow.title,
         status: courseRow.status,
-        source: "ai_coordinated_planning_v2_7",
+        source: publicationGateEnabled
+          ? "ai_publication_gate_v2_8"
+          : "ai_coordinated_planning_v2_7",
         useful_characters: actualUsefulCharacters,
         timings_ms: telemetry.summary(),
       },

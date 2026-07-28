@@ -162,6 +162,50 @@ function addPlainReference(
   });
 }
 
+function addEnumArrayReference<T extends string>(
+  references: ReviewReference[],
+  id: string,
+  path: string,
+  role: string,
+  get: () => T[],
+  set: (value: T[]) => void,
+  allowed: readonly T[],
+): void {
+  references.push({
+    id,
+    path,
+    role,
+    value: () => get().join(", "),
+    set: (replacement) => {
+      const parsed = replacement
+        .split(/[,;|]/)
+        .map((item) => item.trim().toLowerCase())
+        .filter((item): item is T => allowed.includes(item as T));
+      if (parsed.length > 0) set(parsed);
+    },
+  });
+}
+
+function addNumberReference(
+  references: ReviewReference[],
+  id: string,
+  path: string,
+  role: string,
+  get: () => number,
+  set: (value: number) => void,
+): void {
+  references.push({
+    id,
+    path,
+    role,
+    value: () => String(get()),
+    set: (replacement) => {
+      const parsed = Number(replacement.replace(",", ".").trim());
+      if (Number.isFinite(parsed)) set(parsed);
+    },
+  });
+}
+
 function collectBlockReferences(
   blocks: StructuredCourseBlock[],
   references: ReviewReference[],
@@ -287,6 +331,28 @@ function collectBlockReferences(
             },
           ),
         );
+        addEnumArrayReference(
+          references,
+          `${idPrefix}-interval-signs`,
+          `${path}.intervalSigns`,
+          "sign_table_interval_signs",
+          () => block.intervalSigns,
+          (value) => {
+            if (value.length === block.boundaries.length + 1) block.intervalSigns = value;
+          },
+          ["negative", "zero", "positive", "undefined"] as const,
+        );
+        addEnumArrayReference(
+          references,
+          `${idPrefix}-boundary-signs`,
+          `${path}.boundarySigns`,
+          "sign_table_boundary_signs",
+          () => block.boundarySigns,
+          (value) => {
+            if (value.length === block.boundaries.length) block.boundarySigns = value;
+          },
+          ["negative", "zero", "positive", "undefined"] as const,
+        );
         break;
       case "variation_table":
         addRichReference(
@@ -333,6 +399,28 @@ function collectBlockReferences(
             },
           ),
         );
+        addEnumArrayReference(
+          references,
+          `${idPrefix}-directions`,
+          `${path}.directions`,
+          "variation_directions",
+          () => block.directions,
+          (value) => {
+            if (value.length === Math.max(1, block.points.length - 1)) block.directions = value;
+          },
+          ["up", "down", "constant"] as const,
+        );
+        addEnumArrayReference(
+          references,
+          `${idPrefix}-derivative-signs`,
+          `${path}.derivativeSigns`,
+          "variation_derivative_signs",
+          () => block.derivativeSigns,
+          (value) => {
+            if (value.length === Math.max(1, block.points.length - 1)) block.derivativeSigns = value;
+          },
+          ["negative", "zero", "positive", "undefined"] as const,
+        );
         break;
       case "graph":
         addPlainReference(
@@ -353,6 +441,26 @@ function collectBlockReferences(
           () => block.caption,
           (value) => {
             block.caption = value;
+          },
+        );
+        addNumberReference(
+          references,
+          `${idPrefix}-xmin`,
+          `${path}.xmin`,
+          "graph_xmin",
+          () => block.xmin,
+          (value) => {
+            if (value < block.xmax) block.xmin = value;
+          },
+        );
+        addNumberReference(
+          references,
+          `${idPrefix}-xmax`,
+          `${path}.xmax`,
+          "graph_xmax",
+          () => block.xmax,
+          (value) => {
+            if (value > block.xmin) block.xmax = value;
           },
         );
         break;
@@ -799,3 +907,697 @@ Réponds uniquement avec le JSON demandé.`,
   return { value, replacements: applied };
 }
 
+
+export type CoursePublicationIssueCategory =
+  | "mathematical_error"
+  | "answer_explanation_conflict"
+  | "numerical_error"
+  | "proof_error"
+  | "graph_or_table_error"
+  | "level_mismatch"
+  | "scope_error"
+  | "truncated_content"
+  | "notation_error";
+
+export type CoursePublicationIssue = {
+  id: string;
+  severity: "blocking" | "warning";
+  category: CoursePublicationIssueCategory;
+  message: string;
+  expectedFix: string;
+  source: "deterministic" | "independent_judge";
+};
+
+export type CoursePublicationGateReport = {
+  deterministicIssuesBefore: number;
+  judgeIssuesBefore: number;
+  patches: number;
+  deterministicIssuesAfter: number;
+  judgeIssuesAfter: number;
+  unresolved: CoursePublicationIssue[];
+};
+
+type PublicationGateOptions = ReviewOptions & {
+  reviewMaxTokens: number;
+  repairMaxTokens: number;
+};
+
+type ApproximateNumber = {
+  value: number;
+  decimals: number;
+  raw: string;
+};
+
+function publicationJudgeContract(maxIssues: number): JsonSchemaContract {
+  return {
+    name: "educalcul_course_publication_judge",
+    description:
+      "Audit adversarial indépendant avant publication d'une leçon de mathématiques.",
+    schema: {
+      type: "object",
+      properties: {
+        verdict: { type: "string", enum: ["pass", "fail"] },
+        summary: { type: "string" },
+        issues: {
+          type: "array",
+          minItems: 0,
+          maxItems: Math.max(1, maxIssues),
+          items: {
+            type: "object",
+            properties: {
+              id: { type: "string", minLength: 1 },
+              severity: { type: "string", enum: ["blocking", "warning"] },
+              category: {
+                type: "string",
+                enum: [
+                  "mathematical_error",
+                  "answer_explanation_conflict",
+                  "numerical_error",
+                  "proof_error",
+                  "graph_or_table_error",
+                  "level_mismatch",
+                  "scope_error",
+                  "truncated_content",
+                  "notation_error",
+                ],
+              },
+              message: { type: "string", minLength: 5 },
+              expected_fix: { type: "string", minLength: 3 },
+            },
+            required: [
+              "id",
+              "severity",
+              "category",
+              "message",
+              "expected_fix",
+            ],
+            ...noExtra,
+          },
+        },
+      },
+      required: ["verdict", "summary", "issues"],
+      ...noExtra,
+    },
+  };
+}
+
+function publicationRepairContract(maxPatches: number): JsonSchemaContract {
+  return {
+    name: "educalcul_course_publication_repairs",
+    description:
+      "Corrections locales obligatoires des erreurs bloquantes détectées avant publication.",
+    schema: {
+      type: "object",
+      properties: {
+        patches: {
+          type: "array",
+          minItems: 0,
+          maxItems: Math.max(1, maxPatches),
+          items: {
+            type: "object",
+            properties: {
+              id: { type: "string", minLength: 1 },
+              replacement: { type: "string", minLength: 1 },
+              reason: { type: "string", minLength: 3 },
+            },
+            required: ["id", "replacement", "reason"],
+            ...noExtra,
+          },
+        },
+      },
+      required: ["patches"],
+      ...noExtra,
+    },
+  };
+}
+
+function normalizeIssueCategory(value: unknown): CoursePublicationIssueCategory {
+  return value === "answer_explanation_conflict" ||
+    value === "numerical_error" ||
+    value === "proof_error" ||
+    value === "graph_or_table_error" ||
+    value === "level_mismatch" ||
+    value === "scope_error" ||
+    value === "truncated_content" ||
+    value === "notation_error"
+    ? value
+    : "mathematical_error";
+}
+
+function parseJudgeIssues(
+  raw: unknown,
+  validIds: Set<string>,
+): CoursePublicationIssue[] {
+  const record = asRecord(raw);
+  const issues = Array.isArray(record?.issues) ? record.issues : [];
+  return issues.flatMap((rawIssue) => {
+    const issue = asRecord(rawIssue);
+    if (!issue) return [];
+    const id = stringValue(issue.id).trim();
+    const message = stringValue(issue.message).trim();
+    const expectedFix = stringValue(issue.expected_fix).trim();
+    if (!id || !message || !expectedFix || !validIds.has(id)) return [];
+    return [{
+      id,
+      severity: issue.severity === "warning" ? "warning" as const : "blocking" as const,
+      category: normalizeIssueCategory(issue.category),
+      message,
+      expectedFix,
+      source: "independent_judge" as const,
+    }];
+  });
+}
+
+function extractApproximateNumbers(value: string): ApproximateNumber[] {
+  const normalized = value.replace(/\u2212/g, "-");
+  const pattern = /(?:\\approx|≈|environ|approximativement|à peu près)\s*([-+]?\d+(?:[.,]\d+)?)/gi;
+  const output: ApproximateNumber[] = [];
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(normalized)) !== null) {
+    const raw = match[1] || "";
+    const numeric = Number(raw.replace(",", "."));
+    if (!Number.isFinite(numeric)) continue;
+    const decimalPart = /[.,](\d+)/.exec(raw)?.[1] ?? "";
+    output.push({ value: numeric, decimals: decimalPart.length, raw });
+  }
+  return output;
+}
+
+function approximateNumbersMatch(
+  left: ApproximateNumber,
+  right: ApproximateNumber,
+): boolean {
+  const precision = Math.min(left.decimals, right.decimals);
+  const roundingTolerance = 0.51 * 10 ** -precision;
+  const relativeTolerance = Math.max(Math.abs(left.value), Math.abs(right.value)) * 1e-7;
+  return Math.abs(left.value - right.value) <= Math.max(roundingTolerance, relativeTolerance);
+}
+
+function answerLooksTruncated(value: string): boolean {
+  const clean = value.trim();
+  return (
+    /(?:\.\.\.|…)\s*$/.test(clean) ||
+    /\[[^\]]*(?:\.\.\.|…)[^\]]*\]/.test(clean) ||
+    /\b(?:todo|à compléter|réponse incomplète|suite à compléter)\b/i.test(clean)
+  );
+}
+
+function deterministicPublicationIssues(
+  lesson: StructuredCourseLesson,
+): CoursePublicationIssue[] {
+  const issues: CoursePublicationIssue[] = [];
+  lesson.exercises.forEach((exercise, exerciseIndex) => {
+    const answerId = `e${exerciseIndex}-answer`;
+    const explanationId = `e${exerciseIndex}-explanation`;
+    const answer = richTextToMarkdown(exercise.answer);
+    const explanation = richTextToMarkdown(exercise.explanation);
+
+    if (answerLooksTruncated(answer)) {
+      issues.push({
+        id: answerId,
+        severity: "blocking",
+        category: "truncated_content",
+        message: "La réponse finale contient une ellipse ou un marqueur de contenu incomplet.",
+        expectedFix: "Donner la réponse complète, sans ellipse ni plage tronquée.",
+        source: "deterministic",
+      });
+    }
+
+    const answerApproximations = extractApproximateNumbers(answer);
+    const explanationApproximations = extractApproximateNumbers(explanation);
+    if (
+      answerApproximations.length > 0 &&
+      explanationApproximations.length > 0 &&
+      answerApproximations.some(
+        (candidate) =>
+          !explanationApproximations.some((other) =>
+            approximateNumbersMatch(candidate, other),
+          ),
+      )
+    ) {
+      issues.push({
+        id: explanationId,
+        severity: "blocking",
+        category: "answer_explanation_conflict",
+        message: `Les valeurs approchées de answer (${answerApproximations.map((item) => item.raw).join(", ")}) et explanation (${explanationApproximations.map((item) => item.raw).join(", ")}) ne coïncident pas.`,
+        expectedFix: "Recalculer puis utiliser exactement les mêmes valeurs finales dans answer et explanation.",
+        source: "deterministic",
+      });
+    }
+  });
+
+  courseLessonUnstructuredMathFields(lesson).forEach((id) => {
+    issues.push({
+      id,
+      severity: "blocking",
+      category: "notation_error",
+      message: "Le champ contient probablement une formule non délimitée ou une commande LaTeX cassée.",
+      expectedFix: "Réécrire le champ en Markdown mathématique valide avec $...$.",
+      source: "deterministic",
+    });
+  });
+
+  return issues.filter(
+    (issue, index, all) =>
+      all.findIndex(
+        (candidate) =>
+          candidate.id === issue.id &&
+          candidate.category === issue.category &&
+          candidate.message === issue.message,
+      ) === index,
+  );
+}
+
+function publicationJudgePrompt(options: PublicationGateOptions): string {
+  return `Tu es le juge mathématique final et adversarial d'Educalcul.
+Tu interviens APRÈS un rédacteur et APRÈS un premier relecteur indépendant. Ton rôle n'est pas d'améliorer le style : tu dois empêcher toute erreur pédagogique de passer en production.
+
+Niveau : ${sanitizeStructuredText(options.level)}.
+Sujet : ${sanitizeStructuredText(options.subject)}.
+Cours : ${sanitizeStructuredText(options.courseTitle)}.
+Chapitre : ${sanitizeStructuredText(options.chapterTitle)}.
+Leçon : ${sanitizeStructuredText(options.lessonPlan.title)}.
+Objectif : ${sanitizeStructuredText(options.lessonPlan.objective)}.
+Périmètre : ${sanitizeStructuredText(options.lessonPlan.scope)}.
+Notions propriétaires : ${options.boundaries.ownedConcepts.join(" ; ") || "non précisées"}.
+Notions interdites ou réservées aux autres leçons : ${options.boundaries.forbiddenDevelopments.join(" ; ") || "aucune"}.
+Compétences d'exercices attendues : ${options.lessonPlan.exerciseSkills.join(" ; ") || "non précisées"}.
+
+Audit obligatoire, champ par champ :
+• refais indépendamment chaque exercice, sans faire confiance à answer ni explanation ;
+• vérifie les calculs exacts ET les valeurs approchées, y compris unités, pourcentages, dates, intérêts, taux continus, suites et changements de variable ;
+• vérifie les inégalités numériques et les comparaisons de constantes avant de conclure sur une limite ou une suite ;
+• vérifie les dérivées, signes, tableaux, extrema, discriminants, domaines, cas paramétriques, nombre de solutions et sens des implications ;
+• vérifie les démonstrations : aucune circularité, hypothèse manquante ou propriété utilisée avant d'être établie ;
+• vérifie les graphes et légendes : expression, asymptote, tangente, pente, convexité, demi-vie, limites et paramètres doivent décrire le même objet ;
+• vérifie les tableaux : tous les cas particuliers doivent être exacts, notamment quand un paramètre vaut zéro ;
+• vérifie que answer et la conclusion de explanation donnent strictement le même résultat ;
+• refuse toute réponse tronquée, intervalle avec « ... », formule brute cassée ou notation ambiguë ;
+• refuse les définitions non standard présentées comme générales et les notions hors niveau non demandées ;
+• distingue croissance, vitesse de croissance et convexité ; minimum et infimum ; taux nominal, périodique et continu ;
+• une imprécision qui peut faire apprendre quelque chose de faux est BLOCKING.
+
+Règles de sortie :
+• chaque issue cible exactement un id fourni ;
+• pour un exercice, cible answer si le résultat final est faux, explanation si le raisonnement est faux, question si l'énoncé est incohérent, hint si l'indice induit en erreur ;
+• verdict="pass" seulement s'il ne reste AUCUNE issue blocking ;
+• ne signale pas de préférence stylistique ;
+• n'invente aucun id.`;
+}
+
+async function runPublicationJudge(
+  lesson: StructuredCourseLesson,
+  options: PublicationGateOptions,
+  deterministicIssues: CoursePublicationIssue[],
+): Promise<CoursePublicationIssue[]> {
+  const references = collectReferences(lesson);
+  const payload = references.map((reference) => ({
+    id: reference.id,
+    path: reference.path,
+    role: reference.role,
+    content: reference.value(),
+  }));
+  const validIds = new Set(references.map((reference) => reference.id));
+  const raw = await options.generate(
+    JSON.stringify({
+      deterministic_alerts: deterministicIssues.map((issue) => ({
+        id: issue.id,
+        category: issue.category,
+        message: issue.message,
+      })),
+      fields: payload,
+    }),
+    publicationJudgePrompt(options),
+    publicationJudgeContract(40),
+    0,
+    options.reviewMaxTokens,
+    true,
+  );
+  return parseJudgeIssues(raw, validIds);
+}
+
+function relatedReferenceIds(issueId: string, allIds: string[]): string[] {
+  const exerciseMatch = /^(e\d+)-/.exec(issueId);
+  if (exerciseMatch) {
+    return allIds.filter((id) => id.startsWith(`${exerciseMatch[1]}-`));
+  }
+  const blockMatch = /^(lesson(?:-[^\s]+)*-b\d+)/.exec(issueId);
+  if (blockMatch) {
+    return allIds.filter((id) => id.startsWith(blockMatch[1] as string));
+  }
+  return allIds.includes(issueId) ? [issueId] : [];
+}
+
+async function repairPublicationIssues(
+  lesson: StructuredCourseLesson,
+  options: PublicationGateOptions,
+  issues: CoursePublicationIssue[],
+): Promise<{ value: StructuredCourseLesson; patches: number }> {
+  const value = clone(lesson);
+  const references = collectReferences(value);
+  const byId = new Map(references.map((reference) => [reference.id, reference]));
+  const allIds = references.map((reference) => reference.id);
+  const selectedIds = new Set(
+    issues.flatMap((issue) => relatedReferenceIds(issue.id, allIds)),
+  );
+  const fields = references
+    .filter((reference) => selectedIds.has(reference.id))
+    .map((reference) => ({
+      id: reference.id,
+      path: reference.path,
+      role: reference.role,
+      content: reference.value(),
+    }));
+
+  const raw = await options.generate(
+    JSON.stringify({
+      issues: issues.map((issue) => ({
+        id: issue.id,
+        category: issue.category,
+        message: issue.message,
+        expected_fix: issue.expectedFix,
+      })),
+      editable_fields: fields,
+    }),
+    `Tu es le correcteur mathématique ciblé d'Educalcul.
+Niveau : ${sanitizeStructuredText(options.level)}. Sujet : ${sanitizeStructuredText(options.subject)}.
+Leçon : ${sanitizeStructuredText(options.lessonPlan.title)}.
+
+Corrige TOUTES les erreurs bloquantes listées, uniquement par patches locaux.
+• Recalcule chaque exercice depuis l'énoncé avant d'écrire la correction.
+• Pour une incohérence d'exercice, harmonise question, answer, hint et explanation si nécessaire.
+• answer contient la réponse finale complète ; explanation démontre et conclut avec exactement le même résultat.
+• Pour une affirmation de cours fausse, remplace le champ entier par une version exacte, adaptée au niveau et au périmètre.
+• Pour un graphe ou un tableau, la formule, les cas, la légende et les valeurs doivent être cohérents.
+• Supprime toute circularité de preuve en donnant un argument valide, sans utiliser le résultat à démontrer.
+• Utilise le Markdown mathématique avec $...$ ; un display_math reçoit uniquement le LaTeX sans délimiteurs.
+• Ne modifie aucun champ non fourni et n'invente aucun id.
+• Chaque patch remplace le champ complet, pas seulement un fragment.
+• Ne laisse aucune ellipse, aucun TODO et aucune réponse provisoire.`,
+    publicationRepairContract(Math.min(40, Math.max(8, fields.length))),
+    0,
+    options.repairMaxTokens,
+    true,
+  );
+
+  const record = asRecord(raw);
+  const patches = Array.isArray(record?.patches) ? record.patches : [];
+  let applied = 0;
+  for (const rawPatch of patches) {
+    const patch = asRecord(rawPatch);
+    if (!patch) continue;
+    const id = stringValue(patch.id).trim();
+    const replacement = stringValue(patch.replacement).trim();
+    const reference = byId.get(id);
+    if (!reference || !selectedIds.has(id) || !replacement) continue;
+    const before = reference.value();
+    reference.set(replacement);
+    if (reference.value() !== before) applied += 1;
+  }
+  return { value, patches: applied };
+}
+
+/**
+ * Barrière finale « fail closed » : le cours n'est enregistrable que lorsque
+ * les alertes déterministes et un juge mathématique indépendant ne trouvent
+ * plus aucune erreur bloquante. Une seule réparation ciblée est autorisée,
+ * puis le résultat est intégralement ré-audité.
+ */
+export async function verifyCourseLessonForPublication(
+  input: StructuredCourseLesson,
+  options: PublicationGateOptions,
+): Promise<{ value: StructuredCourseLesson; report: CoursePublicationGateReport }> {
+  const initial = clone(input);
+  const deterministicBefore = deterministicPublicationIssues(initial);
+  const judgeBefore = await runPublicationJudge(
+    initial,
+    options,
+    deterministicBefore,
+  );
+  const blockingBefore = [...deterministicBefore, ...judgeBefore].filter(
+    (issue) => issue.severity === "blocking",
+  );
+
+  if (blockingBefore.length === 0) {
+    return {
+      value: initial,
+      report: {
+        deterministicIssuesBefore: deterministicBefore.length,
+        judgeIssuesBefore: judgeBefore.length,
+        patches: 0,
+        deterministicIssuesAfter: deterministicBefore.length,
+        judgeIssuesAfter: judgeBefore.length,
+        unresolved: [],
+      },
+    };
+  }
+
+  const repaired = await repairPublicationIssues(initial, options, blockingBefore);
+  const deterministicAfter = deterministicPublicationIssues(repaired.value);
+  const judgeAfter = await runPublicationJudge(
+    repaired.value,
+    options,
+    deterministicAfter,
+  );
+  const unresolved = [...deterministicAfter, ...judgeAfter]
+    .filter((issue) => issue.severity === "blocking")
+    .filter(
+      (issue, index, all) =>
+        all.findIndex(
+          (candidate) =>
+            candidate.id === issue.id &&
+            candidate.category === issue.category &&
+            candidate.message === issue.message,
+        ) === index,
+    );
+
+  return {
+    value: repaired.value,
+    report: {
+      deterministicIssuesBefore: deterministicBefore.length,
+      judgeIssuesBefore: judgeBefore.length,
+      patches: repaired.patches,
+      deterministicIssuesAfter: deterministicAfter.length,
+      judgeIssuesAfter: judgeAfter.length,
+      unresolved,
+    },
+  };
+}
+
+export type CourseGlobalPublicationGateReport = {
+  issuesBefore: number;
+  patches: number;
+  issuesAfter: number;
+  unresolved: CoursePublicationIssue[];
+};
+
+type GlobalPublicationGateOptions = {
+  generate: StructuredGenerator;
+  blueprint: CourseBlueprint;
+  level: string;
+  subject: string;
+  reviewMaxTokens: number;
+  repairMaxTokens: number;
+};
+
+function collectCourseReferences(
+  chapters: StructuredCourseChapter[],
+): ReviewReference[] {
+  return chapters.flatMap((chapter, chapterIndex) =>
+    chapter.lessons.flatMap((lesson, lessonIndex) =>
+      collectReferences(lesson).map((reference) => ({
+        id: `c${chapterIndex + 1}-l${lessonIndex + 1}-${reference.id}`,
+        path: `chapters[${chapterIndex}].lessons[${lessonIndex}].${reference.path}`,
+        role: reference.role,
+        value: reference.value,
+        set: reference.set,
+      })),
+    ),
+  );
+}
+
+function globalDeterministicPublicationIssues(
+  chapters: StructuredCourseChapter[],
+): CoursePublicationIssue[] {
+  return chapters.flatMap((chapter, chapterIndex) =>
+    chapter.lessons.flatMap((lesson, lessonIndex) =>
+      deterministicPublicationIssues(lesson).map((issue) => ({
+        ...issue,
+        id: `c${chapterIndex + 1}-l${lessonIndex + 1}-${issue.id}`,
+      })),
+    ),
+  );
+}
+
+async function runGlobalPublicationJudge(
+  chapters: StructuredCourseChapter[],
+  options: GlobalPublicationGateOptions,
+): Promise<CoursePublicationIssue[]> {
+  const references = collectCourseReferences(chapters);
+  const validIds = new Set(references.map((reference) => reference.id));
+  const plan = options.blueprint.chapters.map((chapter, chapterIndex) => ({
+    chapter: chapterIndex + 1,
+    title: chapter.title,
+    scope: chapter.scope,
+    lessons: chapter.lessons.map((lesson, lessonIndex) => ({
+      lesson: lessonIndex + 1,
+      title: lesson.title,
+      objective: lesson.objective,
+      owned_concepts: lesson.coreConcepts,
+      forbidden_concepts: lesson.forbiddenConcepts,
+    })),
+  }));
+  const raw = await options.generate(
+    JSON.stringify({
+      plan,
+      fields: references.map((reference) => ({
+        id: reference.id,
+        path: reference.path,
+        role: reference.role,
+        content: reference.value(),
+      })),
+    }),
+    `Tu es le dernier comité de publication global d'Educalcul.
+Le cours a déjà passé une relecture puis un juge mathématique par leçon. Tu contrôles uniquement les défauts qui nécessitent de voir le cours entier.
+
+Niveau : ${sanitizeStructuredText(options.level)}.
+Sujet : ${sanitizeStructuredText(options.subject)}.
+
+Vérifie obligatoirement :
+• aucune définition, propriété ou convention ne se contredit entre deux leçons ;
+• aucun cas particulier n'est présenté ailleurs comme une définition générale ;
+• la progression respecte le plan et le niveau scolaire ;
+• une notion réservée à une autre leçon n'est pas redéveloppée de façon contradictoire ;
+• les mêmes symboles gardent le même sens ;
+• les modèles discret et continu, taux, unités et paramètres restent cohérents d'une leçon à l'autre ;
+• les graphes, tableaux et synthèses ne contredisent pas les paragraphes ou exercices ;
+• aucune leçon n'introduit une notion hors programme comme indispensable ;
+• aucune répétition substantielle n'occupe la place d'un contenu utile ;
+• aucune erreur mathématique manifeste n'a échappé aux contrôles précédents.
+
+Ne signale pas une simple préférence de style. Chaque problème susceptible d'enseigner quelque chose de faux ou de rendre le cours non exploitable est blocking.
+Chaque issue cible exactement un id fourni. verdict="pass" seulement si aucune issue blocking ne reste.`,
+    publicationJudgeContract(60),
+    0,
+    options.reviewMaxTokens,
+    true,
+  );
+  return parseJudgeIssues(raw, validIds);
+}
+
+async function repairGlobalPublicationIssues(
+  chapters: StructuredCourseChapter[],
+  options: GlobalPublicationGateOptions,
+  issues: CoursePublicationIssue[],
+): Promise<{ value: StructuredCourseChapter[]; patches: number }> {
+  const value = clone(chapters);
+  const references = collectCourseReferences(value);
+  const byId = new Map(references.map((reference) => [reference.id, reference]));
+  const selectedIds = new Set(
+    issues.flatMap((issue) => relatedReferenceIds(issue.id, references.map((reference) => reference.id))),
+  );
+  // Les ids globaux préfixés ne sont pas reconnus par relatedReferenceIds.
+  issues.forEach((issue) => {
+    if (byId.has(issue.id)) selectedIds.add(issue.id);
+    const exercisePrefix = /^(c\d+-l\d+-e\d+)-/.exec(issue.id)?.[1];
+    if (exercisePrefix) {
+      references.forEach((reference) => {
+        if (reference.id.startsWith(`${exercisePrefix}-`)) selectedIds.add(reference.id);
+      });
+    }
+    const blockPrefix = /^(c\d+-l\d+-lesson(?:-[^\s]+)*-b\d+)/.exec(issue.id)?.[1];
+    if (blockPrefix) {
+      references.forEach((reference) => {
+        if (reference.id.startsWith(blockPrefix)) selectedIds.add(reference.id);
+      });
+    }
+  });
+  const fields = references
+    .filter((reference) => selectedIds.has(reference.id))
+    .map((reference) => ({
+      id: reference.id,
+      path: reference.path,
+      role: reference.role,
+      content: reference.value(),
+    }));
+  const raw = await options.generate(
+    JSON.stringify({
+      issues: issues.map((issue) => ({
+        id: issue.id,
+        category: issue.category,
+        message: issue.message,
+        expected_fix: issue.expectedFix,
+      })),
+      editable_fields: fields,
+    }),
+    `Tu es le correcteur global final d'Educalcul.
+Corrige uniquement les incohérences inter-leçons listées. Les leçons ont déjà été vérifiées mathématiquement : ne réécris pas le cours et ne modifie aucun champ non fourni.
+• conserve le plan, le niveau et le périmètre propriétaire de chaque leçon ;
+• remplace toute définition non standard par la définition scolaire correcte ;
+• harmonise les unités, symboles, hypothèses, taux et cas particuliers ;
+• si un exercice est concerné, recalcule-le et garde answer et explanation parfaitement cohérents ;
+• utilise du Markdown mathématique avec $...$ ;
+• aucun id inventé, aucune ellipse, aucun contenu provisoire.`,
+    publicationRepairContract(Math.min(60, Math.max(8, fields.length))),
+    0,
+    options.repairMaxTokens,
+    true,
+  );
+  const record = asRecord(raw);
+  const patches = Array.isArray(record?.patches) ? record.patches : [];
+  let applied = 0;
+  for (const rawPatch of patches) {
+    const patch = asRecord(rawPatch);
+    if (!patch) continue;
+    const id = stringValue(patch.id).trim();
+    const replacement = stringValue(patch.replacement).trim();
+    const reference = byId.get(id);
+    if (!reference || !selectedIds.has(id) || !replacement) continue;
+    const before = reference.value();
+    reference.set(replacement);
+    if (reference.value() !== before) applied += 1;
+  }
+  return { value, patches: applied };
+}
+
+/**
+ * Contrôle inter-leçons après les barrières unitaires. Le moindre problème
+ * bloquant non corrigé empêche l'enregistrement du cours.
+ */
+export async function verifyCourseGloballyForPublication(
+  input: StructuredCourseChapter[],
+  options: GlobalPublicationGateOptions,
+): Promise<{ value: StructuredCourseChapter[]; report: CourseGlobalPublicationGateReport }> {
+  const initial = clone(input);
+  const issuesBefore = await runGlobalPublicationJudge(initial, options);
+  const blockingBefore = issuesBefore.filter((issue) => issue.severity === "blocking");
+  if (blockingBefore.length === 0) {
+    return {
+      value: initial,
+      report: { issuesBefore: issuesBefore.length, patches: 0, issuesAfter: 0, unresolved: [] },
+    };
+  }
+  const repaired = await repairGlobalPublicationIssues(initial, options, blockingBefore);
+  const deterministicAfter = globalDeterministicPublicationIssues(repaired.value);
+  const judgeIssuesAfter = await runGlobalPublicationJudge(repaired.value, options);
+  const unresolved = [...deterministicAfter, ...judgeIssuesAfter]
+    .filter((issue) => issue.severity === "blocking")
+    .filter(
+      (issue, index, all) =>
+        all.findIndex(
+          (candidate) =>
+            candidate.id === issue.id &&
+            candidate.category === issue.category &&
+            candidate.message === issue.message,
+        ) === index,
+    );
+  return {
+    value: repaired.value,
+    report: {
+      issuesBefore: issuesBefore.length,
+      patches: repaired.patches,
+      issuesAfter: deterministicAfter.length + judgeIssuesAfter.length,
+      unresolved,
+    },
+  };
+}
