@@ -479,10 +479,11 @@ Contrôle obligatoirement :
 • aucune affirmation plus forte que ce qui est démontré ;
 • aucune confusion entre minimum et infimum, implication et équivalence, croissance et convexité ;
 • aucune répétition développée d'une notion interdite. Un rappel autorisé tient en une phrase.
+• si un exercice développe une notion interdite ou hors périmètre, ne le laisse pas simplement en warning : remplace localement ses quatre champs question, answer, hint et explanation par un exercice de difficulté comparable strictement dans le périmètre de la leçon.
 
 Règles de sortie :
 • ne réécris jamais toute la leçon ;
-• renvoie au maximum 14 patches ;
+• renvoie au maximum 18 patches ;
 • chaque patch remplace UN champ existant, identifié par id ;
 • replacement conserve le rôle du champ et utilise du Markdown mathématique avec $...$ ;
 • pour un champ display_math, replacement contient seulement le LaTeX sans $ ;
@@ -494,7 +495,7 @@ Règles de sortie :
   const raw = await options.generate(
     `Voici les champs de la leçon à contrôler :\n${JSON.stringify({ fields: payload })}`,
     systemPrompt,
-    reviewContract(14),
+    reviewContract(18),
     0,
     3_800,
     false,

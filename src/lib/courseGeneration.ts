@@ -365,6 +365,22 @@ function createTaskLimiter(concurrency: number) {
   };
 }
 
+function lessonHasVisualFocus(
+  lesson: StructuredCourseLesson | undefined,
+  focus: CourseVisualFocus,
+): boolean {
+  if (!lesson) return false;
+  if (focus === "graph") return lesson.blocks.some((block) => block.type === "graph");
+  if (focus === "variation_table") {
+    return lesson.blocks.some((block) => block.type === "variation_table");
+  }
+  if (focus === "sign_table") {
+    return lesson.blocks.some((block) => block.type === "sign_table");
+  }
+  if (focus === "figure") return lesson.blocks.some((block) => block.type === "figure");
+  return lesson.blocks.some((block) => block.type === "table");
+}
+
 function blockingIssues(
   chapter: StructuredCourseChapter,
   options: {
@@ -372,11 +388,34 @@ function blockingIssues(
     includeExercises: boolean;
     minWordsPerLesson: number;
     requireGraph: boolean;
+    validationScope?: "lesson" | "chapter";
+    visualFocus?: CourseVisualFocus;
   },
 ) {
-  return auditStructuredCoursePedagogy(chapter, options).filter(
+  const audited = auditStructuredCoursePedagogy(chapter, options).filter(
     (issue) => issue.severity === "error",
   );
+
+  if (options.validationScope !== "lesson") return audited;
+
+  // L'audit pédagogique historique raisonne au niveau d'un chapitre complet.
+  // Pendant la rédaction multi-agent, chaque réponse ne contient qu'une seule
+  // leçon : les règles « un visuel par chapitre » et « un graph quelque part
+  // dans le chapitre » doivent donc être différées jusqu'à l'assemblage final.
+  const lessonIssues = audited.filter(
+    (issue) => issue.code !== "missing_visual" && issue.code !== "missing_graph",
+  );
+
+  if (options.visualFocus && !lessonHasVisualFocus(chapter.lessons[0], options.visualFocus)) {
+    lessonIssues.push({
+      severity: "error",
+      code: "missing_planned_visual",
+      path: "lessons[0].blocks",
+      message: `La leçon doit contenir le visuel planifié « ${options.visualFocus} ».`,
+    });
+  }
+
+  return lessonIssues;
 }
 
 export async function runCourseGeneration(
@@ -473,6 +512,7 @@ Règles impératives :
 • prerequisite_recall contient uniquement des notions déjà traitées avant cette leçon et qui pourront être rappelées en une phrase ;
 • deux leçons ne doivent pas avoir le même objectif sous des formulations différentes ;
 • progression conforme au programme et au niveau ;
+• aucune extension universitaire ou hors programme : pas d'exponentielle complexe, de formule d'Euler, d'analyse complexe, de série de Fourier ou de notion supérieure sauf demande explicite de l'enseignant et niveau compatible ;
 • n'ajoute pas de chapitre artificiel pour augmenter la longueur ;
 • visual_focus="graph" pour une vraie courbe ; "figure" uniquement pour schémas, camemberts ou diagrammes ;
 • pour une étude de fonction, répartis définition/propriétés, variations, limites, convexité et applications entre les leçons au lieu de tout répéter partout ;
@@ -516,7 +556,7 @@ ${teacherDirective}`;
       );
     }
 
-    const blueprint = normalizeCourseBlueprint(rawBlueprint, {
+    let blueprint = normalizeCourseBlueprint(rawBlueprint, {
       subject,
       chapterCount,
       lessonsPerChapter,
@@ -527,6 +567,37 @@ ${teacherDirective}`;
       "blueprint",
       `${chapterCount} chapitre(s), ${totalLessonCount} leçon(s)`,
     );
+
+    telemetry.start("blueprint-review");
+    try {
+      const reviewedBlueprintRaw = await generate(
+        `Plan à contrôler et corriger sans changer les quantités :\n${JSON.stringify(blueprint)}`,
+        `Tu es l'agent relecteur du plan global Educalcul.
+Niveau : ${grade_level}. Sujet : ${subject}. Domaine : ${subject_area || "Mathématiques"}.
+${programmeBlock}
+${teacherDirective}
+
+Retourne le plan complet corrigé avec exactement ${chapterCount} chapitres et exactement ${lessonsPerChapter} leçons par chapitre.
+Vérifie : conformité stricte au programme, progression logique, absence de doublons entre objectifs, absence de notion universitaire ou hors niveau, et attribution d'une notion principale à une seule leçon.
+Supprime ou remplace toute extension hors programme, notamment exponentielle complexe, formule d'Euler, analyse complexe ou série de Fourier, sauf demande explicite et niveau compatible.
+Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.`,
+        blueprintContract,
+        0,
+        Math.min(6_000, blueprintMaxTokens),
+        false,
+      );
+      blueprint = normalizeCourseBlueprint(reviewedBlueprintRaw, {
+        subject,
+        chapterCount,
+        lessonsPerChapter,
+        chapterRequiresGraph: (title, scope) =>
+          topicRequiresFunctionGraph(subject, subject_area || "", title, scope),
+      });
+      telemetry.end("blueprint-review", "plan validé par un second agent");
+    } catch (error) {
+      telemetry.end("blueprint-review", "relecteur indisponible, plan initial conservé");
+      console.warn("[course-ai] Relecture du plan indisponible; plan initial conservé.", error);
+    }
 
     const jobs = createLessonJobs(blueprint, {
       durationPerLesson,
@@ -603,6 +674,8 @@ ${teacherDirective}`;
           includeExercises: shouldIncludeExercises,
           minWordsPerLesson: job.budget.hardMinWords,
           requireGraph: job.lesson.visualFocus === "graph",
+          validationScope: "lesson" as const,
+          visualFocus: job.lesson.visualFocus,
         };
 
         const requestDraft = async (
