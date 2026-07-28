@@ -166,6 +166,9 @@ La question ne contient jamais la réponse. answer et la conclusion de explanati
 }
 
 function visualRequirement(focus: CourseVisualFocus): string {
+  if (focus === "none") {
+    return "Aucun visuel n'est imposé pour cette leçon. N'en ajoute un que s'il apporte une vraie valeur pédagogique.";
+  }
   if (focus === "graph") {
     return 'Ajoute un bloc "graph" utile, avec expression mathGraph exacte et légende mathématiquement correcte.';
   }
@@ -369,6 +372,7 @@ function lessonHasVisualFocus(
   lesson: StructuredCourseLesson | undefined,
   focus: CourseVisualFocus,
 ): boolean {
+  if (focus === "none") return true;
   if (!lesson) return false;
   if (focus === "graph") return lesson.blocks.some((block) => block.type === "graph");
   if (focus === "variation_table") {
@@ -406,12 +410,20 @@ function blockingIssues(
     (issue) => issue.code !== "missing_visual" && issue.code !== "missing_graph",
   );
 
-  if (options.visualFocus && !lessonHasVisualFocus(chapter.lessons[0], options.visualFocus)) {
+  // Seul un graph explicitement planifié reste bloquant au niveau de la leçon,
+  // car il répond à une exigence de visualisation d'une étude de fonction. Les
+  // autres visual_focus sont des orientations pédagogiques : leur absence ne
+  // doit jamais détruire une leçon complète. Le chapitre assemblé garde ses
+  // contrôles stricts sur la présence globale de visuels et de graphes.
+  if (
+    options.visualFocus === "graph" &&
+    !lessonHasVisualFocus(chapter.lessons[0], "graph")
+  ) {
     lessonIssues.push({
       severity: "error",
-      code: "missing_planned_visual",
+      code: "missing_planned_graph",
       path: "lessons[0].blocks",
-      message: `La leçon doit contenir le visuel planifié « ${options.visualFocus} ».`,
+      message: "La leçon chargée de la visualisation doit contenir un bloc graph rendu par mathGraph.",
     });
   }
 
@@ -514,7 +526,13 @@ Règles impératives :
 • progression conforme au programme et au niveau ;
 • aucune extension universitaire ou hors programme : pas d'exponentielle complexe, de formule d'Euler, d'analyse complexe, de série de Fourier ou de notion supérieure sauf demande explicite de l'enseignant et niveau compatible ;
 • n'ajoute pas de chapitre artificiel pour augmenter la longueur ;
-• visual_focus="graph" pour une vraie courbe ; "figure" uniquement pour schémas, camemberts ou diagrammes ;
+• visual_focus est un choix sémantique, jamais une rotation artificielle entre outils ;
+• visual_focus="sign_table" uniquement pour étudier le signe d'une expression, des racines, facteurs ou intervalles ; jamais pour des limites, un lien exp/ln, une définition ou de la convexité seule ;
+• visual_focus="variation_table" uniquement pour monotonie, dérivée, extrema ou variations ;
+• visual_focus="graph" pour une vraie courbe, des limites, asymptotes, comparaisons de croissance, convexité ou lien entre fonctions réciproques ;
+• visual_focus="table" pour propriétés, valeurs, méthodes ou comparaisons ;
+• visual_focus="figure" uniquement pour schémas, camemberts, diagrammes, géométrie ou processus ; jamais une courbe de fonction ;
+• visual_focus="none" lorsqu'aucun visuel n'apporte une vraie valeur ; toutes les leçons n'ont pas besoin d'un visuel ;
 • pour une étude de fonction, répartis définition/propriétés, variations, limites, convexité et applications entre les leçons au lieu de tout répéter partout ;
 • complexity vaut 1, 2 ou 3 selon la densité réelle ;
 • aucune formule, aucun HTML et aucun Markdown dans ce plan.
@@ -578,7 +596,8 @@ ${programmeBlock}
 ${teacherDirective}
 
 Retourne le plan complet corrigé avec exactement ${chapterCount} chapitres et exactement ${lessonsPerChapter} leçons par chapitre.
-Vérifie : conformité stricte au programme, progression logique, absence de doublons entre objectifs, absence de notion universitaire ou hors niveau, et attribution d'une notion principale à une seule leçon.
+Vérifie : conformité stricte au programme, progression logique, absence de doublons entre objectifs, absence de notion universitaire ou hors niveau, attribution d'une notion principale à une seule leçon, et pertinence sémantique de visual_focus.
+Un sign_table n'est permis que pour une vraie étude de signe; jamais pour limites, croissance comparée, lien avec le logarithme, définition ou convexité. Utilise graph pour courbes/limites/asymptotes/convexité, variation_table pour variations/extrema, table pour propriétés/comparaisons, figure pour schémas non fonctionnels, et none si aucun visuel n'est utile.
 Supprime ou remplace toute extension hors programme, notamment exponentielle complexe, formule d'Euler, analyse complexe ou série de Fourier, sauf demande explicite et niveau compatible.
 Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.`,
         blueprintContract,

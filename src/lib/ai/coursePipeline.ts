@@ -10,7 +10,8 @@ export type CourseVisualFocus =
   | "variation_table"
   | "sign_table"
   | "table"
-  | "figure";
+  | "figure"
+  | "none";
 
 export type CourseBlueprintLesson = {
   title: string;
@@ -92,7 +93,8 @@ function visualFocus(value: unknown, fallback: CourseVisualFocus): CourseVisualF
     value === "variation_table" ||
     value === "sign_table" ||
     value === "table" ||
-    value === "figure"
+    value === "figure" ||
+    value === "none"
     ? value
     : fallback;
 }
@@ -114,15 +116,109 @@ function canonical(value: string): string {
     .trim();
 }
 
-function fallbackFocus(index: number, requireGraph: boolean): CourseVisualFocus {
-  if (requireGraph && index === 0) return "graph";
-  const cycle: CourseVisualFocus[] = [
-    "table",
-    "variation_table",
-    "sign_table",
-    "figure",
-  ];
-  return cycle[index % cycle.length] as CourseVisualFocus;
+function fallbackFocus(_index: number, requireGraph: boolean): CourseVisualFocus {
+  if (requireGraph && _index === 0) return "graph";
+  return "none";
+}
+
+function containsAny(text: string, fragments: string[]): boolean {
+  return fragments.some((fragment) => text.includes(fragment));
+}
+
+/**
+ * Le planificateur reste libre de proposer un visuel, mais le serveur refuse
+ * les associations absurdes (par exemple un tableau de signes pour une leçon
+ * sur les limites). Cette passe est locale, instantanée et déterministe.
+ */
+export function resolveSemanticVisualFocus(
+  requested: CourseVisualFocus,
+  lesson: Pick<
+    CourseBlueprintLesson,
+    "title" | "objective" | "scope" | "coreConcepts"
+  >,
+  options: { requireGraph: boolean; lessonIndex: number },
+): CourseVisualFocus {
+  const text = canonical(
+    [lesson.title, lesson.objective, lesson.scope, ...lesson.coreConcepts].join(" "),
+  );
+
+  const signCompatible = containsAny(text, [
+    "signe",
+    "tableau de signes",
+    "racine",
+    "factorisation",
+    "inequation",
+    "produit",
+    "quotient",
+    "trinome",
+    "polynome",
+    "zero d une expression",
+  ]);
+  const variationCompatible = containsAny(text, [
+    "variation",
+    "monoton",
+    "croissant",
+    "decroissant",
+    "derivee",
+    "extremum",
+    "minimum",
+    "maximum",
+  ]);
+  const graphCompatible = containsAny(text, [
+    "courbe",
+    "graph",
+    "fonction",
+    "limite",
+    "asymptote",
+    "convex",
+    "croissance comparee",
+    "logarithme",
+    "exponentielle",
+    "fonction reciproque",
+    "image",
+  ]);
+  const tableCompatible = containsAny(text, [
+    "propriete",
+    "formule",
+    "valeur",
+    "comparaison",
+    "recapitulatif",
+    "identite",
+    "methode",
+    "lien avec",
+  ]);
+  const figureCompatible = containsAny(text, [
+    "schema",
+    "diagramme",
+    "camembert",
+    "geometr",
+    "construction",
+    "processus",
+    "frise",
+    "probabilite",
+    "statistique",
+  ]);
+
+  if (requested === "sign_table" && signCompatible) return requested;
+  if (requested === "variation_table" && variationCompatible) return requested;
+  if (requested === "graph" && graphCompatible) return requested;
+  if (requested === "table" && tableCompatible) return requested;
+  if (requested === "figure" && figureCompatible) return requested;
+  if (requested === "none") {
+    if (options.requireGraph && options.lessonIndex === 0) return "graph";
+    return "none";
+  }
+
+  // Remplacement sémantique d'un choix inadapté. Les limites, la convexité et
+  // le lien exp/ln gagnent davantage à être visualisés par une courbe; les
+  // propriétés algébriques et comparaisons utilisent plutôt un tableau.
+  if (graphCompatible) return "graph";
+  if (variationCompatible) return "variation_table";
+  if (signCompatible) return "sign_table";
+  if (tableCompatible) return "table";
+  if (figureCompatible) return "figure";
+  if (options.requireGraph && options.lessonIndex === 0) return "graph";
+  return "none";
 }
 
 export function normalizeCourseBlueprint(
@@ -160,7 +256,7 @@ export function normalizeCourseBlueprint(
         `${scope}. Partie ${lessonIndex + 1}/${options.lessonsPerChapter}.`,
       );
       const concepts = cleanStringArray(rawLesson?.core_concepts, 7);
-      lessons.push({
+      const draftLesson: CourseBlueprintLesson = {
         title: lessonTitle,
         objective: cleanPlain(
           rawLesson?.objective,
@@ -177,7 +273,13 @@ export function normalizeCourseBlueprint(
           fallbackFocus(lessonIndex, requireGraph),
         ),
         complexity: complexity(rawLesson?.complexity),
-      });
+      };
+      draftLesson.visualFocus = resolveSemanticVisualFocus(
+        draftLesson.visualFocus,
+        draftLesson,
+        { requireGraph, lessonIndex },
+      );
+      lessons.push(draftLesson);
     }
 
     if (requireGraph && !lessons.some((lesson) => lesson.visualFocus === "graph")) {
