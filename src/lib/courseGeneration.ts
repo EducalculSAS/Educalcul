@@ -375,6 +375,19 @@ function isTruncationError(error: unknown): boolean {
   return error instanceof Error && /tronqu|token|length|max_tokens/i.test(error.message);
 }
 
+function isInvalidStructuredJsonError(error: unknown): boolean {
+  return (
+    error instanceof Error &&
+    /JSON invalide|JSON incomplet|aucun contenu JSON|objet JSON|contenu JSON/i.test(
+      error.message,
+    )
+  );
+}
+
+function isRecoverableWriterOutputError(error: unknown): boolean {
+  return isTruncationError(error) || isInvalidStructuredJsonError(error);
+}
+
 async function mapSettledWithConcurrency<T, R>(
   items: readonly T[],
   concurrency: number,
@@ -600,6 +613,12 @@ export async function runCourseGeneration(
     "AI_COURSE_REVIEW_CONCURRENCY",
     quality_mode === "strict" ? 5 : 6,
     10,
+  );
+  const writerJsonRetryCount = envNumber(
+    "AI_COURSE_WRITER_JSON_RETRIES",
+    2,
+    1,
+    4,
   );
   const reviewLimit = createTaskLimiter(reviewerConcurrency);
   const publicationGateEnabled = process.env.AI_COURSE_PUBLICATION_GATE !== "0";
@@ -889,6 +908,35 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
           teacherDirective,
         });
         const userPrompt = `Rédige la leçon « ${job.lesson.title} ». Couvre uniquement ses notions propriétaires et respecte son budget utile.`;
+        const compactRecoverySystemPrompt = `Tu es le rédacteur de secours JSON d'Educalcul.
+Tu dois générer UNE SEULE leçon complète et exploitable, sans reprendre ni commenter une sortie précédente.
+
+Cours : ${blueprint.title}
+Niveau : ${String(grade_level)}
+Chapitre : ${job.chapter.title}
+Leçon : ${job.lesson.title}
+Objectif : ${job.lesson.objective}
+Périmètre : ${job.lesson.scope}
+Notions propriétaires : ${job.boundaries.ownedConcepts.join(" ; ")}
+Sections obligatoires : ${job.lesson.requiredSections.join(" ; ")}
+Compétences des exercices : ${job.lesson.exerciseSkills.join(" ; ")}
+Notions interdites : ${job.boundaries.forbiddenDevelopments.join(" ; ") || "aucune"}
+Visuel : ${job.lesson.visualFocus}
+
+${COURSE_MARKDOWN_JSON_PROMPT}
+
+CONTRAT DE SECOURS :
+• Retourne uniquement un objet JSON complet et fermé.
+• Un chapitre, une leçon, duration=${durationPerLesson}.
+• Entre 7 et 12 blocs substantiels, sans remplissage ni répétition.
+• ${visualRequirement(job.lesson.visualFocus)}
+• ${shouldIncludeExercises ? "Exactement 3 exercices complets et différents, avec question, answer, hint et explanation cohérents." : "Aucun exercice."}
+• Toute formule est entre $...$ ou dans display_math.
+• Ne développe aucune notion interdite.
+• Vérifie chaque calcul avant de fermer le JSON.
+
+Structure racine exacte :
+{"title":"${job.chapter.title}","lessons":[{"title":"${job.lesson.title}","duration":${durationPerLesson},"blocks":[],"exercises":[]}]}`;
         const contract = courseChapterSchema({
           lessonCount: 1,
           includeExercises: shouldIncludeExercises,
@@ -915,10 +963,11 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
           prompt: string,
           temperature: number,
           maxTokens: number,
+          activeSystemPrompt = systemPrompt,
         ) => {
           const raw = await generate(
             prompt,
-            systemPrompt,
+            activeSystemPrompt,
             contract,
             temperature,
             maxTokens,
@@ -942,30 +991,62 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
           return chapter;
         };
 
-        let structured: StructuredCourseChapter;
-        try {
-          structured = await requestDraft(
-            userPrompt,
-            0.16,
-            job.budget.maxOutputTokens,
-          );
-        } catch (error) {
-          if (!isTruncationError(error)) throw error;
-          structured = await requestDraft(
-            `${userPrompt}\nLa sortie précédente était tronquée. Produis une version complète et plus dense : 7 à 12 blocs, exactement 3 exercices courts, un seul visuel principal, aucune répétition et pas de développement hors périmètre.`,
-            0.03,
-            job.budget.maxOutputTokens,
-          );
-        }
+        const requestDraftWithFreshJsonRecovery = async (
+          prompt: string,
+          temperature: number,
+          purpose: "draft" | "structural-correction",
+        ): Promise<StructuredCourseChapter> => {
+          let lastError: unknown;
+          for (let attempt = 0; attempt <= writerJsonRetryCount; attempt += 1) {
+            const freshRetry = attempt > 0;
+            const activeSystemPrompt = freshRetry
+              ? compactRecoverySystemPrompt
+              : systemPrompt;
+            const activePrompt = freshRetry
+              ? `${prompt}\n\nGÉNÉRATION FRAÎCHE ${attempt}/${writerJsonRetryCount}. Ignore toute sortie précédente. Produis maintenant l'objet JSON complet depuis zéro. Ferme tous les tableaux, objets et chaînes. ${attempt === writerJsonRetryCount ? "Privilégie une structure compacte : 7 à 9 blocs et exactement 3 exercices courts." : "Aucun texte avant ou après le JSON."}`
+              : prompt;
+            const activeTemperature = freshRetry
+              ? attempt === writerJsonRetryCount
+                ? 0
+                : 0.02
+              : temperature;
+            try {
+              return await requestDraft(
+                activePrompt,
+                activeTemperature,
+                job.budget.maxOutputTokens,
+                activeSystemPrompt,
+              );
+            } catch (error) {
+              lastError = error;
+              if (!isRecoverableWriterOutputError(error)) throw error;
+              if (attempt >= writerJsonRetryCount) break;
+              console.warn(
+                `[course-ai] Sortie JSON inutilisable pour « ${job.lesson.title} » (${purpose}, tentative ${attempt + 1}/${writerJsonRetryCount + 1}); nouvelle génération fraîche et compacte.`,
+              );
+            }
+          }
+          throw lastError instanceof Error
+            ? lastError
+            : new Error(
+                `La leçon « ${job.lesson.title} » n'a pas pu produire un JSON complet.`,
+              );
+        };
+
+        let structured = await requestDraftWithFreshJsonRecovery(
+          userPrompt,
+          0.16,
+          "draft",
+        );
 
         let issues = blockingIssues(structured, qualityOptions);
         let bestScore = structuredCourseQualityScore(structured, qualityOptions);
         if (!hasCompleteLesson(structured.lessons[0], shouldIncludeExercises) || issues.length > 0) {
           const issueSummary = formatStructuredQualityIssues(issues);
-          const retry = await requestDraft(
+          const retry = await requestDraftWithFreshJsonRecovery(
             `${userPrompt}\nCORRECTION STRUCTURELLE UNIQUE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`,
             0.02,
-            job.budget.maxOutputTokens,
+            "structural-correction",
           );
           const retryScore = structuredCourseQualityScore(retry, qualityOptions);
           const retryIssues = blockingIssues(retry, qualityOptions);
