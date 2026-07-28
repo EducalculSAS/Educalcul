@@ -547,38 +547,38 @@ export function courseBlueprintSchema(options: {
   const lesson = {
     type: "object",
     properties: {
-      title: { type: "string", minLength: 1 },
-      objective: { type: "string", minLength: 1 },
-      scope: { type: "string", minLength: 1 },
+      title: { type: "string", minLength: 3, maxLength: 120 },
+      objective: { type: "string", minLength: 12, maxLength: 260 },
+      scope: { type: "string", minLength: 20, maxLength: 420 },
       core_concepts: {
         type: "array",
         minItems: 2,
         maxItems: 7,
-        items: { type: "string", minLength: 1 },
+        items: { type: "string", minLength: 2, maxLength: 160 },
       },
       prerequisite_recall: {
         type: "array",
         minItems: 0,
         maxItems: 4,
-        items: { type: "string", minLength: 1 },
+        items: { type: "string", minLength: 2, maxLength: 160 },
       },
       required_sections: {
         type: "array",
         minItems: 3,
         maxItems: 7,
-        items: { type: "string", minLength: 3 },
+        items: { type: "string", minLength: 3, maxLength: 180 },
       },
       exercise_skills: {
         type: "array",
         minItems: 3,
         maxItems: 4,
-        items: { type: "string", minLength: 3 },
+        items: { type: "string", minLength: 3, maxLength: 180 },
       },
       forbidden_concepts: {
         type: "array",
         minItems: 0,
         maxItems: 12,
-        items: { type: "string", minLength: 2 },
+        items: { type: "string", minLength: 2, maxLength: 160 },
       },
       visual_focus: {
         type: "string",
@@ -615,8 +615,8 @@ export function courseBlueprintSchema(options: {
     schema: {
       type: "object",
       properties: {
-        title: { type: "string", minLength: 1 },
-        description: { type: "string", minLength: 1 },
+        title: { type: "string", minLength: 3, maxLength: 140 },
+        description: { type: "string", minLength: 12, maxLength: 420 },
         chapters: {
           type: "array",
           minItems: options.chapterCount,
@@ -624,8 +624,8 @@ export function courseBlueprintSchema(options: {
           items: {
             type: "object",
             properties: {
-              title: { type: "string", minLength: 1 },
-              scope: { type: "string", minLength: 1 },
+              title: { type: "string", minLength: 3, maxLength: 140 },
+              scope: { type: "string", minLength: 20, maxLength: 520 },
               lessons: {
                 type: "array",
                 minItems: options.lessonsPerChapter,

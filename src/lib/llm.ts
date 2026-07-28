@@ -84,6 +84,10 @@ async function callMistralModel(
     model,
     messages: msgs,
     temperature: temp,
+    // Mistral exige top_p=1 lorsque temperature=0 (greedy sampling).
+    // Garder top_p fixe évite aussi de faire varier deux paramètres
+    // d'échantillonnage en même temps sur les autres requêtes.
+    top_p: 1,
     reasoning_effort: reasoning ? "high" : "none",
   };
   if (maxTokens) body.max_tokens = maxTokens;

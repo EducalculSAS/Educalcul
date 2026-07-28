@@ -611,6 +611,8 @@ Règles impératives :
 • exercise_skills contient exactement 3 compétences d'exercices réellement différentes, réservées à cette leçon ;
 • forbidden_concepts énumère les notions proches qu'un rédacteur pourrait être tenté de développer mais qui appartiennent à d'autres leçons ou sont hors niveau ;
 • scope dit explicitement ce que la leçon couvre ET ce qu'elle ne couvre pas ;
+• reste concis : titre 4 à 10 mots, objectif 15 à 28 mots, scope de leçon 25 à 50 mots, scope de chapitre 30 à 65 mots ;
+• chaque entrée de core_concepts, required_sections, exercise_skills et forbidden_concepts tient sur une courte proposition, sans explication longue ;
 • progression conforme au programme et au niveau ;
 • aucune extension universitaire ou hors programme : pas d'exponentielle complexe, de formule d'Euler, d'analyse complexe, de série de Fourier ou de notion supérieure sauf demande explicite de l'enseignant et niveau compatible ;
 • n'ajoute pas de chapitre artificiel pour augmenter la longueur ;
@@ -636,9 +638,13 @@ ${teacherDirective}`;
       chapterCount,
       lessonsPerChapter,
     });
+    // Leanstral consomme une partie du budget dans son raisonnement. Un plan de
+    // six leçons dépassait régulièrement 4 500 tokens, provoquant un second
+    // appel coûteux. Le premier appel reçoit donc directement un budget sûr,
+    // tandis que le prompt et le schéma plafonnent la verbosité.
     const blueprintMaxTokens = Math.min(
-      12_000,
-      Math.max(4_500, 2_200 + totalLessonCount * 360),
+      10_000,
+      Math.max(6_500, 3_000 + totalLessonCount * 500),
     );
 
     let rawBlueprint: unknown;
@@ -657,8 +663,8 @@ ${teacherDirective}`;
         `${blueprintUser}\nLe plan précédent était trop long. Garde exactement les quantités demandées et rends chaque scope et objective très concis.`,
         blueprintSystem,
         blueprintContract,
-        0.03,
-        Math.min(14_000, blueprintMaxTokens + 2_000),
+        0.05,
+        Math.min(10_000, blueprintMaxTokens + 2_000),
         true,
       );
     }
@@ -704,9 +710,9 @@ Vérifie obligatoirement :
 
 verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans se répéter.`,
         courseBlueprintAuditSchema(),
-        0,
-        2_200,
-        true,
+        0.05,
+        3_000,
+        false,
       );
       independentPlanIssues = blueprintAuditMessages(auditRaw);
       telemetry.end(
@@ -734,8 +740,8 @@ ${planFeedback.map((message, index) => `${index + 1}. ${message}`).join("\n")}
 Retourne un nouveau plan complet, précis et non générique. Ne te contente pas de reformuler les mêmes leçons.`,
         blueprintSystem,
         blueprintContract,
-        0.04,
-        Math.min(14_000, blueprintMaxTokens + 2_000),
+        0.08,
+        Math.min(10_000, blueprintMaxTokens + 2_000),
         true,
       );
       blueprint = normalizeCourseBlueprint(repairedRaw, {
@@ -750,15 +756,20 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
         subject,
         shouldIncludeExercises,
       );
+      const blockingPlanIssues = remainingPlanIssues.filter(
+        (message) => !message.includes(".scope — Le périmètre du chapitre est trop vague"),
+      );
       telemetry.end(
         "blueprint-repair",
-        remainingPlanIssues.length > 0
-          ? `${remainingPlanIssues.length} défaut(s) restant(s)`
-          : "plan corrigé par le planificateur",
+        blockingPlanIssues.length > 0
+          ? `${blockingPlanIssues.length} défaut(s) bloquant(s) restant(s)`
+          : remainingPlanIssues.length > 0
+            ? "métadonnées de chapitre stabilisées localement"
+            : "plan corrigé par le planificateur",
       );
-      if (remainingPlanIssues.length > 0) {
+      if (blockingPlanIssues.length > 0) {
         throw new Error(
-          `Le plan global reste insuffisamment précis après une correction :\n${remainingPlanIssues
+          `Le plan global reste insuffisamment précis après une correction :\n${blockingPlanIssues
             .slice(0, 12)
             .map((message, index) => `${index + 1}. ${message}`)
             .join("\n")}`,

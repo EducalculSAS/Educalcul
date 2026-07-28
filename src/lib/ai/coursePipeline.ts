@@ -306,7 +306,11 @@ export function normalizeCourseBlueprint(
       const first = lessons[0];
       if (first) first.visualFocus = "graph";
     }
-    chapters.push({ title, scope, lessons });
+    chapters.push({
+      title,
+      scope: preciseChapterScope(scope, title, lessons),
+      lessons,
+    });
   }
 
   // Le modèle propose la répartition, puis le serveur impose une propriété
@@ -371,6 +375,31 @@ function uniqueConcepts(values: string[]): string[] {
     output.push(value);
   }
   return output;
+}
+
+function preciseChapterScope(
+  scope: string,
+  title: string,
+  lessons: CourseBlueprintLesson[],
+): string {
+  if (canonical(scope).split(" ").length >= 7) return scope;
+
+  const covered = lessons
+    .map((lesson) => lesson.title)
+    .filter(Boolean)
+    .slice(0, 6)
+    .join(" ; ");
+  const excluded = uniqueConcepts(
+    lessons.flatMap((lesson) => lesson.forbiddenConcepts),
+  )
+    .slice(0, 3)
+    .join(" ; ");
+
+  return `Le chapitre « ${title} » organise les apprentissages suivants : ${
+    covered || "les objectifs attribués à ses leçons"
+  }. Il ne développe pas ${
+    excluded || "les notions hors programme ni les contenus réservés aux autres chapitres"
+  }.`;
 }
 
 
