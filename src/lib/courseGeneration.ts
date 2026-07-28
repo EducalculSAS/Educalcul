@@ -13,9 +13,11 @@ import {
   STRUCTURED_MATH_OUTPUT_RULES,
   normalizeStructuredCourseChapter,
   repairInvalidStructuredMath,
+  type StructuredCourseBlock,
   type StructuredCourseChapter,
   type StructuredCourseExercise,
   type StructuredCourseLesson,
+  type StructuredGenerator,
 } from "@/lib/ai/structuredContent";
 import {
   courseChapterSchema,
@@ -33,6 +35,7 @@ import {
   formatStructuredQualityIssues,
   normalizeStructuredCoursePedagogy,
   structuredCourseQualityScore,
+  structuredLessonWordCount,
   topicRequiresFunctionGraph,
 } from "@/lib/ai/pedagogy";
 
@@ -332,6 +335,170 @@ Structure JSON exacte :
 Réponds uniquement avec ce JSON.`;
 }
 
+
+function substantiveBlockCount(lesson: StructuredCourseLesson): number {
+  return lesson.blocks.filter(
+    (block) => block.type !== "heading" && block.type !== "exercise",
+  ).length;
+}
+
+function isSynthesisHeading(block: StructuredCourseBlock): boolean {
+  if (block.type !== "heading") return false;
+  const source = JSON.stringify(block.content)
+    .toLocaleLowerCase("fr")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+  return /synthese|points?[- ]?cles?|a retenir|conclusion/.test(source);
+}
+
+function mergeLessonExpansion(
+  chapter: StructuredCourseChapter,
+  expansion: StructuredCourseChapter,
+): StructuredCourseChapter {
+  const baseLesson = chapter.lessons[0];
+  const expansionLesson = expansion.lessons[0];
+  if (!baseLesson || !expansionLesson) return chapter;
+
+  const baseBlocks = baseLesson.blocks.filter(
+    (block) => block.type !== "exercise",
+  );
+  const seen = new Set(baseBlocks.map((block) => JSON.stringify(block)));
+  const additions = expansionLesson.blocks.filter((block) => {
+    if (block.type === "exercise") return false;
+    const key = JSON.stringify(block);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  if (additions.length === 0) return chapter;
+
+  const synthesisIndex = baseBlocks.findIndex(isSynthesisHeading);
+  const insertionIndex = synthesisIndex >= 0 ? synthesisIndex : baseBlocks.length;
+  const mergedLesson: StructuredCourseLesson = {
+    ...baseLesson,
+    blocks: [
+      ...baseBlocks.slice(0, insertionIndex),
+      ...additions,
+      ...baseBlocks.slice(insertionIndex),
+    ],
+  };
+
+  return normalizeStructuredCoursePedagogy({
+    ...chapter,
+    lessons: [mergedLesson],
+  });
+}
+
+async function enrichLessonToMinimum(options: {
+  chapter: StructuredCourseChapter;
+  generate: StructuredGenerator;
+  chapterTitle: string;
+  lessonTitle: string;
+  lessonScope: string;
+  durationPerLesson: number;
+  minWords: number;
+  maxWords: number;
+}): Promise<StructuredCourseChapter> {
+  let current = options.chapter;
+  const expansionContract = courseChapterSchema({
+    lessonCount: 1,
+    includeExercises: false,
+    minExercises: 0,
+    maxExercises: 0,
+  });
+
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const lesson = current.lessons[0];
+    if (!lesson) return current;
+
+    const currentWords = structuredLessonWordCount(lesson);
+    const currentSubstantiveBlocks = substantiveBlockCount(lesson);
+    if (currentWords >= options.minWords && currentSubstantiveBlocks >= 5) {
+      return current;
+    }
+
+    const missingWords = Math.max(0, options.minWords - currentWords);
+    const remainingCapacity = Math.max(120, options.maxWords - currentWords);
+    const additionalTarget = Math.min(
+      360,
+      remainingCapacity,
+      Math.max(180, missingWords + 110),
+    );
+    const existingBlocksJson = JSON.stringify(
+      lesson.blocks.filter((block) => block.type !== "exercise"),
+    );
+
+    const expansionSystem = `Tu complètes une leçon de mathématiques Educalcul déjà générée.
+Tu ne réécris pas la leçon entière : tu produis uniquement des blocs pédagogiques NOUVEAUX et complémentaires.
+Chapitre : ${options.chapterTitle}.
+Leçon : ${options.lessonTitle}.
+Périmètre strict : ${options.lessonScope}.
+
+${STRUCTURED_MATH_OUTPUT_RULES}
+
+${RICH_TEXT_SCHEMA_PROMPT}
+
+${COURSE_BLOCK_SCHEMA_PROMPT}
+
+CONTRAT BLOQUANT :
+• Retourne exactement un objet chapitre avec exactement une leçon.
+• La leçon contient uniquement 4 à 9 blocs nouveaux, environ ${additionalTarget} mots utiles au total.
+• exercises vaut exactement []. Aucun bloc exercise.
+• Approfondis les explications, ajoute une justification, une méthode ou une application conceptuelle utile.
+• Ne répète aucune définition, propriété, formule, exemple ou conclusion déjà présents.
+• N'ajoute pas de nouvelle leçon, pas de préface, pas de HTML, pas de Markdown, pas de $ ou $$.
+• N'ajoute pas de courbe ou de figure supplémentaire sauf nécessité absolue.
+• Le contenu doit pouvoir être inséré directement avant la synthèse existante.
+
+Structure exacte :
+{
+  "title": "${options.chapterTitle}",
+  "lessons": [
+    {
+      "title": "${options.lessonTitle}",
+      "duration": ${options.durationPerLesson},
+      "blocks": [BLOCS_NOUVEAUX],
+      "exercises": []
+    }
+  ]
+}
+
+Réponds uniquement avec ce JSON.`;
+
+    try {
+      const expansionRaw = await options.generate(
+        `La leçon existante contient environ ${currentWords} mots utiles et ${currentSubstantiveBlocks} blocs substantiels. Le minimum est ${options.minWords} mots et 5 blocs substantiels.\nIl manque au moins ${missingWords} mots utiles.\nVoici les blocs existants, à ne pas répéter :\n${existingBlocksJson}`,
+        expansionSystem,
+        expansionContract,
+        0.12,
+        5_000,
+        false,
+      );
+      const expansion = normalizeStructuredCourseChapter(expansionRaw, {
+        expectedLessonCount: 1,
+        durationPerLesson: options.durationPerLesson,
+        includeExercises: false,
+        maxExercisesPerLesson: 0,
+      });
+      const merged = mergeLessonExpansion(current, expansion);
+      const mergedLesson = merged.lessons[0];
+      if (
+        mergedLesson &&
+        structuredLessonWordCount(mergedLesson) > currentWords
+      ) {
+        current = merged;
+      }
+    } catch (error) {
+      console.warn(
+        `[course-ai] Enrichissement ciblé impossible pour « ${options.lessonTitle} » (tentative ${attempt + 1}/2).`,
+        error,
+      );
+    }
+  }
+
+  return current;
+}
+
 function isTruncationError(error: unknown): boolean {
   return (
     error instanceof Error &&
@@ -584,13 +751,24 @@ Règles : exactement ${lessonsPerChapter} éléments ; progression logique ; auc
               qualityOptions,
             );
 
+            const blockingBeforeRetry = issues.filter(
+              (issue) => issue.severity === "error",
+            );
+            const onlyEnrichmentIssues =
+              blockingBeforeRetry.length > 0 &&
+              blockingBeforeRetry.every(
+                (issue) =>
+                  issue.code === "lesson_too_short" ||
+                  issue.code === "lesson_too_sparse",
+              );
+
             if (
               !hasEnoughStructuredLessons(
                 structured,
                 1,
                 shouldIncludeExercises,
               ) ||
-              issues.some((issue) => issue.severity === "error")
+              (blockingBeforeRetry.length > 0 && !onlyEnrichmentIssues)
             ) {
               const issueSummary = formatStructuredQualityIssues(issues);
               const retryRaw = await generate(
@@ -633,6 +811,17 @@ Règles : exactement ${lessonsPerChapter} éléments ; progression logique ; auc
                 `La leçon « ${plan.title} » n'a pas produit exactement une leçon.`,
               );
             }
+
+            structured = await enrichLessonToMinimum({
+              chapter: structured,
+              generate,
+              chapterTitle,
+              lessonTitle: plan.title,
+              lessonScope: plan.scope,
+              durationPerLesson,
+              minWords: targetWords.min,
+              maxWords: targetWords.max,
+            });
 
             const repaired = await repairInvalidStructuredMath(structured, {
               generate,
