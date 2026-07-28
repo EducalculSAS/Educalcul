@@ -31,6 +31,7 @@ import {
   sanitizeStructuredExerciseDraft,
   sanitizeStructuredQuizDraft,
 } from "@/lib/ai/pedagogy";
+import { runStructuredQualityGuard } from "@/lib/ai/qualityGuard";
 
 export const maxDuration = 120;
 
@@ -161,6 +162,8 @@ async function stabilizeCourse(
   generate: Generate,
   lessonCount: number,
   includeExercises: boolean,
+  level: string,
+  subject: string,
 ): Promise<StructuredCourseChapter> {
   const normalized = normalizeStructuredCourseChapter(raw, {
     expectedLessonCount: lessonCount,
@@ -168,7 +171,14 @@ async function stabilizeCourse(
     includeExercises,
     maxExercisesPerLesson: includeExercises ? 3 : 0,
   });
-  const repaired = await repairInvalidStructuredMath(normalized, {
+  const guarded = await runStructuredQualityGuard(normalized, {
+    generate,
+    label: "édition de cours",
+    level,
+    subject,
+    semanticAudit: true,
+  });
+  const repaired = await repairInvalidStructuredMath(guarded.value, {
     generate,
     label: "édition de cours",
     enableModelRepair: true,
@@ -183,12 +193,21 @@ async function stabilizeExercise(
   generate: Generate,
   questionCount: number,
   blockType: string,
+  level: string,
+  subject: string,
 ): Promise<StructuredExerciseDraft> {
   const normalized = sanitizeStructuredExerciseDraft(
     normalizeStructuredExerciseDraft(raw, questionCount),
     { blockType, exerciseType: "simple" },
   );
-  const repaired = await repairInvalidStructuredMath(normalized, {
+  const guarded = await runStructuredQualityGuard(normalized, {
+    generate,
+    label: "édition d'exercice",
+    level,
+    subject,
+    semanticAudit: true,
+  });
+  const repaired = await repairInvalidStructuredMath(guarded.value, {
     generate,
     label: "édition d'exercice",
     enableModelRepair: true,
@@ -203,11 +222,20 @@ async function stabilizeQuiz(
   raw: unknown,
   generate: Generate,
   questionCount: number,
+  level: string,
+  subject: string,
 ): Promise<StructuredQuizDraft> {
   const normalized = sanitizeStructuredQuizDraft(
     normalizeStructuredQuizDraft(raw, questionCount),
   );
-  const repaired = await repairInvalidStructuredMath(normalized, {
+  const guarded = await runStructuredQualityGuard(normalized, {
+    generate,
+    label: "édition de quiz",
+    level,
+    subject,
+    semanticAudit: true,
+  });
+  const repaired = await repairInvalidStructuredMath(guarded.value, {
     generate,
     label: "édition de quiz",
     enableModelRepair: true,
@@ -239,6 +267,7 @@ export async function POST(request: NextRequest) {
     const instruction = text(body.instruction);
     const content = body.content;
     const level = text(body.level, "6ème");
+    const subject = text(body.subject, instruction || "mathématiques");
 
     const supported: EditType[] = [
       "lesson",
@@ -313,7 +342,14 @@ Crée uniquement le chapitre structuré demandé. Pour une édition, conserve le
         0.16,
         lessonCount === 1 ? 10_000 : Math.min(24_000, 7_500 * lessonCount),
       );
-      const stable = await stabilizeCourse(raw, generate, lessonCount, includeExercises);
+      const stable = await stabilizeCourse(
+        raw,
+        generate,
+        lessonCount,
+        includeExercises,
+        level,
+        subject,
+      );
       const compiled = compileStructuredCourseChapter(stable, {
         chapterIndex: 0,
         durationPerLesson: duration,
@@ -370,7 +406,14 @@ Contexte actuel : ${JSON.stringify(content ?? {})}`,
         0.16,
         Math.min(18_000, 4_500 + questionCount * 2_800),
       );
-      const stable = await stabilizeExercise(raw, generate, questionCount, blockType);
+      const stable = await stabilizeExercise(
+        raw,
+        generate,
+        questionCount,
+        blockType,
+        level,
+        subject,
+      );
       const compiled = compileStructuredExerciseDraft(stable, {
         blockType,
         exerciseType: type === "page" || type === "add_page" ? "contextual" : "simple",
@@ -400,7 +443,7 @@ Question actuelle ou contexte : ${JSON.stringify(content ?? {})}`,
       0.14,
       4_500,
     );
-    const stable = await stabilizeQuiz(raw, generate, 1);
+    const stable = await stabilizeQuiz(raw, generate, 1, level, subject);
     const compiled = compileStructuredQuizDraft(stable);
     const item = compiled.questions[0];
     if (!item) {

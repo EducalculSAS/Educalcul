@@ -38,6 +38,7 @@ import {
   structuredLessonWordCount,
   topicRequiresFunctionGraph,
 } from "@/lib/ai/pedagogy";
+import { runStructuredQualityGuard } from "@/lib/ai/qualityGuard";
 
 export type CourseGenerationParams = {
   grade_level: string;
@@ -823,10 +824,28 @@ Règles : exactement ${lessonsPerChapter} éléments ; progression logique ; auc
               maxWords: targetWords.max,
             });
 
+            const guarded = await runStructuredQualityGuard(structured, {
+              generate,
+              label: `cours ${courseTitle}, chapitre ${chapterTitle}, leçon ${plan.title}`,
+              level: String(grade_level),
+              subject,
+              semanticAudit: true,
+            });
+            structured = normalizeStructuredCoursePedagogy(guarded.value);
+            if (
+              guarded.report.semanticPatches > 0 ||
+              guarded.report.mathTextRepairs > 0 ||
+              guarded.report.removedCurveFigures > 0
+            ) {
+              console.info(
+                `[course-ai] ${plan.title}: ${guarded.report.semanticPatches} correction(s) mathématique(s), ${guarded.report.mathTextRepairs} restructuration(s) LaTeX, ${guarded.report.removedCurveFigures} figure(s) de courbe supprimée(s).`,
+              );
+            }
+
             const repaired = await repairInvalidStructuredMath(structured, {
               generate,
               label: `cours ${courseTitle}, chapitre ${chapterTitle}, leçon ${plan.title}`,
-              enableModelRepair: quality_mode !== "fast",
+              enableModelRepair: true,
             });
             structured = normalizeStructuredCoursePedagogy(repaired.value);
             issues = auditStructuredCoursePedagogy(

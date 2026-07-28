@@ -24,6 +24,7 @@ import { compileStructuredExerciseDraft } from "@/lib/ai/compiler";
 import {
   sanitizeStructuredExerciseDraft,
 } from "@/lib/ai/pedagogy";
+import { runStructuredQualityGuard } from "@/lib/ai/qualityGuard";
 
 const BATCH_SIZE = 2;
 
@@ -383,6 +384,27 @@ ${courseContext}`;
         if (draft.questions.length === 0) {
           throw new Error(
             `La partie ${batchIndex + 1} n'a produit aucune question ${blockType} complète.`,
+          );
+        }
+
+        const guarded = await runStructuredQualityGuard(draft, {
+          generate,
+          label: `exercice ${subject}, partie ${batchIndex + 1}`,
+          level,
+          subject,
+          semanticAudit: true,
+        });
+        draft = sanitizeStructuredExerciseDraft(guarded.value, {
+          blockType,
+          exerciseType,
+        });
+        if (
+          guarded.report.semanticPatches > 0 ||
+          guarded.report.mathTextRepairs > 0 ||
+          guarded.report.removedCurveFigures > 0
+        ) {
+          console.info(
+            `[exercise-ai] Partie ${batchIndex + 1}: ${guarded.report.semanticPatches} correction(s) mathématique(s), ${guarded.report.mathTextRepairs} restructuration(s) LaTeX, ${guarded.report.removedCurveFigures} figure(s) de courbe supprimée(s).`,
           );
         }
 

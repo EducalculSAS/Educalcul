@@ -94,6 +94,17 @@ function inspectString(value, location) {
     });
   }
 
+
+  if (
+    /\b(?:mathbb|mathcal|frac|dfrac|sqrt|left|right|cdot|mapsto|infty)\s*(?:\{|\(|\b)|\b(?:lim|sum|prod|int)\s*_?\s*\{|(?:[A-Za-z0-9)]|\})\s*\^\s*(?:\{|\(|[-+A-Za-z0-9])|\b(?:exp|ln|sin|cos|tan)\s*\([^)]{1,100}\)/i.test(
+      withoutTags,
+    )
+  ) {
+    addIssue("unstructured-math-text", location, {
+      excerpt: withoutTags.replace(/\s+/g, " ").trim().slice(0, 240),
+    });
+  }
+
   if (/\$/.test(withoutMath)) {
     addIssue("orphan-dollar", location, {
       excerpt: withoutMath.replace(/\s+/g, " ").trim().slice(0, 240),
@@ -194,6 +205,20 @@ if (root._type === "course" && Array.isArray(root.content_json)) {
     const lessons = Array.isArray(chapter?.lessons) ? chapter.lessons : [];
     lessons.forEach((lesson, lessonIndex) => {
       const html = typeof lesson?.content === "string" ? lesson.content : "";
+      const svgFigures = html.match(/<figure\b[^>]*class=["'][^"']*course-figure[^"']*["'][\s\S]*?<\/figure>/gi) || [];
+      svgFigures.forEach((figure, figureIndex) => {
+        const caption = decodeEntities(
+          (figure.match(/<figcaption>([\s\S]*?)<\/figcaption>/i)?.[1] || "")
+            .replace(/<[^>]*>/g, " "),
+        );
+        if (/\b(courbe|tangente|asymptote|graphe|fonction exponentielle|fonction logarithme)\b/i.test(caption)) {
+          addIssue(
+            "svg-used-for-function-curve",
+            `content_json[${chapterIndex}].lessons[${lessonIndex}].content`,
+            { figureIndex, caption: caption.replace(/\s+/g, " ").trim().slice(0, 180) },
+          );
+        }
+      });
       const tables = html.match(/<table\b[\s\S]*?<\/table>/gi) || [];
       tables.forEach((table, tableIndex) => {
         const headerMatch = table.match(/<thead\b[\s\S]*?<\/thead>/i);
