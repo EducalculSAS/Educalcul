@@ -215,103 +215,121 @@ export async function repairUnstructuredMathText<T>(
   const value = clone(input);
   const suspiciousBefore = suspiciousReferences(value).length;
   let repaired = 0;
-  const maxRounds = Math.max(1, Math.min(2, options.maxRounds ?? 2));
-  const batchSize = 8;
+  const maxRounds = Math.max(1, Math.min(4, options.maxRounds ?? 3));
+  const batchSize = 6;
 
   const systemPrompt = `Tu répares uniquement la séparation texte/mathématiques d'un contenu Educalcul.
 Le contenu est déjà rédigé et son sens doit rester strictement identique.
 Pour chaque champ reçu :
 • conserve exactement la prose française ;
-• place chaque formule, symbole, équation, inéquation, limite, dérivée, ensemble ou puissance dans un part {"type":"math","latex":"..."} ;
+• place CHAQUE formule, symbole, équation, inéquation, limite, dérivée, ensemble, indice ou puissance dans un part {"type":"math","latex":"..."} ;
 • le LaTeX doit être compatible KaTeX, sans $ ni HTML ;
-• corrige les commandes dont l'antislash a disparu : mathbb{R}, frac, cdot, left, right, lim, to, infty, etc. ;
-• transforme e^(2x-1) en e^{2x-1}, et exp(x) en \exp(x) ;
+• corrige les commandes dont l'antislash a disparu : mathbb{R}, frac, cdot, left, right, lim, to, infty, neq, Delta, alpha, beta, etc. ;
+• transforme e^(2x-1) en e^{2x-1}, exp(x) en \\exp(x), x₁ en x_1 et √Delta en \\sqrt{\\Delta} ;
+• ne laisse aucune écriture mathématique dans un part text, même si la phrase contient plusieurs formules ;
 • ne corrige aucune affirmation mathématique à cette étape ;
 • retourne uniquement les champs demandés, avec le même id.`;
 
+  const applyResult = (
+    raw: unknown,
+    entries: Array<{ reference: RichTextReference; text: string }>,
+  ) => {
+    const result = asRecord(raw);
+    const repairs = Array.isArray(result?.repairs) ? result.repairs : [];
+    const byId = new Map(entries.map(({ reference }) => [reference.id, reference]));
+
+    for (const rawRepair of repairs) {
+      const repair = asRecord(rawRepair);
+      if (!repair) continue;
+      const reference = byId.get(stringValue(repair.id));
+      if (!reference) continue;
+      const content = normalizeStructuredRichText(repair.content);
+      if (content.parts.length === 0) continue;
+      const before = JSON.stringify(reference.get());
+      const after = JSON.stringify(content);
+      if (before === after) continue;
+
+      // Une réparation partielle est tout de même conservée. Les tours suivants
+      // s'occupent des éventuelles expressions encore présentes dans le texte.
+      reference.set(content);
+      repaired += 1;
+    }
+  };
+
+  const repairBatch = async (
+    entries: Array<{ reference: RichTextReference; text: string }>,
+    strict: boolean,
+  ) => {
+    if (entries.length === 0) return;
+    const payload = {
+      fields: entries.map(({ reference, text }) => ({
+        id: reference.id,
+        path: reference.path,
+        suspicious_excerpts: text,
+        content: reference.get(),
+      })),
+    };
+    const contentChars = JSON.stringify(payload).length;
+    const maxTokens = Math.min(
+      5_500,
+      Math.max(2_000, 900 + Math.ceil(contentChars / 2.5)),
+    );
+    const userPrompt = `${strict ? "CORRECTION STRICTE FINALE. " : ""}Contexte : ${sanitizeStructuredText(options.label)}
+Champs à restructurer :
+${JSON.stringify(payload)}`;
+    const raw = await options.generate(
+      userPrompt,
+      systemPrompt,
+      mathTextRepairContract(entries.length),
+      0,
+      maxTokens,
+      false,
+    );
+    applyResult(raw, entries);
+  };
+
   for (let round = 0; round < maxRounds; round += 1) {
-    const allSuspicious = suspiciousReferences(value).slice(0, 80);
+    const allSuspicious = suspiciousReferences(value);
     if (allSuspicious.length === 0) break;
 
     for (let offset = 0; offset < allSuspicious.length; offset += batchSize) {
-      const suspicious = allSuspicious.slice(offset, offset + batchSize);
-      const userPrompt = `Contexte : ${sanitizeStructuredText(options.label)}
-Champs à restructurer :
-${JSON.stringify({
-  fields: suspicious.map(({ reference }) => ({
-    id: reference.id,
-    path: reference.path,
-    content: reference.get(),
-  })),
-})}`;
-
-      const applyResult = (raw: unknown) => {
-        const result = asRecord(raw);
-        const repairs = Array.isArray(result?.repairs) ? result.repairs : [];
-        const byId = new Map(
-          suspicious.map(({ reference }) => [reference.id, reference]),
-        );
-
-        for (const rawRepair of repairs) {
-          const repair = asRecord(rawRepair);
-          if (!repair) continue;
-          const reference = byId.get(stringValue(repair.id));
-          if (!reference) continue;
-          const content = normalizeStructuredRichText(repair.content);
-          if (content.parts.length === 0) continue;
-          const stillSuspicious = content.parts.some(
-            (part) =>
-              part.type === "text" &&
-              containsSuspiciousUnstructuredMath(part.value),
-          );
-          if (stillSuspicious) continue;
-          reference.set(content);
-          repaired += 1;
-        }
-      };
-
+      const batch = allSuspicious.slice(offset, offset + batchSize);
       try {
-        const raw = await options.generate(
-          userPrompt,
-          systemPrompt,
-          mathTextRepairContract(suspicious.length),
-          0,
-          Math.min(4_500, 800 + suspicious.length * 420),
-          false,
-        );
-        applyResult(raw);
+        await repairBatch(batch, round > 0);
       } catch (batchError) {
         console.warn(
           `[quality-guard] Lot de restructuration LaTeX indisponible pour ${options.label}; reprise champ par champ.`,
           batchError,
         );
-        for (const entry of suspicious) {
-          try {
-            const raw = await options.generate(
-              `Contexte : ${sanitizeStructuredText(options.label)}
-Champ à restructurer :
-${JSON.stringify({
-                fields: [
-                  {
-                    id: entry.reference.id,
-                    path: entry.reference.path,
-                    content: entry.reference.get(),
-                  },
-                ],
-              })}`,
-              systemPrompt,
-              mathTextRepairContract(1),
-              0,
-              2_500,
-              false,
-            );
-            applyResult(raw);
-          } catch (fieldError) {
-            console.warn(
-              `[quality-guard] Champ LaTeX non réparé (${entry.reference.path}).`,
-              fieldError,
-            );
-          }
+      }
+
+      // Le mode JSON de Leanstral peut retourner un lot partiellement réparé.
+      // On reprend uniquement les champs du lot qui restent suspects.
+      const remainingIds = new Set(
+        suspiciousReferences(value).map(({ reference }) => reference.id),
+      );
+      for (const entry of batch) {
+        if (!remainingIds.has(entry.reference.id)) continue;
+        try {
+          await repairBatch(
+            [
+              {
+                reference: entry.reference,
+                text: entry.reference
+                  .get()
+                  .parts.filter((part) => part.type === "text")
+                  .map((part) => part.value)
+                  .filter(containsSuspiciousUnstructuredMath)
+                  .join("\n"),
+              },
+            ],
+            true,
+          );
+        } catch (fieldError) {
+          console.warn(
+            `[quality-guard] Champ LaTeX non réparé (${entry.reference.path}).`,
+            fieldError,
+          );
         }
       }
     }
@@ -371,13 +389,55 @@ function qualityFieldPayload(root: unknown): Array<{
       text: structuredRichTextToPlainText(reference.get()),
     }))
     .filter((field) => field.text.length > 0)
-    .slice(0, 120);
+    .slice(0, 240);
+}
+
+function qualityFieldGroupKey(path: string): string {
+  const grouped = path.match(
+    /^(.*?\.(?:exercises|questions|options|steps)\[\d+\])/,
+  );
+  if (grouped?.[1]) return grouped[1];
+  return path.replace(/\.(?:content|question|answer|hint|explanation|title|caption)$/, "");
+}
+
+function packQualityFieldBatches(
+  fields: Array<{ id: string; path: string; text: string }>,
+): Array<Array<{ id: string; path: string; text: string }>> {
+  const groups = new Map<
+    string,
+    Array<{ id: string; path: string; text: string }>
+  >();
+  for (const field of fields) {
+    const key = qualityFieldGroupKey(field.path);
+    const current = groups.get(key) ?? [];
+    current.push(field);
+    groups.set(key, current);
+  }
+
+  const batches: Array<Array<{ id: string; path: string; text: string }>> = [];
+  let current: Array<{ id: string; path: string; text: string }> = [];
+  let currentChars = 0;
+  for (const group of groups.values()) {
+    const groupChars = group.reduce((sum, field) => sum + field.text.length, 0);
+    if (
+      current.length > 0 &&
+      (current.length + group.length > 14 || currentChars + groupChars > 12_000)
+    ) {
+      batches.push(current);
+      current = [];
+      currentChars = 0;
+    }
+    current.push(...group);
+    currentChars += groupChars;
+  }
+  if (current.length > 0) batches.push(current);
+  return batches;
 }
 
 /**
- * Passe de cohérence mathématique ciblée. Le modèle ne renvoie que les champs
- * réellement faux : réponses incompatibles avec les explications, calculs
- * erronés, affirmations trop fortes, raisonnement circulaire ou preuve invalide.
+ * Passe de cohérence mathématique ciblée. Elle est fractionnée en petits lots
+ * afin qu'un audit de leçon ne puisse plus atteindre max_tokens. Les champs
+ * d'un même exercice restent dans le même lot pour comparer answer/explanation.
  */
 export async function auditAndRepairMathematicalContent<T>(
   input: T,
@@ -395,7 +455,7 @@ export async function auditAndRepairMathematicalContent<T>(
 
   const systemPrompt = `Tu es le contrôleur mathématique final d'Educalcul pour le niveau ${sanitizeStructuredText(options.level)}.
 Sujet : ${sanitizeStructuredText(options.subject)}.
-Tu reçois des champs identifiés appartenant au même cours, exercice ou quiz.
+Tu reçois un PETIT LOT de champs identifiés appartenant au même cours, exercice ou quiz.
 Vérifie uniquement les erreurs importantes :
 • calcul ou résultat faux ;
 • réponse finale incompatible avec l'explication ;
@@ -405,40 +465,95 @@ Vérifie uniquement les erreurs importantes :
 • niveau scolaire manifestement inadapté ;
 • notation mathématique ambiguë qui change le sens.
 Ne corrige pas le style, ne raccourcis pas un contenu correct et n'invente pas une autre activité.
+Retourne uniquement les champs réellement faux, jamais tous les champs du lot.
 Pour chaque erreur, remplace le champ complet concerné en conservant son rôle. Toutes les mathématiques de chaque remplacement doivent être dans des parts math LaTeX KaTeX, jamais dans un part text.
 Pour un couple answer/explanation, les deux doivent conclure exactement au même résultat.
-Retourne verdict=reject seulement si le contenu ne peut pas être réparé par au plus 24 remplacements ciblés.`;
+Retourne verdict=reject seulement si ce petit lot ne peut pas être réparé par des remplacements ciblés.`;
 
-  const raw = await options.generate(
-    `Contexte : ${sanitizeStructuredText(options.label)}\nChamps :\n${JSON.stringify({ fields })}`,
-    systemPrompt,
-    semanticPatchContract(24),
-    0,
-    Math.min(10_000, 1_500 + fields.length * 180),
-    false,
-  );
-  const result = asRecord(raw);
-  const verdict = stringValue(result?.verdict);
-  const reason = sanitizeStructuredText(result?.reason);
-  const rawPatches = Array.isArray(result?.patches) ? result.patches : [];
   const byId = new Map(references.map((reference) => [reference.id, reference]));
   let patches = 0;
 
-  for (const rawPatch of rawPatches) {
-    const patch = asRecord(rawPatch);
-    if (!patch) continue;
-    const reference = byId.get(stringValue(patch.id));
-    if (!reference) continue;
-    const content = normalizeStructuredRichText(patch.content);
-    if (content.parts.length === 0) continue;
-    reference.set(content);
-    patches += 1;
-  }
+  const applyPatches = (raw: unknown, batchSize: number) => {
+    const result = asRecord(raw);
+    const verdict = stringValue(result?.verdict);
+    const reason = sanitizeStructuredText(result?.reason);
+    const rawPatches = Array.isArray(result?.patches) ? result.patches : [];
+    let applied = 0;
 
-  if (verdict === "reject" && patches === 0) {
-    throw new Error(
-      `Contrôle mathématique bloquant pour ${options.label}${reason ? ` : ${reason}` : ""}`,
+    for (const rawPatch of rawPatches) {
+      const patch = asRecord(rawPatch);
+      if (!patch) continue;
+      const reference = byId.get(stringValue(patch.id));
+      if (!reference) continue;
+      const content = normalizeStructuredRichText(patch.content);
+      if (content.parts.length === 0) continue;
+      reference.set(content);
+      applied += 1;
+      patches += 1;
+    }
+
+    if (verdict === "reject" && applied === 0 && batchSize === 1) {
+      throw new Error(
+        `Contrôle mathématique bloquant pour ${options.label}${reason ? ` : ${reason}` : ""}`,
+      );
+    }
+    return { verdict, applied };
+  };
+
+  const processBatch = async (
+    batch: Array<{ id: string; path: string; text: string }>,
+  ): Promise<void> => {
+    if (batch.length === 0) return;
+    const payload = JSON.stringify({ fields: batch });
+    const maxTokens = Math.min(
+      5_500,
+      Math.max(2_200, 1_100 + Math.ceil(payload.length / 2.8)),
     );
+
+    try {
+      const raw = await options.generate(
+        `Contexte : ${sanitizeStructuredText(options.label)}\nChamps :\n${payload}`,
+        systemPrompt,
+        semanticPatchContract(Math.min(24, Math.max(1, batch.length * 2))),
+        0,
+        maxTokens,
+        false,
+      );
+      const result = applyPatches(raw, batch.length);
+      if (result.verdict === "reject" && result.applied === 0 && batch.length > 1) {
+        const middle = Math.ceil(batch.length / 2);
+        await processBatch(batch.slice(0, middle));
+        await processBatch(batch.slice(middle));
+      }
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        error.message.startsWith("Contrôle mathématique bloquant")
+      ) {
+        throw error;
+      }
+      if (batch.length > 1) {
+        const middle = Math.ceil(batch.length / 2);
+        console.warn(
+          `[quality-guard] Audit mathématique fractionné pour ${options.label} (${batch.length} champs).`,
+          error,
+        );
+        await processBatch(batch.slice(0, middle));
+        await processBatch(batch.slice(middle));
+        return;
+      }
+
+      // Une indisponibilité ponctuelle du contrôleur ne doit pas détruire une
+      // leçon déjà générée. La validation structurelle et LaTeX reste bloquante.
+      console.warn(
+        `[quality-guard] Audit mathématique indisponible pour ${batch[0]?.path ?? options.label}; champ conservé.`,
+        error,
+      );
+    }
+  };
+
+  for (const batch of packQualityFieldBatches(fields)) {
+    await processBatch(batch);
   }
 
   return { value, patches };
