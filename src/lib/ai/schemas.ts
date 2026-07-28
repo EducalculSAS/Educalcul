@@ -553,6 +553,44 @@ export function courseOutlineSchema(chapterCount: number): JsonSchemaContract {
   };
 }
 
+export function courseLessonPlanSchema(lessonCount: number): JsonSchemaContract {
+  return {
+    name: "educalcul_course_lesson_plan",
+    description: "Plan exact des leçons d'un chapitre Educalcul.",
+    schema: {
+      type: "object",
+      properties: {
+        lessons: {
+          type: "array",
+          minItems: lessonCount,
+          maxItems: lessonCount,
+          items: {
+            type: "object",
+            properties: {
+              title: { type: "string", minLength: 1 },
+              scope: { type: "string", minLength: 1 },
+              visual_focus: {
+                type: "string",
+                enum: [
+                  "graph",
+                  "variation_table",
+                  "sign_table",
+                  "table",
+                  "figure",
+                ],
+              },
+            },
+            required: ["title", "scope", "visual_focus"],
+            ...noExtra,
+          },
+        },
+      },
+      required: ["lessons"],
+      ...noExtra,
+    },
+  };
+}
+
 export function courseChapterSchema(options: {
   lessonCount: number;
   includeExercises: boolean;

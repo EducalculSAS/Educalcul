@@ -25,7 +25,7 @@ import {
   sanitizeStructuredExerciseDraft,
 } from "@/lib/ai/pedagogy";
 
-const BATCH_SIZE = 3;
+const BATCH_SIZE = 2;
 
 export type ExerciseGenerationParams = {
   exerciseType?: "simple" | "contextual";
@@ -353,7 +353,7 @@ ${courseContext}`;
           systemPrompt,
           exerciseDraftSchema(count),
           0.25,
-          9_000,
+          7_000,
           false,
         );
         let draft = sanitizeStructuredExerciseDraft(
@@ -368,7 +368,7 @@ ${courseContext}`;
             systemPrompt,
             exerciseDraftSchema(count),
             0.08,
-            9_000,
+            7_000,
             false,
           );
           const retry = sanitizeStructuredExerciseDraft(

@@ -8,6 +8,32 @@ const MISTRAL_URL   = "https://api.eu.mistral.ai/v1/chat/completions";
 const MISTRAL_MODEL = process.env.MISTRAL_MODEL || "mistral-small-latest";
 const MISTRAL_KEY   = process.env.MISTRAL_API_KEY || "";
 
+type JsonSchemaCapability = "unknown" | "supported" | "unsupported";
+const jsonSchemaCapabilityByModel = new Map<string, JsonSchemaCapability>();
+
+function configuredJsonSchemaMode(): "auto" | "on" | "off" {
+  const value = String(process.env.MISTRAL_JSON_SCHEMA_MODE || "auto")
+    .trim()
+    .toLowerCase();
+  if (value === "on" || value === "true" || value === "1") return "on";
+  if (value === "off" || value === "false" || value === "0") return "off";
+  return "auto";
+}
+
+function modelLikelyRejectsJsonSchema(model: string): boolean {
+  return /(?:^|[-_/])(labs?|leanstral)(?:[-_/]|$)/i.test(model);
+}
+
+function shouldAttemptJsonSchema(model: string): boolean {
+  const mode = configuredJsonSchemaMode();
+  if (mode === "on") return true;
+  if (mode === "off") return false;
+  const cached = jsonSchemaCapabilityByModel.get(model) || "unknown";
+  if (cached === "supported") return true;
+  if (cached === "unsupported") return false;
+  return !modelLikelyRejectsJsonSchema(model);
+}
+
 type Message = { role: "user" | "assistant" | "system"; content: string | MessageContentPart[] };
 type MessageContentPart =
   | { type: "text"; text: string }
@@ -513,11 +539,10 @@ export async function generateStructuredContent(
 
 
 /**
- * Génération contrainte par un JSON Schema Mistral. Les trois générateurs
- * Educalcul utilisent exclusivement cette fonction. Si un modèle Labs ne
- * prend pas encore en charge le schéma personnalisé, on repasse une seule
- * fois en JSON mode avec le schéma inclus dans le prompt, puis les
- * normalisateurs serveur appliquent le même contrat avant compilation.
+ * Génération structurée commune. Les modèles stables utilisent JSON Schema
+ * lorsque disponible. Les modèles Labs/Leanstral passent directement en
+ * json_object : on évite ainsi un aller-retour 422 à chaque requête. Le contrat
+ * reste appliqué côté serveur par les normalisateurs et validateurs.
  */
 export async function generateStructuredContentWithSchema<T>(
   prompt: string,
@@ -542,14 +567,78 @@ export async function generateStructuredContentWithSchema<T>(
     };
     const choice = envelope.choices?.[0];
     if (choice?.finish_reason === "length") {
+      console.warn(`[llm] ${MISTRAL_MODEL} hit max_tokens (maxTokens=${maxTokens})`);
       throw new Error(
-        `Réponse IA tronquée (max_tokens=${maxTokens}). Réduis le volume demandé ou augmente le budget de sortie.`,
+        `Réponse IA tronquée (max_tokens atteint, maxTokens=${maxTokens}).`,
       );
     }
     const content = extractMistralText(choice?.message?.content);
     if (!content) throw new Error("Le modèle n'a renvoyé aucun contenu JSON.");
     return parseJSON(extractJSON(content)) as T;
   };
+
+  const callJsonObjectMode = async (): Promise<T> => {
+    const compatibilitySystem = `${systemPrompt}
+
+MODE JSON COMPATIBLE (${contract.name}) : réponds uniquement avec l'objet JSON demandé. Respecte strictement la structure décrite ci-dessus. Aucun texte avant ou après.`;
+    const compatibilityMessages: Message[] = [
+      { role: "system", content: compatibilitySystem },
+      { role: "user", content: prompt },
+    ];
+
+    let response = await callMistralModel(
+      MISTRAL_MODEL,
+      compatibilityMessages,
+      temperature,
+      maxTokens,
+      reasoning,
+      true,
+      abortSignal,
+    );
+
+    if (response.status === 429) {
+      await new Promise((resolve) => setTimeout(resolve, 1_700));
+      response = await callMistralModel(
+        MISTRAL_MODEL,
+        compatibilityMessages,
+        temperature,
+        maxTokens,
+        reasoning,
+        true,
+        abortSignal,
+      );
+    }
+
+    if (response.ok) {
+      try {
+        return parseResponse(response.text);
+      } catch (error) {
+        if (
+          error instanceof Error &&
+          error.message.includes("max_tokens atteint")
+        ) {
+          throw error;
+        }
+        return (await generateStructuredContent(
+          prompt,
+          compatibilitySystem,
+          Math.min(temperature, 0.15),
+          maxTokens,
+          reasoning,
+          abortSignal,
+        )) as T;
+      }
+    }
+
+    console.error(
+      `[llm] ${MISTRAL_MODEL} JSON mode error ${response.status}: ${response.text.slice(0, 500)}`,
+    );
+    throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
+  };
+
+  if (!shouldAttemptJsonSchema(MISTRAL_MODEL)) {
+    return callJsonObjectMode();
+  }
 
   let response = await callMistralModel(
     MISTRAL_MODEL,
@@ -562,7 +651,10 @@ export async function generateStructuredContentWithSchema<T>(
     contract,
   );
 
-  if (response.ok) return parseResponse(response.text);
+  if (response.ok) {
+    jsonSchemaCapabilityByModel.set(MISTRAL_MODEL, "supported");
+    return parseResponse(response.text);
+  }
 
   if (response.status === 429) {
     await new Promise((resolve) => setTimeout(resolve, 1_700));
@@ -576,25 +668,15 @@ export async function generateStructuredContentWithSchema<T>(
       abortSignal,
       contract,
     );
-    if (response.ok) return parseResponse(response.text);
+    if (response.ok) {
+      jsonSchemaCapabilityByModel.set(MISTRAL_MODEL, "supported");
+      return parseResponse(response.text);
+    }
   }
 
-  // Certains modèles expérimentaux peuvent temporairement refuser
-  // response_format=json_schema. Le fallback reste structuré, mais n'est fait
-  // qu'une fois et ne réintroduit ni HTML ni LaTeX délimité.
   if ([400, 403, 404, 422].includes(response.status)) {
-    console.warn(
-      `[llm] ${MISTRAL_MODEL} n'a pas accepté le JSON Schema (${response.status}); fallback JSON mode.`,
-    );
-    const schemaPrompt = `${systemPrompt}\n\nSCHÉMA JSON À RESPECTER STRICTEMENT :\n${JSON.stringify(contract.schema)}`;
-    return (await generateStructuredContent(
-      prompt,
-      schemaPrompt,
-      temperature,
-      maxTokens,
-      reasoning,
-      abortSignal,
-    )) as T;
+    jsonSchemaCapabilityByModel.set(MISTRAL_MODEL, "unsupported");
+    return callJsonObjectMode();
   }
 
   console.error(
@@ -602,6 +684,7 @@ export async function generateStructuredContentWithSchema<T>(
   );
   throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
 }
+
 
 /** Chatbot tuteur IA — reasoning activé (Mistral Small, mode reasoning) */
 export async function chatWithAI(

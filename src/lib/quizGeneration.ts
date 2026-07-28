@@ -26,7 +26,7 @@ import {
   sanitizeStructuredQuizDraft,
 } from "@/lib/ai/pedagogy";
 
-const BATCH_SIZE = 4;
+const BATCH_SIZE = 2;
 
 export type QuizGenerationParams = {
   linkedCourseId?: number | string | null;
@@ -265,7 +265,7 @@ ${courseContext}`;
           systemPrompt,
           quizDraftSchema(count),
           0.25,
-          8_000,
+          6_000,
           false,
         );
         let draft = sanitizeStructuredQuizDraft(
@@ -279,7 +279,7 @@ ${courseContext}`;
             systemPrompt,
             quizDraftSchema(count),
             0.08,
-            8_000,
+            6_000,
             false,
           );
           const retry = sanitizeStructuredQuizDraft(
