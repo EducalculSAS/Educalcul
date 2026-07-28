@@ -539,6 +539,89 @@ const courseExercise: JsonSchema = {
   ...noExtra,
 };
 
+
+export function courseBlueprintSchema(options: {
+  chapterCount: number;
+  lessonsPerChapter: number;
+}): JsonSchemaContract {
+  const lesson = {
+    type: "object",
+    properties: {
+      title: { type: "string", minLength: 1 },
+      objective: { type: "string", minLength: 1 },
+      scope: { type: "string", minLength: 1 },
+      core_concepts: {
+        type: "array",
+        minItems: 2,
+        maxItems: 7,
+        items: { type: "string", minLength: 1 },
+      },
+      prerequisite_recall: {
+        type: "array",
+        minItems: 0,
+        maxItems: 4,
+        items: { type: "string", minLength: 1 },
+      },
+      visual_focus: {
+        type: "string",
+        enum: [
+          "graph",
+          "variation_table",
+          "sign_table",
+          "table",
+          "figure",
+        ],
+      },
+      complexity: { type: "integer", minimum: 1, maximum: 3 },
+    },
+    required: [
+      "title",
+      "objective",
+      "scope",
+      "core_concepts",
+      "prerequisite_recall",
+      "visual_focus",
+      "complexity",
+    ],
+    ...noExtra,
+  } as JsonSchema;
+
+  return {
+    name: "educalcul_course_blueprint",
+    description:
+      "Plan global exact d'un cours, avec répartition exclusive des notions entre les leçons.",
+    schema: {
+      type: "object",
+      properties: {
+        title: { type: "string", minLength: 1 },
+        description: { type: "string", minLength: 1 },
+        chapters: {
+          type: "array",
+          minItems: options.chapterCount,
+          maxItems: options.chapterCount,
+          items: {
+            type: "object",
+            properties: {
+              title: { type: "string", minLength: 1 },
+              scope: { type: "string", minLength: 1 },
+              lessons: {
+                type: "array",
+                minItems: options.lessonsPerChapter,
+                maxItems: options.lessonsPerChapter,
+                items: lesson,
+              },
+            },
+            required: ["title", "scope", "lessons"],
+            ...noExtra,
+          },
+        },
+      },
+      required: ["title", "description", "chapters"],
+      ...noExtra,
+    },
+  };
+}
+
 export function courseOutlineSchema(chapterCount: number): JsonSchemaContract {
   return {
     name: "educalcul_course_outline",

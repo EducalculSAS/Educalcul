@@ -15,9 +15,8 @@ import {
   type StructuredCourseLesson,
 } from "@/lib/ai/structuredContent";
 import {
+  courseBlueprintSchema,
   courseChapterSchema,
-  courseLessonPlanSchema,
-  courseOutlineSchema,
 } from "@/lib/ai/schemas";
 import {
   compileStructuredCourseChapter,
@@ -31,7 +30,18 @@ import {
   structuredCourseQualityScore,
   topicRequiresFunctionGraph,
 } from "@/lib/ai/pedagogy";
-import { runStructuredQualityGuard } from "@/lib/ai/qualityGuard";
+import { sanitizeStructuredResources } from "@/lib/ai/qualityGuard";
+import {
+  CourseGenerationTelemetry,
+  createLessonJobs,
+  deduplicateCourseChapters,
+  lessonUsefulCharacterCount,
+  normalizeCourseBlueprint,
+  type CourseBlueprint,
+  type CourseVisualFocus,
+  type LessonJob,
+} from "@/lib/ai/coursePipeline";
+import { reviewCourseLesson } from "@/lib/ai/courseReview";
 
 export type CourseGenerationParams = {
   grade_level: string;
@@ -60,78 +70,6 @@ export type GenerationProgress = {
   chapters?: Record<number, { title: string; lessons: CompiledCourseLesson[] }>;
 };
 
-type CourseOutline = {
-  title?: string;
-  description?: string;
-  chapters?: Array<{ title?: string; scope?: string }>;
-};
-
-type CourseLessonPlan = {
-  lessons?: Array<{
-    title?: string;
-    scope?: string;
-    visual_focus?: "graph" | "variation_table" | "sign_table" | "table" | "figure";
-  }>;
-};
-
-type NormalizedLessonPlan = {
-  title: string;
-  scope: string;
-  visualFocus: "graph" | "variation_table" | "sign_table" | "table" | "figure";
-};
-
-type CourseContentBudget = {
-  hardMinWords: number;
-  targetMinWords: number;
-  targetMaxWords: number;
-  targetMinChars: number;
-  targetMaxChars: number;
-};
-
-function courseContentBudget(duration: number): CourseContentBudget {
-  if (duration <= 20) {
-    return {
-      hardMinWords: 280,
-      targetMinWords: 450,
-      targetMaxWords: 650,
-      targetMinChars: 3_000,
-      targetMaxChars: 4_800,
-    };
-  }
-  if (duration <= 30) {
-    return {
-      hardMinWords: 380,
-      targetMinWords: 650,
-      targetMaxWords: 900,
-      targetMinChars: 4_500,
-      targetMaxChars: 7_000,
-    };
-  }
-  if (duration <= 45) {
-    return {
-      hardMinWords: 520,
-      targetMinWords: 900,
-      targetMaxWords: 1_250,
-      targetMinChars: 6_500,
-      targetMaxChars: 9_500,
-    };
-  }
-  return {
-    hardMinWords: 700,
-    targetMinWords: 1_200,
-    targetMaxWords: 1_650,
-    targetMinChars: 8_500,
-    targetMaxChars: 12_500,
-  };
-}
-
-function envConcurrency(name: string, fallback: number, maximum: number): number {
-  const parsed = Number(process.env[name]);
-  return Number.isFinite(parsed)
-    ? Math.max(1, Math.min(maximum, Math.trunc(parsed)))
-    : Math.max(1, Math.min(maximum, fallback));
-}
-
 function clampNumber(
   value: string | number | undefined,
   fallback: number,
@@ -149,10 +87,44 @@ function clampNumber(
     : fallback;
 }
 
-function cleanPlain(value: unknown, fallback = ""): string {
-  return typeof value === "string" && value.trim()
-    ? value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()
+function envNumber(
+  name: string,
+  fallback: number,
+  min: number,
+  max: number,
+): number {
+  const parsed = Number(process.env[name]);
+  return Number.isFinite(parsed)
+    ? Math.max(min, Math.min(max, Math.trunc(parsed)))
     : fallback;
+}
+
+function envConcurrency(name: string, fallback: number, maximum: number): number {
+  return envNumber(name, fallback, 1, maximum);
+}
+
+function styleInstruction(
+  style: CourseGenerationParams["content_style"],
+): string {
+  if (style === "theory_heavy") {
+    return "Style théorique : définitions rigoureuses, propriétés, démonstrations et profondeur conceptuelle, avec des applications ciblées.";
+  }
+  if (style === "practice_heavy") {
+    return "Style pratique : méthodes, interprétations et applications, avec la théorie nécessaire pour comprendre les procédures.";
+  }
+  return "Style équilibré : théorie, justification, méthode, application et synthèse.";
+}
+
+function languageInstruction(
+  level: CourseGenerationParams["language_level"],
+): string {
+  if (level === "simple") {
+    return "Vocabulaire simple : phrases claires et termes techniques expliqués au premier emploi.";
+  }
+  if (level === "academic") {
+    return "Vocabulaire académique : terminologie précise, style formel et démonstrations explicites.";
+  }
+  return "Vocabulaire scolaire standard : rigoureux, clair et accessible.";
 }
 
 function isCompleteCourseExercise(exercise: StructuredCourseExercise): boolean {
@@ -164,14 +136,12 @@ function isCompleteCourseExercise(exercise: StructuredCourseExercise): boolean {
   );
 }
 
-function hasEnoughStructuredLessons(
-  chapter: StructuredCourseChapter,
-  expectedLessons: number,
+function hasCompleteLesson(
+  lesson: StructuredCourseLesson | undefined,
   includeExercises: boolean,
-): boolean {
-  if (chapter.lessons.length !== expectedLessons) return false;
-  return chapter.lessons.every(
-    (lesson) =>
+): lesson is StructuredCourseLesson {
+  return Boolean(
+    lesson &&
       lesson.blocks.length > 0 &&
       (!includeExercises ||
         (lesson.exercises.length >= 3 &&
@@ -179,147 +149,85 @@ function hasEnoughStructuredLessons(
   );
 }
 
-function styleInstruction(
-  style: CourseGenerationParams["content_style"],
-): string {
-  if (style === "theory_heavy") {
-    return "Style théorique : définitions rigoureuses, propriétés, démonstrations et profondeur conceptuelle, avec quelques applications ciblées.";
-  }
-  if (style === "practice_heavy") {
-    return "Style pratique : méthodes pas à pas et applications immédiates, avec la théorie strictement nécessaire.";
-  }
-  return "Style équilibré : alterne théorie, méthode, applications et synthèse.";
-}
-
-function languageInstruction(
-  level: CourseGenerationParams["language_level"],
-): string {
-  if (level === "simple") {
-    return "Vocabulaire simple : phrases courtes, chaque terme technique expliqué au premier emploi.";
-  }
-  if (level === "academic") {
-    return "Vocabulaire académique : terminologie mathématique précise, style formel et démonstrations explicites.";
-  }
-  return "Vocabulaire scolaire standard : rigoureux, clair et accessible.";
-}
-
 function exerciseSchema(includeExercises: boolean): string {
   if (!includeExercises) {
-    return `Le tableau "exercises" est exactement []. Aucun bloc de type "exercise" n'est présent.`;
+    return `Le tableau "exercises" vaut exactement []. Aucun bloc de type "exercise" n'est présent.`;
   }
-  return `La leçon contient exactement 3 ou 4 exercices. Un exercice respecte exactement :
+  return `La leçon contient exactement 3 exercices, ou 4 seulement si la quatrième activité apporte une compétence réellement différente.
+Chaque exercice respecte exactement :
 {
-  "question": "Markdown avec formules entre $...$",
-  "answer": "Réponse finale, avec formules entre $...$",
-  "hint": "Indice court, avec formules entre $...$",
-  "explanation": "Correction, avec formules entre $...$"
+  "question": "Énoncé Markdown avec formules entre $...$",
+  "answer": "Réponse finale Markdown",
+  "hint": "Indice court Markdown",
+  "explanation": "Correction Markdown"
 }
-Les exercices n'ont aucun id. Dans les blocs de la leçon, place un bloc {"type":"exercise","exercise_index":1}, puis 2, 3... juste après la notion correspondante. Chaque index est utilisé une seule fois.
-Le champ question contient uniquement l'énoncé : jamais la réponse ni une correction.
-Le champ answer contient uniquement la réponse finale attendue. Le champ hint aide sans donner cette réponse. Le champ explanation contient une solution propre et se termine par une conclusion compatible avec answer.
-La réponse et la conclusion de l'explication doivent être mathématiquement identiques. Aucune autocorrection visible (« erreur », « recalculons », « en fait »).`;
+Les exercices n'ont aucun id. Dans les blocs, place {"type":"exercise","exercise_index":1}, puis 2 et 3, juste après les notions correspondantes.
+La question ne contient jamais la réponse. answer et la conclusion de explanation donnent exactement le même résultat mathématique. Recalcule chaque activité avant de répondre.`;
 }
 
-function fallbackVisualFocus(
-  lessonIndex: number,
-  requireGraph: boolean,
-): NormalizedLessonPlan["visualFocus"] {
-  if (requireGraph && lessonIndex === 0) return "graph";
-  const cycle: NormalizedLessonPlan["visualFocus"][] = [
-    "table",
-    "variation_table",
-    "sign_table",
-    "figure",
-  ];
-  return cycle[lessonIndex % cycle.length];
-}
-
-function normalizeLessonPlan(
-  raw: CourseLessonPlan,
-  lessonCount: number,
-  chapterTitle: string,
-  chapterScope: string,
-  requireGraph: boolean,
-): NormalizedLessonPlan[] {
-  const source = Array.isArray(raw.lessons) ? raw.lessons : [];
-  return Array.from({ length: lessonCount }, (_, index) => {
-    const candidate = source[index];
-    const visual = candidate?.visual_focus;
-    return {
-      title: cleanPlain(candidate?.title, `${chapterTitle} — leçon ${index + 1}`),
-      scope: cleanPlain(
-        candidate?.scope,
-        `${chapterScope || chapterTitle}. Partie ${index + 1}/${lessonCount}, sans répéter les autres leçons.`,
-      ),
-      visualFocus:
-        visual === "graph" ||
-        visual === "variation_table" ||
-        visual === "sign_table" ||
-        visual === "table" ||
-        visual === "figure"
-          ? visual
-          : fallbackVisualFocus(index, requireGraph),
-    };
-  });
-}
-
-function visualRequirement(
-  focus: NormalizedLessonPlan["visualFocus"],
-): string {
+function visualRequirement(focus: CourseVisualFocus): string {
   if (focus === "graph") {
-    return 'Ajoute obligatoirement un bloc "graph" utile et correctement paramétré.';
+    return 'Ajoute un bloc "graph" utile, avec expression mathGraph exacte et légende mathématiquement correcte.';
   }
   if (focus === "variation_table") {
-    return 'Ajoute obligatoirement un bloc "variation_table" cohérent ET un bloc "graph" correspondant.';
+    return 'Ajoute un bloc "variation_table" cohérent ET un bloc "graph" correspondant, rendu par mathGraph.';
   }
   if (focus === "sign_table") {
-    return 'Ajoute obligatoirement un bloc "sign_table" cohérent.';
+    return 'Ajoute un bloc "sign_table" cohérent avec les racines et les intervalles.';
   }
   if (focus === "figure") {
-    return 'Ajoute obligatoirement un bloc "figure" réservé à un schéma ou diagramme, jamais à une courbe.';
+    return 'Ajoute un bloc "figure" réservé à un schéma, diagramme, camembert, aire, fraction, frise ou processus. Jamais une courbe de fonction.';
   }
-  return 'Ajoute obligatoirement un bloc "table" utile de valeurs ou de comparaison.';
+  return 'Ajoute un bloc "table" utile de valeurs, propriétés ou comparaison.';
 }
 
 const COURSE_MARKDOWN_JSON_PROMPT = `═══ FORMAT JSON + MARKDOWN MATHÉMATIQUE ═══
-• Réponds uniquement avec l'objet JSON demandé, sans texte avant ou après.
-• N'écris jamais de HTML.
-• Les champs de contenu sont des chaînes Markdown simples, pas des objets parts.
-• Toute expression mathématique en ligne est entourée par $...$.
-• Une formule importante utilise un bloc display_math dont le champ latex contient uniquement le corps LaTeX, sans $ ni $$.
-• Dans le JSON, échappe normalement les antislashs : "\\\\frac{1}{2}".
-• Utilise du LaTeX KaTeX valide : \\frac, \\sqrt, \\Delta, \\mathbb, \\lim, \\to, \\infty, \\exp, \\ln, etc.
-• Ne laisse jamais une formule brute comme mathbb{R}, frac{...}, x^2 ou e^(x) hors de $...$.
-• N'utilise pas de Markdown de mise en forme (**gras**, listes avec tirets, titres #). Les titres, listes, tableaux et encadrés sont des blocs JSON.
+• Réponds uniquement avec l'objet JSON demandé.
+• Aucun HTML.
+• Les champs de contenu sont des chaînes Markdown simples.
+• Toute expression mathématique en ligne est entre $...$.
+• Une formule importante utilise display_math avec le corps LaTeX sans $ ni $$.
+• Dans le JSON, les antislashs sont échappés normalement : "\\\\frac{1}{2}".
+• Utilise du LaTeX KaTeX valide : \\frac, \\sqrt, \\Delta, \\mathbb, \\lim, \\to, \\infty, \\exp, \\ln.
+• Ne laisse jamais mathbb{R}, frac{...}, x^2, e^(x), -+∞ ou une équation hors de $...$.
+• N'utilise pas de titres Markdown, de listes Markdown ni de tableaux Markdown : ils ont des blocs JSON.
 • Aucun identifiant technique : le serveur les génère.
 
 Blocs autorisés :
-1. {"type":"heading","level":3,"content":"Titre de section"}
+1. {"type":"heading","level":3,"content":"Titre"}
 2. {"type":"paragraph","content":"Texte avec $f(x)=x^2$."}
 3. {"type":"display_math","latex":"\\\\begin{aligned}a&=b\\\\\\\\c&=d\\\\end{aligned}"}
-4. {"type":"list","ordered":false,"items":["Texte", "Texte avec $x\\\\in\\\\mathbb{R}$"]}
+4. {"type":"list","ordered":false,"items":["Texte","Texte avec $x\\\\in\\\\mathbb{R}$"]}
 5. {"type":"callout","variant":"note","title":"Titre","paragraphs":["Contenu"]}
 6. {"type":"table","variant":"value","headers":["Colonne 1","Colonne 2"],"rows":[["$x$","$f(x)$"]]}
 7. {"type":"sign_table","expression":"$P(x)$","boundaries":["$x_1$","$x_2$"],"interval_signs":["positive","negative","positive"],"boundary_signs":["zero","zero"]}
 8. {"type":"variation_table","variable":"$x$","function_name":"$f$","points":["$-\\\\infty$","$0$","$+\\\\infty$"],"values":["$0$","$1$","$+\\\\infty$"],"directions":["up","up"],"derivative_signs":["positive","positive"]}
-9. {"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Description courte","parameter":null,"vectors":[]}
-10. {"type":"figure", ...} uniquement pour un schéma ou diagramme, jamais pour une courbe.
+9. {"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Description exacte","parameter":null,"vectors":[]}
+10. {"type":"figure", ...} uniquement pour un schéma ou diagramme, jamais une courbe.
 11. {"type":"steps","steps":[{"title":"Étape 1","blocks":[BLOCS]}]}
 12. {"type":"exercise","exercise_index":1}`;
 
+function formatList(values: string[], fallback: string): string {
+  return values.length > 0 ? values.map((value) => `• ${value}`).join("\n") : fallback;
+}
+
+function coursePlanSummary(blueprint: CourseBlueprint): string {
+  return blueprint.chapters
+    .map(
+      (chapter, chapterIndex) =>
+        `Chapitre ${chapterIndex + 1}. ${chapter.title}\n${chapter.lessons
+          .map(
+            (lesson, lessonIndex) =>
+              `  ${chapterIndex + 1}.${lessonIndex + 1} ${lesson.title} — ${lesson.coreConcepts.join(" ; ")}`,
+          )
+          .join("\n")}`,
+    )
+    .join("\n");
+}
+
 function buildLessonSystemPrompt(options: {
-  courseTitle: string;
-  chapterTitle: string;
-  chapterScope: string;
-  chapterIndex: number;
-  chapterCount: number;
-  chapterTitles: string[];
-  lessonTitle: string;
-  lessonScope: string;
-  lessonIndex: number;
-  lessonCount: number;
-  lessonPlan: NormalizedLessonPlan[];
-  visualFocus: NormalizedLessonPlan["visualFocus"];
+  blueprint: CourseBlueprint;
+  job: LessonJob;
   gradeLevel: string;
   subject: string;
   subjectArea: string;
@@ -330,35 +238,32 @@ function buildLessonSystemPrompt(options: {
   language: CourseGenerationParams["language_level"];
   programmeBlock: string;
   teacherDirective: string;
-  targetWords: { min: number; max: number };
-  targetChars: { min: number; max: number };
-  requireGraph: boolean;
 }): string {
-  const allChapters = options.chapterTitles
-    .map((title, index) => `${index + 1}. ${title}`)
-    .join("\n");
-  const allLessons = options.lessonPlan
-    .map(
-      (lesson, index) =>
-        `${index + 1}. ${lesson.title} — ${lesson.scope} — visuel prévu : ${lesson.visualFocus}`,
-    )
-    .join("\n");
+  const { blueprint, job } = options;
+  return `Tu es l'agent rédacteur d'une architecture multi-agent Educalcul.
+Tu rédiges UNE SEULE leçon. Un agent indépendant la relira ensuite et ne pourra appliquer que des patches locaux : rends donc la première version exacte et complète.
 
-  return `Tu es un professeur de mathématiques expert pour Educalcul.
-Tu rédiges UNE SEULE leçon du cours « ${options.courseTitle} ».
+Cours : ${blueprint.title}.
 Niveau : ${options.gradeLevel}.
 Matière : ${options.subjectArea || options.subject}.
 Difficulté : ${options.difficulty}.
-Chapitre ${options.chapterIndex + 1}/${options.chapterCount} : ${options.chapterTitle}.
-Périmètre du chapitre : ${options.chapterScope || options.chapterTitle}.
-Leçon ${options.lessonIndex + 1}/${options.lessonCount} à rédiger : ${options.lessonTitle}.
-Périmètre strict de cette leçon : ${options.lessonScope}.
+Chapitre ${job.chapterIndex + 1}/${blueprint.chapters.length} : ${job.chapter.title}.
+Périmètre du chapitre : ${job.chapter.scope}.
+Leçon ${job.lessonIndex + 1}/${job.chapter.lessons.length} : ${job.lesson.title}.
+Objectif : ${job.lesson.objective}.
+Périmètre strict : ${job.lesson.scope}.
 
-Plan complet du cours — ne duplique pas les autres chapitres :
-${allChapters}
+CARTE GLOBALE — chaque notion principale appartient à un seul agent :
+${coursePlanSummary(blueprint)}
 
-Plan du chapitre — ne traite que la leçon attribuée :
-${allLessons}
+NOTIONS DONT CETTE LEÇON EST PROPRIÉTAIRE :
+${formatList(job.boundaries.ownedConcepts, "• Les notions indiquées dans le périmètre.")}
+
+RAPPELS AUTORISÉS, EN UNE PHRASE MAXIMUM CHACUN :
+${formatList(job.boundaries.allowedRecall, "• Aucun rappel développé.")}
+
+NOTIONS ATTRIBUÉES AUX AUTRES AGENTS — NE PAS LES DÉVELOPPER :
+${formatList(job.boundaries.forbiddenDevelopments, "• Aucune.")}
 
 ${options.programmeBlock}
 ${styleInstruction(options.style)}
@@ -367,34 +272,33 @@ ${options.teacherDirective}
 
 ${COURSE_MARKDOWN_JSON_PROMPT}
 
-═══ CONTRAT BLOQUANT DE CETTE LEÇON ═══
-• Retourne exactement un objet chapitre contenant exactement UNE leçon, ni plus ni moins.
-• Le titre du chapitre est « ${options.chapterTitle} » et le titre de la leçon est « ${options.lessonTitle} ».
+═══ CONTRAT DE CONTENU UTILE ═══
+• Retourne exactement un chapitre contenant exactement une leçon.
+• Le titre du chapitre est « ${job.chapter.title} » et celui de la leçon « ${job.lesson.title} ».
 • duration vaut exactement ${options.durationPerLesson}.
-• Vise ${options.targetWords.min} à ${options.targetWords.max} mots utiles, soit environ ${options.targetChars.min} à ${options.targetChars.max} caractères hors exercices. Ne dépasse pas ce budget.
-• Chaque paragraphe doit apporter une notion, une justification, une méthode, une interprétation ou une application nouvelle. N'allonge jamais avec des généralités ou des répétitions.
-• Ordre pédagogique : définition ou mise en contexte → explication approfondie → méthode ou dérivation expliquée → application élève → approfondissement → synthèse.
-• N'écris aucune section intitulée « exercice résolu », « exercice corrigé » ou « exemple guidé ». Une méthode peut contenir des calculs expliqués, sans adopter le format énoncé puis correction.
-• Le premier bloc exercise arrive seulement après au moins trois blocs pédagogiques substantiels.
-• Chaque exercice vérifie une notion expliquée juste avant lui ; ne regroupe pas tous les exercices à la fin.
-• Une démonstration de 3 étapes ou plus utilise un bloc steps.
-• Cette leçon contient au moins un vrai visuel structuré. ${visualRequirement(options.visualFocus)}
-• ${options.requireGraph ? 'Cette leçon contient obligatoirement un bloc "graph" rendu par mathGraph.' : 'Un bloc graph est utilisé uniquement pour une vraie courbe mathématique.'}
-• Une courbe de fonction utilise exclusivement "graph", jamais "figure".
-• Un tableau de variations utilise exclusivement "variation_table". Un tableau de signes utilise exclusivement "sign_table".
-• "figure" sert uniquement à un schéma, camembert, diagramme, aire, fraction, frise ou processus ; jamais à une courbe.
-• Les contenus utilisent le Markdown mathématique décrit ci-dessus. Aucun HTML et aucun objet parts.
-• Recalcule tous les exemples et exercices avant de répondre.
-• Limite la sortie au contenu demandé : pas de préface, pas de répétition du programme, pas de leçon supplémentaire.
+• Budget visé pour la leçon : ${job.budget.targetMinWords} à ${job.budget.targetMaxWords} mots utiles, environ ${job.budget.targetMinChars} à ${job.budget.targetMaxChars} caractères pédagogiques. Ce budget est un plafond de densité, pas une invitation au remplissage.
+• Développe toutes les notions propriétaires avec définition, justification, méthode ou interprétation, puis arrête-toi lorsque l'objectif est couvert.
+• Chaque paragraphe apporte une information nouvelle. Interdits : répétitions, introductions générales, reformulations de synthèse multiples, historique décoratif et texte ajouté uniquement pour augmenter la longueur.
+• Un rappel autorisé reste bref. Une notion interdite n'est ni démontrée, ni étudiée, ni transformée en section. En cas de contradiction, la liste des notions propriétaires prime sur le titre ou le scope.
+• Progression : mise en contexte utile → construction de la notion → méthode ou justification → applications élève réparties → approfondissement utile → une seule synthèse.
+• Aucun titre « exercice résolu », « exercice corrigé » ou « exemple guidé ». Une méthode peut contenir un calcul expliqué sans imiter un exercice corrigé.
+• Le premier exercice arrive après au moins trois blocs pédagogiques substantiels. Les exercices sont répartis, jamais tous à la fin.
+• Une démonstration de trois étapes ou plus utilise "steps".
+• ${visualRequirement(job.lesson.visualFocus)}
+• Une courbe de fonction utilise exclusivement "graph". SVG/figure ne trace jamais une courbe, une tangente ou une asymptote.
+• Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
+• Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.
+• Recalcule chaque formule, exemple et exercice. Distingue minimum et infimum, implication et équivalence.
+• Pas de leçon supplémentaire, pas de préface hors JSON.
 
 ${exerciseSchema(options.includeExercises)}
 
-Structure JSON exacte :
+Structure exacte :
 {
-  "title": "${options.chapterTitle}",
+  "title": "${job.chapter.title}",
   "lessons": [
     {
-      "title": "${options.lessonTitle}",
+      "title": "${job.lesson.title}",
       "duration": ${options.durationPerLesson},
       "blocks": [BLOCS_STRUCTURÉS],
       "exercises": [EXERCICES_STRUCTURÉS]
@@ -405,12 +309,8 @@ Structure JSON exacte :
 Réponds uniquement avec ce JSON.`;
 }
 
-
 function isTruncationError(error: unknown): boolean {
-  return (
-    error instanceof Error &&
-    /tronqu|token|length|max_tokens/i.test(error.message)
-  );
+  return error instanceof Error && /tronqu|token|length|max_tokens/i.test(error.message);
 }
 
 async function mapSettledWithConcurrency<T, R>(
@@ -442,12 +342,50 @@ async function mapSettledWithConcurrency<T, R>(
   return results;
 }
 
+function createTaskLimiter(concurrency: number) {
+  let active = 0;
+  const queue: Array<() => void> = [];
+
+  const release = () => {
+    active -= 1;
+    const next = queue.shift();
+    if (next) next();
+  };
+
+  return async function limit<T>(task: () => Promise<T>): Promise<T> {
+    if (active >= concurrency) {
+      await new Promise<void>((resolve) => queue.push(resolve));
+    }
+    active += 1;
+    try {
+      return await task();
+    } finally {
+      release();
+    }
+  };
+}
+
+function blockingIssues(
+  chapter: StructuredCourseChapter,
+  options: {
+    expectedLessonCount: number;
+    includeExercises: boolean;
+    minWordsPerLesson: number;
+    requireGraph: boolean;
+  },
+) {
+  return auditStructuredCoursePedagogy(chapter, options).filter(
+    (issue) => issue.severity === "error",
+  );
+}
+
 export async function runCourseGeneration(
   generationId: string,
   params: CourseGenerationParams,
   adminId: number,
 ): Promise<void> {
   const tracker = createGenerationTracker("course_generations", generationId);
+  const telemetry = new CourseGenerationTelemetry();
   const {
     grade_level,
     subject,
@@ -474,21 +412,14 @@ export async function runCourseGeneration(
     6,
   );
   const durationPerLesson = clampNumber(duration_per_lesson, 30, 5, 90);
-  const contentBudget = courseContentBudget(durationPerLesson);
-  const targetWords = {
-    min: contentBudget.targetMinWords,
-    max: contentBudget.targetMaxWords,
-  };
-  const targetChars = {
-    min: contentBudget.targetMinChars,
-    max: contentBudget.targetMaxChars,
-  };
   const totalLessonCount = chapterCount * lessonsPerChapter;
-  const maxCourseCharacters = Math.min(
-    140_000,
-    totalLessonCount * contentBudget.targetMaxChars,
-  );
   const shouldIncludeExercises = include_exercises !== false;
+  const maxCourseCharacters = envNumber(
+    "AI_COURSE_MAX_USEFUL_CHARS",
+    140_000,
+    20_000,
+    220_000,
+  );
   const configuredInterval = Number(process.env.MISTRAL_MIN_REQUEST_INTERVAL_MS);
   const minInterval =
     Number.isFinite(configuredInterval) && configuredInterval >= 0
@@ -498,21 +429,22 @@ export async function runCourseGeneration(
     minInterval,
     () => tracker.isCancelRequested(),
   );
-  const chapterConcurrency = envConcurrency(
-    "AI_COURSE_CHAPTER_CONCURRENCY",
-    quality_mode === "strict" ? 3 : 4,
-    6,
-  );
-  const lessonConcurrency = envConcurrency(
+  const legacyLessonConcurrency = envConcurrency(
     "AI_COURSE_LESSON_CONCURRENCY",
-    quality_mode === "strict" ? 3 : 4,
-    6,
+    quality_mode === "strict" ? 5 : 6,
+    10,
+  );
+  const writerConcurrency = envConcurrency(
+    "AI_COURSE_WRITER_CONCURRENCY",
+    legacyLessonConcurrency,
+    10,
   );
   const reviewerConcurrency = envConcurrency(
     "AI_COURSE_REVIEW_CONCURRENCY",
-    4,
-    8,
+    quality_mode === "strict" ? 5 : 6,
+    10,
   );
+  const reviewLimit = createTaskLimiter(reviewerConcurrency);
   const programmeBlock = getProgrammePromptBlock(String(grade_level));
   const teacherDirective = additional_info?.trim()
     ? `Instructions prioritaires de l'enseignant :\n${additional_info.trim()}`
@@ -523,428 +455,475 @@ export async function runCourseGeneration(
     await tracker.updateProgress({
       step: "outline",
       current: 0,
-      total: chapterCount,
-      message: "Élaboration du plan du cours...",
+      total: totalLessonCount,
+      message: "Planification globale des notions et des agents...",
     });
 
-    const outlineSystem = `Tu conçois le plan d'un cours de mathématiques français pour le niveau ${grade_level}.
+    telemetry.start("blueprint");
+    const blueprintSystem = `Tu es l'agent planificateur principal d'Educalcul.
+Tu conçois EN UNE FOIS la carte complète d'un cours de mathématiques français pour ${grade_level}.
 ${programmeBlock}
-Retourne uniquement un JSON valide sans HTML, sans Markdown et sans LaTeX :
-{"title":"...","description":"...","chapters":[{"title":"...","scope":"notions exactes de ce chapitre"}]}
-Le tableau chapters contient exactement ${chapterCount} chapitres distincts, progressifs et sans répétition. Le futur cours dispose d'un budget maximal d'environ ${maxCourseCharacters} caractères utiles : répartis les notions sans créer de chapitre artificiel.`;
-    const outlineUser = `Sujet : ${subject}
+
+Retourne exactement ${chapterCount} chapitres et exactement ${lessonsPerChapter} leçons par chapitre.
+Chaque leçon contient : title, objective, scope, core_concepts, prerequisite_recall, visual_focus et complexity.
+
+Règles impératives :
+• répartis les notions avant toute rédaction ;
+• une notion principale apparaît dans core_concepts d'UNE SEULE leçon ;
+• prerequisite_recall contient uniquement des notions déjà traitées avant cette leçon et qui pourront être rappelées en une phrase ;
+• deux leçons ne doivent pas avoir le même objectif sous des formulations différentes ;
+• progression conforme au programme et au niveau ;
+• n'ajoute pas de chapitre artificiel pour augmenter la longueur ;
+• visual_focus="graph" pour une vraie courbe ; "figure" uniquement pour schémas, camemberts ou diagrammes ;
+• pour une étude de fonction, répartis définition/propriétés, variations, limites, convexité et applications entre les leçons au lieu de tout répéter partout ;
+• complexity vaut 1, 2 ou 3 selon la densité réelle ;
+• aucune formule, aucun HTML et aucun Markdown dans ce plan.
+
+Le cours final peut utiliser jusqu'à ${maxCourseCharacters} caractères utiles, mais aucun agent ne devra écrire pour remplir.`;
+    const blueprintUser = `Sujet : ${subject}
 Domaine : ${subject_area || "Mathématiques"}
 Difficulté : ${difficulty}
+Style : ${content_style}
 ${teacherDirective}`;
-    const outline = (await generate(
-      outlineUser,
-      outlineSystem,
-      courseOutlineSchema(chapterCount),
-      0.3,
-      4_000,
-      false,
-    )) as CourseOutline;
-
-    const courseTitle = cleanPlain(outline.title, `Cours : ${subject}`);
-    const courseDescription = cleanPlain(
-      outline.description,
-      `Cours complet sur ${subject}.`,
+    const blueprintContract = courseBlueprintSchema({
+      chapterCount,
+      lessonsPerChapter,
+    });
+    const blueprintMaxTokens = Math.min(
+      12_000,
+      Math.max(4_500, 2_200 + totalLessonCount * 360),
     );
-    const rawChapters = Array.isArray(outline.chapters) ? outline.chapters : [];
-    const chapterTitles: string[] = [];
-    const chapterScopes: string[] = [];
-    for (let index = 0; index < chapterCount; index += 1) {
-      const candidate = rawChapters[index];
-      chapterTitles.push(
-        cleanPlain(candidate?.title, `${subject} — partie ${index + 1}`),
+
+    let rawBlueprint: unknown;
+    try {
+      rawBlueprint = await generate(
+        blueprintUser,
+        blueprintSystem,
+        blueprintContract,
+        0.18,
+        blueprintMaxTokens,
+        false,
       );
-      chapterScopes.push(cleanPlain(candidate?.scope, chapterTitles[index]));
+    } catch (error) {
+      if (!isTruncationError(error)) throw error;
+      rawBlueprint = await generate(
+        `${blueprintUser}\nLe plan précédent était trop long. Garde exactement les quantités demandées et rends chaque scope et objective très concis.`,
+        blueprintSystem,
+        blueprintContract,
+        0.05,
+        Math.min(14_000, blueprintMaxTokens + 2_000),
+        false,
+      );
     }
+
+    const blueprint = normalizeCourseBlueprint(rawBlueprint, {
+      subject,
+      chapterCount,
+      lessonsPerChapter,
+      chapterRequiresGraph: (title, scope) =>
+        topicRequiresFunctionGraph(subject, subject_area || "", title, scope),
+    });
+    telemetry.end(
+      "blueprint",
+      `${chapterCount} chapitre(s), ${totalLessonCount} leçon(s)`,
+    );
+
+    const jobs = createLessonJobs(blueprint, {
+      durationPerLesson,
+      includeExercises: shouldIncludeExercises,
+      maxCourseCharacters,
+    });
+    const chapterTitles = blueprint.chapters.map((chapter) => chapter.title);
 
     await tracker.updateProgress({
       step: "chapter",
       current: 0,
-      total: chapterCount,
-      message: `Rédaction multi-agent de ${chapterCount} chapitre(s) en parallèle...`,
+      total: totalLessonCount,
+      message: `${totalLessonCount} agents rédacteurs et relecteurs sont lancés en pipeline parallèle...`,
       chapterTitles,
     });
 
-    let completedChapters = 0;
-    // Les chaînes Markdown réduisent fortement le surcoût JSON. Le budget
-    // reste assez large pour une leçon dense, sans pousser le modèle à remplir
-    // artificiellement jusqu'à max_tokens.
-    const lessonMaxTokens = Math.min(
-      11_000,
-      Math.max(
-        6_500,
-        Math.ceil(targetChars.max / 2.7) +
-          (shouldIncludeExercises ? 2_500 : 1_200),
-      ),
+    const reviewedLessonPromises = new Array<Promise<StructuredCourseLesson>>(
+      jobs.length,
     );
+    let completedLessons = 0;
+    let progressChain = Promise.resolve();
+    const queueProgress = (message: string) => {
+      completedLessons += 1;
+      const current = completedLessons;
+      progressChain = progressChain
+        .then(() =>
+          tracker.updateProgress({
+            step: "chapter",
+            current,
+            total: totalLessonCount,
+            message,
+            chapterTitles,
+          }),
+        )
+        .catch((error) => {
+          console.warn("[course-ai] Mise à jour de progression indisponible.", error);
+        });
+      return progressChain;
+    };
 
-    const chapterResults = await mapSettledWithConcurrency(
-      chapterTitles,
-      chapterConcurrency,
-      async (chapterTitle, chapterIndex) => {
-        const chapterScope = chapterScopes[chapterIndex];
-        const chapterRequireGraph = topicRequiresFunctionGraph(
+    const writerResults = await mapSettledWithConcurrency(
+      jobs,
+      writerConcurrency,
+      async (job, jobIndex) => {
+        if (await tracker.isCancelRequested()) {
+          throw new GenerationCancelledError();
+        }
+
+        const writerLabel = `writer c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
+        telemetry.start(writerLabel);
+        const systemPrompt = buildLessonSystemPrompt({
+          blueprint,
+          job,
+          gradeLevel: String(grade_level),
           subject,
-          subject_area || "",
-          chapterTitle,
-          chapterScope,
-        );
+          subjectArea: subject_area || "Mathématiques",
+          difficulty,
+          durationPerLesson,
+          includeExercises: shouldIncludeExercises,
+          style: content_style,
+          language: language_level,
+          programmeBlock,
+          teacherDirective,
+        });
+        const userPrompt = `Rédige la leçon « ${job.lesson.title} ». Couvre uniquement ses notions propriétaires et respecte son budget utile.`;
+        const contract = courseChapterSchema({
+          lessonCount: 1,
+          includeExercises: shouldIncludeExercises,
+          minExercises: 3,
+          maxExercises: 4,
+        });
+        const qualityOptions = {
+          expectedLessonCount: 1,
+          includeExercises: shouldIncludeExercises,
+          minWordsPerLesson: job.budget.hardMinWords,
+          requireGraph: job.lesson.visualFocus === "graph",
+        };
 
-        const lessonPlanSystem = `Tu découpes le chapitre « ${chapterTitle} » du cours « ${courseTitle} » en exactement ${lessonsPerChapter} leçons complémentaires.
-Périmètre du chapitre : ${chapterScope}.
-Retourne uniquement :
-{"lessons":[{"title":"titre court","scope":"notions exactes sans chevauchement","visual_focus":"graph|variation_table|sign_table|table|figure"}]}
-Règles : exactement ${lessonsPerChapter} éléments ; progression logique ; aucune répétition ; graph pour les courbes ; figure uniquement pour schémas/diagrammes, jamais pour une courbe.${chapterRequireGraph ? ' Au moins une leçon a visual_focus="graph".' : ""}`;
-        let lessonPlanRaw: CourseLessonPlan = {};
-        try {
-          lessonPlanRaw = (await generate(
-            `Niveau : ${grade_level}\nSujet : ${subject}\nChapitre : ${chapterTitle}`,
-            lessonPlanSystem,
-            courseLessonPlanSchema(lessonsPerChapter),
-            0.2,
-            3_000,
+        const requestDraft = async (
+          prompt: string,
+          temperature: number,
+          maxTokens: number,
+        ) => {
+          const raw = await generate(
+            prompt,
+            systemPrompt,
+            contract,
+            temperature,
+            maxTokens,
             false,
-          )) as CourseLessonPlan;
-        } catch (error) {
-          console.warn(
-            `[course-ai] Plan des leçons indisponible pour « ${chapterTitle} », utilisation d'un plan déterministe.`,
-            error,
           );
-        }
-
-        const lessonPlan = normalizeLessonPlan(
-          lessonPlanRaw,
-          lessonsPerChapter,
-          chapterTitle,
-          chapterScope,
-          chapterRequireGraph,
-        );
-        if (
-          chapterRequireGraph &&
-          !lessonPlan.some((lesson) => lesson.visualFocus === "graph")
-        ) {
-          lessonPlan[0].visualFocus = "graph";
-        }
-
-        const lessonResults = await mapSettledWithConcurrency(
-          lessonPlan,
-          lessonConcurrency,
-          async (plan, lessonIndex) => {
-            const requireGraph =
-              plan.visualFocus === "graph" ||
-              (chapterRequireGraph && lessonIndex === 0);
-            const qualityOptions = {
+          let chapter = normalizeStructuredCoursePedagogy(
+            normalizeStructuredCourseChapter(raw, {
               expectedLessonCount: 1,
-              includeExercises: shouldIncludeExercises,
-              minWordsPerLesson: contentBudget.hardMinWords,
-              requireGraph,
-            };
-            const systemPrompt = buildLessonSystemPrompt({
-              courseTitle,
-              chapterTitle,
-              chapterScope,
-              chapterIndex,
-              chapterCount,
-              chapterTitles,
-              lessonTitle: plan.title,
-              lessonScope: plan.scope,
-              lessonIndex,
-              lessonCount: lessonsPerChapter,
-              lessonPlan,
-              visualFocus: plan.visualFocus,
-              gradeLevel: String(grade_level),
-              subject,
-              subjectArea: subject_area || "Mathématiques",
-              difficulty,
               durationPerLesson,
               includeExercises: shouldIncludeExercises,
-              style: content_style,
-              language: language_level,
-              programmeBlock,
-              teacherDirective,
-              targetWords,
-              targetChars,
-              requireGraph,
-            });
-            const userPrompt = `Rédige uniquement la leçon ${lessonIndex + 1}/${lessonsPerChapter} « ${plan.title} » du chapitre « ${chapterTitle} ». Respecte son périmètre : ${plan.scope}`;
-            const contract = courseChapterSchema({
-              lessonCount: 1,
-              includeExercises: shouldIncludeExercises,
-              minExercises: 3,
-              maxExercises: 4,
-            });
+              maxExercisesPerLesson: 4,
+            }),
+          );
+          if (chapter.lessons[0]) {
+            chapter.title = job.chapter.title;
+            chapter.lessons[0].title = job.lesson.title;
+            chapter.lessons[0].duration = durationPerLesson;
+          }
+          const sanitized = sanitizeStructuredResources(chapter);
+          chapter = normalizeStructuredCoursePedagogy(sanitized.value);
+          return chapter;
+        };
 
-            let raw: unknown;
-            try {
-              raw = await generate(
-                userPrompt,
-                systemPrompt,
-                contract,
-                0.18,
-                lessonMaxTokens,
-                false,
-              );
-            } catch (error) {
-              if (!isTruncationError(error)) throw error;
-              try {
-                raw = await generate(
-                  `${userPrompt}\n\nLa sortie précédente a dépassé la limite. Respecte le budget de ${targetChars.min} à ${targetChars.max} caractères hors exercices, 3 exercices courts, aucune répétition, un seul visuel utile et exactement une leçon.`,
-                  systemPrompt,
-                  contract,
-                  0.05,
-                  lessonMaxTokens,
-                  false,
-                );
-              } catch (retryError) {
-                if (!isTruncationError(retryError)) throw retryError;
-                raw = await generate(
-                  `${userPrompt}\n\nTENTATIVE DE SECOURS. Produis une leçon complète mais compacte : environ ${targetChars.min} caractères hors exercices, exactement 3 exercices très courts, 5 à 8 blocs pédagogiques, un seul visuel utile, aucune répétition et aucun développement annexe.`,
-                  systemPrompt,
-                  contract,
-                  0,
-                  Math.min(9_000, lessonMaxTokens),
-                  false,
-                );
-              }
-            }
+        let structured: StructuredCourseChapter;
+        try {
+          structured = await requestDraft(
+            userPrompt,
+            0.16,
+            job.budget.maxOutputTokens,
+          );
+        } catch (error) {
+          if (!isTruncationError(error)) throw error;
+          structured = await requestDraft(
+            `${userPrompt}\nLa sortie précédente était tronquée. Produis une version complète et plus dense : 7 à 12 blocs, exactement 3 exercices courts, un seul visuel principal, aucune répétition et pas de développement hors périmètre.`,
+            0.03,
+            Math.min(9_500, job.budget.maxOutputTokens),
+          );
+        }
 
-            let structured = normalizeStructuredCoursePedagogy(
-              normalizeStructuredCourseChapter(raw, {
-                expectedLessonCount: 1,
-                durationPerLesson,
-                includeExercises: shouldIncludeExercises,
-                maxExercisesPerLesson: 4,
-              }),
-            );
-            if (structured.lessons[0]) {
-              structured.title = chapterTitle;
-              structured.lessons[0].title = plan.title;
-              structured.lessons[0].duration = durationPerLesson;
-            }
+        let issues = blockingIssues(structured, qualityOptions);
+        let bestScore = structuredCourseQualityScore(structured, qualityOptions);
+        if (!hasCompleteLesson(structured.lessons[0], shouldIncludeExercises) || issues.length > 0) {
+          const issueSummary = formatStructuredQualityIssues(issues);
+          const retry = await requestDraft(
+            `${userPrompt}\nCORRECTION STRUCTURELLE UNIQUE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`,
+            0.02,
+            job.budget.maxOutputTokens,
+          );
+          const retryScore = structuredCourseQualityScore(retry, qualityOptions);
+          const retryIssues = blockingIssues(retry, qualityOptions);
+          if (
+            retryIssues.length < issues.length ||
+            (retryIssues.length === issues.length && retryScore >= bestScore)
+          ) {
+            structured = retry;
+            issues = retryIssues;
+            bestScore = retryScore;
+          }
+        }
 
-            let issues = auditStructuredCoursePedagogy(
-              structured,
-              qualityOptions,
-            );
-            let bestScore = structuredCourseQualityScore(
-              structured,
-              qualityOptions,
-            );
+        const lesson = structured.lessons[0];
+        if (!hasCompleteLesson(lesson, shouldIncludeExercises) || issues.length > 0) {
+          throw new Error(
+            `La leçon « ${job.lesson.title} » reste structurellement non conforme :\n${formatStructuredQualityIssues(issues) || "contenu incomplet"}`,
+          );
+        }
 
-            const blockingBeforeRetry = issues.filter(
-              (issue) => issue.severity === "error",
-            );
-            if (
-              !hasEnoughStructuredLessons(
-                structured,
-                1,
-                shouldIncludeExercises,
-              ) ||
-              blockingBeforeRetry.length > 0
-            ) {
-              const issueSummary = formatStructuredQualityIssues(issues);
-              const retryRaw = await generate(
-                `${userPrompt}\n\nCorrige la leçon complète sans ajouter de leçon. Points à corriger :\n${issueSummary || "Structure incomplète."}\nConserve le périmètre et le visuel demandé. Atteins le minimum utile sans répétition ni remplissage.`,
-                systemPrompt,
-                contract,
-                0.05,
-                lessonMaxTokens,
-                false,
-              );
-              const retry = normalizeStructuredCoursePedagogy(
-                normalizeStructuredCourseChapter(retryRaw, {
-                  expectedLessonCount: 1,
-                  durationPerLesson,
-                  includeExercises: shouldIncludeExercises,
-                  maxExercisesPerLesson: 4,
-                }),
-              );
-              if (retry.lessons[0]) {
-                retry.title = chapterTitle;
-                retry.lessons[0].title = plan.title;
-                retry.lessons[0].duration = durationPerLesson;
-              }
-              const retryScore = structuredCourseQualityScore(
-                retry,
-                qualityOptions,
-              );
-              if (retryScore >= bestScore) {
-                structured = retry;
-                bestScore = retryScore;
-                issues = auditStructuredCoursePedagogy(
-                  structured,
-                  qualityOptions,
-                );
-              }
-            }
+        telemetry.end(
+          writerLabel,
+          `${lessonUsefulCharacterCount(lesson)} caractères utiles`,
+        );
 
-            if (structured.lessons.length !== 1) {
-              throw new Error(
-                `La leçon « ${plan.title} » n'a pas produit exactement une leçon.`,
-              );
-            }
-
-            const guarded = await runStructuredQualityGuard(structured, {
+        // Le rédacteur libère immédiatement son slot. La relecture part dans
+        // une file séparée et commence dès qu'un relecteur est disponible.
+        reviewedLessonPromises[jobIndex] = reviewLimit(async () => {
+          const reviewLabel = `review c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
+          telemetry.start(reviewLabel);
+          let reviewed = lesson;
+          let patchCount = 0;
+          try {
+            const result = await reviewCourseLesson(lesson, {
               generate,
-              label: `cours ${courseTitle}, chapitre ${chapterTitle}, leçon ${plan.title}`,
+              courseTitle: blueprint.title,
+              chapterTitle: job.chapter.title,
+              lessonPlan: job.lesson,
+              boundaries: job.boundaries,
               level: String(grade_level),
               subject,
-              semanticAudit: true,
-              semanticConcurrency: reviewerConcurrency,
-              mathTextMode: "markdown",
             });
-            structured = normalizeStructuredCoursePedagogy(guarded.value);
-            if (
-              guarded.report.semanticPatches > 0 ||
-              guarded.report.mathTextRepairs > 0 ||
-              guarded.report.readableMathFallbacks > 0 ||
-              guarded.report.removedCurveFigures > 0
-            ) {
-              console.info(
-                `[course-ai] ${plan.title}: ${guarded.report.semanticPatches} correction(s) mathématique(s), ${guarded.report.mathTextRepairs} réparation(s) LaTeX IA, ${guarded.report.readableMathFallbacks} repli(s) lisible(s), ${guarded.report.removedCurveFigures} figure(s) de courbe supprimée(s).`,
+            reviewed = result.value;
+            patchCount = result.report.patches;
+            if (result.report.warnings.length > 0) {
+              console.warn(
+                `[course-ai] Relecteur ${job.lesson.title}: ${result.report.warnings.join(" | ")}`,
               );
             }
-
-            const repaired = await repairInvalidStructuredMath(structured, {
-              generate,
-              label: `cours ${courseTitle}, chapitre ${chapterTitle}, leçon ${plan.title}`,
-              enableModelRepair: false,
-            });
-            structured = normalizeStructuredCoursePedagogy(repaired.value);
-            issues = auditStructuredCoursePedagogy(
-              structured,
-              qualityOptions,
-            );
-            const blockingIssues = issues.filter(
-              (issue) => issue.severity === "error",
-            );
-            if (blockingIssues.length > 0) {
-              throw new Error(
-                `La leçon « ${plan.title} » reste non conforme :\n${formatStructuredQualityIssues(blockingIssues)}`,
-              );
-            }
-            if (repaired.report.invalidBefore > 0) {
-              console.info(
-                `[course-ai] ${plan.title}: ${repaired.report.invalidBefore} formule(s) invalides, ${repaired.report.repairedByModel} corrigée(s), ${repaired.report.fallbackCount} repli(s).`,
-              );
-            }
-            return structured.lessons[0] as StructuredCourseLesson;
-          },
-        );
-
-        const failedLessons = lessonResults
-          .map((result, index) =>
-            result.status === "rejected" ? lessonPlan[index].title : null,
-          )
-          .filter((title): title is string => Boolean(title));
-        lessonResults.forEach((result, index) => {
-          if (result.status === "rejected") {
-            console.error(
-              `[course-ai] Échec de la leçon « ${lessonPlan[index].title} » :`,
-              result.reason,
+          } catch (error) {
+            console.warn(
+              `[course-ai] Relecteur indisponible pour « ${job.lesson.title} »; validations locales conservées.`,
+              error,
             );
           }
-        });
-        if (failedLessons.length > 0) {
-          throw new Error(
-            `Le chapitre « ${chapterTitle} » est incomplet : ${failedLessons.join(", ")}.`,
-          );
-        }
 
-        let structuredChapter = normalizeStructuredCoursePedagogy({
-          title: chapterTitle,
-          lessons: lessonResults.map(
-            (result) =>
-              (result as PromiseFulfilledResult<StructuredCourseLesson>).value,
-          ),
-        });
-        const chapterQualityOptions = {
-          expectedLessonCount: lessonsPerChapter,
-          includeExercises: shouldIncludeExercises,
-          minWordsPerLesson: contentBudget.hardMinWords,
-          requireGraph: chapterRequireGraph,
-        };
-        const chapterIssues = auditStructuredCoursePedagogy(
-          structuredChapter,
-          chapterQualityOptions,
-        );
-        const blockingChapterIssues = chapterIssues.filter(
-          (issue) => issue.severity === "error",
-        );
-        if (blockingChapterIssues.length > 0) {
-          throw new Error(
-            `Le chapitre « ${chapterTitle} » reste non conforme :\n${formatStructuredQualityIssues(blockingChapterIssues)}`,
-          );
-        }
-        structuredChapter = {
-          ...structuredChapter,
-          title: chapterTitle,
-        };
+          let reviewedChapter = normalizeStructuredCoursePedagogy({
+            title: job.chapter.title,
+            lessons: [reviewed],
+          });
+          const sanitized = sanitizeStructuredResources(reviewedChapter);
+          reviewedChapter = normalizeStructuredCoursePedagogy(sanitized.value);
+          const repaired = await repairInvalidStructuredMath(reviewedChapter, {
+            generate,
+            label: `cours ${blueprint.title}, chapitre ${job.chapter.title}, leçon ${job.lesson.title}`,
+            enableModelRepair: false,
+          });
+          reviewedChapter = normalizeStructuredCoursePedagogy(repaired.value);
+          const finalIssues = blockingIssues(reviewedChapter, qualityOptions);
+          if (finalIssues.length > 0 || !reviewedChapter.lessons[0]) {
+            throw new Error(
+              `La leçon « ${job.lesson.title} » reste non conforme après relecture :\n${formatStructuredQualityIssues(finalIssues)}`,
+            );
+          }
 
-        const compiled = compileStructuredCourseChapter(structuredChapter, {
-          chapterIndex,
-          durationPerLesson,
+          const finalLesson = reviewedChapter.lessons[0];
+          telemetry.end(
+            reviewLabel,
+            `${patchCount} patch(es), ${repaired.report.fallbackCount} repli(s) KaTeX`,
+          );
+          await queueProgress(
+            `Leçon ${completedLessons + 1}/${totalLessonCount} vérifiée : ${job.lesson.title}`,
+          );
+          return finalLesson;
         });
-        completedChapters += 1;
-        await tracker.updateProgress({
-          step: "chapter",
-          current: completedChapters,
-          total: chapterCount,
-          message: `Chapitre ${chapterIndex + 1}/${chapterCount} terminé : ${chapterTitle}`,
-          chapters: { [chapterIndex]: compiled },
-        });
-        return compiled;
       },
     );
+
+    if (await tracker.isCancelRequested()) {
+      await Promise.allSettled(
+        reviewedLessonPromises.filter(
+          (promise): promise is Promise<StructuredCourseLesson> => Boolean(promise),
+        ),
+      );
+      await tracker.setStatus("cancelled");
+      return;
+    }
+
+    const failedWriters = writerResults
+      .map((result, index) => (result.status === "rejected" ? jobs[index] : null))
+      .filter((job): job is LessonJob => Boolean(job));
+    writerResults.forEach((result, index) => {
+      if (result.status === "rejected") {
+        console.error(
+          `[course-ai] Échec de l'agent rédacteur « ${jobs[index]?.lesson.title} » :`,
+          result.reason,
+        );
+      }
+    });
+    if (failedWriters.length > 0) {
+      await Promise.allSettled(
+        reviewedLessonPromises.filter(
+          (promise): promise is Promise<StructuredCourseLesson> => Boolean(promise),
+        ),
+      );
+      throw new Error(
+        `Le cours n'a pas été enregistré car ${failedWriters.length} leçon(s) n'ont pas pu être rédigées : ${failedWriters.map((job) => job.lesson.title).join(", ")}.`,
+      );
+    }
+
+    const reviewResults = await Promise.allSettled(reviewedLessonPromises);
+    await progressChain;
+    const failedReviews = reviewResults
+      .map((result, index) => (result.status === "rejected" ? jobs[index] : null))
+      .filter((job): job is LessonJob => Boolean(job));
+    reviewResults.forEach((result, index) => {
+      if (result.status === "rejected") {
+        console.error(
+          `[course-ai] Échec de la leçon vérifiée « ${jobs[index]?.lesson.title} » :`,
+          result.reason,
+        );
+      }
+    });
+    if (failedReviews.length > 0) {
+      throw new Error(
+        `Le cours n'a pas été enregistré car ${failedReviews.length} leçon(s) restent non conformes après vérification : ${failedReviews.map((job) => job.lesson.title).join(", ")}.`,
+      );
+    }
+
+    const reviewedLessons = reviewResults.map(
+      (result) => (result as PromiseFulfilledResult<StructuredCourseLesson>).value,
+    );
+    const structuredChapters: StructuredCourseChapter[] = blueprint.chapters.map(
+      (chapter, chapterIndex) => ({
+        title: chapter.title,
+        lessons: jobs
+          .map((job, index) => ({ job, lesson: reviewedLessons[index] }))
+          .filter(({ job }) => job.chapterIndex === chapterIndex)
+          .sort((left, right) => left.job.lessonIndex - right.job.lessonIndex)
+          .map(({ lesson }) => lesson as StructuredCourseLesson),
+      }),
+    );
+
+    const deduplicated = deduplicateCourseChapters(structuredChapters);
+    let finalStructuredChapters = deduplicated.chapters.map(
+      normalizeStructuredCoursePedagogy,
+    );
+    const dedupeCreatedIssue = finalStructuredChapters.some((chapter, index) => {
+      const requireGraph = topicRequiresFunctionGraph(
+        subject,
+        subject_area || "",
+        blueprint.chapters[index]?.title || "",
+        blueprint.chapters[index]?.scope || "",
+      );
+      return blockingIssues(chapter, {
+        expectedLessonCount: lessonsPerChapter,
+        includeExercises: shouldIncludeExercises,
+        minWordsPerLesson: Math.min(...jobs
+          .filter((job) => job.chapterIndex === index)
+          .map((job) => job.budget.hardMinWords)),
+        requireGraph,
+      }).length > 0;
+    });
+    if (dedupeCreatedIssue) {
+      finalStructuredChapters = structuredChapters.map(
+        normalizeStructuredCoursePedagogy,
+      );
+      console.info(
+        "[course-ai] Déduplication annulée car elle retirait un bloc nécessaire.",
+      );
+    } else if (deduplicated.removedBlocks > 0) {
+      console.info(
+        `[course-ai] ${deduplicated.removedBlocks} bloc(s) quasi identique(s) supprimé(s) entre les leçons.`,
+      );
+    }
 
     if (await tracker.isCancelRequested()) {
       await tracker.setStatus("cancelled");
       return;
     }
 
-    chapterResults.forEach((result, index) => {
-      if (result.status === "rejected") {
-        console.error(
-          `[course-ai] Échec du chapitre « ${chapterTitles[index]} » :`,
-          result.reason,
+    telemetry.start("compile");
+    const contentJson: CompiledCourseChapter[] = [];
+    for (let chapterIndex = 0; chapterIndex < finalStructuredChapters.length; chapterIndex += 1) {
+      const chapter = finalStructuredChapters[chapterIndex] as StructuredCourseChapter;
+      const requireGraph = topicRequiresFunctionGraph(
+        subject,
+        subject_area || "",
+        blueprint.chapters[chapterIndex]?.title || "",
+        blueprint.chapters[chapterIndex]?.scope || "",
+      );
+      const chapterJobs = jobs.filter((job) => job.chapterIndex === chapterIndex);
+      const chapterIssues = blockingIssues(chapter, {
+        expectedLessonCount: lessonsPerChapter,
+        includeExercises: shouldIncludeExercises,
+        minWordsPerLesson: Math.min(
+          ...chapterJobs.map((job) => job.budget.hardMinWords),
+        ),
+        requireGraph,
+      });
+      if (chapterIssues.length > 0) {
+        throw new Error(
+          `Le chapitre « ${chapter.title} » reste non conforme :\n${formatStructuredQualityIssues(chapterIssues)}`,
         );
       }
-    });
-    const failedChapters = chapterResults
-      .map((result, index) =>
-        result.status === "rejected" ? chapterTitles[index] : null,
-      )
-      .filter((title): title is string => Boolean(title));
-    if (failedChapters.length > 0) {
-      throw new Error(
-        `Le cours n'a pas été enregistré car ${failedChapters.length} chapitre(s) sont incomplets : ${failedChapters.join(", ")}.`,
-      );
+      const compiled = compileStructuredCourseChapter(chapter, {
+        chapterIndex,
+        durationPerLesson,
+      });
+      contentJson.push(compiled);
+      await tracker.updateProgress({
+        step: "chapter",
+        current: totalLessonCount,
+        total: totalLessonCount,
+        message: `Chapitre ${chapterIndex + 1}/${chapterCount} assemblé : ${chapter.title}`,
+        chapterTitles,
+        chapters: { [chapterIndex]: compiled },
+      });
     }
+    telemetry.end("compile", `${contentJson.length} chapitre(s)`);
 
-    const contentJson = chapterResults.map(
-      (result) =>
-        (result as PromiseFulfilledResult<CompiledCourseChapter>).value,
-    );
     if (contentJson.length !== chapterCount) {
       throw new Error("Le nombre final de chapitres ne correspond pas à la demande.");
     }
 
+    const actualUsefulCharacters = finalStructuredChapters.reduce(
+      (courseSum, chapter) =>
+        courseSum +
+        chapter.lessons.reduce(
+          (chapterSum, lesson) =>
+            chapterSum + lessonUsefulCharacterCount(lesson),
+          0,
+        ),
+      0,
+    );
+    if (actualUsefulCharacters > maxCourseCharacters * 1.15) {
+      console.warn(
+        `[course-ai] Le cours contient ${actualUsefulCharacters} caractères utiles, au-dessus du budget indicatif ${maxCourseCharacters}. Aucun contenu n'a été tronqué automatiquement.`,
+      );
+    }
+
     await tracker.updateProgress({
       step: "final-check",
-      current: chapterCount,
-      total: chapterCount + 1,
+      current: totalLessonCount,
+      total: totalLessonCount + 1,
       message: "Enregistrement du cours...",
     });
 
+    telemetry.start("save");
     const { data: courseRow, error: insertError } = await supabaseAdmin
       .from("courses")
       .insert({
-        title: courseTitle,
-        description: courseDescription,
+        title: blueprint.title,
+        description: blueprint.description,
         subject,
         level: String(grade_level) || "6eme",
         status: "draft",
@@ -968,18 +947,25 @@ Règles : exactement ${lessonsPerChapter} éléments ; progression logique ; auc
       details: {
         title: courseRow.title,
         status: courseRow.status,
-        source: "ai_structured_v2_3_chunked",
+        source: "ai_multi_agent_markdown_v2_6",
+        useful_characters: actualUsefulCharacters,
+        timings_ms: telemetry.summary(),
       },
     });
 
+    telemetry.end("save");
+    telemetry.total(
+      `${actualUsefulCharacters} caractères utiles, ${totalLessonCount} leçon(s)`,
+    );
     await tracker.updateProgress({
       step: "final-check",
-      current: chapterCount + 1,
-      total: chapterCount + 1,
+      current: totalLessonCount + 1,
+      total: totalLessonCount + 1,
       message: "Cours enregistré.",
     });
     await tracker.setStatus("done", { course_id: courseRow.id });
   } catch (error: unknown) {
+    telemetry.total("échec");
     if (error instanceof GenerationCancelledError) {
       await tracker.setStatus("cancelled");
       return;
