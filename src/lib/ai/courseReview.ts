@@ -67,21 +67,11 @@ function boundedIntegerEnv(
 }
 
 function publicationRepairCycleLimit(): number {
-  return boundedIntegerEnv(
-    "AI_COURSE_PUBLICATION_MAX_REPAIR_CYCLES",
-    3,
-    1,
-    5,
-  );
+  return boundedIntegerEnv("AI_COURSE_PUBLICATION_MAX_REPAIR_CYCLES", 3, 1, 5);
 }
 
 function globalPublicationRepairCycleLimit(): number {
-  return boundedIntegerEnv(
-    "AI_COURSE_GLOBAL_MAX_REPAIR_CYCLES",
-    3,
-    1,
-    5,
-  );
+  return boundedIntegerEnv("AI_COURSE_GLOBAL_MAX_REPAIR_CYCLES", 3, 1, 5);
 }
 
 function publicationExerciseRewriteLimit(): number {
@@ -95,9 +85,7 @@ function publicationExerciseRewriteLimit(): number {
 
 function richTextToMarkdown(value: StructuredRichText): string {
   return value.parts
-    .map((part) =>
-      part.type === "text" ? part.value : `$${part.latex}$`,
-    )
+    .map((part) => (part.type === "text" ? part.value : `$${part.latex}$`))
     .join("")
     .replace(/\s+/g, " ")
     .trim();
@@ -141,7 +129,13 @@ function reviewContract(maxPatches: number): JsonSchemaContract {
           items: { type: "string" },
         },
       },
-      required: ["verdict", "summary", "patches", "delete_exercise_indexes", "warnings"],
+      required: [
+        "verdict",
+        "summary",
+        "patches",
+        "delete_exercise_indexes",
+        "warnings",
+      ],
       ...noExtra,
     },
   };
@@ -346,7 +340,8 @@ function collectBlockReferences(
               "table_cell",
               () => block.rows[rowIndex]?.[cellIndex] as StructuredRichText,
               (value) => {
-                if (block.rows[rowIndex]) block.rows[rowIndex][cellIndex] = value;
+                if (block.rows[rowIndex])
+                  block.rows[rowIndex][cellIndex] = value;
               },
             ),
           ),
@@ -382,7 +377,8 @@ function collectBlockReferences(
           "sign_table_interval_signs",
           () => block.intervalSigns,
           (value) => {
-            if (value.length === block.boundaries.length + 1) block.intervalSigns = value;
+            if (value.length === block.boundaries.length + 1)
+              block.intervalSigns = value;
           },
           ["negative", "zero", "positive", "undefined"] as const,
         );
@@ -393,7 +389,8 @@ function collectBlockReferences(
           "sign_table_boundary_signs",
           () => block.boundarySigns,
           (value) => {
-            if (value.length === block.boundaries.length) block.boundarySigns = value;
+            if (value.length === block.boundaries.length)
+              block.boundarySigns = value;
           },
           ["negative", "zero", "positive", "undefined"] as const,
         );
@@ -450,7 +447,8 @@ function collectBlockReferences(
           "variation_directions",
           () => block.directions,
           (value) => {
-            if (value.length === Math.max(1, block.points.length - 1)) block.directions = value;
+            if (value.length === Math.max(1, block.points.length - 1))
+              block.directions = value;
           },
           ["up", "down", "constant"] as const,
         );
@@ -461,7 +459,8 @@ function collectBlockReferences(
           "variation_derivative_signs",
           () => block.derivativeSigns,
           (value) => {
-            if (value.length === Math.max(1, block.points.length - 1)) block.derivativeSigns = value;
+            if (value.length === Math.max(1, block.points.length - 1))
+              block.derivativeSigns = value;
           },
           ["negative", "zero", "positive", "undefined"] as const,
         );
@@ -597,7 +596,6 @@ function collectReferences(lesson: StructuredCourseLesson): ReviewReference[] {
   return references;
 }
 
-
 function likelyUndelimitedMath(value: string): boolean {
   const text = value
     .replace(/\$\$[\s\S]*?\$\$/g, " ")
@@ -615,19 +613,21 @@ function likelyUndelimitedMath(value: string): boolean {
   ];
   if (strongPatterns.some((pattern) => pattern.test(text))) return true;
   const hasEquation = /[=<>≤≥]/.test(text);
-  const mathTokens = text.match(/(?:\b[a-zA-Z]\b|\d+|\^|\+|-|=|<|>|\(|\)|\[|\])/g)?.length ?? 0;
+  const mathTokens =
+    text.match(/(?:\b[a-zA-Z]\b|\d+|\^|\+|-|=|<|>|\(|\)|\[|\])/g)?.length ?? 0;
   const words = text.split(/\s+/).length;
   return hasEquation && mathTokens >= 8 && words <= 28;
 }
 
 function suspiciousReferenceIds(references: ReviewReference[]): string[] {
   return references
-    .filter((reference) =>
-      reference.role !== "display_math" &&
-      reference.role !== "graph_expression" &&
-      reference.role !== "graph_caption" &&
-      reference.role !== "figure_caption" &&
-      likelyUndelimitedMath(reference.value()),
+    .filter(
+      (reference) =>
+        reference.role !== "display_math" &&
+        reference.role !== "graph_expression" &&
+        reference.role !== "graph_caption" &&
+        reference.role !== "figure_caption" &&
+        likelyUndelimitedMath(reference.value()),
     )
     .map((reference) => reference.id);
 }
@@ -637,11 +637,17 @@ function removeExerciseAndReindex(
   oneBasedIndex: number,
 ): boolean {
   const index = oneBasedIndex - 1;
-  if (index < 0 || index >= lesson.exercises.length || lesson.exercises.length <= 3) {
+  if (
+    index < 0 ||
+    index >= lesson.exercises.length ||
+    lesson.exercises.length <= 3
+  ) {
     return false;
   }
   lesson.exercises.splice(index, 1);
-  const rewriteBlocks = (blocks: StructuredCourseBlock[]): StructuredCourseBlock[] =>
+  const rewriteBlocks = (
+    blocks: StructuredCourseBlock[],
+  ): StructuredCourseBlock[] =>
     blocks.reduce<StructuredCourseBlock[]>((output, block) => {
       if (block.type === "exercise") {
         if (block.exerciseIndex === oneBasedIndex) return output;
@@ -688,7 +694,10 @@ function stringValue(value: unknown): string {
 export async function reviewCourseLesson(
   input: StructuredCourseLesson,
   options: ReviewOptions,
-): Promise<{ value: StructuredCourseLesson; report: CourseLessonReviewReport }> {
+): Promise<{
+  value: StructuredCourseLesson;
+  report: CourseLessonReviewReport;
+}> {
   const value = clone(input);
   const references = collectReferences(value);
   const payload = references.map((reference) => ({
@@ -697,7 +706,9 @@ export async function reviewCourseLesson(
     role: reference.role,
     content: reference.value(),
   }));
-  const byId = new Map(references.map((reference) => [reference.id, reference]));
+  const byId = new Map(
+    references.map((reference) => [reference.id, reference]),
+  );
   const suspiciousIds = suspiciousReferenceIds(references);
 
   const systemPrompt = `Tu es l'agent relecteur indépendant d'Educalcul.
@@ -837,14 +848,22 @@ function duplicateExerciseRepairContract(maxItems: number): JsonSchemaContract {
 function locateExercise(
   chapters: StructuredCourseChapter[],
   id: string,
-): { exercise: StructuredCourseExercise; chapterIndex: number; lessonIndex: number; exerciseIndex: number } | null {
+): {
+  exercise: StructuredCourseExercise;
+  chapterIndex: number;
+  lessonIndex: number;
+  exerciseIndex: number;
+} | null {
   const match = /^c(\d+)-l(\d+)-e(\d+)$/.exec(id);
   if (!match) return null;
   const chapterIndex = Number(match[1]) - 1;
   const lessonIndex = Number(match[2]) - 1;
   const exerciseIndex = Number(match[3]) - 1;
-  const exercise = chapters[chapterIndex]?.lessons[lessonIndex]?.exercises[exerciseIndex];
-  return exercise ? { exercise, chapterIndex, lessonIndex, exerciseIndex } : null;
+  const exercise =
+    chapters[chapterIndex]?.lessons[lessonIndex]?.exercises[exerciseIndex];
+  return exercise
+    ? { exercise, chapterIndex, lessonIndex, exerciseIndex }
+    : null;
 }
 
 /**
@@ -877,29 +896,39 @@ export async function replaceDuplicateCourseExercises(
   const targetPayload = targets.flatMap((id) => {
     const located = locateExercise(value, id);
     if (!located) return [];
-    const lessonPlan = options.blueprint.chapters[located.chapterIndex]?.lessons[located.lessonIndex];
-    return [{
-      id,
-      lesson_title: value[located.chapterIndex]?.lessons[located.lessonIndex]?.title || "",
-      owned_concepts: lessonPlan?.coreConcepts ?? [],
-      exercise_skills: lessonPlan?.exerciseSkills ?? [],
-      forbidden_concepts: [
-        ...(lessonPlan?.forbiddenConcepts ?? []),
-        ...options.blueprint.chapters.flatMap((chapter, chapterIndex) =>
-          chapter.lessons.flatMap((lesson, lessonIndex) =>
-            chapterIndex === located.chapterIndex && lessonIndex === located.lessonIndex
-              ? []
-              : lesson.coreConcepts,
+    const lessonPlan =
+      options.blueprint.chapters[located.chapterIndex]?.lessons[
+        located.lessonIndex
+      ];
+    return [
+      {
+        id,
+        lesson_title:
+          value[located.chapterIndex]?.lessons[located.lessonIndex]?.title ||
+          "",
+        owned_concepts: lessonPlan?.coreConcepts ?? [],
+        exercise_skills: lessonPlan?.exerciseSkills ?? [],
+        forbidden_concepts: [
+          ...(lessonPlan?.forbiddenConcepts ?? []),
+          ...options.blueprint.chapters.flatMap((chapter, chapterIndex) =>
+            chapter.lessons.flatMap((lesson, lessonIndex) =>
+              chapterIndex === located.chapterIndex &&
+              lessonIndex === located.lessonIndex
+                ? []
+                : lesson.coreConcepts,
+            ),
           ),
-        ),
-      ],
-      current: {
-        question: structuredRichTextToPlainText(located.exercise.question),
-        answer: structuredRichTextToPlainText(located.exercise.answer),
-        hint: structuredRichTextToPlainText(located.exercise.hint),
-        explanation: structuredRichTextToPlainText(located.exercise.explanation),
+        ],
+        current: {
+          question: structuredRichTextToPlainText(located.exercise.question),
+          answer: structuredRichTextToPlainText(located.exercise.answer),
+          hint: structuredRichTextToPlainText(located.exercise.hint),
+          explanation: structuredRichTextToPlainText(
+            located.exercise.explanation,
+          ),
+        },
       },
-    }];
+    ];
   });
 
   const raw = await options.generate(
@@ -929,7 +958,9 @@ Réponds uniquement avec le JSON demandé.`,
   );
 
   const record = asRecord(raw);
-  const replacements = Array.isArray(record?.replacements) ? record.replacements : [];
+  const replacements = Array.isArray(record?.replacements)
+    ? record.replacements
+    : [];
   let applied = 0;
   for (const rawReplacement of replacements) {
     const replacement = asRecord(rawReplacement);
@@ -950,7 +981,6 @@ Réponds uniquement avec le JSON demandé.`,
   }
   return { value, replacements: applied };
 }
-
 
 export type CoursePublicationIssueCategory =
   | "mathematical_error"
@@ -1030,13 +1060,7 @@ function publicationJudgeContract(maxIssues: number): JsonSchemaContract {
               message: { type: "string", minLength: 5 },
               expected_fix: { type: "string", minLength: 3 },
             },
-            required: [
-              "id",
-              "severity",
-              "category",
-              "message",
-              "expected_fix",
-            ],
+            required: ["id", "severity", "category", "message", "expected_fix"],
             ...noExtra,
           },
         },
@@ -1099,7 +1123,9 @@ function publicationExerciseRewriteContract(): JsonSchemaContract {
   };
 }
 
-function normalizeIssueCategory(value: unknown): CoursePublicationIssueCategory {
+function normalizeIssueCategory(
+  value: unknown,
+): CoursePublicationIssueCategory {
   return value === "answer_explanation_conflict" ||
     value === "numerical_error" ||
     value === "proof_error" ||
@@ -1125,20 +1151,26 @@ function parseJudgeIssues(
     const message = stringValue(issue.message).trim();
     const expectedFix = stringValue(issue.expected_fix).trim();
     if (!id || !message || !expectedFix || !validIds.has(id)) return [];
-    return [{
-      id,
-      severity: issue.severity === "warning" ? "warning" as const : "blocking" as const,
-      category: normalizeIssueCategory(issue.category),
-      message,
-      expectedFix,
-      source: "independent_judge" as const,
-    }];
+    return [
+      {
+        id,
+        severity:
+          issue.severity === "warning"
+            ? ("warning" as const)
+            : ("blocking" as const),
+        category: normalizeIssueCategory(issue.category),
+        message,
+        expectedFix,
+        source: "independent_judge" as const,
+      },
+    ];
   });
 }
 
 function extractApproximateNumbers(value: string): ApproximateNumber[] {
   const normalized = value.replace(/\u2212/g, "-");
-  const pattern = /(?:\\approx|≈|environ|approximativement|à peu près)\s*([-+]?\d+(?:[.,]\d+)?)/gi;
+  const pattern =
+    /(?:\\approx|≈|environ|approximativement|à peu près)\s*([-+]?\d+(?:[.,]\d+)?)/gi;
   const output: ApproximateNumber[] = [];
   let match: RegExpExecArray | null;
   while ((match = pattern.exec(normalized)) !== null) {
@@ -1157,8 +1189,12 @@ function approximateNumbersMatch(
 ): boolean {
   const precision = Math.min(left.decimals, right.decimals);
   const roundingTolerance = 0.51 * 10 ** -precision;
-  const relativeTolerance = Math.max(Math.abs(left.value), Math.abs(right.value)) * 1e-7;
-  return Math.abs(left.value - right.value) <= Math.max(roundingTolerance, relativeTolerance);
+  const relativeTolerance =
+    Math.max(Math.abs(left.value), Math.abs(right.value)) * 1e-7;
+  return (
+    Math.abs(left.value - right.value) <=
+    Math.max(roundingTolerance, relativeTolerance)
+  );
 }
 
 function answerLooksTruncated(value: string): boolean {
@@ -1168,6 +1204,67 @@ function answerLooksTruncated(value: string): boolean {
     /\[[^\]]*(?:\.\.\.|…)[^\]]*\]/.test(clean) ||
     /\b(?:todo|à compléter|réponse incomplète|suite à compléter)\b/i.test(clean)
   );
+}
+
+type FinalApproximationResult = {
+  segment: string;
+  values: ApproximateNumber[];
+};
+
+const FINAL_RESULT_PATTERN =
+  /\b(?:donc|ainsi|finalement|en conclusion|par conséquent|d['’]où|on (?:obtient|trouve|conclut)|la réponse est|le résultat est|ce qui donne)\b|(?:≈|\\approx|\\simeq)/i;
+
+function splitResultSegments(value: string): string[] {
+  return (
+    value
+      .replace(/\r\n?/g, "\n")
+      // Ne coupe pas les nombres décimaux comme 20.5.
+      .split(/\n+|[.!?](?=\s|$)/)
+      .map((segment) => segment.trim())
+      .filter(Boolean)
+  );
+}
+
+function finalApproximationResult(
+  value: string,
+): FinalApproximationResult | null {
+  const segments = splitResultSegments(value);
+
+  // On privilégie le dernier segment annonçant explicitement un résultat.
+  const explicitFinalSegment = [...segments]
+    .reverse()
+    .find(
+      (segment) =>
+        FINAL_RESULT_PATTERN.test(segment) &&
+        extractApproximateNumbers(segment).length > 0,
+    );
+
+  // À défaut, on prend uniquement le dernier segment contenant des valeurs.
+  // Les valeurs intermédiaires plus anciennes sont donc ignorées.
+  const lastNumericSegment = [...segments]
+    .reverse()
+    .find((segment) => extractApproximateNumbers(segment).length > 0);
+
+  const segment = explicitFinalSegment ?? lastNumericSegment;
+  if (!segment) return null;
+
+  const values = extractApproximateNumbers(segment);
+  if (values.length === 0) return null;
+
+  return { segment, values };
+}
+
+function allApproximateNumbersArePresent(
+  expected: ApproximateNumber[],
+  actual: ApproximateNumber[],
+): boolean {
+  return expected.every((candidate) =>
+    actual.some((other) => approximateNumbersMatch(candidate, other)),
+  );
+}
+
+function usesPercentNotation(value: string): boolean {
+  return /(?:%|\\%)/.test(value);
 }
 
 function deterministicPublicationIssues(
@@ -1185,30 +1282,41 @@ function deterministicPublicationIssues(
         id: answerId,
         severity: "blocking",
         category: "truncated_content",
-        message: "La réponse finale contient une ellipse ou un marqueur de contenu incomplet.",
-        expectedFix: "Donner la réponse complète, sans ellipse ni plage tronquée.",
+        message:
+          "La réponse finale contient une ellipse ou un marqueur de contenu incomplet.",
+        expectedFix:
+          "Donner la réponse complète, sans ellipse ni plage tronquée.",
         source: "deterministic",
       });
     }
 
-    const answerApproximations = extractApproximateNumbers(answer);
-    const explanationApproximations = extractApproximateNumbers(explanation);
+    const answerFinalResult = finalApproximationResult(answer);
+    const explanationFinalResult = finalApproximationResult(explanation);
+
     if (
-      answerApproximations.length > 0 &&
-      explanationApproximations.length > 0 &&
-      answerApproximations.some(
-        (candidate) =>
-          !explanationApproximations.some((other) =>
-            approximateNumbersMatch(candidate, other),
-          ),
+      answerFinalResult &&
+      explanationFinalResult &&
+      // 20,5 % et 0,205 peuvent représenter la même valeur.
+      // Ce cas ambigu est laissé au juge indépendant.
+      usesPercentNotation(answerFinalResult.segment) ===
+        usesPercentNotation(explanationFinalResult.segment) &&
+      !allApproximateNumbersArePresent(
+        answerFinalResult.values,
+        explanationFinalResult.values,
       )
     ) {
       issues.push({
         id: explanationId,
         severity: "blocking",
         category: "answer_explanation_conflict",
-        message: `Les valeurs approchées de answer (${answerApproximations.map((item) => item.raw).join(", ")}) et explanation (${explanationApproximations.map((item) => item.raw).join(", ")}) ne coïncident pas.`,
-        expectedFix: "Recalculer puis utiliser exactement les mêmes valeurs finales dans answer et explanation.",
+        message:
+          `Les valeurs finales de answer ` +
+          `(${answerFinalResult.values.map((item) => item.raw).join(", ")}) ` +
+          `et de la conclusion de explanation ` +
+          `(${explanationFinalResult.values.map((item) => item.raw).join(", ")}) ` +
+          `ne coïncident pas.`,
+        expectedFix:
+          "Recalculer l'exercice puis terminer explanation par exactement les mêmes valeurs finales, unités et signes que answer.",
         source: "deterministic",
       });
     }
@@ -1219,8 +1327,10 @@ function deterministicPublicationIssues(
       id,
       severity: "blocking",
       category: "notation_error",
-      message: "Le champ contient probablement une formule non délimitée ou une commande LaTeX cassée.",
-      expectedFix: "Réécrire le champ en Markdown mathématique valide avec $...$.",
+      message:
+        "Le champ contient probablement une formule non délimitée ou une commande LaTeX cassée.",
+      expectedFix:
+        "Réécrire le champ en Markdown mathématique valide avec $...$.",
       source: "deterministic",
     });
   });
@@ -1354,10 +1464,7 @@ async function auditCourseLessonForPublication(
   return {
     deterministic,
     judge,
-    unresolved: dedupeBlockingPublicationIssues([
-      ...deterministic,
-      ...judge,
-    ]),
+    unresolved: dedupeBlockingPublicationIssues([...deterministic, ...judge]),
   };
 }
 
@@ -1370,7 +1477,9 @@ async function repairPublicationIssues(
 ): Promise<{ value: StructuredCourseLesson; patches: number }> {
   const value = clone(lesson);
   const references = collectReferences(value);
-  const byId = new Map(references.map((reference) => [reference.id, reference]));
+  const byId = new Map(
+    references.map((reference) => [reference.id, reference]),
+  );
   const allIds = references.map((reference) => reference.id);
   const selectedIds = new Set(
     issues.flatMap((issue) => relatedReferenceIds(issue.id, allIds)),
@@ -1416,10 +1525,7 @@ Corrige TOUTES les erreurs bloquantes listées, uniquement par patches locaux.
 • Chaque patch remplace le champ complet, pas seulement un fragment.
 • Ne laisse aucune ellipse, aucun TODO et aucune réponse provisoire.
 • Cette passe est obligatoire : renvoie au moins un patch valide lorsque des erreurs sont fournies.`,
-    publicationRepairContract(
-      Math.min(40, Math.max(8, fields.length)),
-      true,
-    ),
+    publicationRepairContract(Math.min(40, Math.max(8, fields.length)), true),
     0,
     options.repairMaxTokens,
     true,
@@ -1449,8 +1555,9 @@ function exerciseIndexesForPublicationIssues(
     .map((issue) => /^(?:e)(\d+)-/.exec(issue.id)?.[1])
     .filter((value): value is string => typeof value === "string")
     .map((value) => Number(value))
-    .filter((value, index, all) =>
-      Number.isInteger(value) && value >= 0 && all.indexOf(value) === index,
+    .filter(
+      (value, index, all) =>
+        Number.isInteger(value) && value >= 0 && all.indexOf(value) === index,
     );
 }
 
@@ -1483,7 +1590,9 @@ async function rewritePublicationExercises(
 
   const replacements = await Promise.all(
     indexes.map(async (exerciseIndex) => {
-      const exercise = value.exercises[exerciseIndex] as StructuredCourseExercise;
+      const exercise = value.exercises[
+        exerciseIndex
+      ] as StructuredCourseExercise;
       const exerciseIssues = issues.filter((issue) =>
         issue.id.startsWith(`e${exerciseIndex}-`),
       );
@@ -1547,9 +1656,7 @@ Règles obligatoires :
     exercise.question = normalizeStructuredRichText(replacement.question);
     exercise.answer = normalizeStructuredRichText(replacement.answer);
     exercise.hint = normalizeStructuredRichText(replacement.hint);
-    exercise.explanation = normalizeStructuredRichText(
-      replacement.explanation,
-    );
+    exercise.explanation = normalizeStructuredRichText(replacement.explanation);
     rewrittenIndexes.push(replacement.exerciseIndex);
   }
 
@@ -1570,7 +1677,10 @@ Règles obligatoires :
 export async function verifyCourseLessonForPublication(
   input: StructuredCourseLesson,
   options: PublicationGateOptions,
-): Promise<{ value: StructuredCourseLesson; report: CoursePublicationGateReport }> {
+): Promise<{
+  value: StructuredCourseLesson;
+  report: CoursePublicationGateReport;
+}> {
   let current = clone(input);
   const maxRounds = publicationRepairCycleLimit();
   const rewrittenExercises = new Set<number>();
@@ -1776,10 +1886,7 @@ async function auditCourseGloballyForPublication(
   return {
     deterministic,
     judge,
-    unresolved: dedupeBlockingPublicationIssues([
-      ...deterministic,
-      ...judge,
-    ]),
+    unresolved: dedupeBlockingPublicationIssues([...deterministic, ...judge]),
   };
 }
 
@@ -1792,7 +1899,9 @@ async function repairGlobalPublicationIssues(
 ): Promise<{ value: StructuredCourseChapter[]; patches: number }> {
   const value = clone(chapters);
   const references = collectCourseReferences(value);
-  const byId = new Map(references.map((reference) => [reference.id, reference]));
+  const byId = new Map(
+    references.map((reference) => [reference.id, reference]),
+  );
   const selectedIds = new Set(
     issues.flatMap((issue) =>
       relatedReferenceIds(
@@ -1857,10 +1966,7 @@ Corrige uniquement les incohérences inter-leçons listées. Les leçons ont dé
 • utilise du Markdown mathématique avec $...$ ;
 • aucun id inventé, aucune ellipse, aucun contenu provisoire ;
 • renvoie au moins un patch valide lorsque des erreurs sont fournies.`,
-    publicationRepairContract(
-      Math.min(60, Math.max(8, fields.length)),
-      true,
-    ),
+    publicationRepairContract(Math.min(60, Math.max(8, fields.length)), true),
     0,
     options.repairMaxTokens,
     true,
@@ -1951,4 +2057,3 @@ export async function verifyCourseGloballyForPublication(
     },
   };
 }
-
