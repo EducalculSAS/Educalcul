@@ -605,25 +605,25 @@ export async function runCourseGeneration(
   const publicationGateEnabled = process.env.AI_COURSE_PUBLICATION_GATE !== "0";
   const publicationReviewMaxTokens = envNumber(
     "AI_COURSE_PUBLICATION_REVIEW_MAX_TOKENS",
-    32_000,
+    128_000,
     8_000,
     128_000,
   );
   const publicationRepairMaxTokens = envNumber(
     "AI_COURSE_PUBLICATION_REPAIR_MAX_TOKENS",
-    32_000,
+    128_000,
     8_000,
     128_000,
   );
   const globalPublicationReviewMaxTokens = envNumber(
     "AI_COURSE_GLOBAL_REVIEW_MAX_TOKENS",
-    64_000,
+    128_000,
     12_000,
     128_000,
   );
   const globalPublicationRepairMaxTokens = envNumber(
     "AI_COURSE_GLOBAL_REPAIR_MAX_TOKENS",
-    48_000,
+    128_000,
     12_000,
     128_000,
   );
@@ -752,7 +752,7 @@ Vérifie obligatoirement :
 verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans se répéter.`,
         courseBlueprintAuditSchema(),
         0.05,
-        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 16_000, 3_000, 128_000),
+        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 128_000, 3_000, 128_000),
         false,
       );
       independentPlanIssues = blueprintAuditMessages(auditRaw)
@@ -894,10 +894,17 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
           minExercises: 3,
           maxExercises: 4,
         });
+        // Une différence marginale de quelques mots ne doit jamais annuler un
+        // cours complet. Le prompt continue de viser le budget pédagogique,
+        // tandis que la validation structurelle accepte une marge de 10 %.
+        const structuralMinWords = Math.max(
+          240,
+          Math.floor(job.budget.hardMinWords * 0.9),
+        );
         const qualityOptions = {
           expectedLessonCount: 1,
           includeExercises: shouldIncludeExercises,
-          minWordsPerLesson: job.budget.hardMinWords,
+          minWordsPerLesson: structuralMinWords,
           requireGraph: job.lesson.visualFocus === "graph",
           validationScope: "lesson" as const,
           visualFocus: job.lesson.visualFocus,
@@ -946,7 +953,7 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
           structured = await requestDraft(
             `${userPrompt}\nLa sortie précédente était tronquée. Produis une version complète et plus dense : 7 à 12 blocs, exactement 3 exercices courts, un seul visuel principal, aucune répétition et pas de développement hors périmètre.`,
             0.03,
-            Math.min(9_500, job.budget.maxOutputTokens),
+            job.budget.maxOutputTokens,
           );
         }
 

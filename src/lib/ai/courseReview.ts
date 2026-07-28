@@ -49,6 +49,12 @@ function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T;
 }
 
+function courseReviewTokenLimit(name: string): number {
+  const configured = Number(process.env[name]);
+  if (!Number.isFinite(configured)) return 128_000;
+  return Math.max(8_000, Math.min(128_000, Math.floor(configured)));
+}
+
 function richTextToMarkdown(value: StructuredRichText): string {
   return value.parts
     .map((part) =>
@@ -703,7 +709,7 @@ Règles de sortie :
     systemPrompt,
     reviewContract(18),
     0,
-    5_000,
+    courseReviewTokenLimit("AI_COURSE_LESSON_REVIEW_MAX_TOKENS"),
     true,
   );
 
@@ -880,7 +886,7 @@ Pour chaque id :
 Réponds uniquement avec le JSON demandé.`,
     duplicateExerciseRepairContract(targets.length),
     0,
-    4_500,
+    courseReviewTokenLimit("AI_COURSE_DUPLICATE_REPAIR_MAX_TOKENS"),
     true,
   );
 

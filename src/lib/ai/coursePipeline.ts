@@ -897,11 +897,12 @@ export function createLessonJobs(
       targetMinWords + 80,
       Math.floor(base.targetMaxWords * Math.min(1.08, charRatio)),
     );
-    const maxOutputTokens = clamp(
-      Math.ceil(targetMaxChars / 2.45) + (options.includeExercises ? 2_100 : 900),
-      5_500,
-      10_500,
+    const configuredWriterTokens = Number(
+      process.env.AI_COURSE_WRITER_MAX_TOKENS,
     );
+    const maxOutputTokens = Number.isFinite(configuredWriterTokens)
+      ? clamp(Math.floor(configuredWriterTokens), 8_000, 128_000)
+      : 128_000;
 
     return {
       ...entry,
