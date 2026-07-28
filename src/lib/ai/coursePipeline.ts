@@ -355,6 +355,8 @@ export function normalizeCourseBlueprint(
     }
   }
 
+  specializeCollidingExerciseSkills(chapters);
+
   return {
     title: cleanPlain(root?.title, `Cours : ${options.subject}`),
     description: cleanPlain(
@@ -375,6 +377,47 @@ function uniqueConcepts(values: string[]): string[] {
     output.push(value);
   }
   return output;
+}
+
+/**
+ * Les compétences d'exercice sont une carte de rédaction, pas le contenu final.
+ * Un plan peut légitimement réutiliser un verbe large (par exemple « résoudre »)
+ * tout en visant des objets différents. Lorsqu'une formulation est presque
+ * identique à une compétence déjà réservée, on la spécialise localement avec
+ * le titre et la notion propriétaire de la leçon. Cela évite une seconde
+ * régénération complète du plan pour une simple collision lexicale.
+ */
+function specializeCollidingExerciseSkills(
+  chapters: CourseBlueprintChapter[],
+): void {
+  const seen: string[] = [];
+
+  for (const chapter of chapters) {
+    for (const lesson of chapter.lessons) {
+      lesson.exerciseSkills = lesson.exerciseSkills.map((skill, skillIndex) => {
+        const collision = seen.some((previous) => similarText(previous, skill) >= 0.78);
+        if (!collision) {
+          seen.push(skill);
+          return skill;
+        }
+
+        const anchor = lesson.coreConcepts[skillIndex % Math.max(lesson.coreConcepts.length, 1)]
+          || lesson.coreConcepts[0]
+          || lesson.title;
+        const candidates = [
+          `${skill} dans la leçon « ${lesson.title} »`,
+          `${skill} appliqué à ${anchor}`,
+          `Mobiliser ${anchor} pour ${skill.charAt(0).toLocaleLowerCase("fr")}${skill.slice(1)}`,
+        ];
+        const specialized = candidates.find((candidate) =>
+          seen.every((previous) => similarText(previous, candidate) < 0.78),
+        ) || `${skill} — contexte spécifique : ${lesson.title}`;
+
+        seen.push(specialized);
+        return specialized;
+      });
+    }
+  }
 }
 
 function preciseChapterScope(
@@ -408,6 +451,17 @@ export type CourseBlueprintAuditIssue = {
   location: string;
   message: string;
 };
+
+/**
+ * Les recouvrements lexicaux entre compétences sont des avertissements : les
+ * vrais doublons d'exercices sont contrôlés puis réparés sur le contenu final.
+ * Une égalité exacte reste en revanche bloquante.
+ */
+export function isBlockingCourseBlueprintIssue(
+  issue: CourseBlueprintAuditIssue,
+): boolean {
+  return issue.code !== "overlapping_exercise_skill";
+}
 
 function isGenericPlannedTitle(title: string, subject: string): boolean {
   const key = canonical(title);
@@ -573,11 +627,20 @@ export function auditCourseBlueprint(
     }
     for (const skill of lesson.exerciseSkills) {
       for (const previous of skills) {
-        if (similarText(previous.text, skill) >= 0.78) {
+        const similarity = similarText(previous.text, skill);
+        if (canonical(previous.text) === canonical(skill)) {
           issues.push({
             code: "duplicate_exercise_skill",
             location: `${location}.exercise_skills`,
-            message: `Compétence d'exercice trop proche de ${previous.location} : « ${previous.text} ».`,
+            message: `Compétence d'exercice identique à ${previous.location} : « ${previous.text} ».`,
+          });
+          break;
+        }
+        if (similarity >= 0.78) {
+          issues.push({
+            code: "overlapping_exercise_skill",
+            location: `${location}.exercise_skills`,
+            message: `Compétence d'exercice proche de ${previous.location}, mais contextualisée pour une autre leçon : « ${previous.text} ».`,
           });
           break;
         }

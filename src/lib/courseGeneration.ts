@@ -40,6 +40,7 @@ import {
   deduplicateCourseChapters,
   lessonUsefulCharacterCount,
   normalizeCourseBlueprint,
+  isBlockingCourseBlueprintIssue,
   type CourseBlueprint,
   type CourseVisualFocus,
   type LessonJob,
@@ -508,12 +509,29 @@ function blueprintAuditMessages(raw: unknown): string[] {
   }).slice(0, 20);
 }
 
+function isBlockingIndependentBlueprintMessage(message: string): boolean {
+  const normalized = message
+    .toLocaleLowerCase("fr")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+  const concernsExerciseSkills = normalized.includes("exercise_skills");
+  const lexicalOverlap = /(proche|similaire|chevauch|doublon|duplicate|overlap)/.test(normalized);
+
+  // Le modèle relecteur peut considérer deux compétences comme identiques
+  // uniquement parce qu'elles emploient le même verbe. Le normaliseur les
+  // contextualise déjà, et les vrais doublons d'exercices sont vérifiés sur
+  // le contenu final. Une collision exacte reste détectée par l'audit local.
+  return !(concernsExerciseSkills && lexicalOverlap);
+}
+
 function localBlueprintAuditMessages(
   blueprint: CourseBlueprint,
   subject: string,
   includeExercises: boolean,
+  options: { blockingOnly?: boolean } = {},
 ): string[] {
   return auditCourseBlueprint(blueprint, { subject, includeExercises })
+    .filter((issue) => !options.blockingOnly || isBlockingCourseBlueprintIssue(issue))
     .map((issue) => `${issue.location} — ${issue.message}`)
     .slice(0, 30);
 }
@@ -706,6 +724,7 @@ ${teacherDirective}`;
       blueprint,
       subject,
       shouldIncludeExercises,
+      { blockingOnly: true },
     );
     let independentPlanIssues: string[] = [];
     telemetry.start("blueprint-review");
@@ -721,7 +740,8 @@ Tu ne rédiges pas le cours et tu ne réécris pas le plan. Tu signales uniqueme
 Vérifie obligatoirement :
 • titres pédagogiques spécifiques, jamais « partie 1 » ou « leçon 2 » ;
 • une progression logique où chaque notion principale a un seul propriétaire ;
-• objectifs, required_sections et exercise_skills distincts entre toutes les leçons ;
+• objectifs et required_sections distincts entre toutes les leçons ;
+• pour exercise_skills, ne signale un doublon que si la compétence vise le même objet mathématique ET la même méthode ; un verbe commun comme « résoudre », « calculer » ou « modéliser » ne suffit pas ;
 • scope assez précis pour dire ce qui est couvert et exclu ;
 • prerequisite_recall uniquement vers des notions déjà traitées ;
 • forbidden_concepts pertinent et sans contradiction avec core_concepts ;
@@ -735,7 +755,8 @@ verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans 
         envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 16_000, 3_000, 128_000),
         false,
       );
-      independentPlanIssues = blueprintAuditMessages(auditRaw);
+      independentPlanIssues = blueprintAuditMessages(auditRaw)
+        .filter(isBlockingIndependentBlueprintMessage);
       telemetry.end(
         "blueprint-review",
         independentPlanIssues.length > 0
@@ -777,7 +798,12 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
         subject,
         shouldIncludeExercises,
       );
-      const blockingPlanIssues = remainingPlanIssues.filter(
+      const blockingPlanIssues = localBlueprintAuditMessages(
+        blueprint,
+        subject,
+        shouldIncludeExercises,
+        { blockingOnly: true },
+      ).filter(
         (message) => !message.includes(".scope — Le périmètre du chapitre est trop vague"),
       );
       telemetry.end(
