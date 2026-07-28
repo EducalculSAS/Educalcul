@@ -55,6 +55,44 @@ function courseReviewTokenLimit(name: string): number {
   return Math.max(8_000, Math.min(128_000, Math.floor(configured)));
 }
 
+function boundedIntegerEnv(
+  name: string,
+  fallback: number,
+  minimum: number,
+  maximum: number,
+): number {
+  const configured = Number(process.env[name]);
+  if (!Number.isFinite(configured)) return fallback;
+  return Math.min(maximum, Math.max(minimum, Math.floor(configured)));
+}
+
+function publicationRepairCycleLimit(): number {
+  return boundedIntegerEnv(
+    "AI_COURSE_PUBLICATION_MAX_REPAIR_CYCLES",
+    3,
+    1,
+    5,
+  );
+}
+
+function globalPublicationRepairCycleLimit(): number {
+  return boundedIntegerEnv(
+    "AI_COURSE_GLOBAL_MAX_REPAIR_CYCLES",
+    3,
+    1,
+    5,
+  );
+}
+
+function publicationExerciseRewriteLimit(): number {
+  return boundedIntegerEnv(
+    "AI_COURSE_PUBLICATION_EXERCISE_REWRITE_LIMIT",
+    3,
+    0,
+    6,
+  );
+}
+
 function richTextToMarkdown(value: StructuredRichText): string {
   return value.parts
     .map((part) =>
@@ -938,6 +976,8 @@ export type CoursePublicationGateReport = {
   deterministicIssuesBefore: number;
   judgeIssuesBefore: number;
   patches: number;
+  repairRounds: number;
+  fallbackExerciseRewrites: number;
   deterministicIssuesAfter: number;
   judgeIssuesAfter: number;
   unresolved: CoursePublicationIssue[];
@@ -1007,7 +1047,10 @@ function publicationJudgeContract(maxIssues: number): JsonSchemaContract {
   };
 }
 
-function publicationRepairContract(maxPatches: number): JsonSchemaContract {
+function publicationRepairContract(
+  maxPatches: number,
+  requirePatch = false,
+): JsonSchemaContract {
   return {
     name: "educalcul_course_publication_repairs",
     description:
@@ -1017,7 +1060,7 @@ function publicationRepairContract(maxPatches: number): JsonSchemaContract {
       properties: {
         patches: {
           type: "array",
-          minItems: 0,
+          minItems: requirePatch ? 1 : 0,
           maxItems: Math.max(1, maxPatches),
           items: {
             type: "object",
@@ -1032,6 +1075,25 @@ function publicationRepairContract(maxPatches: number): JsonSchemaContract {
         },
       },
       required: ["patches"],
+      ...noExtra,
+    },
+  };
+}
+
+function publicationExerciseRewriteContract(): JsonSchemaContract {
+  return {
+    name: "educalcul_course_publication_exercise_rewrite",
+    description:
+      "Reconstruction complète et cohérente d'un exercice qui a résisté à une correction locale.",
+    schema: {
+      type: "object",
+      properties: {
+        question: { type: "string", minLength: 8 },
+        answer: { type: "string", minLength: 1 },
+        hint: { type: "string", minLength: 3 },
+        explanation: { type: "string", minLength: 12 },
+      },
+      required: ["question", "answer", "hint", "explanation"],
       ...noExtra,
     },
   };
@@ -1254,10 +1316,57 @@ function relatedReferenceIds(issueId: string, allIds: string[]): string[] {
   return allIds.includes(issueId) ? [issueId] : [];
 }
 
+type LessonPublicationAudit = {
+  deterministic: CoursePublicationIssue[];
+  judge: CoursePublicationIssue[];
+  unresolved: CoursePublicationIssue[];
+};
+
+function dedupeBlockingPublicationIssues(
+  issues: CoursePublicationIssue[],
+): CoursePublicationIssue[] {
+  return issues
+    .filter((issue) => issue.severity === "blocking")
+    .filter(
+      (issue, index, all) =>
+        all.findIndex(
+          (candidate) =>
+            candidate.id === issue.id &&
+            candidate.category === issue.category &&
+            candidate.message === issue.message,
+        ) === index,
+    );
+}
+
+function publicationIssueSignature(issues: CoursePublicationIssue[]): string {
+  return issues
+    .map((issue) => `${issue.id}:${issue.category}`)
+    .sort()
+    .join("|");
+}
+
+async function auditCourseLessonForPublication(
+  lesson: StructuredCourseLesson,
+  options: PublicationGateOptions,
+): Promise<LessonPublicationAudit> {
+  const deterministic = deterministicPublicationIssues(lesson);
+  const judge = await runPublicationJudge(lesson, options, deterministic);
+  return {
+    deterministic,
+    judge,
+    unresolved: dedupeBlockingPublicationIssues([
+      ...deterministic,
+      ...judge,
+    ]),
+  };
+}
+
 async function repairPublicationIssues(
   lesson: StructuredCourseLesson,
   options: PublicationGateOptions,
   issues: CoursePublicationIssue[],
+  round: number,
+  maxRounds: number,
 ): Promise<{ value: StructuredCourseLesson; patches: number }> {
   const value = clone(lesson);
   const references = collectReferences(value);
@@ -1275,8 +1384,12 @@ async function repairPublicationIssues(
       content: reference.value(),
     }));
 
+  if (fields.length === 0) return { value, patches: 0 };
+
   const raw = await options.generate(
     JSON.stringify({
+      repair_round: round,
+      maximum_rounds: maxRounds,
       issues: issues.map((issue) => ({
         id: issue.id,
         category: issue.category,
@@ -1288,19 +1401,25 @@ async function repairPublicationIssues(
     `Tu es le correcteur mathématique ciblé d'Educalcul.
 Niveau : ${sanitizeStructuredText(options.level)}. Sujet : ${sanitizeStructuredText(options.subject)}.
 Leçon : ${sanitizeStructuredText(options.lessonPlan.title)}.
+Cycle de réparation ${round}/${maxRounds}.
 
 Corrige TOUTES les erreurs bloquantes listées, uniquement par patches locaux.
 • Recalcule chaque exercice depuis l'énoncé avant d'écrire la correction.
-• Pour une incohérence d'exercice, harmonise question, answer, hint et explanation si nécessaire.
-• answer contient la réponse finale complète ; explanation démontre et conclut avec exactement le même résultat.
+• Pour une incohérence d'exercice, harmonise question, answer, hint et explanation. Réécris les quatre champs si cela évite toute ambiguïté.
+• answer contient la réponse finale complète ; explanation démontre et conclut avec exactement le même résultat, les mêmes unités, les mêmes signes et les mêmes valeurs approchées.
+• Une valeur intermédiaire ne doit jamais être présentée comme réponse finale.
 • Pour une affirmation de cours fausse, remplace le champ entier par une version exacte, adaptée au niveau et au périmètre.
 • Pour un graphe ou un tableau, la formule, les cas, la légende et les valeurs doivent être cohérents.
 • Supprime toute circularité de preuve en donnant un argument valide, sans utiliser le résultat à démontrer.
 • Utilise le Markdown mathématique avec $...$ ; un display_math reçoit uniquement le LaTeX sans délimiteurs.
 • Ne modifie aucun champ non fourni et n'invente aucun id.
 • Chaque patch remplace le champ complet, pas seulement un fragment.
-• Ne laisse aucune ellipse, aucun TODO et aucune réponse provisoire.`,
-    publicationRepairContract(Math.min(40, Math.max(8, fields.length))),
+• Ne laisse aucune ellipse, aucun TODO et aucune réponse provisoire.
+• Cette passe est obligatoire : renvoie au moins un patch valide lorsque des erreurs sont fournies.`,
+    publicationRepairContract(
+      Math.min(40, Math.max(8, fields.length)),
+      true,
+    ),
     0,
     options.repairMaxTokens,
     true,
@@ -1323,69 +1442,219 @@ Corrige TOUTES les erreurs bloquantes listées, uniquement par patches locaux.
   return { value, patches: applied };
 }
 
+function exerciseIndexesForPublicationIssues(
+  issues: CoursePublicationIssue[],
+): number[] {
+  return issues
+    .map((issue) => /^(?:e)(\d+)-/.exec(issue.id)?.[1])
+    .filter((value): value is string => typeof value === "string")
+    .map((value) => Number(value))
+    .filter((value, index, all) =>
+      Number.isInteger(value) && value >= 0 && all.indexOf(value) === index,
+    );
+}
+
+async function rewritePublicationExercises(
+  lesson: StructuredCourseLesson,
+  options: PublicationGateOptions,
+  issues: CoursePublicationIssue[],
+  alreadyRewritten: Set<number>,
+): Promise<{
+  value: StructuredCourseLesson;
+  rewrites: number;
+  rewrittenIndexes: number[];
+}> {
+  const value = clone(lesson);
+  const remainingLimit = Math.max(
+    0,
+    publicationExerciseRewriteLimit() - alreadyRewritten.size,
+  );
+  if (remainingLimit === 0) {
+    return { value, rewrites: 0, rewrittenIndexes: [] };
+  }
+
+  const indexes = exerciseIndexesForPublicationIssues(issues)
+    .filter((index) => !alreadyRewritten.has(index))
+    .filter((index) => Boolean(value.exercises[index]))
+    .slice(0, remainingLimit);
+  if (indexes.length === 0) {
+    return { value, rewrites: 0, rewrittenIndexes: [] };
+  }
+
+  const replacements = await Promise.all(
+    indexes.map(async (exerciseIndex) => {
+      const exercise = value.exercises[exerciseIndex] as StructuredCourseExercise;
+      const exerciseIssues = issues.filter((issue) =>
+        issue.id.startsWith(`e${exerciseIndex}-`),
+      );
+      const raw = await options.generate(
+        JSON.stringify({
+          exercise_index: exerciseIndex + 1,
+          expected_skill:
+            options.lessonPlan.exerciseSkills[exerciseIndex] ??
+            options.lessonPlan.exerciseSkills[0] ??
+            "application directe de la leçon",
+          blocking_issues: exerciseIssues.map((issue) => ({
+            field: issue.id,
+            category: issue.category,
+            message: issue.message,
+            expected_fix: issue.expectedFix,
+          })),
+          current_exercise: {
+            question: richTextToMarkdown(exercise.question),
+            answer: richTextToMarkdown(exercise.answer),
+            hint: richTextToMarkdown(exercise.hint),
+            explanation: richTextToMarkdown(exercise.explanation),
+          },
+        }),
+        `Tu es l'agent de secours de la barrière de publication Educalcul.
+L'exercice a résisté à une correction locale. Reconstruis cette mini-unité complète de façon mathématiquement exacte.
+
+Niveau : ${sanitizeStructuredText(options.level)}.
+Sujet : ${sanitizeStructuredText(options.subject)}.
+Leçon : ${sanitizeStructuredText(options.lessonPlan.title)}.
+
+Règles obligatoires :
+• conserve la compétence et la difficulté visées, mais tu peux reformuler l'énoncé pour supprimer toute incohérence ;
+• recalcule intégralement depuis l'énoncé ;
+• answer donne uniquement la réponse finale complète ;
+• explanation fournit un raisonnement vérifiable et se termine par exactement le même résultat que answer ;
+• hint aide sans révéler directement la réponse ;
+• vérifie les signes, unités, arrondis, intervalles, dates, taux et cas particuliers ;
+• utilise du Markdown mathématique avec $...$ ;
+• aucune ellipse, aucun TODO, aucun résultat provisoire ;
+• retourne les quatre champs, même si un seul semblait incorrect.`,
+        publicationExerciseRewriteContract(),
+        0,
+        options.repairMaxTokens,
+        true,
+      );
+      const record = asRecord(raw);
+      const question = stringValue(record?.question).trim();
+      const answer = stringValue(record?.answer).trim();
+      const hint = stringValue(record?.hint).trim();
+      const explanation = stringValue(record?.explanation).trim();
+      if (!question || !answer || !hint || !explanation) return null;
+      return { exerciseIndex, question, answer, hint, explanation };
+    }),
+  );
+
+  const rewrittenIndexes: number[] = [];
+  for (const replacement of replacements) {
+    if (!replacement) continue;
+    const exercise = value.exercises[replacement.exerciseIndex];
+    if (!exercise) continue;
+    exercise.question = normalizeStructuredRichText(replacement.question);
+    exercise.answer = normalizeStructuredRichText(replacement.answer);
+    exercise.hint = normalizeStructuredRichText(replacement.hint);
+    exercise.explanation = normalizeStructuredRichText(
+      replacement.explanation,
+    );
+    rewrittenIndexes.push(replacement.exerciseIndex);
+  }
+
+  return {
+    value,
+    rewrites: rewrittenIndexes.length,
+    rewrittenIndexes,
+  };
+}
+
 /**
- * Barrière finale « fail closed » : le cours n'est enregistrable que lorsque
- * les alertes déterministes et un juge mathématique indépendant ne trouvent
- * plus aucune erreur bloquante. Une seule réparation ciblée est autorisée,
- * puis le résultat est intégralement ré-audité.
+ * Barrière finale « fail closed » : jusqu'à trois cycles ciblés
+ * check -> repair -> check. Une incohérence persistante dans un exercice
+ * déclenche la reconstruction de cette mini-unité uniquement, jamais celle de
+ * la leçon entière. Le cours reste refusé si une erreur bloque encore après le
+ * nombre maximal de cycles.
  */
 export async function verifyCourseLessonForPublication(
   input: StructuredCourseLesson,
   options: PublicationGateOptions,
 ): Promise<{ value: StructuredCourseLesson; report: CoursePublicationGateReport }> {
-  const initial = clone(input);
-  const deterministicBefore = deterministicPublicationIssues(initial);
-  const judgeBefore = await runPublicationJudge(
-    initial,
-    options,
-    deterministicBefore,
-  );
-  const blockingBefore = [...deterministicBefore, ...judgeBefore].filter(
-    (issue) => issue.severity === "blocking",
-  );
+  let current = clone(input);
+  const maxRounds = publicationRepairCycleLimit();
+  const rewrittenExercises = new Set<number>();
+  let totalPatches = 0;
+  let repairRounds = 0;
+  let fallbackExerciseRewrites = 0;
 
-  if (blockingBefore.length === 0) {
+  const before = await auditCourseLessonForPublication(current, options);
+  let audit = before;
+
+  if (audit.unresolved.length === 0) {
     return {
-      value: initial,
+      value: current,
       report: {
-        deterministicIssuesBefore: deterministicBefore.length,
-        judgeIssuesBefore: judgeBefore.length,
+        deterministicIssuesBefore: before.deterministic.length,
+        judgeIssuesBefore: before.judge.length,
         patches: 0,
-        deterministicIssuesAfter: deterministicBefore.length,
-        judgeIssuesAfter: judgeBefore.length,
+        repairRounds: 0,
+        fallbackExerciseRewrites: 0,
+        deterministicIssuesAfter: before.deterministic.length,
+        judgeIssuesAfter: before.judge.length,
         unresolved: [],
       },
     };
   }
 
-  const repaired = await repairPublicationIssues(initial, options, blockingBefore);
-  const deterministicAfter = deterministicPublicationIssues(repaired.value);
-  const judgeAfter = await runPublicationJudge(
-    repaired.value,
-    options,
-    deterministicAfter,
-  );
-  const unresolved = [...deterministicAfter, ...judgeAfter]
-    .filter((issue) => issue.severity === "blocking")
-    .filter(
-      (issue, index, all) =>
-        all.findIndex(
-          (candidate) =>
-            candidate.id === issue.id &&
-            candidate.category === issue.category &&
-            candidate.message === issue.message,
-        ) === index,
+  let previousSignature = publicationIssueSignature(audit.unresolved);
+  let stagnantRounds = 0;
+
+  for (let round = 1; round <= maxRounds; round += 1) {
+    repairRounds = round;
+    const repaired = await repairPublicationIssues(
+      current,
+      options,
+      audit.unresolved,
+      round,
+      maxRounds,
     );
+    current = repaired.value;
+    totalPatches += repaired.patches;
+    audit = await auditCourseLessonForPublication(current, options);
+
+    if (audit.unresolved.length === 0) break;
+
+    const exerciseRewrite = await rewritePublicationExercises(
+      current,
+      options,
+      audit.unresolved,
+      rewrittenExercises,
+    );
+    if (exerciseRewrite.rewrites > 0) {
+      current = exerciseRewrite.value;
+      fallbackExerciseRewrites += exerciseRewrite.rewrites;
+      exerciseRewrite.rewrittenIndexes.forEach((index) =>
+        rewrittenExercises.add(index),
+      );
+      audit = await auditCourseLessonForPublication(current, options);
+      if (audit.unresolved.length === 0) break;
+    }
+
+    const signature = publicationIssueSignature(audit.unresolved);
+    const madeProgress =
+      repaired.patches > 0 ||
+      exerciseRewrite.rewrites > 0 ||
+      signature !== previousSignature;
+    stagnantRounds = madeProgress ? 0 : stagnantRounds + 1;
+    previousSignature = signature;
+
+    // Deux cycles sans aucune modification ni changement d'issue suffisent à
+    // conclure que de nouvelles requêtes identiques n'apporteraient rien.
+    if (stagnantRounds >= 2) break;
+  }
 
   return {
-    value: repaired.value,
+    value: current,
     report: {
-      deterministicIssuesBefore: deterministicBefore.length,
-      judgeIssuesBefore: judgeBefore.length,
-      patches: repaired.patches,
-      deterministicIssuesAfter: deterministicAfter.length,
-      judgeIssuesAfter: judgeAfter.length,
-      unresolved,
+      deterministicIssuesBefore: before.deterministic.length,
+      judgeIssuesBefore: before.judge.length,
+      patches: totalPatches,
+      repairRounds,
+      fallbackExerciseRewrites,
+      deterministicIssuesAfter: audit.deterministic.length,
+      judgeIssuesAfter: audit.judge.length,
+      unresolved: audit.unresolved,
     },
   };
 }
@@ -1393,6 +1662,7 @@ export async function verifyCourseLessonForPublication(
 export type CourseGlobalPublicationGateReport = {
   issuesBefore: number;
   patches: number;
+  repairRounds: number;
   issuesAfter: number;
   unresolved: CoursePublicationIssue[];
 };
@@ -1491,16 +1761,45 @@ Chaque issue cible exactement un id fourni. verdict="pass" seulement si aucune i
   return parseJudgeIssues(raw, validIds);
 }
 
+type GlobalPublicationAudit = {
+  deterministic: CoursePublicationIssue[];
+  judge: CoursePublicationIssue[];
+  unresolved: CoursePublicationIssue[];
+};
+
+async function auditCourseGloballyForPublication(
+  chapters: StructuredCourseChapter[],
+  options: GlobalPublicationGateOptions,
+): Promise<GlobalPublicationAudit> {
+  const deterministic = globalDeterministicPublicationIssues(chapters);
+  const judge = await runGlobalPublicationJudge(chapters, options);
+  return {
+    deterministic,
+    judge,
+    unresolved: dedupeBlockingPublicationIssues([
+      ...deterministic,
+      ...judge,
+    ]),
+  };
+}
+
 async function repairGlobalPublicationIssues(
   chapters: StructuredCourseChapter[],
   options: GlobalPublicationGateOptions,
   issues: CoursePublicationIssue[],
+  round: number,
+  maxRounds: number,
 ): Promise<{ value: StructuredCourseChapter[]; patches: number }> {
   const value = clone(chapters);
   const references = collectCourseReferences(value);
   const byId = new Map(references.map((reference) => [reference.id, reference]));
   const selectedIds = new Set(
-    issues.flatMap((issue) => relatedReferenceIds(issue.id, references.map((reference) => reference.id))),
+    issues.flatMap((issue) =>
+      relatedReferenceIds(
+        issue.id,
+        references.map((reference) => reference.id),
+      ),
+    ),
   );
   // Les ids globaux préfixés ne sont pas reconnus par relatedReferenceIds.
   issues.forEach((issue) => {
@@ -1508,13 +1807,19 @@ async function repairGlobalPublicationIssues(
     const exercisePrefix = /^(c\d+-l\d+-e\d+)-/.exec(issue.id)?.[1];
     if (exercisePrefix) {
       references.forEach((reference) => {
-        if (reference.id.startsWith(`${exercisePrefix}-`)) selectedIds.add(reference.id);
+        if (reference.id.startsWith(`${exercisePrefix}-`)) {
+          selectedIds.add(reference.id);
+        }
       });
     }
-    const blockPrefix = /^(c\d+-l\d+-lesson(?:-[^\s]+)*-b\d+)/.exec(issue.id)?.[1];
+    const blockPrefix = /^(c\d+-l\d+-lesson(?:-[^\s]+)*-b\d+)/.exec(
+      issue.id,
+    )?.[1];
     if (blockPrefix) {
       references.forEach((reference) => {
-        if (reference.id.startsWith(blockPrefix)) selectedIds.add(reference.id);
+        if (reference.id.startsWith(blockPrefix)) {
+          selectedIds.add(reference.id);
+        }
       });
     }
   });
@@ -1526,8 +1831,13 @@ async function repairGlobalPublicationIssues(
       role: reference.role,
       content: reference.value(),
     }));
+
+  if (fields.length === 0) return { value, patches: 0 };
+
   const raw = await options.generate(
     JSON.stringify({
+      repair_round: round,
+      maximum_rounds: maxRounds,
       issues: issues.map((issue) => ({
         id: issue.id,
         category: issue.category,
@@ -1537,14 +1847,20 @@ async function repairGlobalPublicationIssues(
       editable_fields: fields,
     }),
     `Tu es le correcteur global final d'Educalcul.
+Cycle de réparation ${round}/${maxRounds}.
 Corrige uniquement les incohérences inter-leçons listées. Les leçons ont déjà été vérifiées mathématiquement : ne réécris pas le cours et ne modifie aucun champ non fourni.
 • conserve le plan, le niveau et le périmètre propriétaire de chaque leçon ;
 • remplace toute définition non standard par la définition scolaire correcte ;
 • harmonise les unités, symboles, hypothèses, taux et cas particuliers ;
-• si un exercice est concerné, recalcule-le et garde answer et explanation parfaitement cohérents ;
+• si un exercice est concerné, recalcule-le et harmonise question, answer, hint et explanation ;
+• answer et explanation doivent se terminer par strictement le même résultat ;
 • utilise du Markdown mathématique avec $...$ ;
-• aucun id inventé, aucune ellipse, aucun contenu provisoire.`,
-    publicationRepairContract(Math.min(60, Math.max(8, fields.length))),
+• aucun id inventé, aucune ellipse, aucun contenu provisoire ;
+• renvoie au moins un patch valide lorsque des erreurs sont fournies.`,
+    publicationRepairContract(
+      Math.min(60, Math.max(8, fields.length)),
+      true,
+    ),
     0,
     options.repairMaxTokens,
     true,
@@ -1567,43 +1883,72 @@ Corrige uniquement les incohérences inter-leçons listées. Les leçons ont dé
 }
 
 /**
- * Contrôle inter-leçons après les barrières unitaires. Le moindre problème
- * bloquant non corrigé empêche l'enregistrement du cours.
+ * Contrôle inter-leçons itératif après les barrières unitaires. Jusqu'à trois
+ * cycles check -> repair -> check sont autorisés. Le moindre problème bloquant
+ * restant après le dernier cycle empêche toujours l'enregistrement du cours.
  */
 export async function verifyCourseGloballyForPublication(
   input: StructuredCourseChapter[],
   options: GlobalPublicationGateOptions,
-): Promise<{ value: StructuredCourseChapter[]; report: CourseGlobalPublicationGateReport }> {
-  const initial = clone(input);
-  const issuesBefore = await runGlobalPublicationJudge(initial, options);
-  const blockingBefore = issuesBefore.filter((issue) => issue.severity === "blocking");
-  if (blockingBefore.length === 0) {
+): Promise<{
+  value: StructuredCourseChapter[];
+  report: CourseGlobalPublicationGateReport;
+}> {
+  let current = clone(input);
+  const maxRounds = globalPublicationRepairCycleLimit();
+  let totalPatches = 0;
+  let repairRounds = 0;
+
+  const before = await auditCourseGloballyForPublication(current, options);
+  let audit = before;
+
+  if (audit.unresolved.length === 0) {
     return {
-      value: initial,
-      report: { issuesBefore: issuesBefore.length, patches: 0, issuesAfter: 0, unresolved: [] },
+      value: current,
+      report: {
+        issuesBefore: before.deterministic.length + before.judge.length,
+        patches: 0,
+        repairRounds: 0,
+        issuesAfter: 0,
+        unresolved: [],
+      },
     };
   }
-  const repaired = await repairGlobalPublicationIssues(initial, options, blockingBefore);
-  const deterministicAfter = globalDeterministicPublicationIssues(repaired.value);
-  const judgeIssuesAfter = await runGlobalPublicationJudge(repaired.value, options);
-  const unresolved = [...deterministicAfter, ...judgeIssuesAfter]
-    .filter((issue) => issue.severity === "blocking")
-    .filter(
-      (issue, index, all) =>
-        all.findIndex(
-          (candidate) =>
-            candidate.id === issue.id &&
-            candidate.category === issue.category &&
-            candidate.message === issue.message,
-        ) === index,
+
+  let previousSignature = publicationIssueSignature(audit.unresolved);
+  let stagnantRounds = 0;
+
+  for (let round = 1; round <= maxRounds; round += 1) {
+    repairRounds = round;
+    const repaired = await repairGlobalPublicationIssues(
+      current,
+      options,
+      audit.unresolved,
+      round,
+      maxRounds,
     );
+    current = repaired.value;
+    totalPatches += repaired.patches;
+    audit = await auditCourseGloballyForPublication(current, options);
+    if (audit.unresolved.length === 0) break;
+
+    const signature = publicationIssueSignature(audit.unresolved);
+    const madeProgress =
+      repaired.patches > 0 || signature !== previousSignature;
+    stagnantRounds = madeProgress ? 0 : stagnantRounds + 1;
+    previousSignature = signature;
+    if (stagnantRounds >= 2) break;
+  }
+
   return {
-    value: repaired.value,
+    value: current,
     report: {
-      issuesBefore: issuesBefore.length,
-      patches: repaired.patches,
-      issuesAfter: deterministicAfter.length + judgeIssuesAfter.length,
-      unresolved,
+      issuesBefore: before.deterministic.length + before.judge.length,
+      patches: totalPatches,
+      repairRounds,
+      issuesAfter: audit.deterministic.length + audit.judge.length,
+      unresolved: audit.unresolved,
     },
   };
 }
+

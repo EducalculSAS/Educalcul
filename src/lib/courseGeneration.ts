@@ -1238,7 +1238,7 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
           }
           telemetry.end(
             label,
-            `${checked.report.patches} patch(es), 0 erreur bloquante restante`,
+            `${checked.report.patches} patch(es), ${checked.report.repairRounds} cycle(s), ${checked.report.fallbackExerciseRewrites} exercice(s) reconstruit(s), 0 erreur bloquante restante`,
           );
           return checked.value;
         },
@@ -1315,7 +1315,7 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
       );
       telemetry.end(
         "publication-global",
-        `${globalCheck.report.patches} patch(es), cohérence inter-leçons validée`,
+        `${globalCheck.report.patches} patch(es), ${globalCheck.report.repairRounds} cycle(s), cohérence inter-leçons validée`,
       );
     }
 
