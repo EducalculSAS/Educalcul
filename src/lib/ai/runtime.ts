@@ -81,13 +81,20 @@ export function createLlmStartGate(
 
     const controller = new AbortController();
     let monitorActive = true;
+
+    // Permet de distinguer une vraie annulation demandée en base
+    // d'un abort technique déclenché par le timeout Mistral.
+    let abortedByCancellationRequest = false;
+
     void (async () => {
       try {
         while (monitorActive && !controller.signal.aborted) {
           if (await checkCancelled()) {
+            abortedByCancellationRequest = true;
             controller.abort();
             break;
           }
+
           await sleep(250);
         }
       } catch {
@@ -116,9 +123,15 @@ export function createLlmStartGate(
         () => controller.abort(),
       );
     } catch (error) {
-      if (controller.signal.aborted || (await checkCancelled())) {
+      const cancellationWasActuallyRequested =
+        abortedByCancellationRequest || (await checkCancelled());
+
+      if (cancellationWasActuallyRequested) {
         throw new GenerationCancelledError();
       }
+
+      // Un AbortError causé par withTimeout est une erreur technique,
+      // pas une annulation demandée par l'utilisateur.
       throw error;
     } finally {
       monitorActive = false;
