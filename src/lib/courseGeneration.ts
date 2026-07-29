@@ -15,7 +15,6 @@ import {
   type StructuredCourseLesson,
 } from "@/lib/ai/structuredContent";
 import {
-  courseBlueprintAuditSchema,
   courseBlueprintSchema,
   courseChapterSchema,
 } from "@/lib/ai/schemas";
@@ -48,7 +47,6 @@ import {
 import {
   courseLessonUnstructuredMathFields,
   replaceDuplicateCourseExercises,
-  reviewCourseLesson,
   verifyCourseGloballyForPublication,
   verifyCourseLessonForPublication,
 } from "@/lib/ai/courseReview";
@@ -401,6 +399,8 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
 • Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.
 • Recalcule chaque formule, exemple et exercice. Distingue minimum et infimum, implication et équivalence.
+• Adapte tes vérifications au domaine réellement traité : calcul exact et unités en arithmétique ; substitutions et ensembles de solutions en algèbre ; domaine, hypothèses, dérivées et variations en analyse ; configuration, orientation et longueurs en géométrie ; univers, dénominateurs et somme des probabilités en probabilités ; effectifs, fréquences et indicateurs en statistiques ; initialisation et indices pour les suites et raisonnements discrets.
+• Pour toute affirmation générale, teste au moins un cas simple, un cas limite et, lorsque c'est pertinent, cherche un contre-exemple avant de la conserver.
 • Ne confonds jamais fonction croissante, vitesse de croissance constante et convexité : si $f''>0$, la pente augmente.
 • Pour une application numérique, conserve la formule exacte, les unités et la même valeur arrondie dans answer et explanation.
 • Avant toute comparaison de constantes ou de bases, vérifie numériquement le rapport utilisé.
@@ -553,41 +553,6 @@ function blockingIssues(
   }
 
   return lessonIssues;
-}
-
-function asUnknownRecord(value: unknown): Record<string, unknown> | null {
-  return typeof value === "object" && value !== null && !Array.isArray(value)
-    ? (value as Record<string, unknown>)
-    : null;
-}
-
-function blueprintAuditMessages(raw: unknown): string[] {
-  const record = asUnknownRecord(raw);
-  const issues = Array.isArray(record?.issues) ? record.issues : [];
-  return issues.flatMap((item) => {
-    const issue = asUnknownRecord(item);
-    if (!issue) return [];
-    const location = typeof issue.location === "string" ? issue.location : "plan";
-    const message = typeof issue.message === "string" ? issue.message : "";
-    const suggestion = typeof issue.suggestion === "string" ? issue.suggestion : "";
-    if (!message) return [];
-    return [`${location} — ${message}${suggestion ? ` Correction attendue : ${suggestion}` : ""}`];
-  }).slice(0, 20);
-}
-
-function isBlockingIndependentBlueprintMessage(message: string): boolean {
-  const normalized = message
-    .toLocaleLowerCase("fr")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-  const concernsExerciseSkills = normalized.includes("exercise_skills");
-  const lexicalOverlap = /(proche|similaire|chevauch|doublon|duplicate|overlap)/.test(normalized);
-
-  // Le modèle relecteur peut considérer deux compétences comme identiques
-  // uniquement parce qu'elles emploient le même verbe. Le normaliseur les
-  // contextualise déjà, et les vrais doublons d'exercices sont vérifiés sur
-  // le contenu final. Une collision exacte reste détectée par l'audit local.
-  return !(concernsExerciseSkills && lexicalOverlap);
 }
 
 function localBlueprintAuditMessages(
@@ -858,108 +823,18 @@ REPRISE APRÈS TRONCATURE. Repars de zéro. Réponds uniquement avec l'objet JSO
       `${chapterCount} chapitre(s), ${totalLessonCount} leçon(s)`,
     );
 
-    const deterministicPlanIssues = localBlueprintAuditMessages(
+    const planWarnings = localBlueprintAuditMessages(
       blueprint,
       subject,
       shouldIncludeExercises,
       String(grade_level),
-      { blockingOnly: true },
     );
-    let independentPlanIssues: string[] = [];
-    telemetry.start("blueprint-review");
-    try {
-      const auditRaw = await generate(
-        `Plan à auditer sans le réécrire :\n${JSON.stringify(blueprint)}`,
-        `Tu es l'agent vérificateur indépendant du plan global Educalcul.
-Niveau : ${grade_level}. Sujet : ${subject}. Domaine : ${subject_area || "Mathématiques"}.
-${programmeBlock}
-${teacherDirective}
-
-Tu ne rédiges pas le cours et tu ne réécris pas le plan. Tu signales uniquement les défauts précis.
-Vérifie obligatoirement :
-• titres pédagogiques spécifiques, jamais « partie 1 » ou « leçon 2 » ;
-• une progression logique où chaque notion principale a un seul propriétaire ;
-• objectifs et required_sections distincts entre toutes les leçons ;
-• pour exercise_skills, ne signale un doublon que si la compétence vise le même objet mathématique ET la même méthode ; un verbe commun comme « résoudre », « calculer » ou « modéliser » ne suffit pas ;
-• scope assez précis pour dire ce qui est couvert et exclu ;
-• prerequisite_recall uniquement vers des notions déjà traitées ;
-• forbidden_concepts pertinent et sans contradiction avec core_concepts ;
-• conformité stricte au programme et absence de notion hors niveau ;
-• visuel sémantiquement utile ;
-• aucun plan où une première leçon traite déjà tout le sujet.
-
-verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans se répéter.`,
-        courseBlueprintAuditSchema(),
-        0.05,
-        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 128_000, 8_000, 128_000),
-        false,
+    if (planWarnings.length > 0) {
+      console.warn(
+        `[course-ai][plan] ${planWarnings.length} avertissement(s) détecté(s) puis transmis aux rédacteurs et au certificateur final : ${planWarnings
+          .slice(0, 8)
+          .join(" | ")}`,
       );
-      independentPlanIssues = blueprintAuditMessages(auditRaw)
-        .filter(isBlockingIndependentBlueprintMessage);
-      telemetry.end(
-        "blueprint-review",
-        independentPlanIssues.length > 0
-          ? `${independentPlanIssues.length} correction(s) demandée(s)`
-          : "plan validé par un agent indépendant",
-      );
-    } catch (error) {
-      telemetry.end("blueprint-review", "vérificateur indisponible, audit local conservé");
-      console.warn("[course-ai] Vérification indépendante du plan indisponible.", error);
-    }
-
-    const planFeedback = [...deterministicPlanIssues, ...independentPlanIssues]
-      .filter((message, index, all) => all.indexOf(message) === index)
-      .slice(0, 30);
-    if (planFeedback.length > 0) {
-      telemetry.start("blueprint-repair");
-      const repairedRaw = await generateBlueprint(
-        `${blueprintUser}
-
-Le premier plan doit être entièrement repensé par le planificateur. Voici les défauts détectés :
-${planFeedback.map((message, index) => `${index + 1}. ${message}`).join("\n")}
-
-Retourne un nouveau plan complet, précis et non générique. Ne te contente pas de reformuler les mêmes leçons.`,
-        0.08,
-        "repair",
-      );
-      blueprint = normalizeCourseBlueprint(repairedRaw, {
-        subject,
-        chapterCount,
-        lessonsPerChapter,
-        chapterRequiresGraph: (title, scope) =>
-          topicRequiresFunctionGraph(subject, subject_area || "", title, scope),
-      });
-      const remainingPlanIssues = localBlueprintAuditMessages(
-        blueprint,
-        subject,
-        shouldIncludeExercises,
-        String(grade_level),
-      );
-      const blockingPlanIssues = localBlueprintAuditMessages(
-        blueprint,
-        subject,
-        shouldIncludeExercises,
-        String(grade_level),
-        { blockingOnly: true },
-      ).filter(
-        (message) => !message.includes(".scope — Le périmètre du chapitre est trop vague"),
-      );
-      telemetry.end(
-        "blueprint-repair",
-        blockingPlanIssues.length > 0
-          ? `${blockingPlanIssues.length} défaut(s) bloquant(s) restant(s)`
-          : remainingPlanIssues.length > 0
-            ? "métadonnées de chapitre stabilisées localement"
-            : "plan corrigé par le planificateur",
-      );
-      if (blockingPlanIssues.length > 0) {
-        throw new Error(
-          `Le plan global reste insuffisamment précis après une correction :\n${blockingPlanIssues
-            .slice(0, 12)
-            .map((message, index) => `${index + 1}. ${message}`)
-            .join("\n")}`,
-        );
-      }
     }
 
     const jobs = createLessonJobs(blueprint, {
@@ -1153,7 +1028,7 @@ Structure racine exacte :
 
         let structured = await requestDraftWithFreshJsonRecovery(
           userPrompt,
-          0.16,
+          0.06,
           "draft",
         );
 
@@ -1190,97 +1065,65 @@ Structure racine exacte :
           `${lessonUsefulCharacterCount(lesson)} caractères utiles`,
         );
 
-        // Le rédacteur libère immédiatement son slot. La relecture part dans
-        // une file séparée et commence dès qu'un relecteur est disponible.
+        // V5 : pas de second agent de relecture généraliste. La normalisation
+        // déterministe et la réparation KaTeX s'exécutent immédiatement ; la
+        // certification sémantique universelle intervient une seule fois plus bas.
         reviewedLessonPromises[jobIndex] = reviewLimit(async () => {
-          const reviewLabel = `review c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
+          const reviewLabel = `normalize c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
           telemetry.start(reviewLabel);
-          let reviewed = lesson;
-          let patchCount = 0;
-          let deletedExerciseCount = 0;
-          let unstructuredMathFields = courseLessonUnstructuredMathFields(lesson);
-          try {
-            const result = await reviewCourseLesson(lesson, {
-              generate,
-              courseTitle: blueprint.title,
-              chapterTitle: job.chapter.title,
-              lessonPlan: job.lesson,
-              boundaries: job.boundaries,
-              level: String(grade_level),
-              subject,
-              curriculumContext: programmeBlock,
-            });
-            reviewed = result.value;
-            patchCount = result.report.patches;
-            deletedExerciseCount = result.report.deletedExercises;
-            unstructuredMathFields = result.report.unstructuredMathFields;
-            if (result.report.warnings.length > 0) {
-              console.warn(
-                `[course-ai] Relecteur ${job.lesson.title}: ${result.report.warnings.join(" | ")}`,
-              );
-            }
-          } catch (error) {
-            console.warn(
-              `[course-ai] Relecteur indisponible pour « ${job.lesson.title} »; validations locales conservées.`,
-              error,
-            );
-          }
 
           let reviewedChapter = normalizeStructuredCoursePedagogy({
             title: job.chapter.title,
-            lessons: [reviewed],
+            lessons: [lesson],
           });
           const sanitized = sanitizeStructuredResources(reviewedChapter);
           reviewedChapter = normalizeStructuredCoursePedagogy(sanitized.value);
 
-          // Réparation ciblée des mathématiques non délimitées avant de refuser
-          // la leçon. Si le relecteur complet a expiré, cette passe courte peut
-          // encore corriger localement le champ concerné. La barrière de
-          // publication indépendante reste ensuite responsable de la qualité.
-          const needsTargetedMathRepair = unstructuredMathFields.length > 0;
-          if (needsTargetedMathRepair) {
-            console.warn(
-              `[course-ai] Réparation mathématique ciblée pour « ${job.lesson.title} » : ${unstructuredMathFields.join(", ")}.`,
+          let normalizedLesson = reviewedChapter.lessons[0];
+          if (!normalizedLesson) {
+            throw new Error(
+              `La leçon « ${job.lesson.title} » a disparu pendant la normalisation.`,
             );
           }
 
+          const unstructuredMathFields =
+            courseLessonUnstructuredMathFields(normalizedLesson);
           const repaired = await repairInvalidStructuredMath(reviewedChapter, {
             generate,
             label: `cours ${blueprint.title}, chapitre ${job.chapter.title}, leçon ${job.lesson.title}`,
-            enableModelRepair: needsTargetedMathRepair,
+            enableModelRepair: unstructuredMathFields.length > 0,
           });
           reviewedChapter = normalizeStructuredCoursePedagogy(repaired.value);
-
-          const repairedLesson = reviewedChapter.lessons[0];
-          if (!repairedLesson) {
+          normalizedLesson = reviewedChapter.lessons[0];
+          if (!normalizedLesson) {
             throw new Error(
               `La leçon « ${job.lesson.title} » a disparu pendant la réparation mathématique.`,
             );
           }
 
-          unstructuredMathFields = courseLessonUnstructuredMathFields(repairedLesson);
-          if (unstructuredMathFields.length > 0) {
+          const remainingMathFields =
+            courseLessonUnstructuredMathFields(normalizedLesson);
+          if (remainingMathFields.length > 0) {
             console.warn(
-              `[course-ai] Mathématiques encore non délimitées après réparation ciblée pour « ${job.lesson.title} » : ${unstructuredMathFields.join(", ")}. La génération continue ; la justesse mathématique reste contrôlée par la barrière de publication.`,
+              `[course-ai] Notation mathématique encore imparfaite pour « ${job.lesson.title} » : ${remainingMathFields.join(", ")}. Le certificateur sémantique décide si le sens reste publiable.`,
             );
           }
 
           const finalIssues = blockingIssues(reviewedChapter, qualityOptions);
           if (finalIssues.length > 0) {
             throw new Error(
-              `La leçon « ${job.lesson.title} » reste non conforme après relecture :\n${formatStructuredQualityIssues(finalIssues)}`,
+              `La leçon « ${job.lesson.title} » reste structurellement non conforme :\n${formatStructuredQualityIssues(finalIssues)}`,
             );
           }
 
-          const finalLesson = repairedLesson;
           telemetry.end(
             reviewLabel,
-            `${patchCount} patch(es), ${deletedExerciseCount} exercice(s) supprimé(s), ${repaired.report.fallbackCount} repli(s) KaTeX`,
+            `${repaired.report.fallbackCount} repli(s) KaTeX, contrôle local terminé`,
           );
           await queueProgress(
-            `Leçon ${completedLessons + 1}/${totalLessonCount} vérifiée : ${job.lesson.title}`,
+            `Leçon ${completedLessons + 1}/${totalLessonCount} structurée : ${job.lesson.title}`,
           );
-          return finalLesson;
+          return normalizedLesson;
         });
       },
     );
@@ -1549,9 +1392,9 @@ Structure racine exacte :
 
     const maxFinalCoordinationRepairRounds = envNumber(
       "AI_COURSE_FINAL_COORDINATION_REPAIR_ROUNDS",
-      2,
       1,
-      3,
+      1,
+      2,
     );
     let finalCoordinationIssues = auditCourseCoordination(
       finalStructuredChapters,
