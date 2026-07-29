@@ -286,6 +286,27 @@ export function normalizeCourseBlueprint(
       const first = lessons[0];
       if (first) first.visualFocus = "graph";
     }
+
+    // Diversité visuelle : un sujet de fonction (exp, ln...) rend presque
+    // toutes les leçons "graphCompatible" au sens sémantique, donc un
+    // chapitre entier retombe facilement sur 3 leçons qui tracent la même
+    // courbe avec une légende à peine différente. Une leçon de modélisation
+    // ou d'application concrète gagne davantage à un schéma (frise,
+    // diagramme, camembert) qu'à une énième courbe : on la diversifie tant
+    // qu'il reste au moins une autre leçon avec un graph dans le chapitre.
+    const graphLessons = lessons.filter((lesson) => lesson.visualFocus === "graph");
+    if (graphLessons.length > 1) {
+      const modelingCandidate = lessons.find(
+        (lesson, index) =>
+          index > 0 &&
+          lesson.visualFocus === "graph" &&
+          /\b(modelis|application|probleme concret|cas concret)\b/.test(
+            canonical([lesson.title, lesson.objective, lesson.scope].join(" ")),
+          ),
+      );
+      if (modelingCandidate) modelingCandidate.visualFocus = "figure";
+    }
+
     chapters.push({ title, scope, lessons });
   }
 
@@ -577,13 +598,21 @@ export function deduplicateCourseChapters(
         if (!canDeduplicate(block)) return true;
         const text = blockPlainText(block).replace(/\s+/g, " ").trim();
         const wordCount = text.split(/\s+/).filter(Boolean).length;
-        if (wordCount < 28) return true;
+        if (wordCount < 18) return true;
         const currentTokens = tokens(text);
+        // Seuil abaissé (0.91 -> 0.78, plancher 20 -> 14 mots partagés) : le
+        // seuil précédent n'attrapait que le copier-coller quasi-littéral,
+        // pas une même notion réexpliquée avec d'autres mots d'une leçon à
+        // l'autre (ex: "lien avec les suites géométriques" développé deux
+        // fois dans le même chapitre). Le garde-fou dedupeCreatedIssue côté
+        // courseGeneration.ts annule déjà toute suppression qui casserait un
+        // seuil de mots ou un visuel requis, donc un seuil plus permissif ici
+        // reste sans risque.
         const duplicate = seen.some(
           (entry) =>
             (canonical(entry.text) === canonical(text) && text.length > 120) ||
-            (Math.min(entry.tokens.size, currentTokens.size) >= 20 &&
-              jaccard(entry.tokens, currentTokens) >= 0.91),
+            (Math.min(entry.tokens.size, currentTokens.size) >= 14 &&
+              jaccard(entry.tokens, currentTokens) >= 0.78),
         );
         if (duplicate) {
           removedBlocks += 1;

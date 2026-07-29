@@ -165,7 +165,8 @@ Chaque exercice respecte exactement :
   "explanation": "Correction Markdown"
 }
 Les exercices n'ont aucun id. Dans les blocs, place {"type":"exercise","exercise_index":1}, puis 2 et 3, juste après les notions correspondantes.
-La question ne contient jamais la réponse. answer et la conclusion de explanation donnent exactement le même résultat mathématique. Recalcule chaque activité avant de répondre.`;
+La question ne contient jamais la réponse. answer et la conclusion de explanation donnent exactement le même résultat mathématique. Recalcule chaque activité avant de répondre.
+Varie la formulation d'un exercice à l'autre (l'élève ne doit jamais voir 3 énoncés qui se ressemblent) : mélange par exemple un calcul direct, un "Vrai ou faux ? Justifier.", un "Identifie l'erreur dans ce raisonnement : [raisonnement fautif court]" ou une comparaison de deux valeurs — toujours répondu en texte libre, jamais de choix à cocher.`;
 }
 
 function visualRequirement(focus: CourseVisualFocus): string {
@@ -288,6 +289,7 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • Chaque paragraphe apporte une information nouvelle. Interdits : répétitions, introductions générales, reformulations de synthèse multiples, historique décoratif et texte ajouté uniquement pour augmenter la longueur.
 • Un rappel autorisé reste bref. Une notion interdite n'est ni démontrée, ni étudiée, ni transformée en section. En cas de contradiction, la liste des notions propriétaires prime sur le titre ou le scope.
 • Progression : mise en contexte utile → construction de la notion → méthode ou justification → applications élève réparties → approfondissement utile → une seule synthèse.
+• Le tableau de synthèse et le callout "Point clé" n'ont le droit d'exister que s'ils apportent une information absente du texte qui précède (comparaison de plusieurs cas côte à côte, piège fréquent, lien avec un autre chapitre) : jamais une reformulation de la dernière propriété ou du dernier paragraphe déjà énoncés.
 • Aucun titre « exercice résolu », « exercice corrigé » ou « exemple guidé ». Une méthode peut contenir un calcul expliqué sans imiter un exercice corrigé.
 • Le premier exercice arrive après au moins trois blocs pédagogiques substantiels. Les exercices sont répartis, jamais tous à la fin.
 • Une démonstration de trois étapes ou plus utilise "steps".
