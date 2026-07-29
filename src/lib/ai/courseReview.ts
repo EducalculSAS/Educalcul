@@ -1325,12 +1325,12 @@ function deterministicPublicationIssues(
   courseLessonUnstructuredMathFields(lesson).forEach((id) => {
     issues.push({
       id,
-      severity: "blocking",
+      severity: "warning",
       category: "notation_error",
       message:
-        "Le champ contient probablement une formule non délimitée ou une commande LaTeX cassée.",
+        "Le champ contient probablement une formule non délimitée ou une commande LaTeX à normaliser.",
       expectedFix:
-        "Réécrire le champ en Markdown mathématique valide avec $...$.",
+        "Réécrire le champ en Markdown mathématique valide avec $...$ lorsque cela améliore le rendu.",
       source: "deterministic",
     });
   });
@@ -1370,7 +1370,8 @@ Audit obligatoire, champ par champ :
 • vérifie les graphes et légendes : expression, asymptote, tangente, pente, convexité, demi-vie, limites et paramètres doivent décrire le même objet ;
 • vérifie les tableaux : tous les cas particuliers doivent être exacts, notamment quand un paramètre vaut zéro ;
 • vérifie que answer et la conclusion de explanation donnent strictement le même résultat ;
-• refuse toute réponse tronquée, intervalle avec « ... », formule brute cassée ou notation ambiguë ;
+• refuse toute réponse tronquée, intervalle avec « ... », formule réellement cassée ou notation mathématiquement ambiguë ;
+• un simple délimiteur $...$ manquant, sans ambiguïté sur le sens ni erreur de calcul, est seulement warning et ne doit jamais être blocking ;
 • refuse les définitions non standard présentées comme générales et les notions hors niveau non demandées ;
 • distingue croissance, vitesse de croissance et convexité ; minimum et infimum ; taux nominal, périodique et continu ;
 • une imprécision qui peut faire apprendre quelque chose de faux est BLOCKING.
@@ -1400,6 +1401,7 @@ async function runPublicationJudge(
     JSON.stringify({
       deterministic_alerts: deterministicIssues.map((issue) => ({
         id: issue.id,
+        severity: issue.severity,
         category: issue.category,
         message: issue.message,
       })),

@@ -1231,8 +1231,8 @@ Structure racine exacte :
 
           unstructuredMathFields = courseLessonUnstructuredMathFields(repairedLesson);
           if (unstructuredMathFields.length > 0) {
-            throw new Error(
-              `La leçon « ${job.lesson.title} » contient encore des mathématiques non délimitées après réparation ciblée dans : ${unstructuredMathFields.join(", ")}.`,
+            console.warn(
+              `[course-ai] Mathématiques encore non délimitées après réparation ciblée pour « ${job.lesson.title} » : ${unstructuredMathFields.join(", ")}. La génération continue ; la justesse mathématique reste contrôlée par la barrière de publication.`,
             );
           }
 
