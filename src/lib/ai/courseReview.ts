@@ -592,6 +592,16 @@ function collectExerciseReferences(
 
 function collectReferences(lesson: StructuredCourseLesson): ReviewReference[] {
   const references: ReviewReference[] = [];
+  addPlainReference(
+    references,
+    "lesson-title",
+    "lesson.title",
+    "lesson_title",
+    () => lesson.title,
+    (value) => {
+      lesson.title = value;
+    },
+  );
   collectBlockReferences(lesson.blocks, references, "lesson");
   collectExerciseReferences(lesson.exercises, references);
   return references;
@@ -1164,9 +1174,37 @@ function parseJudgeIssues(
   raw: unknown,
   validIds: Set<string>,
 ): CoursePublicationIssue[] {
+  const fallbackId = validIds.values().next().value as string | undefined;
+  const failClosed = (message: string): CoursePublicationIssue[] =>
+    fallbackId
+      ? [
+          {
+            id: fallbackId,
+            severity: "blocking",
+            category: "mathematical_error",
+            message,
+            expectedFix:
+              "Relancer la certification et obtenir un verdict structuré avec des issues ciblées valides avant toute publication.",
+            source: "independent_judge",
+          },
+        ]
+      : [];
+
   const record = asRecord(raw);
-  const issues = Array.isArray(record?.issues) ? record.issues : [];
-  return issues.flatMap((rawIssue) => {
+  if (!record) {
+    return failClosed(
+      "Le certificateur indépendant a renvoyé une réponse inexploitable ; la publication est refusée par sécurité.",
+    );
+  }
+  const verdict = record.verdict;
+  if (verdict !== "pass" && verdict !== "fail") {
+    return failClosed(
+      "Le certificateur indépendant n'a pas fourni de verdict pass/fail valide ; la publication est refusée par sécurité.",
+    );
+  }
+
+  const issues = Array.isArray(record.issues) ? record.issues : [];
+  const parsed = issues.flatMap((rawIssue) => {
     const issue = asRecord(rawIssue);
     if (!issue) return [];
     const id = stringValue(issue.id).trim();
@@ -1187,6 +1225,16 @@ function parseJudgeIssues(
       },
     ];
   });
+
+  if (verdict === "fail" && !parsed.some((issue) => issue.severity === "blocking")) {
+    return [
+      ...parsed,
+      ...failClosed(
+        "Le certificateur a rendu verdict=fail sans fournir d'erreur bloquante ciblée valide ; la publication reste refusée.",
+      ),
+    ];
+  }
+  return parsed;
 }
 
 function extractApproximateNumbers(value: string): ApproximateNumber[] {
@@ -1298,6 +1346,11 @@ function normalizeForSemanticDetection(value: string): string {
     .replace(/\\(?:gt|geq|ge)/g, ">")
     .replace(/\\(?:lt|leq|le)/g, "<")
     .replace(/\\cdot/g, "*")
+    .replace(/\\(exp|ln|sin|cos|tan)/g, "$1")
+    .replace(/\\to/g, " -> ")
+    .replace(/\\infty/g, " infini ")
+    .replace(/\\in/g, " in ")
+    .replace(/−/g, "-")
     .replace(/[${}]/g, "")
     .replace(/\s+/g, " ")
     .trim();
@@ -1310,11 +1363,20 @@ const FALSE_PREMISE_PATTERN =
 const PROOF_REQUEST_PATTERN =
   /\b(?:demontrer|montrer|prouver|etablir|en deduire|justifier que)\b/i;
 
+function isStrictFirstExponentContext(
+  options?: Pick<PublicationGateOptions, "level" | "subject">,
+): boolean {
+  if (!options || options.level !== "1ere-generale-maths") return false;
+  return normalizeForSemanticDetection(options.subject).includes("exponent");
+}
+
 function deterministicSemanticRedFlags(
   lesson: StructuredCourseLesson,
+  options?: Pick<PublicationGateOptions, "level" | "subject">,
 ): CoursePublicationIssue[] {
   const issues: CoursePublicationIssue[] = [];
   const references = collectReferences(lesson);
+  const strictFirstExponent = isStrictFirstExponentContext(options);
 
   references.forEach((reference) => {
     const raw = reference.value();
@@ -1361,9 +1423,9 @@ function deterministicSemanticRedFlags(
         severity: "blocking",
         category: "mathematical_error",
         message:
-          "Le champ affirme à tort que $e^{u(x)}=k$ possède toujours une unique solution ; le nombre de solutions dépend de l'équation $u(x)=\ln(k)$.",
+          "Le champ affirme à tort que $e^{u(x)}=k$ possède toujours une unique solution ; le nombre de solutions dépend de l'équation $u(x)=\\ln(k)$.",
         expectedFix:
-          "Énoncer seulement l'équivalence avec $u(x)=\ln(k)$, puis préciser les hypothèses garantissant l'unicité.",
+          "Énoncer seulement l'équivalence avec $u(x)=\\ln(k)$, puis préciser les hypothèses garantissant l'unicité.",
         source: "deterministic",
       });
     }
@@ -1383,6 +1445,162 @@ function deterministicSemanticRedFlags(
         source: "deterministic",
       });
     }
+
+    const wrongFunctionalProof =
+      compact.includes("g(x)=exp(x+a)-exp(a)*exp(x)") &&
+      compact.includes("g'(x)=0");
+    if (wrongFunctionalProof) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "proof_error",
+        message:
+          "La preuve affirme $g'(x)=0$ pour $g(x)=\\exp(x+a)-\\exp(a)\\exp(x)$, alors que $g'(x)=g(x)$. Le raisonnement est invalide.",
+        expectedFix:
+          "Utiliser une fonction quotient ou produit dont la dérivée est réellement nulle, ou présenter la propriété comme admise conformément au programme.",
+        source: "deterministic",
+      });
+    }
+
+    const wrongTangentAtZero =
+      normalized.includes("tangente") &&
+      /(?:en|au point|a l abscisse)\s*0/.test(normalized) &&
+      /(?:^|[\s:;])y\s*=\s*x(?:[.,;]|$)/.test(normalized) &&
+      !/y\s*=\s*x\s*\+\s*1/.test(normalized);
+    if (wrongTangentAtZero) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "graph_or_table_error",
+        message:
+          "La tangente à la courbe de l'exponentielle en 0 est $y=x+1$, pas $y=x$.",
+        expectedFix:
+          "Remplacer l'équation par $y=x+1$ et vérifier que le point $(0,1)$ et la pente 1 sont cohérents.",
+        source: "deterministic",
+      });
+    }
+
+    const invalidPositivityContradiction =
+      compact.includes("exp(x)<=0") &&
+      compact.includes("exp(-x)<=0") &&
+      normalized.includes("produit") &&
+      /contradiction|impossible/.test(normalized);
+    if (invalidPositivityContradiction) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "proof_error",
+        message:
+          "Le raisonnement de positivité est invalide : deux nombres négatifs peuvent avoir un produit positif égal à 1.",
+        expectedFix:
+          "Donner une preuve valide de la stricte positivité, par exemple en utilisant $\\exp(x)=\\exp(x/2)^2$ puis le fait que l'exponentielle ne s'annule pas.",
+        source: "deterministic",
+      });
+    }
+
+    const falseDerivativeCausality =
+      /nombre derive en 0 vaut 1.*(?:donne|definit).*nombre e/.test(normalized);
+    if (falseDerivativeCausality) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "mathematical_error",
+        message:
+          "Le nombre dérivé en 0 vaut 1, mais cela ne 'donne' pas le nombre $e$ ; $e$ est défini comme $\\exp(1)$.",
+        expectedFix:
+          "Séparer les deux faits : $\\exp'(0)=1$ et $e=\\exp(1)$.",
+        source: "deterministic",
+      });
+    }
+
+    const corruptedMathematicalNotation =
+      /lim_\s*x\s*(?:-|->|→)\s*\+?infini/.test(normalized) ||
+      /n\s+in\s+n\^\*n/.test(normalized) ||
+      /\b(?:xmapsto|xto-?infty|xto-?infini)\b/.test(normalized) ||
+      /-\+\s*(?:∞|infini)/.test(raw);
+    if (corruptedMathematicalNotation) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "notation_error",
+        message:
+          "La notation mathématique est dégradée au point de rendre l'énoncé ou la propriété difficile à interpréter.",
+        expectedFix:
+          "Réécrire entièrement le champ en français clair et en Markdown mathématique valide, sans fragments de LaTeX cassés.",
+        source: "deterministic",
+      });
+    }
+
+    if (strictFirstExponent) {
+      const scopeRules: Array<{
+        pattern: RegExp;
+        label: string;
+        expectedFix: string;
+      }> = [
+        {
+          pattern: /\b(?:logarithme|ln)\b/,
+          label: "logarithme népérien",
+          expectedFix:
+            "Remplacer par une transformation algébrique de l'exponentielle, une lecture graphique ou une modélisation ne nécessitant pas le logarithme.",
+        },
+        {
+          pattern:
+            /\b(?:nombre complexe|nombres complexes|exponentielle complexe|forme exponentielle complexe|formule d euler|module et argument|racines? cubiques?.*complex)\b|e\^i/,
+          label: "nombres complexes ou formule d'Euler",
+          expectedFix:
+            "Remplacer par une propriété réelle de l'exponentielle conforme à la Première générale.",
+        },
+        {
+          pattern:
+            /\b(?:asymptote|croissance comparee|limite de fonction|limite en [+-]?infini)\b|lim_?\s*x/,
+          label: "limites de fonctions, asymptotes ou croissance comparée",
+          expectedFix:
+            "Remplacer par l'étude du signe, des variations, de la courbe ou par une comparaison graphique adaptée au niveau.",
+        },
+        {
+          pattern: /\b(?:convexite|convexe|derivee seconde|point d inflexion)\b|f''|exp''/,
+          label: "convexité ou dérivée seconde",
+          expectedFix:
+            "Remplacer par l'étude des variations à l'aide de la dérivée première ou par la tangente sans invoquer la convexité.",
+        },
+        {
+          pattern:
+            /\b(?:equation differentielle lineaire|facteur integrant|cauchy lipschitz|probleme de cauchy)\b|y'\s*[+-]\s*[a-z0-9]*y\s*=/,
+          label: "équation différentielle générale",
+          expectedFix:
+            "Se limiter à la définition admise de l'exponentielle par $f'=f$, $f(0)=1$, sans résoudre d'équation différentielle générale.",
+        },
+        {
+          pattern: /\b(?:fonction exponentielle de base|base a)\b|\ba\^x\b/,
+          label: "fonction exponentielle de base quelconque",
+          expectedFix:
+            "Revenir à la fonction exponentielle réelle $x\\mapsto e^x$ et aux fonctions $t\\mapsto e^{at}$ prévues au programme.",
+        },
+        {
+          pattern: /\b(?:fonction contractante|theoreme de contraction|point fixe)\b/,
+          label: "théorème de point fixe",
+          expectedFix:
+            "Remplacer par un lien élémentaire avec les suites géométriques ou une modélisation exponentielle simple.",
+        },
+        {
+          pattern: /\be\^u\(x\)\b|\bexp\(u\(x\)\)/,
+          label: "composée exponentielle générale $e^{u(x)}$",
+          expectedFix:
+            "Se limiter au cas affine $e^{ax+b}$ lorsque celui-ci est utile au niveau annoncé.",
+        },
+      ];
+      for (const rule of scopeRules) {
+        if (!rule.pattern.test(normalized)) continue;
+        issues.push({
+          id: reference.id,
+          severity: "blocking",
+          category: "level_mismatch",
+          message: `Le champ introduit ${rule.label}, hors du périmètre strict de la fonction exponentielle en Première générale.`,
+          expectedFix: rule.expectedFix,
+          source: "deterministic",
+        });
+      }
+    }
   });
 
   lesson.exercises.forEach((exercise, exerciseIndex) => {
@@ -1393,6 +1611,7 @@ function deterministicSemanticRedFlags(
     const explanation = normalizeForSemanticDetection(
       richTextToMarkdown(exercise.explanation),
     );
+    const combined = `${question} ${answer} ${explanation}`;
     if (
       PROOF_REQUEST_PATTERN.test(question) &&
       FALSE_PREMISE_PATTERN.test(`${answer} ${explanation}`)
@@ -1408,6 +1627,40 @@ function deterministicSemanticRedFlags(
         source: "deterministic",
       });
     }
+
+    const positiveGrowthHalfLife =
+      /\b(?:capital|placement|interet)\b/.test(combined) &&
+      /\bdemi vie\b/.test(combined) &&
+      /(?:taux.*(?:positif|5\s*%)|e\^[+]?0[.,]0?5t|croissance)/.test(combined);
+    if (positiveGrowthHalfLife) {
+      issues.push({
+        id: `e${exerciseIndex}-question`,
+        severity: "blocking",
+        category: "scope_error",
+        message:
+          "Un capital à taux positif possède un temps de doublement, pas une demi-vie. L'énoncé mélange croissance et décroissance.",
+        expectedFix:
+          "Demander le temps de doublement du capital, ou remplacer le contexte par une décroissance si une demi-vie est réellement visée.",
+        source: "deterministic",
+      });
+    }
+
+    const cubicRootsCoefficientConflict =
+      /z\^3=8i/.test(question.replace(/\s+/g, "")) &&
+      /sqrt\s*2|√2/.test(answer) &&
+      /(?:^|\s)2e\^/.test(explanation);
+    if (cubicRootsCoefficientConflict) {
+      issues.push({
+        id: `e${exerciseIndex}-answer`,
+        severity: "blocking",
+        category: "answer_explanation_conflict",
+        message:
+          "Pour $z^3=8i$, la réponse annonce des racines de module $\\sqrt2$ tandis que l'explication utilise le module 2.",
+        expectedFix:
+          "Recalculer les racines cubiques : leur module vaut $\\sqrt[3]{8}=2$, puis harmoniser answer et explanation.",
+        source: "deterministic",
+      });
+    }
   });
 
   return issues;
@@ -1415,6 +1668,7 @@ function deterministicSemanticRedFlags(
 
 function deterministicPublicationIssues(
   lesson: StructuredCourseLesson,
+  options?: Pick<PublicationGateOptions, "level" | "subject">,
 ): CoursePublicationIssue[] {
   const issues: CoursePublicationIssue[] = [];
   lesson.exercises.forEach((exercise, exerciseIndex) => {
@@ -1468,7 +1722,7 @@ function deterministicPublicationIssues(
     }
   });
 
-  issues.push(...deterministicSemanticRedFlags(lesson));
+  issues.push(...deterministicSemanticRedFlags(lesson, options));
 
   courseLessonUnstructuredMathFields(lesson).forEach((id) => {
     issues.push({
@@ -1706,7 +1960,7 @@ async function auditCourseLessonForPublication(
   lesson: StructuredCourseLesson,
   options: PublicationGateOptions,
 ): Promise<LessonPublicationAudit> {
-  const deterministic = deterministicPublicationIssues(lesson);
+  const deterministic = deterministicPublicationIssues(lesson, options);
   const judge = await runPublicationJudge(lesson, options, deterministic);
   return {
     deterministic,
@@ -2057,6 +2311,7 @@ function collectCourseReferences(
 
 function globalDeterministicPublicationIssues(
   chapters: StructuredCourseChapter[],
+  options: Pick<GlobalPublicationGateOptions, "level" | "subject">,
 ): CoursePublicationIssue[] {
   return chapters.flatMap((chapter, chapterIndex) =>
     chapter.lessons.flatMap((lesson, lessonIndex) =>
@@ -2197,7 +2452,7 @@ async function auditCourseGloballyForPublication(
   chapters: StructuredCourseChapter[],
   options: GlobalPublicationGateOptions,
 ): Promise<GlobalPublicationAudit> {
-  const deterministic = globalDeterministicPublicationIssues(chapters);
+  const deterministic = globalDeterministicPublicationIssues(chapters, options);
   // Le contrôle de cohérence et l'inspection du programme sont volontairement
   // séparés : chacun doit produire son propre verdict sans s'appuyer sur
   // l'autre. Les exécuter séquentiellement évite un pic réseau en fin de cours.

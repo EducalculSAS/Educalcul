@@ -196,6 +196,12 @@ export const PROGRAMMES_NATIONAUX: ProgrammeEntry[] = [
           "Variations et dérivée (signe de f')",
           "Extrema d'une fonction",
           "Étude de fonctions",
+          "Fonction exponentielle : définition comme unique fonction dérivable sur $\mathbb{R}$ vérifiant $f'=f$ et $f(0)=1$ ; existence et unicité admises",
+          "Propriétés algébriques : $\exp(x+y)=\exp(x)\exp(y)$ et $\exp(x)\exp(-x)=1$ ; nombre $e$",
+          "Signe, sens de variation et courbe représentative de la fonction exponentielle ; lien avec les suites géométriques",
+          "Pour $a$ réel, dérivée de la fonction $t\mapsto e^{at}$",
+          "Représentation graphique de $t\mapsto e^{kt}$ et $t\mapsto e^{-kt}$ pour $k>0$",
+          "Modélisation d'une croissance ou décroissance exponentielle : capital à taux fixe, décroissance radioactive",
         ],
       },
       {
@@ -350,6 +356,19 @@ export const PROGRAMMES_NATIONAUX: ProgrammeEntry[] = [
   },
 ];
 
+const STRICT_PROGRAMME_GUARDRAILS: Record<string, string[]> = {
+  "1ere-generale-maths": [
+    "Pour la fonction exponentielle, rester sur exp(x), ses propriétés algébriques, son signe, ses variations, sa courbe, la dérivée de t ↦ e^{at}, les suites géométriques et les modélisations simples.",
+    "L'existence et l'unicité de la fonction exponentielle sont admises. Une démonstration peut apparaître seulement comme approfondissement clairement identifié et avec des outils du niveau.",
+    "Ne pas introduire le logarithme népérien comme outil de résolution ou comme chapitre : il n'appartient pas aux contenus attendus de Première.",
+    "Ne pas introduire les nombres complexes, l'exponentielle complexe, la formule d'Euler, module, argument ou racines dans C.",
+    "Ne pas introduire les limites de fonctions, asymptotes, croissance comparée formalisée, convexité, dérivée seconde, intégrales ou séries.",
+    "Ne pas introduire les équations différentielles générales y'=ay+b, le facteur intégrant, Cauchy-Lipschitz ou les théorèmes de point fixe.",
+    "Pour les composées exponentielles, se limiter au cas affine t ↦ e^{at+b} lorsque cela sert directement la capacité t ↦ e^{at}; ne pas généraliser à e^{u(x)} sans nécessité du programme.",
+    "Toute notion interdite doit être remplacée par une application directe du programme, jamais conservée comme enrichissement obligatoire.",
+  ],
+};
+
 /**
  * Retourne le programme officiel pour un niveau donné.
  * Utilisé dans les prompts IA pour biaiser la génération vers le curriculum national.
@@ -378,6 +397,12 @@ export function getProgrammePromptBlock(level: string): string {
     }
   }
 
-  lines.push(`\nReste dans le cadre de ces notions. Ne dépasse pas le niveau défini.`);
+  const guardrails = STRICT_PROGRAMME_GUARDRAILS[level] ?? [];
+  if (guardrails.length > 0) {
+    lines.push(`\n═══ LIMITES STRICTES DU NIVEAU ═══`);
+    for (const rule of guardrails) lines.push(`  - ${rule}`);
+  }
+
+  lines.push(`\nReste strictement dans le cadre de ces notions et limites. Une notion absente ou explicitement interdite ne doit pas apparaître dans le plan, le cours, les exercices ni les corrections.`);
   return lines.join("\n");
 }

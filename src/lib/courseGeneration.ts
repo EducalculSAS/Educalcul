@@ -594,9 +594,10 @@ function localBlueprintAuditMessages(
   blueprint: CourseBlueprint,
   subject: string,
   includeExercises: boolean,
+  level: string,
   options: { blockingOnly?: boolean } = {},
 ): string[] {
-  return auditCourseBlueprint(blueprint, { subject, includeExercises })
+  return auditCourseBlueprint(blueprint, { subject, includeExercises, level })
     .filter((issue) => !options.blockingOnly || isBlockingCourseBlueprintIssue(issue))
     .map((issue) => `${issue.location} — ${issue.message}`)
     .slice(0, 30);
@@ -837,6 +838,7 @@ REPRISE APRÈS TRONCATURE. Repars de zéro. Réponds uniquement avec l'objet JSO
       blueprint,
       subject,
       shouldIncludeExercises,
+      String(grade_level),
       { blockingOnly: true },
     );
     let independentPlanIssues: string[] = [];
@@ -907,11 +909,13 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
         blueprint,
         subject,
         shouldIncludeExercises,
+        String(grade_level),
       );
       const blockingPlanIssues = localBlueprintAuditMessages(
         blueprint,
         subject,
         shouldIncludeExercises,
+        String(grade_level),
         { blockingOnly: true },
       ).filter(
         (message) => !message.includes(".scope — Le périmètre du chapitre est trop vague"),

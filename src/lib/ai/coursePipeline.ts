@@ -537,7 +537,7 @@ function similarText(left: string, right: string): number {
  */
 export function auditCourseBlueprint(
   blueprint: CourseBlueprint,
-  options: { subject: string; includeExercises: boolean },
+  options: { subject: string; includeExercises: boolean; level?: string },
 ): CourseBlueprintAuditIssue[] {
   const issues: CourseBlueprintAuditIssue[] = [];
   const lessons = blueprint.chapters.flatMap((chapter, chapterIndex) =>
@@ -575,6 +575,39 @@ export function auditCourseBlueprint(
   for (const entry of lessons) {
     const { lesson, chapterIndex, lessonIndex, order } = entry;
     const location = `chapters[${chapterIndex}].lessons[${lessonIndex}]`;
+
+    if (
+      options.level === "1ere-generale-maths" &&
+      canonical(options.subject).includes("exponent")
+    ) {
+      const plannedText = canonical(
+        [
+          lesson.title,
+          lesson.objective,
+          lesson.scope,
+          ...lesson.coreConcepts,
+          ...lesson.requiredSections,
+          ...lesson.exerciseSkills,
+        ].join(" "),
+      );
+      const forbiddenPlanConcepts: Array<{ pattern: RegExp; label: string }> = [
+        { pattern: /\b(?:logarithme|ln)\b/, label: "logarithme népérien" },
+        { pattern: /\b(?:complexe|formule d euler|argument|module complexe|racine cubique complexe)\b/, label: "exponentielle ou nombres complexes" },
+        { pattern: /\b(?:limite de fonction|limite en|asymptote|croissance comparee)\b/, label: "limites de fonctions ou croissance comparée" },
+        { pattern: /\b(?:convexite|derivee seconde|point d inflexion)\b/, label: "convexité ou dérivée seconde" },
+        { pattern: /\b(?:equation differentielle lineaire|facteur integrant|cauchy lipschitz|y prime egal a y plus|y prime egal a a y)\b/, label: "équation différentielle générale" },
+        { pattern: /\b(?:fonction exponentielle de base|base a|a puissance x)\b/, label: "fonction exponentielle de base quelconque" },
+        { pattern: /\b(?:point fixe|contractante|theoreme de contraction)\b/, label: "théorème de point fixe" },
+      ];
+      for (const forbidden of forbiddenPlanConcepts) {
+        if (!forbidden.pattern.test(plannedText)) continue;
+        issues.push({
+          code: "forbidden_level_concept",
+          location: `${location}.scope`,
+          message: `Le plan introduit « ${forbidden.label} », hors du périmètre strict de la fonction exponentielle en Première générale. Remplacer par une propriété algébrique, une variation, une représentation de e^{at}, un lien avec les suites géométriques ou une modélisation simple.`,
+        });
+      }
+    }
     if (isGenericPlannedTitle(lesson.title, options.subject)) {
       issues.push({
         code: "generic_lesson_title",
