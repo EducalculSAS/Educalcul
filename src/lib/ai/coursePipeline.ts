@@ -468,10 +468,16 @@ export function createLessonJobs(
       targetMinWords + 80,
       Math.floor(base.targetMaxWords * Math.min(1.08, charRatio)),
     );
+    // Le plancher précédent (5 500) est atteint par la quasi-totalité des
+    // leçons de durée standard (≤ 30 min, la valeur par défaut) : la
+    // conversion caractères→tokens ne couvre alors que le texte utile, pas la
+    // structure JSON (accolades, guillemets, LaTeX échappé en \\\\) qui
+    // gonfle nettement la sortie réelle du modèle. Un plancher trop bas
+    // provoque une troncature systématique dès la première tentative.
     const maxOutputTokens = clamp(
-      Math.ceil(targetMaxChars / 2.45) + (options.includeExercises ? 2_100 : 900),
-      5_500,
-      10_500,
+      Math.ceil(targetMaxChars / 2.45) + (options.includeExercises ? 2_800 : 1_300),
+      7_500,
+      12_000,
     );
 
     return {

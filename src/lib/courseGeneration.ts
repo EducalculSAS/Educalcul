@@ -728,6 +728,13 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           return chapter;
         };
 
+        // Une nouvelle tentative après troncature doit disposer de PLUS de
+        // marge que la précédente, jamais d'un plafond identique ou inférieur
+        // : sinon le modèle tronque exactement la même sortie une seconde
+        // fois. Le budget de base va jusqu'à 10 500 ; on autorise jusqu'à
+        // 14 000 pour les tentatives de rattrapage, comme pour le blueprint.
+        const boostedMaxTokens = (base: number) => Math.min(14_000, base + 3_000);
+
         let structured: StructuredCourseChapter;
         try {
           structured = await requestDraft(
@@ -740,19 +747,40 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           structured = await requestDraft(
             `${userPrompt}\nLa sortie précédente était tronquée. Produis une version complète et plus dense : 7 à 12 blocs, exactement 3 exercices courts, un seul visuel principal, aucune répétition et pas de développement hors périmètre.`,
             0.03,
-            Math.min(9_500, job.budget.maxOutputTokens),
+            boostedMaxTokens(job.budget.maxOutputTokens),
           );
         }
 
         let issues = blockingIssues(structured, qualityOptions);
         let bestScore = structuredCourseQualityScore(structured, qualityOptions);
-        if (!hasCompleteLesson(structured.lessons[0], shouldIncludeExercises) || issues.length > 0) {
+        // Jusqu'à 2 corrections structurelles (ex: bloc graph manquant) avant
+        // d'abandonner la leçon — une seule tentative faisait échouer tout le
+        // cours dès qu'un agent ratait sa correction une fois.
+        const MAX_STRUCTURAL_RETRIES = 2;
+        for (
+          let attempt = 0;
+          attempt < MAX_STRUCTURAL_RETRIES &&
+          (!hasCompleteLesson(structured.lessons[0], shouldIncludeExercises) ||
+            issues.length > 0);
+          attempt += 1
+        ) {
           const issueSummary = formatStructuredQualityIssues(issues);
-          const retry = await requestDraft(
-            `${userPrompt}\nCORRECTION STRUCTURELLE UNIQUE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`,
-            0.02,
-            job.budget.maxOutputTokens,
-          );
+          const correctionPrompt = `${userPrompt}\nCORRECTION STRUCTURELLE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`;
+          let retry: StructuredCourseChapter;
+          try {
+            retry = await requestDraft(
+              correctionPrompt,
+              0.02,
+              job.budget.maxOutputTokens,
+            );
+          } catch (error) {
+            if (!isTruncationError(error)) throw error;
+            retry = await requestDraft(
+              `${correctionPrompt}\nLa tentative précédente était aussi tronquée : reste complet mais plus concis.`,
+              0.02,
+              boostedMaxTokens(job.budget.maxOutputTokens),
+            );
+          }
           const retryScore = structuredCourseQualityScore(retry, qualityOptions);
           const retryIssues = blockingIssues(retry, qualityOptions);
           if (
