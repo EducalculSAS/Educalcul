@@ -673,6 +673,12 @@ export async function runCourseGeneration(
     1,
     4,
   );
+  const writerMaxTokens = envNumber(
+    "AI_COURSE_WRITER_MAX_TOKENS",
+    128_000,
+    8_000,
+    128_000,
+  );
   const reviewLimit = createTaskLimiter(reviewerConcurrency);
   const publicationGateEnabled = process.env.AI_COURSE_PUBLICATION_GATE !== "0";
   const publicationReviewMaxTokens = envNumber(
@@ -759,23 +765,60 @@ ${teacherDirective}`;
       chapterCount,
       lessonsPerChapter,
     });
-    // Le blueprint est une structure JSON relativement petite.
-    // Un plafond trop élevé peut prolonger inutilement le raisonnement du modèle.
-    // 24k laisse une marge confortable pour le raisonnement et la sortie structurée.
+    // Leanstral 1.5 accepte jusqu'à 128k tokens de sortie. Tous les
+    // agents du pipeline utilisent ce plafond comme budget maximal ; il
+    // s'agit d'une limite haute, pas d'une longueur de sortie imposée.
     const blueprintMaxTokens = envNumber(
       "AI_COURSE_BLUEPRINT_MAX_TOKENS",
-      24_000,
+      128_000,
       8_000,
-      32_000,
+      128_000,
+    );
+    const blueprintRetryMaxTokens = envNumber(
+      "AI_COURSE_BLUEPRINT_RETRY_MAX_TOKENS",
+      128_000,
+      8_000,
+      128_000,
     );
 
-    const rawBlueprint = await generate(
+    const generateBlueprint = async (
+      prompt: string,
+      temperature: number,
+      stage: "initial" | "repair",
+    ): Promise<unknown> => {
+      try {
+        return await generate(
+          prompt,
+          blueprintSystem,
+          blueprintContract,
+          temperature,
+          blueprintMaxTokens,
+          false,
+        );
+      } catch (error) {
+        if (!isTruncationError(error)) throw error;
+
+        console.warn(
+          `[course-ai] Blueprint ${stage} tronqué à ${blueprintMaxTokens} tokens ; nouvelle génération fraîche et concise avec ${blueprintRetryMaxTokens} tokens.`,
+        );
+
+        return generate(
+          `${prompt}
+
+REPRISE APRÈS TRONCATURE. Repars de zéro. Réponds uniquement avec l'objet JSON complet attendu. Reste concis, ferme tous les tableaux et objets, et n'ajoute aucun commentaire hors JSON.`,
+          blueprintSystem,
+          blueprintContract,
+          0.02,
+          blueprintRetryMaxTokens,
+          false,
+        );
+      }
+    };
+
+    const rawBlueprint = await generateBlueprint(
       blueprintUser,
-      blueprintSystem,
-      blueprintContract,
       0.12,
-      blueprintMaxTokens,
-      true,
+      "initial",
     );
 
     let blueprint = normalizeCourseBlueprint(rawBlueprint, {
@@ -822,7 +865,7 @@ Vérifie obligatoirement :
 verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans se répéter.`,
         courseBlueprintAuditSchema(),
         0.05,
-        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 8_000, 2_000, 16_000),
+        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 128_000, 8_000, 128_000),
         false,
       );
       independentPlanIssues = blueprintAuditMessages(auditRaw)
@@ -843,18 +886,15 @@ verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans 
       .slice(0, 30);
     if (planFeedback.length > 0) {
       telemetry.start("blueprint-repair");
-      const repairedRaw = await generate(
+      const repairedRaw = await generateBlueprint(
         `${blueprintUser}
 
 Le premier plan doit être entièrement repensé par le planificateur. Voici les défauts détectés :
 ${planFeedback.map((message, index) => `${index + 1}. ${message}`).join("\n")}
 
 Retourne un nouveau plan complet, précis et non générique. Ne te contente pas de reformuler les mêmes leçons.`,
-        blueprintSystem,
-        blueprintContract,
         0.08,
-        blueprintMaxTokens,
-        true,
+        "repair",
       );
       blueprint = normalizeCourseBlueprint(repairedRaw, {
         subject,
@@ -1064,7 +1104,7 @@ Structure racine exacte :
               return await requestDraft(
                 activePrompt,
                 activeTemperature,
-                job.budget.maxOutputTokens,
+                writerMaxTokens,
                 activeSystemPrompt,
               );
             } catch (error) {
