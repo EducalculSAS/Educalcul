@@ -30,7 +30,10 @@ import {
   structuredCourseQualityScore,
   topicRequiresFunctionGraph,
 } from "@/lib/ai/pedagogy";
-import { sanitizeStructuredResources } from "@/lib/ai/qualityGuard";
+import {
+  repairUnstructuredMathText,
+  sanitizeStructuredResources,
+} from "@/lib/ai/qualityGuard";
 import {
   CourseGenerationTelemetry,
   createLessonJobs,
@@ -170,7 +173,7 @@ function visualRequirement(focus: CourseVisualFocus): string {
     return "Aucun visuel n'est imposé pour cette leçon. N'en ajoute un que s'il apporte une vraie valeur pédagogique.";
   }
   if (focus === "graph") {
-    return 'Ajoute un bloc "graph" utile, avec expression mathGraph exacte et légende mathématiquement correcte.';
+    return 'Ajoute un bloc "graph" utile, avec expression mathGraph exacte et légende mathématiquement correcte (caption avec $...$ pour tout symbole, jamais "infty" ou "lambda" en toutes lettres).';
   }
   if (focus === "variation_table") {
     return 'Ajoute un bloc "variation_table" cohérent ET un bloc "graph" correspondant, rendu par mathGraph.';
@@ -193,6 +196,7 @@ const COURSE_MARKDOWN_JSON_PROMPT = `═══ FORMAT JSON + MARKDOWN MATHÉMATI
 • Dans le JSON, les antislashs sont échappés normalement : "\\\\frac{1}{2}".
 • Utilise du LaTeX KaTeX valide : \\frac, \\sqrt, \\Delta, \\mathbb, \\lim, \\to, \\infty, \\exp, \\ln.
 • Ne laisse jamais mathbb{R}, frac{...}, x^2, e^(x), -+∞ ou une équation hors de $...$.
+• Les champs "caption" des blocs graph et figure suivent la même règle : tout symbole ou expression (infini, lambda, fraction, comparaison, f(x)=...) est entre $...$. N'écris jamais "infty", "-infty", "lambda" ou une inégalité en toutes lettres dans une caption : ces mots ne sont jamais convertis en symbole à l'affichage.
 • N'utilise pas de titres Markdown, de listes Markdown ni de tableaux Markdown : ils ont des blocs JSON.
 • Aucun identifiant technique : le serveur les génère.
 
@@ -205,7 +209,7 @@ Blocs autorisés :
 6. {"type":"table","variant":"value","headers":["Colonne 1","Colonne 2"],"rows":[["$x$","$f(x)$"]]}
 7. {"type":"sign_table","expression":"$P(x)$","boundaries":["$x_1$","$x_2$"],"interval_signs":["positive","negative","positive"],"boundary_signs":["zero","zero"]}
 8. {"type":"variation_table","variable":"$x$","function_name":"$f$","points":["$-\\\\infty$","$0$","$+\\\\infty$"],"values":["$0$","$1$","$+\\\\infty$"],"directions":["up","up"],"derivative_signs":["positive","positive"]}
-9. {"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Description exacte","parameter":null,"vectors":[]}
+9. {"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Courbe de $f(x)=e^x$, asymptote horizontale $y=0$ en $-\\\\infty$.","parameter":null,"vectors":[]}
 10. {"type":"figure", ...} uniquement pour un schéma ou diagramme, jamais une courbe.
 11. {"type":"steps","steps":[{"title":"Étape 1","blocks":[BLOCS]}]}
 12. {"type":"exercise","exercise_index":1}`;
@@ -842,6 +846,19 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           });
           const sanitized = sanitizeStructuredResources(reviewedChapter);
           reviewedChapter = normalizeStructuredCoursePedagogy(sanitized.value);
+          // Répare les formules qui ont fui en texte brut (ex: "infty",
+          // "lambda", "frac{...}" écrits en toutes lettres au lieu d'un part
+          // math) : coûte 0 appel si aucun champ n'est suspect, le scan est
+          // synchrone et ne bloque rien.
+          const unstructuredMathRepair = await repairUnstructuredMathText(
+            reviewedChapter,
+            {
+              generate,
+              label: `cours ${blueprint.title}, chapitre ${job.chapter.title}, leçon ${job.lesson.title}`,
+              maxRounds: 1,
+            },
+          );
+          reviewedChapter = normalizeStructuredCoursePedagogy(unstructuredMathRepair.value);
           const repaired = await repairInvalidStructuredMath(reviewedChapter, {
             generate,
             label: `cours ${blueprint.title}, chapitre ${job.chapter.title}, leçon ${job.lesson.title}`,

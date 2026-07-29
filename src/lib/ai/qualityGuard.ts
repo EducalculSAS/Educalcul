@@ -630,6 +630,22 @@ export function sanitizeStructuredResources<T>(
   const value = clone(input);
   let removedCurveFigures = 0;
 
+  // graph.caption / figure.caption sont de simples chaînes (pas de parts
+  // text/math) : ni repairUnstructuredMathText ni le pipeline richText ne les
+  // visitent, alors qu'elles sont bien rendues avec KaTeX à l'affichage
+  // (renderLatexInHTML tourne sur le HTML complet, figcaption compris). Sans
+  // ce repli, "infty"/"lambda"/"frac{...}" écrits en toutes lettres restent
+  // affichés tels quels au lieu du symbole mathématique attendu.
+  const repairCaption = (record: Record<string, unknown>) => {
+    if (
+      (record.type === "graph" || record.type === "figure") &&
+      typeof record.caption === "string" &&
+      containsSuspiciousUnstructuredMath(record.caption)
+    ) {
+      record.caption = readableMathFallbackText(record.caption);
+    }
+  };
+
   const visit = (node: unknown) => {
     if (Array.isArray(node)) {
       for (let index = node.length - 1; index >= 0; index -= 1) {
@@ -648,12 +664,14 @@ export function sanitizeStructuredResources<T>(
             record as unknown as Extract<StructuredCourseBlock, { type: "steps" }>,
           );
         }
+        if (record) repairCaption(record);
         visit(node[index]);
       }
       return;
     }
     const record = asRecord(node);
     if (!record) return;
+    repairCaption(record);
     if (Array.isArray(record.resources)) {
       const result = sanitizeResources(
         record.resources as unknown as StructuredLearningResource[],
@@ -670,27 +688,32 @@ export function sanitizeStructuredResources<T>(
 
 
 function readableMathFallbackText(value: string): string {
+  // \b seul en fin de motif ne protège pas le début : sans \b initial,
+  // "leq?" matchait "le" à l'intérieur de n'importe quel mot français qui en
+  // termine ainsi ("exponentielle" -> "exponentiel≤", "passage" -> "passa≥").
+  // Un \b après le "\\?" optionnel encadre le mot des deux côtés, backslash
+  // ou non.
   return value
     .replace(/\$/g, "")
-    .replace(/\\?mathbb\{R\}/gi, "ℝ")
-    .replace(/\\?mathbb\{N\}/gi, "ℕ")
-    .replace(/\\?mathbb\{Z\}/gi, "ℤ")
-    .replace(/\\?mathbb\{Q\}/gi, "ℚ")
-    .replace(/\\?Delta\b/g, "Δ")
-    .replace(/\\?alpha\b/g, "α")
-    .replace(/\\?beta\b/g, "β")
-    .replace(/\\?lambda\b/g, "λ")
-    .replace(/\\?infty\b/gi, "∞")
-    .replace(/\\?neq\b/g, "≠")
-    .replace(/\\?leq?\b/g, "≤")
-    .replace(/\\?geq?\b/g, "≥")
-    .replace(/\\?cdot\b/g, "×")
-    .replace(/\\?times\b/g, "×")
-    .replace(/\\?to\b/g, "→")
-    .replace(/\\?left\b/g, "")
-    .replace(/\\?right\b/g, "")
-    .replace(/\\?frac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)")
-    .replace(/\\?sqrt\{([^{}]+)\}/g, "√($1)")
+    .replace(/\\?\bmathbb\{R\}/gi, "ℝ")
+    .replace(/\\?\bmathbb\{N\}/gi, "ℕ")
+    .replace(/\\?\bmathbb\{Z\}/gi, "ℤ")
+    .replace(/\\?\bmathbb\{Q\}/gi, "ℚ")
+    .replace(/\\?\bDelta\b/g, "Δ")
+    .replace(/\\?\balpha\b/g, "α")
+    .replace(/\\?\bbeta\b/g, "β")
+    .replace(/\\?\blambda\b/g, "λ")
+    .replace(/\\?\binfty\b/gi, "∞")
+    .replace(/\\?\bneq\b/g, "≠")
+    .replace(/\\?\bleq\b/g, "≤")
+    .replace(/\\?\bgeq\b/g, "≥")
+    .replace(/\\?\bcdot\b/g, "×")
+    .replace(/\\?\btimes\b/g, "×")
+    .replace(/\\?\bto\b/g, "→")
+    .replace(/\\?\bleft\b/g, "")
+    .replace(/\\?\bright\b/g, "")
+    .replace(/\\?\bfrac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)")
+    .replace(/\\?\bsqrt\{([^{}]+)\}/g, "√($1)")
     .replace(/\s+/g, " ")
     .trim();
 }

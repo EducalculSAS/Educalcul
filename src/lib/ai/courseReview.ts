@@ -475,6 +475,7 @@ Contrôle obligatoirement :
 • exactitude des définitions, calculs, limites, dérivées, signes, intervalles, extrema et preuves ;
 • cohérence entre chaque question, answer et explanation ;
 • légendes de graphiques : pente, tangente, asymptote, variations et convexité doivent être exactes ;
+• dans graph_caption et figure_caption, tout symbole ou expression (infini, lambda, fraction, comparaison, f(x)=...) est entre $...$ ; si tu trouves "infty", "-infty", "lambda" ou une inégalité écrite en toutes lettres, corrige-la avec la notation $...$ correspondante ;
 • tableaux : chaque cellule et chaque cas doivent être cohérents avec les hypothèses ;
 • aucune affirmation plus forte que ce qui est démontré ;
 • aucune confusion entre minimum et infimum, implication et équivalence, croissance et convexité ;
