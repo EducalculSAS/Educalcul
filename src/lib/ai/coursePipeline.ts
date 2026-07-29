@@ -19,9 +19,6 @@ export type CourseBlueprintLesson = {
   scope: string;
   coreConcepts: string[];
   prerequisiteRecall: string[];
-  requiredSections: string[];
-  exerciseSkills: string[];
-  forbiddenConcepts: string[];
   visualFocus: CourseVisualFocus;
   complexity: 1 | 2 | 3;
 };
@@ -271,29 +268,12 @@ export function normalizeCourseBlueprint(
             ? concepts
             : [lessonTitle, lessonScope].filter(Boolean).slice(0, 2),
         prerequisiteRecall: cleanStringArray(rawLesson?.prerequisite_recall, 4),
-        requiredSections: cleanStringArray(rawLesson?.required_sections, 7),
-        exerciseSkills: cleanStringArray(rawLesson?.exercise_skills, 4),
-        forbiddenConcepts: cleanStringArray(rawLesson?.forbidden_concepts, 12),
         visualFocus: visualFocus(
           rawLesson?.visual_focus,
           fallbackFocus(lessonIndex, requireGraph),
         ),
         complexity: complexity(rawLesson?.complexity),
       };
-      if (draftLesson.requiredSections.length < 3) {
-        draftLesson.requiredSections = uniqueConcepts([
-          `Définition et cadre de ${lessonTitle}`,
-          ...draftLesson.coreConcepts.map((concept) => `Comprendre ${concept}`),
-          `Méthode et application de ${lessonTitle}`,
-        ]).slice(0, 5);
-      }
-      if (draftLesson.exerciseSkills.length < 3) {
-        draftLesson.exerciseSkills = uniqueConcepts([
-          `Reconnaître et expliquer ${draftLesson.coreConcepts[0] || lessonTitle}`,
-          `Appliquer une méthode liée à ${draftLesson.coreConcepts[1] || lessonTitle}`,
-          `Résoudre un problème mobilisant ${lessonTitle}`,
-        ]).slice(0, 3);
-      }
       draftLesson.visualFocus = resolveSemanticVisualFocus(
         draftLesson.visualFocus,
         draftLesson,
@@ -306,11 +286,7 @@ export function normalizeCourseBlueprint(
       const first = lessons[0];
       if (first) first.visualFocus = "graph";
     }
-    chapters.push({
-      title,
-      scope: preciseChapterScope(scope, title, lessons),
-      lessons,
-    });
+    chapters.push({ title, scope, lessons });
   }
 
   // Le modèle propose la répartition, puis le serveur impose une propriété
@@ -335,73 +311,19 @@ export function normalizeCourseBlueprint(
         let candidate = fallback;
         let suffix = 2;
         while (conceptOwners.has(canonical(candidate))) {
-          candidate = `${fallback} — compétence spécifique ${suffix}`;
+          candidate = `${fallback} — approfondissement ${suffix}`;
           suffix += 1;
         }
         conceptOwners.add(canonical(candidate));
         owned.push(candidate);
       }
-
-      // Un modèle peut proposer plusieurs formulations globales identiques
-      // (« propriétés », « applications », etc.). La propriété exclusive les
-      // transforme alors en rappels et peut laisser une seule notion à une
-      // leçon pourtant bien planifiée. Ce défaut de métadonnée ne doit jamais
-      // provoquer une seconde génération complète du blueprint. On complète
-      // localement avec des intitulés déjà présents dans le plan de la leçon
-      // (titre, sections et compétences), tout en conservant l'unicité globale.
-      if (owned.length < 2) {
-        const candidates = uniqueConcepts([
-          lesson.title,
-          ...lesson.requiredSections,
-          ...lesson.exerciseSkills,
-          lesson.objective,
-          lesson.scope,
-        ]);
-        for (const rawCandidate of candidates) {
-          const candidate = conciseConceptLabel(rawCandidate);
-          const key = canonical(candidate);
-          if (!key || conceptOwners.has(key) || owned.some((item) => canonical(item) === key)) {
-            continue;
-          }
-          conceptOwners.add(key);
-          owned.push(candidate);
-          if (owned.length >= 2) break;
-        }
-      }
-
-      if (owned.length < 2) {
-        const anchor = conciseConceptLabel(
-          lesson.requiredSections[0] ||
-            lesson.exerciseSkills[0] ||
-            lesson.objective ||
-            lesson.scope,
-        );
-        const base = `${lesson.title} — ${anchor || "compétence centrale"}`;
-        let candidate = base;
-        let suffix = 2;
-        while (conceptOwners.has(canonical(candidate))) {
-          candidate = `${base} ${suffix}`;
-          suffix += 1;
-        }
-        conceptOwners.add(canonical(candidate));
-        owned.push(candidate);
-      }
-
       lesson.coreConcepts = owned.slice(0, 7);
       lesson.prerequisiteRecall = uniqueConcepts([
         ...lesson.prerequisiteRecall,
         ...repeated,
       ]).slice(0, 4);
-      const ownKeys = new Set(lesson.coreConcepts.map(canonical));
-      lesson.forbiddenConcepts = uniqueConcepts(lesson.forbiddenConcepts)
-        .filter((concept) => !ownKeys.has(canonical(concept)))
-        .slice(0, 12);
-      lesson.requiredSections = uniqueConcepts(lesson.requiredSections).slice(0, 7);
-      lesson.exerciseSkills = uniqueConcepts(lesson.exerciseSkills).slice(0, 4);
     }
   }
-
-  specializeCollidingExerciseSkills(chapters);
 
   return {
     title: cleanPlain(root?.title, `Cours : ${options.subject}`),
@@ -411,13 +333,6 @@ export function normalizeCourseBlueprint(
     ),
     chapters,
   };
-}
-
-function conciseConceptLabel(value: string): string {
-  const text = cleanPlain(value);
-  if (!text) return "";
-  const words = text.split(/\s+/);
-  return words.length <= 16 ? text : words.slice(0, 16).join(" ");
 }
 
 function uniqueConcepts(values: string[]): string[] {
@@ -430,432 +345,6 @@ function uniqueConcepts(values: string[]): string[] {
     output.push(value);
   }
   return output;
-}
-
-/**
- * Les compétences d'exercice sont une carte de rédaction, pas le contenu final.
- * Un plan peut légitimement réutiliser un verbe large (par exemple « résoudre »)
- * tout en visant des objets différents. Lorsqu'une formulation est presque
- * identique à une compétence déjà réservée, on la spécialise localement avec
- * le titre et la notion propriétaire de la leçon. Cela évite une seconde
- * régénération complète du plan pour une simple collision lexicale.
- */
-function specializeCollidingExerciseSkills(
-  chapters: CourseBlueprintChapter[],
-): void {
-  const seen: string[] = [];
-
-  for (const chapter of chapters) {
-    for (const lesson of chapter.lessons) {
-      lesson.exerciseSkills = lesson.exerciseSkills.map((skill, skillIndex) => {
-        const collision = seen.some((previous) => similarText(previous, skill) >= 0.78);
-        if (!collision) {
-          seen.push(skill);
-          return skill;
-        }
-
-        const anchor = lesson.coreConcepts[skillIndex % Math.max(lesson.coreConcepts.length, 1)]
-          || lesson.coreConcepts[0]
-          || lesson.title;
-        const candidates = [
-          `${skill} dans la leçon « ${lesson.title} »`,
-          `${skill} appliqué à ${anchor}`,
-          `Mobiliser ${anchor} pour ${skill.charAt(0).toLocaleLowerCase("fr")}${skill.slice(1)}`,
-        ];
-        const specialized = candidates.find((candidate) =>
-          seen.every((previous) => similarText(previous, candidate) < 0.78),
-        ) || `${skill} — contexte spécifique : ${lesson.title}`;
-
-        seen.push(specialized);
-        return specialized;
-      });
-    }
-  }
-}
-
-function preciseChapterScope(
-  scope: string,
-  title: string,
-  lessons: CourseBlueprintLesson[],
-): string {
-  if (canonical(scope).split(" ").length >= 7) return scope;
-
-  const covered = lessons
-    .map((lesson) => lesson.title)
-    .filter(Boolean)
-    .slice(0, 6)
-    .join(" ; ");
-  const excluded = uniqueConcepts(
-    lessons.flatMap((lesson) => lesson.forbiddenConcepts),
-  )
-    .slice(0, 3)
-    .join(" ; ");
-
-  return `Le chapitre « ${title} » organise les apprentissages suivants : ${
-    covered || "les objectifs attribués à ses leçons"
-  }. Il ne développe pas ${
-    excluded || "les notions hors programme ni les contenus réservés aux autres chapitres"
-  }.`;
-}
-
-
-export type CourseBlueprintAuditIssue = {
-  code: string;
-  location: string;
-  message: string;
-};
-
-/**
- * Les recouvrements lexicaux entre compétences sont des avertissements : les
- * vrais doublons d'exercices sont contrôlés puis réparés sur le contenu final.
- * Une égalité exacte reste en revanche bloquante.
- */
-export function isBlockingCourseBlueprintIssue(
-  issue: CourseBlueprintAuditIssue,
-): boolean {
-  return issue.code !== "overlapping_exercise_skill";
-}
-
-function isGenericPlannedTitle(title: string, subject: string): boolean {
-  const key = canonical(title);
-  const subjectKey = canonical(subject);
-  if (!key) return true;
-  if (/\b(partie|lecon|chapitre)\s+\d+\b/.test(key)) return true;
-  if (key === subjectKey || key === `cours ${subjectKey}`) return true;
-  if (/^(introduction|generalites|approfondissement|synthese)$/.test(key)) return true;
-  return false;
-}
-
-function similarText(left: string, right: string): number {
-  return jaccard(tokens(left), tokens(right));
-}
-
-/**
- * Contrôle local du plan AVANT le lancement des rédacteurs. Contrairement au
- * normaliseur, cet audit ne masque pas un plan incomplet avec des titres
- * génériques : il oblige le planificateur à fournir une vraie répartition.
- */
-export function auditCourseBlueprint(
-  blueprint: CourseBlueprint,
-  options: { subject: string; includeExercises: boolean; level?: string },
-): CourseBlueprintAuditIssue[] {
-  const issues: CourseBlueprintAuditIssue[] = [];
-  const lessons = blueprint.chapters.flatMap((chapter, chapterIndex) =>
-    chapter.lessons.map((lesson, lessonIndex) => ({
-      chapter,
-      lesson,
-      chapterIndex,
-      lessonIndex,
-      order: chapterIndex * 100 + lessonIndex,
-    })),
-  );
-  const conceptOwner = new Map<string, { order: number; location: string }>();
-  const objectives: Array<{ text: string; location: string }> = [];
-  const skills: Array<{ text: string; location: string }> = [];
-  const titles: Array<{ text: string; location: string }> = [];
-
-  blueprint.chapters.forEach((chapter, chapterIndex) => {
-    const chapterLocation = `chapters[${chapterIndex}]`;
-    if (isGenericPlannedTitle(chapter.title, options.subject)) {
-      issues.push({
-        code: "generic_chapter_title",
-        location: `${chapterLocation}.title`,
-        message: `Le titre « ${chapter.title} » ne décrit aucune progression pédagogique précise.`,
-      });
-    }
-    if (canonical(chapter.scope).split(" ").length < 7) {
-      issues.push({
-        code: "thin_chapter_scope",
-        location: `${chapterLocation}.scope`,
-        message: "Le périmètre du chapitre est trop vague pour coordonner plusieurs rédacteurs.",
-      });
-    }
-  });
-
-  for (const entry of lessons) {
-    const { lesson, chapterIndex, lessonIndex, order } = entry;
-    const location = `chapters[${chapterIndex}].lessons[${lessonIndex}]`;
-
-    if (
-      options.level === "1ere-generale-maths" &&
-      canonical(options.subject).includes("exponent")
-    ) {
-      const plannedText = canonical(
-        [
-          lesson.title,
-          lesson.objective,
-          lesson.scope,
-          ...lesson.coreConcepts,
-          ...lesson.requiredSections,
-          ...lesson.exerciseSkills,
-        ].join(" "),
-      );
-      const forbiddenPlanConcepts: Array<{ pattern: RegExp; label: string }> = [
-        { pattern: /\b(?:logarithme|ln)\b/, label: "logarithme népérien" },
-        { pattern: /\b(?:complexe|formule d euler|argument|module complexe|racine cubique complexe)\b/, label: "exponentielle ou nombres complexes" },
-        { pattern: /\b(?:limite de fonction|limite en|asymptote|croissance comparee)\b/, label: "limites de fonctions ou croissance comparée" },
-        { pattern: /\b(?:convexite|derivee seconde|point d inflexion)\b/, label: "convexité ou dérivée seconde" },
-        { pattern: /\b(?:equation differentielle lineaire|facteur integrant|cauchy lipschitz|y prime egal a y plus|y prime egal a a y)\b/, label: "équation différentielle générale" },
-        { pattern: /\b(?:fonction exponentielle de base|base a|a puissance x)\b/, label: "fonction exponentielle de base quelconque" },
-        { pattern: /\b(?:point fixe|contractante|theoreme de contraction)\b/, label: "théorème de point fixe" },
-      ];
-      for (const forbidden of forbiddenPlanConcepts) {
-        if (!forbidden.pattern.test(plannedText)) continue;
-        issues.push({
-          code: "forbidden_level_concept",
-          location: `${location}.scope`,
-          message: `Le plan introduit « ${forbidden.label} », hors du périmètre strict de la fonction exponentielle en Première générale. Remplacer par une propriété algébrique, une variation, une représentation de e^{at}, un lien avec les suites géométriques ou une modélisation simple.`,
-        });
-      }
-    }
-    if (isGenericPlannedTitle(lesson.title, options.subject)) {
-      issues.push({
-        code: "generic_lesson_title",
-        location: `${location}.title`,
-        message: `Le titre « ${lesson.title} » doit nommer la notion ou la compétence propre à la leçon.`,
-      });
-    }
-    for (const previous of titles) {
-      if (similarText(previous.text, lesson.title) >= 0.78) {
-        issues.push({
-          code: "duplicate_lesson_title",
-          location: `${location}.title`,
-          message: `Titre trop proche de ${previous.location} : « ${previous.text} ».`,
-        });
-        break;
-      }
-    }
-    titles.push({ text: lesson.title, location: `${location}.title` });
-
-    if (canonical(lesson.objective).split(" ").length < 7) {
-      issues.push({
-        code: "thin_objective",
-        location: `${location}.objective`,
-        message: "L'objectif doit préciser ce que l'élève saura expliquer, calculer ou démontrer.",
-      });
-    }
-    for (const previous of objectives) {
-      if (similarText(previous.text, lesson.objective) >= 0.72) {
-        issues.push({
-          code: "duplicate_objective",
-          location: `${location}.objective`,
-          message: `Objectif trop proche de ${previous.location}.`,
-        });
-        break;
-      }
-    }
-    objectives.push({ text: lesson.objective, location: `${location}.objective` });
-
-    if (canonical(lesson.scope).split(" ").length < 10) {
-      issues.push({
-        code: "thin_lesson_scope",
-        location: `${location}.scope`,
-        message: "Le périmètre doit indiquer ce qui est développé et ce qui est volontairement exclu.",
-      });
-    }
-    if (lesson.coreConcepts.length < 2) {
-      issues.push({
-        code: "missing_owned_concepts",
-        location: `${location}.core_concepts`,
-        message: "La leçon doit posséder au moins deux notions ou compétences clairement attribuées.",
-      });
-    }
-    for (const concept of lesson.coreConcepts) {
-      const key = canonical(concept);
-      const previous = conceptOwner.get(key);
-      if (previous) {
-        issues.push({
-          code: "duplicate_concept_owner",
-          location: `${location}.core_concepts`,
-          message: `La notion « ${concept} » appartient déjà à ${previous.location}.`,
-        });
-      } else if (key) {
-        conceptOwner.set(key, { order, location: `${location}.core_concepts` });
-      }
-    }
-    if (lesson.requiredSections.length < 3) {
-      issues.push({
-        code: "missing_required_sections",
-        location: `${location}.required_sections`,
-        message: "Le rédacteur a besoin d'au moins trois sections imposées et complémentaires.",
-      });
-    } else if (lesson.requiredSections.some((section) =>
-      /^(Définition et cadre de|Comprendre |Méthode et application de)/i.test(section),
-    )) {
-      issues.push({
-        code: "fallback_required_sections",
-        location: `${location}.required_sections`,
-        message: "Les sections semblent avoir été complétées automatiquement au lieu d'être réellement planifiées.",
-      });
-    }
-    if (lesson.coreConcepts.some((concept) => /approfondissement\s+\d+$/i.test(concept))) {
-      issues.push({
-        code: "fallback_owned_concept",
-        location: `${location}.core_concepts`,
-        message: "Une notion propriétaire artificielle a été créée parce que le plan dupliquait toutes les notions.",
-      });
-    }
-    if (options.includeExercises && lesson.exerciseSkills.length < 3) {
-      issues.push({
-        code: "missing_exercise_skills",
-        location: `${location}.exercise_skills`,
-        message: "Trois compétences d'exercice distinctes doivent être réservées à cette leçon.",
-      });
-    }
-    if (options.includeExercises && lesson.exerciseSkills.some((skill) =>
-      /^(Reconnaître et expliquer|Appliquer une méthode liée à|Résoudre un problème mobilisant)/i.test(skill),
-    )) {
-      issues.push({
-        code: "fallback_exercise_skills",
-        location: `${location}.exercise_skills`,
-        message: "Les compétences d'exercice semblent avoir été complétées automatiquement au lieu d'être attribuées par le planificateur.",
-      });
-    }
-    for (const skill of lesson.exerciseSkills) {
-      for (const previous of skills) {
-        const similarity = similarText(previous.text, skill);
-        if (canonical(previous.text) === canonical(skill)) {
-          issues.push({
-            code: "duplicate_exercise_skill",
-            location: `${location}.exercise_skills`,
-            message: `Compétence d'exercice identique à ${previous.location} : « ${previous.text} ».`,
-          });
-          break;
-        }
-        if (similarity >= 0.78) {
-          issues.push({
-            code: "overlapping_exercise_skill",
-            location: `${location}.exercise_skills`,
-            message: `Compétence d'exercice proche de ${previous.location}, mais contextualisée pour une autre leçon : « ${previous.text} ».`,
-          });
-          break;
-        }
-      }
-      skills.push({ text: skill, location: `${location}.exercise_skills` });
-    }
-    const ownKeys = new Set(lesson.coreConcepts.map(canonical));
-    for (const forbidden of lesson.forbiddenConcepts) {
-      if (ownKeys.has(canonical(forbidden))) {
-        issues.push({
-          code: "owned_and_forbidden",
-          location: `${location}.forbidden_concepts`,
-          message: `La notion « ${forbidden} » est simultanément propriétaire et interdite.`,
-        });
-      }
-    }
-  }
-
-  for (const entry of lessons) {
-    const { lesson, chapterIndex, lessonIndex, order } = entry;
-    const location = `chapters[${chapterIndex}].lessons[${lessonIndex}]`;
-    for (const recall of lesson.prerequisiteRecall) {
-      const owner = conceptOwner.get(canonical(recall));
-      if (owner && owner.order >= order) {
-        issues.push({
-          code: "future_prerequisite",
-          location: `${location}.prerequisite_recall`,
-          message: `Le rappel « ${recall} » n'a pas encore été traité avant cette leçon.`,
-        });
-      }
-    }
-  }
-
-  return issues.slice(0, 30);
-}
-
-export type CourseCoordinationIssue = {
-  code: "duplicate_exercise" | "duplicate_content" | "missing_owned_concept";
-  first: string;
-  second: string;
-  message: string;
-};
-
-function lessonSearchText(lesson: StructuredCourseLesson): string {
-  return [
-    lesson.title,
-    ...lesson.blocks.map(blockPlainText),
-    ...lesson.exercises.flatMap((exercise) => [
-      structuredRichTextToPlainText(exercise.question),
-      structuredRichTextToPlainText(exercise.answer),
-      structuredRichTextToPlainText(exercise.explanation),
-    ]),
-  ].join(" ");
-}
-
-/** Audit inter-leçons exécuté avant l'enregistrement. */
-export function auditCourseCoordination(
-  chapters: StructuredCourseChapter[],
-  blueprint: CourseBlueprint,
-): CourseCoordinationIssue[] {
-  const issues: CourseCoordinationIssue[] = [];
-  const lessons = chapters.flatMap((chapter, chapterIndex) =>
-    chapter.lessons.map((lesson, lessonIndex) => ({
-      lesson,
-      chapterIndex,
-      lessonIndex,
-      key: `c${chapterIndex + 1}-l${lessonIndex + 1}`,
-    })),
-  );
-  const seenExercises: Array<{ key: string; text: string }> = [];
-  const seenBlocks: Array<{ key: string; text: string }> = [];
-
-  for (const entry of lessons) {
-    const plan = blueprint.chapters[entry.chapterIndex]?.lessons[entry.lessonIndex];
-    const lessonText = canonical(lessonSearchText(entry.lesson));
-    for (const concept of plan?.coreConcepts ?? []) {
-      const conceptTokens = tokens(concept);
-      const overlap = [...conceptTokens].filter((token) => lessonText.includes(token)).length;
-      if (conceptTokens.size >= 2 && overlap / conceptTokens.size < 0.5) {
-        issues.push({
-          code: "missing_owned_concept",
-          first: entry.key,
-          second: entry.key,
-          message: `La notion propriétaire « ${concept} » est insuffisamment visible dans la leçon.`,
-        });
-      }
-    }
-
-    entry.lesson.exercises.forEach((exercise, exerciseIndex) => {
-      const text = structuredRichTextToPlainText(exercise.question);
-      const wordCount = canonical(text).split(" ").filter(Boolean).length;
-      if (wordCount < 5) return;
-      const duplicate = seenExercises.find(
-        (previous) => similarText(previous.text, text) >= 0.78,
-      );
-      if (duplicate) {
-        issues.push({
-          code: "duplicate_exercise",
-          first: duplicate.key,
-          second: `${entry.key}-e${exerciseIndex + 1}`,
-          message: "Deux exercices évaluent pratiquement le même énoncé ou la même opération.",
-        });
-      } else {
-        seenExercises.push({ key: `${entry.key}-e${exerciseIndex + 1}`, text });
-      }
-    });
-
-    entry.lesson.blocks.forEach((block, blockIndex) => {
-      if (!canDeduplicate(block)) return;
-      const text = blockPlainText(block).replace(/\s+/g, " ").trim();
-      const wordCount = text.split(/\s+/).filter(Boolean).length;
-      if (wordCount < 35) return;
-      const duplicate = seenBlocks.find(
-        (previous) => similarText(previous.text, text) >= 0.86,
-      );
-      if (duplicate) {
-        issues.push({
-          code: "duplicate_content",
-          first: duplicate.key,
-          second: `${entry.key}-b${blockIndex + 1}`,
-          message: "Bloc développé très proche d'un bloc déjà présent dans une autre leçon.",
-        });
-      } else {
-        seenBlocks.push({ key: `${entry.key}-b${blockIndex + 1}`, text });
-      }
-    });
-  }
-
-  return issues.slice(0, 40);
 }
 
 export function buildLessonBoundaries(
@@ -880,13 +369,9 @@ export function buildLessonBoundaries(
       ? []
       : chapter.lessons.flatMap((candidate) => candidate.coreConcepts),
   );
-  const forbidden = uniqueConcepts([
-    ...lesson.forbiddenConcepts,
-    ...nearbyConcepts,
-    ...otherChapterConcepts,
-  ])
+  const forbidden = uniqueConcepts([...nearbyConcepts, ...otherChapterConcepts])
     .filter((concept) => !ownKeys.has(canonical(concept)))
-    .slice(0, 32);
+    .slice(0, 14);
 
   return {
     ownedConcepts: uniqueConcepts(lesson.coreConcepts).slice(0, 7),
@@ -983,12 +468,11 @@ export function createLessonJobs(
       targetMinWords + 80,
       Math.floor(base.targetMaxWords * Math.min(1.08, charRatio)),
     );
-    const configuredWriterTokens = Number(
-      process.env.AI_COURSE_WRITER_MAX_TOKENS,
+    const maxOutputTokens = clamp(
+      Math.ceil(targetMaxChars / 2.45) + (options.includeExercises ? 2_100 : 900),
+      5_500,
+      10_500,
     );
-    const maxOutputTokens = Number.isFinite(configuredWriterTokens)
-      ? clamp(Math.floor(configuredWriterTokens), 8_000, 128_000)
-      : 128_000;
 
     return {
       ...entry,
@@ -1093,7 +577,7 @@ export function deduplicateCourseChapters(
           (entry) =>
             (canonical(entry.text) === canonical(text) && text.length > 120) ||
             (Math.min(entry.tokens.size, currentTokens.size) >= 20 &&
-              jaccard(entry.tokens, currentTokens) >= 0.86),
+              jaccard(entry.tokens, currentTokens) >= 0.91),
         );
         if (duplicate) {
           removedBlocks += 1;

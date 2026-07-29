@@ -33,23 +33,15 @@ import {
 import { sanitizeStructuredResources } from "@/lib/ai/qualityGuard";
 import {
   CourseGenerationTelemetry,
-  auditCourseBlueprint,
-  auditCourseCoordination,
   createLessonJobs,
   deduplicateCourseChapters,
   lessonUsefulCharacterCount,
   normalizeCourseBlueprint,
-  isBlockingCourseBlueprintIssue,
   type CourseBlueprint,
   type CourseVisualFocus,
   type LessonJob,
 } from "@/lib/ai/coursePipeline";
-import {
-  courseLessonUnstructuredMathFields,
-  replaceDuplicateCourseExercises,
-  verifyCourseGloballyForPublication,
-  verifyCourseLessonForPublication,
-} from "@/lib/ai/courseReview";
+import { reviewCourseLesson } from "@/lib/ai/courseReview";
 
 export type CourseGenerationParams = {
   grade_level: string;
@@ -109,59 +101,6 @@ function envNumber(
 
 function envConcurrency(name: string, fallback: number, maximum: number): number {
   return envNumber(name, fallback, 1, maximum);
-}
-
-function wait(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function errorDetails(error: unknown): string {
-  if (error instanceof Error) {
-    const cause = (error as Error & { cause?: unknown }).cause;
-    return cause === undefined
-      ? `${error.name}: ${error.message}`
-      : `${error.name}: ${error.message}; cause=${String(cause)}`;
-  }
-
-  if (typeof error === "object" && error !== null && "message" in error) {
-    return String((error as { message?: unknown }).message ?? error);
-  }
-
-  return String(error);
-}
-
-function isTransientNetworkError(error: unknown): boolean {
-  return /fetch failed|econnreset|econnrefused|etimedout|eai_again|enetunreach|socket|network|und_err|terminated/i.test(
-    errorDetails(error),
-  );
-}
-
-async function withTransientNetworkRetry<T>(
-  label: string,
-  task: () => Promise<T>,
-  maxAttempts = 2,
-): Promise<T> {
-  let lastError: unknown;
-
-  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-    try {
-      return await task();
-    } catch (error) {
-      lastError = error;
-      if (!isTransientNetworkError(error) || attempt >= maxAttempts) {
-        throw error;
-      }
-
-      console.warn(
-        `[course-ai][network] ${label} interrompu (${attempt}/${maxAttempts}) : ${errorDetails(error)}. Nouvelle tentative dans 2 s.`,
-      );
-      await wait(2_000);
-    }
-  }
-
-  throw lastError instanceof Error
-    ? lastError
-    : new Error(`${label} a échoué après ${maxAttempts} tentatives.`);
 }
 
 function styleInstruction(
@@ -282,47 +221,11 @@ function coursePlanSummary(blueprint: CourseBlueprint): string {
         `Chapitre ${chapterIndex + 1}. ${chapter.title}\n${chapter.lessons
           .map(
             (lesson, lessonIndex) =>
-              `  ${chapterIndex + 1}.${lessonIndex + 1} ${lesson.title}
-` +
-              `    Objectif : ${lesson.objective}
-` +
-              `    Propriétaire de : ${lesson.coreConcepts.join(" ; ")}
-` +
-              `    Sections réservées : ${lesson.requiredSections.join(" ; ")}
-` +
-              `    Exercices réservés : ${lesson.exerciseSkills.join(" ; ")}`,
+              `  ${chapterIndex + 1}.${lessonIndex + 1} ${lesson.title} — ${lesson.coreConcepts.join(" ; ")}`,
           )
           .join("\n")}`,
     )
     .join("\n");
-}
-
-function lessonPositionContext(blueprint: CourseBlueprint, job: LessonJob): string {
-  const ordered = blueprint.chapters.flatMap((chapter, chapterIndex) =>
-    chapter.lessons.map((lesson, lessonIndex) => ({
-      chapterIndex,
-      lessonIndex,
-      lesson,
-    })),
-  );
-  const current = ordered.findIndex(
-    (entry) =>
-      entry.chapterIndex === job.chapterIndex && entry.lessonIndex === job.lessonIndex,
-  );
-  const previous = ordered
-    .slice(0, Math.max(0, current))
-    .map((entry) => `${entry.lesson.title} : ${entry.lesson.coreConcepts.join(" ; ")}`);
-  const next = ordered
-    .slice(current + 1)
-    .map((entry) => `${entry.lesson.title} : ${entry.lesson.coreConcepts.join(" ; ")}`);
-  return `CONTEXTE DE PROGRESSION :
-` +
-    `Déjà traité avant cette leçon :
-${formatList(previous, "• Rien : première leçon du cours.")}
-
-` +
-    `Réservé aux leçons suivantes :
-${formatList(next, "• Rien : dernière leçon du cours.")}`;
 }
 
 function buildLessonSystemPrompt(options: {
@@ -365,14 +268,6 @@ ${formatList(job.boundaries.allowedRecall, "• Aucun rappel développé.")}
 NOTIONS ATTRIBUÉES AUX AUTRES AGENTS — NE PAS LES DÉVELOPPER :
 ${formatList(job.boundaries.forbiddenDevelopments, "• Aucune.")}
 
-SECTIONS QUE LE PLAN T'ATTRIBUE — elles structurent la leçon :
-${formatList(job.lesson.requiredSections, "• Construire les sections à partir des notions propriétaires.")}
-
-COMPÉTENCES RÉSERVÉES AUX EXERCICES DE CETTE LEÇON :
-${formatList(job.lesson.exerciseSkills, "• Trois applications distinctes des notions propriétaires.")}
-
-${lessonPositionContext(blueprint, job)}
-
 ${options.programmeBlock}
 ${styleInstruction(options.style)}
 ${languageInstruction(options.language)}
@@ -386,8 +281,6 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • duration vaut exactement ${options.durationPerLesson}.
 • Budget visé pour la leçon : ${job.budget.targetMinWords} à ${job.budget.targetMaxWords} mots utiles, environ ${job.budget.targetMinChars} à ${job.budget.targetMaxChars} caractères pédagogiques. Ce budget est un plafond de densité, pas une invitation au remplissage.
 • Développe toutes les notions propriétaires avec définition, justification, méthode ou interprétation, puis arrête-toi lorsque l'objectif est couvert.
-• Les titres de sections suivent required_sections. Une section supplémentaire n'est permise que pour une unique synthèse finale.
-• Chaque exercice évalue une compétence différente de exercise_skills. Ne recycle jamais l'énoncé, les nombres ou la méthode d'un exercice visible dans la carte globale.
 • Chaque paragraphe apporte une information nouvelle. Interdits : répétitions, introductions générales, reformulations de synthèse multiples, historique décoratif et texte ajouté uniquement pour augmenter la longueur.
 • Un rappel autorisé reste bref. Une notion interdite n'est ni démontrée, ni étudiée, ni transformée en section. En cas de contradiction, la liste des notions propriétaires prime sur le titre ou le scope.
 • Progression : mise en contexte utile → construction de la notion → méthode ou justification → applications élève réparties → approfondissement utile → une seule synthèse.
@@ -399,11 +292,6 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
 • Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.
 • Recalcule chaque formule, exemple et exercice. Distingue minimum et infimum, implication et équivalence.
-• Adapte tes vérifications au domaine réellement traité : calcul exact et unités en arithmétique ; substitutions et ensembles de solutions en algèbre ; domaine, hypothèses, dérivées et variations en analyse ; configuration, orientation et longueurs en géométrie ; univers, dénominateurs et somme des probabilités en probabilités ; effectifs, fréquences et indicateurs en statistiques ; initialisation et indices pour les suites et raisonnements discrets.
-• Pour toute affirmation générale, teste au moins un cas simple, un cas limite et, lorsque c'est pertinent, cherche un contre-exemple avant de la conserver.
-• Ne confonds jamais fonction croissante, vitesse de croissance constante et convexité : si $f''>0$, la pente augmente.
-• Pour une application numérique, conserve la formule exacte, les unités et la même valeur arrondie dans answer et explanation.
-• Avant toute comparaison de constantes ou de bases, vérifie numériquement le rapport utilisé.
 • Pas de leçon supplémentaire, pas de préface hors JSON.
 
 ${exerciseSchema(options.includeExercises)}
@@ -426,52 +314,6 @@ Réponds uniquement avec ce JSON.`;
 
 function isTruncationError(error: unknown): boolean {
   return error instanceof Error && /tronqu|token|length|max_tokens/i.test(error.message);
-}
-
-function isInvalidStructuredJsonError(error: unknown): boolean {
-  return (
-    error instanceof Error &&
-    /JSON invalide|JSON incomplet|aucun contenu JSON|objet JSON|contenu JSON/i.test(
-      error.message,
-    )
-  );
-}
-
-function isRequestTimeoutError(error: unknown): boolean {
-  const message = error instanceof Error ? error.message : String(error || "");
-  return /(?:dépassé\s+\d+\s*ms|timed?\s*out|timeout|abort(?:ed|ée)?)/i.test(message);
-}
-
-function isRecoverableWriterOutputError(error: unknown): boolean {
-  return (
-    isTruncationError(error) ||
-    isInvalidStructuredJsonError(error) ||
-    isRequestTimeoutError(error)
-  );
-}
-
-function incompleteLessonMessages(
-  lesson: StructuredCourseLesson | undefined,
-  includeExercises: boolean,
-): string[] {
-  if (!lesson) return ["la leçon est absente"];
-  const messages: string[] = [];
-  if (lesson.blocks.length === 0) messages.push("aucun bloc de cours");
-  if (!includeExercises) return messages;
-  if (lesson.exercises.length < 3) {
-    messages.push(`${lesson.exercises.length}/3 exercice(s) complet(s)`);
-  }
-  lesson.exercises.forEach((exercise, index) => {
-    const missing: string[] = [];
-    if (exercise.question.parts.length === 0) missing.push("question");
-    if (exercise.answer.parts.length === 0) missing.push("answer");
-    if (exercise.hint.parts.length === 0) missing.push("hint");
-    if (exercise.explanation.parts.length === 0) missing.push("explanation");
-    if (missing.length > 0) {
-      messages.push(`exercice ${index + 1} incomplet : ${missing.join(", ")}`);
-    }
-  });
-  return messages;
 }
 
 async function mapSettledWithConcurrency<T, R>(
@@ -588,19 +430,6 @@ function blockingIssues(
   return lessonIssues;
 }
 
-function localBlueprintAuditMessages(
-  blueprint: CourseBlueprint,
-  subject: string,
-  includeExercises: boolean,
-  level: string,
-  options: { blockingOnly?: boolean } = {},
-): string[] {
-  return auditCourseBlueprint(blueprint, { subject, includeExercises, level })
-    .filter((issue) => !options.blockingOnly || isBlockingCourseBlueprintIssue(issue))
-    .map((issue) => `${issue.location} — ${issue.message}`)
-    .slice(0, 30);
-}
-
 export async function runCourseGeneration(
   generationId: string,
   params: CourseGenerationParams,
@@ -635,9 +464,6 @@ export async function runCourseGeneration(
   );
   const durationPerLesson = clampNumber(duration_per_lesson, 30, 5, 90);
   const totalLessonCount = chapterCount * lessonsPerChapter;
-  // Rédaction/relecture + certification de chaque leçon + contrôle global +
-  // sauvegarde. Le compteur ne doit jamais afficher 100 % avant le statut done.
-  const progressTotal = totalLessonCount * 2 + 2;
   const shouldIncludeExercises = include_exercises !== false;
   const maxCourseCharacters = envNumber(
     "AI_COURSE_MAX_USEFUL_CHARS",
@@ -650,30 +476,9 @@ export async function runCourseGeneration(
     Number.isFinite(configuredInterval) && configuredInterval >= 0
       ? configuredInterval
       : DEFAULT_LLM_MIN_START_INTERVAL_MS;
-  const wallClockBudgetMs = envNumber(
-    "AI_COURSE_WALL_CLOCK_BUDGET_MS",
-    690_000,
-    300_000,
-    740_000,
-  );
-  const wallClockErrorMessage =
-    "La génération a été arrêtée avant la limite Vercel. Une certification restait non résolue ; relance la génération.";
-  let wallClockExpired = false;
-  const wallClockTimer = setTimeout(() => {
-    wallClockExpired = true;
-    void tracker
-      .setStatus("error", { error: wallClockErrorMessage })
-      .catch((error) =>
-        console.error(
-          "[course-ai] Impossible de signaler l'expiration interne.",
-          error,
-        ),
-      );
-  }, wallClockBudgetMs);
-
   const generate = createLlmStartGate(
     minInterval,
-    async () => wallClockExpired || (await tracker.isCancelRequested()),
+    () => tracker.isCancelRequested(),
   );
   const legacyLessonConcurrency = envConcurrency(
     "AI_COURSE_LESSON_CONCURRENCY",
@@ -682,58 +487,15 @@ export async function runCourseGeneration(
   );
   const writerConcurrency = envConcurrency(
     "AI_COURSE_WRITER_CONCURRENCY",
-    Math.min(3, legacyLessonConcurrency),
-    4,
+    legacyLessonConcurrency,
+    10,
   );
   const reviewerConcurrency = envConcurrency(
     "AI_COURSE_REVIEW_CONCURRENCY",
     quality_mode === "strict" ? 5 : 6,
     10,
   );
-  const writerJsonRetryCount = envNumber(
-    "AI_COURSE_WRITER_JSON_RETRIES",
-    1,
-    0,
-    2,
-  );
-  const writerMaxTokens = envNumber(
-    "AI_COURSE_WRITER_MAX_TOKENS",
-    16_000,
-    8_000,
-    32_000,
-  );
-  const writerRecoveryMaxTokens = envNumber(
-    "AI_COURSE_WRITER_RECOVERY_MAX_TOKENS",
-    10_000,
-    6_000,
-    16_000,
-  );
   const reviewLimit = createTaskLimiter(reviewerConcurrency);
-  const publicationGateEnabled = process.env.AI_COURSE_PUBLICATION_GATE !== "0";
-  const publicationReviewMaxTokens = envNumber(
-    "AI_COURSE_PUBLICATION_REVIEW_MAX_TOKENS",
-    128_000,
-    8_000,
-    128_000,
-  );
-  const publicationRepairMaxTokens = envNumber(
-    "AI_COURSE_PUBLICATION_REPAIR_MAX_TOKENS",
-    128_000,
-    8_000,
-    128_000,
-  );
-  const globalPublicationReviewMaxTokens = envNumber(
-    "AI_COURSE_GLOBAL_REVIEW_MAX_TOKENS",
-    128_000,
-    12_000,
-    128_000,
-  );
-  const globalPublicationRepairMaxTokens = envNumber(
-    "AI_COURSE_GLOBAL_REPAIR_MAX_TOKENS",
-    128_000,
-    12_000,
-    128_000,
-  );
   const programmeBlock = getProgrammePromptBlock(String(grade_level));
   const teacherDirective = additional_info?.trim()
     ? `Instructions prioritaires de l'enseignant :\n${additional_info.trim()}`
@@ -754,21 +516,13 @@ Tu conçois EN UNE FOIS la carte complète d'un cours de mathématiques françai
 ${programmeBlock}
 
 Retourne exactement ${chapterCount} chapitres et exactement ${lessonsPerChapter} leçons par chapitre.
-Chaque leçon contient : title, objective, scope, core_concepts, prerequisite_recall, required_sections, exercise_skills, forbidden_concepts, visual_focus et complexity.
+Chaque leçon contient : title, objective, scope, core_concepts, prerequisite_recall, visual_focus et complexity.
 
 Règles impératives :
 • répartis les notions avant toute rédaction ;
-• core_concepts contient 2 à 4 notions ou compétences courtes et réellement propres à la leçon ;
 • une notion principale apparaît dans core_concepts d'UNE SEULE leçon ;
 • prerequisite_recall contient uniquement des notions déjà traitées avant cette leçon et qui pourront être rappelées en une phrase ;
-• les titres de chapitres et de leçons sont pédagogiques et spécifiques : interdiction de « partie 1 », « leçon 2 », « introduction » ou du sujet recopié comme titre ;
 • deux leçons ne doivent pas avoir le même objectif sous des formulations différentes ;
-• required_sections contient 3 à 6 sections précises, toutes différentes de celles des autres leçons ;
-• exercise_skills contient exactement 3 compétences d'exercices réellement différentes, réservées à cette leçon ;
-• forbidden_concepts énumère les notions proches qu'un rédacteur pourrait être tenté de développer mais qui appartiennent à d'autres leçons ou sont hors niveau ;
-• scope dit explicitement ce que la leçon couvre ET ce qu'elle ne couvre pas ;
-• reste concis : titre 4 à 10 mots, objectif 15 à 28 mots, scope de leçon 25 à 50 mots, scope de chapitre 30 à 65 mots ;
-• chaque entrée de core_concepts, required_sections, exercise_skills et forbidden_concepts tient sur une courte proposition, sans explication longue ;
 • progression conforme au programme et au niveau ;
 • aucune extension universitaire ou hors programme : pas d'exponentielle complexe, de formule d'Euler, d'analyse complexe, de série de Fourier ou de notion supérieure sauf demande explicite de l'enseignant et niveau compatible ;
 • n'ajoute pas de chapitre artificiel pour augmenter la longueur ;
@@ -780,7 +534,6 @@ Règles impératives :
 • visual_focus="figure" uniquement pour schémas, camemberts, diagrammes, géométrie ou processus ; jamais une courbe de fonction ;
 • visual_focus="none" lorsqu'aucun visuel n'apporte une vraie valeur ; toutes les leçons n'ont pas besoin d'un visuel ;
 • pour une étude de fonction, répartis définition/propriétés, variations, limites, convexité et applications entre les leçons au lieu de tout répéter partout ;
-• une notion propriétaire, une section imposée et une compétence d'exercice ne peuvent être attribuées qu'à une seule leçon ;
 • complexity vaut 1, 2 ou 3 selon la densité réelle ;
 • aucune formule, aucun HTML et aucun Markdown dans ce plan.
 
@@ -794,68 +547,32 @@ ${teacherDirective}`;
       chapterCount,
       lessonsPerChapter,
     });
-    // Leanstral 1.5 accepte jusqu'à 128k tokens de sortie. Tous les
-    // agents du pipeline utilisent ce plafond comme budget maximal ; il
-    // s'agit d'une limite haute, pas d'une longueur de sortie imposée.
-    const blueprintMaxTokens = envNumber(
-      "AI_COURSE_BLUEPRINT_MAX_TOKENS",
-      16_000,
-      8_000,
-      32_000,
-    );
-    const blueprintRetryMaxTokens = envNumber(
-      "AI_COURSE_BLUEPRINT_RETRY_MAX_TOKENS",
-      16_000,
-      8_000,
-      32_000,
-    );
-    const blueprintRepairMaxTokens = envNumber(
-      "AI_COURSE_BLUEPRINT_REPAIR_MAX_TOKENS",
+    const blueprintMaxTokens = Math.min(
       12_000,
-      8_000,
-      24_000,
+      Math.max(4_500, 2_200 + totalLessonCount * 360),
     );
 
-    const generateBlueprint = async (
-      prompt: string,
-      temperature: number,
-      stage: "initial" | "repair",
-      activeMaxTokens = blueprintMaxTokens,
-    ): Promise<unknown> => {
-      try {
-        return await generate(
-          prompt,
-          blueprintSystem,
-          blueprintContract,
-          temperature,
-          activeMaxTokens,
-          false,
-        );
-      } catch (error) {
-        if (!isTruncationError(error)) throw error;
-
-        console.warn(
-          `[course-ai] Blueprint ${stage} tronqué à ${activeMaxTokens} tokens ; nouvelle génération fraîche et concise avec ${blueprintRetryMaxTokens} tokens.`,
-        );
-
-        return generate(
-          `${prompt}
-
-REPRISE APRÈS TRONCATURE. Repars de zéro. Réponds uniquement avec l'objet JSON complet attendu. Reste concis, ferme tous les tableaux et objets, et n'ajoute aucun commentaire hors JSON.`,
-          blueprintSystem,
-          blueprintContract,
-          0.02,
-          blueprintRetryMaxTokens,
-          false,
-        );
-      }
-    };
-
-    const rawBlueprint = await generateBlueprint(
-      blueprintUser,
-      0.12,
-      "initial",
-    );
+    let rawBlueprint: unknown;
+    try {
+      rawBlueprint = await generate(
+        blueprintUser,
+        blueprintSystem,
+        blueprintContract,
+        0.18,
+        blueprintMaxTokens,
+        false,
+      );
+    } catch (error) {
+      if (!isTruncationError(error)) throw error;
+      rawBlueprint = await generate(
+        `${blueprintUser}\nLe plan précédent était trop long. Garde exactement les quantités demandées et rends chaque scope et objective très concis.`,
+        blueprintSystem,
+        blueprintContract,
+        0.05,
+        Math.min(14_000, blueprintMaxTokens + 2_000),
+        false,
+      );
+    }
 
     let blueprint = normalizeCourseBlueprint(rawBlueprint, {
       subject,
@@ -869,89 +586,36 @@ REPRISE APRÈS TRONCATURE. Repars de zéro. Réponds uniquement avec l'objet JSO
       `${chapterCount} chapitre(s), ${totalLessonCount} leçon(s)`,
     );
 
-    let planWarnings = localBlueprintAuditMessages(
-      blueprint,
-      subject,
-      shouldIncludeExercises,
-      String(grade_level),
-    );
-    let blockingPlanWarnings = localBlueprintAuditMessages(
-      blueprint,
-      subject,
-      shouldIncludeExercises,
-      String(grade_level),
-      { blockingOnly: true },
-    );
+    telemetry.start("blueprint-review");
+    try {
+      const reviewedBlueprintRaw = await generate(
+        `Plan à contrôler et corriger sans changer les quantités :\n${JSON.stringify(blueprint)}`,
+        `Tu es l'agent relecteur du plan global Educalcul.
+Niveau : ${grade_level}. Sujet : ${subject}. Domaine : ${subject_area || "Mathématiques"}.
+${programmeBlock}
+${teacherDirective}
 
-    // Un plan hors programme ne doit jamais lancer six rédacteurs. Une seule
-    // correction ciblée est autorisée ; si elle échoue, le job s'arrête tôt.
-    if (blockingPlanWarnings.length > 0) {
-      telemetry.start("blueprint-sanitize");
-      const repairPrompt = `${blueprintUser}
-
-PLAN ACTUEL À CORRIGER :
-${JSON.stringify(blueprint)}
-
-DÉFAUTS BLOQUANTS DÉTECTÉS PAR LE CONTRÔLE LOCAL :
-${blockingPlanWarnings.map((warning, index) => `${index + 1}. ${warning}`).join("\n")}
-
-CORRECTION UNIQUE : conserve exactement le même nombre de chapitres et de leçons. Corrige uniquement les titres, objectifs, périmètres, notions, sections, exercices et interdictions concernés. Supprime toute notion hors programme. Ne remplace jamais une notion interdite par un autre approfondissement hors niveau. Retourne l'objet JSON complet et aucun commentaire.`;
-
-      try {
-        const repairedRaw = await generateBlueprint(
-          repairPrompt,
-          0,
-          "repair",
-          blueprintRepairMaxTokens,
-        );
-        const repairedBlueprint = normalizeCourseBlueprint(repairedRaw, {
-          subject,
-          chapterCount,
-          lessonsPerChapter,
-          chapterRequiresGraph: (title, scope) =>
-            topicRequiresFunctionGraph(subject, subject_area || "", title, scope),
-        });
-        const repairedBlockingWarnings = localBlueprintAuditMessages(
-          repairedBlueprint,
-          subject,
-          shouldIncludeExercises,
-          String(grade_level),
-          { blockingOnly: true },
-        );
-        if (repairedBlockingWarnings.length < blockingPlanWarnings.length) {
-          blueprint = repairedBlueprint;
-          blockingPlanWarnings = repairedBlockingWarnings;
-          planWarnings = localBlueprintAuditMessages(
-            blueprint,
-            subject,
-            shouldIncludeExercises,
-            String(grade_level),
-          );
-        }
-        telemetry.end(
-          "blueprint-sanitize",
-          `${blockingPlanWarnings.length} défaut(s) bloquant(s) restant(s)`,
-        );
-      } catch (error) {
-        telemetry.end("blueprint-sanitize", "correction indisponible");
-        console.warn("[course-ai] Correction ciblée du plan indisponible.", error);
-      }
-    }
-
-    if (blockingPlanWarnings.length > 0) {
-      throw new Error(
-        `Le plan reste hors programme après une correction ciblée :\n${blockingPlanWarnings
-          .map((warning, index) => `${index + 1}. ${warning}`)
-          .join("\n")}`,
+Retourne le plan complet corrigé avec exactement ${chapterCount} chapitres et exactement ${lessonsPerChapter} leçons par chapitre.
+Vérifie : conformité stricte au programme, progression logique, absence de doublons entre objectifs, absence de notion universitaire ou hors niveau, attribution d'une notion principale à une seule leçon, et pertinence sémantique de visual_focus.
+Un sign_table n'est permis que pour une vraie étude de signe; jamais pour limites, croissance comparée, lien avec le logarithme, définition ou convexité. Utilise graph pour courbes/limites/asymptotes/convexité, variation_table pour variations/extrema, table pour propriétés/comparaisons, figure pour schémas non fonctionnels, et none si aucun visuel n'est utile.
+Supprime ou remplace toute extension hors programme, notamment exponentielle complexe, formule d'Euler, analyse complexe ou série de Fourier, sauf demande explicite et niveau compatible.
+Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.`,
+        blueprintContract,
+        0,
+        Math.min(6_000, blueprintMaxTokens),
+        false,
       );
-    }
-
-    if (planWarnings.length > 0) {
-      console.warn(
-        `[course-ai][plan] ${planWarnings.length} avertissement(s) non bloquant(s) transmis aux rédacteurs : ${planWarnings
-          .slice(0, 8)
-          .join(" | ")}`,
-      );
+      blueprint = normalizeCourseBlueprint(reviewedBlueprintRaw, {
+        subject,
+        chapterCount,
+        lessonsPerChapter,
+        chapterRequiresGraph: (title, scope) =>
+          topicRequiresFunctionGraph(subject, subject_area || "", title, scope),
+      });
+      telemetry.end("blueprint-review", "plan validé par un second agent");
+    } catch (error) {
+      telemetry.end("blueprint-review", "relecteur indisponible, plan initial conservé");
+      console.warn("[course-ai] Relecture du plan indisponible; plan initial conservé.", error);
     }
 
     const jobs = createLessonJobs(blueprint, {
@@ -964,7 +628,7 @@ CORRECTION UNIQUE : conserve exactement le même nombre de chapitres et de leço
     await tracker.updateProgress({
       step: "chapter",
       current: 0,
-      total: progressTotal,
+      total: totalLessonCount,
       message: `${totalLessonCount} agents rédacteurs et relecteurs sont lancés en pipeline parallèle...`,
       chapterTitles,
     });
@@ -982,7 +646,7 @@ CORRECTION UNIQUE : conserve exactement le même nombre de chapitres et de leço
           tracker.updateProgress({
             step: "chapter",
             current,
-            total: progressTotal,
+            total: totalLessonCount,
             message,
             chapterTitles,
           }),
@@ -1018,52 +682,16 @@ CORRECTION UNIQUE : conserve exactement le même nombre de chapitres et de leço
           teacherDirective,
         });
         const userPrompt = `Rédige la leçon « ${job.lesson.title} ». Couvre uniquement ses notions propriétaires et respecte son budget utile.`;
-        const compactRecoverySystemPrompt = `Tu es le rédacteur de secours JSON d'Educalcul.
-Tu dois générer UNE SEULE leçon complète et exploitable, sans reprendre ni commenter une sortie précédente.
-
-Cours : ${blueprint.title}
-Niveau : ${String(grade_level)}
-Chapitre : ${job.chapter.title}
-Leçon : ${job.lesson.title}
-Objectif : ${job.lesson.objective}
-Périmètre : ${job.lesson.scope}
-Notions propriétaires : ${job.boundaries.ownedConcepts.join(" ; ")}
-Sections obligatoires : ${job.lesson.requiredSections.join(" ; ")}
-Compétences des exercices : ${job.lesson.exerciseSkills.join(" ; ")}
-Notions interdites : ${job.boundaries.forbiddenDevelopments.join(" ; ") || "aucune"}
-Visuel : ${job.lesson.visualFocus}
-
-${COURSE_MARKDOWN_JSON_PROMPT}
-
-CONTRAT DE SECOURS :
-• Retourne uniquement un objet JSON complet et fermé.
-• Un chapitre, une leçon, duration=${durationPerLesson}.
-• Entre 7 et 12 blocs substantiels, sans remplissage ni répétition.
-• ${visualRequirement(job.lesson.visualFocus)}
-• ${shouldIncludeExercises ? "Exactement 3 exercices complets et différents, avec question, answer, hint et explanation cohérents." : "Aucun exercice."}
-• Toute formule est entre $...$ ou dans display_math.
-• Ne développe aucune notion interdite.
-• Vérifie chaque calcul avant de fermer le JSON.
-
-Structure racine exacte :
-{"title":"${job.chapter.title}","lessons":[{"title":"${job.lesson.title}","duration":${durationPerLesson},"blocks":[],"exercises":[]}]}`;
         const contract = courseChapterSchema({
           lessonCount: 1,
           includeExercises: shouldIncludeExercises,
           minExercises: 3,
           maxExercises: 4,
         });
-        // Une différence marginale de quelques mots ne doit jamais annuler un
-        // cours complet. Le prompt continue de viser le budget pédagogique,
-        // tandis que la validation structurelle accepte une marge de 10 %.
-        const structuralMinWords = Math.max(
-          240,
-          Math.floor(job.budget.hardMinWords * 0.9),
-        );
         const qualityOptions = {
           expectedLessonCount: 1,
           includeExercises: shouldIncludeExercises,
-          minWordsPerLesson: structuralMinWords,
+          minWordsPerLesson: job.budget.hardMinWords,
           requireGraph: job.lesson.visualFocus === "graph",
           validationScope: "lesson" as const,
           visualFocus: job.lesson.visualFocus,
@@ -1073,11 +701,10 @@ Structure racine exacte :
           prompt: string,
           temperature: number,
           maxTokens: number,
-          activeSystemPrompt = systemPrompt,
         ) => {
           const raw = await generate(
             prompt,
-            activeSystemPrompt,
+            systemPrompt,
             contract,
             temperature,
             maxTokens,
@@ -1101,71 +728,30 @@ Structure racine exacte :
           return chapter;
         };
 
-        const requestDraftWithFreshJsonRecovery = async (
-          prompt: string,
-          temperature: number,
-          purpose: "draft" | "structural-correction",
-        ): Promise<StructuredCourseChapter> => {
-          let lastError: unknown;
-          for (let attempt = 0; attempt <= writerJsonRetryCount; attempt += 1) {
-            const freshRetry = attempt > 0;
-            const activeSystemPrompt = freshRetry
-              ? compactRecoverySystemPrompt
-              : systemPrompt;
-            const activePrompt = freshRetry
-              ? `${prompt}\n\nGÉNÉRATION FRAÎCHE ${attempt}/${writerJsonRetryCount}. Ignore toute sortie précédente. Produis maintenant l'objet JSON complet depuis zéro. Ferme tous les tableaux, objets et chaînes. ${attempt === writerJsonRetryCount ? "Privilégie une structure compacte : 7 à 9 blocs et exactement 3 exercices courts." : "Aucun texte avant ou après le JSON."}`
-              : prompt;
-            const activeTemperature = freshRetry
-              ? attempt === writerJsonRetryCount
-                ? 0
-                : 0.02
-              : temperature;
-            const activeMaxTokens = freshRetry
-              ? writerRecoveryMaxTokens
-              : purpose === "structural-correction"
-                ? Math.min(writerMaxTokens, 12_000)
-                : writerMaxTokens;
-            try {
-              return await requestDraft(
-                activePrompt,
-                activeTemperature,
-                activeMaxTokens,
-                activeSystemPrompt,
-              );
-            } catch (error) {
-              lastError = error;
-              if (!isRecoverableWriterOutputError(error)) throw error;
-              if (attempt >= writerJsonRetryCount) break;
-              console.warn(
-                `[course-ai] Sortie JSON inutilisable pour « ${job.lesson.title} » (${purpose}, tentative ${attempt + 1}/${writerJsonRetryCount + 1}); nouvelle génération fraîche et compacte.`,
-              );
-            }
-          }
-          throw lastError instanceof Error
-            ? lastError
-            : new Error(
-                `La leçon « ${job.lesson.title} » n'a pas pu produire un JSON complet.`,
-              );
-        };
-
-        let structured = await requestDraftWithFreshJsonRecovery(
-          userPrompt,
-          0.06,
-          "draft",
-        );
+        let structured: StructuredCourseChapter;
+        try {
+          structured = await requestDraft(
+            userPrompt,
+            0.16,
+            job.budget.maxOutputTokens,
+          );
+        } catch (error) {
+          if (!isTruncationError(error)) throw error;
+          structured = await requestDraft(
+            `${userPrompt}\nLa sortie précédente était tronquée. Produis une version complète et plus dense : 7 à 12 blocs, exactement 3 exercices courts, un seul visuel principal, aucune répétition et pas de développement hors périmètre.`,
+            0.03,
+            Math.min(9_500, job.budget.maxOutputTokens),
+          );
+        }
 
         let issues = blockingIssues(structured, qualityOptions);
         let bestScore = structuredCourseQualityScore(structured, qualityOptions);
         if (!hasCompleteLesson(structured.lessons[0], shouldIncludeExercises) || issues.length > 0) {
-          const completenessSummary = incompleteLessonMessages(
-            structured.lessons[0],
-            shouldIncludeExercises,
-          ).join(" ; ");
           const issueSummary = formatStructuredQualityIssues(issues);
-          const retry = await requestDraftWithFreshJsonRecovery(
-            `${userPrompt}\nCORRECTION STRUCTURELLE UNIQUE. La leçon précédente ne respectait pas le contrat :\n${[issueSummary, completenessSummary].filter(Boolean).join("\n") || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents. Complète précisément les champs manquants signalés.`,
+          const retry = await requestDraft(
+            `${userPrompt}\nCORRECTION STRUCTURELLE UNIQUE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`,
             0.02,
-            "structural-correction",
+            job.budget.maxOutputTokens,
           );
           const retryScore = structuredCourseQualityScore(retry, qualityOptions);
           const retryIssues = blockingIssues(retry, qualityOptions);
@@ -1181,14 +767,8 @@ Structure racine exacte :
 
         const lesson = structured.lessons[0];
         if (!hasCompleteLesson(lesson, shouldIncludeExercises) || issues.length > 0) {
-          const completenessSummary = incompleteLessonMessages(
-            lesson,
-            shouldIncludeExercises,
-          ).join(" ; ");
           throw new Error(
-            `La leçon « ${job.lesson.title} » reste structurellement non conforme :\n${[formatStructuredQualityIssues(issues), completenessSummary]
-              .filter(Boolean)
-              .join("\n") || "contenu incomplet"}`,
+            `La leçon « ${job.lesson.title} » reste structurellement non conforme :\n${formatStructuredQualityIssues(issues) || "contenu incomplet"}`,
           );
         }
 
@@ -1197,65 +777,65 @@ Structure racine exacte :
           `${lessonUsefulCharacterCount(lesson)} caractères utiles`,
         );
 
-        // V5 : pas de second agent de relecture généraliste. La normalisation
-        // déterministe et la réparation KaTeX s'exécutent immédiatement ; la
-        // certification sémantique universelle intervient une seule fois plus bas.
+        // Le rédacteur libère immédiatement son slot. La relecture part dans
+        // une file séparée et commence dès qu'un relecteur est disponible.
         reviewedLessonPromises[jobIndex] = reviewLimit(async () => {
-          const reviewLabel = `normalize c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
+          const reviewLabel = `review c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
           telemetry.start(reviewLabel);
+          let reviewed = lesson;
+          let patchCount = 0;
+          try {
+            const result = await reviewCourseLesson(lesson, {
+              generate,
+              courseTitle: blueprint.title,
+              chapterTitle: job.chapter.title,
+              lessonPlan: job.lesson,
+              boundaries: job.boundaries,
+              level: String(grade_level),
+              subject,
+            });
+            reviewed = result.value;
+            patchCount = result.report.patches;
+            if (result.report.warnings.length > 0) {
+              console.warn(
+                `[course-ai] Relecteur ${job.lesson.title}: ${result.report.warnings.join(" | ")}`,
+              );
+            }
+          } catch (error) {
+            console.warn(
+              `[course-ai] Relecteur indisponible pour « ${job.lesson.title} »; validations locales conservées.`,
+              error,
+            );
+          }
 
           let reviewedChapter = normalizeStructuredCoursePedagogy({
             title: job.chapter.title,
-            lessons: [lesson],
+            lessons: [reviewed],
           });
           const sanitized = sanitizeStructuredResources(reviewedChapter);
           reviewedChapter = normalizeStructuredCoursePedagogy(sanitized.value);
-
-          let normalizedLesson = reviewedChapter.lessons[0];
-          if (!normalizedLesson) {
-            throw new Error(
-              `La leçon « ${job.lesson.title} » a disparu pendant la normalisation.`,
-            );
-          }
-
-          const unstructuredMathFields =
-            courseLessonUnstructuredMathFields(normalizedLesson);
           const repaired = await repairInvalidStructuredMath(reviewedChapter, {
             generate,
             label: `cours ${blueprint.title}, chapitre ${job.chapter.title}, leçon ${job.lesson.title}`,
-            enableModelRepair: unstructuredMathFields.length > 0,
+            enableModelRepair: false,
           });
           reviewedChapter = normalizeStructuredCoursePedagogy(repaired.value);
-          normalizedLesson = reviewedChapter.lessons[0];
-          if (!normalizedLesson) {
-            throw new Error(
-              `La leçon « ${job.lesson.title} » a disparu pendant la réparation mathématique.`,
-            );
-          }
-
-          const remainingMathFields =
-            courseLessonUnstructuredMathFields(normalizedLesson);
-          if (remainingMathFields.length > 0) {
-            console.warn(
-              `[course-ai] Notation mathématique encore imparfaite pour « ${job.lesson.title} » : ${remainingMathFields.join(", ")}. Le certificateur sémantique décide si le sens reste publiable.`,
-            );
-          }
-
           const finalIssues = blockingIssues(reviewedChapter, qualityOptions);
-          if (finalIssues.length > 0) {
+          if (finalIssues.length > 0 || !reviewedChapter.lessons[0]) {
             throw new Error(
-              `La leçon « ${job.lesson.title} » reste structurellement non conforme :\n${formatStructuredQualityIssues(finalIssues)}`,
+              `La leçon « ${job.lesson.title} » reste non conforme après relecture :\n${formatStructuredQualityIssues(finalIssues)}`,
             );
           }
 
+          const finalLesson = reviewedChapter.lessons[0];
           telemetry.end(
             reviewLabel,
-            `${repaired.report.fallbackCount} repli(s) KaTeX, contrôle local terminé`,
+            `${patchCount} patch(es), ${repaired.report.fallbackCount} repli(s) KaTeX`,
           );
           await queueProgress(
-            `Leçon ${completedLessons + 1}/${totalLessonCount} structurée : ${job.lesson.title}`,
+            `Leçon ${completedLessons + 1}/${totalLessonCount} vérifiée : ${job.lesson.title}`,
           );
-          return normalizedLesson;
+          return finalLesson;
         });
       },
     );
@@ -1314,7 +894,7 @@ Structure racine exacte :
     const reviewedLessons = reviewResults.map(
       (result) => (result as PromiseFulfilledResult<StructuredCourseLesson>).value,
     );
-    let structuredChapters: StructuredCourseChapter[] = blueprint.chapters.map(
+    const structuredChapters: StructuredCourseChapter[] = blueprint.chapters.map(
       (chapter, chapterIndex) => ({
         title: chapter.title,
         lessons: jobs
@@ -1324,40 +904,6 @@ Structure racine exacte :
           .map(({ lesson }) => lesson as StructuredCourseLesson),
       }),
     );
-
-    const initialCoordinationIssues = auditCourseCoordination(
-      structuredChapters,
-      blueprint,
-    );
-    const duplicateExerciseIssues = initialCoordinationIssues.filter(
-      (issue) => issue.code === "duplicate_exercise",
-    );
-    if (duplicateExerciseIssues.length > 0) {
-      telemetry.start("coordination-review");
-      try {
-        const coordinated = await replaceDuplicateCourseExercises(
-          structuredChapters,
-          {
-            generate,
-            blueprint,
-            level: String(grade_level),
-            subject,
-            issues: duplicateExerciseIssues,
-          },
-        );
-        structuredChapters = coordinated.value;
-        telemetry.end(
-          "coordination-review",
-          `${coordinated.replacements} exercice(s) inter-leçons remplacé(s)`,
-        );
-      } catch (error) {
-        telemetry.end("coordination-review", "coordinateur indisponible");
-        console.warn(
-          "[course-ai] Le coordinateur final des exercices est indisponible.",
-          error,
-        );
-      }
-    }
 
     const deduplicated = deduplicateCourseChapters(structuredChapters);
     let finalStructuredChapters = deduplicated.chapters.map(
@@ -1392,329 +938,6 @@ Structure racine exacte :
       );
     }
 
-    if (publicationGateEnabled) {
-      telemetry.start("publication-gate");
-      const publicationEntries = jobs.map((job) => ({
-        job,
-        lesson: finalStructuredChapters[job.chapterIndex]?.lessons[job.lessonIndex],
-      }));
-      const publicationResults = await mapSettledWithConcurrency(
-        publicationEntries,
-        reviewerConcurrency,
-        async ({ job, lesson }) => {
-          if (!lesson) {
-            throw new Error(`Leçon finale introuvable : ${job.lesson.title}.`);
-          }
-          if (await tracker.isCancelRequested()) {
-            throw new GenerationCancelledError();
-          }
-          const label = `publication-check c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
-          telemetry.start(label);
-          const checked = await verifyCourseLessonForPublication(lesson, {
-            generate,
-            courseTitle: blueprint.title,
-            chapterTitle: job.chapter.title,
-            lessonPlan: job.lesson,
-            boundaries: job.boundaries,
-            level: String(grade_level),
-            subject,
-            curriculumContext: programmeBlock,
-            reviewMaxTokens: publicationReviewMaxTokens,
-            repairMaxTokens: publicationRepairMaxTokens,
-          });
-          if (checked.report.unresolved.length > 0) {
-            throw new Error(
-              `La leçon « ${job.lesson.title} » ne franchit pas la barrière de publication :\n${checked.report.unresolved
-                .slice(0, 12)
-                .map(
-                  (issue, index) =>
-                    `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
-                )
-                .join("\n")}`,
-            );
-          }
-          telemetry.end(
-            label,
-            `${checked.report.patches} patch(es), ${checked.report.repairRounds} cycle(s), ${checked.report.fallbackExerciseRewrites} exercice(s) reconstruit(s), 0 erreur bloquante restante`,
-          );
-          await queueProgress(
-            `Certification ${completedLessons + 1}/${progressTotal} : ${job.lesson.title}`,
-          );
-          return checked.value;
-        },
-      );
-
-      const publicationFailures = publicationResults
-        .map((result, index) =>
-          result.status === "rejected"
-            ? { job: publicationEntries[index]?.job, reason: result.reason }
-            : null,
-        )
-        .filter(
-          (entry): entry is { job: LessonJob; reason: unknown } => Boolean(entry?.job),
-        );
-      publicationFailures.forEach(({ job, reason }) => {
-        console.error(
-          `[course-ai] Barrière de publication refusée pour « ${job.lesson.title} » :`,
-          reason,
-        );
-      });
-      if (publicationFailures.length > 0) {
-        throw new Error(
-          `Le cours n'a pas été enregistré car ${publicationFailures.length} leçon(s) contiennent encore une erreur mathématique ou pédagogique bloquante : ${publicationFailures
-            .map(({ job }) => job.lesson.title)
-            .join(", ")}.`,
-        );
-      }
-
-      const checkedLessons = publicationResults.map(
-        (result) =>
-          (result as PromiseFulfilledResult<StructuredCourseLesson>).value,
-      );
-      finalStructuredChapters = blueprint.chapters.map((chapter, chapterIndex) => ({
-        title: chapter.title,
-        lessons: jobs
-          .map((job, index) => ({ job, lesson: checkedLessons[index] }))
-          .filter(({ job }) => job.chapterIndex === chapterIndex)
-          .sort((left, right) => left.job.lessonIndex - right.job.lessonIndex)
-          .map(({ lesson }) => normalizeStructuredCoursePedagogy({
-            title: chapter.title,
-            lessons: [lesson],
-          }).lessons[0] as StructuredCourseLesson),
-      }));
-      telemetry.end(
-        "publication-gate",
-        `${totalLessonCount} leçon(s) validée(s), mode fail-closed`,
-      );
-
-      telemetry.start("publication-global");
-      const globalCheck = await withTransientNetworkRetry(
-        "contrôle global de publication",
-        () =>
-          verifyCourseGloballyForPublication(finalStructuredChapters, {
-            generate,
-            blueprint,
-            level: String(grade_level),
-            subject,
-            curriculumContext: programmeBlock,
-            reviewMaxTokens: globalPublicationReviewMaxTokens,
-            repairMaxTokens: globalPublicationRepairMaxTokens,
-          }),
-      );
-      if (globalCheck.report.unresolved.length > 0) {
-        throw new Error(
-          `Le cours ne franchit pas le contrôle global de publication :\n${globalCheck.report.unresolved
-            .slice(0, 15)
-            .map(
-              (issue, index) =>
-                `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
-            )
-            .join("\n")}`,
-        );
-      }
-      finalStructuredChapters = globalCheck.value.map(
-        normalizeStructuredCoursePedagogy,
-      );
-      telemetry.end(
-        "publication-global",
-        `${globalCheck.report.patches} patch(es), ${globalCheck.report.repairRounds} cycle(s), cohérence inter-leçons validée`,
-      );
-      await queueProgress("Cohérence globale certifiée.");
-    }
-
-    const maxFinalCoordinationRepairRounds = envNumber(
-      "AI_COURSE_FINAL_COORDINATION_REPAIR_ROUNDS",
-      1,
-      1,
-      2,
-    );
-    let finalCoordinationIssues = auditCourseCoordination(
-      finalStructuredChapters,
-      blueprint,
-    );
-    let finalCoordinationRepairRound = 0;
-
-    // Les relectures de publication peuvent laisser subsister ou faire
-    // reapparaitre un exercice trop proche d'une autre lecon. On tente alors
-    // une correction ciblee, puis on recertifie uniquement les lecons
-    // modifiees et on relance le controle global avant l'enregistrement.
-    while (finalCoordinationRepairRound < maxFinalCoordinationRepairRounds) {
-      const duplicateExerciseIssues = finalCoordinationIssues.filter(
-        (issue) => issue.code === "duplicate_exercise",
-      );
-      if (duplicateExerciseIssues.length === 0) break;
-
-      finalCoordinationRepairRound += 1;
-      const repairLabel = `final-coordination-repair-${finalCoordinationRepairRound}`;
-      telemetry.start(repairLabel);
-
-      const coordinated = await replaceDuplicateCourseExercises(
-        finalStructuredChapters,
-        {
-          generate,
-          blueprint,
-          level: String(grade_level),
-          subject,
-          issues: duplicateExerciseIssues,
-        },
-      );
-      finalStructuredChapters = coordinated.value.map(
-        normalizeStructuredCoursePedagogy,
-      );
-      telemetry.end(
-        repairLabel,
-        `${coordinated.replacements} exercice(s) inter-lecons remplace(s)`,
-      );
-
-      if (coordinated.replacements > 0 && publicationGateEnabled) {
-        const affectedLessonKeys = new Set<string>();
-        duplicateExerciseIssues.forEach((issue) => {
-          const match = /^c(\d+)-l(\d+)-e\d+$/.exec(issue.second);
-          if (!match) return;
-          affectedLessonKeys.add(`${Number(match[1]) - 1}:${Number(match[2]) - 1}`);
-        });
-
-        const affectedEntries = jobs
-          .filter((job) =>
-            affectedLessonKeys.has(`${job.chapterIndex}:${job.lessonIndex}`),
-          )
-          .map((job) => ({
-            job,
-            lesson:
-              finalStructuredChapters[job.chapterIndex]?.lessons[job.lessonIndex],
-          }));
-
-        const recheckResults = await mapSettledWithConcurrency(
-          affectedEntries,
-          reviewerConcurrency,
-          async ({ job, lesson }) => {
-            if (!lesson) {
-              throw new Error(
-                `Lecon finale introuvable apres deduplication : ${job.lesson.title}.`,
-              );
-            }
-            if (await tracker.isCancelRequested()) {
-              throw new GenerationCancelledError();
-            }
-
-            const label = `publication-recheck-${finalCoordinationRepairRound}-c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
-            telemetry.start(label);
-            const checked = await verifyCourseLessonForPublication(lesson, {
-              generate,
-              courseTitle: blueprint.title,
-              chapterTitle: job.chapter.title,
-              lessonPlan: job.lesson,
-              boundaries: job.boundaries,
-              level: String(grade_level),
-              subject,
-              curriculumContext: programmeBlock,
-              reviewMaxTokens: publicationReviewMaxTokens,
-              repairMaxTokens: publicationRepairMaxTokens,
-            });
-            if (checked.report.unresolved.length > 0) {
-              throw new Error(
-                `La lecon « ${job.lesson.title} » ne franchit pas la recertification apres deduplication :\n${checked.report.unresolved
-                  .slice(0, 12)
-                  .map(
-                    (issue, index) =>
-                      `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
-                  )
-                  .join("\n")}`,
-              );
-            }
-            telemetry.end(
-              label,
-              `${checked.report.patches} patch(es), ${checked.report.repairRounds} cycle(s), recertifiee`,
-            );
-            return checked.value;
-          },
-        );
-
-        recheckResults.forEach((result, index) => {
-          const entry = affectedEntries[index];
-          if (!entry) return;
-          if (result.status === "rejected") {
-            throw result.reason instanceof Error
-              ? result.reason
-              : new Error(
-                  `Echec de la recertification de « ${entry.job.lesson.title} ».`,
-                );
-          }
-          const chapter = finalStructuredChapters[entry.job.chapterIndex];
-          if (!chapter) {
-            throw new Error(
-              `Chapitre final introuvable pour « ${entry.job.lesson.title} ».`,
-            );
-          }
-          chapter.lessons[entry.job.lessonIndex] = result.value;
-        });
-
-        const globalLabel = `publication-global-recheck-${finalCoordinationRepairRound}`;
-        telemetry.start(globalLabel);
-        const globalRecheck = await verifyCourseGloballyForPublication(
-          finalStructuredChapters,
-          {
-            generate,
-            blueprint,
-            level: String(grade_level),
-            subject,
-            curriculumContext: programmeBlock,
-            reviewMaxTokens: globalPublicationReviewMaxTokens,
-            repairMaxTokens: globalPublicationRepairMaxTokens,
-          },
-        );
-        if (globalRecheck.report.unresolved.length > 0) {
-          throw new Error(
-            `Le cours ne franchit pas le controle global apres deduplication :\n${globalRecheck.report.unresolved
-              .slice(0, 15)
-              .map(
-                (issue, index) =>
-                  `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
-              )
-              .join("\n")}`,
-          );
-        }
-        finalStructuredChapters = globalRecheck.value.map(
-          normalizeStructuredCoursePedagogy,
-        );
-        telemetry.end(
-          globalLabel,
-          `${globalRecheck.report.patches} patch(es), ${globalRecheck.report.repairRounds} cycle(s), coherence revalidee`,
-        );
-      }
-
-      finalCoordinationIssues = auditCourseCoordination(
-        finalStructuredChapters,
-        blueprint,
-      );
-    }
-
-    const blockingCoordinationIssues = finalCoordinationIssues.filter(
-      (issue) =>
-        issue.code === "duplicate_exercise" || issue.code === "duplicate_content",
-    );
-    const coverageWarnings = finalCoordinationIssues.filter(
-      (issue) => issue.code === "missing_owned_concept",
-    );
-    if (coverageWarnings.length > 0) {
-      console.warn(
-        `[course-ai] Audit de couverture : ${coverageWarnings
-          .map((issue) => `${issue.first}: ${issue.message}`)
-          .join(" | ")}`,
-      );
-    }
-    if (blockingCoordinationIssues.length > 0) {
-      throw new Error(
-        `Le cours contient encore des repetitions inter-lecons apres ${finalCoordinationRepairRound} cycle(s) de correction :\n${blockingCoordinationIssues
-          .slice(0, 10)
-          .map(
-            (issue, index) =>
-              `${index + 1}. ${issue.first} / ${issue.second} — ${issue.message}`,
-          )
-          .join("\n")}`,
-      );
-    }
-
     if (await tracker.isCancelRequested()) {
       await tracker.setStatus("cancelled");
       return;
@@ -1734,13 +957,8 @@ Structure racine exacte :
       const chapterIssues = blockingIssues(chapter, {
         expectedLessonCount: lessonsPerChapter,
         includeExercises: shouldIncludeExercises,
-        // Utilise le meme seuil tolerant que lors de la validation de chaque
-        // lecon. Une lecon deja acceptee a 90 % du minimum indicatif ne doit
-        // pas etre refusee ensuite par un controle de chapitre plus strict.
         minWordsPerLesson: Math.min(
-          ...chapterJobs.map((job) =>
-            Math.max(240, Math.floor(job.budget.hardMinWords * 0.9)),
-          ),
+          ...chapterJobs.map((job) => job.budget.hardMinWords),
         ),
         requireGraph,
       });
@@ -1756,8 +974,8 @@ Structure racine exacte :
       contentJson.push(compiled);
       await tracker.updateProgress({
         step: "chapter",
-        current: Math.min(completedLessons, progressTotal - 1),
-        total: progressTotal,
+        current: totalLessonCount,
+        total: totalLessonCount,
         message: `Chapitre ${chapterIndex + 1}/${chapterCount} assemblé : ${chapter.title}`,
         chapterTitles,
         chapters: { [chapterIndex]: compiled },
@@ -1787,121 +1005,66 @@ Structure racine exacte :
 
     await tracker.updateProgress({
       step: "final-check",
-      current: progressTotal - 1,
-      total: progressTotal,
+      current: totalLessonCount,
+      total: totalLessonCount + 1,
       message: "Enregistrement du cours...",
     });
 
     telemetry.start("save");
-    const estimatedTime = finalStructuredChapters.reduce(
-      (total, chapter) =>
-        total + chapter.lessons.reduce((sum, lesson) => sum + lesson.duration, 0),
-      0,
-    );
-    const coursePayload = {
-      generation_id: generationId,
-      title: blueprint.title,
-      description: blueprint.description,
-      subject,
-      level: String(grade_level) || "6eme",
-      status: "draft",
-      thumbnail_url: "",
-      folder_id: folder_id || null,
-      content_json: contentJson,
-      estimated_time: estimatedTime,
-      is_published: false,
-    };
+    const { data: courseRow, error: insertError } = await supabaseAdmin
+      .from("courses")
+      .insert({
+        title: blueprint.title,
+        description: blueprint.description,
+        subject,
+        level: String(grade_level) || "6eme",
+        status: "draft",
+        thumbnail_url: "",
+        folder_id: folder_id || null,
+        content_json: contentJson,
+        estimated_time:
+          chapterCount * lessonsPerChapter * (durationPerLesson / 60),
+        is_published: false,
+      })
+      .select()
+      .single();
 
-    const courseRow = await withTransientNetworkRetry(
-      "enregistrement idempotent du cours",
-      async () => {
-        console.info(
-          `[course-ai][save] upsert du cours pour generation_id=${generationId}`,
-        );
-        const { data, error } = await supabaseAdmin
-          .from("courses")
-          .upsert(coursePayload, {
-            onConflict: "generation_id",
-            ignoreDuplicates: false,
-          })
-          .select("id, title, status")
-          .single();
+    if (insertError) throw insertError;
 
-        if (error) throw error;
-        if (!data) {
-          throw new Error("Supabase n'a renvoyé aucun cours après l'enregistrement.");
-        }
-        return data;
+    await auditLog({
+      action: AuditAction.CONTENT_CREATED,
+      adminId,
+      targetType: "course",
+      targetId: String(courseRow.id),
+      details: {
+        title: courseRow.title,
+        status: courseRow.status,
+        source: "ai_multi_agent_markdown_v2_6",
+        useful_characters: actualUsefulCharacters,
+        timings_ms: telemetry.summary(),
       },
-    );
-
-    console.info(`[course-ai][save] cours enregistré : ${courseRow.id}`);
-
-    try {
-      await auditLog({
-        action: AuditAction.CONTENT_CREATED,
-        adminId,
-        targetType: "course",
-        targetId: String(courseRow.id),
-        details: {
-          title: courseRow.title,
-          status: courseRow.status,
-          source: publicationGateEnabled
-            ? "ai_publication_gate_v2_8"
-            : "ai_coordinated_planning_v2_7",
-          useful_characters: actualUsefulCharacters,
-          timings_ms: telemetry.summary(),
-        },
-      });
-    } catch (auditError) {
-      console.warn(
-        "[course-ai][save] Le cours est enregistré, mais le journal d'audit est indisponible.",
-        auditError,
-      );
-    }
+    });
 
     telemetry.end("save");
     telemetry.total(
       `${actualUsefulCharacters} caractères utiles, ${totalLessonCount} leçon(s)`,
     );
-
-    try {
-      await withTransientNetworkRetry(
-        "finalisation du suivi de génération",
-        async () => {
-          await tracker.updateProgress({
-            step: "final-check",
-            current: progressTotal,
-            total: progressTotal,
-            message: "Cours enregistré.",
-          });
-          await tracker.setStatus("done", { course_id: courseRow.id });
-        },
-        3,
-      );
-    } catch (trackingError) {
-      // Le cours existe déjà : ne jamais transformer un succès de sauvegarde
-      // en échec de génération uniquement parce que le suivi réseau a échoué.
-      console.error(
-        `[course-ai][save] Cours ${courseRow.id} enregistré, mais statut final non confirmé.`,
-        trackingError,
-      );
-    }
+    await tracker.updateProgress({
+      step: "final-check",
+      current: totalLessonCount + 1,
+      total: totalLessonCount + 1,
+      message: "Cours enregistré.",
+    });
+    await tracker.setStatus("done", { course_id: courseRow.id });
   } catch (error: unknown) {
     telemetry.total("échec");
     if (error instanceof GenerationCancelledError) {
-      if (wallClockExpired) {
-        await tracker.setStatus("error", { error: wallClockErrorMessage });
-      } else {
-        await tracker.setStatus("cancelled");
-      }
+      await tracker.setStatus("cancelled");
       return;
     }
     console.error("❌ Erreur génération cours IA structurée:", error);
     await tracker.setStatus("error", {
       error: error instanceof Error ? error.message : "Erreur de génération",
     });
-  } finally {
-    clearTimeout(wallClockTimer);
   }
 }

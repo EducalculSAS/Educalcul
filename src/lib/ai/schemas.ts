@@ -547,38 +547,20 @@ export function courseBlueprintSchema(options: {
   const lesson = {
     type: "object",
     properties: {
-      title: { type: "string", minLength: 3, maxLength: 120 },
-      objective: { type: "string", minLength: 12, maxLength: 260 },
-      scope: { type: "string", minLength: 20, maxLength: 420 },
+      title: { type: "string", minLength: 1 },
+      objective: { type: "string", minLength: 1 },
+      scope: { type: "string", minLength: 1 },
       core_concepts: {
         type: "array",
         minItems: 2,
         maxItems: 7,
-        items: { type: "string", minLength: 2, maxLength: 160 },
+        items: { type: "string", minLength: 1 },
       },
       prerequisite_recall: {
         type: "array",
         minItems: 0,
         maxItems: 4,
-        items: { type: "string", minLength: 2, maxLength: 160 },
-      },
-      required_sections: {
-        type: "array",
-        minItems: 3,
-        maxItems: 7,
-        items: { type: "string", minLength: 3, maxLength: 180 },
-      },
-      exercise_skills: {
-        type: "array",
-        minItems: 3,
-        maxItems: 4,
-        items: { type: "string", minLength: 3, maxLength: 180 },
-      },
-      forbidden_concepts: {
-        type: "array",
-        minItems: 0,
-        maxItems: 12,
-        items: { type: "string", minLength: 2, maxLength: 160 },
+        items: { type: "string", minLength: 1 },
       },
       visual_focus: {
         type: "string",
@@ -599,9 +581,6 @@ export function courseBlueprintSchema(options: {
       "scope",
       "core_concepts",
       "prerequisite_recall",
-      "required_sections",
-      "exercise_skills",
-      "forbidden_concepts",
       "visual_focus",
       "complexity",
     ],
@@ -615,8 +594,8 @@ export function courseBlueprintSchema(options: {
     schema: {
       type: "object",
       properties: {
-        title: { type: "string", minLength: 3, maxLength: 140 },
-        description: { type: "string", minLength: 12, maxLength: 420 },
+        title: { type: "string", minLength: 1 },
+        description: { type: "string", minLength: 1 },
         chapters: {
           type: "array",
           minItems: options.chapterCount,
@@ -624,8 +603,8 @@ export function courseBlueprintSchema(options: {
           items: {
             type: "object",
             properties: {
-              title: { type: "string", minLength: 3, maxLength: 140 },
-              scope: { type: "string", minLength: 20, maxLength: 520 },
+              title: { type: "string", minLength: 1 },
+              scope: { type: "string", minLength: 1 },
               lessons: {
                 type: "array",
                 minItems: options.lessonsPerChapter,
@@ -639,40 +618,6 @@ export function courseBlueprintSchema(options: {
         },
       },
       required: ["title", "description", "chapters"],
-      ...noExtra,
-    },
-  };
-}
-
-
-
-export function courseBlueprintAuditSchema(): JsonSchemaContract {
-  return {
-    name: "educalcul_course_blueprint_audit",
-    description:
-      "Audit indépendant du plan global. Le relecteur signale les défauts mais ne réécrit pas le plan.",
-    schema: {
-      type: "object",
-      properties: {
-        verdict: { type: "string", enum: ["ok", "revise"] },
-        issues: {
-          type: "array",
-          minItems: 0,
-          maxItems: 20,
-          items: {
-            type: "object",
-            properties: {
-              code: { type: "string", minLength: 1, maxLength: 60 },
-              location: { type: "string", minLength: 1, maxLength: 120 },
-              message: { type: "string", minLength: 1, maxLength: 500 },
-              suggestion: { type: "string", minLength: 1, maxLength: 500 },
-            },
-            required: ["code", "location", "message", "suggestion"],
-            ...noExtra,
-          },
-        },
-      },
-      required: ["verdict", "issues"],
       ...noExtra,
     },
   };
