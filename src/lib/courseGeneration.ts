@@ -1491,10 +1491,171 @@ Structure racine exacte :
       );
     }
 
-    const finalCoordinationIssues = auditCourseCoordination(
+    const maxFinalCoordinationRepairRounds = envNumber(
+      "AI_COURSE_FINAL_COORDINATION_REPAIR_ROUNDS",
+      2,
+      1,
+      3,
+    );
+    let finalCoordinationIssues = auditCourseCoordination(
       finalStructuredChapters,
       blueprint,
     );
+    let finalCoordinationRepairRound = 0;
+
+    // Les relectures de publication peuvent laisser subsister ou faire
+    // reapparaitre un exercice trop proche d'une autre lecon. On tente alors
+    // une correction ciblee, puis on recertifie uniquement les lecons
+    // modifiees et on relance le controle global avant l'enregistrement.
+    while (finalCoordinationRepairRound < maxFinalCoordinationRepairRounds) {
+      const duplicateExerciseIssues = finalCoordinationIssues.filter(
+        (issue) => issue.code === "duplicate_exercise",
+      );
+      if (duplicateExerciseIssues.length === 0) break;
+
+      finalCoordinationRepairRound += 1;
+      const repairLabel = `final-coordination-repair-${finalCoordinationRepairRound}`;
+      telemetry.start(repairLabel);
+
+      const coordinated = await replaceDuplicateCourseExercises(
+        finalStructuredChapters,
+        {
+          generate,
+          blueprint,
+          level: String(grade_level),
+          subject,
+          issues: duplicateExerciseIssues,
+        },
+      );
+      finalStructuredChapters = coordinated.value.map(
+        normalizeStructuredCoursePedagogy,
+      );
+      telemetry.end(
+        repairLabel,
+        `${coordinated.replacements} exercice(s) inter-lecons remplace(s)`,
+      );
+
+      if (coordinated.replacements > 0 && publicationGateEnabled) {
+        const affectedLessonKeys = new Set<string>();
+        duplicateExerciseIssues.forEach((issue) => {
+          const match = /^c(\d+)-l(\d+)-e\d+$/.exec(issue.second);
+          if (!match) return;
+          affectedLessonKeys.add(`${Number(match[1]) - 1}:${Number(match[2]) - 1}`);
+        });
+
+        const affectedEntries = jobs
+          .filter((job) =>
+            affectedLessonKeys.has(`${job.chapterIndex}:${job.lessonIndex}`),
+          )
+          .map((job) => ({
+            job,
+            lesson:
+              finalStructuredChapters[job.chapterIndex]?.lessons[job.lessonIndex],
+          }));
+
+        const recheckResults = await mapSettledWithConcurrency(
+          affectedEntries,
+          reviewerConcurrency,
+          async ({ job, lesson }) => {
+            if (!lesson) {
+              throw new Error(
+                `Lecon finale introuvable apres deduplication : ${job.lesson.title}.`,
+              );
+            }
+            if (await tracker.isCancelRequested()) {
+              throw new GenerationCancelledError();
+            }
+
+            const label = `publication-recheck-${finalCoordinationRepairRound}-c${job.chapterIndex + 1}-l${job.lessonIndex + 1}`;
+            telemetry.start(label);
+            const checked = await verifyCourseLessonForPublication(lesson, {
+              generate,
+              courseTitle: blueprint.title,
+              chapterTitle: job.chapter.title,
+              lessonPlan: job.lesson,
+              boundaries: job.boundaries,
+              level: String(grade_level),
+              subject,
+              reviewMaxTokens: publicationReviewMaxTokens,
+              repairMaxTokens: publicationRepairMaxTokens,
+            });
+            if (checked.report.unresolved.length > 0) {
+              throw new Error(
+                `La lecon « ${job.lesson.title} » ne franchit pas la recertification apres deduplication :\n${checked.report.unresolved
+                  .slice(0, 12)
+                  .map(
+                    (issue, index) =>
+                      `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
+                  )
+                  .join("\n")}`,
+              );
+            }
+            telemetry.end(
+              label,
+              `${checked.report.patches} patch(es), ${checked.report.repairRounds} cycle(s), recertifiee`,
+            );
+            return checked.value;
+          },
+        );
+
+        recheckResults.forEach((result, index) => {
+          const entry = affectedEntries[index];
+          if (!entry) return;
+          if (result.status === "rejected") {
+            throw result.reason instanceof Error
+              ? result.reason
+              : new Error(
+                  `Echec de la recertification de « ${entry.job.lesson.title} ».`,
+                );
+          }
+          const chapter = finalStructuredChapters[entry.job.chapterIndex];
+          if (!chapter) {
+            throw new Error(
+              `Chapitre final introuvable pour « ${entry.job.lesson.title} ».`,
+            );
+          }
+          chapter.lessons[entry.job.lessonIndex] = result.value;
+        });
+
+        const globalLabel = `publication-global-recheck-${finalCoordinationRepairRound}`;
+        telemetry.start(globalLabel);
+        const globalRecheck = await verifyCourseGloballyForPublication(
+          finalStructuredChapters,
+          {
+            generate,
+            blueprint,
+            level: String(grade_level),
+            subject,
+            reviewMaxTokens: globalPublicationReviewMaxTokens,
+            repairMaxTokens: globalPublicationRepairMaxTokens,
+          },
+        );
+        if (globalRecheck.report.unresolved.length > 0) {
+          throw new Error(
+            `Le cours ne franchit pas le controle global apres deduplication :\n${globalRecheck.report.unresolved
+              .slice(0, 15)
+              .map(
+                (issue, index) =>
+                  `${index + 1}. [${issue.category}] ${issue.id} — ${issue.message}`,
+              )
+              .join("\n")}`,
+          );
+        }
+        finalStructuredChapters = globalRecheck.value.map(
+          normalizeStructuredCoursePedagogy,
+        );
+        telemetry.end(
+          globalLabel,
+          `${globalRecheck.report.patches} patch(es), ${globalRecheck.report.repairRounds} cycle(s), coherence revalidee`,
+        );
+      }
+
+      finalCoordinationIssues = auditCourseCoordination(
+        finalStructuredChapters,
+        blueprint,
+      );
+    }
+
     const blockingCoordinationIssues = finalCoordinationIssues.filter(
       (issue) =>
         issue.code === "duplicate_exercise" || issue.code === "duplicate_content",
@@ -1511,7 +1672,7 @@ Structure racine exacte :
     }
     if (blockingCoordinationIssues.length > 0) {
       throw new Error(
-        `Le cours contient encore des répétitions inter-leçons avant enregistrement :\n${blockingCoordinationIssues
+        `Le cours contient encore des repetitions inter-lecons apres ${finalCoordinationRepairRound} cycle(s) de correction :\n${blockingCoordinationIssues
           .slice(0, 10)
           .map(
             (issue, index) =>
