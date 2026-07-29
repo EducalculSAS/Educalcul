@@ -584,7 +584,9 @@ export async function generateStructuredContentWithSchema<T>(
   const callJsonObjectMode = async (): Promise<T> => {
     const compatibilitySystem = `${systemPrompt}
 
-MODE JSON COMPATIBLE (${contract.name}) : réponds uniquement avec l'objet JSON demandé. Respecte strictement la structure décrite ci-dessus. Aucun texte avant ou après.`;
+MODE JSON COMPATIBLE (${contract.name}) : réponds uniquement avec l'objet JSON demandé. Aucun texte avant ou après.
+CONTRAT JSON EXACT :
+${JSON.stringify(contract.schema)}`;
     const compatibilityMessages: Message[] = [
       { role: "system", content: compatibilitySystem },
       { role: "user", content: prompt },

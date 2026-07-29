@@ -1067,9 +1067,8 @@ function publicationJudgeContract(
     schema: {
       type: "object",
       properties: {
-        verdict: { type: "string", enum: ["pass", "fail"] },
-        summary: { type: "string" },
-        issues: {
+        pass: { type: "boolean" },
+        errors: {
           type: "array",
           minItems: 0,
           maxItems: Math.max(1, maxIssues),
@@ -1077,30 +1076,14 @@ function publicationJudgeContract(
             type: "object",
             properties: {
               id: { type: "string", minLength: 1 },
-              severity: { type: "string", enum: ["blocking", "warning"] },
-              category: {
-                type: "string",
-                enum: [
-                  "mathematical_error",
-                  "answer_explanation_conflict",
-                  "numerical_error",
-                  "proof_error",
-                  "graph_or_table_error",
-                  "level_mismatch",
-                  "scope_error",
-                  "truncated_content",
-                  "notation_error",
-                ],
-              },
               message: { type: "string", minLength: 5 },
-              expected_fix: { type: "string", minLength: 3 },
             },
-            required: ["id", "severity", "category", "message", "expected_fix"],
+            required: ["id", "message"],
             ...noExtra,
           },
         },
       },
-      required: ["verdict", "summary", "issues"],
+      required: ["pass", "errors"],
       ...noExtra,
     },
   };
@@ -1158,86 +1141,129 @@ function publicationExerciseRewriteContract(): JsonSchemaContract {
   };
 }
 
-function normalizeIssueCategory(
-  value: unknown,
-): CoursePublicationIssueCategory {
-  return value === "answer_explanation_conflict" ||
-    value === "numerical_error" ||
-    value === "proof_error" ||
-    value === "graph_or_table_error" ||
-    value === "level_mismatch" ||
-    value === "scope_error" ||
-    value === "truncated_content" ||
-    value === "notation_error"
-    ? value
-    : "mathematical_error";
+type StableJudgeParseResult =
+  | { ok: true; issues: CoursePublicationIssue[] }
+  | { ok: false; reason: string };
+
+function normalizeJudgePass(record: Record<string, unknown>): boolean | undefined {
+  if (typeof record.pass === "boolean") return record.pass;
+  const verdict = stringValue(record.verdict).trim().toLowerCase();
+  if (["pass", "passed", "ok", "valid", "validated", "success"].includes(verdict)) {
+    return true;
+  }
+  if (["fail", "failed", "invalid", "reject", "rejected"].includes(verdict)) {
+    return false;
+  }
+  return undefined;
 }
 
 function parseJudgeIssues(
   raw: unknown,
   validIds: Set<string>,
-): CoursePublicationIssue[] {
-  const fallbackId = validIds.values().next().value as string | undefined;
-  const failClosed = (message: string): CoursePublicationIssue[] =>
-    fallbackId
-      ? [
-          {
-            id: fallbackId,
-            severity: "blocking",
-            category: "mathematical_error",
-            message,
-            expectedFix:
-              "Relancer la certification et obtenir un verdict structuré avec des issues ciblées valides avant toute publication.",
-            source: "independent_judge",
-          },
-        ]
-      : [];
-
+): StableJudgeParseResult {
   const record = asRecord(raw);
   if (!record) {
-    return failClosed(
-      "Le certificateur indépendant a renvoyé une réponse inexploitable ; la publication est refusée par sécurité.",
-    );
+    return { ok: false, reason: "réponse non objet" };
   }
-  const verdict = record.verdict;
-  if (verdict !== "pass" && verdict !== "fail") {
-    return failClosed(
-      "Le certificateur indépendant n'a pas fourni de verdict pass/fail valide ; la publication est refusée par sécurité.",
+
+  const pass = normalizeJudgePass(record);
+  if (pass === undefined) {
+    return { ok: false, reason: "champ pass booléen absent ou invalide" };
+  }
+
+  const rawErrors = Array.isArray(record.errors)
+    ? record.errors
+    : Array.isArray(record.issues)
+      ? record.issues
+      : [];
+  const issues: CoursePublicationIssue[] = [];
+  let malformed = 0;
+
+  for (const rawError of rawErrors) {
+    const error = asRecord(rawError);
+    if (!error) {
+      malformed += 1;
+      continue;
+    }
+    const id = stringValue(error.id).trim();
+    const message = stringValue(error.message || error.reason).trim();
+    if (!id || !message || !validIds.has(id)) {
+      malformed += 1;
+      continue;
+    }
+    issues.push({
+      id,
+      severity: "blocking",
+      category: "mathematical_error",
+      message,
+      expectedFix: `Corriger précisément ce champ : ${message}`,
+      source: "independent_judge",
+    });
+  }
+
+  const deduped = issues.filter(
+    (issue, index, all) =>
+      all.findIndex(
+        (candidate) =>
+          candidate.id === issue.id && candidate.message === issue.message,
+      ) === index,
+  );
+
+  if (pass) {
+    if (rawErrors.length > 0 || malformed > 0 || deduped.length > 0) {
+      return {
+        ok: false,
+        reason: "pass=true est incompatible avec une liste d'erreurs non vide",
+      };
+    }
+    return { ok: true, issues: [] };
+  }
+
+  if (deduped.length === 0) {
+    return {
+      ok: false,
+      reason:
+        "pass=false sans erreur ciblée utilisant un identifiant autorisé",
+    };
+  }
+
+  return { ok: true, issues: deduped };
+}
+
+async function runStableJudgeRequest(
+  generate: StructuredGenerator,
+  payload: string,
+  systemPrompt: string,
+  contract: JsonSchemaContract,
+  validIds: Set<string>,
+  maxTokens: number,
+  label: string,
+): Promise<CoursePublicationIssue[]> {
+  let lastReason = "protocole inconnu";
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    const prompt =
+      attempt === 1
+        ? systemPrompt
+        : `${systemPrompt}\n\nRAPPEL TECHNIQUE OBLIGATOIRE : la réponse précédente était invalide. Retourne exactement {"pass":true,"errors":[]} ou {"pass":false,"errors":[{"id":"ID_AUTORISE","message":"ERREUR_PRECISE"}]}. Aucun autre champ.`;
+    const raw = await generate(
+      payload,
+      prompt,
+      contract,
+      0,
+      Math.min(4_000, Math.max(800, maxTokens)),
+      false,
+    );
+    const parsed = parseJudgeIssues(raw, validIds);
+    if (parsed.ok) return parsed.issues;
+    lastReason = parsed.reason;
+    console.warn(
+      `[course-ai][certification-protocol] ${label} tentative ${attempt}/2 invalide : ${lastReason}`,
     );
   }
 
-  const issues = Array.isArray(record.issues) ? record.issues : [];
-  const parsed = issues.flatMap((rawIssue) => {
-    const issue = asRecord(rawIssue);
-    if (!issue) return [];
-    const id = stringValue(issue.id).trim();
-    const message = stringValue(issue.message).trim();
-    const expectedFix = stringValue(issue.expected_fix).trim();
-    if (!id || !message || !expectedFix || !validIds.has(id)) return [];
-    return [
-      {
-        id,
-        severity:
-          issue.severity === "warning"
-            ? ("warning" as const)
-            : ("blocking" as const),
-        category: normalizeIssueCategory(issue.category),
-        message,
-        expectedFix,
-        source: "independent_judge" as const,
-      },
-    ];
-  });
-
-  if (verdict === "fail" && !parsed.some((issue) => issue.severity === "blocking")) {
-    return [
-      ...parsed,
-      ...failClosed(
-        "Le certificateur a rendu verdict=fail sans fournir d'erreur bloquante ciblée valide ; la publication reste refusée.",
-      ),
-    ];
-  }
-  return parsed;
+  throw new Error(
+    `Le certificateur IA a renvoyé deux réponses JSON invalides pour ${label} (${lastReason}). Le contenu n'est pas classé comme faux : la génération est arrêtée pour erreur de protocole.`,
+  );
 }
 
 function extractApproximateNumbers(value: string): ApproximateNumber[] {
@@ -1782,11 +1808,13 @@ PROTOCOLE UNIVERSEL OBLIGATOIRE :
 • pour CHAQUE exercice, résous la question depuis zéro avant de comparer answer et explanation ;
 • question, answer, hint et explanation doivent être cohérents et répondre à toutes les sous-questions ;
 • refuse les brouillons visibles, autocorrections, contradictions, résultats provisoires, seuils inventés et preuves circulaires ;
-• un simple délimiteur mathématique manquant est warning uniquement si le sens reste totalement non ambigu ;
-• chaque erreur susceptible d'enseigner quelque chose de faux est BLOCKING et cible exactement un id fourni ;
-• verdict="pass" seulement si aucune erreur bloquante ne reste.
+• un simple délimiteur mathématique manquant n'est pas une erreur si le sens reste totalement non ambigu ;
+• chaque erreur susceptible d'enseigner quelque chose de faux doit cibler exactement un id fourni.
 
-Ne réécris rien. Ne donne que le verdict structuré et les issues ciblées.`;
+FORMAT DE SORTIE UNIQUE :
+• aucune erreur réelle : {"pass":true,"errors":[]}
+• au moins une erreur réelle : {"pass":false,"errors":[{"id":"ID_FOURNI","message":"description précise"}]}
+N'ajoute aucun autre champ. N'invente aucun id. Ne réécris pas la leçon.`;
 }
 
 async function runUniversalPublicationJudge(
@@ -1802,49 +1830,50 @@ async function runUniversalPublicationJudge(
   if (references.length === 0) return [];
 
   const validIds = new Set(references.map((reference) => reference.id));
-  const raw = await options.generate(
-    JSON.stringify({
-      deterministic_alerts: deterministicIssues
-        .filter((issue) => validIds.has(issue.id))
-        .map((issue) => ({
-          id: issue.id,
-          severity: issue.severity,
-          category: issue.category,
-          message: issue.message,
-        })),
-      fields: references.map((reference) => ({
-        id: reference.id,
-        path: reference.path,
-        role: reference.role,
-        content: reference.value(),
+  const payload = JSON.stringify({
+    deterministic_alerts: deterministicIssues
+      .filter((issue) => validIds.has(issue.id))
+      .map((issue) => ({
+        id: issue.id,
+        severity: issue.severity,
+        category: issue.category,
+        message: issue.message,
       })),
-      exercises: scope.exercises
-        ? lesson.exercises.map((exercise, exerciseIndex) => ({
-            index: exerciseIndex + 1,
-            ids: {
-              question: `e${exerciseIndex}-question`,
-              answer: `e${exerciseIndex}-answer`,
-              hint: `e${exerciseIndex}-hint`,
-              explanation: `e${exerciseIndex}-explanation`,
-            },
-            question: richTextToMarkdown(exercise.question),
-            answer: richTextToMarkdown(exercise.answer),
-            hint: richTextToMarkdown(exercise.hint),
-            explanation: richTextToMarkdown(exercise.explanation),
-          }))
-        : [],
-    }),
+    fields: references.map((reference) => ({
+      id: reference.id,
+      path: reference.path,
+      role: reference.role,
+      content: reference.value(),
+    })),
+    exercises: scope.exercises
+      ? lesson.exercises.map((exercise, exerciseIndex) => ({
+          index: exerciseIndex + 1,
+          ids: {
+            question: `e${exerciseIndex}-question`,
+            answer: `e${exerciseIndex}-answer`,
+            hint: `e${exerciseIndex}-hint`,
+            explanation: `e${exerciseIndex}-explanation`,
+          },
+          question: richTextToMarkdown(exercise.question),
+          answer: richTextToMarkdown(exercise.answer),
+          hint: richTextToMarkdown(exercise.hint),
+          explanation: richTextToMarkdown(exercise.explanation),
+        }))
+      : [],
+  });
+  return runStableJudgeRequest(
+    options.generate,
+    payload,
     publicationUniversalJudgePrompt(options),
     publicationJudgeContract(
-      80,
-      "educalcul_universal_math_certifier",
-      "Certification universelle en une passe de la théorie et des exercices d'une leçon de mathématiques.",
+      12,
+      "educalcul_universal_math_certifier_v52",
+      "Verdict mathématique minimal et ciblé pour une leçon.",
     ),
-    0,
+    validIds,
     options.reviewMaxTokens,
-    true,
+    `la leçon « ${options.lessonPlan.title} »`,
   );
-  return parseJudgeIssues(raw, validIds);
 }
 
 type PublicationJudgeScope = {
@@ -2314,7 +2343,8 @@ async function runGlobalUniversalJudge(
 ): Promise<CoursePublicationIssue[]> {
   const references = collectCourseReferences(chapters);
   const validIds = new Set(references.map((reference) => reference.id));
-  const raw = await options.generate(
+  return runStableJudgeRequest(
+    options.generate,
     JSON.stringify({
       plan: options.blueprint.chapters.map((chapter, chapterIndex) => ({
         chapter: chapterIndex + 1,
@@ -2351,20 +2381,21 @@ Vérifie obligatoirement :
 • réponses et explications compatibles entre elles et avec les conventions du cours ;
 • diversité réelle des compétences et couverture du sujet demandé sans chapitre artificiel ;
 • adaptation au domaine mathématique rencontré : calcul, algèbre, analyse, géométrie, probabilités, statistiques, suites ou logique ;
-• chaque problème réel est BLOCKING et cible exactement l'id du champ à corriger ;
-• verdict="pass" uniquement si le cours peut être présenté tel quel au niveau annoncé.
+• chaque problème réel cible exactement l'id du champ à corriger.
 
-Ne signale aucune préférence stylistique et n'invente aucun id.`,
+FORMAT DE SORTIE UNIQUE :
+• cours publiable : {"pass":true,"errors":[]}
+• problème réel : {"pass":false,"errors":[{"id":"ID_FOURNI","message":"description précise"}]}
+Ne signale aucune préférence stylistique. N'ajoute aucun autre champ et n'invente aucun id.`,
     publicationJudgeContract(
-      100,
-      "educalcul_global_universal_math_certifier",
-      "Certification globale universelle de cohérence, progression et conformité au programme.",
+      20,
+      "educalcul_global_universal_math_certifier_v52",
+      "Verdict global minimal de cohérence et de conformité au programme.",
     ),
-    0,
+    validIds,
     options.reviewMaxTokens,
-    true,
+    "l'audit global du cours",
   );
-  return parseJudgeIssues(raw, validIds);
 }
 
 type GlobalPublicationAudit = {
