@@ -1197,32 +1197,53 @@ Structure racine exacte :
             );
           }
 
-          if (unstructuredMathFields.length > 0) {
-            throw new Error(
-              `La leçon « ${job.lesson.title} » contient encore des mathématiques non délimitées dans : ${unstructuredMathFields.join(", ")}.`,
-            );
-          }
-
           let reviewedChapter = normalizeStructuredCoursePedagogy({
             title: job.chapter.title,
             lessons: [reviewed],
           });
           const sanitized = sanitizeStructuredResources(reviewedChapter);
           reviewedChapter = normalizeStructuredCoursePedagogy(sanitized.value);
+
+          // Réparation ciblée des mathématiques non délimitées avant de refuser
+          // la leçon. Si le relecteur complet a expiré, cette passe courte peut
+          // encore corriger localement le champ concerné. La barrière de
+          // publication indépendante reste ensuite responsable de la qualité.
+          const needsTargetedMathRepair = unstructuredMathFields.length > 0;
+          if (needsTargetedMathRepair) {
+            console.warn(
+              `[course-ai] Réparation mathématique ciblée pour « ${job.lesson.title} » : ${unstructuredMathFields.join(", ")}.`,
+            );
+          }
+
           const repaired = await repairInvalidStructuredMath(reviewedChapter, {
             generate,
             label: `cours ${blueprint.title}, chapitre ${job.chapter.title}, leçon ${job.lesson.title}`,
-            enableModelRepair: false,
+            enableModelRepair: needsTargetedMathRepair,
           });
           reviewedChapter = normalizeStructuredCoursePedagogy(repaired.value);
+
+          const repairedLesson = reviewedChapter.lessons[0];
+          if (!repairedLesson) {
+            throw new Error(
+              `La leçon « ${job.lesson.title} » a disparu pendant la réparation mathématique.`,
+            );
+          }
+
+          unstructuredMathFields = courseLessonUnstructuredMathFields(repairedLesson);
+          if (unstructuredMathFields.length > 0) {
+            throw new Error(
+              `La leçon « ${job.lesson.title} » contient encore des mathématiques non délimitées après réparation ciblée dans : ${unstructuredMathFields.join(", ")}.`,
+            );
+          }
+
           const finalIssues = blockingIssues(reviewedChapter, qualityOptions);
-          if (finalIssues.length > 0 || !reviewedChapter.lessons[0]) {
+          if (finalIssues.length > 0) {
             throw new Error(
               `La leçon « ${job.lesson.title} » reste non conforme après relecture :\n${formatStructuredQualityIssues(finalIssues)}`,
             );
           }
 
-          const finalLesson = reviewedChapter.lessons[0];
+          const finalLesson = repairedLesson;
           telemetry.end(
             reviewLabel,
             `${patchCount} patch(es), ${deletedExerciseCount} exercice(s) supprimé(s), ${repaired.report.fallbackCount} repli(s) KaTeX`,
