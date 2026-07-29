@@ -437,8 +437,41 @@ function isInvalidStructuredJsonError(error: unknown): boolean {
   );
 }
 
+function isRequestTimeoutError(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error || "");
+  return /(?:dépassé\s+\d+\s*ms|timed?\s*out|timeout|abort(?:ed|ée)?)/i.test(message);
+}
+
 function isRecoverableWriterOutputError(error: unknown): boolean {
-  return isTruncationError(error) || isInvalidStructuredJsonError(error);
+  return (
+    isTruncationError(error) ||
+    isInvalidStructuredJsonError(error) ||
+    isRequestTimeoutError(error)
+  );
+}
+
+function incompleteLessonMessages(
+  lesson: StructuredCourseLesson | undefined,
+  includeExercises: boolean,
+): string[] {
+  if (!lesson) return ["la leçon est absente"];
+  const messages: string[] = [];
+  if (lesson.blocks.length === 0) messages.push("aucun bloc de cours");
+  if (!includeExercises) return messages;
+  if (lesson.exercises.length < 3) {
+    messages.push(`${lesson.exercises.length}/3 exercice(s) complet(s)`);
+  }
+  lesson.exercises.forEach((exercise, index) => {
+    const missing: string[] = [];
+    if (exercise.question.parts.length === 0) missing.push("question");
+    if (exercise.answer.parts.length === 0) missing.push("answer");
+    if (exercise.hint.parts.length === 0) missing.push("hint");
+    if (exercise.explanation.parts.length === 0) missing.push("explanation");
+    if (missing.length > 0) {
+      messages.push(`exercice ${index + 1} incomplet : ${missing.join(", ")}`);
+    }
+  });
+  return messages;
 }
 
 async function mapSettledWithConcurrency<T, R>(
@@ -649,8 +682,8 @@ export async function runCourseGeneration(
   );
   const writerConcurrency = envConcurrency(
     "AI_COURSE_WRITER_CONCURRENCY",
-    legacyLessonConcurrency,
-    10,
+    Math.min(3, legacyLessonConcurrency),
+    4,
   );
   const reviewerConcurrency = envConcurrency(
     "AI_COURSE_REVIEW_CONCURRENCY",
@@ -659,15 +692,21 @@ export async function runCourseGeneration(
   );
   const writerJsonRetryCount = envNumber(
     "AI_COURSE_WRITER_JSON_RETRIES",
-    2,
     1,
-    4,
+    0,
+    2,
   );
   const writerMaxTokens = envNumber(
     "AI_COURSE_WRITER_MAX_TOKENS",
-    128_000,
+    16_000,
     8_000,
-    128_000,
+    32_000,
+  );
+  const writerRecoveryMaxTokens = envNumber(
+    "AI_COURSE_WRITER_RECOVERY_MAX_TOKENS",
+    10_000,
+    6_000,
+    16_000,
   );
   const reviewLimit = createTaskLimiter(reviewerConcurrency);
   const publicationGateEnabled = process.env.AI_COURSE_PUBLICATION_GATE !== "0";
@@ -760,21 +799,28 @@ ${teacherDirective}`;
     // s'agit d'une limite haute, pas d'une longueur de sortie imposée.
     const blueprintMaxTokens = envNumber(
       "AI_COURSE_BLUEPRINT_MAX_TOKENS",
-      128_000,
+      16_000,
       8_000,
-      128_000,
+      32_000,
     );
     const blueprintRetryMaxTokens = envNumber(
       "AI_COURSE_BLUEPRINT_RETRY_MAX_TOKENS",
-      128_000,
+      16_000,
       8_000,
-      128_000,
+      32_000,
+    );
+    const blueprintRepairMaxTokens = envNumber(
+      "AI_COURSE_BLUEPRINT_REPAIR_MAX_TOKENS",
+      12_000,
+      8_000,
+      24_000,
     );
 
     const generateBlueprint = async (
       prompt: string,
       temperature: number,
       stage: "initial" | "repair",
+      activeMaxTokens = blueprintMaxTokens,
     ): Promise<unknown> => {
       try {
         return await generate(
@@ -782,14 +828,14 @@ ${teacherDirective}`;
           blueprintSystem,
           blueprintContract,
           temperature,
-          blueprintMaxTokens,
+          activeMaxTokens,
           false,
         );
       } catch (error) {
         if (!isTruncationError(error)) throw error;
 
         console.warn(
-          `[course-ai] Blueprint ${stage} tronqué à ${blueprintMaxTokens} tokens ; nouvelle génération fraîche et concise avec ${blueprintRetryMaxTokens} tokens.`,
+          `[course-ai] Blueprint ${stage} tronqué à ${activeMaxTokens} tokens ; nouvelle génération fraîche et concise avec ${blueprintRetryMaxTokens} tokens.`,
         );
 
         return generate(
@@ -823,15 +869,86 @@ REPRISE APRÈS TRONCATURE. Repars de zéro. Réponds uniquement avec l'objet JSO
       `${chapterCount} chapitre(s), ${totalLessonCount} leçon(s)`,
     );
 
-    const planWarnings = localBlueprintAuditMessages(
+    let planWarnings = localBlueprintAuditMessages(
       blueprint,
       subject,
       shouldIncludeExercises,
       String(grade_level),
     );
+    let blockingPlanWarnings = localBlueprintAuditMessages(
+      blueprint,
+      subject,
+      shouldIncludeExercises,
+      String(grade_level),
+      { blockingOnly: true },
+    );
+
+    // Un plan hors programme ne doit jamais lancer six rédacteurs. Une seule
+    // correction ciblée est autorisée ; si elle échoue, le job s'arrête tôt.
+    if (blockingPlanWarnings.length > 0) {
+      telemetry.start("blueprint-sanitize");
+      const repairPrompt = `${blueprintUser}
+
+PLAN ACTUEL À CORRIGER :
+${JSON.stringify(blueprint)}
+
+DÉFAUTS BLOQUANTS DÉTECTÉS PAR LE CONTRÔLE LOCAL :
+${blockingPlanWarnings.map((warning, index) => `${index + 1}. ${warning}`).join("\n")}
+
+CORRECTION UNIQUE : conserve exactement le même nombre de chapitres et de leçons. Corrige uniquement les titres, objectifs, périmètres, notions, sections, exercices et interdictions concernés. Supprime toute notion hors programme. Ne remplace jamais une notion interdite par un autre approfondissement hors niveau. Retourne l'objet JSON complet et aucun commentaire.`;
+
+      try {
+        const repairedRaw = await generateBlueprint(
+          repairPrompt,
+          0,
+          "repair",
+          blueprintRepairMaxTokens,
+        );
+        const repairedBlueprint = normalizeCourseBlueprint(repairedRaw, {
+          subject,
+          chapterCount,
+          lessonsPerChapter,
+          chapterRequiresGraph: (title, scope) =>
+            topicRequiresFunctionGraph(subject, subject_area || "", title, scope),
+        });
+        const repairedBlockingWarnings = localBlueprintAuditMessages(
+          repairedBlueprint,
+          subject,
+          shouldIncludeExercises,
+          String(grade_level),
+          { blockingOnly: true },
+        );
+        if (repairedBlockingWarnings.length < blockingPlanWarnings.length) {
+          blueprint = repairedBlueprint;
+          blockingPlanWarnings = repairedBlockingWarnings;
+          planWarnings = localBlueprintAuditMessages(
+            blueprint,
+            subject,
+            shouldIncludeExercises,
+            String(grade_level),
+          );
+        }
+        telemetry.end(
+          "blueprint-sanitize",
+          `${blockingPlanWarnings.length} défaut(s) bloquant(s) restant(s)`,
+        );
+      } catch (error) {
+        telemetry.end("blueprint-sanitize", "correction indisponible");
+        console.warn("[course-ai] Correction ciblée du plan indisponible.", error);
+      }
+    }
+
+    if (blockingPlanWarnings.length > 0) {
+      throw new Error(
+        `Le plan reste hors programme après une correction ciblée :\n${blockingPlanWarnings
+          .map((warning, index) => `${index + 1}. ${warning}`)
+          .join("\n")}`,
+      );
+    }
+
     if (planWarnings.length > 0) {
       console.warn(
-        `[course-ai][plan] ${planWarnings.length} avertissement(s) détecté(s) puis transmis aux rédacteurs et au certificateur final : ${planWarnings
+        `[course-ai][plan] ${planWarnings.length} avertissement(s) non bloquant(s) transmis aux rédacteurs : ${planWarnings
           .slice(0, 8)
           .join(" | ")}`,
       );
@@ -1003,11 +1120,16 @@ Structure racine exacte :
                 ? 0
                 : 0.02
               : temperature;
+            const activeMaxTokens = freshRetry
+              ? writerRecoveryMaxTokens
+              : purpose === "structural-correction"
+                ? Math.min(writerMaxTokens, 12_000)
+                : writerMaxTokens;
             try {
               return await requestDraft(
                 activePrompt,
                 activeTemperature,
-                writerMaxTokens,
+                activeMaxTokens,
                 activeSystemPrompt,
               );
             } catch (error) {
@@ -1035,9 +1157,13 @@ Structure racine exacte :
         let issues = blockingIssues(structured, qualityOptions);
         let bestScore = structuredCourseQualityScore(structured, qualityOptions);
         if (!hasCompleteLesson(structured.lessons[0], shouldIncludeExercises) || issues.length > 0) {
+          const completenessSummary = incompleteLessonMessages(
+            structured.lessons[0],
+            shouldIncludeExercises,
+          ).join(" ; ");
           const issueSummary = formatStructuredQualityIssues(issues);
           const retry = await requestDraftWithFreshJsonRecovery(
-            `${userPrompt}\nCORRECTION STRUCTURELLE UNIQUE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`,
+            `${userPrompt}\nCORRECTION STRUCTURELLE UNIQUE. La leçon précédente ne respectait pas le contrat :\n${[issueSummary, completenessSummary].filter(Boolean).join("\n") || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents. Complète précisément les champs manquants signalés.`,
             0.02,
             "structural-correction",
           );
@@ -1055,8 +1181,14 @@ Structure racine exacte :
 
         const lesson = structured.lessons[0];
         if (!hasCompleteLesson(lesson, shouldIncludeExercises) || issues.length > 0) {
+          const completenessSummary = incompleteLessonMessages(
+            lesson,
+            shouldIncludeExercises,
+          ).join(" ; ");
           throw new Error(
-            `La leçon « ${job.lesson.title} » reste structurellement non conforme :\n${formatStructuredQualityIssues(issues) || "contenu incomplet"}`,
+            `La leçon « ${job.lesson.title} » reste structurellement non conforme :\n${[formatStructuredQualityIssues(issues), completenessSummary]
+              .filter(Boolean)
+              .join("\n") || "contenu incomplet"}`,
           );
         }
 
