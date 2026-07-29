@@ -769,7 +769,15 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           attempt += 1
         ) {
           const issueSummary = formatStructuredQualityIssues(issues);
-          const correctionPrompt = `${userPrompt}\nCORRECTION STRUCTURELLE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`;
+          // "Rends une leçon complète" ne suffit pas à faire écrire davantage
+          // de mots : le modèle a besoin d'une consigne d'expansion explicite,
+          // sinon il retombe régulièrement sous le seuil (vu en prod : 329
+          // mots pour un minimum de 360, deux tentatives sans amélioration).
+          const tooShort = issues.some((issue) => issue.code === "lesson_too_short");
+          const expansionDirective = tooShort
+            ? `\nLA LEÇON EST TROP COURTE : ajoute au moins 120 mots de contenu substantiel et nouveau (approfondissement, exemple traité, remarque pédagogique, application) strictement dans le périmètre. Ne te contente pas de reformuler l'existant : le nombre de mots doit augmenter nettement.`
+            : "";
+          const correctionPrompt = `${userPrompt}\nCORRECTION STRUCTURELLE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}${expansionDirective}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`;
           let retry: StructuredCourseChapter;
           try {
             retry = await requestDraft(
