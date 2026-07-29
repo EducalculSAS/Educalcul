@@ -1540,8 +1540,13 @@ Structure racine exacte :
       const chapterIssues = blockingIssues(chapter, {
         expectedLessonCount: lessonsPerChapter,
         includeExercises: shouldIncludeExercises,
+        // Utilise le meme seuil tolerant que lors de la validation de chaque
+        // lecon. Une lecon deja acceptee a 90 % du minimum indicatif ne doit
+        // pas etre refusee ensuite par un controle de chapitre plus strict.
         minWordsPerLesson: Math.min(
-          ...chapterJobs.map((job) => job.budget.hardMinWords),
+          ...chapterJobs.map((job) =>
+            Math.max(240, Math.floor(job.budget.hardMinWords * 0.9)),
+          ),
         ),
         requireGraph,
       });
