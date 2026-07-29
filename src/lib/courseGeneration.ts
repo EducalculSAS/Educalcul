@@ -1180,6 +1180,7 @@ Structure racine exacte :
               boundaries: job.boundaries,
               level: String(grade_level),
               subject,
+              curriculumContext: programmeBlock,
             });
             reviewed = result.value;
             patchCount = result.report.patches;
@@ -1414,6 +1415,7 @@ Structure racine exacte :
             boundaries: job.boundaries,
             level: String(grade_level),
             subject,
+            curriculumContext: programmeBlock,
             reviewMaxTokens: publicationReviewMaxTokens,
             repairMaxTokens: publicationRepairMaxTokens,
           });
@@ -1488,6 +1490,7 @@ Structure racine exacte :
             blueprint,
             level: String(grade_level),
             subject,
+            curriculumContext: programmeBlock,
             reviewMaxTokens: globalPublicationReviewMaxTokens,
             repairMaxTokens: globalPublicationRepairMaxTokens,
           }),
@@ -1597,6 +1600,7 @@ Structure racine exacte :
               boundaries: job.boundaries,
               level: String(grade_level),
               subject,
+              curriculumContext: programmeBlock,
               reviewMaxTokens: publicationReviewMaxTokens,
               repairMaxTokens: publicationRepairMaxTokens,
             });
@@ -1647,6 +1651,7 @@ Structure racine exacte :
             blueprint,
             level: String(grade_level),
             subject,
+            curriculumContext: programmeBlock,
             reviewMaxTokens: globalPublicationReviewMaxTokens,
             repairMaxTokens: globalPublicationRepairMaxTokens,
           },

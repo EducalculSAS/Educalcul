@@ -41,6 +41,7 @@ type ReviewOptions = {
   boundaries: LessonBoundaryContext;
   level: string;
   subject: string;
+  curriculumContext?: string;
 };
 
 const noExtra = { additionalProperties: false } as const;
@@ -691,6 +692,19 @@ function stringValue(value: unknown): string {
   return typeof value === "string" ? value : "";
 }
 
+type CurriculumAwareOptions = {
+  curriculumContext?: string;
+};
+
+function curriculumPromptFragment(options: CurriculumAwareOptions): string {
+  const curriculum = options.curriculumContext?.trim();
+  if (!curriculum) {
+    return "RÉFÉRENCE DE PROGRAMME : non fournie. Reste strictement dans le niveau, le plan et le périmètre annoncés.";
+  }
+  return `RÉFÉRENCE DE PROGRAMME À RESPECTER STRICTEMENT :
+${curriculum}`;
+}
+
 export async function reviewCourseLesson(
   input: StructuredCourseLesson,
   options: ReviewOptions,
@@ -726,6 +740,7 @@ Rappels courts autorisés : ${options.boundaries.allowedRecall.join(" ; ") || "a
 Notions à ne pas développer car attribuées aux autres agents : ${options.boundaries.forbiddenDevelopments.join(" ; ") || "aucune"}.
 Sections prévues par le plan : ${options.lessonPlan.requiredSections.join(" ; ") || "non précisées"}.
 Compétences réservées aux exercices : ${options.lessonPlan.exerciseSkills.join(" ; ") || "non précisées"}.
+${curriculumPromptFragment(options)}
 Champs détectés localement comme mathématiques probablement non délimitées : ${suspiciousIds.join(" ; ") || "aucun"}.
 
 Contrôle obligatoirement :
@@ -738,6 +753,9 @@ Contrôle obligatoirement :
 • aucune répétition développée d'une notion interdite. Un rappel autorisé tient en une phrase ;
 • chaque exercice correspond à une compétence réservée dans le plan et ne duplique pas un exercice déjà décrit dans la leçon ;
 • refais les calculs de manière indépendante, surtout pour les paramètres, discriminants, changements de signe, extrema, limites et cas particuliers ;
+• avant d'accepter une affirmation universelle ou une inégalité, cherche activement un contre-exemple et teste plusieurs valeurs simples ;
+• si une question demande de démontrer une affirmation fausse, corrige l'énoncé et ses quatre champs au lieu de tenter de justifier le faux ;
+• refuse tout brouillon visible, autocorrection, « erreur, reprenons », calcul abandonné ou raisonnement contradictoire laissé dans le contenu final ;
 • tout champ signalé comme mathématiques probablement non délimitées doit être patché en Markdown avec $...$ ou en texte scolaire sans formule brute ;
 • si un exercice est faux, hors périmètre ou redondant, corrige ses quatre champs. Tu peux demander sa suppression uniquement si la leçon contient 4 exercices et qu'il en restera au moins 3.
 
@@ -1024,11 +1042,15 @@ type ApproximateNumber = {
   raw: string;
 };
 
-function publicationJudgeContract(maxIssues: number): JsonSchemaContract {
+function publicationJudgeContract(
+  maxIssues: number,
+  name = "educalcul_course_publication_judge",
+  description =
+    "Audit adversarial indépendant avant publication d'une leçon de mathématiques.",
+): JsonSchemaContract {
   return {
-    name: "educalcul_course_publication_judge",
-    description:
-      "Audit adversarial indépendant avant publication d'une leçon de mathématiques.",
+    name,
+    description,
     schema: {
       type: "object",
       properties: {
@@ -1267,6 +1289,130 @@ function usesPercentNotation(value: string): boolean {
   return /(?:%|\\%)/.test(value);
 }
 
+function normalizeForSemanticDetection(value: string): string {
+  return value
+    .toLocaleLowerCase("fr")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\\(?:left|right|,|;|!)/g, "")
+    .replace(/\\(?:gt|geq|ge)/g, ">")
+    .replace(/\\(?:lt|leq|le)/g, "<")
+    .replace(/\\cdot/g, "*")
+    .replace(/[${}]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const VISIBLE_SCRATCHPAD_PATTERN =
+  /\b(?:recalculons|reprenons|je me suis trompe|j['’]ai fait une erreur|attendez|oups|oops|erreur[.!:]\s*(?:reprenons|recalculons|correction)|ce resultat est faux)\b/i;
+const FALSE_PREMISE_PATTERN =
+  /\b(?:n['’]est pas toujours vra(?:i|ie)|est fausse?|contre-exemple|l['’]enonce est faux|ne peut pas etre demontre|affirmation fausse)\b/i;
+const PROOF_REQUEST_PATTERN =
+  /\b(?:demontrer|montrer|prouver|etablir|en deduire|justifier que)\b/i;
+
+function deterministicSemanticRedFlags(
+  lesson: StructuredCourseLesson,
+): CoursePublicationIssue[] {
+  const issues: CoursePublicationIssue[] = [];
+  const references = collectReferences(lesson);
+
+  references.forEach((reference) => {
+    const raw = reference.value();
+    const normalized = normalizeForSemanticDetection(raw);
+
+    if (VISIBLE_SCRATCHPAD_PATTERN.test(normalized)) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "proof_error",
+        message:
+          "Le champ contient un brouillon visible, une autocorrection ou un raisonnement abandonné qui ne doit jamais être présenté à l'élève.",
+        expectedFix:
+          "Réécrire le champ avec un raisonnement final propre, linéaire et vérifié, sans trace d'essais ni d'erreurs intermédiaires.",
+        source: "deterministic",
+      });
+    }
+
+    const compact = normalized.replace(/\s+/g, "");
+    const statesGeneralExpConvexity =
+      compact.includes("e^u(x)") &&
+      compact.includes("f''(x)=e^u(x)(u'(x))^2") &&
+      !compact.includes("u''(x)");
+    if (statesGeneralExpConvexity) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "mathematical_error",
+        message:
+          "La dérivée seconde de $e^{u(x)}$ est incomplète : le terme en $u''(x)$ manque, donc la convexité générale annoncée est fausse.",
+        expectedFix:
+          "Utiliser $f''(x)=e^{u(x)}((u'(x))^2+u''(x))$ et ne conclure à la convexité qu'avec des hypothèses suffisantes.",
+        source: "deterministic",
+      });
+    }
+
+    const assertsUniqueComposedSolution =
+      compact.includes("e^u(x)=k") &&
+      compact.includes("admetuneuniquesolution") &&
+      !/(injective|strictementmonotone|bijection)/.test(compact);
+    if (assertsUniqueComposedSolution) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "mathematical_error",
+        message:
+          "Le champ affirme à tort que $e^{u(x)}=k$ possède toujours une unique solution ; le nombre de solutions dépend de l'équation $u(x)=\ln(k)$.",
+        expectedFix:
+          "Énoncer seulement l'équivalence avec $u(x)=\ln(k)$, puis préciser les hypothèses garantissant l'unicité.",
+        source: "deterministic",
+      });
+    }
+
+    const falseExpCubicThreshold =
+      /e\^x>x\^3/.test(compact) &&
+      /(?:x>3|pourtoutx>3)/.test(compact);
+    if (falseExpCubicThreshold) {
+      issues.push({
+        id: reference.id,
+        severity: "blocking",
+        category: "numerical_error",
+        message:
+          "L'affirmation $e^x>x^3$ pour tout $x>3$ est fausse ; par exemple $e^4<4^3$.",
+        expectedFix:
+          "Remplacer l'énoncé par une affirmation exacte ou déterminer correctement le seuil après vérification numérique et analytique.",
+        source: "deterministic",
+      });
+    }
+  });
+
+  lesson.exercises.forEach((exercise, exerciseIndex) => {
+    const question = normalizeForSemanticDetection(
+      richTextToMarkdown(exercise.question),
+    );
+    const answer = normalizeForSemanticDetection(richTextToMarkdown(exercise.answer));
+    const explanation = normalizeForSemanticDetection(
+      richTextToMarkdown(exercise.explanation),
+    );
+    if (
+      PROOF_REQUEST_PATTERN.test(question) &&
+      FALSE_PREMISE_PATTERN.test(`${answer} ${explanation}`)
+    ) {
+      issues.push({
+        id: `e${exerciseIndex}-question`,
+        severity: "blocking",
+        category: "mathematical_error",
+        message:
+          "L'énoncé demande de démontrer une affirmation que la réponse ou la correction réfute elle-même.",
+        expectedFix:
+          "Remplacer l'énoncé par une proposition vraie, puis recalculer answer, hint et explanation depuis zéro.",
+        source: "deterministic",
+      });
+    }
+  });
+
+  return issues;
+}
+
 function deterministicPublicationIssues(
   lesson: StructuredCourseLesson,
 ): CoursePublicationIssue[] {
@@ -1322,6 +1468,8 @@ function deterministicPublicationIssues(
     }
   });
 
+  issues.push(...deterministicSemanticRedFlags(lesson));
+
   courseLessonUnstructuredMathFields(lesson).forEach((id) => {
     issues.push({
       id,
@@ -1346,9 +1494,9 @@ function deterministicPublicationIssues(
   );
 }
 
-function publicationJudgePrompt(options: PublicationGateOptions): string {
-  return `Tu es le juge mathématique final et adversarial d'Educalcul.
-Tu interviens APRÈS un rédacteur et APRÈS un premier relecteur indépendant. Ton rôle n'est pas d'améliorer le style : tu dois empêcher toute erreur pédagogique de passer en production.
+function publicationTheoryJudgePrompt(options: PublicationGateOptions): string {
+  return `Tu es le certificateur théorique final et adversarial d'Educalcul.
+Tu contrôles UNIQUEMENT les blocs de cours, définitions, propriétés, preuves, tableaux et graphes. Tu ne fais confiance ni au rédacteur ni au premier relecteur.
 
 Niveau : ${sanitizeStructuredText(options.level)}.
 Sujet : ${sanitizeStructuredText(options.subject)}.
@@ -1359,29 +1507,131 @@ Objectif : ${sanitizeStructuredText(options.lessonPlan.objective)}.
 Périmètre : ${sanitizeStructuredText(options.lessonPlan.scope)}.
 Notions propriétaires : ${options.boundaries.ownedConcepts.join(" ; ") || "non précisées"}.
 Notions interdites ou réservées aux autres leçons : ${options.boundaries.forbiddenDevelopments.join(" ; ") || "aucune"}.
-Compétences d'exercices attendues : ${options.lessonPlan.exerciseSkills.join(" ; ") || "non précisées"}.
+${curriculumPromptFragment(options)}
 
-Audit obligatoire, champ par champ :
-• refais indépendamment chaque exercice, sans faire confiance à answer ni explanation ;
-• vérifie les calculs exacts ET les valeurs approchées, y compris unités, pourcentages, dates, intérêts, taux continus, suites et changements de variable ;
-• vérifie les inégalités numériques et les comparaisons de constantes avant de conclure sur une limite ou une suite ;
-• vérifie les dérivées, signes, tableaux, extrema, discriminants, domaines, cas paramétriques, nombre de solutions et sens des implications ;
-• vérifie les démonstrations : aucune circularité, hypothèse manquante ou propriété utilisée avant d'être établie ;
-• vérifie les graphes et légendes : expression, asymptote, tangente, pente, convexité, demi-vie, limites et paramètres doivent décrire le même objet ;
-• vérifie les tableaux : tous les cas particuliers doivent être exacts, notamment quand un paramètre vaut zéro ;
-• vérifie que answer et la conclusion de explanation donnent strictement le même résultat ;
-• refuse toute réponse tronquée, intervalle avec « ... », formule réellement cassée ou notation mathématiquement ambiguë ;
-• un simple délimiteur $...$ manquant, sans ambiguïté sur le sens ni erreur de calcul, est seulement warning et ne doit jamais être blocking ;
-• refuse les définitions non standard présentées comme générales et les notions hors niveau non demandées ;
-• distingue croissance, vitesse de croissance et convexité ; minimum et infimum ; taux nominal, périodique et continu ;
-• une imprécision qui peut faire apprendre quelque chose de faux est BLOCKING.
+Méthode obligatoire :
+• vérifie chaque affirmation mathématique comme si elle était contestée ;
+• pour toute affirmation universelle, cherche activement un contre-exemple simple avant de l'accepter ;
+• recalcule dérivées, limites, signes, discriminants, extrema, convexité, tableaux et paramètres ;
+• vérifie les hypothèses : une formule vraie pour $e^{ax+b}$ ne doit pas être généralisée sans preuve à $e^{u(x)}$ ;
+• vérifie le nombre de solutions : transformer $e^{u(x)}=k$ en $u(x)=\ln(k)$ ne garantit pas l'unicité ;
+• vérifie les graphes et légendes, y compris expression, paramètres, asymptotes, tangentes, pente et convexité ;
+• refuse une preuve circulaire, une propriété utilisée avant d'être établie ou une conclusion plus forte que les hypothèses ;
+• refuse toute notion hors niveau ou hors programme présentée comme indispensable ;
+• refuse tout brouillon visible, autocorrection, « erreur, reprenons », calcul abandonné ou contradiction interne ;
+• un simple délimiteur mathématique manquant est warning seulement si le sens reste parfaitement non ambigu.
 
-Règles de sortie :
-• chaque issue cible exactement un id fourni ;
-• pour un exercice, cible answer si le résultat final est faux, explanation si le raisonnement est faux, question si l'énoncé est incohérent, hint si l'indice induit en erreur ;
-• verdict="pass" seulement s'il ne reste AUCUNE issue blocking ;
-• ne signale pas de préférence stylistique ;
-• n'invente aucun id.`;
+Chaque défaut susceptible d'enseigner quelque chose de faux est BLOCKING. Chaque issue cible exactement un id fourni. verdict="pass" seulement si aucune issue blocking ne reste.`;
+}
+
+function publicationExerciseJudgePrompt(options: PublicationGateOptions): string {
+  return `Tu es le solveur indépendant final des exercices Educalcul.
+Tu contrôles UNIQUEMENT les exercices. Tu dois résoudre chaque question depuis zéro, sans utiliser answer ni explanation comme source de vérité.
+
+Niveau : ${sanitizeStructuredText(options.level)}.
+Sujet : ${sanitizeStructuredText(options.subject)}.
+Leçon : ${sanitizeStructuredText(options.lessonPlan.title)}.
+Compétences attendues : ${options.lessonPlan.exerciseSkills.join(" ; ") || "non précisées"}.
+${curriculumPromptFragment(options)}
+
+Procédure obligatoire pour CHAQUE exercice :
+1. Vérifie que l'énoncé est vrai, résoluble, non ambigu et adapté au niveau. Si l'on demande de prouver une affirmation fausse, cible question en blocking.
+2. Résous indépendamment toutes les sous-questions et teste les cas limites, valeurs simples et contre-exemples.
+3. Compare ensuite ton résultat à answer, sans jamais lui faire confiance.
+4. Vérifie chaque étape de explanation, les unités, signes, arrondis, intervalles, dates, taux et nombres de solutions.
+5. Vérifie que answer et la conclusion de explanation donnent exactement le même résultat et répondent à toutes les sous-questions.
+6. Refuse un seuil numérique inventé, une vérification sur un seul point utilisée comme preuve générale, ou un appel vague à « croissance comparée » qui ne démontre pas l'assertion demandée.
+7. Refuse tout brouillon visible, autocorrection, « erreur », « reprenons », calcul abandonné ou contradiction entre deux phrases.
+8. Vérifie que hint aide sans révéler une réponse fausse.
+
+Pour un exercice, cible question si l'énoncé est faux, answer si le résultat final est faux, explanation si le raisonnement est faux, hint si l'indice induit en erreur. Chaque erreur mathématique ou pédagogique réelle est BLOCKING. verdict="pass" seulement si toutes les questions sont intégralement correctes.`;
+}
+
+async function runPublicationTheoryJudge(
+  lesson: StructuredCourseLesson,
+  options: PublicationGateOptions,
+  deterministicIssues: CoursePublicationIssue[],
+): Promise<CoursePublicationIssue[]> {
+  const references = collectReferences(lesson).filter(
+    (reference) => !reference.role.startsWith("exercise_"),
+  );
+  if (references.length === 0) return [];
+  const validIds = new Set(references.map((reference) => reference.id));
+  const raw = await options.generate(
+    JSON.stringify({
+      deterministic_alerts: deterministicIssues
+        .filter((issue) => validIds.has(issue.id))
+        .map((issue) => ({
+          id: issue.id,
+          severity: issue.severity,
+          category: issue.category,
+          message: issue.message,
+        })),
+      fields: references.map((reference) => ({
+        id: reference.id,
+        path: reference.path,
+        role: reference.role,
+        content: reference.value(),
+      })),
+    }),
+    publicationTheoryJudgePrompt(options),
+    publicationJudgeContract(
+      50,
+      "educalcul_course_theory_certifier",
+      "Certification adversariale des définitions, propriétés, preuves, tableaux et graphes d'une leçon.",
+    ),
+    0,
+    options.reviewMaxTokens,
+    true,
+  );
+  return parseJudgeIssues(raw, validIds);
+}
+
+async function runPublicationExerciseJudge(
+  lesson: StructuredCourseLesson,
+  options: PublicationGateOptions,
+  deterministicIssues: CoursePublicationIssue[],
+): Promise<CoursePublicationIssue[]> {
+  const references = collectReferences(lesson).filter((reference) =>
+    reference.role.startsWith("exercise_"),
+  );
+  if (references.length === 0) return [];
+  const validIds = new Set(references.map((reference) => reference.id));
+  const raw = await options.generate(
+    JSON.stringify({
+      deterministic_alerts: deterministicIssues
+        .filter((issue) => validIds.has(issue.id))
+        .map((issue) => ({
+          id: issue.id,
+          severity: issue.severity,
+          category: issue.category,
+          message: issue.message,
+        })),
+      exercises: lesson.exercises.map((exercise, exerciseIndex) => ({
+        index: exerciseIndex + 1,
+        ids: {
+          question: `e${exerciseIndex}-question`,
+          answer: `e${exerciseIndex}-answer`,
+          hint: `e${exerciseIndex}-hint`,
+          explanation: `e${exerciseIndex}-explanation`,
+        },
+        question: richTextToMarkdown(exercise.question),
+        answer: richTextToMarkdown(exercise.answer),
+        hint: richTextToMarkdown(exercise.hint),
+        explanation: richTextToMarkdown(exercise.explanation),
+      })),
+    }),
+    publicationExerciseJudgePrompt(options),
+    publicationJudgeContract(
+      60,
+      "educalcul_course_exercise_certifier",
+      "Résolution indépendante et certification adversariale de tous les exercices d'une leçon.",
+    ),
+    0,
+    options.reviewMaxTokens,
+    true,
+  );
+  return parseJudgeIssues(raw, validIds);
 }
 
 async function runPublicationJudge(
@@ -1389,31 +1639,26 @@ async function runPublicationJudge(
   options: PublicationGateOptions,
   deterministicIssues: CoursePublicationIssue[],
 ): Promise<CoursePublicationIssue[]> {
-  const references = collectReferences(lesson);
-  const payload = references.map((reference) => ({
-    id: reference.id,
-    path: reference.path,
-    role: reference.role,
-    content: reference.value(),
-  }));
-  const validIds = new Set(references.map((reference) => reference.id));
-  const raw = await options.generate(
-    JSON.stringify({
-      deterministic_alerts: deterministicIssues.map((issue) => ({
-        id: issue.id,
-        severity: issue.severity,
-        category: issue.category,
-        message: issue.message,
-      })),
-      fields: payload,
-    }),
-    publicationJudgePrompt(options),
-    publicationJudgeContract(40),
-    0,
-    options.reviewMaxTokens,
-    true,
+  // Deux passes séquentielles : le solveur d'exercices ne partage ni charge
+  // ni réponse avec le certificateur théorique. Cela limite aussi les pics de
+  // concurrence Mistral pendant les six vérifications de leçon.
+  const theoryIssues = await runPublicationTheoryJudge(
+    lesson,
+    options,
+    deterministicIssues,
   );
-  return parseJudgeIssues(raw, validIds);
+  console.info(
+    `[course-ai][certification] théorie « ${options.lessonPlan.title} » : ${theoryIssues.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
+  );
+  const exerciseIssues = await runPublicationExerciseJudge(
+    lesson,
+    options,
+    deterministicIssues,
+  );
+  console.info(
+    `[course-ai][certification] exercices « ${options.lessonPlan.title} » : ${exerciseIssues.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
+  );
+  return [...theoryIssues, ...exerciseIssues];
 }
 
 function relatedReferenceIds(issueId: string, allIds: string[]): string[] {
@@ -1512,10 +1757,12 @@ async function repairPublicationIssues(
     `Tu es le correcteur mathématique ciblé d'Educalcul.
 Niveau : ${sanitizeStructuredText(options.level)}. Sujet : ${sanitizeStructuredText(options.subject)}.
 Leçon : ${sanitizeStructuredText(options.lessonPlan.title)}.
+${curriculumPromptFragment(options)}
 Cycle de réparation ${round}/${maxRounds}.
 
 Corrige TOUTES les erreurs bloquantes listées, uniquement par patches locaux.
-• Recalcule chaque exercice depuis l'énoncé avant d'écrire la correction.
+• Recalcule chaque exercice depuis l'énoncé avant d'écrire la correction et cherche un contre-exemple à toute affirmation universelle.
+• Si l'énoncé demande de démontrer une affirmation fausse ou hors niveau, remplace question, answer, hint et explanation par une mini-unité exacte et conforme au programme.
 • Pour une incohérence d'exercice, harmonise question, answer, hint et explanation. Réécris les quatre champs si cela évite toute ambiguïté.
 • answer contient la réponse finale complète ; explanation démontre et conclut avec exactement le même résultat, les mêmes unités, les mêmes signes et les mêmes valeurs approchées.
 • Une valeur intermédiaire ne doit jamais être présentée comme réponse finale.
@@ -1525,6 +1772,7 @@ Corrige TOUTES les erreurs bloquantes listées, uniquement par patches locaux.
 • Utilise le Markdown mathématique avec $...$ ; un display_math reçoit uniquement le LaTeX sans délimiteurs.
 • Ne modifie aucun champ non fourni et n'invente aucun id.
 • Chaque patch remplace le champ complet, pas seulement un fragment.
+• Supprime tout brouillon visible, autocorrection, calcul abandonné, « erreur », « reprenons » ou contradiction interne.
 • Ne laisse aucune ellipse, aucun TODO et aucune réponse provisoire.
 • Cette passe est obligatoire : renvoie au moins un patch valide lorsque des erreurs sont fournies.`,
     publicationRepairContract(Math.min(40, Math.max(8, fields.length)), true),
@@ -1624,16 +1872,18 @@ L'exercice a résisté à une correction locale. Reconstruis cette mini-unité c
 Niveau : ${sanitizeStructuredText(options.level)}.
 Sujet : ${sanitizeStructuredText(options.subject)}.
 Leçon : ${sanitizeStructuredText(options.lessonPlan.title)}.
+${curriculumPromptFragment(options)}
 
 Règles obligatoires :
 • conserve la compétence et la difficulté visées, mais tu peux reformuler l'énoncé pour supprimer toute incohérence ;
+• vérifie d'abord que l'affirmation demandée est vraie ; cherche un contre-exemple et remplace l'énoncé si nécessaire ;
 • recalcule intégralement depuis l'énoncé ;
 • answer donne uniquement la réponse finale complète ;
 • explanation fournit un raisonnement vérifiable et se termine par exactement le même résultat que answer ;
 • hint aide sans révéler directement la réponse ;
 • vérifie les signes, unités, arrondis, intervalles, dates, taux et cas particuliers ;
 • utilise du Markdown mathématique avec $...$ ;
-• aucune ellipse, aucun TODO, aucun résultat provisoire ;
+• aucune ellipse, aucun TODO, aucun résultat provisoire, aucun brouillon ni autocorrection visible ;
 • retourne les quatre champs, même si un seul semblait incorrect.`,
         publicationExerciseRewriteContract(),
         0,
@@ -1786,6 +2036,7 @@ type GlobalPublicationGateOptions = {
   subject: string;
   reviewMaxTokens: number;
   repairMaxTokens: number;
+  curriculumContext?: string;
 };
 
 function collectCourseReferences(
@@ -1850,6 +2101,7 @@ Le cours a déjà passé une relecture puis un juge mathématique par leçon. Tu
 
 Niveau : ${sanitizeStructuredText(options.level)}.
 Sujet : ${sanitizeStructuredText(options.subject)}.
+${curriculumPromptFragment(options)}
 
 Vérifie obligatoirement :
 • aucune définition, propriété ou convention ne se contredit entre deux leçons ;
@@ -1861,11 +2113,73 @@ Vérifie obligatoirement :
 • les graphes, tableaux et synthèses ne contredisent pas les paragraphes ou exercices ;
 • aucune leçon n'introduit une notion hors programme comme indispensable ;
 • aucune répétition substantielle n'occupe la place d'un contenu utile ;
-• aucune erreur mathématique manifeste n'a échappé aux contrôles précédents.
+• aucune erreur mathématique manifeste n'a échappé aux contrôles précédents ;
+• cherche activement des contre-exemples aux affirmations universelles et aux seuils numériques ;
+• aucun brouillon, autocorrection ou raisonnement contradictoire n'est resté dans le contenu final.
 
 Ne signale pas une simple préférence de style. Chaque problème susceptible d'enseigner quelque chose de faux ou de rendre le cours non exploitable est blocking.
 Chaque issue cible exactement un id fourni. verdict="pass" seulement si aucune issue blocking ne reste.`,
-    publicationJudgeContract(60),
+    publicationJudgeContract(
+      70,
+      "educalcul_course_global_consistency_certifier",
+      "Certification de la cohérence mathématique et pédagogique inter-leçons.",
+    ),
+    0,
+    options.reviewMaxTokens,
+    true,
+  );
+  return parseJudgeIssues(raw, validIds);
+}
+
+async function runGlobalCurriculumJudge(
+  chapters: StructuredCourseChapter[],
+  options: GlobalPublicationGateOptions,
+): Promise<CoursePublicationIssue[]> {
+  const references = collectCourseReferences(chapters);
+  const validIds = new Set(references.map((reference) => reference.id));
+  const raw = await options.generate(
+    JSON.stringify({
+      plan: options.blueprint.chapters.map((chapter, chapterIndex) => ({
+        chapter: chapterIndex + 1,
+        title: chapter.title,
+        scope: chapter.scope,
+        lessons: chapter.lessons.map((lesson, lessonIndex) => ({
+          lesson: lessonIndex + 1,
+          title: lesson.title,
+          objective: lesson.objective,
+          owned_concepts: lesson.coreConcepts,
+          forbidden_concepts: lesson.forbiddenConcepts,
+        })),
+      })),
+      fields: references.map((reference) => ({
+        id: reference.id,
+        path: reference.path,
+        role: reference.role,
+        content: reference.value(),
+      })),
+    }),
+    `Tu es l'inspecteur de conformité au programme d'Educalcul.
+Tu ne contrôles pas le style. Tu vérifies que chaque notion, méthode, preuve et exercice correspond réellement au niveau annoncé et au programme fourni.
+
+Niveau : ${sanitizeStructuredText(options.level)}.
+Sujet : ${sanitizeStructuredText(options.subject)}.
+${curriculumPromptFragment(options)}
+
+Règles strictes :
+• une notion d'un niveau supérieur, une méthode universitaire ou un théorème admis mais démontré avec un outil hors programme est BLOCKING ;
+• un rappel bref déjà acquis est autorisé, mais il ne doit pas devenir le cœur d'une leçon ;
+• compare chaque bloc et chaque exercice au plan : le contenu doit rester dans owned_concepts et éviter forbidden_concepts ;
+• une formule générale plus avancée ne doit pas remplacer la capacité scolaire attendue ;
+• un exercice qui exige un outil non étudié est blocking, même si sa correction est mathématiquement juste ;
+• cible précisément les champs à remplacer et utilise category="level_mismatch" ou "scope_error" ;
+• verdict="pass" seulement si l'ensemble est exploitable tel quel par un élève du niveau annoncé.
+
+N'invente aucun id et ne signale aucune préférence stylistique.`,
+    publicationJudgeContract(
+      80,
+      "educalcul_course_curriculum_certifier",
+      "Certification indépendante de la conformité au niveau, au programme et au périmètre pédagogique.",
+    ),
     0,
     options.reviewMaxTokens,
     true,
@@ -1884,7 +2198,18 @@ async function auditCourseGloballyForPublication(
   options: GlobalPublicationGateOptions,
 ): Promise<GlobalPublicationAudit> {
   const deterministic = globalDeterministicPublicationIssues(chapters);
-  const judge = await runGlobalPublicationJudge(chapters, options);
+  // Le contrôle de cohérence et l'inspection du programme sont volontairement
+  // séparés : chacun doit produire son propre verdict sans s'appuyer sur
+  // l'autre. Les exécuter séquentiellement évite un pic réseau en fin de cours.
+  const consistencyJudge = await runGlobalPublicationJudge(chapters, options);
+  console.info(
+    `[course-ai][certification] cohérence globale : ${consistencyJudge.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
+  );
+  const curriculumJudge = await runGlobalCurriculumJudge(chapters, options);
+  console.info(
+    `[course-ai][certification] conformité programme : ${curriculumJudge.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
+  );
+  const judge = [...consistencyJudge, ...curriculumJudge];
   return {
     deterministic,
     judge,
@@ -1958,15 +2283,18 @@ async function repairGlobalPublicationIssues(
       editable_fields: fields,
     }),
     `Tu es le correcteur global final d'Educalcul.
+${curriculumPromptFragment(options)}
 Cycle de réparation ${round}/${maxRounds}.
-Corrige uniquement les incohérences inter-leçons listées. Les leçons ont déjà été vérifiées mathématiquement : ne réécris pas le cours et ne modifie aucun champ non fourni.
+Corrige uniquement les incohérences inter-leçons, erreurs de niveau et défauts sémantiques listés. Les leçons ont déjà été vérifiées mathématiquement : ne réécris pas le cours et ne modifie aucun champ non fourni.
 • conserve le plan, le niveau et le périmètre propriétaire de chaque leçon ;
+• remplace tout contenu hors programme par un contenu exact qui enseigne la compétence prévue au niveau annoncé ;
 • remplace toute définition non standard par la définition scolaire correcte ;
 • harmonise les unités, symboles, hypothèses, taux et cas particuliers ;
 • si un exercice est concerné, recalcule-le et harmonise question, answer, hint et explanation ;
 • answer et explanation doivent se terminer par strictement le même résultat ;
 • utilise du Markdown mathématique avec $...$ ;
-• aucun id inventé, aucune ellipse, aucun contenu provisoire ;
+• aucun id inventé, aucune ellipse, aucun contenu provisoire, aucun brouillon ou autocorrection visible ;
+• pour toute affirmation générale, teste un contre-exemple avant de la conserver ;
 • renvoie au moins un patch valide lorsque des erreurs sont fournies.`,
     publicationRepairContract(Math.min(60, Math.max(8, fields.length)), true),
     0,
