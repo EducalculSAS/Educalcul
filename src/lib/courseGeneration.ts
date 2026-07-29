@@ -706,17 +706,14 @@ ${teacherDirective}`;
       chapterCount,
       lessonsPerChapter,
     });
-    // Leanstral 1.5 accepte jusqu'à 128k tokens de sortie. Le blueprint est
-    // une petite structure JSON mais le raisonnement interne du modèle peut
-    // consommer une part importante de max_tokens. On lui donne donc, dès le
-    // premier appel, le plafond du modèle au lieu de relancer le même plan avec
-    // des budgets croissants. max_tokens reste un plafond, pas une longueur
-    // cible : le modèle s'arrête normalement dès que l'objet JSON est terminé.
+    // Le blueprint est une structure JSON relativement petite.
+    // Un plafond trop élevé peut prolonger inutilement le raisonnement du modèle.
+    // 24k laisse une marge confortable pour le raisonnement et la sortie structurée.
     const blueprintMaxTokens = envNumber(
       "AI_COURSE_BLUEPRINT_MAX_TOKENS",
-      128_000,
-      12_000,
-      128_000,
+      24_000,
+      8_000,
+      32_000,
     );
 
     const rawBlueprint = await generate(
@@ -772,7 +769,7 @@ Vérifie obligatoirement :
 verdict="ok" seulement si les rédacteurs peuvent travailler en parallèle sans se répéter.`,
         courseBlueprintAuditSchema(),
         0.05,
-        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 128_000, 3_000, 128_000),
+        envNumber("AI_COURSE_BLUEPRINT_REVIEW_MAX_TOKENS", 8_000, 2_000, 16_000),
         false,
       );
       independentPlanIssues = blueprintAuditMessages(auditRaw)

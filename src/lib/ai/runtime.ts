@@ -90,96 +90,52 @@ export function createLlmStartGate(
       try {
         while (monitorActive && !controller.signal.aborted) {
           if (await checkCancelled()) {
-      throw new GenerationCancelledError();
-    }
+            abortedByCancellationRequest = true;
+            controller.abort();
+            break;
+          }
 
-    const configuredTimeout = Number(process.env.MISTRAL_REQUEST_TIMEOUT_MS);
-    const requestTimeoutMs =
-      Number.isFinite(configuredTimeout) && configuredTimeout >= 30_000
-        ? configuredTimeout
-        : 180_000;
+          await sleep(250);
+        }
+      } catch {
+        // L'échec du polling ne doit pas interrompre une génération valide.
+      }
+    })();
 
-    // Le blueprint est indispensable à tout le pipeline. En cas de timeout
-    // ponctuel, on repart une seule fois avec une requête et un contrôleur neufs.
-    const isBlueprintRequest = contract.name === "educalcul_course_blueprint";
-    const maxAttempts = isBlueprintRequest ? 2 : 1;
-    let lastError: unknown;
+    try {
+      const configuredTimeout = Number(process.env.MISTRAL_REQUEST_TIMEOUT_MS);
+      const requestTimeoutMs =
+        Number.isFinite(configuredTimeout) && configuredTimeout >= 30_000
+          ? configuredTimeout
+          : 180_000;
+      return await withTimeout(
+        generateStructuredContentWithSchema<T>(
+          userPrompt,
+          systemPrompt,
+          contract,
+          temperature,
+          maxTokens,
+          reasoning,
+          controller.signal,
+        ),
+        requestTimeoutMs,
+        `La requête Mistral (${contract.name})`,
+        () => controller.abort(),
+      );
+    } catch (error) {
+      const cancellationWasActuallyRequested =
+        abortedByCancellationRequest || (await checkCancelled());
 
-    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-      if (await checkCancelled()) {
+      if (cancellationWasActuallyRequested) {
         throw new GenerationCancelledError();
       }
 
-      const controller = new AbortController();
-      let monitorActive = true;
-      let abortedByCancellationRequest = false;
-      let abortedByTimeout = false;
-
-      void (async () => {
-        try {
-          while (monitorActive && !controller.signal.aborted) {
-            if (await checkCancelled()) {
-              abortedByCancellationRequest = true;
-              controller.abort();
-              break;
-            }
-            await sleep(250);
-          }
-        } catch {
-          // L'échec du polling ne doit pas interrompre une génération valide.
-        }
-      })();
-
-      try {
-        return await withTimeout(
-          generateStructuredContentWithSchema<T>(
-            userPrompt,
-            systemPrompt,
-            contract,
-            temperature,
-            maxTokens,
-            reasoning,
-            controller.signal,
-          ),
-          requestTimeoutMs,
-          `La requête Mistral (${contract.name})`,
-          () => {
-            abortedByTimeout = true;
-            controller.abort();
-          },
-        );
-      } catch (error) {
-        lastError = error;
-
-        const cancellationWasActuallyRequested =
-          abortedByCancellationRequest || (await checkCancelled());
-
-        if (cancellationWasActuallyRequested) {
-          throw new GenerationCancelledError();
-        }
-
-        const message = error instanceof Error ? error.message : String(error);
-        const isTimeout =
-          abortedByTimeout || /a dépassé|timeout|timed out/i.test(message);
-
-        if (!isTimeout || attempt >= maxAttempts) {
-          throw error;
-        }
-
-        console.warn(
-          `[llm] Timeout ${contract.name} — nouvelle tentative ` +
-            `${attempt + 1}/${maxAttempts} avec une requête fraîche.`,
-        );
-
-        await sleep(2_000);
-      } finally {
-        monitorActive = false;
-      }
+      // Un AbortError causé par withTimeout est une erreur technique,
+      // pas une annulation demandée par l'utilisateur.
+      throw error;
+    } finally {
+      monitorActive = false;
     }
-
-    throw lastError instanceof Error
-      ? lastError
-      : new Error(`Échec de la requête Mistral (${contract.name}).`);
   };
 }
 
