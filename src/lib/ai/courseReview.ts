@@ -68,11 +68,14 @@ function boundedIntegerEnv(
 }
 
 function publicationRepairCycleLimit(): number {
-  return boundedIntegerEnv("AI_COURSE_PUBLICATION_MAX_REPAIR_CYCLES", 3, 1, 5);
+  // Une seule réparation complète par leçon suffit en environnement
+  // serverless. Si elle échoue, on refuse proprement au lieu d'épuiser les
+  // 800 secondes de la fonction Vercel avec des relectures identiques.
+  return boundedIntegerEnv("AI_COURSE_PUBLICATION_MAX_REPAIR_CYCLES", 1, 1, 2);
 }
 
 function globalPublicationRepairCycleLimit(): number {
-  return boundedIntegerEnv("AI_COURSE_GLOBAL_MAX_REPAIR_CYCLES", 3, 1, 5);
+  return boundedIntegerEnv("AI_COURSE_GLOBAL_MAX_REPAIR_CYCLES", 1, 1, 2);
 }
 
 function publicationExerciseRewriteLimit(): number {
@@ -1888,30 +1891,53 @@ async function runPublicationExerciseJudge(
   return parseJudgeIssues(raw, validIds);
 }
 
+type PublicationJudgeScope = {
+  theory: boolean;
+  exercises: boolean;
+};
+
+const FULL_PUBLICATION_JUDGE_SCOPE: PublicationJudgeScope = {
+  theory: true,
+  exercises: true,
+};
+
+function publicationJudgeScopeForIssues(
+  issues: CoursePublicationIssue[],
+): PublicationJudgeScope {
+  const exercises = issues.some((issue) => /^e\d+-/.test(issue.id));
+  const theory = issues.some((issue) => !/^e\d+-/.test(issue.id));
+  return {
+    theory: theory || !exercises,
+    exercises,
+  };
+}
+
 async function runPublicationJudge(
   lesson: StructuredCourseLesson,
   options: PublicationGateOptions,
   deterministicIssues: CoursePublicationIssue[],
+  scope: PublicationJudgeScope = FULL_PUBLICATION_JUDGE_SCOPE,
 ): Promise<CoursePublicationIssue[]> {
-  // Deux passes séquentielles : le solveur d'exercices ne partage ni charge
-  // ni réponse avec le certificateur théorique. Cela limite aussi les pics de
-  // concurrence Mistral pendant les six vérifications de leçon.
-  const theoryIssues = await runPublicationTheoryJudge(
-    lesson,
-    options,
-    deterministicIssues,
-  );
-  console.info(
-    `[course-ai][certification] théorie « ${options.lessonPlan.title} » : ${theoryIssues.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
-  );
-  const exerciseIssues = await runPublicationExerciseJudge(
-    lesson,
-    options,
-    deterministicIssues,
-  );
-  console.info(
-    `[course-ai][certification] exercices « ${options.lessonPlan.title} » : ${exerciseIssues.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
-  );
+  // La première passe contrôle théorie et exercices. Les passes de réparation
+  // ne relancent ensuite que le certificateur concerné par les erreurs
+  // restantes, afin d'éviter de doubler inutilement le temps de génération.
+  const theoryIssues = scope.theory
+    ? await runPublicationTheoryJudge(lesson, options, deterministicIssues)
+    : [];
+  if (scope.theory) {
+    console.info(
+      `[course-ai][certification] théorie « ${options.lessonPlan.title} » : ${theoryIssues.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
+    );
+  }
+
+  const exerciseIssues = scope.exercises
+    ? await runPublicationExerciseJudge(lesson, options, deterministicIssues)
+    : [];
+  if (scope.exercises) {
+    console.info(
+      `[course-ai][certification] exercices « ${options.lessonPlan.title} » : ${exerciseIssues.filter((issue) => issue.severity === "blocking").length} erreur(s) bloquante(s)`,
+    );
+  }
   return [...theoryIssues, ...exerciseIssues];
 }
 
@@ -1959,9 +1985,15 @@ function publicationIssueSignature(issues: CoursePublicationIssue[]): string {
 async function auditCourseLessonForPublication(
   lesson: StructuredCourseLesson,
   options: PublicationGateOptions,
+  scope: PublicationJudgeScope = FULL_PUBLICATION_JUDGE_SCOPE,
 ): Promise<LessonPublicationAudit> {
   const deterministic = deterministicPublicationIssues(lesson, options);
-  const judge = await runPublicationJudge(lesson, options, deterministic);
+  const judge = await runPublicationJudge(
+    lesson,
+    options,
+    deterministic,
+    scope,
+  );
   return {
     deterministic,
     judge,
@@ -2218,16 +2250,21 @@ export async function verifyCourseLessonForPublication(
 
   for (let round = 1; round <= maxRounds; round += 1) {
     repairRounds = round;
+    const issuesToRepair = audit.unresolved;
     const repaired = await repairPublicationIssues(
       current,
       options,
-      audit.unresolved,
+      issuesToRepair,
       round,
       maxRounds,
     );
     current = repaired.value;
     totalPatches += repaired.patches;
-    audit = await auditCourseLessonForPublication(current, options);
+    audit = await auditCourseLessonForPublication(
+      current,
+      options,
+      publicationJudgeScopeForIssues(issuesToRepair),
+    );
 
     if (audit.unresolved.length === 0) break;
 
@@ -2243,7 +2280,10 @@ export async function verifyCourseLessonForPublication(
       exerciseRewrite.rewrittenIndexes.forEach((index) =>
         rewrittenExercises.add(index),
       );
-      audit = await auditCourseLessonForPublication(current, options);
+      audit = await auditCourseLessonForPublication(current, options, {
+        theory: false,
+        exercises: true,
+      });
       if (audit.unresolved.length === 0) break;
     }
 
@@ -2255,9 +2295,9 @@ export async function verifyCourseLessonForPublication(
     stagnantRounds = madeProgress ? 0 : stagnantRounds + 1;
     previousSignature = signature;
 
-    // Deux cycles sans aucune modification ni changement d'issue suffisent à
-    // conclure que de nouvelles requêtes identiques n'apporteraient rien.
-    if (stagnantRounds >= 2) break;
+    // Une passe sans modification ni changement d'issue suffit : relancer
+    // les mêmes juges ne ferait qu'allonger la requête jusqu'au timeout Vercel.
+    if (stagnantRounds >= 1) break;
   }
 
   return {

@@ -637,6 +637,9 @@ export async function runCourseGeneration(
   );
   const durationPerLesson = clampNumber(duration_per_lesson, 30, 5, 90);
   const totalLessonCount = chapterCount * lessonsPerChapter;
+  // Rédaction/relecture + certification de chaque leçon + contrôle global +
+  // sauvegarde. Le compteur ne doit jamais afficher 100 % avant le statut done.
+  const progressTotal = totalLessonCount * 2 + 2;
   const shouldIncludeExercises = include_exercises !== false;
   const maxCourseCharacters = envNumber(
     "AI_COURSE_MAX_USEFUL_CHARS",
@@ -649,9 +652,30 @@ export async function runCourseGeneration(
     Number.isFinite(configuredInterval) && configuredInterval >= 0
       ? configuredInterval
       : DEFAULT_LLM_MIN_START_INTERVAL_MS;
+  const wallClockBudgetMs = envNumber(
+    "AI_COURSE_WALL_CLOCK_BUDGET_MS",
+    690_000,
+    300_000,
+    740_000,
+  );
+  const wallClockErrorMessage =
+    "La génération a été arrêtée avant la limite Vercel. Une certification restait non résolue ; relance la génération.";
+  let wallClockExpired = false;
+  const wallClockTimer = setTimeout(() => {
+    wallClockExpired = true;
+    void tracker
+      .setStatus("error", { error: wallClockErrorMessage })
+      .catch((error) =>
+        console.error(
+          "[course-ai] Impossible de signaler l'expiration interne.",
+          error,
+        ),
+      );
+  }, wallClockBudgetMs);
+
   const generate = createLlmStartGate(
     minInterval,
-    () => tracker.isCancelRequested(),
+    async () => wallClockExpired || (await tracker.isCancelRequested()),
   );
   const legacyLessonConcurrency = envConcurrency(
     "AI_COURSE_LESSON_CONCURRENCY",
@@ -948,7 +972,7 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
     await tracker.updateProgress({
       step: "chapter",
       current: 0,
-      total: totalLessonCount,
+      total: progressTotal,
       message: `${totalLessonCount} agents rédacteurs et relecteurs sont lancés en pipeline parallèle...`,
       chapterTitles,
     });
@@ -966,7 +990,7 @@ Retourne un nouveau plan complet, précis et non générique. Ne te contente pas
           tracker.updateProgress({
             step: "chapter",
             current,
-            total: totalLessonCount,
+            total: progressTotal,
             message,
             chapterTitles,
           }),
@@ -1438,6 +1462,9 @@ Structure racine exacte :
             label,
             `${checked.report.patches} patch(es), ${checked.report.repairRounds} cycle(s), ${checked.report.fallbackExerciseRewrites} exercice(s) reconstruit(s), 0 erreur bloquante restante`,
           );
+          await queueProgress(
+            `Certification ${completedLessons + 1}/${progressTotal} : ${job.lesson.title}`,
+          );
           return checked.value;
         },
       );
@@ -1517,6 +1544,7 @@ Structure racine exacte :
         "publication-global",
         `${globalCheck.report.patches} patch(es), ${globalCheck.report.repairRounds} cycle(s), cohérence inter-leçons validée`,
       );
+      await queueProgress("Cohérence globale certifiée.");
     }
 
     const maxFinalCoordinationRepairRounds = envNumber(
@@ -1753,8 +1781,8 @@ Structure racine exacte :
       contentJson.push(compiled);
       await tracker.updateProgress({
         step: "chapter",
-        current: totalLessonCount,
-        total: totalLessonCount,
+        current: Math.min(completedLessons, progressTotal - 1),
+        total: progressTotal,
         message: `Chapitre ${chapterIndex + 1}/${chapterCount} assemblé : ${chapter.title}`,
         chapterTitles,
         chapters: { [chapterIndex]: compiled },
@@ -1784,8 +1812,8 @@ Structure racine exacte :
 
     await tracker.updateProgress({
       step: "final-check",
-      current: totalLessonCount,
-      total: totalLessonCount + 1,
+      current: progressTotal - 1,
+      total: progressTotal,
       message: "Enregistrement du cours...",
     });
 
@@ -1868,8 +1896,8 @@ Structure racine exacte :
         async () => {
           await tracker.updateProgress({
             step: "final-check",
-            current: totalLessonCount + 1,
-            total: totalLessonCount + 1,
+            current: progressTotal,
+            total: progressTotal,
             message: "Cours enregistré.",
           });
           await tracker.setStatus("done", { course_id: courseRow.id });
@@ -1887,12 +1915,18 @@ Structure racine exacte :
   } catch (error: unknown) {
     telemetry.total("échec");
     if (error instanceof GenerationCancelledError) {
-      await tracker.setStatus("cancelled");
+      if (wallClockExpired) {
+        await tracker.setStatus("error", { error: wallClockErrorMessage });
+      } else {
+        await tracker.setStatus("cancelled");
+      }
       return;
     }
     console.error("❌ Erreur génération cours IA structurée:", error);
     await tracker.setStatus("error", {
       error: error instanceof Error ? error.message : "Erreur de génération",
     });
+  } finally {
+    clearTimeout(wallClockTimer);
   }
 }
