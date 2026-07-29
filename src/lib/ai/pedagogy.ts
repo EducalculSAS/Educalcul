@@ -372,6 +372,31 @@ export function auditStructuredCoursePedagogy(
           substantiveBefore += 1;
         }
       }
+      // "exercise_before_explanation" ne vérifie que le PREMIER exercice :
+      // rien n'empêchait jusqu'ici les 3-4 exercices d'être groupés d'un bloc,
+      // typiquement tous relégués à la toute fin de la leçon — exactement ce
+      // que le prompt interdit ("jamais tous à la fin") sans que rien ne le
+      // fasse respecter. On exige au moins un bloc pédagogique substantiel
+      // entre deux exercices consécutifs.
+      let substantiveSincePreviousExercise = Infinity;
+      let clusteredExercises = false;
+      for (const block of lesson.blocks) {
+        if (block.type === "exercise") {
+          if (substantiveSincePreviousExercise === 0) clusteredExercises = true;
+          substantiveSincePreviousExercise = 0;
+        } else if (isSubstantiveBlock(block)) {
+          substantiveSincePreviousExercise += 1;
+        }
+      }
+      if (clusteredExercises) {
+        issues.push({
+          severity: "error",
+          code: "exercises_clustered",
+          path: `${path}.blocks`,
+          message:
+            "Au moins deux exercices se suivent sans contenu pédagogique substantiel entre eux ; les exercices doivent être répartis dans la leçon (jamais groupés, surtout pas tous à la fin).",
+        });
+      }
     } else if (lesson.exercises.length > 0 || exerciseRefs.length > 0) {
       issues.push({
         severity: "error",
