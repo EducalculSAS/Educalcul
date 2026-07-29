@@ -113,6 +113,59 @@ function envConcurrency(name: string, fallback: number, maximum: number): number
   return envNumber(name, fallback, 1, maximum);
 }
 
+function wait(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function errorDetails(error: unknown): string {
+  if (error instanceof Error) {
+    const cause = (error as Error & { cause?: unknown }).cause;
+    return cause === undefined
+      ? `${error.name}: ${error.message}`
+      : `${error.name}: ${error.message}; cause=${String(cause)}`;
+  }
+
+  if (typeof error === "object" && error !== null && "message" in error) {
+    return String((error as { message?: unknown }).message ?? error);
+  }
+
+  return String(error);
+}
+
+function isTransientNetworkError(error: unknown): boolean {
+  return /fetch failed|econnreset|econnrefused|etimedout|eai_again|enetunreach|socket|network|und_err|terminated/i.test(
+    errorDetails(error),
+  );
+}
+
+async function withTransientNetworkRetry<T>(
+  label: string,
+  task: () => Promise<T>,
+  maxAttempts = 2,
+): Promise<T> {
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      return await task();
+    } catch (error) {
+      lastError = error;
+      if (!isTransientNetworkError(error) || attempt >= maxAttempts) {
+        throw error;
+      }
+
+      console.warn(
+        `[course-ai][network] ${label} interrompu (${attempt}/${maxAttempts}) : ${errorDetails(error)}. Nouvelle tentative dans 2 s.`,
+      );
+      await wait(2_000);
+    }
+  }
+
+  throw lastError instanceof Error
+    ? lastError
+    : new Error(`${label} a échoué après ${maxAttempts} tentatives.`);
+}
+
 function styleInstruction(
   style: CourseGenerationParams["content_style"],
 ): string {
@@ -1366,16 +1419,17 @@ Structure racine exacte :
       );
 
       telemetry.start("publication-global");
-      const globalCheck = await verifyCourseGloballyForPublication(
-        finalStructuredChapters,
-        {
-          generate,
-          blueprint,
-          level: String(grade_level),
-          subject,
-          reviewMaxTokens: globalPublicationReviewMaxTokens,
-          repairMaxTokens: globalPublicationRepairMaxTokens,
-        },
+      const globalCheck = await withTransientNetworkRetry(
+        "contrôle global de publication",
+        () =>
+          verifyCourseGloballyForPublication(finalStructuredChapters, {
+            generate,
+            blueprint,
+            level: String(grade_level),
+            subject,
+            reviewMaxTokens: globalPublicationReviewMaxTokens,
+            repairMaxTokens: globalPublicationRepairMaxTokens,
+          }),
       );
       if (globalCheck.report.unresolved.length > 0) {
         throw new Error(
@@ -1500,56 +1554,100 @@ Structure racine exacte :
     });
 
     telemetry.start("save");
-    const { data: courseRow, error: insertError } = await supabaseAdmin
-      .from("courses")
-      .insert({
-        title: blueprint.title,
-        description: blueprint.description,
-        subject,
-        level: String(grade_level) || "6eme",
-        status: "draft",
-        thumbnail_url: "",
-        folder_id: folder_id || null,
-        content_json: contentJson,
-        estimated_time: finalStructuredChapters.reduce(
-          (total, chapter) =>
-            total + chapter.lessons.reduce((sum, lesson) => sum + lesson.duration, 0),
-          0,
-        ),
-        is_published: false,
-      })
-      .select()
-      .single();
+    const estimatedTime = finalStructuredChapters.reduce(
+      (total, chapter) =>
+        total + chapter.lessons.reduce((sum, lesson) => sum + lesson.duration, 0),
+      0,
+    );
+    const coursePayload = {
+      generation_id: generationId,
+      title: blueprint.title,
+      description: blueprint.description,
+      subject,
+      level: String(grade_level) || "6eme",
+      status: "draft",
+      thumbnail_url: "",
+      folder_id: folder_id || null,
+      content_json: contentJson,
+      estimated_time: estimatedTime,
+      is_published: false,
+    };
 
-    if (insertError) throw insertError;
+    const courseRow = await withTransientNetworkRetry(
+      "enregistrement idempotent du cours",
+      async () => {
+        console.info(
+          `[course-ai][save] upsert du cours pour generation_id=${generationId}`,
+        );
+        const { data, error } = await supabaseAdmin
+          .from("courses")
+          .upsert(coursePayload, {
+            onConflict: "generation_id",
+            ignoreDuplicates: false,
+          })
+          .select("id, title, status")
+          .single();
 
-    await auditLog({
-      action: AuditAction.CONTENT_CREATED,
-      adminId,
-      targetType: "course",
-      targetId: String(courseRow.id),
-      details: {
-        title: courseRow.title,
-        status: courseRow.status,
-        source: publicationGateEnabled
-          ? "ai_publication_gate_v2_8"
-          : "ai_coordinated_planning_v2_7",
-        useful_characters: actualUsefulCharacters,
-        timings_ms: telemetry.summary(),
+        if (error) throw error;
+        if (!data) {
+          throw new Error("Supabase n'a renvoyé aucun cours après l'enregistrement.");
+        }
+        return data;
       },
-    });
+    );
+
+    console.info(`[course-ai][save] cours enregistré : ${courseRow.id}`);
+
+    try {
+      await auditLog({
+        action: AuditAction.CONTENT_CREATED,
+        adminId,
+        targetType: "course",
+        targetId: String(courseRow.id),
+        details: {
+          title: courseRow.title,
+          status: courseRow.status,
+          source: publicationGateEnabled
+            ? "ai_publication_gate_v2_8"
+            : "ai_coordinated_planning_v2_7",
+          useful_characters: actualUsefulCharacters,
+          timings_ms: telemetry.summary(),
+        },
+      });
+    } catch (auditError) {
+      console.warn(
+        "[course-ai][save] Le cours est enregistré, mais le journal d'audit est indisponible.",
+        auditError,
+      );
+    }
 
     telemetry.end("save");
     telemetry.total(
       `${actualUsefulCharacters} caractères utiles, ${totalLessonCount} leçon(s)`,
     );
-    await tracker.updateProgress({
-      step: "final-check",
-      current: totalLessonCount + 1,
-      total: totalLessonCount + 1,
-      message: "Cours enregistré.",
-    });
-    await tracker.setStatus("done", { course_id: courseRow.id });
+
+    try {
+      await withTransientNetworkRetry(
+        "finalisation du suivi de génération",
+        async () => {
+          await tracker.updateProgress({
+            step: "final-check",
+            current: totalLessonCount + 1,
+            total: totalLessonCount + 1,
+            message: "Cours enregistré.",
+          });
+          await tracker.setStatus("done", { course_id: courseRow.id });
+        },
+        3,
+      );
+    } catch (trackingError) {
+      // Le cours existe déjà : ne jamais transformer un succès de sauvegarde
+      // en échec de génération uniquement parce que le suivi réseau a échoué.
+      console.error(
+        `[course-ai][save] Cours ${courseRow.id} enregistré, mais statut final non confirmé.`,
+        trackingError,
+      );
+    }
   } catch (error: unknown) {
     telemetry.total("échec");
     if (error instanceof GenerationCancelledError) {
