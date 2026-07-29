@@ -249,15 +249,12 @@ export default function AdminCoursesPage() {
 
   // Une génération lancée depuis cette page (ou une autre, ou avant un
   // rechargement) rafraîchit la liste dès qu'elle aboutit à un cours créé.
+  // Pas de notification ici : la modale plein écran et le widget affichent
+  // déjà l'état "Cours créé !", une seconde modale ferait doublon.
   useEffect(() => {
     return onContentCreated("course", () => {
       invalidateAdminCache("courses:");
       fetchContents(true);
-      setNotification({
-        variant: "success",
-        title: "Cours généré !",
-        subtitle: "Le cours a été créé et enregistré directement en brouillon.",
-      });
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onContentCreated]);
@@ -1704,11 +1701,8 @@ export default function AdminCoursesPage() {
           title={notification.title}
           subtitle={notification.subtitle}
           onAction={() => {
-            const wasSuccess = notification.variant === "success";
             setNotification(null);
-            if (!wasSuccess) {
-              setIsAiModalOpen(true);
-            }
+            setIsAiModalOpen(true);
           }}
           onClose={() => setNotification(null)}
         />

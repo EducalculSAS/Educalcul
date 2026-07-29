@@ -111,9 +111,13 @@ export function ContentGenerationsProvider({ children }: { children: React.React
     })();
   }, []);
 
-  // Poll toutes les générations non terminées.
+  // Poll toutes les générations non terminées (hors ids provisoires : le
+  // serveur ne les connaît pas encore tant que startGeneration n'a pas reçu
+  // l'id réel).
   useEffect(() => {
-    const active = generations.filter((g) => !FINISHED_STATUSES.has(g.status));
+    const active = generations.filter(
+      (g) => !FINISHED_STATUSES.has(g.status) && !g.id.startsWith("temp-"),
+    );
     if (active.length === 0) return;
 
     const timer = setInterval(async () => {
@@ -155,17 +159,16 @@ export function ContentGenerationsProvider({ children }: { children: React.React
     }
   }, [generations]);
 
-  const startGeneration = useCallback(async (kind: ContentKind, params: Record<string, unknown>) => {
-    const headers = await authHeaders();
-    const res = await fetch(`/api/admin/ai/${kind}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", ...headers },
-      body: JSON.stringify(params),
-    });
-    if (!res.ok) return null;
-    const { generationId } = await res.json();
-    if (!generationId) return null;
+  // ids provisoires en attente de la réponse du serveur, associés à une
+  // éventuelle annulation demandée avant même que l'id réel soit connu.
+  const pendingCancelRef = useRef<Set<string>>(new Set());
 
+  const startGeneration = useCallback(async (kind: ContentKind, params: Record<string, unknown>) => {
+    // La modale plein écran s'affiche IMMÉDIATEMENT avec un id provisoire :
+    // sans ça, le temps de l'aller-retour réseau (création de la ligne en
+    // base côté serveur) laisse un écran vide entre la fermeture du
+    // formulaire et l'apparition de la progression.
+    const tempId = `temp-${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const totalGuess =
       kind === "course"
         ? Number(params.page_count) || 4
@@ -173,7 +176,7 @@ export function ContentGenerationsProvider({ children }: { children: React.React
 
     setGenerations((prev) => [
       {
-        id: generationId,
+        id: tempId,
         kind,
         status: "pending",
         progress: { step: "outline", current: 0, total: totalGuess, message: "Démarrage..." },
@@ -184,19 +187,60 @@ export function ContentGenerationsProvider({ children }: { children: React.React
       },
       ...prev,
     ]);
-    setFocusedId(generationId);
-    return generationId as string;
+    setFocusedId(tempId);
+
+    try {
+      const headers = await authHeaders();
+      const res = await fetch(`/api/admin/ai/${kind}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...headers },
+        body: JSON.stringify(params),
+      });
+      if (!res.ok) throw new Error("start failed");
+      const { generationId } = await res.json();
+      if (!generationId) throw new Error("no id");
+
+      const cancelledEarly = pendingCancelRef.current.delete(tempId);
+      setGenerations((prev) =>
+        prev.map((gen) =>
+          gen.id === tempId
+            ? { ...gen, id: generationId, status: cancelledEarly ? "cancel_requested" : gen.status }
+            : gen,
+        ),
+      );
+      setFocusedId((prev) => (prev === tempId ? generationId : prev));
+
+      if (cancelledEarly) {
+        const cancelHeaders = await authHeaders();
+        await fetch(`/api/admin/ai/${kind}/${generationId}`, { method: "POST", headers: cancelHeaders });
+      }
+
+      return generationId as string;
+    } catch {
+      pendingCancelRef.current.delete(tempId);
+      setGenerations((prev) => prev.filter((gen) => gen.id !== tempId));
+      setFocusedId((prev) => (prev === tempId ? null : prev));
+      return null;
+    }
   }, []);
 
   const cancelGeneration = useCallback(
     async (id: string) => {
       const g = generations.find((gen) => gen.id === id);
       if (!g) return;
-      const headers = await authHeaders();
-      await fetch(`/api/admin/ai/${g.kind}/${id}`, { method: "POST", headers });
+      // Feedback immédiat : le bouton "Annuler" disparaît et "Annulation en
+      // cours..." s'affiche sans attendre l'aller-retour réseau.
       setGenerations((prev) =>
         prev.map((gen) => (gen.id === id ? { ...gen, status: "cancel_requested" } : gen)),
       );
+      if (id.startsWith("temp-")) {
+        // L'id réel n'existe pas encore côté serveur : on mémorise la demande,
+        // startGeneration l'appliquera dès que l'id définitif sera connu.
+        pendingCancelRef.current.add(id);
+        return;
+      }
+      const headers = await authHeaders();
+      await fetch(`/api/admin/ai/${g.kind}/${id}`, { method: "POST", headers });
     },
     [generations],
   );
