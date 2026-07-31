@@ -297,10 +297,14 @@ Pour chaque champ reçu :
     // Plafond relevé (5 500 -> 9 000) : un lot dense de champs suspects
     // tronquait cet appel (vu en prod, maxTokens=3422), ce qui abandonnait le
     // lot silencieusement ("indisponible... reprise champ par champ") au
-    // lieu de le réparer.
+    // lieu de le réparer. Le plancher précédent (2 000) tronquait encore en
+    // prod car il ne dépendait que des caractères du lot, pas du nombre de
+    // champs : chaque champ restructuré en parts text/math ajoute un
+    // surcoût JSON fixe (accolades, "type", "value"/"latex") même quand son
+    // contenu est court. Le budget suit maintenant aussi la taille du lot.
     const maxTokens = Math.min(
-      9_000,
-      Math.max(2_000, 900 + Math.ceil(contentChars / 2.5)),
+      10_000,
+      Math.max(3_500, 900 + entries.length * 250 + Math.ceil(contentChars / 2.5)),
     );
     const userPrompt = `${strict ? "CORRECTION STRICTE FINALE. " : ""}Contexte : ${sanitizeStructuredText(options.label)}
 Champs à restructurer :
@@ -534,11 +538,12 @@ Retourne verdict=reject seulement si ce petit lot ne peut pas être réparé par
   ): Promise<void> => {
     if (batch.length === 0) return;
     const payload = JSON.stringify({ fields: batch });
-    // Même raisonnement que le rédacteur de cours : un plafond de 5 500
-    // tronque les lots denses (utilisé aussi par exercices/quiz/ai-edit).
+    // Même raisonnement que le rédacteur de cours et repairBatch ci-dessus :
+    // le budget doit suivre le nombre de champs du lot, pas seulement leurs
+    // caractères (surcoût JSON fixe par champ restructuré).
     const maxTokens = Math.min(
-      9_000,
-      Math.max(2_200, 1_100 + Math.ceil(payload.length / 2.8)),
+      10_000,
+      Math.max(3_500, 1_100 + batch.length * 250 + Math.ceil(payload.length / 2.8)),
     );
 
     try {

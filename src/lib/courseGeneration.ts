@@ -1128,8 +1128,13 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
         thumbnail_url: "",
         folder_id: folder_id || null,
         content_json: contentJson,
-        estimated_time:
-          chapterCount * lessonsPerChapter * (durationPerLesson / 60),
+        // Colonne integer en base : chapterCount * lessonsPerChapter * durée
+        // n'est pas toujours un multiple de 60 (vu en prod : 3*3*30/60 = 4.5,
+        // rejeté par Postgres avec "invalid input syntax for type integer").
+        estimated_time: Math.max(
+          1,
+          Math.round(chapterCount * lessonsPerChapter * (durationPerLesson / 60)),
+        ),
         is_published: false,
       })
       .select()
