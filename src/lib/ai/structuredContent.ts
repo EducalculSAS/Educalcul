@@ -538,6 +538,39 @@ export function sanitizeStructuredText(
   return text;
 }
 
+// Conversions appliquées AVANT sanitizeStructuredText pour les labels courts
+// des diagrammes déterministes (trig_circle, pie_chart...). sanitizeStructuredText
+// seul se contente de retirer l'antislash d'une commande reconnue
+// ("\frac" -> "frac"), ce qui est correct pour de la prose (la commande ne
+// devrait de toute façon jamais y figurer) mais rend un label illisible : un
+// angle "$-\frac{\pi}{3}$" ressortait "-frac{pi}{3}" au lieu de "-π/3" (vu en
+// production). Ici on convertit d'abord en notation lisible équivalente à
+// celle des captions (readableMathFallbackText dans qualityGuard.ts).
+const DIAGRAM_LABEL_CONVERSIONS: Array<[RegExp, string]> = [
+  [/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2"],
+  [/\\sqrt\{([^{}]*)\}/g, "√$1"],
+  [/\\vec\{([^{}]*)\}/g, "$1⃗"],
+  [/\\pi\b/g, "π"],
+  [/\\theta\b/g, "θ"],
+  [/\\infty\b/g, "∞"],
+  [/\\lambda\b/g, "λ"],
+  [/\\alpha\b/g, "α"],
+  [/\\beta\b/g, "β"],
+  [/\\times\b/g, "×"],
+  [/\\cdot\b/g, "·"],
+  [/\\leq\b/g, "≤"],
+  [/\\geq\b/g, "≥"],
+  [/\\neq\b/g, "≠"],
+];
+
+export function sanitizeDiagramLabel(value: unknown): string {
+  let text = stringValue(value);
+  for (const [pattern, replacement] of DIAGRAM_LABEL_CONVERSIONS) {
+    text = text.replace(pattern, replacement);
+  }
+  return sanitizeStructuredText(text);
+}
+
 function stripOuterMathDelimiters(value: string): string {
   let result = value.trim();
   let changed = true;
@@ -1061,18 +1094,18 @@ function normalizeGraphVector(value: unknown): StructuredGraphVector | null {
 function normalizeTrigCircleAngle(value: unknown): StructuredTrigCircleAngle | null {
   const raw = asRecord(value);
   if (!raw) return null;
-  const label = sanitizeStructuredText(raw.label ?? raw.angle_deg ?? raw.angleDeg);
+  const label = sanitizeDiagramLabel(raw.label ?? raw.angle_deg ?? raw.angleDeg);
   if (!label) return null;
   return {
     angleDeg: finiteNumber(raw.angle_deg ?? raw.angleDeg, 0),
-    label: label.slice(0, 40),
+    label: label.slice(0, 24),
   };
 }
 
 function normalizePieSlice(value: unknown): StructuredPieSlice | null {
   const raw = asRecord(value);
   if (!raw) return null;
-  const label = sanitizeStructuredText(raw.label);
+  const label = sanitizeDiagramLabel(raw.label);
   const numericValue = finiteNumber(raw.value, Number.NaN);
   if (!label || !Number.isFinite(numericValue) || numericValue < 0) return null;
   return { label: label.slice(0, 60), value: numericValue, tone: normalizeFigureTone(raw.tone) };
@@ -1081,7 +1114,7 @@ function normalizePieSlice(value: unknown): StructuredPieSlice | null {
 function normalizeNumberLinePoint(value: unknown): StructuredNumberLinePoint | null {
   const raw = asRecord(value);
   if (!raw) return null;
-  const label = sanitizeStructuredText(raw.label);
+  const label = sanitizeDiagramLabel(raw.label);
   const numericValue = finiteNumber(raw.value, Number.NaN);
   if (!label || !Number.isFinite(numericValue)) return null;
   return { value: numericValue, label: label.slice(0, 40), filled: raw.filled !== false };
@@ -1107,7 +1140,7 @@ function normalizeNumberLineInterval(
 function normalizeBar(value: unknown): StructuredBar | null {
   const raw = asRecord(value);
   if (!raw) return null;
-  const label = sanitizeStructuredText(raw.label);
+  const label = sanitizeDiagramLabel(raw.label);
   const numericValue = finiteNumber(raw.value, Number.NaN);
   if (!label || !Number.isFinite(numericValue) || numericValue < 0) return null;
   return { label: label.slice(0, 30), value: numericValue, tone: normalizeFigureTone(raw.tone) };
@@ -1116,8 +1149,8 @@ function normalizeBar(value: unknown): StructuredBar | null {
 function normalizeProbabilityLeaf(value: unknown): StructuredProbabilityLeaf | null {
   const raw = asRecord(value);
   if (!raw) return null;
-  const label = sanitizeStructuredText(raw.label);
-  const probability = sanitizeStructuredText(raw.probability);
+  const label = sanitizeDiagramLabel(raw.label);
+  const probability = sanitizeDiagramLabel(raw.probability);
   if (!label || !probability) return null;
   return { label: label.slice(0, 40), probability: probability.slice(0, 20) };
 }
@@ -1141,7 +1174,7 @@ function normalizeProbabilityBranch(
 function normalizeVennSet(value: unknown): StructuredVennSet | null {
   const raw = asRecord(value);
   if (!raw) return null;
-  const label = sanitizeStructuredText(raw.label);
+  const label = sanitizeDiagramLabel(raw.label);
   if (!label) return null;
   return { label: label.slice(0, 30), tone: normalizeFigureTone(raw.tone) };
 }
@@ -1435,10 +1468,10 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
       const regionLabelsRaw = asRecord(raw.region_labels ?? raw.regionLabels);
       const regionLabels = regionLabelsRaw
         ? {
-            aOnly: sanitizeStructuredText(regionLabelsRaw.a_only) || undefined,
-            bOnly: sanitizeStructuredText(regionLabelsRaw.b_only) || undefined,
-            both: sanitizeStructuredText(regionLabelsRaw.both) || undefined,
-            neither: sanitizeStructuredText(regionLabelsRaw.neither) || undefined,
+            aOnly: sanitizeDiagramLabel(regionLabelsRaw.a_only) || undefined,
+            bOnly: sanitizeDiagramLabel(regionLabelsRaw.b_only) || undefined,
+            both: sanitizeDiagramLabel(regionLabelsRaw.both) || undefined,
+            neither: sanitizeDiagramLabel(regionLabelsRaw.neither) || undefined,
           }
         : undefined;
       return {
@@ -1453,15 +1486,15 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
         Array.isArray(input) ? input : [];
       const vertexLabelsRaw = asUnknownArray(raw.vertex_labels ?? raw.vertexLabels);
       const vertexLabels = [0, 1, 2].map((index) =>
-        sanitizeStructuredText(vertexLabelsRaw[index]) || ["A", "B", "C"][index],
+        sanitizeDiagramLabel(vertexLabelsRaw[index]) || ["A", "B", "C"][index],
       ) as [string, string, string];
       const sideLabelsRaw = asUnknownArray(raw.side_labels ?? raw.sideLabels);
       const sideLabels = [0, 1, 2].map((index) =>
-        sanitizeStructuredText(sideLabelsRaw[index]),
+        sanitizeDiagramLabel(sideLabelsRaw[index]),
       ) as [string, string, string];
       const angleLabelsRaw = asUnknownArray(raw.angle_labels ?? raw.angleLabels);
       const angleLabels = [0, 1, 2].map((index) =>
-        sanitizeStructuredText(angleLabelsRaw[index]),
+        sanitizeDiagramLabel(angleLabelsRaw[index]),
       ) as [string, string, string];
       const rightAngleRaw = raw.right_angle_at ?? raw.rightAngleAt;
       const rightAngleAt =
@@ -1491,7 +1524,7 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
         median,
         q3,
         max,
-        axisLabel: sanitizeStructuredText(raw.axis_label ?? raw.axisLabel) || undefined,
+        axisLabel: sanitizeDiagramLabel(raw.axis_label ?? raw.axisLabel) || undefined,
       };
     }
     case "exercise":

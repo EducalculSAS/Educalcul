@@ -213,6 +213,21 @@ const UNIT_CIRCLE_COORDS: Record<number, [string, string]> = {
   330: ["√3/2", "-1/2"],
 };
 
+/** Fond quadrillé (cadre blanc arrondi + grille fine), même style visuel que
+ * .math-graph (mathGraph.ts) pour que tous les diagrammes à base de plan
+ * coordonné se ressemblent. */
+function gridBackground(width: number, height: number, step: number): string {
+  const frame = `<rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="6" fill="#ffffff" stroke="rgba(197,161,72,0.25)" stroke-width="1"/>`;
+  const lines: string[] = [];
+  for (let x = step; x < width; x += step) {
+    lines.push(`<line x1="${x}" y1="1" x2="${x}" y2="${height - 1}" stroke="rgba(15,30,58,0.07)" stroke-width="1"/>`);
+  }
+  for (let y = step; y < height; y += step) {
+    lines.push(`<line x1="1" y1="${y}" x2="${width - 1}" y2="${y}" stroke="rgba(15,30,58,0.07)" stroke-width="1"/>`);
+  }
+  return frame + lines.join("");
+}
+
 function renderTrigCircle(
   block: Extract<StructuredCourseBlock, { type: "trig_circle" }>,
 ): string {
@@ -220,7 +235,8 @@ function renderTrigCircle(
   const cy = 100;
   const r = 68;
   const angles = block.highlightedAngles.slice(0, 8);
-  const axes = `<line x1="${cx - r - 18}" y1="${cy}" x2="${cx + r + 18}" y2="${cy}" stroke="#94a3b8" stroke-width="1"/><line x1="${cx}" y1="${cy - r - 18}" x2="${cx}" y2="${cy + r + 18}" stroke="#94a3b8" stroke-width="1"/>`;
+  const grid = gridBackground(200, 200, 20);
+  const axes = `<line x1="${cx - r - 18}" y1="${cy}" x2="${cx + r + 18}" y2="${cy}" stroke="rgba(15,30,58,0.55)" stroke-width="1.5"/><line x1="${cx}" y1="${cy - r - 18}" x2="${cx}" y2="${cy + r + 18}" stroke="rgba(15,30,58,0.55)" stroke-width="1.5"/>`;
   const circle = `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="#10213d" stroke-width="1.5" fill="none"/>`;
   const markers = angles
     .map((angle) => {
@@ -241,7 +257,7 @@ function renderTrigCircle(
   // (src/lib/trigCircleInteractive.ts) : le curseur fait varier l'angle et
   // affiche (cos, sin) en direct, sans jamais recalculer le tracé statique
   // ci-dessus (déjà correct et déterministe).
-  const svg = `<svg class="tc-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">${axes}${circle}${markers}<g class="tc-live"></g></svg>`;
+  const svg = `<svg class="tc-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">${grid}${axes}${circle}${markers}<g class="tc-live"></g></svg>`;
   const controls = `<div class="tc-controls"><input type="range" class="tc-angle-slider" min="0" max="360" step="1" value="45"/><span class="tc-angle-value">45°</span></div>`;
   return `<figure class="course-figure course-figure-trig-circle">${svg}${controls}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
@@ -335,6 +351,14 @@ function renderBarChart(
   const chartBottom = 130;
   const slotWidth = (chartRight - chartLeft) / bars.length;
   const barWidth = slotWidth * 0.6;
+  const grid = gridBackground(220, 160, 20);
+  // Lignes horizontales à hauteur des graduations pour lire les valeurs,
+  // même convention qu'un diagramme en barres classique.
+  const gridSteps = 4;
+  const valueGrid = Array.from({ length: gridSteps }, (_, index) => {
+    const y = chartTop + ((chartBottom - chartTop) * index) / gridSteps;
+    return `<line x1="${chartLeft}" y1="${num(y)}" x2="${chartRight}" y2="${num(y)}" stroke="rgba(15,30,58,0.07)" stroke-width="1"/>`;
+  }).join("");
   const axis = `<line x1="${chartLeft}" y1="${chartBottom}" x2="${chartRight}" y2="${chartBottom}" stroke="#10213d" stroke-width="1.5"/>`;
   const parts = bars
     .map((bar, index) => {
@@ -345,7 +369,7 @@ function renderBarChart(
       return `<rect x="${num(x)}" y="${num(yTop)}" width="${num(barWidth)}" height="${num(height)}" fill="${color}" fill-opacity="0.8"/><text x="${num(x + barWidth / 2)}" y="${num(yTop - 5)}" font-size="10" text-anchor="middle" fill="#10213d">${bar.value}</text><text x="${num(x + barWidth / 2)}" y="${chartBottom + 14}" font-size="10" text-anchor="middle" fill="#64748b">${escapeHtml(bar.label)}</text>`;
     })
     .join("");
-  const svg = `<svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" role="img">${axis}${parts}</svg>`;
+  const svg = `<svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" role="img">${grid}${valueGrid}${axis}${parts}</svg>`;
   return `<figure class="course-figure course-figure-bar-chart">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -533,6 +557,7 @@ function renderBoxPlot(
   const y = 40;
   const boxHalf = 16;
   const toX = (value: number) => left + ((value - min) / span) * (right - left);
+  const grid = gridBackground(220, 90, 20);
   const whiskerLeft = `<line x1="${num(toX(block.min))}" y1="${y}" x2="${num(toX(block.q1))}" y2="${y}" stroke="#10213d" stroke-width="1.5"/><line x1="${num(toX(block.min))}" y1="${y - 8}" x2="${num(toX(block.min))}" y2="${y + 8}" stroke="#10213d" stroke-width="1.5"/>`;
   const whiskerRight = `<line x1="${num(toX(block.q3))}" y1="${y}" x2="${num(toX(block.max))}" y2="${y}" stroke="#10213d" stroke-width="1.5"/><line x1="${num(toX(block.max))}" y1="${y - 8}" x2="${num(toX(block.max))}" y2="${y + 8}" stroke="#10213d" stroke-width="1.5"/>`;
   const box = `<rect x="${num(toX(block.q1))}" y="${y - boxHalf}" width="${num(toX(block.q3) - toX(block.q1))}" height="${boxHalf * 2}" fill="#2563eb" fill-opacity="0.15" stroke="#10213d" stroke-width="1.5"/>`;
@@ -552,7 +577,7 @@ function renderBoxPlot(
   const axisLabel = block.axisLabel
     ? `<text x="${(left + right) / 2}" y="${y + boxHalf + 30}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(block.axisLabel)}</text>`
     : "";
-  const svg = `<svg viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" role="img">${whiskerLeft}${whiskerRight}${box}${median}${labels}${axisLabel}</svg>`;
+  const svg = `<svg viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" role="img">${grid}${whiskerLeft}${whiskerRight}${box}${median}${labels}${axisLabel}</svg>`;
   return `<figure class="course-figure course-figure-box-plot">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 

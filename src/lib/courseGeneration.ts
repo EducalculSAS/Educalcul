@@ -306,7 +306,7 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • Une démonstration de trois étapes ou plus utilise "steps".
 • ${visualRequirement(job.lesson.visualFocus)}
 • Une courbe de fonction utilise exclusivement "graph". SVG/figure ne trace jamais une courbe, une tangente ou une asymptote.
-• Un cercle trigonométrique utilise exclusivement le bloc "trig_circle" (jamais "figure") : le serveur calcule lui-même les coordonnées exactes des angles remarquables, tu ne fournis que l'angle et son nom.
+• Un cercle trigonométrique utilise exclusivement le bloc "trig_circle" (jamais "figure") : le serveur calcule lui-même les coordonnées exactes des angles remarquables, tu ne fournis que l'angle et son nom. Un seul nom court par angle (ex: "$\\frac{\\pi}{6}$"), jamais deux angles co-terminaux dans le même label (pas de "$-\\frac{\\pi}{3}$ ou $\\frac{5\\pi}{3}$") : le serveur affiche déjà la coordonnée exacte à côté, un label trop long déborde du cadre.
 • Un camembert utilise "pie_chart", une droite graduée ou un ensemble de solutions "number_line", un diagramme en barres "bar_chart", un arbre pondéré "probability_tree", un diagramme d'ensembles "venn_diagram", un triangle ou schéma géométrique annoté "triangle_diagram", une boîte à moustaches "box_plot". N'utilise "figure" que si aucun de ces blocs dédiés ne correspond.
 • Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
 • Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.

@@ -130,6 +130,11 @@ export function containsSuspiciousUnstructuredMath(value: string): boolean {
     return true;
   }
   if (/\b(?:-?infty|\+?infty|xmapsto|o\s*[+-]?infty)\b/i.test(text)) return true;
+  // "2pi", "pi/3"... jamais détecté jusqu'ici : ce détecteur listait frac,
+  // infty, lambda etc. mais pas pi, alors que c'est la lettre grecque la plus
+  // fréquente d'un cours de trigonométrie (vu en prod : "sur [0, 2pi]" jamais
+  // converti en "0, 2π" faute d'être repéré comme suspect).
+  if (/(?<![a-zA-Z])\d*pi\b/i.test(text)) return true;
   return false;
 }
 
@@ -723,6 +728,10 @@ function readableMathFallbackText(value: string): string {
     .replace(/\\?\bbeta\b/g, "β")
     .replace(/\\?\blambda\b/g, "λ")
     .replace(/\\?\binfty\b/gi, "∞")
+    // "2pi" n'a pas de \b entre le chiffre et "pi" (les deux sont des
+    // caractères de mot) : motif séparé avant le cas "pi" isolé.
+    .replace(/(\d)pi\b/gi, "$1π")
+    .replace(/\\?\bpi\b/gi, "π")
     .replace(/\\?\bneq\b/g, "≠")
     .replace(/\\?\bleq\b/g, "≤")
     .replace(/\\?\bgeq\b/g, "≥")
