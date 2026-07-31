@@ -184,7 +184,7 @@ function visualRequirement(focus: CourseVisualFocus): string {
     return 'Ajoute un bloc "sign_table" cohérent avec les racines et les intervalles.';
   }
   if (focus === "figure") {
-    return 'Ajoute un bloc "figure" réservé à un schéma, diagramme, camembert, aire, fraction, frise ou processus. Jamais une courbe de fonction.';
+    return 'Ajoute le bloc dédié le plus adapté : "trig_circle" (cercle trigonométrique), "pie_chart" (camembert), "number_line" (droite graduée, intervalle), "bar_chart" (effectifs), "probability_tree" (arbre pondéré), "venn_diagram" (ensembles/événements) ou "triangle_diagram" (géométrie annotée). N\'utilise "figure" que si aucun ne correspond. Jamais une courbe de fonction.';
   }
   return 'Ajoute un bloc "table" utile de valeurs, propriétés ou comparaison.';
 }
@@ -212,9 +212,18 @@ Blocs autorisés :
 7. {"type":"sign_table","expression":"$P(x)$","boundaries":["$x_1$","$x_2$"],"interval_signs":["positive","negative","positive"],"boundary_signs":["zero","zero"]}
 8. {"type":"variation_table","variable":"$x$","function_name":"$f$","points":["$-\\\\infty$","$0$","$+\\\\infty$"],"values":["$0$","$1$","$+\\\\infty$"],"directions":["up","up"],"derivative_signs":["positive","positive"]}
 9. {"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Courbe de $f(x)=e^x$, asymptote horizontale $y=0$ en $-\\\\infty$.","parameter":null,"vectors":[]}
-10. {"type":"figure", ...} uniquement pour un schéma ou diagramme, jamais une courbe.
-11. {"type":"steps","steps":[{"title":"Étape 1","blocks":[BLOCS]}]}
-12. {"type":"exercise","exercise_index":1}`;
+10. {"type":"figure", ...} uniquement pour un schéma géométrique simple non couvert par les blocs 11-17 ci-dessous (jamais une courbe, jamais un cercle trigonométrique).
+11. {"type":"trig_circle","caption":"Cercle trigonométrique et angles remarquables.","highlighted_angles":[{"angle_deg":30,"label":"$\\\\frac{\\\\pi}{6}$"},{"angle_deg":90,"label":"$\\\\frac{\\\\pi}{2}$"}]} — le serveur calcule lui-même les coordonnées exactes affichées ; label est juste le nom de l'angle, jamais les coordonnées.
+12. {"type":"pie_chart","caption":"Répartition des réponses.","slices":[{"label":"Oui","value":60,"tone":"blue"},{"label":"Non","value":40,"tone":"gold"}]}
+13. {"type":"number_line","caption":"Ensemble des solutions.","min":-5,"max":5,"points":[{"value":2,"label":"2","filled":true}],"intervals":[{"from":-2,"to":3,"from_included":false,"to_included":true,"tone":"blue"}]}
+14. {"type":"bar_chart","caption":"Effectifs par catégorie.","bars":[{"label":"A","value":12,"tone":"blue"},{"label":"B","value":7,"tone":"gold"}]}
+15. {"type":"probability_tree","caption":"Arbre pondéré de l'expérience.","branches":[{"label":"Rouge","probability":"1/3","children":[{"label":"Gagné","probability":"1/2"},{"label":"Perdu","probability":"1/2"}]}]}
+16. {"type":"venn_diagram","caption":"Événements A et B.","sets":[{"label":"A","tone":"blue"},{"label":"B","tone":"gold"}],"region_labels":{"a_only":"5","b_only":"3","both":"2","neither":"10"}} (region_labels à null si non pertinent)
+17. {"type":"triangle_diagram","caption":"Triangle ABC rectangle en A.","vertex_labels":["A","B","C"],"side_labels":["","5 cm","3 cm"],"angle_labels":["90°","",""],"right_angle_at":0} (side_labels/angle_labels : chaîne vide si non annoté ; right_angle_at à null si aucun angle droit)
+18. {"type":"box_plot","caption":"Diagramme en boîte des notes.","min":4,"q1":9,"median":12,"q3":15,"max":19,"axis_label":"Notes sur 20"}
+19. {"type":"steps","steps":[{"title":"Étape 1","blocks":[BLOCS]}]}
+20. {"type":"exercise","exercise_index":1}
+Les blocs 11-18 sont déterministes : ne fournis QUE les données sémantiques demandées (angles, valeurs, labels courts), jamais de coordonnées x/y — le serveur calcule toute la disposition géométrique.`;
 
 function formatList(values: string[], fallback: string): string {
   return values.length > 0 ? values.map((value) => `• ${value}`).join("\n") : fallback;
@@ -297,7 +306,8 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • Une démonstration de trois étapes ou plus utilise "steps".
 • ${visualRequirement(job.lesson.visualFocus)}
 • Une courbe de fonction utilise exclusivement "graph". SVG/figure ne trace jamais une courbe, une tangente ou une asymptote.
-• N'utilise jamais "figure" pour un cercle trigonométrique avec plusieurs points étiquetés de coordonnées (fractions, racines) : les labels SVG ne peuvent pas afficher de LaTeX et se chevauchent dès qu'il y a plus de 2-3 étiquettes. Décris le cercle trigonométrique en texte et utilise "graph" pour les courbes de sin/cos qui en découlent à la place.
+• Un cercle trigonométrique utilise exclusivement le bloc "trig_circle" (jamais "figure") : le serveur calcule lui-même les coordonnées exactes des angles remarquables, tu ne fournis que l'angle et son nom.
+• Un camembert utilise "pie_chart", une droite graduée ou un ensemble de solutions "number_line", un diagramme en barres "bar_chart", un arbre pondéré "probability_tree", un diagramme d'ensembles "venn_diagram", un triangle ou schéma géométrique annoté "triangle_diagram", une boîte à moustaches "box_plot". N'utilise "figure" que si aucun de ces blocs dédiés ne correspond.
 • Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
 • Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.
 • Recalcule chaque formule, exemple et exercice. Distingue minimum et infimum, implication et équivalence.

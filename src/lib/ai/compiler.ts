@@ -156,6 +156,406 @@ function polarPoint(
   };
 }
 
+// ── Diagrammes déterministes ─────────────────────────────────────────────────
+// La disposition géométrique (angles, échelles, positions) est calculée ici,
+// jamais laissée à l'IA : c'est ce qui élimine la classe de bugs de "figure"
+// (chevauchement de labels, débordement du viewBox). Le modèle ne fournit que
+// des données sémantiques (valeurs, labels courts).
+
+function num(value: number): string {
+  return Number.isInteger(value) ? String(value) : value.toFixed(2).replace(/\.?0+$/, "");
+}
+
+/** Point sur un cercle en convention mathématique standard (0°=est,
+ * antihoraire), contrairement à polarPoint (0°=est, horaire, utilisé par
+ * "figure" pour des arcs SVG où l'axe y est inversé). */
+function trigPoint(
+  cx: number,
+  cy: number,
+  radius: number,
+  angleDegrees: number,
+): { x: number; y: number } {
+  const radians = (angleDegrees * Math.PI) / 180;
+  return { x: cx + radius * Math.cos(radians), y: cy - radius * Math.sin(radians) };
+}
+
+function labelAnchorFor(cosValue: number): "start" | "middle" | "end" {
+  if (cosValue > 0.2) return "start";
+  if (cosValue < -0.2) return "end";
+  return "middle";
+}
+
+function labelDyFor(sinValue: number): string {
+  if (sinValue > 0.2) return "-4";
+  if (sinValue < -0.2) return "10";
+  return "3";
+}
+
+// Coordonnées exactes des angles remarquables du cercle trigonométrique :
+// calculées une fois ici, jamais confiées au modèle (élimine tout risque
+// d'erreur de calcul ou de "racine(3)/2" mal placé/tronqué).
+const UNIT_CIRCLE_COORDS: Record<number, [string, string]> = {
+  0: ["1", "0"],
+  30: ["√3/2", "1/2"],
+  45: ["√2/2", "√2/2"],
+  60: ["1/2", "√3/2"],
+  90: ["0", "1"],
+  120: ["-1/2", "√3/2"],
+  135: ["-√2/2", "√2/2"],
+  150: ["-√3/2", "1/2"],
+  180: ["-1", "0"],
+  210: ["-√3/2", "-1/2"],
+  225: ["-√2/2", "-√2/2"],
+  240: ["-1/2", "-√3/2"],
+  270: ["0", "-1"],
+  300: ["1/2", "-√3/2"],
+  315: ["√2/2", "-√2/2"],
+  330: ["√3/2", "-1/2"],
+};
+
+function renderTrigCircle(
+  block: Extract<StructuredCourseBlock, { type: "trig_circle" }>,
+): string {
+  const cx = 100;
+  const cy = 100;
+  const r = 68;
+  const angles = block.highlightedAngles.slice(0, 8);
+  const axes = `<line x1="${cx - r - 18}" y1="${cy}" x2="${cx + r + 18}" y2="${cy}" stroke="#94a3b8" stroke-width="1"/><line x1="${cx}" y1="${cy - r - 18}" x2="${cx}" y2="${cy + r + 18}" stroke="#94a3b8" stroke-width="1"/>`;
+  const circle = `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="#10213d" stroke-width="1.5" fill="none"/>`;
+  const markers = angles
+    .map((angle) => {
+      const normalized = ((Math.round(angle.angleDeg) % 360) + 360) % 360;
+      const exact = UNIT_CIRCLE_COORDS[normalized];
+      const text = exact
+        ? `${escapeHtml(angle.label)} : (${escapeHtml(exact[0])}, ${escapeHtml(exact[1])})`
+        : escapeHtml(angle.label);
+      const point = trigPoint(cx, cy, r, angle.angleDeg);
+      const labelPoint = trigPoint(cx, cy, r + 16, angle.angleDeg);
+      const radians = (angle.angleDeg * Math.PI) / 180;
+      const anchor = labelAnchorFor(Math.cos(radians));
+      const dy = labelDyFor(Math.sin(radians));
+      return `<circle cx="${num(point.x)}" cy="${num(point.y)}" r="3.2" fill="#dc2626"/><text x="${num(labelPoint.x)}" y="${num(labelPoint.y)}" dy="${dy}" font-size="10" text-anchor="${anchor}" fill="#10213d">${text}</text>`;
+    })
+    .join("");
+  // Point mobile ajouté/animé côté client par enhanceTrigCircles
+  // (src/lib/trigCircleInteractive.ts) : le curseur fait varier l'angle et
+  // affiche (cos, sin) en direct, sans jamais recalculer le tracé statique
+  // ci-dessus (déjà correct et déterministe).
+  const svg = `<svg class="tc-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">${axes}${circle}${markers}<g class="tc-live"></g></svg>`;
+  const controls = `<div class="tc-controls"><input type="range" class="tc-angle-slider" min="0" max="360" step="1" value="45"/><span class="tc-angle-value">45°</span></div>`;
+  return `<figure class="course-figure course-figure-trig-circle">${svg}${controls}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderPieChart(
+  block: Extract<StructuredCourseBlock, { type: "pie_chart" }>,
+): string {
+  const cx = 95;
+  const cy = 80;
+  const r = 55;
+  const total = block.slices.reduce((sum, slice) => sum + slice.value, 0) || 1;
+  let startAngle = -90;
+  const parts = block.slices.map((slice) => {
+    const sweep = (slice.value / total) * 360;
+    const endAngle = startAngle + sweep;
+    const start = trigPoint(cx, cy, r, -startAngle);
+    const end = trigPoint(cx, cy, r, -endAngle);
+    const largeArc = sweep > 180 ? 1 : 0;
+    const midAngle = -(startAngle + endAngle) / 2;
+    const labelPoint = trigPoint(cx, cy, r + 16, midAngle);
+    const midRadians = (midAngle * Math.PI) / 180;
+    const anchor = labelAnchorFor(Math.cos(midRadians));
+    const percent = Math.round((slice.value / total) * 100);
+    const path =
+      sweep >= 359.99
+        ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${FIGURE_PALETTE[slice.tone]}" fill-opacity="0.75" stroke="#fff" stroke-width="1.5"/>`
+        : `<path d="M ${num(cx)} ${num(cy)} L ${num(start.x)} ${num(start.y)} A ${r} ${r} 0 ${largeArc} 1 ${num(end.x)} ${num(end.y)} Z" fill="${FIGURE_PALETTE[slice.tone]}" fill-opacity="0.75" stroke="#fff" stroke-width="1.5"/>`;
+    const label = `<text x="${num(labelPoint.x)}" y="${num(labelPoint.y)}" font-size="10" text-anchor="${anchor}" fill="#10213d">${escapeHtml(slice.label)} (${percent}%)</text>`;
+    startAngle = endAngle;
+    return path + label;
+  });
+  const svg = `<svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" role="img">${parts.join("")}</svg>`;
+  return `<figure class="course-figure course-figure-pie-chart">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderNumberLine(
+  block: Extract<StructuredCourseBlock, { type: "number_line" }>,
+): string {
+  const min = Math.min(block.min, block.max);
+  const max = Math.max(block.min, block.max);
+  const span = max - min || 1;
+  const left = 20;
+  const right = 220;
+  const y = 35;
+  const toX = (value: number) => left + ((value - min) / span) * (right - left);
+  const showTicks = span <= 14 && Number.isInteger(min) && Number.isInteger(max);
+  const ticks = showTicks
+    ? Array.from({ length: Math.round(span) + 1 }, (_, index) => min + index)
+        .map(
+          (value) =>
+            `<line x1="${num(toX(value))}" y1="${y - 4}" x2="${num(toX(value))}" y2="${y + 4}" stroke="#94a3b8" stroke-width="1"/><text x="${num(toX(value))}" y="${y + 18}" font-size="9" text-anchor="middle" fill="#64748b">${value}</text>`,
+        )
+        .join("")
+    : "";
+  const line = `<line x1="${left - 10}" y1="${y}" x2="${right + 10}" y2="${y}" stroke="#10213d" stroke-width="1.5" marker-end="url(#nl-arrow)" marker-start="url(#nl-arrow-start)"/>`;
+  const intervals = block.intervals
+    .map((interval) => {
+      const x1 = toX(Math.max(interval.from, min));
+      const x2 = toX(Math.min(interval.to, max));
+      const color = FIGURE_PALETTE[interval.tone];
+      const bracket = (x: number, included: boolean) =>
+        included
+          ? `<circle cx="${num(x)}" cy="${y}" r="3.5" fill="${color}"/>`
+          : `<circle cx="${num(x)}" cy="${y}" r="3.5" fill="#fff" stroke="${color}" stroke-width="1.5"/>`;
+      return `<line x1="${num(x1)}" y1="${y}" x2="${num(x2)}" y2="${y}" stroke="${color}" stroke-width="4"/>${bracket(x1, interval.fromIncluded)}${bracket(x2, interval.toIncluded)}`;
+    })
+    .join("");
+  const points = block.points
+    .map((point) => {
+      const x = toX(clampNumber(point.value, min, max));
+      const fill = point.filled ? "#10213d" : "#fff";
+      return `<circle cx="${num(x)}" cy="${y}" r="4" fill="${fill}" stroke="#10213d" stroke-width="1.5"/><text x="${num(x)}" y="${y - 10}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(point.label)}</text>`;
+    })
+    .join("");
+  const svg = `<svg viewBox="0 0 240 70" xmlns="http://www.w3.org/2000/svg" role="img"><defs><marker id="nl-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#10213d"/></marker><marker id="nl-arrow-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M6,0 L0,3 L6,6 Z" fill="#10213d"/></marker></defs>${line}${ticks}${intervals}${points}</svg>`;
+  return `<figure class="course-figure course-figure-number-line">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function clampNumber(value: number, min: number, max: number): number {
+  return Math.max(min, Math.min(max, value));
+}
+
+function renderBarChart(
+  block: Extract<StructuredCourseBlock, { type: "bar_chart" }>,
+): string {
+  const bars = block.bars;
+  const maxValue = Math.max(...bars.map((bar) => bar.value), 1);
+  const chartLeft = 20;
+  const chartRight = 210;
+  const chartTop = 15;
+  const chartBottom = 130;
+  const slotWidth = (chartRight - chartLeft) / bars.length;
+  const barWidth = slotWidth * 0.6;
+  const axis = `<line x1="${chartLeft}" y1="${chartBottom}" x2="${chartRight}" y2="${chartBottom}" stroke="#10213d" stroke-width="1.5"/>`;
+  const parts = bars
+    .map((bar, index) => {
+      const height = (bar.value / maxValue) * (chartBottom - chartTop);
+      const x = chartLeft + index * slotWidth + (slotWidth - barWidth) / 2;
+      const yTop = chartBottom - height;
+      const color = FIGURE_PALETTE[bar.tone];
+      return `<rect x="${num(x)}" y="${num(yTop)}" width="${num(barWidth)}" height="${num(height)}" fill="${color}" fill-opacity="0.8"/><text x="${num(x + barWidth / 2)}" y="${num(yTop - 5)}" font-size="10" text-anchor="middle" fill="#10213d">${bar.value}</text><text x="${num(x + barWidth / 2)}" y="${chartBottom + 14}" font-size="10" text-anchor="middle" fill="#64748b">${escapeHtml(bar.label)}</text>`;
+    })
+    .join("");
+  const svg = `<svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" role="img">${axis}${parts}</svg>`;
+  return `<figure class="course-figure course-figure-bar-chart">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderProbabilityTree(
+  block: Extract<StructuredCourseBlock, { type: "probability_tree" }>,
+): string {
+  const branches = block.branches;
+  const leafCounts = branches.map((branch) => Math.max(1, branch.children.length));
+  const totalLeaves = leafCounts.reduce((sum, count) => sum + count, 0);
+  const rowHeight = 26;
+  const height = Math.max(90, (totalLeaves + branches.length) * rowHeight);
+  const rootX = 15;
+  const branchX = 95;
+  const leafX = 190;
+  const rootY = height / 2;
+  let cursorY = 10;
+  const segments: string[] = [];
+  branches.forEach((branch, index) => {
+    const leaves = branch.children.length > 0 ? branch.children : [{ label: "", probability: "" }];
+    const branchTop = cursorY;
+    const branchBottom = cursorY + leaves.length * rowHeight;
+    const branchY = (branchTop + branchBottom) / 2;
+    segments.push(
+      `<line x1="${rootX}" y1="${num(rootY)}" x2="${branchX}" y2="${num(branchY)}" stroke="#10213d" stroke-width="1.5"/>`,
+      `<text x="${(rootX + branchX) / 2}" y="${num((rootY + branchY) / 2 - 5)}" font-size="9" text-anchor="middle" fill="#64748b">${escapeHtml(branch.probability)}</text>`,
+      `<text x="${branchX + 6}" y="${num(branchY)}" dy="-6" font-size="10" fill="#10213d">${escapeHtml(branch.label)}</text>`,
+    );
+    if (branch.children.length > 0) {
+      branch.children.forEach((leaf, leafIndex) => {
+        const leafY = branchTop + leafIndex * rowHeight + rowHeight / 2;
+        segments.push(
+          `<line x1="${branchX}" y1="${num(branchY)}" x2="${leafX}" y2="${num(leafY)}" stroke="#10213d" stroke-width="1.5"/>`,
+          `<text x="${(branchX + leafX) / 2}" y="${num((branchY + leafY) / 2 - 5)}" font-size="9" text-anchor="middle" fill="#64748b">${escapeHtml(leaf.probability)}</text>`,
+          `<text x="${leafX + 6}" y="${num(leafY)}" dy="3" font-size="10" fill="#10213d">${escapeHtml(leaf.label)}</text>`,
+        );
+      });
+    }
+    cursorY = branchBottom;
+    void index;
+  });
+  const svg = `<svg viewBox="0 0 260 ${num(height)}" xmlns="http://www.w3.org/2000/svg" role="img">${segments.join("")}</svg>`;
+  return `<figure class="course-figure course-figure-probability-tree">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderVennDiagram(
+  block: Extract<StructuredCourseBlock, { type: "venn_diagram" }>,
+): string {
+  const sets = block.sets;
+  const r = 42;
+  if (sets.length === 2) {
+    const cxA = 78;
+    const cxB = 122;
+    const cy = 75;
+    const region = block.regionLabels;
+    const circles = `<circle cx="${cxA}" cy="${cy}" r="${r}" fill="${FIGURE_PALETTE[sets[0].tone]}" fill-opacity="0.35" stroke="${FIGURE_PALETTE[sets[0].tone]}" stroke-width="1.5"/><circle cx="${cxB}" cy="${cy}" r="${r}" fill="${FIGURE_PALETTE[sets[1].tone]}" fill-opacity="0.35" stroke="${FIGURE_PALETTE[sets[1].tone]}" stroke-width="1.5"/>`;
+    const setLabels = `<text x="${cxA - 20}" y="${cy - r - 6}" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(sets[0].label)}</text><text x="${cxB + 20}" y="${cy - r - 6}" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(sets[1].label)}</text>`;
+    const regionLabels = region
+      ? [
+          region.aOnly ? `<text x="${cxA - 22}" y="${cy}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(region.aOnly)}</text>` : "",
+          region.bOnly ? `<text x="${cxB + 22}" y="${cy}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(region.bOnly)}</text>` : "",
+          region.both ? `<text x="${(cxA + cxB) / 2}" y="${cy}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(region.both)}</text>` : "",
+          region.neither ? `<text x="100" y="${cy + r + 20}" font-size="10" text-anchor="middle" fill="#64748b">${escapeHtml(region.neither)}</text>` : "",
+        ].join("")
+      : "";
+    const svg = `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img">${circles}${setLabels}${regionLabels}</svg>`;
+    return `<figure class="course-figure course-figure-venn">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  }
+  const centers = [
+    { x: 85, y: 55 },
+    { x: 60, y: 100 },
+    { x: 110, y: 100 },
+  ];
+  const circles = sets
+    .slice(0, 3)
+    .map(
+      (set, index) =>
+        `<circle cx="${centers[index].x}" cy="${centers[index].y}" r="${r}" fill="${FIGURE_PALETTE[set.tone]}" fill-opacity="0.3" stroke="${FIGURE_PALETTE[set.tone]}" stroke-width="1.5"/>`,
+    )
+    .join("");
+  const labelOffsets = [
+    { x: 85, y: 55 - r - 8 },
+    { x: 60 - r + 5, y: 100 + r + 4 },
+    { x: 110 + r - 5, y: 100 + r + 4 },
+  ];
+  const setLabels = sets
+    .slice(0, 3)
+    .map(
+      (set, index) =>
+        `<text x="${labelOffsets[index].x}" y="${labelOffsets[index].y}" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(set.label)}</text>`,
+    )
+    .join("");
+  const svg = `<svg viewBox="0 0 170 160" xmlns="http://www.w3.org/2000/svg" role="img">${circles}${setLabels}</svg>`;
+  return `<figure class="course-figure course-figure-venn">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderTriangleDiagram(
+  block: Extract<StructuredCourseBlock, { type: "triangle_diagram" }>,
+): string {
+  const isRight = block.rightAngleAt !== undefined;
+  const base: Array<{ x: number; y: number }> = isRight
+    ? block.rightAngleAt === 0
+      ? [{ x: 40, y: 130 }, { x: 160, y: 130 }, { x: 40, y: 30 }]
+      : block.rightAngleAt === 1
+        ? [{ x: 30, y: 30 }, { x: 30, y: 130 }, { x: 160, y: 130 }]
+        : [{ x: 40, y: 130 }, { x: 160, y: 30 }, { x: 40, y: 30 }]
+    : [{ x: 100, y: 25 }, { x: 35, y: 135 }, { x: 165, y: 135 }];
+  const [a, b, c] = base;
+  const centroid = { x: (a.x + b.x + c.x) / 3, y: (a.y + b.y + c.y) / 3 };
+  const labelAt = (point: { x: number; y: number }) => {
+    const dx = point.x - centroid.x;
+    const dy = point.y - centroid.y;
+    const length = Math.hypot(dx, dy) || 1;
+    return { x: point.x + (dx / length) * 14, y: point.y + (dy / length) * 14 };
+  };
+  const vertexLabels = [a, b, c]
+    .map((point, index) => {
+      const label = labelAt(point);
+      return `<text x="${num(label.x)}" y="${num(label.y)}" font-size="11" font-weight="bold" text-anchor="middle" fill="#10213d">${escapeHtml(block.vertexLabels[index])}</text>`;
+    })
+    .join("");
+  const sides: Array<[{ x: number; y: number }, { x: number; y: number }]> = [
+    [b, c],
+    [a, c],
+    [a, b],
+  ];
+  const sideLabels = block.sideLabels
+    ? sides
+        .map(([p1, p2], index) => {
+          const text = block.sideLabels?.[index];
+          if (!text) return "";
+          const mid = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+          const label = labelAt(mid);
+          const midLabel = { x: mid.x + (label.x - mid.x) * 0.6, y: mid.y + (label.y - mid.y) * 0.6 };
+          return `<text x="${num(midLabel.x)}" y="${num(midLabel.y)}" font-size="10" text-anchor="middle" fill="#64748b">${escapeHtml(text)}</text>`;
+        })
+        .join("")
+    : "";
+  const angleLabels = block.angleLabels
+    ? [a, b, c]
+        .map((point, index) => {
+          const text = block.angleLabels?.[index];
+          if (!text) return "";
+          const dx = centroid.x - point.x;
+          const dy = centroid.y - point.y;
+          const length = Math.hypot(dx, dy) || 1;
+          const pos = { x: point.x + (dx / length) * 22, y: point.y + (dy / length) * 22 };
+          return `<text x="${num(pos.x)}" y="${num(pos.y)}" font-size="9" text-anchor="middle" fill="#c89f36">${escapeHtml(text)}</text>`;
+        })
+        .join("")
+    : "";
+  let rightAngleMarker = "";
+  if (block.rightAngleAt !== undefined) {
+    const vertex = base[block.rightAngleAt];
+    const others = base.filter((_, index) => index !== block.rightAngleAt);
+    const toUnit = (p: { x: number; y: number }) => {
+      const dx = p.x - vertex.x;
+      const dy = p.y - vertex.y;
+      const length = Math.hypot(dx, dy) || 1;
+      return { x: dx / length, y: dy / length };
+    };
+    const u1 = toUnit(others[0]);
+    const u2 = toUnit(others[1]);
+    const size = 12;
+    const p1 = { x: vertex.x + u1.x * size, y: vertex.y + u1.y * size };
+    const p2 = { x: vertex.x + u1.x * size + u2.x * size, y: vertex.y + u1.y * size + u2.y * size };
+    const p3 = { x: vertex.x + u2.x * size, y: vertex.y + u2.y * size };
+    rightAngleMarker = `<path d="M ${num(p1.x)} ${num(p1.y)} L ${num(p2.x)} ${num(p2.y)} L ${num(p3.x)} ${num(p3.y)}" fill="none" stroke="#10213d" stroke-width="1.2"/>`;
+  }
+  const triangle = `<polygon points="${a.x},${a.y} ${b.x},${b.y} ${c.x},${c.y}" fill="#10213d" fill-opacity="0.06" stroke="#10213d" stroke-width="1.5"/>`;
+  const svg = `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img">${triangle}${rightAngleMarker}${vertexLabels}${sideLabels}${angleLabels}</svg>`;
+  return `<figure class="course-figure course-figure-triangle">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderBoxPlot(
+  block: Extract<StructuredCourseBlock, { type: "box_plot" }>,
+): string {
+  const axisMin = Math.min(block.min, block.q1, block.median, block.q3, block.max);
+  const axisMax = Math.max(block.min, block.q1, block.median, block.q3, block.max);
+  const padding = (axisMax - axisMin) * 0.1 || 1;
+  const min = axisMin - padding;
+  const max = axisMax + padding;
+  const span = max - min || 1;
+  const left = 20;
+  const right = 210;
+  const y = 40;
+  const boxHalf = 16;
+  const toX = (value: number) => left + ((value - min) / span) * (right - left);
+  const whiskerLeft = `<line x1="${num(toX(block.min))}" y1="${y}" x2="${num(toX(block.q1))}" y2="${y}" stroke="#10213d" stroke-width="1.5"/><line x1="${num(toX(block.min))}" y1="${y - 8}" x2="${num(toX(block.min))}" y2="${y + 8}" stroke="#10213d" stroke-width="1.5"/>`;
+  const whiskerRight = `<line x1="${num(toX(block.q3))}" y1="${y}" x2="${num(toX(block.max))}" y2="${y}" stroke="#10213d" stroke-width="1.5"/><line x1="${num(toX(block.max))}" y1="${y - 8}" x2="${num(toX(block.max))}" y2="${y + 8}" stroke="#10213d" stroke-width="1.5"/>`;
+  const box = `<rect x="${num(toX(block.q1))}" y="${y - boxHalf}" width="${num(toX(block.q3) - toX(block.q1))}" height="${boxHalf * 2}" fill="#2563eb" fill-opacity="0.15" stroke="#10213d" stroke-width="1.5"/>`;
+  const median = `<line x1="${num(toX(block.median))}" y1="${y - boxHalf}" x2="${num(toX(block.median))}" y2="${y + boxHalf}" stroke="#dc2626" stroke-width="2"/>`;
+  const labels = [
+    { value: block.min, key: "min" },
+    { value: block.q1, key: "Q1" },
+    { value: block.median, key: "Méd" },
+    { value: block.q3, key: "Q3" },
+    { value: block.max, key: "max" },
+  ]
+    .map(
+      (entry) =>
+        `<text x="${num(toX(entry.value))}" y="${y + boxHalf + 16}" font-size="9" text-anchor="middle" fill="#64748b">${entry.value}</text>`,
+    )
+    .join("");
+  const axisLabel = block.axisLabel
+    ? `<text x="${(left + right) / 2}" y="${y + boxHalf + 30}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(block.axisLabel)}</text>`
+    : "";
+  const svg = `<svg viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" role="img">${whiskerLeft}${whiskerRight}${box}${median}${labels}${axisLabel}</svg>`;
+  return `<figure class="course-figure course-figure-box-plot">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
 /** Compile du texte structuré vers les chaînes historiques attendues par les
  * viewers. Seules les formules validées par KaTeX reçoivent des délimiteurs.
  * Une formule invalide devient du texte : aucun $ cassé ne peut être stocké. */
@@ -326,6 +726,22 @@ function compileCourseBlock(
         .join("");
       return `<figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img"><defs><marker id="${markerId}" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#10213d"/></marker></defs>${elements}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
     }
+    case "trig_circle":
+      return renderTrigCircle(block);
+    case "pie_chart":
+      return renderPieChart(block);
+    case "number_line":
+      return renderNumberLine(block);
+    case "bar_chart":
+      return renderBarChart(block);
+    case "probability_tree":
+      return renderProbabilityTree(block);
+    case "venn_diagram":
+      return renderVennDiagram(block);
+    case "triangle_diagram":
+      return renderTriangleDiagram(block);
+    case "box_plot":
+      return renderBoxPlot(block);
     case "exercise": {
       const zeroBased = block.exerciseIndex - 1;
       const exerciseId = exerciseIds[zeroBased];

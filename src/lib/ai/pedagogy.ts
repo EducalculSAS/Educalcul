@@ -108,6 +108,14 @@ function blockWordCount(block: StructuredCourseBlock): number {
       );
     case "graph":
     case "figure":
+    case "trig_circle":
+    case "pie_chart":
+    case "number_line":
+    case "bar_chart":
+    case "probability_tree":
+    case "venn_diagram":
+    case "triangle_diagram":
+    case "box_plot":
       return block.caption.split(/\s+/).filter(Boolean).length;
     case "steps":
       return block.steps.reduce(
@@ -141,7 +149,15 @@ function isVisualBlock(block: StructuredCourseBlock): boolean {
     block.type === "sign_table" ||
     block.type === "variation_table" ||
     block.type === "graph" ||
-    block.type === "figure"
+    block.type === "figure" ||
+    block.type === "trig_circle" ||
+    block.type === "pie_chart" ||
+    block.type === "number_line" ||
+    block.type === "bar_chart" ||
+    block.type === "probability_tree" ||
+    block.type === "venn_diagram" ||
+    block.type === "triangle_diagram" ||
+    block.type === "box_plot"
   );
 }
 

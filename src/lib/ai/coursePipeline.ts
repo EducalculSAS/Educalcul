@@ -563,6 +563,14 @@ function blockPlainText(block: StructuredCourseBlock): string {
       ].join(" ");
     case "graph":
     case "figure":
+    case "trig_circle":
+    case "pie_chart":
+    case "number_line":
+    case "bar_chart":
+    case "probability_tree":
+    case "venn_diagram":
+    case "triangle_diagram":
+    case "box_plot":
       return block.caption;
     case "steps":
       return block.steps

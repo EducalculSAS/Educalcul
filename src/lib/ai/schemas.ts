@@ -453,6 +453,269 @@ const figureBlock: JsonSchema = {
   ...noExtra,
 };
 
+const toneEnum: JsonSchema = {
+  type: "string",
+  enum: ["navy", "gold", "blue", "green", "red", "gray"],
+};
+
+// Diagrammes déterministes : seules des données sémantiques sont demandées
+// (angles, valeurs, labels courts) — jamais de coordonnées pixel choisies par
+// le modèle. compiler.ts calcule la disposition géométrique exacte, ce qui
+// élimine la classe de bugs de "figure" (chevauchement, débordement du
+// viewBox, labels mathématiques illisibles en <text> SVG brut).
+
+const trigCircleBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["trig_circle"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    highlighted_angles: {
+      type: "array",
+      minItems: 1,
+      maxItems: 12,
+      items: {
+        type: "object",
+        properties: {
+          angle_deg: { type: "number", minimum: -360, maximum: 360 },
+          label: { type: "string", minLength: 1, maxLength: 40 },
+        },
+        required: ["angle_deg", "label"],
+        ...noExtra,
+      },
+    },
+  },
+  required: ["type", "caption", "highlighted_angles"],
+  ...noExtra,
+};
+
+const pieChartBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["pie_chart"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    slices: {
+      type: "array",
+      minItems: 2,
+      maxItems: 8,
+      items: {
+        type: "object",
+        properties: {
+          label: { type: "string", minLength: 1, maxLength: 60 },
+          value: { type: "number", minimum: 0 },
+          tone: toneEnum,
+        },
+        required: ["label", "value", "tone"],
+        ...noExtra,
+      },
+    },
+  },
+  required: ["type", "caption", "slices"],
+  ...noExtra,
+};
+
+const numberLineBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["number_line"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    min: { type: "number" },
+    max: { type: "number" },
+    points: {
+      type: "array",
+      minItems: 0,
+      maxItems: 8,
+      items: {
+        type: "object",
+        properties: {
+          value: { type: "number" },
+          label: { type: "string", minLength: 1, maxLength: 40 },
+          filled: { type: "boolean" },
+        },
+        required: ["value", "label", "filled"],
+        ...noExtra,
+      },
+    },
+    intervals: {
+      type: "array",
+      minItems: 0,
+      maxItems: 4,
+      items: {
+        type: "object",
+        properties: {
+          from: { type: "number" },
+          to: { type: "number" },
+          from_included: { type: "boolean" },
+          to_included: { type: "boolean" },
+          tone: toneEnum,
+        },
+        required: ["from", "to", "from_included", "to_included", "tone"],
+        ...noExtra,
+      },
+    },
+  },
+  required: ["type", "caption", "min", "max", "points", "intervals"],
+  ...noExtra,
+};
+
+const barChartBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["bar_chart"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    bars: {
+      type: "array",
+      minItems: 2,
+      maxItems: 10,
+      items: {
+        type: "object",
+        properties: {
+          label: { type: "string", minLength: 1, maxLength: 30 },
+          value: { type: "number", minimum: 0 },
+          tone: toneEnum,
+        },
+        required: ["label", "value", "tone"],
+        ...noExtra,
+      },
+    },
+  },
+  required: ["type", "caption", "bars"],
+  ...noExtra,
+};
+
+const probabilityLeaf: JsonSchema = {
+  type: "object",
+  properties: {
+    label: { type: "string", minLength: 1, maxLength: 40 },
+    probability: { type: "string", minLength: 1, maxLength: 20 },
+  },
+  required: ["label", "probability"],
+  ...noExtra,
+};
+
+const probabilityTreeBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["probability_tree"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    branches: {
+      type: "array",
+      minItems: 2,
+      maxItems: 4,
+      items: {
+        type: "object",
+        properties: {
+          label: { type: "string", minLength: 1, maxLength: 40 },
+          probability: { type: "string", minLength: 1, maxLength: 20 },
+          children: {
+            type: "array",
+            minItems: 0,
+            maxItems: 4,
+            items: probabilityLeaf,
+          },
+        },
+        required: ["label", "probability", "children"],
+        ...noExtra,
+      },
+    },
+  },
+  required: ["type", "caption", "branches"],
+  ...noExtra,
+};
+
+const vennDiagramBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["venn_diagram"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    sets: {
+      type: "array",
+      minItems: 2,
+      maxItems: 3,
+      items: {
+        type: "object",
+        properties: {
+          label: { type: "string", minLength: 1, maxLength: 30 },
+          tone: toneEnum,
+        },
+        required: ["label", "tone"],
+        ...noExtra,
+      },
+    },
+    region_labels: {
+      oneOf: [
+        { type: "null" },
+        {
+          type: "object",
+          properties: {
+            a_only: { type: "string", maxLength: 30 },
+            b_only: { type: "string", maxLength: 30 },
+            both: { type: "string", maxLength: 30 },
+            neither: { type: "string", maxLength: 30 },
+          },
+          required: ["a_only", "b_only", "both", "neither"],
+          ...noExtra,
+        },
+      ],
+    },
+  },
+  required: ["type", "caption", "sets", "region_labels"],
+  ...noExtra,
+};
+
+const triangleDiagramBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["triangle_diagram"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    vertex_labels: {
+      type: "array",
+      minItems: 3,
+      maxItems: 3,
+      items: { type: "string", minLength: 1, maxLength: 5 },
+    },
+    side_labels: {
+      type: "array",
+      minItems: 3,
+      maxItems: 3,
+      items: { type: "string", maxLength: 20 },
+    },
+    angle_labels: {
+      type: "array",
+      minItems: 3,
+      maxItems: 3,
+      items: { type: "string", maxLength: 20 },
+    },
+    right_angle_at: {
+      oneOf: [{ type: "null" }, { type: "integer", minimum: 0, maximum: 2 }],
+    },
+  },
+  required: [
+    "type",
+    "caption",
+    "vertex_labels",
+    "side_labels",
+    "angle_labels",
+    "right_angle_at",
+  ],
+  ...noExtra,
+};
+
+const boxPlotBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["box_plot"] },
+    caption: { type: "string", minLength: 1, maxLength: 300 },
+    min: { type: "number" },
+    q1: { type: "number" },
+    median: { type: "number" },
+    q3: { type: "number" },
+    max: { type: "number" },
+    axis_label: { oneOf: [{ type: "null" }, { type: "string", maxLength: 40 }] },
+  },
+  required: ["type", "caption", "min", "q1", "median", "q3", "max", "axis_label"],
+  ...noExtra,
+};
+
 const learningResourceBlock: JsonSchema = {
   oneOf: [tableBlock, signTableBlock, variationTableBlock, graphBlock, figureBlock],
 };
@@ -522,6 +785,14 @@ const courseBlock: JsonSchema = {
     variationTableBlock,
     graphBlock,
     figureBlock,
+    trigCircleBlock,
+    pieChartBlock,
+    numberLineBlock,
+    barChartBlock,
+    probabilityTreeBlock,
+    vennDiagramBlock,
+    triangleDiagramBlock,
+    boxPlotBlock,
     exerciseRefBlock,
     stepsBlock,
   ],

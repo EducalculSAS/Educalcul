@@ -642,9 +642,22 @@ export function sanitizeStructuredResources<T>(
   // (renderLatexInHTML tourne sur le HTML complet, figcaption compris). Sans
   // ce repli, "infty"/"lambda"/"frac{...}" écrits en toutes lettres restent
   // affichés tels quels au lieu du symbole mathématique attendu.
+  const CAPTION_BLOCK_TYPES = new Set([
+    "graph",
+    "figure",
+    "trig_circle",
+    "pie_chart",
+    "number_line",
+    "bar_chart",
+    "probability_tree",
+    "venn_diagram",
+    "triangle_diagram",
+    "box_plot",
+  ]);
   const repairCaption = (record: Record<string, unknown>) => {
     if (
-      (record.type === "graph" || record.type === "figure") &&
+      typeof record.type === "string" &&
+      CAPTION_BLOCK_TYPES.has(record.type) &&
       typeof record.caption === "string" &&
       containsSuspiciousUnstructuredMath(record.caption)
     ) {

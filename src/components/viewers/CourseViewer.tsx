@@ -29,6 +29,7 @@ import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import { enhanceCourseSteps } from "@/lib/courseSteps";
+import { enhanceTrigCircles } from "@/lib/trigCircleInteractive";
 import MathInput from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 
@@ -188,6 +189,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     const t = setTimeout(() => {
       enhanceMathGraphs(document.body);
       enhanceCourseSteps(document.body);
+      enhanceTrigCircles(document.body);
     }, 120);
     return () => clearTimeout(t);
   }, [currentChapterIndex, currentLessonIndex]);

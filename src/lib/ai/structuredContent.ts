@@ -109,6 +109,59 @@ export type StructuredGraphVector = {
   tone: StructuredFigureTone;
 };
 
+// Diagrammes déterministes : contrairement à "figure" (coordonnées brutes
+// choisies par le modèle, ce qui provoque chevauchements et débordements dès
+// que plusieurs labels mathématiques sont nécessaires — un <text> SVG ne
+// peut pas afficher de KaTeX), ces blocs ne demandent au modèle que des
+// données sémantiques (angles, valeurs, labels). La disposition géométrique
+// est calculée côté serveur dans compiler.ts, et les labels passent par
+// foreignObject + $...$ pour un rendu KaTeX correct.
+
+export type StructuredTrigCircleAngle = {
+  angleDeg: number;
+  label: string;
+};
+
+export type StructuredPieSlice = {
+  label: string;
+  value: number;
+  tone: StructuredFigureTone;
+};
+
+export type StructuredNumberLinePoint = {
+  value: number;
+  label: string;
+  filled: boolean;
+};
+
+export type StructuredNumberLineInterval = {
+  from: number;
+  to: number;
+  fromIncluded: boolean;
+  toIncluded: boolean;
+  tone: StructuredFigureTone;
+};
+
+export type StructuredBar = {
+  label: string;
+  value: number;
+  tone: StructuredFigureTone;
+};
+
+export type StructuredProbabilityLeaf = {
+  label: string;
+  probability: string;
+};
+
+export type StructuredProbabilityBranch = StructuredProbabilityLeaf & {
+  children: StructuredProbabilityLeaf[];
+};
+
+export type StructuredVennSet = {
+  label: string;
+  tone: StructuredFigureTone;
+};
+
 export type StructuredCourseBlock =
   | {
       type: "heading";
@@ -175,6 +228,63 @@ export type StructuredCourseBlock =
       type: "figure";
       caption: string;
       elements: StructuredFigureElement[];
+    }
+  | {
+      type: "trig_circle";
+      caption: string;
+      highlightedAngles: StructuredTrigCircleAngle[];
+    }
+  | {
+      type: "pie_chart";
+      caption: string;
+      slices: StructuredPieSlice[];
+    }
+  | {
+      type: "number_line";
+      caption: string;
+      min: number;
+      max: number;
+      points: StructuredNumberLinePoint[];
+      intervals: StructuredNumberLineInterval[];
+    }
+  | {
+      type: "bar_chart";
+      caption: string;
+      bars: StructuredBar[];
+    }
+  | {
+      type: "probability_tree";
+      caption: string;
+      branches: StructuredProbabilityBranch[];
+    }
+  | {
+      type: "venn_diagram";
+      caption: string;
+      sets: StructuredVennSet[];
+      regionLabels?: {
+        aOnly?: string;
+        bOnly?: string;
+        both?: string;
+        neither?: string;
+      };
+    }
+  | {
+      type: "triangle_diagram";
+      caption: string;
+      vertexLabels: [string, string, string];
+      sideLabels?: [string, string, string];
+      angleLabels?: [string, string, string];
+      rightAngleAt?: 0 | 1 | 2;
+    }
+  | {
+      type: "box_plot";
+      caption: string;
+      min: number;
+      q1: number;
+      median: number;
+      q3: number;
+      max: number;
+      axisLabel?: string;
     }
   | {
       type: "exercise";
@@ -948,6 +1058,94 @@ function normalizeGraphVector(value: unknown): StructuredGraphVector | null {
   };
 }
 
+function normalizeTrigCircleAngle(value: unknown): StructuredTrigCircleAngle | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const label = sanitizeStructuredText(raw.label ?? raw.angle_deg ?? raw.angleDeg);
+  if (!label) return null;
+  return {
+    angleDeg: finiteNumber(raw.angle_deg ?? raw.angleDeg, 0),
+    label: label.slice(0, 40),
+  };
+}
+
+function normalizePieSlice(value: unknown): StructuredPieSlice | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const label = sanitizeStructuredText(raw.label);
+  const numericValue = finiteNumber(raw.value, Number.NaN);
+  if (!label || !Number.isFinite(numericValue) || numericValue < 0) return null;
+  return { label: label.slice(0, 60), value: numericValue, tone: normalizeFigureTone(raw.tone) };
+}
+
+function normalizeNumberLinePoint(value: unknown): StructuredNumberLinePoint | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const label = sanitizeStructuredText(raw.label);
+  const numericValue = finiteNumber(raw.value, Number.NaN);
+  if (!label || !Number.isFinite(numericValue)) return null;
+  return { value: numericValue, label: label.slice(0, 40), filled: raw.filled !== false };
+}
+
+function normalizeNumberLineInterval(
+  value: unknown,
+): StructuredNumberLineInterval | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const from = finiteNumber(raw.from, Number.NaN);
+  const to = finiteNumber(raw.to, Number.NaN);
+  if (!Number.isFinite(from) || !Number.isFinite(to)) return null;
+  return {
+    from: Math.min(from, to),
+    to: Math.max(from, to),
+    fromIncluded: (raw.from_included ?? raw.fromIncluded) === true,
+    toIncluded: (raw.to_included ?? raw.toIncluded) === true,
+    tone: normalizeFigureTone(raw.tone),
+  };
+}
+
+function normalizeBar(value: unknown): StructuredBar | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const label = sanitizeStructuredText(raw.label);
+  const numericValue = finiteNumber(raw.value, Number.NaN);
+  if (!label || !Number.isFinite(numericValue) || numericValue < 0) return null;
+  return { label: label.slice(0, 30), value: numericValue, tone: normalizeFigureTone(raw.tone) };
+}
+
+function normalizeProbabilityLeaf(value: unknown): StructuredProbabilityLeaf | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const label = sanitizeStructuredText(raw.label);
+  const probability = sanitizeStructuredText(raw.probability);
+  if (!label || !probability) return null;
+  return { label: label.slice(0, 40), probability: probability.slice(0, 20) };
+}
+
+function normalizeProbabilityBranch(
+  value: unknown,
+): StructuredProbabilityBranch | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const leaf = normalizeProbabilityLeaf(raw);
+  if (!leaf) return null;
+  const children = Array.isArray(raw.children)
+    ? raw.children
+        .map(normalizeProbabilityLeaf)
+        .filter((entry): entry is StructuredProbabilityLeaf => entry !== null)
+        .slice(0, 4)
+    : [];
+  return { ...leaf, children };
+}
+
+function normalizeVennSet(value: unknown): StructuredVennSet | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const label = sanitizeStructuredText(raw.label);
+  if (!label) return null;
+  return { label: label.slice(0, 30), tone: normalizeFigureTone(raw.tone) };
+}
+
 function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock | null {
   if (depth > 4) return null;
   const raw = asRecord(value);
@@ -1144,6 +1342,156 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
         type: "figure",
         caption: sanitizeStructuredText(raw.caption),
         elements,
+      };
+    }
+    case "trig_circle": {
+      const rawAngles = raw.highlighted_angles ?? raw.highlightedAngles;
+      const highlightedAngles = Array.isArray(rawAngles)
+        ? rawAngles
+            .map(normalizeTrigCircleAngle)
+            .filter((entry): entry is StructuredTrigCircleAngle => entry !== null)
+            .slice(0, 12)
+        : [];
+      if (highlightedAngles.length === 0) return null;
+      return {
+        type: "trig_circle",
+        caption: sanitizeStructuredText(raw.caption),
+        highlightedAngles,
+      };
+    }
+    case "pie_chart": {
+      const slices = Array.isArray(raw.slices)
+        ? raw.slices
+            .map(normalizePieSlice)
+            .filter((entry): entry is StructuredPieSlice => entry !== null)
+            .slice(0, 8)
+        : [];
+      if (slices.length < 2) return null;
+      return {
+        type: "pie_chart",
+        caption: sanitizeStructuredText(raw.caption),
+        slices,
+      };
+    }
+    case "number_line": {
+      const points = Array.isArray(raw.points)
+        ? raw.points
+            .map(normalizeNumberLinePoint)
+            .filter((entry): entry is StructuredNumberLinePoint => entry !== null)
+            .slice(0, 8)
+        : [];
+      const intervals = Array.isArray(raw.intervals)
+        ? raw.intervals
+            .map(normalizeNumberLineInterval)
+            .filter((entry): entry is StructuredNumberLineInterval => entry !== null)
+            .slice(0, 4)
+        : [];
+      if (points.length === 0 && intervals.length === 0) return null;
+      return {
+        type: "number_line",
+        caption: sanitizeStructuredText(raw.caption),
+        min: finiteNumber(raw.min, -5),
+        max: finiteNumber(raw.max, 5),
+        points,
+        intervals,
+      };
+    }
+    case "bar_chart": {
+      const bars = Array.isArray(raw.bars)
+        ? raw.bars
+            .map(normalizeBar)
+            .filter((entry): entry is StructuredBar => entry !== null)
+            .slice(0, 10)
+        : [];
+      if (bars.length < 2) return null;
+      return {
+        type: "bar_chart",
+        caption: sanitizeStructuredText(raw.caption),
+        bars,
+      };
+    }
+    case "probability_tree": {
+      const branches = Array.isArray(raw.branches)
+        ? raw.branches
+            .map(normalizeProbabilityBranch)
+            .filter((entry): entry is StructuredProbabilityBranch => entry !== null)
+            .slice(0, 4)
+        : [];
+      if (branches.length < 2) return null;
+      return {
+        type: "probability_tree",
+        caption: sanitizeStructuredText(raw.caption),
+        branches,
+      };
+    }
+    case "venn_diagram": {
+      const sets = Array.isArray(raw.sets)
+        ? raw.sets
+            .map(normalizeVennSet)
+            .filter((entry): entry is StructuredVennSet => entry !== null)
+            .slice(0, 3)
+        : [];
+      if (sets.length < 2) return null;
+      const regionLabelsRaw = asRecord(raw.region_labels ?? raw.regionLabels);
+      const regionLabels = regionLabelsRaw
+        ? {
+            aOnly: sanitizeStructuredText(regionLabelsRaw.a_only) || undefined,
+            bOnly: sanitizeStructuredText(regionLabelsRaw.b_only) || undefined,
+            both: sanitizeStructuredText(regionLabelsRaw.both) || undefined,
+            neither: sanitizeStructuredText(regionLabelsRaw.neither) || undefined,
+          }
+        : undefined;
+      return {
+        type: "venn_diagram",
+        caption: sanitizeStructuredText(raw.caption),
+        sets,
+        regionLabels,
+      };
+    }
+    case "triangle_diagram": {
+      const asUnknownArray = (input: unknown): unknown[] =>
+        Array.isArray(input) ? input : [];
+      const vertexLabelsRaw = asUnknownArray(raw.vertex_labels ?? raw.vertexLabels);
+      const vertexLabels = [0, 1, 2].map((index) =>
+        sanitizeStructuredText(vertexLabelsRaw[index]) || ["A", "B", "C"][index],
+      ) as [string, string, string];
+      const sideLabelsRaw = asUnknownArray(raw.side_labels ?? raw.sideLabels);
+      const sideLabels = [0, 1, 2].map((index) =>
+        sanitizeStructuredText(sideLabelsRaw[index]),
+      ) as [string, string, string];
+      const angleLabelsRaw = asUnknownArray(raw.angle_labels ?? raw.angleLabels);
+      const angleLabels = [0, 1, 2].map((index) =>
+        sanitizeStructuredText(angleLabelsRaw[index]),
+      ) as [string, string, string];
+      const rightAngleRaw = raw.right_angle_at ?? raw.rightAngleAt;
+      const rightAngleAt =
+        rightAngleRaw === 0 || rightAngleRaw === 1 || rightAngleRaw === 2
+          ? rightAngleRaw
+          : undefined;
+      return {
+        type: "triangle_diagram",
+        caption: sanitizeStructuredText(raw.caption),
+        vertexLabels,
+        sideLabels,
+        angleLabels,
+        rightAngleAt,
+      };
+    }
+    case "box_plot": {
+      const min = finiteNumber(raw.min, 0);
+      const q1 = finiteNumber(raw.q1, min);
+      const median = finiteNumber(raw.median, q1);
+      const q3 = finiteNumber(raw.q3, median);
+      const max = finiteNumber(raw.max, q3);
+      return {
+        type: "box_plot",
+        caption: sanitizeStructuredText(raw.caption),
+        min,
+        q1,
+        median,
+        q3,
+        max,
+        axisLabel: sanitizeStructuredText(raw.axis_label ?? raw.axisLabel) || undefined,
       };
     }
     case "exercise":

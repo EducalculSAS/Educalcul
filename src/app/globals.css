@@ -123,8 +123,14 @@ main,
   }
 
   .course-figure {
-    @apply my-6 flex flex-col items-center justify-center gap-2;
+    @apply my-6 flex flex-col items-center justify-center gap-2 mx-auto;
     counter-increment: educalcul-figure;
+    max-width: 420px;
+    padding: 0.75rem 0.75rem 0.5rem;
+    background: linear-gradient(180deg, #ffffff, var(--greek-cream, #faf7f2));
+    border: 1px solid rgba(197, 161, 72, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(15, 30, 58, 0.06);
   }
 
   /* Un SVG généré sans width/height explicites s'étirait à la taille du
@@ -1241,6 +1247,24 @@ main,
   font-variant-numeric: tabular-nums;
 }
 .g-param-slider {
+  flex: 1;
+  accent-color: var(--greek-gold, #c5a148);
+  cursor: pointer;
+}
+
+/* Curseur d'angle (cercle trigonométrique interactif) */
+.tc-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--greek-blue, #0f1e3a);
+}
+.tc-angle-slider {
   flex: 1;
   accent-color: var(--greek-gold, #c5a148);
   cursor: pointer;
