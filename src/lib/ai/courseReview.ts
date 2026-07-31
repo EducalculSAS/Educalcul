@@ -495,12 +495,23 @@ Règles de sortie :
 • verdict="ok" si aucune erreur importante ; verdict="patched" si tu fournis au moins un patch.
 • ne retourne jamais verdict reject : une difficulté non corrigeable va dans warnings.`;
 
+  // Fixe à 3 800 auparavant, quelle que soit la taille de la leçon : une
+  // leçon dense avec beaucoup de champs patchables tronquait la relecture
+  // (vu en prod, maxTokens=3800), qui retombait alors sur "validations
+  // locales conservées" sans être vraiment relue. Le budget suit désormais
+  // la taille réelle du contenu à relire, comme pour le rédacteur.
+  const payloadChars = JSON.stringify({ fields: payload }).length;
+  const reviewMaxTokens = Math.min(
+    10_000,
+    Math.max(3_800, 1_200 + Math.ceil(payloadChars / 2.2)),
+  );
+
   const raw = await options.generate(
     `Voici les champs de la leçon à contrôler :\n${JSON.stringify({ fields: payload })}`,
     systemPrompt,
     reviewContract(18),
     0,
-    3_800,
+    reviewMaxTokens,
     false,
   );
 

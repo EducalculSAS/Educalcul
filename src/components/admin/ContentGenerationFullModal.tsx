@@ -1,6 +1,6 @@
 "use client";
 
-import { BrainCircuit, Minus, Sparkles } from "lucide-react";
+import { BrainCircuit, Minus, Sparkles, X } from "lucide-react";
 import { useContentGenerations, type ContentKind } from "@/contexts/ContentGenerationsContext";
 import { useSmoothPercentByKey } from "./useSmoothPercent";
 
@@ -62,7 +62,7 @@ export default function ContentGenerationFullModal() {
             title={isFinished ? "Fermer" : "Réduire (la génération continue en arrière-plan)"}
           >
             {isFinished ? (
-              <span className="text-2xl leading-none">×</span>
+              <X size={22} className="transition-transform group-hover:scale-125" />
             ) : (
               <Minus size={22} className="transition-transform group-hover:scale-125" />
             )}

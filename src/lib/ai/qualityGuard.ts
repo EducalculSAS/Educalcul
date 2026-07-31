@@ -289,8 +289,12 @@ Pour chaque champ reçu :
       })),
     };
     const contentChars = JSON.stringify(payload).length;
+    // Plafond relevé (5 500 -> 9 000) : un lot dense de champs suspects
+    // tronquait cet appel (vu en prod, maxTokens=3422), ce qui abandonnait le
+    // lot silencieusement ("indisponible... reprise champ par champ") au
+    // lieu de le réparer.
     const maxTokens = Math.min(
-      5_500,
+      9_000,
       Math.max(2_000, 900 + Math.ceil(contentChars / 2.5)),
     );
     const userPrompt = `${strict ? "CORRECTION STRICTE FINALE. " : ""}Contexte : ${sanitizeStructuredText(options.label)}
@@ -525,8 +529,10 @@ Retourne verdict=reject seulement si ce petit lot ne peut pas être réparé par
   ): Promise<void> => {
     if (batch.length === 0) return;
     const payload = JSON.stringify({ fields: batch });
+    // Même raisonnement que le rédacteur de cours : un plafond de 5 500
+    // tronque les lots denses (utilisé aussi par exercices/quiz/ai-edit).
     const maxTokens = Math.min(
-      5_500,
+      9_000,
       Math.max(2_200, 1_100 + Math.ceil(payload.length / 2.8)),
     );
 

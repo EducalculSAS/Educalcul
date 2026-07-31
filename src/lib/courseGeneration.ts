@@ -802,10 +802,12 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
 
         let issues = blockingIssues(structured, qualityOptions);
         let bestScore = structuredCourseQualityScore(structured, qualityOptions);
-        // Jusqu'à 2 corrections structurelles (ex: bloc graph manquant) avant
-        // d'abandonner la leçon — une seule tentative faisait échouer tout le
-        // cours dès qu'un agent ratait sa correction une fois.
-        const MAX_STRUCTURAL_RETRIES = 2;
+        // Jusqu'à 3 corrections structurelles (ex: bloc graph manquant, 0
+        // exercice) avant d'abandonner la leçon — une seule tentative faisait
+        // échouer tout le cours dès qu'un agent ratait sa correction une
+        // fois ; vu en prod un échec qui persiste sur 2 tentatives (0
+        // exercice ET graph manquant simultanément).
+        const MAX_STRUCTURAL_RETRIES = 3;
         for (
           let attempt = 0;
           attempt < MAX_STRUCTURAL_RETRIES &&
