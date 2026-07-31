@@ -297,6 +297,7 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • Une démonstration de trois étapes ou plus utilise "steps".
 • ${visualRequirement(job.lesson.visualFocus)}
 • Une courbe de fonction utilise exclusivement "graph". SVG/figure ne trace jamais une courbe, une tangente ou une asymptote.
+• N'utilise jamais "figure" pour un cercle trigonométrique avec plusieurs points étiquetés de coordonnées (fractions, racines) : les labels SVG ne peuvent pas afficher de LaTeX et se chevauchent dès qu'il y a plus de 2-3 étiquettes. Décris le cercle trigonométrique en texte et utilise "graph" pour les courbes de sin/cos qui en découlent à la place.
 • Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
 • Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.
 • Recalcule chaque formule, exemple et exercice. Distingue minimum et infimum, implication et équivalence.

@@ -582,6 +582,7 @@ export function normalizeStructuredLatex(value: unknown): string {
     .replace(/(?<![A-Za-z\\])rac\s*\{/g, "\\frac{")
     .replace(/(?<![A-Za-z\\])egin\s*\{/g, "\\begin{")
     .replace(/(?<![A-Za-z\\])ext\s*\{/g, "\\text{")
+    .replace(/(?<![A-Za-z\\])vec\s*\{/g, "\\vec{")
     .replace(/(?<![A-Za-z\\])heta\b/g, "\\theta")
     .replace(/(?<![A-Za-z\\])imes\b/g, "\\times")
     .replace(/(?<![A-Za-z\\])ight\s*([{(])/g, "\\right$1");
