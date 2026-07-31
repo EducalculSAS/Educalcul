@@ -481,7 +481,8 @@ Contrôle obligatoirement :
 • aucune confusion entre minimum et infimum, implication et équivalence, croissance et convexité ;
 • aucune répétition développée d'une notion interdite. Un rappel autorisé tient en une phrase.
 • si le callout "Point clé" ou le tableau de synthèse ne fait que reformuler le dernier paragraphe ou la dernière propriété déjà énoncés, patch son contenu (callout_paragraph, table_cell) pour qu'il apporte une information réellement absente du texte (comparaison de cas, piège fréquent, lien avec un autre chapitre) plutôt que de le laisser redondant ;
-• si un exercice développe une notion interdite ou hors périmètre, ne le laisse pas simplement en warning : remplace localement ses quatre champs question, answer, hint et explanation par un exercice de difficulté comparable strictement dans le périmètre de la leçon.
+• si un exercice développe une notion interdite ou hors périmètre, ne le laisse pas simplement en warning : remplace localement ses quatre champs question, answer, hint et explanation par un exercice de difficulté comparable strictement dans le périmètre de la leçon ;
+• un paragraphe qui esquive une notion interdite par « si le logarithme était disponible », « n'est pas disponible ici, mais... » ou une formule interdite « à titre indicatif » n'est jamais acceptable, même signalé en warning : patch-le pour soit limiter l'énoncé aux cas résolubles dans le périmètre, soit renvoyer explicitement au chapitre suivant en une phrase, sans jamais écrire la formule interdite.
 
 Règles de sortie :
 • ne réécris jamais toute la leçon ;

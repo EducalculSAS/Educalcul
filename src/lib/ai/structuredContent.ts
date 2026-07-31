@@ -573,6 +573,19 @@ export function normalizeStructuredLatex(value: unknown): string {
     latex = next;
   }
 
+  // Le modèle laisse parfois tomber les 1-2 premières lettres d'une commande
+  // juste avant une accolade (ex: "e^{- rac{20\ln 2}{8}}" au lieu de
+  // "e^{-\frac{20\ln 2}{8}}", vu en production). Non précédé d'une lettre ou
+  // d'un antislash, et suivi immédiatement de "{" : signature fiable d'une
+  // commande tronquée, jamais d'un mot français légitime.
+  latex = latex
+    .replace(/(?<![A-Za-z\\])rac\s*\{/g, "\\frac{")
+    .replace(/(?<![A-Za-z\\])egin\s*\{/g, "\\begin{")
+    .replace(/(?<![A-Za-z\\])ext\s*\{/g, "\\text{")
+    .replace(/(?<![A-Za-z\\])heta\b/g, "\\theta")
+    .replace(/(?<![A-Za-z\\])imes\b/g, "\\times")
+    .replace(/(?<![A-Za-z\\])ight\s*([{(])/g, "\\right$1");
+
   latex = latex
     .replace(/\\text\s*\{\s*(?:π|\\pi)\s*\}/g, "\\pi")
     .replace(/\\text\s*\{\s*(exp|ln|sin|cos|tan)\s*\}/g, "\\$1");
