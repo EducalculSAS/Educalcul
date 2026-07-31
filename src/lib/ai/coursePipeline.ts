@@ -68,8 +68,18 @@ function asRecord(value: unknown): UnknownRecord | null {
 }
 
 function cleanPlain(value: unknown, fallback = ""): string {
+  // Filet de sécurité : title/scope/objective s'affichent tels quels partout
+  // dans l'admin (jamais interprétés comme du LaTeX). Le prompt interdit déjà
+  // toute formule ici, mais le modèle laisse parfois passer une notation
+  // brute (ex: "t↦e^{at}" vu en production, affiché avec des accolades
+  // visibles) : on retire ce qui ne peut jamais être de la prose française.
   return typeof value === "string" && value.trim()
-    ? value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()
+    ? value
+        .replace(/<[^>]*>/g, " ")
+        .replace(/[{}$]/g, "")
+        .replace(/[\^_]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
     : fallback;
 }
 

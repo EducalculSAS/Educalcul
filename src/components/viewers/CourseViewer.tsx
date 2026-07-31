@@ -555,7 +555,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
             <div key={chapter.id} className="space-y-1">
               <div className="px-3 py-2 text-xs font-bold text-[var(--greek-bronze)]/70 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] flex items-center justify-center text-[10px]">{cIndex + 1}</span>
-                {chapter.title}
+                <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(chapter.title) }} />
               </div>
               <div className="space-y-1">
                 {chapter.lessons.map((lesson, lIndex) => {
@@ -578,7 +578,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                       ) : (
                         <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${isActive ? "border-white" : "border-gray-300 group-hover:border-[var(--greek-gold)]"}`} />
                       )}
-                      <span className="truncate flex-1 font-medium">{lesson.title}</span>
+                      <span
+                        className="truncate flex-1 font-medium"
+                        dangerouslySetInnerHTML={{ __html: renderLatexInHTML(lesson.title) }}
+                      />
                       <Icon className={`w-3 h-3 ${isActive ? "opacity-100" : "opacity-40"}`} />
                     </button>
                   );
@@ -613,9 +616,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
           {/* Titre leçon — scrollable horizontalement sur mobile */}
           <div className="flex-1 overflow-x-auto scrollbar-none min-w-0">
-            <h2 className="text-base font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] whitespace-nowrap">
-              {currentLesson?.title}
-            </h2>
+            <h2
+              className="text-base font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentLesson?.title || "") }}
+            />
           </div>
 
           {/* Cercle progression SVG */}
@@ -648,9 +652,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                     {currentLesson.type === 'video' || currentLesson.type === 'video_file' ? <Video size={16}/> : <FileText size={16}/>}
                     {currentLesson.type === 'video' || currentLesson.type === 'video_file' ? 'Vidéo' : 'Leçon'}
                   </div>
-                  <h1 className="text-3xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight">
-                    {currentLesson.title}
-                  </h1>
+                  <h1
+                    className="text-3xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight"
+                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentLesson.title) }}
+                  />
                 </div>
 
                 {/* Content Body */}

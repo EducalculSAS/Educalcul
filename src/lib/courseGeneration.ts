@@ -583,7 +583,7 @@ Règles impératives :
 • visual_focus="none" lorsqu'aucun visuel n'apporte une vraie valeur ; toutes les leçons n'ont pas besoin d'un visuel ;
 • pour une étude de fonction, répartis définition/propriétés, variations, limites, convexité et applications entre les leçons au lieu de tout répéter partout ;
 • complexity vaut 1, 2 ou 3 selon la densité réelle ;
-• aucune formule, aucun HTML et aucun Markdown dans ce plan.
+• aucune formule, aucun HTML et aucun Markdown dans ce plan : title et scope sont des phrases en français uniquement, sans aucun des caractères $ ^ _ { } et sans notation type "t↦e^{at}" ou "f'(x)". Écris le concept en toutes lettres ("Dérivée de la fonction exponentielle affine") : ces titres s'affichent tels quels partout dans l'admin, y compris là où les formules ne sont jamais interprétées.
 
 Le cours final peut utiliser jusqu'à ${maxCourseCharacters} caractères utiles, mais aucun agent ne devra écrire pour remplir.`;
     const blueprintUser = `Sujet : ${subject}
@@ -647,6 +647,7 @@ Retourne le plan complet corrigé avec exactement ${chapterCount} chapitres et e
 Vérifie : conformité stricte au programme, progression logique, absence de doublons entre objectifs, absence de notion universitaire ou hors niveau, attribution d'une notion principale à une seule leçon, et pertinence sémantique de visual_focus.
 Un sign_table n'est permis que pour une vraie étude de signe; jamais pour limites, croissance comparée, lien avec le logarithme, définition ou convexité. Utilise graph pour courbes/limites/asymptotes/convexité, variation_table pour variations/extrema, table pour propriétés/comparaisons, figure pour schémas non fonctionnels, et none si aucun visuel n'est utile.
 Supprime ou remplace toute extension hors programme, notamment exponentielle complexe, formule d'Euler, analyse complexe ou série de Fourier, sauf demande explicite et niveau compatible.
+Si un title ou un scope contient une formule ou une notation mathématique brute ($ ^ _ { } ou un style "t↦e^{at}"), réécris-le en toutes lettres : ces titres s'affichent tels quels partout dans l'admin, jamais interprétés comme du LaTeX.
 Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.`,
         blueprintContract,
         0,
@@ -891,16 +892,18 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           });
           const sanitized = sanitizeStructuredResources(reviewedChapter);
           reviewedChapter = normalizeStructuredCoursePedagogy(sanitized.value);
-          // Répare les formules qui ont fui en texte brut (ex: "infty",
-          // "lambda", "frac{...}" écrits en toutes lettres au lieu d'un part
-          // math) : coûte 0 appel si aucun champ n'est suspect, le scan est
-          // synchrone et ne bloque rien.
+          // Répare les formules qui ont fui en texte brut (ex: "f'=f",
+          // "f(0)=1" écrits tels quels au lieu d'un part math) : coûte 0
+          // appel si aucun champ n'est suspect, le scan est synchrone et ne
+          // bloque rien. 2 tours au lieu d'1 : un échec ponctuel du modèle de
+          // réparation sur un lot ne doit pas laisser passer un champ
+          // détecté comme suspect sans seconde chance.
           const unstructuredMathRepair = await repairUnstructuredMathText(
             reviewedChapter,
             {
               generate,
               label: `cours ${blueprint.title}, chapitre ${job.chapter.title}, leçon ${job.lesson.title}`,
-              maxRounds: 1,
+              maxRounds: 2,
             },
           );
           reviewedChapter = normalizeStructuredCoursePedagogy(unstructuredMathRepair.value);
