@@ -29,6 +29,7 @@ import {
   normalizeStructuredCoursePedagogy,
   structuredCourseQualityScore,
   topicRequiresFunctionGraph,
+  type StructuredQualityIssue,
 } from "@/lib/ai/pedagogy";
 import {
   repairUnstructuredMathText,
@@ -320,6 +321,46 @@ Réponds uniquement avec ce JSON.`;
 
 function isTruncationError(error: unknown): boolean {
   return error instanceof Error && /tronqu|token|length|max_tokens/i.test(error.message);
+}
+
+// "Rends une leçon complète" ou "corrige ça" ne suffit jamais à faire agir le
+// modèle sur un défaut précis (vu deux fois en prod : mots insuffisants puis
+// exercices groupés, chacun stable sur 2 tentatives tant qu'aucune directive
+// concrète n'était donnée). Chaque nouveau code de blocage structurel DOIT
+// venir avec une directive actionnable ici, sinon la correction se contente
+// de reformuler sans jamais résoudre le problème réel.
+const STRUCTURAL_CORRECTION_DIRECTIVES: Record<string, string> = {
+  lesson_too_short:
+    "LA LEÇON EST TROP COURTE : ajoute au moins 120 mots de contenu substantiel et nouveau (approfondissement, exemple traité, remarque pédagogique, application) strictement dans le périmètre. Ne te contente pas de reformuler l'existant : le nombre de mots doit augmenter nettement.",
+  lesson_too_sparse:
+    "LA LEÇON N'A PAS ASSEZ DE BLOCS PÉDAGOGIQUES UTILES : ajoute au moins 2 blocs substantiels supplémentaires (paragraphe, méthode, exemple, tableau) strictement dans le périmètre, pas seulement plus de texte dans les blocs déjà présents.",
+  exercises_clustered:
+    "AU MOINS DEUX EXERCICES SE SUIVENT SANS RIEN ENTRE EUX : insère un bloc pédagogique substantiel (paragraphe, méthode ou exemple traité) entre CHAQUE paire d'exercices consécutifs, y compris entre les deux derniers exercices en fin de leçon. Aucun exercice ne doit jamais suivre directement un autre exercice.",
+  exercise_before_explanation:
+    "UN EXERCICE ARRIVE TROP TÔT : déplace le premier exercice après au moins 3 blocs pédagogiques substantiels (définition, propriété, méthode) au lieu de le laisser en début de leçon.",
+  missing_planned_graph:
+    'LE GRAPHE REQUIS EST ABSENT : ajoute, en plus des blocs existants, un bloc {"type":"graph"} avec une expression mathGraph exacte et une légende mathématiquement correcte.',
+  solved_exercise_in_lesson:
+    "UN TITRE RESSEMBLE À UN EXERCICE CORRIGÉ : renomme-le en méthode ou explication de calcul, sans jamais le présenter comme un exercice résolu ou un exemple guidé.",
+  exercise_count:
+    "LE NOMBRE D'EXERCICES EST INCORRECT : produis exactement 3 exercices (4 seulement si la quatrième apporte une compétence réellement différente).",
+  exercise_references:
+    'LES RÉFÉRENCES D\'EXERCICES SONT INCORRECTES : chaque exercice doit être référencé exactement une fois par un bloc {"type":"exercise","exercise_index":N}, N allant de 1 au nombre total d\'exercices, sans doublon ni index manquant.',
+};
+
+function structuralCorrectionDirectives(
+  issues: StructuredQualityIssue[],
+): string {
+  const seen = new Set<string>();
+  const lines: string[] = [];
+  for (const issue of issues) {
+    const directive = STRUCTURAL_CORRECTION_DIRECTIVES[issue.code];
+    if (directive && !seen.has(issue.code)) {
+      seen.add(issue.code);
+      lines.push(directive);
+    }
+  }
+  return lines.length > 0 ? `\n${lines.join("\n")}` : "";
 }
 
 async function mapSettledWithConcurrency<T, R>(
@@ -771,15 +812,8 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
           attempt += 1
         ) {
           const issueSummary = formatStructuredQualityIssues(issues);
-          // "Rends une leçon complète" ne suffit pas à faire écrire davantage
-          // de mots : le modèle a besoin d'une consigne d'expansion explicite,
-          // sinon il retombe régulièrement sous le seuil (vu en prod : 329
-          // mots pour un minimum de 360, deux tentatives sans amélioration).
-          const tooShort = issues.some((issue) => issue.code === "lesson_too_short");
-          const expansionDirective = tooShort
-            ? `\nLA LEÇON EST TROP COURTE : ajoute au moins 120 mots de contenu substantiel et nouveau (approfondissement, exemple traité, remarque pédagogique, application) strictement dans le périmètre. Ne te contente pas de reformuler l'existant : le nombre de mots doit augmenter nettement.`
-            : "";
-          const correctionPrompt = `${userPrompt}\nCORRECTION STRUCTURELLE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}${expansionDirective}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`;
+          const directives = structuralCorrectionDirectives(issues);
+          const correctionPrompt = `${userPrompt}\nCORRECTION STRUCTURELLE. La leçon précédente ne respectait pas le contrat :\n${issueSummary || "structure ou exercices incomplets"}${directives}\nRends une leçon complète sans changer le périmètre, sans répétition et sans ajouter de notion attribuée aux autres agents.`;
           let retry: StructuredCourseChapter;
           try {
             retry = await requestDraft(

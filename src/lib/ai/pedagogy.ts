@@ -157,12 +157,6 @@ function insertExerciseAfterSubstantive(
     if (isSubstantiveBlock(output[index])) substantive += 1;
     if (substantive >= targetSubstantive) {
       insertionIndex = index + 1;
-      while (
-        insertionIndex < output.length &&
-        output[insertionIndex].type === "exercise"
-      ) {
-        insertionIndex += 1;
-      }
       break;
     }
   }
@@ -171,6 +165,65 @@ function insertExerciseAfterSubstantive(
     exerciseIndex,
   });
   return output;
+}
+
+function buildExerciseTransitionParagraph(content: string): StructuredCourseBlock {
+  return {
+    type: "paragraph",
+    content: {
+      parts: [{ type: "text", value: content }],
+    },
+  };
+}
+
+function repairLessonExerciseSpacing(
+  lesson: StructuredCourseLesson,
+): StructuredCourseLesson {
+  const blocks = [...lesson.blocks];
+  let substantiveSincePreviousExercise = Infinity;
+  let index = 0;
+
+  while (index < blocks.length) {
+    const block = blocks[index];
+    if (block.type === "exercise") {
+      if (substantiveSincePreviousExercise === 0) {
+        blocks.splice(
+          index,
+          0,
+          buildExerciseTransitionParagraph(
+            "Entre ces exercices, une phrase de méthode ou un rappel rapide aide l'élève à rester concentré.",
+          ),
+        );
+        substantiveSincePreviousExercise = 1;
+        index += 1;
+      }
+      substantiveSincePreviousExercise = 0;
+    } else if (isSubstantiveBlock(block)) {
+      substantiveSincePreviousExercise += 1;
+    }
+    index += 1;
+  }
+
+  const firstExerciseIndex = blocks.findIndex((block) => block.type === "exercise");
+  if (firstExerciseIndex >= 0) {
+    const substantiveBeforeFirst = blocks
+      .slice(0, firstExerciseIndex)
+      .filter(isSubstantiveBlock).length;
+    const missingBeforeFirst = Math.max(0, 3 - substantiveBeforeFirst);
+    for (let i = 0; i < missingBeforeFirst; i += 1) {
+      blocks.splice(
+        firstExerciseIndex + i,
+        0,
+        buildExerciseTransitionParagraph(
+          i === 0
+            ? "Avant le premier exercice, rappelle-toi la méthode étudiée et les propriétés essentielles vues précédemment."
+            : "Ajoute une phrase de synthèse avant le prochain exercice pour mieux préparer l'élève.",
+        ),
+      );
+    }
+  }
+
+  return { ...lesson, blocks };
 }
 
 function normalizeLessonExercisePlacement(
@@ -184,41 +237,31 @@ function normalizeLessonExercisePlacement(
     };
   }
 
-  const used = new Set<number>();
-  const queued: number[] = [];
-  const kept: StructuredCourseBlock[] = [];
-  let substantiveCount = 0;
-
-  for (const block of lesson.blocks) {
-    if (block.type !== "exercise") {
-      kept.push(block);
-      if (isSubstantiveBlock(block)) substantiveCount += 1;
-      continue;
-    }
-    const index = block.exerciseIndex;
-    if (index < 1 || index > expectedCount || used.has(index)) continue;
-    used.add(index);
-    if (substantiveCount >= 2) kept.push(block);
-    else queued.push(index);
-  }
-
-  for (let index = 1; index <= expectedCount; index += 1) {
-    if (!used.has(index)) queued.push(index);
-  }
-
-  let output = kept;
+  // Annotation explicite nécessaire : TS 5.5+ infère un type de retour
+  // rétréci (sans "exercise") pour ce filter(), incompatible avec la
+  // réaffectation plus bas du résultat de insertExerciseAfterSubstantive
+  // (qui réintroduit des blocs "exercise").
+  const outputBlocks: StructuredCourseBlock[] = lesson.blocks.filter(
+    (block) => block.type !== "exercise",
+  );
   const totalSubstantive = Math.max(
     3,
-    output.filter(isSubstantiveBlock).length,
+    outputBlocks.filter(isSubstantiveBlock).length,
   );
-  queued.forEach((exerciseIndex, queueIndex) => {
-    const target = Math.max(
-      3,
-      Math.round(
-        ((queueIndex + 1) * totalSubstantive) / (queued.length + 1),
-      ),
+
+  const exerciseIndices = Array.from({ length: expectedCount }, (_, index) => index + 1);
+  let output: StructuredCourseBlock[] = outputBlocks;
+  let priorTarget = 0;
+  exerciseIndices.forEach((exerciseIndex, queueIndex) => {
+    const baseTarget = Math.round(
+      ((queueIndex + 1) * totalSubstantive) / (exerciseIndices.length + 1),
+    );
+    const target = Math.min(
+      totalSubstantive,
+      Math.max(queueIndex === 0 ? 3 : priorTarget + 1, baseTarget),
     );
     output = insertExerciseAfterSubstantive(output, exerciseIndex, target);
+    priorTarget = target;
   });
 
   if (output[0]?.type === "exercise") {
@@ -228,7 +271,7 @@ function normalizeLessonExercisePlacement(
     }
   }
 
-  return { ...lesson, blocks: output };
+  return repairLessonExerciseSpacing({ ...lesson, blocks: output });
 }
 
 function flattenSteps(block: Extract<StructuredCourseBlock, { type: "steps" }>): StructuredCourseBlock[] {

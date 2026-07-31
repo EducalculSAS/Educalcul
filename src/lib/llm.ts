@@ -4,9 +4,9 @@ import type { JsonSchemaContract } from "@/lib/ai/schemas";
  * EU — les données ne quittent jamais l'UE/EEE, voir docs.mistral.ai/studio-api/regional-inference).
  */
 
-const MISTRAL_URL   = "https://api.eu.mistral.ai/v1/chat/completions";
+const MISTRAL_URL = "https://api.eu.mistral.ai/v1/chat/completions";
 const MISTRAL_MODEL = process.env.MISTRAL_MODEL || "mistral-small-latest";
-const MISTRAL_KEY   = process.env.MISTRAL_API_KEY || "";
+const MISTRAL_KEY = process.env.MISTRAL_API_KEY || "";
 
 type JsonSchemaCapability = "unknown" | "supported" | "unsupported";
 const jsonSchemaCapabilityByModel = new Map<string, JsonSchemaCapability>();
@@ -34,7 +34,10 @@ function shouldAttemptJsonSchema(model: string): boolean {
   return !modelLikelyRejectsJsonSchema(model);
 }
 
-type Message = { role: "user" | "assistant" | "system"; content: string | MessageContentPart[] };
+type Message = {
+  role: "user" | "assistant" | "system";
+  content: string | MessageContentPart[];
+};
 type MessageContentPart =
   | { type: "text"; text: string }
   | { type: "image_url"; image_url: string };
@@ -50,10 +53,16 @@ function extractMistralText(content: unknown): string {
     const chunks = content.flatMap((item) => {
       if (typeof item !== "object" || item === null) return [];
       const maybeType = (item as { type?: unknown }).type;
-      if (maybeType === "text" && typeof (item as { text?: unknown }).text === "string") {
+      if (
+        maybeType === "text" &&
+        typeof (item as { text?: unknown }).text === "string"
+      ) {
         return [(item as { text: string }).text];
       }
-      if (maybeType === "json" && (item as { json?: unknown }).json !== undefined) {
+      if (
+        maybeType === "json" &&
+        (item as { json?: unknown }).json !== undefined
+      ) {
         const json = (item as { json: unknown }).json;
         return [typeof json === "string" ? json : JSON.stringify(json)];
       }
@@ -84,15 +93,13 @@ async function callMistralModel(
     model,
     messages: msgs,
     temperature: temp,
-    // Mistral exige top_p=1 lorsque temperature=0 (greedy sampling).
-    // Garder top_p fixe évite aussi de faire varier deux paramètres
-    // d'échantillonnage en même temps sur les autres requêtes.
-    top_p: 1,
     reasoning_effort: reasoning ? "high" : "none",
   };
   if (maxTokens) body.max_tokens = maxTokens;
   // Pour la génération de contenu, le schéma JSON est le contrat unique :
-  // le modèle ne peut ni ajouter du HTML ni déplacer les champs mathématiques.
+  // le modèle ne peut ni ajouter du HTML ni déplacer les champs
+  // mathématiques. À défaut (modèle Labs/Leanstral, ou schéma refusé),
+  // json_object garantit au moins un JSON syntaxiquement valide.
   if (jsonSchema) {
     body.response_format = {
       type: "json_schema",
@@ -127,15 +134,16 @@ async function callMistralModel(
     resp = await fetch(MISTRAL_URL, {
       method: "POST",
       headers: {
-        "Content-Type":  "application/json",
-        "Authorization": `Bearer ${MISTRAL_KEY}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${MISTRAL_KEY}`,
       },
       body: JSON.stringify(body),
       signal: controller.signal,
     });
   } finally {
     clearTimeout(timeout);
-    if (abortSignal && externalListener) abortSignal.removeEventListener("abort", externalListener);
+    if (abortSignal && externalListener)
+      abortSignal.removeEventListener("abort", externalListener);
   }
 
   const text = await resp.text();
@@ -143,17 +151,34 @@ async function callMistralModel(
 }
 
 async function callMistral(
-  msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false, abortSignal?: AbortSignal
+  msgs: Message[],
+  temp = 0.7,
+  maxTokens?: number,
+  reasoning = false,
+  jsonMode = false,
+  abortSignal?: AbortSignal,
 ): Promise<string> {
-  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning, jsonMode, abortSignal);
+  const { ok, text, status } = await callMistralModel(
+    MISTRAL_MODEL,
+    msgs,
+    temp,
+    maxTokens,
+    reasoning,
+    jsonMode,
+    abortSignal,
+  );
 
   if (ok) {
     try {
       const parsed = JSON.parse(text);
       const finishReason = parsed?.choices?.[0]?.finish_reason;
       if (finishReason === "length") {
-        console.warn(`[llm] ${MISTRAL_MODEL} hit max_tokens (maxTokens=${maxTokens})`);
-        throw new Error("Réponse IA tronquée (max_tokens atteint) — réessaie avec un contenu plus court, ou réessaie simplement.");
+        console.warn(
+          `[llm] ${MISTRAL_MODEL} hit max_tokens (maxTokens=${maxTokens})`,
+        );
+        throw new Error(
+          "Réponse IA tronquée (max_tokens atteint) — réessaie avec un contenu plus court, ou réessaie simplement.",
+        );
       }
       const msg = parsed?.choices?.[0]?.message;
       const content = extractMistralText(msg?.content);
@@ -169,26 +194,52 @@ async function callMistral(
   }
 
   if (status === 429) {
-    console.warn(`[llm] ${MISTRAL_MODEL} rate-limited, nouvelle tentative dans 1.5s`);
-    await new Promise(r => setTimeout(r, 1500));
-    const retry = await callMistralModel(MISTRAL_MODEL, msgs, temp, maxTokens, reasoning, jsonMode);
+    console.warn(
+      `[llm] ${MISTRAL_MODEL} rate-limited, nouvelle tentative dans 1.5s`,
+    );
+    await new Promise((r) => setTimeout(r, 1500));
+    const retry = await callMistralModel(
+      MISTRAL_MODEL,
+      msgs,
+      temp,
+      maxTokens,
+      reasoning,
+      jsonMode,
+    );
     if (retry.ok) {
       try {
         const parsed = JSON.parse(retry.text);
         const msg = parsed?.choices?.[0]?.message;
-        const content = extractMistralText(msg?.content) || (typeof msg?.content === "string" ? msg.content : "");
+        const content =
+          extractMistralText(msg?.content) ||
+          (typeof msg?.content === "string" ? msg.content : "");
         if (content) return content.trim();
         return retry.text.trim();
-      } catch { return retry.text.trim(); }
+      } catch {
+        return retry.text.trim();
+      }
     }
-    console.error(`[llm] ${MISTRAL_MODEL} retry error ${retry.status}: ${retry.text.slice(0, 400)}`);
+    console.error(
+      `[llm] ${MISTRAL_MODEL} retry error ${retry.status}: ${retry.text.slice(0, 400)}`,
+    );
   }
 
-  console.error(`[llm] ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`);
-  throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
+  console.error(
+    `[llm] ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`,
+  );
+  throw new Error(
+    "Le modèle IA est indisponible. Réessaie dans quelques secondes.",
+  );
 }
 
-function dispatch(msgs: Message[], temp = 0.7, maxTokens?: number, reasoning = false, jsonMode = false, abortSignal?: AbortSignal) {
+function dispatch(
+  msgs: Message[],
+  temp = 0.7,
+  maxTokens?: number,
+  reasoning = false,
+  jsonMode = false,
+  abortSignal?: AbortSignal,
+) {
   return callMistral(msgs, temp, maxTokens, reasoning, jsonMode, abortSignal);
 }
 
@@ -297,16 +348,41 @@ function escapeControlCharsInStrings(raw: string): string {
   let escaped = false;
   for (const ch of raw) {
     if (inString) {
-      if (escaped) { out += ch; escaped = false; continue; }
-      if (ch === "\\") { out += ch; escaped = true; continue; }
-      if (ch === '"') { inString = false; out += ch; continue; }
-      if (ch === "\n") { out += "\\n"; continue; }
-      if (ch === "\r") { out += "\\r"; continue; }
-      if (ch === "\t") { out += "\\t"; continue; }
+      if (escaped) {
+        out += ch;
+        escaped = false;
+        continue;
+      }
+      if (ch === "\\") {
+        out += ch;
+        escaped = true;
+        continue;
+      }
+      if (ch === '"') {
+        inString = false;
+        out += ch;
+        continue;
+      }
+      if (ch === "\n") {
+        out += "\\n";
+        continue;
+      }
+      if (ch === "\r") {
+        out += "\\r";
+        continue;
+      }
+      if (ch === "\t") {
+        out += "\\t";
+        continue;
+      }
       out += ch;
       continue;
     }
-    if (ch === '"') { inString = true; out += ch; continue; }
+    if (ch === '"') {
+      inString = true;
+      out += ch;
+      continue;
+    }
     out += ch;
   }
   return out;
@@ -327,13 +403,27 @@ function escapeUnescapedQuotesInStrings(raw: string): string {
       if (ch === '"') inString = true;
       continue;
     }
-    if (escaped) { out += ch; escaped = false; continue; }
-    if (ch === "\\") { out += ch; escaped = true; continue; }
+    if (escaped) {
+      out += ch;
+      escaped = false;
+      continue;
+    }
+    if (ch === "\\") {
+      out += ch;
+      escaped = true;
+      continue;
+    }
     if (ch === '"') {
       let j = i + 1;
       while (j < raw.length && /\s/.test(raw[j])) j++;
       const next = raw[j];
-      if (next === undefined || next === "," || next === ":" || next === "}" || next === "]") {
+      if (
+        next === undefined ||
+        next === "," ||
+        next === ":" ||
+        next === "}" ||
+        next === "]"
+      ) {
         inString = false;
         out += ch;
       } else {
@@ -347,20 +437,45 @@ function escapeUnescapedQuotesInStrings(raw: string): string {
 }
 
 function parseJSON(raw: string): unknown {
-  try { return JSON.parse(raw); }
-  catch {
-    try { return JSON.parse(normalizeJsonString(raw)); }
-    catch {
-      try { return JSON.parse(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")); }
-      catch {
-        try { return JSON.parse(escapeControlCharsInStrings(raw)); }
-        catch {
-          try { return JSON.parse(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"))); }
-          catch {
-            try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw))); }
-            catch {
-              try { return JSON.parse(escapeUnescapedQuotesInStrings(escapeControlCharsInStrings(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\")))); }
-              catch (e) { throw new Error(`JSON invalide reçu de l'IA : ${(e as Error).message}`); }
+  try {
+    return JSON.parse(raw);
+  } catch {
+    try {
+      return JSON.parse(normalizeJsonString(raw));
+    } catch {
+      try {
+        return JSON.parse(raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"));
+      } catch {
+        try {
+          return JSON.parse(escapeControlCharsInStrings(raw));
+        } catch {
+          try {
+            return JSON.parse(
+              escapeControlCharsInStrings(
+                raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"),
+              ),
+            );
+          } catch {
+            try {
+              return JSON.parse(
+                escapeUnescapedQuotesInStrings(
+                  escapeControlCharsInStrings(raw),
+                ),
+              );
+            } catch {
+              try {
+                return JSON.parse(
+                  escapeUnescapedQuotesInStrings(
+                    escapeControlCharsInStrings(
+                      raw.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\"),
+                    ),
+                  ),
+                );
+              } catch (e) {
+                throw new Error(
+                  `JSON invalide reçu de l'IA : ${(e as Error).message}`,
+                );
+              }
             }
           }
         }
@@ -374,7 +489,7 @@ async function repairStructuredJSON(
   systemPrompt: string,
   prompt: string,
   temperature: number,
-  maxTokens: number
+  maxTokens: number,
 ): Promise<string> {
   const repairSystem = `${systemPrompt}
 
@@ -400,7 +515,7 @@ Retourne uniquement le JSON valide correspondant à la demande initiale.`;
     Math.min(temperature, 0.2),
     maxTokens,
     false,
-    true
+    true,
   );
 }
 
@@ -408,8 +523,12 @@ Retourne uniquement le JSON valide correspondant à la demande initiale.`;
 
 /** Corriger une réponse élève */
 export async function gradeAnswer(
-  question: string, correctAnswer: string, studentAnswer: string,
-  explanation: string | undefined, level: string, maxPoints: number
+  question: string,
+  correctAnswer: string,
+  studentAnswer: string,
+  explanation: string | undefined,
+  level: string,
+  maxPoints: number,
 ): Promise<{ is_correct: boolean; score: number; feedback: string }> {
   const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}". Corrige avec soin et pédagogie.
 RÈGLES D'ÉQUIVALENCE (très important) :
@@ -427,15 +546,36 @@ RÈGLES pour le feedback :
 9. FORMATE TOUTE expression mathématique en LaTeX entre $...$ (ex: $f(x) = x^2 + 6x + 4$, $(x+3)^2 - 5$, $\\frac{1}{2}$). N'écris JAMAIS de caractères Unicode comme ², ³, √, ½ ou × : utilise toujours LaTeX ($x^2$, $\\sqrt{x}$, $\\frac{1}{2}$, $\\times$).`;
 
   const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
-  const text = await dispatch([{ role: "system", content: system }, { role: "user", content: user }], 0.2, 800, false, true);
-  const r = parseJSON(extractJSON(text)) as { is_correct?: boolean; score?: number; feedback?: string };
-  return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
+  const text = await dispatch(
+    [
+      { role: "system", content: system },
+      { role: "user", content: user },
+    ],
+    0.2,
+    800,
+    false,
+    true,
+  );
+  const r = parseJSON(extractJSON(text)) as {
+    is_correct?: boolean;
+    score?: number;
+    feedback?: string;
+  };
+  return {
+    is_correct: r.is_correct === true,
+    score: r.score || 0,
+    feedback: r.feedback || "Pas de feedback",
+  };
 }
 
 /** Corriger une réponse élève soumise sous forme de dessin (image base64) via un modèle vision */
 export async function gradeImageAnswer(
-  question: string, correctAnswer: string, imageDataUrl: string,
-  explanation: string | undefined, level: string, maxPoints: number
+  question: string,
+  correctAnswer: string,
+  imageDataUrl: string,
+  explanation: string | undefined,
+  level: string,
+  maxPoints: number,
 ): Promise<{ is_correct: boolean; score: number; feedback: string }> {
   const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}".
 Tu reçois une photo/dessin de la réponse manuscrite d'un élève.
@@ -467,15 +607,35 @@ RÈGLES pour le feedback :
     },
   ];
 
-  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, 0.2, 800, false, true);
+  const { ok, text, status } = await callMistralModel(
+    MISTRAL_MODEL,
+    msgs,
+    0.2,
+    800,
+    false,
+    true,
+  );
   if (!ok) {
-    console.error(`[llm] vision ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`);
-    throw new Error("Le modèle de vision IA est indisponible. Réessaie dans quelques secondes.");
+    console.error(
+      `[llm] vision ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`,
+    );
+    throw new Error(
+      "Le modèle de vision IA est indisponible. Réessaie dans quelques secondes.",
+    );
   }
   const parsed = JSON.parse(text);
-  const content = extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
-  const r = parseJSON(extractJSON(content)) as { is_correct?: boolean; score?: number; feedback?: string };
-  return { is_correct: r.is_correct === true, score: r.score || 0, feedback: r.feedback || "Pas de feedback" };
+  const content =
+    extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
+  const r = parseJSON(extractJSON(content)) as {
+    is_correct?: boolean;
+    score?: number;
+    feedback?: string;
+  };
+  return {
+    is_correct: r.is_correct === true,
+    score: r.score || 0,
+    feedback: r.feedback || "Pas de feedback",
+  };
 }
 
 /** Générer un cours/exercice/quiz structuré → JSON parsé */
@@ -514,18 +674,27 @@ export async function generateStructuredContent(
   abortSignal?: AbortSignal,
 ): Promise<unknown> {
   const text = await dispatch(
-    [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }],
+    [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: prompt },
+    ],
     temperature,
     maxTokens,
     reasoning,
     true,
-    abortSignal
+    abortSignal,
   );
   const extracted = extractJSON(text);
   try {
     return parseJSON(extracted);
   } catch {
-    const repaired = await repairStructuredJSON(text, systemPrompt, prompt, temperature, maxTokens);
+    const repaired = await repairStructuredJSON(
+      text,
+      systemPrompt,
+      prompt,
+      temperature,
+      maxTokens,
+    );
     try {
       return parseJSON(extractJSON(repaired));
     } catch {
@@ -534,19 +703,22 @@ export async function generateStructuredContent(
         return parseJSON(extractJSON(forced));
       } catch {
         const snippet = text.slice(0, 200).replace(/\s+/g, " ").trim();
-        console.warn(`[llm] Impossible de récupérer du JSON structuré après plusieurs tentatives. Réponse brute : ${snippet} ; last repair output: ${forced.slice(0, 200).replace(/\s+/g, " ").trim()}`);
-        throw new Error("JSON invalide reçu de l'IA : impossible de générer un JSON structuré valide malgré les tentatives de réparation.");
+        console.warn(
+          `[llm] Impossible de récupérer du JSON structuré après plusieurs tentatives. Réponse brute : ${snippet} ; last repair output: ${forced.slice(0, 200).replace(/\s+/g, " ").trim()}`,
+        );
+        throw new Error(
+          "JSON invalide reçu de l'IA : impossible de générer un JSON structuré valide malgré les tentatives de réparation.",
+        );
       }
     }
   }
 }
 
-
 /**
  * Génération structurée commune. Les modèles stables utilisent JSON Schema
  * lorsque disponible. Les modèles Labs/Leanstral passent directement en
- * json_object : on évite ainsi un aller-retour 422 à chaque requête. Le contrat
- * reste appliqué côté serveur par les normalisateurs et validateurs.
+ * json_object : on évite ainsi un aller-retour 422 à chaque requête. Le
+ * contrat reste appliqué côté serveur par les normalisateurs et validateurs.
  */
 export async function generateStructuredContentWithSchema<T>(
   prompt: string,
@@ -571,7 +743,9 @@ export async function generateStructuredContentWithSchema<T>(
     };
     const choice = envelope.choices?.[0];
     if (choice?.finish_reason === "length") {
-      console.warn(`[llm] ${MISTRAL_MODEL} hit max_tokens (maxTokens=${maxTokens})`);
+      console.warn(
+        `[llm] ${MISTRAL_MODEL} hit max_tokens (maxTokens=${maxTokens})`,
+      );
       throw new Error(
         `Réponse IA tronquée (max_tokens atteint, maxTokens=${maxTokens}).`,
       );
@@ -639,7 +813,9 @@ ${JSON.stringify(contract.schema)}`;
     console.error(
       `[llm] ${MISTRAL_MODEL} JSON mode error ${response.status}: ${response.text.slice(0, 500)}`,
     );
-    throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
+    throw new Error(
+      "Le modèle IA est indisponible. Réessaie dans quelques secondes.",
+    );
   };
 
   if (!shouldAttemptJsonSchema(MISTRAL_MODEL)) {
@@ -688,25 +864,35 @@ ${JSON.stringify(contract.schema)}`;
   console.error(
     `[llm] ${MISTRAL_MODEL} schema error ${response.status}: ${response.text.slice(0, 500)}`,
   );
-  throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
+  throw new Error(
+    "Le modèle IA est indisponible. Réessaie dans quelques secondes.",
+  );
 }
-
 
 /** Chatbot tuteur IA — reasoning activé (Mistral Small, mode reasoning) */
 export async function chatWithAI(
   messages: Array<{ role: "user" | "assistant"; content: string }>,
   systemPrompt: string,
   temperature = 0.65,
-  maxTokens = 700
+  maxTokens = 700,
 ): Promise<string> {
-  return (await dispatch(
-    [{ role: "system", content: systemPrompt }, ...messages.map(m => ({ role: m.role as "user"|"assistant", content: m.content }))],
-    temperature, maxTokens,
-    true
-  )).trim();
+  return (
+    await dispatch(
+      [
+        { role: "system", content: systemPrompt },
+        ...messages.map((m) => ({
+          role: m.role as "user" | "assistant",
+          content: m.content,
+        })),
+      ],
+      temperature,
+      maxTokens,
+      true,
+    )
+  ).trim();
 }
 
 // ── Aliases de compatibilité ───────────────────────────────────────────────────
-export const gradeWithQwen           = gradeAnswer;
+export const gradeWithQwen = gradeAnswer;
 export const generateContentWithQwen = generateStructuredContent;
-export const chatWithQwen            = chatWithAI;
+export const chatWithQwen = chatWithAI;
