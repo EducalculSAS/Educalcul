@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { chatWithAI } from "@/lib/llm";
+import { chatWithAIPlain } from "@/lib/llm";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
@@ -38,7 +38,12 @@ export async function POST(req: Request) {
       // Température basse : un bot support doit être fiable/factuel plutôt
       // que créatif, et suit mieux les instructions de formatage strictes
       // (relance vers un ticket après 5 messages).
-      const message = await chatWithAI(trimmed, buildSupportSystemPrompt("parent", userTurnCount), 0.3, 400);
+      const message = await chatWithAIPlain(
+        trimmed,
+        buildSupportSystemPrompt("parent", userTurnCount),
+        0.2,
+        1_000,
+      );
       return NextResponse.json({ message });
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : String(error);

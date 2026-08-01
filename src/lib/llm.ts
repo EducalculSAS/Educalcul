@@ -892,6 +892,34 @@ export async function chatWithAI(
   ).trim();
 }
 
+/**
+ * Chat court sans raisonnement interne. À utiliser pour les réponses de support
+ * et les synthèses factuelles, où un petit plafond de sortie ne doit pas être
+ * consommé par des tokens de raisonnement. Les autres usages de chatWithAI ne
+ * changent pas.
+ */
+export async function chatWithAIPlain(
+  messages: Array<{ role: "user" | "assistant"; content: string }>,
+  systemPrompt: string,
+  temperature = 0.4,
+  maxTokens = 1_000,
+): Promise<string> {
+  return (
+    await dispatch(
+      [
+        { role: "system", content: systemPrompt },
+        ...messages.map((m) => ({
+          role: m.role as "user" | "assistant",
+          content: m.content,
+        })),
+      ],
+      temperature,
+      maxTokens,
+      false,
+    )
+  ).trim();
+}
+
 // ── Aliases de compatibilité ───────────────────────────────────────────────────
 export const gradeWithQwen = gradeAnswer;
 export const generateContentWithQwen = generateStructuredContent;

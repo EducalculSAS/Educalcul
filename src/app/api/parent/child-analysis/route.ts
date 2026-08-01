@@ -1,7 +1,7 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { chatWithAI } from "@/lib/llm";
+import { chatWithAIPlain } from "@/lib/llm";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
 
 export async function GET(req: Request) {
@@ -97,11 +97,11 @@ Analyse ces données et produis un rapport structuré en français avec ces sect
 
 Sois précis, bienveillant et basé uniquement sur les données réelles. Si les données sont insuffisantes dis-le clairement. Réponds en français, de façon concise (max 400 mots total).`;
 
-    const analysis = await chatWithAI(
+    const analysis = await chatWithAIPlain(
       [{ role: "user", content: prompt }],
       "Tu es un assistant pédagogique expert qui analyse la progression d'élèves et donne des conseils aux parents.",
-      0.4,
-      600
+      0.3,
+      1_600
     );
 
     return NextResponse.json({
