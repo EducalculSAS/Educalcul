@@ -1,12 +1,12 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
 import JsonLd from "@/components/JsonLd";
 import Image from "next/image";
+import FadeInSection from "@/components/home/FadeInSection";
+import FaqList from "@/components/faq/FaqList";
+import { FAQ_DATA } from "@/lib/faqData";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -24,166 +24,35 @@ const faqSchema = {
 };
 
 const SYM = [
-  { s: "∑", x: 6,  y: 10, z: 96,  d: 0,   t: 7.2  },
-  { s: "π", x: 87, y: 7,  z: 72,  d: 1.3, t: 8.5  },
-  { s: "√", x: 12, y: 62, z: 58,  d: 0.6, t: 9.1  },
-  { s: "∫", x: 91, y: 48, z: 104, d: 2.1, t: 7.4  },
-  { s: "Δ", x: 43, y: 14, z: 50,  d: 0.9, t: 10.2 },
-  { s: "∞", x: 65, y: 70, z: 66,  d: 1.8, t: 8.0  },
-  { s: "α", x: 2,  y: 40, z: 44,  d: 2.7, t: 9.3  },
-  { s: "×", x: 76, y: 26, z: 54,  d: 0.4, t: 7.8  },
-  { s: "θ", x: 50, y: 78, z: 62,  d: 2.0, t: 8.8  },
-  { s: "β", x: 28, y: 53, z: 42,  d: 3.3, t: 10.5 },
-  { s: "≠", x: 58, y: 30, z: 46,  d: 1.1, t: 9.7  },
-  { s: "÷", x: 19, y: 84, z: 38,  d: 2.9, t: 7.3  },
+  { s: "∑", x: 6, y: 10, z: 96, d: 0, t: 7.2 },
+  { s: "π", x: 87, y: 7, z: 72, d: 1.3, t: 8.5 },
+  { s: "√", x: 12, y: 62, z: 58, d: 0.6, t: 9.1 },
+  { s: "∫", x: 91, y: 48, z: 104, d: 2.1, t: 7.4 },
+  { s: "Δ", x: 43, y: 14, z: 50, d: 0.9, t: 10.2 },
+  { s: "∞", x: 65, y: 70, z: 66, d: 1.8, t: 8.0 },
+  { s: "α", x: 2, y: 40, z: 44, d: 2.7, t: 9.3 },
+  { s: "×", x: 76, y: 26, z: 54, d: 0.4, t: 7.8 },
+  { s: "θ", x: 50, y: 78, z: 62, d: 2.0, t: 8.8 },
+  { s: "β", x: 28, y: 53, z: 42, d: 3.3, t: 10.5 },
+  { s: "≠", x: 58, y: 30, z: 46, d: 1.1, t: 9.7 },
+  { s: "÷", x: 19, y: 84, z: 38, d: 2.9, t: 7.3 },
 ];
-
-type FAQItem = { question: string; answer: React.ReactNode };
-type FAQSection = { title: string; items: FAQItem[] };
-
-const FAQ_DATA: FAQSection[] = [
-  {
-    title: "Généralités",
-    items: [
-      { question: "C'est quoi Educalcul ?", answer: "Educalcul est une plateforme de mathématiques pour les enfants. On y trouve des leçons claires, des exercices, des quiz et un suivi détaillé pour progresser pas à pas." },
-      { question: "Pour quels niveaux c'est fait ?", answer: "Le contenu couvre du CP à la Terminale. L'enfant choisit son niveau pour accéder aux contenus adaptés à sa classe." },
-      { question: "Est-ce que ça suit le programme scolaire ?", answer: "Oui, tous les contenus sont alignés sur le programme officiel de l'Éducation Nationale." },
-      { question: "Mon enfant peut-il travailler seul ?", answer: "Oui. Les consignes sont courtes, les exercices sont guidés et les corrections expliquées permettent d'avancer sans bloquer." },
-      { question: "Sur quels appareils peut-on l'utiliser ?", answer: "Educalcul fonctionne sur ordinateur, tablette et téléphone. Le site s'adapte à toutes les tailles d'écran." },
-    ],
-  },
-  {
-    title: "Comptes et accès",
-    items: [
-      { question: "Comment créer un compte ?", answer: "Cliquez sur Inscription, choisissez votre type de compte, puis remplissez le formulaire. C'est rapide et vous pouvez commencer immédiatement." },
-      { question: "Quelle est la différence entre compte Parent et Enfant ?", answer: "Le compte Parent permet de gérer les enfants, les abonnements et de suivre les progrès. Le compte Enfant est dédié aux leçons, exercices et quiz." },
-      { question: "J'ai oublié mon mot de passe, que faire ?", answer: "Sur la page de connexion, cliquez sur « Mot de passe oublié ». Vous recevrez un lien par email pour le réinitialiser." },
-      { question: "Peut-on changer de niveau en cours d'année ?", answer: "Oui. Le niveau peut être ajusté à tout moment depuis l'espace parent si l'enfant progresse vite ou s'il faut revoir les bases." },
-    ],
-  },
-  {
-    title: "Cours, exercices & abonnements",
-    items: [
-      { question: "Qu'est-ce qu'on trouve dans les cours ?", answer: "Des explications claires, des exemples concrets et des activités pour s'entraîner immédiatement après chaque leçon." },
-      { question: "Les exercices corrigent-ils les erreurs ?", answer: "Oui, l'enfant voit ce qui est juste ou faux et peut comprendre ses erreurs grâce aux explications détaillées." },
-      { question: "Comment suivre les progrès de mon enfant ?", answer: "Le tableau de bord parent affiche l'avancée, les exercices réalisés, les badges obtenus et les points à revoir." },
-      {
-        question: "Quels abonnements sont proposés ?",
-        answer: (
-          <span>
-            Plusieurs formules sont disponibles selon vos besoins. Retrouvez tous les détails sur la page{" "}
-            <Link href="/tarifs" className="text-[var(--greek-blue)] underline hover:text-[var(--greek-gold)] transition-colors">Tarifs</Link>.
-          </span>
-        ),
-      },
-      { question: "L'abonnement se renouvelle-t-il automatiquement ?", answer: "Cela dépend de la formule choisie. Tous les détails sont indiqués clairement avant validation, et vous pouvez annuler à tout moment." },
-    ],
-  },
-];
-
-/* Animation au scroll */
-function useScrollVisible() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) { setVisible(true); return; }
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.05 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, visible };
-}
-
-function FaqSection({ section, sIdx, openItem, setOpenItem }: {
-  section: FAQSection;
-  sIdx: number;
-  openItem: string | null;
-  setOpenItem: (id: string | null) => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (el.getBoundingClientRect().top < window.innerHeight) { setVisible(true); return; }
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.08 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return (
-    <div ref={ref} className="mb-10">
-      <div className="flex items-center gap-4 mb-5"
-        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "opacity 0.4s 0ms, transform 0.4s 0ms" }}>
-        <div className="w-6 h-px opacity-60" style={{ background: "var(--greek-gold)" }} />
-        <h2 className="font-[family-name:var(--font-display)] font-bold text-base text-[var(--greek-blue)] uppercase tracking-wider">{section.title}</h2>
-        <div className="flex-1 h-px bg-gray-200" />
-      </div>
-      <div className="space-y-2.5">
-        {section.items.map((item, iIdx) => (
-          <div key={`${sIdx}-${iIdx}`}
-            style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: `opacity 0.4s ${50 + iIdx * 55}ms, transform 0.4s ${50 + iIdx * 55}ms` }}>
-            <FaqItem id={`${sIdx}-${iIdx}`} question={item.question} answer={item.answer} openItem={openItem} setOpenItem={setOpenItem} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function FaqItem({ id, question, answer, openItem, setOpenItem }: {
-  id: string;
-  question: string;
-  answer: React.ReactNode;
-  openItem: string | null;
-  setOpenItem: (id: string | null) => void;
-}) {
-  const isOpen = openItem === id;
-  return (
-    <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(197,161,72,0.18)", background: "#fff" }}>
-      <button
-        type="button"
-        onClick={() => setOpenItem(isOpen ? null : id)}
-        className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left transition-colors hover:bg-[rgba(197,161,72,0.03)]"
-      >
-        <span className="font-[family-name:var(--font-display)] font-semibold text-sm" style={{ color: "var(--greek-blue)" }}>{question}</span>
-        <span
-          className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-lg font-light transition-transform duration-300"
-          style={{ background: "rgba(197,161,72,0.10)", color: "var(--greek-gold)", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
-        >+</span>
-      </button>
-      <div style={{ maxHeight: isOpen ? "400px" : "0px", overflow: "hidden", transition: "max-height 0.3s ease" }}>
-        <div className="px-6 pb-5 pt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          {answer}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function FAQ() {
-  const [openItem, setOpenItem] = useState<string | null>(null);
-  const { ref: badgeRef, visible: badgeVisible } = useScrollVisible();
-  const { ref: ctaRef,   visible: ctaVisible   } = useScrollVisible();
-
   return (
     <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
       <JsonLd data={faqSchema} />
       <Navbar />
       <main className="flex-grow pt-[64px]">
-
         {/* HERO — split, aperçu questions à droite */}
         <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white py-32">
           {SYM.map((cfg, i) => (
             <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none"
-              style={{ left:`${cfg.x}%`, top:`${cfg.y}%`, fontSize:`${cfg.z}px`, fontFamily:"Georgia,serif", color:"var(--greek-gold)", opacity:0.1, animationDuration:`${cfg.t}s`, animationDelay:`${cfg.d}s` }}
+              style={{ left: `${cfg.x}%`, top: `${cfg.y}%`, fontSize: `${cfg.z}px`, fontFamily: "Georgia,serif", color: "var(--greek-gold)", opacity: 0.1, animationDuration: `${cfg.t}s`, animationDelay: `${cfg.d}s` }}
             >{cfg.s}</span>
           ))}
           <div className="relative container mx-auto px-6 max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Gauche */}
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.6)" }}>Aide & réponses</p>
                 <h1 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4 text-white"
@@ -194,7 +63,6 @@ export default function FAQ() {
                   Tout ce que vous devez savoir avant de commencer.
                 </p>
               </div>
-              {/* Droite — catégories */}
               <div className="hidden md:flex flex-col gap-3">
                 {FAQ_DATA.map((section, i) => (
                   <div key={i} className="flex items-center justify-between px-5 py-4 rounded-xl gap-4"
@@ -213,15 +81,15 @@ export default function FAQ() {
         {/* FAQ */}
         <section className="py-20 bg-[var(--greek-cream)]">
           <div className="container mx-auto px-6 max-w-3xl">
-            <div>
-              {FAQ_DATA.map((section, sIdx) => (
-                <FaqSection key={sIdx} section={section} sIdx={sIdx} openItem={openItem} setOpenItem={setOpenItem} />
-              ))}
-            </div>
+            <FaqList />
 
             {/* Badge programme EN */}
-            <div ref={badgeRef} className="mt-10 mb-4 flex flex-col sm:flex-row items-center justify-between gap-5 p-5 rounded-2xl"
-              style={{ background: "#fff", border: "1px solid var(--greek-border)", boxShadow: "0 2px 12px rgba(15,30,58,0.04)", opacity: badgeVisible ? 1 : 0, transform: badgeVisible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.5s, transform 0.5s" }}>
+            <FadeInSection
+              translateY={20}
+              durationMs={500}
+              className="mt-10 mb-4 flex flex-col sm:flex-row items-center justify-between gap-5 p-5 rounded-2xl"
+              style={{ background: "#fff", border: "1px solid var(--greek-border)", boxShadow: "0 2px 12px rgba(15,30,58,0.04)" }}
+            >
               <div className="flex items-center gap-5 flex-shrink-0">
                 <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={80} height={80} className="w-auto object-contain flex-shrink-0" style={{ height: 80 }} unoptimized />
                 <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
@@ -242,18 +110,14 @@ export default function FAQ() {
               >
                 Voir les programmes <ArrowRight size={14} />
               </Link>
-            </div>
+            </FadeInSection>
 
             {/* CTA */}
-            <div
-              ref={ctaRef}
+            <FadeInSection
+              translateY={24}
+              delayMs={150}
               className="mt-4 text-center p-10 rounded-2xl text-white"
-              style={{
-                background: "var(--greek-blue)",
-                opacity: ctaVisible ? 1 : 0,
-                transform: ctaVisible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity 0.5s 0.15s, transform 0.5s 0.15s",
-              }}
+              style={{ background: "var(--greek-blue)" }}
             >
               <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-3">Vous n&apos;avez pas trouvé votre réponse ?</h3>
               <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.55)" }}>Notre équipe répond généralement en moins de 24h.</p>
@@ -264,10 +128,9 @@ export default function FAQ() {
               >
                 Nous contacter <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
+            </FadeInSection>
           </div>
         </section>
-
       </main>
       <Footer />
     </div>
