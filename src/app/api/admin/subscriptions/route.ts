@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
+import { fetchAdminSubscriptionPlans } from "@/lib/adminSubscriptionPlans";
 
 // GET — list all plans. Subscriber details are attached only for admins;
 // the public signup page only needs the plan fields themselves.
@@ -19,31 +20,7 @@ export async function GET(req: Request) {
       return NextResponse.json(plans || []);
     }
 
-    // Attach subscriber count + subscriber list per plan
-    const plansWithCount = await Promise.all(
-      (plans || []).map(async (plan) => {
-        const { data: subs } = await supabaseAdmin
-          .from("subscriptions")
-          .select("user_id, status, current_period_end")
-          .eq("plan_id", plan.id.toString())
-          .eq("status", "active");
-
-        // Resolve user info for each subscriber (user_id = auth_id in subscriptions)
-        const subscribers = await Promise.all(
-          (subs || []).map(async (s) => {
-            const { data: u } = await supabaseAdmin
-              .from("users")
-              .select("first_name, last_name, email, avatar")
-              .eq("auth_id", s.user_id)
-              .maybeSingle();
-            return { ...s, user: u };
-          })
-        );
-
-        return { ...plan, subscriber_count: subscribers.length, subscribers };
-      })
-    );
-
+    const plansWithCount = await fetchAdminSubscriptionPlans();
     return NextResponse.json(plansWithCount);
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
