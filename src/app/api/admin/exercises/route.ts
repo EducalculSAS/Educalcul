@@ -43,13 +43,16 @@ export async function GET(request: Request) {
       return NextResponse.json(isAdmin ? filledData : stripAnswers(filledData));
     }
 
+    // Liste : pas de content_json (potentiellement volumineux) — chaque
+    // carte n'affiche que ces champs ; le contenu complet est rechargé à la
+    // demande (édition/aperçu/export) via ?id=.
     let query = supabaseAdmin
       .from("exercises")
       .select(
         `
         id, title, description, question,
         difficulty_level, type, level, status,
-        folder_id, course_id, content_json,
+        folder_id, course_id,
         points_reward, max_attempts, time_limit,
         created_at, updated_at,
         courses (title, subject, level),
@@ -72,10 +75,10 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
-    // Ensure content_json is filled for all exercises
-    const processedData = data.map(fillEmptyContentJson);
-
-    return NextResponse.json(isAdmin ? processedData : processedData.map(stripAnswers));
+    // La liste n'inclut plus content_json (voir select ci-dessus) : pas de
+    // fillEmptyContentJson ici, ça injecterait un faux contenu de repli sur
+    // des lignes où le champ est simplement absent, pas vide.
+    return NextResponse.json(isAdmin ? data : data.map(stripAnswers));
   } catch (error: any) {
     console.error("Error fetching exercises:", error);
     return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });

@@ -21,9 +21,12 @@ export async function GET(request: Request) {
       return NextResponse.json(data);
     }
 
+    // Liste : pas de content_json (potentiellement volumineux) — chaque
+    // carte n'affiche que ces champs ; le contenu complet est rechargé à la
+    // demande (édition/aperçu/export) via ?id=.
     let query = supabaseAdmin
       .from("courses")
-      .select("*")
+      .select("id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, created_at, updated_at")
       .order("created_at", { ascending: false });
 
     if (status && status !== "all") {

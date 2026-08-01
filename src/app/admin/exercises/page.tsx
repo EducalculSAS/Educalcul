@@ -1,16 +1,17 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { fillEmptyContentJson } from "@/lib/exerciseContent";
 import AdminExercisesClient from "@/components/admin/AdminExercisesClient";
 
 export default async function AdminExercisesPage() {
   const [{ data: rootFolders }, { data: exercisesData }, { data: allFolders }, { data: courses }] = await Promise.all([
     supabaseAdmin.from("exercise_folders").select("*").is("parent_id", null).order("name"),
+    // Pas de content_json (volumineux) dans la liste : rechargé à la demande
+    // (édition/aperçu/export) via getFullExercise côté client.
     supabaseAdmin
       .from("exercises")
       .select(`
         id, title, description, question,
         difficulty_level, type, level, status,
-        folder_id, course_id, content_json,
+        folder_id, course_id,
         points_reward, max_attempts, time_limit,
         created_at, updated_at,
         courses (title, subject, level),
@@ -21,12 +22,12 @@ export default async function AdminExercisesPage() {
     supabaseAdmin.from("courses").select("id, title").order("title"),
   ]);
 
-  const allExercises = (exercisesData || []).map(fillEmptyContentJson);
+  const exercisesWithoutContent = (exercisesData || []).map((e: any) => ({ ...e, content_json: null }));
 
   return (
     <AdminExercisesClient
       initialFolders={rootFolders || []}
-      initialAllExercises={allExercises as any}
+      initialAllExercises={exercisesWithoutContent}
       initialAllFolderCounts={allFolders || []}
       initialCourses={courses || []}
     />

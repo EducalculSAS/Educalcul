@@ -693,6 +693,20 @@ export default function AdminExercisesClient({
     }
   };
 
+  // La liste ne charge plus content_json (trop volumineux pour un simple
+  // aperçu de carte) : on le récupère à la demande, seulement quand une
+  // action a besoin du contenu complet (édition, aperçu, export).
+  const getFullExercise = async (exercise: Exercise): Promise<Exercise> => {
+    if (exercise.content_json) return exercise;
+    const res = await fetch(`/api/admin/exercises?id=${exercise.id}`);
+    const full = await res.json();
+    if (!res.ok) return exercise;
+    const merge = (e: Exercise) => (e.id === exercise.id ? { ...e, content_json: full.content_json ?? [] } : e);
+    setExercises((es) => es.map(merge));
+    setAllExercises((es) => es.map(merge));
+    return { ...exercise, content_json: full.content_json ?? [] };
+  };
+
   const handlePreview = (exercise: Exercise) => {
     const previewData = {
       title: exercise.title,
@@ -1238,21 +1252,24 @@ export default function AdminExercisesClient({
                     </span>
                     <div className="flex gap-1">
                       <button
-                        onClick={() => handlePreview(exercise)}
+                        onClick={async () => handlePreview(await getFullExercise(exercise))}
                         className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
                         title="Prévisualiser"
                       >
                         <Eye size={16} />
                       </button>
                       <button
-                        onClick={() => openEditModal(exercise)}
+                        onClick={async () => openEditModal(await getFullExercise(exercise))}
                         className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
                         title="Modifier"
                       >
                         <Edit size={16} />
                       </button>
                       <button
-                        onClick={() => exportAsJSON(exercise, "exercise", exercise.title)}
+                        onClick={async () => {
+                          const full = await getFullExercise(exercise);
+                          exportAsJSON(full, "exercise", full.title);
+                        }}
                         className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
                         title="Exporter JSON"
                       >

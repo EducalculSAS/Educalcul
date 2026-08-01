@@ -780,6 +780,20 @@ export default function AdminQuizzesClient({
     }
   };
 
+  // La liste ne charge plus content_json (trop volumineux pour un simple
+  // aperçu de carte) : on le récupère à la demande, seulement quand une
+  // action a besoin du contenu complet (édition, aperçu, export).
+  const getFullQuiz = async (quiz: Quiz): Promise<Quiz> => {
+    if (quiz.content_json) return quiz;
+    const res = await fetch(`/api/admin/quizzes?id=${quiz.id}`);
+    const full = await res.json();
+    if (!res.ok) return quiz;
+    const merge = (q: Quiz) => (q.id === quiz.id ? { ...q, content_json: full.content_json ?? [] } : q);
+    setQuizzes((qs) => qs.map(merge));
+    setAllQuizzes((qs) => qs.map(merge));
+    return { ...quiz, content_json: full.content_json ?? [] };
+  };
+
   const handlePreview = (quiz: Quiz) => {
     const previewData = {
       title: quiz.title,
@@ -1217,21 +1231,24 @@ export default function AdminQuizzesClient({
                     </span>
                     <div className="flex gap-1">
                       <button
-                        onClick={() => handlePreview(quiz)}
+                        onClick={async () => handlePreview(await getFullQuiz(quiz))}
                         className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
                         title="Prévisualiser"
                       >
                         <Eye size={16} />
                       </button>
                       <button
-                        onClick={() => handleOpenModal(quiz)}
+                        onClick={async () => handleOpenModal(await getFullQuiz(quiz))}
                         className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
                         title="Modifier"
                       >
                         <Edit size={16} />
                       </button>
                       <button
-                        onClick={() => exportAsJSON(quiz, "quiz", quiz.title)}
+                        onClick={async () => {
+                          const full = await getFullQuiz(quiz);
+                          exportAsJSON(full, "quiz", full.title);
+                        }}
                         className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
                         title="Exporter JSON"
                       >

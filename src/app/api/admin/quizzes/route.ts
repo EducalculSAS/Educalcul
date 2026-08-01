@@ -31,11 +31,17 @@ export async function GET(request: Request) {
       return NextResponse.json(isAdmin ? data : stripAnswers(data));
     }
 
+    // Liste : pas de content_json (potentiellement volumineux) — chaque
+    // carte n'affiche que ces champs ; le contenu complet est rechargé à la
+    // demande (édition/aperçu/export) via ?id=.
     let query = supabaseAdmin
       .from("quizzes")
       .select(
         `
-        *,
+        id, title, description, course_id, folder_id,
+        time_limit_minutes, min_score_percent, status, type,
+        difficulty_level, level, max_attempts, grading_type,
+        thumbnail_filename, estimated_time, created_at, updated_at,
         courses (title),
         quiz_folders (name, color)
       `
