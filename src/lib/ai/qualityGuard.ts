@@ -367,6 +367,22 @@ ${JSON.stringify(payload)}`;
     }
   }
 
+  // Filet de sécurité déterministe : après tous les tours, un champ peut
+  // rester suspect (lot rejeté, réponse tronquée, ou réparation elle-même
+  // mal formée par le modèle). On ne laisse jamais fuir du LaTeX brut à
+  // l'affichage — le même repli lisible que celui des légendes de figures
+  // (readableMathFallbackText) est appliqué directement au texte, sans
+  // appel modèle supplémentaire.
+  for (const { reference } of suspiciousReferences(value)) {
+    const content = reference.get();
+    const nextParts = content.parts.map((part) =>
+      part.type === "text" && containsSuspiciousUnstructuredMath(part.value)
+        ? { ...part, value: readableMathFallbackText(part.value) }
+        : part,
+    );
+    reference.set({ parts: nextParts });
+  }
+
   return {
     value,
     repaired,
@@ -716,7 +732,7 @@ export function sanitizeStructuredResources<T>(
 }
 
 
-function readableMathFallbackText(value: string): string {
+export function readableMathFallbackText(value: string): string {
   // \b seul en fin de motif ne protège pas le début : sans \b initial,
   // "leq?" matchait "le" à l'intérieur de n'importe quel mot français qui en
   // termine ainsi ("exponentielle" -> "exponentiel≤", "passage" -> "passa≥").
@@ -743,6 +759,17 @@ function readableMathFallbackText(value: string): string {
     .replace(/\\?\bcdot\b/g, "×")
     .replace(/\\?\btimes\b/g, "×")
     .replace(/\\?\bto\b/g, "→")
+    .replace(/\\?\bsetminus\b/g, "∖")
+    .replace(/\\?\bmid\b/g, "|")
+    .replace(/\\?\bnotin\b/g, "∉")
+    .replace(/\\?\bin\b/g, "∈")
+    // \left/\right dimensionnent un délimiteur ({, (, [, |) qui doit rester
+    // affiché : sans ces règles, "\left\{...\right\}" perdait le mot mais
+    // gardait un antislash orphelin devant l'accolade ("\{"), jamais nettoyé
+    // par ailleurs dans ce repli déterministe (vu en prod pour un domaine de
+    // définition écrit en ensemble : "\mathbb{R} \setminus \left\{...\right\}").
+    .replace(/\\left\s*\\?([{([|])/g, "$1")
+    .replace(/\\right\s*\\?([})\]|])/g, "$1")
     .replace(/\\?\bleft\b/g, "")
     .replace(/\\?\bright\b/g, "")
     .replace(/\\?\bfrac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)")

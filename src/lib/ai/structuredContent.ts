@@ -521,6 +521,15 @@ export function sanitizeStructuredText(
   let text = original
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, " ")
     .replace(/<\/?[A-Za-z][^>]*>/g, " ")
+    // Un tour de réparation LaTeX (repairUnstructuredMathText) a parfois
+    // renvoyé un fragment mal sérialisé au lieu du texte attendu, laissant
+    // fuiter des guillemets droits littéraux dans le contenu final (ex:
+    // `sur $[", "\pi, 2\pi]$` au lieu de `sur $[\pi, 2\pi]$`, vu en prod).
+    // Aucun texte ou label de ce pipeline n'a besoin de guillemets droits :
+    // on retire d'abord la paire séparée d'une virgule (l'artefact `", "`
+    // le plus fréquent), puis tout guillemet isolé restant.
+    .replace(/"\s*,\s*"/g, "")
+    .replace(/"/g, "")
     .replace(/\$\$?|\\\(|\\\)|\\\[|\\\]/g, "")
     .replace(/\\([A-Za-z]+)\b/g, "$1")
     .replace(/\\+/g, "")
@@ -695,6 +704,13 @@ export function normalizeStructuredLatex(value: unknown): string {
   latex = stripOuterMathDelimiters(latex)
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, " ")
     .replace(/<\/?[A-Za-z][^>]*>/g, " ")
+    // Voir le même artefact dans sanitizeStructuredText : un tour de
+    // réparation a renvoyé `[", "\pi, 2\pi]` au lieu de `[\pi, 2\pi]`
+    // (guillemets droits d'une sérialisation ratée qui ont fui dans la
+    // formule). Aucune formule KaTeX de ce pipeline n'utilise de guillemet
+    // droit.
+    .replace(/"\s*,\s*"/g, "")
+    .replace(/"/g, "")
     .replace(/\$/g, "")
     .replace(/</g, "\\lt ")
     .replace(/>/g, "\\gt ")
