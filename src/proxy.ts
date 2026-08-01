@@ -84,55 +84,64 @@ export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
 
-  // Rafraîchit le cookie de session Supabase sur CHAQUE requête (pages et
-  // API) : sans ça, un access token expiré ne serait jamais renouvelé côté
-  // cookie et createSupabaseServerClient() verrait un utilisateur
-  // "déconnecté" côté Server Component alors que sa session est valide.
-  // Toute réponse renvoyée plus bas doit repartir de celle-ci (pas d'un
-  // NextResponse.next() nu) pour ne pas perdre ce rafraîchissement.
-  const sessionResponse = await updateSession(req);
+  if (pathname.startsWith("/api/admin")) {
+    // Garde spécifique aux API admin (JWT en header + rôle + 2FA) : totalement
+    // indépendante du cookie de session, elle authentifie via le header
+    // Authorization. Pas d'appel à updateSession() ici : ce serait un
+    // aller-retour Supabase Auth payé en plus, pour rien.
+    if (isPublic(pathname, method)) return NextResponse.next();
 
-  // La garde ci-dessous (JWT en header + rôle + 2FA) ne concerne que les API
-  // admin ; le reste du site (pages et autres routes) n'a besoin que du
-  // rafraîchissement de session ci-dessus.
-  if (!pathname.startsWith("/api/admin")) return sessionResponse;
+    const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
+    if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  if (isPublic(pathname, method)) return sessionResponse;
+    const authId = await getAuthUserId(token);
+    if (!authId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // getRole() renvoie null aussi bien pour "profil introuvable" que pour
+    // "compte banni" : dans les deux cas l'accès doit être refusé, y compris
+    // aux endpoints normalement ouverts à tout utilisateur authentifié.
+    const user = await getRole(authId);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const authId = await getAuthUserId(token);
-  if (!authId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // Published-content reads and avatar uploads: any authenticated, non-banned user
+    const isUserLevel =
+      (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
+      (method === "POST" && pathname === "/api/admin/upload");
+    if (isUserLevel) return NextResponse.next();
 
-  // getRole() renvoie null aussi bien pour "profil introuvable" que pour
-  // "compte banni" : dans les deux cas l'accès doit être refusé, y compris
-  // aux endpoints normalement ouverts à tout utilisateur authentifié.
-  const user = await getRole(authId);
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  // Published-content reads and avatar uploads: any authenticated, non-banned user
-  const isUserLevel =
-    (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
-    (method === "POST" && pathname === "/api/admin/upload");
-  if (isUserLevel) return sessionResponse;
+    // 2FA (TOTP) obligatoire pour tout compte admin, dès sa création (les
+    // routes /api/auth/2fa/totp/* ne sont pas sous /api/admin/*, donc un admin
+    // pas encore configuré peut toujours configurer son TOTP malgré ce blocage).
+    if (!(await has2FASession(user.id, req))) {
+      return NextResponse.json({ error: "2FA required" }, { status: 401 });
+    }
 
-  if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-
-  // 2FA (TOTP) obligatoire pour tout compte admin, dès sa création (les
-  // routes /api/auth/2fa/totp/* ne sont pas sous /api/admin/*, donc un admin
-  // pas encore configuré peut toujours configurer son TOTP malgré ce blocage).
-  if (!(await has2FASession(user.id, req))) {
-    return NextResponse.json({ error: "2FA required" }, { status: 401 });
+    return NextResponse.next();
   }
 
-  return sessionResponse;
+  if (pathname.startsWith("/api/")) {
+    // Toutes les autres routes API s'authentifient par le header Authorization
+    // (voir src/lib/apiAuth.ts), jamais par le cookie de session : inutile d'y
+    // rafraîchir ce cookie. Vu en prod : ce rafraîchissement (un round-trip
+    // Supabase Auth) tournait sur CHAQUE appel /api/* d'un enfant connecté
+    // (suivi de progression, vérif badges, etc.), ajoutant une latence
+    // perceptible à toutes les pages authentifiées malgré leur conversion en
+    // composants serveur.
+    return NextResponse.next();
+  }
+
+  // Pages : rafraîchit le cookie de session pour que createSupabaseServerClient()
+  // voie une identité à jour dans les Server Components.
+  return await updateSession(req);
 }
 
 export const config = {
-  // Toutes les routes sauf les assets statiques : le rafraîchissement de
-  // session doit tourner sur les pages (pas seulement /api/admin/*) pour que
-  // les Server Components voient une session à jour.
+  // Toutes les routes sauf les assets statiques : le matcher doit rester
+  // large pour couvrir /api/admin/* (garde ci-dessus) et les pages
+  // (rafraîchissement de session) — le tri entre les deux se fait dans la
+  // fonction, pas dans le matcher.
   matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)"],
 };
 
