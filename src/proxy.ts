@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { updateSession } from "@/lib/supabase/middleware";
 
 // Middleware tourne en runtime Edge : pas d'accès au module Node "crypto",
 // on utilise donc SubtleCrypto (identique en résultat à
@@ -83,7 +84,20 @@ export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
 
-  if (isPublic(pathname, method)) return NextResponse.next();
+  // Rafraîchit le cookie de session Supabase sur CHAQUE requête (pages et
+  // API) : sans ça, un access token expiré ne serait jamais renouvelé côté
+  // cookie et createSupabaseServerClient() verrait un utilisateur
+  // "déconnecté" côté Server Component alors que sa session est valide.
+  // Toute réponse renvoyée plus bas doit repartir de celle-ci (pas d'un
+  // NextResponse.next() nu) pour ne pas perdre ce rafraîchissement.
+  const sessionResponse = await updateSession(req);
+
+  // La garde ci-dessous (JWT en header + rôle + 2FA) ne concerne que les API
+  // admin ; le reste du site (pages et autres routes) n'a besoin que du
+  // rafraîchissement de session ci-dessus.
+  if (!pathname.startsWith("/api/admin")) return sessionResponse;
+
+  if (isPublic(pathname, method)) return sessionResponse;
 
   const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
   if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -101,7 +115,7 @@ export async function proxy(req: NextRequest) {
   const isUserLevel =
     (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
     (method === "POST" && pathname === "/api/admin/upload");
-  if (isUserLevel) return NextResponse.next();
+  if (isUserLevel) return sessionResponse;
 
   if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
@@ -112,11 +126,14 @@ export async function proxy(req: NextRequest) {
     return NextResponse.json({ error: "2FA required" }, { status: 401 });
   }
 
-  return NextResponse.next();
+  return sessionResponse;
 }
 
 export const config = {
-  matcher: ["/api/admin/:path*"],
+  // Toutes les routes sauf les assets statiques : le rafraîchissement de
+  // session doit tourner sur les pages (pas seulement /api/admin/*) pour que
+  // les Server Components voient une session à jour.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)"],
 };
 
 export default proxy;

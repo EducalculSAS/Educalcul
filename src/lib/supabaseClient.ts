@@ -1,4 +1,5 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { createBrowserClient } from '@supabase/ssr';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -13,7 +14,18 @@ const supabaseServiceRole = typeof window === 'undefined'
 const PUBLIC_KEY = "__sb_public__";
 function getPublicClient(): SupabaseClient {
   if (!(globalThis as any)[PUBLIC_KEY]) {
-    (globalThis as any)[PUBLIC_KEY] = createClient(supabaseUrl, supabaseAnonKey);
+    // createBrowserClient (session en cookies, lisible par le serveur via
+    // createSupabaseServerClient) UNIQUEMENT dans le navigateur : ce module
+    // est importé par les ~100 routes /api/* pour supabaseAdmin, et son
+    // évaluation exécute donc aussi cette ligne côté serveur à chaque fois.
+    // createBrowserClient s'appuie sur `document.cookie`, absent en Node —
+    // l'appeler côté serveur casserait toutes ces routes. Ce client "public"
+    // n'est de toute façon jamais réellement utilisé côté serveur (seul
+    // supabaseAdmin l'est) : createClient() y sert juste à ne rien casser.
+    (globalThis as any)[PUBLIC_KEY] =
+      typeof window === "undefined"
+        ? createClient(supabaseUrl, supabaseAnonKey)
+        : createBrowserClient(supabaseUrl, supabaseAnonKey);
   }
   return (globalThis as any)[PUBLIC_KEY];
 }
