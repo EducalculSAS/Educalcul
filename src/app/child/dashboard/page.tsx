@@ -1,18 +1,15 @@
-﻿"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { redirect } from "next/navigation";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getServerUser } from "@/lib/supabase/server";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import {
   BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
-  Play, MessageSquare, Star, CheckCircle, Zap,
+  Play, MessageSquare, Star, CheckCircle, Zap, type LucideIcon,
 } from "lucide-react";
-import AppAdminLoader from "@/components/AppAdminLoader";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   pencil: PenTool, zap: Zap, flame: Star, star: Star, crown: Trophy,
   check: CheckCircle, trophy: Trophy, brain: BrainCircuit, sparkles: Star,
   graduation: Star, book: BookOpen, map: Star, library: BookOpen,
@@ -21,67 +18,56 @@ const ICON_MAP: Record<string, any> = {
   scroll: BookOpen, owl: Star, universe: Star,
 };
 
-export default function ChildDashboard() {
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
-  const [authId, setAuthId] = useState<string | null>(null);
-  const [gradeLevel, setGradeLevel] = useState<string | null>(null);
-  const [nextCourse, setNextCourse] = useState<any>(null);
-  const [nextExercise, setNextExercise] = useState<any>(null);
-  const [earnedBadges, setEarnedBadges] = useState<any[]>([]);
-  const [stats, setStats] = useState({ badges: 0, exercises: 0 });
+interface Badge { id: number; name: string; icon: string; color: string }
 
-  useEffect(() => {
-    (async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) { router.push("/auth/connexion"); return; }
+// Purement un affichage de données propres à l'élève connecté (cours/exercices
+// suivants, badges, stats) : aucune interactivité au-delà de la navigation
+// (Link) et du widget calendrier, déjà un client island à part. Tout se
+// résout donc côté serveur — plus de spinner de chargement, plus d'aller-
+// retour client pour la session + les 6 requêtes en Promise.all.
+export default async function ChildDashboard() {
+  const authUser = await getServerUser();
+  if (!authUser) redirect("/auth/connexion");
+  if (authUser.role !== "child") redirect("/dashboard");
 
-      const { data: userData }: any = await supabase.from("users").select(USER_SELECT_COLUMNS).eq("auth_id", session.user.id).maybeSingle();
-      if (!userData || userData.role !== "child") { router.push("/dashboard"); return; }
+  // USER_SELECT_COLUMNS est une chaîne dynamique (pas un littéral) : comme
+  // dans le code client d'origine, supabase-js ne peut pas en inférer les
+  // colonnes et retombe sur un type d'erreur générique sans ce `: any`.
+  const { data: userData }: { data: any } = await supabaseAdmin
+    .from("users")
+    .select(USER_SELECT_COLUMNS)
+    .eq("id", authUser.id)
+    .maybeSingle();
+  if (!userData) redirect("/dashboard");
 
-      setUser(userData);
-      setAuthId(session.user.id);
-      setGradeLevel(userData.grade_level);
+  const level = userData.grade_level;
 
-      const level = userData.grade_level;
+  const [
+    { data: courses },
+    { data: exercises },
+    { data: progress },
+    { data: attempts },
+    { data: ubadges },
+    { count: exoCount },
+  ] = await Promise.all([
+    supabaseAdmin.from("courses").select("id, title, subject, level").eq("status", "published").eq("level", level).limit(10),
+    supabaseAdmin.from("exercises").select("id, title, difficulty_level").eq("status", "published").limit(10),
+    supabaseAdmin.from("user_course_progress").select("course_id").eq("user_id", userData.id),
+    supabaseAdmin.from("user_exercise_attempts").select("exercise_id").eq("user_id", userData.id),
+    supabaseAdmin.from("user_badges").select("badge:badges(id, name, icon, color)").eq("user_id", userData.id).order("earned_at", { ascending: false }).limit(4),
+    supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userData.id),
+  ]);
 
-      // Fetch in parallel
-      const [
-        { data: courses },
-        { data: exercises },
-        { data: progress },
-        { data: attempts },
-        { data: ubadges },
-        { count: exoCount },
-      ] = await Promise.all([
-        supabase.from("courses").select("id, title, subject, level").eq("status", "published").eq("level", level).limit(10),
-        supabase.from("exercises").select("id, title, difficulty_level").eq("status", "published").limit(10),
-        supabase.from("user_course_progress").select("course_id").eq("user_id", userData.id),
-        supabase.from("user_exercise_attempts").select("exercise_id").eq("user_id", userData.id),
-        supabase.from("user_badges").select("badge:badges(id, name, icon, color)").eq("user_id", userData.id).order("earned_at", { ascending: false }).limit(4),
-        supabase.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userData.id),
-      ]);
+  const doneCoursesIds = new Set((progress || []).map((p) => p.course_id));
+  const nextCourse = (courses || []).find((c) => !doneCoursesIds.has(c.id)) || (courses || [])[0] || null;
 
-      // Next course = first not yet started
-      const doneCoursesIds = new Set((progress || []).map((p: any) => p.course_id));
-      const nextC = (courses || []).find((c: any) => !doneCoursesIds.has(c.id));
-      setNextCourse(nextC || (courses || [])[0] || null);
+  const doneExoIds = new Set((attempts || []).map((a) => a.exercise_id));
+  const nextExercise = (exercises || []).find((e) => !doneExoIds.has(e.id)) || (exercises || [])[0] || null;
 
-      // Next exercise = first not yet attempted
-      const doneExoIds = new Set((attempts || []).map((a: any) => a.exercise_id));
-      const nextE = (exercises || []).find((e: any) => !doneExoIds.has(e.id));
-      setNextExercise(nextE || (exercises || [])[0] || null);
-
-      // Badges
-      const badges = (ubadges || []).map((ub: any) => ub.badge).filter(Boolean);
-      setEarnedBadges(badges);
-      setStats({ badges: badges.length, exercises: exoCount ?? 0 });
-      setLoading(false);
-    })();
-  }, [router]);
-
-  if (loading) return <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]"><AppAdminLoader /></div>;
+  const earnedBadges = ((ubadges || []) as unknown as { badge: Badge | null }[])
+    .map((ub) => ub.badge)
+    .filter((b): b is Badge => Boolean(b));
+  const stats = { badges: earnedBadges.length, exercises: exoCount ?? 0 };
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
@@ -93,10 +79,10 @@ export default function ChildDashboard() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h1 className="text-3xl md:text-5xl font-bold mb-2">
-                Bonjour, {user?.first_name} !
+                Bonjour, {userData.first_name} !
               </h1>
               <p className="text-xl opacity-90 flex items-center gap-2">
-                <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">{gradeLevel || "Niveau"}</span>
+                <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">{level || "Niveau"}</span>
                 <span>Prêt à apprendre ?</span>
               </p>
             </div>
@@ -199,11 +185,9 @@ export default function ChildDashboard() {
         </div>
 
         {/* Calendrier */}
-        {authId && user && (
-          <div className="mb-8">
-            <MiniCalendarWidget authId={authId} ownerId={user.id} isParent={false} title="Mon Calendrier" fullCalendarHref="/child/calendar" />
-          </div>
-        )}
+        <div className="mb-8">
+          <MiniCalendarWidget authId={authUser.authId} ownerId={userData.id} isParent={false} title="Mon Calendrier" fullCalendarHref="/child/calendar" />
+        </div>
 
         {/* Mes Trophées — réels */}
         <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
@@ -227,7 +211,7 @@ export default function ChildDashboard() {
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {earnedBadges.map((b: any) => {
+              {earnedBadges.map((b) => {
                 const Icon = ICON_MAP[b.icon] || Star;
                 return (
                   <div key={b.id} className="rounded-2xl border border-[rgba(197,161,72,0.25)] p-4 flex flex-col items-center text-center shadow-sm"
@@ -246,5 +230,3 @@ export default function ChildDashboard() {
     </div>
   );
 }
-
-

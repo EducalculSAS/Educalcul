@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { updateSession } from "@/lib/supabase/middleware";
 
 // Middleware tourne en runtime Edge : pas d'accès au module Node "crypto",
 // on utilise donc SubtleCrypto (identique en résultat à
@@ -83,40 +84,65 @@ export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
 
-  if (isPublic(pathname, method)) return NextResponse.next();
+  if (pathname.startsWith("/api/admin")) {
+    // Garde spécifique aux API admin (JWT en header + rôle + 2FA) : totalement
+    // indépendante du cookie de session, elle authentifie via le header
+    // Authorization. Pas d'appel à updateSession() ici : ce serait un
+    // aller-retour Supabase Auth payé en plus, pour rien.
+    if (isPublic(pathname, method)) return NextResponse.next();
 
-  const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
+    if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const authId = await getAuthUserId(token);
-  if (!authId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const authId = await getAuthUserId(token);
+    if (!authId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  // getRole() renvoie null aussi bien pour "profil introuvable" que pour
-  // "compte banni" : dans les deux cas l'accès doit être refusé, y compris
-  // aux endpoints normalement ouverts à tout utilisateur authentifié.
-  const user = await getRole(authId);
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // getRole() renvoie null aussi bien pour "profil introuvable" que pour
+    // "compte banni" : dans les deux cas l'accès doit être refusé, y compris
+    // aux endpoints normalement ouverts à tout utilisateur authentifié.
+    const user = await getRole(authId);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  // Published-content reads and avatar uploads: any authenticated, non-banned user
-  const isUserLevel =
-    (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
-    (method === "POST" && pathname === "/api/admin/upload");
-  if (isUserLevel) return NextResponse.next();
+    // Published-content reads and avatar uploads: any authenticated, non-banned user
+    const isUserLevel =
+      (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
+      (method === "POST" && pathname === "/api/admin/upload");
+    if (isUserLevel) return NextResponse.next();
 
-  if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  // 2FA (TOTP) obligatoire pour tout compte admin, dès sa création (les
-  // routes /api/auth/2fa/totp/* ne sont pas sous /api/admin/*, donc un admin
-  // pas encore configuré peut toujours configurer son TOTP malgré ce blocage).
-  if (!(await has2FASession(user.id, req))) {
-    return NextResponse.json({ error: "2FA required" }, { status: 401 });
+    // 2FA (TOTP) obligatoire pour tout compte admin, dès sa création (les
+    // routes /api/auth/2fa/totp/* ne sont pas sous /api/admin/*, donc un admin
+    // pas encore configuré peut toujours configurer son TOTP malgré ce blocage).
+    if (!(await has2FASession(user.id, req))) {
+      return NextResponse.json({ error: "2FA required" }, { status: 401 });
+    }
+
+    return NextResponse.next();
   }
 
-  return NextResponse.next();
+  if (pathname.startsWith("/api/")) {
+    // Toutes les autres routes API s'authentifient par le header Authorization
+    // (voir src/lib/apiAuth.ts), jamais par le cookie de session : inutile d'y
+    // rafraîchir ce cookie. Vu en prod : ce rafraîchissement (un round-trip
+    // Supabase Auth) tournait sur CHAQUE appel /api/* d'un enfant connecté
+    // (suivi de progression, vérif badges, etc.), ajoutant une latence
+    // perceptible à toutes les pages authentifiées malgré leur conversion en
+    // composants serveur.
+    return NextResponse.next();
+  }
+
+  // Pages : rafraîchit le cookie de session pour que createSupabaseServerClient()
+  // voie une identité à jour dans les Server Components.
+  return await updateSession(req);
 }
 
 export const config = {
-  matcher: ["/api/admin/:path*"],
+  // Toutes les routes sauf les assets statiques : le matcher doit rester
+  // large pour couvrir /api/admin/* (garde ci-dessus) et les pages
+  // (rafraîchissement de session) — le tri entre les deux se fait dans la
+  // fonction, pas dans le matcher.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)"],
 };
 
 export default proxy;

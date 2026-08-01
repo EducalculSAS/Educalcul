@@ -1,45 +1,19 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { redirect } from "next/navigation";
 import { ArrowLeft, CheckCircle, XCircle, Clock, Eye } from "lucide-react";
-import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
+import { getServerUser } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
-export default function QuizHistoryPage() {
-  const [loading, setLoading] = useState(true);
-  const [attempts, setAttempts] = useState<any[]>([]);
+export default async function QuizHistoryPage() {
+  const authUser = await getServerUser();
+  if (!authUser) redirect("/auth/connexion");
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const { data: { session } } = await supabase.auth.getSession();
-        if (!session?.user) {
-          setLoading(false);
-          return;
-        }
-        const res = await fetch(`/api/child/activities?userId=${session.user.id}`);
-        const data = await res.json();
-        const quizzes = (data.quizzes || []).filter(
-          (a: any) => a.status === "completed"
-        );
-        setAttempts(quizzes);
-      } catch (e) {
-        console.error("Error loading quiz history:", e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <AppAdminLoader />
-      </div>
-    );
-  }
+  const { data: attempts } = await supabaseAdmin
+    .from("user_quiz_attempts")
+    .select("*, quizzes(title)")
+    .eq("user_id", authUser.id)
+    .eq("status", "completed")
+    .order("completed_at", { ascending: false });
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
@@ -55,7 +29,7 @@ export default function QuizHistoryPage() {
         Mes tentatives
       </h1>
 
-      {attempts.length === 0 ? (
+      {!attempts || attempts.length === 0 ? (
         <div className="text-center text-[var(--text-muted)] py-12">
           Tu n'as pas encore terminé de quiz.
         </div>
