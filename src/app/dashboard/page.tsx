@@ -1,55 +1,18 @@
-"use client";
+import { redirect } from "next/navigation";
+import { getServerUser } from "@/lib/supabase/server";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+// Purement un redirect selon le rôle : plus besoin d'un aller-retour client
+// (getSession + requête users + redirect) pour ça maintenant que le rôle est
+// lisible côté serveur — redirect() renvoie une réponse HTTP directement, la
+// page ne s'affiche jamais.
+export default async function DashboardRedirect() {
+  const user = await getServerUser();
 
-export default function DashboardRedirect() {
-  const router = useRouter();
+  if (!user) redirect("/auth/connexion");
 
-  useEffect(() => {
-    const go = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+  if (user.role === "parent") redirect("/parent/dashboard");
+  if (user.role === "child") redirect("/child/dashboard");
+  if (user.role === "admin") redirect("/admin/dashboard");
 
-      if (!session) {
-        router.replace("/auth/connexion");
-        return;
-      }
-
-      const { data: user, error } = await supabase
-        .from("users")
-        .select("role")
-        .eq("auth_id", session.user.id)
-        .maybeSingle();
-
-      if (error) {
-        console.error("Error fetching user role:", error);
-        router.replace("/auth/connexion");
-        return;
-      }
-
-      if (user?.role === "parent") {
-        router.replace("/parent/dashboard");
-        return;
-      }
-
-      if (user?.role === "child") {
-        router.replace("/child/dashboard");
-        return;
-      }
-
-      if (user?.role === "admin") {
-        router.replace("/admin/dashboard");
-        return;
-      }
-
-      router.replace("/auth/connexion");
-    };
-
-    go();
-  }, [router]);
-
-  return null;
+  redirect("/auth/connexion");
 }

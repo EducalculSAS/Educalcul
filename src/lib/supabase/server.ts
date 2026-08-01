@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 /**
  * Client Supabase pour Server Components / Route Handlers, basé sur les
@@ -34,4 +35,40 @@ export async function createSupabaseServerClient(): Promise<SupabaseClient> {
       },
     },
   );
+}
+
+export interface ServerUser {
+  authId: string;
+  id: number;
+  role: string;
+  parentId: number | null;
+}
+
+/**
+ * Identité + rôle de l'utilisateur connecté, pour un Server Component (ex:
+ * choisir vers quel dashboard rediriger, ou n'afficher un lien qu'à un rôle
+ * donné). Volontairement plus léger que getAuthenticatedUser (src/lib/apiAuth.ts) :
+ * pas de vérification 2FA ici — la 2FA reste appliquée par le proxy pour les
+ * API admin et par chaque route qui manipule des données sensibles. Cette
+ * fonction ne sert qu'à décider quoi RENDRE, jamais à autoriser un accès.
+ *
+ * getUser() (pas getSession()) : identité vérifiée auprès du serveur Auth,
+ * pas seulement lue depuis le cookie.
+ */
+export async function getServerUser(): Promise<ServerUser | null> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase.auth.getUser();
+  if (error || !data?.user) return null;
+
+  const { data: row } = await supabaseAdmin
+    .from("users")
+    .select("id, role, parent_id, status, ban_reason")
+    .eq("auth_id", data.user.id)
+    .maybeSingle();
+  if (!row) return null;
+  // Même garde que getAuthenticatedUser : un compte banni garde un JWT
+  // Supabase valide jusqu'à expiration.
+  if (row.status === "inactive" || row.ban_reason) return null;
+
+  return { authId: data.user.id, id: row.id, role: row.role, parentId: row.parent_id };
 }
