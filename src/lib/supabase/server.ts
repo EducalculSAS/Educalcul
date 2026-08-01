@@ -57,18 +57,27 @@ export interface ServerUser {
  */
 export async function getServerUser(): Promise<ServerUser | null> {
   const supabase = await createSupabaseServerClient();
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) return null;
+  // getSession() lit le JWT depuis le cookie sans requête réseau : le
+  // middleware (updateSession(), src/proxy.ts) vient déjà de le
+  // vérifier/rafraîchir aupres du serveur Auth sur cette même requête.
+  // Un getUser() ici paierait un second aller-retour réseau redondant à
+  // chaque page authentifiée (mesuré: latence perceptible sur toutes les
+  // pages converties). L'autorisation des actions sensibles continue de
+  // passer par getAuthenticatedUser (src/lib/apiAuth.ts), qui vérifie
+  // toujours via getUser() côté API.
+  const { data, error } = await supabase.auth.getSession();
+  const authUser = data?.session?.user;
+  if (error || !authUser) return null;
 
   const { data: row } = await supabaseAdmin
     .from("users")
     .select("id, role, parent_id, status, ban_reason")
-    .eq("auth_id", data.user.id)
+    .eq("auth_id", authUser.id)
     .maybeSingle();
   if (!row) return null;
   // Même garde que getAuthenticatedUser : un compte banni garde un JWT
   // Supabase valide jusqu'à expiration.
   if (row.status === "inactive" || row.ban_reason) return null;
 
-  return { authId: data.user.id, id: row.id, role: row.role, parentId: row.parent_id };
+  return { authId: authUser.id, id: row.id, role: row.role, parentId: row.parent_id };
 }

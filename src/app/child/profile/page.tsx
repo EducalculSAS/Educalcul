@@ -9,8 +9,12 @@ export default async function ChildProfilePage() {
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
 
+  // getSession() (pas getUser()) : le middleware vient déjà de vérifier la
+  // session sur cette même requête, pas besoin d'un second aller-retour
+  // réseau juste pour lire les identités liées (affichage non sensible).
   const supabase = await createSupabaseServerClient();
-  const { data: { user: au } } = await supabase.auth.getUser();
+  const { data: { session } } = await supabase.auth.getSession();
+  const au = session?.user;
   const googleLinked = !!au?.identities?.some((id) => id.provider === "google");
 
   const { data: userData }: { data: any } = await supabaseAdmin
