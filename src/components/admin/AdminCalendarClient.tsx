@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from "react";
 import { Calendar, Plus, Trash2, Edit, X } from "lucide-react";
-import { supabase } from "@/lib/supabaseClient";
 import { getEventTypeMeta, EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
 import { ZONE_OPTIONS, getZoneLabel } from "@/lib/calendarZones";
 import { useConfirm } from "@/components/ConfirmDialog";

@@ -10,7 +10,7 @@ import {
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
-import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
+import { type PricingConfig } from "@/lib/pricingConfig";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Plan {

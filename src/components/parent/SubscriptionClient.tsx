@@ -19,7 +19,7 @@ import { useToast } from "@/components/Toast";
 import { useRouter, useSearchParams } from "next/navigation";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
-import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
+import { type PricingConfig } from "@/lib/pricingConfig";
 
 interface SubscriptionPlan {
   id: number;
@@ -65,12 +65,15 @@ function SubscriptionPageContent({
   const [loading, setLoading] = useState(isNewSignup);
   const [subLoading, setSubLoading] = useState(false);
   const [plans] = useState<SubscriptionPlan[]>(initialPlans);
-  const [currentPlan, setCurrentPlan] = useState<any>(initialCurrentPlan);
-  const [billingHistory, setBillingHistory] = useState<any[]>(initialBillingHistory);
-  const [user, setUser] = useState<any>(isNewSignup || !authId ? null : { id: authId, email: authEmail });
+  // Toutes chargées côté serveur et jamais modifiées côté client (un retour
+  // de checkout re-render le composant serveur via router.replace, voir plus
+  // bas) : pas besoin d'état local pour ces trois-là.
+  const currentPlan = initialCurrentPlan;
+  const billingHistory = initialBillingHistory;
+  const user = isNewSignup || !authId ? null : { id: authId, email: authEmail };
   const [processingPlanId, setProcessingPlanId] = useState<number | null>(null);
   const { error: toastError } = useToast();
-  const [myReferralCode, setMyReferralCode] = useState<any>(initialReferralCode);
+  const myReferralCode = initialReferralCode;
   const [copied, setCopied] = useState(false);
   const [pendingDiscount] = useState(initialPendingDiscount);
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);

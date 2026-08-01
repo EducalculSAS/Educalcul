@@ -47,8 +47,8 @@ export default function QuizDetailClient({
     return true;
   });
   const [isRendering, setIsRendering] = useState(false);
-  const [attemptsHistory, setAttemptsHistory] = useState<any[]>(isPreview ? [] : initialAttemptsHistory);
-  const [alreadyCompleted, setAlreadyCompleted] = useState(isPreview ? false : initialAlreadyCompleted);
+  const attemptsHistory = isPreview ? [] : initialAttemptsHistory;
+  const alreadyCompleted = isPreview ? false : initialAlreadyCompleted;
   const [attemptKey, setAttemptKey] = useState(0);
   const [forceNewAttempt, setForceNewAttempt] = useState(false);
   const [openCorrection, setOpenCorrection] = useState(false);
