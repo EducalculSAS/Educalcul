@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { normalizePricingConfig, DEFAULT_PRICING_CONFIG } from "@/lib/pricingConfig";
+import { fetchParentSubscriptionDetails } from "@/lib/parentSubscriptionDetails";
 import SubscriptionClient from "@/components/parent/SubscriptionClient";
 
 function generateReferralCode(length = 8) {
@@ -28,6 +29,8 @@ export default async function SubscriptionPage({
         initialPricingConfig={DEFAULT_PRICING_CONFIG}
         initialReferralCode={null}
         initialPendingDiscount={0}
+        initialCurrentPlan={null}
+        initialBillingHistory={[]}
       />
     );
   }
@@ -39,7 +42,7 @@ export default async function SubscriptionPage({
   const { data: { session } } = await supabase.auth.getSession();
   const authEmail = session?.user?.email ?? null;
 
-  const [{ data: plansData }, { data: pricingRow }, { data: userRow }] = await Promise.all([
+  const [{ data: plansData }, { data: pricingRow }, { data: userRow }, subDetails] = await Promise.all([
     supabaseAdmin
       .from("subscription_plans")
       .select("*")
@@ -54,6 +57,10 @@ export default async function SubscriptionPage({
       .select("id, first_name, last_name, pending_discount_percent")
       .eq("id", authUser.id)
       .maybeSingle(),
+    fetchParentSubscriptionDetails(authUser.authId).catch((err) => {
+      console.error("subscription-details fetch failed:", err);
+      return { subscription: null, invoices: [] as any[] };
+    }),
   ]);
   const plans = (plansData || []).filter((p: any) => p.is_active);
   const pricingConfig = pricingRow?.value ? normalizePricingConfig(pricingRow.value) : DEFAULT_PRICING_CONFIG;
@@ -102,6 +109,8 @@ export default async function SubscriptionPage({
       initialPricingConfig={pricingConfig}
       initialReferralCode={referralCode}
       initialPendingDiscount={userRow?.pending_discount_percent || 0}
+      initialCurrentPlan={subDetails.subscription ?? { plan_id: null, status: "active" }}
+      initialBillingHistory={subDetails.invoices || []}
     />
   );
 }

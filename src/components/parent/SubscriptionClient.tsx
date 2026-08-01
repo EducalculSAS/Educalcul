@@ -37,11 +37,9 @@ interface SubscriptionPlan {
 /** Page abonnement : le flow "nouvelle inscription" (isNewSignup) dépend du
  * sessionStorage du navigateur (données saisies avant paiement) et ne peut
  * pas être prérendu côté serveur. Le flow normal (gestion d'un abonnement
- * existant) reçoit ses données de base (plans, config tarifs, code
- * parrainage, réduction en attente) déjà chargées du serveur ; seul le détail
- * Stripe (abonnement en cours + factures) reste chargé côté client, car il
- * dépend d'appels Stripe live (auto-healing, liste de factures) qu'on ne veut
- * pas dupliquer côté serveur. */
+ * existant) reçoit maintenant tout — plans, config tarifs, code parrainage,
+ * réduction en attente, ET le détail Stripe (abonnement + factures) — déjà
+ * chargé du serveur ; plus aucun aller-retour client au premier affichage. */
 function SubscriptionPageContent({
   authId,
   authEmail,
@@ -49,6 +47,8 @@ function SubscriptionPageContent({
   initialPricingConfig,
   initialReferralCode,
   initialPendingDiscount,
+  initialCurrentPlan,
+  initialBillingHistory,
 }: {
   authId: string | null;
   authEmail: string | null;
@@ -56,15 +56,17 @@ function SubscriptionPageContent({
   initialPricingConfig: PricingConfig;
   initialReferralCode: any | null;
   initialPendingDiscount: number;
+  initialCurrentPlan: any | null;
+  initialBillingHistory: any[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isNewSignup = searchParams.get("new") === "true";
   const [loading, setLoading] = useState(isNewSignup);
-  const [subLoading, setSubLoading] = useState(!isNewSignup);
+  const [subLoading, setSubLoading] = useState(false);
   const [plans] = useState<SubscriptionPlan[]>(initialPlans);
-  const [currentPlan, setCurrentPlan] = useState<any>(null);
-  const [billingHistory, setBillingHistory] = useState<any[]>([]);
+  const [currentPlan, setCurrentPlan] = useState<any>(initialCurrentPlan);
+  const [billingHistory, setBillingHistory] = useState<any[]>(initialBillingHistory);
   const [user, setUser] = useState<any>(isNewSignup || !authId ? null : { id: authId, email: authEmail });
   const [processingPlanId, setProcessingPlanId] = useState<number | null>(null);
   const { error: toastError } = useToast();
@@ -100,29 +102,13 @@ function SubscriptionPageContent({
       return;
     }
 
-    // NORMAL FLOW : seul le détail Stripe (abonnement + factures) reste à charger.
+    // NORMAL FLOW : tout arrive déjà chargé du serveur (props) — rien à faire.
+    // Un retour de checkout Stripe déclenche un router.replace vers cette
+    // même page (voir plus bas), ce qui refait tourner le composant serveur
+    // et rapporte un abonnement à jour — pas besoin d'un fetch client ici.
     if (!authId) {
       router.push("/auth/connexion");
-      return;
     }
-
-    (async () => {
-      try {
-        const subRes = await fetch(`/api/parent/subscription-details?userId=${authId}`);
-        const subData = await subRes.json();
-        if (subData.subscription) {
-          setCurrentPlan(subData.subscription);
-        } else {
-          setCurrentPlan({ plan_id: null, status: "active" });
-        }
-        if (subData.invoices) setBillingHistory(subData.invoices);
-      } catch (error) {
-        console.error("Error fetching subscription details:", error);
-        setCurrentPlan({ plan_id: null, status: "active" });
-      } finally {
-        setSubLoading(false);
-      }
-    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNewSignup, authId]);
 
@@ -629,6 +615,8 @@ export default function SubscriptionClient(props: {
   initialPricingConfig: PricingConfig;
   initialReferralCode: any | null;
   initialPendingDiscount: number;
+  initialCurrentPlan: any | null;
+  initialBillingHistory: any[];
 }) {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin h-8 w-8 rounded-full border-b-2 border-[var(--greek-blue)]" /></div>}>

@@ -1,0 +1,133 @@
+import { stripe } from "@/lib/stripe";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+
+export async function fetchParentSubscriptionDetails(userId: string) {
+  // 1. Get subscription from Supabase to find Stripe Customer ID
+  let { data: subscription, error: dbError } = await supabaseAdmin
+    .from("subscriptions")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("status", "active")
+    .maybeSingle();
+
+  // Auto-Healing: If no subscription in DB, check Stripe by email
+  if (!subscription || !subscription.stripe_customer_id) {
+    const { data: userData } = await supabaseAdmin.auth.admin.getUserById(userId);
+
+    if (userData?.user?.email) {
+      const customers = await stripe.customers.list({
+        email: userData.user.email,
+        limit: 1,
+      });
+
+      if (customers.data.length > 0) {
+        const customer = customers.data[0];
+        const subscriptions = await stripe.subscriptions.list({
+          customer: customer.id,
+          status: "active",
+          limit: 1,
+        });
+
+        if (subscriptions.data.length > 0) {
+          const activeSub = subscriptions.data[0];
+          let planId = "premium";
+          if (activeSub.items.data[0].price.unit_amount === 1999) {
+            planId = "family";
+          }
+
+          const { data: newSub, error: insertError } = await supabaseAdmin
+            .from("subscriptions")
+            .upsert({
+              user_id: userId,
+              plan_id: planId,
+              status: "active",
+              current_period_start: new Date((activeSub as any).current_period_start * 1000).toISOString(),
+              current_period_end: new Date((activeSub as any).current_period_end * 1000).toISOString(),
+              stripe_customer_id: customer.id,
+              stripe_subscription_id: activeSub.id,
+            }, { onConflict: "user_id" })
+            .select()
+            .single();
+
+          if (newSub) {
+            subscription = newSub;
+          } else if (insertError) {
+            console.error("Auto-healing failed:", insertError);
+            subscription = {
+              user_id: userId,
+              plan_id: planId,
+              status: "active",
+              stripe_customer_id: customer.id,
+              stripe_subscription_id: activeSub.id,
+              current_period_end: new Date((activeSub as any).current_period_end * 1000).toISOString(),
+              cancel_at_period_end: activeSub.cancel_at_period_end,
+            } as any;
+          }
+        }
+      }
+    }
+  }
+
+  if (dbError && !subscription) {
+    throw new Error("Database error");
+  }
+
+  if (!subscription) {
+    return { subscription: null, invoices: [] as any[] };
+  }
+
+  if (!subscription.stripe_customer_id) {
+    return { subscription, invoices: [] as any[] };
+  }
+
+  const customerId = subscription.stripe_customer_id;
+
+  // 2. Fetch subscription details from Stripe to get renewal date + cancellation status
+  let stripeSubscription: any = null;
+  if (subscription.stripe_subscription_id) {
+    stripeSubscription = await stripe.subscriptions.retrieve(subscription.stripe_subscription_id);
+  }
+
+  const stripeCancelAtPeriodEnd = stripeSubscription?.cancel_at_period_end ?? false;
+  const stripePeriodEnd = stripeSubscription
+    ? new Date(stripeSubscription.current_period_end * 1000).toISOString()
+    : subscription.current_period_end;
+
+  // Synchroniser cancel_at_period_end en DB si Stripe est différent
+  // (l'utilisateur a annulé via le portail Stripe → DB doit refléter ça)
+  if (stripeSubscription && stripeCancelAtPeriodEnd !== subscription.cancel_at_period_end) {
+    await supabaseAdmin
+      .from("subscriptions")
+      .update({
+        cancel_at_period_end: stripeCancelAtPeriodEnd,
+        current_period_end: stripePeriodEnd,
+      })
+      .eq("stripe_subscription_id", subscription.stripe_subscription_id);
+  }
+
+  // 3. Fetch invoices from Stripe
+  const invoices = await stripe.invoices.list({
+    customer: customerId,
+    limit: 12,
+    status: "paid",
+  });
+
+  const formattedInvoices = invoices.data.map((invoice) => ({
+    id: invoice.id,
+    date: new Date(invoice.created * 1000).toISOString(),
+    amount: invoice.amount_paid / 100,
+    currency: invoice.currency.toUpperCase(),
+    status: invoice.status,
+    pdf_url: invoice.invoice_pdf,
+    number: invoice.number,
+  }));
+
+  return {
+    subscription: {
+      ...subscription,
+      current_period_end: stripePeriodEnd,
+      cancel_at_period_end: stripeCancelAtPeriodEnd,
+    },
+    invoices: formattedInvoices,
+  };
+}
