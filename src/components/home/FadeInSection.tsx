@@ -7,6 +7,8 @@ interface FadeInSectionProps {
   className?: string;
   /** Décalage vertical de départ (px) avant l'apparition. */
   translateY?: number;
+  /** Décalage horizontal de départ (px), utilisé à la place de translateY quand fourni. */
+  translateX?: number;
   durationMs?: number;
   delayMs?: number;
   threshold?: number;
@@ -23,6 +25,7 @@ export default function FadeInSection({
   children,
   className,
   translateY = 28,
+  translateX,
   durationMs = 700,
   delayMs = 0,
   threshold = 0.15,
@@ -62,7 +65,11 @@ export default function FadeInSection({
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : `translateY(${translateY}px)`,
+        transform: visible
+          ? "translate(0, 0)"
+          : translateX !== undefined
+            ? `translateX(${translateX}px)`
+            : `translateY(${translateY}px)`,
         transition: `opacity ${durationMs}ms ease ${delayMs}ms, transform ${durationMs}ms ease ${delayMs}ms`,
         ...style,
       }}
