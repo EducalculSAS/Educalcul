@@ -5,7 +5,7 @@ import Link from "next/link";
 import {
   Users, CreditCard, BookOpen, Calculator, Brain,
   MessageSquare, TicketCheck, AlertTriangle, TrendingUp,
-  UserPlus, BarChart2, Settings, Shield, Gift, RefreshCw,
+  UserPlus, BarChart2, Shield, Gift, RefreshCw,
   ChevronRight, Clock,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
@@ -238,7 +238,6 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               { href: "/admin/support",        icon: <TicketCheck size={15} />,    label: "Support",         color: "hover:bg-amber-50 hover:text-amber-700"  },
               { href: "/admin/reports",        icon: <BarChart2 size={15} />,      label: "Rapports",        color: "hover:bg-teal-50 hover:text-teal-700"    },
               { href: "/admin/landing",         icon: <Gift size={15} />,           label: "Landing Page",    color: "hover:bg-rose-50 hover:text-rose-700"   },
-              { href: "/admin/settings",       icon: <Settings size={15} />,       label: "Paramètres",      color: "hover:bg-gray-50 hover:text-gray-700"    },
             ].map(({ href, icon, label, color }) => (
               <Link
                 key={href}
