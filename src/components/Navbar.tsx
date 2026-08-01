@@ -109,7 +109,13 @@ export default function Navbar() {
   const getProfileLink = () => {
     if (userRole === "parent") return "/parent/profile";
     if (userRole === "child") return "/child/profile";
-    return "/admin/profile";
+    if (userRole === "admin") return "/admin/profile";
+    // Rôle pas encore résolu (fetchUserData en cours) : ce lien est rendu
+    // avant même de savoir qui est connecté, donc Next.js le préfetch dès
+    // le montage. Un repli sur "/admin/profile" faisait précharger cette
+    // page à chaque connexion parent/enfant le temps de la résolution du
+    // rôle (vu en prod : /admin/profile prefetché depuis /child/dashboard).
+    return null;
   };
 
   return (
@@ -295,13 +301,15 @@ export default function Navbar() {
                     </Link>
                   </>
                 )}
-                <Link
-                  href={getProfileLink()}
-                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <Settings className="w-4 h-4" /> Profil
-                </Link>
+                {getProfileLink() && (
+                  <Link
+                    href={getProfileLink()!}
+                    className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]" style={{color:"rgba(255,255,255,0.7)"}}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Settings className="w-4 h-4" /> Profil
+                  </Link>
+                )}
                 <button
                   onClick={() => {
                     handleSignOut();
