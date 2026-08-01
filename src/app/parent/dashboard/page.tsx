@@ -1,18 +1,16 @@
-﻿"use client";
-
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 import {
-  Activity, Users, BookOpen, CheckCircle, TrendingUp,
-  ArrowRight, Lock, Plus, MessageSquare, Crown, UserCircle,
+  Users, BookOpen, CheckCircle, TrendingUp,
+  ArrowRight, Plus, MessageSquare, Crown, UserCircle,
   BarChart2,
 } from "lucide-react";
-import AppAdminLoader from "@/components/AppAdminLoader";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
+import ChildReportLink from "@/components/parent/ChildReportLink";
 import { avatarUrl } from "@/lib/avatarUrl";
-import { useSubscription } from "@/lib/useSubscription";
+import { getServerUser } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 interface ChildStats {
   exerciseCount: number;
@@ -21,14 +19,12 @@ interface ChildStats {
   lastActivity: { type: string; title: string; relativeTime: string } | null;
 }
 
-interface Child {
+interface ChildRow {
   id: string;
   first_name: string;
   last_name: string;
   grade_level: string | null;
   avatar?: string;
-  stats: ChildStats | null;
-  loading: boolean;
 }
 
 const formatRelativeTime = (d: string) => {
@@ -39,76 +35,68 @@ const formatRelativeTime = (d: string) => {
   return `Il y a ${Math.floor(diff / 86400)} j`;
 };
 
-export default function ParentDashboard() {
-  const router = useRouter();
-  const sub = useSubscription();
-  const [children, setChildren] = useState<Child[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [userName, setUserName] = useState("Parent");
-  const [authId, setAuthId] = useState<string | null>(null);
-  const [parentId, setParentId] = useState<number | null>(null);
+async function fetchChildStats(childId: string): Promise<ChildStats> {
+  const [
+    { count: totalEx },
+    { count: totalQuiz },
+    { data: correct },
+    { data: lastQuiz },
+    { data: lastEx },
+  ] = await Promise.all([
+    supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
+    supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
+    supabaseAdmin.from("user_exercise_attempts").select("id").eq("user_id", childId).eq("is_correct", true),
+    supabaseAdmin.from("user_quiz_attempts").select("completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(1).maybeSingle(),
+    supabaseAdmin.from("user_exercise_attempts").select("attempted_at, is_correct, exercises(title)").eq("user_id", childId).order("attempted_at", { ascending: false }).limit(1).maybeSingle(),
+  ]);
 
-  useEffect(() => {
-    (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { router.push("/auth/connexion"); return; }
+  const successRate = (totalEx || 0) > 0 ? Math.round(((correct?.length || 0) / (totalEx || 1)) * 100) : 0;
 
-      const { data: userData } = await supabase.from("users").select("first_name, role, id").eq("auth_id", user.id).maybeSingle();
-      if (!userData || userData.role !== "parent") { router.push("/dashboard"); return; }
+  const activities: { type: string; title: string; date: string }[] = [];
+  if (lastQuiz) activities.push({ type: "Quiz", title: (lastQuiz as any).quizzes?.title || "Quiz", date: (lastQuiz as any).completed_at });
+  if (lastEx) activities.push({ type: "Exercice", title: (lastEx as any).exercises?.title || "Exercice", date: (lastEx as any).attempted_at });
+  activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-      setUserName(userData.first_name || "Parent");
-      setAuthId(user.id);
-      setParentId(userData.id);
-
-      const { data: childrenData } = await supabase.from("users").select("id, first_name, last_name, grade_level, avatar").eq("role", "child").eq("parent_id", userData.id).order("first_name");
-
-      const base = (childrenData || []).map((c: any) => ({ ...c, stats: null, loading: true }));
-      setChildren(base);
-      setLoading(false);
-
-      base.forEach((child: any) => {
-        fetchChildStats(child.id).then(stats => {
-          setChildren(prev => prev.map(c => c.id === child.id ? { ...c, stats, loading: false } : c));
-        });
-      });
-    })();
-  }, []);
-
-  const fetchChildStats = async (childId: string): Promise<ChildStats> => {
-    const [
-      { count: totalEx },
-      { count: totalQuiz },
-      { data: correct },
-      { data: lastQuiz },
-      { data: lastEx },
-    ] = await Promise.all([
-      supabase.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
-      supabase.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
-      supabase.from("user_exercise_attempts").select("id").eq("user_id", childId).eq("is_correct", true),
-      supabase.from("user_quiz_attempts").select("completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(1).maybeSingle() as any,
-      supabase.from("user_exercise_attempts").select("attempted_at, is_correct, exercises(title)").eq("user_id", childId).order("attempted_at", { ascending: false }).limit(1).maybeSingle() as any,
-    ]);
-
-    const successRate = (totalEx || 0) > 0 ? Math.round(((correct?.length || 0) / (totalEx || 1)) * 100) : 0;
-
-    const activities: any[] = [];
-    if (lastQuiz?.data) activities.push({ type: "Quiz", title: (lastQuiz.data as any).quizzes?.title || "Quiz", date: (lastQuiz.data as any).completed_at });
-    if (lastEx?.data) activities.push({ type: "Exercice", title: (lastEx.data as any).exercises?.title || "Exercice", date: (lastEx.data as any).attempted_at });
-    activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-    return {
-      exerciseCount: totalEx || 0,
-      quizCount: totalQuiz || 0,
-      successRate,
-      lastActivity: activities[0] ? { ...activities[0], relativeTime: formatRelativeTime(activities[0].date) } : null,
-    };
+  return {
+    exerciseCount: totalEx || 0,
+    quizCount: totalQuiz || 0,
+    successRate,
+    lastActivity: activities[0] ? { ...activities[0], relativeTime: formatRelativeTime(activities[0].date) } : null,
   };
+}
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><AppAdminLoader /></div>;
+// Toute la page est un affichage de données propres au parent connecté (ses
+// enfants + leurs stats) : la seule chose qui dépend d'un état vraiment
+// interactif est le verrou "rapport détaillé" selon le plan d'abonnement,
+// isolé dans ChildReportLink. Le reste (y compris les stats par enfant, avant
+// chargées une par une après le montage) se résout entièrement côté serveur.
+export default async function ParentDashboard() {
+  const authUser = await getServerUser();
+  if (!authUser) redirect("/auth/connexion");
+  if (authUser.role !== "parent") redirect("/dashboard");
+
+  const { data: userData } = await supabaseAdmin
+    .from("users")
+    .select("first_name, role, id")
+    .eq("id", authUser.id)
+    .maybeSingle();
+  if (!userData) redirect("/dashboard");
+
+  const { data: childrenRows } = await supabaseAdmin
+    .from("users")
+    .select("id, first_name, last_name, grade_level, avatar")
+    .eq("role", "child")
+    .eq("parent_id", userData.id)
+    .order("first_name");
+
+  const childrenBase = (childrenRows || []) as ChildRow[];
+  const stats = await Promise.all(childrenBase.map((c) => fetchChildStats(c.id)));
+  const children = childrenBase.map((c, i) => ({ ...c, stats: stats[i] }));
+
+  const totalExercises = children.reduce((a, c) => a + (c.stats?.exerciseCount || 0), 0);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
-
       {/* Hero Header — même style que child */}
       <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
@@ -117,7 +105,7 @@ export default function ParentDashboard() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h1 className="text-3xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-2">
-                Bonjour, {userName} !
+                Bonjour, {userData.first_name || "Parent"} !
               </h1>
               <p className="text-xl opacity-90 flex items-center gap-2">
                 <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">PARENT</span>
@@ -130,9 +118,7 @@ export default function ParentDashboard() {
                 <div className="text-xs uppercase tracking-wider opacity-80">Enfant{children.length !== 1 ? "s" : ""}</div>
               </div>
               <div className="text-center px-4">
-                <div className="text-2xl font-bold text-[var(--greek-gold)]">
-                  {children.reduce((a, c) => a + (c.stats?.exerciseCount || 0), 0)}
-                </div>
+                <div className="text-2xl font-bold text-[var(--greek-gold)]">{totalExercises}</div>
                 <div className="text-xs uppercase tracking-wider opacity-80">Exercices</div>
               </div>
             </div>
@@ -141,7 +127,6 @@ export default function ParentDashboard() {
       </div>
 
       <div className="container mx-auto max-w-6xl px-4">
-
         {/* Navigation rapide — même style que child */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <Link href="/parent/children" className="group">
@@ -231,33 +216,29 @@ export default function ParentDashboard() {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {children.map(child => (
-              <div key={child.id} className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
-
-                {/* Header */}
-                <div className="p-5 border-b border-[rgba(197,161,72,0.25)]">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-2xl bg-[var(--greek-blue)]/10 flex items-center justify-center overflow-hidden font-bold text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
-                        {child.avatar
-                          ? <img src={avatarUrl(child.avatar, "/avatars/avatar1.png")!} alt={child.first_name} className="w-full h-full object-cover" />
-                          : <span className="text-lg">{child.first_name.charAt(0)}</span>}
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-[var(--greek-blue)] text-lg leading-tight">{child.first_name} {child.last_name}</h3>
-                        <span className="inline-block text-xs font-semibold bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] px-2 py-0.5 rounded-full">{child.grade_level || "Niveau non défini"}</span>
+            {children.map((child) => {
+              const avatar = avatarUrl(child.avatar, "/avatars/avatar1.png");
+              return (
+                <div key={child.id} className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+                  {/* Header */}
+                  <div className="p-5 border-b border-[rgba(197,161,72,0.25)]">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-11 h-11 rounded-2xl bg-[var(--greek-blue)]/10 flex items-center justify-center overflow-hidden font-bold text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
+                          {child.avatar && avatar
+                            ? <Image src={avatar} alt={child.first_name} fill sizes="44px" className="object-cover" />
+                            : <span className="text-lg">{child.first_name.charAt(0)}</span>}
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-[var(--greek-blue)] text-lg leading-tight">{child.first_name} {child.last_name}</h3>
+                          <span className="inline-block text-xs font-semibold bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] px-2 py-0.5 rounded-full">{child.grade_level || "Niveau non défini"}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Body */}
-                <div className="p-5 flex-grow">
-                  {child.loading ? (
-                    <div className="flex justify-center py-8">
-                      <div className="animate-spin h-6 w-6 border-b-2 border-[var(--greek-blue)] rounded-full" />
-                    </div>
-                  ) : (
+                  {/* Body */}
+                  <div className="p-5 flex-grow">
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-3">
                         <div className="p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-center">
@@ -286,35 +267,23 @@ export default function ParentDashboard() {
                         </div>
                       )}
                     </div>
-                  )}
-                </div>
+                  </div>
 
-                {/* Footer */}
-                <div className="p-4 bg-gray-50 border-t border-[rgba(197,161,72,0.25)]">
-                  {sub.features.detailed_reports ? (
-                    <Link href={`/parent/child/${child.id}`} className="flex items-center justify-center w-full py-2.5 px-4 bg-[var(--greek-blue)] text-white rounded-xl hover:opacity-90 transition-all font-bold text-sm group shadow-sm">
-                      Rapport complet <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  ) : (
-                    <Link href="/parent/subscription" className="flex items-center justify-center w-full py-2.5 px-4 bg-gray-100 border border-[rgba(197,161,72,0.25)] text-gray-500 rounded-xl hover:bg-gray-200 transition-all font-medium text-sm">
-                      <Lock className="w-4 h-4 mr-2" /> Débloquer le rapport
-                    </Link>
-                  )}
+                  {/* Footer */}
+                  <div className="p-4 bg-gray-50 border-t border-[rgba(197,161,72,0.25)]">
+                    <ChildReportLink childId={child.id} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
         {/* Calendrier */}
-        {authId && parentId && (
-          <div className="mt-8">
-            <MiniCalendarWidget authId={authId} ownerId={parentId} isParent={true} title="Calendrier" fullCalendarHref="/parent/calendar" />
-          </div>
-        )}
+        <div className="mt-8">
+          <MiniCalendarWidget authId={authUser.authId} ownerId={userData.id} isParent={true} title="Calendrier" fullCalendarHref="/parent/calendar" />
+        </div>
       </div>
     </div>
   );
 }
-
-
