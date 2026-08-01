@@ -1,5 +1,16 @@
 import type { Metadata, Viewport } from "next";
+import { Cinzel } from "next/font/google";
 import "./globals.css";
+
+// Auto-hébergée au build par Next (fini le <link> Google Fonts qui bloquait
+// le premier rendu le temps d'un aller-retour réseau vers fonts.googleapis.com
+// + fonts.gstatic.com) et servie avec font-display: swap dès le départ.
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-display",
+  display: "swap",
+});
 import { ToastProvider } from "@/components/Toast";
 import { ConfirmProvider } from "@/components/ConfirmDialog";
 import CookieBanner from "@/components/CookieBanner";
@@ -155,7 +166,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" dir="ltr">
+    <html lang="fr" dir="ltr" className={cinzel.variable}>
       <head>
         <meta charSet="UTF-8" />
         {/* Geo meta tags */}
@@ -163,10 +174,6 @@ export default function RootLayout({
         <meta name="geo.country" content="FR" />
         <meta name="language" content="French" />
         <meta name="content-language" content="fr" />
-        {/* Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
         {/* Preload critical assets */}
         <link rel="preload" href="/logo.png" as="image" />
       </head>

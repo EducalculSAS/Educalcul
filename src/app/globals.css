@@ -14,7 +14,9 @@
   --text-light: #faf7f2;
   --card-bg: #ffffff;
   --card-border-antique: #ede0c0;
-  --font-display: "Cinzel", serif;
+  /* --font-display est défini par next/font (Cinzel) via la classe posée sur
+     <html> dans layout.tsx : ne pas la redéfinir ici, ça retomberait sur un
+     Cinzel non auto-hébergé si l'ordre du CSS changeait. */
   --font-body: "Inter", Arial, sans-serif;
   --nav-h: 64px;
 }
