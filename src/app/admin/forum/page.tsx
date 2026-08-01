@@ -1,5 +1,3 @@
-"use client";
-
 import ForumApp from "@/components/forum/ForumApp";
 import { MessageSquare } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";

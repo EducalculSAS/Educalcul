@@ -1,92 +1,31 @@
-﻿"use client";
+import { redirect } from "next/navigation";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import AdminShell from "@/components/admin/AdminShell";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
-import AppAdminLoader from "@/components/AppAdminLoader";
-import AdminSidebar from "@/components/AdminSidebar";
-import AdminTotpSetupModal from "@/components/admin/AdminTotpSetupModal";
-import { ContentGenerationsProvider } from "@/contexts/ContentGenerationsContext";
-import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidget";
-
-export default function AdminLayout({
+/** Vérifie identité + rôle admin + statut banni côté serveur, avant même que
+ * la première page admin ne s'exécute — remplace l'ancien check client (dans
+ * AdminLayout) qui laissait toutes les pages admin se monter avant de
+ * rediriger. Le seul contrôle qui reste client (AdminShell) est la 2FA
+ * "vérifiée sur cet appareil" : ce token vit en localStorage, illisible côté
+ * serveur. */
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
+  const supabase = await createSupabaseServerClient();
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) redirect("/auth/connexion");
 
-  useEffect(() => {
-    const checkAdmin = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+  const { data: userData, error } = await supabaseAdmin
+    .from("users")
+    .select("role, status, ban_reason")
+    .eq("auth_id", session.user.id)
+    .maybeSingle();
 
-      if (!session) {
-        router.push("/auth/connexion");
-        return;
-      }
+  if (error || !userData || userData.role !== "admin") redirect("/dashboard");
+  if (userData.status === "inactive" || userData.ban_reason) redirect("/auth/banned");
 
-      // Check role in public.users
-      const { data: userData, error } = await supabase
-        .from("users")
-        .select("role, status, ban_reason")
-        .eq("auth_id", session.user.id)
-        .maybeSingle();
-
-      if (error || !userData || userData.role !== "admin") {
-        router.push("/dashboard");
-        return;
-      }
-
-      if (userData.status === "inactive" || userData.ban_reason) {
-        router.push("/auth/banned");
-        return;
-      }
-
-      // TOTP confirmé mais pas encore vérifié sur cet appareil pour cette
-      // session (ex: navigation directe/logo en plein flux de vérification) :
-      // on bloque l'accès à TOUTE page /admin/* tant que ce n'est pas fait,
-      // pas seulement la redirection post-login initiale.
-      const totpRes = await fetch("/api/auth/2fa/totp/status", {
-        headers: { Authorization: `Bearer ${session.access_token}` },
-      });
-      const totpData = await totpRes.json();
-      if (totpRes.ok && totpData.confirmed) {
-        const token = window.localStorage.getItem("edu_2fa_token");
-        if (!token) {
-          router.push(`/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`);
-          return;
-        }
-      }
-
-      setLoading(false);
-    };
-
-    checkAdmin();
-  }, [router]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]">
-        <AppAdminLoader />
-      </div>
-    );
-  }
-
-  return (
-    <ContentGenerationsProvider>
-      <div className="min-h-screen bg-[var(--greek-cream)] flex">
-        <AdminTotpSetupModal />
-        <AdminSidebar />
-        <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
-          {children}
-        </div>
-        <ContentGenerationsWidget />
-      </div>
-    </ContentGenerationsProvider>
-  );
+  return <AdminShell>{children}</AdminShell>;
 }
-
-
