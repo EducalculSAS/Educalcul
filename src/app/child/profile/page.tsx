@@ -4,8 +4,10 @@ import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import ChildProfileSettings from "@/components/child/ChildProfileSettings";
+import { logPageTiming } from "@/lib/perfLog";
 
 export default async function ChildProfilePage() {
+  const __t0 = performance.now();
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
 
@@ -32,6 +34,7 @@ export default async function ChildProfilePage() {
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", authUser.id),
   ]);
 
+  logPageTiming("/child/profile", __t0);
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero */}

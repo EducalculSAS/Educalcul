@@ -3,8 +3,10 @@ import { BookOpen } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import CoursesCatalog from "@/components/child/CoursesCatalog";
+import { logPageTiming } from "@/lib/perfLog";
 
 export default async function ChildCoursesPage() {
+  const __t0 = performance.now();
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "child") redirect("/dashboard");
@@ -40,6 +42,7 @@ export default async function ChildCoursesPage() {
     if (status !== "not_started" || pct > 0) courseProgress[c.id] = { status, pct };
   }
 
+  logPageTiming("/child/cours", __t0);
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}

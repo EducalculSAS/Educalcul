@@ -8,6 +8,7 @@ import {
   Play, MessageSquare, Star, CheckCircle, Zap, type LucideIcon,
 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
+import { logPageTiming } from "@/lib/perfLog";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   pencil: PenTool, zap: Zap, flame: Star, star: Star, crown: Trophy,
@@ -26,6 +27,7 @@ interface Badge { id: number; name: string; icon: string; color: string }
 // résout donc côté serveur — plus de spinner de chargement, plus d'aller-
 // retour client pour la session + les 6 requêtes en Promise.all.
 export default async function ChildDashboard() {
+  const __t0 = performance.now();
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "child") redirect("/dashboard");
@@ -69,6 +71,7 @@ export default async function ChildDashboard() {
     .filter((b): b is Badge => Boolean(b));
   const stats = { badges: earnedBadges.length, exercises: exoCount ?? 0 };
 
+  logPageTiming("/child/dashboard", __t0);
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
       {/* Header */}

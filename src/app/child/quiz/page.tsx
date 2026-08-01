@@ -3,8 +3,10 @@ import { Trophy } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import QuizCatalog from "@/components/child/QuizCatalog";
+import { logPageTiming } from "@/lib/perfLog";
 
 export default async function ChildQuizPage() {
+  const __t0 = performance.now();
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "child") redirect("/dashboard");
@@ -39,6 +41,7 @@ export default async function ChildQuizPage() {
     initialProgress[a.quiz_id] = { status: everPassed ? "passed" : "failed", score: best, attempts: history.length };
   }
 
+  logPageTiming("/child/quiz", __t0);
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}

@@ -3,8 +3,10 @@ import { ArrowLeft, CheckCircle, XCircle, Clock, Eye } from "lucide-react";
 import Link from "next/link";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { logPageTiming } from "@/lib/perfLog";
 
 export default async function ExerciseHistoryPage() {
+  const __t0 = performance.now();
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
 
@@ -15,6 +17,7 @@ export default async function ExerciseHistoryPage() {
     .in("status", ["completed", "attempted"])
     .order("completed_at", { ascending: false });
 
+  logPageTiming("/child/exercises/history", __t0);
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       <Link

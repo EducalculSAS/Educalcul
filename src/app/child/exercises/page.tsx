@@ -3,8 +3,10 @@ import { Brain } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ExercisesCatalog from "@/components/child/ExercisesCatalog";
+import { logPageTiming } from "@/lib/perfLog";
 
 export default async function ChildExercisesPage() {
+  const __t0 = performance.now();
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "child") redirect("/dashboard");
@@ -39,6 +41,7 @@ export default async function ChildExercisesPage() {
     initialProgress[a.exercise_id] = { status: everPassed ? "passed" : "failed", score: best, attempts: history.length };
   }
 
+  logPageTiming("/child/exercises", __t0);
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
