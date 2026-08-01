@@ -3,20 +3,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-
-// Retire les champs qui révèlent la réponse correcte avant de renvoyer un quiz
-// à un lecteur non-admin (élève) : content_json contient correctAnswer/explanation
-// en clair pour chaque question, nécessaires uniquement à la correction serveur.
-function stripAnswers(quiz: any) {
-  if (!quiz?.content_json || !Array.isArray(quiz.content_json)) return quiz;
-  return {
-    ...quiz,
-    content_json: quiz.content_json.map((q: any) => {
-      const { correctAnswer, explanation, ...safe } = q;
-      return safe;
-    }),
-  };
-}
+import { stripAnswers } from "@/lib/quizContent";
 
 export async function GET(request: Request) {
   try {

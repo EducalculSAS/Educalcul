@@ -1,57 +1,44 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
-import { ArrowLeft, X, AlertCircle } from "lucide-react";
-import ExerciseViewer from "@/components/viewers/ExerciseViewer";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import { redirect } from "next/navigation";
+import { AlertCircle } from "lucide-react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { getServerUser } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { stripAnswers, fillEmptyContentJson } from "@/lib/exerciseContent";
+import ExerciseReviewClient from "@/components/child/ExerciseReviewClient";
 
-export default function ExerciseReviewPage() {
-  const params = useParams();
-  const router = useRouter();
-  const exerciseId = params.id as string;
+export default async function ExerciseReviewPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id: exerciseId } = await params;
+  const authUser = await getServerUser();
+  if (!authUser) redirect("/auth/connexion");
 
-  const [loading, setLoading] = useState(true);
-  const [exercise, setExercise] = useState<any>(null);
-  const [progress, setProgress] = useState<any>(null);
+  const [{ data: exerciseData, error }, { data: attemptRow }] = await Promise.all([
+    supabaseAdmin
+      .from("exercises")
+      .select(`
+        id, title, description, question,
+        difficulty_level, type, level, status,
+        folder_id, course_id, content_json,
+        points_reward, max_attempts, time_limit,
+        created_at, updated_at,
+        courses (title, subject, level),
+        exercise_folders (name, color)
+      `)
+      .eq("id", exerciseId)
+      .maybeSingle(),
+    supabaseAdmin
+      .from("user_exercise_attempts")
+      .select("progress_json")
+      .eq("user_id", authUser.id)
+      .eq("exercise_id", exerciseId)
+      .maybeSingle(),
+  ]);
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const { data: { session } } = await supabase.auth.getSession();
-        if (!session?.user) {
-          setLoading(false);
-          return;
-        }
-
-        const [exRes, progRes] = await Promise.all([
-          fetch(`/api/admin/exercises?id=${exerciseId}`),
-          fetch(`/api/child/exercises/${exerciseId}/progress?userId=${session.user.id}`),
-        ]);
-
-        const exData = await exRes.json();
-        const progData = await progRes.json();
-
-        if (exData?.id) setExercise(exData);
-        if (progData?.progress) setProgress(progData.progress);
-      } catch (e) {
-        console.error("Error loading exercise review:", e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
-  }, [exerciseId]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <AppAdminLoader />
-      </div>
-    );
-  }
+  const exercise = error || !exerciseData ? null : stripAnswers(fillEmptyContentJson(exerciseData));
+  const progress = attemptRow?.progress_json || null;
 
   if (!exercise || !progress) {
     return (
@@ -67,30 +54,5 @@ export default function ExerciseReviewPage() {
     );
   }
 
-  return (
-    <div className="fixed inset-0 z-50 bg-white flex flex-col overflow-hidden">
-      <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-        <button
-          onClick={() => router.back()}
-          className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-          title="Retour"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </button>
-        <h1 className="text-lg font-bold truncate flex-1">
-          Correction — {exercise.title}
-        </h1>
-        <Link
-          href="/child/exercises/history"
-          className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-          title="Fermer"
-        >
-          <X className="w-5 h-5" />
-        </Link>
-      </div>
-      <div className="flex-1 overflow-hidden">
-        <ExerciseViewer exercise={exercise} reviewMode initialProgress={progress} />
-      </div>
-    </div>
-  );
+  return <ExerciseReviewClient exercise={exercise} progress={progress} />;
 }
