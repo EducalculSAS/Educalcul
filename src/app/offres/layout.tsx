@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nos offres — Cours, Exercices & IA pédagogique | Educalcul",
+  title: "Nos offres — Cours, Exercices & IA pédagogique",
   description: "Explorez toutes les fonctionnalités d'Educalcul : cours alignés sur le programme, exercices corrigés par IA, gamification et suivi parental en temps réel.",
   openGraph: {
     title: "Offres Educalcul — Ce que la plateforme vous apporte",
