@@ -63,6 +63,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         subject: emailSubject,
         textPart: emailText,
         htmlPart: emailHtml,
+        fromEmail: "support@educalcul.com",
+        fromName: "Support Educalcul",
       });
 
       if (!result.success) {

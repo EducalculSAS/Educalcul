@@ -45,12 +45,12 @@ export default function Footer() {
               Plateforme d&apos;apprentissage des mathématiques, du CP à la Terminale.
               IA pédagogique, progression gamifiée, suivi parents.
             </p>
-            <a href="mailto:educalcul@gmail.com"
+            <a href="mailto:contact@educalcul.com"
               className="flex items-center gap-2 text-sm mb-5 transition-colors hover:text-white"
               style={{ color: "rgba(255,255,255,0.45)" }}
             >
               <Mail className="w-4 h-4 shrink-0" />
-              educalcul@gmail.com
+              contact@educalcul.com
             </a>
             <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (

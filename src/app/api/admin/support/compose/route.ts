@@ -67,6 +67,8 @@ export async function POST(req: Request) {
       subject,
       textPart: message,
       htmlPart: buildEmailHtml({ title: subject, body: htmlBody, cta: { label: "Voir le message", url: `https://project-fz32e2.vercel.app${link}` } }),
+      fromEmail: "support@educalcul.com",
+      fromName: "Support Educalcul",
     });
 
     // Notification in-app si l'utilisateur a un compte

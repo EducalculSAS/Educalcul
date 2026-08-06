@@ -6,9 +6,11 @@ interface SendEmailParams {
   subject: string;
   textPart: string;
   htmlPart: string;
+  fromEmail?: string;
+  fromName?: string;
 }
 
-export async function sendEmail({ toEmail, toName, subject, textPart, htmlPart }: SendEmailParams) {
+export async function sendEmail({ toEmail, toName, subject, textPart, htmlPart, fromEmail, fromName }: SendEmailParams) {
   const gmailUser = process.env.GMAIL_USER;
   const gmailPass = process.env.GMAIL_APP_PASSWORD;
 
@@ -27,7 +29,7 @@ export async function sendEmail({ toEmail, toName, subject, textPart, htmlPart }
     });
 
     await transporter.sendMail({
-      from: `"${process.env.ADMIN_NAME_FROM || "Educalcul"}" <${gmailUser}>`,
+      from: `"${fromName || process.env.ADMIN_NAME_FROM || "Educalcul"}" <${fromEmail || "no-reply@educalcul.com"}>`,
       to: `"${toName}" <${toEmail}>`,
       subject,
       text: textPart,

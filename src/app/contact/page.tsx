@@ -21,7 +21,7 @@ const SYM = [
 ];
 
 const INFO_ITEMS = [
-  { icon: Mail, title: "Email", desc: "educalcul@gmail.com" },
+  { icon: Mail, title: "Email", desc: "contact@educalcul.com" },
   { icon: Clock, title: "Réponse sous 24h", desc: "En semaine, jours ouvrés" },
   { icon: MessageSquare, title: "Support en français", desc: "Une équipe dédiée, basée en France" },
   { icon: ShieldCheck, title: "RGPD & confidentialité", desc: "Vos données ne sont jamais partagées" },
