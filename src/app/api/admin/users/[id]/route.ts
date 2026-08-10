@@ -1,7 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { requireRole } from "@/lib/apiAuth";
+import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -48,7 +48,8 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    if (!(await requireRole(req, ["admin"]))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    // Édite le rôle du compte (peut promouvoir en admin) — réservé au super admin.
+    if (!(await requireSuperAdmin(req))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
     const { first_name, last_name, email, role, status, grade_level } = await req.json();
     const { data, error } = await supabaseAdmin.from("users").update({ first_name, last_name, email, role, status, grade_level }).eq("id", id).select().single();
@@ -61,7 +62,8 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    if (!(await requireRole(req, ["admin"]))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    // Bannir/débannir/supprimer un compte — réservé au super admin.
+    if (!(await requireSuperAdmin(req))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
     const { action, payload } = await req.json();
     const { data: user } = await supabaseAdmin.from("users").select("id, auth_id, email, status").eq("id", id).single();

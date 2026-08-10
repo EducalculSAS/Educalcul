@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { requireRole } from "@/lib/apiAuth";
+import { requireSuperAdmin } from "@/lib/apiAuth";
 import { runGradePromotion, undoLastGradePromotion } from "@/lib/gradePromotionRun";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -19,7 +19,7 @@ async function getConfig() {
 }
 
 export async function GET(req: Request) {
-  const admin = await requireRole(req, ["admin"]);
+  const admin = await requireSuperAdmin(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
   const { data: lastRun } = await supabaseAdmin
@@ -33,7 +33,7 @@ export async function GET(req: Request) {
 }
 
 export async function PUT(req: Request) {
-  const admin = await requireRole(req, ["admin"]);
+  const admin = await requireSuperAdmin(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
   const { date } = await req.json();
@@ -51,7 +51,7 @@ export async function PUT(req: Request) {
 }
 
 export async function POST(req: Request) {
-  const admin = await requireRole(req, ["admin"]);
+  const admin = await requireSuperAdmin(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
   const config = RATE_LIMITS["grade-promotion:run"];
@@ -78,7 +78,7 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-  const admin = await requireRole(req, ["admin"]);
+  const admin = await requireSuperAdmin(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
   const config = RATE_LIMITS["grade-promotion:run"];

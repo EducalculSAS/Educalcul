@@ -7,6 +7,9 @@ export interface AuthenticatedUser {
   id: number;
   role: string;
   parent_id: number | null;
+  /** Uniquement pour role="admin" : "super" (accès complet) ou "support"
+   * (accès restreint — tickets, forum, profil). null pour les non-admins. */
+  adminLevel: string | null;
 }
 
 export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedUser | null> {
@@ -42,7 +45,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
 
   const { data: row } = await supabaseAdmin
     .from("users")
-    .select("id, role, parent_id, status, ban_reason, two_factor_enabled")
+    .select("id, role, parent_id, status, ban_reason, two_factor_enabled, admin_level")
     .eq("auth_id", data.user.id)
     .maybeSingle();
 
@@ -72,7 +75,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
     if (!session || new Date(session.expires_at) < new Date()) return null;
   }
 
-  return { authId: data.user.id, id: row.id, role: row.role, parent_id: row.parent_id };
+  return { authId: data.user.id, id: row.id, role: row.role, parent_id: row.parent_id, adminLevel: row.admin_level };
 }
 
 /**
@@ -111,6 +114,16 @@ export async function getAuthIdentityOnly(req: Request): Promise<{ authId: strin
 export async function requireRole(req: Request, roles: string[]): Promise<AuthenticatedUser | null> {
   const user = await getAuthenticatedUser(req);
   if (!user || !roles.includes(user.role)) return null;
+  return user;
+}
+
+/** Pour les actions admin sensibles (bannir/supprimer un utilisateur, gérer
+ * d'autres admins, sécurité, abonnements, emails) — un admin "support"
+ * (accès restreint : tickets, forum, profil) n'y a pas accès, seul un admin
+ * "super" (accès complet, comportement historique par défaut) peut agir. */
+export async function requireSuperAdmin(req: Request): Promise<AuthenticatedUser | null> {
+  const user = await getAuthenticatedUser(req);
+  if (!user || user.role !== "admin" || user.adminLevel !== "super") return null;
   return user;
 }
 

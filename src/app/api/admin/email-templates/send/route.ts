@@ -3,12 +3,12 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { emailTemplate } from "@/lib/emailTemplates";
-import { requireRole } from "@/lib/apiAuth";
+import { requireSuperAdmin } from "@/lib/apiAuth";
 
 export async function POST(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { templateId, target, specificEmail, selectedUserId, customEmail } = await req.json();

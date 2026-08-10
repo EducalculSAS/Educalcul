@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { requireRole } from "@/lib/apiAuth";
+import { requireSuperAdmin } from "@/lib/apiAuth";
 import { normalizePricingConfig } from "@/lib/pricingConfig";
 
 // GET (admin) — config actuelle (identique à la version publique mais réservée
 // à l'admin pour peupler le formulaire d'édition).
 export async function GET(req: Request) {
-  const admin = await requireRole(req, ["admin"]);
+  const admin = await requireSuperAdmin(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
   const { data } = await supabaseAdmin
@@ -22,7 +22,7 @@ export async function GET(req: Request) {
 // PUT (admin) — enregistre la config. La valeur est TOUJOURS re-normalisée côté
 // serveur : impossible d'injecter des champs arbitraires ou des prix invalides.
 export async function PUT(req: Request) {
-  const admin = await requireRole(req, ["admin"]);
+  const admin = await requireSuperAdmin(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
   let body: any;

@@ -23,18 +23,26 @@ import {
   History,
   Star,
   ScanSearch,
+  ShieldCheck,
+  Flag,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { trackLogout } from "@/lib/trackLogout";
 import { useRouter } from "next/navigation";
 
-export default function AdminSidebar() {
+// Un admin "support" (accès restreint) ne voit que ce qui touche à son
+// travail quotidien — tickets, forum, son propre profil. Tout le reste
+// (utilisateurs, contenu, argent, sécurité...) reste réservé au super admin,
+// et est de toute façon rejeté côté serveur si jamais accédé directement.
+const SUPPORT_VISIBLE = new Set(["/admin/dashboard", "/admin/support", "/admin/forum", "/admin/profile"]);
+
+export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  const menuItems = [
+  const allMenuItems = [
     {
       name: "Tableau de bord",
       href: "/admin/dashboard",
@@ -56,8 +64,14 @@ export default function AdminSidebar() {
     { name: "Liste d'attente", href: "/admin/landing", icon: Trophy },
     { name: "Journal d'audit", href: "/admin/audit-log", icon: History },
     { name: "Scanner IA", href: "/admin/scanner", icon: ScanSearch },
+    { name: "Sécurité", href: "/admin/security", icon: ShieldCheck },
+    { name: "Fonctionnalités", href: "/admin/feature-flags", icon: Flag },
     { name: "Profil", href: "/admin/profile", icon: User },
   ];
+
+  const menuItems = adminLevel === "support"
+    ? allMenuItems.filter((item) => SUPPORT_VISIBLE.has(item.href))
+    : allMenuItems;
 
   const handleLogout = async () => {
     try { await trackLogout(); await supabase.auth.signOut(); } catch (e) { console.error(e); }

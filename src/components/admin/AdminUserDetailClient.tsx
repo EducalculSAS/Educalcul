@@ -6,7 +6,7 @@ import {
   ArrowLeft, Shield, Baby, Ban, MessageCircle, KeyRound, Trash2,
   CheckCircle, AlertTriangle, Send, X, Loader2, Edit, Bell,
   CreditCard, User as UserIcon, Trophy, MessageSquare,
-  Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff, ShieldCheck,
+  Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff, ShieldCheck, UserCog,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { supabase } from "@/lib/supabaseClient";
@@ -84,6 +84,7 @@ export default function AdminUserDetailClient({
     last_name: initialData.user.last_name || "",
     email: initialData.user.email || "",
     role: initialData.user.role || "parent",
+    admin_level: initialData.user.admin_level || "super",
     status: initialData.user.status || "active",
     grade_level: initialData.user.grade_level || "",
     password: "",
@@ -128,6 +129,45 @@ export default function AdminUserDetailClient({
   };
 
   const showToast = (type: "success" | "error", text: string) => { setToast({ type, text }); setTimeout(() => setToast(null), 4000); };
+
+  const [impersonating, setImpersonating] = useState(false);
+
+  const impersonate = async () => {
+    setImpersonating(true);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+
+      const res = await fetch("/api/admin/impersonate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ targetUserId: id }),
+      });
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error);
+
+      // Garde la session admin de côté pour pouvoir y revenir (bannière
+      // ImpersonationBanner) — puis remplace la session courante par celle
+      // de la cible via le lien magique généré côté serveur.
+      sessionStorage.setItem("edu_impersonation_origin", JSON.stringify({
+        access_token: session.access_token,
+        refresh_token: session.refresh_token,
+      }));
+      sessionStorage.setItem("edu_impersonating", JSON.stringify({
+        targetId: Number(id),
+        targetName: result.targetName,
+        returnTo: `/admin/users/${id}`,
+      }));
+
+      const { error: verifyError } = await supabase.auth.verifyOtp({ token_hash: result.tokenHash, type: "email" });
+      if (verifyError) throw verifyError;
+
+      window.location.href = result.targetRole === "child" ? "/child/dashboard" : "/parent/dashboard";
+    } catch (err: any) {
+      showToast("error", err.message || "Échec de la connexion en tant qu'utilisateur");
+      setImpersonating(false);
+    }
+  };
 
   const doAction = async (actionName: string, payload?: any) => {
     setActionLoading(true);
@@ -255,13 +295,18 @@ export default function AdminUserDetailClient({
             <GlassButton
               size="sm"
               variant="outline"
-              onClick={() => { setEditForm({ first_name: user.first_name || "", last_name: user.last_name || "", email: user.email || "", role: user.role, status: user.status, grade_level: user.grade_level || "", password: "" }); setShowEditModal(true); }}
+              onClick={() => { setEditForm({ first_name: user.first_name || "", last_name: user.last_name || "", email: user.email || "", role: user.role, admin_level: user.admin_level || "super", status: user.status, grade_level: user.grade_level || "", password: "" }); setShowEditModal(true); }}
             >
               <Edit size={14} /> Modifier
             </GlassButton>
             <GlassButton size="sm" variant="outline" onClick={() => { setNewPassword(""); setShowResetModal(true); }}>
               <KeyRound size={14} /> Reset MDP
             </GlassButton>
+            {user.role !== "admin" && (
+              <GlassButton size="sm" variant="outline" disabled={impersonating} onClick={impersonate}>
+                <UserCog size={14} /> Se connecter en tant que
+              </GlassButton>
+            )}
             {user.role !== "admin" && (
               <GlassButton size="sm" variant="ghost" disabled={actionLoading} onClick={() => doAction("toggle_2fa")}>
                 <ShieldCheck size={14} /> {user.two_factor_enabled ? "Désactiver la 2FA" : "Activer la 2FA"}
@@ -669,6 +714,12 @@ export default function AdminUserDetailClient({
                   </select>
                 </div>
               </div>
+              {editForm.role === "admin" && <div><label className={labelCls}>Niveau admin</label>
+                <select value={editForm.admin_level} onChange={e => setEditForm({ ...editForm, admin_level: e.target.value })} className={inputCls}>
+                  <option value="super">Super admin (accès complet)</option>
+                  <option value="support">Support (tickets, forum, profil uniquement)</option>
+                </select>
+              </div>}
               {editForm.role === "child" && <div><label className={labelCls}>Niveau</label>
                 <ThemedSelect
                   value={editForm.grade_level}

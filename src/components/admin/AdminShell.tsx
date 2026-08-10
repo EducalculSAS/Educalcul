@@ -14,7 +14,7 @@ import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidge
  * composant ne s'exécute. Il ne reste ici que la vérification 2FA "sur cet
  * appareil" : le token de vérification vit dans le localStorage du
  * navigateur, donc ne peut pas être lu côté serveur. */
-export default function AdminShell({ children }: { children: React.ReactNode }) {
+export default function AdminShell({ children, adminLevel = "super" }: { children: React.ReactNode; adminLevel?: string }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
@@ -59,7 +59,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     <ContentGenerationsProvider>
       <div className="min-h-screen bg-[var(--greek-cream)] flex">
         <AdminTotpSetupModal />
-        <AdminSidebar />
+        <AdminSidebar adminLevel={adminLevel} />
         <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
           {children}
         </div>

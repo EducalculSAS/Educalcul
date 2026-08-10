@@ -29,6 +29,10 @@ const ACTION_LABELS: Record<string, string> = {
   TWO_FACTOR_CODE_SENT: "Code 2FA envoyé",
   TWO_FACTOR_VERIFIED: "2FA vérifiée",
   TWO_FACTOR_FAILED: "Code 2FA incorrect",
+  ADMIN_IP_ALLOWLIST_ADDED: "IP ajoutée à la liste blanche",
+  ADMIN_IP_ALLOWLIST_REMOVED: "IP retirée de la liste blanche",
+  IMPERSONATION_STARTED: "Connexion en tant qu'utilisateur",
+  IMPERSONATION_ENDED: "Fin de connexion en tant qu'utilisateur",
 };
 
 function userLabel(u: { first_name?: string; last_name?: string; email?: string } | null): string {

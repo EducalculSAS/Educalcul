@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { requireRole } from "@/lib/apiAuth";
+import { requireSuperAdmin } from "@/lib/apiAuth";
 import { fetchAdminSubscriptionPlans } from "@/lib/adminSubscriptionPlans";
 
 // GET — list all plans. Subscriber details are attached only for admins;
@@ -15,7 +15,7 @@ export async function GET(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) {
       return NextResponse.json(plans || []);
     }
@@ -31,7 +31,7 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
@@ -93,7 +93,7 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { searchParams } = new URL(req.url);

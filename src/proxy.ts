@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
+import { ipMatchesCidr } from "@/lib/adminIpAllowlist";
+import { getClientIp } from "@/lib/ipGeo";
 
 // Middleware tourne en runtime Edge : pas d'accès au module Node "crypto",
 // on utilise donc SubtleCrypto (identique en résultat à
@@ -80,6 +82,27 @@ async function has2FASession(userId: number, req: NextRequest): Promise<boolean>
   }
 }
 
+// Liste blanche IP admin — désactivée tant que la table est vide (pas de
+// risque de se bloquer soi-même). Requête REST directe comme le reste de ce
+// fichier (runtime Edge, pas le client supabaseAdmin habituel).
+async function isIpAllowed(req: NextRequest): Promise<boolean> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/admin_ip_allowlist?select=cidr`,
+      { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
+    );
+    if (!res.ok) return true; // panne de lecture → ne bloque pas tous les admins
+    const rows: { cidr: string }[] = await res.json();
+    if (!rows || rows.length === 0) return true; // liste vide = désactivée
+
+    const ip = getClientIp(req);
+    if (!ip) return false;
+    return rows.some((row) => ipMatchesCidr(ip, row.cidr));
+  } catch {
+    return true;
+  }
+}
+
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
@@ -110,6 +133,10 @@ export async function proxy(req: NextRequest) {
     if (isUserLevel) return NextResponse.next();
 
     if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+    if (!(await isIpAllowed(req))) {
+      return NextResponse.json({ error: "IP non autorisée" }, { status: 403 });
+    }
 
     // 2FA (TOTP) obligatoire pour tout compte admin, dès sa création (les
     // routes /api/auth/2fa/totp/* ne sont pas sous /api/admin/*, donc un admin

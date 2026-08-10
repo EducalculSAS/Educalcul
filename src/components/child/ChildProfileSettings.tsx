@@ -11,6 +11,7 @@ import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getSimpleLevelLabel } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
+import UserSessionsList from "@/components/UserSessionsList";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -244,6 +245,11 @@ export default function ChildProfileSettings({
               ))}
             </div>
           </div>
+        </div>
+
+        {/* ── Appareils connectés ── */}
+        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
+          <UserSessionsList />
         </div>
       </div>
 

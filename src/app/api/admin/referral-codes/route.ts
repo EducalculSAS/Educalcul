@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { requireRole } from "@/lib/apiAuth";
+import { requireSuperAdmin } from "@/lib/apiAuth";
 
 function generateCode(length = 8) {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -12,7 +12,7 @@ function generateCode(length = 8) {
 export async function GET(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { data, error } = await supabaseAdmin
@@ -35,7 +35,7 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
@@ -95,7 +95,7 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
   try {
     // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
-    const admin = await requireRole(req, ["admin"]);
+    const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { searchParams } = new URL(req.url);

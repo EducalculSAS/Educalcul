@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe } from "@/lib/stripe";
 import { isValidNumericId, validateString } from "@/lib/validation";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-import { requireRole } from "@/lib/apiAuth";
+import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { fetchAdminUserDetail } from "@/lib/adminUserDetail";
 
 export async function GET(req: Request) {
@@ -32,8 +32,8 @@ export async function GET(req: Request) {
 
 export async function PUT(req: Request) {
   try {
-    // ✓ SECURITY: Require admin authentication
-    const admin = await requireRole(req, ["admin"]);
+    // Édite le rôle du compte (peut promouvoir en admin) — réservé au super admin.
+    const admin = await requireSuperAdmin(req);
     if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -45,9 +45,9 @@ export async function PUT(req: Request) {
       return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
     }
 
-    const { first_name, last_name, email, role, status, grade_level } = await req.json();
+    const { first_name, last_name, email, role, admin_level, status, grade_level } = await req.json();
     const { data, error } = await supabaseAdmin.from("users")
-      .update({ first_name, last_name, email, role, status, grade_level })
+      .update({ first_name, last_name, email, role, admin_level: role === "admin" ? (admin_level || "super") : null, status, grade_level })
       .eq("id", id)
       .select()
       .single();
@@ -76,8 +76,8 @@ export async function PUT(req: Request) {
 
 export async function POST(req: Request) {
   try {
-    // ✓ SECURITY: Require admin authentication
-    const admin = await requireRole(req, ["admin"]);
+    // Bannir/débannir/supprimer/agir sur un compte — réservé au super admin.
+    const admin = await requireSuperAdmin(req);
     if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
