@@ -255,13 +255,13 @@ export default function AdminEmailsClient({
           <Edit2 className="w-3.5 h-3.5" /> Modifier
         </button>
         {tmpl.target !== "triggered" && (
-          <button
+          <GlassButton
+            size="sm"
+            variant="navy"
             onClick={() => { setSendTmpl(tmpl); setSendForm({ target: tmpl.target, specificEmail: "", selectedUserId: "" }); setSendResult(null); }}
-            title="Envoyer"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[var(--greek-blue)] rounded-lg hover:opacity-90 transition-all"
           >
             <Send className="w-3.5 h-3.5" /> Envoyer
-          </button>
+          </GlassButton>
         )}
         {tmpl.is_deletable && (
           <button

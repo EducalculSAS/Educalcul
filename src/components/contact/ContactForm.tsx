@@ -3,6 +3,7 @@
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { SUBJECTS } from "@/lib/contactSubjects";
+import GlassButton from "@/components/ui/GlassButton";
 
 const inputClass = "w-full px-4 py-3 rounded-xl text-sm border border-gray-200 bg-white text-[var(--text-dark)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--greek-blue)] focus:ring-1 focus:ring-[var(--greek-blue)] transition-colors";
 
@@ -100,18 +101,18 @@ export default function ContactForm() {
               className={inputClass + " resize-none"} />
           </div>
 
-          <button
-            type="submit"
+          <GlassButton
+            onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            variant="navy"
+            fullWidth
             disabled={status === "loading"}
-            className="w-full flex items-center justify-center gap-2 py-3.5 px-6 font-bold text-sm rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 font-[family-name:var(--font-display)]"
-            style={{ background: "var(--greek-blue)", color: "white" }}
           >
             {status === "loading" ? (
               <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> Envoi en cours...</>
             ) : (
               <><Send className="w-4 h-4" /> Envoyer le message</>
             )}
-          </button>
+          </GlassButton>
         </form>
       )}
     </div>

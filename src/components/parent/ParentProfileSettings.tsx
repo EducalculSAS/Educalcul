@@ -445,18 +445,19 @@ export default function ParentProfileSettings({
               </div>
 
               <div className="pt-2 text-right">
-                <button
-                  type="submit"
+                <GlassButton
+                  onClick={() => handleProfileUpdate({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  variant="navy"
+                  size="sm"
                   disabled={saving}
-                  className="inline-flex items-center px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:bg-[var(--greek-blue)] transition-colors disabled:opacity-50"
                 >
                   {saving ? (
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    <Loader2 className="w-4 h-4 animate-spin" />
                   ) : (
-                    <Save className="w-4 h-4 mr-2" />
+                    <Save className="w-4 h-4" />
                   )}
                   Mettre à jour
-                </button>
+                </GlassButton>
               </div>
             </form>
           </div>
@@ -523,18 +524,18 @@ export default function ParentProfileSettings({
               </div>
 
               <div className="pt-4 text-right">
-                <button
-                  type="submit"
+                <GlassButton
+                  onClick={() => handlePasswordUpdate({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  variant="navy"
                   disabled={saving}
-                  className="inline-flex items-center px-6 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)] transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 disabled:opacity-50 disabled:transform-none"
                 >
                   {saving ? (
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    <Loader2 className="w-5 h-5 animate-spin" />
                   ) : (
-                    <Lock className="w-5 h-5 mr-2" />
+                    <Lock className="w-5 h-5" />
                   )}
                   Changer le mot de passe
-                </button>
+                </GlassButton>
               </div>
             </form>
           </div>
@@ -644,7 +645,7 @@ export default function ParentProfileSettings({
             </h2>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <p className="text-sm text-gray-600">Reçois par email un lien pour télécharger une copie de tes données et de celles de tes enfants (format JSON, lien valable 24h).</p>
-              <button
+              <GlassButton
                 onClick={async () => {
                   setExportingData(true);
                   try {
@@ -660,11 +661,13 @@ export default function ParentProfileSettings({
                     setExportingData(false);
                   }
                 }}
+                variant="navy"
+                size="sm"
                 disabled={exportingData}
-                className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg hover:opacity-90 transition-colors font-medium shadow-sm shrink-0 disabled:opacity-50"
+                className="shrink-0"
               >
                 {exportingData ? "Envoi..." : "Demander mes données"}
-              </button>
+              </GlassButton>
             </div>
           </div>
 
@@ -761,14 +764,15 @@ export default function ParentProfileSettings({
                       Continuer
                     </GlassButton>
                   ) : (
-                    <button
+                    <GlassButton
                       onClick={handleDeleteAccount}
+                      variant="danger"
+                      size="sm"
                       disabled={saving}
-                      className="px-5 py-2.5 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 flex items-center gap-2"
                     >
                       {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
                       Supprimer définitivement
-                    </button>
+                    </GlassButton>
                   )}
                 </div>
               </>

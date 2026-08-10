@@ -154,15 +154,15 @@ export default function TableEditorModal({
               aria-label="Description pour la génération IA"
               className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm px-3 py-1.5"
             />
-            <button
-              type="button"
+            <GlassButton
+              size="sm"
+              variant="gold"
               onClick={handleAiGenerate}
               disabled={aiLoading || !aiDescription.trim()}
-              className="px-3 py-1.5 bg-[var(--greek-gold)] text-white rounded-lg text-sm font-medium disabled:opacity-50 flex items-center gap-1"
             >
               {aiLoading ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
               Générer
-            </button>
+            </GlassButton>
           </div>
           {aiError && <p className="text-xs text-red-500">{aiError}</p>}
         </div>

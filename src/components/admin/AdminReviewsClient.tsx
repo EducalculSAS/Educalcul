@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { Star, Plus, Trash2, Edit, X, GripVertical } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
 import { supabase } from "@/lib/supabaseClient";
 import type { ManualReview } from "@/lib/manualReviews";
 import type { ReviewRatingOverride } from "@/lib/reviewRatingOverride";
@@ -159,9 +160,9 @@ export default function AdminReviewsClient({
         title="Avis clients"
         subtitle="Avis affichés sur la page d'accueil, saisis manuellement (copiez le texte exact depuis Trustpilot ou une autre source)."
         actions={
-          <button onClick={openCreate} className="btn-primary-greek flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold">
+          <GlassButton size="sm" variant="navy" onClick={openCreate}>
             <Plus className="w-4 h-4" /> Nouvel avis
-          </button>
+          </GlassButton>
         }
       />
 
@@ -194,9 +195,9 @@ export default function AdminReviewsClient({
         )}
 
         <div className="flex items-center gap-3">
-          <button onClick={saveRatingOverride} disabled={ratingSaving} className="btn-primary-greek px-4 py-2 rounded-xl text-sm font-bold disabled:opacity-50">
+          <GlassButton size="sm" variant="navy" onClick={saveRatingOverride} disabled={ratingSaving}>
             {ratingSaving ? "Enregistrement..." : "Enregistrer la note"}
-          </button>
+          </GlassButton>
           {ratingSaved && <span className="text-xs font-semibold text-[#00b67a]">✓ Enregistré</span>}
         </div>
       </div>
@@ -319,12 +320,12 @@ export default function AdminReviewsClient({
               </label>
 
               <div className="flex justify-end gap-2 pt-2">
-                <button onClick={() => setModalOpen(false)} className="px-4 py-2 rounded-xl text-sm font-medium text-[var(--greek-blue)] border border-[rgba(197,161,72,0.3)] hover:bg-[rgba(197,161,72,0.08)] transition-colors">
+                <GlassButton size="sm" variant="ghost" onClick={() => setModalOpen(false)}>
                   Annuler
-                </button>
-                <button onClick={handleSave} disabled={saving || !name.trim() || !reviewText.trim()} className="btn-primary-greek px-4 py-2 rounded-xl text-sm font-bold disabled:opacity-50">
+                </GlassButton>
+                <GlassButton size="sm" variant="navy" onClick={handleSave} disabled={saving || !name.trim() || !reviewText.trim()}>
                   {saving ? "Enregistrement..." : "Enregistrer"}
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>

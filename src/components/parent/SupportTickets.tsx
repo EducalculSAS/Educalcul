@@ -147,9 +147,14 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
             </div>
             <div className="flex justify-end gap-3 pt-2">
               <GlassButton onClick={() => setShowForm(false)} variant="ghost" size="sm">Annuler</GlassButton>
-              <button type="submit" disabled={submitting} className="flex items-center gap-2 px-6 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl font-bold text-sm hover:bg-blue-800 transition-colors disabled:opacity-50">
+              <GlassButton
+                onClick={() => submitNewTicket({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                variant="navy"
+                size="sm"
+                disabled={submitting}
+              >
                 {submitting ? "Envoi..." : <><Send size={14} /> Envoyer</>}
-              </button>
+              </GlassButton>
             </div>
           </form>
         </div>

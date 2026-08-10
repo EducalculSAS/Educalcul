@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 const ACTION_LABELS: Record<string, string> = {
   USER_CREATED: "Utilisateur créé",
@@ -48,9 +49,33 @@ export default function AuditLogTable({
   pageSize: number;
 }) {
   const [loading, setLoading] = useState(false);
+  const [exporting, setExporting] = useState(false);
   const [entries, setEntries] = useState<any[]>(initialEntries);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(initialTotal);
+
+  const exportCsv = async () => {
+    setExporting(true);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+      const res = await fetch("/api/admin/audit-log/export", {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `journal-audit-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } finally {
+      setExporting(false);
+    }
+  };
 
   const load = async (p: number) => {
     setLoading(true);
@@ -72,6 +97,12 @@ export default function AuditLogTable({
 
   return (
     <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden">
+      <div className="flex justify-end px-4 pt-4">
+        <GlassButton onClick={exportCsv} variant="outline" size="sm" disabled={exporting}>
+          <Download className="w-4 h-4" />
+          {exporting ? "Export en cours…" : "Exporter en CSV"}
+        </GlassButton>
+      </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-gray-50 text-gray-500 text-xs uppercase">

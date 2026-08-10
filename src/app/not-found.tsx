@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default function NotFound() {
   return (
@@ -19,12 +19,9 @@ export default function NotFound() {
           <p className="text-gray-500 mb-8">
             Cette page n'existe pas ou a été déplacée. Retournez à l'accueil pour continuer.
           </p>
-          <Link
-            href="/"
-            className="btn-primary-greek inline-flex items-center gap-2"
-          >
+          <GlassButton href="/" variant="navy">
             Retour à l'accueil
-          </Link>
+          </GlassButton>
         </div>
       </main>
       <Footer />

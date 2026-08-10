@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { AVATARS } from "@/lib/constants";
 import { isValidEmail } from "@/lib/validation";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface InitialChild {
   id: string;
@@ -328,12 +329,16 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                     placeholder="000000"
                   />
                   <div className="flex items-center gap-2">
-                    <button
-                      type="button" onClick={confirmTwoFAToggle} disabled={togglingTwoFA || twoFACode.length !== 6}
-                      className="flex-1 inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
-                    >
-                      {togglingTwoFA ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer"}
-                    </button>
+                    <div className="flex-1">
+                      <GlassButton
+                        onClick={() => confirmTwoFAToggle({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                        variant="navy"
+                        fullWidth
+                        disabled={togglingTwoFA || twoFACode.length !== 6}
+                      >
+                        {togglingTwoFA ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer"}
+                      </GlassButton>
+                    </div>
                     <button type="button" onClick={cancelTwoFAFlow} disabled={togglingTwoFA} className="px-4 py-2.5 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-50">
                       Annuler
                     </button>
@@ -350,9 +355,13 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
             </div>
 
             <div className="pt-4 flex justify-end">
-              <button type="submit" disabled={saving} className="flex items-center px-8 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-[#2c5282] transition-colors shadow-md font-bold disabled:opacity-70">
-                {saving ? (<><Loader2 className="w-5 h-5 mr-2 animate-spin" />Enregistrement...</>) : (<><Save className="w-5 h-5 mr-2" />Enregistrer les modifications</>)}
-              </button>
+              <GlassButton
+                onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                variant="navy"
+                disabled={saving}
+              >
+                {saving ? (<><Loader2 className="w-5 h-5 animate-spin" />Enregistrement...</>) : (<><Save className="w-5 h-5" />Enregistrer les modifications</>)}
+              </GlassButton>
             </div>
           </form>
         </div>

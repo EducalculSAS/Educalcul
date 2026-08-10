@@ -453,13 +453,14 @@ function SubscriptionPageContent({
                   <GlassButton onClick={handleCancel} variant="outline" fullWidth>
                     Annuler
                   </GlassButton>
-                  <button
+                  <GlassButton
                     onClick={() => handleSubscribe(selectedPlan.id)}
+                    variant="navy"
+                    fullWidth
                     disabled={processingPlanId === selectedPlan.id}
-                    className="py-3 rounded-xl font-bold bg-[var(--greek-gold)] text-white hover:opacity-90 transition-colors disabled:opacity-60"
                   >
                     {processingPlanId === selectedPlan.id ? "Chargement..." : "Payer"}
-                  </button>
+                  </GlassButton>
                 </div>
               </div>
             </div>

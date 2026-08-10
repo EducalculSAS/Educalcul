@@ -208,7 +208,7 @@ export default function BadgesSettings({
               <Star className="w-5 h-5 text-[var(--greek-gold)]" />
               Badges affichés sur mon profil
             </h2>
-            <GlassButton onClick={saveFeatured} variant="navy" size="sm" style={savingFeatured ? { opacity: 0.5, pointerEvents: "none" } : undefined}>
+            <GlassButton onClick={saveFeatured} variant="navy" size="sm" disabled={savingFeatured}>
               {savingFeatured ? <Loader2 className="w-3 h-3 animate-spin" /> : <CheckCircle className="w-3 h-3" />}
               Sauvegarder
             </GlassButton>

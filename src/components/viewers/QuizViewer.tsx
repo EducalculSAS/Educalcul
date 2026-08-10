@@ -679,7 +679,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             >
               <ArrowLeft className="w-5 h-5" /> Précédent
             </button>
-            <button
+            <GlassButton
               onClick={
                 showReview
                   ? currentQuestionIndex < questions.length - 1
@@ -706,7 +706,8 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                     ? !(answers[currentQuestionIndex]?.length > 0)
                     : !answers[currentQuestionIndex]))
               }
-              className="btn-primary-greek px-8 py-3 flex items-center gap-2 group disabled:opacity-50 shadow-md hover:shadow-lg"
+              variant="navy"
+              className="group"
             >
               {isValidating ? (
                 <>
@@ -735,7 +736,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                   <CheckCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 </>
               )}
-            </button>
+            </GlassButton>
           </div>
         </div>
       </div>

@@ -288,7 +288,7 @@ export default function ChildProfileSettings({
               {deleteStep === 1 ? (
                 <GlassButton onClick={() => setDeleteStep(2)} variant="danger" size="sm">Continuer</GlassButton>
               ) : (
-                <GlassButton onClick={handleDeleteAccount} variant="danger" size="sm" style={saving ? { opacity: 0.5, pointerEvents: "none" } : undefined}>
+                <GlassButton onClick={handleDeleteAccount} variant="danger" size="sm" disabled={saving}>
                   {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}Supprimer
                 </GlassButton>
               )}

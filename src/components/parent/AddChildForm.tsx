@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { AVATARS, SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { validatePassword, isValidEmail } from "@/lib/validation";
+import GlassButton from "@/components/ui/GlassButton";
 
 const SPECIALTY_LEVELS = new Set([
   "2nde", "1ere-generale", "1ere-generale-maths", "1ere-sti2d", "1ere-stmg", "1ere-st2s", "1ere-stl", "1ere-std2a", "1ere-sthr",
@@ -221,13 +222,16 @@ export default function AddChildForm({ parentId }: { parentId: number }) {
               </div>
             </div>
 
-            <button
-              type="submit" disabled={loading}
-              className="w-full py-4 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+            <GlassButton
+              onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+              variant="navy"
+              fullWidth
+              disabled={loading}
+              className="!py-4"
             >
-              {loading ? <Loader2 className="w-6 h-6 animate-spin mr-2" /> : <Save className="w-6 h-6 mr-2" />}
+              {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : <Save className="w-6 h-6" />}
               <span className="text-lg">Enregistrer l'enfant</span>
-            </button>
+            </GlassButton>
           </form>
         </div>
       </div>

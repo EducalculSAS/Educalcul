@@ -6,6 +6,7 @@ import { getEventTypeMeta, EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
 import { ZONE_OPTIONS, getZoneLabel } from "@/lib/calendarZones";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
 
 const ADMIN_EVENT_TYPE_OPTIONS = [
   ...EVENT_TYPE_OPTIONS,
@@ -128,9 +129,9 @@ export default function AdminCalendarClient({
           title="Calendrier — Événements globaux"
           subtitle="Ces événements (vacances scolaires, dates importantes...) apparaissent automatiquement dans les calendriers de tous les parents et élèves, filtrés selon leur zone scolaire."
           actions={
-            <button onClick={openCreate} className="btn-primary-greek flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold">
+            <GlassButton size="sm" variant="navy" onClick={openCreate}>
               <Plus className="w-4 h-4" /> Nouvel événement
-            </button>
+            </GlassButton>
           }
         />
       </div>
@@ -254,12 +255,12 @@ export default function AdminCalendarClient({
               </div>
 
               <div className="flex justify-end gap-2 pt-2">
-                <button onClick={() => setModalOpen(false)} className="px-4 py-2 rounded-xl text-sm font-medium text-[var(--greek-blue)] border border-[rgba(197,161,72,0.3)] hover:bg-[rgba(197,161,72,0.08)] transition-colors">
+                <GlassButton size="sm" variant="ghost" onClick={() => setModalOpen(false)}>
                   Annuler
-                </button>
-                <button onClick={handleSave} disabled={saving || !title.trim() || !startDate} className="btn-primary-greek px-4 py-2 rounded-xl text-sm font-bold disabled:opacity-50">
+                </GlassButton>
+                <GlassButton size="sm" variant="navy" onClick={handleSave} disabled={saving || !title.trim() || !startDate}>
                   {saving ? "Enregistrement..." : "Enregistrer"}
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>

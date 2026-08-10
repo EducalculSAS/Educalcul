@@ -1243,15 +1243,15 @@ export default function ExerciseViewer({
         </button>
 
         {reviewMode ? (
-          <button
+          <GlassButton
             onClick={handleNextPage}
             disabled={currentPageIndex >= pages.length - 1}
-            className="btn-primary-greek px-6 py-2 flex items-center gap-2 shadow-md hover:shadow-lg disabled:opacity-50"
+            variant="navy"
           >
             Suivant <ArrowRight className="w-4 h-4" />
-          </button>
+          </GlassButton>
         ) : (
-        <button
+        <GlassButton
           onClick={
             showReview
               ? currentPageIndex < pages.length - 1
@@ -1279,7 +1279,7 @@ export default function ExerciseViewer({
               : validateAllAnswers
           }
           disabled={isValidating}
-          className="btn-primary-greek px-6 py-2 flex items-center gap-2 shadow-md hover:shadow-lg disabled:opacity-50"
+          variant="navy"
         >
           {isValidating ? (
             <>
@@ -1304,7 +1304,7 @@ export default function ExerciseViewer({
               Valider et Terminer <CheckCircle className="w-4 h-4" />
             </>
           )}
-        </button>
+        </GlassButton>
         )}
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { X, Trash2 } from "lucide-react";
 import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS, CalendarEventType } from "@/lib/calendarEventTypes";
 import { CalendarEventItem } from "./CalendarView";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface EventModalProps {
   open: boolean;
@@ -160,29 +161,23 @@ export default function EventModal({ open, onClose, onSave, onDelete, initialDat
             <div className="flex items-center justify-between pt-2">
               <div>
                 {event && onDelete && (
-                  <button
-                    onClick={onDelete}
-                    disabled={saving}
-                    className="flex items-center gap-1 text-sm text-red-600 hover:text-red-700 px-3 py-2 rounded-[10px] hover:bg-red-50 transition-colors"
-                  >
+                  <GlassButton size="sm" variant="danger" onClick={onDelete} disabled={saving}>
                     <Trash2 className="w-4 h-4" /> Supprimer
-                  </button>
+                  </GlassButton>
                 )}
               </div>
               <div className="flex gap-2">
-                <button
-                  onClick={onClose}
-                  className="px-4 py-2 rounded-[10px] text-sm font-medium text-[var(--greek-blue)] border border-[rgba(197,161,72,0.3)] hover:bg-[rgba(197,161,72,0.08)] transition-colors"
-                >
+                <GlassButton size="sm" variant="ghost" onClick={onClose}>
                   Annuler
-                </button>
-                <button
+                </GlassButton>
+                <GlassButton
+                  size="sm"
+                  variant="navy"
                   onClick={handleSave}
                   disabled={saving || !title.trim() || !startDate}
-                  className="btn-primary-greek px-4 py-2 rounded-[10px] text-sm font-medium disabled:opacity-50"
                 >
                   {saving ? "Enregistrement..." : "Enregistrer"}
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>
