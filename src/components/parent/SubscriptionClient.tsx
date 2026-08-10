@@ -20,6 +20,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { type PricingConfig } from "@/lib/pricingConfig";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface SubscriptionPlan {
   id: number;
@@ -136,9 +137,13 @@ function SubscriptionPageContent({
           // Plan gratuit : rien à frauder, le compte est créé directement.
           if (sessionId === "free") {
             const { data: { user: currentUser } } = await supabase.auth.getUser();
+            const { data: { session: currentSession } } = await supabase.auth.getSession();
             const createUserRes = await fetch("/api/auth/create-account", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: {
+                "Content-Type": "application/json",
+                ...(currentSession ? { Authorization: `Bearer ${currentSession.access_token}` } : {}),
+              },
               body: JSON.stringify({ ...signupData, sessionId, existingAuthId: currentUser?.id || null }),
             });
             if (createUserRes.ok) {
@@ -399,13 +404,10 @@ function SubscriptionPageContent({
                   )}
                 </div>
                 {currentPlan?.stripe_customer_id && (
-                  <button
-                    onClick={handleManagePayment}
-                    className="px-5 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 transition-colors flex items-center gap-2 whitespace-nowrap"
-                  >
+                  <GlassButton onClick={handleManagePayment} variant="navy" size="sm" className="whitespace-nowrap">
                     <CreditCard className="w-4 h-4" />
                     Gérer votre abonnement
-                  </button>
+                  </GlassButton>
                 )}
               </div>
             )}
@@ -448,12 +450,9 @@ function SubscriptionPageContent({
                   ))}
                 </ul>
                 <div className="grid grid-cols-2 gap-4">
-                  <button
-                    onClick={handleCancel}
-                    className="py-3 rounded-xl font-bold text-[var(--greek-blue)] border-2 border-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
-                  >
+                  <GlassButton onClick={handleCancel} variant="outline" fullWidth>
                     Annuler
-                  </button>
+                  </GlassButton>
                   <button
                     onClick={() => handleSubscribe(selectedPlan.id)}
                     disabled={processingPlanId === selectedPlan.id}
@@ -548,10 +547,10 @@ function SubscriptionPageContent({
                     <span className="flex-1 min-w-0 font-mono font-bold text-xl sm:text-2xl tracking-[0.15em] sm:tracking-[0.25em] text-[var(--greek-blue)] truncate">
                       {myReferralCode.code}
                     </span>
-                    <button onClick={copyCode} className="flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-2 rounded-lg bg-[var(--greek-blue)] text-white hover:opacity-90 transition shrink-0">
+                    <GlassButton onClick={copyCode} variant="navy" size="sm" className="shrink-0">
                       {copied ? <CheckCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                       {copied ? "Copié !" : "Copier"}
-                    </button>
+                    </GlassButton>
                   </div>
                   <div className="flex flex-wrap items-center gap-2 text-sm">
                     <span className="flex items-center gap-1.5 text-gray-500">

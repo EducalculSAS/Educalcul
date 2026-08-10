@@ -11,6 +11,7 @@ import ChildReportLink from "@/components/parent/ChildReportLink";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface ChildStats {
   exerciseCount: number;
@@ -200,9 +201,9 @@ export default async function ParentDashboard() {
             <BarChart2 className="w-6 h-6 text-[var(--greek-gold)]" />
             Suivi de mes enfants
           </h2>
-          <Link href="/parent/add-child" className="flex items-center gap-2 bg-[var(--greek-gold)] text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-yellow-500 transition-all shadow-sm">
+          <GlassButton href="/parent/add-child" variant="navy" size="sm">
             <Plus className="w-4 h-4" /> Ajouter un enfant
-          </Link>
+          </GlassButton>
         </div>
 
         {children.length === 0 ? (
@@ -210,9 +211,9 @@ export default async function ParentDashboard() {
             <Users className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <p className="text-xl text-[var(--greek-blue)] font-bold font-[family-name:var(--font-display)] mb-2">Aucun enfant ajouté</p>
             <p className="text-gray-500 mb-6">Ajoutez votre premier enfant pour commencer le suivi.</p>
-            <Link href="/parent/add-child" className="inline-block bg-[var(--greek-gold)] text-white px-6 py-3 rounded-xl font-bold hover:bg-yellow-500 transition-all shadow-md">
+            <GlassButton href="/parent/add-child" variant="navy">
               Commencer maintenant
-            </Link>
+            </GlassButton>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">

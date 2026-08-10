@@ -8,6 +8,7 @@ import {
 import { buildEmailHtml } from "@/lib/emailTemplates";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface EmailTemplate {
   id: number;
@@ -266,6 +267,7 @@ export default function AdminEmailsClient({
           <button
             onClick={() => handleDelete(tmpl)}
             title="Supprimer"
+            aria-label="Supprimer le template"
             className="p-1.5 text-red-400 border border-red-100 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -282,12 +284,9 @@ export default function AdminEmailsClient({
         title="Emails"
         subtitle="Gérez les templates et envoyez des campagnes aux utilisateurs"
         actions={
-          <button
-            onClick={() => setCreateOpen(true)}
-            className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-sm"
-          >
+          <GlassButton size="sm" variant="navy" onClick={() => setCreateOpen(true)}>
             <Plus className="w-4 h-4" /> Nouveau
-          </button>
+          </GlassButton>
         }
       />
 
@@ -442,12 +441,11 @@ export default function AdminEmailsClient({
             )}
 
             <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3 shrink-0">
-              <button onClick={() => setEditTmpl(null)} className="px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">Annuler</button>
-              <button onClick={handleSave} disabled={saving}
-                className="flex items-center gap-2 px-5 py-2 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 disabled:opacity-50 text-sm">
+              <GlassButton size="sm" variant="ghost" onClick={() => setEditTmpl(null)}>Annuler</GlassButton>
+              <GlassButton size="sm" variant="navy" disabled={saving} onClick={handleSave}>
                 {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
                 Sauvegarder
-              </button>
+              </GlassButton>
             </div>
           </div>
         </div>
@@ -520,19 +518,23 @@ export default function AdminEmailsClient({
               )}
             </div>
             <div className="px-6 pb-6 flex justify-end gap-3">
-              <button onClick={() => setSendTmpl(null)} className="px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">
+              <GlassButton size="sm" variant="ghost" onClick={() => setSendTmpl(null)}>
                 {sendResult ? "Fermer" : "Annuler"}
-              </button>
+              </GlassButton>
               {!sendResult && (
-                <button onClick={handleSend} disabled={
-                  sending ||
-                  (sendForm.target === "specific_user" && !sendForm.selectedUserId) ||
-                  (sendForm.target === "custom_email" && !sendForm.specificEmail)
-                }
-                  className="flex items-center gap-2 px-5 py-2 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 disabled:opacity-50 text-sm">
+                <GlassButton
+                  size="sm"
+                  variant="navy"
+                  disabled={
+                    sending ||
+                    (sendForm.target === "specific_user" && !sendForm.selectedUserId) ||
+                    (sendForm.target === "custom_email" && !sendForm.specificEmail)
+                  }
+                  onClick={handleSend}
+                >
                   {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                   {sending ? "Envoi..." : "Envoyer"}
-                </button>
+                </GlassButton>
               )}
             </div>
           </div>
@@ -631,7 +633,7 @@ export default function AdminEmailsClient({
               </div>
             </div>
             <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3">
-              <button onClick={() => setCreateOpen(false)} className="px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">Annuler</button>
+              <GlassButton size="sm" variant="ghost" onClick={() => setCreateOpen(false)}>Annuler</GlassButton>
               {(() => {
                 const isPersonal = ["specific_user","custom_email"].includes(newForm.target);
                 const disabled = saving || !newForm.subject || !newForm.body
@@ -639,11 +641,10 @@ export default function AdminEmailsClient({
                   || (isPersonal && newForm.target === "custom_email" && !newForm.specificEmail)
                   || (!isPersonal && !newForm.name);
                 return (
-                  <button onClick={handleCreate} disabled={disabled}
-                    className={`flex items-center gap-2 px-5 py-2 text-white font-bold rounded-xl hover:opacity-90 disabled:opacity-50 text-sm ${isPersonal ? "bg-[var(--greek-blue)]" : "bg-[var(--greek-gold)]"}`}>
+                  <GlassButton size="sm" variant="navy" disabled={disabled} onClick={handleCreate}>
                     {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : isPersonal ? <Send className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                     {isPersonal ? "Envoyer le message" : "Créer le template"}
-                  </button>
+                  </GlassButton>
                 );
               })()}
             </div>

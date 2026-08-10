@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 
     const { data: tickets, error } = await supabaseAdmin
       .from("support_tickets")
-      .select(`*, replies:ticket_replies(*)`)
+      .select(`id, subject, message, status, created_at, updated_at, replies:ticket_replies(id, reply_message, is_admin, author_name, replied_at)`)
       .eq("user_id", user.id)
       .eq("is_archived", false)
       .order("updated_at", { ascending: false });

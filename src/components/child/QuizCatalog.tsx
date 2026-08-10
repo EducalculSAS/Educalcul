@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { Trophy, Play, CheckCircle, XCircle, ArrowLeft } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
 interface QuizRow {
@@ -67,13 +67,13 @@ export default function QuizCatalog({
   return (
     <div className="space-y-8">
       {currentFolderId !== null && (
-        <button
+        <GlassButton
           onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
-          className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+          variant="outline" size="sm"
         >
           <ArrowLeft size={20} />
           Retour
-        </button>
+        </GlassButton>
       )}
 
       {currentFolders.length === 0 && currentQuizzes.length === 0 ? (
@@ -88,6 +88,14 @@ export default function QuizCatalog({
             <div
               key={folder.id}
               onClick={() => navigateToFolder(folder.id, folder.name)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  navigateToFolder(folder.id, folder.name);
+                }
+              }}
               className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
               style={{ animationDelay: `${index * 40}ms` }}
             >
@@ -156,13 +164,13 @@ export default function QuizCatalog({
                     {quiz.description || "Relève ce défi pour prouver tes compétences !"}
                   </p>
                   <div className="mt-auto">
-                    <Link
+                    <GlassButton
                       href={`/child/quiz/${quiz.id}`}
-                      className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
+                      variant="navy" fullWidth size="sm"
                     >
                       <Play className="w-4 h-4 fill-current" />
                       {isDone ? "Recommencer" : "Lancer le Quiz"}
-                    </Link>
+                    </GlassButton>
                   </div>
                 </div>
               </div>

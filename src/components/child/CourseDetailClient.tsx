@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
 import { useAITutor } from "@/contexts/AITutorContext";
+import GlassButton from "@/components/ui/GlassButton";
 
 /** Page de détail cours : le contenu arrive en props quand id !== "preview".
  * Le mode "preview" (ouvert depuis l'admin via localStorage) reste
@@ -188,6 +189,7 @@ export default function CourseDetailClient({
             onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Retour à l'aperçu"
+            aria-label="Retour à l'aperçu"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -201,6 +203,7 @@ export default function CourseDetailClient({
             }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Fermer"
+            aria-label="Fermer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -220,7 +223,7 @@ export default function CourseDetailClient({
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-8 pb-28 md:pb-8 max-w-4xl">
       <button
         onClick={() => {
           if (isPreview) {
@@ -248,7 +251,7 @@ export default function CourseDetailClient({
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/10">
-              <img src="/logo.png" alt="Educalcul" className="w-24 h-24 object-contain opacity-20" />
+              <img src="/logo.png" alt="Miniature par défaut du cours" className="w-24 h-24 object-contain opacity-20" />
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -267,7 +270,7 @@ export default function CourseDetailClient({
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-grow">
               <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                <BookOpen className="w-6 h-6 text-[var(--greek-gold)]" />
+                <BookOpen className="w-6 h-6 text-[var(--greek-gold)]" aria-hidden="true" />
                 À propos de ce cours
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed">
@@ -313,13 +316,13 @@ export default function CourseDetailClient({
                   </div>
                 )}
 
-                <button
+                <GlassButton
                   onClick={() => setStarted(true)}
-                  className="w-full btn-primary-greek py-4 text-lg shadow-lg mb-4 flex items-center justify-center gap-2 transform hover:scale-105 transition-all"
+                  variant="navy" fullWidth className="mb-4 text-lg"
                 >
                   <Play className="w-6 h-6 fill-current" />
                   {resumeInfo?.status === "completed" ? "Revoir le cours" : resumeInfo ? "Reprendre" : "Démarrer la leçon"}
-                </button>
+                </GlassButton>
 
                 <div className="space-y-4 text-sm text-gray-600">
                   <div className="flex items-center justify-between border-b border-[rgba(197,161,72,0.25)] pb-2">

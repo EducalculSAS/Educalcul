@@ -19,6 +19,8 @@ import {
   Mail,
 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 type Ticket = {
   id: number;
@@ -320,40 +322,21 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
         actions={
           !selectedTicket && (
             <>
-              <div className="flex bg-gray-50 rounded-xl p-1 border border-[rgba(197,161,72,0.25)]">
-                <button
-                  onClick={() => setViewMode("active")}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    viewMode === "active"
-                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[rgba(197,161,72,0.25)]"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <Inbox size={16} className="inline mr-2" />
-                  Tickets Actifs
-                </button>
-                <button
-                  onClick={() => setViewMode("archived")}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    viewMode === "archived"
-                      ? "bg-white text-[var(--greek-blue)] shadow-sm border border-[rgba(197,161,72,0.25)]"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <Archive size={16} className="inline mr-2" />
-                  Archives
-                </button>
-              </div>
+              <GlassSegmentedControl
+                size="sm"
+                options={[
+                  { id: "active", label: (<span className="flex items-center gap-1.5"><Inbox size={16} /> Tickets Actifs</span>) },
+                  { id: "archived", label: (<span className="flex items-center gap-1.5"><Archive size={16} /> Archives</span>) },
+                ]}
+                value={viewMode}
+                onChange={(v) => setViewMode(v as "active" | "archived")}
+              />
 
               {viewMode === "archived" && (
-                <button
-                  onClick={handlePurge}
-                  disabled={actionLoading}
-                  className="px-4 py-2 bg-red-50 text-red-700 rounded-xl hover:bg-red-100 transition-colors text-sm font-medium border border-red-200 flex items-center gap-2 shadow-sm"
-                >
+                <GlassButton size="sm" variant="danger" disabled={actionLoading} onClick={handlePurge}>
                   <Trash2 size={16} />
                   Purger anciens
-                </button>
+                </GlassButton>
               )}
             </>
           )
@@ -397,40 +380,26 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
               <div className="flex items-center gap-2">
                 {selectedTicket.is_archived ? (
                   <>
-                    <button
-                      onClick={() => handleArchive(false)}
-                      disabled={actionLoading}
-                      className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-md hover:bg-blue-100 transition-colors text-sm font-medium border border-blue-200"
-                    >
-                      <RefreshCcw size={14} className="inline mr-1" /> Restaurer
-                    </button>
-                    <button
-                      onClick={handleDelete}
-                      disabled={actionLoading}
-                      className="px-3 py-1.5 bg-red-50 text-red-700 rounded-md hover:bg-red-100 transition-colors text-sm font-medium border border-red-200"
-                    >
-                      <Trash2 size={14} className="inline mr-1" /> Supprimer
-                    </button>
+                    <GlassButton size="sm" variant="outline" disabled={actionLoading} onClick={() => handleArchive(false)}>
+                      <RefreshCcw size={14} /> Restaurer
+                    </GlassButton>
+                    <GlassButton size="sm" variant="danger" disabled={actionLoading} onClick={handleDelete}>
+                      <Trash2 size={14} /> Supprimer
+                    </GlassButton>
                   </>
                 ) : (
                   <>
-                    <button
+                    <GlassButton
+                      size="sm"
+                      variant="outline"
+                      disabled={actionLoading || selectedTicket.status === "Résolu"}
                       onClick={() => handleStatusChange("Résolu")}
-                      disabled={
-                        actionLoading || selectedTicket.status === "Résolu"
-                      }
-                      className="px-3 py-1.5 bg-green-50 text-green-700 rounded-md hover:bg-green-100 transition-colors text-sm font-medium border border-green-200 disabled:opacity-50"
                     >
-                      <CheckCircle size={14} className="inline mr-1" /> Marquer
-                      Résolu
-                    </button>
-                    <button
-                      onClick={() => handleArchive(true)}
-                      disabled={actionLoading}
-                      className="px-3 py-1.5 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium border border-[rgba(197,161,72,0.25)]"
-                    >
-                      <Archive size={14} className="inline mr-1" /> Archiver
-                    </button>
+                      <CheckCircle size={14} /> Marquer Résolu
+                    </GlassButton>
+                    <GlassButton size="sm" variant="ghost" disabled={actionLoading} onClick={() => handleArchive(true)}>
+                      <Archive size={14} /> Archiver
+                    </GlassButton>
                   </>
                 )}
               </div>
@@ -528,6 +497,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                     <textarea
                       value={replyMessage}
                       onChange={(e) => setReplyMessage(e.target.value)}
+                      aria-label="Réponse au ticket"
                       className="w-full p-4 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent min-h-[150px]"
                       placeholder="Écrivez votre réponse ici..."
                       required
@@ -541,10 +511,11 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                         Une réponse marquera automatiquement le ticket comme
                         "Répondu".
                       </div>
-                      <button
-                        type="submit"
+                      <GlassButton
+                        size="sm"
+                        variant="navy"
                         disabled={replyLoading || !replyMessage.trim()}
-                        className="px-6 py-2 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-700 transition-colors font-semibold flex items-center gap-2 disabled:opacity-50 shadow-lg shadow-blue-900/10"
+                        onClick={() => handleReply({ preventDefault: () => {} } as unknown as React.FormEvent)}
                       >
                         {replyLoading ? (
                           <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
@@ -552,7 +523,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                           <Send size={18} />
                         )}
                         Envoyer la réponse
-                      </button>
+                      </GlassButton>
                     </div>
                   </form>
                 </div>

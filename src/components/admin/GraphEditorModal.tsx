@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { X } from "lucide-react";
 import { buildGraphSvg } from "@/lib/mathGraph";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default function GraphEditorModal({
   isOpen,
@@ -79,17 +80,12 @@ export default function GraphEditorModal({
         </div>
 
         <div className="flex justify-end gap-2 pt-2">
-          <button type="button" onClick={onClose} className="px-4 py-2 text-sm rounded-lg border border-[rgba(197,161,72,0.3)] text-gray-600 hover:bg-gray-50">
+          <GlassButton size="sm" variant="ghost" onClick={onClose}>
             Annuler
-          </button>
-          <button
-            type="button"
-            onClick={handleInsert}
-            disabled={!svg}
-            className="px-4 py-2 text-sm rounded-lg bg-[var(--greek-blue)] text-white font-medium hover:opacity-90 disabled:opacity-50"
-          >
+          </GlassButton>
+          <GlassButton size="sm" variant="navy" onClick={handleInsert} disabled={!svg}>
             Insérer
-          </button>
+          </GlassButton>
         </div>
       </div>
     </div>

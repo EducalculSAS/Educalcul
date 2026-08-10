@@ -119,7 +119,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav ref={navRef} className="navbar fixed top-0 left-0 right-0 z-[1030] h-[64px] min-h-[64px] px-6 shadow-md" style={{background:"var(--greek-blue)",borderBottom:"1px solid rgba(197,161,72,0.12)"}}>
+    <nav ref={navRef} className="navbar liquid-glass backdrop-blur-[20px] backdrop-saturate-[1.8] fixed top-0 left-0 right-0 z-[1030] h-[64px] min-h-[64px] px-6">
       <div className="container mx-auto flex items-center justify-between h-full max-w-7xl">
         {/* Brand */}
         <Link href={getDashboardLink()} className="flex items-center gap-2 no-underline flex-shrink-0">
@@ -140,8 +140,8 @@ export default function Navbar() {
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
-          style={{background:"var(--greek-blue)",borderBottom:"1px solid rgba(197,161,72,0.15)",boxShadow:"0 20px 40px rgba(0,0,0,0.3)"}}
+          className={`liquid-glass backdrop-blur-[20px] backdrop-saturate-[1.8] absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
+          style={{boxShadow:"inset 0 1px 0 rgba(255,255,255,0.14), inset 0 0 0 1px rgba(255,255,255,0.03), 0 20px 40px rgba(0,0,0,0.35)"}}
         >
           {/* Navigation Links — toujours visibles sur pages publiques */}
           {(!user || !isAppPage) && (

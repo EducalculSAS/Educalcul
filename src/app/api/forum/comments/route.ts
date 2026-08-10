@@ -39,20 +39,22 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { postId, content } = body;
 
-    const { data, error } = await supabaseAdmin
-      .from("forum_comments")
-      .insert({ post_id: postId, content: stripHtml(content), author_id: me.id }) // author = caller
-      .select(`*, author:users(first_name, last_name, child_username, role, avatar)`)
-      .single();
+    // Insertion du commentaire et lecture du post (pour la notification) sont
+    // indépendantes — exécutées en parallèle.
+    const [{ data, error }, { data: post }] = await Promise.all([
+      supabaseAdmin
+        .from("forum_comments")
+        .insert({ post_id: postId, content: stripHtml(content), author_id: me.id }) // author = caller
+        .select(`*, author:users(first_name, last_name, child_username, role, avatar)`)
+        .single(),
+      supabaseAdmin
+        .from("forum_posts")
+        .select("category_id, author:users!author_id(auth_id, role)")
+        .eq("id", postId)
+        .maybeSingle(),
+    ]);
 
     if (error) throw error;
-
-    // Notifier l'auteur du post si différent du commentateur
-    const { data: post } = await supabaseAdmin
-      .from("forum_posts")
-      .select("category_id, author:users!author_id(auth_id, role)")
-      .eq("id", postId)
-      .maybeSingle();
 
     const postAuthor = (post?.author as any);
     const postAuthorAuthId = postAuthor?.auth_id;

@@ -13,7 +13,7 @@ export async function GET(req: Request) {
 
     const { data: sub } = await supabaseAdmin
       .from("subscriptions")
-      .select("*")
+      .select("stripe_subscription_id, plan_id")
       .eq("user_id", authId)
       .maybeSingle();
 
@@ -48,6 +48,10 @@ export async function POST(req: Request) {
     const { sessionId } = await req.json();
     const authId = me.authId;
     if (!sessionId) return NextResponse.json({ error: "Missing params" }, { status: 400 });
+    // "free" est le sentinel utilisé pour le plan gratuit (pas de session Stripe
+    // réelle à synchroniser) — le compte a déjà été créé directement par
+    // /api/auth/create-account, rien à faire ici.
+    if (sessionId === "free") return NextResponse.json({ success: true, plan_id: "free" });
 
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ["subscription"],
@@ -59,6 +63,15 @@ export async function POST(req: Request) {
 
     const planId = session.metadata?.planId;
     if (!planId) return NextResponse.json({ error: "No planId in metadata" }, { status: 400 });
+
+    // ✓ SECURITY : sans ce contrôle, un session_id Stripe payé par un AUTRE
+    // utilisateur (visible dans l'URL de retour ?session_id=..., donc
+    // potentiellement dans l'historique navigateur / un outil d'analytics)
+    // pouvait être rejoué ici par n'importe quel compte authentifié pour
+    // s'attribuer le même plan payant sans payer.
+    if (session.metadata?.userId && session.metadata.userId !== authId) {
+      return NextResponse.json({ error: "Session non autorisée" }, { status: 403 });
+    }
 
     const sub = session.subscription as any;
 

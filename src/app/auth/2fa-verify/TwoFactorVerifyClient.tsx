@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, AlertCircle, RotateCcw } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 function TwoFactorVerifyContent() {
   const router = useRouter();
@@ -114,6 +115,8 @@ function TwoFactorVerifyContent() {
         <p className="text-sm" style={{ color: "var(--text-muted)" }}>
           {sent || method === "totp"
             ? "Un code à 6 chiffres a été envoyé par email."
+            : error
+            ? "Échec de l'envoi du code — voir le message ci-dessous."
             : "Envoi du code en cours…"}
         </p>
       </div>
@@ -145,14 +148,14 @@ function TwoFactorVerifyContent() {
             />
           </div>
 
-          <button
-            type="submit"
+          <GlassButton
+            onClick={() => handleVerify({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            variant="navy"
+            fullWidth
             disabled={loading || code.length < 6}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
-            style={{ background: "var(--greek-blue)", boxShadow: "0 4px 16px rgba(15,30,58,0.25)" }}
           >
             {loading ? "Vérification…" : "Vérifier"}
-          </button>
+          </GlassButton>
         </form>
 
         <button

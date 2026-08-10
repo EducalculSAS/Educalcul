@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ChevronDown, ChevronUp, GraduationCap, Loader2, CheckCircle, AlertCircle, X, RotateCcw } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface LastRun {
   id: number;
@@ -143,29 +144,17 @@ export default function GradePromotionPanel() {
                     className="px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm w-28"
                   />
                 </div>
-                <button
-                  onClick={saveDate}
-                  disabled={saving}
-                  className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-lg text-sm font-semibold hover:opacity-90 transition-colors disabled:opacity-50"
-                >
+                <GlassButton size="sm" variant="navy" disabled={saving} onClick={saveDate}>
                   {saving ? "Enregistrement..." : "Enregistrer la date"}
-                </button>
-                <button
-                  onClick={() => setShowConfirm(true)}
-                  disabled={running}
-                  className="px-4 py-2 bg-orange-500 text-white rounded-lg text-sm font-semibold hover:bg-orange-600 transition-colors disabled:opacity-50"
-                >
+                </GlassButton>
+                <GlassButton size="sm" variant="danger" disabled={running} onClick={() => setShowConfirm(true)}>
                   {running ? "Passage en cours..." : "Déclencher maintenant"}
-                </button>
+                </GlassButton>
                 {canUndo && (
-                  <button
-                    onClick={() => setShowUndoConfirm(true)}
-                    disabled={undoing}
-                    className="px-4 py-2 border border-red-300 text-red-600 rounded-lg text-sm font-semibold hover:bg-red-50 transition-colors disabled:opacity-50 flex items-center gap-1.5"
-                  >
+                  <GlassButton size="sm" variant="danger" disabled={undoing} onClick={() => setShowUndoConfirm(true)}>
                     <RotateCcw className="w-3.5 h-3.5" />
                     {undoing ? "Annulation..." : "Annuler le dernier passage"}
-                  </button>
+                  </GlassButton>
                 )}
               </div>
 
@@ -182,14 +171,14 @@ export default function GradePromotionPanel() {
           <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-6 border border-[rgba(197,161,72,0.25)]">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">Confirmer le passage de classe</h3>
-              <button onClick={() => setShowConfirm(false)} className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
+              <button onClick={() => setShowConfirm(false)} aria-label="Fermer" className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
             </div>
             <p className="text-sm text-gray-600 mb-6">
               Tous les comptes enfant vont avancer d'un niveau immédiatement, quelle que soit la date configurée. Une annulation reste possible juste après (bouton "Annuler le dernier passage"). Continuer ?
             </p>
             <div className="flex justify-end gap-2">
-              <button onClick={() => setShowConfirm(false)} className="px-4 py-2 text-gray-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">Annuler</button>
-              <button onClick={runNow} className="px-4 py-2 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition-colors">Confirmer</button>
+              <GlassButton size="sm" variant="ghost" onClick={() => setShowConfirm(false)}>Annuler</GlassButton>
+              <GlassButton size="sm" variant="danger" onClick={runNow}>Confirmer</GlassButton>
             </div>
           </div>
         </div>
@@ -200,14 +189,14 @@ export default function GradePromotionPanel() {
           <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-6 border border-[rgba(197,161,72,0.25)]">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">Annuler le dernier passage</h3>
-              <button onClick={() => setShowUndoConfirm(false)} className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
+              <button onClick={() => setShowUndoConfirm(false)} aria-label="Fermer" className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
             </div>
             <p className="text-sm text-gray-600 mb-6">
               Tous les comptes touchés par le dernier passage de classe reviennent à leur niveau précédent. Les choix de spécialité déjà faits entre-temps par des élèves ne seront pas défaits. Continuer ?
             </p>
             <div className="flex justify-end gap-2">
-              <button onClick={() => setShowUndoConfirm(false)} className="px-4 py-2 text-gray-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">Annuler</button>
-              <button onClick={undoLast} className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors">Confirmer</button>
+              <GlassButton size="sm" variant="ghost" onClick={() => setShowUndoConfirm(false)}>Annuler</GlassButton>
+              <GlassButton size="sm" variant="danger" onClick={undoLast}>Confirmer</GlassButton>
             </div>
           </div>
         </div>

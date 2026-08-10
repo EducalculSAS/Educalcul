@@ -23,7 +23,7 @@ export default function AdminPageHeader({
     <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div>
         <h1 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-          <Icon className="text-[var(--greek-gold)]" size={30} />
+          <Icon className="text-[var(--greek-gold)]" size={30} aria-hidden="true" />
           {title}
         </h1>
         {subtitle && (

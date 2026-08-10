@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     // 1. Verify the requester owns the child (admins may manage any child)
     let childQuery = supabaseAdmin
       .from("users")
-      .select("*")
+      .select("id, auth_id, first_name, last_name, email, parent_id, role")
       .eq("id", childId)
       .eq("role", "child");
     if (requester.role !== "admin") {

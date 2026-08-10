@@ -6,6 +6,7 @@ import { validateEmail, validateName, validateString } from "@/lib/validation";
 import { sendEmail } from "@/lib/mailer";
 import { welcomeEmail } from "@/lib/emailTemplates";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 export async function POST(req: NextRequest) {
   try {
@@ -75,7 +76,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: message }, { status: 429 });
     }
 
-    let authUserId: string = existingAuthId || "";
+    // ✓ SECURITY (IDOR) : existingAuthId vient du client — sans vérification,
+    // n'importe qui pouvait fournir l'auth_id d'un AUTRE utilisateur et faire
+    // écraser son profil (prénom/nom/rôle) par cette route non authentifiée.
+    // On n'accepte existingAuthId que s'il correspond à la session réellement
+    // authentifiée de l'appelant (token Bearer vérifié côté serveur).
+    let authUserId: string = "";
+    if (existingAuthId) {
+      const me = await getAuthenticatedUser(req);
+      if (!me || me.authId !== existingAuthId) {
+        return NextResponse.json({ error: "Session invalide." }, { status: 401 });
+      }
+      authUserId = existingAuthId;
+    }
 
     // Si pas d'auth existant -> créer l'utilisateur Supabase Auth (flow email/password)
     if (!authUserId) {

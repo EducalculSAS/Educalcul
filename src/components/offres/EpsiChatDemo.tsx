@@ -50,7 +50,7 @@ function EpsiChat({ onClose, inline = false }: { onClose: () => void; inline?: b
 
   return (
     <div className="flex flex-col rounded-2xl overflow-hidden shadow-2xl"
-      style={{ background: "#0d1829", border: "1px solid rgba(197,161,72,0.25)", width: inline ? "100%" : 340, height: 480 }}>
+      style={{ background: "var(--greek-blue)", border: "1px solid rgba(197,161,72,0.25)", width: inline ? "100%" : 340, height: 480 }}>
       <div className="flex items-center gap-3 px-4 py-3 border-b flex-shrink-0" style={{ borderColor: "rgba(197,161,72,0.15)", background: "rgba(255,255,255,0.03)" }}>
         <Image src="/logoAI.png" alt="EpsiAI" width={26} height={26} style={{ width: 26, height: 26 }} className="object-contain" />
         <div className="flex-1 min-w-0">
@@ -63,7 +63,7 @@ function EpsiChat({ onClose, inline = false }: { onClose: () => void; inline?: b
       <div className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-2.5" style={{ scrollbarWidth: "none" }}>
         {messages.filter(m => m.from !== "cta").map((msg, i) => (
           <div key={i} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-            {msg.from === "ai" && <Image src="/logoAI.png" alt="" width={20} height={20} style={{ width: 20, height: 20 }} className="object-contain mr-2 mt-1 flex-shrink-0" />}
+            {msg.from === "ai" && <Image src="/logoAI.png" alt="EpsiAI" width={20} height={20} style={{ width: 20, height: 20 }} className="object-contain mr-2 mt-1 flex-shrink-0" />}
             <div className="max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed"
               style={msg.from === "ai" ? { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 } : { background: "var(--greek-gold)", color: "#fff", borderBottomRightRadius: 4 }}>
               {msg.text}
@@ -92,7 +92,7 @@ function EpsiChat({ onClose, inline = false }: { onClose: () => void; inline?: b
       ) : (
         <div className="px-3 py-3 border-t flex gap-2 flex-shrink-0" style={{ borderColor: "rgba(197,161,72,0.15)" }}>
           <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSend()}
-            placeholder="Pose ta question…" className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none"
+            placeholder="Pose ta question…" aria-label="Pose ta question" className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none"
             style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)" }} />
           <button onClick={handleSend} disabled={!input.trim() || typing}
             className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-40" style={{ background: "var(--greek-gold)" }}>

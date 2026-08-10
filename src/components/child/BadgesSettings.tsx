@@ -6,6 +6,7 @@ import { Trophy, Lock, CheckCircle, Star, Zap, BookOpen, Crown, Target, Brain, S
 import { avatarUrl } from "@/lib/avatarUrl";
 import { BORDER_STYLES, NAME_COLORS, getBorderStyle, getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
+import GlassButton from "@/components/ui/GlassButton";
 
 const ICON_MAP: Record<string, any> = {
   pencil: Pencil, zap: Zap, flame: Flame, star: Star, crown: Crown,
@@ -207,11 +208,10 @@ export default function BadgesSettings({
               <Star className="w-5 h-5 text-[var(--greek-gold)]" />
               Badges affichés sur mon profil
             </h2>
-            <button onClick={saveFeatured} disabled={savingFeatured}
-              className="flex items-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800 transition-colors disabled:opacity-50">
+            <GlassButton onClick={saveFeatured} variant="navy" size="sm" style={savingFeatured ? { opacity: 0.5, pointerEvents: "none" } : undefined}>
               {savingFeatured ? <Loader2 className="w-3 h-3 animate-spin" /> : <CheckCircle className="w-3 h-3" />}
               Sauvegarder
-            </button>
+            </GlassButton>
           </div>
           <p className="text-xs text-gray-500 mb-4">Sélectionne jusqu'à 3 badges à afficher sur ton profil dans le forum.</p>
           <div className="flex gap-4 mb-4">

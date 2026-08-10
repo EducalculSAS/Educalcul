@@ -27,9 +27,10 @@ export default async function ChildProfilePage() {
   }
   if (!userData.email && au?.email) userData.email = au.email;
 
-  const [{ count: coursesCount }, { count: exercisesCount }] = await Promise.all([
+  const [{ count: coursesCount }, { count: exercisesCount }, { count: badgesCount }] = await Promise.all([
     supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", authUser.id),
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", authUser.id),
+    supabaseAdmin.from("user_badges").select("*", { count: "exact", head: true }).eq("user_id", userData.id),
   ]);
 
   return (
@@ -51,7 +52,7 @@ export default async function ChildProfilePage() {
         <ChildProfileSettings
           user={userData}
           googleLinked={googleLinked}
-          activityCounts={{ courses: coursesCount ?? 0, exercises: exercisesCount ?? 0 }}
+          activityCounts={{ courses: coursesCount ?? 0, exercises: exercisesCount ?? 0, badges: badgesCount ?? 0 }}
         />
       </div>
     </div>

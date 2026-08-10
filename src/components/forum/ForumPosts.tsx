@@ -13,6 +13,7 @@ import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useConfirm } from "@/components/ConfirmDialog";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Post {
   id: number;
@@ -88,14 +89,14 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button onClick={onBack} className="p-2 bg-white border border-[rgba(197,161,72,0.25)] text-[var(--greek-blue)] rounded-xl hover:bg-gray-50 transition-all shadow-sm">
+          <button onClick={onBack} aria-label="Retour" className="p-2 bg-white border border-[rgba(197,161,72,0.25)] text-[var(--greek-blue)] rounded-xl hover:bg-gray-50 transition-all shadow-sm">
             <ArrowLeft className="w-5 h-5" />
           </button>
           <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">{categoryName}</h2>
         </div>
-        <button onClick={() => setShowModal(true)} className="flex items-center gap-2 bg-[var(--greek-blue)] text-white px-4 py-2 rounded-xl font-semibold text-sm hover:bg-blue-800 shadow-sm transition-all">
+        <GlassButton onClick={() => setShowModal(true)} variant="navy" size="sm">
           <Plus className="w-4 h-4" /> Nouveau sujet
-        </button>
+        </GlassButton>
       </div>
 
       <div className="space-y-3">
@@ -126,8 +127,8 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
                 </Link>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    {post.is_pinned && <Pin className="w-3.5 h-3.5 text-[var(--greek-gold)] fill-current shrink-0" />}
-                    {post.is_locked && <Lock className="w-3.5 h-3.5 text-red-500 shrink-0" />}
+                    {post.is_pinned && <Pin className="w-3.5 h-3.5 text-[var(--greek-gold)] fill-current shrink-0" role="img" aria-label="Épinglé" />}
+                    {post.is_locked && <Lock className="w-3.5 h-3.5 text-red-500 shrink-0" role="img" aria-label="Verrouillé" />}
                     <h3 className="font-bold text-[var(--greek-blue)] truncate">{post.title}</h3>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-gray-400">
@@ -140,12 +141,12 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
                 </div>
               </div>
               <div className="flex items-center gap-3 shrink-0">
-                <div className="flex items-center gap-1 text-sm text-gray-500">
-                  <MessageCircle className="w-4 h-4" />
+                <div className="flex items-center gap-1 text-sm text-gray-500" aria-label={`${commentCount} commentaire${commentCount !== 1 ? "s" : ""}`}>
+                  <MessageCircle className="w-4 h-4" aria-hidden="true" />
                   <span className="font-semibold">{commentCount}</span>
                 </div>
                 {role === "admin" && (
-                  <button onClick={(e) => handleDelete(e, post.id)} className="opacity-0 group-hover:opacity-100 p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+                  <button onClick={(e) => handleDelete(e, post.id)} aria-label="Supprimer le sujet" className="opacity-0 group-hover:opacity-100 p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
                     <Trash2 className="w-4 h-4" />
                   </button>
                 )}
@@ -160,7 +161,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
           <div className="bg-white rounded-2xl p-8 max-w-2xl w-full shadow-2xl border border-[var(--greek-gold)]">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau sujet</h2>
-              <button onClick={() => setShowModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <button onClick={() => setShowModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>
             <div className="space-y-4">
               <div>
@@ -172,8 +173,8 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
                 <textarea value={newPostContent} onChange={e => setNewPostContent(e.target.value)} className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm h-40 resize-none" placeholder="Décris ta question ou ton sujet..." />
               </div>
               <div className="flex gap-3 pt-2">
-                <button onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 border border-[rgba(197,161,72,0.25)] text-gray-500 rounded-xl text-sm font-semibold hover:bg-gray-50">Annuler</button>
-                <button onClick={handleCreatePost} className="flex-1 px-4 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800">Publier</button>
+                <div className="flex-1"><GlassButton onClick={() => setShowModal(false)} variant="ghost" fullWidth>Annuler</GlassButton></div>
+                <div className="flex-1"><GlassButton onClick={handleCreatePost} variant="navy" fullWidth>Publier</GlassButton></div>
               </div>
             </div>
           </div>

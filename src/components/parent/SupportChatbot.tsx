@@ -68,10 +68,10 @@ export default function SupportChatbot() {
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
               <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Assistante IA</p>
             </div>
-            <button onClick={() => setMessages([BOT_WELCOME])} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Nouvelle conversation">
+            <button onClick={() => setMessages([BOT_WELCOME])} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Nouvelle conversation" aria-label="Nouvelle conversation">
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
-            <button onClick={() => setOpen(false)} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Fermer">
+            <button onClick={() => setOpen(false)} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Fermer" aria-label="Fermer le chat">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -115,7 +115,7 @@ export default function SupportChatbot() {
           <div className="px-3 py-3 shrink-0 flex gap-2" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
             <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }}
               disabled={sending}
-              placeholder="Votre question…" className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none disabled:opacity-50"
+              placeholder="Votre question…" aria-label="Votre question" className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none disabled:opacity-50"
               style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)" }} />
             <button onClick={() => sendMessage()} disabled={!input.trim() || sending}
               className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all hover:-translate-y-0.5 disabled:opacity-40"

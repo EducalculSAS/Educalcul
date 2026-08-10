@@ -16,13 +16,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Params manquants" }, { status: 400 });
     }
 
-    // Resolve referral code
-    const { data: refCode, error: refErr } = await supabaseAdmin
-      .from("referral_codes")
-      .select("*")
-      .eq("code", code.trim().toUpperCase())
-      .eq("is_active", true)
-      .single();
+    // Resolve referral code, and check idempotence (un utilisateur ne peut
+    // utiliser un code de parrainage qu'une fois) in parallel — the two
+    // queries are independent of each other.
+    const [{ data: refCode, error: refErr }, { data: alreadyUsed }] = await Promise.all([
+      supabaseAdmin
+        .from("referral_codes")
+        .select("id, code, owner_user_id, is_active, valid_until, max_uses, current_uses")
+        .eq("code", code.trim().toUpperCase())
+        .eq("is_active", true)
+        .single(),
+      supabaseAdmin
+        .from("referral_uses")
+        .select("id")
+        .eq("used_by_user_id", me.id)
+        .maybeSingle(),
+    ]);
 
     if (refErr || !refCode) return NextResponse.json({ error: "Code invalide" }, { status: 404 });
 
@@ -37,12 +46,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Vous ne pouvez pas utiliser votre propre code" }, { status: 400 });
     }
 
-    // Idempotence : un utilisateur ne peut utiliser un code de parrainage qu'une fois.
-    const { data: alreadyUsed } = await supabaseAdmin
-      .from("referral_uses")
-      .select("id")
-      .eq("used_by_user_id", me.id)
-      .maybeSingle();
     if (alreadyUsed) {
       return NextResponse.json({ error: "Vous avez déjà utilisé un code de parrainage" }, { status: 400 });
     }

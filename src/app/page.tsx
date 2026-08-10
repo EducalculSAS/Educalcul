@@ -1,23 +1,26 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, LogIn, Users, BookOpen } from "lucide-react";
+import { ArrowRight, LogIn, Users, BookOpen, Sparkles, GraduationCap, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollArrow from "@/components/home/ScrollArrow";
-import FadeInSection from "@/components/home/FadeInSection";
+import Reveal, { RevealGroup, RevealItem } from "@/components/home/Reveal";
+import FaqAccordionItem from "@/components/tarifs/TarifsFaqItem";
+import HomePricingGrid from "@/components/home/HomePricingGrid";
 import EpsiAIHover from "@/components/home/EpsiAIHover";
+import EpsiChatPreview from "@/components/home/EpsiChatPreview";
+import GlassButton from "@/components/ui/GlassButton";
 import AnimatedStatsCard from "@/components/home/AnimatedStatsCard";
 import StepsSection from "@/components/home/StepsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import { fetchTrustpilotReviews } from "@/lib/trustpilot";
+import { fetchReviewsForHomepage } from "@/lib/manualReviews";
+import { fetchReviewRatingOverride } from "@/lib/reviewRatingOverride";
+import { fetchActivePlans } from "@/lib/plans";
 
-// Cette page était auparavant un pur "use client" : rien n'était rendu côté
-// serveur (page blanche jusqu'à l'hydratation), et les avis Trustpilot
-// étaient chargés après montage (flash "0 avis" + aller-retour réseau en
-// plus). Elle est maintenant un composant serveur ; seules les portions
-// réellement interactives (animations déclenchées au scroll, survol, compteur
-// animé) sont isolées dans de petits client islands sous
-// src/components/home/.
+// Page publique, quasi-statique (avis + tarifs) : ISR plutôt qu'un aller-retour
+// Supabase à chaque visite. 5 min de décalage max après une modification
+// admin, en échange d'un TTFB en cache pour tout le reste.
+export const revalidate = 300;
 
 /* ─── Symboles math hero — animation CSS pure, aucun état React requis ─── */
 const SYM = [
@@ -41,21 +44,40 @@ const SYM = [
   { s: "ω", x: 93, y: 75, z: 56, d: 0.3, t: 9.5 },
 ];
 
+const MINI_FAQ = [
+  { q: "Combien coûte l'essai ?", a: "Rien. 7 jours d'accès complet, aucune carte bancaire requise pour commencer." },
+  { q: "Puis-je résilier à tout moment ?", a: "Oui, sans engagement ni justification, directement depuis l'espace parent." },
+  { q: "Le contenu suit-il le programme officiel ?", a: "Intégralement — chaque cours et exercice est aligné sur les programmes de l'Éducation Nationale, du CP à la Terminale." },
+];
+
 export default async function Home() {
-  const tpReviews = await fetchTrustpilotReviews();
+  const [tpReviews, ratingOverride, allPlans] = await Promise.all([
+    fetchReviewsForHomepage(),
+    fetchReviewRatingOverride(),
+    fetchActivePlans(),
+  ]);
+
+  // Chaque formule existe en plusieurs lignes (une par intervalle de
+  // facturation) — un seul aperçu par formule distincte (tarif mensuel de
+  // préférence), sinon l'aperçu tarifs affiche 3x la même formule.
+  const plansByName = new Map<string, (typeof allPlans)[number]>();
+  for (const p of allPlans) {
+    const existing = plansByName.get(p.name);
+    if (!existing || p.billing_interval === "month") plansByName.set(p.name, existing?.billing_interval === "month" ? existing : p);
+  }
+  const plans = Array.from(plansByName.values()).sort((a, b) => a.price - b.price);
 
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: "#0f1e3a" }}>
+    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
       <Navbar />
-
       <ScrollArrow />
 
       {/* ════════════════════════════════════════════════════════
-          §1 — HERO
+          HERO
       ════════════════════════════════════════════════════════ */}
       <section
         className="relative flex flex-col items-center justify-center overflow-hidden"
-        style={{ minHeight: "100dvh", background: "#0f1e3a", paddingTop: "var(--nav-h)" }}
+        style={{ minHeight: "100dvh", background: "var(--greek-blue)", paddingTop: "var(--nav-h)" }}
       >
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {SYM.map((cfg, i) => (
@@ -78,286 +100,231 @@ export default async function Home() {
           ))}
         </div>
 
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            width: 600,
-            height: 600,
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(197,161,72,0.08) 0%, transparent 65%)",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -58%)",
-          }}
-        />
-
         <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-3xl">
-          <Image src="/logo.png" alt="Educalcul" width={192} height={110} className="mb-10 w-auto" style={{ height: 110 }} priority />
-
-          <h1
-            className="font-[family-name:var(--font-display)] font-bold leading-[1.02] tracking-tight mb-6"
-            style={{ color: "#f0ede8", fontSize: "clamp(2.6rem, 5.5vw, 4.2rem)" }}
-          >
-            Les maths<br />
-            <span style={{ color: "var(--greek-gold)" }}>enfin à portée de main</span>
-          </h1>
-
-          <p className="text-base leading-relaxed mb-10 max-w-lg" style={{ color: "rgba(240,237,232,0.48)" }}>
-            Educalcul, la seule plateforme qui accompagne tous les élèves en mathématiques, du CP à la Terminale.
-            <br />
-            Pour votre enfant : du contenu de qualité accompagné d’une IA socratique, dans un environnement ludique.
-            <br />
-            Pour vous : un suivi parental précis pour observer ses progrès en toute sérénité.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href="/auth/inscription"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-200 hover:-translate-y-[2px] active:scale-[0.98] font-[family-name:var(--font-display)]"
-              style={{ background: "var(--greek-gold)", color: "#fff", boxShadow: "0 8px 32px rgba(197,161,72,0.32)" }}
-            >
-              Commencer gratuitement <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/auth/connexion"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 border hover:-translate-y-[1px] font-[family-name:var(--font-display)]"
-              style={{ borderColor: "rgba(255,255,255,0.1)", color: "rgba(240,237,232,0.55)" }}
-            >
-              <LogIn className="w-4 h-4" /> Se connecter
-            </Link>
+          <div className="hero-rise hero-rise-1 mb-6">
+            <Image src="/logo.png" alt="Educalcul" width={190} height={108} className="w-auto object-contain" style={{ height: 100 }} priority unoptimized />
           </div>
 
-          <p className="text-sm italic mt-6" style={{ color: "rgba(197,161,72,0.45)", fontFamily: "Georgia, serif" }}>
+          <h1
+            className="font-[family-name:var(--font-display)] font-bold leading-[0.98] tracking-tight mb-8 hero-rise hero-rise-2 max-w-3xl"
+            style={{ color: "#f0ede8", fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
+          >
+            Les maths,<br />
+            <span className="text-gradient-gold">enfin à portée de main</span>
+          </h1>
+
+          <p className="text-base leading-relaxed mb-12 max-w-lg hero-rise hero-rise-3" style={{ color: "rgba(240,237,232,0.55)" }}>
+            Une IA socratique qui guide sans donner la réponse, un programme complet du CP à la Terminale,
+            et un suivi parental limpide. Educalcul accompagne toute la famille, pas seulement l'élève.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 hero-rise hero-rise-4">
+            <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
+              Commencer gratuitement <ArrowRight className="w-4 h-4" />
+            </GlassButton>
+            <GlassButton href="/auth/connexion" variant="light" className="font-semibold">
+              <LogIn className="w-4 h-4" /> Se connecter
+            </GlassButton>
+          </div>
+
+          <p className="text-sm italic mt-10 hero-rise hero-rise-5" style={{ color: "rgba(197,161,72,0.45)", fontFamily: "Georgia, serif" }}>
             Educalcul, par amour des mathématiques.
           </p>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          §2 — MANIFESTE
+          BANDEAU DE PREUVE — faits vérifiables, pas de chiffres inventés
       ════════════════════════════════════════════════════════ */}
-      <section className="py-32 px-6" style={{ background: "var(--greek-cream)" }}>
-        <div className="max-w-4xl mx-auto">
-          <div className="flex gap-8 items-start">
-            <div className="hidden sm:block w-1 rounded-full flex-shrink-0 mt-2" style={{ background: "var(--greek-gold)", height: 72, opacity: 0.6 }} />
-            <div>
-              <blockquote
-                className="font-[family-name:var(--font-display)] font-bold leading-tight"
-                style={{ color: "var(--greek-blue)", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
-              >
-                "Votre enfant ne manque pas de capacités.
-                <br />
-                <span style={{ color: "var(--greek-gold)" }}>Il manque d'une bonne méthode.</span>"
-              </blockquote>
-              <p className="mt-8 text-sm leading-relaxed max-w-xl" style={{ color: "var(--text-muted)" }}>
-                Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils, au bon moment, de la bonne façon.
-              </p>
-            </div>
+      <section className="py-6 px-6" style={{ background: "var(--greek-cream)", borderBottom: "1px solid var(--greek-border)" }}>
+        <Reveal y={12} className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+          <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>
+            <GraduationCap className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> Du CP à la Terminale
           </div>
-        </div>
+          <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>
+            <Sparkles className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> IA pédagogique 24h/24
+          </div>
+          <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>
+            <ShieldCheck className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> 100% programme officiel
+          </div>
+          <div className="w-px h-5 hidden sm:block" style={{ background: "var(--greek-border)" }} />
+          <div className="flex items-center gap-3">
+            <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={140} height={140} className="w-auto object-contain" style={{ height: 60 }} unoptimized />
+            <Image src="/eduscol.svg" alt="Eduscol" width={64} height={22} className="h-5 w-auto object-contain" unoptimized />
+          </div>
+        </Reveal>
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          §3 — BENTO GRID
+          GRAND ÉNONCÉ
       ════════════════════════════════════════════════════════ */}
-      <section className="pt-4 pb-28 px-6" style={{ background: "var(--greek-cream)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            {/* Bloc A — Cours */}
-            <FadeInSection
-              className="rounded-3xl p-8 flex flex-col justify-between"
-              style={{ background: "#fff", border: "1px solid var(--greek-border)", minHeight: 280 }}
-            >
-              <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ background: "rgba(15,30,58,0.06)" }}>
-                  <BookOpen className="w-5 h-5" style={{ color: "var(--greek-blue)" }} />
-                </div>
-                <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--greek-gold)" }}>
-                  Cours & Exercices
-                </div>
-                <h3 className="font-[family-name:var(--font-display)] font-bold text-xl leading-snug mb-3" style={{ color: "var(--greek-blue)" }}>
-                  Programme complet,<br />du CP à la Terminale
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Cours structurés, exercices progressifs, corrections détaillées. Aligné sur le programme officiel.
-                </p>
-              </div>
-              <div className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--greek-gold)" }} />
-                Tous niveaux
-              </div>
-            </FadeInSection>
-
-            {/* Bloc B — EpsiAI */}
-            <FadeInSection
-              delayMs={120}
-              className="rounded-3xl p-8 flex flex-col justify-between relative overflow-visible"
-              style={{ background: "var(--greek-blue)", minHeight: 280 }}
-            >
-              <div className="relative z-10">
-                <EpsiAIHover />
-                <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "rgba(197,161,72,0.7)" }}>IA Pédagogique</div>
-                <h3 className="font-[family-name:var(--font-display)] font-bold text-xl leading-snug mb-3" style={{ color: "#f0ede8" }}>
-                  EpsiAI guide,<br />sans donner la réponse
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(240,237,232,0.5)" }}>
-                  Détecte les lacunes, adapte le rythme, encourage l'élève. Disponible 24h/24.
-                </p>
-              </div>
-              <div className="mt-6 relative z-10 inline-flex items-center gap-1.5 text-xs font-bold" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--greek-gold)" }} />
-                Disponible 24h/24
-              </div>
-            </FadeInSection>
-          </div>
-
-          {/* Suivi Parents */}
-          <FadeInSection
-            delayMs={240}
-            threshold={0.35}
-            className="rounded-3xl p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-            style={{ background: "var(--greek-blue)", border: "1px solid rgba(197,161,72,0.12)" }}
+      <section className="pt-44 pb-36 px-6" style={{ background: "var(--greek-cream)" }}>
+        <Reveal className="max-w-4xl mx-auto text-center" y={44} scale={0.94} duration={1}>
+          <blockquote
+            className="font-[family-name:var(--font-display)] font-bold leading-[1.15]"
+            style={{ fontSize: "clamp(2rem, 4.2vw, 3.4rem)" }}
           >
-            <div>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ background: "rgba(197,161,72,0.12)", border: "1px solid rgba(197,161,72,0.2)" }}>
-                <Users className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />
+            <span style={{ color: "var(--greek-blue)" }}>Votre enfant ne manque pas de capacités.</span>
+            <br />
+            <span className="text-gradient-gold-dark">Il manque d'une bonne méthode.</span>
+          </blockquote>
+          <p className="mt-8 text-base leading-relaxed max-w-xl mx-auto" style={{ color: "var(--text-muted)" }}>
+            Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils, au bon moment, de la bonne façon.
+          </p>
+        </Reveal>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          VITRINE DES FONCTIONNALITÉS — rangées alternées
+      ════════════════════════════════════════════════════════ */}
+      <section className="pb-8 px-6" style={{ background: "var(--greek-cream)" }}>
+        <div className="max-w-5xl mx-auto flex flex-col gap-28 md:gap-36">
+          {/* Rangée A — Cours */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <Reveal y={36} scale={0.96}>
+              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
+                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 01 · Cours & Exercices
               </div>
-              <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "rgba(197,161,72,0.7)" }}>Suivi Parents</div>
-              <h3 className="font-[family-name:var(--font-display)] font-bold text-2xl leading-snug mb-3" style={{ color: "#f0ede8" }}>
-                Chaque progrès,<br />visible en temps réel
+              <h3 className="font-[family-name:var(--font-body)] font-extrabold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+                Tout le programme,<br />aucune lacune oubliée
               </h3>
-              <p className="text-sm leading-relaxed max-w-sm" style={{ color: "rgba(240,237,232,0.5)" }}>
-                Tableau de bord parents avec progression par chapitre, taux de réussite et notifications personnalisées.
+              <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
+                Cours structurés, exercices progressifs, corrections détaillées — construits chapitre par chapitre sur le programme officiel, du CP à la Terminale.
               </p>
-            </div>
-
-            <AnimatedStatsCard />
-          </FadeInSection>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════
-          §3b — PHOTOS ENFANTS
-      ════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-6 overflow-hidden" style={{ background: "var(--greek-cream)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12 max-w-lg">
-            <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>
-              Des élèves qui comprennent,<br />
-              <span style={{ color: "var(--greek-gold)" }}>enfin.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-            <FadeInSection className="group md:col-span-2 relative rounded-3xl overflow-hidden" style={{ height: 420 }} translateY={32}>
-              <Image
-                src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=900&q=80&fit=crop"
-                alt="Élève qui travaille et sourit"
-                fill
-                sizes="(max-width: 768px) 100vw, 66vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.65) 0%, transparent 50%)" }} />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-[family-name:var(--font-display)] font-bold text-lg leading-snug mb-1">
-                  "Enfin, maman comprend mes devoirs !"
-                </p>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>Théo · CE2 · Suivi avec son parent</p>
+            </Reveal>
+            <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-1" style={{ background: "#fff", border: "1px solid var(--greek-border)", minHeight: 280 }}>
+              <div className="h-full flex flex-col justify-center gap-3">
+                {["Fractions et nombres décimaux", "Théorème de Pythagore", "Fonctions affines"].map((t, i) => (
+                  <div key={t} className="flex items-center gap-3 p-3 rounded-xl" style={{ background: i === 1 ? "rgba(197,161,72,0.08)" : "transparent", border: i === 1 ? "1px solid rgba(197,161,72,0.25)" : "1px solid transparent" }}>
+                    <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: i <= 1 ? "var(--greek-gold)" : "var(--greek-border)" }} />
+                    <span className="text-sm font-semibold" style={{ color: i <= 1 ? "var(--greek-blue)" : "var(--text-muted)" }}>{t}</span>
+                    {i < 1 && <BookOpen className="w-4 h-4 ml-auto" style={{ color: "var(--greek-gold)" }} />}
+                  </div>
+                ))}
               </div>
-            </FadeInSection>
-
-            <div className="flex flex-col gap-4">
-              <FadeInSection className="group relative rounded-3xl overflow-hidden" style={{ height: 200 }} translateY={32} delayMs={120}>
-                <Image
-                  src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80&fit=crop"
-                  alt="Enfants qui apprennent ensemble"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.5) 0%, transparent 60%)" }} />
-                <div className="absolute bottom-4 left-4">
-                  <p className="text-white text-sm font-semibold" style={{ fontFamily: "Cinzel, serif" }}>Apprendre avec plaisir</p>
-                </div>
-              </FadeInSection>
-
-              <FadeInSection className="group relative rounded-3xl overflow-hidden" style={{ height: 200 }} translateY={32} delayMs={240}>
-                <Image
-                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80&fit=crop"
-                  alt="Enfant qui réussit ses exercices"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,30,58,0.5) 0%, transparent 60%)" }} />
-                <div className="absolute bottom-4 left-4">
-                  <p className="text-white text-sm font-semibold" style={{ fontFamily: "Cinzel, serif" }}>Les maths au tableau</p>
-                </div>
-              </FadeInSection>
-            </div>
+            </Reveal>
           </div>
 
-          {/* Badge programme EN sous les photos */}
-          <FadeInSection
-            translateY={16}
-            delayMs={360}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl"
-            style={{ background: "#fff", border: "1px solid var(--greek-border)" }}
-          >
-            <div className="flex items-center gap-6 flex-wrap justify-center sm:justify-start">
-              <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={180} height={180} className="w-auto object-contain flex-shrink-0" style={{ height: 180 }} unoptimized />
-              <div className="w-px h-10 hidden sm:block" style={{ background: "var(--greek-border)" }} />
-              <Image src="/eduscol.svg" alt="Eduscol" width={80} height={28} className="h-7 w-auto object-contain" unoptimized />
-            </div>
-            <div className="text-center sm:text-right">
-              <p className="text-sm font-bold" style={{ color: "var(--greek-blue)" }}>
-                100% aligné sur le programme officiel
+          {/* Rangée B — EpsiAI */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-8 relative overflow-visible transition-transform duration-500 hover:-translate-y-1" style={{ background: "var(--greek-blue)", minHeight: 280 }}>
+              <div className="relative z-10 h-full flex flex-col justify-center gap-4">
+                <EpsiAIHover />
+
+                <EpsiChatPreview />
+
+                <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold w-fit" style={{ color: "var(--greek-gold)" }}>
+                  <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--greek-gold)" }} />
+                  Disponible 24h/24
+                </div>
+              </div>
+            </Reveal>
+            <Reveal y={36} scale={0.95}>
+              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
+                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 02 · IA Pédagogique
+              </div>
+              <h3 className="font-[family-name:var(--font-body)] font-extrabold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+                Un tuteur IA qui pose<br />les bonnes questions
+              </h3>
+              <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
+                Jamais la réponse toute cuite : EpsiAI repère où ça bloque et guide l'élève jusqu'au déclic, avec la méthode socratique. Disponible 24h/24.
               </p>
-              <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                Du CP à la Terminale, toutes filières
+            </Reveal>
+          </div>
+
+          {/* Rangée C — Suivi Parents */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <Reveal y={36} scale={0.96}>
+              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
+                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 03 · Suivi Parents
+              </div>
+              <h3 className="font-[family-name:var(--font-body)] font-extrabold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+                Vous savez enfin<br />où il en est vraiment
+              </h3>
+              <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
+                Progression par chapitre, taux de réussite, temps passé : un tableau de bord clair, pas un bulletin de plus à décoder.
               </p>
-            </div>
-            <Link
-              href="/programmes"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5"
-              style={{ background: "var(--greek-blue)", color: "#fff" }}
-            >
-              Voir les programmes <ArrowRight size={14} />
-            </Link>
-          </FadeInSection>
+            </Reveal>
+            <Reveal y={36} scale={0.95} delay={0.1}>
+              <AnimatedStatsCard />
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          §3c — TÉMOIGNAGES
+          APERÇU TARIFS
       ════════════════════════════════════════════════════════ */}
-      <section className="py-16 px-6" style={{ background: "var(--greek-cream)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Avis clients</p>
-            <h2 className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-              Ce que disent nos familles
-            </h2>
+      {plans.length > 0 && (
+        <section className="pt-28 pb-16 px-6" style={{ background: "var(--greek-cream)" }}>
+          <div className="max-w-5xl mx-auto">
+            <Reveal className="text-center mb-14" y={20}>
+              <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Tarifs</p>
+              <h2 className="font-[family-name:var(--font-body)] font-extrabold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
+                Une formule pour chaque famille
+              </h2>
+            </Reveal>
+            <HomePricingGrid plans={plans} />
+            <Reveal y={12} delay={0.2} className="text-center mt-10">
+              <Link href="/tarifs" className="text-sm font-bold underline underline-offset-4" style={{ color: "var(--greek-blue)" }}>
+                Comparer toutes les formules
+              </Link>
+            </Reveal>
           </div>
-          <FadeInSection translateY={24} durationMs={600}>
-            <TestimonialsSection reviews={tpReviews} />
-          </FadeInSection>
-        </div>
+        </section>
+      )}
+
+      {/* ════════════════════════════════════════════════════════
+          TRUSTPILOT — badge compact uniquement
+      ════════════════════════════════════════════════════════ */}
+      <section className="pb-24 px-6" style={{ background: "var(--greek-cream)" }}>
+        <Reveal y={16} className="max-w-5xl mx-auto flex justify-center">
+          <TestimonialsSection reviews={tpReviews} ratingOverride={ratingOverride} compact />
+        </Reveal>
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          §4 — COMMENT ÇA MARCHE (fond beige)
+          COMMENT ÇA MARCHE
       ════════════════════════════════════════════════════════ */}
       <StepsSection />
 
       {/* ════════════════════════════════════════════════════════
-          §5 — CTA FINAL
+          QUESTIONS FRÉQUENTES
       ════════════════════════════════════════════════════════ */}
-      <section className="py-28 px-6" style={{ background: "var(--greek-blue)" }}>
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-6" style={{ color: "#f0ede8", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+      <section className="pt-24 pb-36 px-6" style={{ background: "var(--greek-cream)" }}>
+        <div className="max-w-3xl mx-auto">
+          <Reveal className="text-center mb-10" y={20}>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Questions fréquentes</p>
+            <h2 className="font-[family-name:var(--font-body)] font-extrabold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
+              Encore quelques doutes ?
+            </h2>
+          </Reveal>
+          <RevealGroup className="flex flex-col gap-3" stagger={0.08}>
+            {MINI_FAQ.map((f) => (
+              <RevealItem key={f.q}>
+                <FaqAccordionItem question={f.q} answer={f.a} />
+              </RevealItem>
+            ))}
+          </RevealGroup>
+          <Reveal y={12} delay={0.15} className="text-center mt-8">
+            <Link href="/faq" className="text-sm font-bold underline underline-offset-4" style={{ color: "var(--greek-blue)" }}>
+              Voir toutes les questions
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          CTA FINAL
+      ════════════════════════════════════════════════════════ */}
+      <section className="relative py-36 px-6 overflow-hidden" style={{ background: "var(--greek-blue)" }}>
+        <Reveal className="relative z-10 text-center max-w-2xl mx-auto" y={36} scale={0.95}>
+          <h2
+            className="font-[family-name:var(--font-display)] font-bold leading-[1.1] mb-6"
+            style={{ color: "#f0ede8", fontSize: "clamp(2.1rem, 4.2vw, 3.2rem)" }}
+          >
             Votre enfant mérite<br />
-            <span style={{ color: "var(--greek-gold)" }}>le meilleur.</span>
+            <span className="text-gradient-gold">le meilleur.</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm" style={{ color: "rgba(240,237,232,0.42)" }}>
             <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Méthodologie adaptée</span>
@@ -365,22 +332,14 @@ export default async function Home() {
             <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Annulable à tout moment</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/auth/inscription"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-200 hover:-translate-y-[2px] active:scale-[0.98] font-[family-name:var(--font-display)]"
-              style={{ background: "var(--greek-gold)", color: "#fff", boxShadow: "0 8px 32px rgba(197,161,72,0.32)" }}
-            >
+            <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
               Commencer gratuitement <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/offres"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 border hover:-translate-y-[1px] font-[family-name:var(--font-display)]"
-              style={{ borderColor: "rgba(197,161,72,0.22)", color: "rgba(240,237,232,0.55)" }}
-            >
+            </GlassButton>
+            <GlassButton href="/offres" variant="light" className="font-semibold">
               Voir les offres
-            </Link>
+            </GlassButton>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <Footer />

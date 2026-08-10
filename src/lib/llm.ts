@@ -531,6 +531,8 @@ export async function gradeAnswer(
   maxPoints: number,
 ): Promise<{ is_correct: boolean; score: number; feedback: string }> {
   const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}". Corrige avec soin et pédagogie.
+VÉRIFICATION ALGÉBRIQUE (à faire systématiquement, avant de juger) :
+- Redéveloppe/recalcule toi-même, terme à terme, la réponse attendue ET la réponse élève, pour comparer deux expressions réellement simplifiées — ne juge JAMAIS sur une simple ressemblance visuelle des deux chaînes de caractères. Une erreur de signe ou de calcul de ta part change le verdict pour l'élève, sois rigoureux.
 RÈGLES D'ÉQUIVALENCE (très important) :
 - Accepte TOUTE forme mathématiquement équivalente à la réponse attendue, même si elle diffère de la formulation donnée : fraction non simplifiée ou simplifiée (ex: 4/8 = 1/2), nombre décimal vs fraction (ex: 0.5 = 1/2), forme développée vs factorisée, ordre différent des termes/solutions, unités équivalentes, écriture avec ou sans espace/virgule décimale, pourcentage vs décimal (ex: 50% = 0.5), racine simplifiée ou non.
 - Seule l'exactitude mathématique compte, pas la forme exacte du texte.

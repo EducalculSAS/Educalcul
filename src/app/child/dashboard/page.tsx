@@ -8,6 +8,7 @@ import {
   Play, MessageSquare, Star, CheckCircle, Zap, type LucideIcon,
 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
+import GlassButton from "@/components/ui/GlassButton";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   pencil: PenTool, zap: Zap, flame: Star, star: Star, crown: Trophy,
@@ -147,9 +148,9 @@ export default async function ChildDashboard() {
                     <p className="text-xs text-gray-500">{nextCourse.subject}</p>
                   </div>
                 </div>
-                <Link href={`/child/cours/${nextCourse.id}`} className="btn-primary-greek px-4 py-2 text-sm whitespace-nowrap flex items-center gap-1">
+                <GlassButton href={`/child/cours/${nextCourse.id}`} variant="navy" size="sm" className="whitespace-nowrap">
                   <Play className="w-3 h-3 fill-current" /> Démarrer
-                </Link>
+                </GlassButton>
               </div>
             ) : (
               <div className="bg-gray-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center gap-3 text-gray-400">
@@ -171,9 +172,9 @@ export default async function ChildDashboard() {
                     <p className="text-xs text-gray-500 capitalize">{nextExercise.difficulty_level || "Normal"}</p>
                   </div>
                 </div>
-                <Link href={`/child/exercises/${nextExercise.id}`} className="bg-[var(--greek-bronze)] text-white px-4 py-2 text-sm rounded-lg font-bold hover:bg-[var(--greek-gold)] transition-colors whitespace-nowrap flex items-center gap-1">
+                <GlassButton href={`/child/exercises/${nextExercise.id}`} variant="navy" size="sm" className="whitespace-nowrap">
                   <Play className="w-3 h-3 fill-current" /> Faire
-                </Link>
+                </GlassButton>
               </div>
             ) : (
               <div className="bg-gray-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center gap-3 text-gray-400">

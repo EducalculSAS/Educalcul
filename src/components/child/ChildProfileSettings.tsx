@@ -10,6 +10,7 @@ import {
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getSimpleLevelLabel } from "@/lib/constants";
+import GlassButton from "@/components/ui/GlassButton";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -42,7 +43,7 @@ export default function ChildProfileSettings({
 }: {
   user: ChildUser;
   googleLinked: boolean;
-  activityCounts: { courses: number; exercises: number };
+  activityCounts: { courses: number; exercises: number; badges: number };
 }) {
   const [saving, setSaving] = useState(false);
   const [avatar, setAvatar] = useState(user.avatar || "/avatars/avatar1.png");
@@ -112,7 +113,7 @@ export default function ChildProfileSettings({
         <div className={`p-4 rounded-xl flex items-center gap-3 text-sm font-medium mb-6 ${message.type === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
           {message.type === "success" ? <CheckCircle className="w-5 h-5 shrink-0" /> : <AlertCircle className="w-5 h-5 shrink-0" />}
           {message.text}
-          <button className="ml-auto font-bold text-lg leading-none" onClick={() => setMessage(null)}>×</button>
+          <button className="ml-auto font-bold text-lg leading-none" onClick={() => setMessage(null)} aria-label="Fermer le message">×</button>
         </div>
       )}
 
@@ -142,7 +143,7 @@ export default function ChildProfileSettings({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
         {[
           { icon: School, label: "Niveau", value: user.grade_level ? getSimpleLevelLabel(user.grade_level) : "—", color: "#3b82f6" },
-          { icon: Trophy, label: "Trophées", value: "0", color: "var(--greek-gold)" },
+          { icon: Trophy, label: "Trophées", value: `${activityCounts.badges}`, color: "var(--greek-gold)" },
           { icon: BookOpen, label: "Cours suivis", value: `${activityCounts.courses}`, color: "#a855f7" },
           { icon: Brain, label: "Exercices", value: `${activityCounts.exercises}`, color: "#10b981" },
         ].map(({ icon: Icon, label, value, color }, i) => (
@@ -203,12 +204,12 @@ export default function ChildProfileSettings({
               {googleLinked ? (
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Lié</span>
-                  <button onClick={handleUnlinkGoogle} className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" /></button>
+                  <button onClick={handleUnlinkGoogle} aria-label="Supprimer le lien Google" className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" aria-hidden="true" /></button>
                 </div>
               ) : (
-                <button onClick={handleLinkGoogle} className="text-xs font-bold px-4 py-2 rounded-xl border transition-all hover:opacity-80" style={{ borderColor: "rgba(197,161,72,0.3)", color: "var(--greek-blue)" }}>
+                <GlassButton onClick={handleLinkGoogle} variant="outline" size="sm">
                   Lier
-                </button>
+                </GlassButton>
               )}
             </div>
           </div>
@@ -254,9 +255,9 @@ export default function ChildProfileSettings({
             <p className="font-semibold text-red-800 text-sm">Supprimer mon compte</p>
             <p className="text-xs text-red-600">Action irréversible — toutes tes données seront perdues.</p>
           </div>
-          <button onClick={() => { setDeleteStep(1); setShowDeleteModal(true); }} className="px-4 py-2 bg-white border border-red-200 text-red-600 rounded-xl text-sm font-semibold hover:bg-red-100 transition-colors">
+          <GlassButton onClick={() => { setDeleteStep(1); setShowDeleteModal(true); }} variant="danger" size="sm">
             Supprimer mon compte
-          </button>
+          </GlassButton>
         </div>
       </div>
 
@@ -283,13 +284,13 @@ export default function ChildProfileSettings({
               )}
             </div>
             <div className="px-6 pb-6 flex gap-3 justify-end">
-              <button onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }} className="px-5 py-2 border border-gray-200 rounded-xl text-gray-600 text-sm font-semibold hover:bg-gray-50">Annuler</button>
+              <GlassButton onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }} variant="ghost" size="sm">Annuler</GlassButton>
               {deleteStep === 1 ? (
-                <button onClick={() => setDeleteStep(2)} className="px-5 py-2 bg-red-500 text-white text-sm font-bold rounded-xl hover:bg-red-600">Continuer</button>
+                <GlassButton onClick={() => setDeleteStep(2)} variant="danger" size="sm">Continuer</GlassButton>
               ) : (
-                <button onClick={handleDeleteAccount} disabled={saving} className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-xl hover:bg-red-700 disabled:opacity-50 flex items-center gap-2">
+                <GlassButton onClick={handleDeleteAccount} variant="danger" size="sm" style={saving ? { opacity: 0.5, pointerEvents: "none" } : undefined}>
                   {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}Supprimer
-                </button>
+                </GlassButton>
               )}
             </div>
           </div>

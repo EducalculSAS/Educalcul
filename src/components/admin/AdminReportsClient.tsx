@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
 import {
   Users, BookOpen, MessageSquare, TrendingUp, Activity,
   BarChart2, UserPlus, CreditCard, Dumbbell, Gift, RefreshCw, Clock,
@@ -76,14 +77,10 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
                 <p className="text-xs text-gray-300">actualisation dans {countdown}s</p>
               </div>
             )}
-            <button
-              onClick={() => fetchData()}
-              disabled={refreshing}
-              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
-            >
+            <GlassButton size="sm" variant="outline" disabled={refreshing} onClick={() => fetchData()}>
               <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
               <span className="hidden sm:inline">Actualiser</span>
-            </button>
+            </GlassButton>
           </>
         }
       />
@@ -119,7 +116,7 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
       </div>
 
       {/* ── Performance & Trafic ─────────────────────────────────────────── */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+      <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
         <h3 className="text-base font-bold text-[var(--greek-blue)] mb-5 flex items-center gap-2">
           <Wifi size={18} className="text-[var(--greek-gold)]" />
           Performance &amp; Trafic du site
@@ -232,7 +229,7 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* Bar chart — inscriptions par semaine */}
-        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)]">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)]">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
             <TrendingUp size={18} className="text-[var(--greek-gold)]" />
             Inscriptions — 8 dernières semaines
@@ -262,7 +259,7 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
         </div>
 
         {/* Recent activity */}
-        <div className="bg-white p-6 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)]">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)]">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
             <Activity size={18} className="text-[var(--greek-gold)]" />
             Activité récente

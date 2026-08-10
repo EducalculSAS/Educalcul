@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, X, Plus } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 import PageLoader from "@/components/PageLoader";
 import { useSmoothPercent } from "./useSmoothPercent";
 import type { Chapter, Lesson } from "./CourseBuilder";
@@ -132,7 +133,7 @@ export default function AIAddContentModal({
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1060] p-4 backdrop-blur-sm">
       <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-4 flex justify-between items-center text-white">
+        <div className="bg-gradient-to-r from-[var(--greek-blue)] to-blue-600 p-4 flex justify-between items-center text-white">
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-amber-300" />
             <h3 className="font-bold text-lg">Ajouter du contenu avec l'IA</h3>
@@ -256,15 +257,16 @@ export default function AIAddContentModal({
 
         {!loading && (
           <div className="p-4 border-t border-[rgba(197,161,72,0.25)] flex justify-end gap-2">
-            <button
-              type="button"
+            <GlassButton
+              size="sm"
+              variant="navy"
               onClick={handleApply}
               disabled={!instruction.trim()}
-              className="px-4 py-2 text-sm rounded-lg bg-[var(--greek-blue)] text-white font-medium hover:opacity-90 disabled:opacity-50 flex items-center gap-2"
+              className="gap-2"
             >
               <Plus size={16} />
               Créer et insérer
-            </button>
+            </GlassButton>
           </div>
         )}
       </div>

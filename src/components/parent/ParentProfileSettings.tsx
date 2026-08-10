@@ -21,6 +21,7 @@ import { validatePassword } from "@/lib/validation";
 import Image from "next/image";
 import { avatarUrl } from "@/lib/avatarUrl";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
+import GlassButton from "@/components/ui/GlassButton";
 
 /** Réglages du profil parent : informations, sécurité, notifications, comptes
  * liés, export RGPD et suppression de compte — toutes des mutations, donc
@@ -356,9 +357,10 @@ export default function ParentProfileSettings({
                   />
                   <label
                     htmlFor="avatar-upload"
+                    aria-label="Changer la photo de profil"
                     className="absolute bottom-0 right-0 bg-[var(--greek-blue)] text-white p-2 rounded-full cursor-pointer shadow-lg hover:bg-blue-600 transition-colors"
                   >
-                    <Camera className="w-4 h-4" />
+                    <Camera className="w-4 h-4" aria-hidden="true" />
                     <input
                       id="avatar-upload"
                       type="file"
@@ -480,7 +482,7 @@ export default function ParentProfileSettings({
                     })
                   }
                   className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="••••••"
+                  placeholder="Votre mot de passe actuel"
                 />
               </div>
 
@@ -498,7 +500,7 @@ export default function ParentProfileSettings({
                     })
                   }
                   className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="••••••"
+                  placeholder="Au moins 10 caractères"
                 />
               </div>
 
@@ -516,7 +518,7 @@ export default function ParentProfileSettings({
                     })
                   }
                   className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="••••••"
+                  placeholder="Retapez le nouveau mot de passe"
                 />
               </div>
 
@@ -623,17 +625,15 @@ export default function ParentProfileSettings({
                     onClick={handleUnlinkGoogle}
                     className="p-1 text-gray-400 hover:text-red-500 transition-colors"
                     title="Délier le compte"
+                    aria-label="Délier le compte Google"
                   >
-                    <Trash2 className="w-5 h-5" />
+                    <Trash2 className="w-5 h-5" aria-hidden="true" />
                   </button>
                 </div>
               ) : (
-                <button
-                  onClick={handleLinkGoogle}
-                  className="px-4 py-2 bg-white border border-[rgba(197,161,72,0.25)] rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
-                >
+                <GlassButton onClick={handleLinkGoogle} variant="outline" size="sm">
                   Lier le compte
-                </button>
+                </GlassButton>
               )}
             </div>
           </div>
@@ -678,12 +678,9 @@ export default function ParentProfileSettings({
                 <p className="font-medium text-red-800">Supprimer mon compte</p>
                 <p className="text-sm text-red-600">Cette action est irréversible et supprimera toutes vos données.</p>
               </div>
-              <button
-                onClick={() => { setDeleteStep(1); setShowDeleteModal(true); }}
-                className="px-4 py-2 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium shadow-sm"
-              >
+              <GlassButton onClick={() => { setDeleteStep(1); setShowDeleteModal(true); }} variant="danger" size="sm">
                 Supprimer mon compte
-              </button>
+              </GlassButton>
             </div>
           </div>
         </div>
@@ -708,19 +705,12 @@ export default function ParentProfileSettings({
                   </div>
                 </div>
                 <div className="px-6 pb-6 flex gap-3 justify-end">
-                  <button
-                    onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }}
-                    className="px-5 py-2.5 border border-gray-200 rounded-xl text-gray-600 font-semibold hover:bg-gray-50 transition-colors"
-                  >
+                  <GlassButton onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }} variant="ghost" size="sm">
                     Fermer
-                  </button>
-                  <a
-                    href="/parent/subscription"
-                    onClick={() => setShowDeleteModal(false)}
-                    className="px-5 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors"
-                  >
+                  </GlassButton>
+                  <GlassButton href="/parent/subscription" variant="navy" size="sm">
                     Gérer l'abonnement
-                  </a>
+                  </GlassButton>
                 </div>
               </>
             ) : (
@@ -763,19 +753,13 @@ export default function ParentProfileSettings({
                   )}
                 </div>
                 <div className="px-6 pb-6 flex gap-3 justify-end">
-                  <button
-                    onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }}
-                    className="px-5 py-2.5 border border-gray-200 rounded-xl text-gray-600 font-semibold hover:bg-gray-50 transition-colors"
-                  >
+                  <GlassButton onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }} variant="ghost" size="sm">
                     Annuler
-                  </button>
+                  </GlassButton>
                   {deleteStep === 1 ? (
-                    <button
-                      onClick={() => setDeleteStep(2)}
-                      className="px-5 py-2.5 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition-colors"
-                    >
+                    <GlassButton onClick={() => setDeleteStep(2)} variant="danger" size="sm">
                       Continuer
-                    </button>
+                    </GlassButton>
                   ) : (
                     <button
                       onClick={handleDeleteAccount}

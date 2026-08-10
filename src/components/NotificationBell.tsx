@@ -110,7 +110,7 @@ export default function NotificationBell() {
       {open && (
         <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-[rgba(197,161,72,0.2)] z-[9999] overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(197,161,72,0.15)]">
             <h3 className="font-bold text-[var(--greek-blue)] text-sm">Notifications</h3>
             <div className="flex items-center gap-2">
               {unread > 0 && (
@@ -118,7 +118,7 @@ export default function NotificationBell() {
                   <Check className="w-3 h-3" /> Tout lire
                 </button>
               )}
-              <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-gray-600">
+              <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-gray-600" aria-label="Fermer le panneau de notifications">
                 <X className="w-4 h-4" />
               </button>
             </div>

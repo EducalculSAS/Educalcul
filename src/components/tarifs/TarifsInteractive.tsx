@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Check, X, Star, ArrowRight, Sparkles, Info } from "lucide-react";
 import type { Plan } from "@/lib/plans";
+import { FEATURE_ROWS, formatVal, intervalLabel } from "@/lib/planFeatures";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 /* A row in the comparison: either a real plan or a custom config */
 interface CompareItem {
@@ -13,51 +16,6 @@ interface CompareItem {
   billing_interval: string;
   features: Record<string, boolean | number | string | null>;
 }
-
-const FEATURE_ROWS: { key: string; label: string; tip?: string }[] = [
-  { key: "max_children", label: "Enfants", tip: "Profils enfants actifs simultanément" },
-  { key: "access_level_exercises", label: "Niveaux scolaires", tip: "CP à 6ème / CP à 3ème / CP à Terminale" },
-  { key: "ai_access", label: "IA EpsiAI", tip: "Accès à l'assistante pédagogique IA" },
-  { key: "ai_daily_limit", label: "Questions IA / jour", tip: "Nombre de messages envoyés à EpsiAI" },
-  { key: "quiz_access", label: "Quiz & évaluations", tip: "Accès à tous les quiz" },
-  { key: "detailed_reports", label: "Rapports hebdomadaires", tip: "Email récapitulatif chaque semaine" },
-  { key: "custom_avatars", label: "Avatars & cosmétiques", tip: "Contours et couleurs de nom exclusifs" },
-  { key: "priority_support", label: "Support prioritaire", tip: "Réponse garantie sous 4h en semaine" },
-];
-
-function formatVal(key: string, val: boolean | number | string | null): { label: string; included: boolean } {
-  if (val === false || val === null || val === 0 || val === "none") return { label: "", included: false };
-  if (val === true) return { label: "Inclus", included: true };
-  if (key === "max_children") return { label: Number(val) === -1 ? "Illimité" : `${val} enfant${Number(val) > 1 ? "s" : ""}`, included: true };
-  if (key === "ai_daily_limit") return { label: Number(val) === -1 ? "Illimité" : `${val} / jour`, included: true };
-  if (key === "ai_access") {
-    if (val === "unlimited") return { label: "Illimité", included: true };
-    if (val === "limited") return { label: "Limité", included: true };
-    return { label: "", included: false };
-  }
-  if (key === "access_level_exercises") {
-    if (val === "all") return { label: "CP → Terminale", included: true };
-    if (val === "college") return { label: "CP → 3ème", included: true };
-    if (val === "basic") return { label: "CP → 6ème", included: true };
-    return { label: String(val), included: true };
-  }
-  if (key === "history") {
-    if (val === "unlim" || val === "unlimited") return { label: "Illimité", included: true };
-    if (val === "30d") return { label: "30 jours", included: true };
-    if (val === "7d") return { label: "7 jours", included: true };
-    return { label: String(val), included: true };
-  }
-  return { label: String(val), included: true };
-}
-
-const intervalLabel = (i: string) => {
-  switch (i) {
-    case "year": return "/an";
-    case "semester": return "/semestre";
-    case "quarter": return "/trimestre";
-    default: return "/mois";
-  }
-};
 
 const INTERVAL_LABELS: { id: string; label: string }[] = [
   { id: "month", label: "Mensuel" },
@@ -108,8 +66,9 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
             onClick={handleClose}
             className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
             style={{ color: "rgba(255,255,255,0.5)" }}
+            aria-label="Fermer"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4" aria-hidden="true" />
           </button>
           {plan.promo_description && (
             <div className="inline-flex items-center gap-1 text-xs font-bold mb-3" style={{ color: "var(--greek-gold)" }}>
@@ -140,7 +99,7 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
               return (
                 <li key={row.key} className="flex items-center gap-3">
                   <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${included ? "bg-[rgba(197,161,72,0.12)]" : "bg-gray-50"}`}>
-                    {included ? <Check className="w-3 h-3" style={{ color: "var(--greek-gold)" }} /> : <X className="w-3 h-3 text-gray-300" />}
+                    {included ? <Check className="w-3 h-3" style={{ color: "var(--greek-gold)" }} aria-label="Inclus" /> : <X className="w-3 h-3 text-gray-300" aria-label="Non inclus" />}
                   </div>
                   <span className={`text-sm flex-1 ${included ? "text-[var(--text-dark)]" : "text-gray-300"}`}>{row.label}</span>
                   {included && label !== "Inclus" && (
@@ -165,9 +124,9 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
 }
 
 /* ─── Plan card (used in both Familles and Lycéens tabs) ─── */
-function PlanCard({
+export function PlanCard({
   plan, idx, popular, hideChildren, cardsVisible, onOpen,
-  compareChecked, onToggleCompare,
+  compareChecked, onToggleCompare, hideCompare = false,
 }: {
   plan: Plan;
   idx: number;
@@ -177,14 +136,15 @@ function PlanCard({
   onOpen: () => void;
   compareChecked: boolean;
   onToggleCompare: () => void;
+  hideCompare?: boolean;
 }) {
   const rows = FEATURE_ROWS.slice(0, 4).filter((r) => !(hideChildren && r.key === "max_children"));
   return (
     <div
+      className="h-full"
       style={{
         position: "relative",
         zIndex: popular ? 10 : 1,
-        transform: popular ? "scale(1.04)" : undefined,
         opacity: cardsVisible ? undefined : 0,
         animation: cardsVisible ? `cardIn 0.5s ease-out ${popular ? "180ms" : "0ms"} both` : "none",
       }}
@@ -204,22 +164,24 @@ function PlanCard({
           </div>
         )}
 
-        <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)] cursor-pointer" onClick={onOpen}>
-          {plan.promo_description && (
-            <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-3">
-              <Sparkles className="w-3 h-3" />{plan.promo_description}
-            </div>
-          )}
-          {plan.trial_days > 0 && (
-            <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200 mb-3">
-              {plan.trial_days} jours d&apos;essai gratuit
-            </div>
-          )}
+        <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)]">
+          <div className="min-h-[26px] mb-3 flex flex-wrap items-center justify-center gap-2">
+            {plan.promo_description && (
+              <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)]">
+                <Sparkles className="w-3 h-3" />{plan.promo_description}
+              </div>
+            )}
+            {plan.trial_days > 0 && (
+              <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">
+                {plan.trial_days} jours d&apos;essai gratuit
+              </div>
+            )}
+          </div>
           <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">{plan.name}</h3>
           {plan.description && <p className="text-sm text-[var(--text-muted)]">{plan.description}</p>}
         </div>
 
-        <div className="px-7 py-6 text-center border-b border-[var(--greek-border)] cursor-pointer" onClick={onOpen}>
+        <div className="px-7 py-6 text-center border-b border-[var(--greek-border)]">
           <div className="flex items-end justify-center gap-1">
             <span className="font-[family-name:var(--font-display)] text-4xl font-bold text-[var(--greek-blue)]">
               {Number(plan.price) === 0 ? "Gratuit" : `${plan.price}€`}
@@ -238,7 +200,7 @@ function PlanCard({
               return (
                 <li key={row.key} className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-[rgba(197,161,72,0.12)] flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-[var(--greek-gold)]" />
+                    <Check className="w-3 h-3 text-[var(--greek-gold)]" aria-hidden="true" />
                   </div>
                   <span className="text-sm text-[var(--text-dark)] flex-1">{row.label}</span>
                   {label !== "Inclus" && (
@@ -248,25 +210,28 @@ function PlanCard({
               );
             })}
           </ul>
-          <button
-            onClick={onOpen}
-            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all group-hover:-translate-y-0.5 group-hover:shadow-md font-[family-name:var(--font-display)]"
-            style={popular
-              ? { background: "var(--greek-blue)", color: "white" }
-              : { border: "2px solid var(--greek-blue)", color: "var(--greek-blue)" }}
-          >
-            Voir les détails <ArrowRight className="w-4 h-4" />
-          </button>
+          <div className="mt-auto">
+            <GlassButton
+              onClick={onOpen}
+              variant={popular ? "navy" : "outline"}
+              fullWidth
+              className="font-bold font-[family-name:var(--font-display)]"
+            >
+              Voir les détails <ArrowRight className="w-4 h-4" />
+            </GlassButton>
 
-          <label className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold cursor-pointer select-none" style={{ color: "var(--text-muted)" }}>
-            <input
-              type="checkbox"
-              checked={compareChecked}
-              onChange={onToggleCompare}
-              className="w-4 h-4 rounded accent-[var(--greek-gold)] cursor-pointer"
-            />
-            Comparer
-          </label>
+            {!hideCompare && (
+              <label className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold cursor-pointer select-none" style={{ color: "var(--text-muted)" }}>
+                <input
+                  type="checkbox"
+                  checked={compareChecked}
+                  onChange={onToggleCompare}
+                  className="w-4 h-4 rounded accent-[var(--greek-gold)] cursor-pointer"
+                />
+                Comparer
+              </label>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -354,7 +319,7 @@ function ComparisonTable({ items, onRemove }: { items: CompareItem[]; onRemove: 
                       label === "Inclus" ? (
                         <div className="flex justify-center">
                           <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: "rgba(197,161,72,0.12)" }}>
-                            <Check className="w-3.5 h-3.5" style={{ color: "var(--greek-gold)" }} />
+                            <Check className="w-3.5 h-3.5" style={{ color: "var(--greek-gold)" }} aria-label="Inclus" />
                           </div>
                         </div>
                       ) : (
@@ -364,7 +329,7 @@ function ComparisonTable({ items, onRemove }: { items: CompareItem[]; onRemove: 
                       )
                     ) : (
                       <div className="flex justify-center">
-                        <X className="w-4 h-4 text-gray-200" />
+                        <X className="w-4 h-4 text-gray-200" aria-label="Non inclus" />
                       </div>
                     )}
                   </td>
@@ -669,39 +634,22 @@ export default function TarifsInteractive({ initialPlans }: { initialPlans: Plan
           `}</style>
 
           <div className="flex justify-center mb-12">
-            <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-2xl" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
-              {TABS.map((t) => (
-                <button
-                  key={t.id}
-                  onClick={() => setTab(t.id)}
-                  className="px-5 py-2.5 rounded-xl text-sm font-bold transition-all font-[family-name:var(--font-display)]"
-                  style={tab === t.id
-                    ? { background: "var(--greek-blue)", color: "#fff" }
-                    : { background: "transparent", color: "var(--greek-blue)" }}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </div>
+            <GlassSegmentedControl
+              options={TABS}
+              value={tab}
+              onChange={(id) => setTab(id as TabId)}
+            />
           </div>
 
           {tab === "familles" && (
             <>
               <div className="flex justify-center mb-10">
-                <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid var(--greek-border)" }}>
-                  {INTERVAL_LABELS.map((it) => (
-                    <button
-                      key={it.id}
-                      onClick={() => setInterval(it.id)}
-                      className="px-4 py-2 rounded-lg text-xs font-bold transition-all font-[family-name:var(--font-display)]"
-                      style={interval === it.id
-                        ? { background: "var(--greek-blue)", color: "#fff" }
-                        : { background: "transparent", color: "var(--greek-blue)" }}
-                    >
-                      {it.label}
-                    </button>
-                  ))}
-                </div>
+                <GlassSegmentedControl
+                  options={INTERVAL_LABELS}
+                  value={interval}
+                  onChange={setInterval}
+                  size="sm"
+                />
               </div>
               {famillePlans.length === 0
                 ? <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>

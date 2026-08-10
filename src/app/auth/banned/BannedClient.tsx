@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import { AlertTriangle, Clock, FileText, LogIn } from 'lucide-react';
 import AppAdminLoader from '@/components/AppAdminLoader';
+import GlassButton from '@/components/ui/GlassButton';
 
 export default function BannedPage() {
   const router = useRouter();
@@ -161,13 +162,10 @@ export default function BannedPage() {
 
           {/* Footer */}
           <div className="px-8 py-6 flex gap-4 justify-between sm:justify-end border-t" style={{ background: "var(--greek-cream)", borderColor: "var(--greek-border)" }}>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-6 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-opacity shadow-sm"
-            >
+            <GlassButton onClick={handleLogout} variant="navy" size="sm">
               <LogIn className="w-5 h-5" />
               Se déconnecter
-            </button>
+            </GlassButton>
           </div>
         </div>
 

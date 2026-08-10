@@ -3,6 +3,7 @@ import { randomUUID } from "crypto";
 import { chatWithAI } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { sanitizeErrorMessage } from "@/lib/safeError";
 
 const DEMO_COOKIE = "epsi_demo_id";
 
@@ -131,6 +132,6 @@ export async function POST(req: NextRequest) {
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     console.error("[epsi-demo]", msg);
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(msg) }, { status: 500 });
   }
 }

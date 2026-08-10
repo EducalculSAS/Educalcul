@@ -3,6 +3,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAI } from "@/lib/llm";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 // POST: parent asks AI to suggest a math revision schedule for a child,
 // based on ALL of the child's activity — exercises, quizzes, course
@@ -11,6 +12,12 @@ export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const cfg = RATE_LIMITS["ai:tutor"];
+    const rl = await rateLimitWithBackoff(`calendar:suggest:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    if (!rl.allowed) {
+      return NextResponse.json({ error: "Trop de suggestions demandées, réessaie plus tard." }, { status: 429 });
+    }
 
     const body = await req.json();
     const { childId } = body;
@@ -33,37 +40,44 @@ export async function POST(req: Request) {
       .maybeSingle();
     if (!child) return NextResponse.json({ error: "Child not found" }, { status: 404 });
 
-    // ── Exercices (titre = sujet précis de maths, "subject" n'est pas renseigné) ──
-    const { data: exerciseAttempts } = await supabaseAdmin
-      .from("user_exercise_attempts")
-      .select("is_correct, attempted_at, exercise:exercises(title, difficulty_level)")
-      .eq("user_id", childIdNum)
-      .order("attempted_at", { ascending: false })
-      .limit(100);
-
-    // ── Quiz : mêmes sujets, taux de réussite + temps passé par quiz ──
-    const { data: quizAttempts } = await supabaseAdmin
-      .from("user_quiz_attempts")
-      .select("score, total_questions, time_spent_seconds, completed_at, quiz:quizzes(title)")
-      .eq("user_id", childIdNum)
-      .order("completed_at", { ascending: false })
-      .limit(50);
-
-    // ── Cours consultés ──
-    const { data: courseProgress } = await supabaseAdmin
-      .from("user_course_progress")
-      .select("created_at, course:courses(title)")
-      .eq("user_id", childIdNum)
-      .order("created_at", { ascending: false })
-      .limit(20);
-
-    // ── Temps passé sur la plateforme (30 derniers jours) ──
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
-    const { data: sessions } = await supabaseAdmin
-      .from("user_sessions")
-      .select("duration_seconds, login_at")
-      .eq("user_id", childIdNum)
-      .gte("login_at", thirtyDaysAgo);
+
+    // Ces 4 requêtes ne dépendent que de childIdNum : indépendantes entre
+    // elles, on les lance en parallèle plutôt qu'en série.
+    const [
+      { data: exerciseAttempts },
+      { data: quizAttempts },
+      { data: courseProgress },
+      { data: sessions },
+    ] = await Promise.all([
+      // ── Exercices (titre = sujet précis de maths, "subject" n'est pas renseigné) ──
+      supabaseAdmin
+        .from("user_exercise_attempts")
+        .select("is_correct, attempted_at, exercise:exercises(title)")
+        .eq("user_id", childIdNum)
+        .order("attempted_at", { ascending: false })
+        .limit(100),
+      // ── Quiz : mêmes sujets, taux de réussite + temps passé par quiz ──
+      supabaseAdmin
+        .from("user_quiz_attempts")
+        .select("score, total_questions, time_spent_seconds, completed_at, quiz:quizzes(title)")
+        .eq("user_id", childIdNum)
+        .order("completed_at", { ascending: false })
+        .limit(50),
+      // ── Cours consultés ──
+      supabaseAdmin
+        .from("user_course_progress")
+        .select("created_at, course:courses(title)")
+        .eq("user_id", childIdNum)
+        .order("created_at", { ascending: false })
+        .limit(20),
+      // ── Temps passé sur la plateforme (30 derniers jours) ──
+      supabaseAdmin
+        .from("user_sessions")
+        .select("duration_seconds, login_at")
+        .eq("user_id", childIdNum)
+        .gte("login_at", thirtyDaysAgo),
+    ]);
     const totalSessionMinutes = Math.round(
       (sessions || []).reduce((sum, s) => sum + (s.duration_seconds || 0), 0) / 60
     );

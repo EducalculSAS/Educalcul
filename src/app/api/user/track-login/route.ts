@@ -56,22 +56,24 @@ export async function POST(request: Request) {
       updates.login_streak = dbUser.last_login_date === yesterday ? (dbUser.login_streak || 0) + 1 : 1;
     }
 
-    // Update users table
-    await supabaseAdmin.from("users").update(updates).eq("auth_id", authUser.id);
-
-    // One login history row per session/day
+    // Update users table + insert login history row (independent writes, run in parallel)
     if (isNewDay) {
-      await supabaseAdmin.from("user_login_history").insert({
-        user_id:     dbUser.id,
-        logged_at:   new Date().toISOString(),
-        ip:          geo.ip || null,
-        city:        geo.city || null,
-        country:     geo.country || null,
-        latitude:    geo.available ? geo.latitude : null,
-        longitude:   geo.available ? geo.longitude : null,
-        device_type: device_type || null,
-        user_agent:  user_agent || null,
-      });
+      await Promise.all([
+        supabaseAdmin.from("users").update(updates).eq("auth_id", authUser.id),
+        supabaseAdmin.from("user_login_history").insert({
+          user_id:     dbUser.id,
+          logged_at:   new Date().toISOString(),
+          ip:          geo.ip || null,
+          city:        geo.city || null,
+          country:     geo.country || null,
+          latitude:    geo.available ? geo.latitude : null,
+          longitude:   geo.available ? geo.longitude : null,
+          device_type: device_type || null,
+          user_agent:  user_agent || null,
+        }),
+      ]);
+    } else {
+      await supabaseAdmin.from("users").update(updates).eq("auth_id", authUser.id);
     }
 
     return NextResponse.json({ ok: true, is_new_day: isNewDay });

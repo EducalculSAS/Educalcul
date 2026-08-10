@@ -22,7 +22,6 @@ import {
   Pencil,
   Image as ImageIcon,
 } from "lucide-react";
-import Link from "next/link";
 import { Chapter, Lesson, Exercise } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -32,6 +31,7 @@ import { enhanceCourseSteps } from "@/lib/courseSteps";
 import { enhanceTrigCircles } from "@/lib/trigCircleInteractive";
 import MathInput from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
+import GlassButton from "@/components/ui/GlassButton";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -498,24 +498,15 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                 <div className="w-full md:w-80 flex-shrink-0">
                   <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24 space-y-3">
                     <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 text-center">Et maintenant ?</h3>
-                    <Link
-                      href="/child/exercises"
-                      className="w-full btn-primary-greek py-4 text-base shadow-lg flex items-center justify-center transform hover:scale-105 transition-all"
-                    >
+                    <GlassButton href="/child/exercises" variant="navy" fullWidth className="font-bold text-base">
                       Faire les exercices
-                    </Link>
-                    <Link
-                      href="/child/quiz"
-                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-blue)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
-                    >
+                    </GlassButton>
+                    <GlassButton href="/child/quiz" variant="navy" fullWidth className="font-bold text-base">
                       Tenter le quiz
-                    </Link>
-                    <Link
-                      href="/child/cours"
-                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-bronze)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
-                    >
+                    </GlassButton>
+                    <GlassButton href="/child/cours" variant="outline" fullWidth className="font-bold text-base">
                       Retour aux cours
-                    </Link>
+                    </GlassButton>
                   </div>
                 </div>
               </div>
@@ -831,10 +822,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
             <span className="hidden md:inline">Leçon précédente</span>
           </button>
           
-          <button
-            onClick={handleNext}
-            className="btn-primary-greek flex items-center gap-3 px-6 py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
-          >
+          <GlassButton onClick={handleNext} variant="navy">
             {currentChapterIndex === chapters.length - 1 && currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1 ? (
               reviewMode ? (
                 <>Continuer <ChevronRight className="w-5 h-5" /></>
@@ -845,10 +833,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
               <>
                 <span className="hidden md:inline">Leçon suivante</span>
                 <span className="md:hidden">Suivant</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-5 h-5 transition-transform" />
               </>
             )}
-          </button>
+          </GlassButton>
         </div>
 
         {/* Text Selection Popup — controlled imperatively via ref, never hidden by React */}

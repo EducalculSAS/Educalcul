@@ -13,23 +13,18 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     const { id } = await params;
 
-    // Get Ticket
-    const { data: ticket, error: ticketError } = await supabaseAdmin
-      .from('support_tickets')
-      .select('*')
-      .eq('id', id)
-      .single();
+    // Le ticket et ses réponses sont indépendants (clé étrangère connue via
+    // l'id de l'URL) — inutile d'attendre le ticket avant de lancer l'autre.
+    const [
+      { data: ticket, error: ticketError },
+      { data: replies, error: repliesError },
+    ] = await Promise.all([
+      supabaseAdmin.from('support_tickets').select('*').eq('id', id).single(),
+      supabaseAdmin.from('ticket_replies').select('*').eq('ticket_id', id).order('replied_at', { ascending: true }),
+    ]);
 
     if (ticketError) return NextResponse.json({ error: sanitizeErrorMessage(ticketError.message) }, { status: 500 });
     if (!ticket) return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
-
-    // Get Replies
-    const { data: replies, error: repliesError } = await supabaseAdmin
-      .from('ticket_replies')
-      .select('*')
-      .eq('ticket_id', id)
-      .order('replied_at', { ascending: true });
-
     if (repliesError) return NextResponse.json({ error: sanitizeErrorMessage(repliesError.message) }, { status: 500 });
 
     return NextResponse.json({ ticket, replies });

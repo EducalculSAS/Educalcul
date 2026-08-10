@@ -43,6 +43,7 @@ export default function DeleteChildButton({ childId }: { childId: string }) {
       disabled={deleting}
       className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
       title="Supprimer"
+      aria-label="Supprimer le profil enfant"
     >
       {deleting ? (
         <div className="w-4 h-4 animate-spin rounded-full border-2 border-[var(--greek-blue)] border-t-transparent" />

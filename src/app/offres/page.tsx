@@ -9,6 +9,10 @@ import Image from "next/image";
 import FadeInSection from "@/components/home/FadeInSection";
 import EpsiChatDemo from "@/components/offres/EpsiChatDemo";
 
+// Page publique statique : ISR pour servir depuis le cache plutôt que de
+// re-render à chaque visite.
+export const revalidate = 300;
+
 const SYM = [
   { s: "∑", x: 6, y: 10, z: 96, d: 0, t: 7.2 },
   { s: "π", x: 87, y: 7, z: 72, d: 1.3, t: 8.5 },

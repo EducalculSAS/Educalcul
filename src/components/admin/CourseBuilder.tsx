@@ -442,6 +442,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                 <button
                   type="button"
                   onClick={() => removeChapter(chapter.id)}
+                  aria-label="Supprimer le chapitre"
                   className="text-gray-400 hover:text-red-500 transition-colors"
                 >
                   <Trash2 size={18} />
@@ -463,6 +464,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                           disabled={lIndex === 0}
                           className="hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
                           title="Monter"
+                          aria-label="Monter la leçon"
                         >
                           <ChevronUp size={16} />
                         </button>
@@ -472,6 +474,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                           disabled={lIndex === (chapter.lessons || []).length - 1}
                           className="hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
                           title="Descendre"
+                          aria-label="Descendre la leçon"
                         >
                           <ChevronDown size={16} />
                         </button>
@@ -549,6 +552,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                             <button
                               type="button"
                               onClick={() => removeLesson(chapter.id, lesson.id)}
+                              aria-label="Supprimer la leçon"
                               className="text-gray-300 hover:text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
                             >
                               <Trash2 size={16} />
@@ -696,6 +700,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                                 <button
                                   type="button"
                                   onClick={() => removeExercise(chapter.id, lesson.id, ex.id)}
+                                  aria-label="Supprimer le mini-exercice"
                                   className="text-gray-300 hover:text-red-500 transition-colors flex-shrink-0 mt-1"
                                 >
                                   <Trash2 size={16} />

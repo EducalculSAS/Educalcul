@@ -7,6 +7,20 @@ import { supabase } from "@/lib/supabaseClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { resolveAuthDestination } from "@/lib/authRedirect";
 import { LogIn, Lock, AlertCircle, User, Eye, EyeOff } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
+
+/** Supabase Auth renvoie ses messages d'erreur en anglais quel que soit le
+ * paramétrage — le reste de l'interface est en français, donc on traduit
+ * les cas courants plutôt que d'exposer le texte brut. */
+function translateAuthError(message?: string): string {
+  if (!message) return "Une erreur est survenue lors de la connexion.";
+  const m = message.toLowerCase();
+  if (m.includes("invalid login credentials")) return "Email/identifiant ou mot de passe incorrect.";
+  if (m.includes("email not confirmed")) return "Adresse email non confirmée. Vérifiez votre boîte de réception.";
+  if (m.includes("too many requests")) return "Trop de tentatives. Réessayez dans quelques minutes.";
+  if (m.includes("user not found")) return "Aucun compte trouvé avec ces identifiants.";
+  return message;
+}
 
 const GoogleIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -93,7 +107,7 @@ export default function ConnexionClient() {
         router.push(dest);
       }
     } catch (err: any) {
-      setError(err.message || "Une erreur est survenue lors de la connexion.");
+      setError(translateAuthError(err.message));
     } finally {
       setLoading(false);
     }
@@ -201,18 +215,19 @@ export default function ConnexionClient() {
           </div>
 
           {/* Submit */}
-          <button
-            type="submit"
+          <GlassButton
+            onClick={() => handleLogin({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            variant="navy"
+            fullWidth
+            className="mt-2"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed mt-2"
-            style={{ background: "var(--greek-blue)", boxShadow: "0 4px 16px rgba(15,30,58,0.25)" }}
           >
             {loading ? (
               <span className="animate-pulse">Connexion en cours…</span>
             ) : (
               <><LogIn className="w-4 h-4" /> Se connecter</>
             )}
-          </button>
+          </GlassButton>
         </form>
       </div>
 

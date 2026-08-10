@@ -3,6 +3,7 @@
 import { BrainCircuit, Minus, Sparkles, X } from "lucide-react";
 import { useContentGenerations, type ContentKind } from "@/contexts/ContentGenerationsContext";
 import { useSmoothPercentByKey } from "./useSmoothPercent";
+import GlassButton from "@/components/ui/GlassButton";
 
 const KIND_LABEL: Record<ContentKind, { noun: string; created: string }> = {
   course: { noun: "cours", created: "Le cours a été enregistré directement en brouillon" },
@@ -149,13 +150,14 @@ export default function ContentGenerationFullModal() {
               )}
 
               {generation.status !== "cancel_requested" && (
-                <button
-                  type="button"
+                <GlassButton
+                  size="sm"
+                  variant="danger"
                   onClick={() => cancelGeneration(generation.id)}
-                  className="mt-8 px-6 py-2.5 rounded-full text-sm font-semibold text-red-600 border border-red-200 hover:bg-red-50 transition-colors"
+                  className="mt-8"
                 >
                   Annuler la génération
-                </button>
+                </GlassButton>
               )}
             </>
           )}

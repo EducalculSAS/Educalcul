@@ -6,6 +6,7 @@ import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AppAdminLoader from "@/components/AppAdminLoader";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Category {
   id: number;
@@ -37,8 +38,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
 
   useEffect(() => { fetchCategories(); }, []);
 
-  const handleCreateCategory = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleCreateCategory = async () => {
     if (!newCatName) return;
     await fetch("/api/forum/categories", {
       method: "POST",
@@ -66,9 +66,9 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Catégories</h2>
         {role === "admin" && (
-          <button onClick={() => setShowModal(true)} className="flex items-center gap-2 bg-[var(--greek-blue)] text-white px-4 py-2 rounded-xl font-semibold text-sm hover:bg-blue-800 shadow-sm transition-all">
+          <GlassButton onClick={() => setShowModal(true)} variant="navy" size="sm">
             <Plus className="w-4 h-4" /> Nouvelle catégorie
-          </button>
+          </GlassButton>
         )}
       </div>
 
@@ -79,18 +79,27 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
             <div
               key={cat.id}
               onClick={() => onSelectCategory(cat.id, cat.name)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onSelectCategory(cat.id, cat.name);
+                }
+              }}
               className="group cursor-pointer bg-white border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col relative"
             >
               {role === "admin" && (
                 <button
                   onClick={(e) => handleDelete(e, cat.id)}
+                  aria-label="Supprimer la catégorie"
                   className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
               )}
               <div className="w-12 h-12 bg-blue-50 text-[var(--greek-blue)] rounded-xl flex items-center justify-center mb-4">
-                <MessageSquare className="w-6 h-6" />
+                <MessageSquare className="w-6 h-6" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-bold text-[var(--greek-blue)] mb-1">{cat.name}</h3>
               <p className="text-gray-500 text-sm mb-4 line-clamp-2 flex-1">{cat.description}</p>
@@ -112,9 +121,9 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
           <div className="bg-white rounded-2xl p-8 max-w-lg w-full shadow-2xl border border-[var(--greek-gold)]">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouvelle catégorie</h2>
-              <button onClick={() => setShowModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <button onClick={() => setShowModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
             </div>
-            <form onSubmit={handleCreateCategory} className="space-y-4">
+            <form onSubmit={(e) => { e.preventDefault(); handleCreateCategory(); }} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Nom *</label>
                 <input value={newCatName} onChange={e => setNewCatName(e.target.value)} className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm" required />
@@ -124,8 +133,8 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
                 <textarea value={newCatDesc} onChange={e => setNewCatDesc(e.target.value)} className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl outline-none focus:ring-2 focus:ring-[var(--greek-blue)] text-sm h-24 resize-none" />
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 border border-[rgba(197,161,72,0.25)] text-gray-500 rounded-xl text-sm font-semibold hover:bg-gray-50">Annuler</button>
-                <button type="submit" className="flex-1 px-4 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800">Créer</button>
+                <div className="flex-1"><GlassButton onClick={() => setShowModal(false)} variant="ghost" fullWidth>Annuler</GlassButton></div>
+                <div className="flex-1"><GlassButton onClick={handleCreateCategory} variant="navy" fullWidth>Créer</GlassButton></div>
               </div>
             </form>
           </div>

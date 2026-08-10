@@ -7,6 +7,14 @@ import CalendarView, { CalendarEventItem } from "@/components/calendar/CalendarV
 import EventModal from "@/components/calendar/EventModal";
 import { getEventTypeMeta, PARENT_ONLY_EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
 import { STUDENT_ZONE_OPTIONS } from "@/lib/calendarZones";
+import { supabase } from "@/lib/supabaseClient";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+
+async function authHeaders() {
+  const { data: { session } } = await supabase.auth.getSession();
+  return { Authorization: `Bearer ${session?.access_token || ""}` };
+}
 
 interface ChildOption {
   id: number;
@@ -47,7 +55,7 @@ export default function ParentCalendarClient({
   const [suggesting, setSuggesting] = useState(false);
 
   const loadEvents = useCallback(async (uid: string, oId: number) => {
-    const res = await fetch(`/api/calendar/events?userId=${uid}&ownerId=${oId}`);
+    const res = await fetch(`/api/calendar/events?userId=${uid}&ownerId=${oId}`, { headers: await authHeaders() });
     const data = await res.json();
     setEvents(data.events || []);
     setGlobalEvents(data.globalEvents || []);
@@ -56,7 +64,7 @@ export default function ParentCalendarClient({
 
   useEffect(() => {
     (async () => {
-      const subRes = await fetch(`/api/parent/subscription-details?userId=${authId}`);
+      const subRes = await fetch(`/api/parent/subscription-details?userId=${authId}`, { headers: await authHeaders() });
       const subData = await subRes.json();
       if (subData.subscription?.current_period_end) {
         const date = subData.subscription.current_period_end.slice(0, 10);
@@ -113,13 +121,13 @@ export default function ParentCalendarClient({
       if (selectedEvent && !selectedEvent.isVirtual) {
         await fetch(`/api/calendar/events/${selectedEvent.id}`, {
           method: "PATCH",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
           body: JSON.stringify({ userId: authId, ...data }),
         });
       } else {
         await fetch(`/api/calendar/events`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
           body: JSON.stringify({ userId: authId, ownerId: activeOwnerId, ...data }),
         });
       }
@@ -134,7 +142,7 @@ export default function ParentCalendarClient({
     if (!selectedEvent) return;
     setSaving(true);
     try {
-      await fetch(`/api/calendar/events/${selectedEvent.id}?userId=${authId}`, { method: "DELETE" });
+      await fetch(`/api/calendar/events/${selectedEvent.id}?userId=${authId}`, { method: "DELETE", headers: await authHeaders() });
       await loadEvents(authId, activeOwnerId);
       setModalOpen(false);
     } finally {
@@ -146,7 +154,7 @@ export default function ParentCalendarClient({
     setSchoolZone(zone);
     await fetch(`/api/calendar/zone`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...(await authHeaders()) },
       body: JSON.stringify({ userId: authId, ownerId: activeOwnerId, zone }),
     });
     await loadEvents(authId, activeOwnerId);
@@ -158,7 +166,7 @@ export default function ParentCalendarClient({
     try {
       const res = await fetch(`/api/calendar/suggest`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...(await authHeaders()) },
         body: JSON.stringify({ userId: authId, childId: activeOwnerId }),
       });
       if (res.ok) await loadEvents(authId, activeOwnerId);
@@ -192,30 +200,16 @@ export default function ParentCalendarClient({
       </div>
 
       <div className="container mx-auto max-w-6xl px-4">
-        <div className="flex flex-wrap gap-2 mb-4">
-          <button
-            onClick={() => switchOwner(parentId)}
-            className={`px-4 py-2 rounded-[10px] text-sm font-bold transition-colors ${
-              activeOwnerId === parentId
-                ? "bg-[var(--greek-blue)] text-white"
-                : "bg-white border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.08)]"
-            }`}
-          >
-            Mon calendrier
-          </button>
-          {children.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => switchOwner(c.id)}
-              className={`px-4 py-2 rounded-[10px] text-sm font-bold transition-colors ${
-                activeOwnerId === c.id
-                  ? "bg-[var(--greek-blue)] text-white"
-                  : "bg-white border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.08)]"
-              }`}
-            >
-              {c.first_name}
-            </button>
-          ))}
+        <div className="mb-4">
+          <GlassSegmentedControl
+            options={[
+              { id: String(parentId), label: "Mon calendrier" },
+              ...children.map((c) => ({ id: String(c.id), label: c.first_name })),
+            ]}
+            value={String(activeOwnerId)}
+            onChange={(id) => switchOwner(Number(id))}
+            size="sm"
+          />
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
@@ -252,18 +246,16 @@ export default function ParentCalendarClient({
                 <Sparkles className="w-4 h-4" /> {suggesting ? "Génération..." : "Suggestion IA"}
               </button>
             )}
-            <button
-              onClick={() => exportIcs(activeOwnerId)}
-              className="flex items-center gap-2 text-sm font-medium px-3 py-2 rounded-[10px] border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.08)] transition-colors"
-            >
+            <GlassButton onClick={() => exportIcs(activeOwnerId)} variant="outline" size="sm">
               <Download className="w-4 h-4" /> Exporter (.ics)
-            </button>
-            <button
+            </GlassButton>
+            <GlassButton
               onClick={() => { setSelectedEvent(null); setSelectedDate(new Date().toISOString().slice(0, 10)); setModalOpen(true); }}
-              className="btn-primary-greek flex items-center gap-2 px-3 py-2 rounded-[10px] text-sm font-medium"
+              variant="navy"
+              size="sm"
             >
               <Plus className="w-4 h-4" /> Ajouter
-            </button>
+            </GlassButton>
           </div>
         </div>
 

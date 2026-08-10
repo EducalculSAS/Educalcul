@@ -324,6 +324,7 @@ export default function QuizBuilder({
                       }
                       className="flex-1 bg-white border border-[rgba(197,161,72,0.25)] rounded-lg p-2 font-medium focus:ring-blue-500 focus:border-blue-500"
                       placeholder="Énoncé de la question..."
+                      aria-label="Énoncé de la question"
                     />
 
                     <select
@@ -345,6 +346,7 @@ export default function QuizBuilder({
                         })
                       }
                       className="w-40 border-[rgba(197,161,72,0.25)] rounded-lg text-sm bg-white"
+                      aria-label="Type de question"
                     >
                       <option value="single_choice">Choix Unique</option>
                       <option value="multiple_choice">Choix Multiple</option>

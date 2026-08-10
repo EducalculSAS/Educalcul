@@ -2,23 +2,21 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe } from "@/lib/stripe";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 export async function DELETE(req: Request) {
   try {
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader?.startsWith("Bearer ")) {
+    // ✓ SECURITY : cette route utilisait supabaseAdmin.auth.getUser(token)
+    // directement, ce qui contournait le gate 2FA obligatoire et le contrôle
+    // de compte banni appliqués partout ailleurs via getAuthenticatedUser —
+    // un token volé permettait de supprimer le compte (+ tous les enfants)
+    // sans re-vérification, malgré la 2FA activée par le parent.
+    const me = await getAuthenticatedUser(req);
+    if (!me) {
       return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
     }
-    const token = authHeader.slice(7);
 
-    // Vérifier le token
-    const { data: { user }, error: userError } = await supabaseAdmin.auth.getUser(token);
-    if (userError || !user) {
-      console.error("Token invalid:", userError?.message);
-      return NextResponse.json({ error: "Session invalide" }, { status: 401 });
-    }
-
-    const parentAuthId = user.id;
+    const parentAuthId = me.authId;
     console.log("[delete-account] Starting deletion for auth_id:", parentAuthId);
 
     // Récupérer les auth_ids des enfants AVANT suppression

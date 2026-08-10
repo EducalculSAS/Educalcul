@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Upload, X, FileJson, Download, Sparkles } from "lucide-react";
 import { downloadJSONTemplate } from "@/lib/jsonTemplates";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface ImportJsonModalProps {
   onClose: () => void;
@@ -14,6 +15,7 @@ interface ImportJsonModalProps {
 
 export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichier", template, templateFilename }: ImportJsonModalProps) {
   const [dragging, setDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFile = useCallback((file: File) => {
     if (!file.name.endsWith(".json")) {
@@ -52,7 +54,7 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
           <div className="flex items-center gap-3 relative z-10">
             <div className="p-2.5 bg-white/15 rounded-xl backdrop-blur-sm">
-              <FileJson className="text-[var(--greek-gold)]" size={24} />
+              <FileJson className="text-[var(--greek-gold)]" size={24} aria-hidden="true" />
             </div>
             <div>
               <h3 className="text-xl font-bold font-[family-name:var(--font-display)] tracking-wide">
@@ -76,13 +78,14 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
               <p className="text-sm text-gray-500 mb-3">
                 Récupérez un fichier JSON vierge avec la structure attendue pour créer un {label} à la main.
               </p>
-              <button
-                type="button"
+              <GlassButton
+                size="sm"
+                variant="outline"
                 onClick={() => downloadJSONTemplate(template, templateFilename)}
-                className="flex items-center gap-2 px-4 py-2.5 bg-white text-[var(--greek-blue)] border-2 border-[var(--greek-blue)]/20 rounded-xl text-sm font-bold hover:border-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
+                className="gap-2"
               >
-                <Download size={16} /> Télécharger le modèle JSON
-              </button>
+                <Download size={16} aria-hidden="true" /> Télécharger le modèle JSON
+              </GlassButton>
             </div>
           )}
 
@@ -91,7 +94,7 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
             <div className="p-6 border-b border-[rgba(197,161,72,0.25)] bg-gray-50/50">
               <SectionTitle n={2}>Remplissez votre contenu</SectionTitle>
               <p className="text-sm text-gray-500 flex items-start gap-2">
-                <Sparkles size={15} className="text-[var(--greek-gold)] flex-shrink-0 mt-0.5" />
+                <Sparkles size={15} className="text-[var(--greek-gold)] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 Éditez le fichier téléchargé (titre, description, chapitres/questions...) en respectant le format JSON, puis enregistrez-le.
               </p>
             </div>
@@ -111,7 +114,7 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
               }`}
             >
               <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors ${dragging ? "bg-[var(--greek-blue)]" : "bg-[var(--greek-blue)]/10"}`}>
-                <Upload size={26} className={dragging ? "text-white" : "text-[var(--greek-blue)]"} />
+                <Upload size={26} className={dragging ? "text-white" : "text-[var(--greek-blue)]"} aria-hidden="true" />
               </div>
 
               <div className="text-center">
@@ -122,9 +125,12 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
               </div>
 
               {!dragging && (
-                <label className="cursor-pointer px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800 transition-colors shadow-sm">
-                  Parcourir les fichiers
+                <>
+                  <GlassButton size="sm" variant="navy" onClick={() => fileInputRef.current?.click()}>
+                    Parcourir les fichiers
+                  </GlassButton>
                   <input
+                    ref={fileInputRef}
                     type="file"
                     accept=".json"
                     className="hidden"
@@ -133,7 +139,7 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
                       if (f) handleFile(f);
                     }}
                   />
-                </label>
+                </>
               )}
 
               <p className="text-xs text-gray-400">Fichiers .json uniquement</p>

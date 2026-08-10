@@ -18,7 +18,15 @@ export default async function ChildQuizPage() {
 
   const [{ data: allFolders }, { data: allQuizzes }, { data: attempts }] = await Promise.all([
     supabaseAdmin.from("quiz_folders").select("*").eq("status", "published").order("name"),
-    supabaseAdmin.from("quizzes").select("*, courses(title)").eq("status", "published"),
+    // Pas de content_json (volumineux, non utilisé par le catalogue) — le
+    // contenu complet n'est chargé qu'à l'ouverture d'un quiz précis.
+    supabaseAdmin.from("quizzes").select(`
+      id, title, description, course_id, folder_id,
+      time_limit_minutes, min_score_percent, status, type,
+      difficulty_level, level, max_attempts, grading_type,
+      estimated_time, created_at, updated_at,
+      courses (title)
+    `).eq("status", "published"),
     supabaseAdmin.from("user_quiz_attempts").select("quiz_id, attempts_history").eq("user_id", authUser.id),
   ]);
 
@@ -61,7 +69,7 @@ export default async function ChildQuizPage() {
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <QuizCatalog
           allFolders={allFolders || []}
-          allQuizzes={allQuizzes || []}
+          allQuizzes={(allQuizzes || []) as any}
           levelFolderId={levelFolder?.id ?? null}
           initialProgress={initialProgress}
         />

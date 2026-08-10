@@ -42,7 +42,8 @@ export default function BadgeMinis({ badgeIds }: { badgeIds: number[] }) {
           <div key={b.id} title={b.name}
             className="w-4 h-4 rounded flex items-center justify-center"
             style={{ backgroundColor: b.color + "25" }}>
-            <Icon className="w-2.5 h-2.5" style={{ color: b.color }} />
+            <Icon className="w-2.5 h-2.5" aria-hidden="true" style={{ color: b.color }} />
+            <span className="sr-only">{b.name}</span>
           </div>
         );
       })}

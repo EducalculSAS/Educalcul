@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { X, Plus, Minus, Sparkles, Loader2 } from "lucide-react";
 import { renderLatexInHTML } from "@/lib/katexLoader";
+import GlassButton from "@/components/ui/GlassButton";
 
 type TableType = "value" | "sign" | "variation" | "generic";
 
@@ -116,7 +117,7 @@ export default function TableEditorModal({
       <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-5 space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-bold text-gray-800">Insérer un tableau</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600" aria-label="Fermer">
             <X size={20} />
           </button>
         </div>
@@ -150,6 +151,7 @@ export default function TableEditorModal({
               value={aiDescription}
               onChange={(e) => setAiDescription(e.target.value)}
               placeholder="Ex: tableau de signes de (2x-4)(x+1)"
+              aria-label="Description pour la génération IA"
               className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm px-3 py-1.5"
             />
             <button
@@ -215,16 +217,16 @@ export default function TableEditorModal({
 
         {/* Row/column controls */}
         <div className="flex flex-wrap gap-2">
-          <button type="button" onClick={addColumn} className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
+          <button type="button" onClick={addColumn} aria-label="Ajouter une colonne" className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
             <Plus size={12} /> Colonne
           </button>
-          <button type="button" onClick={removeColumn} className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
+          <button type="button" onClick={removeColumn} aria-label="Supprimer une colonne" className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
             <Minus size={12} /> Colonne
           </button>
-          <button type="button" onClick={addRow} className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
+          <button type="button" onClick={addRow} aria-label="Ajouter une ligne" className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
             <Plus size={12} /> Ligne
           </button>
-          <button type="button" onClick={removeRow} className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
+          <button type="button" onClick={removeRow} aria-label="Supprimer une ligne" className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] hover:bg-amber-50 flex items-center gap-1">
             <Minus size={12} /> Ligne
           </button>
         </div>
@@ -247,12 +249,12 @@ export default function TableEditorModal({
         </div>
 
         <div className="flex justify-end gap-2 pt-2">
-          <button type="button" onClick={onClose} className="px-4 py-2 text-sm rounded-lg border border-[rgba(197,161,72,0.3)] text-gray-600 hover:bg-gray-50">
+          <GlassButton size="sm" variant="ghost" onClick={onClose}>
             Annuler
-          </button>
-          <button type="button" onClick={handleInsert} className="px-4 py-2 text-sm rounded-lg bg-[var(--greek-blue)] text-white font-medium hover:opacity-90">
+          </GlassButton>
+          <GlassButton size="sm" variant="navy" onClick={handleInsert}>
             Insérer
-          </button>
+          </GlassButton>
         </div>
       </div>
     </div>

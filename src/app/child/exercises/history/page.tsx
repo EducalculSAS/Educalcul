@@ -10,7 +10,7 @@ export default async function ExerciseHistoryPage() {
 
   const { data: attempts } = await supabaseAdmin
     .from("user_exercise_attempts")
-    .select("*, exercises(title)")
+    .select("id, exercise_id, passed, score, total_points, score_percent, is_correct, completed_at, exercises(title)")
     .eq("user_id", authUser.id)
     .in("status", ["completed", "attempted"])
     .order("completed_at", { ascending: false });
@@ -35,7 +35,7 @@ export default async function ExerciseHistoryPage() {
         </div>
       ) : (
         <div className="space-y-3">
-          {attempts.map((a) => {
+          {attempts.map((a: any) => {
             const passed = a.passed ?? (a.score_percent != null ? a.score_percent >= 50 : a.is_correct);
             return (
               <Link

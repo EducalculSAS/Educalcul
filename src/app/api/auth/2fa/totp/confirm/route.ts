@@ -53,20 +53,23 @@ export async function POST(req: Request) {
 
     const token = generateTwoFactorSessionToken();
     const expiresAt = new Date(Date.now() + TWO_FACTOR_SESSION_TTL_MS.admin).toISOString();
-    const { error: sessionError } = await supabaseAdmin.from("two_factor_sessions").insert({
-      user_id: user.id,
-      token_hash: hashTwoFactorValue(token),
-      expires_at: expiresAt,
-      user_agent: req.headers.get("user-agent") || null,
-    });
-    if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
 
     // Codes de secours (usage unique) — affichés une seule fois ici, en cas
-    // de perte de l'appareil d'authentification.
+    // de perte de l'appareil d'authentification. Indépendante de la session
+    // ci-dessus, donc lancée en parallèle.
     const backupCodes = generateBackupCodes();
-    await supabaseAdmin.from("two_factor_backup_codes").insert(
-      backupCodes.map(code => ({ user_id: user.id, code_hash: hashTwoFactorValue(code) }))
-    );
+    const [{ error: sessionError }] = await Promise.all([
+      supabaseAdmin.from("two_factor_sessions").insert({
+        user_id: user.id,
+        token_hash: hashTwoFactorValue(token),
+        expires_at: expiresAt,
+        user_agent: req.headers.get("user-agent") || null,
+      }),
+      supabaseAdmin.from("two_factor_backup_codes").insert(
+        backupCodes.map(code => ({ user_id: user.id, code_hash: hashTwoFactorValue(code) }))
+      ),
+    ]);
+    if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
 
     return NextResponse.json({ success: true, token, expiresAt, backupCodes });
   } catch (err: any) {

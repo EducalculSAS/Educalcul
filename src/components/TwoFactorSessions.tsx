@@ -66,8 +66,9 @@ export default function TwoFactorSessions() {
               disabled={revoking === s.id}
               className="text-gray-400 hover:text-red-600 transition-colors shrink-0"
               title="Révoquer"
+              aria-label="Révoquer cet appareil"
             >
-              {revoking === s.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <X className="w-4 h-4" />}
+              {revoking === s.id ? <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" /> : <X className="w-4 h-4" aria-hidden="true" />}
             </button>
           </div>
         ))}

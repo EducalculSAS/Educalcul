@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import QRCode from "qrcode";
 import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, Loader2, AlertCircle, Copy, Check, KeyRound } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 /**
  * Popup obligatoire forçant tout admin sans TOTP configuré à en configurer
@@ -65,8 +66,8 @@ export default function AdminTotpSetupModal() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [needsSetup]);
 
-  const confirmCode = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const confirmCode = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setConfirming(true);
     setError(null);
     try {
@@ -115,14 +116,15 @@ export default function AdminTotpSetupModal() {
             <input type="checkbox" checked={savedBackupCodes} onChange={e => setSavedBackupCodes(e.target.checked)} />
             J'ai noté ces codes dans un endroit sûr.
           </label>
-          <button
-            type="button"
-            disabled={!savedBackupCodes}
+          <GlassButton
+            fullWidth
+            size="sm"
+            variant="navy"
             onClick={() => setNeedsSetup(false)}
-            className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
+            disabled={!savedBackupCodes}
           >
             Terminer
-          </button>
+          </GlassButton>
         </div>
       </div>
     );
@@ -155,12 +157,12 @@ export default function AdminTotpSetupModal() {
         ) : qrDataUrl && secret ? (
           <>
             <div className="flex justify-center mb-4">
-              <img src={qrDataUrl} alt="QR code TOTP" className="rounded-lg border border-[rgba(197,161,72,0.25)]" />
+              <img src={qrDataUrl} alt="Code QR pour configurer l'application d'authentification" className="rounded-lg border border-[rgba(197,161,72,0.25)]" />
             </div>
             <div className="flex items-center justify-between gap-2 px-3 py-2 mb-5 rounded-lg bg-gray-50 border border-gray-200">
               <code className="text-xs font-mono text-gray-600 break-all">{secret}</code>
-              <button type="button" onClick={copySecret} className="shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
-                {copied ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}
+              <button type="button" onClick={copySecret} aria-label="Copier le secret" className="shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
+                {copied ? <Check className="w-4 h-4 text-green-600" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
               </button>
             </div>
 
@@ -174,15 +176,18 @@ export default function AdminTotpSetupModal() {
                 onChange={e => setCode(e.target.value.replace(/\D/g, ""))}
                 className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-lg text-center text-xl tracking-[0.4em] font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                 placeholder="000000"
+                aria-label="Code à 6 chiffres"
                 required
               />
-              <button
-                type="submit"
+              <GlassButton
+                fullWidth
+                size="sm"
+                variant="navy"
+                onClick={() => confirmCode()}
                 disabled={confirming || code.length !== 6}
-                className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
               >
                 {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer et activer"}
-              </button>
+              </GlassButton>
             </form>
           </>
         ) : null}

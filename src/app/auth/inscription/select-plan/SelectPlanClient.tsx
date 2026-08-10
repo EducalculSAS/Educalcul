@@ -211,7 +211,7 @@ export default function SelectPlan() {
                     ? "border-red-400 bg-red-50"
                     : "border-gray-300 focus:border-[var(--greek-blue)]"
                 }`}
-                placeholder="EX: RUBEN3K7P"
+                placeholder="EX: ABCD1234"
               />
               <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
                 {referralValidating && <Loader2 className="w-4 h-4 animate-spin text-gray-400" />}

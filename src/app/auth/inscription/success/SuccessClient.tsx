@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { CheckCircle, Loader2, AlertCircle, Mail } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 function SuccessContent() {
   const router = useRouter();
@@ -41,11 +42,15 @@ function SuccessContent() {
         // est créé directement (rien à frauder sur un plan à 0€).
         if (sessionId === "free") {
           const { data: { user: currentUser } } = await supabase.auth.getUser();
+          const { data: { session: currentSession } } = await supabase.auth.getSession();
           setMessage("Création de votre compte...");
 
           const res = await fetch("/api/auth/create-account", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              ...(currentSession ? { Authorization: `Bearer ${currentSession.access_token}` } : {}),
+            },
             body: JSON.stringify({ ...signupData, sessionId, existingAuthId: currentUser?.id || null }),
           });
           const result = await res.json();
@@ -114,12 +119,9 @@ function SuccessContent() {
           <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
           <h2 className="text-xl font-bold text-gray-800 mb-2">Une erreur est survenue</h2>
           <p className="text-gray-500 text-sm mb-6">{errorMsg}</p>
-          <button
-            onClick={() => router.push("/auth/inscription")}
-            className="px-6 py-2 bg-[var(--greek-blue)] text-white rounded-xl font-bold hover:opacity-90"
-          >
+          <GlassButton onClick={() => router.push("/auth/inscription")} variant="navy" size="sm">
             Recommencer l&apos;inscription
-          </button>
+          </GlassButton>
         </div>
       </div>
     );
@@ -135,12 +137,9 @@ function SuccessContent() {
             La finalisation de votre compte prend un peu plus de temps que prévu. Vous allez recevoir un email de confirmation
             dans les prochaines minutes — vous pourrez alors vous connecter avec {userEmail || "votre email"}.
           </p>
-          <button
-            onClick={() => router.push("/auth/connexion")}
-            className="px-6 py-2 bg-[var(--greek-blue)] text-white rounded-xl font-bold hover:opacity-90"
-          >
+          <GlassButton onClick={() => router.push("/auth/connexion")} variant="navy" size="sm">
             Aller à la connexion
-          </button>
+          </GlassButton>
         </div>
       </div>
     );

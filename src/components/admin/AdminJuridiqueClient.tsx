@@ -8,6 +8,8 @@ import {
 import type { LegalPageData, LegalSection } from "@/components/LegalPageRenderer";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 const PAGES = [
   { slug: "mentions-legales", label: "Mentions Légales",         icon: Scale,    href: "/mentions-legales",           color: "blue"   },
@@ -102,40 +104,45 @@ export default function AdminJuridiqueClient({ initialPages }: { initialPages: R
         actions={
           <>
             {page && (
-              <a href={PAGES.find(p => p.slug === activeSlug)?.href} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 border border-[rgba(197,161,72,0.4)] rounded-xl text-sm font-semibold text-[var(--greek-blue)] hover:bg-gray-50 transition-colors">
+              <GlassButton
+                size="sm"
+                variant="outline"
+                onClick={() => {
+                  const href = PAGES.find(p => p.slug === activeSlug)?.href;
+                  if (href) window.open(href, "_blank", "noopener,noreferrer");
+                }}
+              >
                 <Eye size={16} /> Voir la page
-              </a>
+              </GlassButton>
             )}
-            <button
-              onClick={savePage}
+            <GlassButton
+              size="sm"
+              variant="navy"
               disabled={saving}
-              className="flex items-center gap-2 px-6 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold disabled:opacity-50"
+              onClick={savePage}
             >
               {saving ? <RefreshCw size={16} className="animate-spin" /> : <Save size={16} />}
               {saving ? "Sauvegarde..." : "Sauvegarder"}
-            </button>
+            </GlassButton>
           </>
         }
       />
 
       {/* Page tabs */}
-      <div className="flex flex-wrap gap-2">
-        {PAGES.map(({ slug, label, icon: Icon }) => (
-          <button
-            key={slug}
-            onClick={() => { setActiveSlug(slug); setOpenSection(null); }}
-            className={`flex items-center gap-1.5 px-3 py-2.5 sm:px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
-              activeSlug === slug
-                ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)] shadow-md"
-                : "bg-white text-gray-600 border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-blue)] hover:text-[var(--greek-blue)]"
-            }`}
-          >
-            <Icon size={14} className="shrink-0" />
-            {label}
-          </button>
-        ))}
-      </div>
+      <GlassSegmentedControl
+        size="sm"
+        options={PAGES.map(({ slug, label, icon: Icon }) => ({
+          id: slug,
+          label: (
+            <span className="flex items-center gap-1.5">
+              <Icon size={14} className="shrink-0" />
+              {label}
+            </span>
+          ),
+        }))}
+        value={activeSlug}
+        onChange={(slug) => { setActiveSlug(slug); setOpenSection(null); }}
+      />
 
       {!page ? (
         <div className="text-center py-20 text-gray-400">Page non trouvée en base de données.</div>
@@ -180,12 +187,9 @@ export default function AdminJuridiqueClient({ initialPages }: { initialPages: R
               <h2 className="font-[family-name:var(--font-display)] font-bold text-sm text-[var(--greek-blue)] uppercase tracking-wider">
                 Sections ({page.sections.length})
               </h2>
-              <button
-                onClick={addSection}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[var(--greek-blue)] text-white rounded-lg hover:bg-blue-800 transition-colors"
-              >
+              <GlassButton size="sm" variant="navy" onClick={addSection}>
                 <Plus size={13} /> Ajouter une section
-              </button>
+              </GlassButton>
             </div>
 
             <div className="space-y-2">

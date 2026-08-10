@@ -34,24 +34,26 @@ export async function POST(request: Request) {
 
     const now = new Date().toISOString();
 
-    await supabaseAdmin.from("users").update({
-      last_logout_at:      now,
-      last_logout_ip:      geo.ip || null,
-      last_logout_city:    geo.city || null,
-      last_logout_country: geo.country || null,
-    }).eq("auth_id", authUser.id);
-
-    // Complete the most recent open session row
-    await supabaseAdmin
-      .from("user_login_history")
-      .update({
-        logged_out_at: now,
-        logout_ip:      geo.ip || null,
-        logout_city:    geo.city || null,
-        logout_country: geo.country || null,
-      })
-      .eq("user_id", dbUser.id)
-      .is("logged_out_at", null);
+    // Independent writes — run in parallel.
+    await Promise.all([
+      supabaseAdmin.from("users").update({
+        last_logout_at:      now,
+        last_logout_ip:      geo.ip || null,
+        last_logout_city:    geo.city || null,
+        last_logout_country: geo.country || null,
+      }).eq("auth_id", authUser.id),
+      // Complete the most recent open session row
+      supabaseAdmin
+        .from("user_login_history")
+        .update({
+          logged_out_at: now,
+          logout_ip:      geo.ip || null,
+          logout_city:    geo.city || null,
+          logout_country: geo.country || null,
+        })
+        .eq("user_id", dbUser.id)
+        .is("logged_out_at", null),
+    ]);
 
     return NextResponse.json({ ok: true });
   } catch (err: any) {

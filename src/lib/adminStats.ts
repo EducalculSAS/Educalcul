@@ -21,7 +21,7 @@ export async function fetchAdminStats() {
     supabaseAdmin.from('courses').select('*', { count: 'exact', head: true }).eq('status', 'published'),
     supabaseAdmin.from('exercises').select('*', { count: 'exact', head: true }),
     supabaseAdmin.from('quizzes').select('*', { count: 'exact', head: true }),
-    supabaseAdmin.from('support_tickets').select('*', { count: 'exact', head: true }).eq('status', 'Ouvert'),
+    supabaseAdmin.from('support_tickets').select('*', { count: 'exact', head: true }).eq('status', 'Ouvert').eq('is_archived', false),
     supabaseAdmin.from('forum_reports').select('*', { count: 'exact', head: true }),
     supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).gte('created_at', sevenDaysAgo),
     supabaseAdmin.from('users')

@@ -1,12 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import Image from "next/image";
 import FadeInSection from "@/components/home/FadeInSection";
 import FaqList from "@/components/faq/FaqList";
 import { FAQ_DATA } from "@/lib/faqData";
+import GlassButton from "@/components/ui/GlassButton";
+
+// Page publique statique : ISR pour servir depuis le cache plutôt que de
+// re-render à chaque visite.
+export const revalidate = 300;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -103,13 +107,9 @@ export default function FAQ() {
                   Du CP à la Terminale, toutes filières
                 </p>
               </div>
-              <Link
-                href="/programmes"
-                className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5"
-                style={{ background: "var(--greek-blue)", color: "#fff" }}
-              >
+              <GlassButton href="/programmes" variant="navy" size="sm" className="flex-shrink-0">
                 Voir les programmes <ArrowRight size={14} />
-              </Link>
+              </GlassButton>
             </FadeInSection>
 
             {/* CTA */}
@@ -121,13 +121,9 @@ export default function FAQ() {
             >
               <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-3">Vous n&apos;avez pas trouvé votre réponse ?</h3>
               <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.55)" }}>Notre équipe répond généralement en moins de 24h.</p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 hover:shadow-lg font-[family-name:var(--font-display)]"
-                style={{ background: "var(--greek-gold)", color: "#fff" }}
-              >
+              <GlassButton href="/contact" variant="gold">
                 Nous contacter <ArrowRight className="w-4 h-4" />
-              </Link>
+              </GlassButton>
             </FadeInSection>
           </div>
         </section>

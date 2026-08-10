@@ -15,7 +15,8 @@ export default async function ParentCalendarPage() {
     .maybeSingle();
   if (!userData) redirect("/dashboard");
 
-  const [{ data: childrenData }, { data: events }] = await Promise.all([
+  const ownerZone = userData.school_zone || "C";
+  const [{ data: childrenData }, { data: events }, { data: globalEvents }] = await Promise.all([
     supabaseAdmin
       .from("users")
       .select("id, first_name")
@@ -27,14 +28,12 @@ export default async function ParentCalendarPage() {
       .select("*")
       .eq("owner_id", userData.id)
       .order("start_date", { ascending: true }),
+    supabaseAdmin
+      .from("global_calendar_events")
+      .select("*")
+      .or(`zone.eq.all,zone.eq.${ownerZone}`)
+      .order("start_date", { ascending: true }),
   ]);
-
-  const ownerZone = userData.school_zone || "C";
-  const { data: globalEvents } = await supabaseAdmin
-    .from("global_calendar_events")
-    .select("*")
-    .or(`zone.eq.all,zone.eq.${ownerZone}`)
-    .order("start_date", { ascending: true });
 
   return (
     <ParentCalendarClient

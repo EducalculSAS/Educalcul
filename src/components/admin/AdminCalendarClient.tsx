@@ -140,6 +140,7 @@ export default function AdminCalendarClient({
           <button
             key={opt.value}
             onClick={() => setZoneFilter(opt.value)}
+            aria-pressed={zoneFilter === opt.value}
             className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
               zoneFilter === opt.value
                 ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]"
@@ -187,10 +188,10 @@ export default function AdminCalendarClient({
                     <td className="px-4 py-3 text-gray-600">{ev.end_date || "—"}</td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex justify-end gap-2">
-                        <button onClick={() => openEdit(ev)} className="p-2 rounded-lg hover:bg-[rgba(197,161,72,0.1)] text-[var(--greek-blue)]">
+                        <button onClick={() => openEdit(ev)} aria-label="Modifier l'événement" className="p-2 rounded-lg hover:bg-[rgba(197,161,72,0.1)] text-[var(--greek-blue)]">
                           <Edit className="w-4 h-4" />
                         </button>
-                        <button onClick={() => handleDelete(ev)} className="p-2 rounded-lg hover:bg-red-50 text-red-600">
+                        <button onClick={() => handleDelete(ev)} aria-label="Supprimer l'événement" className="p-2 rounded-lg hover:bg-red-50 text-red-600">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
@@ -211,7 +212,7 @@ export default function AdminCalendarClient({
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">
                 {editing ? "Modifier l'événement" : "Nouvel événement"}
               </h3>
-              <button onClick={() => setModalOpen(false)} className="p-1 rounded-full hover:bg-[rgba(197,161,72,0.1)]">
+              <button onClick={() => setModalOpen(false)} aria-label="Fermer" className="p-1 rounded-full hover:bg-[rgba(197,161,72,0.1)]">
                 <X className="w-5 h-5 text-[var(--greek-blue)]" />
               </button>
             </div>

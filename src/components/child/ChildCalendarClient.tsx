@@ -6,6 +6,13 @@ import { ArrowLeft, Plus, Download, Calendar } from "lucide-react";
 import CalendarView, { type CalendarEventItem } from "@/components/calendar/CalendarView";
 import EventModal from "@/components/calendar/EventModal";
 import { getEventTypeMeta, EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
+import { supabase } from "@/lib/supabaseClient";
+import GlassButton from "@/components/ui/GlassButton";
+
+async function authHeaders() {
+  const { data: { session } } = await supabase.auth.getSession();
+  return { Authorization: `Bearer ${session?.access_token || ""}` };
+}
 
 /** Calendrier (CRUD événements) : entièrement mutations + état de modale,
  * isolé en client island. Les événements initiaux arrivent déjà chargés du
@@ -26,7 +33,7 @@ export default function ChildCalendarClient({
   const [saving, setSaving] = useState(false);
 
   const loadEvents = useCallback(async () => {
-    const res = await fetch(`/api/calendar/events?userId=${authId}&ownerId=${ownerId}`);
+    const res = await fetch(`/api/calendar/events?userId=${authId}&ownerId=${ownerId}`, { headers: await authHeaders() });
     const data = await res.json();
     setEvents(data.events || []);
     setGlobalEvents(data.globalEvents || []);
@@ -68,13 +75,13 @@ export default function ChildCalendarClient({
       if (selectedEvent && !selectedEvent.isVirtual) {
         await fetch(`/api/calendar/events/${selectedEvent.id}`, {
           method: "PATCH",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
           body: JSON.stringify({ userId: authId, ...data }),
         });
       } else {
         await fetch(`/api/calendar/events`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
           body: JSON.stringify({ userId: authId, ownerId, ...data }),
         });
       }
@@ -89,7 +96,7 @@ export default function ChildCalendarClient({
     if (!selectedEvent) return;
     setSaving(true);
     try {
-      await fetch(`/api/calendar/events/${selectedEvent.id}?userId=${authId}`, { method: "DELETE" });
+      await fetch(`/api/calendar/events/${selectedEvent.id}?userId=${authId}`, { method: "DELETE", headers: await authHeaders() });
       await loadEvents();
       setModalOpen(false);
     } finally {
@@ -132,18 +139,15 @@ export default function ChildCalendarClient({
             })}
           </div>
           <div className="flex gap-2">
-            <button
-              onClick={exportIcs}
-              className="flex items-center gap-2 text-sm font-medium px-3 py-2 rounded-[10px] border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] hover:bg-[rgba(197,161,72,0.08)] transition-colors"
-            >
+            <GlassButton onClick={exportIcs} variant="outline" size="sm">
               <Download className="w-4 h-4" /> Exporter (.ics)
-            </button>
-            <button
+            </GlassButton>
+            <GlassButton
               onClick={() => { setSelectedEvent(null); setSelectedDate(new Date().toISOString().slice(0, 10)); setModalOpen(true); }}
-              className="btn-primary-greek flex items-center gap-2 px-3 py-2 rounded-[10px] text-sm font-medium"
+              variant="navy" size="sm"
             >
               <Plus className="w-4 h-4" /> Ajouter
-            </button>
+            </GlassButton>
           </div>
         </div>
 

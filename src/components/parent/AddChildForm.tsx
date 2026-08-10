@@ -207,11 +207,15 @@ export default function AddChildForm({ parentId }: { parentId: number }) {
                   <div
                     key={avatar}
                     onClick={() => setFormData({ ...formData, avatar })}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setFormData({ ...formData, avatar }); } }}
+                    aria-pressed={formData.avatar === avatar}
                     className={`relative cursor-pointer rounded-full p-1 border-2 transition-all duration-200 ${
                       formData.avatar === avatar ? "border-[var(--greek-gold)] scale-110 shadow-md" : "border-transparent hover:border-[rgba(197,161,72,0.25)] hover:scale-105"
                     }`}
                   >
-                    <Image src={`/avatars/${avatar}`} alt="Avatar" width={64} height={64} className="w-full h-full rounded-full" />
+                    <Image src={`/avatars/${avatar}`} alt={avatar.replace(".png", "")} width={64} height={64} className="w-full h-full rounded-full" />
                   </div>
                 ))}
               </div>

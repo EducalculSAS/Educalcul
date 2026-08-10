@@ -15,17 +15,21 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    const { data: user } = await supabaseAdmin.from("users").select("id").eq("auth_id", authId).single();
+    // Selecting parent_id/role/auth_id up front avoids a second "fullUser"
+    // round-trip later for the same row.
+    const { data: user } = await supabaseAdmin.from("users").select("id, auth_id, role, parent_id").eq("auth_id", authId).single();
     if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    const fullUser = user;
 
-    // Verify user actually unlocked this border/color via badges
-    const { data: userBadges } = await supabaseAdmin
-      .from("user_badges")
-      .select("badge:badges(unlocks_avatar_border, unlocks_name_animation)")
-      .eq("user_id", user.id);
-
-    // Unlock from cross-category cosmetics
-    const { data: cosmetics } = await supabaseAdmin.from("user_cosmetics").select("cosmetic_key").eq("user_id", user.id);
+    // Verify user actually unlocked this border/color via badges, and unlock
+    // from cross-category cosmetics — both independent, only need user.id.
+    const [{ data: userBadges }, { data: cosmetics }] = await Promise.all([
+      supabaseAdmin
+        .from("user_badges")
+        .select("badge:badges(unlocks_avatar_border, unlocks_name_animation)")
+        .eq("user_id", user.id),
+      supabaseAdmin.from("user_cosmetics").select("cosmetic_key").eq("user_id", user.id),
+    ]);
     const unlockedBorders = new Set(['none']);
     const unlockedColors = new Set(['default']);
     // Each cosmetic unlocks both the border and the color of same name
@@ -43,7 +47,6 @@ export async function POST(req: Request) {
     }
 
     // Also unlock from subscription (child inherits from parent)
-    const { data: fullUser } = await supabaseAdmin.from("users").select("auth_id, role, parent_id").eq("id", user.id).single();
     let subUserId = fullUser?.auth_id || "";
     if (fullUser?.role === "child" && fullUser?.parent_id) {
       const { data: parent } = await supabaseAdmin.from("users").select("auth_id").eq("id", fullUser.parent_id).maybeSingle();

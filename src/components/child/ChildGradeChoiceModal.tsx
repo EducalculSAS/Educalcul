@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { GraduationCap, Loader2, AlertCircle, X } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 const CHOICES = [
   { value: "1ere-generale", label: "Première Générale", detail: "Sans spécialité mathématiques" },
@@ -100,22 +101,20 @@ export default function ChildGradeChoiceModal() {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <button
-                type="button"
+              <GlassButton
                 onClick={confirmChoice}
-                disabled={submitting}
-                className="flex-1 inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
+                variant="navy" size="sm" fullWidth
+                style={submitting ? { opacity: 0.5, pointerEvents: "none" } : undefined}
               >
                 {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer mon choix"}
-              </button>
-              <button
-                type="button"
+              </GlassButton>
+              <GlassButton
                 onClick={() => setPending(null)}
-                disabled={submitting}
-                className="px-4 py-2.5 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-50 flex items-center gap-1"
+                variant="ghost" size="sm"
+                style={submitting ? { opacity: 0.5, pointerEvents: "none" } : undefined}
               >
                 <X className="w-4 h-4" /> Retour
-              </button>
+              </GlassButton>
             </div>
           </div>
         )}

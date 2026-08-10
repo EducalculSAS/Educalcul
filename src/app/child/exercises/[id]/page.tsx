@@ -27,31 +27,32 @@ export default async function ExerciseDetailPage({
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
 
-  const { data: exerciseData, error } = await supabaseAdmin
-    .from("exercises")
-    .select(`
-      id, title, description, question,
-      difficulty_level, type, level, status,
-      folder_id, course_id, content_json,
-      points_reward, max_attempts, time_limit,
-      created_at, updated_at,
-      courses (title, subject, level),
-      exercise_folders (name, color)
-    `)
-    .eq("id", exerciseId)
-    .maybeSingle();
+  const [{ data: exerciseData, error }, { data: attemptRow }] = await Promise.all([
+    supabaseAdmin
+      .from("exercises")
+      .select(`
+        id, title, description, question,
+        difficulty_level, type, level, status,
+        folder_id, course_id, content_json,
+        points_reward, max_attempts, time_limit,
+        courses (title, subject, level),
+        exercise_folders (name, color)
+      `)
+      .eq("id", exerciseId)
+      .maybeSingle(),
+    supabaseAdmin
+      .from("user_exercise_attempts")
+      .select("status, attempts_history")
+      .eq("user_id", authUser.id)
+      .eq("exercise_id", exerciseId)
+      .maybeSingle(),
+  ]);
 
   const exercise = error || !exerciseData ? null : stripAnswers(fillEmptyContentJson(exerciseData));
 
   let attemptsHistory: any[] = [];
   let alreadyCompleted = false;
   if (exercise) {
-    const { data: attemptRow } = await supabaseAdmin
-      .from("user_exercise_attempts")
-      .select("status, attempts_history")
-      .eq("user_id", authUser.id)
-      .eq("exercise_id", exerciseId)
-      .maybeSingle();
     attemptsHistory = attemptRow?.attempts_history || [];
     alreadyCompleted = attemptRow?.status === "completed";
   }

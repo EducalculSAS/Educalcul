@@ -16,7 +16,7 @@ export default async function ChildBadgesPage() {
   if (!userData) redirect("/dashboard");
 
   const [{ data: allBadges }, { data: ub }] = await Promise.all([
-    supabaseAdmin.from("badges").select("*").eq("is_active", true).order("display_order"),
+    supabaseAdmin.from("badges").select("id, name, icon, color, description, display_order").eq("is_active", true).order("display_order"),
     supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userData.id),
   ]);
   const earnedIds = (ub || []).map((e) => e.badge_id);
@@ -28,10 +28,25 @@ export default async function ChildBadgesPage() {
     Object.keys(BORDER_STYLES).forEach((k) => borders.add(k));
     Object.keys(NAME_COLORS).forEach((k) => colors.add(k));
   } else {
-    const { data: cosmetics } = await supabaseAdmin
-      .from("user_cosmetics")
-      .select("cosmetic_key")
-      .eq("user_id", userData.id);
+    // Cosmétiques et chaîne d'abonnement (parent -> sub -> plan) sont
+    // indépendants : on les lance en parallèle plutôt qu'en série.
+    const [{ data: cosmetics }, subResult] = await Promise.all([
+      supabaseAdmin.from("user_cosmetics").select("cosmetic_key").eq("user_id", userData.id),
+      (async () => {
+        let subUserId = authUser.authId;
+        if (userData.role === "child" && userData.parent_id) {
+          const { data: parentUser } = await supabaseAdmin.from("users").select("auth_id").eq("id", userData.parent_id).maybeSingle();
+          if (parentUser?.auth_id) subUserId = parentUser.auth_id;
+        }
+        const { data: sub } = await supabaseAdmin.from("subscriptions").select("plan_id").eq("user_id", subUserId).maybeSingle();
+        let planFeatures = null;
+        if (sub?.plan_id) {
+          const { data: planData } = await supabaseAdmin.from("subscription_plans").select("features").eq("id", sub.plan_id).maybeSingle();
+          planFeatures = planData?.features ?? null;
+        }
+        return { planId: sub?.plan_id ?? null, planFeatures };
+      })(),
+    ]);
     for (const c of cosmetics || []) {
       const k = c.cosmetic_key;
       if (BORDER_STYLES[k]?.source === "subscription" || NAME_COLORS[k]?.source === "subscription") continue;
@@ -40,18 +55,7 @@ export default async function ChildBadgesPage() {
       else { borders.add(k); colors.add(k); }
     }
 
-    let subUserId = authUser.authId;
-    if (userData.role === "child" && userData.parent_id) {
-      const { data: parentUser } = await supabaseAdmin.from("users").select("auth_id").eq("id", userData.parent_id).maybeSingle();
-      if (parentUser?.auth_id) subUserId = parentUser.auth_id;
-    }
-    const { data: sub } = await supabaseAdmin.from("subscriptions").select("plan_id").eq("user_id", subUserId).maybeSingle();
-    let planFeatures = null;
-    if (sub?.plan_id) {
-      const { data: planData } = await supabaseAdmin.from("subscription_plans").select("features").eq("id", sub.plan_id).maybeSingle();
-      planFeatures = planData?.features ?? null;
-    }
-    const subUnlocks = getSubscriptionUnlocks(sub?.plan_id ?? null, planFeatures);
+    const subUnlocks = getSubscriptionUnlocks(subResult.planId, subResult.planFeatures);
     subUnlocks.borders.forEach((b) => borders.add(b));
     subUnlocks.colors.forEach((c) => colors.add(c));
   }

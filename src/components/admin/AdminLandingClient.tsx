@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { Trophy, Users, Gift, Trash2, Download, RefreshCw, Search, Crown, Check, X, Pencil } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 interface Entry {
   id: number;
@@ -149,12 +151,12 @@ export default function AdminLandingClient({
           subtitle="Gérez les inscrits, le parrainage et le classement du site de lancement."
           actions={
             <>
-              <button onClick={fetchEntries} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[rgba(197,161,72,0.3)] text-[var(--greek-blue)] font-semibold hover:bg-[var(--greek-cream)] transition-colors">
+              <GlassButton size="sm" variant="outline" onClick={fetchEntries}>
                 <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} /> Actualiser
-              </button>
-              <button onClick={exportCSV} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--greek-blue)] text-white font-semibold hover:opacity-90 transition-opacity">
+              </GlassButton>
+              <GlassButton size="sm" variant="navy" onClick={exportCSV}>
                 <Download className="w-4 h-4" /> CSV
-              </button>
+              </GlassButton>
             </>
           }
         />
@@ -183,14 +185,20 @@ export default function AdminLandingClient({
       <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 border-b border-[rgba(197,161,72,0.15)]">
           <div className="relative flex-1 max-w-sm w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" aria-hidden="true" />
             <input type="text" placeholder="Rechercher nom, email, code..." value={search} onChange={e => setSearch(e.target.value)}
+              aria-label="Rechercher"
               className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[var(--greek-blue)]" />
           </div>
-          <div className="flex gap-1 text-sm">
-            <button onClick={() => setSortBy("position")} className={`px-3 py-1.5 rounded-lg font-semibold ${sortBy === "position" ? "bg-[var(--greek-blue)] text-white" : "text-gray-500 hover:bg-gray-100"}`}>Par position</button>
-            <button onClick={() => setSortBy("referrals")} className={`px-3 py-1.5 rounded-lg font-semibold ${sortBy === "referrals" ? "bg-[var(--greek-blue)] text-white" : "text-gray-500 hover:bg-gray-100"}`}>Par filleuls</button>
-          </div>
+          <GlassSegmentedControl
+            size="sm"
+            options={[
+              { id: "position", label: "Par position" },
+              { id: "referrals", label: "Par filleuls" },
+            ]}
+            value={sortBy}
+            onChange={(v) => setSortBy(v as "position" | "referrals")}
+          />
         </div>
 
         {/* Table */}
@@ -219,14 +227,14 @@ export default function AdminLandingClient({
                   <td className="px-4 py-3 font-bold text-[var(--greek-blue)]">{e.position}</td>
                   <td className="px-4 py-3">
                     {editId === e.id ? (
-                      <input value={editName} onChange={ev => setEditName(ev.target.value)} className="w-28 px-2 py-1 border border-gray-200 rounded-lg" />
+                      <input value={editName} onChange={ev => setEditName(ev.target.value)} aria-label="Nom" className="w-28 px-2 py-1 border border-gray-200 rounded-lg" />
                     ) : (e.display_name || <span className="text-gray-300">—</span>)}
                   </td>
                   <td className="px-4 py-3 text-gray-600">{e.email}</td>
                   <td className="px-4 py-3"><span className="px-2 py-0.5 rounded-md bg-[var(--greek-cream)] text-[var(--greek-bronze)] font-mono text-xs font-bold">{e.referral_code}</span></td>
                   <td className="px-4 py-3">
                     {editId === e.id ? (
-                      <input type="number" min={0} value={editRefs} onChange={ev => setEditRefs(ev.target.value)} className="w-16 px-2 py-1 border border-gray-200 rounded-lg" />
+                      <input type="number" min={0} value={editRefs} onChange={ev => setEditRefs(ev.target.value)} aria-label="Nombre de filleuls" className="w-16 px-2 py-1 border border-gray-200 rounded-lg" />
                     ) : (
                       <span className="inline-flex items-center gap-1 font-semibold text-[var(--greek-blue)]">{e.referral_count} 👥</span>
                     )}

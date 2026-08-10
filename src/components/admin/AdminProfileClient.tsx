@@ -6,6 +6,7 @@ import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { User, Save, Eye, Crown, Shield } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminTotpCard from "@/components/admin/AdminTotpCard";
+import GlassButton from "@/components/ui/GlassButton";
 
 const ADMIN_AVATAR = "/logo.png";
 
@@ -161,6 +162,7 @@ export default function AdminProfileClient({ initialFormData }: {
           </span>
           <button
             onClick={() => setMessage(null)}
+            aria-label="Fermer"
             className="font-bold hover:bg-black/5 p-1 rounded-full transition-colors"
           >
             <div className="w-4 h-4 flex items-center justify-center">×</div>
@@ -344,14 +346,15 @@ export default function AdminProfileClient({ initialFormData }: {
                   </div>
                 </div>
 
-                <button
-                  type="submit"
+                <GlassButton
+                  size="sm"
+                  variant="navy"
                   disabled={saving}
-                  className="w-full md:w-auto px-8 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)] focus:ring-opacity-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transform hover:scale-[1.02] active:scale-[0.98]"
+                  onClick={() => handleUpdateProfile({ preventDefault: () => {} } as unknown as React.FormEvent)}
                 >
                   <Save size={20} />
                   {saving ? "Enregistrement..." : "Sauvegarder"}
-                </button>
+                </GlassButton>
               </form>
             </div>
           </div>

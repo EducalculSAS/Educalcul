@@ -13,6 +13,7 @@ import {
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
 import { useSmoothPercent } from "./useSmoothPercent";
+import GlassButton from "@/components/ui/GlassButton";
 
 export interface AIGenerateProgress {
   current: number;
@@ -106,8 +107,8 @@ export default function ExerciseGeneratorModal({
     setStep(2);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (!params.subject.trim()) {
       setFieldError("Veuillez entrer un sujet.");
       return;
@@ -154,6 +155,7 @@ export default function ExerciseGeneratorModal({
           </div>
           <button
             onClick={onClose}
+            aria-label="Fermer la modale"
             className="group p-2 transition-colors text-white/70 hover:text-white relative z-10"
           >
             <X size={22} className="transition-transform group-hover:scale-125" />
@@ -279,10 +281,11 @@ export default function ExerciseGeneratorModal({
 
               {/* Subject */}
               <div>
-                <label className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
+                <label htmlFor="exercise-gen-subject" className="block text-sm font-semibold text-[var(--greek-blue)] mb-1.5">
                   Sujet / thème
                 </label>
                 <input
+                  id="exercise-gen-subject"
                   type="text"
                   required
                   value={params.subject}
@@ -444,21 +447,14 @@ export default function ExerciseGeneratorModal({
               )}
 
               <div className="flex justify-between gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="px-5 py-2.5 text-[var(--greek-blue)] font-bold rounded-xl border border-[rgba(197,161,72,0.25)] hover:bg-gray-50 transition-colors flex items-center gap-2"
-                >
+                <GlassButton size="sm" variant="outline" onClick={() => setStep(1)} className="gap-2">
                   <ArrowLeft size={16} />
                   Retour
-                </button>
-                <button
-                  type="submit"
-                  className="px-8 py-2.5 bg-[var(--greek-gold)] text-white font-bold rounded-xl hover:bg-yellow-600 transition-colors flex items-center gap-2 shadow-lg shadow-yellow-900/10"
-                >
+                </GlassButton>
+                <GlassButton size="sm" variant="navy" onClick={() => handleSubmit()} className="gap-2">
                   <Sparkles size={16} />
                   Générer
-                </button>
+                </GlassButton>
               </div>
             </form>
           )}

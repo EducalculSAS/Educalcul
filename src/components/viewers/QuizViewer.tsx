@@ -14,11 +14,11 @@ import {
   HelpCircle,
   Clock,
 } from "lucide-react";
-import Link from "next/link";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
+import GlassButton from "@/components/ui/GlassButton";
 
 
 interface QuizViewerProps {
@@ -451,28 +451,24 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                 <div className="w-full md:w-80 flex-shrink-0">
                   <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24 space-y-3">
                     <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 text-center">Et maintenant ?</h3>
-                    <button
+                    <GlassButton
                       onClick={() => {
                         setQuizCompleted(false);
                         setShowReview(true);
                         setCurrentQuestionIndex(0);
                       }}
-                      className="w-full btn-primary-greek py-4 text-base shadow-lg flex items-center justify-center transform hover:scale-105 transition-all"
+                      variant="navy"
+                      fullWidth
+                      className="font-bold text-base"
                     >
                       Voir la correction
-                    </button>
-                    <Link
-                      href="/child/exercises"
-                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-blue)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
-                    >
+                    </GlassButton>
+                    <GlassButton href="/child/exercises" variant="navy" fullWidth className="font-bold text-base">
                       Faire les exercices
-                    </Link>
-                    <Link
-                      href="/child/quiz"
-                      className="w-full flex items-center justify-center py-4 rounded-xl font-bold text-base bg-[var(--greek-bronze)] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
-                    >
+                    </GlassButton>
+                    <GlassButton href="/child/quiz" variant="outline" fullWidth className="font-bold text-base">
                       Retour aux quiz
-                    </Link>
+                    </GlassButton>
                   </div>
                 </div>
               </div>
@@ -494,6 +490,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                 onClick={onBack}
                 className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
                 title="Retour"
+                aria-label="Retour"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
@@ -503,8 +500,8 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             </h3>
           </div>
           <div className="flex items-center gap-3 flex-shrink-0">
-            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold border ${isLowTime ? "bg-red-50 border-red-400 text-red-600 animate-pulse" : "bg-[var(--greek-blue)]/10 border-[var(--greek-gold)] text-[var(--greek-blue)]"}`}>
-              <Clock className="w-3.5 h-3.5" />
+            <div aria-label="Temps restant" className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold border ${isLowTime ? "bg-red-50 border-red-400 text-red-600 animate-pulse" : "bg-[var(--greek-blue)]/10 border-[var(--greek-gold)] text-[var(--greek-blue)]"}`}>
+              <Clock className="w-3.5 h-3.5" aria-hidden="true" />
               {timeLimitSeconds ? formatTime(displayTime) : formatTime(elapsed)}
             </div>
             <div className="text-sm font-medium text-[var(--greek-blue)] bg-[var(--greek-blue)]/10 border border-[var(--greek-gold)] px-3 py-1 rounded-full">

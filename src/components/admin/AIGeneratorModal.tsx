@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { useSmoothPercent } from "./useSmoothPercent";
+import GlassButton from "@/components/ui/GlassButton";
 
 export interface AIGenerateParams {
   topic: string;
@@ -103,8 +104,8 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
   const [fieldError, setFieldError] = useState<string | null>(null);
   const smoothPct = useSmoothPercent(progress?.current ?? 0, progress?.total ?? 0, isGenerating);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (!params.topic.trim()) {
       setFieldError("Veuillez entrer un sujet.");
       return;
@@ -273,6 +274,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                   placeholder="Ex: Les fractions, Le théorème de Pythagore..."
                   className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 focus:border-[var(--greek-blue)] transition-all font-medium text-gray-800 placeholder:text-gray-400"
                   autoFocus
+                  aria-label="Sujet de la leçon"
                 />
               </Card>
 
@@ -285,6 +287,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                       value={params.level}
                       onChange={(e) => setParams({ ...params, level: e.target.value })}
                       className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 transition-all appearance-none font-medium text-gray-800"
+                      aria-label="Niveau scolaire"
                     >
                       {SCHOOL_LEVELS.map((level) => (
                         <option key={level.value} value={level.value}>
@@ -305,6 +308,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                       value={params.subjectArea}
                       onChange={(e) => setParams({ ...params, subjectArea: e.target.value })}
                       className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 transition-all appearance-none font-medium text-gray-800"
+                      aria-label="Domaine mathématique"
                     >
                       {SUBJECT_AREAS.map((s) => (
                         <option key={s} value={s}>
@@ -330,6 +334,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                       setParams({ ...params, count: parseInt(e.target.value) || 1 })
                     }
                     className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 transition-all font-medium text-gray-800"
+                    aria-label={getCountLabel()}
                   />
                 </Card>
 
@@ -348,6 +353,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                       })
                     }
                     className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 transition-all font-medium text-gray-800"
+                    aria-label="Nombre de leçons par chapitre"
                   />
                   <p className="text-[11px] text-gray-400 mt-1.5">Entre 2 et 4 leçons</p>
                 </Card>
@@ -504,30 +510,20 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                   rows={3}
                   placeholder="Ex: Insister sur des exemples concrets, adopter un ton ludique..."
                   className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 focus:border-[var(--greek-blue)] transition-all text-gray-800 resize-none"
+                  aria-label="Instructions supplémentaires"
                 />
               </Card>
             </div>
 
             {/* Footer */}
             <div className="flex justify-end gap-3 px-6 md:px-8 py-5 border-t border-gray-200 bg-gray-50 sticky bottom-0">
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-6 py-2.5 font-semibold text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-100 transition-colors"
-              >
+              <GlassButton size="sm" variant="ghost" onClick={onClose}>
                 Annuler
-              </button>
-              <button
-                type="submit"
-                className="px-8 py-2.5 font-semibold text-white rounded-xl transition-all flex items-center gap-2 shadow-md hover:-translate-y-0.5"
-                style={{
-                  background:
-                    "linear-gradient(to right, var(--greek-gold), #b08438)",
-                }}
-              >
+              </GlassButton>
+              <GlassButton size="sm" variant="navy" onClick={() => handleSubmit()} className="gap-2">
                 <Sparkles size={18} />
                 Générer le contenu
-              </button>
+              </GlassButton>
             </div>
           </form>
         )}

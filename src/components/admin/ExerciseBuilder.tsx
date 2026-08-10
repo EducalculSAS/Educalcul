@@ -28,6 +28,7 @@ import {
 
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddExerciseModal from "./AIAddExerciseModal";
+import GlassButton from "@/components/ui/GlassButton";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 
@@ -459,22 +460,14 @@ export default function ExerciseBuilder({
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-900">Contenu de l'exercice</h3>
         <div className="flex gap-2">
-          <button
-            onClick={() => setIsAiAddModalOpen(true)}
-            className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white text-sm rounded-lg hover:bg-purple-600 transition-colors"
-            type="button"
-          >
+          <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
             Ajouter avec l'IA
-          </button>
-          <button
-            onClick={addPage}
-            className="flex items-center gap-2 px-3 py-1.5 bg-[var(--greek-blue)] text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
-            type="button"
-          >
+          </GlassButton>
+          <GlassButton size="sm" variant="navy" onClick={addPage}>
             <Plus size={16} />
             Ajouter une page
-          </button>
+          </GlassButton>
         </div>
       </div>
 

@@ -1205,3 +1205,34 @@ export function topicAnglesSchema(count: number): JsonSchemaContract {
     },
   };
 }
+
+/** Sortie du Scanner IA (admin) : findings détectés dans un lot de fichiers. */
+export function scanFindingsSchema(): JsonSchemaContract {
+  return {
+    name: "educalcul_scan_findings",
+    description: "Problèmes détectés dans un lot de fichiers source, par un audit automatisé.",
+    schema: {
+      type: "object",
+      properties: {
+        findings: {
+          type: "array",
+          maxItems: 30,
+          items: {
+            type: "object",
+            properties: {
+              severity: { type: "string", enum: ["critical", "high", "medium", "low", "info"] },
+              file: { type: "string", minLength: 1 },
+              title: { type: "string", minLength: 1, maxLength: 140 },
+              description: { type: "string", minLength: 1 },
+              fix: { type: "string" },
+            },
+            required: ["severity", "file", "title", "description", "fix"],
+            ...noExtra,
+          },
+        },
+      },
+      required: ["findings"],
+      ...noExtra,
+    },
+  };
+}

@@ -8,6 +8,7 @@ import {
   Users, BookOpen, MessageSquare, BarChart2,
   CreditCard, Sparkles, Shield,
 } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Props {
   firstName: string;
@@ -117,14 +118,15 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
               {!cguScrolled && (
                 <p className="text-xs text-gray-400 text-center mb-3">↓ Faites défiler pour lire et accepter</p>
               )}
-              <button
+              <GlassButton
                 onClick={() => setStep("welcome")}
+                variant="navy"
+                fullWidth
                 disabled={!cguScrolled}
-                className="w-full py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 <CheckCircle className="w-5 h-5" />
                 J'accepte les conditions d'utilisation
-              </button>
+              </GlassButton>
             </div>
           </div>
         )}
@@ -149,13 +151,10 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
                 </div>
               ))}
             </div>
-            <button
-              onClick={() => setStep("tour")}
-              className="px-8 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors flex items-center gap-2 shadow-lg"
-            >
+            <GlassButton onClick={() => setStep("tour")} variant="navy">
               <Sparkles className="w-5 h-5" />
               Découvrir la plateforme
-            </button>
+            </GlassButton>
           </div>
         )}
 
@@ -201,6 +200,7 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
               <div className="flex gap-2">
                 {TOUR_STEPS.map((_, i) => (
                   <button key={i} onClick={() => setTourIndex(i)}
+                    aria-label={`Aller à l'étape ${i + 1}`}
                     className={`w-2 h-2 rounded-full transition-all ${i === tourIndex ? "bg-[var(--greek-gold)] w-5" : "bg-gray-200"}`}
                   />
                 ))}
@@ -214,12 +214,9 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
                   Suivant <ChevronRight className="w-4 h-4" />
                 </button>
               ) : (
-                <button
-                  onClick={() => setStep("end")}
-                  className="flex items-center gap-1 bg-[var(--greek-blue)] text-white font-bold text-sm px-4 py-2 rounded-xl hover:bg-blue-800 transition-colors"
-                >
+                <GlassButton onClick={() => setStep("end")} variant="navy" size="sm">
                   Terminer <ChevronRight className="w-4 h-4" />
-                </button>
+                </GlassButton>
               )}
             </div>
           </div>
@@ -241,13 +238,13 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
               <p className="font-bold text-[var(--greek-blue)] text-sm mb-2">Premier pas recommandé</p>
               <p className="text-sm text-gray-600">Ajoutez votre premier enfant depuis <strong>Mes Enfants → Ajouter un enfant</strong> pour commencer le suivi.</p>
             </div>
-            <button
+            <GlassButton
               onClick={handleComplete}
+              variant="gold"
               disabled={saving}
-              className="px-10 py-3 bg-[var(--greek-gold)] text-white font-bold rounded-xl hover:bg-yellow-600 transition-colors shadow-lg text-lg disabled:opacity-50"
             >
               {saving ? "Sauvegarde..." : "Accéder au tableau de bord"}
-            </button>
+            </GlassButton>
           </div>
         )}
       </div>

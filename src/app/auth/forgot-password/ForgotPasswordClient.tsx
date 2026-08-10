@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -58,12 +59,9 @@ export default function ForgotPassword() {
                 <CheckCircle className="w-8 h-8" style={{ color: "var(--greek-gold)" }} />
               </div>
               <p className="text-gray-800 mb-6">{message}</p>
-              <Link
-                href="/auth/connexion"
-                className="btn-primary-greek w-full flex justify-center items-center gap-2"
-              >
+              <GlassButton href="/auth/connexion" variant="gold" fullWidth>
                 Retour à la connexion
-              </Link>
+              </GlassButton>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -98,10 +96,11 @@ export default function ForgotPassword() {
                 </div>
               </div>
 
-              <button
-                type="submit"
+              <GlassButton
+                onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                variant="gold"
+                fullWidth
                 disabled={status === "loading"}
-                className="btn-primary-greek w-full flex justify-center items-center gap-2"
               >
                 {status === "loading" ? (
                   <>
@@ -111,7 +110,7 @@ export default function ForgotPassword() {
                 ) : (
                   "Envoyer le lien"
                 )}
-              </button>
+              </GlassButton>
 
               <div className="text-center mt-4">
                 <Link

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { Lock, CheckCircle, AlertCircle } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default function UpdatePassword() {
   const [password, setPassword] = useState("");
@@ -158,10 +159,11 @@ export default function UpdatePassword() {
                 </div>
               </div>
 
-              <button
-                type="submit"
+              <GlassButton
+                onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                variant="gold"
+                fullWidth
                 disabled={status === "loading"}
-                className="btn-primary-greek w-full flex justify-center items-center gap-2"
               >
                 {status === "loading" ? (
                   <>
@@ -171,7 +173,7 @@ export default function UpdatePassword() {
                 ) : (
                   "Mettre à jour le mot de passe"
                 )}
-              </button>
+              </GlassButton>
             </form>
           )}
         </div>

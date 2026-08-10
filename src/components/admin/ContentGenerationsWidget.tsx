@@ -55,8 +55,8 @@ function GenerationRow({
           </span>
         </span>
         <div className="flex items-center gap-1 flex-shrink-0">
-          {generation.status === "done" && <CheckCircle2 size={14} className="text-emerald-500" />}
-          {generation.status === "error" && <XCircle size={14} className="text-red-500" />}
+          {generation.status === "done" && <CheckCircle2 size={14} className="text-emerald-500" aria-label="Terminé" />}
+          {generation.status === "error" && <XCircle size={14} className="text-red-500" aria-label="Erreur" />}
           {isActive ? (
             <button
               type="button"
@@ -66,6 +66,7 @@ function GenerationRow({
               }}
               className="text-gray-400 hover:text-red-500 transition-opacity"
               title="Annuler"
+              aria-label="Annuler la génération"
             >
               <X size={14} />
             </button>
@@ -78,6 +79,7 @@ function GenerationRow({
               }}
               className="text-gray-400 hover:text-gray-600 transition-opacity"
               title="Retirer de la liste"
+              aria-label="Retirer de la liste"
             >
               <X size={14} />
             </button>

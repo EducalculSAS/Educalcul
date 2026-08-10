@@ -160,14 +160,15 @@ export async function POST(req: Request) {
     const userId = user.id;
 
     // ── Individual badge checking ───────────────────────────────────────────
-    const { data: allBadges } = await supabaseAdmin.from("badges").select("*").eq("is_active", true);
-    const { data: earned } = await supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userId);
-    const earnedIds = new Set((earned || []).map(e => e.badge_id));
-
+    // All of these queries only depend on userId, which is already known —
+    // run them together instead of fetching badges/user_badges first.
     const [
+      { data: allBadges }, { data: earned },
       { count: exoCount }, { count: correctCount }, { count: quizCount },
       { count: courseCount }, { data: quizScores },
     ] = await Promise.all([
+      supabaseAdmin.from("badges").select("id, requirement_type, requirement_value, name, description").eq("is_active", true),
+      supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userId),
       // Count exercises that are passed (or completed if no threshold was set, i.e. passed IS NULL)
       supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).or("passed.eq.true,passed.is.null"),
       supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).eq("is_correct", true),
@@ -176,6 +177,7 @@ export async function POST(req: Request) {
       supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", userId),
       supabaseAdmin.from("user_quiz_attempts").select("score, total_questions").eq("user_id", userId),
     ]);
+    const earnedIds = new Set((earned || []).map(e => e.badge_id));
 
     const perfectQuizzes = (quizScores || []).filter(q => q.total_questions > 0 && q.score === q.total_questions).length;
 

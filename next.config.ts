@@ -28,7 +28,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
-  
+
+  // Le Scanner IA (admin) lit le code source du site à l'exécution pour
+  // l'auditer — sans ça, Vercel ne trace que les fichiers réellement
+  // importés et un fs.readFile sur une page non importée échouerait en prod
+  // (marcherait en local seulement).
+  outputFileTracingIncludes: {
+    "/api/admin/scanner/run": ["./src/app/**/*.tsx", "./src/components/**/*.tsx", "./src/lib/**/*.ts"],
+  },
+
   // ✓ SECURITY: Restrict image sources to trusted domains
   images: {
     remotePatterns: [

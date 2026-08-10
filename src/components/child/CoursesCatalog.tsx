@@ -3,14 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { BookOpen, Play, CheckCircle, ArrowLeft } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
 interface CourseRow {
   id: string; folder_id: number | null; title: string; description?: string;
-  thumbnail_url?: string; subject?: string; content_json?: { lessons?: unknown[] }[];
+  thumbnail_url?: string; subject?: string; lesson_count?: number;
 }
 type CourseProgress = Record<string, { status: string; pct: number }>;
 
@@ -129,13 +129,13 @@ export default function CoursesCatalog({
   return (
     <div className="space-y-8" ref={gridRef}>
       {currentFolderId !== null && (
-        <button
+        <GlassButton
           onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}
-          className="flex items-center gap-2 text-[var(--greek-blue)] bg-white px-5 py-2.5 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm hover:bg-blue-50 hover:-translate-x-1 transition-all duration-300 w-fit font-bold"
+          variant="outline" size="sm"
         >
           <ArrowLeft size={20} />
           Retour
-        </button>
+        </GlassButton>
       )}
 
       {currentFolders.length === 0 && currentCourses.length === 0 ? (
@@ -152,6 +152,14 @@ export default function CoursesCatalog({
               <div
                 key={folder.id}
                 onClick={() => navigateToFolder(folder.id, folder.name)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    navigateToFolder(folder.id, folder.name);
+                  }
+                }}
                 className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
                 style={{ animationDelay: `${index * 40}ms` }}
               >
@@ -170,7 +178,7 @@ export default function CoursesCatalog({
             const prog = courseProgress[course.id];
             const isCompleted = prog?.status === "completed" || (prog?.pct ?? 0) >= 100;
             const isInProgress = !isCompleted && prog && prog.pct > 0;
-            const totalL = (course.content_json || []).reduce((a: number, ch) => a + (ch.lessons?.length || 0), 0);
+            const totalL = course.lesson_count ?? 0;
             const donePct = prog?.pct ?? 0;
 
             return (
@@ -183,7 +191,7 @@ export default function CoursesCatalog({
                   {course.thumbnail_url ? (
                     <Image src={course.thumbnail_url} alt={course.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                   ) : (
-                    <Image src="/logo.png" alt="Educalcul" width={80} height={80} className="w-20 h-20 object-contain opacity-30 m-auto" />
+                    <Image src="/logo.png" alt="Vignette par défaut du cours" width={80} height={80} className="w-20 h-20 object-contain opacity-30 m-auto" />
                   )}
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[var(--greek-blue)] shadow-sm">
                     {course.subject || "Mathématiques"}
@@ -214,13 +222,13 @@ export default function CoursesCatalog({
                   )}
 
                   <div className="mt-auto">
-                    <Link
+                    <GlassButton
                       href={`/child/cours/${course.id}`}
-                      className="w-full btn-primary-greek py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--greek-gold)] group-hover:text-[var(--greek-blue)] transition-colors"
+                      variant="navy" fullWidth size="sm"
                     >
                       <Play className="w-4 h-4 fill-current" />
                       {isCompleted ? "Revoir" : isInProgress ? "Reprendre" : "Commencer"}
-                    </Link>
+                    </GlassButton>
                   </div>
                 </div>
               </div>

@@ -14,6 +14,7 @@ import PageLoader from "@/components/PageLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GradePromotionPanel from "@/components/admin/GradePromotionPanel";
+import GlassButton from "@/components/ui/GlassButton";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 
 interface User {
@@ -497,16 +498,21 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
         subtitle="Gérez les comptes parents, élèves et administrateurs"
         actions={
           <>
-            <button onClick={() => { setExportTarget(filteredUsers); setShowExportModal(true); }}
-              className="flex items-center gap-2 px-4 py-2.5 border border-[rgba(197,161,72,0.35)] text-[var(--greek-blue)] rounded-xl hover:bg-[rgba(197,161,72,0.06)] transition-colors font-semibold text-sm"
-              title="Exporter les utilisateurs">
+            <GlassButton
+              size="sm"
+              variant="outline"
+              onClick={() => { setExportTarget(filteredUsers); setShowExportModal(true); }}
+            >
               <Download size={16} />
               <span className="hidden sm:inline">Exporter</span>
-            </button>
-            <button onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" }); setShowFormModal(true); }}
-              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold text-sm">
+            </GlassButton>
+            <GlassButton
+              size="sm"
+              variant="navy"
+              onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" }); setShowFormModal(true); }}
+            >
               <Plus size={18} /> <span className="hidden sm:inline">Nouvel Utilisateur</span><span className="sm:hidden">Nouveau</span>
-            </button>
+            </GlassButton>
           </>
         }
       />
@@ -683,10 +689,15 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                 </div>
               </div>
               <div className="flex justify-end gap-3 pt-2">
-                <button type="button" onClick={() => setShowFormModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button type="submit" disabled={submitting} className="px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-50 flex items-center gap-2">
+                <GlassButton size="sm" variant="ghost" onClick={() => setShowFormModal(false)}>Annuler</GlassButton>
+                <GlassButton
+                  size="sm"
+                  variant="navy"
+                  disabled={submitting}
+                  onClick={() => handleFormSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                >
                   {submitting && <Loader2 className="w-4 h-4 animate-spin" />}Créer
-                </button>
+                </GlassButton>
               </div>
             </form>
           </div>
@@ -728,12 +739,16 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                 </>
               )}
               <div className="flex justify-end gap-3 pt-2">
-                <button onClick={() => { setShowBanModal(false); setBanReason(""); setBanDays(null); }} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button onClick={handleBanConfirm} disabled={submitting}
-                  className={`flex items-center gap-2 px-7 py-2.5 text-white font-bold rounded-xl transition-colors disabled:opacity-50 ${banTarget.status === "inactive" ? "bg-green-500 hover:bg-green-600" : "bg-orange-500 hover:bg-orange-600"}`}>
+                <GlassButton size="sm" variant="ghost" onClick={() => { setShowBanModal(false); setBanReason(""); setBanDays(null); }}>Annuler</GlassButton>
+                <GlassButton
+                  size="sm"
+                  variant={banTarget.status === "inactive" ? "outline" : "danger"}
+                  disabled={submitting}
+                  onClick={handleBanConfirm}
+                >
                   {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
                   <Ban size={15} />{banTarget.status === "inactive" ? "Réactiver" : "Bannir"}
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>
@@ -754,11 +769,10 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                 <br /><span className="text-red-500 font-medium">Cette action est irréversible.</span>
               </p>
               <div className="flex justify-end gap-3 pt-2">
-                <button onClick={() => setShowDeleteModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button onClick={handleDeleteConfirm} disabled={submitting}
-                  className="flex items-center gap-2 px-7 py-2.5 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition-colors disabled:opacity-50">
+                <GlassButton size="sm" variant="ghost" onClick={() => setShowDeleteModal(false)}>Annuler</GlassButton>
+                <GlassButton size="sm" variant="danger" disabled={submitting} onClick={handleDeleteConfirm}>
                   {submitting && <Loader2 className="w-4 h-4 animate-spin" />}<Trash2 size={15} /> Supprimer définitivement
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>

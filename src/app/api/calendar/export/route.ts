@@ -43,7 +43,7 @@ export async function GET(req: Request) {
 
     let query = supabaseAdmin
       .from("calendar_events")
-      .select("*")
+      .select("id, title, description, start_date, end_date")
       .eq("owner_id", ownerId)
       .order("start_date", { ascending: true });
 
@@ -51,22 +51,21 @@ export async function GET(req: Request) {
       query = query.eq("visible_to_child", true);
     }
 
-    const { data: events, error } = await query;
+    // The events query and the owner's school zone lookup are independent —
+    // run them in parallel instead of one after the other.
+    const [{ data: events, error }, ownerZoneRes] = await Promise.all([
+      query,
+      ownerId !== requester.id
+        ? supabaseAdmin.from("users").select("school_zone").eq("id", ownerId).maybeSingle()
+        : Promise.resolve(null),
+    ]);
     if (error) throw error;
 
-    let ownerZone = requester.school_zone || "C";
-    if (ownerId !== requester.id) {
-      const { data: ownerData } = await supabaseAdmin
-        .from("users")
-        .select("school_zone")
-        .eq("id", ownerId)
-        .maybeSingle();
-      ownerZone = ownerData?.school_zone || "C";
-    }
+    const ownerZone = ownerZoneRes ? ownerZoneRes.data?.school_zone || "C" : requester.school_zone || "C";
 
     const { data: globalEvents, error: globalError } = await supabaseAdmin
       .from("global_calendar_events")
-      .select("*")
+      .select("id, title, description, start_date, end_date")
       .or(`zone.eq.all,zone.eq.${ownerZone}`);
     if (globalError) throw globalError;
 

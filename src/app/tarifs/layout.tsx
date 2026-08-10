@@ -10,8 +10,8 @@ const offersSchema = {
   url: `${BASE}/tarifs`,
   itemListElement: [
     { "@type": "ListItem", position: 1, item: { "@type": "Offer", name: "Plan Gratuit", price: "0", priceCurrency: "EUR", availability: "https://schema.org/InStock", url: `${BASE}/auth/inscription`, seller: { "@type": "Organization", name: "Educalcul" } } },
-    { "@type": "ListItem", position: 2, item: { "@type": "Offer", name: "Plan Premium", description: "Accès complet CP à Terminale, IA 10/j, rapports, avatars.", price: "9.99", priceCurrency: "EUR", availability: "https://schema.org/InStock", url: `${BASE}/auth/inscription`, seller: { "@type": "Organization", name: "Educalcul" } } },
-    { "@type": "ListItem", position: 3, item: { "@type": "Offer", name: "Plan Famille", description: "Jusqu'à 6 enfants, IA 20/j, support prioritaire.", price: "19.99", priceCurrency: "EUR", availability: "https://schema.org/InStock", url: `${BASE}/auth/inscription`, seller: { "@type": "Organization", name: "Educalcul" } } },
+    { "@type": "ListItem", position: 2, item: { "@type": "Offer", name: "Plan Solo", description: "Accès complet CP à Terminale, IA 10/j, rapports, avatars.", price: "9.99", priceCurrency: "EUR", availability: "https://schema.org/InStock", url: `${BASE}/auth/inscription`, seller: { "@type": "Organization", name: "Educalcul" } } },
+    { "@type": "ListItem", position: 3, item: { "@type": "Offer", name: "Plan Family", description: "Jusqu'à 6 enfants, IA 20/j, support prioritaire.", price: "16.99", priceCurrency: "EUR", availability: "https://schema.org/InStock", url: `${BASE}/auth/inscription`, seller: { "@type": "Organization", name: "Educalcul" } } },
   ],
 };
 

@@ -17,18 +17,21 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
     }
 
-    // Vérifier que le ticket appartient bien à cet utilisateur
-    const { data: ticket } = await supabaseAdmin
-      .from("support_tickets")
-      .select("id, user_id, user_name, user_email")
-      .eq("id", ticketId)
-      .eq("user_id", user.id)
-      .maybeSingle();
+    // Vérifier que le ticket appartient bien à cet utilisateur (en parallèle
+    // avec la lecture du profil, ces deux lectures étant indépendantes)
+    const [{ data: ticket }, { data: profile }] = await Promise.all([
+      supabaseAdmin
+        .from("support_tickets")
+        .select("id, user_id, user_name, user_email")
+        .eq("id", ticketId)
+        .eq("user_id", user.id)
+        .maybeSingle(),
+      supabaseAdmin
+        .from("users").select("first_name, last_name").eq("auth_id", user.id).maybeSingle(),
+    ]);
 
     if (!ticket) return NextResponse.json({ error: "Ticket introuvable" }, { status: 404 });
 
-    const { data: profile } = await supabaseAdmin
-      .from("users").select("first_name, last_name").eq("auth_id", user.id).maybeSingle();
     const authorName = profile ? `${profile.first_name || ""} ${profile.last_name || ""}`.trim() : ticket.user_name;
 
     // Insérer la réponse

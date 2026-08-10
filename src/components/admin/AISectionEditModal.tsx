@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, X } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 import PageLoader from "@/components/PageLoader";
 import { useSmoothPercent } from "./useSmoothPercent";
 
@@ -151,6 +152,7 @@ export default function AISectionEditModal({
                 value={instruction}
                 onChange={(e) => setInstruction(e.target.value)}
                 placeholder={`Ex : Renomme ${label}... / Corrige l'énoncé... / Ajoute un exemple...`}
+                aria-label="Instruction de modification"
                 className="w-full min-h-[100px] border border-[rgba(197,161,72,0.25)] rounded-xl text-sm p-3 focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                 disabled={loading}
                 autoFocus
@@ -162,15 +164,16 @@ export default function AISectionEditModal({
 
         {!loading && (
           <div className="p-4 border-t border-[rgba(197,161,72,0.25)] flex justify-end gap-2">
-            <button
-              type="button"
+            <GlassButton
+              size="sm"
+              variant="navy"
               onClick={handleApply}
               disabled={!instruction.trim()}
-              className="px-4 py-2 text-sm rounded-lg bg-[var(--greek-blue)] text-white font-medium hover:opacity-90 disabled:opacity-50 flex items-center gap-2"
+              className="gap-2"
             >
               <Sparkles size={16} />
               Appliquer
-            </button>
+            </GlassButton>
           </div>
         )}
       </div>

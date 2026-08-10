@@ -23,7 +23,6 @@ export default async function ExerciseReviewPage({
         difficulty_level, type, level, status,
         folder_id, course_id, content_json,
         points_reward, max_attempts, time_limit,
-        created_at, updated_at,
         courses (title, subject, level),
         exercise_folders (name, color)
       `)

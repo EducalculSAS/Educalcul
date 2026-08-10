@@ -17,6 +17,7 @@ import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
+import GlassButton from "@/components/ui/GlassButton";
 
 // Utility function to extract all content from exercise blocks
 function extractExerciseContent(contentJson: any): string {
@@ -253,6 +254,7 @@ export default function ExerciseDetailClient({
             onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Retour à l'aperçu"
+            aria-label="Retour à l'aperçu"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -266,6 +268,7 @@ export default function ExerciseDetailClient({
             }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Fermer"
+            aria-label="Fermer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -369,19 +372,21 @@ export default function ExerciseDetailClient({
                   const attemptsUsed = attemptsHistory.length;
                   const limitReached = !!maxAttempts && attemptsUsed >= maxAttempts;
                   return (
-                    <button
+                    <GlassButton
                       onClick={() => {
                         if (limitReached) return;
                         setForceNewAttempt(alreadyCompleted);
                         if (alreadyCompleted) setAttemptKey((k) => k + 1);
                         setStarted(true);
                       }}
-                      disabled={limitReached}
-                      className={`w-full py-4 text-lg shadow-lg mb-1 flex items-center justify-center gap-2 transform transition-all rounded-full font-bold ${limitReached ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "btn-primary-greek hover:scale-105"}`}
+                      variant={limitReached ? "ghost" : "navy"}
+                      fullWidth
+                      className="text-lg mb-1"
+                      style={limitReached ? { opacity: 0.6, pointerEvents: "none" } : undefined}
                     >
                       <Play className="w-6 h-6 fill-current" />
                       {limitReached ? "Tentatives épuisées" : alreadyCompleted ? "Recommencer l'exercice" : "Commencer l'exercice"}
-                    </button>
+                    </GlassButton>
                   );
                 })()}
                 {!!exercise.max_attempts && (

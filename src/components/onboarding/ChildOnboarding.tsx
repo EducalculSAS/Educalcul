@@ -6,6 +6,7 @@ import {
   BookOpen, Brain, Trophy, Calculator,
   ChevronRight, ChevronLeft, CheckCircle, MessageSquare,
 } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Props {
   firstName: string;
@@ -126,12 +127,9 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
             <div className="bg-blue-50 rounded-2xl p-4 text-sm text-[var(--greek-blue)] font-medium max-w-xs">
               Des cours, des exercices, des quiz et des badges t'attendent !
             </div>
-            <button
-              onClick={() => setStep("tour")}
-              className="px-8 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors flex items-center gap-2 shadow-lg"
-            >
+            <GlassButton onClick={() => setStep("tour")} variant="navy">
               C'est parti ! <ChevronRight className="w-5 h-5" />
-            </button>
+            </GlassButton>
           </div>
         )}
 
@@ -174,10 +172,9 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
                   Suivant <ChevronRight className="w-4 h-4" />
                 </button>
               ) : (
-                <button onClick={() => setStep("quiz")}
-                  className="flex items-center gap-1 bg-[var(--greek-blue)] text-white font-bold text-sm px-4 py-2 rounded-xl hover:bg-blue-800">
+                <GlassButton onClick={() => setStep("quiz")} variant="navy" size="sm">
                   Mini-test ! <ChevronRight className="w-4 h-4" />
-                </button>
+                </GlassButton>
               )}
             </div>
           </div>
@@ -235,13 +232,13 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
               <p className="font-bold text-[var(--greek-blue)] mb-1">Pour commencer</p>
               <p>Va dans <strong>Mes Cours</strong> et commence par la première leçon de ton niveau !</p>
             </div>
-            <button
+            <GlassButton
               onClick={handleComplete}
+              variant="gold"
               disabled={saving}
-              className="px-10 py-3 bg-[var(--greek-gold)] text-white font-bold rounded-xl hover:bg-yellow-600 transition-colors shadow-lg text-lg disabled:opacity-50"
             >
               {saving ? "Sauvegarde..." : "C'est parti !"}
-            </button>
+            </GlassButton>
           </div>
         )}
       </div>

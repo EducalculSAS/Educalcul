@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Cookie, X, Check } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -42,12 +43,12 @@ export default function CookieBanner() {
           </p>
         </div>
         <div className="flex gap-3 shrink-0">
-          <button onClick={decline} className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white/70 hover:text-white border border-white/30 rounded-lg transition-colors">
+          <GlassButton onClick={decline} variant="light" size="sm">
             <X className="w-4 h-4" /> Refuser
-          </button>
-          <button onClick={accept} className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold bg-[var(--greek-gold)] text-white rounded-lg hover:opacity-90 transition-all">
+          </GlassButton>
+          <GlassButton onClick={accept} variant="gold" size="sm">
             <Check className="w-4 h-4" /> Accepter
-          </button>
+          </GlassButton>
         </div>
       </div>
     </div>

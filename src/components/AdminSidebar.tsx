@@ -21,6 +21,8 @@ import {
   GraduationCap,
   Calendar,
   History,
+  Star,
+  ScanSearch,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -50,8 +52,10 @@ export default function AdminSidebar() {
     { name: "Juridique", href: "/admin/juridique", icon: Scale },
     { name: "Programmes", href: "/admin/programmes", icon: GraduationCap },
     { name: "Calendrier", href: "/admin/calendar", icon: Calendar },
+    { name: "Avis clients", href: "/admin/reviews", icon: Star },
     { name: "Liste d'attente", href: "/admin/landing", icon: Trophy },
     { name: "Journal d'audit", href: "/admin/audit-log", icon: History },
+    { name: "Scanner IA", href: "/admin/scanner", icon: ScanSearch },
     { name: "Profil", href: "/admin/profile", icon: User },
   ];
 
@@ -68,8 +72,9 @@ export default function AdminSidebar() {
         onClick={() => setIsOpen(!isOpen)}
         className="lg:hidden fixed z-[1050] p-2 bg-[var(--greek-blue)] text-white rounded-md shadow-lg"
         style={{ top: 12, left: 16 }}
+        aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
       >
-        {isOpen ? <X size={20} /> : <Menu size={20} />}
+        {isOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
       </button>
 
       {/* Sidebar Overlay for Mobile */}

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { UserCheck } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
+import GlassButton from "@/components/ui/GlassButton";
 
 /**
  * Espace élève/parent : une session qui a traîné trop longtemps dans l'onglet
@@ -50,14 +51,15 @@ export default function SessionStillHereModal() {
           <p className="text-sm text-slate-600">
             Ta session est restée ouverte un moment. Confirme que tu es toujours là pour continuer.
           </p>
-          <button
-            type="button"
+          <GlassButton
             onClick={confirmStillHere}
+            variant="navy"
+            fullWidth
+            className="mt-2"
             disabled={refreshing}
-            className="mt-2 w-full rounded-full bg-[var(--greek-blue)] text-white font-semibold py-2.5 disabled:opacity-60"
           >
             {refreshing ? "Un instant..." : "Oui, je suis toujours là"}
-          </button>
+          </GlassButton>
         </div>
       </div>
     </div>

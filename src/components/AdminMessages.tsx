@@ -61,12 +61,12 @@ export default function AdminMessages() {
     <div className="fixed top-20 right-4 z-50 space-y-2 max-w-sm w-full">
       {notifs.map(n => (
         <div key={n.id} className={`flex items-start gap-3 p-4 rounded-2xl border shadow-lg ${colors[n.type] || colors.message}`}>
-          <div className="shrink-0 mt-0.5">{icons[n.type] || icons.message}</div>
+          <div className="shrink-0 mt-0.5" aria-hidden="true">{icons[n.type] || icons.message}</div>
           <div className="flex-1 min-w-0">
             <p className="font-bold text-sm">{n.title}</p>
             <p className="text-xs opacity-80 mt-0.5">{n.content}</p>
           </div>
-          <button onClick={() => dismiss(n.id)} className="shrink-0 opacity-50 hover:opacity-100 transition-opacity"><X className="w-4 h-4" /></button>
+          <button onClick={() => dismiss(n.id)} aria-label="Fermer la notification" className="shrink-0 opacity-50 hover:opacity-100 transition-opacity"><X className="w-4 h-4" aria-hidden="true" /></button>
         </div>
       ))}
     </div>

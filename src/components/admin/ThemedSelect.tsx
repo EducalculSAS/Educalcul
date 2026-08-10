@@ -13,9 +13,10 @@ interface ThemedSelectProps {
   onChange: (value: string) => void;
   options: Option[];
   className?: string;
+  ariaLabel?: string;
 }
 
-export default function ThemedSelect({ value, onChange, options, className = "" }: ThemedSelectProps) {
+export default function ThemedSelect({ value, onChange, options, className = "", ariaLabel }: ThemedSelectProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -36,6 +37,9 @@ export default function ThemedSelect({ value, onChange, options, className = "" 
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
+        aria-label={ariaLabel}
+        aria-haspopup="listbox"
+        aria-expanded={open}
         className="w-full flex items-center justify-between gap-2 px-4 py-2 bg-gray-50 border-none rounded-xl focus:outline-none text-left text-[var(--text-dark)]"
       >
         <span className="truncate">{selected?.label || value}</span>

@@ -17,8 +17,15 @@ export default async function ChildExercisesPage() {
   const level = userData?.grade_level || null;
 
   const [{ data: allFolders }, { data: allExercises }, { data: attempts }] = await Promise.all([
-    supabaseAdmin.from("exercise_folders").select("*").eq("status", "published").order("name"),
-    supabaseAdmin.from("exercises").select("*, courses(title)").eq("status", "published"),
+    supabaseAdmin.from("exercise_folders").select("id, parent_id, name, color, icon, grade_level").eq("status", "published").order("name"),
+    // Pas de content_json (volumineux, non utilisé par le catalogue) — le
+    // contenu complet n'est chargé qu'à l'ouverture d'un exercice précis.
+    supabaseAdmin.from("exercises").select(`
+      id, title, description, question,
+      difficulty_level, thumbnail_url,
+      folder_id,
+      courses (title)
+    `).eq("status", "published"),
     supabaseAdmin.from("user_exercise_attempts").select("exercise_id, attempts_history").eq("user_id", authUser.id),
   ]);
 
@@ -61,7 +68,7 @@ export default async function ChildExercisesPage() {
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <ExercisesCatalog
           allFolders={allFolders || []}
-          allExercises={allExercises || []}
+          allExercises={(allExercises || []) as any}
           levelFolderId={levelFolder?.id ?? null}
           initialProgress={initialProgress}
         />

@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Send, Loader2, ChevronDown, ChevronUp, Mail, X, Plus } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Reply {
   id: number;
@@ -118,15 +119,14 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
       )}
 
       {!showForm ? (
-        <button onClick={() => setShowForm(true)}
-          className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--greek-blue)] text-white rounded-2xl font-bold hover:bg-blue-800 transition-colors shadow-sm">
-          <Plus size={18} /> Nouveau ticket
-        </button>
+        <GlassButton onClick={() => setShowForm(true)} variant="navy" fullWidth>
+          <Plus size={18} aria-hidden="true" /> Nouveau ticket
+        </GlassButton>
       ) : (
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
           <div className="flex items-center justify-between mb-5">
             <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau ticket</h2>
-            <button onClick={() => setShowForm(false)} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"><X size={16} /></button>
+            <button onClick={() => setShowForm(false)} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400" aria-label="Fermer"><X size={16} /></button>
           </div>
           <form onSubmit={submitNewTicket} className="space-y-4">
             <div>
@@ -146,7 +146,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
               </select>
             </div>
             <div className="flex justify-end gap-3 pt-2">
-              <button type="button" onClick={() => setShowForm(false)} className="px-5 py-2.5 text-gray-600 hover:bg-gray-100 rounded-xl font-semibold text-sm transition-colors">Annuler</button>
+              <GlassButton onClick={() => setShowForm(false)} variant="ghost" size="sm">Annuler</GlassButton>
               <button type="submit" disabled={submitting} className="flex items-center gap-2 px-6 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl font-bold text-sm hover:bg-blue-800 transition-colors disabled:opacity-50">
                 {submitting ? "Envoi..." : <><Send size={14} /> Envoyer</>}
               </button>
@@ -157,7 +157,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
 
       {tickets.length === 0 ? (
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-12 text-center shadow-sm">
-          <Mail className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+          <Mail className="w-12 h-12 text-gray-300 mx-auto mb-4" aria-hidden="true" />
           <p className="text-gray-400 font-medium">Aucun message pour le moment</p>
           <p className="text-gray-300 text-sm mt-1">L'équipe Educalcul vous contactera ici si besoin</p>
         </div>

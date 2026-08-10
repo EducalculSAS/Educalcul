@@ -250,6 +250,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
               <input
                 type="password" placeholder="Laisser vide pour ne pas changer" value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                aria-label="Nouveau mot de passe (laisser vide pour conserver l'actuel)"
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
               <p className="text-xs text-gray-500 mt-1">
@@ -272,13 +273,21 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                   <div
                     key={avatar}
                     onClick={() => setFormData({ ...formData, avatar })}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setFormData({ ...formData, avatar });
+                      }
+                    }}
                     className={`relative cursor-pointer rounded-full p-1 border-2 transition-all duration-200 ${
                       formData.avatar === avatar
                         ? "border-[var(--greek-gold)] scale-110 shadow-md"
                         : "border-transparent hover:border-[rgba(197,161,72,0.25)] hover:scale-105"
                     }`}
                   >
-                    <Image src={`/avatars/${avatar}`} alt="Avatar" width={64} height={64} className="w-full h-full rounded-full" />
+                    <Image src={`/avatars/${avatar}`} alt={`Avatar ${avatar}`} width={64} height={64} className="w-full h-full rounded-full" />
                   </div>
                 ))}
               </div>

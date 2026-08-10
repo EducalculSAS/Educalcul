@@ -154,9 +154,9 @@ export default function CalendarView({ events, globalEvents = [], onDayClick, on
                     <span className="text-base font-bold leading-none">{d.getDate()}</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-sm text-gray-800 truncate">{ev.title}</p>
+                    <p className="font-semibold text-sm text-[var(--greek-blue)] truncate">{ev.title}</p>
                     {ev.end_date && ev.end_date !== ev.start_date && (
-                      <p className="text-xs text-gray-400">jusqu'au {ev.end_date}</p>
+                      <p className="text-xs text-[var(--greek-bronze)]">jusqu'au {ev.end_date}</p>
                     )}
                   </div>
                   <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: meta.color }} />
@@ -187,6 +187,7 @@ export default function CalendarView({ events, globalEvents = [], onDayClick, on
               <button
                 key={i}
                 onClick={() => onDayClick?.(cell.iso!)}
+                aria-label={`Aller au ${cell.day} ${MONTH_NAMES[month]} ${year}`}
                 className={`min-h-[28px] rounded-[8px] border flex flex-col items-center justify-center gap-0.5 transition-colors hover:bg-[rgba(197,161,72,0.08)] ${
                   isToday ? "border-[var(--greek-gold)] bg-[rgba(197,161,72,0.08)]" : "border-transparent"
                 }`}
@@ -212,6 +213,7 @@ export default function CalendarView({ events, globalEvents = [], onDayClick, on
             <button
               key={i}
               onClick={() => onDayClick?.(cell.iso!)}
+              aria-label={`Aller au ${cell.day} ${MONTH_NAMES[month]} ${year}`}
               className={`min-h-[70px] md:min-h-[90px] p-1 rounded-[10px] border text-left flex flex-col gap-0.5 transition-colors hover:bg-[rgba(197,161,72,0.08)] ${
                 isToday
                   ? "border-[var(--greek-gold)] bg-[rgba(197,161,72,0.08)]"

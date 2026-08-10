@@ -11,6 +11,7 @@ import {
   Mail, Lock, User, AlertCircle, CheckCircle,
   Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff,
 } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 /* ── Google SVG ── */
 const GoogleIcon = () => (
@@ -263,7 +264,7 @@ export default function Inscription() {
               border: `1.5px solid ${referralStatus === "valid" ? "var(--greek-gold)" : referralStatus === "invalid" ? "rgba(239,68,68,0.4)" : "rgba(197,161,72,0.25)"}`,
               color: "var(--greek-blue)",
             }}
-            placeholder="EX: RUBEN3K7P"
+            placeholder="EX: ABCD1234"
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2">
             {referralValidating && <Loader2 className="w-4 h-4 animate-spin" style={{ color: "var(--text-muted)" }} />}
@@ -373,36 +374,24 @@ export default function Inscription() {
         {/* Boutons navigation */}
         <div className={`flex gap-3 mt-6 ${step > 0 ? "justify-between" : "justify-end"}`}>
           {step > 0 && (
-            <button
-              type="button"
-              onClick={handleBack}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all hover:opacity-80"
-              style={{ background: "var(--greek-cream)", color: "var(--greek-blue)", border: "1.5px solid rgba(197,161,72,0.25)" }}
-            >
+            <GlassButton onClick={handleBack} variant="ghost" size="sm">
               <ArrowLeft className="w-4 h-4" /> Retour
-            </button>
+            </GlassButton>
           )}
 
           {step < TOTAL - 1 ? (
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={false}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-40 disabled:cursor-not-allowed"
-              style={{ background: accent, boxShadow: "0 4px 16px rgba(15,30,58,0.2)" }}
-            >
+            <GlassButton onClick={handleNext} variant="navy" size="sm">
               Suivant <ArrowRight className="w-4 h-4" />
-            </button>
+            </GlassButton>
           ) : (
-            <button
-              type="button"
+            <GlassButton
               onClick={handleRegister}
+              variant="navy"
+              size="sm"
               disabled={loading || !cguAccepted}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ background: accent, boxShadow: "0 4px 16px rgba(15,30,58,0.2)" }}
             >
               {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Vérification…</> : <>Continuer vers les plans <ArrowRight className="w-4 h-4" /></>}
-            </button>
+            </GlassButton>
           )}
         </div>
 

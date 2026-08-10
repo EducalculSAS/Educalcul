@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { MessageCircle, Plus, CheckCircle, Clock, AlertCircle, X, Send, ChevronDown, ChevronUp } from "lucide-react";
 import { useAITutor } from "@/contexts/AITutorContext";
+import GlassButton from "@/components/ui/GlassButton";
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: any }> = {
   "Ouvert":    { label: "Ouvert",    color: "bg-blue-100 text-blue-700",    icon: Clock },
@@ -138,15 +139,14 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
 
         {/* Nouveau ticket */}
         {!showForm ? (
-          <button onClick={() => setShowForm(true)}
-            className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--greek-blue)] text-white rounded-2xl font-bold hover:bg-blue-800 transition-colors shadow-sm">
+          <GlassButton onClick={() => setShowForm(true)} variant="navy" fullWidth className="font-bold">
             <Plus size={18} /> Nouveau ticket
-          </button>
+          </GlassButton>
         ) : (
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
             <div className="flex items-center justify-between mb-5">
               <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau ticket</h2>
-              <button onClick={() => setShowForm(false)} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"><X size={16} /></button>
+              <button onClick={() => setShowForm(false)} aria-label="Fermer le formulaire" className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"><X size={16} aria-hidden="true" /></button>
             </div>
             <form onSubmit={submitTicket} className="space-y-4">
               <div>

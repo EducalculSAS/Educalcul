@@ -11,6 +11,7 @@ import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
 import { useSmoothPercent } from "./useSmoothPercent";
 import type { AIGenerateProgress } from "./ExerciseGeneratorModal";
+import GlassButton from "@/components/ui/GlassButton";
 
 export interface QuizGenParams {
   linkedCourseId: string | null;
@@ -75,8 +76,8 @@ export default function QuizGeneratorModal({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (!params.subject.trim()) {
       setFieldError("Veuillez entrer un sujet.");
       return;
@@ -107,6 +108,7 @@ export default function QuizGeneratorModal({
           </div>
           <button
             onClick={onClose}
+            aria-label="Fermer"
             className="group p-2 transition-colors text-white/70 hover:text-white relative z-10"
           >
             <X size={22} className="transition-transform group-hover:scale-125" />
@@ -276,6 +278,7 @@ export default function QuizGeneratorModal({
                       questionCount: parseInt(e.target.value),
                     })
                   }
+                  aria-label={`Nombre de questions : ${params.questionCount}`}
                   className="w-full accent-[var(--greek-blue)]"
                 />
                 <div className="flex justify-between text-xs text-gray-400 mt-1">
@@ -306,20 +309,13 @@ export default function QuizGeneratorModal({
               )}
 
               <div className="flex justify-end gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-5 py-2.5 text-gray-600 font-bold rounded-xl border border-[rgba(197,161,72,0.25)] hover:bg-gray-50 transition-colors"
-                >
+                <GlassButton size="sm" variant="ghost" onClick={onClose}>
                   Annuler
-                </button>
-                <button
-                  type="submit"
-                  className="px-8 py-2.5 bg-[var(--greek-gold)] text-white font-bold rounded-xl hover:bg-yellow-600 transition-colors flex items-center gap-2 shadow-lg shadow-yellow-900/10"
-                >
+                </GlassButton>
+                <GlassButton size="sm" variant="navy" onClick={() => handleSubmit()} className="gap-2">
                   <Sparkles size={16} />
                   Générer
-                </button>
+                </GlassButton>
               </div>
             </form>
           )}

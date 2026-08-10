@@ -8,6 +8,8 @@ import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import {
   Plus,
@@ -955,7 +957,9 @@ export default function AdminExercisesClient({
         subtitle="Gérez les exercices et leur contenu"
         actions={
           <>
-            <button
+            <GlassButton
+              size="sm"
+              variant="outline"
               onClick={() => {
                 setEditingFolder(null);
                 setFolderFormData({
@@ -967,31 +971,21 @@ export default function AdminExercisesClient({
                 });
                 setIsFolderModalOpen(true);
               }}
-              className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-[var(--greek-blue)] border border-[var(--greek-blue)] rounded-xl hover:bg-blue-50 transition-colors shadow-sm"
             >
-              <FolderPlus size={20} />
+              <FolderPlus size={18} />
               Nouveau Dossier
-            </button>
-            <button
-              onClick={() => setIsAiModalOpen(true)}
-              className="flex items-center justify-center gap-2 px-4 py-3 bg-[var(--greek-gold)] text-white rounded-xl hover:bg-yellow-600 transition-colors shadow-lg shadow-yellow-900/10"
-            >
-              <Sparkles size={20} />
+            </GlassButton>
+            <GlassButton size="sm" variant="navy" onClick={() => setIsAiModalOpen(true)}>
+              <Sparkles size={18} />
               Générer avec IA
-            </button>
-            <button
-              onClick={() => setShowImportModal(true)}
-              className="flex items-center justify-center gap-2 px-4 py-3 bg-white text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm"
-            >
-              <Upload size={18} /> JSON
-            </button>
-            <button
-              onClick={() => { resetForm(); setIsModalOpen(true); }}
-              className="flex items-center justify-center gap-2 px-4 py-3 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-lg shadow-blue-900/10"
-            >
-              <Plus size={20} />
+            </GlassButton>
+            <GlassButton size="sm" variant="ghost" onClick={() => setShowImportModal(true)}>
+              <Upload size={16} /> JSON
+            </GlassButton>
+            <GlassButton size="sm" variant="navy" onClick={() => { resetForm(); setIsModalOpen(true); }}>
+              <Plus size={18} />
               Nouvel Exercice
-            </button>
+            </GlassButton>
           </>
         }
       />
@@ -1408,8 +1402,9 @@ export default function AdminExercisesClient({
                 </div>
               </div>
               <div className="flex justify-end gap-3">
-                <button
-                  type="button"
+                <GlassButton
+                  size="sm"
+                  variant="ghost"
                   onClick={() => {
                     setIsFolderModalOpen(false);
                     setEditingFolder(null);
@@ -1421,17 +1416,17 @@ export default function AdminExercisesClient({
                       icon: "",
                     });
                   }}
-                  className="px-4 py-2 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
                 >
                   Annuler
-                </button>
-                <button
-                  type="submit"
+                </GlassButton>
+                <GlassButton
+                  size="sm"
+                  variant="navy"
                   disabled={!folderFormData.name.trim()}
-                  className="px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-50"
+                  onClick={() => handleSaveFolder({ preventDefault: () => {} } as unknown as React.FormEvent)}
                 >
                   {editingFolder ? "Sauvegarder" : "Créer"}
-                </button>
+                </GlassButton>
               </div>
             </form>
           </div>
@@ -1602,14 +1597,16 @@ export default function AdminExercisesClient({
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Difficulté</label>
-                      <div className="flex gap-1.5">
-                        {[{ v: "easy", l: "Facile", c: "text-green-700 border-green-300 bg-green-50" }, { v: "medium", l: "Moyen", c: "text-blue-700 border-blue-300 bg-blue-50" }, { v: "hard", l: "Difficile", c: "text-red-700 border-red-300 bg-red-50" }].map((d) => (
-                          <button key={d.v} type="button" onClick={() => setFormData({ ...formData, difficulty_level: d.v as "easy" | "medium" | "hard" })}
-                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.difficulty_level === d.v ? d.c + " shadow-sm" : "text-gray-400 border-[rgba(197,161,72,0.25)] bg-white"}`}>
-                            {d.l}
-                          </button>
-                        ))}
-                      </div>
+                      <GlassSegmentedControl
+                        size="sm"
+                        options={[
+                          { id: "easy", label: "Facile" },
+                          { id: "medium", label: "Moyen" },
+                          { id: "hard", label: "Difficile" },
+                        ]}
+                        value={formData.difficulty_level}
+                        onChange={(v) => setFormData({ ...formData, difficulty_level: v as "easy" | "medium" | "hard" })}
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Durée estimée</label>
@@ -1625,14 +1622,16 @@ export default function AdminExercisesClient({
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Statut</label>
-                      <div className="flex gap-1.5">
-                        {[{ v: "draft", l: "Brouillon" }, { v: "published", l: "Publié" }, { v: "archived", l: "Archivé" }].map((s) => (
-                          <button key={s.v} type="button" onClick={() => setFormData({ ...formData, status: s.v as "draft" | "published" | "archived" })}
-                            className={`flex-1 py-2.5 text-xs font-bold rounded-xl border-2 transition-all ${formData.status === s.v ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "text-gray-400 border-[rgba(197,161,72,0.25)] bg-white"}`}>
-                            {s.l}
-                          </button>
-                        ))}
-                      </div>
+                      <GlassSegmentedControl
+                        size="sm"
+                        options={[
+                          { id: "draft", label: "Brouillon" },
+                          { id: "published", label: "Publié" },
+                          { id: "archived", label: "Archivé" },
+                        ]}
+                        value={formData.status}
+                        onChange={(v) => setFormData({ ...formData, status: v as "draft" | "published" | "archived" })}
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Correction</label>
@@ -1719,21 +1718,18 @@ export default function AdminExercisesClient({
 
               {/* Footer Actions */}
               <div className="flex justify-end gap-3 p-6 border-t border-[rgba(197,161,72,0.25)] bg-white flex-shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-6 py-2.5 text-gray-600 font-bold hover:bg-gray-100 rounded-xl transition-colors border border-[rgba(197,161,72,0.25)]"
-                >
+                <GlassButton size="sm" variant="ghost" onClick={() => setIsModalOpen(false)}>
                   Annuler
-                </button>
-                <button
-                  type="submit"
+                </GlassButton>
+                <GlassButton
+                  size="sm"
+                  variant="navy"
                   disabled={isSubmitting}
-                  className="px-8 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-[var(--greek-blue)]/90 transition-colors disabled:opacity-50 flex items-center gap-2 shadow-md shadow-blue-900/20"
+                  onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
                 >
                   {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
                   {editingExercise ? "Mettre à jour" : "Créer l'exercice"}
-                </button>
+                </GlassButton>
               </div>
             </form>
           </div>

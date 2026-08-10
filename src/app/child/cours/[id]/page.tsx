@@ -21,7 +21,7 @@ export default async function CourseDetailPage({
 
   const { data: courseData, error } = await supabaseAdmin
     .from("courses")
-    .select("*")
+    .select("id, title, description, content_json, subject, level, thumbnail_url")
     .eq("id", courseId)
     .maybeSingle();
 

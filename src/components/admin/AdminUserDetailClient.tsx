@@ -13,6 +13,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { validatePassword } from "@/lib/validation";
 import ThemedSelect from "@/components/admin/ThemedSelect";
+import GlassButton from "@/components/ui/GlassButton";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -33,23 +34,23 @@ function Row({ label, value, mono }: { label: string; value: string; mono?: bool
 }
 
 // Reusable confirm modal
-function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLabel, confirmClass, loading, children }: any) {
+function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLabel, confirmVariant, loading, children }: any) {
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
         <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
           <h2 className="text-xl font-bold font-[family-name:var(--font-display)] text-gray-800">{title}</h2>
-          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400" aria-label="Fermer"><X size={18} /></button>
         </div>
         <div className="p-8 space-y-4">
           {description && <p className="text-sm text-gray-600">{description}</p>}
           {children}
           <div className="flex justify-end gap-3 pt-2">
-            <button onClick={onClose} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-            <button onClick={onConfirm} disabled={loading} className={`flex items-center gap-2 px-7 py-2.5 text-white font-bold rounded-xl transition-colors disabled:opacity-50 ${confirmClass || "bg-red-500 hover:bg-red-600"}`}>
+            <GlassButton size="sm" variant="ghost" onClick={onClose}>Annuler</GlassButton>
+            <GlassButton size="sm" variant={confirmVariant || "danger"} disabled={loading} onClick={onConfirm}>
               {loading && <Loader2 size={14} className="animate-spin" />}{confirmLabel}
-            </button>
+            </GlassButton>
           </div>
         </div>
       </div>
@@ -228,7 +229,7 @@ export default function AdminUserDetailClient({
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
         <div className="flex flex-col gap-4">
           <div className="flex items-start gap-4 min-w-0">
-            <button onClick={() => router.push("/admin/users")} className="p-2 text-[var(--greek-blue)] hover:bg-blue-50 rounded-xl transition-colors shrink-0 mt-1">
+            <button onClick={() => router.push("/admin/users")} className="p-2 text-[var(--greek-blue)] hover:bg-blue-50 rounded-xl transition-colors shrink-0 mt-1" aria-label="Retour à la liste des utilisateurs">
               <ArrowLeft size={20} />
             </button>
             <div className="relative shrink-0">
@@ -251,34 +252,36 @@ export default function AdminUserDetailClient({
 
           {/* Actions */}
           <div className="flex flex-wrap gap-2">
-            <button onClick={() => { setEditForm({ first_name: user.first_name || "", last_name: user.last_name || "", email: user.email || "", role: user.role, status: user.status, grade_level: user.grade_level || "", password: "" }); setShowEditModal(true); }}
-              className="flex items-center gap-2 px-4 py-2 border border-[var(--greek-blue)] text-[var(--greek-blue)] rounded-xl text-sm font-semibold hover:bg-blue-50 transition-colors">
+            <GlassButton
+              size="sm"
+              variant="outline"
+              onClick={() => { setEditForm({ first_name: user.first_name || "", last_name: user.last_name || "", email: user.email || "", role: user.role, status: user.status, grade_level: user.grade_level || "", password: "" }); setShowEditModal(true); }}
+            >
               <Edit size={14} /> Modifier
-            </button>
-            <button onClick={() => { setNewPassword(""); setShowResetModal(true); }}
-              className="flex items-center gap-2 px-4 py-2 border border-purple-300 text-purple-600 rounded-xl text-sm font-semibold hover:bg-purple-50 transition-colors">
+            </GlassButton>
+            <GlassButton size="sm" variant="outline" onClick={() => { setNewPassword(""); setShowResetModal(true); }}>
               <KeyRound size={14} /> Reset MDP
-            </button>
+            </GlassButton>
             {user.role !== "admin" && (
-              <button onClick={() => doAction("toggle_2fa")} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 border border-[rgba(197,161,72,0.25)] text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
+              <GlassButton size="sm" variant="ghost" disabled={actionLoading} onClick={() => doAction("toggle_2fa")}>
                 <ShieldCheck size={14} /> {user.two_factor_enabled ? "Désactiver la 2FA" : "Activer la 2FA"}
-              </button>
+              </GlassButton>
             )}
-            <button onClick={() => setShowMessageModal(true)} className="flex items-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-semibold hover:bg-blue-800 transition-colors shadow-sm">
+            <GlassButton size="sm" variant="navy" onClick={() => setShowMessageModal(true)}>
               <MessageCircle size={14} /> Message
-            </button>
+            </GlassButton>
             {isBanned ? (
-              <button onClick={() => doAction("unban")} disabled={actionLoading} className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-xl text-sm font-semibold hover:bg-green-600 transition-colors shadow-sm disabled:opacity-50">
+              <GlassButton size="sm" variant="outline" disabled={actionLoading} onClick={() => doAction("unban")}>
                 <CheckCircle size={14} /> Réactiver
-              </button>
+              </GlassButton>
             ) : (
-              <button onClick={() => setShowBanModal(true)} className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-xl text-sm font-semibold hover:bg-orange-600 transition-colors shadow-sm">
+              <GlassButton size="sm" variant="danger" onClick={() => setShowBanModal(true)}>
                 <Ban size={14} /> Bannir
-              </button>
+              </GlassButton>
             )}
-            <button onClick={() => setShowDeleteModal(true)} className="flex items-center gap-2 px-4 py-2 text-red-500 border border-red-200 rounded-xl text-sm font-semibold hover:bg-red-50 transition-colors">
+            <GlassButton size="sm" variant="danger" onClick={() => setShowDeleteModal(true)}>
               <Trash2 size={14} /> Supprimer
-            </button>
+            </GlassButton>
           </div>
         </div>
       </div>
@@ -338,14 +341,16 @@ export default function AdminUserDetailClient({
                     );
                   })}
                 </select>
-                <button
-                  onClick={savePlan}
+                <GlassButton
+                  size="sm"
+                  variant="navy"
+                  fullWidth
                   disabled={savingPlan || !selectedPlanId}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white rounded-xl text-sm font-bold hover:bg-blue-800 transition-colors disabled:opacity-50"
+                  onClick={savePlan}
                 >
                   {savingPlan ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
                   Attribuer cet abonnement
-                </button>
+                </GlassButton>
                 {subscription ? (
                   <p className="text-xs text-gray-400 text-center">
                     Actuel : <span className="font-semibold text-gray-600">
@@ -672,10 +677,10 @@ export default function AdminUserDetailClient({
                 />
               </div>}
               <div className="flex justify-end gap-3 pt-2">
-                <button onClick={() => setShowEditModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button onClick={saveEdit} disabled={actionLoading} className="flex items-center gap-2 px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-50">
+                <GlassButton size="sm" variant="ghost" onClick={() => setShowEditModal(false)}>Annuler</GlassButton>
+                <GlassButton size="sm" variant="navy" disabled={actionLoading} onClick={saveEdit}>
                   {actionLoading && <Loader2 size={14} className="animate-spin" />} Enregistrer
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>
@@ -707,8 +712,11 @@ export default function AdminUserDetailClient({
                 </div>
               </div>
               <div className="flex justify-end gap-3 pt-2">
-                <button onClick={() => setShowResetModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button
+                <GlassButton size="sm" variant="ghost" onClick={() => setShowResetModal(false)}>Annuler</GlassButton>
+                <GlassButton
+                  size="sm"
+                  variant="navy"
+                  disabled={!!validatePassword(newPassword) || actionLoading}
                   onClick={async () => {
                     if (validatePassword(newPassword)) return;
                     setActionLoading(true);
@@ -718,10 +726,9 @@ export default function AdminUserDetailClient({
                     setNewPassword("");
                     setActionLoading(false);
                   }}
-                  disabled={!!validatePassword(newPassword) || actionLoading}
-                  className="flex items-center gap-2 px-7 py-2.5 bg-purple-500 text-white font-bold rounded-xl hover:bg-purple-600 transition-colors disabled:opacity-50">
+                >
                   {actionLoading && <Loader2 size={14} className="animate-spin" />}<KeyRound size={14} /> Appliquer
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>
@@ -741,10 +748,10 @@ export default function AdminUserDetailClient({
               <div><label className={labelCls}>Titre *</label><input value={msgForm.title} onChange={e => setMsgForm({ ...msgForm, title: e.target.value })} className={inputCls} placeholder="Objet" /></div>
               <div><label className={labelCls}>Message *</label><textarea value={msgForm.content} onChange={e => setMsgForm({ ...msgForm, content: e.target.value })} className={inputCls + " h-28 resize-none"} placeholder="Contenu..." /></div>
               <div className="flex justify-end gap-3 pt-2">
-                <button onClick={() => setShowMessageModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button onClick={handleSendMessage} disabled={!msgForm.title || !msgForm.content || actionLoading} className="flex items-center gap-2 px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors disabled:opacity-50">
+                <GlassButton size="sm" variant="ghost" onClick={() => setShowMessageModal(false)}>Annuler</GlassButton>
+                <GlassButton size="sm" variant="navy" disabled={!msgForm.title || !msgForm.content || actionLoading} onClick={handleSendMessage}>
                   {actionLoading ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />} Envoyer
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>
@@ -756,7 +763,7 @@ export default function AdminUserDetailClient({
         open={showBanModal} onClose={() => { setShowBanModal(false); setBanReason(""); setBanDays(null); }}
         onConfirm={handleBan} title="Bannir l'utilisateur"
         description="Le compte sera suspendu et l'utilisateur recevra une notification."
-        confirmLabel="Bannir" confirmClass="bg-orange-500 hover:bg-orange-600" loading={actionLoading}
+        confirmLabel="Bannir" confirmVariant="danger" loading={actionLoading}
       >
         <div className="space-y-3">
           <div>
@@ -778,7 +785,7 @@ export default function AdminUserDetailClient({
         open={showDeleteModal} onClose={() => setShowDeleteModal(false)}
         onConfirm={handleDelete} title="Supprimer le compte"
         description={`Supprimer définitivement le compte de ${data?.user.first_name} ${data?.user.last_name} ? Cette action est irréversible.`}
-        confirmLabel="Supprimer définitivement" confirmClass="bg-red-500 hover:bg-red-600" loading={actionLoading}
+        confirmLabel="Supprimer définitivement" confirmVariant="danger" loading={actionLoading}
       />
     </div>
   );

@@ -7,6 +7,8 @@ import {
   DEFAULT_CUSTOM_PRICING,
   type CustomPlanConfig, type AIId, type PricingCustomConfig, type PricingOption,
 } from "@/lib/customPlanPricing";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 // Fonctionnalités qu'une option peut déverrouiller (pour le menu admin).
 // Seules des fonctionnalités RÉELLEMENT applicables figurent ici — vérifiées
@@ -102,6 +104,7 @@ function EditableNumber({ value, onChange, className, suffix = "€" }: {
         onBlur={() => { setEditing(false); onChange(Math.max(0, Math.round((Number(v) || 0) * 100) / 100)); }}
         onKeyDown={e => { if (e.key === "Enter") (e.target as HTMLInputElement).blur(); }}
         onClick={e => e.stopPropagation()}
+        aria-label="Modifier la valeur"
         className="w-20 px-1.5 py-0.5 rounded border border-[var(--greek-gold)] text-sm text-[var(--greek-blue)] bg-white outline-none"
       />
     );
@@ -207,13 +210,12 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }:
               );
             })}
           </ul>
-          <button
+          <GlassButton
             onClick={onChoose}
+            variant={popular ? "navy" : "outline"}
+            fullWidth
+            className="mt-auto"
             disabled={processing || isCurrent}
-            className="mt-auto w-full py-3 px-4 rounded-xl font-bold text-sm text-center transition-all hover:-translate-y-0.5 hover:shadow-md font-[family-name:var(--font-display)] disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
-            style={popular
-              ? { background: "var(--greek-blue)", color: "white" }
-              : { border: "2px solid var(--greek-blue)", color: "var(--greek-blue)" }}
           >
             {processing ? (
               <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
@@ -222,7 +224,7 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }:
             ) : (
               <>{cta} <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
             )}
-          </button>
+          </GlassButton>
         </div>
       </div>
     </div>
@@ -241,6 +243,7 @@ function EditableText({ value, onChange, className }: { value: string; onChange:
         onBlur={() => { setEditing(false); onChange(v.trim() || value); }}
         onKeyDown={e => { if (e.key === "Enter") (e.target as HTMLInputElement).blur(); }}
         onClick={e => e.stopPropagation()}
+        aria-label="Modifier le texte"
         className="px-1.5 py-0.5 rounded border border-[var(--greek-gold)] text-sm text-[var(--greek-blue)] bg-white outline-none" />
     );
   }
@@ -273,7 +276,7 @@ function OptionRow({ option, selected, onToggle, edit }: {
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           {edit && (
-            <button type="button" onClick={edit.onDelete} title="Supprimer l'option"
+            <button type="button" onClick={edit.onDelete} title="Supprimer l'option" aria-label="Supprimer l'option"
               className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors">
               <Trash2 className="w-4 h-4" />
             </button>
@@ -449,15 +452,18 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
             )}
           </div>
           {!edit && (
-            <button onClick={() => onChoose(cfg)} disabled={processing}
-              className="w-full py-3.5 rounded-xl font-bold text-sm text-center transition-all font-[family-name:var(--font-display)] disabled:opacity-50 hover:-translate-y-0.5"
-              style={{ background: "var(--greek-gold)", color: "#fff" }}>
+            <GlassButton
+              onClick={() => onChoose(cfg)}
+              variant="gold"
+              fullWidth
+              disabled={processing}
+            >
               {processing ? (
                 <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
               ) : (
                 <>{ctaLabel} <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
               )}
-            </button>
+            </GlassButton>
           )}
         </div>
       </div>
@@ -525,15 +531,11 @@ export default function PlanChooser({
 
       {/* Onglets principaux */}
       <div className="flex justify-center mb-12">
-        <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-2xl" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
-          {TABS.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)}
-              className="px-5 py-2.5 rounded-xl text-sm font-bold transition-all font-[family-name:var(--font-display)]"
-              style={tab === t.id ? { background: "var(--greek-blue)", color: "#fff" } : { background: "transparent", color: "var(--greek-blue)" }}>
-              {t.label}
-            </button>
-          ))}
-        </div>
+        <GlassSegmentedControl
+          options={TABS.map(t => ({ id: t.id, label: t.label }))}
+          value={tab}
+          onChange={(id) => setTab(id as "familles" | "custom")}
+        />
       </div>
 
       {tab === "familles" && (
@@ -607,11 +609,15 @@ export default function PlanChooser({
         <div className="sticky bottom-4 mt-8 flex justify-center">
           <div className="flex items-center gap-3 px-5 py-3 rounded-2xl shadow-xl bg-white border border-[var(--greek-gold)]">
             <span className="text-sm font-semibold text-[var(--greek-blue)]">Modifications non enregistrées</span>
-            <button onClick={admin.onSave} disabled={admin.saving}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 transition-colors disabled:opacity-50 text-sm">
+            <GlassButton
+              onClick={admin.onSave}
+              variant="navy"
+              size="sm"
+              disabled={admin.saving}
+            >
               {admin.saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
               Sauvegarder
-            </button>
+            </GlassButton>
           </div>
         </div>
       )}

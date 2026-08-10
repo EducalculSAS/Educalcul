@@ -2,11 +2,19 @@ import { NextRequest } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(req: NextRequest) {
   // Défense en profondeur : proxy.ts protège déjà /api/admin/*, mais on revérifie ici au cas où.
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
+  const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+  const config = RATE_LIMITS["ai:admin"];
+  const rate = await rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
+  if (!rate.allowed) {
+    return Response.json({ error: "Trop de générations IA, réessaie dans quelques minutes." }, { status: 429 });
+  }
 
   const { description, type, level } = await req.json();
 

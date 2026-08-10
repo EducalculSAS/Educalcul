@@ -85,6 +85,7 @@ export const RATE_LIMITS = {
   // authenticated admin via proxy.ts). Not meant to throttle normal usage —
   // just a backstop against a compromised token or a runaway client bug.
   'ai:admin': { maxAttempts: 300, windowMs: 60 * 60 * 1000, name: 'Admin AI generation' },
+  'scanner:run': { maxAttempts: 100, windowMs: 60 * 60 * 1000, name: 'Scanner IA' },
 
   // Démo publique (page epsi) - plafond large PAR IP, en complément (pas en
   // remplacement) du compteur par cookie qui reste la limite principale de

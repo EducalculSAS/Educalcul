@@ -103,7 +103,7 @@ export default function AnimatedStatsCard() {
         <div className="flex flex-col items-center justify-between rounded-xl py-2.5 px-1" style={{ background: "rgba(255,255,255,0.04)", height: 64 }}>
           <div className="h-8 flex items-end justify-center">
             <div className="relative w-10 h-10" style={{ marginBottom: -4 }}>
-              <Image src="/Streaks.gif" alt="streak" fill className="object-contain" unoptimized />
+              <Image src="/Streaks.gif" alt="Animation de flamme pour la série de 7 jours" fill className="object-contain" unoptimized />
               <span
                 className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-display)] font-bold z-10"
                 style={{ color: "#fff", fontSize: 11, textShadow: "0 1px 8px rgba(0,0,0,1), 0 0 16px rgba(0,0,0,0.8)", paddingTop: 10 }}

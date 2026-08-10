@@ -83,7 +83,8 @@ export async function POST(req: Request) {
   });
 
   if (!result.success) {
-    return NextResponse.json({ error: `Email error: ${result.error}` }, { status: 500 });
+    console.error("[forgot-password] sendEmail error:", result.error);
+    return NextResponse.json({ error: "Impossible d'envoyer l'email pour le moment. Réessayez dans quelques instants." }, { status: 500 });
   }
 
   return NextResponse.json({ success: true });

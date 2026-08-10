@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import Link from "next/link";
 import {
   Award, BookOpen, CheckCircle, TrendingUp, Activity, Brain, Sparkles,
   RotateCcw, Star, Lock, CalendarClock,
 } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 interface ActivityItem {
   id: string;
@@ -149,14 +150,28 @@ export default function ChildReportTabs({
   return (
     <>
       {/* Tabs */}
-      <div className="flex gap-1 p-1 bg-[var(--greek-gold)]/10 rounded-xl w-fit mb-6">
-        {([["activite", "Activité"], ["ia", "Analyse IA"]] as const).map(([key, label]) => (
-          <button key={key} onClick={() => { setTab(key); if (key === "ia" && !analysis && hasSub) loadAnalysis(); }}
-            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${tab === key ? "bg-white shadow-sm text-[var(--greek-blue)]" : "text-gray-500 hover:text-gray-700"}`}>
-            {label}
-            {key === "ia" && !hasSub && <Lock className="inline w-3 h-3 ml-1 mb-0.5 opacity-50" />}
-          </button>
-        ))}
+      <div className="w-fit mb-6">
+        <GlassSegmentedControl
+          options={[
+            { id: "activite", label: "Activité" },
+            {
+              id: "ia",
+              label: (
+                <>
+                  Analyse IA
+                  {!hasSub && <Lock className="inline w-3 h-3 ml-1 mb-0.5 opacity-50" />}
+                </>
+              ),
+            },
+          ]}
+          value={tab}
+          onChange={(id) => {
+            const key = id as "activite" | "ia";
+            setTab(key);
+            if (key === "ia" && !analysis && hasSub) loadAnalysis();
+          }}
+          size="sm"
+        />
       </div>
 
       {tab === "activite" && (
@@ -246,13 +261,10 @@ export default function ChildReportTabs({
               <p className="text-sm text-gray-500 mb-6 leading-relaxed">
                 L'analyse IA d'EpsiAI est disponible avec un abonnement actif. Passez à un plan supérieur pour obtenir des rapports personnalisés sur la progression de {childFirstName}.
               </p>
-              <Link
-                href="/parent/subscription"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--greek-blue)] text-white rounded-xl font-bold text-sm hover:bg-blue-800 transition-colors shadow-sm"
-              >
+              <GlassButton href="/parent/subscription" variant="navy" size="sm">
                 <Sparkles className="w-4 h-4" />
                 Voir les abonnements
-              </Link>
+              </GlassButton>
             </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -296,9 +308,9 @@ export default function ChildReportTabs({
                     <div className="text-center py-12">
                       <Brain className="w-12 h-12 text-gray-200 mx-auto mb-3" />
                       <p className="text-gray-500 text-sm mb-4">Lancez l'analyse pour obtenir des conseils personnalisés.</p>
-                      <button onClick={loadAnalysis} className="flex items-center gap-2 mx-auto px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl font-bold text-sm hover:bg-blue-800 transition-colors">
+                      <GlassButton onClick={loadAnalysis} variant="navy" size="sm" className="mx-auto">
                         <Sparkles className="w-4 h-4" /> Analyser maintenant
-                      </button>
+                      </GlassButton>
                     </div>
                   )}
                 </div>

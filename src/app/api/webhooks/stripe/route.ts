@@ -16,7 +16,7 @@ async function getUserByCustomerId(customerId: string) {
   if (!data?.user_id) return null;
   const { data: profile } = await supabaseAdmin
     .from("users")
-    .select("first_name, email, auth_id")
+    .select("first_name, email")
     .eq("auth_id", data.user_id)
     .maybeSingle();
   return profile ? { ...profile, authId: data.user_id } : null;
@@ -97,22 +97,21 @@ export async function POST(req: Request) {
           }
         }
 
-        // Get Stripe subscription details
+        // Get Stripe subscription details — indépendant de la ligne
+        // subscriptions existante, lancés en parallèle.
+        const [stripeSub, { data: existingSub }] = await Promise.all([
+          session.subscription ? stripe.subscriptions.retrieve(session.subscription as string) : Promise.resolve(null),
+          supabaseAdmin.from("subscriptions").select("stripe_subscription_id").eq("user_id", userId).maybeSingle(),
+        ]);
         let periodEnd: string | null = null;
         let stripeSubId: string | null = null;
-        if (session.subscription) {
-          const stripeSub = await stripe.subscriptions.retrieve(session.subscription as string);
+        if (stripeSub) {
           periodEnd = new Date((stripeSub as any).current_period_end * 1000).toISOString();
           stripeSubId = stripeSub.id;
         }
 
         // Un utilisateur ne doit avoir qu'un seul abonnement Stripe actif :
         // on annule l'ancien s'il existe et diffère du nouveau
-        const { data: existingSub } = await supabaseAdmin
-          .from("subscriptions")
-          .select("stripe_subscription_id")
-          .eq("user_id", userId)
-          .maybeSingle();
 
         const oldSubId = existingSub?.stripe_subscription_id;
         if (oldSubId && oldSubId !== stripeSubId) {
@@ -138,9 +137,11 @@ export async function POST(req: Request) {
         // Apply referral code if used
         const referralCode = session.metadata?.referralCode;
         if (referralCode) {
-          const { data: rc } = await supabaseAdmin.from("referral_codes").select("id, current_uses, owner_user_id").eq("code", referralCode).single();
+          const [{ data: rc }, { data: userRow }] = await Promise.all([
+            supabaseAdmin.from("referral_codes").select("id, current_uses, owner_user_id").eq("code", referralCode).single(),
+            supabaseAdmin.from("users").select("id").eq("auth_id", userId).maybeSingle(),
+          ]);
           if (rc) {
-            const { data: userRow } = await supabaseAdmin.from("users").select("id").eq("auth_id", userId).maybeSingle();
             if (userRow) {
               await supabaseAdmin.from("referral_uses").insert({ referral_code_id: rc.id, used_by_user_id: userRow.id });
               await supabaseAdmin.from("referral_codes").update({ current_uses: rc.current_uses + 1 }).eq("id", rc.id);

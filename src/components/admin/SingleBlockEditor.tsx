@@ -34,7 +34,9 @@ export default function SingleBlockEditor({
         onClick={() => setModalOpen(true)}
         className="px-3 py-1.5 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] text-gray-600 hover:bg-amber-50 font-medium"
       >
-        {content?.trim() ? "Modifier" : "Créer"}
+        {content?.trim()
+          ? type === "table" ? "Modifier le tableau" : "Modifier le graphique"
+          : type === "table" ? "Créer un tableau" : "Créer un graphique"}
       </button>
 
       {modalOpen && type === "table" && (

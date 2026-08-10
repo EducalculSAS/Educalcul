@@ -17,6 +17,7 @@ import AppAdminLoader from "@/components/AppAdminLoader";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
+import GlassButton from "@/components/ui/GlassButton";
 
 /** Page de détail quiz : le contenu (déjà purgé des réponses côté serveur)
  * et l'historique de tentatives arrivent en props quand id !== "preview". Le
@@ -205,6 +206,7 @@ export default function QuizDetailClient({
             onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Retour à l'aperçu"
+            aria-label="Retour à l'aperçu"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -218,6 +220,7 @@ export default function QuizDetailClient({
             }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Fermer"
+            aria-label="Fermer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -261,7 +264,7 @@ export default function QuizDetailClient({
       >
         <div className="relative h-64 md:h-80 bg-[var(--greek-blue)] relative overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 opacity-10 pattern-grid-lg"></div>
-          <Trophy className="w-24 h-24 text-[var(--greek-gold)] drop-shadow-lg" />
+          <Trophy className="w-24 h-24 text-[var(--greek-gold)] drop-shadow-lg" aria-hidden="true" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
             <div className="p-8 text-white w-full">
               <div className="inline-block px-3 py-1 bg-[var(--greek-gold)] text-[var(--greek-blue)] text-xs font-bold rounded-full mb-3 shadow-md">
@@ -291,19 +294,19 @@ export default function QuizDetailClient({
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="text-sm text-gray-600">Validation globale à la fin</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="text-sm text-gray-600">Score basé sur la précision</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="text-sm text-gray-600">Explications détaillées fournies</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[var(--greek-blue)] shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="text-sm text-gray-600">Accumule des points XP</span>
                   </div>
                 </div>
@@ -321,19 +324,21 @@ export default function QuizDetailClient({
                   const attemptsUsed = attemptsHistory.length;
                   const limitReached = !!maxAttempts && attemptsUsed >= maxAttempts;
                   return (
-                    <button
+                    <GlassButton
                       onClick={() => {
                         if (limitReached) return;
                         setForceNewAttempt(alreadyCompleted);
                         if (alreadyCompleted) setAttemptKey((k) => k + 1);
                         setStarted(true);
                       }}
-                      disabled={limitReached}
-                      className={`w-full py-4 text-lg shadow-lg mb-1 flex items-center justify-center gap-2 transform transition-all rounded-full font-bold ${limitReached ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "btn-primary-greek hover:scale-105"}`}
+                      variant={limitReached ? "ghost" : "navy"}
+                      fullWidth
+                      className="text-lg mb-1"
+                      style={limitReached ? { opacity: 0.6, pointerEvents: "none" } : undefined}
                     >
                       <Play className="w-6 h-6 fill-current" />
                       {limitReached ? "Tentatives épuisées" : alreadyCompleted ? "Recommencer le quiz" : "Démarrer le quiz"}
-                    </button>
+                    </GlassButton>
                   );
                 })()}
                 {!!quiz.max_attempts && (

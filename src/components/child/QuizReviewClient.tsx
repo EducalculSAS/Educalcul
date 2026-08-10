@@ -15,6 +15,7 @@ export default function QuizReviewClient({ quiz, progress }: { quiz: any; progre
           onClick={() => router.back()}
           className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
           title="Retour"
+          aria-label="Retour"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
@@ -25,6 +26,7 @@ export default function QuizReviewClient({ quiz, progress }: { quiz: any; progre
           href="/child/quiz/history"
           className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
           title="Fermer"
+          aria-label="Fermer"
         >
           <X className="w-5 h-5" />
         </Link>

@@ -63,6 +63,8 @@ export default function AvatarWithBorder({
         height={total}
         viewBox={`0 0 ${total} ${total}`}
         overflow="visible"
+        role="img"
+        aria-label={name || "Avatar"}
       >
         <defs>
           <clipPath id={`av-clip-${key}-${size}-${(av)}`}>

@@ -1,11 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
 import FadeInSection from "@/components/home/FadeInSection";
 import TarifsInteractive from "@/components/tarifs/TarifsInteractive";
 import TarifsFaqItem from "@/components/tarifs/TarifsFaqItem";
 import { fetchActivePlans } from "@/lib/plans";
+import GlassButton from "@/components/ui/GlassButton";
+
+// Page publique quasi-statique (plans édités en admin) : ISR au lieu d'un
+// aller-retour Supabase à chaque visite.
+export const revalidate = 300;
 
 const SYM = [
   { s: "∑", x: 6, y: 10, z: 96, d: 0, t: 7.2 },
@@ -54,11 +58,9 @@ export default async function Tarifs() {
                 <p className="text-white/55 text-lg leading-relaxed mb-8">
                   Sans engagement, sans frais cachés. Annulez à tout moment depuis votre espace.
                 </p>
-                <Link href="/auth/inscription"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 hover:shadow-lg font-[family-name:var(--font-display)]"
-                  style={{ background: "var(--greek-gold)", color: "#fff", boxShadow: "0 8px 32px rgba(197,161,72,0.32)" }}>
+                <GlassButton href="/auth/inscription" variant="gold">
                   Essai gratuit 7 jours <ArrowRight className="w-4 h-4" />
-                </Link>
+                </GlassButton>
               </div>
               <div className="hidden md:flex flex-col gap-4">
                 <div className="rounded-2xl p-6" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>

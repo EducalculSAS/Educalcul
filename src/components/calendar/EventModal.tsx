@@ -74,7 +74,7 @@ export default function EventModal({ open, onClose, onSave, onDelete, initialDat
           <h3 className="text-lg font-bold text-[var(--greek-blue)]">
             {isVirtual ? "Détails" : event ? "Modifier l'événement" : "Nouvel événement"}
           </h3>
-          <button onClick={onClose} className="p-1 rounded-full hover:bg-[rgba(197,161,72,0.1)]">
+          <button onClick={onClose} className="p-1 rounded-full hover:bg-[rgba(197,161,72,0.1)]" aria-label="Fermer la modale">
             <X className="w-5 h-5 text-[var(--greek-blue)]" />
           </button>
         </div>

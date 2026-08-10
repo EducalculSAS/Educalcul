@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default function Error({ reset }: { reset: () => void }) {
   return (
@@ -15,18 +15,12 @@ export default function Error({ reset }: { reset: () => void }) {
           Quelque chose s'est mal passé. Essayez de recharger la page ou revenez à l'accueil.
         </p>
         <div className="flex gap-4 justify-center">
-          <button
-            onClick={reset}
-            className="px-6 py-3 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:opacity-90 transition-all"
-          >
+          <GlassButton onClick={reset} variant="navy" size="sm">
             Réessayer
-          </button>
-          <Link
-            href="/"
-            className="px-6 py-3 border-2 border-[var(--greek-blue)] text-[var(--greek-blue)] font-bold rounded-xl hover:bg-[var(--greek-blue)] hover:text-white transition-all"
-          >
+          </GlassButton>
+          <GlassButton href="/" variant="outline" size="sm">
             Accueil
-          </Link>
+          </GlassButton>
         </div>
       </div>
     </div>

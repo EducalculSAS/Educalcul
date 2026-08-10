@@ -7,6 +7,7 @@ import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
 import { renderLatexInHTML } from "@/lib/katexLoader";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Message {
   role: "user" | "assistant";
@@ -420,10 +421,9 @@ export default function AITutor() {
                     <Lock className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--greek-gold)" }} />
                     <p className="text-sm font-bold mb-1" style={{ color: "rgba(240,237,232,0.9)" }}>Plan requis</p>
                     <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>L'IA est disponible à partir du plan Premium.</p>
-                    <a href="/parent/subscription" className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl"
-                      style={{ background: "var(--greek-gold)", color: "#fff" }}>
+                    <GlassButton href="/parent/subscription" variant="gold" size="sm">
                       Voir les abonnements <ArrowRight className="w-3 h-3" />
-                    </a>
+                    </GlassButton>
                   </div>
                 </div>
               ) : (

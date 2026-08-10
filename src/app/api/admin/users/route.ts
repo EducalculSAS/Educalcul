@@ -17,9 +17,11 @@ export async function GET(request: Request) {
     const role = searchParams.get("role");
     const status = searchParams.get("status");
 
+    // select(*) exclu volontairement : password_hash n'a rien à faire dans
+    // une réponse JSON, même pour un admin.
     let query = supabaseAdmin
       .from("users")
-      .select("*")
+      .select("id, auth_id, email, child_username, first_name, last_name, role, parent_id, grade_level, avatar, status, created_at, updated_at, account_type, subscription_plan_id, subscription_expires_at, child_age, last_login_ip, last_login_city, last_login_country, last_active_at, avatar_border, name_animation, name_color, equipped_border, featured_badges, login_count, login_streak, last_login_date, ban_reason, ban_until, onboarding_completed, notif_weekly_reports, notif_offers_news, school_zone, two_factor_enabled, needs_grade_choice, graduated_at")
       .order("created_at", { ascending: false });
 
     if (role && role !== "all" && isValidRole(role)) {
@@ -332,21 +334,23 @@ export async function DELETE(request: Request) {
         { table: "course_folders", columns: ["created_by"] },
       ];
 
-      for (const { table, columns } of tablesToClean) {
-        for (const column of columns) {
-          const { error: deleteError } = await supabaseAdmin
-            .from(table)
-            .delete()
-            .eq(column, userData.id);
-          
-          if (deleteError) {
-            console.warn(`[DELETE USER] Error deleting from ${table}.${column}:`, deleteError.message);
-            // Continue with other tables
-          } else {
-            console.log(`[DELETE USER] Cleaned ${table}.${column}`);
-          }
-        }
-      }
+      // Chaque (table, colonne) est une suppression indépendante des autres —
+      // aucune ne dépend du résultat d'une autre, donc en parallèle.
+      await Promise.all(
+        tablesToClean.flatMap(({ table, columns }) =>
+          columns.map(async (column) => {
+            const { error: deleteError } = await supabaseAdmin
+              .from(table)
+              .delete()
+              .eq(column, userData.id);
+            if (deleteError) {
+              console.warn(`[DELETE USER] Error deleting from ${table}.${column}:`, deleteError.message);
+            } else {
+              console.log(`[DELETE USER] Cleaned ${table}.${column}`);
+            }
+          })
+        )
+      );
     }
 
     // Delete from Auth. Retried once — a transient failure here previously left

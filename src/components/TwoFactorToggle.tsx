@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 import TwoFactorSessions from "@/components/TwoFactorSessions";
+import GlassButton from "@/components/ui/GlassButton";
 
 /** Section "Authentification à deux facteurs" — utilisée dans les 3 pages profil. */
 export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boolean }) {
@@ -164,13 +165,15 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
             required
           />
           <div className="flex items-center gap-2">
-            <button
-              type="submit"
+            <GlassButton
+              onClick={() => confirmCode({ preventDefault: () => {} } as unknown as React.FormEvent)}
+              variant="navy"
+              size="sm"
+              fullWidth
               disabled={verifying || code.length !== 6}
-              className="flex-1 inline-flex items-center justify-center px-4 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
             >
               {verifying ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer"}
-            </button>
+            </GlassButton>
             <button
               type="button"
               onClick={cancelFlow}

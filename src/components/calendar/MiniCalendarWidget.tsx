@@ -6,6 +6,12 @@ import { Calendar as CalendarIcon, Plus, ArrowRight } from "lucide-react";
 import CalendarView, { CalendarEventItem } from "./CalendarView";
 import EventModal from "./EventModal";
 import { getEventTypeMeta } from "@/lib/calendarEventTypes";
+import { supabase } from "@/lib/supabaseClient";
+
+async function authHeaders() {
+  const { data: { session } } = await supabase.auth.getSession();
+  return { Authorization: `Bearer ${session?.access_token || ""}` };
+}
 
 interface MiniCalendarWidgetProps {
   authId: string;
@@ -24,7 +30,7 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
   const [saving, setSaving] = useState(false);
 
   const loadEvents = useCallback(async () => {
-    const res = await fetch(`/api/calendar/events?userId=${authId}&ownerId=${ownerId}`);
+    const res = await fetch(`/api/calendar/events?userId=${authId}&ownerId=${ownerId}`, { headers: await authHeaders() });
     const data = await res.json();
     setEvents(data.events || []);
     setGlobalEvents(data.globalEvents || []);
@@ -57,13 +63,13 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
       if (selectedEvent && !selectedEvent.isVirtual) {
         await fetch(`/api/calendar/events/${selectedEvent.id}`, {
           method: "PATCH",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
           body: JSON.stringify({ userId: authId, ...data }),
         });
       } else {
         await fetch(`/api/calendar/events`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
           body: JSON.stringify({ userId: authId, ownerId, ...data }),
         });
       }
@@ -78,7 +84,7 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
     if (!selectedEvent) return;
     setSaving(true);
     try {
-      await fetch(`/api/calendar/events/${selectedEvent.id}?userId=${authId}`, { method: "DELETE" });
+      await fetch(`/api/calendar/events/${selectedEvent.id}?userId=${authId}`, { method: "DELETE", headers: await authHeaders() });
       await loadEvents();
       setModalOpen(false);
     } finally {
@@ -119,7 +125,7 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
           </div>
 
           {upcoming.length === 0 ? (
-            <p className="text-sm text-gray-400 mt-2">Aucun événement à venir.</p>
+            <p className="text-sm text-[var(--greek-bronze)] mt-2">Aucun événement à venir.</p>
           ) : (
             <div className="flex flex-col gap-2">
               {upcoming.map(ev => {
@@ -135,8 +141,8 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
                       style={{ backgroundColor: meta.color }}
                     />
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-gray-800 truncate">{ev.title}</p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-sm font-semibold text-[var(--greek-blue)] truncate">{ev.title}</p>
+                      <p className="text-xs text-[var(--greek-bronze)]">
                         {new Date(ev.start_date + "T00:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}
                       </p>
                     </div>

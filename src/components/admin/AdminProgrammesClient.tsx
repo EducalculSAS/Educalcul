@@ -164,7 +164,7 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
                 <div className="flex items-center justify-center gap-3">
                   <FileText size={20} className="text-[var(--greek-blue)]" />
                   <span className="text-sm font-semibold text-[var(--greek-blue)]">{file.name}</span>
-                  <button type="button" onClick={e => { e.stopPropagation(); setFile(null); if (fileRef.current) fileRef.current.value = ""; }}>
+                  <button type="button" aria-label="Supprimer le fichier" onClick={e => { e.stopPropagation(); setFile(null); if (fileRef.current) fileRef.current.value = ""; }}>
                     <X size={16} className="text-gray-400 hover:text-red-500" />
                   </button>
                 </div>
@@ -264,6 +264,7 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
                         download={pdf.file_name}
                         className="p-2 rounded-lg text-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
                         title="Télécharger"
+                        aria-label="Télécharger le programme"
                       >
                         <Download size={16} />
                       </a>
@@ -271,12 +272,14 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
                         onClick={() => startEdit(pdf)}
                         className="p-2 rounded-lg text-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
                         title="Modifier"
+                        aria-label="Modifier le programme"
                       >
                         <Pencil size={16} />
                       </button>
                       <button
                         onClick={() => handleDelete(pdf.level)}
                         className="p-2 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        aria-label="Supprimer le programme"
                       >
                         <Trash2 size={16} />
                       </button>

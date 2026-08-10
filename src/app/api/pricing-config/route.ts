@@ -5,6 +5,8 @@ import { normalizePricingConfig, DEFAULT_PRICING_CONFIG } from "@/lib/pricingCon
 // Lecture publique de la config d'affichage des tarifs (libellés + forfait
 // sur-mesure). Toujours normalisée → l'appelant reçoit une config complète même
 // si la ligne DB est absente.
+export const revalidate = 3600;
+
 export async function GET() {
   try {
     const { data } = await supabaseAdmin

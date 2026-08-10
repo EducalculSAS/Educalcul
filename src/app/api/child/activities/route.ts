@@ -34,26 +34,29 @@ export async function GET(req: Request) {
 
     const internalId = userRecord.id;
 
-    // Fetch Exercises History
-    const { data: exercises, error: exError } = await supabaseAdmin
-      .from("user_exercise_attempts")
-      .select("*, exercises(title)")
-      .eq("user_id", internalId)
-      .order("completed_at", { ascending: false });
-
-    // Fetch Quizzes History
-    const { data: quizzes, error: qzError } = await supabaseAdmin
-      .from("user_quiz_attempts")
-      .select("*, quizzes(title)")
-      .eq("user_id", internalId)
-      .order("completed_at", { ascending: false });
-
-    // Fetch Courses History
-    const { data: courses, error: coError } = await supabaseAdmin
-      .from("user_course_progress")
-      .select("*, courses(title)")
-      .eq("user_id", internalId)
-      .order("completed_at", { ascending: false });
+    // These three history queries are independent (filtered only by
+    // internalId), so run them in parallel instead of one after the other.
+    const [
+      { data: exercises, error: exError },
+      { data: quizzes, error: qzError },
+      { data: courses, error: coError },
+    ] = await Promise.all([
+      supabaseAdmin
+        .from("user_exercise_attempts")
+        .select("*, exercises(title)")
+        .eq("user_id", internalId)
+        .order("completed_at", { ascending: false }),
+      supabaseAdmin
+        .from("user_quiz_attempts")
+        .select("*, quizzes(title)")
+        .eq("user_id", internalId)
+        .order("completed_at", { ascending: false }),
+      supabaseAdmin
+        .from("user_course_progress")
+        .select("*, courses(title)")
+        .eq("user_id", internalId)
+        .order("completed_at", { ascending: false }),
+    ]);
 
     if (exError || qzError || coError) {
       throw exError || qzError || coError;

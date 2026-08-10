@@ -7,6 +7,7 @@ import { avatarUrl } from "@/lib/avatarUrl";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import DeleteChildButton from "@/components/parent/DeleteChildButton";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Child {
   id: string;
@@ -50,13 +51,10 @@ export default async function ManageChildrenPage() {
               <span>Gérez les profils et les accès de vos enfants</span>
             </p>
           </div>
-          <Link
-            href="/parent/add-child"
-            className="flex items-center gap-2 bg-[var(--greek-gold)] hover:bg-yellow-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md shrink-0"
-          >
+          <GlassButton href="/parent/add-child" variant="gold" className="shrink-0">
             <PlusCircle className="w-5 h-5" />
             Ajouter un enfant
-          </Link>
+          </GlassButton>
         </div>
       </div>
       <div className="container mx-auto px-4 pb-12 max-w-6xl">

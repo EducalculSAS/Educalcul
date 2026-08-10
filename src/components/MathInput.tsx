@@ -355,10 +355,12 @@ interface MathInputProps {
   disabled?: boolean;
   className?: string;
   placeholder?: string;
+  /** Nom accessible du champ pour les lecteurs d'écran (ex: le titre de la question). */
+  ariaLabel?: string;
 }
 
 const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput(
-  { value, onChange, disabled, className, placeholder },
+  { value, onChange, disabled, className, placeholder, ariaLabel },
   ref
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -402,6 +404,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     mf.style.setProperty("--highlight-background-color", "rgba(197,161,72,0.25)");
     mf.style.setProperty("--primary-color", "var(--greek-gold)");
     mf.style.setProperty("--contains-highlight-background-color", "rgba(197,161,72,0.12)");
+    if (ariaLabel) mf.setAttribute("aria-label", ariaLabel);
     container.appendChild(mf);
     mfRef.current = mf;
 

@@ -58,15 +58,15 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
 
   const configs = {
     success: {
-      icon: <CheckCircle className="w-4 h-4 shrink-0" style={{ color: "var(--greek-gold)" }} />,
+      icon: <CheckCircle aria-hidden="true" className="w-4 h-4 shrink-0" style={{ color: "var(--greek-gold)" }} />,
       style: { background: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.35)", color: "#fff" },
     },
     error: {
-      icon: <AlertCircle className="w-4 h-4 shrink-0 text-red-300" />,
+      icon: <AlertCircle aria-hidden="true" className="w-4 h-4 shrink-0 text-red-300" />,
       style: { background: "var(--greek-blue)", borderColor: "rgba(239,68,68,0.35)", color: "#fff" },
     },
     info: {
-      icon: <Info className="w-4 h-4 shrink-0" style={{ color: "rgba(255,255,255,0.6)" }} />,
+      icon: <Info aria-hidden="true" className="w-4 h-4 shrink-0" style={{ color: "rgba(255,255,255,0.6)" }} />,
       style: { background: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.2)", color: "#fff" },
     },
   };
@@ -84,6 +84,7 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
       <p className="text-sm font-medium flex-1" style={{ color: "rgba(255,255,255,0.9)" }}>{toast.message}</p>
       <button
         onClick={() => onRemove(toast.id)}
+        aria-label="Fermer"
         className="transition-colors hover:opacity-70"
         style={{ color: "rgba(255,255,255,0.5)" }}
       >

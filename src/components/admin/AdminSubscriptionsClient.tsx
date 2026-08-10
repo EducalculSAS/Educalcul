@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import { type PricingConfig } from "@/lib/pricingConfig";
 
@@ -342,13 +344,15 @@ export default function AdminSubscriptionsClient({
           title="Abonnements & Parrainage"
           subtitle="Gérez les plans, les tarifs et les codes de parrainage"
           actions={
-            <button
+            <GlassButton
+              size="sm"
+              variant="navy"
+              className={tab === "parrainage" ? "invisible" : ""}
               onClick={() => tab === "plans" ? openPlanModal() : tab === "promos" ? openRefModal() : undefined}
-              className={`flex items-center gap-2 px-5 py-2.5 bg-[var(--greek-blue)] text-white rounded-xl hover:bg-blue-800 transition-colors shadow-md font-semibold ${tab === "parrainage" ? "invisible" : ""}`}
             >
               <Plus size={18} />
               {tab === "plans" ? "Nouveau plan" : "Nouveau code promo"}
-            </button>
+            </GlassButton>
           }
         />
       </div>
@@ -374,19 +378,16 @@ export default function AdminSubscriptionsClient({
       </div>
 
       {/* ── Tabs ── */}
-      <div className="flex gap-1 p-1 bg-gray-100 rounded-xl w-fit mb-6">
-        {([
-          { key: "plans",      label: "Plans d'abonnement" },
-          { key: "promos",     label: "Codes promo" },
-          { key: "parrainage", label: "Parrainage" },
-        ] as const).map(({ key, label }) => (
-          <button key={key} onClick={() => setTab(key)}
-            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${tab === key ? "bg-white shadow-sm text-[var(--greek-blue)]" : "text-gray-500 hover:text-gray-700"}`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
+      <GlassSegmentedControl
+        className="w-fit mb-6"
+        options={[
+          { id: "plans", label: "Plans d'abonnement" },
+          { id: "promos", label: "Codes promo" },
+          { id: "parrainage", label: "Parrainage" },
+        ]}
+        value={tab}
+        onChange={(v) => setTab(v as typeof tab)}
+      />
 
       {/* ── Toast ── */}
       {toast && (
@@ -550,10 +551,10 @@ export default function AdminSubscriptionsClient({
                         >
                           <Power size={15} />
                         </button>
-                        <button onClick={() => openPlanModal(plan)} className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors">
+                        <button onClick={() => openPlanModal(plan)} aria-label="Modifier le plan" className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors">
                           <Edit size={15} />
                         </button>
-                        <button onClick={() => deletePlan(plan.id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                        <button onClick={() => deletePlan(plan.id)} aria-label="Supprimer le plan" className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
                           <Trash2 size={15} />
                         </button>
                       </div>
@@ -618,7 +619,7 @@ export default function AdminSubscriptionsClient({
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-2">
                           <span className="font-mono font-bold text-[var(--greek-blue)] bg-blue-50 px-2.5 py-1 rounded-lg text-sm tracking-wider">{c.code}</span>
-                          <button onClick={() => copyCode(c.code)} className="text-gray-400 hover:text-gray-600 transition-colors">
+                          <button onClick={() => copyCode(c.code)} aria-label="Copier le code" className="text-gray-400 hover:text-gray-600 transition-colors">
                             {copiedCode === c.code ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
                           </button>
                         </div>
@@ -653,8 +654,8 @@ export default function AdminSubscriptionsClient({
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-1 justify-end">
-                          <button onClick={() => openRefModal(c)} className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"><Edit size={14} /></button>
-                          <button onClick={() => deleteCode(c.id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 size={14} /></button>
+                          <button onClick={() => openRefModal(c)} aria-label="Modifier le code" className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"><Edit size={14} /></button>
+                          <button onClick={() => deleteCode(c.id)} aria-label="Supprimer le code" className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 size={14} /></button>
                         </div>
                       </td>
                     </tr>
@@ -699,7 +700,7 @@ export default function AdminSubscriptionsClient({
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-2">
                           <span className="font-mono font-bold text-[var(--greek-blue)] bg-blue-50 px-2.5 py-1 rounded-lg text-sm tracking-wider">{c.code}</span>
-                          <button onClick={() => copyCode(c.code)} className="text-gray-400 hover:text-gray-600 transition-colors">
+                          <button onClick={() => copyCode(c.code)} aria-label="Copier le code" className="text-gray-400 hover:text-gray-600 transition-colors">
                             {copiedCode === c.code ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
                           </button>
                         </div>
@@ -756,7 +757,7 @@ export default function AdminSubscriptionsClient({
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                 {editingPlan ? "Modifier le plan" : "Nouveau plan"}
               </h2>
-              <button onClick={() => setShowPlanModal(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
+              <button onClick={() => setShowPlanModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
                 <X size={20} />
               </button>
             </div>
@@ -890,10 +891,10 @@ export default function AdminSubscriptionsClient({
               </label>
 
               <div className="flex justify-end gap-3 pt-2">
-                <button type="button" onClick={() => setShowPlanModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button type="submit" className="px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors shadow-sm">
+                <GlassButton size="sm" variant="ghost" onClick={() => setShowPlanModal(false)}>Annuler</GlassButton>
+                <GlassButton size="sm" variant="navy" onClick={() => savePlan({ preventDefault: () => {} } as unknown as React.FormEvent)}>
                   {editingPlan ? "Mettre à jour" : "Créer le plan"}
-                </button>
+                </GlassButton>
               </div>
             </form>
           </div>
@@ -908,7 +909,7 @@ export default function AdminSubscriptionsClient({
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                 {editingCode ? "Modifier le code" : "Nouveau code promo"}
               </h2>
-              <button onClick={() => setShowRefModal(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
+              <button onClick={() => setShowRefModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
                 <X size={20} />
               </button>
             </div>
@@ -954,10 +955,10 @@ export default function AdminSubscriptionsClient({
                 <span className="text-sm font-semibold text-gray-700">Code actif</span>
               </label>
               <div className="flex justify-end gap-3 pt-2">
-                <button type="button" onClick={() => setShowRefModal(false)} className="px-5 py-2.5 text-gray-600 font-medium hover:bg-gray-100 rounded-xl transition-colors">Annuler</button>
-                <button type="submit" className="px-7 py-2.5 bg-[var(--greek-blue)] text-white font-bold rounded-xl hover:bg-blue-800 transition-colors shadow-sm">
+                <GlassButton size="sm" variant="ghost" onClick={() => setShowRefModal(false)}>Annuler</GlassButton>
+                <GlassButton size="sm" variant="navy" onClick={() => saveRef({ preventDefault: () => {} } as unknown as React.FormEvent)}>
                   {editingCode ? "Mettre à jour" : "Créer le code"}
-                </button>
+                </GlassButton>
               </div>
             </form>
           </div>

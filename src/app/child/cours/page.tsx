@@ -17,8 +17,8 @@ export default async function ChildCoursesPage() {
   const level = userData?.grade_level || null;
 
   const [{ data: allFolders }, { data: allCourses }, { data: progressRows }] = await Promise.all([
-    supabaseAdmin.from("course_folders").select("*").eq("status", "published").order("name"),
-    supabaseAdmin.from("courses").select("*").eq("status", "published"),
+    supabaseAdmin.from("course_folders").select("id, parent_id, name, color, icon, grade_level").eq("status", "published").order("name"),
+    supabaseAdmin.from("courses").select("id, folder_id, title, description, thumbnail_url, subject, content_json").eq("status", "published"),
     supabaseAdmin.from("user_course_progress").select("course_id, status, progress_json").eq("user_id", authUser.id),
   ]);
 
@@ -30,15 +30,23 @@ export default async function ChildCoursesPage() {
     )
   );
 
+  // content_json sert uniquement à compter les leçons ici, côté serveur — on
+  // calcule ce total une seule fois et on ne renvoie PAS content_json au
+  // client (potentiellement volumineux, et CoursesCatalog le recalculait une
+  // deuxième fois inutilement côté navigateur).
   const courseProgress: Record<string, { status: string; pct: number }> = {};
-  for (const c of allCourses || []) {
+  const coursesForClient = (allCourses || []).map((c) => {
+    const { content_json, ...rest } = c as any;
+    const lessonCount = (content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
+
     const dbp = (progressRows || []).find((p) => p.course_id === c.id);
     const status = dbp?.status || "not_started";
     const done: string[] = dbp?.progress_json?.lessonsCompleted || [];
-    const totalL = (c.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
-    const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
+    const pct = lessonCount > 0 ? Math.round((done.length / lessonCount) * 100) : 0;
     if (status !== "not_started" || pct > 0) courseProgress[c.id] = { status, pct };
-  }
+
+    return { ...rest, lesson_count: lessonCount };
+  });
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
@@ -62,7 +70,7 @@ export default async function ChildCoursesPage() {
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <CoursesCatalog
           allFolders={allFolders || []}
-          allCourses={allCourses || []}
+          allCourses={coursesForClient}
           levelFolderId={levelFolder?.id ?? null}
           courseProgress={courseProgress}
         />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Flag, X, CheckCircle, AlertTriangle } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
+import GlassButton from "@/components/ui/GlassButton";
 
 /** Bouton retour + modale de signalement : les deux seules actions
  * interactives (navigation historique du navigateur, mutation forum_reports)
@@ -68,12 +69,9 @@ export default function ProfileHeaderActions({
           <ArrowLeft className="w-4 h-4" /> Retour
         </button>
         {userRole !== "admin" && (
-          <button
-            onClick={() => setReportOpen(true)}
-            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/20"
-          >
+          <GlassButton onClick={() => setReportOpen(true)} variant="light" size="sm">
             <Flag className="w-4 h-4" /> Signaler le profil
-          </button>
+          </GlassButton>
         )}
       </div>
 
@@ -97,7 +95,7 @@ export default function ProfileHeaderActions({
                 <h2 className="text-lg font-bold text-[var(--greek-blue)]">Signaler le profil</h2>
                 <p className="text-sm text-gray-500">Explique brièvement pourquoi tu signales ce profil.</p>
               </div>
-              <button onClick={() => setReportOpen(false)} className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600">
+              <button onClick={() => setReportOpen(false)} aria-label="Fermer" className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -105,16 +103,17 @@ export default function ProfileHeaderActions({
               <textarea
                 value={reportReason}
                 onChange={(e) => setReportReason(e.target.value)}
+                aria-label="Raison du signalement"
                 className="h-36 w-full resize-none rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                 placeholder="Ex : contenu inapproprié, usurpation, harcèlement..."
               />
               <div className="flex gap-3">
-                <button onClick={() => setReportOpen(false)} className="flex-1 rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-600 hover:bg-gray-50">
+                <GlassButton onClick={() => setReportOpen(false)} variant="ghost" size="sm" fullWidth>
                   Annuler
-                </button>
-                <button onClick={submitReport} className="flex-1 rounded-xl bg-[var(--greek-blue)] px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">
+                </GlassButton>
+                <GlassButton onClick={submitReport} variant="navy" size="sm" fullWidth>
                   Signaler
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>

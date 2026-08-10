@@ -132,7 +132,7 @@ export async function POST(req: Request) {
           is_active: false,
           features: computed.features,
         })
-        .select('*')
+        .select('id, name, price, billing_interval, trial_days, is_active')
         .single();
 
       if (customErr || !customPlan) {
@@ -145,7 +145,7 @@ export async function POST(req: Request) {
       // Fetch plan from DB
       const { data: dbPlan } = await supabaseAdmin
         .from('subscription_plans')
-        .select('*')
+        .select('id, name, price, billing_interval, trial_days, is_active')
         .eq('id', planId)
         .eq('is_active', true)
         .maybeSingle();
@@ -202,31 +202,30 @@ export async function POST(req: Request) {
       userId = result.authId;
     }
 
-    // Resolve discount from referral code or pending reward
+    // Resolve discount from referral code or pending reward — les deux
+    // requêtes sont indépendantes, lancées en parallèle.
     let discountPercent = 0;
 
-    if (referralCode) {
-      const { data: rc } = await supabaseAdmin
-        .from('referral_codes')
-        .select('*')
-        .eq('code', referralCode.trim().toUpperCase())
-        .eq('is_active', true)
-        .maybeSingle();
+    const [{ data: rc }, { data: userRow }] = await Promise.all([
+      referralCode
+        ? supabaseAdmin
+            .from('referral_codes')
+            .select('discount_type, discount_value')
+            .eq('code', referralCode.trim().toUpperCase())
+            .eq('is_active', true)
+            .maybeSingle()
+        : Promise.resolve({ data: null }),
+      !isNewSignup && userId
+        ? supabaseAdmin
+            .from('users')
+            .select('pending_discount_percent, id')
+            .eq('auth_id', userId)
+            .maybeSingle()
+        : Promise.resolve({ data: null }),
+    ]);
 
-      if (rc && rc.discount_type === 'percent') {
-        discountPercent = Math.max(discountPercent, rc.discount_value);
-      }
-    }
-
-    // Check pending parrainage reward (only for existing users)
-    let userRow: any = null;
-    if (!isNewSignup && userId) {
-      const { data } = await supabaseAdmin
-        .from('users')
-        .select('pending_discount_percent, id')
-        .eq('auth_id', userId)
-        .maybeSingle();
-      userRow = data;
+    if (rc && rc.discount_type === 'percent') {
+      discountPercent = Math.max(discountPercent, rc.discount_value);
     }
 
     if (userRow?.pending_discount_percent > 0) {

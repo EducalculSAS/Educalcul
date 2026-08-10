@@ -1,12 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import FadeInSection from "@/components/home/FadeInSection";
 import LevelPicker from "@/components/programmes/LevelPicker";
 import LevelGroupsList from "@/components/programmes/LevelGroupsList";
 import { fetchProgrammePdfs } from "@/lib/programmePdfs";
+import GlassButton from "@/components/ui/GlassButton";
+
+// Page publique quasi-statique (PDFs édités en admin) : ISR au lieu d'un
+// aller-retour Supabase à chaque visite.
+export const revalidate = 300;
 
 const SYM = [
   { s: "∑", x: 6, y: 10, z: 96, d: 0, t: 7.2 },
@@ -72,19 +76,15 @@ export default async function ProgrammesPage() {
       {/* CTA */}
       <section className="py-16 px-6" style={{ background: "var(--greek-blue)" }}>
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl mb-4" style={{ color: "#f0ede8" }}>
+          <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl mb-4 text-white">
             Prêt à commencer ?
           </h2>
-          <p className="text-sm mb-8" style={{ color: "rgba(240,237,232,0.45)" }}>
+          <p className="text-sm mb-8 text-white/45">
             Inscrivez-vous en 2 minutes et accédez à tous les contenus alignés sur ces programmes.
           </p>
-          <Link
-            href="/auth/inscription"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5"
-            style={{ background: "var(--greek-gold)", color: "#fff", boxShadow: "0 8px 28px rgba(197,161,72,0.3)" }}
-          >
+          <GlassButton href="/auth/inscription" variant="gold">
             Commencer gratuitement <ArrowRight size={16} />
-          </Link>
+          </GlassButton>
         </div>
       </section>
 

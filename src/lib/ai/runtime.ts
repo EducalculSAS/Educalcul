@@ -145,7 +145,8 @@ export const REASONING_TOKEN_BUFFER = 10_000;
 type GenerationsTable =
   | "course_generations"
   | "exercise_generations"
-  | "quiz_generations";
+  | "quiz_generations"
+  | "scan_runs";
 
 export function createGenerationTracker(
   table: GenerationsTable,
