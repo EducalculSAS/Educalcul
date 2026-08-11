@@ -3,6 +3,8 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createClient } from "@supabase/supabase-js";
 import { getIpGeo } from "@/lib/ipGeo";
+import { hashTwoFactorValue } from "@/lib/twoFactor";
+import { getTwoFactorCookieFromRequest, clearTwoFactorCookie } from "@/lib/twoFactorCookie";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +36,11 @@ export async function POST(request: Request) {
 
     const now = new Date().toISOString();
 
+    // Révoque aussi la session 2FA (cookie httpOnly) : sans ça, se
+    // déconnecter du compte Supabase ne coupait pas ce jeton séparé, encore
+    // valide pour les 4h/30j restantes de son TTL si jamais réutilisé.
+    const twoFAToken = getTwoFactorCookieFromRequest(request);
+
     // Independent writes — run in parallel.
     await Promise.all([
       supabaseAdmin.from("users").update({
@@ -53,8 +60,12 @@ export async function POST(request: Request) {
         })
         .eq("user_id", dbUser.id)
         .is("logged_out_at", null),
+      twoFAToken
+        ? supabaseAdmin.from("two_factor_sessions").delete().eq("user_id", dbUser.id).eq("token_hash", hashTwoFactorValue(twoFAToken))
+        : Promise.resolve(),
     ]);
 
+    await clearTwoFactorCookie();
     return NextResponse.json({ ok: true });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });

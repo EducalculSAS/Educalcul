@@ -65,7 +65,9 @@ async function getRole(authId: string): Promise<{ role: string; id: number } | n
 }
 
 async function has2FASession(userId: number, req: NextRequest): Promise<boolean> {
-  const token = req.headers.get("x-2fa-token");
+  // Cookie httpOnly (voir src/lib/twoFactorCookie.ts) — nom en dur ici plutôt
+  // qu'importé pour ne pas tirer next/headers dans ce fichier Edge Middleware.
+  const token = req.cookies.get("edu_2fa")?.value;
   if (!token) return false;
   try {
     const tokenHash = await sha256Hex(token);

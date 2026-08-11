@@ -87,9 +87,7 @@ export default function Navbar() {
       await trackLogout();
       await supabase.auth.signOut();
     } catch (e) { console.error(e); }
-    const cookieConsent = localStorage.getItem("cookie_consent");
     localStorage.clear();
-    if (cookieConsent) localStorage.setItem("cookie_consent", cookieConsent);
     setUser(null);
     setUserRole(null);
     window.location.href = "/";

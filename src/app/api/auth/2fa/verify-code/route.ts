@@ -4,6 +4,7 @@ import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
+import { setTwoFactorCookie } from "@/lib/twoFactorCookie";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 
 export async function POST(req: Request) {
@@ -68,7 +69,8 @@ export async function POST(req: Request) {
 
     await auditLog({ action: AuditAction.TWO_FACTOR_VERIFIED, adminId: user.id, details: { method: "email" } }, req);
 
-    return NextResponse.json({ success: true, token, expiresAt });
+    await setTwoFactorCookie(token, ttl);
+    return NextResponse.json({ success: true, expiresAt });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }

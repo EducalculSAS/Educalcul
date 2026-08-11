@@ -78,7 +78,7 @@ export default function AdminTotpSetupModal() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Code incorrect.");
-      window.localStorage.setItem("edu_2fa_token", data.token);
+      // Jeton posé par le serveur via cookie httpOnly (Set-Cookie), rien à stocker ici.
       setBackupCodes(data.backupCodes || null);
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue.");

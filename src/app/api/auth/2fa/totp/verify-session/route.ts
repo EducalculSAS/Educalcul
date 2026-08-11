@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
+import { getTwoFactorCookie } from "@/lib/twoFactorCookie";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
-/** Valide que le jeton 2FA présent en localStorage (X-2FA-Token) est encore
+/** Valide que le jeton 2FA (cookie httpOnly, jamais lisible en JS) est encore
  * réellement actif — pas juste "présent". Corrige le "flash puis
  * déconnexion" : sans ça, AdminShell ne vérifiait que la PRÉSENCE du jeton,
  * laissait le dashboard s'afficher, et c'est seulement le premier appel
@@ -16,7 +17,7 @@ export async function GET(req: Request) {
     const identity = await getAuthIdentityOnly(req);
     if (!identity) return NextResponse.json({ valid: false }, { status: 401 });
 
-    const token = req.headers.get("x-2fa-token");
+    const token = await getTwoFactorCookie();
     if (!token) return NextResponse.json({ valid: false });
 
     const { data: user } = await supabaseAdmin.from("users").select("id").eq("auth_id", identity.authId).maybeSingle();

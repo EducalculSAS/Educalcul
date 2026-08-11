@@ -1,6 +1,7 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createClient } from "@supabase/supabase-js";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
+import { getTwoFactorCookieFromRequest } from "@/lib/twoFactorCookie";
 
 export interface AuthenticatedUser {
   authId: string;
@@ -64,7 +65,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
   // chicken-and-egg, et pas de fenêtre où un admin reste sans 2FA.
   const requires2FA = row.role === "admin" || row.two_factor_enabled;
   if (requires2FA) {
-    const twoFAToken = req.headers.get("x-2fa-token");
+    const twoFAToken = getTwoFactorCookieFromRequest(req);
     if (!twoFAToken) return null;
     const { data: session } = await supabaseAdmin
       .from("two_factor_sessions")

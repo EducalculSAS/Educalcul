@@ -5,6 +5,7 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { verifyTotp, looksLikeBackupCode } from "@/lib/totp";
 import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
+import { setTwoFactorCookie } from "@/lib/twoFactorCookie";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 
 // Vérifie un code TOTP au login (une fois la configuration déjà confirmée)
@@ -73,7 +74,8 @@ export async function POST(req: Request) {
       req,
     );
 
-    return NextResponse.json({ success: true, token, expiresAt, usedBackupCode });
+    await setTwoFactorCookie(token, ttl);
+    return NextResponse.json({ success: true, expiresAt, usedBackupCode });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }

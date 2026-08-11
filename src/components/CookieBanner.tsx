@@ -5,22 +5,35 @@ import Link from "next/link";
 import { Cookie, X, Check } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
+function getCookieConsent(): string | null {
+  const match = document.cookie.match(/(?:^|; )cookie_consent=([^;]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+// Un vrai cookie (pas localStorage) : les `localStorage.clear()` des flux de
+// déconnexion (Navbar, AdminSidebar, suppression de compte...) effaçaient ce
+// choix avec le reste, faisant réapparaître la bannière après une simple
+// déconnexion — un cookie dédié survit à tout ça naturellement, 1 an.
+function setCookieConsent(value: "accepted" | "declined") {
+  const maxAge = 60 * 60 * 24 * 365;
+  document.cookie = `cookie_consent=${value}; path=/; max-age=${maxAge}; SameSite=Lax`;
+}
+
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie_consent");
-    if (!consent) setVisible(true);
+    if (!getCookieConsent()) setVisible(true);
   }, []);
 
   const accept = () => {
-    localStorage.setItem("cookie_consent", "accepted");
+    setCookieConsent("accepted");
     setVisible(false);
     window.dispatchEvent(new Event("cookie_consent_accepted"));
   };
 
   const decline = () => {
-    localStorage.setItem("cookie_consent", "declined");
+    setCookieConsent("declined");
     setVisible(false);
   };
 

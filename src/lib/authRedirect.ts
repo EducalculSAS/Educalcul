@@ -46,6 +46,26 @@ async function isAdminTotpConfirmedClient(supabase: SupabaseClient): Promise<boo
 }
 
 /**
+ * Le jeton de session 2FA vit dans un cookie httpOnly (voir
+ * src/lib/twoFactorCookie.ts) : illisible depuis ce JS, donc on demande
+ * directement au serveur s'il est encore valide (pas juste présent).
+ */
+async function hasValidTwoFactorSession(supabase: SupabaseClient): Promise<boolean> {
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return false;
+    const res = await fetch("/api/auth/2fa/totp/verify-session", {
+      headers: { Authorization: `Bearer ${session.access_token}` },
+    });
+    if (!res.ok) return false;
+    const data = await res.json();
+    return !!data.valid;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Retourne le chemin dashboard selon le rôle.
  */
 export function getDashboardPath(role: string | null | undefined): string {
@@ -81,17 +101,15 @@ export async function resolveAuthDestination(
   // 2FA opt-in par email pour parent/enfant. Pour les admins, TOTP (Google
   // Authenticator) une fois sa configuration confirmée seulement — voir
   // src/lib/twoFactor.ts et /auth/2fa-verify (qui gère les deux méthodes).
-  // Un jeton de session 2FA déjà présent et non expiré sur cet appareil
-  // dispense de repasser par la vérification — l'exactitude réelle du jeton
-  // est de toute façon revérifiée côté serveur à chaque appel API
-  // (src/lib/apiAuth.ts), ceci n'est qu'un raccourci d'UX.
+  // Une session 2FA déjà valide sur cet appareil (cookie httpOnly) dispense
+  // de repasser par la vérification.
   let requires2FA = !!user.two_factor_enabled;
   if (user.role === "admin") {
     requires2FA = await isAdminTotpConfirmedClient(supabase);
   }
   if (requires2FA) {
-    const token = typeof window !== "undefined" ? window.localStorage.getItem("edu_2fa_token") : null;
-    if (!token) return `/auth/2fa-verify?redirect=${encodeURIComponent(dashboard)}`;
+    const valid = await hasValidTwoFactorSession(supabase);
+    if (!valid) return `/auth/2fa-verify?redirect=${encodeURIComponent(dashboard)}`;
   }
 
   return dashboard;

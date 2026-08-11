@@ -11,9 +11,10 @@ import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidge
 
 /** Coquille des pages admin : l'identité/rôle/statut banni sont désormais
  * vérifiés côté serveur (src/app/admin/layout.tsx) avant même que ce
- * composant ne s'exécute. Il ne reste ici que la vérification 2FA "sur cet
- * appareil" : le token de vérification vit dans le localStorage du
- * navigateur, donc ne peut pas être lu côté serveur. */
+ * composant ne s'exécute. Il ne reste ici que la vérification 2FA : le jeton
+ * vit dans un cookie httpOnly (voir src/lib/twoFactorCookie.ts), illisible
+ * en JS — on demande donc au serveur s'il est valide plutôt que de le lire
+ * nous-mêmes. */
 export default function AdminShell({ children, adminLevel = "super" }: { children: React.ReactNode; adminLevel?: string }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -34,23 +35,15 @@ export default function AdminShell({ children, adminLevel = "super" }: { childre
       });
       const totpData = await totpRes.json();
       if (totpRes.ok && totpData.confirmed) {
-        const token = window.localStorage.getItem("edu_2fa_token");
-        if (!token) {
-          router.push(`/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`);
-          return;
-        }
-
-        // Le jeton peut être présent mais expiré/révoqué (TTL 4h) — sans ce
-        // contrôle, le dashboard s'affichait un instant avant que le premier
-        // appel /api/admin/* échoue en 401 et force une déconnexion (le
-        // "flash puis déco" observé). On vérifie sa validité réelle AVANT
-        // d'afficher quoi que ce soit.
+        // Le cookie peut être absent, expiré ou révoqué (TTL 4h) — sans ce
+        // contrôle AVANT le premier rendu, le dashboard s'affichait un
+        // instant avant que le premier appel /api/admin/* échoue en 401 et
+        // force une déconnexion (le "flash puis déco" observé).
         const sessionCheck = await fetch("/api/auth/2fa/totp/verify-session", {
-          headers: { Authorization: `Bearer ${session.access_token}`, "X-2FA-Token": token },
+          headers: { Authorization: `Bearer ${session.access_token}` },
         });
         const sessionData = await sessionCheck.json();
         if (!sessionCheck.ok || !sessionData.valid) {
-          window.localStorage.removeItem("edu_2fa_token");
           router.push(`/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`);
           return;
         }

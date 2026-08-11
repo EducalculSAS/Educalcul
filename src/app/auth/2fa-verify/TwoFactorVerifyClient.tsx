@@ -94,7 +94,8 @@ function TwoFactorVerifyContent() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Code incorrect.");
-      localStorage.setItem("edu_2fa_token", data.token);
+      // Le serveur pose désormais le jeton 2FA lui-même via un cookie
+      // httpOnly (Set-Cookie sur cette même réponse) — rien à stocker ici.
       router.push(redirect);
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue.");

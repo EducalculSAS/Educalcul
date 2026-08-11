@@ -45,19 +45,16 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
       if (url.startsWith("/api/")) {
         const { data: { session } } = await getPublicClient().auth.getSession();
-        const twoFAToken = window.localStorage.getItem("edu_2fa_token");
-        if (session?.access_token || twoFAToken) {
+        // Le jeton 2FA voyage désormais dans un cookie httpOnly (voir
+        // src/lib/twoFactorCookie.ts) : le navigateur l'attache tout seul aux
+        // requêtes same-origin, plus besoin de le lire/poser à la main ici
+        // (et il n'est de toute façon plus lisible depuis ce JS).
+        if (session?.access_token) {
           const headers = new Headers(
             init?.headers ?? (input instanceof Request ? input.headers : undefined)
           );
-          if (session?.access_token && !headers.has("Authorization")) {
+          if (!headers.has("Authorization")) {
             headers.set("Authorization", `Bearer ${session.access_token}`);
-          }
-          // Jeton de session 2FA (voir src/lib/twoFactor.ts) — distinct du JWT
-          // Supabase, requis en plus par apiAuth.ts pour les comptes qui ont
-          // activé la 2FA (obligatoire pour les admins).
-          if (twoFAToken && !headers.has("X-2FA-Token")) {
-            headers.set("X-2FA-Token", twoFAToken);
           }
           init = { ...init, headers };
         }
@@ -66,19 +63,18 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       // Never block a request because token retrieval failed.
     }
     const response = await originalFetch(input as any, init);
-    // Un jeton 2FA présent en localStorage mais expiré/révoqué (TTL admin de
-    // 4h) laisse admin/layout.tsx croire la 2FA validée (il ne vérifie que la
-    // PRÉSENCE du jeton, pas sa validité) : la page s'affiche, puis chaque
-    // appel /api/admin/* échoue en 401. Plutôt que de renvoyer vers une page
-    // de re-vérification 2FA en pleine action (vécu comme un blocage confus),
-    // on déconnecte proprement et on renvoie vers la connexion : l'admin se
-    // reconnecte une fois, normalement, au lieu de re-suivre un flux 2FA isolé.
+    // Un jeton 2FA expiré/révoqué côté serveur (TTL admin de 4h) laisse
+    // AdminShell croire la 2FA validée tant qu'il n'a pas revérifié (voir
+    // /api/auth/2fa/totp/verify-session) : sans ce filet, la page pourrait
+    // s'afficher puis chaque appel /api/admin/* échouer en 401. Plutôt que de
+    // renvoyer vers une page de re-vérification 2FA en pleine action (vécu
+    // comme un blocage confus), on déconnecte proprement et on renvoie vers
+    // la connexion : l'admin se reconnecte une fois, normalement.
     if (
       response.status === 401 &&
       url.startsWith("/api/admin/") &&
       window.location.pathname.startsWith("/admin")
     ) {
-      window.localStorage.removeItem("edu_2fa_token");
       getPublicClient().auth.signOut().finally(() => {
         window.location.href = `/auth/connexion?redirect=${encodeURIComponent(
           window.location.pathname,

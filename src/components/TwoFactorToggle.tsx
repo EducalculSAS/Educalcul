@@ -80,7 +80,7 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
       });
       const verifyData = await verifyRes.json();
       if (!verifyRes.ok) throw new Error(verifyData.error || "Code incorrect.");
-      window.localStorage.setItem("edu_2fa_token", verifyData.token);
+      // Jeton posé par le serveur via cookie httpOnly (Set-Cookie), rien à stocker ici.
 
       const toggleRes = await fetch("/api/auth/2fa/toggle", {
         method: "POST",
