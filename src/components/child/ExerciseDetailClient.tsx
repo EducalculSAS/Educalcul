@@ -64,8 +64,8 @@ function extractExerciseContent(contentJson: any): string {
 
 /** Page de détail exercice : le contenu (déjà purgé des réponses côté
  * serveur) et l'historique de tentatives arrivent en props quand id !==
- * "preview". Le mode "preview" (ouvert depuis l'admin via localStorage) reste
- * entièrement client, comme avant. */
+ * "preview" (aperçu admin transmis via une ligne content_previews, cf. la
+ * page serveur). */
 export default function ExerciseDetailClient({
   exerciseId,
   initialExercise,
@@ -81,18 +81,9 @@ export default function ExerciseDetailClient({
   const { setPageContext, clearContext } = useAITutor();
   const isPreview = exerciseId === "preview";
 
-  const [loading, setLoading] = useState(isPreview);
-  const [exercise, setExercise] = useState<any>(isPreview ? null : initialExercise);
-  const [started, setStartedState] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const wasStarted = localStorage.getItem(`exercise-${exerciseId}-started`);
-    if (wasStarted !== "true") return false;
-    try {
-      const localProg = localStorage.getItem(`exercise-${exerciseId}-progress`);
-      if (localProg && JSON.parse(localProg)?.exerciseCompleted) return false;
-    } catch {}
-    return true;
-  });
+  const [loading] = useState(false);
+  const [exercise] = useState<any>(initialExercise);
+  const [started, setStarted] = useState(false);
   const [isRendering, setIsRendering] = useState(false);
   const attemptsHistory = isPreview ? [] : initialAttemptsHistory;
   const alreadyCompleted = isPreview ? false : initialAlreadyCompleted;
@@ -100,34 +91,6 @@ export default function ExerciseDetailClient({
   const [forceNewAttempt, setForceNewAttempt] = useState(false);
   const [openCorrection, setOpenCorrection] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (initialAlreadyCompleted) setStartedState(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const setStarted = (value: boolean) => {
-    setStartedState(value);
-    if (value) {
-      localStorage.setItem(`exercise-${exerciseId}-started`, "true");
-    } else {
-      localStorage.removeItem(`exercise-${exerciseId}-started`);
-    }
-  };
-
-  // Mode preview uniquement : le contenu vient du localStorage de l'admin.
-  useEffect(() => {
-    if (!isPreview) return;
-    const previewData = localStorage.getItem("exercise_preview_data");
-    if (previewData) {
-      try {
-        setExercise(JSON.parse(previewData));
-      } catch (e) {
-        console.error("Error parsing preview data", e);
-      }
-    }
-    setLoading(false);
-  }, [isPreview]);
 
   useEffect(() => {
     if (!exercise) return;
@@ -261,10 +224,7 @@ export default function ExerciseDetailClient({
           <h1 className="text-lg font-bold truncate flex-1">{exercise.title}</h1>
           <button
             onClick={() => {
-              if (isPreview) { window.close(); } else {
-                if (exercise?.id) localStorage.removeItem(`exercise-${exercise.id}-page`);
-                setStarted(false);
-              }
+              if (isPreview) { window.close(); } else { setStarted(false); }
             }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Fermer"

@@ -21,7 +21,8 @@ type ExerciseProgress = Record<string, { status: string; score: number; attempts
  * (dossiers, exercices publiés, progression) arrive déjà chargé depuis le
  * serveur — plus de 3 aller-retours API au montage. Reste un client island
  * car la navigation entre dossiers doit rester instantanée (pas de rechargement
- * réseau à chaque clic) et persiste le dossier courant en sessionStorage.
+ * réseau à chaque clic) et persiste le dossier courant dans un cookie de
+ * session (voir useSessionFolderId.ts).
  */
 export default function ExercisesCatalog({
   allFolders, allExercises, levelFolderId, initialProgress,
@@ -35,23 +36,6 @@ export default function ExercisesCatalog({
   const [exerciseProgress, setExerciseProgress] = useState<ExerciseProgress>(initialProgress);
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_exercises_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
-
-  // Repli localStorage pour un exercice sans historique DB (ancien
-  // comportement conservé pour ne rien casser côté progression déjà stockée
-  // localement chez des utilisateurs existants).
-  useEffect(() => {
-    setExerciseProgress((prev) => {
-      const next = { ...prev };
-      for (const ex of allExercises) {
-        if (next[ex.id]) continue;
-        const status = localStorage.getItem(`ex-${ex.id}-status`);
-        const score = parseInt(localStorage.getItem(`ex-${ex.id}-score`) || "0");
-        if (status) next[ex.id] = { status, score, attempts: 0 };
-      }
-      return next;
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const navigateToFolder = (folderId: number, folderName: string) => {
     setBreadcrumbs([...breadcrumbs, { id: folderId, name: folderName }]);

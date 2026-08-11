@@ -387,12 +387,6 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
     const threshold = (quiz as any).min_score_percent || 0;
     const passed = threshold > 0 ? percentage >= threshold : true;
-    // Save pass/fail to localStorage
-    const qzId = (quiz as any).id;
-    if (qzId && qzId !== "preview") {
-      localStorage.setItem(`qz-${qzId}-status`, passed ? "passed" : "failed");
-      localStorage.setItem(`qz-${qzId}-score`, String(percentage));
-    }
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">

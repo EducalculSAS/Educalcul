@@ -70,6 +70,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const messages: Message[] = body.messages ?? [];
     const context: AITutorPageContext = body.context ?? { page: "other" };
+    const contextKey: string | undefined = body.contextKey;
     const isSupportMode = context.page === "support";
 
     // ✓ Rate limiting on expensive AI endpoint, keyed on the real user.
@@ -118,6 +119,21 @@ export async function POST(req: Request) {
       // Mode support : température basse pour un ton factuel/fiable et un
       // meilleur respect du formatage imposé (relance vers un ticket).
       const message = await chatWithAI(trimmed, systemPrompt, isSupportMode ? 0.3 : 0.65, 800);
+
+      // Persistance serveur de la conversation (plus de localStorage — voir
+      // /api/child/ai-tutor/messages pour la lecture/suppression). Le dernier
+      // message de `trimmed` est celui que l'élève vient d'envoyer.
+      if (contextKey) {
+        const lastUser = trimmed[trimmed.length - 1];
+        supabaseAdmin
+          .from("ai_tutor_messages")
+          .insert([
+            { user_id: me.id, context_key: contextKey, role: "user", content: lastUser.content },
+            { user_id: me.id, context_key: contextKey, role: "assistant", content: message },
+          ])
+          .then(undefined, (e) => console.error("[ai-tutor] message persistence failed:", e?.message));
+      }
+
       return NextResponse.json({ message });
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);

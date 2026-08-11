@@ -5,9 +5,6 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { UserCog } from "lucide-react";
 
-const ORIGIN_KEY = "edu_impersonation_origin";
-const STATE_KEY = "edu_impersonating";
-
 interface ImpersonationState {
   targetId: number;
   targetName: string;
@@ -17,19 +14,21 @@ interface ImpersonationState {
 /** Bannière fixe visible sur tout le site tant qu'un admin est "connecté en
  * tant que" un autre compte — permet de revenir à sa propre session en un
  * clic. Vit dans le layout racine car la cible peut naviguer n'importe où
- * (dashboard parent, enfant...), pas seulement dans /admin. */
+ * (dashboard parent, enfant...), pas seulement dans /admin. L'état
+ * d'impersonation (et le refresh_token d'origine) vit côté serveur, référencé
+ * par un cookie httpOnly : rien en sessionStorage. */
 export default function ImpersonationBanner() {
   const router = useRouter();
   const [state, setState] = useState<ImpersonationState | null>(null);
   const [ending, setEnding] = useState(false);
 
   useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem(STATE_KEY);
-      if (raw) setState(JSON.parse(raw));
-    } catch {
-      // ignore
-    }
+    fetch("/api/admin/impersonate/status")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (d?.active) setState({ targetId: d.targetId, targetName: d.targetName, returnTo: d.returnTo });
+      })
+      .catch(() => {});
   }, []);
 
   if (!state) return null;
@@ -37,22 +36,12 @@ export default function ImpersonationBanner() {
   const endImpersonation = async () => {
     setEnding(true);
     try {
-      const originRaw = sessionStorage.getItem(ORIGIN_KEY);
-      if (originRaw) {
-        const origin = JSON.parse(originRaw);
-        await supabase.auth.setSession({ access_token: origin.access_token, refresh_token: origin.refresh_token });
+      const res = await fetch("/api/admin/impersonate/end", { method: "POST" });
+      const data = await res.json().catch(() => null);
+      if (data?.access_token && data?.refresh_token) {
+        await supabase.auth.setSession({ access_token: data.access_token, refresh_token: data.refresh_token });
       }
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        await fetch("/api/admin/impersonate/end", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
-          body: JSON.stringify({ targetUserId: state.targetId, targetName: state.targetName }),
-        });
-      }
-      sessionStorage.removeItem(ORIGIN_KEY);
-      sessionStorage.removeItem(STATE_KEY);
-      router.push(state.returnTo || "/admin/users");
+      router.push(data?.returnTo || state.returnTo || "/admin/users");
       router.refresh();
     } finally {
       setEnding(false);

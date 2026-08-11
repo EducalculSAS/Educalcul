@@ -709,7 +709,7 @@ export default function AdminExercisesClient({
     return { ...exercise, content_json: full.content_json ?? [] };
   };
 
-  const handlePreview = (exercise: Exercise) => {
+  const handlePreview = async (exercise: Exercise) => {
     const previewData = {
       title: exercise.title,
       description: exercise.question || "",
@@ -729,8 +729,14 @@ export default function AdminExercisesClient({
       content_json: exercise.content_json || [],
     };
 
-    localStorage.setItem("exercise_preview_data", JSON.stringify(previewData));
-    window.open("/child/exercises/preview", "_blank");
+    const res = await fetch("/api/admin/content-preview", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "exercise", payload: previewData }),
+    });
+    const data = await res.json();
+    if (!res.ok) return;
+    window.open(`/child/exercises/preview?pid=${data.id}`, "_blank");
   };
 
   // Génération en arrière-plan (même architecture que les cours) : ferme le

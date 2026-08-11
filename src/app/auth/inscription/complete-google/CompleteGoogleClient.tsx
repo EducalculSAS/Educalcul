@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { User, Mail, Lock, AlertCircle, Loader2, CheckCircle } from "lucide-react";
 import PasswordStrength from "@/components/PasswordStrength";
 import { validatePassword } from "@/lib/validation";
+import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
 
 const ROLE = "parent" as const;
 
@@ -43,14 +44,11 @@ export default function CompleteGoogleProfile() {
       setEmail(session.user.email || "");
 
       // Récupérer données pré-remplies depuis l'inscription
-      try {
-        const stored = sessionStorage.getItem("educalcul_signup_data");
-        if (stored) {
-          const d = JSON.parse(stored);
-          if (d.firstName)   setFirstName(v => v || d.firstName);
-          if (d.lastName)    setLastName(v => v || d.lastName);
-        }
-      } catch {}
+      const s = await getSignupSession();
+      if (s.data) {
+        if (s.data.firstName) setFirstName(v => v || s.data.firstName);
+        if (s.data.lastName)  setLastName(v => v || s.data.lastName);
+      }
 
       setLoading(false);
     };
@@ -104,9 +102,7 @@ export default function CompleteGoogleProfile() {
       referralCode: null,
       referralStatus: "idle",
     };
-    sessionStorage.setItem("educalcul_signup_data", JSON.stringify(signupData));
-    sessionStorage.setItem("educalcul_signup_mode", "google");
-    sessionStorage.setItem("educalcul_pending_role", ROLE);
+    await patchSignupSession({ mode: "google", pendingRole: ROLE, data: signupData });
 
     router.push("/auth/inscription/select-plan");
   };

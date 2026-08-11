@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { setPendingSignupPassword } from "@/lib/pendingSignupPassword";
+import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
 import { validatePassword } from "@/lib/validation";
 import {
   Mail, Lock, User, AlertCircle, CheckCircle,
@@ -87,17 +88,16 @@ export default function Inscription() {
 
   useEffect(() => {
     setMounted(true);
-    const stored = sessionStorage.getItem("educalcul_signup_data");
-    const mode   = sessionStorage.getItem("educalcul_signup_mode");
-    if (stored && mode === "email") {
-      try {
-        const d = JSON.parse(stored);
+    (async () => {
+      const s = await getSignupSession();
+      if (s.data && s.mode === "email") {
+        const d = s.data;
         if (d.firstName)     setFirstName(d.firstName);
         if (d.lastName)      setLastName(d.lastName);
         if (d.email)         setEmail(d.email);
         if (d.referralCode)  { setReferralCode(d.referralCode); setReferralStatus("valid"); }
-      } catch {}
-    }
+      }
+    })();
   }, []);
 
   /* ── Navigation entre étapes ── */
@@ -125,10 +125,17 @@ export default function Inscription() {
     return null;
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     const err = validateStep(step);
     if (err) { setError(err); return; }
     setError(null);
+    // Sauvegarde incrémentale à chaque étape validée (jamais le mot de passe,
+    // voir pendingSignupPassword.ts) : un refresh ou un retour plus tard
+    // reprend exactement là où on s'était arrêté.
+    patchSignupSession({
+      mode: "email",
+      data: { role: ROLE, firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim() || null },
+    });
     if (step < TOTAL - 1) goTo(step + 1);
   };
 
@@ -147,14 +154,16 @@ export default function Inscription() {
   };
 
   /* ── Google ── */
-  const handleGoogleLogin = () => {
-    sessionStorage.setItem("educalcul_signup_mode", "google");
-    sessionStorage.setItem("educalcul_pending_role", ROLE);
-    sessionStorage.setItem("educalcul_signup_data", JSON.stringify({
-      role: ROLE,
-      firstName: firstName.trim() || null,
-      lastName: lastName.trim() || null,
-    }));
+  const handleGoogleLogin = async () => {
+    await patchSignupSession({
+      mode: "google",
+      pendingRole: ROLE,
+      data: {
+        role: ROLE,
+        firstName: firstName.trim() || null,
+        lastName: lastName.trim() || null,
+      },
+    });
 
     const redirectUri = `${getSiteUrl()}/api/auth/google/callback`;
     const params = new URLSearchParams({
@@ -178,17 +187,19 @@ export default function Inscription() {
       const checkData = await checkRes.json();
       if (!checkData.valid) { setError(checkData.error || "Email déjà utilisé."); setLoading(false); return; }
 
-      // Le mot de passe ne va jamais dans sessionStorage (lisible par toute
-      // XSS pour la durée de l'onglet) : il reste en mémoire JS le temps de
-      // la navigation vers select-plan, qui l'utilise pour créer le compte.
+      // Le mot de passe ne va jamais côté serveur ni dans du stockage
+      // navigateur : il reste en mémoire JS le temps de la navigation vers
+      // select-plan, qui l'utilise pour créer le compte.
       setPendingSignupPassword(password);
-      sessionStorage.setItem("educalcul_signup_data", JSON.stringify({
-        role: ROLE, firstName: firstName.trim(), lastName: lastName.trim(),
-        email: email.trim(),
-        referralCode: referralCode.trim() || null,
-        referralStatus, cguAcceptedAt: new Date().toISOString(),
-      }));
-      sessionStorage.setItem("educalcul_signup_mode", "email");
+      await patchSignupSession({
+        mode: "email",
+        data: {
+          role: ROLE, firstName: firstName.trim(), lastName: lastName.trim(),
+          email: email.trim(),
+          referralCode: referralCode.trim() || null,
+          referralStatus, cguAcceptedAt: new Date().toISOString(),
+        },
+      });
       router.push("/auth/inscription/select-plan");
     } catch (err: any) { setError(err.message || "Une erreur est survenue."); }
     finally { setLoading(false); }

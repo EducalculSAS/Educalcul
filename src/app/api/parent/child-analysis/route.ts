@@ -18,6 +18,22 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
+    // Cache serveur (1x/jour, comme avant côté client) — plus de localStorage :
+    // l'analyse contient des données sur un enfant, elle doit vivre côté
+    // serveur (gérable/supprimable), pas indéfiniment sur l'appareil du parent.
+    const force = searchParams.get("force") === "1";
+    if (!force) {
+      const { data: cached } = await supabaseAdmin
+        .from("child_ai_analysis_cache")
+        .select("analysis, stats, generated_at")
+        .eq("child_id", childId)
+        .maybeSingle();
+      const isToday = cached && new Date(cached.generated_at).toDateString() === new Date().toDateString();
+      if (isToday) {
+        return NextResponse.json({ analysis: cached.analysis, stats: cached.stats, generatedAt: cached.generated_at, cached: true });
+      }
+    }
+
     // Fetch child profile
     const { data: child } = await supabaseAdmin
       .from("users")
@@ -104,10 +120,15 @@ Sois précis, bienveillant et basé uniquement sur les données réelles. Si les
       1_600
     );
 
-    return NextResponse.json({
-      analysis,
-      stats: { totalEx, correctEx, successRate, avgQuizScore, totalQuiz: quizzes?.length || 0, totalCourses: courseProgress?.length || 0 },
-    });
+    const stats = { totalEx, correctEx, successRate, avgQuizScore, totalQuiz: quizzes?.length || 0, totalCourses: courseProgress?.length || 0 };
+    const generatedAt = new Date().toISOString();
+
+    await supabaseAdmin
+      .from("child_ai_analysis_cache")
+      .upsert({ child_id: childId, analysis, stats, generated_at: generatedAt }, { onConflict: "child_id" })
+      .then(undefined, (e) => console.error("[child-analysis] cache write failed:", e?.message));
+
+    return NextResponse.json({ analysis, stats, generatedAt, cached: false });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }

@@ -146,19 +146,10 @@ export default function AdminUserDetailClient({
       const result = await res.json();
       if (!res.ok) throw new Error(result.error);
 
-      // Garde la session admin de côté pour pouvoir y revenir (bannière
-      // ImpersonationBanner) — puis remplace la session courante par celle
-      // de la cible via le lien magique généré côté serveur.
-      sessionStorage.setItem("edu_impersonation_origin", JSON.stringify({
-        access_token: session.access_token,
-        refresh_token: session.refresh_token,
-      }));
-      sessionStorage.setItem("edu_impersonating", JSON.stringify({
-        targetId: Number(id),
-        targetName: result.targetName,
-        returnTo: `/admin/users/${id}`,
-      }));
-
+      // La session admin d'origine est déjà gardée côté serveur (voir
+      // /api/admin/impersonate, référencée par un cookie httpOnly) — il ne
+      // reste plus qu'à remplacer la session courante par celle de la cible
+      // via le lien magique généré côté serveur.
       const { error: verifyError } = await supabase.auth.verifyOtp({ token_hash: result.tokenHash, type: "email" });
       if (verifyError) throw verifyError;
 

@@ -28,7 +28,14 @@ const AUTHENTICATED_READ = new Set([
 // Endpoints reachable without any session (route validates its own output)
 function isPublic(pathname: string, method: string) {
   // Plans list shown on public signup - route strips subscriber data for non-admin
-  return pathname === "/api/admin/subscriptions" && method === "GET";
+  if (pathname === "/api/admin/subscriptions" && method === "GET") return true;
+  // Pendant une impersonation, la session active du navigateur est celle de
+  // la CIBLE (parent/enfant), pas de l'admin — ces deux routes s'autorisent
+  // elles-mêmes via le cookie httpOnly edu_impersonation, pas via ce garde
+  // admin+2FA (voir src/lib/impersonationCookie.ts).
+  if (pathname === "/api/admin/impersonate/status" && method === "GET") return true;
+  if (pathname === "/api/admin/impersonate/end" && method === "POST") return true;
+  return false;
 }
 
 async function getAuthUserId(token: string): Promise<string | null> {

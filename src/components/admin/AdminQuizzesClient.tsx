@@ -796,7 +796,7 @@ export default function AdminQuizzesClient({
     return { ...quiz, content_json: full.content_json ?? [] };
   };
 
-  const handlePreview = (quiz: Quiz) => {
+  const handlePreview = async (quiz: Quiz) => {
     const previewData = {
       title: quiz.title,
       description: quiz.description || "",
@@ -814,8 +814,14 @@ export default function AdminQuizzesClient({
       content_json: quiz.content_json || [],
     };
 
-    localStorage.setItem("quiz_preview_data", JSON.stringify(previewData));
-    window.open("/child/quiz/preview", "_blank");
+    const res = await fetch("/api/admin/content-preview", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "quiz", payload: previewData }),
+    });
+    const data = await res.json();
+    if (!res.ok) return;
+    window.open(`/child/quiz/preview?pid=${data.id}`, "_blank");
   };
 
   const handleOpenModal = (quiz: Quiz | null = null) => {

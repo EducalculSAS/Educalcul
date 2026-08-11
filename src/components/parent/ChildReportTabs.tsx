@@ -74,12 +74,10 @@ function renderAnalysis(text: string) {
   return <>{elements}</>;
 }
 
-const STORAGE_KEY = (id: string) => `ai_report_${id}`;
-const getTodayStr = () => new Date().toDateString();
-
 /** Onglets "Activité" (pur affichage, déjà chargé du serveur) / "Analyse IA"
- * (générée à la demande, mise en cache en localStorage, 1/jour) : seule
- * partie interactive de /parent/child/[id], isolée en client island. */
+ * (générée à la demande, mise en cache côté serveur — voir
+ * /api/parent/child-analysis, 1x/jour) : seule partie interactive de
+ * /parent/child/[id], isolée en client island. */
 export default function ChildReportTabs({
   childId, childFirstName, activities, stats, subjectStats, hasSub,
 }: {
@@ -91,51 +89,24 @@ export default function ChildReportTabs({
   hasSub: boolean;
 }) {
   const [tab, setTab] = useState<"activite" | "ia">("activite");
-  const [analysis, setAnalysis] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY(childId));
-      return saved ? JSON.parse(saved).analysis : null;
-    } catch { return null; }
-  });
+  const [analysis, setAnalysis] = useState<string | null>(null);
   const [analysisLoading, setAnalysisLoading] = useState(false);
-  const [analysisStats, setAnalysisStats] = useState<any>(() => {
-    if (typeof window === "undefined") return null;
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY(childId));
-      return saved ? JSON.parse(saved).stats : null;
-    } catch { return null; }
-  });
-  const [generatedAt, setGeneratedAt] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY(childId));
-      return saved ? JSON.parse(saved).generatedAt : null;
-    } catch { return null; }
-  });
-  const [canRegenerate, setCanRegenerate] = useState(() => {
-    if (typeof window === "undefined") return true;
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY(childId));
-      if (!saved) return true;
-      return new Date(JSON.parse(saved).generatedAt).toDateString() !== getTodayStr();
-    } catch { return true; }
-  });
+  const [analysisStats, setAnalysisStats] = useState<any>(null);
+  const [generatedAt, setGeneratedAt] = useState<string | null>(null);
+  const [canRegenerate, setCanRegenerate] = useState(true);
 
-  const loadAnalysis = async () => {
+  const loadAnalysis = async (force = false) => {
     if (analysisLoading) return;
     setAnalysisLoading(true);
     try {
-      const res = await fetch(`/api/parent/child-analysis?childId=${childId}`);
+      const res = await fetch(`/api/parent/child-analysis?childId=${childId}${force ? "&force=1" : ""}`);
       const data = await res.json();
       setAnalysis(data.analysis);
       setAnalysisStats(data.stats);
-      const now = new Date().toISOString();
-      setGeneratedAt(now);
-      setCanRegenerate(false);
-      try {
-        localStorage.setItem(STORAGE_KEY(childId), JSON.stringify({ analysis: data.analysis, stats: data.stats, generatedAt: now }));
-      } catch {}
+      setGeneratedAt(data.generatedAt);
+      // Déjà généré aujourd'hui (repris du cache serveur) → pas de nouvelle
+      // génération avant demain, comme avant.
+      setCanRegenerate(!(data.generatedAt && new Date(data.generatedAt).toDateString() === new Date().toDateString()));
     } catch {
       setAnalysis("Erreur lors de l'analyse. Vérifiez que l'IA est disponible.");
     } finally {
@@ -282,7 +253,7 @@ export default function ChildReportTabs({
                       </span>
                     )}
                     <button
-                      onClick={loadAnalysis}
+                      onClick={() => loadAnalysis(true)}
                       disabled={analysisLoading || !canRegenerate}
                       title={!canRegenerate ? "Rapport déjà généré aujourd'hui" : "Régénérer"}
                       className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-[var(--greek-blue)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
@@ -308,7 +279,7 @@ export default function ChildReportTabs({
                     <div className="text-center py-12">
                       <Brain className="w-12 h-12 text-gray-200 mx-auto mb-3" />
                       <p className="text-gray-500 text-sm mb-4">Lancez l'analyse pour obtenir des conseils personnalisés.</p>
-                      <GlassButton onClick={loadAnalysis} variant="navy" size="sm" className="mx-auto">
+                      <GlassButton onClick={() => loadAnalysis()} variant="navy" size="sm" className="mx-auto">
                         <Sparkles className="w-4 h-4" /> Analyser maintenant
                       </GlassButton>
                     </div>

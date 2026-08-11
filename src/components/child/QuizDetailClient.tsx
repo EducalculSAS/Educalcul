@@ -20,9 +20,9 @@ import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
 
 /** Page de détail quiz : le contenu (déjà purgé des réponses côté serveur)
- * et l'historique de tentatives arrivent en props quand id !== "preview". Le
- * mode "preview" (ouvert depuis l'admin via localStorage) reste entièrement
- * client, comme avant. */
+ * et l'historique de tentatives arrivent en props quand id !== "preview"
+ * (aperçu admin transmis via une ligne content_previews, cf. la page
+ * serveur). */
 export default function QuizDetailClient({
   quizId,
   initialQuiz,
@@ -38,15 +38,9 @@ export default function QuizDetailClient({
   const { setPageContext, clearContext } = useAITutor();
   const isPreview = quizId === "preview";
 
-  const [loading, setLoading] = useState(isPreview);
-  const [quiz, setQuiz] = useState<any>(isPreview ? null : initialQuiz);
-  const [started, setStartedState] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const wasStarted = localStorage.getItem(`quiz-${quizId}-started`);
-    if (wasStarted !== "true") return false;
-    if (localStorage.getItem(`qz-${quizId}-status`)) return false;
-    return true;
-  });
+  const [loading] = useState(false);
+  const [quiz] = useState<any>(initialQuiz);
+  const [started, setStarted] = useState(false);
   const [isRendering, setIsRendering] = useState(false);
   const attemptsHistory = isPreview ? [] : initialAttemptsHistory;
   const alreadyCompleted = isPreview ? false : initialAlreadyCompleted;
@@ -54,34 +48,6 @@ export default function QuizDetailClient({
   const [forceNewAttempt, setForceNewAttempt] = useState(false);
   const [openCorrection, setOpenCorrection] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (initialAlreadyCompleted) setStartedState(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const setStarted = (value: boolean) => {
-    setStartedState(value);
-    if (value) {
-      localStorage.setItem(`quiz-${quizId}-started`, "true");
-    } else {
-      localStorage.removeItem(`quiz-${quizId}-started`);
-    }
-  };
-
-  // Mode preview uniquement : le contenu vient du localStorage de l'admin.
-  useEffect(() => {
-    if (!isPreview) return;
-    const previewData = localStorage.getItem("quiz_preview_data");
-    if (previewData) {
-      try {
-        setQuiz(JSON.parse(previewData));
-      } catch (e) {
-        console.error("Error parsing preview data", e);
-      }
-    }
-    setLoading(false);
-  }, [isPreview]);
 
   useEffect(() => {
     if (!quiz) return;
@@ -213,10 +179,7 @@ export default function QuizDetailClient({
           <h1 className="text-lg font-bold truncate flex-1">{quiz.title}</h1>
           <button
             onClick={() => {
-              if (isPreview) { window.close(); } else {
-                if (quiz?.id) localStorage.removeItem(`quiz-${quiz.id}-page`);
-                setStarted(false);
-              }
+              if (isPreview) { window.close(); } else { setStarted(false); }
             }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Fermer"

@@ -8,17 +8,15 @@ import { ArrowRight, Send, X } from "lucide-react";
 type Msg = { from: "user" | "ai" | "cta"; text: string };
 type ApiMsg = { role: "user" | "assistant"; content: string };
 const INITIAL_MSG: Msg = { from: "ai", text: "Bonjour, je suis EpsiAI. Quel exercice te pose problème aujourd'hui ?" };
-const STORAGE_MSGS = "epsi_demo_msgs";
-function loadSavedMessages(): Msg[] {
-  try { const raw = localStorage.getItem(STORAGE_MSGS); if (raw) return JSON.parse(raw) as Msg[]; } catch { /**/ }
-  return [INITIAL_MSG];
-}
 
+// Démo publique, anonyme, sans compte — pas de persistance (ni localStorage
+// ni serveur) : la conversation ne vaut que pour la session en cours. Le
+// vrai suivi de quota (`limitReached`) reste côté serveur (/api/epsi-demo).
 function EpsiChat({ onClose, inline = false }: { onClose: () => void; inline?: boolean }) {
-  const [messages, setMessages] = useState<Msg[]>(() => typeof window !== "undefined" ? loadSavedMessages() : [INITIAL_MSG]);
+  const [messages, setMessages] = useState<Msg[]>([INITIAL_MSG]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
-  const [limitReached, setLimitReached] = useState(() => typeof window !== "undefined" ? loadSavedMessages().some(m => m.from === "cta") : false);
+  const [limitReached, setLimitReached] = useState(false);
   useEffect(() => {
     fetch("/api/epsi-demo").then(r => r.json()).then(data => {
       if (data.limitReached && !limitReached) { setLimitReached(true); setMessages(prev => prev.some(m => m.from === "cta") ? prev : [...prev, { from: "cta", text: "" }]); }
@@ -46,7 +44,6 @@ function EpsiChat({ onClose, inline = false }: { onClose: () => void; inline?: b
     finally { setTyping(false); }
   };
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages, typing]);
-  useEffect(() => { if (messages.length > 1) localStorage.setItem(STORAGE_MSGS, JSON.stringify(messages)); }, [messages]);
 
   return (
     <div className="flex flex-col rounded-2xl overflow-hidden shadow-2xl"

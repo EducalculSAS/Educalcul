@@ -21,6 +21,7 @@ import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
+import { getSignupSession, patchSignupSession, clearSignupSession } from "@/lib/signupSession";
 
 interface SubscriptionPlan {
   id: number;
@@ -84,25 +85,21 @@ function SubscriptionPageContent({
 
   useEffect(() => {
     if (isNewSignup) {
-      try {
-        const storedPlan = sessionStorage.getItem("educalcul_selected_plan");
-        const storedData = sessionStorage.getItem("educalcul_signup_data");
-
-        if (!storedPlan || !storedData) {
+      (async () => {
+        try {
+          const s = await getSignupSession();
+          if (!s.selectedPlan || !s.data) {
+            router.push("/auth/inscription");
+            return;
+          }
+          setSelectedPlan(s.selectedPlan);
+          setSignupData(s.data);
+          setLoading(false);
+        } catch (error) {
+          console.error("Error loading signup data:", error);
           router.push("/auth/inscription");
-          return;
         }
-
-        const planData = JSON.parse(storedPlan);
-        const signupFormData = JSON.parse(storedData);
-
-        setSelectedPlan(planData);
-        setSignupData(signupFormData);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error loading signup data:", error);
-        router.push("/auth/inscription");
-      }
+      })();
       return;
     }
 
@@ -126,13 +123,7 @@ function SubscriptionPageContent({
       try {
         // NEW SIGNUP FLOW
         if (isNewSignup && signupData) {
-          const cleanup = () => {
-            sessionStorage.removeItem("educalcul_signup_data");
-            sessionStorage.removeItem("educalcul_selected_plan");
-            sessionStorage.removeItem("educalcul_signup_mode");
-            sessionStorage.removeItem("educalcul_pending_role");
-            sessionStorage.removeItem("educalcul_pending_auth_id");
-          };
+          const cleanup = () => clearSignupSession();
 
           // Plan gratuit : rien à frauder, le compte est créé directement.
           if (sessionId === "free") {
@@ -161,7 +152,7 @@ function SubscriptionPageContent({
           // Paiement Stripe réel : le webhook crée le compte une fois le
           // paiement confirmé — on attend juste que ce soit fait. On vérifie
           // par authId (fiable), pas par email (modifiable sur la page Stripe).
-          const pendingAuthId = sessionStorage.getItem("educalcul_pending_auth_id");
+          const pendingAuthId = (await getSignupSession()).pendingAuthId;
           const { data: { user: liveUserForStatus } } = await supabase.auth.getUser();
           const statusQuery = pendingAuthId
             ? `authId=${encodeURIComponent(pendingAuthId)}`
@@ -234,7 +225,7 @@ function SubscriptionPageContent({
 
         const data = await response.json();
         if (data.url) {
-          if (data.authId) sessionStorage.setItem("educalcul_pending_auth_id", data.authId);
+          if (data.authId) await patchSignupSession({ pendingAuthId: data.authId });
           window.location.href = data.url;
         } else {
           console.error("Error creating checkout session:", data.error);
@@ -335,10 +326,7 @@ function SubscriptionPageContent({
 
   const handleCancel = () => {
     if (isNewSignup) {
-      sessionStorage.removeItem("educalcul_signup_data");
-      sessionStorage.removeItem("educalcul_selected_plan");
-      sessionStorage.removeItem("educalcul_signup_mode");
-      sessionStorage.removeItem("educalcul_pending_role");
+      clearSignupSession();
       router.push("/");
     } else {
       handleManagePayment();

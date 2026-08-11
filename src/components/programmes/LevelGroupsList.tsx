@@ -7,6 +7,7 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 import type { DbProgrammePdf } from "@/lib/programmePdfs";
 import { GOTO_LEVEL_EVENT } from "./LevelPicker";
+import { getClientCookie } from "@/lib/clientCookie";
 
 const LEVEL_GROUPS = [
   {
@@ -181,7 +182,7 @@ export default function LevelGroupsList({ dbPdfs }: { dbPdfs: Record<string, DbP
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
-    const stored = localStorage.getItem("programmes-my-level");
+    const stored = getClientCookie("programmes-my-level");
     if (stored) setMyLevel(stored);
 
     const onGoto = (e: Event) => {

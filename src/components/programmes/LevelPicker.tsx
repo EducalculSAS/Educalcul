@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GraduationCap } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
+import { getClientCookie, setClientCookie } from "@/lib/clientCookie";
 
 export const GOTO_LEVEL_EVENT = "programmes:goto-level";
 
@@ -22,7 +23,7 @@ export default function LevelPicker() {
 
   useEffect(() => {
     const init = async () => {
-      const stored = localStorage.getItem("programmes-my-level");
+      const stored = getClientCookie("programmes-my-level");
       if (stored) {
         setMyLevel(stored);
         announceLevel(stored);
@@ -48,7 +49,7 @@ export default function LevelPicker() {
 
   const goToLevel = (level: string) => {
     setMyLevel(level);
-    localStorage.setItem("programmes-my-level", level);
+    setClientCookie("programmes-my-level", level);
     announceLevel(level);
   };
 

@@ -8,11 +8,12 @@ import { useRouter } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
+import { supabase } from "@/lib/supabaseClient";
 
-/** Page de détail cours : le contenu arrive en props quand id !== "preview".
- * Le mode "preview" (ouvert depuis l'admin via localStorage) reste
- * entièrement client, comme avant. La progression (resumeInfo) est purement
- * locale (localStorage), donc reste calculée côté client. */
+/** Page de détail cours : le contenu arrive en props quand id !== "preview"
+ * (aperçu admin transmis via une ligne content_previews, cf. la page
+ * serveur). La progression (resumeInfo) vient de la même route serveur que
+ * CourseViewer, plus de copie locale. */
 export default function CourseDetailClient({
   courseId,
   initialCourse,
@@ -24,56 +25,34 @@ export default function CourseDetailClient({
   const { setPageContext, clearContext } = useAITutor();
   const isPreview = courseId === "preview";
 
-  const [loading, setLoading] = useState(isPreview);
-  const [course, setCourse] = useState<any>(isPreview ? null : initialCourse);
+  const [loading, setLoading] = useState(false);
+  const [course, setCourse] = useState<any>(initialCourse);
   const [resumeInfo, setResumeInfo] = useState<{ pct: number; chapterIndex: number; status: string } | null>(null);
-  const [started, setStartedState] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const wasStarted = localStorage.getItem(`course-${courseId}-started`);
-    return wasStarted === "true";
-  });
+  const [started, setStarted] = useState(false);
   const [isRendering, setIsRendering] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const setStarted = (value: boolean) => {
-    setStartedState(value);
-    if (value) {
-      localStorage.setItem(`course-${courseId}-started`, "true");
-    } else {
-      localStorage.removeItem(`course-${courseId}-started`);
-    }
-  };
-
-  // Mode preview uniquement : le contenu vient du localStorage de l'admin.
+  // Progression (serveur) + contexte AI tutor.
   useEffect(() => {
-    if (!isPreview) return;
-    const previewData = localStorage.getItem("course_preview_data");
-    if (previewData) {
+    if (!course || isPreview) return;
+    (async () => {
       try {
-        setCourse(JSON.parse(previewData));
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session?.user) return;
+        const res = await fetch(`/api/child/courses/${courseId}/progress?userId=${session.user.id}`);
+        const data = await res.json();
+        const p = data?.progress;
+        const done = p?.lessonsCompleted || [];
+        const chIdx = typeof p?.lastChapterIndex === "number" ? p.lastChapterIndex : 0;
+        const totalL = (course.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
+        const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
+        const status = data?.status || "not_started";
+        const effectiveStatus = status === "completed" || pct >= 100 ? "completed" : status;
+        if (effectiveStatus !== "not_started" || pct > 0) setResumeInfo({ pct, chapterIndex: chIdx, status: effectiveStatus });
       } catch (e) {
-        console.error("Error parsing preview data", e);
-      }
-    }
-    setLoading(false);
-  }, [isPreview]);
-
-  // Progression locale (localStorage) + contexte AI tutor.
-  useEffect(() => {
-    if (!course) return;
-    const status = localStorage.getItem(`cv-${courseId}-status`) || "not_started";
-    const chIdx = parseInt(localStorage.getItem(`cv-${courseId}-ch`) || "0");
-    const done = (() => {
-      try {
-        return JSON.parse(localStorage.getItem(`cv-${courseId}-done`) || "[]");
-      } catch {
-        return [];
+        console.error("Failed to load course progress", e);
       }
     })();
-    const totalL = (course.content_json || []).reduce((a: number, ch: any) => a + (ch.lessons?.length || 0), 0);
-    const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
-    const effectiveStatus = status === "completed" || pct >= 100 ? "completed" : status;
-    if (effectiveStatus !== "not_started" || pct > 0) setResumeInfo({ pct, chapterIndex: chIdx, status: effectiveStatus });
 
     const chaptersSummary = (course.content_json || [])
       .map((ch: any) => `Chapitre: ${ch.title || ""}\n${(ch.blocks || []).map((b: any) => b.content || b.text || "").join(" ")}`)
@@ -196,10 +175,7 @@ export default function CourseDetailClient({
           <h1 className="text-lg font-bold truncate flex-1">{course.title}</h1>
           <button
             onClick={() => {
-              if (isPreview) { window.close(); } else {
-                if (course?.id) localStorage.removeItem(`course-${course.id}-page`);
-                setStarted(false);
-              }
+              if (isPreview) { window.close(); } else { setStarted(false); }
             }}
             className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
             title="Fermer"

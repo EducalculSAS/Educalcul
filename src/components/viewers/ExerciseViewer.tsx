@@ -131,11 +131,11 @@ export default function ExerciseViewer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exercise.id]);
 
-  // Nouvelle tentative : on efface la progression locale précédente
+  // Nouvelle tentative : rien à effacer localement (plus de localStorage) —
+  // le prochain chargement serveur ne trouvera simplement pas de progression
+  // pour cette tentative.
   useEffect(() => {
-    if (!forceNewAttempt || typeof window === "undefined" || !exercise.id) return;
-    localStorage.removeItem(`exercise-${exercise.id}-progress`);
-    localStorage.removeItem(`exercise-${exercise.id}-page`);
+    if (!forceNewAttempt) return;
     setExerciseCompleted(false);
     setAnswers({});
     setSubmittedBlocks(new Set());
@@ -146,108 +146,30 @@ export default function ExerciseViewer({
     setBlockModes({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
-  // Initialize currentPageIndex from localStorage or default to 0
-  const [currentPageIndex, setCurrentPageIndexState] = useState(() => {
-    if (typeof window === "undefined") return 0;
-    if (!exercise.id || forceNewAttempt) return 0;
-    try {
-      const saved = localStorage.getItem(`exercise-${exercise.id}-page`);
-      const pageCount = (exercise.content_json?.length || 0);
-      const index = saved ? Math.min(parseInt(saved, 10), pageCount - 1) : 0;
-      return index;
-    } catch (e) {
-      console.error("Failed to load page index:", e);
-      return 0;
-    }
-  });
 
-  // Wrapper to save page index to localStorage
-  const setCurrentPageIndex = (newIndex: number | ((prev: number) => number)) => {
-    setCurrentPageIndexState((prev) => {
-      const index = typeof newIndex === "function" ? newIndex(prev) : newIndex;
-      if (exercise.id) {
-        try {
-          localStorage.setItem(`exercise-${exercise.id}-page`, index.toString());
-        } catch (e) {
-          console.error("Failed to save page index:", e);
-        }
-      }
-      return index;
-    });
-  };
-  // Charge la progression sauvegardée (réponses, soumissions, score, feedback...)
-  const loadProgress = (): {
-    answers: Record<string, any>;
-    submittedBlocks: string[];
-    results: Record<string, boolean>;
-    aiFeedback: Record<string, string>;
-    revealed: Record<string, any>;
-    score: number;
-    exerciseCompleted: boolean;
-    blockModes: Record<string, "text" | "draw">;
-  } | null => {
-    if (typeof window === "undefined" || !exercise.id || forceNewAttempt) return null;
-    try {
-      const saved = localStorage.getItem(`exercise-${exercise.id}-progress`);
-      return saved ? JSON.parse(saved) : null;
-    } catch (e) {
-      console.error("Failed to load exercise progress:", e);
-      return null;
-    }
-  };
+  // Position/réponses/score : plus de repli localStorage — tout vient du
+  // serveur (effet "Charge la progression..." plus bas), avec un bref flash
+  // à l'état vide le temps du premier chargement.
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
-  const [answers, setAnswers] = useState<Record<string, any>>(
-    () => (reviewMode ? initialProgress?.answers : loadProgress()?.answers) || {}
-  );
+  const [answers, setAnswers] = useState<Record<string, any>>(() => (reviewMode ? initialProgress?.answers : undefined) || {});
   const mathfieldRefs = useRef<Record<string, MathInputHandle | null>>({});
   const [submittedBlocks, setSubmittedBlocks] = useState<Set<string>>(
-    () => new Set((reviewMode ? initialProgress?.submittedBlocks : loadProgress()?.submittedBlocks) || [])
+    () => new Set((reviewMode ? initialProgress?.submittedBlocks : undefined) || [])
   );
   const [loadingBlocks, setLoadingBlocks] = useState<Set<string>>(new Set());
-  const [results, setResults] = useState<Record<string, boolean>>(
-    () => (reviewMode ? initialProgress?.results : loadProgress()?.results) || {}
-  );
-  const [aiFeedback, setAiFeedback] = useState<Record<string, string>>(
-    () => (reviewMode ? initialProgress?.aiFeedback : loadProgress()?.aiFeedback) || {}
-  );
+  const [results, setResults] = useState<Record<string, boolean>>(() => (reviewMode ? initialProgress?.results : undefined) || {});
+  const [aiFeedback, setAiFeedback] = useState<Record<string, string>>(() => (reviewMode ? initialProgress?.aiFeedback : undefined) || {});
   // Réponse correcte, révélée par le serveur uniquement après soumission de
   // chaque bloc — jamais présente dans le contenu initial envoyé à l'élève.
-  const [revealed, setRevealed] = useState<Record<string, any>>(
-    () => (reviewMode ? initialProgress?.revealed : loadProgress()?.revealed) || {}
-  );
-  const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : loadProgress()?.score) || 0);
-  const [exerciseCompleted, setExerciseCompleted] = useState(
-    () => (reviewMode ? true : loadProgress()?.exerciseCompleted) || false
-  );
+  const [revealed, setRevealed] = useState<Record<string, any>>(() => (reviewMode ? initialProgress?.revealed : undefined) || {});
+  const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : undefined) || 0);
+  const [exerciseCompleted, setExerciseCompleted] = useState(() => (reviewMode ? true : false));
   const [showReview, setShowReview] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
-  const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(
-    () => (reviewMode ? initialProgress?.blockModes : loadProgress()?.blockModes) || {}
-  );
-
-  // Sauvegarde la progression à chaque changement pour permettre de reprendre l'exercice
-  useEffect(() => {
-    if (reviewMode) return;
-    if (typeof window === "undefined" || !exercise.id || exercise.id === "preview") return;
-    try {
-      localStorage.setItem(
-        `exercise-${exercise.id}-progress`,
-        JSON.stringify({
-          answers,
-          submittedBlocks: Array.from(submittedBlocks),
-          results,
-          aiFeedback,
-          revealed,
-          score,
-          exerciseCompleted,
-          blockModes,
-        })
-      );
-    } catch (e) {
-      console.error("Failed to save exercise progress:", e);
-    }
-  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, exercise.id]);
+  const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(() => (reviewMode ? initialProgress?.blockModes : undefined) || {});
+  // Rempli par l'effet de chargement serveur ci-dessous.
+  const accumulatedSecondsRef = useRef(0);
 
   // Charge la progression depuis la base de données (survit à une déconnexion / changement d'appareil)
   const userIdRef = useRef<string | null>(null);
@@ -278,6 +200,11 @@ export default function ExerciseViewer({
           setScore(p.score || 0);
           setExerciseCompleted(p.exerciseCompleted || data?.status === "completed" || false);
           setBlockModes(p.blockModes || {});
+          accumulatedSecondsRef.current = p.timeSpent || 0;
+          if (typeof p.currentPageIndex === "number") {
+            const pageCount = (exercise.content_json?.length || 0);
+            setCurrentPageIndex(Math.min(p.currentPageIndex, Math.max(0, pageCount - 1)));
+          }
           if (openCorrection) {
             setExerciseCompleted(false);
             setShowReview(true);
@@ -298,7 +225,8 @@ export default function ExerciseViewer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exercise.id]);
 
-  // Sauvegarde la progression en base de données (debounced)
+  // Sauvegarde la progression en base de données (debounced) — seule
+  // persistance désormais (plus d'écriture localStorage en parallèle).
   const saveProgressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     if (reviewMode) return;
@@ -324,6 +252,8 @@ export default function ExerciseViewer({
               score,
               exerciseCompleted,
               blockModes,
+              currentPageIndex,
+              timeSpent: accumulatedSecondsRef.current,
             },
           }),
         });
@@ -343,22 +273,23 @@ export default function ExerciseViewer({
     return () => {
       if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
     };
-  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, exercise.id]);
+  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, currentPageIndex, exercise.id]);
 
   const currentPage = pages[currentPageIndex];
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
-  // Session timer
+  // Session timer — accumulé en base via progress_json.timeSpent (voir plus
+  // haut), plus de localStorage.
   const sessionStartRef = useRef<number>(Date.now());
   const getAccumulatedSeconds = () => {
     if (!exercise.id || exercise.id === "preview") return 0;
-    return parseInt(localStorage.getItem(`ex-${exercise.id}-time`) || "0");
+    return accumulatedSecondsRef.current;
   };
   const saveTimeSpent = () => {
     if (!exercise.id || exercise.id === "preview") return;
     const elapsed = Math.round((Date.now() - sessionStartRef.current) / 1000);
     const total = getAccumulatedSeconds() + elapsed;
-    localStorage.setItem(`ex-${exercise.id}-time`, String(total));
+    accumulatedSecondsRef.current = total;
     sessionStartRef.current = Date.now();
     return total;
   };
@@ -667,11 +598,6 @@ export default function ExerciseViewer({
     const isPreview = exercise.id === undefined || exercise.id === "preview";
     const threshold = exercise.min_score_percent || 0;
     const passed = threshold > 0 ? percentage >= threshold : true;
-    // Save pass/fail to localStorage
-    if (exercise.id && exercise.id !== "preview") {
-      localStorage.setItem(`ex-${exercise.id}-status`, passed ? "passed" : "failed");
-      localStorage.setItem(`ex-${exercise.id}-score`, String(percentage));
-    }
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">

@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getSignupSession, clearSignupSession } from "@/lib/signupSession";
 import { CheckCircle, Loader2, AlertCircle, Mail } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -18,24 +19,18 @@ function SuccessContent() {
     const sessionId = searchParams.get("session_id");
     if (!sessionId) { router.replace("/auth/inscription"); return; }
 
-    const cleanup = () => {
-      sessionStorage.removeItem("educalcul_signup_data");
-      sessionStorage.removeItem("educalcul_selected_plan");
-      sessionStorage.removeItem("educalcul_signup_mode");
-      sessionStorage.removeItem("educalcul_pending_role");
-      sessionStorage.removeItem("educalcul_pending_auth_id");
-    };
+    const cleanup = () => clearSignupSession();
 
     const run = async () => {
       try {
-        const stored = sessionStorage.getItem("educalcul_signup_data");
-        if (!stored) {
+        const s = await getSignupSession();
+        if (!s.data) {
           setStatus("error");
           setErrorMsg("Données d'inscription introuvables. Veuillez recommencer.");
           return;
         }
 
-        const signupData = JSON.parse(stored);
+        const signupData = s.data;
         setUserEmail(signupData.email || "");
 
         // Plan gratuit : pas de paiement Stripe réel à confirmer, le compte
@@ -72,7 +67,7 @@ function SuccessContent() {
         // affiché sur la page Stripe est modifiable par le payeur et peut
         // différer de l'email réel du compte.
         setMessage("Paiement confirmé, finalisation de votre compte...");
-        const pendingAuthId = sessionStorage.getItem("educalcul_pending_auth_id");
+        const pendingAuthId = s.pendingAuthId;
         const { data: { user: liveUser } } = await supabase.auth.getUser();
         const statusQuery = pendingAuthId
           ? `authId=${encodeURIComponent(pendingAuthId)}`

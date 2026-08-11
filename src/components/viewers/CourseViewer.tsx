@@ -90,24 +90,16 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   const courseId = (course as any).id;
   const isPreviewCourse = !courseId || courseId === "preview";
 
-  const [currentChapterIndex, setCurrentChapterIndex] = useState(() => {
-    if (typeof window === "undefined" || isPreviewCourse || reviewMode) return 0;
-    return parseInt(localStorage.getItem(`cv-${courseId}-ch`) || "0");
-  });
-  const [currentLessonIndex, setCurrentLessonIndex] = useState(() => {
-    if (typeof window === "undefined" || isPreviewCourse || reviewMode) return 0;
-    return parseInt(localStorage.getItem(`cv-${courseId}-ls`) || "0");
-  });
+  // Position/progression : plus de repli localStorage — la position exacte
+  // vient uniquement du serveur (voir l'effet "Charge la progression
+  // sauvegardée en base" plus bas), au prix d'un bref flash sur la
+  // leçon 1 avant que cet effet ne resitue l'élève où il en était.
+  const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
+  const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth >= 768 : true
   );
-  const [completedLessons, setCompletedLessons] = useState<Set<string>>(() => {
-    if (typeof window === "undefined" || isPreviewCourse) return new Set();
-    try {
-      const raw = localStorage.getItem(`cv-${courseId}-done`);
-      return raw ? new Set(JSON.parse(raw)) : new Set();
-    } catch { return new Set(); }
-  });
+  const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
   const [courseCompleted, setCourseCompleted] = useState(false);
   const [selectedText, setSelectedText] = useState("");
   const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0 });
@@ -117,17 +109,19 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   const selectedTextRef = useRef("");
   const rangeRef = useRef<Range | null>(null);
   const sessionStartRef = useRef<number>(Date.now());
+  // Rempli par l'effet de chargement serveur ci-dessous (progress_json.timeSpent).
+  const accumulatedSecondsRef = useRef(0);
 
   // Accumulated time from previous sessions + current
   const getAccumulatedSeconds = () => {
     if (isPreviewCourse) return 0;
-    return parseInt(localStorage.getItem(`cv-${courseId}-time`) || "0");
+    return accumulatedSecondsRef.current;
   };
   const saveTimeSpent = () => {
     if (isPreviewCourse) return;
     const elapsed = Math.round((Date.now() - sessionStartRef.current) / 1000);
     const total = getAccumulatedSeconds() + elapsed;
-    localStorage.setItem(`cv-${courseId}-time`, String(total));
+    accumulatedSecondsRef.current = total;
     sessionStartRef.current = Date.now(); // reset so we don't double-count
     return total;
   };
@@ -297,19 +291,9 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     }
   };
 
-  // Persist navigation state
-  useEffect(() => {
-    if (isPreviewCourse || reviewMode) return;
-    localStorage.setItem(`cv-${courseId}-ch`, String(currentChapterIndex));
-    localStorage.setItem(`cv-${courseId}-ls`, String(currentLessonIndex));
-  }, [currentChapterIndex, currentLessonIndex]);
-
-  useEffect(() => {
-    if (isPreviewCourse || reviewMode) return;
-    localStorage.setItem(`cv-${courseId}-done`, JSON.stringify([...completedLessons]));
-  }, [completedLessons]);
-
-  // Charge la progression sauvegardée en base (reprise après déconnexion)
+  // Charge la progression sauvegardée en base (reprise après déconnexion) —
+  // seule source de vérité pour la position/progression, plus de double
+  // écriture locale en parallèle.
   const progressLoadedFromDbRef = useRef(false);
   useEffect(() => {
     if (isPreviewCourse || reviewMode) { progressLoadedFromDbRef.current = true; return; }
@@ -328,6 +312,9 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         }
         if (typeof p?.lastLessonIndex === "number") {
           setCurrentLessonIndex(p.lastLessonIndex);
+        }
+        if (typeof p?.timeSpent === "number") {
+          accumulatedSecondsRef.current = p.timeSpent;
         }
         if (data?.status === "completed") {
           setCourseCompleted(true);
@@ -404,8 +391,6 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
       const finalCompleted = new Set(completedLessons);
       if (currentLesson) finalCompleted.add(currentLesson.id);
       saveProgress('completed', currentChapterIndex, finalCompleted);
-      // Mark completed in localStorage so course list can read it
-      if (!isPreviewCourse) localStorage.setItem(`cv-${courseId}-status`, 'completed');
       setCourseCompleted(true);
       if (onComplete) onComplete();
     }

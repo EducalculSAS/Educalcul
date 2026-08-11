@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { resolveAuthDestination } from '@/lib/authRedirect';
+import { getSignupSession, patchSignupSession } from '@/lib/signupSession';
 
 export default function AuthCallback() {
   const router = useRouter();
@@ -60,17 +61,17 @@ export default function AuthCallback() {
 
       // Compte complet existant → dashboard
       if (dest !== 'no_account' && dest !== 'incomplete') {
-        sessionStorage.removeItem('educalcul_signup_mode');
-        sessionStorage.removeItem('educalcul_pending_role');
+        await patchSignupSession({ mode: null, pendingRole: null });
         router.push(dest);
         return;
       }
 
       // Pas de compte ou compte incomplet → flow inscription Google
-      const authIntent = sessionStorage.getItem('educalcul_auth_intent');
-      const signupMode = sessionStorage.getItem('educalcul_signup_mode');
-      const pendingRole = sessionStorage.getItem('educalcul_pending_role');
-      sessionStorage.removeItem('educalcul_auth_intent');
+      const s = await getSignupSession();
+      const authIntent = s.authIntent;
+      const signupMode = s.mode;
+      const pendingRole = s.pendingRole;
+      await patchSignupSession({ authIntent: null });
 
       // Préparer les données Google pour complete-google
       const googleSignupData = {
@@ -84,9 +85,7 @@ export default function AuthCallback() {
 
       // Dans tous les cas (login ou signup), si pas de compte → inscription
       if (authIntent === 'login' || signupMode === 'google' || dest === 'incomplete') {
-        sessionStorage.setItem('educalcul_signup_data', JSON.stringify(googleSignupData));
-        sessionStorage.setItem('educalcul_signup_mode', 'google');
-        sessionStorage.setItem('educalcul_pending_role', pendingRole || 'parent');
+        await patchSignupSession({ data: googleSignupData, mode: 'google', pendingRole: pendingRole || 'parent' });
         router.push('/auth/inscription/complete-google');
         return;
       }

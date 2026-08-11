@@ -101,7 +101,7 @@ export default function AITutor() {
   // Refs to store latest state for event listeners
   const messagesRef = useRef<Message[]>([WELCOME]);
   const pageContextRef = useRef(pageContext);
-  const saveMessagesRef = useRef<(msgs: Message[]) => void>(() => {});
+  const getContextKeyRef = useRef<() => string>(() => "default");
 
   // Get unique key for this exercise/course/quiz
   const getContextKey = useCallback(() => {
@@ -112,43 +112,43 @@ export default function AITutor() {
     return "default";
   }, [pageContext.exerciseTitle, pageContext.courseTitle, pageContext.quizTitle, isSupportMode]);
 
-  // Save messages to localStorage
-  const saveMessages = useCallback((msgs: Message[]) => {
+  // Historique persisté côté serveur (voir /api/child/ai-tutor/messages) —
+  // plus de localStorage : conversation potentiellement sensible d'un enfant,
+  // qui doit pouvoir être gérée/supprimée (RGPD), pas juste traîner sur
+  // l'appareil sans contrôle possible.
+  const deleteServerHistory = useCallback(async () => {
     try {
-      const key = `athena-chat-${getContextKey()}`;
-      localStorage.setItem(key, JSON.stringify(msgs));
-    } catch (e) {
-      // Silently fail if localStorage is blocked by Tracking Prevention
-      // The chat will still work, just won't persist between reloads
+      await fetch(`/api/child/ai-tutor/messages?contextKey=${encodeURIComponent(getContextKey())}`, { method: "DELETE" });
+    } catch {
+      // best-effort
     }
-  }, [getContextKey()]);
+  }, [getContextKey]);
 
   // Update refs whenever state changes
   useEffect(() => {
     messagesRef.current = messages;
     pageContextRef.current = pageContext;
-    saveMessagesRef.current = saveMessages;
-  }, [messages, pageContext, saveMessages]);
+    getContextKeyRef.current = getContextKey;
+  }, [messages, pageContext, getContextKey]);
 
-  // Load messages from localStorage
-  const loadMessages = useCallback(() => {
+  const loadMessages = useCallback(async (): Promise<Message[]> => {
     try {
-      const key = `athena-chat-${getContextKey()}`;
-      const saved = localStorage.getItem(key);
-      if (saved) {
-        return JSON.parse(saved);
+      const res = await fetch(`/api/child/ai-tutor/messages?contextKey=${encodeURIComponent(getContextKey())}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data.messages) && data.messages.length > 0) return data.messages;
       }
     } catch (e) {
       console.error("Failed to load chat:", e);
     }
     return [WELCOME];
-  }, [getContextKey()]);
-
+  }, [getContextKey]);
 
   // Load saved messages when exercise changes
   useEffect(() => {
-    const loaded = loadMessages();
-    setMessages(loaded);
+    let cancelled = false;
+    loadMessages().then((loaded) => { if (!cancelled) setMessages(loaded); });
+    return () => { cancelled = true; };
   }, [loadMessages]);
 
   // Render math après chaque nouveau message
@@ -162,12 +162,11 @@ export default function AITutor() {
       // Use refs to read the latest state without re-subscribing the listener.
       const currentMessages = messagesRef.current;
       const currentContext = pageContextRef.current;
-      const currentSaveMessages = saveMessagesRef.current;
+      const currentContextKey = getContextKeyRef.current();
 
       const userMsg: Message = { role: "user", content: message };
       const newMessages = [...currentMessages, userMsg];
       setMessages(newMessages);
-      currentSaveMessages(newMessages);
 
       setOpen(true);
       setMinimized(false);
@@ -177,7 +176,7 @@ export default function AITutor() {
         const res = await fetch("/api/child/ai-tutor", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: newMessages.slice(-10), context: currentContext }),
+          body: JSON.stringify({ messages: newMessages.slice(-10), context: currentContext, contextKey: currentContextKey }),
         });
         const data = await res.json();
         const finalMessages = [
@@ -185,7 +184,6 @@ export default function AITutor() {
           { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
         ];
         setMessages(finalMessages as any);
-        currentSaveMessages(finalMessages as any);
       } catch (error) {
         console.error("Error sending AI message:", error);
       } finally {
@@ -222,7 +220,6 @@ export default function AITutor() {
     const userMsg: Message = { role: "user", content: input.trim() };
     const history = [...messages, userMsg];
     setMessages(history);
-    saveMessages(history);
     setInput("");
     setLoading(true);
 
@@ -230,7 +227,7 @@ export default function AITutor() {
       const res = await fetch("/api/child/ai-tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...(authId ? { "x-user-auth-id": authId } : {}) },
-        body: JSON.stringify({ messages: history.slice(-10), context: pageContext }),
+        body: JSON.stringify({ messages: history.slice(-10), context: pageContext, contextKey: getContextKey() }),
       });
 
       const data = await res.json();
@@ -239,7 +236,6 @@ export default function AITutor() {
       if (res.status === 403 && data.blocked) {
         const newMessages = [...history, { role: "assistant" as const, content: `${data.reason}` }];
         setMessages(newMessages);
-        saveMessages(newMessages);
         setLoading(false);
         return;
       }
@@ -249,7 +245,6 @@ export default function AITutor() {
         { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
       ];
       setMessages(newMessages as any);
-      saveMessages(newMessages as any);
     } catch (error) {
       console.error("❌ Fetch error:", error);
       const newMessages = [
@@ -257,11 +252,10 @@ export default function AITutor() {
         { role: "assistant" as const, content: "Oups, je n'ai pas pu répondre. Essaie encore !" },
       ];
       setMessages(newMessages as any);
-      saveMessages(newMessages as any);
     } finally {
       setLoading(false);
     }
-  }, [input, loading, messages, pageContext, saveMessages]);
+  }, [input, loading, messages, pageContext, getContextKey, authId]);
 
   const handleKey = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -327,7 +321,7 @@ export default function AITutor() {
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
               <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{isSupportMode ? "Assistante IA" : "Tutrice IA · Maths"}</p>
             </div>
-            <button onClick={() => { setMessages([WELCOME]); saveMessages([WELCOME]); }}
+            <button onClick={() => { setMessages([WELCOME]); deleteServerHistory(); }}
               className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
               onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
               onMouseLeave={e => (e.currentTarget.style.background = "transparent")}

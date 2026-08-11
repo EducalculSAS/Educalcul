@@ -553,7 +553,7 @@ export default function AdminCoursesClient({
     return { ...course, content_json: full.content_json ?? [] };
   };
 
-  const handlePreview = (course: Course) => {
+  const handlePreview = async (course: Course) => {
     const previewData = {
       title: course.title,
       description: course.description || "",
@@ -562,11 +562,17 @@ export default function AdminCoursesClient({
       content_json: course.content_json || [],
     };
 
-    // Save to localStorage so children windows can access it (even if unsaved)
-    localStorage.setItem("course_preview_data", JSON.stringify(previewData));
+    // Aperçu transmis via une ligne DB temporaire (pas de localStorage) —
+    // l'onglet ouvert par window.open la récupère via son id dans l'URL.
+    const res = await fetch("/api/admin/content-preview", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "course", payload: previewData }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.id) return;
 
-    // Open preview in a new window (using the real student route)
-    window.open("/child/cours/preview", "_blank");
+    window.open(`/child/cours/preview?pid=${data.id}`, "_blank");
   };
 
   const handleOpenModal = (mode: "create" | "edit", course?: Course) => {

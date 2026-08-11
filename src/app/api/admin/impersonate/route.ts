@@ -1,7 +1,10 @@
+import { cookies } from "next/headers";
 import { requireSuperAdmin } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
+import { IMPERSONATION_COOKIE_NAME, IMPERSONATION_MAX_AGE } from "@/lib/impersonationCookie";
 
 /** Génère un lien de connexion à usage unique pour se connecter en tant
  * qu'un parent/enfant, sans jamais voir ni manipuler son mot de passe.
@@ -14,6 +17,14 @@ export async function POST(req: Request) {
   try {
     const { targetUserId } = await req.json();
     if (!targetUserId) return Response.json({ error: "targetUserId requis" }, { status: 400 });
+
+    // Capture le refresh_token admin (cookies de la requête courante) pour
+    // pouvoir restaurer sa session côté serveur à la fin de l'impersonation
+    // — jamais copié en sessionStorage côté navigateur.
+    const serverClient = await createSupabaseServerClient();
+    const { data: originSessionData } = await serverClient.auth.getSession();
+    const originRefreshToken = originSessionData?.session?.refresh_token;
+    if (!originRefreshToken) return Response.json({ error: "Session admin introuvable" }, { status: 401 });
 
     const { data: target } = await supabaseAdmin
       .from("users")
@@ -39,6 +50,31 @@ export async function POST(req: Request) {
     }
 
     const targetName = [target.first_name, target.last_name].filter(Boolean).join(" ") || target.email;
+    const returnTo = `/admin/users/${targetUserId}`;
+
+    const { data: session, error: sessionError } = await supabaseAdmin
+      .from("impersonation_sessions")
+      .insert({
+        admin_id: admin.id,
+        origin_refresh_token: originRefreshToken,
+        target_id: target.id,
+        target_name: targetName,
+        return_to: returnTo,
+      })
+      .select("id")
+      .single();
+    if (sessionError || !session) {
+      return Response.json({ error: "Impossible de démarrer l'impersonation" }, { status: 500 });
+    }
+
+    const store = await cookies();
+    store.set(IMPERSONATION_COOKIE_NAME, session.id, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: IMPERSONATION_MAX_AGE,
+    });
 
     await auditLog(
       { action: AuditAction.IMPERSONATION_STARTED, adminId: admin.id, targetUserId: target.id, targetType: "user", targetId: String(target.id), details: { targetName, targetRole: target.role } },

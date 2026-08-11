@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { resolveAuthDestination } from "@/lib/authRedirect";
+import { patchSignupSession } from "@/lib/signupSession";
 import { LogIn, Lock, AlertCircle, User, Eye, EyeOff } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -48,11 +49,8 @@ export default function ConnexionClient() {
 
   useEffect(() => { setMounted(true); }, []);
 
-  const handleGoogleLogin = () => {
-    sessionStorage.removeItem("educalcul_signup_mode");
-    sessionStorage.removeItem("educalcul_pending_role");
-    sessionStorage.removeItem("educalcul_signup_data");
-    sessionStorage.setItem("educalcul_auth_intent", "login");
+  const handleGoogleLogin = async () => {
+    await patchSignupSession({ mode: null, pendingRole: null, data: null, authIntent: "login" });
 
     const redirectUri = `${getSiteUrl()}/api/auth/google/callback`;
     const params = new URLSearchParams({
