@@ -39,6 +39,21 @@ export default function AdminShell({ children, adminLevel = "super" }: { childre
           router.push(`/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`);
           return;
         }
+
+        // Le jeton peut être présent mais expiré/révoqué (TTL 4h) — sans ce
+        // contrôle, le dashboard s'affichait un instant avant que le premier
+        // appel /api/admin/* échoue en 401 et force une déconnexion (le
+        // "flash puis déco" observé). On vérifie sa validité réelle AVANT
+        // d'afficher quoi que ce soit.
+        const sessionCheck = await fetch("/api/auth/2fa/totp/verify-session", {
+          headers: { Authorization: `Bearer ${session.access_token}`, "X-2FA-Token": token },
+        });
+        const sessionData = await sessionCheck.json();
+        if (!sessionCheck.ok || !sessionData.valid) {
+          window.localStorage.removeItem("edu_2fa_token");
+          router.push(`/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`);
+          return;
+        }
       }
 
       setLoading(false);
