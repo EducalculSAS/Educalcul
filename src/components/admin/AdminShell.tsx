@@ -18,6 +18,14 @@ import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidge
 export default function AdminShell({ children, adminLevel = "super" }: { children: React.ReactNode; adminLevel?: string }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  // Tant que la 2FA n'est pas configurée, aucun appel /api/admin/* ne peut
+  // aboutir (proxy.ts l'exige pour tout admin). Rendre la coquille (sidebar,
+  // widgets, contenu de page) en même temps que le popup de configuration
+  // faisait partir ces appels immédiatement ; ils échouaient en 401
+  // "2FA required" et déclenchaient la déconnexion forcée de
+  // src/lib/supabaseClient.ts (le "flash puis déco" observé). Le popup
+  // s'affiche donc seul, bloquant, jusqu'à la fin de la configuration.
+  const [needsTotpSetup, setNeedsTotpSetup] = useState(false);
 
   useEffect(() => {
     const checkTotp = async () => {
@@ -34,6 +42,11 @@ export default function AdminShell({ children, adminLevel = "super" }: { childre
         headers: { Authorization: `Bearer ${session.access_token}` },
       });
       const totpData = await totpRes.json();
+      if (totpRes.ok && !totpData.confirmed) {
+        setNeedsTotpSetup(true);
+        setLoading(false);
+        return;
+      }
       if (totpRes.ok && totpData.confirmed) {
         // Le cookie peut être absent, expiré ou révoqué (TTL 4h) — sans ce
         // contrôle AVANT le premier rendu, le dashboard s'affichait un
@@ -63,10 +76,17 @@ export default function AdminShell({ children, adminLevel = "super" }: { childre
     );
   }
 
+  if (needsTotpSetup) {
+    return (
+      <div className="min-h-screen bg-[var(--greek-cream)]">
+        <AdminTotpSetupModal onComplete={() => setNeedsTotpSetup(false)} />
+      </div>
+    );
+  }
+
   return (
     <ContentGenerationsProvider>
       <div className="min-h-screen bg-[var(--greek-cream)] flex">
-        <AdminTotpSetupModal />
         <AdminSidebar adminLevel={adminLevel} />
         <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
           {children}

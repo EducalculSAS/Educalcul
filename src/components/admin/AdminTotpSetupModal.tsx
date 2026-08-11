@@ -11,7 +11,7 @@ import GlassButton from "@/components/ui/GlassButton";
  * un avant de pouvoir continuer. Se ferme définitivement (plus jamais
  * affiché) une fois la config confirmée — pas de "plus tard".
  */
-export default function AdminTotpSetupModal() {
+export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () => void } = {}) {
   const [checked, setChecked] = useState(false);
   const [needsSetup, setNeedsSetup] = useState(false);
   const [secret, setSecret] = useState<string | null>(null);
@@ -120,7 +120,7 @@ export default function AdminTotpSetupModal() {
             fullWidth
             size="sm"
             variant="navy"
-            onClick={() => setNeedsSetup(false)}
+            onClick={() => { setNeedsSetup(false); onComplete?.(); }}
             disabled={!savedBackupCodes}
           >
             Terminer
