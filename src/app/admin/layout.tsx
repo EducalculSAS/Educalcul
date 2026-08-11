@@ -9,9 +9,12 @@ import AdminShell from "@/components/admin/AdminShell";
 /** Vérifie identité + rôle admin + statut banni côté serveur, avant même que
  * la première page admin ne s'exécute — remplace l'ancien check client (dans
  * AdminLayout) qui laissait toutes les pages admin se monter avant de
- * rediriger. Le seul contrôle qui reste client (AdminShell) est la 2FA
- * "vérifiée sur cet appareil" : ce token vit en localStorage, illisible côté
- * serveur. */
+ * rediriger. Le seul contrôle qui reste client (AdminShell) est la 2FA "sur
+ * cet appareil" — le cookie du jeton (httpOnly, voir
+ * src/lib/twoFactorCookie.ts) est bien lisible ici côté serveur, mais la
+ * validation (existence + non-expiration en base) reste faite via
+ * /api/auth/2fa/totp/verify-session, appelé par AdminShell, pour partager la
+ * même logique que le flux de connexion (authRedirect.ts). */
 export default async function AdminLayout({
   children,
 }: {
