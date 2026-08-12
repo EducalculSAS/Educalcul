@@ -22,12 +22,14 @@ export default function HomePricingGrid({ plans }: { plans: Plan[] }) {
   const top3 = plans.slice(0, 3);
 
   return (
-    <RevealGroup className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch pt-4" stagger={0.1}>
+    <RevealGroup
+      className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch pt-4"
+      stagger={0.1}
+    >
       {top3.map((plan, i) => (
         <RevealItem key={plan.id} className="h-full">
           <PlanCard
             plan={plan}
-            idx={i}
             popular={top3.length > 1 && i === 1}
             hideChildren={false}
             cardsVisible

@@ -945,7 +945,6 @@ export default function TarifsInteractive({
         <PlanCard
           key={plan.id}
           plan={plan}
-          idx={idx}
           popular={list.length > 1 && idx === 1}
           hideChildren={hideChildren}
           cardsVisible={cardsVisible}
