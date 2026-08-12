@@ -4,6 +4,30 @@ import { stripe } from "@/lib/stripe";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 
+/** Supprime un compte Supabase Auth, avec un retry puis un repli sur
+ * admin_force_delete_auth_user (fonction SQL SECURITY DEFINER) si l'API
+ * Admin échoue encore — elle peut renvoyer une erreur générique "Database
+ * error deleting user" sans cause identifiable côté schéma applicatif. Un
+ * compte "fantôme" (profil supprimé, connexion Auth orpheline) a déjà été
+ * observé en prod pour cette raison. */
+async function deleteAuthUser(authId: string, label: string): Promise<boolean> {
+  let { error } = await supabaseAdmin.auth.admin.deleteUser(authId);
+  if (error) {
+    console.warn(`[delete-account] Auth deletion failed for ${label}, retrying:`, JSON.stringify(error));
+    await new Promise(r => setTimeout(r, 500));
+    ({ error } = await supabaseAdmin.auth.admin.deleteUser(authId));
+  }
+  if (error) {
+    console.warn(`[delete-account] Auth API still failing for ${label}, falling back to admin_force_delete_auth_user:`, JSON.stringify(error));
+    const { error: rpcError } = await supabaseAdmin.rpc("admin_force_delete_auth_user", { target_auth_id: authId });
+    if (rpcError) {
+      console.error(`[delete-account] Fallback deletion also failed for ${label}:`, JSON.stringify(rpcError));
+      return false;
+    }
+  }
+  return true;
+}
+
 export async function DELETE(req: Request) {
   try {
     // ✓ SECURITY : cette route utilisait supabaseAdmin.auth.getUser(token)
@@ -61,27 +85,17 @@ export async function DELETE(req: Request) {
     }
     console.log("[delete-account] public.users deleted via RPC");
 
-    // 3. Supprimer les auth users enfants
+    // 3. Supprimer les auth users enfants — avec repli si l'API Admin
+    // échoue (voir deleteAuthUser ci-dessous : même filet que la route admin).
     for (const childAuthId of childAuthIds) {
-      const { error } = await supabaseAdmin.auth.admin.deleteUser(childAuthId);
-      if (error) {
-        console.error(`[delete-account] Error deleting child ${childAuthId}:`, error.message);
-      } else {
-        console.log(`[delete-account] Child auth deleted: ${childAuthId}`);
-      }
+      const ok = await deleteAuthUser(childAuthId, `child ${childAuthId}`);
+      if (!ok) console.error(`[delete-account] Could not delete child auth ${childAuthId} (public.users déjà supprimé)`);
     }
 
-    // 3. Supprimer le auth user parent — avec retry si needed
-    const { error: deleteAuthError } = await supabaseAdmin.auth.admin.deleteUser(parentAuthId);
-    if (deleteAuthError) {
-      console.error("[delete-account] Error deleting parent auth:", deleteAuthError.message);
-      // Tenter une deuxième fois après délai
-      await new Promise(r => setTimeout(r, 500));
-      const { error: retryError } = await supabaseAdmin.auth.admin.deleteUser(parentAuthId);
-      if (retryError) {
-        console.error("[delete-account] Retry failed:", retryError.message);
-        return NextResponse.json({ error: sanitizeErrorMessage(retryError.message) }, { status: 500 });
-      }
+    // 4. Supprimer le auth user parent
+    const parentOk = await deleteAuthUser(parentAuthId, "parent");
+    if (!parentOk) {
+      return NextResponse.json({ error: "Le compte a été supprimé mais la connexion associée n'a pas pu l'être — contacte le support technique." }, { status: 500 });
     }
     console.log("[delete-account] Parent auth deleted successfully");
 

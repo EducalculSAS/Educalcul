@@ -332,6 +332,25 @@ export async function DELETE(request: Request) {
         { table: "exercise_folders", columns: ["created_by"] },
         { table: "courses", columns: ["created_by"] },
         { table: "course_folders", columns: ["created_by"] },
+        // Tables ajoutées après un vrai blocage constaté : un admin de test
+        // supprimé restait "fantôme" côté Supabase Auth car la suppression
+        // de public.users échouait silencieusement sur une contrainte FK
+        // (colonne NOT NULL, donc pas de ON DELETE SET NULL possible) —
+        // voir aussi la migration qui bascule les colonnes nullable
+        // équivalentes (audit_logs, feature_flags...) en ON DELETE SET NULL
+        // plutôt que de perdre ces lignes.
+        { table: "two_factor_totp", columns: ["user_id"] },
+        { table: "two_factor_sessions", columns: ["user_id"] },
+        { table: "two_factor_codes", columns: ["user_id"] },
+        { table: "two_factor_backup_codes", columns: ["user_id"] },
+        { table: "user_login_history", columns: ["user_id"] },
+        { table: "calendar_events", columns: ["owner_id", "created_by"] },
+        { table: "data_export_requests", columns: ["user_id"] },
+        { table: "grade_promotion_snapshots", columns: ["user_id"] },
+        { table: "scan_runs", columns: ["admin_id"] },
+        { table: "course_generations", columns: ["admin_id"] },
+        { table: "exercise_generations", columns: ["admin_id"] },
+        { table: "quiz_generations", columns: ["admin_id"] },
       ];
 
       // Chaque (table, colonne) est une suppression indépendante des autres —
@@ -353,17 +372,28 @@ export async function DELETE(request: Request) {
       );
     }
 
-    // Delete from Auth. Retried once — a transient failure here previously left
-    // "ghost" auth.users rows with no public.users profile behind (silently, since
-    // this only logged a warning). Now surfaced to the caller if it still fails.
+    // Delete from Auth. Retried once, puis en dernier recours via
+    // admin_force_delete_auth_user (fonction SQL SECURITY DEFINER qui
+    // supprime directement la ligne auth.users) — l'API Admin de Supabase
+    // Auth échoue parfois avec une erreur générique "Database error deleting
+    // user" sans cause identifiable côté schéma applicatif. Un compte
+    // "fantôme" (profil supprimé, connexion Auth impossible à supprimer)
+    // a déjà été observé en prod pour cette raison.
     console.log(`[DELETE USER] Deleting from Supabase Auth`);
     let { error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id);
     if (authError) {
-      console.warn(`[DELETE USER] Auth deletion failed, retrying once:`, authError.message);
+      console.warn(`[DELETE USER] Auth deletion failed, retrying once:`, JSON.stringify(authError));
       ({ error: authError } = await supabaseAdmin.auth.admin.deleteUser(auth_id));
     }
     if (authError) {
-      console.error(`[DELETE USER] Auth deletion still failing for ${auth_id} (${userData?.email}):`, authError.message);
+      console.warn(`[DELETE USER] Auth API still failing for ${auth_id}, falling back to admin_force_delete_auth_user:`, JSON.stringify(authError));
+      const { error: rpcError } = await supabaseAdmin.rpc("admin_force_delete_auth_user", { target_auth_id: auth_id });
+      if (rpcError) {
+        console.error(`[DELETE USER] Fallback deletion also failed for ${auth_id} (${userData?.email}):`, JSON.stringify(rpcError));
+      } else {
+        console.log(`[DELETE USER] Fallback deletion succeeded for ${auth_id}`);
+        authError = null;
+      }
     }
 
     // Manually delete from public.users
@@ -373,8 +403,11 @@ export async function DELETE(request: Request) {
       .eq("auth_id", auth_id);
 
     if (dbError) {
-      console.error(`[DELETE USER] DB deletion error for ${auth_id}:`, dbError);
-      // Log but don't fail - auth user is already deleted
+      console.error(`[DELETE USER] DB deletion error for ${auth_id}:`, JSON.stringify(dbError));
+      // Surfacé au caller ci-dessous plutôt qu'avalé silencieusement — un
+      // profil qui survit malgré un message "supprimé avec succès" est
+      // exactement le bug déjà observé (ligne public.users retenue par une
+      // contrainte FK non nettoyée par tablesToClean ci-dessus).
     }
 
     // ✓ SECURITY: Log admin action
@@ -390,7 +423,9 @@ export async function DELETE(request: Request) {
     return NextResponse.json({
       success: true,
       message: "User deleted successfully",
-      warning: authError
+      warning: dbError
+        ? "Le compte de connexion a été supprimé mais le profil n'a pas pu l'être — contacte le support technique."
+        : authError
         ? "Le profil a été supprimé mais le compte de connexion (Supabase Auth) n'a pas pu l'être — contacte le support technique."
         : undefined,
     });
