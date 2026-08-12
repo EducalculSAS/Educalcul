@@ -15,7 +15,13 @@ const PRESS_SCALE = 0.93;
  * ne les voyait jamais l'un l'autre et les deux réagissaient en même temps. */
 const registry = new Set<HTMLSpanElement>();
 
-export type GlassButtonVariant = "gold" | "light" | "navy" | "outline" | "danger" | "ghost";
+export type GlassButtonVariant =
+  | "gold"
+  | "light"
+  | "navy"
+  | "outline"
+  | "danger"
+  | "ghost";
 
 /** Un seul jeu de couleurs par variante — change ici pour changer tous les
  * boutons du site qui utilisent cette variante. Transparent partout (même
@@ -23,18 +29,42 @@ export type GlassButtonVariant = "gold" | "light" | "navy" | "outline" | "danger
  * réduit (1.2) pour que ça reste cohérent d'une section à l'autre. */
 const VARIANTS: Record<GlassButtonVariant, CSSProperties> = {
   // Sur fond navy (héros, CTA final) — pilule dorée translucide.
-  gold: { background: "rgba(197,161,72,0.32)", color: "#fff", borderColor: "rgba(197,161,72,0.4)" },
+  gold: {
+    background: "rgba(197,161,72,0.32)",
+    color: "#fff",
+    borderColor: "rgba(197,161,72,0.4)",
+  },
   // Sur fond navy — pilule claire secondaire.
-  light: { background: "rgba(255,255,255,0.14)", color: "rgba(240,237,232,0.9)", borderColor: "rgba(255,255,255,0.18)" },
+  light: {
+    background: "rgba(255,255,255,0.14)",
+    color: "rgba(240,237,232,0.9)",
+    borderColor: "rgba(255,255,255,0.18)",
+  },
   // Sur fond blanc (cartes tarifs) — pilule navy translucide, assez opaque
   // pour garder sa teinte (trop transparente sur fond blanc, elle vire gris).
-  navy: { background: "rgba(15,30,58,0.72)", color: "#fff", borderColor: "rgba(255,255,255,0.18)" },
+  navy: {
+    background: "rgba(15,30,58,0.72)",
+    color: "#fff",
+    borderColor: "rgba(255,255,255,0.18)",
+  },
   // Sur fond blanc (cartes tarifs) — contour navy.
-  outline: { background: "rgba(15,30,58,0.04)", color: "var(--greek-blue)", borderColor: "rgba(15,30,58,0.3)" },
+  outline: {
+    background: "rgba(15,30,58,0.04)",
+    color: "var(--greek-blue)",
+    borderColor: "rgba(15,30,58,0.3)",
+  },
   // Action destructive (supprimer/bannir) — partout, fond clair ou foncé.
-  danger: { background: "rgba(220,38,38,0.12)", color: "#dc2626", borderColor: "rgba(220,38,38,0.3)" },
+  danger: {
+    background: "rgba(220,38,38,0.12)",
+    color: "#dc2626",
+    borderColor: "rgba(220,38,38,0.3)",
+  },
   // Action secondaire discrète (annuler, fermer une modale) — sur fond blanc.
-  ghost: { background: "rgba(15,30,58,0.03)", color: "var(--text-muted)", borderColor: "rgba(15,30,58,0.12)" },
+  ghost: {
+    background: "rgba(15,30,58,0.03)",
+    color: "var(--text-muted)",
+    borderColor: "rgba(15,30,58,0.12)",
+  },
 };
 
 interface GlassButtonProps {
@@ -69,15 +99,31 @@ interface GlassButtonProps {
  * change sur le même élément — bug WebKit connu. `href` → vrai lien
  * navigable ; `onClick` → bouton (pour les cas type "ouvrir une modale" où
  * il ne s'agit pas d'une navigation). */
-export default function GlassButton({ href, onClick, children, variant = "gold", className = "", style, fullWidth = false, rounded = "full", size = "md", disabled = false }: GlassButtonProps) {
+export default function GlassButton({
+  href,
+  onClick,
+  children,
+  variant = "gold",
+  className = "",
+  style,
+  fullWidth = false,
+  rounded = "full",
+  size = "md",
+  disabled = false,
+}: GlassButtonProps) {
   const wrapperRef = useRef<HTMLSpanElement>(null);
   const elRef = useRef<HTMLElement | null>(null);
   const raf = useRef(0);
   const stretch = useRef({ tx: 0, ty: 0, scaleX: 1, scaleY: 1 });
   const pressed = useRef(false);
-  const revertTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const revertTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
   const disabledRef = useRef(disabled);
-  disabledRef.current = disabled;
+
+  useEffect(() => {
+    disabledRef.current = disabled;
+  }, [disabled]);
 
   const ACTIVATION_ZONE = 100;
   const MAX_STRETCH = 0.07;
@@ -126,9 +172,20 @@ export default function GlassButton({ href, onClick, children, variant = "gold",
         for (const other of registry) {
           if (other === wrapper) continue;
           const oRect = other.getBoundingClientRect();
-          const oEdgeX = Math.max(0, Math.abs(e.clientX - (oRect.left + oRect.width / 2)) - oRect.width / 2);
-          const oEdgeY = Math.max(0, Math.abs(e.clientY - (oRect.top + oRect.height / 2)) - oRect.height / 2);
-          if (Math.hypot(oEdgeX, oEdgeY) < edgeDist) { closest = false; break; }
+          const oEdgeX = Math.max(
+            0,
+            Math.abs(e.clientX - (oRect.left + oRect.width / 2)) -
+              oRect.width / 2,
+          );
+          const oEdgeY = Math.max(
+            0,
+            Math.abs(e.clientY - (oRect.top + oRect.height / 2)) -
+              oRect.height / 2,
+          );
+          if (Math.hypot(oEdgeX, oEdgeY) < edgeDist) {
+            closest = false;
+            break;
+          }
         }
 
         if (!closest || edgeDist > ACTIVATION_ZONE) {
@@ -156,10 +213,13 @@ export default function GlassButton({ href, onClick, children, variant = "gold",
         // négatif : l'étirement restait bloqué en permanence dans cette
         // direction même avec beaucoup d'espace visuel libre. On ne
         // contraint donc que si le voisin est lui aussi un GlassButton.
-        const neighbor = (nx >= 0 ? wrapper.nextElementSibling : wrapper.previousElementSibling) as HTMLElement | null;
+        const neighbor = (
+          nx >= 0 ? wrapper.nextElementSibling : wrapper.previousElementSibling
+        ) as HTMLElement | null;
         if (neighbor?.classList.contains("liquid-glass-wrap")) {
           const nRect = neighbor.getBoundingClientRect();
-          const gap = nx >= 0 ? nRect.left - rect.right : rect.left - nRect.right;
+          const gap =
+            nx >= 0 ? nRect.left - rect.right : rect.left - nRect.right;
           const reachLimit = Math.max(0, gap - SAFETY_GAP);
           const maxScaleX = 1 + reachLimit / rect.width;
           scaleX = Math.min(scaleX, maxScaleX);
@@ -215,8 +275,11 @@ export default function GlassButton({ href, onClick, children, variant = "gold",
 
   const preset = VARIANTS[variant];
   const radiusClass = rounded === "xl" ? "rounded-xl" : "rounded-full";
-  const sizeClass = size === "sm" ? "px-4 py-2 text-xs gap-1.5" : "px-8 py-4 text-sm gap-2";
-  const disabledClass = disabled ? "opacity-50 pointer-events-none" : "cursor-pointer";
+  const sizeClass =
+    size === "sm" ? "px-4 py-2 text-xs gap-1.5" : "px-8 py-4 text-sm gap-2";
+  const disabledClass = disabled
+    ? "opacity-50 pointer-events-none"
+    : "cursor-pointer";
   const combinedClassName = `liquid-glass-btn backdrop-blur-[32px] backdrop-saturate-[1.2] inline-flex items-center justify-center ${disabledClass} ${radiusClass} ${sizeClass} font-[family-name:var(--font-body)] ${fullWidth ? "w-full" : ""} ${className}`;
   const combinedStyle: CSSProperties = { ...preset, ...style };
 
@@ -224,10 +287,20 @@ export default function GlassButton({ href, onClick, children, variant = "gold",
     <span
       ref={wrapperRef}
       className="liquid-glass-wrap"
-      style={{ display: fullWidth ? "block" : "inline-block", width: fullWidth ? "100%" : undefined, transition: DEFAULT_TRANSITION, willChange: "transform" }}
+      style={{
+        display: fullWidth ? "block" : "inline-block",
+        width: fullWidth ? "100%" : undefined,
+        transition: DEFAULT_TRANSITION,
+        willChange: "transform",
+      }}
     >
       {href && !disabled ? (
-        <Link ref={elRef as React.Ref<HTMLAnchorElement>} href={href} className={combinedClassName} style={combinedStyle}>
+        <Link
+          ref={elRef as React.Ref<HTMLAnchorElement>}
+          href={href}
+          className={combinedClassName}
+          style={combinedStyle}
+        >
           {children}
         </Link>
       ) : (
