@@ -3,110 +3,237 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 
-export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   try {
     // Défense en profondeur : proxy.ts garde déjà /api/admin/*, mais cette route
     // expose/modifie N'IMPORTE quel compte (bannissement, reset mot de passe,
     // édition). On revérifie donc le rôle admin ici même.
-    if (!(await requireRole(req, ["admin"]))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    if (!(await requireRole(req, ["admin"])))
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
     // select(*) exclu volontairement : password_hash n'a rien à faire dans
     // une réponse JSON, même pour un admin.
     const { data: user, error } = await supabaseAdmin
       .from("users")
-      .select("id, auth_id, email, child_username, first_name, last_name, role, parent_id, grade_level, avatar, status, created_at, updated_at, account_type, subscription_plan_id, subscription_expires_at, child_age, last_login_ip, last_login_city, last_login_country, last_active_at, avatar_border, name_animation, name_color, equipped_border, featured_badges, login_count, login_streak, last_login_date, ban_reason, ban_until, onboarding_completed, notif_weekly_reports, notif_offers_news, school_zone, two_factor_enabled, needs_grade_choice, graduated_at")
+      .select(
+        "id, auth_id, email, child_username, first_name, last_name, role, parent_id, grade_level, avatar, status, created_at, updated_at, account_type, subscription_plan_id, subscription_expires_at, child_age, last_login_ip, last_login_city, last_login_country, last_active_at, latitude, longitude, avatar_border, name_animation, name_color, equipped_border, featured_badges, login_count, login_streak, last_login_date, ban_reason, ban_until, onboarding_completed, notif_weekly_reports, notif_offers_news, school_zone, two_factor_enabled, needs_grade_choice, graduated_at",
+      )
       .eq("id", id)
       .single();
-    if (error || !user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    if (error || !user)
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     const [
-      { count: ea }, { count: qa }, { count: cp }, { count: fp }, { count: fc },
-      { data: sub }, { data: children }, { data: activity }, { data: notifs }, { data: bdg },
+      { count: ea },
+      { count: qa },
+      { count: cp },
+      { count: fp },
+      { count: fc },
+      { data: sub },
+      { data: children },
+      { data: activity },
+      { data: notifs },
+      { data: bdg },
     ] = await Promise.all([
-      supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", id),
-      supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", id),
-      supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", id),
-      supabaseAdmin.from("forum_posts").select("*", { count: "exact", head: true }).eq("author_id", id),
-      supabaseAdmin.from("forum_comments").select("*", { count: "exact", head: true }).eq("author_id", id),
-      supabaseAdmin.from("subscriptions").select("*, plan:subscription_plans(name, price)").eq("user_id", user.auth_id).eq("status", "active").maybeSingle(),
-      supabaseAdmin.from("users").select("id, first_name, last_name, grade_level, avatar").eq("parent_id", id).eq("role", "child"),
-      supabaseAdmin.from("user_exercise_attempts").select("created_at, exercises(title)").eq("user_id", id).order("created_at", { ascending: false }).limit(5),
-      supabaseAdmin.from("admin_notifications").select("*").eq("user_id", id).order("created_at", { ascending: false }).limit(10),
-      supabaseAdmin.from("user_badges").select("badge:badges(name, icon)").eq("user_id", id),
+      supabaseAdmin
+        .from("user_exercise_attempts")
+        .select("*", { count: "exact", head: true })
+        .eq("user_id", id),
+      supabaseAdmin
+        .from("user_quiz_attempts")
+        .select("*", { count: "exact", head: true })
+        .eq("user_id", id),
+      supabaseAdmin
+        .from("user_course_progress")
+        .select("*", { count: "exact", head: true })
+        .eq("user_id", id),
+      supabaseAdmin
+        .from("forum_posts")
+        .select("*", { count: "exact", head: true })
+        .eq("author_id", id),
+      supabaseAdmin
+        .from("forum_comments")
+        .select("*", { count: "exact", head: true })
+        .eq("author_id", id),
+      supabaseAdmin
+        .from("subscriptions")
+        .select("*, plan:subscription_plans(name, price)")
+        .eq("user_id", user.auth_id)
+        .eq("status", "active")
+        .maybeSingle(),
+      supabaseAdmin
+        .from("users")
+        .select("id, first_name, last_name, grade_level, avatar")
+        .eq("parent_id", id)
+        .eq("role", "child"),
+      supabaseAdmin
+        .from("user_exercise_attempts")
+        .select("created_at, exercises(title)")
+        .eq("user_id", id)
+        .order("created_at", { ascending: false })
+        .limit(5),
+      supabaseAdmin
+        .from("admin_notifications")
+        .select("*")
+        .eq("user_id", id)
+        .order("created_at", { ascending: false })
+        .limit(10),
+      supabaseAdmin
+        .from("user_badges")
+        .select("badge:badges(name, icon)")
+        .eq("user_id", id),
     ]);
 
     return NextResponse.json({
       user,
-      stats: { exercise_attempts: ea ?? 0, quiz_attempts: qa ?? 0, course_progress: cp ?? 0, forum_posts: fp ?? 0, forum_comments: fc ?? 0 },
-      subscription: sub ?? null, children: children ?? [], recent_activity: activity ?? [],
-      notifications: notifs ?? [], badges: bdg ?? [],
+      stats: {
+        exercise_attempts: ea ?? 0,
+        quiz_attempts: qa ?? 0,
+        course_progress: cp ?? 0,
+        forum_posts: fp ?? 0,
+        forum_comments: fc ?? 0,
+      },
+      subscription: sub ?? null,
+      children: children ?? [],
+      recent_activity: activity ?? [],
+      notifications: notifs ?? [],
+      badges: bdg ?? [],
     });
   } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json(
+      { error: sanitizeErrorMessage(err.message) },
+      { status: 500 },
+    );
   }
 }
 
-export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   try {
     // Édite le rôle du compte (peut promouvoir en admin) — réservé au super admin.
-    if (!(await requireSuperAdmin(req))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    if (!(await requireSuperAdmin(req)))
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
-    const { first_name, last_name, email, role, status, grade_level } = await req.json();
-    const { data, error } = await supabaseAdmin.from("users").update({ first_name, last_name, email, role, status, grade_level }).eq("id", id).select().single();
-    if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    const { first_name, last_name, email, role, status, grade_level } =
+      await req.json();
+    const { data, error } = await supabaseAdmin
+      .from("users")
+      .update({ first_name, last_name, email, role, status, grade_level })
+      .eq("id", id)
+      .select()
+      .single();
+    if (error)
+      return NextResponse.json(
+        { error: sanitizeErrorMessage(error.message) },
+        { status: 500 },
+      );
     return NextResponse.json(data);
   } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json(
+      { error: sanitizeErrorMessage(err.message) },
+      { status: 500 },
+    );
   }
 }
 
-export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   try {
     // Bannir/débannir/supprimer un compte — réservé au super admin.
-    if (!(await requireSuperAdmin(req))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    if (!(await requireSuperAdmin(req)))
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     const { id } = await params;
     const { action, payload } = await req.json();
-    const { data: user } = await supabaseAdmin.from("users").select("id, auth_id, email, status").eq("id", id).single();
-    if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    const { data: user } = await supabaseAdmin
+      .from("users")
+      .select("id, auth_id, email, status")
+      .eq("id", id)
+      .single();
+    if (!user)
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     if (action === "ban") {
       const banDays = payload?.banDays || null;
-      const banUntil = banDays ? new Date(Date.now() + banDays * 24 * 60 * 60 * 1000).toISOString() : null;
-      
-      await supabaseAdmin.from("users").update({ 
-        status: "inactive",
-        ban_reason: payload?.reason || "Votre compte a été suspendu par un administrateur.",
-        ban_until: banUntil,
-      }).eq("id", id);
-      
-      await supabaseAdmin.from("admin_notifications").insert({ 
-        user_id: id, 
-        type: "ban", 
-        title: "Compte suspendu", 
-        content: payload?.reason || "Votre compte a été suspendu par un administrateur." 
+      const banUntil = banDays
+        ? new Date(Date.now() + banDays * 24 * 60 * 60 * 1000).toISOString()
+        : null;
+
+      await supabaseAdmin
+        .from("users")
+        .update({
+          status: "inactive",
+          ban_reason:
+            payload?.reason ||
+            "Votre compte a été suspendu par un administrateur.",
+          ban_until: banUntil,
+        })
+        .eq("id", id);
+
+      await supabaseAdmin.from("admin_notifications").insert({
+        user_id: id,
+        type: "ban",
+        title: "Compte suspendu",
+        content:
+          payload?.reason ||
+          "Votre compte a été suspendu par un administrateur.",
       });
       return NextResponse.json({ success: true });
     }
     if (action === "unban") {
-      await supabaseAdmin.from("users").update({ 
-        status: "active",
-        ban_reason: null,
-        ban_until: null,
-      }).eq("id", id);
-      await supabaseAdmin.from("admin_notifications").insert({ user_id: id, type: "info", title: "Compte réactivé", content: "Votre compte a été réactivé." });
+      await supabaseAdmin
+        .from("users")
+        .update({
+          status: "active",
+          ban_reason: null,
+          ban_until: null,
+        })
+        .eq("id", id);
+      await supabaseAdmin
+        .from("admin_notifications")
+        .insert({
+          user_id: id,
+          type: "info",
+          title: "Compte réactivé",
+          content: "Votre compte a été réactivé.",
+        });
       return NextResponse.json({ success: true });
     }
     if (action === "send_message") {
-      if (!payload?.title || !payload?.content) return NextResponse.json({ error: "title and content required" }, { status: 400 });
-      await supabaseAdmin.from("admin_notifications").insert({ user_id: id, type: payload.type || "message", title: payload.title, content: payload.content });
+      if (!payload?.title || !payload?.content)
+        return NextResponse.json(
+          { error: "title and content required" },
+          { status: 400 },
+        );
+      await supabaseAdmin
+        .from("admin_notifications")
+        .insert({
+          user_id: id,
+          type: payload.type || "message",
+          title: payload.title,
+          content: payload.content,
+        });
       return NextResponse.json({ success: true });
     }
     if (action === "reset_password") {
-      if (user.email) await supabaseAdmin.auth.admin.generateLink({ type: "recovery", email: user.email });
+      if (user.email)
+        await supabaseAdmin.auth.admin.generateLink({
+          type: "recovery",
+          email: user.email,
+        });
       return NextResponse.json({ success: true });
     }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
   } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json(
+      { error: sanitizeErrorMessage(err.message) },
+      { status: 500 },
+    );
   }
 }

@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import AdminSidebar from "@/components/AdminSidebar";
 import AdminTotpSetupModal from "@/components/admin/AdminTotpSetupModal";
+import PresenceTracker from "@/components/child/PresenceTracker";
 import { ContentGenerationsProvider } from "@/contexts/ContentGenerationsContext";
 import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidget";
 
@@ -15,7 +16,13 @@ import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidge
  * vit dans un cookie httpOnly (voir src/lib/twoFactorCookie.ts), illisible
  * en JS — on demande donc au serveur s'il est valide plutôt que de le lire
  * nous-mêmes. */
-export default function AdminShell({ children, adminLevel = "super" }: { children: React.ReactNode; adminLevel?: string }) {
+export default function AdminShell({
+  children,
+  adminLevel = "super",
+}: {
+  children: React.ReactNode;
+  adminLevel?: string;
+}) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   // Tant que la 2FA n'est pas configurée, aucun appel /api/admin/* ne peut
@@ -57,7 +64,9 @@ export default function AdminShell({ children, adminLevel = "super" }: { childre
         });
         const sessionData = await sessionCheck.json();
         if (!sessionCheck.ok || !sessionData.valid) {
-          router.push(`/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`);
+          router.push(
+            `/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`,
+          );
           return;
         }
       }
@@ -86,6 +95,7 @@ export default function AdminShell({ children, adminLevel = "super" }: { childre
 
   return (
     <ContentGenerationsProvider>
+      <PresenceTracker />
       <div className="min-h-screen bg-[var(--greek-cream)] flex">
         <AdminSidebar adminLevel={adminLevel} />
         <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
