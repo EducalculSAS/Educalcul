@@ -44,7 +44,7 @@ const SYM = [
 
 export default function FAQ() {
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
+    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
       <JsonLd data={faqSchema} />
       <Navbar />
       <main className="flex-grow pt-[64px]">

@@ -29,7 +29,7 @@ const INFO_ITEMS = [
 
 export default function Contact() {
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
+    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
       <Navbar />
       <main className="flex-grow pt-[64px]">
         {/* HERO — split, panneau message à droite */}

@@ -37,7 +37,7 @@ export default async function Tarifs() {
   const plans = await fetchActivePlans();
 
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--greek-cream)]">
+    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
       <Navbar />
       <main className="flex-grow pt-[64px]">
         {/* HERO — split, panneau droite garanties */}
