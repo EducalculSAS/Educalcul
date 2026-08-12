@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import {
   Sparkles,
-  X,
   Link as LinkIcon,
   BrainCircuit,
 } from "lucide-react";
@@ -12,6 +11,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useSmoothPercent } from "./useSmoothPercent";
 import type { AIGenerateProgress } from "./ExerciseGeneratorModal";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 export interface QuizGenParams {
   linkedCourseId: string | null;
@@ -106,13 +106,7 @@ export default function QuizGeneratorModal({
               </p>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            aria-label="Fermer"
-            className="group p-2 transition-colors text-white/70 hover:text-white relative z-10"
-          >
-            <X size={22} className="transition-transform group-hover:scale-125" />
-          </button>
+          <GlassCloseButton onClick={onClose} variant="dark" />
         </div>
 
         <div className="flex-1 overflow-y-auto">

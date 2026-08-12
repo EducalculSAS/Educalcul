@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Send, X } from "lucide-react";
+import { ArrowRight, Send } from "lucide-react";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 type Msg = { from: "user" | "ai" | "cta"; text: string };
 type ApiMsg = { role: "user" | "assistant"; content: string };
@@ -55,7 +56,7 @@ function EpsiChat({ onClose, inline = false }: { onClose: () => void; inline?: b
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>IA pédagogique · Aperçu</p>
         </div>
         <span className="w-2 h-2 rounded-full animate-pulse mr-1" style={{ background: "#34d399" }} />
-        <button onClick={onClose} className="p-1 rounded-lg hover:bg-white/10 transition-colors"><X className="w-4 h-4" style={{ color: "rgba(255,255,255,0.4)" }} /></button>
+        <GlassCloseButton onClick={onClose} variant="dark" size="sm" />
       </div>
       <div className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-2.5" style={{ scrollbarWidth: "none" }}>
         {messages.filter(m => m.from !== "cta").map((msg, i) => (

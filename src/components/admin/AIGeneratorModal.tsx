@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {
   Sparkles,
-  X,
   XCircle,
   BookOpen,
   BrainCircuit,
@@ -19,6 +18,7 @@ import {
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { useSmoothPercent } from "./useSmoothPercent";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 export interface AIGenerateParams {
   topic: string;
@@ -191,13 +191,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
               </p>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            className="group text-white/70 hover:text-white transition-colors p-2 relative z-10"
-            aria-label="Fermer"
-          >
-            <X size={22} className="transition-transform group-hover:scale-125" />
-          </button>
+          <GlassCloseButton onClick={onClose} variant="dark" />
         </div>
 
         {/* Loading Overlay */}

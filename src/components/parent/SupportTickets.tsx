@@ -2,8 +2,9 @@
 
 import { useState, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Send, Loader2, ChevronDown, ChevronUp, Mail, X, Plus } from "lucide-react";
+import { Send, Loader2, ChevronDown, ChevronUp, Mail, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Reply {
   id: number;
@@ -126,7 +127,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
           <div className="flex items-center justify-between mb-5">
             <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau ticket</h2>
-            <button onClick={() => setShowForm(false)} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400" aria-label="Fermer"><X size={16} /></button>
+            <GlassCloseButton onClick={() => setShowForm(false)} variant="light" size="sm" />
           </div>
           <form onSubmit={submitNewTicket} className="space-y-4">
             <div>

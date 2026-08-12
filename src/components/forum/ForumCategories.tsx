@@ -1,12 +1,13 @@
 ﻿"use client";
 
 import React, { useEffect, useState } from "react";
-import { MessageSquare, Plus, Trash2, X } from "lucide-react";
+import { MessageSquare, Plus, Trash2 } from "lucide-react";
 import { ForumRole } from "./ForumApp";
 import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Category {
   id: number;
@@ -121,7 +122,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
           <div className="bg-white rounded-2xl p-8 max-w-lg w-full shadow-2xl border border-[var(--greek-gold)]">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouvelle catégorie</h2>
-              <button onClick={() => setShowModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowModal(false)} variant="light" />
             </div>
             <form onSubmit={(e) => { e.preventDefault(); handleCreateCategory(); }} className="space-y-4">
               <div>

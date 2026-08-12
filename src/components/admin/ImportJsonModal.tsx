@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import { Upload, X, FileJson, Download, Sparkles } from "lucide-react";
+import { Upload, FileJson, Download, Sparkles } from "lucide-react";
 import { downloadJSONTemplate } from "@/lib/jsonTemplates";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface ImportJsonModalProps {
   onClose: () => void;
@@ -65,9 +66,7 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="group text-white/70 hover:text-white transition-colors p-2 relative z-10" aria-label="Fermer">
-            <X size={22} className="transition-transform group-hover:scale-125" />
-          </button>
+          <GlassCloseButton onClick={onClose} variant="dark" />
         </div>
 
         <div className="flex-1 overflow-y-auto">

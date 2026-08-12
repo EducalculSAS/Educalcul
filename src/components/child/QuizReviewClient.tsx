@@ -1,9 +1,9 @@
 "use client";
 
-import { ArrowLeft, X } from "lucide-react";
-import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import QuizViewer from "@/components/viewers/QuizViewer";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 export default function QuizReviewClient({ quiz, progress }: { quiz: any; progress: any }) {
   const router = useRouter();
@@ -22,14 +22,10 @@ export default function QuizReviewClient({ quiz, progress }: { quiz: any; progre
         <h1 className="text-lg font-bold truncate flex-1">
           Correction — {quiz.title}
         </h1>
-        <Link
-          href="/child/quiz/history"
-          className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-          title="Fermer"
-          aria-label="Fermer"
-        >
-          <X className="w-5 h-5" />
-        </Link>
+        <GlassCloseButton
+          variant="dark"
+          onClick={() => router.push("/child/quiz/history")}
+        />
       </div>
       <div className="flex-1 overflow-hidden">
         <QuizViewer

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Star, Plus, Trash2, Edit, X, GripVertical } from "lucide-react";
+import { Star, Plus, Trash2, Edit, GripVertical } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { supabase } from "@/lib/supabaseClient";
 import type { ManualReview } from "@/lib/manualReviews";
 import type { ReviewRatingOverride } from "@/lib/reviewRatingOverride";
@@ -268,9 +269,7 @@ export default function AdminReviewsClient({
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">
                 {editing ? "Modifier l'avis" : "Nouvel avis"}
               </h3>
-              <button onClick={() => setModalOpen(false)} className="p-1 rounded-full hover:bg-[rgba(197,161,72,0.1)]" aria-label="Fermer">
-                <X className="w-5 h-5 text-[var(--greek-blue)]" />
-              </button>
+              <GlassCloseButton onClick={() => setModalOpen(false)} variant="light" />
             </div>
 
             <div className="space-y-3">

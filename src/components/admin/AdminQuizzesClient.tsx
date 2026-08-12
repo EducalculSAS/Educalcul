@@ -10,6 +10,7 @@ import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import QuizBuilder, { Question } from "@/components/admin/QuizBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -1303,7 +1304,7 @@ export default function AdminQuizzesClient({
               <h3 className="text-lg font-bold text-gray-800">
                 {editingFolder ? "Modifier le dossier" : "Nouveau Dossier"}
               </h3>
-              <button
+              <GlassCloseButton
                 onClick={() => {
                   setIsFolderModalOpen(false);
                   setEditingFolder(null);
@@ -1315,11 +1316,7 @@ export default function AdminQuizzesClient({
                     icon: "",
                   });
                 }}
-                className="group p-2 text-gray-400 hover:text-gray-600 transition-colors relative z-10"
-                aria-label="Fermer"
-              >
-                <X size={22} className="transition-transform group-hover:scale-125" />
-              </button>
+              />
             </div>
             <form onSubmit={handleSaveFolder} className="p-6 space-y-4">
               <div>
@@ -1494,9 +1491,7 @@ export default function AdminQuizzesClient({
                   {editingQuiz ? "Modifier le quiz" : "Nouveau quiz"}
                 </h2>
               </div>
-              <button onClick={() => setIsModalOpen(false)} className="group p-2 text-white/70 hover:text-white transition-colors relative z-10" aria-label="Fermer">
-                <X size={22} className="transition-transform group-hover:scale-125" />
-              </button>
+              <GlassCloseButton variant="dark" onClick={() => setIsModalOpen(false)} />
             </div>
 
             <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">

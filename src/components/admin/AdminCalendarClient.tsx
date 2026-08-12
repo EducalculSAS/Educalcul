@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Calendar, Plus, Trash2, Edit, X } from "lucide-react";
+import { Calendar, Plus, Trash2, Edit } from "lucide-react";
 import { getEventTypeMeta, EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
 import { ZONE_OPTIONS, getZoneLabel } from "@/lib/calendarZones";
 import { useConfirm } from "@/components/ConfirmDialog";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -213,9 +214,7 @@ export default function AdminCalendarClient({
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">
                 {editing ? "Modifier l'événement" : "Nouvel événement"}
               </h3>
-              <button onClick={() => setModalOpen(false)} aria-label="Fermer" className="p-1 rounded-full hover:bg-[rgba(197,161,72,0.1)]">
-                <X className="w-5 h-5 text-[var(--greek-blue)]" />
-              </button>
+              <GlassCloseButton onClick={() => setModalOpen(false)} />
             </div>
 
             <div className="space-y-3">

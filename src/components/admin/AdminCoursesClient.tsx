@@ -12,7 +12,6 @@ import {
   Edit,
   Trash2,
   XCircle,
-  X,
   Loader2,
   Image as ImageIcon,
   Sparkles,
@@ -45,6 +44,7 @@ import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import {
   getAdminCache,
@@ -1309,16 +1309,7 @@ export default function AdminCoursesClient({
                     : "Modifier le cours"}
                 </h3>
               </div>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="group p-2 text-white/70 hover:text-white transition-colors relative z-10"
-                aria-label="Fermer"
-              >
-                <X
-                  size={22}
-                  className="transition-transform group-hover:scale-125"
-                />
-              </button>
+              <GlassCloseButton variant="dark" onClick={() => setIsModalOpen(false)} />
             </div>
 
             <form
@@ -1559,7 +1550,7 @@ export default function AdminCoursesClient({
               <h3 className="text-lg font-bold text-gray-800">
                 {editingFolder ? "Modifier le dossier" : "Nouveau Dossier"}
               </h3>
-              <button
+              <GlassCloseButton
                 onClick={() => {
                   setIsFolderModalOpen(false);
                   setEditingFolder(null);
@@ -1571,14 +1562,7 @@ export default function AdminCoursesClient({
                     icon: "",
                   });
                 }}
-                className="group p-2 text-gray-400 hover:text-gray-600 transition-colors relative z-10"
-                aria-label="Fermer"
-              >
-                <X
-                  size={22}
-                  className="transition-transform group-hover:scale-125"
-                />
-              </button>
+              />
             </div>
             <form onSubmit={handleSaveFolder} className="p-6 space-y-4">
               <div>
@@ -1762,14 +1746,9 @@ function NotificationModal({
   return (
     <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <div className="bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md overflow-hidden animate-fade-bounce relative">
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Fermer"
-          className="group absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 transition-colors z-10"
-        >
-          <X size={20} className="transition-transform group-hover:scale-125" />
-        </button>
+        <div className="absolute top-3 right-3 z-10">
+          <GlassCloseButton onClick={onClose} />
+        </div>
         <div className="px-8 pt-8 pb-4 flex flex-col items-center text-center">
           <div
             className="w-16 h-16 rounded-full flex items-center justify-center mb-4"

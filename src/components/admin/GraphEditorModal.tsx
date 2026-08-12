@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { X } from "lucide-react";
 import { buildGraphSvg } from "@/lib/mathGraph";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 export default function GraphEditorModal({
   isOpen,
@@ -34,9 +34,7 @@ export default function GraphEditorModal({
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto p-5 space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-bold text-gray-800">Insérer un graphique</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-            <X size={20} />
-          </button>
+          <GlassCloseButton onClick={onClose} />
         </div>
 
         <div className="space-y-2">

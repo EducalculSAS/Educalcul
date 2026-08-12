@@ -9,6 +9,7 @@ import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import {
@@ -1305,7 +1306,7 @@ export default function AdminExercisesClient({
               <h3 className="text-lg font-bold text-gray-800">
                 {editingFolder ? "Modifier le dossier" : "Nouveau Dossier"}
               </h3>
-              <button
+              <GlassCloseButton
                 onClick={() => {
                   setIsFolderModalOpen(false);
                   setEditingFolder(null);
@@ -1317,11 +1318,7 @@ export default function AdminExercisesClient({
                     icon: "",
                   });
                 }}
-                className="group p-2 text-gray-400 hover:text-gray-600 transition-colors relative z-10"
-                aria-label="Fermer"
-              >
-                <X size={22} className="transition-transform group-hover:scale-125" />
-              </button>
+              />
             </div>
             <form onSubmit={handleSaveFolder} className="p-6 space-y-4">
               <div>
@@ -1496,9 +1493,7 @@ export default function AdminExercisesClient({
                   {editingExercise ? "Modifier l'exercice" : "Nouvel exercice"}
                 </h2>
               </div>
-              <button onClick={() => setIsModalOpen(false)} className="group p-2 text-white/70 hover:text-white transition-colors relative z-10">
-                <X size={22} className="transition-transform group-hover:scale-125" />
-              </button>
+              <GlassCloseButton variant="dark" onClick={() => setIsModalOpen(false)} />
             </div>
 
             <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">

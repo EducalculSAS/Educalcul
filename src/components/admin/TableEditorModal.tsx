@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { X, Plus, Minus, Sparkles, Loader2 } from "lucide-react";
+import { Plus, Minus, Sparkles, Loader2 } from "lucide-react";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 type TableType = "value" | "sign" | "variation" | "generic";
 
@@ -117,9 +118,7 @@ export default function TableEditorModal({
       <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-5 space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-bold text-gray-800">Insérer un tableau</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600" aria-label="Fermer">
-            <X size={20} />
-          </button>
+          <GlassCloseButton onClick={onClose} variant="light" />
         </div>
 
         {/* Type selector */}

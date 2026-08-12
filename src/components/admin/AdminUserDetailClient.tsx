@@ -14,6 +14,7 @@ import { SCHOOL_LEVELS } from "@/lib/constants";
 import { validatePassword } from "@/lib/validation";
 import ThemedSelect from "@/components/admin/ThemedSelect";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -41,7 +42,7 @@ function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLab
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
         <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
           <h2 className="text-xl font-bold font-[family-name:var(--font-display)] text-gray-800">{title}</h2>
-          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400" aria-label="Fermer"><X size={18} /></button>
+          <GlassCloseButton onClick={onClose} />
         </div>
         <div className="p-8 space-y-4">
           {description && <p className="text-sm text-gray-600">{description}</p>}
@@ -685,7 +686,7 @@ export default function AdminUserDetailClient({
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Modifier le profil</h2>
-              <button onClick={() => setShowEditModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowEditModal(false)} />
             </div>
             <div className="p-8 space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -735,7 +736,7 @@ export default function AdminUserDetailClient({
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-purple-600 font-[family-name:var(--font-display)]">Nouveau mot de passe</h2>
-              <button onClick={() => setShowResetModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowResetModal(false)} />
             </div>
             <div className="p-8 space-y-4">
               <p className="text-sm text-gray-600">Définir un nouveau mot de passe pour <strong>{user?.first_name} {user?.last_name}</strong>.</p>
@@ -783,7 +784,7 @@ export default function AdminUserDetailClient({
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Envoyer un message</h2>
-              <button onClick={() => setShowMessageModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowMessageModal(false)} />
             </div>
             <div className="p-8 space-y-4">
               <div><label className={labelCls}>Type</label><select value={msgForm.type} onChange={e => setMsgForm({ ...msgForm, type: e.target.value })} className={inputCls}><option value="message">Message</option><option value="warning">Avertissement</option><option value="info">Information</option></select></div>

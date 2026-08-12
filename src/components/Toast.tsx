@@ -1,7 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback, useEffect } from "react";
-import { CheckCircle, AlertCircle, Info, X } from "lucide-react";
+import { CheckCircle, AlertCircle, Info } from "lucide-react";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 type ToastType = "success" | "error" | "info";
 
@@ -82,14 +83,7 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
     >
       {cfg.icon}
       <p className="text-sm font-medium flex-1" style={{ color: "rgba(255,255,255,0.9)" }}>{toast.message}</p>
-      <button
-        onClick={() => onRemove(toast.id)}
-        aria-label="Fermer"
-        className="transition-colors hover:opacity-70"
-        style={{ color: "rgba(255,255,255,0.5)" }}
-      >
-        <X className="w-4 h-4" />
-      </button>
+      <GlassCloseButton onClick={() => onRemove(toast.id)} variant="dark" size="sm" />
     </div>
   );
 }

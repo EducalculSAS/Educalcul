@@ -10,6 +10,7 @@ import {
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import { type PricingConfig } from "@/lib/pricingConfig";
@@ -757,9 +758,7 @@ export default function AdminSubscriptionsClient({
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                 {editingPlan ? "Modifier le plan" : "Nouveau plan"}
               </h2>
-              <button onClick={() => setShowPlanModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
-                <X size={20} />
-              </button>
+              <GlassCloseButton onClick={() => setShowPlanModal(false)} variant="light" />
             </div>
             <form onSubmit={savePlan} className="p-8 space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -909,9 +908,7 @@ export default function AdminSubscriptionsClient({
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                 {editingCode ? "Modifier le code" : "Nouveau code promo"}
               </h2>
-              <button onClick={() => setShowRefModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600">
-                <X size={20} />
-              </button>
+              <GlassCloseButton onClick={() => setShowRefModal(false)} variant="light" />
             </div>
             <form onSubmit={saveRef} className="p-8 space-y-4">
               <div>

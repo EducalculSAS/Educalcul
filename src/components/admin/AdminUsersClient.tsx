@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 import {
   Users, Search, Plus, Trash2, CheckCircle, XCircle,
   Loader2, Shield, User as UserIcon, Baby, Globe, MapPin,
-  X, Eye, EyeOff, Ban, Download, FileText, Table,
+  Eye, EyeOff, Ban, Download, FileText, Table,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/PageLoader";
@@ -15,6 +15,7 @@ import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GradePromotionPanel from "@/components/admin/GradePromotionPanel";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 
 interface User {
@@ -281,7 +282,7 @@ function ExportModal({ users, title, onClose }: { users: User[]; title: string; 
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm">
         <div className="border-b border-[rgba(197,161,72,0.25)] px-6 py-4 flex items-center justify-between rounded-t-2xl">
           <h2 className="text-lg font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Exporter</h2>
-          <button onClick={onClose} className="p-1.5 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+          <GlassCloseButton onClick={onClose} />
         </div>
         <div className="p-6 space-y-3">
           <div className="flex items-center justify-between mb-1">
@@ -654,7 +655,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="sticky top-0 bg-white border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouvel utilisateur</h2>
-              <button onClick={() => setShowFormModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={20} /></button>
+              <GlassCloseButton onClick={() => setShowFormModal(false)} />
             </div>
             <form onSubmit={handleFormSubmit} className="p-8 space-y-5">
               <div className="grid grid-cols-2 gap-4">
@@ -712,7 +713,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
               <h2 className={`text-xl font-bold font-[family-name:var(--font-display)] ${banTarget.status === "inactive" ? "text-green-600" : "text-orange-500"}`}>
                 {banTarget.status === "inactive" ? "Réactiver le compte" : "Bannir l'utilisateur"}
               </h2>
-              <button onClick={() => setShowBanModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowBanModal(false)} />
             </div>
             <div className="p-8 space-y-4">
               <p className="text-sm text-gray-600">
@@ -761,7 +762,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-red-600 font-[family-name:var(--font-display)]">Supprimer le compte</h2>
-              <button onClick={() => setShowDeleteModal(false)} className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowDeleteModal(false)} />
             </div>
             <div className="p-8 space-y-4">
               <p className="text-sm text-gray-600">

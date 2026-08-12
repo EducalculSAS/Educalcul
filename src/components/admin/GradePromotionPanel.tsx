@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { ChevronDown, ChevronUp, GraduationCap, Loader2, CheckCircle, AlertCircle, X, RotateCcw } from "lucide-react";
+import { ChevronDown, ChevronUp, GraduationCap, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface LastRun {
   id: number;
@@ -171,7 +172,7 @@ export default function GradePromotionPanel() {
           <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-6 border border-[rgba(197,161,72,0.25)]">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">Confirmer le passage de classe</h3>
-              <button onClick={() => setShowConfirm(false)} aria-label="Fermer" className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowConfirm(false)} variant="light" size="sm" />
             </div>
             <p className="text-sm text-gray-600 mb-6">
               Tous les comptes enfant vont avancer d'un niveau immédiatement, quelle que soit la date configurée. Une annulation reste possible juste après (bouton "Annuler le dernier passage"). Continuer ?
@@ -189,7 +190,7 @@ export default function GradePromotionPanel() {
           <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-6 border border-[rgba(197,161,72,0.25)]">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">Annuler le dernier passage</h3>
-              <button onClick={() => setShowUndoConfirm(false)} aria-label="Fermer" className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowUndoConfirm(false)} variant="light" size="sm" />
             </div>
             <p className="text-sm text-gray-600 mb-6">
               Tous les comptes touchés par le dernier passage de classe reviennent à leur niveau précédent. Les choix de spécialité déjà faits entre-temps par des élèves ne seront pas défaits. Continuer ?

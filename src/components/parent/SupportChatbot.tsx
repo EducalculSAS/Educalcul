@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 import { Send, RotateCcw, X } from "lucide-react";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface BotMsg { from: "bot" | "user"; text: string }
 
@@ -71,9 +72,7 @@ export default function SupportChatbot() {
             <button onClick={() => setMessages([BOT_WELCOME])} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Nouvelle conversation" aria-label="Nouvelle conversation">
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
-            <button onClick={() => setOpen(false)} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Fermer" aria-label="Fermer le chat">
-              <X className="w-4 h-4" />
-            </button>
+            <GlassCloseButton onClick={() => setOpen(false)} variant="dark" size="sm" aria-label="Fermer le chat" />
           </div>
 
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3" style={{ scrollbarWidth: "none" }}>

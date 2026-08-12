@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS, CalendarEventType } from "@/lib/calendarEventTypes";
 import { CalendarEventItem } from "./CalendarView";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface EventModalProps {
   open: boolean;
@@ -75,9 +76,7 @@ export default function EventModal({ open, onClose, onSave, onDelete, initialDat
           <h3 className="text-lg font-bold text-[var(--greek-blue)]">
             {isVirtual ? "Détails" : event ? "Modifier l'événement" : "Nouvel événement"}
           </h3>
-          <button onClick={onClose} className="p-1 rounded-full hover:bg-[rgba(197,161,72,0.1)]" aria-label="Fermer la modale">
-            <X className="w-5 h-5 text-[var(--greek-blue)]" />
-          </button>
+          <GlassCloseButton onClick={onClose} variant="light" aria-label="Fermer la modale" />
         </div>
 
         {isVirtual ? (

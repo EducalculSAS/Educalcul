@@ -8,6 +8,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Message {
   role: "user" | "assistant";
@@ -334,13 +335,11 @@ export default function AITutor() {
               onMouseLeave={e => (e.currentTarget.style.background = "transparent")}>
               <Minus className="w-3.5 h-3.5" />
             </button>
-            <button onClick={() => { setOpen(false); setMinimized(false); }}
-              className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-              title="Fermer">
-              <X className="w-3.5 h-3.5" />
-            </button>
+            <GlassCloseButton
+              variant="dark"
+              size="sm"
+              onClick={() => { setOpen(false); setMinimized(false); }}
+            />
           </div>
 
           {!minimized && (

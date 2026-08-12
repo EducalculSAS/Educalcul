@@ -7,6 +7,7 @@ import type { Plan } from "@/lib/plans";
 import { FEATURE_ROWS, formatVal, intervalLabel } from "@/lib/planFeatures";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 /* A row in the comparison: either a real plan or a custom config */
 interface CompareItem {
@@ -62,14 +63,9 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
         <div className="sm:hidden w-10 h-1 bg-gray-200 rounded-full mx-auto mt-3 mb-1" />
 
         <div className="px-8 pt-6 pb-7 text-center relative" style={{ background: "var(--greek-blue)" }}>
-          <button
-            onClick={handleClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-            aria-label="Fermer"
-          >
-            <X className="w-4 h-4" aria-hidden="true" />
-          </button>
+          <div className="absolute top-4 right-4">
+            <GlassCloseButton onClick={handleClose} variant="dark" size="sm" />
+          </div>
           {plan.promo_description && (
             <div className="inline-flex items-center gap-1 text-xs font-bold mb-3" style={{ color: "var(--greek-gold)" }}>
               <Sparkles className="w-3 h-3" />{plan.promo_description}

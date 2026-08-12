@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Sparkles, X, Plus } from "lucide-react";
+import { Sparkles, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import PageLoader from "@/components/PageLoader";
 import { useSmoothPercent } from "./useSmoothPercent";
 import type { Page, Block } from "./ExerciseBuilder";
@@ -118,9 +119,7 @@ export default function AIAddExerciseModal({
             <Sparkles className="w-5 h-5 text-amber-300" />
             <h3 className="font-bold text-lg">Ajouter du contenu avec l'IA</h3>
           </div>
-          <button onClick={handleClose} className="group text-white/80 hover:text-white transition-colors" aria-label="Fermer">
-            <X size={20} className="transition-transform group-hover:scale-125" />
-          </button>
+          <GlassCloseButton onClick={handleClose} variant="dark" />
         </div>
 
         <div className="p-4 space-y-3">

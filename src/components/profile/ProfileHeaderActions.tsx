@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Flag, X, CheckCircle, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Flag, CheckCircle, AlertTriangle } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 /** Bouton retour + modale de signalement : les deux seules actions
  * interactives (navigation historique du navigateur, mutation forum_reports)
@@ -95,9 +96,7 @@ export default function ProfileHeaderActions({
                 <h2 className="text-lg font-bold text-[var(--greek-blue)]">Signaler le profil</h2>
                 <p className="text-sm text-gray-500">Explique brièvement pourquoi tu signales ce profil.</p>
               </div>
-              <button onClick={() => setReportOpen(false)} aria-label="Fermer" className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600">
-                <X className="w-4 h-4" />
-              </button>
+              <GlassCloseButton onClick={() => setReportOpen(false)} variant="light" size="sm" />
             </div>
             <div className="space-y-4 px-6 py-5">
               <textarea

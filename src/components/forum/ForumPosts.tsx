@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { MessageSquare, Plus, ArrowLeft, Clock, Pin, Lock, MessageCircle, Trash2, X } from "lucide-react";
+import { MessageSquare, Plus, ArrowLeft, Clock, Pin, Lock, MessageCircle, Trash2 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { ForumRole } from "./ForumApp";
@@ -14,6 +14,7 @@ import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useConfirm } from "@/components/ConfirmDialog";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Post {
   id: number;
@@ -161,7 +162,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
           <div className="bg-white rounded-2xl p-8 max-w-2xl w-full shadow-2xl border border-[var(--greek-gold)]">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau sujet</h2>
-              <button onClick={() => setShowModal(false)} aria-label="Fermer" className="p-2 hover:bg-gray-100 rounded-xl text-gray-400"><X size={18} /></button>
+              <GlassCloseButton onClick={() => setShowModal(false)} variant="light" />
             </div>
             <div className="space-y-4">
               <div>

@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Bell, X, Check, MessageSquare, Trophy, CreditCard, AlertCircle, Info } from "lucide-react";
+import { Bell, Check, MessageSquare, Trophy, CreditCard, AlertCircle, Info } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Notification {
   id: number;
@@ -118,9 +119,7 @@ export default function NotificationBell() {
                   <Check className="w-3 h-3" /> Tout lire
                 </button>
               )}
-              <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-gray-600" aria-label="Fermer le panneau de notifications">
-                <X className="w-4 h-4" />
-              </button>
+              <GlassCloseButton onClick={() => setOpen(false)} size="sm" aria-label="Fermer le panneau de notifications" />
             </div>
           </div>
 
