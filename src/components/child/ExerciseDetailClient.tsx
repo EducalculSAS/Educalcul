@@ -8,7 +8,6 @@ import {
   Brain,
   CheckCircle,
   HelpCircle,
-  X,
   AlertCircle,
   Eye,
 } from "lucide-react";
@@ -18,6 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 // Utility function to extract all content from exercise blocks
 function extractExerciseContent(contentJson: any): string {
@@ -222,16 +222,12 @@ export default function ExerciseDetailClient({
             <ArrowLeft className="w-5 h-5" />
           </button>
           <h1 className="text-lg font-bold truncate flex-1">{exercise.title}</h1>
-          <button
+          <GlassCloseButton
+            variant="dark"
             onClick={() => {
               if (isPreview) { window.close(); } else { setStarted(false); }
             }}
-            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-            title="Fermer"
-            aria-label="Fermer"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          />
         </div>
         <div className="flex-1 overflow-hidden">
           <ExerciseViewer

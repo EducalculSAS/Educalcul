@@ -9,7 +9,6 @@ import {
   AlertCircle,
   CheckCircle,
   BookOpen,
-  X,
   Eye,
 } from "lucide-react";
 import QuizViewer from "@/components/viewers/QuizViewer";
@@ -18,6 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 /** Page de détail quiz : le contenu (déjà purgé des réponses côté serveur)
  * et l'historique de tentatives arrivent en props quand id !== "preview"
@@ -177,16 +177,12 @@ export default function QuizDetailClient({
             <ArrowLeft className="w-5 h-5" />
           </button>
           <h1 className="text-lg font-bold truncate flex-1">{quiz.title}</h1>
-          <button
+          <GlassCloseButton
+            variant="dark"
             onClick={() => {
               if (isPreview) { window.close(); } else { setStarted(false); }
             }}
-            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-            title="Fermer"
-            aria-label="Fermer"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          />
         </div>
         <div className="flex-1 overflow-hidden">
           <QuizViewer
