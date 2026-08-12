@@ -148,8 +148,16 @@ export default function GlassButton({ href, onClick, children, variant = "gold",
         let scaleX = 1 + Math.abs(nx) * MAX_STRETCH * fade;
         const scaleY = 1 + Math.abs(ny) * MAX_STRETCH * 0.5 * fade;
 
+        // Le voisin DOM immédiat n'est un vrai voisin visuel que dans un
+        // groupe de boutons côte à côte (segmented control, ligne de CTA) —
+        // ailleurs (ex: bouton en bas d'une carte tarif, sous une liste de
+        // features) c'est un élément sans rapport avec un rect qui n'a rien
+        // à voir avec "à gauche/droite", et le calcul d'écart tombait
+        // négatif : l'étirement restait bloqué en permanence dans cette
+        // direction même avec beaucoup d'espace visuel libre. On ne
+        // contraint donc que si le voisin est lui aussi un GlassButton.
         const neighbor = (nx >= 0 ? wrapper.nextElementSibling : wrapper.previousElementSibling) as HTMLElement | null;
-        if (neighbor) {
+        if (neighbor?.classList.contains("liquid-glass-wrap")) {
           const nRect = neighbor.getBoundingClientRect();
           const gap = nx >= 0 ? nRect.left - rect.right : rect.left - nRect.right;
           const reachLimit = Math.max(0, gap - SAFETY_GAP);
