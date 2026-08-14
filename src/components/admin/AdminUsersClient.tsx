@@ -15,6 +15,7 @@ import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GradePromotionPanel from "@/components/admin/GradePromotionPanel";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 
@@ -610,24 +611,34 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                     </td>
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-1 justify-end">
-                        <button onClick={() => router.push(`/admin/users/detail?id=${user.id}`)}
-                          className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors" title="Voir le profil">
-                          <Eye size={15} />
-                        </button>
-                        <button
+                        <GlassIconButton
+                          icon={Eye}
+                          color="navy"
+                          size="sm"
+                          onClick={() => router.push(`/admin/users/detail?id=${user.id}`)}
+                          aria-label="Voir le profil"
+                        />
+                        <GlassIconButton
+                          icon={Download}
+                          color="gold"
+                          size="sm"
                           onClick={() => { setExportTarget([user]); setShowExportModal(true); }}
-                          className="p-1.5 text-[var(--greek-gold)] hover:bg-amber-50 rounded-lg transition-colors" title="Exporter">
-                          <Download size={15} />
-                        </button>
-                        <button onClick={() => { setBanTarget(user); setBanReason(""); setShowBanModal(true); }}
-                          className={`p-1.5 rounded-lg transition-colors ${user.status === "inactive" ? "text-green-600 hover:bg-green-50" : "text-orange-500 hover:bg-orange-50"}`}
-                          title={user.status === "inactive" ? "Réactiver" : "Bannir"}>
-                          <Ban size={15} />
-                        </button>
-                        <button onClick={() => { setDeleteTarget(user); setShowDeleteModal(true); }}
-                          className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Supprimer">
-                          <Trash2 size={15} />
-                        </button>
+                          aria-label="Exporter"
+                        />
+                        <GlassIconButton
+                          icon={Ban}
+                          color={user.status === "inactive" ? "green" : "orange"}
+                          size="sm"
+                          onClick={() => { setBanTarget(user); setBanReason(""); setShowBanModal(true); }}
+                          aria-label={user.status === "inactive" ? "Réactiver" : "Bannir"}
+                        />
+                        <GlassIconButton
+                          icon={Trash2}
+                          color="red"
+                          size="sm"
+                          onClick={() => { setDeleteTarget(user); setShowDeleteModal(true); }}
+                          aria-label="Supprimer"
+                        />
                       </div>
                     </td>
                   </tr>
@@ -672,9 +683,15 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                     onChange={e => setForm({ ...form, password: e.target.value })}
                     className={inputCls + " font-mono pr-10"}
                   />
-                  <button type="button" onClick={() => setShowFormPassword(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                    {showFormPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                  </button>
+                  <span className="absolute right-2 top-1/2 -translate-y-1/2">
+                    <GlassIconButton
+                      icon={showFormPassword ? EyeOff : Eye}
+                      color="navy"
+                      size="sm"
+                      onClick={() => setShowFormPassword(v => !v)}
+                      aria-label={showFormPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+                    />
+                  </span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">

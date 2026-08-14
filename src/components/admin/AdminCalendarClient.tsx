@@ -8,6 +8,7 @@ import { useConfirm } from "@/components/ConfirmDialog";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 const ADMIN_EVENT_TYPE_OPTIONS = [
   ...EVENT_TYPE_OPTIONS,
@@ -190,12 +191,8 @@ export default function AdminCalendarClient({
                     <td className="px-4 py-3 text-gray-600">{ev.end_date || "—"}</td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex justify-end gap-2">
-                        <button onClick={() => openEdit(ev)} aria-label="Modifier l'événement" className="p-2 rounded-lg hover:bg-[rgba(197,161,72,0.1)] text-[var(--greek-blue)]">
-                          <Edit className="w-4 h-4" />
-                        </button>
-                        <button onClick={() => handleDelete(ev)} aria-label="Supprimer l'événement" className="p-2 rounded-lg hover:bg-red-50 text-red-600">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        <GlassIconButton icon={Edit} onClick={() => openEdit(ev)} color="navy" size="sm" aria-label="Modifier l'événement" />
+                        <GlassIconButton icon={Trash2} onClick={() => handleDelete(ev)} color="red" size="sm" aria-label="Supprimer l'événement" />
                       </div>
                     </td>
                   </tr>

@@ -5,6 +5,7 @@ import QRCode from "qrcode";
 import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, Loader2, AlertCircle, Copy, Check, KeyRound } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 /**
  * Popup obligatoire forçant tout admin sans TOTP configuré à en configurer
@@ -161,9 +162,13 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
             </div>
             <div className="flex items-center justify-between gap-2 px-3 py-2 mb-5 rounded-lg bg-gray-50 border border-gray-200">
               <code className="text-xs font-mono text-gray-600 break-all">{secret}</code>
-              <button type="button" onClick={copySecret} aria-label="Copier le secret" className="shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
-                {copied ? <Check className="w-4 h-4 text-green-600" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
-              </button>
+              <GlassIconButton
+                icon={copied ? Check : Copy}
+                color={copied ? "green" : "navy"}
+                size="sm"
+                onClick={copySecret}
+                aria-label="Copier le secret"
+              />
             </div>
 
             <form onSubmit={confirmCode} className="space-y-3">

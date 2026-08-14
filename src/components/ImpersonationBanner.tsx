@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { UserCog } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface ImpersonationState {
   targetId: number;
@@ -52,13 +53,14 @@ export default function ImpersonationBanner() {
     <div className="fixed top-0 inset-x-0 z-[9999] bg-amber-500 text-white text-sm font-semibold px-4 py-2 flex items-center justify-center gap-3 shadow-md">
       <UserCog className="w-4 h-4 shrink-0" />
       <span>Connecté en tant que {state.targetName} (mode admin)</span>
-      <button
+      <GlassButton
         onClick={endImpersonation}
         disabled={ending}
-        className="underline hover:no-underline disabled:opacity-60"
+        variant="light"
+        size="sm"
       >
         {ending ? "Retour..." : "Quitter"}
-      </button>
+      </GlassButton>
     </div>
   );
 }

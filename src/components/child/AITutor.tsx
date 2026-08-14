@@ -9,6 +9,7 @@ import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Message {
   role: "user" | "assistant";
@@ -322,19 +323,20 @@ export default function AITutor() {
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
               <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{isSupportMode ? "Assistante IA" : "Tutrice IA · Maths"}</p>
             </div>
-            <button onClick={() => { setMessages([WELCOME]); deleteServerHistory(); }}
-              className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-              title="Nouvelle conversation">
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
-            <button onClick={() => setMinimized(v => !v)}
-              className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}>
-              <Minus className="w-3.5 h-3.5" />
-            </button>
+            <GlassIconButton
+              icon={RotateCcw}
+              onClick={() => { setMessages([WELCOME]); deleteServerHistory(); }}
+              color="white"
+              size="sm"
+              aria-label="Nouvelle conversation"
+            />
+            <GlassIconButton
+              icon={Minus}
+              onClick={() => setMinimized(v => !v)}
+              color="white"
+              size="sm"
+              aria-label="Réduire la conversation"
+            />
             <GlassCloseButton
               variant="dark"
               size="sm"
@@ -397,12 +399,11 @@ export default function AITutor() {
               {messages.length <= 2 && (
                 <div className="px-3 pb-2 flex flex-wrap gap-1.5 shrink-0">
                   {(isSupportMode ? SUPPORT_QUICK_SUGGESTIONS : DEFAULT_QUICK_SUGGESTIONS).map((s) => (
-                    <button key={s}
+                    <GlassButton key={s}
                       onClick={() => { setInput(s); setTimeout(() => inputRef.current?.focus(), 50); }}
-                      className="text-[10px] font-black px-3 py-1.5 rounded-full transition-all"
-                      style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.2)", color: "rgba(197,161,72,0.8)" }}>
+                      variant="light" size="sm" className="text-[10px]">
                       {s}
-                    </button>
+                    </GlassButton>
                   ))}
                 </div>
               )}
@@ -431,11 +432,15 @@ export default function AITutor() {
                     className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none resize-none"
                     style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)", minHeight: "36px", maxHeight: "80px" }}
                   />
-                  <button onClick={sendMessage} disabled={!input.trim() || loading}
-                    className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 self-end transition-all hover:-translate-y-0.5 disabled:opacity-40"
-                    style={{ background: "var(--greek-gold)" }}>
-                    <Send className="w-3.5 h-3.5 text-white" />
-                  </button>
+                  <GlassIconButton
+                    icon={Send}
+                    onClick={sendMessage}
+                    disabled={!input.trim() || loading}
+                    color="gold"
+                    size="md"
+                    className="self-end"
+                    aria-label="Envoyer le message"
+                  />
                 </div>
               )}
             </>

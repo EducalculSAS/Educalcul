@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Bell, X, AlertTriangle, Info, MessageCircle, Ban } from "lucide-react";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Notif {
   id: number;
@@ -66,7 +67,7 @@ export default function AdminMessages() {
             <p className="font-bold text-sm">{n.title}</p>
             <p className="text-xs opacity-80 mt-0.5">{n.content}</p>
           </div>
-          <button onClick={() => dismiss(n.id)} aria-label="Fermer la notification" className="shrink-0 opacity-50 hover:opacity-100 transition-opacity"><X className="w-4 h-4" aria-hidden="true" /></button>
+          <GlassIconButton icon={X} onClick={() => dismiss(n.id)} color="gray" size="sm" aria-label="Fermer la notification" className="shrink-0" />
         </div>
       ))}
     </div>

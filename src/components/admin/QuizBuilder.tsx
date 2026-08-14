@@ -19,6 +19,8 @@ import {
 
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddQuizModal from "./AIAddQuizModal";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 
@@ -239,22 +241,14 @@ export default function QuizBuilder({
           Questions ({questions.length})
         </h3>
         <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={() => setIsAiAddModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm font-medium"
-          >
+          <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
             Ajouter avec l'IA
-          </button>
-          <button
-            type="button"
-            onClick={addQuestion}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium"
-          >
+          </GlassButton>
+          <GlassButton size="sm" variant="navy" onClick={addQuestion}>
             <Plus size={16} />
             Ajouter une Question
-          </button>
+          </GlassButton>
         </div>
       </div>
 
@@ -284,13 +278,9 @@ export default function QuizBuilder({
       {questions.length === 0 ? (
         <div className="text-center py-12 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
           <p className="text-gray-500 mb-2">Aucune question ajoutée</p>
-          <button
-            type="button"
-            onClick={addQuestion}
-            className="text-blue-600 hover:text-blue-700 font-medium"
-          >
+          <GlassButton size="sm" variant="ghost" onClick={addQuestion}>
             Commencer par ajouter une question
-          </button>
+          </GlassButton>
         </div>
       ) : (
         <div className="space-y-6" ref={contentRef}>
@@ -419,27 +409,23 @@ export default function QuizBuilder({
                           />
 
                           {question.type !== "true_false" && (
-                            <button
-                              type="button"
-                              onClick={() =>
-                                removeOption(question.id, optIndex)
-                              }
-                              className="text-gray-300 hover:text-red-500"
-                            >
-                              <Trash2 size={16} />
-                            </button>
+                            <GlassIconButton
+                              icon={Trash2}
+                              onClick={() => removeOption(question.id, optIndex)}
+                              color="red"
+                              size="sm"
+                              aria-label="Supprimer l'option"
+                            />
                           )}
                         </div>
                       ))}
 
                       {question.type !== "true_false" && (
-                        <button
-                          type="button"
-                          onClick={() => addOption(question.id)}
-                          className="text-sm text-blue-600 hover:text-blue-700 font-medium pl-9 flex items-center gap-1"
-                        >
-                          <Plus size={14} /> Ajouter une option
-                        </button>
+                        <div className="pl-9">
+                          <GlassButton size="sm" variant="ghost" onClick={() => addOption(question.id)}>
+                            <Plus size={14} /> Ajouter une option
+                          </GlassButton>
+                        </div>
                       )}
                     </div>
                   )}
@@ -493,22 +479,22 @@ export default function QuizBuilder({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <button
-                    type="button"
+                  <GlassButton
+                    size="sm"
+                    variant="ghost"
                     onClick={() => setAiEditQuestionId(question.id)}
-                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
-                    title="Modifier cette question avec l'IA"
+                    className="!px-2.5"
                   >
                     <Sparkles size={14} />
                     <span className="hidden sm:inline">IA</span>
-                  </button>
-                  <button
-                    type="button"
+                  </GlassButton>
+                  <GlassIconButton
+                    icon={Trash2}
                     onClick={() => removeQuestion(question.id)}
-                    className="text-gray-400 hover:text-red-500 transition-colors"
-                  >
-                    <Trash2 size={18} />
-                  </button>
+                    color="red"
+                    size="sm"
+                    aria-label="Supprimer la question"
+                  />
                 </div>
               </div>
             </div>

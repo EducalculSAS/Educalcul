@@ -5,6 +5,7 @@ import { Flag, Plus, Trash2 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import { supabase } from "@/lib/supabaseClient";
 
 interface FeatureFlag {
@@ -145,9 +146,13 @@ export default function AdminFeatureFlagsClient({ initialFlags }: { initialFlags
                   {new Date(f.updated_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
                 </td>
                 <td className="px-4 py-3 text-right">
-                  <button onClick={() => removeFlag(f)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500">
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <GlassIconButton
+                    icon={Trash2}
+                    onClick={() => removeFlag(f)}
+                    color="red"
+                    size="sm"
+                    aria-label="Supprimer"
+                  />
                 </td>
               </tr>
             ))}

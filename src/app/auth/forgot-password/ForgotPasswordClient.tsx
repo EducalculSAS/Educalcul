@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -113,12 +112,9 @@ export default function ForgotPassword() {
               </GlassButton>
 
               <div className="text-center mt-4">
-                <Link
-                  href="/auth/connexion"
-                  className="text-[var(--greek-blue)] hover:text-[var(--greek-gold)] text-sm font-semibold flex items-center justify-center gap-1 transition-colors"
-                >
+                <GlassButton href="/auth/connexion" variant="ghost" size="sm">
                   <ArrowLeft className="w-4 h-4" /> Retour à la connexion
-                </Link>
+                </GlassButton>
               </div>
             </form>
           )}

@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowLeft } from "lucide-react";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface Plan extends ChooserPlan {
   is_active: boolean;
@@ -107,12 +108,9 @@ export default function SelectPlan() {
         />
 
         <div className="text-center mt-8">
-          <button
-            onClick={() => router.push("/auth/inscription")}
-            className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            ← Retour à l&apos;inscription
-          </button>
+          <GlassButton onClick={() => router.push("/auth/inscription")} variant="ghost" size="sm">
+            <ArrowLeft className="w-4 h-4" /> Retour à l&apos;inscription
+          </GlassButton>
         </div>
       </div>
     </div>

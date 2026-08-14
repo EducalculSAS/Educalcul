@@ -22,6 +22,8 @@ import {
   Upload,
   XCircle,
 } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 export interface Exercise {
   id: string;
@@ -315,22 +317,14 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold text-gray-800">Contenu du Cours</h3>
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setIsAiAddModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm font-medium"
-          >
+          <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
             Ajouter avec l'IA
-          </button>
-          <button
-            type="button"
-            onClick={addChapter}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium"
-          >
+          </GlassButton>
+          <GlassButton size="sm" variant="navy" onClick={addChapter}>
             <Plus size={16} />
             Ajouter un Chapitre
-          </button>
+          </GlassButton>
         </div>
       </div>
 
@@ -376,13 +370,9 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
       {chapters.length === 0 ? (
         <div className="text-center py-12 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
           <p className="text-gray-500 mb-2">Le cours est vide</p>
-          <button
-            type="button"
-            onClick={addChapter}
-            className="text-blue-600 hover:text-blue-700 font-medium"
-          >
+          <GlassButton size="sm" variant="navy" onClick={addChapter}>
             Commencer par ajouter un chapitre
-          </button>
+          </GlassButton>
         </div>
       ) : (
         <div className="space-y-4">
@@ -405,17 +395,13 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                 <div className="cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500" title="Glisser pour réordonner">
                   <GripVertical size={20} />
                 </div>
-                <button
-                  type="button"
+                <GlassIconButton
+                  icon={expandedChapters.has(chapter.id) ? ChevronDown : ChevronRight}
                   onClick={() => toggleChapter(chapter.id)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  {expandedChapters.has(chapter.id) ? (
-                    <ChevronDown size={20} />
-                  ) : (
-                    <ChevronRight size={20} />
-                  )}
-                </button>
+                  color="navy"
+                  size="sm"
+                  aria-label={expandedChapters.has(chapter.id) ? "Replier le chapitre" : "Déplier le chapitre"}
+                />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
@@ -430,23 +416,22 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                     placeholder="Titre du chapitre"
                   />
                 </div>
-                <button
-                  type="button"
+                <GlassButton
+                  size="sm"
+                  variant="ghost"
                   onClick={() => setAiEditTarget({ scope: "chapter", chapterId: chapter.id })}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
-                  title="Modifier ce chapitre avec l'IA"
+                  className="!px-2.5"
                 >
                   <Sparkles size={14} />
                   <span className="hidden sm:inline">IA</span>
-                </button>
-                <button
-                  type="button"
+                </GlassButton>
+                <GlassIconButton
+                  icon={Trash2}
                   onClick={() => removeChapter(chapter.id)}
+                  color="red"
+                  size="sm"
                   aria-label="Supprimer le chapitre"
-                  className="text-gray-400 hover:text-red-500 transition-colors"
-                >
-                  <Trash2 size={18} />
-                </button>
+                />
               </div>
 
               {/* Lessons List */}
@@ -457,27 +442,23 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                       key={lesson.id}
                       className="flex flex-col sm:flex-row gap-3 p-4 border border-[rgba(197,161,72,0.25)] rounded-lg hover:border-blue-100 transition-colors group"
                     >
-                      <div className="hidden sm:flex flex-col mt-2 text-gray-300 flex-shrink-0">
-                        <button
-                          type="button"
+                      <div className="hidden sm:flex flex-col mt-2 flex-shrink-0">
+                        <GlassIconButton
+                          icon={ChevronUp}
                           onClick={() => moveLesson(chapter.id, lIndex, lIndex - 1)}
                           disabled={lIndex === 0}
-                          className="hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
-                          title="Monter"
+                          color="navy"
+                          size="sm"
                           aria-label="Monter la leçon"
-                        >
-                          <ChevronUp size={16} />
-                        </button>
-                        <button
-                          type="button"
+                        />
+                        <GlassIconButton
+                          icon={ChevronDown}
                           onClick={() => moveLesson(chapter.id, lIndex, lIndex + 1)}
                           disabled={lIndex === (chapter.lessons || []).length - 1}
-                          className="hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
-                          title="Descendre"
+                          color="navy"
+                          size="sm"
                           aria-label="Descendre la leçon"
-                        >
-                          <ChevronDown size={16} />
-                        </button>
+                        />
                       </div>
 
                       <div className="flex-1 min-w-0 space-y-3">
@@ -540,23 +521,23 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                           </div>
 
                           <div className="flex items-center gap-2 flex-shrink-0">
-                            <button
-                              type="button"
+                            <GlassButton
+                              size="sm"
+                              variant="ghost"
                               onClick={() => setAiEditTarget({ scope: "lesson", chapterId: chapter.id, lessonId: lesson.id })}
-                              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
-                              title="Modifier cette leçon avec l'IA"
+                              className="!px-2.5"
                             >
                               <Sparkles size={14} />
                               <span className="hidden sm:inline">IA</span>
-                            </button>
-                            <button
-                              type="button"
+                            </GlassButton>
+                            <GlassIconButton
+                              icon={Trash2}
                               onClick={() => removeLesson(chapter.id, lesson.id)}
+                              color="red"
+                              size="sm"
                               aria-label="Supprimer la leçon"
-                              className="text-gray-300 hover:text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
-                            >
-                              <Trash2 size={16} />
-                            </button>
+                              className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+                            />
                           </div>
                         </div>
 
@@ -656,13 +637,14 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                                     alt="Illustration"
                                     className="w-full h-32 object-cover rounded-lg border border-[rgba(197,161,72,0.25)]"
                                   />
-                                  <button
-                                    type="button"
+                                  <GlassIconButton
+                                    icon={XCircle}
                                     onClick={() => updateLesson(chapter.id, lesson.id, { image_url: "" })}
-                                    className="absolute top-1.5 right-1.5 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
-                                  >
-                                    <XCircle size={16} />
-                                  </button>
+                                    color="red"
+                                    size="sm"
+                                    aria-label="Retirer l'image"
+                                    className="absolute top-1.5 right-1.5"
+                                  />
                                 </div>
                               ) : (
                                 <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-dashed border-[rgba(197,161,72,0.4)] rounded-lg text-xs text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors">
@@ -697,14 +679,14 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                                   className="flex-1 min-h-[50px] p-2 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm resize-y"
                                   placeholder="Énoncé de la question..."
                                 />
-                                <button
-                                  type="button"
+                                <GlassIconButton
+                                  icon={Trash2}
                                   onClick={() => removeExercise(chapter.id, lesson.id, ex.id)}
+                                  color="red"
+                                  size="sm"
                                   aria-label="Supprimer le mini-exercice"
-                                  className="text-gray-300 hover:text-red-500 transition-colors flex-shrink-0 mt-1"
-                                >
-                                  <Trash2 size={16} />
-                                </button>
+                                  className="flex-shrink-0 mt-1"
+                                />
                               </div>
                               <input
                                 type="text"
@@ -722,28 +704,32 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                               />
                             </div>
                           ))}
-                          <button
-                            type="button"
+                          <GlassButton
+                            size="sm"
+                            variant="outline"
+                            fullWidth
+                            rounded="xl"
                             onClick={() => addExercise(chapter.id, lesson.id)}
-                            className="w-full py-1.5 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-lg text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors text-xs font-medium flex items-center justify-center gap-2"
                           >
                             <Plus size={14} />
                             Ajouter un mini-exercice
-                          </button>
+                          </GlassButton>
                         </div>
                         )}
                       </div>
                     </div>
                   ))}
 
-                  <button
-                    type="button"
+                  <GlassButton
+                    size="sm"
+                    variant="outline"
+                    fullWidth
+                    rounded="xl"
                     onClick={() => addLesson(chapter.id)}
-                    className="w-full py-2 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-lg text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors text-sm font-medium flex items-center justify-center gap-2"
                   >
                     <Plus size={16} />
                     Ajouter une leçon
-                  </button>
+                  </GlassButton>
                 </div>
               )}
             </div>

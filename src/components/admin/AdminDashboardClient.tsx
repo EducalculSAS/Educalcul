@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
 
 const ROLE_LABEL: Record<string, string> = { parent: "Parent", child: "Élève", admin: "Admin" };
 const ROLE_COLOR: Record<string, string> = {
@@ -70,14 +71,16 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
                 {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
               </span>
             )}
-            <button
+            <GlassButton
               onClick={() => load()}
               disabled={refreshing}
-              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
+              variant="outline"
+              size="sm"
+              rounded="xl"
             >
               <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
               <span className="hidden sm:inline">Actualiser</span>
-            </button>
+            </GlassButton>
           </>
         }
       />

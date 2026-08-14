@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Category {
@@ -52,8 +53,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
     fetchCategories();
   };
 
-  const handleDelete = async (e: React.MouseEvent, id: number) => {
-    e.stopPropagation();
+  const handleDelete = async (id: number) => {
     if (!(await confirm("Supprimer cette catégorie et tous ses sujets ?"))) return;
     await supabase.from("forum_posts").delete().eq("category_id", id);
     await supabase.from("forum_categories").delete().eq("id", id);
@@ -91,13 +91,18 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
               className="group cursor-pointer bg-white border border-[rgba(197,161,72,0.25)] rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col relative"
             >
               {role === "admin" && (
-                <button
-                  onClick={(e) => handleDelete(e, cat.id)}
-                  aria-label="Supprimer la catégorie"
-                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
+                <div
+                  onClick={(e) => e.stopPropagation()}
+                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity"
                 >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+                  <GlassIconButton
+                    icon={Trash2}
+                    onClick={() => handleDelete(cat.id)}
+                    color="red"
+                    size="sm"
+                    aria-label="Supprimer la catégorie"
+                  />
+                </div>
               )}
               <div className="w-12 h-12 bg-blue-50 text-[var(--greek-blue)] rounded-xl flex items-center justify-center mb-4">
                 <MessageSquare className="w-6 h-6" aria-hidden="true" />

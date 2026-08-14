@@ -11,6 +11,7 @@ import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getSimpleLevelLabel } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import UserSessionsList from "@/components/UserSessionsList";
 
 const GoogleIcon = () => (
@@ -205,7 +206,7 @@ export default function ChildProfileSettings({
               {googleLinked ? (
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Lié</span>
-                  <button onClick={handleUnlinkGoogle} aria-label="Supprimer le lien Google" className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" aria-hidden="true" /></button>
+                  <GlassIconButton icon={Trash2} onClick={handleUnlinkGoogle} color="red" size="sm" aria-label="Supprimer le lien Google" />
                 </div>
               ) : (
                 <GlassButton onClick={handleLinkGoogle} variant="outline" size="sm">

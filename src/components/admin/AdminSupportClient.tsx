@@ -370,13 +370,9 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
           <div className="flex flex-col h-full">
             {/* Toolbar */}
             <div className="p-4 border-b border-[rgba(197,161,72,0.25)] flex items-center justify-between bg-gray-50">
-              <button
-                onClick={handleBackToList}
-                className="flex items-center text-gray-600 hover:text-[var(--greek-blue)] transition-colors"
-              >
-                <ArrowLeft size={18} className="mr-2" />
-                Retour à la liste
-              </button>
+              <GlassButton size="sm" variant="ghost" onClick={handleBackToList}>
+                <ArrowLeft size={18} /> Retour à la liste
+              </GlassButton>
               <div className="flex items-center gap-2">
                 {selectedTicket.is_archived ? (
                   <>
@@ -614,9 +610,9 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                         </div>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <button className="text-[var(--greek-blue)] hover:text-blue-800 font-medium text-sm">
+                        <GlassButton size="sm" variant="ghost" onClick={() => handleTicketClick(ticket)}>
                           Voir
-                        </button>
+                        </GlassButton>
                       </td>
                     </tr>
                   ))

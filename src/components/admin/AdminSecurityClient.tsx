@@ -5,6 +5,7 @@ import { ShieldCheck, Plus, Trash2 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import { supabase } from "@/lib/supabaseClient";
 
 interface AllowlistEntry {
@@ -124,9 +125,7 @@ export default function AdminSecurityClient({ initialEntries }: { initialEntries
                   {new Date(e.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
                 </td>
                 <td className="px-4 py-3 text-right">
-                  <button onClick={() => removeEntry(e)} className="p-1.5 rounded-lg hover:bg-red-50 text-red-500">
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => removeEntry(e)} aria-label="Supprimer" />
                 </td>
               </tr>
             ))}

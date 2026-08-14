@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle, XCircle, Clock, Eye } from "lucide-react";
 import Link from "next/link";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default async function ExerciseHistoryPage() {
   const authUser = await getServerUser();
@@ -17,13 +18,11 @@ export default async function ExerciseHistoryPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
-      <Link
-        href="/child/exercises"
-        className="flex items-center text-[var(--greek-blue)] hover:text-[var(--greek-gold)] mb-6 transition-colors font-bold"
-      >
-        <ArrowLeft className="w-5 h-5 mr-2" />
-        Retour aux exercices
-      </Link>
+      <div className="mb-6">
+        <GlassButton href="/child/exercises" variant="ghost" size="sm">
+          <ArrowLeft className="w-4 h-4" /> Retour aux exercices
+        </GlassButton>
+      </div>
 
       <h1 className="text-2xl md:text-3xl font-bold text-[var(--greek-blue)] mb-6 font-[family-name:var(--font-display)]">
         Mes tentatives

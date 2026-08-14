@@ -14,6 +14,7 @@ import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useConfirm } from "@/components/ConfirmDialog";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Post {
@@ -70,8 +71,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     fetchPosts();
   };
 
-  const handleDelete = async (e: React.MouseEvent, id: number) => {
-    e.stopPropagation();
+  const handleDelete = async (id: number) => {
     if (!(await confirm("Supprimer ce sujet et ses commentaires ?"))) return;
     await supabase.from("forum_posts").delete().eq("id", id);
     fetchPosts();
@@ -90,9 +90,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button onClick={onBack} aria-label="Retour" className="p-2 bg-white border border-[rgba(197,161,72,0.25)] text-[var(--greek-blue)] rounded-xl hover:bg-gray-50 transition-all shadow-sm">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <GlassIconButton icon={ArrowLeft} onClick={onBack} color="navy" aria-label="Retour" />
           <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">{categoryName}</h2>
         </div>
         <GlassButton onClick={() => setShowModal(true)} variant="navy" size="sm">
@@ -147,9 +145,9 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
                   <span className="font-semibold">{commentCount}</span>
                 </div>
                 {role === "admin" && (
-                  <button onClick={(e) => handleDelete(e, post.id)} aria-label="Supprimer le sujet" className="opacity-0 group-hover:opacity-100 p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <div onClick={(e) => e.stopPropagation()} className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <GlassIconButton icon={Trash2} onClick={() => handleDelete(post.id)} color="red" size="sm" aria-label="Supprimer le sujet" />
+                  </div>
                 )}
               </div>
             </div>

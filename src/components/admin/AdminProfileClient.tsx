@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
-import { User, Save, Eye, Crown, Shield } from "lucide-react";
+import { User, Save, Eye, Crown, Shield, X } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminTotpCard from "@/components/admin/AdminTotpCard";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 const ADMIN_AVATAR = "/logo.png";
 
@@ -160,13 +161,13 @@ export default function AdminProfileClient({ initialFormData }: {
             )}
             {message.text}
           </span>
-          <button
+          <GlassIconButton
+            icon={X}
             onClick={() => setMessage(null)}
+            color="gray"
+            size="sm"
             aria-label="Fermer"
-            className="font-bold hover:bg-black/5 p-1 rounded-full transition-colors"
-          >
-            <div className="w-4 h-4 flex items-center justify-center">×</div>
-          </button>
+          />
         </div>
       )}
 

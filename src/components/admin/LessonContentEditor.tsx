@@ -20,6 +20,8 @@ import type { Lesson, Exercise } from "./CourseBuilder";
 import TableEditorModal from "./TableEditorModal";
 import GraphEditorModal from "./GraphEditorModal";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 const BLOCK_LABELS: Record<LessonBlock["type"], string> = {
   text: "Texte",
@@ -135,13 +137,13 @@ export default function LessonContentEditor({
                 {BLOCK_LABELS[block.type]}
               </span>
               <div className="flex-1" />
-              <button
-                type="button"
+              <GlassIconButton
+                icon={Trash2}
                 onClick={() => removeBlock(block.id)}
-                className="text-gray-300 hover:text-red-500 transition-colors"
-              >
-                <Trash2 size={16} />
-              </button>
+                color="red"
+                size="sm"
+                aria-label="Supprimer le bloc"
+              />
             </div>
 
             {block.type === "text" && (
@@ -174,13 +176,13 @@ export default function LessonContentEditor({
                     __html: renderLatexInHTML(renderMathGraphPlaceholders(block.content || "")),
                   }}
                 />
-                <button
-                  type="button"
+                <GlassButton
+                  size="sm"
+                  variant="ghost"
                   onClick={() => (block.type === "table" ? setTableModalFor(block.id) : setGraphModalFor(block.id))}
-                  className="px-3 py-1.5 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] text-gray-600 hover:bg-amber-50 font-medium"
                 >
                   Modifier
-                </button>
+                </GlassButton>
               </div>
             )}
 
@@ -193,13 +195,14 @@ export default function LessonContentEditor({
                       alt="Illustration"
                       className="w-full h-32 object-cover rounded-lg border border-[rgba(197,161,72,0.25)]"
                     />
-                    <button
-                      type="button"
+                    <GlassIconButton
+                      icon={XCircle}
                       onClick={() => updateBlock(block.id, { image_url: "" })}
-                      className="absolute top-1.5 right-1.5 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
-                    >
-                      <XCircle size={16} />
-                    </button>
+                      color="red"
+                      size="sm"
+                      aria-label="Supprimer l'image"
+                      className="absolute top-1.5 right-1.5"
+                    />
                   </div>
                 ) : (
                   <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-dashed border-[rgba(197,161,72,0.4)] rounded-lg text-xs text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors">
@@ -253,21 +256,21 @@ export default function LessonContentEditor({
 
       {/* Add block toolbar */}
       <div className="flex flex-wrap gap-2">
-        <button type="button" onClick={() => addBlock("text")} className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border-2 border-dashed border-[rgba(197,161,72,0.25)] text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors font-medium">
+        <GlassButton size="sm" variant="outline" onClick={() => addBlock("text")}>
           <Plus size={14} /> Texte
-        </button>
-        <button type="button" onClick={() => addBlock("table")} className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border-2 border-dashed border-[rgba(197,161,72,0.25)] text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors font-medium">
+        </GlassButton>
+        <GlassButton size="sm" variant="outline" onClick={() => addBlock("table")}>
           <Plus size={14} /> Tableau
-        </button>
-        <button type="button" onClick={() => addBlock("graph")} className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border-2 border-dashed border-[rgba(197,161,72,0.25)] text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors font-medium">
+        </GlassButton>
+        <GlassButton size="sm" variant="outline" onClick={() => addBlock("graph")}>
           <Plus size={14} /> Graphique
-        </button>
-        <button type="button" onClick={() => addBlock("image")} className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border-2 border-dashed border-[rgba(197,161,72,0.25)] text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors font-medium">
+        </GlassButton>
+        <GlassButton size="sm" variant="outline" onClick={() => addBlock("image")}>
           <Plus size={14} /> Image
-        </button>
-        <button type="button" onClick={() => addBlock("exercise")} className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border-2 border-dashed border-[rgba(197,161,72,0.25)] text-gray-500 hover:border-blue-200 hover:text-blue-600 transition-colors font-medium">
+        </GlassButton>
+        <GlassButton size="sm" variant="outline" onClick={() => addBlock("exercise")}>
           <Plus size={14} /> Mini-exercice
-        </button>
+        </GlassButton>
       </div>
 
       {tableModalFor !== null && (

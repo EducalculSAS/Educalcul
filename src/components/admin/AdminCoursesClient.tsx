@@ -45,6 +45,7 @@ import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import {
   getAdminCache,
@@ -1119,10 +1120,16 @@ export default function AdminCoursesClient({
                   : "border-[rgba(197,161,72,0.25)] hover:shadow-lg hover:-translate-y-1"
               }`}
               >
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
+                <div
+                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <GlassIconButton
+                    icon={Edit}
+                    color="navy"
+                    size="sm"
+                    aria-label="Modifier"
+                    onClick={() => {
                       setEditingFolder(folder);
                       setFolderFormData({
                         name: folder.name,
@@ -1133,22 +1140,15 @@ export default function AdminCoursesClient({
                       });
                       setIsFolderModalOpen(true);
                     }}
-                    className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
-                    title="Modifier"
-                  >
-                    <Edit size={14} />
-                  </button>
+                  />
                   {!folder.is_system && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteFolder(folder);
-                      }}
-                      className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                      title="Supprimer"
-                    >
-                      <Trash2 size={14} />
-                    </button>
+                    <GlassIconButton
+                      icon={Trash2}
+                      color="red"
+                      size="sm"
+                      aria-label="Supprimer"
+                      onClick={() => handleDeleteFolder(folder)}
+                    />
                   )}
                 </div>
 
@@ -1257,37 +1257,37 @@ export default function AdminCoursesClient({
                     {new Date(course.created_at).toLocaleDateString("fr-FR")}
                   </span>
                   <div className="flex items-center gap-1">
-                    <button
+                    <GlassIconButton
+                      icon={Eye}
                       onClick={async () => handlePreview(await getFullCourse(course))}
-                      className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
-                      title="Prévisualiser"
-                    >
-                      <Eye size={18} />
-                    </button>
-                    <button
+                      color="navy"
+                      size="sm"
+                      aria-label="Prévisualiser"
+                    />
+                    <GlassIconButton
+                      icon={Edit}
                       onClick={async () => handleOpenModal("edit", await getFullCourse(course))}
-                      className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
-                      title="Modifier"
-                    >
-                      <Edit size={18} />
-                    </button>
-                    <button
+                      color="navy"
+                      size="sm"
+                      aria-label="Modifier"
+                    />
+                    <GlassIconButton
+                      icon={Download}
                       onClick={async () => {
                         const full = await getFullCourse(course);
                         exportAsJSON(full, "course", full.title);
                       }}
-                      className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-                      title="Exporter JSON"
-                    >
-                      <Download size={18} />
-                    </button>
-                    <button
+                      color="gold"
+                      size="sm"
+                      aria-label="Exporter JSON"
+                    />
+                    <GlassIconButton
+                      icon={Trash2}
                       onClick={() => handleDelete(course)}
-                      className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                      title="Supprimer"
-                    >
-                      <Trash2 size={18} />
-                    </button>
+                      color="red"
+                      size="sm"
+                      aria-label="Supprimer"
+                    />
                   </div>
                 </div>
               </div>
@@ -1473,18 +1473,19 @@ export default function AdminCoursesClient({
                               alt="Preview"
                               className="w-full h-full object-cover"
                             />
-                            <button
-                              type="button"
+                            <GlassIconButton
+                              icon={XCircle}
                               onClick={() =>
                                 setFormData((prev) => ({
                                   ...prev,
                                   thumbnail_url: "",
                                 }))
                               }
-                              className="absolute top-0.5 right-0.5 p-0.5 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
-                            >
-                              <XCircle size={13} />
-                            </button>
+                              color="red"
+                              size="sm"
+                              aria-label="Retirer l'image"
+                              className="absolute top-0.5 right-0.5"
+                            />
                           </div>
                         )}
                         <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium flex-1 justify-center border border-dashed border-[rgba(197,161,72,0.25)]">
@@ -1765,17 +1766,14 @@ function NotificationModal({
           <p className="text-gray-600 text-sm leading-relaxed">{subtitle}</p>
         </div>
         <div className="px-8 pb-8 pt-2 flex flex-col gap-2">
-          <button
-            type="button"
+          <GlassButton
             onClick={onAction}
-            className="w-full py-3 rounded-xl font-bold text-white transition-all shadow-md hover:-translate-y-0.5"
-            style={{
-              background:
-                "linear-gradient(to right, var(--greek-gold), #b08438)",
-            }}
+            variant="navy"
+            rounded="xl"
+            fullWidth
           >
             {ctaLabel}
-          </button>
+          </GlassButton>
         </div>
       </div>
     </div>

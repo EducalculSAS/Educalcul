@@ -25,6 +25,7 @@ import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph"
 import MathInput, { MathInputHandle } from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import "katex/dist/katex.min.css";
 
 // Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
@@ -690,14 +691,7 @@ export default function ExerciseViewer({
       <div className="bg-[var(--greek-cream)] border-b border-[var(--greek-gold)] px-6 py-4 flex items-center gap-3 justify-between shrink-0">
         <div className="flex items-center gap-3">
           {onBack && (
-            <button
-              onClick={() => { saveTimeSpent(); onBack(); }}
-              className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
-              title="Retour"
-              aria-label="Retour"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
+            <GlassIconButton icon={ArrowLeft} onClick={() => { saveTimeSpent(); onBack(); }} color="navy" size="sm" aria-label="Retour" />
           )}
           <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)]">
             {exercise.title}
@@ -1057,30 +1051,30 @@ export default function ExerciseViewer({
                                   __html: renderLatexInHTML(item),
                                 }}
                               />
-                              <button
+                              <GlassIconButton
+                                icon={ArrowUp}
                                 disabled={isSubmitted || i === 0}
                                 onClick={() => {
                                   const next = [...current];
                                   [next[i - 1], next[i]] = [next[i], next[i - 1]];
                                   handleBlockAnswerChange(block.id, next);
                                 }}
-                                type="button"
-                                className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-20"
-                              >
-                                <ArrowUp size={14} />
-                              </button>
-                              <button
+                                color="navy"
+                                size="sm"
+                                aria-label="Monter"
+                              />
+                              <GlassIconButton
+                                icon={ArrowDown}
                                 disabled={isSubmitted || i === current.length - 1}
                                 onClick={() => {
                                   const next = [...current];
                                   [next[i], next[i + 1]] = [next[i + 1], next[i]];
                                   handleBlockAnswerChange(block.id, next);
                                 }}
-                                type="button"
-                                className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-20"
-                              >
-                                <ArrowDown size={14} />
-                              </button>
+                                color="navy"
+                                size="sm"
+                                aria-label="Descendre"
+                              />
                             </div>
                           );
                         });
@@ -1158,15 +1152,14 @@ export default function ExerciseViewer({
 
       {/* Footer Navigation */}
       <div className="bg-[var(--greek-cream)] border-t border-[var(--greek-gold)] p-4 flex justify-between shrink-0">
-        <button
+        <GlassButton
           onClick={handlePrevPage}
           disabled={currentPageIndex === 0}
-          className={`px-4 py-2 text-[var(--greek-bronze)] font-medium hover:bg-[var(--greek-gold)]/10 rounded-lg flex items-center gap-2 transition-colors ${
-            currentPageIndex === 0 ? "opacity-0 pointer-events-none" : ""
-          }`}
+          variant="ghost"
+          style={currentPageIndex === 0 ? { opacity: 0 } : undefined}
         >
           <ArrowLeft className="w-4 h-4" /> Précédent
-        </button>
+        </GlassButton>
 
         {reviewMode ? (
           <GlassButton

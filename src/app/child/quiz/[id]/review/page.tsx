@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
-import { AlertCircle } from "lucide-react";
-import Link from "next/link";
+import { AlertCircle, ArrowLeft } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers } from "@/lib/quizContent";
 import QuizReviewClient from "@/components/child/QuizReviewClient";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default async function QuizReviewPage({
   params,
@@ -39,9 +39,9 @@ export default async function QuizReviewPage({
         <h1 className="text-2xl font-bold text-[var(--greek-blue)] mb-2">
           Aucune correction disponible
         </h1>
-        <Link href="/child/quiz/history" className="text-[var(--greek-gold)] hover:underline">
-          Retour à mes tentatives
-        </Link>
+        <GlassButton href="/child/quiz/history" variant="ghost" size="sm">
+          <ArrowLeft className="w-4 h-4" /> Retour à mes tentatives
+        </GlassButton>
       </div>
     );
   }

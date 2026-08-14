@@ -9,6 +9,7 @@ import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
@@ -1130,10 +1131,13 @@ export default function AdminExercisesClient({
                       : "border-[rgba(197,161,72,0.25)] hover:shadow-lg hover:-translate-y-1"
                   }`}
               >
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
+                <div
+                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <GlassIconButton
+                    icon={Edit}
+                    onClick={() => {
                       setEditingFolder(folder);
                       setFolderFormData({
                         name: folder.name,
@@ -1144,22 +1148,20 @@ export default function AdminExercisesClient({
                       });
                       setIsFolderModalOpen(true);
                     }}
-                    className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
-                    title="Modifier"
-                  >
-                    <Edit size={14} />
-                  </button>
+                    color="navy"
+                    size="sm"
+                    aria-label="Modifier"
+                  />
                   {!folder.is_system && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
+                    <GlassIconButton
+                      icon={Trash2}
+                      onClick={() => {
                         handleDeleteFolder(folder);
                       }}
-                      className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                      title="Supprimer"
-                    >
-                      <Trash2 size={14} />
-                    </button>
+                      color="red"
+                      size="sm"
+                      aria-label="Supprimer"
+                    />
                   )}
                 </div>
 
@@ -1252,37 +1254,37 @@ export default function AdminExercisesClient({
                       {new Date(exercise.created_at).toLocaleDateString()}
                     </span>
                     <div className="flex gap-1">
-                      <button
+                      <GlassIconButton
+                        icon={Eye}
                         onClick={async () => handlePreview(await getFullExercise(exercise))}
-                        className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
-                        title="Prévisualiser"
-                      >
-                        <Eye size={16} />
-                      </button>
-                      <button
+                        color="gray"
+                        size="sm"
+                        aria-label="Prévisualiser"
+                      />
+                      <GlassIconButton
+                        icon={Edit}
                         onClick={async () => openEditModal(await getFullExercise(exercise))}
-                        className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
-                        title="Modifier"
-                      >
-                        <Edit size={16} />
-                      </button>
-                      <button
+                        color="navy"
+                        size="sm"
+                        aria-label="Modifier"
+                      />
+                      <GlassIconButton
+                        icon={Download}
                         onClick={async () => {
                           const full = await getFullExercise(exercise);
                           exportAsJSON(full, "exercise", full.title);
                         }}
-                        className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-                        title="Exporter JSON"
-                      >
-                        <Download size={16} />
-                      </button>
-                      <button
+                        color="gold"
+                        size="sm"
+                        aria-label="Exporter JSON"
+                      />
+                      <GlassIconButton
+                        icon={Trash2}
                         onClick={() => handleDelete(exercise.id)}
-                        className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                        title="Supprimer"
-                      >
-                        <Trash2 size={16} />
-                      </button>
+                        color="red"
+                        size="sm"
+                        aria-label="Supprimer"
+                      />
                     </div>
                   </div>
                 </div>
@@ -1444,13 +1446,13 @@ export default function AdminExercisesClient({
             <p className="font-semibold">Exercice généré</p>
             <p className="opacity-90">{aiSuccess}</p>
           </div>
-          <button
+          <GlassIconButton
+            icon={X}
             onClick={() => setAiSuccess(null)}
-            className="text-emerald-700 hover:text-emerald-900"
+            color="green"
+            size="sm"
             aria-label="Fermer"
-          >
-            <X size={16} />
-          </button>
+          />
         </div>
       )}
 
@@ -1462,13 +1464,13 @@ export default function AdminExercisesClient({
             <p className="font-semibold">Erreur IA</p>
             <p className="opacity-90">{aiError}</p>
           </div>
-          <button
+          <GlassIconButton
+            icon={X}
             onClick={() => setAiError(null)}
-            className="text-red-700 hover:text-red-900"
+            color="red"
+            size="sm"
             aria-label="Fermer"
-          >
-            <X size={16} />
-          </button>
+          />
         </div>
       )}
 
@@ -1558,9 +1560,15 @@ export default function AdminExercisesClient({
                         {formData.thumbnail_url && (
                           <div className="relative w-full h-20 bg-gray-100 rounded-lg overflow-hidden border border-[rgba(197,161,72,0.25)] mb-2">
                             <img src={formData.thumbnail_url} alt="Aperçu" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder-exercise.png"; }} />
-                            <button type="button" onClick={() => setFormData({ ...formData, thumbnail_url: "" })} className="absolute top-1.5 right-1.5 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500">
-                              <XCircle size={16} />
-                            </button>
+                            <div className="absolute top-1.5 right-1.5">
+                              <GlassIconButton
+                                icon={XCircle}
+                                onClick={() => setFormData({ ...formData, thumbnail_url: "" })}
+                                color="red"
+                                size="sm"
+                                aria-label="Supprimer l'image"
+                              />
+                            </div>
                           </div>
                         )}
                         <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium w-full justify-center border border-dashed border-[rgba(197,161,72,0.25)]">

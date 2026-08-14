@@ -4,6 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 const ACTION_LABELS: Record<string, string> = {
   USER_CREATED: "Utilisateur créé",
@@ -143,13 +144,23 @@ export default function AuditLogTable({
       <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100">
         <span className="text-xs text-gray-400">{total} entrée(s)</span>
         <div className="flex items-center gap-2">
-          <button onClick={() => load(Math.max(1, page - 1))} disabled={page === 1} className="p-1.5 rounded-lg border border-gray-200 disabled:opacity-40">
-            <ChevronLeft className="w-4 h-4" />
-          </button>
+          <GlassIconButton
+            icon={ChevronLeft}
+            color="navy"
+            size="sm"
+            onClick={() => load(Math.max(1, page - 1))}
+            disabled={page === 1}
+            aria-label="Page précédente"
+          />
           <span className="text-xs text-gray-500">{page} / {totalPages}</span>
-          <button onClick={() => load(Math.min(totalPages, page + 1))} disabled={page === totalPages} className="p-1.5 rounded-lg border border-gray-200 disabled:opacity-40">
-            <ChevronRight className="w-4 h-4" />
-          </button>
+          <GlassIconButton
+            icon={ChevronRight}
+            color="navy"
+            size="sm"
+            onClick={() => load(Math.min(totalPages, page + 1))}
+            disabled={page === totalPages}
+            aria-label="Page suivante"
+          />
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { useConfirm } from "@/components/ConfirmDialog";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface User { id: number; first_name: string; last_name: string; child_username?: string; avatar: string | null; role: string; equipped_border?: string | null; name_color?: string | null; featured_badges?: any[]; }
 interface Comment { id: number; content: string; created_at: string; author: User; }
@@ -132,9 +133,7 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
       {/* Header */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <button onClick={onBack} aria-label="Retour" className="p-2 bg-white border border-[rgba(197,161,72,0.25)] text-[var(--greek-blue)] rounded-xl hover:bg-gray-50 shadow-sm">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <GlassIconButton icon={ArrowLeft} onClick={onBack} color="navy" aria-label="Retour" />
           <span className="text-sm text-gray-400">{post.category?.name}</span>
         </div>
         {isAdmin && (
@@ -162,9 +161,9 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
         <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">{post.content}</p>
         {!isAdmin && (
           <div className="flex justify-end mt-3">
-            <button onClick={() => setReportModal({ type: "post", targetId: post.id, targetUserId: post.author?.id })} className="flex items-center gap-1 text-xs text-gray-400 hover:text-red-500 transition-colors">
-              <Flag className="w-3 h-3" /> Signaler
-            </button>
+            <GlassButton onClick={() => setReportModal({ type: "post", targetId: post.id, targetUserId: post.author?.id })} variant="ghost" size="sm">
+              <Flag className="w-3.5 h-3.5" /> Signaler
+            </GlassButton>
           </div>
         )}
       </div>
@@ -195,24 +194,22 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
                   {(comment.author?.featured_badges?.length ?? 0) > 0 && <BadgeMinis badgeIds={comment.author?.featured_badges || []} />}
                   <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase ${roleBadge(comment.author?.role)}`}>{roleLabel(comment.author?.role)}</span>
                   {isAdmin && comment.author?.id && (
-                    <a href={`/admin/users/${comment.author.id}`} className="text-gray-300 hover:text-[var(--greek-blue)] transition-colors" title="Voir le profil" aria-label="Voir le profil admin">
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
+                    <GlassIconButton icon={ExternalLink} href={`/admin/users/${comment.author.id}`} color="gray" size="sm" aria-label="Voir le profil admin" />
                   )}
                   <span className="text-xs text-gray-400">{formatDistanceToNow(new Date(comment.created_at), { addSuffix: true, locale: fr })}</span>
                 </div>
                 {(isAdmin || (userDbId !== null && comment.author?.id === userDbId)) && (
-                  <button onClick={() => deleteComment(comment.id)} aria-label="Supprimer le commentaire" className="opacity-0 group-hover:opacity-100 p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <GlassIconButton icon={Trash2} onClick={() => deleteComment(comment.id)} color="red" size="sm" aria-label="Supprimer le commentaire" />
+                  </div>
                 )}
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">{comment.content}</p>
               {!isAdmin && (
                 <div className="flex justify-end mt-1">
-                  <button onClick={() => setReportModal({ type: "comment", targetId: comment.id, targetUserId: comment.author?.id })} className="flex items-center gap-1 text-xs text-gray-400 hover:text-red-500 transition-colors">
-                    <Flag className="w-3 h-3" /> Signaler
-                  </button>
+                  <GlassButton onClick={() => setReportModal({ type: "comment", targetId: comment.id, targetUserId: comment.author?.id })} variant="ghost" size="sm">
+                    <Flag className="w-3.5 h-3.5" /> Signaler
+                  </GlassButton>
                 </div>
               )}
             </div>
@@ -254,7 +251,7 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
                 <AlertTriangle className="w-4 h-4 text-orange-500" />
                 Signaler ce {reportModal.type === "post" ? "sujet" : "message"}
               </h2>
-              <button onClick={() => { setReportModal(null); setReportReason(""); }} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"><X size={16} /></button>
+              <GlassIconButton icon={X} onClick={() => { setReportModal(null); setReportReason(""); }} color="gray" size="sm" aria-label="Fermer" />
             </div>
             <div className="p-6 space-y-4">
               <p className="text-sm text-gray-500">Explique pourquoi tu signales ce contenu. Ton signalement sera examiné par un modérateur.</p>
@@ -270,11 +267,10 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
                 />
               </div>
               <div className="flex justify-end gap-3">
-                <button onClick={() => { setReportModal(null); setReportReason(""); }} className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-xl text-sm font-semibold transition-colors">Annuler</button>
-                <button onClick={submitReport} disabled={!reportReason.trim()}
-                  className="flex items-center gap-2 px-5 py-2 bg-orange-500 text-white rounded-xl text-sm font-bold hover:bg-orange-600 transition-colors disabled:opacity-50">
+                <GlassButton onClick={() => { setReportModal(null); setReportReason(""); }} variant="ghost" size="sm">Annuler</GlassButton>
+                <GlassButton onClick={submitReport} variant="danger" size="sm" disabled={!reportReason.trim()}>
                   <Flag className="w-3.5 h-3.5" /> Signaler
-                </button>
+                </GlassButton>
               </div>
             </div>
           </div>

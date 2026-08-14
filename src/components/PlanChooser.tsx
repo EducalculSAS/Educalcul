@@ -8,6 +8,7 @@ import {
   type CustomPlanConfig, type AIId, type PricingCustomConfig, type PricingOption,
 } from "@/lib/customPlanPricing";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 // Fonctionnalités qu'une option peut déverrouiller (pour le menu admin).
@@ -276,10 +277,7 @@ function OptionRow({ option, selected, onToggle, edit }: {
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           {edit && (
-            <button type="button" onClick={edit.onDelete} title="Supprimer l'option" aria-label="Supprimer l'option"
-              className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors">
-              <Trash2 className="w-4 h-4" />
-            </button>
+            <GlassIconButton icon={Trash2} onClick={edit.onDelete} color="red" size="sm" aria-label="Supprimer l'option" />
           )}
           <button type="button" onClick={() => onToggle(!selected)}
             className="relative w-11 h-6 rounded-full transition-colors"
@@ -412,10 +410,9 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
             />
           ))}
           {edit && (
-            <button type="button" onClick={addOption}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 border-dashed border-[var(--greek-border)] text-sm font-semibold text-[var(--greek-blue)] hover:border-[var(--greek-gold)] hover:text-[var(--greek-gold)] transition-colors">
+            <GlassButton onClick={addOption} variant="outline" rounded="xl" fullWidth>
               <Plus className="w-4 h-4" /> Ajouter une option
-            </button>
+            </GlassButton>
           )}
         </div>
       </div>

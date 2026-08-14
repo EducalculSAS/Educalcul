@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 /** Page de détail quiz : le contenu (déjà purgé des réponses côté serveur)
@@ -168,14 +169,13 @@ export default function QuizDetailClient({
     return (
       <div className="fixed inset-0 z-50 bg-white flex flex-col overflow-hidden">
         <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-          <button
+          <GlassIconButton
+            icon={ArrowLeft}
             onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
-            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-            title="Retour à l'aperçu"
+            color="white"
+            className="flex-shrink-0"
             aria-label="Retour à l'aperçu"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          />
           <h1 className="text-lg font-bold truncate flex-1">{quiz.title}</h1>
           <GlassCloseButton
             variant="dark"
@@ -203,19 +203,22 @@ export default function QuizDetailClient({
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <button
-        onClick={() => {
-          if (isPreview) {
-            window.close();
-          } else {
-            router.back();
-          }
-        }}
-        className="flex items-center text-[var(--greek-blue)] hover:text-[var(--greek-gold)] mb-6 transition-colors font-bold"
-      >
-        <ArrowLeft className="w-5 h-5 mr-2" />
-        Retour
-      </button>
+      <div className="mb-6">
+        <GlassButton
+          onClick={() => {
+            if (isPreview) {
+              window.close();
+            } else {
+              router.back();
+            }
+          }}
+          variant="ghost"
+          size="sm"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Retour
+        </GlassButton>
+      </div>
 
       <div
         ref={contentRef}
@@ -344,13 +347,13 @@ export default function QuizDetailClient({
                               {a.score_percent ?? 0}%
                             </span>
                             {i === 0 && (
-                              <button
+                              <GlassIconButton
+                                icon={Eye}
                                 onClick={() => { setForceNewAttempt(false); setOpenCorrection(true); setStarted(true); }}
-                                title="Voir ma correction"
-                                className="text-[var(--greek-blue)] hover:opacity-70"
-                              >
-                                <Eye className="w-4 h-4" />
-                              </button>
+                                color="navy"
+                                size="sm"
+                                aria-label="Voir ma correction"
+                              />
                             )}
                           </span>
                         </div>

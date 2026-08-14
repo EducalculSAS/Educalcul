@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getPendingSignupPassword, clearPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
-import { AlertCircle, Loader2, Gift, CheckCircle, Pencil, User, Mail } from "lucide-react";
+import { AlertCircle, Loader2, Gift, CheckCircle, Pencil, User, Mail, ArrowLeft } from "lucide-react";
 import { computeCustomPlan, DEFAULT_CUSTOM_PRICING } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
@@ -157,12 +157,9 @@ export default function RecapClient() {
             <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2">
               <User className="w-4 h-4 text-[var(--greek-gold)]" /> Vos informations
             </h2>
-            <button
-              onClick={() => router.push("/auth/inscription")}
-              className="text-xs font-semibold text-[var(--greek-blue)] hover:underline flex items-center gap-1"
-            >
+            <GlassButton onClick={() => router.push("/auth/inscription")} variant="ghost" size="sm">
               <Pencil className="w-3 h-3" /> Modifier
-            </button>
+            </GlassButton>
           </div>
           <div className="space-y-1 text-sm text-gray-600">
             <p><span className="text-gray-400">Nom :</span> {signupData.firstName} {signupData.lastName}</p>
@@ -176,12 +173,9 @@ export default function RecapClient() {
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-6 shadow-sm mb-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-bold text-[var(--greek-blue)]">Formule choisie</h2>
-            <button
-              onClick={() => router.push("/auth/inscription/select-plan")}
-              className="text-xs font-semibold text-[var(--greek-blue)] hover:underline flex items-center gap-1"
-            >
+            <GlassButton onClick={() => router.push("/auth/inscription/select-plan")} variant="ghost" size="sm">
               <Pencil className="w-3 h-3" /> Changer
-            </button>
+            </GlassButton>
           </div>
 
           {selectedPlan.custom ? (
@@ -258,12 +252,9 @@ export default function RecapClient() {
         </GlassButton>
 
         <div className="text-center mt-6">
-          <button
-            onClick={() => router.push("/auth/inscription/select-plan")}
-            className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            ← Retour aux formules
-          </button>
+          <GlassButton onClick={() => router.push("/auth/inscription/select-plan")} variant="ghost" size="sm">
+            <ArrowLeft className="w-4 h-4" /> Retour aux formules
+          </GlassButton>
         </div>
       </div>
     </div>

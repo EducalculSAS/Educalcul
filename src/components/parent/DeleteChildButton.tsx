@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 /** Bouton de suppression d'un profil enfant : seule action mutante de
  * /parent/children, isolée en client island. La liste elle-même est rendue
@@ -37,19 +38,20 @@ export default function DeleteChildButton({ childId }: { childId: string }) {
     }
   };
 
-  return (
-    <button
-      onClick={handleDelete}
-      disabled={deleting}
-      className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
-      title="Supprimer"
-      aria-label="Supprimer le profil enfant"
-    >
-      {deleting ? (
+  if (deleting) {
+    return (
+      <div className="w-9 h-9 flex items-center justify-center">
         <div className="w-4 h-4 animate-spin rounded-full border-2 border-[var(--greek-blue)] border-t-transparent" />
-      ) : (
-        <Trash2 className="w-4 h-4" />
-      )}
-    </button>
+      </div>
+    );
+  }
+
+  return (
+    <GlassIconButton
+      icon={Trash2}
+      onClick={handleDelete}
+      color="red"
+      aria-label="Supprimer le profil enfant"
+    />
   );
 }

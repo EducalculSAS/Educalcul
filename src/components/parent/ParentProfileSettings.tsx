@@ -23,6 +23,7 @@ import { avatarUrl } from "@/lib/avatarUrl";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
 import UserSessionsList from "@/components/UserSessionsList";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 /** Réglages du profil parent : informations, sécurité, notifications, comptes
  * liés, export RGPD et suppression de compte — toutes des mutations, donc
@@ -627,14 +628,13 @@ export default function ParentProfileSettings({
                     <CheckCircle className="w-4 h-4 mr-1" />
                     Lié
                   </span>
-                  <button
+                  <GlassIconButton
+                    icon={Trash2}
                     onClick={handleUnlinkGoogle}
-                    className="p-1 text-gray-400 hover:text-red-500 transition-colors"
-                    title="Délier le compte"
+                    color="red"
+                    size="sm"
                     aria-label="Délier le compte Google"
-                  >
-                    <Trash2 className="w-5 h-5" aria-hidden="true" />
-                  </button>
+                  />
                 </div>
               ) : (
                 <GlassButton onClick={handleLinkGoogle} variant="outline" size="sm">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import Link from "next/link";
 import { ArrowLeft, Plus, Download, Sparkles, Calendar } from "lucide-react";
 import CalendarView, { CalendarEventItem } from "@/components/calendar/CalendarView";
 import EventModal from "@/components/calendar/EventModal";
@@ -183,9 +182,11 @@ export default function ParentCalendarClient({
       <div className="bg-[var(--greek-blue)] text-white pt-24 pb-10 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
         <div className="container mx-auto max-w-6xl relative z-10">
-          <Link href="/parent/dashboard" className="inline-flex items-center gap-2 text-sm opacity-80 hover:opacity-100 mb-3">
-            <ArrowLeft className="w-4 h-4" /> Retour au tableau de bord
-          </Link>
+          <div className="mb-3">
+            <GlassButton href="/parent/dashboard" variant="light" size="sm">
+              <ArrowLeft className="w-4 h-4" /> Retour au tableau de bord
+            </GlassButton>
+          </div>
           <h1 className="text-3xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
             <Calendar className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
             CALENDRIER SCOLAIRE
@@ -238,13 +239,9 @@ export default function ParentCalendarClient({
               </select>
             </label>
             {!isOwnCalendar && (
-              <button
-                onClick={handleSuggest}
-                disabled={suggesting}
-                className="flex items-center gap-2 text-sm font-medium px-3 py-2 rounded-[10px] border border-[rgba(197,161,72,0.3)] text-[var(--greek-gold)] hover:bg-[rgba(197,161,72,0.08)] transition-colors disabled:opacity-50"
-              >
+              <GlassButton onClick={handleSuggest} disabled={suggesting} variant="outline" size="sm">
                 <Sparkles className="w-4 h-4" /> {suggesting ? "Génération..." : "Suggestion IA"}
-              </button>
+              </GlassButton>
             )}
             <GlassButton onClick={() => exportIcs(activeOwnerId)} variant="outline" size="sm">
               <Download className="w-4 h-4" /> Exporter (.ics)

@@ -11,6 +11,7 @@ import QuizBuilder, { Question } from "@/components/admin/QuizBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -1111,10 +1112,15 @@ export default function AdminQuizzesClient({
                       : "border-[rgba(197,161,72,0.25)] hover:shadow-lg hover:-translate-y-1"
                   }`}
               >
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
+                <div
+                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <GlassIconButton
+                    icon={Edit}
+                    size="sm"
+                    color="navy"
+                    onClick={() => {
                       setEditingFolder(folder);
                       setFolderFormData({
                         name: folder.name,
@@ -1125,24 +1131,18 @@ export default function AdminQuizzesClient({
                       });
                       setIsFolderModalOpen(true);
                     }}
-                    className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
-                    title="Modifier"
                     aria-label="Modifier le dossier"
-                  >
-                    <Edit size={14} />
-                  </button>
+                  />
                   {!folder.is_system && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
+                    <GlassIconButton
+                      icon={Trash2}
+                      size="sm"
+                      color="red"
+                      onClick={() => {
                         handleDeleteFolder(folder);
                       }}
-                      className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                      title="Supprimer"
                       aria-label="Supprimer le dossier"
-                    >
-                      <Trash2 size={14} />
-                    </button>
+                    />
                   )}
                 </div>
 
@@ -1246,41 +1246,37 @@ export default function AdminQuizzesClient({
                       {new Date(quiz.created_at).toLocaleDateString()}
                     </span>
                     <div className="flex gap-1">
-                      <button
+                      <GlassIconButton
+                        icon={Eye}
+                        size="sm"
+                        color="navy"
                         onClick={async () => handlePreview(await getFullQuiz(quiz))}
-                        className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
-                        title="Prévisualiser"
                         aria-label="Prévisualiser le quiz"
-                      >
-                        <Eye size={16} />
-                      </button>
-                      <button
+                      />
+                      <GlassIconButton
+                        icon={Edit}
+                        size="sm"
+                        color="navy"
                         onClick={async () => handleOpenModal(await getFullQuiz(quiz))}
-                        className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"
-                        title="Modifier"
                         aria-label="Modifier le quiz"
-                      >
-                        <Edit size={16} />
-                      </button>
-                      <button
+                      />
+                      <GlassIconButton
+                        icon={Download}
+                        size="sm"
+                        color="gold"
                         onClick={async () => {
                           const full = await getFullQuiz(quiz);
                           exportAsJSON(full, "quiz", full.title);
                         }}
-                        className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-                        title="Exporter JSON"
                         aria-label="Exporter le quiz en JSON"
-                      >
-                        <Download size={16} />
-                      </button>
-                      <button
+                      />
+                      <GlassIconButton
+                        icon={Trash2}
+                        size="sm"
+                        color="red"
                         onClick={() => handleDelete(quiz.id)}
-                        className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                        title="Supprimer"
                         aria-label="Supprimer le quiz"
-                      >
-                        <Trash2 size={16} />
-                      </button>
+                      />
                     </div>
                   </div>
                 </div>
@@ -1442,13 +1438,13 @@ export default function AdminQuizzesClient({
             <p className="font-semibold">Quiz généré</p>
             <p className="opacity-90">{aiSuccess}</p>
           </div>
-          <button
+          <GlassIconButton
+            icon={X}
+            size="sm"
+            color="green"
             onClick={() => setAiSuccess(null)}
-            className="text-emerald-700 hover:text-emerald-900"
             aria-label="Fermer"
-          >
-            <X size={16} />
-          </button>
+          />
         </div>
       )}
 
@@ -1460,13 +1456,13 @@ export default function AdminQuizzesClient({
             <p className="font-semibold">Erreur IA</p>
             <p className="opacity-90">{aiError}</p>
           </div>
-          <button
+          <GlassIconButton
+            icon={X}
+            size="sm"
+            color="red"
             onClick={() => setAiError(null)}
-            className="text-red-700 hover:text-red-900"
             aria-label="Fermer"
-          >
-            <X size={16} />
-          </button>
+          />
         </div>
       )}
 
@@ -1556,14 +1552,15 @@ export default function AdminQuizzesClient({
                             alt="Aperçu"
                             className="w-full h-full object-cover"
                           />
-                          <button
-                            type="button"
-                            onClick={() => setFormData({ ...formData, thumbnail_filename: "" })}
-                            className="absolute top-1.5 right-1.5 p-1 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500"
-                            aria-label="Supprimer l'image"
-                          >
-                            <XCircle size={16} />
-                          </button>
+                          <div className="absolute top-1.5 right-1.5">
+                            <GlassIconButton
+                              icon={XCircle}
+                              size="sm"
+                              color="red"
+                              onClick={() => setFormData({ ...formData, thumbnail_filename: "" })}
+                              aria-label="Supprimer l'image"
+                            />
+                          </div>
                         </div>
                       ) : (
                         <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm font-medium border border-dashed border-[rgba(197,161,72,0.25)]">

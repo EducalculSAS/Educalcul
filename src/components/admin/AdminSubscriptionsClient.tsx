@@ -10,6 +10,7 @@ import {
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
@@ -546,18 +547,15 @@ export default function AdminSubscriptionsClient({
                         )}
                       </button>
                       <div className="flex items-center gap-1">
-                        <button onClick={() => togglePlan(plan)}
-                          className={`p-1.5 rounded-lg text-xs font-medium transition-colors ${plan.is_active ? "text-orange-500 hover:bg-orange-50" : "text-green-600 hover:bg-green-50"}`}
-                          title={plan.is_active ? "Désactiver" : "Activer"}
-                        >
-                          <Power size={15} />
-                        </button>
-                        <button onClick={() => openPlanModal(plan)} aria-label="Modifier le plan" className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors">
-                          <Edit size={15} />
-                        </button>
-                        <button onClick={() => deletePlan(plan.id)} aria-label="Supprimer le plan" className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
-                          <Trash2 size={15} />
-                        </button>
+                        <GlassIconButton
+                          icon={Power}
+                          color={plan.is_active ? "orange" : "green"}
+                          size="sm"
+                          onClick={() => togglePlan(plan)}
+                          aria-label={plan.is_active ? "Désactiver" : "Activer"}
+                        />
+                        <GlassIconButton icon={Edit} color="navy" size="sm" onClick={() => openPlanModal(plan)} aria-label="Modifier le plan" />
+                        <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => deletePlan(plan.id)} aria-label="Supprimer le plan" />
                       </div>
                     </div>
                   </div>
@@ -620,9 +618,13 @@ export default function AdminSubscriptionsClient({
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-2">
                           <span className="font-mono font-bold text-[var(--greek-blue)] bg-blue-50 px-2.5 py-1 rounded-lg text-sm tracking-wider">{c.code}</span>
-                          <button onClick={() => copyCode(c.code)} aria-label="Copier le code" className="text-gray-400 hover:text-gray-600 transition-colors">
-                            {copiedCode === c.code ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
-                          </button>
+                          <GlassIconButton
+                            icon={copiedCode === c.code ? Check : Copy}
+                            color={copiedCode === c.code ? "green" : "navy"}
+                            size="sm"
+                            onClick={() => copyCode(c.code)}
+                            aria-label="Copier le code"
+                          />
                         </div>
                         {c.description && <p className="text-xs text-gray-400 mt-0.5">{c.description}</p>}
                       </td>
@@ -655,8 +657,8 @@ export default function AdminSubscriptionsClient({
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-1 justify-end">
-                          <button onClick={() => openRefModal(c)} aria-label="Modifier le code" className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors"><Edit size={14} /></button>
-                          <button onClick={() => deleteCode(c.id)} aria-label="Supprimer le code" className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 size={14} /></button>
+                          <GlassIconButton icon={Edit} color="navy" size="sm" onClick={() => openRefModal(c)} aria-label="Modifier le code" />
+                          <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => deleteCode(c.id)} aria-label="Supprimer le code" />
                         </div>
                       </td>
                     </tr>
@@ -701,9 +703,13 @@ export default function AdminSubscriptionsClient({
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-2">
                           <span className="font-mono font-bold text-[var(--greek-blue)] bg-blue-50 px-2.5 py-1 rounded-lg text-sm tracking-wider">{c.code}</span>
-                          <button onClick={() => copyCode(c.code)} aria-label="Copier le code" className="text-gray-400 hover:text-gray-600 transition-colors">
-                            {copiedCode === c.code ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
-                          </button>
+                          <GlassIconButton
+                            icon={copiedCode === c.code ? Check : Copy}
+                            color={copiedCode === c.code ? "green" : "navy"}
+                            size="sm"
+                            onClick={() => copyCode(c.code)}
+                            aria-label="Copier le code"
+                          />
                         </div>
                       </td>
                       <td className="px-5 py-4">
@@ -726,19 +732,17 @@ export default function AdminSubscriptionsClient({
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-1">
-                          <button onClick={() => openRefModal(c)} className="p-1.5 text-[var(--greek-blue)] hover:bg-blue-50 rounded-lg transition-colors" title="Modifier la remise">
-                            <Edit size={14} />
-                          </button>
-                          <button
+                          <GlassIconButton icon={Edit} color="navy" size="sm" onClick={() => openRefModal(c)} aria-label="Modifier la remise" />
+                          <GlassIconButton
+                            icon={Power}
+                            color={c.is_active ? "orange" : "green"}
+                            size="sm"
                             onClick={async () => {
                               await fetch("/api/admin/referral-codes", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: c.id, is_active: !c.is_active }) });
                               fetchCodes();
                             }}
-                            className={`p-1.5 rounded-lg transition-colors ${c.is_active ? "text-orange-500 hover:bg-orange-50" : "text-green-600 hover:bg-green-50"}`}
-                            title={c.is_active ? "Suspendre" : "Réactiver"}
-                          >
-                            <Power size={14} />
-                          </button>
+                            aria-label={c.is_active ? "Suspendre" : "Réactiver"}
+                          />
                         </div>
                       </td>
                     </tr>

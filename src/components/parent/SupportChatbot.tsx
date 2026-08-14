@@ -5,6 +5,8 @@ import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 import { Send, RotateCcw, X } from "lucide-react";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface BotMsg { from: "bot" | "user"; text: string }
 
@@ -69,9 +71,7 @@ export default function SupportChatbot() {
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
               <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Assistante IA</p>
             </div>
-            <button onClick={() => setMessages([BOT_WELCOME])} className="p-1.5 rounded-lg transition-colors" style={{ color: "rgba(255,255,255,0.4)" }} title="Nouvelle conversation" aria-label="Nouvelle conversation">
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
+            <GlassIconButton icon={RotateCcw} onClick={() => setMessages([BOT_WELCOME])} color="white" size="sm" aria-label="Nouvelle conversation" />
             <GlassCloseButton onClick={() => setOpen(false)} variant="dark" size="sm" aria-label="Fermer le chat" />
           </div>
 
@@ -103,10 +103,9 @@ export default function SupportChatbot() {
           {messages.length <= 1 && (
             <div className="px-3 pb-2 flex flex-wrap gap-1.5 shrink-0">
               {["Mot de passe oublié", "Gérer mon abonnement", "Ajouter un enfant", "Signaler un bug"].map((q) => (
-                <button key={q} onClick={() => sendMessage(q)} className="text-[10px] font-black px-3 py-1.5 rounded-full transition-all"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.2)", color: "rgba(197,161,72,0.8)" }}>
+                <GlassButton key={q} onClick={() => sendMessage(q)} variant="light" size="sm" className="text-[10px] font-black">
                   {q}
-                </button>
+                </GlassButton>
               ))}
             </div>
           )}
@@ -116,11 +115,7 @@ export default function SupportChatbot() {
               disabled={sending}
               placeholder="Votre question…" aria-label="Votre question" className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none disabled:opacity-50"
               style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)" }} />
-            <button onClick={() => sendMessage()} disabled={!input.trim() || sending}
-              className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all hover:-translate-y-0.5 disabled:opacity-40"
-              style={{ background: "var(--greek-gold)" }}>
-              <Send className="w-3.5 h-3.5 text-white" />
-            </button>
+            <GlassIconButton icon={Send} onClick={() => sendMessage()} disabled={!input.trim() || sending} color="gold" aria-label="Envoyer" />
           </div>
         </div>
       )}

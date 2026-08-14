@@ -6,6 +6,8 @@ import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface ProgrammePdf {
   id: string;
@@ -164,9 +166,15 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
                 <div className="flex items-center justify-center gap-3">
                   <FileText size={20} className="text-[var(--greek-blue)]" />
                   <span className="text-sm font-semibold text-[var(--greek-blue)]">{file.name}</span>
-                  <button type="button" aria-label="Supprimer le fichier" onClick={e => { e.stopPropagation(); setFile(null); if (fileRef.current) fileRef.current.value = ""; }}>
-                    <X size={16} className="text-gray-400 hover:text-red-500" />
-                  </button>
+                  <span onClick={e => e.stopPropagation()}>
+                    <GlassIconButton
+                      icon={X}
+                      color="red"
+                      size="sm"
+                      aria-label="Supprimer le fichier"
+                      onClick={() => { setFile(null); if (fileRef.current) fileRef.current.value = ""; }}
+                    />
+                  </span>
                 </div>
               ) : (
                 <div>
@@ -179,15 +187,14 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
           </div>
 
           <div className="flex justify-end">
-            <button
-              type="submit"
+            <GlassButton
+              variant="navy"
               disabled={uploading || !file}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-sm text-white transition-all disabled:opacity-60"
-              style={{ background: "var(--greek-blue)" }}
+              onClick={() => handleUpload({ preventDefault: () => {} } as unknown as React.FormEvent)}
             >
               {uploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
               {uploading ? "Upload en cours..." : "Enregistrer"}
-            </button>
+            </GlassButton>
           </div>
         </form>
       </div>
@@ -224,18 +231,18 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
                       />
                     </div>
                     <div className="flex justify-end gap-2">
-                      <button onClick={cancelEdit} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-[rgba(197,161,72,0.3)] text-[var(--text-muted)] hover:bg-gray-50">
+                      <GlassButton size="sm" variant="ghost" onClick={cancelEdit}>
                         Annuler
-                      </button>
-                      <button
-                        onClick={() => saveEdit(pdf.id)}
+                      </GlassButton>
+                      <GlassButton
+                        size="sm"
+                        variant="navy"
                         disabled={saving}
-                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg text-white disabled:opacity-60"
-                        style={{ background: "var(--greek-blue)" }}
+                        onClick={() => saveEdit(pdf.id)}
                       >
                         {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
                         Enregistrer
-                      </button>
+                      </GlassButton>
                     </div>
                   </div>
                 ) : (
@@ -250,39 +257,39 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
                       </div>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <a
-                        href={pdf.file_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 text-xs font-bold rounded-lg border transition-colors hover:bg-gray-50"
-                        style={{ borderColor: "rgba(197,161,72,0.3)", color: "var(--greek-blue)" }}
+                      <GlassButton
+                        size="sm"
+                        variant="outline"
+                        onClick={() => window.open(pdf.file_url, "_blank", "noopener,noreferrer")}
                       >
                         Voir le PDF
-                      </a>
-                      <a
-                        href={pdf.file_url}
-                        download={pdf.file_name}
-                        className="p-2 rounded-lg text-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
-                        title="Télécharger"
+                      </GlassButton>
+                      <GlassIconButton
+                        icon={Download}
+                        color="gold"
+                        size="sm"
                         aria-label="Télécharger le programme"
-                      >
-                        <Download size={16} />
-                      </a>
-                      <button
-                        onClick={() => startEdit(pdf)}
-                        className="p-2 rounded-lg text-[var(--greek-blue)] hover:bg-blue-50 transition-colors"
-                        title="Modifier"
+                        onClick={() => {
+                          const a = document.createElement("a");
+                          a.href = pdf.file_url;
+                          a.download = pdf.file_name;
+                          a.click();
+                        }}
+                      />
+                      <GlassIconButton
+                        icon={Pencil}
+                        color="navy"
+                        size="sm"
                         aria-label="Modifier le programme"
-                      >
-                        <Pencil size={16} />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(pdf.level)}
-                        className="p-2 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        onClick={() => startEdit(pdf)}
+                      />
+                      <GlassIconButton
+                        icon={Trash2}
+                        color="red"
+                        size="sm"
                         aria-label="Supprimer le programme"
-                      >
-                        <Trash2 size={16} />
-                      </button>
+                        onClick={() => handleDelete(pdf.level)}
+                      />
                     </div>
                   </div>
                 )}

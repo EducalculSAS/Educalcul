@@ -19,6 +19,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 
 interface QuizViewerProps {
@@ -480,14 +481,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
         <div className="px-6 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
             {onBack && (
-              <button
-                onClick={onBack}
-                className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
-                title="Retour"
-                aria-label="Retour"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
+              <GlassIconButton icon={ArrowLeft} onClick={onBack} color="navy" size="sm" aria-label="Retour" />
             )}
             <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] truncate">
               {quiz.title}
@@ -664,15 +658,14 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
           {/* Actions */}
           <div className="flex justify-between pt-4 border-t border-gray-100">
-            <button
+            <GlassButton
               onClick={handlePrevQuestion}
               disabled={currentQuestionIndex === 0 || !showReview}
-              className={`px-4 py-2 text-[var(--greek-bronze)] font-medium rounded-lg flex items-center gap-2 transition-colors ${
-                currentQuestionIndex === 0 || !showReview ? "opacity-0 pointer-events-none" : "hover:bg-[var(--greek-gold)]/10"
-              }`}
+              variant="ghost"
+              style={currentQuestionIndex === 0 || !showReview ? { opacity: 0 } : undefined}
             >
               <ArrowLeft className="w-5 h-5" /> Précédent
-            </button>
+            </GlassButton>
             <GlassButton
               onClick={
                 showReview

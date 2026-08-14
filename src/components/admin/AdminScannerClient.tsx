@@ -20,6 +20,7 @@ import {
 import { supabase } from "@/lib/supabaseClient";
 import AdminLoaderDots from "@/components/AdminLoaderDots";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 const ICONS: Record<string, any> = { Palette, ShieldAlert, Gauge, Accessibility, Search, Code2 };
 
@@ -401,12 +402,13 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                     </GlassButton>
                   )}
                   {!ACTIVE_STATUSES.has(selectedRun.status) && (
-                    <button
+                    <GlassIconButton
+                      icon={Trash2}
+                      color="red"
+                      size="sm"
                       onClick={() => deleteRun(selectedRun.id)}
-                      className="flex items-center gap-1.5 text-xs font-medium px-2 py-1.5 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-red-500"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+                      aria-label="Supprimer"
+                    />
                   )}
                 </div>
               </div>
@@ -443,29 +445,29 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                               </div>
                               <div className="flex items-center gap-1 shrink-0">
                                 {f.status === "resolved" ? (
-                                  <button
+                                  <GlassIconButton
+                                    icon={RotateCcw}
+                                    color="navy"
+                                    size="sm"
                                     onClick={() => setFindingStatus(selectedRun.id, f.id, "open")}
-                                    className="p-1.5 rounded-lg bg-white/60 hover:bg-white"
-                                    title="Rouvrir"
-                                  >
-                                    <RotateCcw className="w-3.5 h-3.5" />
-                                  </button>
+                                    aria-label="Rouvrir"
+                                  />
                                 ) : (
-                                  <button
+                                  <GlassIconButton
+                                    icon={CheckCircle2}
+                                    color="green"
+                                    size="sm"
                                     onClick={() => setFindingStatus(selectedRun.id, f.id, "resolved")}
-                                    className="p-1.5 rounded-lg bg-white/60 hover:bg-white"
-                                    title="Marquer résolu"
-                                  >
-                                    <CheckCircle2 className="w-3.5 h-3.5" />
-                                  </button>
+                                    aria-label="Marquer résolu"
+                                  />
                                 )}
-                                <button
+                                <GlassIconButton
+                                  icon={XCircle}
+                                  color="gray"
+                                  size="sm"
                                   onClick={() => setFindingStatus(selectedRun.id, f.id, "ignored")}
-                                  className="p-1.5 rounded-lg bg-white/60 hover:bg-white"
-                                  title="Ignorer"
-                                >
-                                  <XCircle className="w-3.5 h-3.5" />
-                                </button>
+                                  aria-label="Ignorer"
+                                />
                               </div>
                             </div>
                             <p className="text-sm mt-1.5 opacity-90">{f.description}</p>

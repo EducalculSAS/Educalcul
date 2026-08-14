@@ -9,6 +9,7 @@ import { buildEmailHtml } from "@/lib/emailTemplates";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface EmailTemplate {
   id: number;
@@ -240,20 +241,12 @@ export default function AdminEmailsClient({
       </div>
 
       <div className="flex items-center gap-2 flex-wrap">
-        <button
-          onClick={() => setPreviewTmpl(tmpl)}
-          title="Aperçu"
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-        >
+        <GlassButton size="sm" variant="outline" onClick={() => setPreviewTmpl(tmpl)}>
           <Eye className="w-3.5 h-3.5" /> Aperçu
-        </button>
-        <button
-          onClick={() => handleEdit(tmpl)}
-          title="Modifier"
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[var(--greek-blue)] border border-[rgba(58,110,165,0.3)] rounded-lg hover:bg-blue-50 transition-colors"
-        >
+        </GlassButton>
+        <GlassButton size="sm" variant="outline" onClick={() => handleEdit(tmpl)}>
           <Edit2 className="w-3.5 h-3.5" /> Modifier
-        </button>
+        </GlassButton>
         {tmpl.target !== "triggered" && (
           <GlassButton
             size="sm"
@@ -264,14 +257,13 @@ export default function AdminEmailsClient({
           </GlassButton>
         )}
         {tmpl.is_deletable && (
-          <button
+          <GlassIconButton
+            icon={Trash2}
             onClick={() => handleDelete(tmpl)}
-            title="Supprimer"
+            color="red"
+            size="sm"
             aria-label="Supprimer le template"
-            className="p-1.5 text-red-400 border border-red-100 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors"
-          >
-            <Trash2 className="w-3.5 h-3.5" />
-          </button>
+          />
         )}
       </div>
     </div>
@@ -345,9 +337,7 @@ export default function AdminEmailsClient({
                 <h3 className="font-bold text-[var(--greek-blue)]">{previewTmpl.name}</h3>
                 <p className="text-xs text-gray-400 mt-0.5">Sujet : {previewTmpl.subject}</p>
               </div>
-              <button onClick={() => setPreviewTmpl(null)} className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
-                <X className="w-5 h-5" />
-              </button>
+              <GlassIconButton icon={X} onClick={() => setPreviewTmpl(null)} color="gray" aria-label="Fermer" />
             </div>
             <div className="flex-1 overflow-hidden rounded-b-2xl">
               <iframe srcDoc={previewHtml} className="w-full h-full border-0" style={{ minHeight: "600px" }} title="Aperçu email" />
@@ -381,9 +371,7 @@ export default function AdminEmailsClient({
                     HTML complet
                   </button>
                 </div>
-                <button onClick={() => setEditTmpl(null)} className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg">
-                  <X className="w-5 h-5" />
-                </button>
+                <GlassIconButton icon={X} onClick={() => setEditTmpl(null)} color="gray" aria-label="Fermer" />
               </div>
             </div>
 
@@ -458,7 +446,7 @@ export default function AdminEmailsClient({
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h3 className="font-bold text-[var(--greek-blue)]">Envoyer — {sendTmpl.name}</h3>
-              <button onClick={() => setSendTmpl(null)} className="text-gray-400 hover:text-gray-600 text-xl">×</button>
+              <GlassIconButton icon={X} onClick={() => setSendTmpl(null)} color="gray" size="sm" aria-label="Fermer" />
             </div>
             <div className="p-6 space-y-4">
               {sendResult ? (
@@ -547,7 +535,7 @@ export default function AdminEmailsClient({
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h3 className="font-bold text-[var(--greek-blue)]">Nouveau</h3>
-              <button onClick={() => setCreateOpen(false)} className="text-gray-400 hover:text-gray-600 text-xl">×</button>
+              <GlassIconButton icon={X} onClick={() => setCreateOpen(false)} color="gray" size="sm" aria-label="Fermer" />
             </div>
             <div className="overflow-auto flex-1 p-6 space-y-4">
               {/* Nom uniquement pour les campagnes */}

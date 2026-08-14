@@ -252,15 +252,15 @@ export default function ChildReportTabs({
                         {formattedGeneratedAt}
                       </span>
                     )}
-                    <button
+                    <GlassButton
                       onClick={() => loadAnalysis(true)}
                       disabled={analysisLoading || !canRegenerate}
-                      title={!canRegenerate ? "Rapport déjà généré aujourd'hui" : "Régénérer"}
-                      className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-[var(--greek-blue)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                      variant="ghost"
+                      size="sm"
                     >
                       <RotateCcw className={`w-3.5 h-3.5 ${analysisLoading ? "animate-spin" : ""}`} />
                       {!canRegenerate ? "Disponible demain" : "Régénérer"}
-                    </button>
+                    </GlassButton>
                   </div>
                 </div>
 

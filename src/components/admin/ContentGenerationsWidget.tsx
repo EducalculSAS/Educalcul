@@ -5,6 +5,8 @@ import { ChevronDown, Loader2, CheckCircle2, XCircle, X, BookOpen, PencilLine, L
 import { useContentGenerations, type ContentGeneration, type ContentKind } from "@/contexts/ContentGenerationsContext";
 import { useSmoothPercentByKey } from "./useSmoothPercent";
 import ContentGenerationFullModal from "./ContentGenerationFullModal";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 const KIND_ICON: Record<ContentKind, React.ElementType> = {
   course: BookOpen,
@@ -58,31 +60,13 @@ function GenerationRow({
           {generation.status === "done" && <CheckCircle2 size={14} className="text-emerald-500" aria-label="Terminé" />}
           {generation.status === "error" && <XCircle size={14} className="text-red-500" aria-label="Erreur" />}
           {isActive ? (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onCancel();
-              }}
-              className="text-gray-400 hover:text-red-500 transition-opacity"
-              title="Annuler"
-              aria-label="Annuler la génération"
-            >
-              <X size={14} />
-            </button>
+            <span onClick={(e) => e.stopPropagation()}>
+              <GlassIconButton icon={X} color="red" size="sm" onClick={onCancel} aria-label="Annuler la génération" />
+            </span>
           ) : (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onDismiss();
-              }}
-              className="text-gray-400 hover:text-gray-600 transition-opacity"
-              title="Retirer de la liste"
-              aria-label="Retirer de la liste"
-            >
-              <X size={14} />
-            </button>
+            <span onClick={(e) => e.stopPropagation()}>
+              <GlassIconButton icon={X} color="gray" size="sm" onClick={onDismiss} aria-label="Retirer de la liste" />
+            </span>
           )}
         </div>
       </div>
@@ -130,11 +114,7 @@ export default function ContentGenerationsWidget() {
     <>
       <div className="fixed top-4 right-4 z-[1400]">
         <div className="relative">
-          <button
-            type="button"
-            onClick={() => setOpen((o) => !o)}
-            className="flex items-center gap-2 rounded-full bg-white shadow-lg border border-[rgba(197,161,72,0.3)] px-4 py-2 text-sm font-semibold text-[var(--greek-blue)] hover:shadow-xl transition-shadow"
-          >
+          <GlassButton variant="outline" size="sm" onClick={() => setOpen((o) => !o)}>
             {active.length > 0 ? (
               <Loader2 size={16} className="animate-spin text-[var(--greek-gold)]" />
             ) : (
@@ -144,7 +124,7 @@ export default function ContentGenerationsWidget() {
               ? `Génération${active.length > 1 ? "s" : ""} en cours (${active.length})`
               : "Générations récentes"}
             <ChevronDown size={16} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-          </button>
+          </GlassButton>
 
           {open && (
             <div className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto bg-white rounded-xl shadow-2xl border border-[rgba(197,161,72,0.25)] py-2">

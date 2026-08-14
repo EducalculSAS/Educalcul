@@ -5,6 +5,7 @@ import { Trophy, Users, Gift, Trash2, Download, RefreshCw, Search, Crown, Check,
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 interface Entry {
@@ -252,13 +253,13 @@ export default function AdminLandingClient({
                     <div className="flex items-center justify-end gap-1.5">
                       {editId === e.id ? (
                         <>
-                          <button disabled={busy === e.id} onClick={() => saveEdit(e.id)} className="p-1.5 rounded-lg bg-green-500 text-white hover:bg-green-600" title="Enregistrer"><Check className="w-4 h-4" /></button>
-                          <button onClick={() => setEditId(null)} className="p-1.5 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300" title="Annuler"><X className="w-4 h-4" /></button>
+                          <GlassIconButton icon={Check} onClick={() => saveEdit(e.id)} disabled={busy === e.id} color="green" size="sm" aria-label="Enregistrer" />
+                          <GlassIconButton icon={X} onClick={() => setEditId(null)} color="gray" size="sm" aria-label="Annuler" />
                         </>
                       ) : (
                         <>
-                          <button onClick={() => startEdit(e)} className="p-1.5 rounded-lg text-[var(--greek-blue)] hover:bg-[var(--greek-cream)]" title="Modifier"><Pencil className="w-4 h-4" /></button>
-                          <button disabled={busy === e.id} onClick={() => deleteEntry(e.id)} className="p-1.5 rounded-lg text-red-500 hover:bg-red-50" title="Supprimer"><Trash2 className="w-4 h-4" /></button>
+                          <GlassIconButton icon={Pencil} onClick={() => startEdit(e)} color="navy" size="sm" aria-label="Modifier" />
+                          <GlassIconButton icon={Trash2} onClick={() => deleteEntry(e.id)} disabled={busy === e.id} color="red" size="sm" aria-label="Supprimer" />
                         </>
                       )}
                     </div>

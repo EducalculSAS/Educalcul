@@ -1,11 +1,11 @@
 import { redirect } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { avatarUrl } from "@/lib/avatarUrl";
 import ChildReportTabs from "@/components/parent/ChildReportTabs";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface ActivityItem {
   id: string;
@@ -92,9 +92,11 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
         <div className="container mx-auto max-w-6xl relative z-10">
-          <Link href="/parent/children" className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 transition-colors text-sm">
-            <ArrowLeft className="w-4 h-4" /> Mes enfants
-          </Link>
+          <div className="mb-6">
+            <GlassButton href="/parent/children" variant="ghost" size="sm">
+              <ArrowLeft className="w-4 h-4" /> Mes enfants
+            </GlassButton>
+          </div>
           <div className="flex items-center gap-5">
             <div className="relative w-16 h-16 rounded-2xl bg-white/10 border-2 border-white/20 flex items-center justify-center overflow-hidden shrink-0">
               {child.avatar && avatar

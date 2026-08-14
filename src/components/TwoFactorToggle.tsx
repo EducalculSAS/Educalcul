@@ -174,24 +174,25 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
             >
               {verifying ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer"}
             </GlassButton>
-            <button
-              type="button"
+            <GlassButton
               onClick={cancelFlow}
               disabled={verifying}
-              className="px-4 py-2.5 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-50"
+              variant="ghost"
+              size="sm"
             >
               Annuler
-            </button>
+            </GlassButton>
           </div>
-          <button
-            type="button"
+          <GlassButton
             onClick={sendCode}
             disabled={sending || cooldown > 0}
-            className="w-full flex items-center justify-center gap-2 text-xs font-semibold text-[var(--greek-gold)] transition-opacity disabled:opacity-40"
+            variant="ghost"
+            size="sm"
+            fullWidth
           >
             <RotateCcw className="w-3 h-3" />
             {cooldown > 0 ? `Renvoyer le code (${cooldown}s)` : sending ? "Envoi…" : "Renvoyer le code"}
-          </button>
+          </GlassButton>
         </form>
       )}
 

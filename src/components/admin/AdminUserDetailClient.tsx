@@ -14,6 +14,7 @@ import { SCHOOL_LEVELS } from "@/lib/constants";
 import { validatePassword } from "@/lib/validation";
 import ThemedSelect from "@/components/admin/ThemedSelect";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 const roleBadge = (r: string) => {
@@ -261,9 +262,14 @@ export default function AdminUserDetailClient({
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
         <div className="flex flex-col gap-4">
           <div className="flex items-start gap-4 min-w-0">
-            <button onClick={() => router.push("/admin/users")} className="p-2 text-[var(--greek-blue)] hover:bg-blue-50 rounded-xl transition-colors shrink-0 mt-1" aria-label="Retour à la liste des utilisateurs">
-              <ArrowLeft size={20} />
-            </button>
+            <span className="shrink-0 mt-1">
+              <GlassIconButton
+                icon={ArrowLeft}
+                color="navy"
+                onClick={() => router.push("/admin/users")}
+                aria-label="Retour à la liste des utilisateurs"
+              />
+            </span>
             <div className="relative shrink-0">
               <div className="w-16 h-16 rounded-2xl bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] font-bold text-2xl flex items-center justify-center overflow-hidden">
                 {img ? <img src={img} alt="" className="w-full h-full object-cover" /> : initials}
@@ -413,23 +419,26 @@ export default function AdminUserDetailClient({
                         {" "}(~{remainingWeeks} semaine{remainingWeeks > 1 ? "s" : ""})
                       </p>
                       <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => addFreeTime(-1)}
+                        <GlassButton
+                          size="sm"
+                          variant="danger"
                           disabled={freeTimeLoading}
-                          className="px-3 py-2 rounded-xl text-sm font-bold bg-red-50 text-red-700 hover:bg-red-100 transition-colors disabled:opacity-50"
+                          onClick={() => addFreeTime(-1)}
                         >
                           − 1 semaine
-                        </button>
+                        </GlassButton>
                         <span className="flex-1 text-center text-sm font-bold" style={{ color: "var(--greek-blue)" }}>
                           {freeWeeksOffset > 0 ? `+${freeWeeksOffset}` : freeWeeksOffset} semaine{Math.abs(freeWeeksOffset) > 1 ? "s" : ""}
                         </span>
-                        <button
-                          onClick={() => addFreeTime(1)}
+                        <GlassButton
+                          size="sm"
+                          variant="outline"
                           disabled={freeTimeLoading}
-                          className="px-3 py-2 rounded-xl text-sm font-bold bg-green-50 text-green-700 hover:bg-green-100 transition-colors disabled:opacity-50"
+                          onClick={() => addFreeTime(1)}
+                          style={{ background: "rgba(22,163,74,0.1)", color: "#16a34a", borderColor: "rgba(22,163,74,0.3)" }}
                         >
                           + 1 semaine
-                        </button>
+                        </GlassButton>
                       </div>
                     </div>
                   );
@@ -608,9 +617,14 @@ export default function AdminUserDetailClient({
                       <p className="text-xs text-gray-400 mt-0.5">{p.category?.name} · {new Date(p.created_at).toLocaleDateString("fr-FR")}</p>
                       <p className="text-xs text-gray-500 mt-1 line-clamp-2">{p.content}</p>
                     </div>
-                    <button onClick={() => doAction("delete_post", { post_id: p.id })} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors shrink-0" title="Supprimer">
-                      <Trash2 size={14} />
-                    </button>
+                    <GlassIconButton
+                      icon={Trash2}
+                      color="red"
+                      size="sm"
+                      onClick={() => doAction("delete_post", { post_id: p.id })}
+                      aria-label="Supprimer"
+                      className="shrink-0"
+                    />
                   </div>
                 )) : <p className="text-sm text-gray-400 italic">Aucun sujet</p>}
               </div>
@@ -632,9 +646,14 @@ export default function AdminUserDetailClient({
                       <p className="text-sm text-gray-700 line-clamp-3">{c.content}</p>
                       <p className="text-xs text-gray-400 mt-1">{new Date(c.created_at).toLocaleDateString("fr-FR")}</p>
                     </div>
-                    <button onClick={() => doAction("delete_comment", { comment_id: c.id })} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors shrink-0" title="Supprimer">
-                      <Trash2 size={14} />
-                    </button>
+                    <GlassIconButton
+                      icon={Trash2}
+                      color="red"
+                      size="sm"
+                      onClick={() => doAction("delete_comment", { comment_id: c.id })}
+                      aria-label="Supprimer"
+                      className="shrink-0"
+                    />
                   </div>
                 )) : <p className="text-sm text-gray-400 italic">Aucun message</p>}
               </div>
@@ -663,8 +682,8 @@ export default function AdminUserDetailClient({
                       <div className="flex gap-1 shrink-0">
                         {r.status === "pending" && (
                           <>
-                            <button onClick={() => doAction("review_report", { report_id: r.id })} className="p-1.5 text-green-600 hover:bg-green-100 rounded-lg transition-colors" title="Marquer traité"><CheckCircle size={14} /></button>
-                            <button onClick={() => doAction("dismiss_report", { report_id: r.id })} className="p-1.5 text-gray-400 hover:bg-gray-100 rounded-lg transition-colors" title="Ignorer"><X size={14} /></button>
+                            <GlassIconButton icon={CheckCircle} color="green" size="sm" onClick={() => doAction("review_report", { report_id: r.id })} aria-label="Marquer traité" />
+                            <GlassIconButton icon={X} color="gray" size="sm" onClick={() => doAction("dismiss_report", { report_id: r.id })} aria-label="Ignorer" />
                           </>
                         )}
                         <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${r.status === "pending" ? "bg-red-100 text-red-700" : r.status === "reviewed" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
@@ -749,9 +768,15 @@ export default function AdminUserDetailClient({
                     className={inputCls + " font-mono pr-10"}
                     placeholder="Minimum 10 caractères"
                   />
-                  <button type="button" onClick={() => setShowNewPassword(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                    {showNewPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                  </button>
+                  <span className="absolute right-2 top-1/2 -translate-y-1/2">
+                    <GlassIconButton
+                      icon={showNewPassword ? EyeOff : Eye}
+                      color="navy"
+                      size="sm"
+                      onClick={() => setShowNewPassword(v => !v)}
+                      aria-label={showNewPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+                    />
+                  </span>
                 </div>
               </div>
               <div className="flex justify-end gap-3 pt-2">

@@ -30,6 +30,8 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { trackLogout } from "@/lib/trackLogout";
 import { useRouter } from "next/navigation";
+import GlassIconButton from "@/components/ui/GlassIconButton";
+import GlassButton from "@/components/ui/GlassButton";
 
 // Un admin "support" (accès restreint) ne voit que ce qui touche à son
 // travail quotidien — tickets, forum, son propre profil. Tout le reste
@@ -82,14 +84,13 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
   return (
     <>
       {/* Mobile Menu Button */}
-      <button
+      <GlassIconButton
+        icon={isOpen ? X : Menu}
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed z-[1050] p-2 bg-[var(--greek-blue)] text-white rounded-md shadow-lg"
-        style={{ top: 12, left: 16 }}
+        color="navy"
         aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-      >
-        {isOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-      </button>
+        className="lg:hidden fixed z-[1050] top-3 left-4"
+      />
 
       {/* Sidebar Overlay for Mobile */}
       {isOpen && (
@@ -143,13 +144,17 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
 
         {/* Déconnexion — collé en bas */}
         <div className="flex-shrink-0 p-3 border-t border-[rgba(197,161,72,0.25)]">
-          <button
+          <GlassButton
             onClick={handleLogout}
-            className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-all duration-200 text-sm"
+            variant="danger"
+            size="sm"
+            rounded="xl"
+            fullWidth
+            className="justify-start"
           >
             <LogOut size={18} className="flex-shrink-0" />
             <span>Déconnexion</span>
-          </button>
+          </GlassButton>
         </div>
       </div>
     </>

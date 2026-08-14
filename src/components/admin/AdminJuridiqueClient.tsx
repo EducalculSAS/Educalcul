@@ -9,6 +9,7 @@ import type { LegalPageData, LegalSection } from "@/components/LegalPageRenderer
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 const PAGES = [
@@ -206,12 +207,15 @@ export default function AdminJuridiqueClient({ initialPages }: { initialPages: R
                       <GripVertical size={16} className="text-gray-300 flex-shrink-0" />
                       <span className="flex-1 text-sm font-semibold text-[var(--greek-blue)] truncate">{section.title}</span>
                       <span className="text-xs text-gray-400 flex-shrink-0">{section.content.length} car.</span>
-                      <button
-                        onClick={e => { e.stopPropagation(); deleteSection(idx); }}
-                        className="p-1 rounded hover:bg-red-50 text-gray-300 hover:text-red-500 transition-colors flex-shrink-0"
-                      >
-                        <Trash2 size={14} />
-                      </button>
+                      <span onClick={e => e.stopPropagation()} className="flex-shrink-0">
+                        <GlassIconButton
+                          icon={Trash2}
+                          onClick={() => deleteSection(idx)}
+                          color="red"
+                          size="sm"
+                          aria-label="Supprimer la section"
+                        />
+                      </span>
                       <ChevronDown
                         size={16}
                         className="text-gray-400 flex-shrink-0 transition-transform duration-200"

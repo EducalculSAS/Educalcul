@@ -6,6 +6,7 @@ import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import { supabase } from "@/lib/supabaseClient";
 import type { ManualReview } from "@/lib/manualReviews";
 import type { ReviewRatingOverride } from "@/lib/reviewRatingOverride";
@@ -247,12 +248,8 @@ export default function AdminReviewsClient({
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex justify-end gap-2">
-                      <button onClick={() => openEdit(r)} className="p-2 rounded-lg hover:bg-[rgba(197,161,72,0.1)] text-[var(--greek-blue)]" aria-label="Modifier l'avis">
-                        <Edit className="w-4 h-4" />
-                      </button>
-                      <button onClick={() => handleDelete(r)} className="p-2 rounded-lg hover:bg-red-50 text-red-600" aria-label="Supprimer l'avis">
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <GlassIconButton icon={Edit} onClick={() => openEdit(r)} color="navy" size="sm" aria-label="Modifier l'avis" />
+                      <GlassIconButton icon={Trash2} onClick={() => handleDelete(r)} color="red" size="sm" aria-label="Supprimer l'avis" />
                     </div>
                   </td>
                 </tr>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Eraser, Undo2, Trash2 } from "lucide-react";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 const COLORS = ["#000000", "#ef4444", "#3b82f6", "#22c55e", "#c5a148"];
 
@@ -228,32 +229,25 @@ export default function DrawingCanvas({
       )}
       {!disabled && (
         <div className="absolute top-2 right-2 flex items-center gap-1.5">
-          <button
+          <GlassIconButton
+            icon={Eraser}
             onClick={() => setTool((t) => (t === "pen" ? "eraser" : "pen"))}
-            className={`p-2 rounded-full shadow border transition-colors ${
-              tool === "eraser"
-                ? "bg-[var(--greek-blue)] border-[var(--greek-blue)] text-white"
-                : "bg-white/80 border-[rgba(197,161,72,0.3)] text-[var(--text-dark)] hover:bg-[var(--greek-gold)]/10"
-            }`}
-            title={tool === "eraser" ? "Repasser en stylo" : "Gomme (ou double-tap au stylet)"}
-          >
-            <Eraser className="w-4 h-4" />
-          </button>
-          <button
+            color="navy"
+            aria-label={tool === "eraser" ? "Repasser en stylo" : "Gomme (ou double-tap au stylet)"}
+          />
+          <GlassIconButton
+            icon={Undo2}
             onClick={undo}
             disabled={!canUndo}
-            className="p-2 bg-white/80 rounded-full shadow border border-[rgba(197,161,72,0.3)] text-[var(--text-dark)] hover:bg-[var(--greek-gold)]/10 disabled:opacity-40 disabled:cursor-not-allowed"
-            title="Annuler le dernier trait"
-          >
-            <Undo2 className="w-4 h-4" />
-          </button>
-          <button
+            color="navy"
+            aria-label="Annuler le dernier trait"
+          />
+          <GlassIconButton
+            icon={Trash2}
             onClick={clearCanvas}
-            className="p-2 bg-white/80 rounded-full shadow hover:bg-red-50 text-red-500 border border-red-200"
-            title="Effacer tout"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
+            color="red"
+            aria-label="Effacer tout"
+          />
         </div>
       )}
     </div>

@@ -29,6 +29,7 @@ import {
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddExerciseModal from "./AIAddExerciseModal";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 
@@ -538,17 +539,13 @@ export default function ExerciseBuilder({
                 <div className="cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500" title="Glisser pour réordonner">
                   <GripVertical size={18} />
                 </div>
-                <button
+                <GlassIconButton
+                  icon={expandedPages.has(page.id) ? ChevronDown : ChevronRight}
                   onClick={() => togglePage(page.id)}
-                  className="p-1 hover:bg-gray-200 rounded text-gray-500"
-                  type="button"
-                >
-                  {expandedPages.has(page.id) ? (
-                    <ChevronDown size={18} />
-                  ) : (
-                    <ChevronRight size={18} />
-                  )}
-                </button>
+                  color="navy"
+                  size="sm"
+                  aria-label={expandedPages.has(page.id) ? "Replier la page" : "Déplier la page"}
+                />
                 <div className="flex-1">
                   <input
                     type="text"
@@ -560,22 +557,22 @@ export default function ExerciseBuilder({
                     placeholder="Titre de la page"
                   />
                 </div>
-                <button
+                <GlassButton
+                  size="sm"
+                  variant="ghost"
                   onClick={() => setAiEditTarget({ scope: "page", pageId: page.id })}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
-                  type="button"
-                  title="Modifier cette page avec l'IA"
+                  className="!px-2.5"
                 >
                   <Sparkles size={14} />
                   <span className="hidden sm:inline">IA</span>
-                </button>
-                <button
+                </GlassButton>
+                <GlassIconButton
+                  icon={Trash2}
                   onClick={() => removePage(page.id)}
-                  className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded"
-                  type="button"
-                >
-                  <Trash2 size={16} />
-                </button>
+                  color="red"
+                  size="sm"
+                  aria-label="Supprimer la page"
+                />
               </div>
 
               {/* Page Content (Blocks) */}
@@ -636,21 +633,22 @@ export default function ExerciseBuilder({
                               ))}
                             </select>
                           </div>
-                          <button
+                          <GlassIconButton
+                            icon={Sparkles}
                             onClick={() => setAiEditTarget({ scope: "block", pageId: page.id, blockId: block.id })}
-                            className="ml-2 flex items-center gap-1 px-2 py-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs font-medium"
-                            type="button"
-                            title="Modifier ce bloc avec l'IA"
-                          >
-                            <Sparkles size={14} />
-                          </button>
-                          <button
+                            color="navy"
+                            size="sm"
+                            aria-label="Modifier ce bloc avec l'IA"
+                            className="ml-2"
+                          />
+                          <GlassIconButton
+                            icon={Trash2}
                             onClick={() => removeBlock(page.id, block.id)}
-                            className="ml-1 p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded"
-                            type="button"
-                          >
-                            <Trash2 size={16} />
-                          </button>
+                            color="red"
+                            size="sm"
+                            aria-label="Supprimer le bloc"
+                            className="ml-1"
+                          />
                         </div>
 
                         {/* Block Content based on Type */}
@@ -759,14 +757,14 @@ export default function ExerciseBuilder({
                                   ) : (
                                     <img src={block.content} alt="Preview" className="h-40 object-contain border rounded-lg bg-gray-50" />
                                   )}
-                                  <button
-                                    type="button"
+                                  <GlassIconButton
+                                    icon={Trash2}
                                     onClick={() => updateBlock(page.id, block.id, { content: "", mediaType: undefined })}
-                                    className="absolute -top-2 -right-2 p-1 bg-white rounded-full shadow border text-gray-500 hover:text-red-500"
-                                    title="Retirer le fichier"
-                                  >
-                                    <Trash2 size={14} />
-                                  </button>
+                                    color="red"
+                                    size="sm"
+                                    aria-label="Retirer le fichier"
+                                    className="absolute -top-2 -right-2"
+                                  />
                                 </div>
                               ) : (
                                 <label
@@ -843,28 +841,28 @@ export default function ExerciseBuilder({
                                       }}
                                       className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                                     />
-                                    <button
+                                    <GlassIconButton
+                                      icon={Trash2}
                                       onClick={() => {
                                         removeOption(page.id, block.id, optIndex);
                                         updateBlock(page.id, block.id, {
                                           correctAnswer: correct.filter((c) => c !== option),
                                         });
                                       }}
-                                      className="p-1 text-gray-400 hover:text-red-500"
-                                      type="button"
-                                    >
-                                      <Trash2 size={14} />
-                                    </button>
+                                      color="red"
+                                      size="sm"
+                                      aria-label="Supprimer l'option"
+                                    />
                                   </div>
                                 );
                               })}
-                              <button
+                              <GlassButton
+                                size="sm"
+                                variant="ghost"
                                 onClick={() => addOption(page.id, block.id)}
-                                className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
-                                type="button"
                               >
                                 <Plus size={14} /> Ajouter une option
-                              </button>
+                              </GlassButton>
                             </div>
                           )}
 
@@ -955,29 +953,29 @@ export default function ExerciseBuilder({
                                     className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                                     placeholder="Réponse attendue (alternatives séparées par |)"
                                   />
-                                  <button
+                                  <GlassIconButton
+                                    icon={Trash2}
                                     onClick={() => {
                                       const next = (block.blanks || []).filter((_, j) => j !== i);
                                       updateBlock(page.id, block.id, { blanks: next });
                                     }}
-                                    className="p-1 text-gray-400 hover:text-red-500"
-                                    type="button"
-                                  >
-                                    <Trash2 size={14} />
-                                  </button>
+                                    color="red"
+                                    size="sm"
+                                    aria-label="Supprimer ce trou"
+                                  />
                                 </div>
                               ))}
-                              <button
+                              <GlassButton
+                                size="sm"
+                                variant="ghost"
                                 onClick={() =>
                                   updateBlock(page.id, block.id, {
                                     blanks: [...(block.blanks || []), ""],
                                   })
                                 }
-                                className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
-                                type="button"
                               >
                                 <Plus size={14} /> Ajouter un trou
-                              </button>
+                              </GlassButton>
                             </div>
                           )}
 
@@ -1011,29 +1009,29 @@ export default function ExerciseBuilder({
                                     className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                                     placeholder="Correspondance"
                                   />
-                                  <button
+                                  <GlassIconButton
+                                    icon={Trash2}
                                     onClick={() => {
                                       const next = (block.pairs || []).filter((_, j) => j !== i);
                                       updateBlock(page.id, block.id, { pairs: next });
                                     }}
-                                    className="p-1 text-gray-400 hover:text-red-500"
-                                    type="button"
-                                  >
-                                    <Trash2 size={14} />
-                                  </button>
+                                    color="red"
+                                    size="sm"
+                                    aria-label="Supprimer cette paire"
+                                  />
                                 </div>
                               ))}
-                              <button
+                              <GlassButton
+                                size="sm"
+                                variant="ghost"
                                 onClick={() =>
                                   updateBlock(page.id, block.id, {
                                     pairs: [...(block.pairs || []), { left: "", right: "" }],
                                   })
                                 }
-                                className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
-                                type="button"
                               >
                                 <Plus size={14} /> Ajouter une paire
-                              </button>
+                              </GlassButton>
                             </div>
                           )}
 
@@ -1056,53 +1054,53 @@ export default function ExerciseBuilder({
                                     className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
                                     placeholder="Étape / élément"
                                   />
-                                  <button
+                                  <GlassIconButton
+                                    icon={ArrowUp}
                                     disabled={i === 0}
                                     onClick={() => {
                                       const next = [...(block.items || [])];
                                       [next[i - 1], next[i]] = [next[i], next[i - 1]];
                                       updateBlock(page.id, block.id, { items: next });
                                     }}
-                                    className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-30"
-                                    type="button"
-                                  >
-                                    <ArrowUp size={14} />
-                                  </button>
-                                  <button
+                                    color="navy"
+                                    size="sm"
+                                    aria-label="Monter cet élément"
+                                  />
+                                  <GlassIconButton
+                                    icon={ArrowDown}
                                     disabled={i === (block.items?.length || 0) - 1}
                                     onClick={() => {
                                       const next = [...(block.items || [])];
                                       [next[i], next[i + 1]] = [next[i + 1], next[i]];
                                       updateBlock(page.id, block.id, { items: next });
                                     }}
-                                    className="p-1 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-30"
-                                    type="button"
-                                  >
-                                    <ArrowDown size={14} />
-                                  </button>
-                                  <button
+                                    color="navy"
+                                    size="sm"
+                                    aria-label="Descendre cet élément"
+                                  />
+                                  <GlassIconButton
+                                    icon={Trash2}
                                     onClick={() => {
                                       const next = (block.items || []).filter((_, j) => j !== i);
                                       updateBlock(page.id, block.id, { items: next });
                                     }}
-                                    className="p-1 text-gray-400 hover:text-red-500"
-                                    type="button"
-                                  >
-                                    <Trash2 size={14} />
-                                  </button>
+                                    color="red"
+                                    size="sm"
+                                    aria-label="Supprimer cet élément"
+                                  />
                                 </div>
                               ))}
-                              <button
+                              <GlassButton
+                                size="sm"
+                                variant="ghost"
                                 onClick={() =>
                                   updateBlock(page.id, block.id, {
                                     items: [...(block.items || []), ""],
                                   })
                                 }
-                                className="text-sm text-[var(--greek-blue)] hover:underline flex items-center gap-1"
-                                type="button"
                               >
                                 <Plus size={14} /> Ajouter un élément
-                              </button>
+                              </GlassButton>
                             </div>
                           )}
 
@@ -1129,7 +1127,7 @@ export default function ExerciseBuilder({
                       <div className="border-2 border-[var(--greek-blue)]/30 rounded-lg p-3 bg-white">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-xs font-bold text-gray-500 uppercase">Quel type de question ?</span>
-                          <button onClick={() => setAddBlockMenuFor(null)} type="button" className="text-xs text-gray-400 hover:text-gray-600">Annuler</button>
+                          <GlassButton size="sm" variant="ghost" onClick={() => setAddBlockMenuFor(null)}>Annuler</GlassButton>
                         </div>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                           {CREATABLE_BLOCK_TYPES.map((t) => {
@@ -1151,14 +1149,16 @@ export default function ExerciseBuilder({
                         </div>
                       </div>
                     ) : (
-                      <button
+                      <GlassButton
+                        size="sm"
+                        variant="outline"
+                        fullWidth
+                        rounded="xl"
                         onClick={() => setAddBlockMenuFor(page.id)}
-                        className="w-full py-2 border-2 border-dashed border-[rgba(197,161,72,0.25)] rounded-lg text-gray-500 hover:border-[var(--greek-blue)] hover:text-[var(--greek-blue)] transition-colors flex items-center justify-center gap-2"
-                        type="button"
                       >
                         <Plus size={16} />
                         Ajouter un bloc
-                      </button>
+                      </GlassButton>
                     )}
                   </div>
                 </div>

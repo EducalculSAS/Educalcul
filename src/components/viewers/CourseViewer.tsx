@@ -32,6 +32,7 @@ import { enhanceTrigCircles } from "@/lib/trigCircleInteractive";
 import MathInput from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -523,9 +524,9 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                {chapters.reduce((acc, c) => acc + c.lessons.length, 0)} leçons • {chapters.length} chapitres
              </p>
           </div>
-          <button onClick={() => setSidebarOpen(false)} className="md:hidden p-2 text-[var(--greek-bronze)] hover:bg-[var(--greek-gold)]/10 rounded-lg">
-            <X className="w-5 h-5" />
-          </button>
+          <div className="md:hidden">
+            <GlassIconButton icon={X} onClick={() => setSidebarOpen(false)} color="navy" size="sm" aria-label="Fermer le menu" />
+          </div>
         </div>
         
         <div className="overflow-y-auto flex-1 p-3 space-y-4">
@@ -576,21 +577,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         <div className="h-14 border-b border-[var(--greek-gold)] flex items-center px-4 gap-2 bg-[var(--greek-cream)] shrink-0 z-10">
           {/* Flèche retour */}
           {onBack && (
-            <button
-              onClick={onBack}
-              className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
-              title="Retour à l'aperçu"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+            <GlassIconButton icon={ChevronLeft} onClick={onBack} color="navy" size="sm" aria-label="Retour à l'aperçu" />
           )}
           {/* Menu burger */}
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-1.5 rounded-lg text-[var(--greek-blue)] flex-shrink-0 transition-transform duration-150 hover:scale-110 active:scale-95"
-          >
-            <Menu className="w-5 h-5" />
-          </button>
+          <GlassIconButton icon={Menu} onClick={() => setSidebarOpen(!sidebarOpen)} color="navy" size="sm" aria-label="Menu" />
 
           {/* Titre leçon — scrollable horizontalement sur mobile */}
           <div className="flex-1 overflow-x-auto scrollbar-none min-w-0">
@@ -798,14 +788,14 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
         {/* Footer Navigation */}
         <div className="h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex items-center justify-between px-6 md:px-12 shrink-0 z-10 sticky bottom-0">
-          <button
+          <GlassButton
             onClick={handlePrev}
             disabled={currentChapterIndex === 0 && currentLessonIndex === 0}
-            className="group flex items-center gap-2 px-4 py-2 text-[var(--greek-bronze)] font-medium disabled:opacity-30 hover:text-[var(--greek-blue)] transition-colors"
+            variant="ghost"
           >
-            <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <ChevronLeft className="w-5 h-5" />
             <span className="hidden md:inline">Leçon précédente</span>
-          </button>
+          </GlassButton>
           
           <GlassButton onClick={handleNext} variant="navy">
             {currentChapterIndex === chapters.length - 1 && currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1 ? (
@@ -1061,21 +1051,14 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
               {/* Hint toggle */}
               {ex.hint && !isCorrect && !isRevealed && (
                 <div className="mb-3">
-                  <button
-                    type="button"
+                  <GlassButton
                     onClick={() => handleToggleHint(ex.id)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors"
-                    style={{
-                      borderColor: "var(--greek-gold)",
-                      color: "var(--greek-blue)",
-                      background: s.showHint
-                        ? "rgba(197,161,72,0.1)"
-                        : "transparent",
-                    }}
+                    variant="outline"
+                    size="sm"
                   >
                     <Lightbulb className="w-3.5 h-3.5" />
                     {s.showHint ? "Masquer l'indice" : "Indice"}
-                  </button>
+                  </GlassButton>
                   {s.showHint && (
                     <div
                       className="mt-2 px-4 py-2.5 rounded-lg text-sm"
@@ -1138,12 +1121,12 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     />
                   )}
 
-                  <button
-                    type="button"
+                  <GlassButton
                     onClick={() => handleVerify(ex)}
                     disabled={!s.input.trim() || isGrading}
-                    className="self-end min-w-[150px] justify-center whitespace-nowrap px-5 py-2.5 rounded-xl font-bold text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
-                    style={{ background: "var(--greek-blue)" }}
+                    variant="navy"
+                    size="sm"
+                    className="self-end min-w-[150px]"
                   >
                     {isGrading ? (
                       <>
@@ -1153,7 +1136,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     ) : (
                       "Vérifier"
                     )}
-                  </button>
+                  </GlassButton>
                 </div>
               )}
 
@@ -1178,28 +1161,22 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                       Tentative {s.attempts} {s.attempts >= 2 ? "— tu peux voir la correction" : "— essaie encore"}
                     </p>
                     <div className="flex gap-2 mt-2">
-                      <button
-                        type="button"
+                      <GlassButton
                         onClick={() => handleRetry(ex.id)}
-                        className="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors"
-                        style={{
-                          borderColor: "#fecaca",
-                          color: "#991b1b",
-                          background: "#fff",
-                        }}
+                        variant="danger"
+                        size="sm"
                       >
                         Réessayer
-                      </button>
+                      </GlassButton>
                       {showCorrection && (
-                        <button
-                          type="button"
+                        <GlassButton
                           onClick={() => handleReveal(ex.id)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white"
-                          style={{ background: "var(--greek-blue)" }}
+                          variant="navy"
+                          size="sm"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           Voir la correction
-                        </button>
+                        </GlassButton>
                       )}
                     </div>
                   </div>
