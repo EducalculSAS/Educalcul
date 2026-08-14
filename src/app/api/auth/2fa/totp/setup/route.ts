@@ -41,11 +41,15 @@ export async function POST(req: Request) {
     const { error } = await supabaseAdmin
       .from("two_factor_totp")
       .upsert({ user_id: user.id, secret, confirmed_at: null }, { onConflict: "user_id" });
-    if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    if (error) {
+      console.error("[2fa/totp/setup] upsert failed:", error);
+      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    }
 
     const otpauthUrl = buildOtpauthUrl(secret, user.email || identity.email || `admin-${user.id}`);
     return NextResponse.json({ secret, otpauthUrl });
   } catch (err: any) {
+    console.error("[2fa/totp/setup] failed:", err);
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
 }

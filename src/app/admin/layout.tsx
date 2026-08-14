@@ -39,6 +39,7 @@ export default async function AdminLayout({
   // (observé en pratique : cette page enchaîne beaucoup plus d'appels réseau
   // que /dashboard, donc statistiquement plus souvent touchée en premier).
   if (error) {
+    console.error("[admin/layout] users lookup failed:", error);
     return (
       <div className="flex min-h-screen items-center justify-center bg-[var(--greek-cream)] px-4">
         <div className="max-w-sm text-center">
