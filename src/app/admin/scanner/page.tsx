@@ -1,4 +1,3 @@
-import { ScanSearch } from "lucide-react";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminScannerClient from "@/components/admin/AdminScannerClient";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
@@ -13,7 +12,7 @@ export default async function AdminScannerPage() {
   return (
     <div className="space-y-6">
       <AdminPageHeader
-        icon={ScanSearch}
+        iconName="scan-search"
         title="Scanner IA"
         subtitle="Audits automatisés du code source du site — style, sécurité, performance, accessibilité, SEO."
       />

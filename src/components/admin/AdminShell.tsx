@@ -43,6 +43,20 @@ export default function AdminShell({
   }, []);
 
   useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event !== "SIGNED_OUT") return;
+      // Le cookie 2FA est httpOnly : seul le serveur peut l'effacer. keepalive
+      // évite que la requête soit annulée par la redirection qui suit le logout.
+      void fetch("/api/auth/2fa/clear-session", {
+        method: "POST",
+        credentials: "same-origin",
+        keepalive: true,
+      }).catch(() => undefined);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
     const checkTotp = async () => {
       const {
         data: { session },

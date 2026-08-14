@@ -57,16 +57,8 @@ export interface ServerUser {
  */
 export async function getServerUser(): Promise<ServerUser | null> {
   const supabase = await createSupabaseServerClient();
-  // getSession() lit le JWT depuis le cookie sans requête réseau : le
-  // middleware (updateSession(), src/proxy.ts) vient déjà de le
-  // vérifier/rafraîchir aupres du serveur Auth sur cette même requête.
-  // Un getUser() ici paierait un second aller-retour réseau redondant à
-  // chaque page authentifiée (mesuré: latence perceptible sur toutes les
-  // pages converties). L'autorisation des actions sensibles continue de
-  // passer par getAuthenticatedUser (src/lib/apiAuth.ts), qui vérifie
-  // toujours via getUser() côté API.
-  const { data, error } = await supabase.auth.getSession();
-  const authUser = data?.session?.user;
+  const { data, error } = await supabase.auth.getUser();
+  const authUser = data?.user;
   if (error || !authUser) return null;
 
   const { data: row } = await supabaseAdmin

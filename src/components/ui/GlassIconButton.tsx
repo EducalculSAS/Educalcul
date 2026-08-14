@@ -9,8 +9,8 @@ const PRESS_TRANSITION = "transform 0.12s ease-out";
 const RELEASE_TRANSITION = "transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)";
 const PRESS_SCALE = 0.88;
 const ACTIVATION_ZONE = 70;
-const MAX_GROW = 0.16;
-const MAX_PULL = 3;
+const MAX_GROW = 0.08;
+const MAX_PULL = 1.5;
 
 export type GlassIconButtonColor = "navy" | "gold" | "gray" | "orange" | "red" | "green" | "white";
 

@@ -123,13 +123,10 @@ export async function redirectAfterAuth(
   supabase: SupabaseClient,
   router: AppRouterInstance
 ): Promise<boolean> {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return false;
 
-  if (!session) return false;
-
-  const dest = await resolveAuthDestination(supabase, session.user.id);
+  const dest = await resolveAuthDestination(supabase, user.id);
 
   if (dest === "banned") {
     router.push("/auth/banned");

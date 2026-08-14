@@ -62,24 +62,27 @@ export default function Navbar() {
       setFirstName(userData?.first_name || null);
     };
 
-    // Vérification initiale
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user || null);
-      if (session?.user) fetchUserData(session.user.id);
+    // Vérification initiale : getUser() authentifie l'identité auprès de Supabase Auth.
+    supabase.auth.getUser().then(({ data: { user: authUser } }) => {
+      setUser(authUser || null);
+      if (authUser) fetchUserData(authUser.id);
     });
 
-    // Écoute des changements (login/logout) — cleanup correctement retourné au useEffect
+    // onAuthStateChange signale le changement, puis getUser() revalide l'identité
+    // avant qu'elle soit utilisée pour charger un rôle ou prendre une décision UI.
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "INITIAL_SESSION") return; // déjà géré par getSession ci-dessus
-      setUser(session?.user || null);
-      if (session?.user) {
-        fetchUserData(session.user.id);
-      } else {
-        setUserRole(null);
-        setFirstName(null);
-      }
+    } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "INITIAL_SESSION") return;
+      void supabase.auth.getUser().then(({ data: { user: authUser } }) => {
+        setUser(authUser || null);
+        if (authUser) {
+          fetchUserData(authUser.id);
+        } else {
+          setUserRole(null);
+          setFirstName(null);
+        }
+      });
     });
 
     return () => subscription.unsubscribe();
