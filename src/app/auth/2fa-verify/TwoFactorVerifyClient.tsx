@@ -96,7 +96,12 @@ function TwoFactorVerifyContent() {
       if (!res.ok) throw new Error(data.error || "Code incorrect.");
       // Le serveur pose désormais le jeton 2FA lui-même via un cookie
       // httpOnly (Set-Cookie sur cette même réponse) — rien à stocker ici.
-      router.push(redirect);
+      // Navigation complète (pas router.push) : le Router Cache de Next.js
+      // peut avoir mis en cache /admin/dashboard depuis avant la validation
+      // 2FA (ex: tentative précédente), et le resservir tel quel sans
+      // relire le cookie edu_2fa qu'on vient de poser — l'admin retombait
+      // alors en boucle sur cette page malgré un code correct.
+      window.location.href = redirect;
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue.");
     } finally {
