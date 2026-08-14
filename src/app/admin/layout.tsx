@@ -56,7 +56,12 @@ export default async function AdminLayout({
         !!twoFactorSession && new Date(twoFactorSession.expires_at) > new Date();
     }
     if (!validTwoFactorSession) {
-      redirect("/auth/2fa-verify?redirect=%2Fadmin%2Fdashboard");
+      // Chemin réellement demandé (posé par proxy.ts) plutôt qu'un
+      // /admin/dashboard fixe — sinon revenir de /auth/2fa-verify après une
+      // impersonation (returnTo = /admin/users/[id], par ex.) renvoyait
+      // systématiquement au dashboard au lieu de la page d'origine.
+      const currentPath = (await headers()).get("x-pathname") || "/admin/dashboard";
+      redirect(`/auth/2fa-verify?redirect=${encodeURIComponent(currentPath)}`);
     }
   }
 

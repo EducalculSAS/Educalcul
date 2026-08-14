@@ -169,7 +169,12 @@ export async function proxy(req: NextRequest) {
   }
 
   // Pages : rafraîchit le cookie de session pour que createSupabaseServerClient()
-  // voie une identité à jour dans les Server Components.
+  // voie une identité à jour dans les Server Components. Le chemin est aussi
+  // exposé en header (illisible autrement dans un layout serveur) — utilisé
+  // par src/app/admin/layout.tsx pour renvoyer vers /auth/2fa-verify avec le
+  // bon `redirect=` plutôt qu'un /admin/dashboard fixe qui faisait perdre la
+  // page demandée après une re-vérification 2FA.
+  req.headers.set("x-pathname", pathname);
   return await updateSession(req);
 }
 

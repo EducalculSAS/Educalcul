@@ -127,9 +127,13 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="navbar liquid-glass backdrop-blur-[20px] backdrop-saturate-[1.8] fixed top-0 left-0 right-0 z-[1030] h-[64px] min-h-[64px] px-6 overflow-visible"
+      className="navbar liquid-glass backdrop-blur-[20px] backdrop-saturate-[1.8] fixed left-0 right-0 z-[1030] h-[64px] min-h-[64px] px-6 overflow-visible"
       style={{
         borderBottom: "none",
+        // Décalée sous la bannière d'impersonation quand elle est affichée
+        // (voir ImpersonationBanner.tsx) — sinon la bannière, en z-index plus
+        // haut, cachait entièrement la navbar (logo, menu injoignables).
+        top: "var(--imp-banner-h, 0px)",
       }}
     >
       <div className="container mx-auto flex items-center justify-between h-full max-w-7xl">
