@@ -1,11 +1,12 @@
 import { redirect } from "next/navigation";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { isAdminIpAllowed } from "@/lib/adminIpAllowlist";
 import { getClientIp } from "@/lib/ipGeo";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { getTwoFactorCookie } from "@/lib/twoFactorCookie";
+import { IMPERSONATION_COOKIE_NAME } from "@/lib/impersonationCookie";
 import AdminShell from "@/components/admin/AdminShell";
 
 /** Vérifie identité + rôle admin + statut banni côté serveur, avant même que
@@ -32,6 +33,20 @@ export default async function AdminLayout({
 
   if (error || !userData || userData.role !== "admin") redirect("/dashboard");
   if (userData.status === "inactive" || userData.ban_reason) redirect("/auth/banned");
+
+  // Une vraie page admin ne se rend jamais tant qu'on impersonne encore (la
+  // session active serait alors celle de la cible, qui échouerait le check
+  // de rôle ci-dessus) — si ce cookie traîne ici, c'est qu'une impersonation
+  // n'a jamais été proprement terminée (ex: l'admin s'est reconnecté
+  // manuellement pendant qu'il impersonnait, invalidant le refresh_token
+  // d'origine stocké et cassant "Quitter"). On la nettoie pour éviter que la
+  // bannière reste bloquée affichée à tort.
+  const cookieStore = await cookies();
+  const impersonationCookie = cookieStore.get(IMPERSONATION_COOKIE_NAME)?.value;
+  if (impersonationCookie) {
+    cookieStore.delete(IMPERSONATION_COOKIE_NAME);
+    await supabaseAdmin.from("impersonation_sessions").delete().eq("id", impersonationCookie);
+  }
 
   // Une configuration TOTP confirmée exige aussi une session 2FA valide AVANT
   // de rendre la moindre page admin. AdminShell garde le contrôle client en

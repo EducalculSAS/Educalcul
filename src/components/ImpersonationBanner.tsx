@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { UserCog } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -21,18 +21,23 @@ interface ImpersonationState {
  * par un cookie httpOnly : rien en sessionStorage. */
 export default function ImpersonationBanner() {
   const router = useRouter();
+  const pathname = usePathname();
   const { error: toastError } = useToast();
   const [state, setState] = useState<ImpersonationState | null>(null);
   const [ending, setEnding] = useState(false);
 
+  // Revérifié à chaque navigation (pas juste au montage) — sinon la bannière
+  // reste affichée à tort tant que le layout racine ne remonte pas (ex: après
+  // une impersonation terminée côté serveur mais dont l'état client était
+  // resté figé sur l'ancienne réponse "active").
   useEffect(() => {
     fetch("/api/admin/impersonate/status")
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
-        if (d?.active) setState({ targetId: d.targetId, targetName: d.targetName, returnTo: d.returnTo });
+        setState(d?.active ? { targetId: d.targetId, targetName: d.targetName, returnTo: d.returnTo } : null);
       })
       .catch(() => {});
-  }, []);
+  }, [pathname]);
 
   // La navbar publique (fixed top-0) se retrouvait cachée derrière cette
   // bannière (elle aussi fixed top-0, z-index plus haut) : on expose sa
