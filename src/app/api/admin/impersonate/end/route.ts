@@ -28,10 +28,27 @@ export async function POST(req: Request) {
 
     await supabaseAdmin.from("impersonation_sessions").delete().eq("id", id);
 
-    const { data: refreshed, error: refreshError } = await supabaseAdmin.auth.refreshSession({
-      refresh_token: row.origin_refresh_token,
-    });
-    if (refreshError || !refreshed?.session) {
+    // NE JAMAIS passer par supabaseAdmin.auth.* ici : ce client est un
+    // singleton partagé par tout le processus serveur, et refreshSession()
+    // y installe la session de l'utilisateur — l'en-tête Authorization du
+    // client passe alors du service_role au JWT admin (rôle "authenticated").
+    // Toutes les opérations admin suivantes du processus échouaient donc en
+    // RLS 42501 (audit_logs, two_factor_totp, rate_limits…) jusqu'au
+    // redémarrage du serveur. On échange le refresh_token par un appel HTTP
+    // direct, qui ne touche aucun état partagé.
+    const tokenRes = await fetch(
+      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`,
+      {
+        method: "POST",
+        headers: {
+          apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refresh_token: row.origin_refresh_token }),
+      },
+    );
+    const refreshedSession = await tokenRes.json().catch(() => null);
+    if (!tokenRes.ok || !refreshedSession?.access_token || !refreshedSession?.refresh_token) {
       return Response.json({ error: "Impossible de restaurer la session admin" }, { status: 500 });
     }
 
@@ -48,8 +65,8 @@ export async function POST(req: Request) {
     );
 
     return Response.json({
-      access_token: refreshed.session.access_token,
-      refresh_token: refreshed.session.refresh_token,
+      access_token: refreshedSession.access_token,
+      refresh_token: refreshedSession.refresh_token,
       returnTo: row.return_to,
     });
   } catch (err: any) {
