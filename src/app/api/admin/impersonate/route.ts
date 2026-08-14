@@ -50,7 +50,9 @@ export async function POST(req: Request) {
     }
 
     const targetName = [target.first_name, target.last_name].filter(Boolean).join(" ") || target.email;
-    const returnTo = `/admin/users/${targetUserId}`;
+    // Pas de route dynamique /admin/users/[id] dans ce repo — la fiche
+    // détaillée vit sur /admin/users/detail?id=X (voir src/app/admin/users/detail/page.tsx).
+    const returnTo = `/admin/users/detail?id=${targetUserId}`;
 
     const { data: session, error: sessionError } = await supabaseAdmin
       .from("impersonation_sessions")
