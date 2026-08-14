@@ -31,7 +31,31 @@ export default async function AdminLayout({
     .eq("auth_id", authUser.id)
     .maybeSingle();
 
-  if (error || !userData || userData.role !== "admin") redirect("/dashboard");
+  // Une vraie erreur réseau/DB ne veut RIEN dire sur le rôle — la traiter
+  // comme "pas admin" renvoyait vers /dashboard qui, lui, réussissait
+  // généralement sa propre vérification (moins d'appels réseau) et
+  // renvoyait ici, créant une boucle infinie /dashboard ↔ /admin/dashboard
+  // dès qu'une seule requête Supabase timait out ou échouait transitoirement
+  // (observé en pratique : cette page enchaîne beaucoup plus d'appels réseau
+  // que /dashboard, donc statistiquement plus souvent touchée en premier).
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[var(--greek-cream)] px-4">
+        <div className="max-w-sm text-center">
+          <h1 className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--greek-blue)] mb-2">
+            Connexion instable
+          </h1>
+          <p className="text-sm text-[var(--text-muted)] mb-4">
+            Impossible de vérifier ton compte pour le moment. Réessaie dans quelques secondes.
+          </p>
+          <a href="/admin/dashboard" className="text-sm font-medium underline" style={{ color: "var(--greek-blue)" }}>
+            Réessayer
+          </a>
+        </div>
+      </div>
+    );
+  }
+  if (!userData || userData.role !== "admin") redirect("/dashboard");
   if (userData.status === "inactive" || userData.ban_reason) redirect("/auth/banned");
 
   // Une vraie page admin ne se rend jamais tant qu'on impersonne encore (la
