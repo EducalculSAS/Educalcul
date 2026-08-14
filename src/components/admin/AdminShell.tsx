@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
@@ -24,6 +24,7 @@ export default function AdminShell({
   adminLevel?: string;
 }) {
   const router = useRouter();
+  const mountedRef = useRef(true);
   const [loading, setLoading] = useState(true);
   // Tant que la 2FA n'est pas configurée, aucun appel /api/admin/* ne peut
   // aboutir (proxy.ts l'exige pour tout admin). Rendre la coquille (sidebar,
@@ -33,6 +34,13 @@ export default function AdminShell({
   // src/lib/supabaseClient.ts (le "flash puis déco" observé). Le popup
   // s'affiche donc seul, bloquant, jusqu'à la fin de la configuration.
   const [needsTotpSetup, setNeedsTotpSetup] = useState(false);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     const checkTotp = async () => {
@@ -48,30 +56,36 @@ export default function AdminShell({
       const totpRes = await fetch("/api/auth/2fa/totp/status", {
         headers: { Authorization: `Bearer ${session.access_token}` },
       });
-      const totpData = await totpRes.json();
-      if (totpRes.ok && !totpData.confirmed) {
-        setNeedsTotpSetup(true);
-        setLoading(false);
+
+      if (!totpRes.ok) {
+        if (mountedRef.current) setLoading(false);
         return;
       }
-      if (totpRes.ok && totpData.confirmed) {
-        // Le cookie peut être absent, expiré ou révoqué (TTL 4h) — sans ce
-        // contrôle AVANT le premier rendu, le dashboard s'affichait un
-        // instant avant que le premier appel /api/admin/* échoue en 401 et
-        // force une déconnexion (le "flash puis déco" observé).
-        const sessionCheck = await fetch("/api/auth/2fa/totp/verify-session", {
-          headers: { Authorization: `Bearer ${session.access_token}` },
-        });
-        const sessionData = await sessionCheck.json();
-        if (!sessionCheck.ok || !sessionData.valid) {
-          router.push(
-            `/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`,
-          );
-          return;
+
+      const totpData = await totpRes.json();
+      if (totpData.role === "admin" && !totpData.confirmed) {
+        if (mountedRef.current) {
+          setNeedsTotpSetup(true);
+          setLoading(false);
         }
+        return;
       }
 
-      setLoading(false);
+      const sessionCheck = await fetch("/api/auth/2fa/totp/verify-session", {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+      const sessionData = await sessionCheck
+        .json()
+        .catch(() => ({ valid: false }));
+
+      if (!sessionCheck.ok || !sessionData.valid) {
+        router.replace(
+          `/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`,
+        );
+        return;
+      }
+
+      if (mountedRef.current) setLoading(false);
     };
 
     checkTotp();
