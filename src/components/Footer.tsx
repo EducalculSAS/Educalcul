@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { Facebook, Twitter, Instagram, Youtube, Mail } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassButton from "@/components/ui/GlassButton";
@@ -43,7 +42,6 @@ const NAV_COLS = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const pathname = usePathname();
 
   return (
     <footer style={{ background: "var(--greek-blue)" }} className="text-white mt-auto">
@@ -75,32 +73,25 @@ export default function Footer() {
           {NAV_COLS.map((col) => (
             <div key={col.title}>
               <p
-                className="text-xs font-bold tracking-widest uppercase mb-4 font-[family-name:var(--font-display)]"
+                className="text-xs font-bold tracking-widest uppercase mb-4 text-center font-[family-name:var(--font-display)]"
                 style={{ color: "var(--greek-gold)" }}
               >
                 {col.title}
               </p>
               <ul className="space-y-2">
-                {col.links.map((l) => {
-                  const active = pathname === l.href;
-                  return (
-                    <li key={l.href}>
-                      <GlassButton
-                        href={l.href}
-                        size="sm"
-                        fullWidth
-                        className="text-sm"
-                        style={
-                          active
-                            ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)" }
-                            : { background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.75)" }
-                        }
-                      >
-                        {l.label}
-                      </GlassButton>
-                    </li>
-                  );
-                })}
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <GlassButton
+                      href={l.href}
+                      size="sm"
+                      fullWidth
+                      className="text-sm"
+                      style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.75)" }}
+                    >
+                      {l.label}
+                    </GlassButton>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}

@@ -11,39 +11,20 @@ import type { User as SupabaseUser } from "@supabase/supabase-js";
 import NotificationBell from "@/components/NotificationBell";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
-import {
-  Menu,
-  X,
-  LogOut,
-  User,
-  LayoutDashboard,
-  Settings,
-  Users,
-  CreditCard,
-  BookOpen,
-  Trophy,
-  Brain,
-  MessageSquare,
-  HelpCircle,
-  type LucideIcon,
-} from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 
 // Pages "app" où on affiche le menu connecté
 const APP_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"];
 
-/** Lien du menu déroulant en pilule verre liquide — même traitement que les
- * items du menu admin (AdminSidebar) : "gold" sur la page active, "light"
- * discret sinon, plutôt qu'un simple texte. */
+/** Lien du menu déroulant en pilule verre liquide — texte seul, centré,
+ * sans distinction dorée pour la page active (juste le reflet blanc au
+ * survol commun à tous les boutons verre liquide). */
 function DropdownLink({
   href,
-  icon: Icon,
-  active,
   onClick,
   children,
 }: {
   href: string;
-  icon?: LucideIcon;
-  active: boolean;
   onClick: () => void;
   children: ReactNode;
 }) {
@@ -51,17 +32,11 @@ function DropdownLink({
     <GlassButton
       href={href}
       onClick={onClick}
-      variant={active ? "gold" : "light"}
       size="sm"
       fullWidth
-      className={`font-[family-name:var(--font-display)] ${active ? "font-bold" : ""}`}
-      style={
-        active
-          ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)" }
-          : { background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)" }
-      }
+      className="font-[family-name:var(--font-display)]"
+      style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)" }}
     >
-      {Icon && <Icon className="w-4 h-4" />}
       {children}
     </GlassButton>
   );
@@ -221,11 +196,11 @@ export default function Navbar() {
           {/* Navigation Links — toujours visibles sur pages publiques */}
           {(!user || !isAppPage) && (
             <div className="flex flex-col p-4 gap-2">
-              <DropdownLink href="/" active={pathname === "/"} onClick={() => setIsOpen(false)}>Accueil</DropdownLink>
-              <DropdownLink href="/offres" active={pathname?.startsWith("/offres") ?? false} onClick={() => setIsOpen(false)}>Offres</DropdownLink>
-              <DropdownLink href="/tarifs" active={pathname?.startsWith("/tarifs") ?? false} onClick={() => setIsOpen(false)}>Tarifs</DropdownLink>
-              <DropdownLink href="/faq" active={pathname?.startsWith("/faq") ?? false} onClick={() => setIsOpen(false)}>FAQ</DropdownLink>
-              <DropdownLink href="/contact" active={pathname?.startsWith("/contact") ?? false} onClick={() => setIsOpen(false)}>Contact</DropdownLink>
+              <DropdownLink href="/" onClick={() => setIsOpen(false)}>Accueil</DropdownLink>
+              <DropdownLink href="/offres" onClick={() => setIsOpen(false)}>Offres</DropdownLink>
+              <DropdownLink href="/tarifs" onClick={() => setIsOpen(false)}>Tarifs</DropdownLink>
+              <DropdownLink href="/faq" onClick={() => setIsOpen(false)}>FAQ</DropdownLink>
+              <DropdownLink href="/contact" onClick={() => setIsOpen(false)}>Contact</DropdownLink>
             </div>
           )}
 
@@ -241,7 +216,7 @@ export default function Navbar() {
           <div className="flex flex-col p-4 gap-2">
             {!user || !isAppPage ? (
               <>
-                <DropdownLink href="/auth/connexion" icon={User} active={pathname?.startsWith("/auth/connexion") ?? false} onClick={() => setIsOpen(false)}>
+                <DropdownLink href="/auth/connexion" onClick={() => setIsOpen(false)}>
                   Connexion
                 </DropdownLink>
                 <div className="mt-2">
@@ -260,7 +235,7 @@ export default function Navbar() {
             ) : user && isAppPage ? (
               <>
                 <div
-                  className="px-4 py-3 mb-1 text-xs font-bold tracking-widest uppercase border-b font-[family-name:var(--font-display)]"
+                  className="px-4 py-3 mb-1 text-xs font-bold tracking-widest uppercase text-center border-b font-[family-name:var(--font-display)]"
                   style={{
                     color: "var(--greek-gold)",
                     borderColor: "rgba(197,161,72,0.2)",
@@ -270,49 +245,49 @@ export default function Navbar() {
                     ? `${firstName} - ${getRoleDisplayName()}`
                     : getRoleDisplayName()}
                 </div>
-                <DropdownLink href={getDashboardLink()} icon={LayoutDashboard} active={pathname === getDashboardLink()} onClick={() => setIsOpen(false)}>
+                <DropdownLink href={getDashboardLink()} onClick={() => setIsOpen(false)}>
                   Tableau de bord
                 </DropdownLink>
                 {userRole === "parent" && (
                   <>
-                    <DropdownLink href="/parent/children" icon={Users} active={pathname?.startsWith("/parent/children") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/parent/children" onClick={() => setIsOpen(false)}>
                       Mes Enfants
                     </DropdownLink>
-                    <DropdownLink href="/parent/subscription" icon={CreditCard} active={pathname?.startsWith("/parent/subscription") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/parent/subscription" onClick={() => setIsOpen(false)}>
                       Abonnements
                     </DropdownLink>
-                    <DropdownLink href="/parent/forum" icon={MessageSquare} active={pathname?.startsWith("/parent/forum") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/parent/forum" onClick={() => setIsOpen(false)}>
                       Forum
                     </DropdownLink>
-                    <DropdownLink href="/parent/support" icon={HelpCircle} active={pathname?.startsWith("/parent/support") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/parent/support" onClick={() => setIsOpen(false)}>
                       Support
                     </DropdownLink>
                   </>
                 )}
                 {userRole === "child" && (
                   <>
-                    <DropdownLink href="/child/cours" icon={BookOpen} active={pathname?.startsWith("/child/cours") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/child/cours" onClick={() => setIsOpen(false)}>
                       Mes Cours
                     </DropdownLink>
-                    <DropdownLink href="/child/exercises" icon={Brain} active={pathname?.startsWith("/child/exercises") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/child/exercises" onClick={() => setIsOpen(false)}>
                       Exercices
                     </DropdownLink>
-                    <DropdownLink href="/child/quiz" icon={Trophy} active={pathname?.startsWith("/child/quiz") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/child/quiz" onClick={() => setIsOpen(false)}>
                       Quiz & Défis
                     </DropdownLink>
-                    <DropdownLink href="/child/badges" icon={Trophy} active={pathname?.startsWith("/child/badges") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/child/badges" onClick={() => setIsOpen(false)}>
                       Mes Trophées
                     </DropdownLink>
-                    <DropdownLink href="/child/forum" icon={MessageSquare} active={pathname?.startsWith("/child/forum") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/child/forum" onClick={() => setIsOpen(false)}>
                       Forum
                     </DropdownLink>
-                    <DropdownLink href="/child/support" icon={HelpCircle} active={pathname?.startsWith("/child/support") ?? false} onClick={() => setIsOpen(false)}>
+                    <DropdownLink href="/child/support" onClick={() => setIsOpen(false)}>
                       Support
                     </DropdownLink>
                   </>
                 )}
                 {getProfileLink() && (
-                  <DropdownLink href={getProfileLink()!} icon={Settings} active={pathname?.startsWith(getProfileLink()!) ?? false} onClick={() => setIsOpen(false)}>
+                  <DropdownLink href={getProfileLink()!} onClick={() => setIsOpen(false)}>
                     Profil
                   </DropdownLink>
                 )}
