@@ -135,7 +135,7 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
                 variant={isActive ? "gold" : "light"}
                 size="sm"
                 fullWidth
-                className={`justify-start text-sm ${isActive ? "font-bold shadow-md" : ""}`}
+                className={`text-sm ${isActive ? "font-bold shadow-md" : ""}`}
                 style={
                   isActive
                     ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)" }
@@ -156,7 +156,6 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
             variant="danger"
             size="sm"
             fullWidth
-            className="justify-start"
           >
             <LogOut size={18} className="flex-shrink-0" />
             <span>Déconnexion</span>

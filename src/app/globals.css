@@ -443,7 +443,14 @@ main,
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 .liquid-glass-btn::after {
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.14);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
 }
 .liquid-glass-btn:hover::after {
   opacity: 1;

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { trackLogout } from "@/lib/trackLogout";
@@ -25,10 +25,47 @@ import {
   Brain,
   MessageSquare,
   HelpCircle,
+  type LucideIcon,
 } from "lucide-react";
 
 // Pages "app" où on affiche le menu connecté
 const APP_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"];
+
+/** Lien du menu déroulant en pilule verre liquide — même traitement que les
+ * items du menu admin (AdminSidebar) : "gold" sur la page active, "light"
+ * discret sinon, plutôt qu'un simple texte. */
+function DropdownLink({
+  href,
+  icon: Icon,
+  active,
+  onClick,
+  children,
+}: {
+  href: string;
+  icon?: LucideIcon;
+  active: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <GlassButton
+      href={href}
+      onClick={onClick}
+      variant={active ? "gold" : "light"}
+      size="sm"
+      fullWidth
+      className={`font-[family-name:var(--font-display)] ${active ? "font-bold" : ""}`}
+      style={
+        active
+          ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)" }
+          : { background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)" }
+      }
+    >
+      {Icon && <Icon className="w-4 h-4" />}
+      {children}
+    </GlassButton>
+  );
+}
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -166,9 +203,13 @@ export default function Navbar() {
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] backdrop-blur-[32px] backdrop-saturate-[1.2] transition-all duration-300 ease-in-out origin-top overflow-hidden border border-white/10 ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
+          data-glass-bounds
+          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top overflow-hidden border border-white/10 ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
           style={{
-            background: "rgba(15,30,58,0.82)",
+            // Fond plein (pas de flou/transparence) — cohérent avec le
+            // bandeau navbar lui-même, plutôt qu'un panneau translucide qui
+            // laissait deviner le contenu défilant derrière.
+            background: "var(--greek-blue)",
             boxShadow: "none",
             border: "none",
             borderTopLeftRadius: "0",
@@ -180,46 +221,11 @@ export default function Navbar() {
           {/* Navigation Links — toujours visibles sur pages publiques */}
           {(!user || !isAppPage) && (
             <div className="flex flex-col p-4 gap-2">
-              <Link
-                href="/"
-                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]"
-                style={{ color: "rgba(255,255,255,0.7)" }}
-                onClick={() => setIsOpen(false)}
-              >
-                Accueil
-              </Link>
-              <Link
-                href="/offres"
-                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]"
-                style={{ color: "rgba(255,255,255,0.7)" }}
-                onClick={() => setIsOpen(false)}
-              >
-                Offres
-              </Link>
-              <Link
-                href="/tarifs"
-                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]"
-                style={{ color: "rgba(255,255,255,0.7)" }}
-                onClick={() => setIsOpen(false)}
-              >
-                Tarifs
-              </Link>
-              <Link
-                href="/faq"
-                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]"
-                style={{ color: "rgba(255,255,255,0.7)" }}
-                onClick={() => setIsOpen(false)}
-              >
-                FAQ
-              </Link>
-              <Link
-                href="/contact"
-                className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white font-[family-name:var(--font-display)]"
-                style={{ color: "rgba(255,255,255,0.7)" }}
-                onClick={() => setIsOpen(false)}
-              >
-                Contact
-              </Link>
+              <DropdownLink href="/" active={pathname === "/"} onClick={() => setIsOpen(false)}>Accueil</DropdownLink>
+              <DropdownLink href="/offres" active={pathname?.startsWith("/offres") ?? false} onClick={() => setIsOpen(false)}>Offres</DropdownLink>
+              <DropdownLink href="/tarifs" active={pathname?.startsWith("/tarifs") ?? false} onClick={() => setIsOpen(false)}>Tarifs</DropdownLink>
+              <DropdownLink href="/faq" active={pathname?.startsWith("/faq") ?? false} onClick={() => setIsOpen(false)}>FAQ</DropdownLink>
+              <DropdownLink href="/contact" active={pathname?.startsWith("/contact") ?? false} onClick={() => setIsOpen(false)}>Contact</DropdownLink>
             </div>
           )}
 
@@ -235,14 +241,9 @@ export default function Navbar() {
           <div className="flex flex-col p-4 gap-2">
             {!user || !isAppPage ? (
               <>
-                <Link
-                  href="/auth/connexion"
-                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                  style={{ color: "rgba(255,255,255,0.7)" }}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <User className="w-4 h-4" /> Connexion
-                </Link>
+                <DropdownLink href="/auth/connexion" icon={User} active={pathname?.startsWith("/auth/connexion") ?? false} onClick={() => setIsOpen(false)}>
+                  Connexion
+                </DropdownLink>
                 <div className="mt-2">
                   <GlassButton
                     href="/auth/inscription"
@@ -269,111 +270,51 @@ export default function Navbar() {
                     ? `${firstName} - ${getRoleDisplayName()}`
                     : getRoleDisplayName()}
                 </div>
-                <Link
-                  href={getDashboardLink()}
-                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                  style={{ color: "rgba(255,255,255,0.7)" }}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <LayoutDashboard className="w-4 h-4" /> Tableau de bord
-                </Link>
+                <DropdownLink href={getDashboardLink()} icon={LayoutDashboard} active={pathname === getDashboardLink()} onClick={() => setIsOpen(false)}>
+                  Tableau de bord
+                </DropdownLink>
                 {userRole === "parent" && (
                   <>
-                    <Link
-                      href="/parent/children"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Users className="w-4 h-4" /> Mes Enfants
-                    </Link>
-                    <Link
-                      href="/parent/subscription"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <CreditCard className="w-4 h-4" /> Abonnements
-                    </Link>
-                    <Link
-                      href="/parent/forum"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <MessageSquare className="w-4 h-4" /> Forum
-                    </Link>
-                    <Link
-                      href="/parent/support"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <HelpCircle className="w-4 h-4" /> Support
-                    </Link>
+                    <DropdownLink href="/parent/children" icon={Users} active={pathname?.startsWith("/parent/children") ?? false} onClick={() => setIsOpen(false)}>
+                      Mes Enfants
+                    </DropdownLink>
+                    <DropdownLink href="/parent/subscription" icon={CreditCard} active={pathname?.startsWith("/parent/subscription") ?? false} onClick={() => setIsOpen(false)}>
+                      Abonnements
+                    </DropdownLink>
+                    <DropdownLink href="/parent/forum" icon={MessageSquare} active={pathname?.startsWith("/parent/forum") ?? false} onClick={() => setIsOpen(false)}>
+                      Forum
+                    </DropdownLink>
+                    <DropdownLink href="/parent/support" icon={HelpCircle} active={pathname?.startsWith("/parent/support") ?? false} onClick={() => setIsOpen(false)}>
+                      Support
+                    </DropdownLink>
                   </>
                 )}
                 {userRole === "child" && (
                   <>
-                    <Link
-                      href="/child/cours"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <BookOpen className="w-4 h-4" /> Mes Cours
-                    </Link>
-                    <Link
-                      href="/child/exercises"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Brain className="w-4 h-4" /> Exercices
-                    </Link>
-                    <Link
-                      href="/child/quiz"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Trophy className="w-4 h-4" /> Quiz & Défis
-                    </Link>
-                    <Link
-                      href="/child/badges"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Trophy className="w-4 h-4" /> Mes Trophées
-                    </Link>
-                    <Link
-                      href="/child/forum"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <MessageSquare className="w-4 h-4" /> Forum
-                    </Link>
-                    <Link
-                      href="/child/support"
-                      className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <HelpCircle className="w-4 h-4" /> Support
-                    </Link>
+                    <DropdownLink href="/child/cours" icon={BookOpen} active={pathname?.startsWith("/child/cours") ?? false} onClick={() => setIsOpen(false)}>
+                      Mes Cours
+                    </DropdownLink>
+                    <DropdownLink href="/child/exercises" icon={Brain} active={pathname?.startsWith("/child/exercises") ?? false} onClick={() => setIsOpen(false)}>
+                      Exercices
+                    </DropdownLink>
+                    <DropdownLink href="/child/quiz" icon={Trophy} active={pathname?.startsWith("/child/quiz") ?? false} onClick={() => setIsOpen(false)}>
+                      Quiz & Défis
+                    </DropdownLink>
+                    <DropdownLink href="/child/badges" icon={Trophy} active={pathname?.startsWith("/child/badges") ?? false} onClick={() => setIsOpen(false)}>
+                      Mes Trophées
+                    </DropdownLink>
+                    <DropdownLink href="/child/forum" icon={MessageSquare} active={pathname?.startsWith("/child/forum") ?? false} onClick={() => setIsOpen(false)}>
+                      Forum
+                    </DropdownLink>
+                    <DropdownLink href="/child/support" icon={HelpCircle} active={pathname?.startsWith("/child/support") ?? false} onClick={() => setIsOpen(false)}>
+                      Support
+                    </DropdownLink>
                   </>
                 )}
                 {getProfileLink() && (
-                  <Link
-                    href={getProfileLink()!}
-                    className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:translate-x-1 hover:text-white flex items-center gap-2 font-[family-name:var(--font-display)]"
-                    style={{ color: "rgba(255,255,255,0.7)" }}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Settings className="w-4 h-4" /> Profil
-                  </Link>
+                  <DropdownLink href={getProfileLink()!} icon={Settings} active={pathname?.startsWith(getProfileLink()!) ?? false} onClick={() => setIsOpen(false)}>
+                    Profil
+                  </DropdownLink>
                 )}
                 <div className="px-4 pt-2 pb-1">
                   <GlassButton
@@ -384,7 +325,7 @@ export default function Navbar() {
                     variant="danger"
                     size="sm"
                     fullWidth
-                    className="justify-start font-[family-name:var(--font-display)]"
+                    className="font-[family-name:var(--font-display)]"
                   >
                     <LogOut className="w-4 h-4" /> Déconnexion
                   </GlassButton>

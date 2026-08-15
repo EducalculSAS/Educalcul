@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Facebook, Twitter, Instagram, Youtube, Mail } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import GlassButton from "@/components/ui/GlassButton";
 
 const SOCIALS = [
   { icon: Facebook, label: "Facebook" },
@@ -42,6 +43,7 @@ const NAV_COLS = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
 
   return (
     <footer style={{ background: "var(--greek-blue)" }} className="text-white mt-auto">
@@ -78,18 +80,27 @@ export default function Footer() {
               >
                 {col.title}
               </p>
-              <ul className="space-y-3">
-                {col.links.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="text-sm transition-all duration-200 hover:translate-x-1 hover:text-white inline-block"
-                      style={{ color: "rgba(255,255,255,0.5)" }}
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
+              <ul className="space-y-2">
+                {col.links.map((l) => {
+                  const active = pathname === l.href;
+                  return (
+                    <li key={l.href}>
+                      <GlassButton
+                        href={l.href}
+                        size="sm"
+                        fullWidth
+                        className="text-sm"
+                        style={
+                          active
+                            ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)" }
+                            : { background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.75)" }
+                        }
+                      >
+                        {l.label}
+                      </GlassButton>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
