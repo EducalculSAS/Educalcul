@@ -325,6 +325,7 @@ export default function GlassButton({
         <Link
           ref={elRef as React.Ref<HTMLAnchorElement>}
           href={href}
+          onClick={onClick}
           className={combinedClassName}
           style={combinedStyle}
         >

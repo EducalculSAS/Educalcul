@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -129,19 +128,19 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
               pathname === item.href || pathname?.startsWith(item.href + "/");
 
             return (
-              <Link
+              <GlassButton
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 text-sm ${
-                  isActive
-                    ? "bg-[var(--greek-gold)] text-[var(--greek-blue)] font-bold shadow-md"
-                    : "text-white/80 hover:bg-white/10 hover:text-white"
-                }`}
+                variant={isActive ? "gold" : "light"}
+                rounded="xl"
+                size="sm"
+                fullWidth
+                className={`justify-start text-sm ${isActive ? "font-bold" : ""}`}
               >
                 <Icon size={18} className="flex-shrink-0" />
                 <span className="truncate">{item.name}</span>
-              </Link>
+              </GlassButton>
             );
           })}
         </nav>
