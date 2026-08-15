@@ -1,13 +1,14 @@
 "use client";
 
-import { History, MessageSquare, ScanSearch, type LucideIcon } from "lucide-react";
+import { History, MessageSquare, ScanSearch, Gamepad2, type LucideIcon } from "lucide-react";
 
-type ServerSafeAdminIcon = "history" | "message-square" | "scan-search";
+type ServerSafeAdminIcon = "history" | "message-square" | "scan-search" | "gamepad-2";
 
 const SERVER_SAFE_ICONS: Record<ServerSafeAdminIcon, LucideIcon> = {
   history: History,
   "message-square": MessageSquare,
   "scan-search": ScanSearch,
+  "gamepad-2": Gamepad2,
 };
 
 interface AdminPageHeaderProps {

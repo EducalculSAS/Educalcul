@@ -146,7 +146,8 @@ type GenerationsTable =
   | "course_generations"
   | "exercise_generations"
   | "quiz_generations"
-  | "scan_runs";
+  | "scan_runs"
+  | "minigame_generations";
 
 export function createGenerationTracker(
   table: GenerationsTable,

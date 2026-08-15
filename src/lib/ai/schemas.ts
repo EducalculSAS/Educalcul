@@ -1236,3 +1236,34 @@ export function scanFindingsSchema(): JsonSchemaContract {
     },
   };
 }
+
+/** Fiche de calcul mental (mini-jeux) : questions courtes à réponse
+ * numérique unique, respectant les opérations autorisées pour le niveau
+ * (voir src/lib/minigames/calculMentalRules.ts, qui construit le prompt). */
+export function calculMentalQuestionsSchema(count: number): JsonSchemaContract {
+  return {
+    name: "educalcul_calcul_mental",
+    description: "Questions de calcul mental chronométré, réponse numérique unique.",
+    schema: {
+      type: "object",
+      properties: {
+        questions: {
+          type: "array",
+          minItems: count,
+          maxItems: count,
+          items: {
+            type: "object",
+            properties: {
+              prompt: { type: "string", minLength: 1, maxLength: 200 },
+              answer: { type: "number" },
+            },
+            required: ["prompt", "answer"],
+            ...noExtra,
+          },
+        },
+      },
+      required: ["questions"],
+      ...noExtra,
+    },
+  };
+}

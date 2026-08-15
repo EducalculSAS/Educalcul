@@ -33,6 +33,7 @@ const BORDERS: Record<string, Conf> = {
   flamme:  { stroke: "#f97316", strokeW: 3,   rectAnimCls: "border-anim-flame"   },
   pro:     { stroke: "#f59e0b", strokeW: 2.5, rectAnimCls: "border-anim-pro"     },
   elite:   { stroke: "#7c3aed", strokeW: 3,   rectAnimCls: "border-anim-elite"   },
+  mathador:{ stroke: "#6366f1", strokeW: 2.5, rectAnimCls: "border-anim-premium" },
   admin:   { stroke: "#ff6b6b", strokeW: 3,   rectAnimCls: "border-anim-admin"   },
 };
 

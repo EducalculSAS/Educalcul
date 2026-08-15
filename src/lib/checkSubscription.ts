@@ -6,6 +6,8 @@ interface PlanFeatures {
   max_children: number;
   detailed_reports: boolean;
   access_level_exercises: "basic" | "intermediate" | "advanced" | "all";
+  /** Parties de mini-jeux (Mathador, calcul mental...) par jour. -1 = illimité. */
+  minigames_daily_limit: number;
   [key: string]: any;
 }
 
@@ -15,6 +17,7 @@ const FREE_FEATURES: PlanFeatures = {
   max_children: 1,
   detailed_reports: false,
   access_level_exercises: "basic",
+  minigames_daily_limit: 3,
 };
 
 export async function getUserFeatures(
@@ -101,6 +104,42 @@ export async function checkAIAccess(authId: string): Promise<{ allowed: boolean;
 
   if (used >= limit) {
     return { allowed: false, reason: `Limite quotidienne atteinte (${limit} messages/jour). Revenez demain ou passez à Annuel Pro.`, remaining: 0 };
+  }
+
+  return { allowed: true, remaining };
+}
+
+/** Même patron que checkAIAccess, pour les mini-jeux (Mathador, calcul
+ * mental...) — un enfant sur plan gratuit a un nombre de parties/jour
+ * limité, illimité sur les plans payants qui le prévoient (-1). */
+export async function checkMinigamesAccess(authId: string): Promise<{ allowed: boolean; reason?: string; remaining: number }> {
+  const { data: userRow } = await supabaseAdmin
+    .from("users")
+    .select("id, role, parent_id")
+    .eq("auth_id", authId)
+    .maybeSingle();
+
+  if (!userRow) return { allowed: false, reason: "Utilisateur introuvable", remaining: 0 };
+  if (userRow.role === "admin") return { allowed: true, remaining: -1 };
+
+  const features = await getUserFeatures(authId, userRow);
+  const limit = features.minigames_daily_limit;
+  if (limit === -1) return { allowed: true, remaining: -1 };
+
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  const { count } = await supabaseAdmin
+    .from("minigame_sessions")
+    .select("*", { count: "exact", head: true })
+    .eq("user_id", userRow.id)
+    .gte("created_at", todayStart.toISOString());
+
+  const used = count ?? 0;
+  const remaining = Math.max(0, limit - used);
+
+  if (used >= limit) {
+    return { allowed: false, reason: `Limite quotidienne atteinte (${limit} parties/jour). Revenez demain ou passez à un plan supérieur.`, remaining: 0 };
   }
 
   return { allowed: true, remaining };

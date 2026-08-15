@@ -39,6 +39,14 @@ function quizPerfectTier(n: number) {
   if (n >= 1)  return 1;
   return 0;
 }
+// Somme cumulée des scores Mathador (max 13 pts/partie, coup mathador compris).
+function mathadorTier(n: number) {
+  if (n >= 1000) return 4;
+  if (n >= 400)  return 3;
+  if (n >= 150)  return 2;
+  if (n >= 50)   return 1;
+  return 0;
+}
 function loginStreakTier(n: number) {
   if (n >= 365) return 5;
   if (n >= 90)  return 4;
@@ -142,6 +150,13 @@ const COSMETIC_REQUIREMENTS: Record<string, {
       return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
     },
   },
+  mathador: {
+    label: "Contour Mathador",
+    checks: (t) => {
+      const parts = [{ name: "Points Mathador cumulés (palier 2 - 150)", ok: t.mathador >= 2 }];
+      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
+    },
+  },
 };
 
 export async function POST(req: Request) {
@@ -165,7 +180,7 @@ export async function POST(req: Request) {
     const [
       { data: allBadges }, { data: earned },
       { count: exoCount }, { count: correctCount }, { count: quizCount },
-      { count: courseCount }, { data: quizScores },
+      { count: courseCount }, { data: quizScores }, { data: mathadorScores },
     ] = await Promise.all([
       supabaseAdmin.from("badges").select("id, requirement_type, requirement_value, name, description").eq("is_active", true),
       supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userId),
@@ -176,10 +191,12 @@ export async function POST(req: Request) {
       supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).or("passed.eq.true,passed.is.null"),
       supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", userId),
       supabaseAdmin.from("user_quiz_attempts").select("score, total_questions").eq("user_id", userId),
+      supabaseAdmin.from("minigame_sessions").select("score").eq("user_id", userId).eq("game_type", "mathador").eq("status", "completed"),
     ]);
     const earnedIds = new Set((earned || []).map(e => e.badge_id));
 
     const perfectQuizzes = (quizScores || []).filter(q => q.total_questions > 0 && q.score === q.total_questions).length;
+    const mathadorPoints = (mathadorScores || []).reduce((sum, s) => sum + (s.score || 0), 0);
 
     const stats: Record<string, number> = {
       exercise_count: exoCount ?? 0,
@@ -208,6 +225,7 @@ export async function POST(req: Request) {
       quizPerfect: quizPerfectTier(perfectQuizzes),
       loginStreak: loginStreakTier(user.login_streak ?? 0),
       loginCount: loginCountTier(user.login_count ?? 0),
+      mathador: mathadorTier(mathadorPoints),
     };
 
     const { data: ownedCosmetics } = await supabaseAdmin.from("user_cosmetics").select("cosmetic_key").eq("user_id", userId);

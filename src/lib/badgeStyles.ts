@@ -10,6 +10,7 @@ export const BORDER_STYLES: Record<string, { ring: string; label: string; previe
   flamme:   { ring: "",    label: "Flamme",      preview: "border-orange-500", source: "subscription" },
   pro:      { ring: "",    label: "Annuel Pro",  preview: "border-yellow-500", source: "subscription" },
   elite:    { ring: "",    label: "Elite",       preview: "border-pink-500",   source: "subscription" },
+  mathador: { ring: "",    label: "Mathador",    preview: "border-indigo-500", source: "badge" },
   admin:    { ring: "",    label: "Admin",       preview: "border-red-500",    source: "admin" },
 };
 

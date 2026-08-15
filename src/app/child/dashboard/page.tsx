@@ -5,7 +5,7 @@ import { getServerUser } from "@/lib/supabase/server";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import {
   BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
-  Play, MessageSquare, Star, CheckCircle, Zap, type LucideIcon,
+  Play, MessageSquare, Star, CheckCircle, Zap, Gamepad2, type LucideIcon,
 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import GlassButton from "@/components/ui/GlassButton";
@@ -108,6 +108,7 @@ export default async function ChildDashboard() {
             { href: "/child/cours", icon: BookOpen, label: "Mes Cours", desc: "Découvre de nouvelles leçons", color: "bg-blue-100 text-[var(--greek-blue)]", action: "Commencer" },
             { href: "/child/exercises", icon: PenTool, label: "Exercices", desc: "Entraîne-toi et progresse", color: "bg-orange-100 text-[var(--greek-bronze)]", action: "S'entraîner" },
             { href: "/child/quiz", icon: BrainCircuit, label: "Quiz", desc: "Teste tes connaissances", color: "bg-yellow-100 text-[var(--greek-gold)]", action: "Jouer" },
+            { href: "/child/minigames", icon: Gamepad2, label: "Mini-jeux", desc: "Défie-toi et grimpe au classement", color: "bg-indigo-100 text-indigo-600", action: "Jouer" },
             { href: "/child/forum", icon: MessageSquare, label: "Forum", desc: "Pose tes questions", color: "bg-blue-100 text-[var(--greek-blue)]", action: "Y aller" },
           ].map(({ href, icon: Icon, label, desc, color, action }) => (
             <Link key={href} href={href} className="group">

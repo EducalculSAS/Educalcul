@@ -275,6 +275,9 @@ export default function Navbar() {
                     <DropdownLink href="/child/quiz" onClick={() => setIsOpen(false)}>
                       Quiz & Défis
                     </DropdownLink>
+                    <DropdownLink href="/child/minigames" onClick={() => setIsOpen(false)}>
+                      Mini-jeux
+                    </DropdownLink>
                     <DropdownLink href="/child/badges" onClick={() => setIsOpen(false)}>
                       Mes Trophées
                     </DropdownLink>

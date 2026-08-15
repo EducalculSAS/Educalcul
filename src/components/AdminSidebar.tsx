@@ -24,6 +24,7 @@ import {
   ScanSearch,
   ShieldCheck,
   Flag,
+  Gamepad2,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -65,6 +66,7 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
     { name: "Liste d'attente", href: "/admin/landing", icon: Trophy },
     { name: "Journal d'audit", href: "/admin/audit-log", icon: History },
     { name: "Scanner IA", href: "/admin/scanner", icon: ScanSearch },
+    { name: "Mini-jeux", href: "/admin/minigames", icon: Gamepad2 },
     { name: "Sécurité", href: "/admin/security", icon: ShieldCheck },
     { name: "Fonctionnalités", href: "/admin/feature-flags", icon: Flag },
     { name: "Profil", href: "/admin/profile", icon: User },
