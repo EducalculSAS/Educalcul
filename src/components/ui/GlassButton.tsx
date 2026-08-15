@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { clampGlassTranslate } from "@/lib/liquidGlassBounds";
+import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
 const DEFAULT_TRANSITION = "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)";
 const PRESS_TRANSITION = "transform 0.12s ease-out";
@@ -225,11 +227,14 @@ export default function GlassButton({
           scaleX = Math.min(scaleX, maxScaleX);
         }
 
-        const tx = nx * MAX_PULL * fade;
-        const ty = ny * MAX_PULL * 0.5 * fade;
+        const pulledTx = nx * MAX_PULL * fade;
+        const pulledTy = ny * MAX_PULL * 0.5 * fade;
+        const originXFrac = originX === "0%" ? 0 : 1;
+        const originYFrac = originY === "0%" ? 0 : 1;
+        const clamped = clampGlassTranslate(wrapper, rect, pulledTx, pulledTy, scaleX, scaleY, originXFrac, originYFrac);
 
         wrapper.style.transformOrigin = `${originX} ${originY}`;
-        stretch.current = { tx, ty, scaleX, scaleY };
+        stretch.current = { tx: clamped.tx, ty: clamped.ty, scaleX, scaleY };
         applyTransform();
       });
     };
@@ -280,13 +285,18 @@ export default function GlassButton({
   const disabledClass = disabled
     ? "opacity-50 pointer-events-none"
     : "cursor-pointer";
-  const combinedClassName = `liquid-glass-btn backdrop-blur-[32px] backdrop-saturate-[1.2] inline-flex items-center justify-center ${disabledClass} ${radiusClass} ${sizeClass} font-[family-name:var(--font-body)] ${fullWidth ? "w-full" : ""} ${className}`;
+  // Les classes de position (fixed/absolute/top-*/left-*/z-*...) vont sur le
+  // <span> englobant, pas ici : cet élément est un descendant d'un ancêtre
+  // animé par transform, qui devient son containing block dès que le survol
+  // s'active — voir splitPositionClasses.ts pour le détail du bug que ça évite.
+  const { position: positionClasses, rest: restClassName } = splitPositionClasses(className);
+  const combinedClassName = `liquid-glass-btn backdrop-blur-[32px] backdrop-saturate-[1.2] inline-flex items-center justify-center ${disabledClass} ${radiusClass} ${sizeClass} font-[family-name:var(--font-body)] ${fullWidth ? "w-full" : ""} ${restClassName}`;
   const combinedStyle: CSSProperties = { ...preset, ...style };
 
   return (
     <span
       ref={wrapperRef}
-      className="liquid-glass-wrap"
+      className={`liquid-glass-wrap ${positionClasses}`}
       style={{
         display: fullWidth ? "block" : "inline-block",
         width: fullWidth ? "100%" : undefined,

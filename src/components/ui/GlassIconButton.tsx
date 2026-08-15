@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
+import { clampGlassTranslate } from "@/lib/liquidGlassBounds";
+import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
 const DEFAULT_TRANSITION = "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)";
 const PRESS_TRANSITION = "transform 0.12s ease-out";
@@ -108,8 +110,11 @@ export default function GlassIconButton({
         const ny = Math.max(-1, Math.min(1, dy / ACTIVATION_ZONE));
 
         grow = 1 + MAX_GROW * fade;
-        tx = nx * MAX_PULL * fade;
-        ty = ny * MAX_PULL * fade;
+        const pulledTx = nx * MAX_PULL * fade;
+        const pulledTy = ny * MAX_PULL * fade;
+        const clamped = clampGlassTranslate(wrapper, rect, pulledTx, pulledTy, grow, grow, 0.5, 0.5);
+        tx = clamped.tx;
+        ty = clamped.ty;
         applyTransform();
       });
     };
@@ -153,12 +158,17 @@ export default function GlassIconButton({
   const sizeClasses = size === "sm" ? "w-7 h-7" : "w-9 h-9";
   const iconSize = size === "sm" ? "w-3.5 h-3.5" : "w-4 h-4";
   const disabledClass = disabled ? "opacity-40 pointer-events-none" : "cursor-pointer";
-  const combinedClassName = `liquid-glass-btn backdrop-blur-[32px] backdrop-saturate-[1.2] rounded-full inline-flex items-center justify-center shrink-0 transition-colors ${sizeClasses} ${COLOR_VARIANTS[color]} ${disabledClass} ${className}`;
+  // Les classes de position (fixed/absolute/top-*/left-*/z-*...) vont sur le
+  // <span> englobant, pas ici : cet élément est un descendant d'un ancêtre
+  // animé par transform, qui devient son containing block dès que le survol
+  // s'active — voir splitPositionClasses.ts pour le détail du bug que ça évite.
+  const { position: positionClasses, rest: restClassName } = splitPositionClasses(className);
+  const combinedClassName = `liquid-glass-btn backdrop-blur-[32px] backdrop-saturate-[1.2] rounded-full inline-flex items-center justify-center shrink-0 transition-colors ${sizeClasses} ${COLOR_VARIANTS[color]} ${disabledClass} ${restClassName}`;
 
   return (
     <span
       ref={wrapperRef}
-      className="inline-block"
+      className={`inline-block ${positionClasses}`}
       style={{ transition: DEFAULT_TRANSITION, willChange: "transform" }}
     >
       {href && !disabled ? (
