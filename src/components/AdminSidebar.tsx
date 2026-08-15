@@ -135,7 +135,12 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
                 variant={isActive ? "gold" : "light"}
                 size="sm"
                 fullWidth
-                className={`justify-start text-sm ${isActive ? "font-bold" : ""}`}
+                className={`justify-start text-sm ${isActive ? "font-bold shadow-md" : ""}`}
+                style={
+                  isActive
+                    ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)" }
+                    : { background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)" }
+                }
               >
                 <Icon size={18} className="flex-shrink-0" />
                 <span className="truncate">{item.name}</span>

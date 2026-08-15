@@ -10,6 +10,7 @@ import { getDashboardPath } from "@/lib/authRedirect";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import NotificationBell from "@/components/NotificationBell";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import {
   Menu,
   X,
@@ -155,20 +156,19 @@ export default function Navbar() {
         {/* Cloche + burger */}
         <div className="flex items-center gap-2">
           {user && firstName && isAppPage && <NotificationBell />}
-          <button
-            className="p-2 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+          <GlassIconButton
+            icon={isOpen ? X : Menu}
+            color="white"
+            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
             onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          />
         </div>
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top overflow-hidden border border-white/10 ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
+          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] backdrop-blur-[32px] backdrop-saturate-[1.2] transition-all duration-300 ease-in-out origin-top overflow-hidden border border-white/10 ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
           style={{
-            background: "var(--greek-blue)",
+            background: "rgba(15,30,58,0.82)",
             boxShadow: "none",
             border: "none",
             borderTopLeftRadius: "0",
@@ -375,16 +375,20 @@ export default function Navbar() {
                     <Settings className="w-4 h-4" /> Profil
                   </Link>
                 )}
-                <button
-                  onClick={() => {
-                    handleSignOut();
-                    setIsOpen(false);
-                  }}
-                  className="py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 text-left w-full flex items-center gap-2 hover:translate-x-1 hover:text-red-400 font-[family-name:var(--font-display)]"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
-                >
-                  <LogOut className="w-4 h-4" /> Déconnexion
-                </button>
+                <div className="px-4 pt-2 pb-1">
+                  <GlassButton
+                    onClick={() => {
+                      handleSignOut();
+                      setIsOpen(false);
+                    }}
+                    variant="danger"
+                    size="sm"
+                    fullWidth
+                    className="justify-start font-[family-name:var(--font-display)]"
+                  >
+                    <LogOut className="w-4 h-4" /> Déconnexion
+                  </GlassButton>
+                </div>
               </>
             ) : null}
           </div>

@@ -1,6 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Twitter, Instagram, Youtube, Mail } from "lucide-react";
+import GlassIconButton from "@/components/ui/GlassIconButton";
+
+const SOCIALS = [
+  { icon: Facebook, label: "Facebook" },
+  { icon: Twitter, label: "Twitter" },
+  { icon: Instagram, label: "Instagram" },
+  { icon: Youtube, label: "YouTube" },
+];
 
 const NAV_COLS = [
   {
@@ -53,11 +63,8 @@ export default function Footer() {
               contact@educalcul.com
             </a>
             <div className="flex gap-3">
-              {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-                <a key={i} href="#"
-                  className="w-9 h-9 flex items-center justify-center rounded-lg transition-all duration-200 hover:-translate-y-0.5 bg-white/[0.06] border border-white/[0.08] hover:bg-[var(--greek-gold)]">
-                  <Icon className="w-4 h-4" />
-                </a>
+              {SOCIALS.map((s) => (
+                <GlassIconButton key={s.label} icon={s.icon} href="#" color="white" aria-label={s.label} />
               ))}
             </div>
           </div>
