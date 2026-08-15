@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { clampGlassTranslate } from "@/lib/liquidGlassBounds";
+import { clampGlassTranslate, isRectOffscreen } from "@/lib/liquidGlassBounds";
 import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
 const DEFAULT_TRANSITION = "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)";
@@ -88,6 +88,18 @@ export default function GlassIconButton({
       raf.current = requestAnimationFrame(() => {
         raf.current = 0;
         const rect = wrapper.getBoundingClientRect();
+
+        // Cf. GlassButton.tsx : un ancêtre caché hors écran par transform
+        // (sidebar mobile fermée...) ne clippe pas ce bouton, seulement sa
+        // boîte se déplace — il ne doit plus du tout réagir au survol.
+        if (isRectOffscreen(rect)) {
+          grow = 1;
+          tx = 0;
+          ty = 0;
+          applyTransform();
+          return;
+        }
+
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
         const dx = e.clientX - cx;

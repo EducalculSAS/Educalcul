@@ -49,6 +49,21 @@ export function clampGlassTranslate(
   return { tx: clampedTx, ty: clampedTy };
 }
 
+/** Un ancêtre caché hors écran par transform (ex. une sidebar mobile fermée
+ * en translateX(-100%)) ne fait que déplacer la boîte du bouton — il ne la
+ * clippe pas. Sans ce filtre, un bouton ainsi "caché" restait candidat à
+ * l'effet magnétique (survol, "plus proche du curseur"...) alors qu'il ne
+ * devrait jamais réagir ni être visible tant que son conteneur l'est pas. */
+export function isRectOffscreen(rect: DOMRect): boolean {
+  if (typeof window === "undefined") return false;
+  return (
+    rect.right <= 0 ||
+    rect.bottom <= 0 ||
+    rect.left >= document.documentElement.clientWidth ||
+    rect.top >= window.innerHeight
+  );
+}
+
 function getGlassBounds(el: HTMLElement): { left: number; top: number; right: number; bottom: number } | null {
   const container = el.closest("[data-glass-bounds]");
   if (container) {

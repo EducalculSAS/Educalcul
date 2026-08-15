@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
-import { clampGlassTranslate } from "@/lib/liquidGlassBounds";
+import { clampGlassTranslate, isRectOffscreen } from "@/lib/liquidGlassBounds";
 import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
 const DEFAULT_TRANSITION = "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)";
@@ -159,6 +159,22 @@ export default function GlassButton({
         }
 
         const rect = wrapper.getBoundingClientRect();
+
+        // Un ancêtre caché hors écran par transform (ex. la sidebar mobile
+        // fermée, translateX(-100%)) ne fait QUE déplacer sa boîte — il ne la
+        // clippe pas. Le bouton restait donc inscrit dans `registry` avec un
+        // rect bien réel mais hors viewport ; s'il gagnait le "plus proche du
+        // curseur" (ex. juste après le bord gauche), son propre transform de
+        // survol le faisait "sortir" visuellement du conteneur caché. Un
+        // bouton qui n'intersecte plus le viewport ne doit plus du tout
+        // participer à l'effet, ni comme cible ni comme concurrent.
+        if (isRectOffscreen(rect)) {
+          wrapper.style.transformOrigin = "50% 50%";
+          stretch.current = { tx: 0, ty: 0, scaleX: 1, scaleY: 1 };
+          applyTransform();
+          return;
+        }
+
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
         const dx = e.clientX - cx;
@@ -174,6 +190,7 @@ export default function GlassButton({
         for (const other of registry) {
           if (other === wrapper) continue;
           const oRect = other.getBoundingClientRect();
+          if (isRectOffscreen(oRect)) continue;
           const oEdgeX = Math.max(
             0,
             Math.abs(e.clientX - (oRect.left + oRect.width / 2)) -
