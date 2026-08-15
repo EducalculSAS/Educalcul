@@ -83,13 +83,17 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
 
   return (
     <>
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button — même bouton pour ouvrir (survole le contenu,
+          repli navy) et fermer (survole le bandeau "Admin Panel" du même
+          bleu : sans le variant blanc ici, la croix devenait illisible
+          navy-sur-navy). Décalé à droite du titre en position ouverte pour
+          ne plus le recouvrir (sidebar toujours w-64, décalage fixe). */}
       <GlassIconButton
         icon={isOpen ? X : Menu}
         onClick={() => setIsOpen(!isOpen)}
-        color="navy"
+        color={isOpen ? "white" : "navy"}
         aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        className="lg:hidden fixed z-[1050] top-3 left-4"
+        className={`lg:hidden fixed z-[1050] top-3 ${isOpen ? "left-[204px]" : "left-4"}`}
       />
 
       {/* Sidebar Overlay for Mobile */}
