@@ -708,7 +708,6 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                             size="sm"
                             variant="outline"
                             fullWidth
-                            rounded="xl"
                             onClick={() => addExercise(chapter.id, lesson.id)}
                           >
                             <Plus size={14} />
@@ -724,7 +723,6 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                     size="sm"
                     variant="outline"
                     fullWidth
-                    rounded="xl"
                     onClick={() => addLesson(chapter.id)}
                   >
                     <Plus size={16} />

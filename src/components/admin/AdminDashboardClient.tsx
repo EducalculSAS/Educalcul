@@ -76,7 +76,6 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               disabled={refreshing}
               variant="outline"
               size="sm"
-              rounded="xl"
             >
               <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
               <span className="hidden sm:inline">Actualiser</span>

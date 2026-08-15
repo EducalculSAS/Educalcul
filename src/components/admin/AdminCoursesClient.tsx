@@ -1769,7 +1769,6 @@ function NotificationModal({
           <GlassButton
             onClick={onAction}
             variant="navy"
-            rounded="xl"
             fullWidth
           >
             {ctaLabel}

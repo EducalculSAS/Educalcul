@@ -133,7 +133,6 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 variant={isActive ? "gold" : "light"}
-                rounded="xl"
                 size="sm"
                 fullWidth
                 className={`justify-start text-sm ${isActive ? "font-bold" : ""}`}
@@ -151,7 +150,6 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
             onClick={handleLogout}
             variant="danger"
             size="sm"
-            rounded="xl"
             fullWidth
             className="justify-start"
           >

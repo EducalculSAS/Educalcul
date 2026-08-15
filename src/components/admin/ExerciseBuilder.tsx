@@ -1153,7 +1153,6 @@ export default function ExerciseBuilder({
                         size="sm"
                         variant="outline"
                         fullWidth
-                        rounded="xl"
                         onClick={() => setAddBlockMenuFor(page.id)}
                       >
                         <Plus size={16} />
