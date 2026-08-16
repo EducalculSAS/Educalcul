@@ -10,15 +10,16 @@ export async function fetchAdminUserDetail(id: string) {
   if (error || !user) return null;
 
   const [
-    { count: ea }, { count: qa }, { count: cp },
+    { count: ea }, { count: qa }, { count: cp }, { count: mg },
     { data: sub }, { data: children }, { data: notifs }, { data: bdg },
     { data: posts }, { data: comments }, { data: reports }, { data: loginHistory },
     { data: exerciseAttempts }, { data: quizAttempts }, { data: courseProgress },
-    { data: tickets },
+    { data: tickets }, { data: minigameSessions },
   ] = await Promise.all([
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", id),
     supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", id),
     supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", id),
+    supabaseAdmin.from("minigame_sessions").select("*", { count: "exact", head: true }).eq("user_id", id).eq("status", "completed"),
     supabaseAdmin.from("subscriptions").select("*").eq("user_id", user.auth_id).maybeSingle(),
     supabaseAdmin.from("users").select("id, first_name, last_name, grade_level, avatar").eq("parent_id", id).eq("role", "child"),
     supabaseAdmin.from("admin_notifications").select("*").eq("user_id", id).order("created_at", { ascending: false }).limit(20),
@@ -39,11 +40,14 @@ export async function fetchAdminUserDetail(id: string) {
     supabaseAdmin.from("support_tickets")
       .select("id, subject, status, priority, created_at, updated_at")
       .eq("user_id", user.auth_id).order("created_at", { ascending: false }).limit(20),
+    supabaseAdmin.from("minigame_sessions")
+      .select("id, game_type, score, max_score, duration_seconds, status, created_at, completed_at")
+      .eq("user_id", id).order("created_at", { ascending: false }).limit(20),
   ]);
 
   return {
     user,
-    stats: { exercise_attempts: ea ?? 0, quiz_attempts: qa ?? 0, course_progress: cp ?? 0 },
+    stats: { exercise_attempts: ea ?? 0, quiz_attempts: qa ?? 0, course_progress: cp ?? 0, minigame_sessions: mg ?? 0 },
     subscription: sub ?? null, children: children ?? [],
     notifications: notifs ?? [], badges: bdg ?? [],
     forum_posts: posts ?? [], forum_comments: comments ?? [], reports: reports ?? [],
@@ -52,5 +56,6 @@ export async function fetchAdminUserDetail(id: string) {
     quiz_attempts: quizAttempts ?? [],
     course_progress: courseProgress ?? [],
     support_tickets: tickets ?? [],
+    minigame_sessions: minigameSessions ?? [],
   };
 }

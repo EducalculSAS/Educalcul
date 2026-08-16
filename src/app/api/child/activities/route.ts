@@ -151,16 +151,29 @@ export async function POST(req: Request) {
       if (status === "completed") {
         const { data: existing } = await supabaseAdmin
           .from("user_exercise_attempts")
-          .select("attempts_history")
+          .select("attempts_history, progress_json")
           .eq("user_id", internalId)
           .eq("exercise_id", itemId)
           .maybeSingle();
+        // La partie qui vient de se terminer est encore dans progress_json
+        // (pas encore écrasée par cet upsert) — on capture son détail
+        // question par question dans l'historique AVANT qu'il ne soit
+        // remplacé, sinon cette tentative ne serait plus jamais consultable
+        // en détail une fois la suivante jouée (seul un résumé de score
+        // était gardé jusqu'ici, voir plan "revue admin des copies").
+        const prevProgress = existing?.progress_json as { answers?: any; results?: any; revealed?: any; aiFeedback?: any } | undefined;
         attemptsHistory = [...(existing?.attempts_history || []), {
           score: safeScore,
           total_points: totalPoints || 0,
           score_percent: safeScorePercent,
           passed: safePassed,
           completed_at: new Date().toISOString(),
+          detail: prevProgress ? {
+            answers: prevProgress.answers || {},
+            results: prevProgress.results || {},
+            revealed: prevProgress.revealed || {},
+            aiFeedback: prevProgress.aiFeedback || {},
+          } : undefined,
         }];
       }
       result = await supabaseAdmin.from("user_exercise_attempts").upsert({
@@ -179,16 +192,23 @@ export async function POST(req: Request) {
       if (status === "completed") {
         const { data: existing } = await supabaseAdmin
           .from("user_quiz_attempts")
-          .select("attempts_history")
+          .select("attempts_history, progress_json")
           .eq("user_id", internalId)
           .eq("quiz_id", itemId)
           .maybeSingle();
+        const prevProgress = existing?.progress_json as { answers?: any; questionResults?: any; revealed?: any; questionFeedbacks?: any } | undefined;
         attemptsHistory = [...(existing?.attempts_history || []), {
           score: safeScore,
           total_points: totalPoints || 0,
           score_percent: safeScorePercent,
           passed: safePassed,
           completed_at: new Date().toISOString(),
+          detail: prevProgress ? {
+            answers: prevProgress.answers || {},
+            questionResults: prevProgress.questionResults || {},
+            revealed: prevProgress.revealed || {},
+            questionFeedbacks: prevProgress.questionFeedbacks || {},
+          } : undefined,
         }];
       }
       result = await supabaseAdmin.from("user_quiz_attempts").upsert({

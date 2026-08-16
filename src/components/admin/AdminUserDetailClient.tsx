@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   ArrowLeft, Shield, Baby, Ban, MessageCircle, KeyRound, Trash2,
   CheckCircle, AlertTriangle, Send, X, Loader2, Edit, Bell,
   CreditCard, User as UserIcon, Trophy, MessageSquare,
   Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff, ShieldCheck, UserCog,
+  Gamepad2,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { supabase } from "@/lib/supabaseClient";
@@ -25,6 +27,30 @@ const roleBadge = (r: string) => {
 
 const inputCls = "w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none text-sm bg-white";
 const labelCls = "block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1";
+
+const MINIGAME_LABEL: Record<string, string> = {
+  mathador: "Mathador",
+  calcul_mental: "Calcul mental",
+  enigmes: "Énigmes",
+  suites: "Suites",
+  langues: "Maths en langues",
+};
+const MINIGAME_STATUS_LABEL: Record<string, string> = {
+  in_progress: "En cours",
+  completed: "Terminée",
+  abandoned: "Abandonnée",
+};
+const MINIGAME_STATUS_COLOR: Record<string, string> = {
+  in_progress: "bg-blue-100 text-blue-700",
+  completed: "bg-green-100 text-green-700",
+  abandoned: "bg-gray-100 text-gray-500",
+};
+function formatMinigameDuration(seconds: number | null) {
+  if (seconds === null || seconds === undefined) return "—";
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return m > 0 ? `${m}m ${s}s` : `${s}s`;
+}
 
 function Row({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
   return (
@@ -113,6 +139,7 @@ export default function AdminUserDetailClient({
   const [showPosts, setShowPosts] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [showAttempts, setShowAttempts] = useState(false);
+  const [showMinigames, setShowMinigames] = useState(false);
   const [showTickets, setShowTickets] = useState(false);
   const [plans] = useState<any[]>(initialPlans);
   const [selectedPlanId, setSelectedPlanId] = useState<string>(initialData.subscription?.plan_id?.toString() || "");
@@ -240,6 +267,7 @@ export default function AdminUserDetailClient({
   const {
     user, stats, subscription, children, notifications, badges, forum_posts, forum_comments, reports,
     exercise_attempts = [], quiz_attempts = [], course_progress = [], support_tickets = [],
+    minigame_sessions = [],
   } = data;
   const isChild = user.role === "child";
   const isParent = user.role === "parent";
@@ -477,11 +505,12 @@ export default function AdminUserDetailClient({
 
           {/* Stats — children only for exos/quiz/cours */}
           {isChild && (
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-4 gap-4">
               {[
                 { label: "Exercices", value: stats.exercise_attempts, color: "text-orange-600" },
                 { label: "Quiz", value: stats.quiz_attempts, color: "text-blue-600" },
                 { label: "Cours", value: stats.course_progress, color: "text-teal-600" },
+                { label: "Mini-jeux", value: stats.minigame_sessions, color: "text-purple-600" },
               ].map(s => (
                 <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-4">
                   <p className={`text-2xl font-bold mb-1 ${s.color}`}>{s.value}</p>
@@ -512,9 +541,20 @@ export default function AdminUserDetailClient({
                               <p className="font-semibold text-gray-700 truncate">{a.exercises?.title || "Exercice supprimé"}</p>
                               <p className="text-xs text-gray-400">{new Date(a.completed_at || a.attempted_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}</p>
                             </div>
-                            <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
-                              {a.score}/{a.total_points} ({a.score_percent}%)
-                            </span>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                                {a.score}/{a.total_points} ({a.score_percent}%)
+                              </span>
+                              {a.exercise_id && (
+                                <Link
+                                  href={`/admin/users/attempt-review?userId=${id}&kind=exercise&itemId=${a.exercise_id}`}
+                                  className="p-1 rounded-lg text-gray-400 hover:text-[var(--greek-blue)] hover:bg-[rgba(15,30,58,0.06)] transition-colors"
+                                  title="Voir la correction"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                </Link>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -530,9 +570,20 @@ export default function AdminUserDetailClient({
                               <p className="font-semibold text-gray-700 truncate">{a.quizzes?.title || "Quiz supprimé"}</p>
                               <p className="text-xs text-gray-400">{new Date(a.completed_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}</p>
                             </div>
-                            <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
-                              {a.score}/{a.total_points} ({a.score_percent}%)
-                            </span>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                                {a.score}/{a.total_points} ({a.score_percent}%)
+                              </span>
+                              {a.quiz_id && (
+                                <Link
+                                  href={`/admin/users/attempt-review?userId=${id}&kind=quiz&itemId=${a.quiz_id}`}
+                                  className="p-1 rounded-lg text-gray-400 hover:text-[var(--greek-blue)] hover:bg-[rgba(15,30,58,0.06)] transition-colors"
+                                  title="Voir la correction"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                </Link>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -556,6 +607,47 @@ export default function AdminUserDetailClient({
                       </div>
                     ) : <p className="text-xs text-gray-400 italic">Aucune progression</p>}
                   </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Mini-jeux */}
+          {isChild && (
+            <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
+              <button onClick={() => setShowMinigames(!showMinigames)} className="w-full flex items-center justify-between">
+                <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                  <Gamepad2 className="w-4 h-4" />Mini-jeux ({minigame_sessions.length})
+                </h2>
+                {showMinigames ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
+              </button>
+              {showMinigames && (
+                <div className="mt-4">
+                  {minigame_sessions.length > 0 ? (
+                    <div className="space-y-1.5">
+                      {minigame_sessions.map((s: any) => (
+                        <div key={s.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
+                          <div className="min-w-0">
+                            <p className="font-semibold text-gray-700 truncate">{MINIGAME_LABEL[s.game_type] || s.game_type}</p>
+                            <p className="text-xs text-gray-400">
+                              {new Date(s.completed_at || s.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
+                              {" · "}{formatMinigameDuration(s.duration_seconds)}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-2 shrink-0">
+                            {s.max_score != null && (
+                              <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                                {s.score}/{s.max_score}
+                              </span>
+                            )}
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${MINIGAME_STATUS_COLOR[s.status] || "bg-gray-100 text-gray-500"}`}>
+                              {MINIGAME_STATUS_LABEL[s.status] || s.status}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : <p className="text-xs text-gray-400 italic">Aucune partie jouée</p>}
                 </div>
               )}
             </div>

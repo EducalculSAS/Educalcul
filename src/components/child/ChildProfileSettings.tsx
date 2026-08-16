@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import {
   User, Trophy, Shield, School, BookOpen, Mail,
   CheckCircle, AlertCircle, Trash2,
-  Camera, Bell, Loader2, Brain,
+  Camera, Bell, Loader2, Brain, Gamepad2,
 } from "lucide-react";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -45,7 +45,7 @@ export default function ChildProfileSettings({
 }: {
   user: ChildUser;
   googleLinked: boolean;
-  activityCounts: { courses: number; exercises: number; badges: number };
+  activityCounts: { courses: number; exercises: number; badges: number; minigames: number };
 }) {
   const [saving, setSaving] = useState(false);
   const [avatar, setAvatar] = useState(user.avatar || "/avatars/avatar1.png");
@@ -142,12 +142,13 @@ export default function ChildProfileSettings({
       </div>
 
       {/* ── Stats rapides ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
         {[
           { icon: School, label: "Niveau", value: user.grade_level ? getSimpleLevelLabel(user.grade_level) : "—", color: "#3b82f6" },
           { icon: Trophy, label: "Trophées", value: `${activityCounts.badges}`, color: "var(--greek-gold)" },
           { icon: BookOpen, label: "Cours suivis", value: `${activityCounts.courses}`, color: "#a855f7" },
           { icon: Brain, label: "Exercices", value: `${activityCounts.exercises}`, color: "#10b981" },
+          { icon: Gamepad2, label: "Mini-jeux", value: `${activityCounts.minigames}`, color: "#ec4899" },
         ].map(({ icon: Icon, label, value, color }, i) => (
           <div key={i} className="bg-white rounded-2xl p-4 border border-[rgba(197,161,72,0.2)] flex flex-col gap-2">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: `${color}15` }}>

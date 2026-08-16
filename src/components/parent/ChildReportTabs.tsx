@@ -3,14 +3,14 @@
 import { useState, type ReactNode } from "react";
 import {
   Award, BookOpen, CheckCircle, TrendingUp, Activity, Brain, Sparkles,
-  RotateCcw, Star, Lock, CalendarClock,
+  RotateCcw, Star, Lock, CalendarClock, Gamepad2,
 } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
 interface ActivityItem {
   id: string;
-  type: "Quiz" | "Exercice" | "Cours";
+  type: "Quiz" | "Exercice" | "Cours" | "Mini-jeu";
   title: string;
   date: string;
   score?: string;
@@ -158,8 +158,8 @@ export default function ChildReportTabs({
                 <div className="p-8 text-center text-gray-400">Aucune activité enregistrée.</div>
               ) : activities.map((a) => (
                 <div key={`${a.type}-${a.id}`} className="p-4 hover:bg-gray-50 transition-colors flex items-center gap-4">
-                  <div className={`p-2.5 rounded-xl shrink-0 ${a.type === "Quiz" ? "bg-purple-100 text-purple-600" : a.type === "Exercice" ? "bg-orange-100 text-orange-600" : "bg-blue-100 text-blue-600"}`}>
-                    {a.type === "Quiz" ? <Award className="w-4 h-4" /> : a.type === "Exercice" ? <BookOpen className="w-4 h-4" /> : <Activity className="w-4 h-4" />}
+                  <div className={`p-2.5 rounded-xl shrink-0 ${a.type === "Quiz" ? "bg-purple-100 text-purple-600" : a.type === "Exercice" ? "bg-orange-100 text-orange-600" : a.type === "Mini-jeu" ? "bg-pink-100 text-pink-600" : "bg-blue-100 text-blue-600"}`}>
+                    {a.type === "Quiz" ? <Award className="w-4 h-4" /> : a.type === "Exercice" ? <BookOpen className="w-4 h-4" /> : a.type === "Mini-jeu" ? <Gamepad2 className="w-4 h-4" /> : <Activity className="w-4 h-4" />}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-semibold text-gray-800 text-sm truncate">{a.title}</p>

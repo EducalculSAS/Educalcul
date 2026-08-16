@@ -20,6 +20,7 @@ import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { AdminAttemptControls } from "@/components/viewers/ExerciseViewer";
 
 
 interface QuizViewerProps {
@@ -46,15 +47,25 @@ interface QuizViewerProps {
     questionFeedbacks?: Record<number, string>;
     revealed?: Record<number, { correctAnswer?: string | string[]; explanation?: string }>;
     score?: number;
+    adminComments?: Record<string, string>;
+    adminEditedAnswers?: Record<string, any>;
   } | null;
+  /** Voir ExerciseViewer.tsx — même contrat, réutilisé tel quel côté quiz. */
+  adminMode?: {
+    onComment: (key: string, text: string) => void;
+    onEditAnswer: (key: string, value: any) => void;
+    saving?: boolean;
+  };
 }
 
-export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, forceNewAttempt, bestScorePercent, openCorrection, initialProgress }: QuizViewerProps) {
+export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, forceNewAttempt, bestScorePercent, openCorrection, initialProgress, adminMode }: QuizViewerProps) {
   const questions = quiz.content_json || [];
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, any>>(
     () => (reviewMode ? initialProgress?.answers : undefined) || {}
   );
+  const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
+  const [adminEditedAnswers] = useState<Record<string, any>>(() => initialProgress?.adminEditedAnswers || {});
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(!!reviewMode);
   const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : 0) || 0);
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -654,6 +665,32 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                 </div>
               )}
             </>
+          )}
+
+          {isAnswerSubmitted && (
+            <div className="mb-6 space-y-2">
+              {adminEditedAnswers[String(currentQuestionIndex)] !== undefined && (
+                <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
+                  <span className="font-bold block mb-0.5">Réponse corrigée par l'admin :</span>
+                  {typeof adminEditedAnswers[String(currentQuestionIndex)] === "string" ? adminEditedAnswers[String(currentQuestionIndex)] : JSON.stringify(adminEditedAnswers[String(currentQuestionIndex)])}
+                </div>
+              )}
+              {adminComments[String(currentQuestionIndex)] && (
+                <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
+                  <span className="font-bold block mb-0.5">Commentaire de l'admin :</span>
+                  {adminComments[String(currentQuestionIndex)]}
+                </div>
+              )}
+              {adminMode && (
+                <AdminAttemptControls
+                  itemKey={String(currentQuestionIndex)}
+                  currentAnswer={answers[currentQuestionIndex]}
+                  existingComment={adminComments[String(currentQuestionIndex)]}
+                  existingEditedAnswer={adminEditedAnswers[String(currentQuestionIndex)]}
+                  adminMode={adminMode}
+                />
+              )}
+            </div>
           )}
 
           {/* Actions */}

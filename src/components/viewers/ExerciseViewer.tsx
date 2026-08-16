@@ -46,6 +46,79 @@ function seededShuffle<T>(arr: T[], seed: string): T[] {
   return copy;
 }
 
+/** Zone commentaire + édition de réponse affichée sous une question, en revue
+ * admin uniquement (`adminMode` fourni par le parent). Composant local pour
+ * ne pas alourdir l'état déjà volumineux d'ExerciseViewer — gère juste ses
+ * deux champs (textarea) et délègue la sauvegarde au parent. */
+export function AdminAttemptControls({
+  itemKey,
+  currentAnswer,
+  existingComment,
+  existingEditedAnswer,
+  adminMode,
+}: {
+  itemKey: string;
+  currentAnswer: any;
+  existingComment?: string;
+  existingEditedAnswer?: any;
+  adminMode: { onComment: (key: string, text: string) => void; onEditAnswer: (key: string, value: any) => void; saving?: boolean };
+}) {
+  const [comment, setComment] = useState(existingComment || "");
+  const [editing, setEditing] = useState(false);
+  const [editValue, setEditValue] = useState(() =>
+    JSON.stringify(existingEditedAnswer !== undefined ? existingEditedAnswer : currentAnswer, null, 2)
+  );
+
+  return (
+    <div className="mt-3 pt-3 border-t border-dashed border-purple-200 space-y-2">
+      <div className="flex items-center gap-2">
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Laisser un commentaire pour l'élève sur cette question..."
+          className="flex-1 text-xs border border-purple-200 rounded-lg px-2 py-1.5 outline-none focus:ring-2 focus:ring-purple-300"
+          rows={2}
+        />
+        <GlassButton size="sm" variant="outline" onClick={() => adminMode.onComment(itemKey, comment)} disabled={adminMode.saving}>
+          Enregistrer
+        </GlassButton>
+      </div>
+      {!editing ? (
+        <button type="button" onClick={() => setEditing(true)} className="text-xs font-semibold text-purple-600 hover:underline">
+          Modifier la réponse enregistrée
+        </button>
+      ) : (
+        <div className="space-y-1.5">
+          <textarea
+            value={editValue}
+            onChange={(e) => setEditValue(e.target.value)}
+            className="w-full text-xs font-mono border border-purple-200 rounded-lg px-2 py-1.5 outline-none focus:ring-2 focus:ring-purple-300"
+            rows={2}
+          />
+          <div className="flex gap-2">
+            <GlassButton
+              size="sm"
+              variant="outline"
+              onClick={() => {
+                try {
+                  adminMode.onEditAnswer(itemKey, JSON.parse(editValue));
+                  setEditing(false);
+                } catch {
+                  // JSON invalide — on laisse le champ ouvert pour correction.
+                }
+              }}
+              disabled={adminMode.saving}
+            >
+              Enregistrer la correction
+            </GlassButton>
+            <GlassButton size="sm" variant="ghost" onClick={() => setEditing(false)}>Annuler</GlassButton>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 interface ExerciseViewerProps {
   exercise: {
     id?: string;
@@ -77,7 +150,23 @@ interface ExerciseViewerProps {
     revealed?: Record<string, any>;
     score?: number;
     blockModes?: Record<string, "text" | "draw">;
+    /** Commentaire/réponse corrigée laissés par un admin sur cette tentative
+     * (revue admin — voir /admin/users/attempt-review) : affichés en lecture
+     * même hors mode admin, pour que l'élève les voie sur SA propre page de
+     * correction. */
+    adminComments?: Record<string, string>;
+    adminEditedAnswers?: Record<string, any>;
   } | null;
+  /** Présent uniquement sur l'écran de revue admin (reviewMode est aussi vrai
+   * dans ce cas) : ajoute, sous chaque question déjà affichée en lecture
+   * seule, un champ de commentaire et un bouton pour corriger la réponse
+   * enregistrée de l'élève. Purement additif — sans ce prop, reviewMode se
+   * comporte exactement comme avant (écran élève). */
+  adminMode?: {
+    onComment: (blockId: string, text: string) => void;
+    onEditAnswer: (blockId: string, value: any) => void;
+    saving?: boolean;
+  };
 }
 
 export default function ExerciseViewer({
@@ -89,6 +178,7 @@ export default function ExerciseViewer({
   bestScorePercent,
   openCorrection,
   initialProgress,
+  adminMode,
 }: ExerciseViewerProps) {
   const pages = exercise.content_json || [];
   const { pageContext, setPageContext } = useAITutor();
@@ -169,6 +259,8 @@ export default function ExerciseViewer({
   const [showReview, setShowReview] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(() => (reviewMode ? initialProgress?.blockModes : undefined) || {});
+  const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
+  const [adminEditedAnswers] = useState<Record<string, any>>(() => initialProgress?.adminEditedAnswers || {});
   // Rempli par l'effet de chargement serveur ci-dessous.
   const accumulatedSecondsRef = useRef(0);
 
@@ -1142,6 +1234,27 @@ export default function ExerciseViewer({
                       </div>
                     )}
 
+                    {adminEditedAnswers[block.id] !== undefined && (
+                      <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
+                        <span className="font-bold block mb-0.5">Réponse corrigée par l'admin :</span>
+                        {typeof adminEditedAnswers[block.id] === "string" ? adminEditedAnswers[block.id] : JSON.stringify(adminEditedAnswers[block.id])}
+                      </div>
+                    )}
+                    {adminComments[block.id] && (
+                      <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
+                        <span className="font-bold block mb-0.5">Commentaire de l'admin :</span>
+                        {adminComments[block.id]}
+                      </div>
+                    )}
+                    {adminMode && (
+                      <AdminAttemptControls
+                        itemKey={block.id}
+                        currentAnswer={answer}
+                        existingComment={adminComments[block.id]}
+                        existingEditedAnswer={adminEditedAnswers[block.id]}
+                        adminMode={adminMode}
+                      />
+                    )}
                   </div>
                 )}
               </div>

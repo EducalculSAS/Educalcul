@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp } from "lucide-react";
+import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { avatarUrl } from "@/lib/avatarUrl";
@@ -9,12 +9,20 @@ import GlassButton from "@/components/ui/GlassButton";
 
 interface ActivityItem {
   id: string;
-  type: "Quiz" | "Exercice" | "Cours";
+  type: "Quiz" | "Exercice" | "Cours" | "Mini-jeu";
   title: string;
   date: string;
   score?: string;
   status?: "success" | "failure" | "completed";
 }
+
+const MINIGAME_LABEL: Record<string, string> = {
+  mathador: "Mathador",
+  calcul_mental: "Calcul mental",
+  enigmes: "Énigmes",
+  suites: "Suites",
+  langues: "Maths en langues",
+};
 
 export default async function ChildReportPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: childId } = await params;
@@ -37,10 +45,11 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
 
   if (!child || child.parent_id !== authUser.id) redirect("/parent/children");
 
-  const [{ data: quizzes }, { data: exercises }, { data: courseProgress }] = await Promise.all([
+  const [{ data: quizzes }, { data: exercises }, { data: courseProgress }, { data: minigameSessions }] = await Promise.all([
     supabaseAdmin.from("user_quiz_attempts").select("id, completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(30),
     supabaseAdmin.from("user_exercise_attempts").select("id, attempted_at, is_correct, exercises(title, difficulty_level, subject)").eq("user_id", childId).order("attempted_at", { ascending: false }).limit(30),
     supabaseAdmin.from("user_course_progress").select("id, created_at, course_id, courses(title, subject)").eq("user_id", childId).order("created_at", { ascending: false }).limit(20),
+    supabaseAdmin.from("minigame_sessions").select("id, game_type, score, max_score, completed_at").eq("user_id", childId).eq("status", "completed").order("completed_at", { ascending: false }).limit(30),
   ]);
 
   const allActivities: ActivityItem[] = [];
@@ -67,6 +76,15 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
     if (!subjectMap[subj]) subjectMap[subj] = { correct: 0, total: 0 };
   });
 
+  (minigameSessions || []).forEach((m: any) => {
+    const pct = m.max_score > 0 ? (m.score / m.max_score) * 100 : 0;
+    allActivities.push({
+      id: m.id, type: "Mini-jeu", title: MINIGAME_LABEL[m.game_type] || m.game_type, date: m.completed_at,
+      score: m.max_score != null ? `${m.score}/${m.max_score}` : undefined,
+      status: m.max_score > 0 ? (pct >= 50 ? "success" : "failure") : "completed",
+    });
+  });
+
   allActivities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const correctEx = (exercises || []).filter((e: any) => e.is_correct).length;
@@ -79,6 +97,7 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
     quizzesTaken: quizzes?.length || 0,
     exercisesDone: totalEx,
     successRate: totalEx > 0 ? Math.round((correctEx / totalEx) * 100) : 0,
+    minigamesPlayed: minigameSessions?.length || 0,
   };
 
   const subjectStats = Object.entries(subjectMap).map(([subject, v]) => ({ subject, ...v })).sort((a, b) => b.total - a.total);
@@ -118,12 +137,13 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
 
       <div className="container mx-auto max-w-6xl px-4">
         {/* Stats cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           {[
             { label: "Exercices", value: stats.exercisesDone, icon: <BookOpen className="w-5 h-5" />, color: "bg-orange-50 text-orange-600" },
             { label: "Réussite exos", value: `${stats.successRate}%`, icon: <CheckCircle className="w-5 h-5" />, color: "bg-green-50 text-green-600" },
             { label: "Quiz", value: stats.quizzesTaken, icon: <Award className="w-5 h-5" />, color: "bg-purple-50 text-purple-600" },
             { label: "Score moyen quiz", value: stats.avgScore > 0 ? `${stats.avgScore}%` : "—", icon: <TrendingUp className="w-5 h-5" />, color: "bg-blue-50 text-blue-600" },
+            { label: "Mini-jeux", value: stats.minigamesPlayed, icon: <Gamepad2 className="w-5 h-5" />, color: "bg-pink-50 text-pink-600" },
           ].map((s) => (
             <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <div className="flex items-start justify-between mb-2">
