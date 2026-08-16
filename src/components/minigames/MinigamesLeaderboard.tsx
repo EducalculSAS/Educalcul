@@ -56,20 +56,22 @@ export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador
 
   return (
     <div className="rounded-2xl border p-5 bg-white" style={{ borderColor: "rgba(15,30,58,0.1)" }}>
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="flex items-center gap-2 font-[family-name:var(--font-display)] text-lg font-bold text-[var(--greek-blue)]">
+      <div className="mb-4">
+        <h2 className="flex items-center gap-2 font-[family-name:var(--font-display)] text-lg font-bold text-[var(--greek-blue)] mb-3">
           <Trophy className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />
           Classement
         </h2>
-        <GlassSegmentedControl
-          size="sm"
-          options={[
-            { id: "week", label: "Cette semaine" },
-            { id: "all", label: "Tout temps" },
-          ]}
-          value={period}
-          onChange={(v) => setPeriod(v as typeof period)}
-        />
+        <div className="flex justify-center">
+          <GlassSegmentedControl
+            size="sm"
+            options={[
+              { id: "week", label: "Cette semaine" },
+              { id: "all", label: "Tout temps" },
+            ]}
+            value={period}
+            onChange={(v) => setPeriod(v as typeof period)}
+          />
+        </div>
       </div>
 
       {loading ? (

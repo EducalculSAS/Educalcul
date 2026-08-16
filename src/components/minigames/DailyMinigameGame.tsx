@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Calculator, PuzzleIcon, TrendingUp, Languages, type LucideIcon } from "lucide-react";
+import { Calculator, PuzzleIcon, TrendingUp, Languages, type LucideIcon } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import AppAdminLoader from "@/components/AppAdminLoader";
 import { useToast } from "@/components/Toast";
 import MinigamesLeaderboard from "@/components/minigames/MinigamesLeaderboard";
+import MinigameBackButton from "@/components/minigames/MinigameBackButton";
 import type { MinigameType, AnswerType } from "@/lib/minigames/gameTypes";
 
 interface Question {
@@ -159,26 +161,30 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
 
   if (state === "loading") {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin" style={{ color: "var(--greek-gold)" }} />
-      </div>
+      <>
+        <MinigameBackButton sessionId={sessionId} />
+        <AppAdminLoader />
+      </>
     );
   }
 
   if (state === "error") {
     const alreadyPlayedToday = errorMsg?.includes("déjà fait ce mini-jeu aujourd'hui");
     return (
-      <div className="max-w-md mx-auto text-center py-20 px-4">
-        <p className="text-[var(--text-muted)] mb-4">{errorMsg}</p>
-        {!alreadyPlayedToday && (
-          <GlassButton onClick={startGame} variant="navy">Réessayer</GlassButton>
-        )}
-        {alreadyPlayedToday && (
-          <div className="mt-8 text-left">
-            <MinigamesLeaderboard gameType={gameType} />
-          </div>
-        )}
-      </div>
+      <>
+        <MinigameBackButton sessionId={sessionId} />
+        <div className="max-w-md mx-auto text-center py-20 px-4">
+          <p className="text-[var(--text-muted)] mb-4">{errorMsg}</p>
+          {!alreadyPlayedToday && (
+            <GlassButton onClick={startGame} variant="navy">Réessayer</GlassButton>
+          )}
+          {alreadyPlayedToday && (
+            <div className="mt-8 text-left">
+              <MinigamesLeaderboard gameType={gameType} />
+            </div>
+          )}
+        </div>
+      </>
     );
   }
 
@@ -186,59 +192,65 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
 
   if (state === "finished" && result) {
     return (
-      <div className="max-w-md mx-auto text-center py-16 px-4">
-        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${badgeClass}`}>
-          <GameIcon className="w-7 h-7" />
+      <>
+        <MinigameBackButton sessionId={sessionId} />
+        <div className="max-w-md mx-auto text-center py-16 px-4">
+          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${badgeClass}`}>
+            <GameIcon className="w-7 h-7" />
+          </div>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--greek-blue)] mb-3">
+            Partie terminée !
+          </h1>
+          <p className="text-lg mb-6">
+            Score :{" "}
+            <span className="font-bold" style={{ color: "var(--greek-gold)" }}>
+              {result.score} / {result.maxScore}
+            </span>
+          </p>
+          <p className="text-sm text-[var(--text-muted)] mb-8">À demain pour une nouvelle fiche !</p>
+          <div className="text-left">
+            <MinigamesLeaderboard gameType={gameType} />
+          </div>
         </div>
-        <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--greek-blue)] mb-3">
-          Partie terminée !
-        </h1>
-        <p className="text-lg mb-6">
-          Score :{" "}
-          <span className="font-bold" style={{ color: "var(--greek-gold)" }}>
-            {result.score} / {result.maxScore}
-          </span>
-        </p>
-        <p className="text-sm text-[var(--text-muted)] mb-8">À demain pour une nouvelle fiche !</p>
-        <div className="text-left">
-          <MinigamesLeaderboard gameType={gameType} />
-        </div>
-      </div>
+      </>
     );
   }
 
   const question = questions[currentIndex];
 
   return (
-    <div className="max-w-md mx-auto py-16 px-4 text-center">
-      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-5 ${badgeClass}`}>
-        <GameIcon className="w-6 h-6" />
+    <>
+      <MinigameBackButton sessionId={sessionId} />
+      <div className="max-w-md mx-auto py-16 px-4 text-center">
+        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-5 ${badgeClass}`}>
+          <GameIcon className="w-6 h-6" />
+        </div>
+
+        <div className="flex items-center justify-between mb-6 text-sm text-[var(--text-muted)]">
+          <span>Question {currentIndex + 1} / {questions.length}</span>
+          <span className="font-bold" style={{ color: timeLeft <= 5 ? "#dc2626" : accent }}>{timeLeft}s</span>
+        </div>
+
+        <div className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--greek-blue)] mb-8">
+          {question?.prompt}
+        </div>
+
+        <input
+          type={answerType === "number" ? "number" : "text"}
+          inputMode={answerType === "number" ? "decimal" : "text"}
+          autoFocus
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSubmitAnswer()}
+          className="w-full text-center text-2xl font-bold py-3 px-4 rounded-xl border-2 mb-6 outline-none"
+          style={{ borderColor: accent, color: "var(--greek-blue)" }}
+          placeholder="?"
+        />
+
+        <GlassButton onClick={handleSubmitAnswer} variant="gold" fullWidth>
+          Valider
+        </GlassButton>
       </div>
-
-      <div className="flex items-center justify-between mb-6 text-sm text-[var(--text-muted)]">
-        <span>Question {currentIndex + 1} / {questions.length}</span>
-        <span className="font-bold" style={{ color: timeLeft <= 5 ? "#dc2626" : accent }}>{timeLeft}s</span>
-      </div>
-
-      <div className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--greek-blue)] mb-8">
-        {question?.prompt}
-      </div>
-
-      <input
-        type={answerType === "number" ? "number" : "text"}
-        inputMode={answerType === "number" ? "decimal" : "text"}
-        autoFocus
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSubmitAnswer()}
-        className="w-full text-center text-2xl font-bold py-3 px-4 rounded-xl border-2 mb-6 outline-none"
-        style={{ borderColor: accent, color: "var(--greek-blue)" }}
-        placeholder="?"
-      />
-
-      <GlassButton onClick={handleSubmitAnswer} variant="gold" fullWidth>
-        Valider
-      </GlassButton>
-    </div>
+    </>
   );
 }

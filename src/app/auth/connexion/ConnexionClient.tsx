@@ -134,15 +134,10 @@ export default function ConnexionClient() {
         style={{ background: "#fff", boxShadow: "0 8px 48px rgba(15,30,58,0.10)", border: "1px solid rgba(197,161,72,0.18)" }}
       >
         {/* Bouton Google */}
-        <button
-          type="button"
-          onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md mb-6"
-          style={{ background: "#fff", border: "1.5px solid #e2e8f0", color: "var(--greek-blue)", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
-        >
+        <GlassButton onClick={handleGoogleLogin} variant="outline" fullWidth className="mb-6">
           <GoogleIcon />
           Continuer avec Google
-        </button>
+        </GlassButton>
 
         {/* Séparateur */}
         <div className="flex items-center gap-3 mb-6">
