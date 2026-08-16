@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2, RotateCcw, Send, Undo2 } from "lucide-react";
+import { Loader2, RotateCcw, Send, Undo2, Sigma } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { useToast } from "@/components/Toast";
+import MinigamesLeaderboard from "@/components/minigames/MinigamesLeaderboard";
 
 type Op = "+" | "-" | "x" | "/";
 const OPS: { op: Op; label: string; points: number }[] = [
@@ -197,6 +198,9 @@ export default function MathadorGame() {
   if (state === "finished" && result) {
     return (
       <div className="max-w-md mx-auto text-center py-16 px-4">
+        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 bg-indigo-100 text-indigo-600">
+          <Sigma className="w-7 h-7" />
+        </div>
         <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--greek-blue)] mb-3">
           {result.valid ? "Partie terminée !" : "Partie non validée"}
         </h1>
@@ -211,6 +215,9 @@ export default function MathadorGame() {
         <GlassButton onClick={startGame} variant="gold">
           <RotateCcw className="w-4 h-4" /> Nouvelle partie
         </GlassButton>
+        <div className="mt-8 text-left">
+          <MinigamesLeaderboard gameType="mathador" />
+        </div>
       </div>
     );
   }
@@ -219,6 +226,9 @@ export default function MathadorGame() {
 
   return (
     <div className="max-w-2xl mx-auto py-10 px-4">
+      <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4 bg-indigo-100 text-indigo-600">
+        <Sigma className="w-6 h-6" />
+      </div>
       <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--greek-blue)] text-center mb-2">
         Mathador
       </h1>

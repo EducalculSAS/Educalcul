@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { clampGlassTranslate, isRectOffscreen } from "@/lib/liquidGlassBounds";
+import { clampGlassTranslate, isRectOffscreen, glassButtonRegistry } from "@/lib/liquidGlassBounds";
 import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
 const DEFAULT_TRANSITION = "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)";
@@ -13,6 +13,7 @@ const PRESS_SCALE = 0.88;
 const ACTIVATION_ZONE = 70;
 const MAX_GROW = 0.08;
 const MAX_PULL = 1.5;
+const SAFETY_GAP = 6;
 
 export type GlassIconButtonColor = "navy" | "gold" | "gray" | "orange" | "red" | "green" | "white";
 
@@ -74,6 +75,8 @@ export default function GlassIconButton({
     const el = elRef.current;
     if (!wrapper || !el || disabled) return;
 
+    glassButtonRegistry.add(wrapper);
+
     let grow = 1;
     let tx = 0;
     let ty = 0;
@@ -117,11 +120,56 @@ export default function GlassIconButton({
           return;
         }
 
+        // Le plus proche du curseur gagne, tous boutons "verre liquide"
+        // confondus (registre partagé avec GlassButton) — sinon un
+        // GlassButton et un GlassIconButton posés côte à côte (ex. "Exporter
+        // en .txt" + la corbeille ronde) réagiraient chacun dans son coin
+        // au lieu de se comporter comme un seul groupe magnétique.
+        let closest = true;
+        for (const other of glassButtonRegistry) {
+          if (other === wrapper) continue;
+          const oRect = other.getBoundingClientRect();
+          if (isRectOffscreen(oRect)) continue;
+          const oEdgeX = Math.max(0, Math.abs(e.clientX - (oRect.left + oRect.width / 2)) - oRect.width / 2);
+          const oEdgeY = Math.max(0, Math.abs(e.clientY - (oRect.top + oRect.height / 2)) - oRect.height / 2);
+          if (Math.hypot(oEdgeX, oEdgeY) < edgeDist) {
+            closest = false;
+            break;
+          }
+        }
+        if (!closest) {
+          grow = 1;
+          tx = 0;
+          ty = 0;
+          applyTransform();
+          return;
+        }
+
         const fade = 1 - edgeDist / ACTIVATION_ZONE;
         const nx = Math.max(-1, Math.min(1, dx / ACTIVATION_ZONE));
         const ny = Math.max(-1, Math.min(1, dy / ACTIVATION_ZONE));
 
         grow = 1 + MAX_GROW * fade;
+
+        // Ne grossit jamais au point de chevaucher un voisin "verre liquide"
+        // direct (ex. un GlassButton plus grand juste à côté) — croissance
+        // symétrique depuis le centre, donc on borne selon l'espace
+        // disponible des DEUX côtés, pas seulement celui vers le curseur.
+        const prevNeighbor = wrapper.previousElementSibling as HTMLElement | null;
+        const nextNeighbor = wrapper.nextElementSibling as HTMLElement | null;
+        let maxGrow = Infinity;
+        if (prevNeighbor?.classList.contains("liquid-glass-wrap")) {
+          const pRect = prevNeighbor.getBoundingClientRect();
+          const reachLimit = Math.max(0, rect.left - pRect.right - SAFETY_GAP);
+          maxGrow = Math.min(maxGrow, 1 + (2 * reachLimit) / rect.width);
+        }
+        if (nextNeighbor?.classList.contains("liquid-glass-wrap")) {
+          const nRect = nextNeighbor.getBoundingClientRect();
+          const reachLimit = Math.max(0, nRect.left - rect.right - SAFETY_GAP);
+          maxGrow = Math.min(maxGrow, 1 + (2 * reachLimit) / rect.width);
+        }
+        grow = Math.min(grow, maxGrow);
+
         const pulledTx = nx * MAX_PULL * fade;
         const pulledTy = ny * MAX_PULL * fade;
         const clamped = clampGlassTranslate(wrapper, rect, pulledTx, pulledTy, grow, grow, 0.5, 0.5);
@@ -164,6 +212,7 @@ export default function GlassIconButton({
       window.removeEventListener("mouseup", onUp);
       cancelAnimationFrame(raf.current);
       clearTimeout(revertTimer.current);
+      glassButtonRegistry.delete(wrapper);
     };
   }, [disabled]);
 
@@ -180,7 +229,7 @@ export default function GlassIconButton({
   return (
     <span
       ref={wrapperRef}
-      className={`inline-block ${positionClasses}`}
+      className={`liquid-glass-wrap inline-block ${positionClasses}`}
       style={{ transition: DEFAULT_TRANSITION, willChange: "transform" }}
     >
       {href && !disabled ? (

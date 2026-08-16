@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Sigma, Calculator, PuzzleIcon, TrendingUp, Languages, Code2, ArrowRight, Lock } from "lucide-react";
+import { Sigma, Calculator, PuzzleIcon, TrendingUp, Languages, Code2, ArrowRight, Lock, Flame, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
+import { getStreaksForGames } from "@/lib/minigames/streaks";
 
 const GAMES = [
-  { href: "/child/minigames/mathador", icon: Sigma, label: "Mathador", desc: "5 nombres, une cible, trouve le compte juste.", color: "bg-indigo-100 text-indigo-600", available: true },
-  { href: "/child/minigames/calcul-mental", icon: Calculator, label: "Calcul mental", desc: "Réponds vite, réponds juste, contre la montre.", color: "bg-yellow-100 text-[var(--greek-gold)]", available: true },
-  { href: null, icon: PuzzleIcon, label: "Énigmes", desc: "Bientôt disponible", color: "bg-gray-100 text-gray-400", available: false },
-  { href: null, icon: TrendingUp, label: "Suites", desc: "Bientôt disponible", color: "bg-gray-100 text-gray-400", available: false },
-  { href: null, icon: Languages, label: "Maths en langues", desc: "Bientôt disponible", color: "bg-gray-100 text-gray-400", available: false },
-  { href: null, icon: Code2, label: "Scratch & Python", desc: "Bientôt disponible", color: "bg-gray-100 text-gray-400", available: false },
+  { gameType: "mathador", href: "/child/minigames/mathador", icon: Sigma, label: "Mathador", desc: "5 nombres, une cible, trouve le compte juste.", color: "bg-indigo-100 text-indigo-600", available: true },
+  { gameType: "calcul_mental", href: "/child/minigames/calcul-mental", icon: Calculator, label: "Calcul mental", desc: "Réponds vite, réponds juste, contre la montre.", color: "bg-yellow-100 text-[var(--greek-gold)]", available: true },
+  { gameType: "enigmes", href: "/child/minigames/enigmes", icon: PuzzleIcon, label: "Énigmes", desc: "5 énigmes de logique par jour, à toi de déduire.", color: "bg-purple-100 text-purple-600", available: true },
+  { gameType: "suites", href: "/child/minigames/suites", icon: TrendingUp, label: "Suites", desc: "Trouve le prochain terme, du collège au lycée.", color: "bg-teal-100 text-teal-600", available: true },
+  { gameType: "langues", href: "/child/minigames/langues", icon: Languages, label: "Maths en langues", desc: "Des maths de lycée, en anglais, allemand ou espagnol.", color: "bg-rose-100 text-rose-600", available: true },
+  { gameType: "scratch_python", href: null, icon: Code2, label: "Scratch & Python", desc: "Bientôt disponible", color: "bg-gray-100 text-gray-400", available: false },
 ];
 
 export default async function MinigamesPage() {
@@ -17,16 +18,31 @@ export default async function MinigamesPage() {
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "child") redirect("/dashboard");
 
-  return (
-    <div className="min-h-screen bg-[var(--greek-cream)] pb-12 pt-24">
-      <div className="container mx-auto max-w-6xl px-4">
-        <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-[var(--greek-blue)] mb-2">
-          Mini-jeux
-        </h1>
-        <p className="text-[var(--text-muted)] mb-8">Joue, grimpe au classement, débloque des récompenses.</p>
+  const streaks = await getStreaksForGames(authUser.id, GAMES.filter((g) => g.available).map((g) => g.gameType));
 
+  return (
+    <div className="min-h-screen bg-[var(--greek-cream)]">
+      {/* Hero Header */}
+      <div className="bg-[var(--greek-blue)] text-white pt-20 pb-12 px-8 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+        <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
+              <Gamepad2 className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
+              MINI-JEUX
+            </h1>
+            <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
+              <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">JOUE</span>
+              <span>Grimpe au classement, débloque des récompenses !</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="container mx-auto max-w-6xl px-4 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {GAMES.map(({ href, icon: Icon, label, desc, color, available }) => {
+          {GAMES.map(({ gameType, href, icon: Icon, label, desc, color, available }) => {
+            const streak = streaks[gameType] || 0;
             const card = (
               <div
                 className={`bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] h-full relative overflow-hidden ${
@@ -41,11 +57,19 @@ export default async function MinigamesPage() {
                   {!available && <Lock className="w-4 h-4 text-gray-400" />}
                 </h3>
                 <p className="text-gray-600 mb-4 text-sm">{desc}</p>
-                {available && (
-                  <div className="flex items-center text-[var(--greek-blue)] font-bold text-sm">
-                    Jouer <ArrowRight className="w-4 h-4 ml-1" />
-                  </div>
-                )}
+                <div className="flex items-center justify-between">
+                  {available && (
+                    <div className="flex items-center text-[var(--greek-blue)] font-bold text-sm">
+                      Jouer <ArrowRight className="w-4 h-4 ml-1" />
+                    </div>
+                  )}
+                  {available && (
+                    <div className={`flex items-center gap-1 text-sm font-bold ${streak > 0 ? "text-orange-500" : "text-gray-300"}`}>
+                      <Flame className={`w-4 h-4 ${streak > 0 ? "fill-orange-500" : ""}`} />
+                      {streak}
+                    </div>
+                  )}
+                </div>
               </div>
             );
             return href ? (

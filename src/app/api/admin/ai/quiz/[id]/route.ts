@@ -1,6 +1,7 @@
 import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { reconcileStaleGenerations } from "@/lib/ai/runtime";
 
 export async function GET(
   request: Request,
@@ -10,6 +11,7 @@ export async function GET(
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
+  await reconcileStaleGenerations("quiz_generations");
   const { data, error } = await supabaseAdmin
     .from("quiz_generations")
     .select("id, status, progress, quiz_id, error, params, created_at")

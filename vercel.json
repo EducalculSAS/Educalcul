@@ -6,12 +6,19 @@
     },
     "src/app/api/admin/ai/**": {
       "maxDuration": 300
+    },
+    "src/app/api/cron/**": {
+      "maxDuration": 800
     }
   },
   "crons": [
     {
       "path": "/api/cron/grade-promotion",
       "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/minigames-daily",
+      "schedule": "0 4 * * *"
     }
   ]
 }

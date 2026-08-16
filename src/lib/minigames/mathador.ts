@@ -107,15 +107,27 @@ function randomFrom<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+/** Signature stable d'un tirage (ordre des nombres indifférent) — sert à
+ * détecter qu'un nouveau tirage reproduit un tirage déjà joué récemment. */
+export function mathadorPuzzleSignature(numbers: number[], target: number): string {
+  return `${[...numbers].sort((a, b) => a - b).join(",")}|${target}`;
+}
+
 /** Tire 5 nombres + une cible et vérifie par le solveur exhaustif qu'au
  * moins une solution existe avant de renvoyer le tirage — jamais de partie
  * injouable. Retire jusqu'à `maxAttempts` fois si besoin. Biaise vers un
  * tirage permettant un "coup mathador" (les 4 opérations) quand possible,
  * pour se rapprocher des tirages donnés en exemple, sans le garantir à
  * chaque fois (sinon trop peu de tirages possibles).
+ *
+ * `avoidSignatures` (tirages joués récemment par le même enfant, voir
+ * mathadorPuzzleSignature) est évité tant qu'une alternative solvable existe
+ * — jamais au prix de renvoyer un tirage injouable ou d'épuiser tous les
+ * essais sans résultat.
  */
-export function generateMathadorPuzzle(maxAttempts = 200): MathadorPuzzle {
+export function generateMathadorPuzzle(maxAttempts = 200, avoidSignatures: Set<string> = new Set()): MathadorPuzzle {
   let fallback: MathadorPuzzle | null = null;
+  let repeatFallback: MathadorPuzzle | null = null;
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const numbers = Array.from({ length: 5 }, () => randomFrom(SMALL_NUMBERS));
@@ -125,11 +137,19 @@ export function generateMathadorPuzzle(maxAttempts = 200): MathadorPuzzle {
     if (!solution) continue;
 
     const puzzle: MathadorPuzzle = { numbers, target, maxScore: solution.score };
+    const isRepeat = avoidSignatures.has(mathadorPuzzleSignature(numbers, target));
+
+    if (isRepeat) {
+      if (!repeatFallback) repeatFallback = puzzle; // filet si on ne trouve QUE des répétitions
+      continue;
+    }
+
     if (solution.usedAllFourOperations) return puzzle; // le meilleur cas, on s'arrête là
     if (!fallback) fallback = puzzle;
   }
 
   if (fallback) return fallback;
+  if (repeatFallback) return repeatFallback;
 
   // Filet de sécurité théorique (ne devrait jamais arriver avec 200 essais) :
   // un tirage trivialement solvable par simple addition.

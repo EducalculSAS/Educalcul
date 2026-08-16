@@ -1237,13 +1237,14 @@ export function scanFindingsSchema(): JsonSchemaContract {
   };
 }
 
-/** Fiche de calcul mental (mini-jeux) : questions courtes à réponse
- * numérique unique, respectant les opérations autorisées pour le niveau
- * (voir src/lib/minigames/calculMentalRules.ts, qui construit le prompt). */
-export function calculMentalQuestionsSchema(count: number): JsonSchemaContract {
+/** Fiche quotidienne d'un mini-jeu "à paliers" (calcul mental, énigmes,
+ * suites, langues) : questions courtes à réponse numérique OU texte unique
+ * selon le jeu, voir src/lib/minigames/gameTypes.ts qui pilote `answerType`
+ * et construit le prompt. */
+export function dailySheetQuestionsSchema(count: number, answerType: "number" | "text"): JsonSchemaContract {
   return {
-    name: "educalcul_calcul_mental",
-    description: "Questions de calcul mental chronométré, réponse numérique unique.",
+    name: "educalcul_daily_minigame_sheet",
+    description: `Fiche de ${count} questions courtes, réponse ${answerType === "number" ? "numérique" : "texte"} unique.`,
     schema: {
       type: "object",
       properties: {
@@ -1254,8 +1255,8 @@ export function calculMentalQuestionsSchema(count: number): JsonSchemaContract {
           items: {
             type: "object",
             properties: {
-              prompt: { type: "string", minLength: 1, maxLength: 200 },
-              answer: { type: "number" },
+              prompt: { type: "string", minLength: 1, maxLength: 300 },
+              answer: answerType === "number" ? { type: "number" } : { type: "string", minLength: 1, maxLength: 60 },
             },
             required: ["prompt", "answer"],
             ...noExtra,

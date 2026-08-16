@@ -4,7 +4,9 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { checkMinigamesAccess } from "@/lib/checkSubscription";
-import { generateMathadorPuzzle } from "@/lib/minigames/mathador";
+import { generateMathadorPuzzle, mathadorPuzzleSignature } from "@/lib/minigames/mathador";
+
+const RECENT_TIRAGES_TO_AVOID = 15;
 import { gradeLevelToMinigameCode } from "@/lib/minigames/levels";
 
 /** Démarre une partie de Mathador : vérifie la limite quotidienne, tire un
@@ -35,7 +37,25 @@ export async function POST(req: Request) {
     if (!user) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
 
     const gradeLevel = user.grade_level || "6eme";
-    const puzzle = generateMathadorPuzzle();
+
+    // Évite de retirer un tirage déjà joué récemment par ce même enfant —
+    // ne s'applique qu'à ses propres parties, pas de collision inter-enfants.
+    const { data: recentSessions } = await supabaseAdmin
+      .from("minigame_sessions")
+      .select("content_json")
+      .eq("user_id", user.id)
+      .eq("game_type", "mathador")
+      .order("created_at", { ascending: false })
+      .limit(RECENT_TIRAGES_TO_AVOID);
+
+    const avoidSignatures = new Set(
+      (recentSessions || [])
+        .map((s) => s.content_json as { numbers?: number[]; target?: number })
+        .filter((c) => Array.isArray(c?.numbers) && typeof c?.target === "number")
+        .map((c) => mathadorPuzzleSignature(c.numbers as number[], c.target as number)),
+    );
+
+    const puzzle = generateMathadorPuzzle(200, avoidSignatures);
 
     const { data: session, error } = await supabaseAdmin
       .from("minigame_sessions")

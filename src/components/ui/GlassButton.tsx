@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
-import { clampGlassTranslate, isRectOffscreen } from "@/lib/liquidGlassBounds";
+import { clampGlassTranslate, isRectOffscreen, glassButtonRegistry } from "@/lib/liquidGlassBounds";
 import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
 const DEFAULT_TRANSITION = "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)";
@@ -10,12 +10,14 @@ const PRESS_TRANSITION = "transform 0.12s ease-out";
 const RELEASE_TRANSITION = "transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)";
 const PRESS_SCALE = 0.93;
 
-/** Registre global de tous les GlassButton montés — la vérification "suis-je
- * le plus proche du curseur" doit comparer TOUS les boutons de la page, pas
- * seulement les frères DOM directs : deux boutons dans deux cartes tarifs
- * différentes ne sont pas frères, donc un check basé sur previousElementSibling
- * ne les voyait jamais l'un l'autre et les deux réagissaient en même temps. */
-const registry = new Set<HTMLSpanElement>();
+// Registre partagé avec GlassIconButton (src/lib/liquidGlassBounds.ts) — la
+// vérification "suis-je le plus proche du curseur" doit comparer TOUS les
+// boutons "verre liquide" de la page, pas seulement les frères DOM directs ni
+// seulement les instances du même composant : deux boutons dans deux cartes
+// tarifs différentes ne sont pas frères, et un GlassButton à côté d'un
+// GlassIconButton (ex. "Exporter en .txt" + la corbeille ronde) doivent aussi
+// se voir l'un l'autre pour ne pas réagir chacun dans son coin.
+const registry = glassButtonRegistry;
 
 export type GlassButtonVariant =
   | "gold"

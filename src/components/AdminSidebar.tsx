@@ -54,6 +54,7 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
     { name: "Cours", href: "/admin/courses", icon: BookOpen },
     { name: "Exercices", href: "/admin/exercises", icon: Calculator },
     { name: "Quiz", href: "/admin/quizzes", icon: Trophy },
+    { name: "Mini-jeux", href: "/admin/minigames", icon: Gamepad2 },
     { name: "Rapports", href: "/admin/reports", icon: FileText },
     { name: "Forum", href: "/admin/forum", icon: MessageSquare },
     { name: "Emails", href: "/admin/emails", icon: Mail },
@@ -66,7 +67,6 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
     { name: "Liste d'attente", href: "/admin/landing", icon: Trophy },
     { name: "Journal d'audit", href: "/admin/audit-log", icon: History },
     { name: "Scanner IA", href: "/admin/scanner", icon: ScanSearch },
-    { name: "Mini-jeux", href: "/admin/minigames", icon: Gamepad2 },
     { name: "Sécurité", href: "/admin/security", icon: ShieldCheck },
     { name: "Fonctionnalités", href: "/admin/feature-flags", icon: Flag },
     { name: "Profil", href: "/admin/profile", icon: User },
@@ -105,8 +105,13 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
         />
       )}
 
-      {/* Sidebar Container — commence sous la navbar */}
+      {/* Sidebar Container — commence sous la navbar. `data-glass-bounds` borne
+          l'effet magnétique des GlassButton internes à ce rectangle : sans ça,
+          clampGlassTranslate retombe sur le viewport entier et un bouton
+          fullWidth collé au bord (ex. Déconnexion) déborde visuellement dans
+          le contenu principal dès que le survol l'étire. */}
       <div
+        data-glass-bounds
         className={`fixed left-0 w-64 bg-[var(--greek-blue)] text-white z-[1040] transform transition-transform duration-300 ease-in-out lg:translate-x-0 flex flex-col ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
@@ -151,13 +156,19 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
           })}
         </nav>
 
-        {/* Déconnexion — collé en bas */}
+        {/* Déconnexion — collé en bas. Le variant "danger" par défaut est
+            calibré pour un fond clair (opacité 0.12) : sur le navy foncé de
+            la sidebar, le survol reste quasi invisible alors que les items
+            du dessus (variant light/gold, opacité 0.14-0.32) pulsent bien.
+            Même override manuel que fait déjà l'item actif — juste teinté
+            rouge à une opacité comparable pour un vrai retour au survol. */}
         <div className="flex-shrink-0 p-3 border-t border-[rgba(197,161,72,0.25)]">
           <GlassButton
             onClick={handleLogout}
             variant="danger"
             size="sm"
             fullWidth
+            style={{ background: "rgba(220,38,38,0.22)", borderColor: "rgba(220,38,38,0.4)", color: "#ff8080" }}
           >
             <LogOut size={18} className="flex-shrink-0" />
             <span>Déconnexion</span>

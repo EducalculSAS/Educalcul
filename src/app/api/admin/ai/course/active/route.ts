@@ -1,6 +1,7 @@
 import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { reconcileStaleGenerations } from "@/lib/ai/runtime";
 
 /**
  * Liste les générations en cours (ou tout juste terminées) de l'admin
@@ -9,6 +10,8 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 export async function GET(request: Request) {
   const admin = await requireRole(request, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
+  await reconcileStaleGenerations("course_generations");
 
   const { data, error } = await supabaseAdmin
     .from("course_generations")

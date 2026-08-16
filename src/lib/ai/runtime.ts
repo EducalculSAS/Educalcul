@@ -142,12 +142,50 @@ export function createLlmStartGate(
 export const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1_700;
 export const REASONING_TOKEN_BUFFER = 10_000;
 
-type GenerationsTable =
+export type GenerationsTable =
   | "course_generations"
   | "exercise_generations"
   | "quiz_generations"
   | "scan_runs"
   | "minigame_generations";
+
+/** Une génération "pending"/"running"/"cancel_requested" reste dans cet état
+ * pour toujours si le processus serveur qui la faisait avancer meurt avant
+ * d'écrire un statut terminal (redémarrage du serveur en dev, dépassement de
+ * maxDuration en prod, crash) — rien d'autre ne la fait jamais progresser,
+ * puisque c'est justement CE processus qui aurait dû détecter l'annulation
+ * ou finir le travail. Plutôt qu'un job de nettoyage à part, chaque route qui
+ * LIT ces tables se corrige elle-même : toute ligne active dont `updated_at`
+ * n'a pas bougé depuis STALE_MS est considérée morte et reçoit un statut
+ * terminal. Un "cancel_requested" mort devient "cancelled" (l'utilisateur
+ * avait déjà demandé l'arrêt) ; un "pending"/"running" mort devient "error"
+ * (le travail ne s'est jamais terminé). */
+const STALE_GENERATION_MS = 3 * 60 * 1000;
+
+export async function reconcileStaleGenerations(table: GenerationsTable): Promise<void> {
+  const cutoff = new Date(Date.now() - STALE_GENERATION_MS).toISOString();
+  const { data: stale } = await supabaseAdmin
+    .from(table)
+    .select("id, status")
+    .in("status", ["pending", "running", "cancel_requested"])
+    .lt("updated_at", cutoff);
+
+  if (!stale || stale.length === 0) return;
+
+  await Promise.all(
+    stale.map((row) => {
+      const nextStatus = row.status === "cancel_requested" ? "cancelled" : "error";
+      const extra =
+        nextStatus === "error"
+          ? { error: "Génération interrompue : le processus serveur s'est arrêté avant la fin (redémarrage, délai maximal dépassé, ou plantage)." }
+          : {};
+      return supabaseAdmin
+        .from(table)
+        .update({ status: nextStatus, updated_at: new Date().toISOString(), ...extra })
+        .eq("id", row.id);
+    }),
+  );
+}
 
 export function createGenerationTracker(
   table: GenerationsTable,

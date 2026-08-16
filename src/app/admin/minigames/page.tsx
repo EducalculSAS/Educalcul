@@ -3,18 +3,11 @@ import AdminMinigamesClient from "@/components/admin/AdminMinigamesClient";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 export default async function AdminMinigamesPage() {
-  const [{ data: generations }, { data: sessions }] = await Promise.all([
-    supabaseAdmin
-      .from("minigame_generations")
-      .select("id, game_type, status, progress, params, error, created_at")
-      .order("created_at", { ascending: false })
-      .limit(50),
-    supabaseAdmin
-      .from("minigame_sessions")
-      .select("game_type, status, score")
-      .order("created_at", { ascending: false })
-      .limit(1000),
-  ]);
+  const { data: sessions } = await supabaseAdmin
+    .from("minigame_sessions")
+    .select("game_type, status, score")
+    .order("created_at", { ascending: false })
+    .limit(1000);
 
   const statsByType: Record<string, { plays: number; completed: number; totalScore: number }> = {};
   for (const s of sessions || []) {
@@ -31,9 +24,9 @@ export default async function AdminMinigamesPage() {
       <AdminPageHeader
         iconName="gamepad-2"
         title="Mini-jeux"
-        subtitle="Génère des fiches de calcul mental par niveau, publie-les, et suis l'activité des joueurs."
+        subtitle="Mathador et calcul mental — le calcul mental se génère automatiquement chaque nuit, par palier."
       />
-      <AdminMinigamesClient initialGenerations={generations || []} stats={statsByType} />
+      <AdminMinigamesClient stats={statsByType} />
     </div>
   );
 }

@@ -1,3 +1,12 @@
+/** Registre global de tous les boutons "verre liquide" montés — GlassButton
+ * ET GlassIconButton y participent tous les deux, pour que "le plus proche du
+ * curseur gagne" et le calcul de distance au voisin marchent aussi bien
+ * entre deux boutons du même composant qu'entre un GlassButton et un
+ * GlassIconButton côte à côte (ex. "Exporter en .txt" + la corbeille ronde).
+ * Un Set unique partagé évite que chaque composant ait son propre registre
+ * isolé, ce qui les ferait réagir chacun dans leur coin sans se voir. */
+export const glassButtonRegistry = new Set<HTMLElement>();
+
 /** Empêche l'effet magnétique (translate/scale au survol) des boutons "verre
  * liquide" de pousser le bouton hors de son cadre visuel — par défaut la
  * fenêtre (jamais un bouton à moitié hors écran en rétrécissant la fenêtre,

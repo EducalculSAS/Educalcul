@@ -1,11 +1,14 @@
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { reconcileStaleGenerations } from "@/lib/ai/runtime";
 
 /** Historique des scans (toutes catégories), plus récents d'abord. */
 export async function GET(request: Request) {
   const admin = await requireRole(request, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
+  await reconcileStaleGenerations("scan_runs");
 
   const { data, error } = await supabaseAdmin
     .from("scan_runs")

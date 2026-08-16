@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2, Trophy } from "lucide-react";
+import { Loader2, Trophy, Clock } from "lucide-react";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import type { MinigameType } from "@/lib/minigames/gameTypes";
 
 interface Entry {
   rank: number;
@@ -12,7 +14,16 @@ interface Entry {
   equippedBorder: string | null;
   nameColor: string | null;
   total: number;
+  bestDurationSeconds: number | null;
+  totalDurationSeconds: number | null;
   isMe: boolean;
+}
+
+function formatDuration(seconds: number | null) {
+  if (seconds === null || seconds === undefined) return null;
+  const m = Math.floor(seconds / 60);
+  const s = Math.round(seconds % 60);
+  return m > 0 ? `${m}m ${s}s` : `${s}s`;
 }
 
 const NAME_COLOR_CLS: Record<string, string> = {
@@ -28,7 +39,7 @@ const NAME_COLOR_CLS: Record<string, string> = {
   admin: "name-admin-animated",
 };
 
-export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador" | "calcul_mental" }) {
+export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador" | MinigameType }) {
   const [period, setPeriod] = useState<"week" | "all">("week");
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<{ leaderboard: Entry[]; me: { total: number; rank: number | null } } | null>(null);
@@ -44,27 +55,21 @@ export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador
   }, [gameType, period]);
 
   return (
-    <div className="rounded-2xl border p-5" style={{ borderColor: "rgba(15,30,58,0.1)" }}>
+    <div className="rounded-2xl border p-5 bg-white" style={{ borderColor: "rgba(15,30,58,0.1)" }}>
       <div className="flex items-center justify-between mb-4">
         <h2 className="flex items-center gap-2 font-[family-name:var(--font-display)] text-lg font-bold text-[var(--greek-blue)]">
           <Trophy className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />
           Classement
         </h2>
-        <div className="flex gap-1 text-sm">
-          {(["week", "all"] as const).map((p) => (
-            <button
-              key={p}
-              onClick={() => setPeriod(p)}
-              className="px-3 py-1 rounded-full font-medium transition"
-              style={{
-                background: period === p ? "var(--greek-blue)" : "transparent",
-                color: period === p ? "white" : "var(--text-muted)",
-              }}
-            >
-              {p === "week" ? "Cette semaine" : "Tout temps"}
-            </button>
-          ))}
-        </div>
+        <GlassSegmentedControl
+          size="sm"
+          options={[
+            { id: "week", label: "Cette semaine" },
+            { id: "all", label: "Tout temps" },
+          ]}
+          value={period}
+          onChange={(v) => setPeriod(v as typeof period)}
+        />
       </div>
 
       {loading ? (
@@ -86,6 +91,11 @@ export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador
               <span className={`flex-1 font-medium ${e.nameColor ? NAME_COLOR_CLS[e.nameColor] || "" : ""}`} style={{ color: !e.nameColor || !NAME_COLOR_CLS[e.nameColor] ? "var(--greek-blue)" : undefined }}>
                 {e.firstName}{e.isMe ? " (toi)" : ""}
               </span>
+              {formatDuration(e.bestDurationSeconds) && (
+                <span className="flex items-center gap-1 text-xs text-[var(--text-muted)] shrink-0">
+                  <Clock className="w-3 h-3" /> {formatDuration(e.bestDurationSeconds)}
+                </span>
+              )}
               <span className="font-bold" style={{ color: "var(--greek-gold)" }}>{e.total} pts</span>
             </li>
           ))}

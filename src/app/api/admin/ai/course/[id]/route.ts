@@ -1,6 +1,7 @@
 import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { reconcileStaleGenerations } from "@/lib/ai/runtime";
 
 /** Statut + progression d'une génération en cours (ou terminée). */
 export async function GET(
@@ -11,6 +12,7 @@ export async function GET(
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
+  await reconcileStaleGenerations("course_generations");
   const { data, error } = await supabaseAdmin
     .from("course_generations")
     .select("id, status, progress, course_id, error, params, created_at")
