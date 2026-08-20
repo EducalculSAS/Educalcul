@@ -83,10 +83,12 @@ export default function Navbar() {
 
     // onAuthStateChange signale le changement, puis getUser() revalide l'identité
     // avant qu'elle soit utilisée pour charger un rôle ou prendre une décision UI.
+    // INITIAL_SESSION (session retrouvée depuis le cookie au chargement) n'est
+    // plus ignoré : le getUser() ci-dessus peut en théorie s'exécuter avant que
+    // le cookie soit lu par le client, et rien ne corrigeait alors l'état.
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event) => {
-      if (event === "INITIAL_SESSION") return;
+    } = supabase.auth.onAuthStateChange(() => {
       void supabase.auth.getUser().then(({ data: { user: authUser } }) => {
         setUser(authUser || null);
         if (authUser) {
