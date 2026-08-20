@@ -12,9 +12,41 @@ export const maxDuration = 800;
 // a lancé le premier appel ni d'un script externe qui doit rester ouvert.
 const ADMIN_ID = 55; // admin2@educalcul.com (super admin)
 const MAX_ATTEMPTS = 2;
+const STALE_RUNNING_MINUTES = 12;
 const SELF_URL = "https://educalcul.com/api/cron/course-queue-advance";
 
+// Sans Fluid Compute, Vercel peut tuer un after() en plein travail sans
+// lever d'erreur (observé en prod : la ligne course_generations reste
+// "running" pour toujours, et comme la relance en chaîne se fait dans le
+// after() qui vient de mourir, plus rien ne se déclenche — la file entière
+// s'arrête silencieusement). On repère et on relibère ces items "running"
+// trop vieux à chaque appel, pour que le prochain passage (manuel ou via le
+// vrai cron ci-dessous) puisse les reprendre.
+async function recoverStale() {
+  const cutoff = new Date(Date.now() - STALE_RUNNING_MINUTES * 60 * 1000).toISOString();
+  const { data: stale } = await supabaseAdmin
+    .from("course_generation_queue")
+    .select("id, attempts")
+    .eq("status", "running")
+    .lt("updated_at", cutoff);
+
+  for (const row of stale || []) {
+    const nextAttempts = row.attempts + 1;
+    await supabaseAdmin
+      .from("course_generation_queue")
+      .update({
+        status: nextAttempts >= MAX_ATTEMPTS ? "failed" : "pending",
+        attempts: nextAttempts,
+        last_error: "Génération interrompue : le processus serveur s'est arrêté avant la fin (redémarrage, délai maximal dépassé, ou plantage).",
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", row.id);
+  }
+}
+
 async function claimNext() {
+  await recoverStale();
+
   const { data: candidate } = await supabaseAdmin
     .from("course_generation_queue")
     .select("id")
@@ -47,7 +79,19 @@ async function advanceQueue() {
   }
 }
 
+// GET pour le vrai Vercel Cron (voir vercel.json) — filet de sécurité qui
+// relance la chaîne toutes les 5 min si elle s'est arrêtée (voir
+// recoverStale ci-dessus). POST pour un déclenchement manuel et pour
+// l'auto-relance en chaîne (advanceQueue).
+export async function GET(req: Request) {
+  return handle(req);
+}
+
 export async function POST(req: Request) {
+  return handle(req);
+}
+
+async function handle(req: Request) {
   if (!process.env.CRON_SECRET) {
     return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 500 });
   }
@@ -75,6 +119,8 @@ export async function POST(req: Request) {
     subject: item.subject,
     additional_info: item.additional_info,
     folder_id: item.folder_id,
+    page_count: item.page_count ?? undefined,
+    lessons_per_chapter: item.lessons_per_chapter ?? undefined,
   };
 
   const { data: generation } = await supabaseAdmin
