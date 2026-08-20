@@ -27,11 +27,11 @@ function todayStr() {
   return new Date().toISOString().slice(0, 10);
 }
 
-function TierCard({ gameType, answerType, palierCode, tier, sheet, date, onChanged }: {
+function TierCard({ gameType, answerType, palierCode, freeQuestionCount, sheet, date, onChanged }: {
   gameType: MinigameType;
   answerType: AnswerType;
   palierCode: string;
-  tier: "free" | "premium";
+  freeQuestionCount: number;
   sheet: Sheet | undefined;
   date: string;
   onChanged: () => void;
@@ -73,7 +73,7 @@ function TierCard({ gameType, answerType, palierCode, tier, sheet, date, onChang
       const res = await fetch("/api/admin/minigames/daily-sheets", {
         method: "POST",
         headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify({ gameType, palierCode, date, tier }),
+        body: JSON.stringify({ gameType, palierCode, date, tier: "free" }),
       });
       if (res.ok) {
         setEditing(null);
@@ -87,9 +87,8 @@ function TierCard({ gameType, answerType, palierCode, tier, sheet, date, onChang
   return (
     <div className="border rounded-xl p-3" style={{ borderColor: "rgba(15,30,58,0.1)" }}>
       <div className="flex items-center justify-between gap-2 mb-2">
-        <span className="text-xs font-bold uppercase tracking-wide flex items-center gap-1.5" style={{ color: tier === "premium" ? "var(--greek-gold)" : "var(--greek-blue)" }}>
-          {tier === "premium" && <Lock className="w-3 h-3" />}
-          {tier === "premium" ? "Bonus premium" : "Standard"}
+        <span className="text-xs font-bold uppercase tracking-wide flex items-center gap-1.5" style={{ color: "var(--greek-blue)" }}>
+          5 questions du jour
           {sheet?.language && <span className="normal-case font-normal text-gray-400">({sheet.language})</span>}
         </span>
         <div className="flex items-center gap-1.5">
@@ -110,6 +109,7 @@ function TierCard({ gameType, answerType, palierCode, tier, sheet, date, onChang
         <div className="space-y-1.5">
           {questions.map((q, i) => (
             <div key={i} className="flex items-center gap-1.5">
+              {i >= freeQuestionCount && <Lock className="w-3 h-3 shrink-0" style={{ color: "var(--greek-gold)" }} aria-label="Premium uniquement" />}
               <input
                 value={q.prompt}
                 onChange={(e) => { if (!dirty) startEdit(); updateQuestion(i, { prompt: e.target.value }); }}
@@ -155,19 +155,17 @@ export default function AdminDailySheetsPanel({ gameType }: { gameType: Minigame
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, gameType]);
 
-  const byPalier = (code: string) => ({
-    free: sheets.find((s) => s.palier_code === code && s.tier === "free"),
-    premium: sheets.find((s) => s.palier_code === code && s.tier === "premium"),
-  });
+  const byPalier = (code: string) => sheets.find((s) => s.palier_code === code && s.tier === "free");
 
   const rules = RULES_BY_GAME_TYPE[gameType];
-  const answerType = GAME_TYPES[gameType].answerType;
+  const config = GAME_TYPES[gameType];
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between flex-wrap gap-2">
         <p className="text-sm text-gray-500">
           Contenu du jour par palier — généré automatiquement chaque nuit, modifiable ici si besoin.
+          Les <Lock className="inline w-3 h-3 -mt-0.5" style={{ color: "var(--greek-gold)" }} /> {config.freeQuestionCount + 1}ᵉ à 5ᵉ questions sont réservées au premium.
         </p>
         <input
           type="date"
@@ -183,14 +181,11 @@ export default function AdminDailySheetsPanel({ gameType }: { gameType: Minigame
       ) : (
         <div className="grid md:grid-cols-2 gap-4">
           {rules.map((rule) => {
-            const { free, premium } = byPalier(rule.code);
+            const sheet = byPalier(rule.code);
             return (
               <div key={rule.code} className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-4">
                 <h3 className="font-bold text-[var(--greek-blue)] mb-3">{rule.label}</h3>
-                <div className="space-y-3">
-                  <TierCard gameType={gameType} answerType={answerType} palierCode={rule.code} tier="free" sheet={free} date={date} onChanged={load} />
-                  <TierCard gameType={gameType} answerType={answerType} palierCode={rule.code} tier="premium" sheet={premium} date={date} onChanged={load} />
-                </div>
+                <TierCard gameType={gameType} answerType={config.answerType} palierCode={rule.code} freeQuestionCount={config.freeQuestionCount} sheet={sheet} date={date} onChanged={load} />
               </div>
             );
           })}

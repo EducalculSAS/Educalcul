@@ -21,12 +21,12 @@ export interface GameTypeConfig {
   buildSystemPrompt: (rule: any, avoidPrompts: string[], theme?: string, language?: MathLanguage) => string;
   /** Uniquement pour "langues" — une langue tournante par jour (déterministe). */
   getLanguageForDate?: (forDate: string) => MathLanguage;
-  /** false → pas de fiche premium bonus pour ce jeu : les élèves premium
-   * n'ont que les 5 questions "free" comme tout le monde, jamais 10. Par
-   * défaut (undefined) équivaut à true — tous les autres jeux gardent le
-   * bonus premium. Énigmes n'en a pas : la fiche bonus finissait par
-   * dupliquer les mêmes énigmes que la fiche gratuite. */
-  hasPremiumBonus?: boolean;
+  /** Une seule fiche de 5 questions est générée par jour/palier (plus de
+   * fiche bonus séparée — ça évitait la déduplication entre deux tirages et
+   * ça a fini par produire des doublons, voir Énigmes). Les élèves gratuits
+   * ne répondent qu'aux `freeQuestionCount` premières questions ; le premium
+   * a accès aux 5. */
+  freeQuestionCount: number;
 }
 
 // Chaque jeu "à paliers" décrit ici — le cron, le générateur, les routes
@@ -42,6 +42,7 @@ export const GAME_TYPES: Record<MinigameType, GameTypeConfig> = {
     answerType: "number",
     getRule: getCalculMentalRule,
     buildSystemPrompt: buildCalculMentalSystemPrompt,
+    freeQuestionCount: 2,
   },
   enigmes: {
     gameType: "enigmes",
@@ -50,7 +51,7 @@ export const GAME_TYPES: Record<MinigameType, GameTypeConfig> = {
     answerType: "text",
     getRule: getEnigmeRule,
     buildSystemPrompt: buildEnigmesSystemPrompt,
-    hasPremiumBonus: false,
+    freeQuestionCount: 2,
   },
   suites: {
     gameType: "suites",
@@ -59,6 +60,7 @@ export const GAME_TYPES: Record<MinigameType, GameTypeConfig> = {
     answerType: "number",
     getRule: getSuiteRule,
     buildSystemPrompt: buildSuitesSystemPrompt,
+    freeQuestionCount: 2,
   },
   langues: {
     gameType: "langues",
@@ -68,6 +70,7 @@ export const GAME_TYPES: Record<MinigameType, GameTypeConfig> = {
     getRule: getLangueRule,
     buildSystemPrompt: buildLanguesSystemPrompt,
     getLanguageForDate: getRotatingLanguage,
+    freeQuestionCount: 2,
   },
 };
 

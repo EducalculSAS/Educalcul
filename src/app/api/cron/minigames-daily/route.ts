@@ -2,13 +2,12 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createLlmStartGate, DEFAULT_LLM_MIN_START_INTERVAL_MS } from "@/lib/ai/runtime";
 import { listGameTypes } from "@/lib/minigames/gameTypes";
-import { generateAndUpsertDailySheet, type SheetTier } from "@/lib/minigames/runDailySheetGeneration";
+import { generateAndUpsertDailySheet } from "@/lib/minigames/runDailySheetGeneration";
 
 export const maxDuration = 800;
 
 const DAYS_AHEAD = 5; // aujourd'hui + 4 jours d'avance
 const ARCHIVE_AFTER_DAYS = 3;
-const TIERS: SheetTier[] = ["free", "premium"];
 
 function toDateStr(d: Date): string {
   return d.toISOString().slice(0, 10);
@@ -20,10 +19,13 @@ function toDateStr(d: Date): string {
 //
 // Idempotent : boucle sur les 4 jeux du registre (chacun avec SA plage de
 // paliers, pas systématiquement les 12 — voir src/lib/minigames/gameTypes.ts)
-// × 2 tiers × 5 jours, ne génère que les créneaux qui n'existent pas déjà —
-// une exécution interrompue en cours de route (ou qui n'a pas le temps de
-// tout faire en un run, le volume total étant plus grand qu'avec un seul
-// jeu) est simplement complétée par le run du lendemain.
+// × 5 jours, ne génère que les créneaux qui n'existent pas déjà — une
+// exécution interrompue en cours de route est simplement complétée par le
+// run du lendemain. Une seule fiche de 5 questions par jour/palier (tier
+// "free" uniquement) — pas de fiche bonus séparée : le partage gratuit/
+// premium se fait en ne servant que les `freeQuestionCount` premières
+// questions aux comptes gratuits (voir dailyGameSession.ts), pas en
+// générant un second lot qui finissait par dupliquer le premier.
 export async function GET(req: Request) {
   if (!process.env.CRON_SECRET) {
     return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 500 });
@@ -43,8 +45,9 @@ export async function GET(req: Request) {
   const { data: existingRows } = await supabaseAdmin
     .from("minigame_daily_sheets")
     .select("game_type, palier_code, for_date, tier")
+    .eq("tier", "free")
     .in("for_date", dates);
-  const existing = new Set((existingRows || []).map((r) => `${r.game_type}|${r.palier_code}|${r.for_date}|${r.tier}`));
+  const existing = new Set((existingRows || []).map((r) => `${r.game_type}|${r.palier_code}|${r.for_date}`));
 
   let generated = 0;
   let failed = 0;
@@ -55,26 +58,23 @@ export async function GET(req: Request) {
   // rate-limit du modèle (vécu lors du premier test — 429 dès le 2e appel).
   const generate = createLlmStartGate(DEFAULT_LLM_MIN_START_INTERVAL_MS, () => Promise.resolve(false));
 
-  for (const { gameType, palierCodes, hasPremiumBonus } of listGameTypes()) {
-    const tiersForGame = hasPremiumBonus === false ? (["free"] as SheetTier[]) : TIERS;
+  for (const { gameType, palierCodes } of listGameTypes()) {
     for (const palierCode of palierCodes) {
       for (const date of dates) {
-        for (const tier of tiersForGame) {
-          const key = `${gameType}|${palierCode}|${date}|${tier}`;
-          if (existing.has(key)) continue;
-          try {
-            const result = await generateAndUpsertDailySheet(gameType, palierCode, date, tier, { generate });
-            if (result.error) {
-              failed++;
-              errors.push(`${key}: ${result.error}`);
-            } else {
-              generated++;
-            }
-          } catch (err) {
-            // Un créneau qui échoue ne doit jamais faire tomber tout le run.
+        const key = `${gameType}|${palierCode}|${date}`;
+        if (existing.has(key)) continue;
+        try {
+          const result = await generateAndUpsertDailySheet(gameType, palierCode, date, "free", { generate });
+          if (result.error) {
             failed++;
-            errors.push(`${key}: ${err instanceof Error ? err.message : "erreur inconnue"}`);
+            errors.push(`${key}: ${result.error}`);
+          } else {
+            generated++;
           }
+        } catch (err) {
+          // Un créneau qui échoue ne doit jamais faire tomber tout le run.
+          failed++;
+          errors.push(`${key}: ${err instanceof Error ? err.message : "erreur inconnue"}`);
         }
       }
     }

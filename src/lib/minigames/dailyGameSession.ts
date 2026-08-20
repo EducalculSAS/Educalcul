@@ -18,8 +18,10 @@ function normalizeText(s: string): string {
 }
 
 /** Démarre la partie du jour pour un jeu "à paliers" donné : le contenu est
- * fixe (5 questions du palier de l'enfant, +5 bonus si premium) — pas une
- * génération à la demande. Une seule partie complétée par jour et par jeu :
+ * fixe (5 questions du palier de l'enfant par jour) — pas une génération à
+ * la demande. Un compte gratuit ne répond qu'aux `freeQuestionCount`
+ * premières questions de la fiche ; un compte premium a accès aux 5. Une
+ * seule partie complétée par jour et par jeu :
  * le contenu du jour ne se rejoue pas pour gonfler le score (indépendant du
  * compteur global `minigames_daily_limit`, qui continue de s'appliquer en
  * plus). Logique partagée par calcul-mental/énigmes/suites/langues — seules
@@ -75,25 +77,25 @@ export async function startDailyGameSession(gameType: MinigameType, req: Request
     const features = await getUserFeatures(me.authId);
     const isPremium = features.minigames_daily_limit === -1 || features.minigames_daily_limit > 3;
 
-    const tiers = isPremium && gameConfig.hasPremiumBonus !== false ? ["free", "premium"] : ["free"];
-    const { data: sheets } = await supabaseAdmin
+    const { data: sheet } = await supabaseAdmin
       .from("minigame_daily_sheets")
-      .select("id, tier, questions")
+      .select("id, questions")
       .eq("game_type", gameType)
       .eq("palier_code", palierCode)
       .eq("for_date", today)
+      .eq("tier", "free")
       .eq("is_archived", false)
-      .in("tier", tiers);
+      .maybeSingle();
 
-    if (!sheets || sheets.length === 0) {
+    if (!sheet) {
       return NextResponse.json({ error: "Le contenu du jour n'est pas encore prêt pour ton niveau." }, { status: 404 });
     }
 
-    // Ordre stable (free d'abord) pour que les index renvoyés au client
-    // correspondent toujours au même ordre de correction côté submit.
-    const ordered = [...sheets].sort((a, b) => (a.tier === "free" ? -1 : 1) - (b.tier === "free" ? -1 : 1));
-    const questions = ordered.flatMap((s) => (s.questions || []) as { prompt: string; answer: number | string }[]);
-    const sheetIds = ordered.map((s) => s.id);
+    const allQuestions = (sheet.questions || []) as { prompt: string; answer: number | string }[];
+    // Compte gratuit : seulement les N premières questions de la fiche.
+    // Compte premium : la fiche entière. Un seul lot généré par jour — plus
+    // de fiche bonus séparée (voir gameTypes.ts:freeQuestionCount).
+    const questions = isPremium ? allQuestions : allQuestions.slice(0, gameConfig.freeQuestionCount);
 
     if (questions.length === 0) {
       return NextResponse.json({ error: "Fiche vide." }, { status: 404 });
@@ -105,7 +107,7 @@ export async function startDailyGameSession(gameType: MinigameType, req: Request
         user_id: user.id,
         game_type: gameType,
         grade_level: gradeLevel,
-        content_json: { palierCode, forDate: today, sheetIds, questionCount: questions.length },
+        content_json: { palierCode, forDate: today, sheetIds: [sheet.id], questionCount: questions.length },
         status: "in_progress",
       })
       .select("id")
@@ -160,16 +162,17 @@ export async function submitDailyGameSession(gameType: MinigameType, sessionId: 
       return NextResponse.json({ error: "Cette partie est déjà terminée." }, { status: 400 });
     }
 
-    const { sheetIds } = session.content_json as { sheetIds: string[] };
+    const { sheetIds, questionCount } = session.content_json as { sheetIds: string[]; questionCount: number };
     const { data: sheetRows } = await supabaseAdmin
       .from("minigame_daily_sheets")
-      .select("id, tier, questions")
+      .select("id, questions")
       .in("id", sheetIds || []);
 
-    // Même ordre stable qu'au démarrage (free d'abord) — les index envoyés
-    // par le client doivent retomber sur les mêmes questions qu'à l'affichage.
-    const ordered = (sheetRows || []).sort((a, b) => (a.tier === "free" ? -1 : 1) - (b.tier === "free" ? -1 : 1));
-    const questions = ordered.flatMap((s) => (s.questions || []) as { prompt: string; answer: number | string }[]);
+    // Même tranche qu'au démarrage (les N premières questions de la fiche,
+    // N = questionCount figé à ce moment-là) — indépendant d'un éventuel
+    // changement d'abonnement en cours de partie.
+    const allQuestions = (sheetRows?.[0]?.questions || []) as { prompt: string; answer: number | string }[];
+    const questions = allQuestions.slice(0, questionCount);
 
     let correct = 0;
     const detail = answers.map((a) => {
