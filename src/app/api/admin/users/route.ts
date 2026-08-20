@@ -464,6 +464,25 @@ export async function DELETE(request: Request) {
       );
     }
 
+    // Manually delete from public.users AVANT Supabase Auth : users.auth_id
+    // référence auth.users.id sans cascade (ON DELETE NO ACTION), donc
+    // supprimer auth.users en premier échoue systématiquement tant que
+    // cette ligne existe encore — c'était la cause du "profil supprimé mais
+    // le compte de connexion n'a pas pu l'être" observé sur TOUTES les
+    // suppressions, retry et repli RPC compris (le repli fait le même DELETE
+    // brut sur auth.users, bloqué par la même contrainte).
+    const { error: dbError } = await supabaseAdmin
+      .from("users")
+      .delete()
+      .eq("auth_id", auth_id);
+
+    if (dbError) {
+      console.error(
+        `[DELETE USER] DB deletion error for ${auth_id}:`,
+        JSON.stringify(dbError),
+      );
+    }
+
     // Delete from Auth. Retried once, puis en dernier recours via
     // admin_force_delete_auth_user (fonction SQL SECURITY DEFINER qui
     // supprime directement la ligne auth.users) — l'API Admin de Supabase
@@ -500,23 +519,6 @@ export async function DELETE(request: Request) {
         console.log(`[DELETE USER] Fallback deletion succeeded for ${auth_id}`);
         authError = null;
       }
-    }
-
-    // Manually delete from public.users
-    const { error: dbError } = await supabaseAdmin
-      .from("users")
-      .delete()
-      .eq("auth_id", auth_id);
-
-    if (dbError) {
-      console.error(
-        `[DELETE USER] DB deletion error for ${auth_id}:`,
-        JSON.stringify(dbError),
-      );
-      // Surfacé au caller ci-dessous plutôt qu'avalé silencieusement — un
-      // profil qui survit malgré un message "supprimé avec succès" est
-      // exactement le bug déjà observé (ligne public.users retenue par une
-      // contrainte FK non nettoyée par tablesToClean ci-dessus).
     }
 
     // ✓ SECURITY: Log admin action
