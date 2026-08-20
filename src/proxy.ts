@@ -191,7 +191,10 @@ export async function proxy(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
       const roleInfo = await getRole(user.id);
-      if (roleInfo) {
+      // Les admins ne sont jamais auto-redirigés : l'accès à /admin/dashboard
+      // passe toujours par une navigation explicite (+ re-vérification 2FA),
+      // pas par un simple cookie de session retrouvé sur la page d'accueil.
+      if (roleInfo && roleInfo.role !== "admin") {
         return NextResponse.redirect(new URL(dashboardPathForRole(roleInfo.role), req.url));
       }
     }
