@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import {
   User, Trophy, Shield, School, BookOpen, Mail,
   CheckCircle, AlertCircle, Trash2,
-  Camera, Bell, Loader2, Brain, Gamepad2,
+  Camera, Bell, Brain, Gamepad2,
 } from "lucide-react";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -51,8 +51,6 @@ export default function ChildProfileSettings({
   const [avatar, setAvatar] = useState(user.avatar || "/avatars/avatar1.png");
   const [googleLinked, setGoogleLinked] = useState(initialGoogleLinked);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [deleteStep, setDeleteStep] = useState<1 | 2>(1);
   const [notifications, setNotifications] = useState({
     notif_weekly_reports: user.notif_weekly_reports ?? false,
     notif_offers_news: user.notif_offers_news ?? false,
@@ -95,19 +93,6 @@ export default function ChildProfileSettings({
     } catch (err: any) { setMessage({ type: "error", text: err.message }); }
   };
 
-  const handleDeleteAccount = async () => {
-    setSaving(true);
-    setShowDeleteModal(false);
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.access_token) throw new Error("Session expirée");
-      const r = await fetch("/api/parent/delete-account", { method: "DELETE", headers: { Authorization: `Bearer ${session.access_token}` } });
-      if (!r.ok) throw new Error((await r.json()).error);
-      await supabase.auth.signOut();
-      sessionStorage.clear(); localStorage.clear();
-      window.location.href = "/";
-    } catch (err: any) { setMessage({ type: "error", text: err.message }); setSaving(false); }
-  };
 
   return (
     <>
@@ -255,55 +240,6 @@ export default function ChildProfileSettings({
         </div>
       </div>
 
-      {/* ── Danger zone ── */}
-      <div className="rounded-2xl p-6 border border-red-200 bg-red-50 mt-6">
-        <h2 className="text-base font-bold text-red-700 mb-3 flex items-center gap-2"><AlertCircle className="w-5 h-5" />Zone de danger</h2>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <p className="font-semibold text-red-800 text-sm">Supprimer mon compte</p>
-            <p className="text-xs text-red-600">Action irréversible — toutes tes données seront perdues.</p>
-          </div>
-          <GlassButton onClick={() => { setDeleteStep(1); setShowDeleteModal(true); }} variant="danger" size="sm">
-            Supprimer mon compte
-          </GlassButton>
-        </div>
-      </div>
-
-      {showDeleteModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.5)", backdropFilter: "blur(4px)" }}>
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
-            <div className="bg-red-600 px-6 py-4 text-white">
-              <h3 className="text-lg font-bold flex items-center gap-2"><AlertCircle className="w-5 h-5" />
-                {deleteStep === 1 ? "Supprimer mon compte" : "Dernière confirmation"}
-              </h3>
-            </div>
-            <div className="p-6">
-              {deleteStep === 1 ? (
-                <>
-                  <p className="text-gray-700 mb-4 text-sm">Es-tu sûr(e) de vouloir supprimer définitivement ton compte ?</p>
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-xs text-red-700 space-y-1">
-                    <p>• Toutes tes données de progression seront perdues</p>
-                    <p>• Tes badges et trophées seront supprimés</p>
-                    <p>• Cette action est irréversible</p>
-                  </div>
-                </>
-              ) : (
-                <p className="text-gray-700 text-sm font-semibold">Es-tu absolument certain(e) ? Il n'y a aucun moyen de récupérer tes données.</p>
-              )}
-            </div>
-            <div className="px-6 pb-6 flex gap-3 justify-end">
-              <GlassButton onClick={() => { setShowDeleteModal(false); setDeleteStep(1); }} variant="ghost" size="sm">Annuler</GlassButton>
-              {deleteStep === 1 ? (
-                <GlassButton onClick={() => setDeleteStep(2)} variant="danger" size="sm">Continuer</GlassButton>
-              ) : (
-                <GlassButton onClick={handleDeleteAccount} variant="danger" size="sm" disabled={saving}>
-                  {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}Supprimer
-                </GlassButton>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

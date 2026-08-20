@@ -39,6 +39,11 @@ export async function DELETE(req: Request) {
     if (!me) {
       return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
     }
+    // Seul un parent peut supprimer un compte (le sien + ceux de ses
+    // enfants) — un enfant n'a pas ce droit, même sur son propre compte.
+    if (me.role !== "parent") {
+      return NextResponse.json({ error: "Seul un parent peut supprimer un compte" }, { status: 403 });
+    }
 
     const parentAuthId = me.authId;
     console.log("[delete-account] Starting deletion for auth_id:", parentAuthId);

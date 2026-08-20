@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createServerClient } from "@supabase/ssr";
 import { updateSession } from "@/lib/supabase/middleware";
 import { ipMatchesCidr } from "@/lib/adminIpAllowlist";
 import { getClientIp } from "@/lib/ipGeo";
+
+function dashboardPathForRole(role: string): string {
+  if (role === "parent") return "/parent/dashboard";
+  if (role === "child") return "/child/dashboard";
+  if (role === "admin") return "/admin/dashboard";
+  return "/dashboard";
+}
 
 // Middleware tourne en runtime Edge : pas d'accès au module Node "crypto",
 // on utilise donc SubtleCrypto (identique en résultat à
@@ -166,6 +174,27 @@ export async function proxy(req: NextRequest) {
     // perceptible à toutes les pages authentifiées malgré leur conversion en
     // composants serveur.
     return NextResponse.next();
+  }
+
+  // Page d'accueil : un utilisateur déjà connecté (cookie de session valide)
+  // qui la rouvre (nouvel onglet, navigateur relancé) est envoyé directement
+  // sur son tableau de bord plutôt que sur la vitrine publique — sinon rien
+  // ne distingue visuellement un compte connecté d'un visiteur anonyme sur
+  // cette page, ce qui donne l'impression trompeuse d'avoir été déconnecté.
+  if (pathname === "/" && req.method === "GET") {
+    const supabase = createServerClient(SUPABASE_URL, ANON_KEY, {
+      cookies: {
+        getAll: () => req.cookies.getAll(),
+        setAll: () => {},
+      },
+    });
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const roleInfo = await getRole(user.id);
+      if (roleInfo) {
+        return NextResponse.redirect(new URL(dashboardPathForRole(roleInfo.role), req.url));
+      }
+    }
   }
 
   // Pages : rafraîchit le cookie de session pour que createSupabaseServerClient()
