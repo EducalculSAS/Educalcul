@@ -59,6 +59,8 @@ const defaultPlanForm = {
   feature_custom_avatars: false,
   feature_ai_access: "limited" as "none" | "limited" | "unlimited",
   feature_ai_daily_limit: 10,
+  feature_minigames_daily_limit: 3,
+  feature_minigames_premium_content: false,
   cosmetic_borders: [] as string[],
   cosmetic_colors: [] as string[],
 };
@@ -153,6 +155,8 @@ export default function AdminSubscriptionsClient({
         feature_custom_avatars: !!f.custom_avatars,
         feature_ai_access: (f.ai_access || "limited") as "none" | "limited" | "unlimited",
         feature_ai_daily_limit: f.ai_daily_limit ?? 10,
+        feature_minigames_daily_limit: f.minigames_daily_limit ?? 3,
+        feature_minigames_premium_content: !!f.minigames_premium_content,
         cosmetic_borders: (f.cosmetic_borders as string[]) ?? [],
         cosmetic_colors: (f.cosmetic_colors as string[]) ?? [],
       });
@@ -172,6 +176,8 @@ export default function AdminSubscriptionsClient({
       custom_avatars: planForm.feature_custom_avatars,
       ai_access: planForm.feature_ai_access,
       ai_daily_limit: planForm.feature_ai_access === "unlimited" ? -1 : Number(planForm.feature_ai_daily_limit),
+      minigames_daily_limit: Number(planForm.feature_minigames_daily_limit),
+      minigames_premium_content: planForm.feature_minigames_premium_content,
       cosmetic_borders: planForm.cosmetic_borders,
       cosmetic_colors: planForm.cosmetic_colors,
     };
@@ -873,11 +879,16 @@ export default function AdminSubscriptionsClient({
                     <label className={labelCls}>Messages IA / jour {planForm.feature_ai_access === "unlimited" ? "(ignoré si illimité)" : ""}</label>
                     <input type="number" min="0" value={planForm.feature_ai_daily_limit} disabled={planForm.feature_ai_access !== "limited"} onChange={e => setPlanForm({...planForm, feature_ai_daily_limit: Number(e.target.value)})} className={inputCls + (planForm.feature_ai_access !== "limited" ? " opacity-40" : "")} />
                   </div>
+                  <div>
+                    <label className={labelCls}>Mini-jeux — parties / jour (-1 = illimité)</label>
+                    <input type="number" min="-1" value={planForm.feature_minigames_daily_limit} onChange={e => setPlanForm({...planForm, feature_minigames_daily_limit: Number(e.target.value)})} className={inputCls} />
+                  </div>
                   <div className="col-span-2 grid grid-cols-2 gap-3">
                     {[
                       { key: "feature_detailed_reports", label: "Rapports détaillés" },
                       { key: "feature_priority_support", label: "Support prioritaire" },
                       { key: "feature_custom_avatars",   label: "Avatars personnalisés" },
+                      { key: "feature_minigames_premium_content", label: "Mini-jeux — contenu premium (5 questions au lieu de 2)" },
                     ].map(({ key, label }) => (
                       <label key={key} className="flex items-center gap-3 p-3 border border-[rgba(197,161,72,0.25)] rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">
                         <input type="checkbox" checked={(planForm as Record<string, unknown>)[key] as boolean} onChange={e => setPlanForm({...planForm, [key]: e.target.checked})} className="w-4 h-4 text-[var(--greek-blue)] rounded" />

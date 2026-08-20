@@ -8,6 +8,11 @@ interface PlanFeatures {
   access_level_exercises: "basic" | "intermediate" | "advanced" | "all";
   /** Parties de mini-jeux (Mathador, calcul mental...) par jour. -1 = illimité. */
   minigames_daily_limit: number;
+  /** Accès aux 5 questions/jour des mini-jeux à paliers (calcul mental,
+   * énigmes, suites, langues) — false = seulement les 2 premières. Distinct
+   * de minigames_daily_limit (le nombre total de PARTIES/jour, tous jeux
+   * confondus) : ce flag contrôle le CONTENU d'une partie, pas son nombre. */
+  minigames_premium_content: boolean;
   [key: string]: any;
 }
 
@@ -18,6 +23,7 @@ const FREE_FEATURES: PlanFeatures = {
   detailed_reports: false,
   access_level_exercises: "basic",
   minigames_daily_limit: 3,
+  minigames_premium_content: false,
 };
 
 export async function getUserFeatures(
