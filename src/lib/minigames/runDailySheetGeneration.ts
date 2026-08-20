@@ -91,6 +91,15 @@ export async function generateDailySheet(
   const avoidPrompts = await getRecentQuestionsForPalier(gameType, palierCode, options.excludeId);
   const generate = options.generate ?? defaultGate();
 
+  // L'IA reçoit déjà avoidPrompts comme consigne dans le prompt système, mais
+  // rien ne garantissait jusqu'ici qu'elle l'ait vraiment respectée — c'est
+  // ce qui a produit des énigmes bonus identiques aux énigmes gratuites du
+  // même jour (même liste avoidPrompts reçue, ignorée par le modèle). On
+  // vérifie donc ici, en code, que chaque question générée ne reprend pas
+  // (une fois normalisée) une question de avoidPrompts — sinon on la rejette
+  // et on relance, comme pour un doublon intra-fiche.
+  const avoidSet = new Set(avoidPrompts.map(normalizePrompt));
+
   try {
     let questions: RawQuestion[] = [];
     for (let attempt = 1; attempt <= MAX_DEDUPE_ATTEMPTS; attempt++) {
@@ -103,11 +112,14 @@ export async function generateDailySheet(
 
       const valid = (result.questions || []).filter((q) => {
         if (!q || typeof q.prompt !== "string" || !q.prompt.trim()) return false;
+        if (avoidSet.has(normalizePrompt(q.prompt))) return false;
         return config.answerType === "number" ? Number.isFinite(q.answer) : typeof q.answer === "string" && q.answer.trim().length > 0;
       });
-      const { unique, hadDuplicates } = dedupeQuestions(valid);
-      questions = unique;
-      if (!hadDuplicates || unique.length >= QUESTIONS_PER_SHEET) break;
+      const { unique } = dedupeQuestions(valid);
+      // Garde la meilleure tentative si aucune n'atteint la cible (mieux
+      // vaut publier 3-4 questions solides que 0 après épuisement des essais).
+      if (unique.length > questions.length) questions = unique;
+      if (unique.length >= QUESTIONS_PER_SHEET) break;
     }
 
     if (questions.length === 0) return { error: "Aucune question valide générée." };

@@ -63,7 +63,8 @@ Règles impératives :
 - Chaque question doit avoir une réponse NUMÉRIQUE unique et sans ambiguïté : jamais de fraction non simplifiable, jamais de racine, et jamais un décimal à développement infini (ex. 1/3 = 0,333... est interdit — choisis des valeurs qui donnent un résultat exact ou un décimal qui s'arrête en 1-2 chiffres). La réponse elle-même reste un nombre, même si l'énoncé est en langue étrangère.
 - Les questions doivent être résolubles en quelques dizaines de secondes par un élève de ce niveau qui maîtrise ces notions en français.
 - Varie les types de questions dans le cadre autorisé plutôt que de répéter la même structure.
-- Les 5 questions de la fiche doivent toutes être DIFFÉRENTES les unes des autres.${avoidBlock}`;
+- Les 5 questions de la fiche doivent toutes être DIFFÉRENTES les unes des autres.
+- Pour toute notation mathématique nécessitant une mise en forme (équation, puissance, dérivée, trigonométrie), utilise LaTeX entre signes dollar (ex. $x^2 + 3x - 4 = 0$, $f'(x)$, $\\sin(\\theta)$) même si le texte autour est en langue étrangère — seul l'habillage textuel change de langue, la notation mathématique reste universelle.${avoidBlock}`;
 }
 
 export { LANGUES_RULES as default };

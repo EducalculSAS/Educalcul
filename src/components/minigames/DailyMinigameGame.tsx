@@ -5,6 +5,7 @@ import { Calculator, PuzzleIcon, TrendingUp, Languages, type LucideIcon } from "
 import GlassButton from "@/components/ui/GlassButton";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { useToast } from "@/components/Toast";
+import { renderLatexInHTML } from "@/lib/katexLoader";
 import MinigamesLeaderboard from "@/components/minigames/MinigamesLeaderboard";
 import MinigameBackButton from "@/components/minigames/MinigameBackButton";
 import type { MinigameType, AnswerType } from "@/lib/minigames/gameTypes";
@@ -207,9 +208,10 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
           <span>Question {currentIndex + 1} / {questions.length}</span>
         </div>
 
-        <div className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--greek-blue)] mb-8">
-          {question?.prompt}
-        </div>
+        <div
+          className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--greek-blue)] mb-8"
+          dangerouslySetInnerHTML={{ __html: renderLatexInHTML(question?.prompt || "") }}
+        />
 
         <input
           type={answerType === "number" ? "number" : "text"}

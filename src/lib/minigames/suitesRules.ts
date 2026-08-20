@@ -45,7 +45,8 @@ Règles impératives :
 - Donne toujours assez de termes ou d'informations dans l'énoncé pour que la suite soit déterminée sans ambiguïté.
 - Formule chaque question en une ou deux lignes courtes, en français ("Soit la suite 2, 5, 8, 11, ... Quel est le terme suivant ?").
 - Varie les types de questions (terme suivant, raison, terme de rang n) dans le cadre autorisé.
-- Les 5 questions de la fiche doivent toutes être DIFFÉRENTES les unes des autres.${avoidBlock}`;
+- Les 5 questions de la fiche doivent toutes être DIFFÉRENTES les unes des autres.
+- Pour toute notation nécessitant une mise en forme (indice uₙ, formule de récurrence u(n+1)=u(n)+r, fraction, puissance), utilise LaTeX entre signes dollar : $u_n$, $u_{n+1} = u_n + r$, $\\frac{3}{4}$. Pour une suite de nombres simples ("2, 5, 8, 11, ..."), le texte normal suffit.${avoidBlock}`;
 }
 
 export { SUITES_RULES as default };
