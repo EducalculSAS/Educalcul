@@ -3,6 +3,13 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createClient } from "@supabase/supabase-js";
 import { getIpGeo } from "@/lib/ipGeo";
+import {
+  DEVICE_ID_COOKIE_NAME,
+  DEVICE_ID_COOKIE_MAX_AGE,
+  getDeviceIdFromRequest,
+  summarizeDeviceLabel,
+  decodeSessionIdFromAuthHeader,
+} from "@/lib/deviceIdentity";
 
 export const dynamic = "force-dynamic";
 
@@ -91,7 +98,42 @@ export async function POST(request: Request) {
         .eq("auth_id", authUser.id);
     }
 
-    return NextResponse.json({ ok: true, is_new_day: isNewDay });
+    // "Appareils connectés" (voir UserSessionsList.tsx) : une ligne par
+    // appareil PHYSIQUE, identifié par un cookie stable — pas une ligne par
+    // connexion Supabase (auth.sessions en crée une nouvelle à chaque
+    // signInWithPassword, y compris pour le même Mac qui se reconnecte,
+    // d'où les doublons "Mac"/"Ordinateur" observés). Cet appel est déjà
+    // fait à chaque montage + toutes les 2 min (throttle 25s côté client),
+    // donc last_active_at reste à jour sans action supplémentaire, et le
+    // session_id stocké reste quasi toujours frais pour la révocation.
+    let deviceId = getDeviceIdFromRequest(request);
+    const isNewDeviceCookie = !deviceId;
+    if (!deviceId) deviceId = crypto.randomUUID();
+
+    const sessionId = decodeSessionIdFromAuthHeader(request);
+    await supabaseAdmin.from("user_devices").upsert(
+      {
+        auth_id: authUser.id,
+        device_id: deviceId,
+        label: summarizeDeviceLabel(user_agent),
+        user_agent: user_agent || null,
+        session_id: sessionId,
+        last_active_at: new Date().toISOString(),
+      },
+      { onConflict: "auth_id,device_id" },
+    );
+
+    const response = NextResponse.json({ ok: true, is_new_day: isNewDay });
+    if (isNewDeviceCookie) {
+      response.cookies.set(DEVICE_ID_COOKIE_NAME, deviceId, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        path: "/",
+        maxAge: DEVICE_ID_COOKIE_MAX_AGE,
+      });
+    }
+    return response;
   } catch (err: any) {
     return NextResponse.json(
       { error: sanitizeErrorMessage(err.message) },
