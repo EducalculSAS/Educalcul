@@ -25,6 +25,16 @@ export async function POST(req: Request) {
   // bloquant toute génération de cours tant que le plan n'est pas mis à
   // niveau. Reste actif pour tout le conteneur tant qu'il est chaud.
   process.env.MISTRAL_MODEL = "labs-leanstral-1-5";
+  // Concurrence par défaut (6 rédacteurs + 6 relecteurs, voir
+  // courseGeneration.ts) sature quand même labs-leanstral-1-5 dès que
+  // plusieurs cours tournent en parallèle sur des instances Vercel
+  // distinctes — observé en prod : la quasi-totalité des leçons échouait
+  // même en tirant seulement 2 cours à 90s d'écart. Ramené au réglage qui a
+  // fonctionné de façon fiable en local (1 requête à la fois, 7s d'écart).
+  process.env.AI_COURSE_WRITER_CONCURRENCY = "1";
+  process.env.AI_COURSE_REVIEW_CONCURRENCY = "1";
+  process.env.AI_COURSE_LESSON_CONCURRENCY = "1";
+  process.env.MISTRAL_MIN_REQUEST_INTERVAL_MS = "7000";
 
   const body = await req.json().catch(() => ({}));
   const { grade_level, subject, additional_info, folder_id } = body;
