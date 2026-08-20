@@ -21,6 +21,12 @@ export interface GameTypeConfig {
   buildSystemPrompt: (rule: any, avoidPrompts: string[], theme?: string, language?: MathLanguage) => string;
   /** Uniquement pour "langues" — une langue tournante par jour (déterministe). */
   getLanguageForDate?: (forDate: string) => MathLanguage;
+  /** false → pas de fiche premium bonus pour ce jeu : les élèves premium
+   * n'ont que les 5 questions "free" comme tout le monde, jamais 10. Par
+   * défaut (undefined) équivaut à true — tous les autres jeux gardent le
+   * bonus premium. Énigmes n'en a pas : la fiche bonus finissait par
+   * dupliquer les mêmes énigmes que la fiche gratuite. */
+  hasPremiumBonus?: boolean;
 }
 
 // Chaque jeu "à paliers" décrit ici — le cron, le générateur, les routes
@@ -44,6 +50,7 @@ export const GAME_TYPES: Record<MinigameType, GameTypeConfig> = {
     answerType: "text",
     getRule: getEnigmeRule,
     buildSystemPrompt: buildEnigmesSystemPrompt,
+    hasPremiumBonus: false,
   },
   suites: {
     gameType: "suites",

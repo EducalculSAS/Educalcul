@@ -17,11 +17,9 @@ interface Question {
 type Answer = { index: number; value: number | string };
 type GameState = "loading" | "playing" | "finished" | "error";
 
-const SECONDS_PER_QUESTION = 20;
-
 // Identité visuelle par jeu (icône + accent) — mêmes couleurs que les cartes
 // du catalogue (/child/minigames) pour que le jeu reste reconnaissable une
-// fois lancé, même si la mécanique (question/input chronométré) est partagée.
+// fois lancé, même si la mécanique (question/input) est partagée.
 const GAME_VISUALS: Record<MinigameType, { icon: LucideIcon; badgeClass: string; accent: string }> = {
   calcul_mental: { icon: Calculator, badgeClass: "bg-yellow-100 text-[var(--greek-gold)]", accent: "var(--greek-gold)" },
   enigmes: { icon: PuzzleIcon, badgeClass: "bg-purple-100 text-purple-600", accent: "#9333ea" },
@@ -40,7 +38,7 @@ function apiSlug(gameType: MinigameType): string {
 
 /** Composant générique pour tous les mini-jeux "à paliers" (calcul mental,
  * énigmes, suites, langues) — même mécanique (une question à la fois,
- * chronométrée), seule la saisie change (numérique ou texte) selon
+ * sans chrono), seule la saisie change (numérique ou texte) selon
  * `answerType` renvoyé par la route de démarrage. */
 export default function DailyMinigameGame({ gameType }: { gameType: MinigameType }) {
   const { error: toastError, success: toastSuccess } = useToast();
@@ -51,7 +49,6 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(SECONDS_PER_QUESTION);
   const [result, setResult] = useState<{ score: number; maxScore: number } | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const startedAt = useRef<number>(0);
@@ -76,7 +73,6 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
       setQuestions(data.questions);
       setAnswerType(data.answerType || "number");
       startedAt.current = Date.now();
-      setTimeLeft(SECONDS_PER_QUESTION);
       setState("playing");
     } catch {
       setErrorMsg("Erreur réseau.");
@@ -120,27 +116,8 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
       finishGame(next);
     } else {
       setCurrentIndex((i) => i + 1);
-      setTimeLeft(SECONDS_PER_QUESTION);
     }
   };
-
-  // Minuteur par question — passe automatiquement à la suivante (réponse
-  // vide comptée fausse) si le temps est écoulé.
-  useEffect(() => {
-    if (state !== "playing") return;
-    if (timeLeft <= 0) {
-      if (answerType === "number") {
-        const value = Number(inputValue);
-        goToNext(inputValue.trim() !== "" && Number.isFinite(value) ? value : null);
-      } else {
-        goToNext(inputValue.trim() !== "" ? inputValue : null);
-      }
-      return;
-    }
-    const timer = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timeLeft, state]);
 
   const handleSubmitAnswer = () => {
     if (inputValue.trim() === "") {
@@ -226,9 +203,8 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
           <GameIcon className="w-6 h-6" />
         </div>
 
-        <div className="flex items-center justify-between mb-6 text-sm text-[var(--text-muted)]">
+        <div className="mb-6 text-sm text-[var(--text-muted)]">
           <span>Question {currentIndex + 1} / {questions.length}</span>
-          <span className="font-bold" style={{ color: timeLeft <= 5 ? "#dc2626" : accent }}>{timeLeft}s</span>
         </div>
 
         <div className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--greek-blue)] mb-8">

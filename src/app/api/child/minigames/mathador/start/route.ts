@@ -38,6 +38,22 @@ export async function POST(req: Request) {
 
     const gradeLevel = user.grade_level || "6eme";
 
+    // Une seule partie de Mathador par jour, comme les jeux à paliers —
+    // évite d'épuiser trop vite la réserve de tirages "jamais rejoués
+    // récemment" (RECENT_TIRAGES_TO_AVOID) en rejouant en boucle.
+    const today = new Date().toISOString().slice(0, 10);
+    const { data: alreadyPlayedToday } = await supabaseAdmin
+      .from("minigame_sessions")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("game_type", "mathador")
+      .eq("status", "completed")
+      .gte("created_at", `${today}T00:00:00.000Z`)
+      .maybeSingle();
+    if (alreadyPlayedToday) {
+      return NextResponse.json({ error: "Tu as déjà fait Mathador aujourd'hui — reviens demain !" }, { status: 400 });
+    }
+
     // Évite de retirer un tirage déjà joué récemment par ce même enfant —
     // ne s'applique qu'à ses propres parties, pas de collision inter-enfants.
     const { data: recentSessions } = await supabaseAdmin

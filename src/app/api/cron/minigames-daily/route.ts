@@ -55,10 +55,11 @@ export async function GET(req: Request) {
   // rate-limit du modèle (vécu lors du premier test — 429 dès le 2e appel).
   const generate = createLlmStartGate(DEFAULT_LLM_MIN_START_INTERVAL_MS, () => Promise.resolve(false));
 
-  for (const { gameType, palierCodes } of listGameTypes()) {
+  for (const { gameType, palierCodes, hasPremiumBonus } of listGameTypes()) {
+    const tiersForGame = hasPremiumBonus === false ? (["free"] as SheetTier[]) : TIERS;
     for (const palierCode of palierCodes) {
       for (const date of dates) {
-        for (const tier of TIERS) {
+        for (const tier of tiersForGame) {
           const key = `${gameType}|${palierCode}|${date}|${tier}`;
           if (existing.has(key)) continue;
           try {

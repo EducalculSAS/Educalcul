@@ -190,12 +190,20 @@ export default function MathadorGame() {
   }
 
   if (state === "error") {
+    const alreadyPlayedToday = errorMsg?.includes("déjà fait Mathador aujourd'hui");
     return (
       <>
         <MinigameBackButton sessionId={sessionId} />
         <div className="max-w-md mx-auto text-center py-20 px-4">
           <p className="text-[var(--text-muted)] mb-4">{errorMsg}</p>
-          <GlassButton onClick={startGame} variant="navy">Réessayer</GlassButton>
+          {!alreadyPlayedToday && (
+            <GlassButton onClick={startGame} variant="navy">Réessayer</GlassButton>
+          )}
+          {alreadyPlayedToday && (
+            <div className="mt-8 text-left">
+              <MinigamesLeaderboard gameType="mathador" />
+            </div>
+          )}
         </div>
       </>
     );

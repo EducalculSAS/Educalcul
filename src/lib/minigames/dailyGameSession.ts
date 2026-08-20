@@ -75,7 +75,7 @@ export async function startDailyGameSession(gameType: MinigameType, req: Request
     const features = await getUserFeatures(me.authId);
     const isPremium = features.minigames_daily_limit === -1 || features.minigames_daily_limit > 3;
 
-    const tiers = isPremium ? ["free", "premium"] : ["free"];
+    const tiers = isPremium && gameConfig.hasPremiumBonus !== false ? ["free", "premium"] : ["free"];
     const { data: sheets } = await supabaseAdmin
       .from("minigame_daily_sheets")
       .select("id, tier, questions")
