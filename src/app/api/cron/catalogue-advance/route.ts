@@ -193,7 +193,10 @@ Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qu
       // sur 100% des tentatives). Plancher et facteur alignés sur celui du
       // pipeline lourd (courseGeneration.ts, ~2.45 caractères/token, plus la
       // marge JSON) plutôt que sur le nombre de mots utiles seul.
-      const maxTokens = Math.min(22000, Math.max(9000, Math.round(adjustedMax * 13) + 2000));
+      // + budget supplémentaire par exercice au-delà du premier : les leçons
+      // "exercices" (jusqu'à 5 exercices corrigés) tronquaient sinon avant
+      // la fin du tableau exercises (observé en prod : cp-l023).
+      const maxTokens = Math.min(26000, Math.max(9000, Math.round(adjustedMax * 13) + 2000 + (maxExercises - 1) * 900));
 
       const raw = await generate(userPrompt, systemPrompt, contract, 0.7, maxTokens, false);
 
@@ -259,37 +262,46 @@ Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qu
         ? item.title
         : compiled.lessons[0]?.title?.trim() || item.title;
 
-      const { data: course, error: upsertError } = await supabaseAdmin
-        .from("courses")
-        .upsert(
-          {
-            slug: item.slug,
-            title: finalTitle,
-            description: item.mini_description,
-            level: item.grade_level,
-            subject: item.theme_name,
-            folder_id: item.folder_id,
-            status: "draft",
-            content_json: [compiled],
-            estimated_time: durationPerLesson,
-            chapter_name: item.chapter_name,
-            theme_order: item.theme_order,
-            chapter_order: item.chapter_order,
-            lesson_order: item.lesson_order,
-            is_theme_summary: item.is_theme_summary,
-          },
-          { onConflict: "slug" },
-        )
-        .select("id")
-        .single();
+      // Un "cours" au sens de l'utilisateur regroupe PLUSIEURS chapitres,
+      // chacun avec PLUSIEURS leçons — pas une leçon isolée par cours (retour
+      // utilisateur direct après relecture : "je veux dans un cours,
+      // plusieurs leçon dans un chapitre voir plusieurs chapitre"). On
+      // fusionne donc chaque micro-leçon générée dans le cours partagé de son
+      // thème (1 cours par thème, comme les 113 dossiers-thème existants),
+      // via une fonction Postgres qui fait la fusion atomiquement (verrou de
+      // ligne) pour éviter toute perte d'écriture entre leçons concurrentes
+      // du même thème.
+      const lessonForMerge = compiled.lessons[0];
+      if (!lessonForMerge) {
+        throw new Error("Leçon compilée manquante.");
+      }
+      lessonForMerge.id = item.slug;
+      lessonForMerge.title = finalTitle;
 
-      if (upsertError || !course) {
-        throw new Error(upsertError?.message || "upsert échoué");
+      const courseSlug = `${item.grade_level}-t${item.theme_order}`;
+      const chapterKey = item.is_theme_summary ? "bilan" : `c${item.chapter_order}`;
+      const chapterTitle = item.is_theme_summary ? "Bilan du thème" : item.chapter_name || item.theme_name;
+      const chapterOrder = item.is_theme_summary ? 9999 : item.chapter_order;
+
+      const { data: courseId, error: mergeError } = await supabaseAdmin.rpc("merge_catalogue_lesson", {
+        p_slug: courseSlug,
+        p_title: item.theme_name,
+        p_folder_id: item.folder_id,
+        p_level: item.grade_level,
+        p_subject: item.theme_name,
+        p_chapter_key: chapterKey,
+        p_chapter_title: chapterTitle,
+        p_chapter_order: chapterOrder,
+        p_lesson: lessonForMerge,
+      });
+
+      if (mergeError || !courseId) {
+        throw new Error(mergeError?.message || "fusion du cours échouée");
       }
 
       await supabaseAdmin
         .from("catalogue_import_queue")
-        .update({ status: "done", course_id: course.id, last_error: null, updated_at: new Date().toISOString() })
+        .update({ status: "done", course_id: courseId, last_error: null, updated_at: new Date().toISOString() })
         .eq("id", item.id);
     } catch (err) {
       console.error("[catalogue-advance] Échec:", err);
