@@ -3,7 +3,7 @@ import AdminExercisesClient from "@/components/admin/AdminExercisesClient";
 
 export default async function AdminExercisesPage() {
   const [{ data: rootFolders }, { data: exercisesData }, { data: allFolders }, { data: courses }] = await Promise.all([
-    supabaseAdmin.from("exercise_folders").select("*").is("parent_id", null).order("name"),
+    supabaseAdmin.from("exercise_folders").select("*").is("parent_id", null).order("display_order").order("name"),
     // Pas de content_json (volumineux) dans la liste : rechargé à la demande
     // (édition/aperçu/export) via getFullExercise côté client.
     supabaseAdmin

@@ -3,7 +3,7 @@ import AdminCoursesClient from "@/components/admin/AdminCoursesClient";
 
 export default async function AdminCoursesPage() {
   const [{ data: rootFolders }, { data: courses }, { data: allFolders }] = await Promise.all([
-    supabaseAdmin.from("course_folders").select("*").is("parent_id", null).order("name"),
+    supabaseAdmin.from("course_folders").select("*").is("parent_id", null).order("display_order").order("name"),
     // Pas de content_json (volumineux) dans la liste : rechargé à la demande
     // (édition/aperçu/export) via getFullCourse côté client.
     supabaseAdmin

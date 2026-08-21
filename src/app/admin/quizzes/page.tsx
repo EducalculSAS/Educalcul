@@ -3,7 +3,7 @@ import AdminQuizzesClient from "@/components/admin/AdminQuizzesClient";
 
 export default async function AdminQuizzesPage() {
   const [{ data: rootFolders }, { data: quizzes }, { data: allFolders }, { data: courses }] = await Promise.all([
-    supabaseAdmin.from("quiz_folders").select("*").is("parent_id", null).order("name"),
+    supabaseAdmin.from("quiz_folders").select("*").is("parent_id", null).order("display_order").order("name"),
     // Pas de content_json (volumineux) dans la liste : rechargé à la demande
     // (édition/aperçu/export) via getFullQuiz côté client.
     supabaseAdmin
