@@ -172,7 +172,7 @@ Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qu
       // sur 100% des tentatives). Plancher et facteur alignés sur celui du
       // pipeline lourd (courseGeneration.ts, ~2.45 caractères/token, plus la
       // marge JSON) plutôt que sur le nombre de mots utiles seul.
-      const maxTokens = Math.min(16000, Math.max(6000, Math.round(adjustedMax * 9) + 1500));
+      const maxTokens = Math.min(22000, Math.max(9000, Math.round(adjustedMax * 13) + 2000));
 
       const raw = await generate(userPrompt, systemPrompt, contract, 0.7, maxTokens, false);
 
