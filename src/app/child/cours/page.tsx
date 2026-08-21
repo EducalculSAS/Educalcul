@@ -17,8 +17,8 @@ export default async function ChildCoursesPage() {
   const level = userData?.grade_level || null;
 
   const [{ data: allFolders }, { data: allCourses }, { data: progressRows }] = await Promise.all([
-    supabaseAdmin.from("course_folders").select("id, parent_id, name, color, icon, grade_level").eq("status", "published").order("name"),
-    supabaseAdmin.from("courses").select("id, folder_id, title, description, thumbnail_url, subject, content_json").eq("status", "published"),
+    supabaseAdmin.from("course_folders").select("id, parent_id, name, color, icon, grade_level, display_order").eq("status", "published").order("display_order").order("name"),
+    supabaseAdmin.from("courses").select("id, folder_id, title, description, thumbnail_url, subject, content_json, chapter_order, is_theme_summary").eq("status", "published"),
     supabaseAdmin.from("user_course_progress").select("course_id, status, progress_json").eq("user_id", authUser.id),
   ]);
 

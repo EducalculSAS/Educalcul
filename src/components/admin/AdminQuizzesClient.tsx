@@ -348,7 +348,7 @@ export default function AdminQuizzesClient({
     }
     try {
       // 1. Fetch Folders
-      let folderQuery = supabase.from("quiz_folders").select("*").order("name");
+      let folderQuery = supabase.from("quiz_folders").select("*").order("display_order").order("name");
 
       if (currentFolderId === null) {
         folderQuery = folderQuery.is("parent_id", null);

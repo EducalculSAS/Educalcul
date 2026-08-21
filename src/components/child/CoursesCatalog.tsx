@@ -2,15 +2,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
-import { BookOpen, Play, CheckCircle, ArrowLeft } from "lucide-react";
+import { BookOpen, Play, CheckCircle, ArrowLeft, Lock } from "lucide-react";
 import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
 import GlassButton from "@/components/ui/GlassButton";
 
-interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
+interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string; display_order?: number }
 interface CourseRow {
   id: string; folder_id: number | null; title: string; description?: string;
   thumbnail_url?: string; subject?: string; lesson_count?: number;
+  chapter_order?: number | null; is_theme_summary?: boolean | null;
 }
 type CourseProgress = Record<string, { status: string; pct: number }>;
 
@@ -48,8 +49,14 @@ export default function CoursesCatalog({
   }, [allFolders, currentFolderId, levelFolderId]);
 
   const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
-  const currentCourses = allCourses.filter((c) => (c.folder_id ?? null) === displayParentId);
-  const currentFolders = allFolders.filter((f) => f.parent_id === displayParentId);
+  // Ordre pédagogique : chapter_order (le bilan a un chapter_order très
+  // grand, donc il arrive naturellement en dernier sans traitement spécial).
+  const currentCourses = allCourses
+    .filter((c) => (c.folder_id ?? null) === displayParentId)
+    .sort((a, b) => (a.chapter_order ?? 0) - (b.chapter_order ?? 0));
+  const currentFolders = allFolders
+    .filter((f) => f.parent_id === displayParentId)
+    .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
 
   useEffect(() => {
     if (currentCourses.length === 0) return;
@@ -181,15 +188,25 @@ export default function CoursesCatalog({
             const totalL = course.lesson_count ?? 0;
             const donePct = prog?.pct ?? 0;
 
+            // Chaque cours d'un thème doit être lu dans l'ordre : le premier
+            // est toujours accessible, les suivants se débloquent seulement
+            // une fois le cours précédent terminé (checklist comprise, voir
+            // le blocage déjà en place dans CourseViewer). "Terminé" est déjà
+            // strictement défini par l'avancée jusqu'à la dernière leçon.
+            const previousCourse = index > 0 ? currentCourses[index - 1] : null;
+            const previousProg = previousCourse ? courseProgress[previousCourse.id] : null;
+            const previousCompleted = previousProg?.status === "completed" || (previousProg?.pct ?? 0) >= 100;
+            const isLocked = index > 0 && !previousCompleted;
+
             return (
               <div
                 key={course.id}
-                className={`group bg-white rounded-[20px] shadow-sm border-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? "opacity-0" : "opacity-100"} ${isCompleted ? "border-green-400" : "border-[rgba(197,161,72,0.25)]"}`}
+                className={`group bg-white rounded-[20px] shadow-sm border-2 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? "opacity-0" : "opacity-100"} ${isLocked ? "opacity-60" : "hover:shadow-xl hover:-translate-y-1"} ${isCompleted ? "border-green-400" : "border-[rgba(197,161,72,0.25)]"}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-48 bg-gray-100 overflow-hidden">
                   {course.thumbnail_url ? (
-                    <Image src={course.thumbnail_url} alt={course.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <Image src={course.thumbnail_url} alt={course.title} fill sizes="(max-width: 768px) 100vw, 33vw" className={`object-cover transition-transform duration-500 ${isLocked ? "grayscale" : "group-hover:scale-110"}`} />
                   ) : (
                     <Image src="/logo.png" alt="Vignette par défaut du cours" width={80} height={80} className="w-20 h-20 object-contain opacity-30 m-auto" />
                   )}
@@ -201,12 +218,19 @@ export default function CoursesCatalog({
                       <CheckCircle className="w-3 h-3" /> Terminé
                     </div>
                   )}
+                  {isLocked && (
+                    <div className="absolute inset-0 bg-[var(--greek-blue)]/50 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                        <Lock className="w-6 h-6 text-[var(--greek-blue)]" />
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">{course.title}</h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
-                    {course.description || "Découvre ce chapitre passionnant !"}
+                    {isLocked ? "Termine le cours précédent pour débloquer celui-ci." : (course.description || "Découvre ce chapitre passionnant !")}
                   </p>
 
                   {isInProgress && (
@@ -223,11 +247,21 @@ export default function CoursesCatalog({
 
                   <div className="mt-auto">
                     <GlassButton
-                      href={`/child/cours/${course.id}`}
-                      variant="navy" fullWidth size="sm"
+                      href={isLocked ? undefined : `/child/cours/${course.id}`}
+                      variant={isLocked ? "outline" : "navy"} fullWidth size="sm"
+                      disabled={isLocked}
                     >
-                      <Play className="w-4 h-4 fill-current" />
-                      {isCompleted ? "Revoir" : isInProgress ? "Reprendre" : "Commencer"}
+                      {isLocked ? (
+                        <>
+                          <Lock className="w-4 h-4" />
+                          Verrouillé
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-4 h-4 fill-current" />
+                          {isCompleted ? "Revoir" : isInProgress ? "Reprendre" : "Commencer"}
+                        </>
+                      )}
                     </GlassButton>
                   </div>
                 </div>

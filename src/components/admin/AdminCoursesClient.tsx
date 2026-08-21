@@ -374,6 +374,7 @@ export default function AdminCoursesClient({
       let folderQuery = supabase
         .from("course_folders")
         .select("*")
+        .order("display_order")
         .order("name");
 
       if (currentFolderId === null) {

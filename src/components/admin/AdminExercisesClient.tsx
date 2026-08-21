@@ -382,6 +382,7 @@ export default function AdminExercisesClient({
       let folderQuery = supabase
         .from("exercise_folders")
         .select("*")
+        .order("display_order")
         .order("name");
 
       if (currentFolderId === null) {
