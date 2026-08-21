@@ -185,6 +185,19 @@ const imageBlock: JsonSchema = {
   ...noExtra,
 };
 
+const baseTenBlocksBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["base_ten_blocks"] },
+    hundreds: { type: "integer", minimum: 0, maximum: 9 },
+    tens: { type: "integer", minimum: 0, maximum: 9 },
+    units: { type: "integer", minimum: 0, maximum: 9 },
+    caption: { type: "string", maxLength: 200 },
+  },
+  required: ["type", "hundreds", "tens", "units", "caption"],
+  ...noExtra,
+};
+
 const signValueSchema: JsonSchema = {
   type: "string",
   enum: ["negative", "zero", "positive", "undefined"],
@@ -816,6 +829,7 @@ const courseBlock: JsonSchema = {
     tableBlock,
     columnOperationBlock,
     imageBlock,
+    baseTenBlocksBlock,
     signTableBlock,
     variationTableBlock,
     graphBlock,

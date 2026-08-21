@@ -679,14 +679,30 @@ function compileCourseBlock(
       )}</td></tr></tbody></table>`;
     }
     case "image": {
-      // block.url est résolu côté serveur après la génération IA (voir
-      // resolveImageBlocks dans catalogue-advance/route.ts), pas par le
+      // block.url est résolu côté serveur après la génération IA (boucle sur
+      // les blocs image dans catalogue-advance/route.ts), pas par le
       // modèle lui-même : il ne fournit qu'une requête de recherche. Un bloc
       // non résolu (aucune image libre trouvée) ne s'affiche pas plutôt que
       // de casser la mise en page avec une image manquante.
       if (!block.url) return "";
       const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}${block.attribution ? ` <span class="course-image-credit">— ${escapeHtml(block.attribution)}</span>` : ""}</figcaption>` : "";
       return `<figure class="course-image"><img src="${escapeAttribute(block.url)}" alt="${escapeAttribute(block.caption || "")}" loading="lazy" />${caption}</figure>`;
+    }
+    case "base_ten_blocks": {
+      // Visualisation déterministe dizaines/unités (grille HTML/CSS), pour
+      // remplacer les figures SVG dessinées à la main par l'IA — jugées peu
+      // lisibles et peu soignées (retour utilisateur direct sur un exemple
+      // CP montrant des points alignés à la va-vite).
+      const hundredCol = Array.from({ length: block.hundreds }, () => `<div class="base-ten-hundred"></div>`).join("");
+      const tenCol = Array.from({ length: block.tens }, () => `<div class="base-ten-ten"></div>`).join("");
+      const unitCol = Array.from({ length: block.units }, () => `<div class="base-ten-unit"></div>`).join("");
+      const groups = [
+        block.hundreds > 0 ? `<div class="base-ten-group">${hundredCol}<span class="base-ten-label">${block.hundreds} centaine${block.hundreds > 1 ? "s" : ""}</span></div>` : "",
+        block.tens > 0 ? `<div class="base-ten-group">${tenCol}<span class="base-ten-label">${block.tens} dizaine${block.tens > 1 ? "s" : ""}</span></div>` : "",
+        block.units > 0 ? `<div class="base-ten-group">${unitCol}<span class="base-ten-label">${block.units} unité${block.units > 1 ? "s" : ""}</span></div>` : "",
+      ].filter(Boolean).join("");
+      const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : "";
+      return `<figure class="base-ten-blocks">${groups}${caption}</figure>`;
     }
     case "sign_table": {
       const boundaryHeaders = block.boundaries.map((boundary, index) => {

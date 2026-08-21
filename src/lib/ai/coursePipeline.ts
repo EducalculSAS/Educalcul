@@ -553,6 +553,8 @@ function blockPlainText(block: StructuredCourseBlock): string {
       return [...block.operands, block.operator, block.result].join(" ");
     case "image":
       return block.caption;
+    case "base_ten_blocks":
+      return block.caption;
     case "sign_table":
       return [
         structuredRichTextToPlainText(block.expression),

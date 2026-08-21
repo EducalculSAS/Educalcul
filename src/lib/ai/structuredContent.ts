@@ -209,6 +209,13 @@ export type StructuredCourseBlock =
       attribution?: string;
     }
   | {
+      type: "base_ten_blocks";
+      hundreds: number;
+      tens: number;
+      units: number;
+      caption: string;
+    }
+  | {
       type: "sign_table";
       expression: StructuredRichText;
       boundaries: StructuredRichText[];
@@ -464,6 +471,9 @@ Seul bloc autorisé pour un calcul posé en colonnes : jamais de \\begin{array},
 14. Photo réelle :
 {"type":"image","query":"des billes de couleur sur une table, photo réaliste","caption":"Légende courte sans LaTeX"}
 Le serveur cherche et insère une vraie photo libre de droits correspondant à "query" (en français ou anglais, décris précisément ce qu'il faut voir) : jamais d'URL, jamais de balise img, jamais de description d'image qui n'est pas accompagnée de ce bloc. N'écris JAMAIS une phrase du type "regarde cette image" ou "observe ce dessin" sans placer ce bloc juste à côté : si tu mentionnes un visuel, il doit exister sous forme de bloc (image, figure, table...). Si aucune bonne photo n'est probable pour ce concept (notion abstraite, calcul...), décris en mots au lieu de demander une image.
+15. Dizaines/centaines/unités (numération, valeur positionnelle) :
+{"type":"base_ten_blocks","hundreds":0,"tens":5,"units":3,"caption":"53 : 5 dizaines et 3 unités"}
+Bloc OBLIGATOIRE dès que tu représentes visuellement un nombre en dizaines/unités (ou centaines) — n'essaie JAMAIS de dessiner ça toi-même avec le bloc "figure" (lignes/points/polygones à la main) : c'est illisible et peu soigné. hundreds/tens/units sont les chiffres de 0 à 9 de chaque rang.
 Ne crée aucun autre type de bloc.`;
 
 const ENTITY_MAP: Record<string, string> = {
@@ -1316,6 +1326,15 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
       const caption = stringValue(raw.caption).slice(0, 200);
       if (!query) return null;
       return { type: "image", query, caption };
+    }
+    case "base_ten_blocks": {
+      const clamp = (value: unknown) => Math.min(9, Math.max(0, Math.trunc(finiteNumber(value, 0))));
+      const hundreds = clamp(raw.hundreds);
+      const tens = clamp(raw.tens);
+      const units = clamp(raw.units);
+      const caption = stringValue(raw.caption).slice(0, 200);
+      if (hundreds === 0 && tens === 0 && units === 0) return null;
+      return { type: "base_ten_blocks", hundreds, tens, units, caption };
     }
     case "sign_table": {
       const boundaries = Array.isArray(raw.boundaries)

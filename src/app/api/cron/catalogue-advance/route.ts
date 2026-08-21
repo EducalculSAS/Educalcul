@@ -83,6 +83,19 @@ function parseLengthGuidance(text: string | null): { min: number; max: number } 
   return { min: Number(match[1]), max: Number(match[2]) };
 }
 
+const ROLE_INSTRUCTIONS: Record<string, string> = {
+  decouverte:
+    "Rôle de cette micro-leçon : DÉCOUVERTE. Introduis uniquement cette petite notion précise (pas tout le chapitre), avec le vocabulaire essentiel et une situation concrète. Objectif clair en une phrase, courte mise en situation, explication, exemple guidé, petite vérification finale, puis 2 à 4 éléments « À retenir ».",
+  explication:
+    "Rôle de cette micro-leçon : EXPLICATION. Explique en profondeur cette notion précise avec définition si utile, exemple(s) guidé(s), et une remarque « Attention » si une erreur est fréquente sur CE point précis. Ne déborde pas sur les autres notions du chapitre, elles ont leurs propres leçons. Termine par 2 à 4 éléments « À retenir ».",
+  demonstration:
+    "Rôle de cette micro-leçon : DÉMONSTRATION. Montre pas à pas, avec un exemple concret détaillé (ou plusieurs si utile), comment on applique/obtient ce résultat précis. Utilise le bloc \"steps\" si la démonstration a 3 étapes ou plus. Termine par 2 à 4 éléments « À retenir ».",
+  visualisation:
+    "Rôle de cette micro-leçon : VISUALISATION. Rends cette notion concrète visuellement (bloc base_ten_blocks pour la numération, figure, tableau, ou photo réelle libre de droits si pertinent) et commente ce que montre la représentation. Termine par une petite vérification finale.",
+  exercices:
+    "Rôle de cette micro-leçon : ENTRAÎNEMENT. C'est la leçon la plus importante du chapitre : une très courte reprise du point clé (2-3 phrases maximum), puis PLUSIEURS exercices variés et corrigés (type short_answer) qui font vraiment pratiquer cette notion précise, du plus simple au plus difficile. Chaque exercice doit avoir une explication de correction claire.",
+};
+
 const LESSON_TYPE_INSTRUCTIONS: Record<string, string> = {
   Découvrir:
     "Type de leçon : DÉCOUVRIR. Introduis la notion, le vocabulaire essentiel et une première représentation ou situation concrète. Objectif très clair en une phrase (« À la fin de ce cours, tu sauras... »), une courte introduction (pourquoi cette notion existe), une explication principale, un exemple guidé, et une toute petite vérification finale (QCM, vrai/faux, calcul ou mini-question). Termine par 2 à 5 éléments « À retenir ».",
@@ -123,6 +136,14 @@ async function handle(req: Request) {
       const adjustedMax = item.is_theme_summary ? Math.round(doubledMax * 1.45) : doubledMax;
       const adjustedMin = item.is_theme_summary ? Math.round(doubledMin * 1.3) : doubledMin;
       const durationPerLesson = item.is_theme_summary ? 20 : 12;
+      const minExercises = item.min_exercises || (item.is_theme_summary ? 2 : 1);
+      const maxExercises = item.max_exercises || (item.is_theme_summary ? 3 : 2);
+      const roleInstruction = item.is_theme_summary
+        ? LESSON_TYPE_INSTRUCTIONS.Bilan
+        : ROLE_INSTRUCTIONS[item.lesson_role] || LESSON_TYPE_INSTRUCTIONS[item.lesson_type] || LESSON_TYPE_INSTRUCTIONS.Découvrir;
+      const numberWordsInstruction = item.is_number_intro
+        ? `\n• Cette leçon apprend un/des chiffres ou nombres à un enfant de CP qui ne sait pas encore lire les chiffres seuls : écris systématiquement le nombre en toutes lettres suivi du chiffre entre parenthèses la première fois qu'il apparaît dans une phrase (ex: "trois (3) pommes"), puis tu peux utiliser le chiffre seul ensuite dans la même phrase/exemple.`
+        : "";
 
       const systemPrompt = `Tu es un professeur de mathématiques de l'Éducation nationale française qui rédige un micro-cours pour Educalcul.
 ${STRUCTURED_MATH_OUTPUT_RULES}
@@ -133,12 +154,12 @@ ${COURSE_BLOCK_SCHEMA_PROMPT}
 • Niveau : ${item.level_name} (${item.program_version || "programme en vigueur 2026-2027"}).
 • Ton pédagogique imposé pour ce niveau : ${item.tone || "clair et adapté à l'âge"}.
 • Longueur cible pour CE micro-cours : entre ${adjustedMin} et ${adjustedMax} mots de texte utile (hors JSON). Ne remplis jamais artificiellement pour atteindre cette longueur ; une notion claire prime sur une longueur imposée, mais reste dans cette fourchette.
-• ${LESSON_TYPE_INSTRUCTIONS[item.lesson_type] || LESSON_TYPE_INSTRUCTIONS.Découvrir}
-• Ce micro-cours appartient au thème « ${item.theme_name} »${item.chapter_name ? ` et plus précisément au chapitre « ${item.chapter_name} »` : ""}. Reste STRICTEMENT dans le périmètre de ce chapitre/thème pour ce niveau : n'introduis jamais une notion prévue à un autre niveau ou dans un autre chapitre du même thème.
+• ${roleInstruction}
+• Ce micro-cours appartient au thème « ${item.theme_name} »${item.chapter_name ? ` et plus précisément au chapitre « ${item.chapter_name} »` : ""}. Reste STRICTEMENT dans le périmètre de CETTE micro-leçon précise (voir sujet éditorial ci-dessous) : n'aborde pas les autres sous-notions du chapitre, elles ont leurs propres leçons dédiées, et n'introduis jamais une notion prévue à un autre niveau.
 • Reste rigoureusement conforme au programme officiel français de ce niveau pour l'année scolaire 2026-2027. Un cours de ce niveau doit rester à CE niveau, ni plus simple ni plus avancé.
 • Rédige entièrement en français, vocabulaire de l'Éducation nationale (numérateur/dénominateur, image/antécédent, coefficient directeur, fonction affine, etc. selon pertinence).
 • Vérifie que tous les calculs et exemples numériques sont exacts et cohérents (unités correctes, résultat qui correspond réellement à la question posée).
-• 1 seule leçon dans "lessons", avec exactement 1 exercice de vérification immédiate (type short_answer, très court : QCM formulé en texte, vrai/faux, calcul ou mini-question).
+• 1 seule leçon dans "lessons", avec entre ${minExercises} et ${maxExercises} exercices de vérification (type short_answer, courts : QCM formulé en texte, vrai/faux, calcul ou mini-question), chacun avec une explication de correction.${numberWordsInstruction}
 • Interdits stricts : TODO, Lorem ipsum, contenu vide, texte répété artificiellement, notion hors-programme pour ce niveau.`;
 
       const userPrompt = item.is_theme_summary
@@ -160,8 +181,8 @@ Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qu
       const contract = courseChapterSchema({
         lessonCount: 1,
         includeExercises: true,
-        minExercises: 1,
-        maxExercises: 1,
+        minExercises,
+        maxExercises,
       });
 
       const generate = createLlmStartGate(4000, async () => false);
@@ -181,7 +202,7 @@ Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qu
           expectedLessonCount: 1,
           durationPerLesson,
           includeExercises: true,
-          maxExercisesPerLesson: 1,
+          maxExercisesPerLesson: maxExercises,
         }),
       );
       chapter.title = item.chapter_name || item.theme_name;
@@ -200,13 +221,16 @@ Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qu
       if (!chapter.lessons[0] || chapter.lessons[0].blocks.length === 0) {
         throw new Error("Leçon vide après normalisation.");
       }
-      if (chapter.lessons[0].exercises.length === 0) {
+      if (chapter.lessons[0].exercises.length < minExercises) {
         // Symptôme observé en prod sur cp-l008 : une réponse IA tronquée en
         // fin de génération (le tableau "exercises" arrive après "blocks"
         // dans le JSON) produit un chapitre avec des blocs valides mais
-        // aucun exercice. On refuse ce résultat plutôt que de l'enregistrer
-        // silencieusement : l'item repart en pending et sera régénéré.
-        throw new Error("Aucun exercice après normalisation (réponse IA probablement tronquée).");
+        // aucun exercice, ou moins que le minimum demandé. On refuse ce
+        // résultat plutôt que de l'enregistrer silencieusement : l'item
+        // repart en pending et sera régénéré.
+        throw new Error(
+          `Seulement ${chapter.lessons[0].exercises.length} exercice(s) après normalisation, minimum ${minExercises} attendu (réponse IA probablement tronquée).`,
+        );
       }
 
       // Résolution des blocs "image" : l'IA ne fournit qu'une requête de
