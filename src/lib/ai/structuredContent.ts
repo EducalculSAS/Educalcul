@@ -451,6 +451,9 @@ exercise_index est la position 1, 2, 3... de l'exercice dans le tableau exercise
 12. Démonstration en étapes :
 {"type":"steps","steps":[{"title":RICH_TEXT,"blocks":[BLOCS]},{"title":RICH_TEXT,"blocks":[BLOCS]},{"title":RICH_TEXT,"blocks":[BLOCS]}]}
 Une démonstration de 3 étapes ou plus utilise ce bloc. Le champ title est toujours présent dans chaque étape.
+13. Opération posée en colonnes (addition, soustraction, multiplication, division) :
+{"type":"column_operation","operator":"+","operands":["24","15"],"result":"39","carries":[]}
+Seul bloc autorisé pour un calcul posé en colonnes : jamais de \\begin{array}, jamais de tableau pour ça. operands va du haut vers le bas (2 à 4 nombres), carries contient les retenues au-dessus de chaque colonne si besoin, tableau vide sinon.
 Ne crée aucun autre type de bloc.`;
 
 const ENTITY_MAP: Record<string, string> = {
