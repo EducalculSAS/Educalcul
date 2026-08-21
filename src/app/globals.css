@@ -1331,6 +1331,10 @@ main,
    rendu déterministe côté serveur (voir compiler.ts), pas du LaTeX
    \begin{array} laissé à la charge du modèle. */
 .column-operation {
+  /* .prose (typographie Tailwind) force width:100% sur les tables, ce qui
+     étirait la ligne de résultat bien au-delà des chiffres — la table doit
+     rester à sa largeur de contenu pour que le trait ne dépasse pas. */
+  width: auto !important;
   border-collapse: collapse;
   margin: 1rem auto;
   font-family: var(--font-mono, monospace);
