@@ -150,7 +150,14 @@ Le champ "title" de la leçon JSON doit être exactement : "${item.title}".`;
       });
 
       const generate = createLlmStartGate(4000, async () => false);
-      const maxTokens = Math.min(6000, Math.max(1800, Math.round(adjustedMax * 3.2) + 1200));
+      // Le JSON structuré (parts text/math, blocs, exercice) pèse beaucoup
+      // plus lourd que le texte utile qu'il transporte — la formule
+      // précédente (maxTokens=1904 pour un CP à 220 mots) tronquait
+      // systématiquement la réponse avant la fin (observé en prod : échec
+      // sur 100% des tentatives). Plancher et facteur alignés sur celui du
+      // pipeline lourd (courseGeneration.ts, ~2.45 caractères/token, plus la
+      // marge JSON) plutôt que sur le nombre de mots utiles seul.
+      const maxTokens = Math.min(9000, Math.max(4000, Math.round(adjustedMax * 9) + 1000));
 
       const raw = await generate(userPrompt, systemPrompt, contract, 0.7, maxTokens, false);
 
@@ -211,9 +218,21 @@ Le champ "title" de la leçon JSON doit être exactement : "${item.title}".`;
         .eq("id", item.id);
     } catch (err) {
       console.error("[catalogue-advance] Échec:", err);
+      // attempts doit être incrémenté ici aussi (pas seulement dans
+      // recoverStale), sinon un item qui échoue directement (ex: réponse IA
+      // tronquée) reste indéfiniment à attempts=0 < MAX_ATTEMPTS et se fait
+      // reclaimer en boucle par claimNext() sans jamais laisser la chaîne
+      // avancer vers l'item suivant — observé en prod (36 tentatives sur le
+      // même cp-l001 sans progresser).
+      const nextAttempts = item.attempts + 1;
       await supabaseAdmin
         .from("catalogue_import_queue")
-        .update({ status: "failed", last_error: String((err as Error)?.message || err), updated_at: new Date().toISOString() })
+        .update({
+          status: nextAttempts >= MAX_ATTEMPTS ? "failed" : "pending",
+          attempts: nextAttempts,
+          last_error: String((err as Error)?.message || err),
+          updated_at: new Date().toISOString(),
+        })
         .eq("id", item.id);
     } finally {
       await advanceQueue();
