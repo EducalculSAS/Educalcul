@@ -133,8 +133,13 @@ async function handle(req: Request) {
       // la fourchette catalogue, puis on applique le bonus bilan par-dessus.
       const doubledMin = Math.round(min * 2);
       const doubledMax = Math.round(max * 2);
-      const adjustedMax = item.is_theme_summary ? Math.round(doubledMax * 1.45) : doubledMax;
-      const adjustedMin = item.is_theme_summary ? Math.round(doubledMin * 1.3) : doubledMin;
+      // Le multiplicateur bilan a été réduit (1.45→1.2, 1.3→1.15) : cumulé
+      // au doublement de longueur + 2-3 exercices minimum, les bilans
+      // dépassaient systématiquement les 180s de la requête Mistral (modèle
+      // gratuit "labs", pas un problème de budget de tokens mais de temps
+      // de génération réel — observé en prod sur tous les bilans CP).
+      const adjustedMax = item.is_theme_summary ? Math.round(doubledMax * 1.2) : doubledMax;
+      const adjustedMin = item.is_theme_summary ? Math.round(doubledMin * 1.15) : doubledMin;
       const durationPerLesson = item.is_theme_summary ? 20 : 12;
       const minExercises = item.min_exercises || (item.is_theme_summary ? 2 : 1);
       const maxExercises = item.max_exercises || (item.is_theme_summary ? 3 : 2);
