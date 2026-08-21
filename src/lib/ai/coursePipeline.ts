@@ -549,6 +549,8 @@ function blockPlainText(block: StructuredCourseBlock): string {
         ...block.headers.map(structuredRichTextToPlainText),
         ...block.rows.flat().map(structuredRichTextToPlainText),
       ].join(" ");
+    case "column_operation":
+      return [...block.operands, block.operator, block.result].join(" ");
     case "sign_table":
       return [
         structuredRichTextToPlainText(block.expression),

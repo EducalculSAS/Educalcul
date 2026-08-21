@@ -198,6 +198,7 @@ const COURSE_MARKDOWN_JSON_PROMPT = `═══ FORMAT JSON + MARKDOWN MATHÉMATI
 • Dans le JSON, les antislashs sont échappés normalement : "\\\\frac{1}{2}".
 • Utilise du LaTeX KaTeX valide : \\frac, \\sqrt, \\Delta, \\mathbb, \\lim, \\to, \\infty, \\exp, \\ln.
 • Ne laisse jamais mathbb{R}, frac{...}, x^2, e^(x), -+∞ ou une équation hors de $...$.
+• N'utilise jamais \\begin{array}, \\begin{matrix} ni aucun environnement LaTeX de mise en page tabulaire (non supporté, rendu cassé à l'affichage) : pour une opération posée en colonnes, utilise exclusivement le bloc "column_operation" (n°21 ci-dessous).
 • Les champs "caption" des blocs graph et figure suivent la même règle : tout symbole ou expression (infini, lambda, fraction, comparaison, f(x)=...) est entre $...$. N'écris jamais "infty", "-infty", "lambda" ou une inégalité en toutes lettres dans une caption : ces mots ne sont jamais convertis en symbole à l'affichage.
 • N'utilise pas de titres Markdown, de listes Markdown ni de tableaux Markdown : ils ont des blocs JSON.
 • Aucun identifiant technique : le serveur les génère.
@@ -223,7 +224,8 @@ Blocs autorisés :
 18. {"type":"box_plot","caption":"Diagramme en boîte des notes.","min":4,"q1":9,"median":12,"q3":15,"max":19,"axis_label":"Notes sur 20"}
 19. {"type":"steps","steps":[{"title":"Étape 1","blocks":[BLOCS]}]}
 20. {"type":"exercise","exercise_index":1}
-Les blocs 11-18 sont déterministes : ne fournis QUE les données sémantiques demandées (angles, valeurs, labels courts), jamais de coordonnées x/y — le serveur calcule toute la disposition géométrique.`;
+21. {"type":"column_operation","operator":"+","operands":["24","15"],"result":"39","carries":[]} — POUR TOUTE opération posée en colonnes (addition, soustraction, multiplication, division), quel que soit le niveau : jamais de \\begin{array}, jamais de tableau Markdown ni de bloc "table" pour représenter un calcul posé, c'est le seul bloc autorisé pour ça. operands : les nombres du haut vers le bas (2 à 4). result : le résultat final. carries : les retenues au-dessus de chaque colonne si besoin (ex ["1"] pour une addition avec une retenue), tableau vide sinon. Exemple soustraction avec emprunt : {"type":"column_operation","operator":"-","operands":["52","27"],"result":"25","carries":[]}.
+Les blocs 11-18 et 21 sont déterministes : ne fournis QUE les données sémantiques demandées (angles, valeurs, labels courts, opérandes), jamais de coordonnées x/y ni de mise en page — le serveur calcule toute la disposition.`;
 
 function formatList(values: string[], fallback: string): string {
   return values.length > 0 ? values.map((value) => `• ${value}`).join("\n") : fallback;

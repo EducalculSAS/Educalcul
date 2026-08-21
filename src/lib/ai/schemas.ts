@@ -152,6 +152,28 @@ const tableBlock: JsonSchema = {
   ...noExtra,
 };
 
+const columnOperationBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["column_operation"] },
+    operator: { type: "string", enum: ["+", "-", "×", "÷"] },
+    operands: {
+      type: "array",
+      minItems: 2,
+      maxItems: 4,
+      items: { type: "string" },
+    },
+    result: { type: "string" },
+    carries: {
+      type: "array",
+      maxItems: 12,
+      items: { type: "string" },
+    },
+  },
+  required: ["type", "operator", "operands", "result", "carries"],
+  ...noExtra,
+};
+
 const signValueSchema: JsonSchema = {
   type: "string",
   enum: ["negative", "zero", "positive", "undefined"],
@@ -781,6 +803,7 @@ const courseBlock: JsonSchema = {
     listBlock,
     calloutBlock,
     tableBlock,
+    columnOperationBlock,
     signTableBlock,
     variationTableBlock,
     graphBlock,

@@ -1327,6 +1327,38 @@ main,
   font-size: 1.1rem;
 }
 
+/* Opération posée en colonnes (addition, soustraction, multiplication...) —
+   rendu déterministe côté serveur (voir compiler.ts), pas du LaTeX
+   \begin{array} laissé à la charge du modèle. */
+.column-operation {
+  border-collapse: collapse;
+  margin: 1rem auto;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.15rem;
+}
+.column-operation td {
+  padding: 0.15rem 0.3rem;
+}
+.column-operation-sign {
+  text-align: left;
+  width: 1.5rem;
+  font-weight: 700;
+}
+.column-operation-digits {
+  text-align: right;
+  letter-spacing: 0.15em;
+  white-space: pre;
+}
+.column-operation-carries .column-operation-digits {
+  font-size: 0.75rem;
+  color: #b45309;
+}
+.column-operation-result td {
+  border-top: 2px solid #10213d;
+  font-weight: 700;
+  padding-top: 0.3rem;
+}
+
 /* Une formule affichée (KaTeX displayMode) trop large pour sa colonne défile
    horizontalement au lieu de déborder de la page. */
 .katex-display {

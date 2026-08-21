@@ -651,6 +651,33 @@ function compileCourseBlock(
       if (!headers || !rows) return "";
       return `<table class="math-table math-table-value"><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table>`;
     }
+    case "column_operation": {
+      // Opération posée en colonnes (addition, soustraction...) : un vrai
+      // calcul en grille rendu par le serveur, pas du LaTeX \begin{array}
+      // laissé à la charge du modèle — c'était la source du texte cassé
+      // ("r@ l 3 +; 2 hline 5") observé dans les cours générés, KaTeX ne
+      // supportant pas cet environnement et le repli texte ne le comprenant
+      // pas non plus.
+      const width = Math.max(
+        block.result.length,
+        ...block.operands.map((operand) => operand.length),
+      );
+      const pad = (value: string) => escapeAttribute(value).padStart(width, " ").replace(/ /g, "&nbsp;");
+      const operandRows = block.operands
+        .map((operand, index) => {
+          const sign = index === block.operands.length - 1 ? escapeAttribute(block.operator) : "&nbsp;";
+          return `<tr><td class="column-operation-sign">${sign}</td><td class="column-operation-digits">${pad(operand)}</td></tr>`;
+        })
+        .join("");
+      const carryRow = block.carries.some(Boolean)
+        ? `<tr class="column-operation-carries"><td></td><td class="column-operation-digits">${pad(
+            block.carries.join(""),
+          )}</td></tr>`
+        : "";
+      return `<table class="column-operation" data-operator="${escapeAttribute(block.operator)}"><tbody>${carryRow}${operandRows}<tr class="column-operation-result"><td></td><td class="column-operation-digits">${pad(
+        block.result,
+      )}</td></tr></tbody></table>`;
+    }
     case "sign_table": {
       const boundaryHeaders = block.boundaries.map((boundary, index) => {
         const leftInterval = `<th>Intervalle ${index + 1}</th>`;

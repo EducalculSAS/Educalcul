@@ -195,6 +195,13 @@ export type StructuredCourseBlock =
       rows: StructuredRichText[][];
     }
   | {
+      type: "column_operation";
+      operator: "+" | "-" | "×" | "÷";
+      operands: string[];
+      result: string;
+      carries: string[];
+    }
+  | {
       type: "sign_table";
       expression: StructuredRichText;
       boundaries: StructuredRichText[];
@@ -1271,6 +1278,25 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
         : [];
       if (rows.length === 0) return null;
       return { type: "table", variant: "value", headers, rows };
+    }
+    case "column_operation": {
+      const rawOperator = stringValue(raw.operator);
+      const operator = (["+", "-", "×", "÷", "x", "*", "/"].includes(rawOperator)
+        ? rawOperator === "x" || rawOperator === "*"
+          ? "×"
+          : rawOperator === "/"
+            ? "÷"
+            : rawOperator
+        : "+") as "+" | "-" | "×" | "÷";
+      const operands = Array.isArray(raw.operands)
+        ? raw.operands.map((entry) => stringValue(entry)).filter(Boolean).slice(0, 4)
+        : [];
+      const result = stringValue(raw.result);
+      if (operands.length < 2 || !result) return null;
+      const carries = Array.isArray(raw.carries)
+        ? raw.carries.map((entry) => stringValue(entry))
+        : [];
+      return { type: "column_operation", operator, operands, result, carries };
     }
     case "sign_table": {
       const boundaries = Array.isArray(raw.boundaries)
