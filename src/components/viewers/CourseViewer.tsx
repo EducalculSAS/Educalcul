@@ -102,6 +102,11 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   );
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
   const [courseCompleted, setCourseCompleted] = useState(false);
+  // true tant qu'aucune checklist interactive n'est présente sur la leçon
+  // courante, ou une fois que toutes ses cases sont cochées — sert à
+  // bloquer "Terminer le cours" sur la dernière leçon (bilan) tant que
+  // l'élève n'a pas coché toute sa checklist "Je sais faire".
+  const [checklistComplete, setChecklistComplete] = useState(true);
   const [selectedText, setSelectedText] = useState("");
   const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0 });
   const contentRef = useRef<HTMLDivElement>(null);
@@ -355,6 +360,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     if (popupRef.current) popupRef.current.style.display = "none";
     selectedTextRef.current = "";
     setSelectedText("");
+    // Réarmé à true : si la nouvelle leçon contient une checklist, le
+    // composant InteractiveChecklist le repassera à false via son callback
+    // dès son montage tant qu'elle n'est pas entièrement cochée.
+    setChecklistComplete(true);
   }, [currentChapterIndex, currentLessonIndex]);
 
   // Scroll back to top when changing lesson/chapter
@@ -743,7 +752,8 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                            currentLesson.content || "",
                            currentLesson.exercises || [],
                            currentLesson.id,
-                           (course as any).level
+                           (course as any).level,
+                           setChecklistComplete
                          )}
                        </div>
                        {currentLesson.image_url && (
@@ -797,10 +807,21 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
             <span className="hidden md:inline">Leçon précédente</span>
           </GlassButton>
           
-          <GlassButton onClick={handleNext} variant="navy">
+          <GlassButton
+            onClick={handleNext}
+            variant="navy"
+            disabled={
+              currentChapterIndex === chapters.length - 1 &&
+              currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1 &&
+              !reviewMode &&
+              !checklistComplete
+            }
+          >
             {currentChapterIndex === chapters.length - 1 && currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1 ? (
               reviewMode ? (
                 <>Continuer <ChevronRight className="w-5 h-5" /></>
+              ) : !checklistComplete ? (
+                <>Coche la checklist pour terminer <CheckCircle className="w-5 h-5" /></>
               ) : (
                 <>Terminer le cours <CheckCircle className="w-5 h-5" /></>
               )
@@ -853,26 +874,31 @@ interface ExerciseState {
 
 // Découpe le HTML d'une leçon autour des placeholders
 // <div class="lesson-exercise" data-exercise-id="ex-1"></div> insérés par l'IA,
-// et insère le mini-exercice interactif correspondant à cet endroit précis.
+// et des checklists <ul class="course-checklist">...</ul> (bilans de thème),
+// pour insérer le mini-exercice interactif ou la checklist cochable
+// correspondante à cet endroit précis.
 function renderLessonContentWithInlineExercises(
   content: string,
   exercises: Exercise[],
   lessonId: string,
-  level?: string
+  level?: string,
+  onChecklistStatusChange?: (complete: boolean) => void
 ) {
-  const regex = /<div[^>]*class="[^"]*lesson-exercise[^"]*"[^>]*data-exercise-id="([^"]*)"[^>]*>\s*<\/div>/g;
-  const parts: { html?: string; exerciseId?: string }[] = [];
+  const regex = /<div[^>]*class="[^"]*lesson-exercise[^"]*"[^>]*data-exercise-id="([^"]*)"[^>]*>\s*<\/div>|<ul[^>]*class="[^"]*course-checklist[^"]*"[^>]*>([\s\S]*?)<\/ul>/g;
+  const parts: { html?: string; exerciseId?: string; checklistHtml?: string }[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
   while ((match = regex.exec(content)) !== null) {
     if (match.index > lastIndex) parts.push({ html: content.slice(lastIndex, match.index) });
-    parts.push({ exerciseId: match[1] });
+    if (match[1] !== undefined) parts.push({ exerciseId: match[1] });
+    else parts.push({ checklistHtml: match[2] });
     lastIndex = match.index + match[0].length;
   }
   if (lastIndex < content.length) parts.push({ html: content.slice(lastIndex) });
   if (parts.length === 0) parts.push({ html: content });
 
   let exerciseCount = 0;
+  let checklistCount = 0;
   return parts.map((part, idx) => {
     if (part.exerciseId) {
       const ex = exercises.find((e) => e.id === part.exerciseId);
@@ -889,6 +915,19 @@ function renderLessonContentWithInlineExercises(
         />
       );
     }
+    if (part.checklistHtml !== undefined) {
+      const items = [...part.checklistHtml.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/g)].map((m) => m[1].trim());
+      if (items.length === 0) return null;
+      checklistCount++;
+      return (
+        <InteractiveChecklist
+          key={`checklist-${idx}`}
+          checklistId={`${lessonId}-checklist-${checklistCount}`}
+          items={items}
+          onStatusChange={onChecklistStatusChange}
+        />
+      );
+    }
     const html = (part.html || "").trim();
     if (!html) return null;
     return (
@@ -898,6 +937,74 @@ function renderLessonContentWithInlineExercises(
       />
     );
   });
+}
+
+// ─── Checklist interactive "Je sais faire" ─────────────────────────────────
+// Remplace les puces d'un <ul class="course-checklist"> par de vraies cases
+// à cocher. Prévient le parent (via onStatusChange) dès que tout est coché,
+// pour débloquer "Terminer le cours" sur la dernière leçon d'un bilan.
+function InteractiveChecklist({
+  checklistId,
+  items,
+  onStatusChange,
+}: {
+  checklistId: string;
+  items: string[];
+  onStatusChange?: (complete: boolean) => void;
+}) {
+  const [checked, setChecked] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    onStatusChange?.(checked.size >= items.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked, items.length]);
+
+  const toggle = (index: number) => {
+    setChecked((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
+
+  const allChecked = checked.size >= items.length;
+
+  return (
+    <div className="rounded-xl border border-[rgba(197,161,72,0.3)] bg-[var(--greek-cream)]/60 p-4 space-y-2">
+      {items.map((item, index) => {
+        const isChecked = checked.has(index);
+        return (
+          <label
+            key={`${checklistId}-${index}`}
+            className="flex items-start gap-3 cursor-pointer select-none py-1"
+          >
+            <button
+              type="button"
+              onClick={() => toggle(index)}
+              aria-pressed={isChecked}
+              className={`mt-0.5 shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors ${
+                isChecked
+                  ? "bg-[var(--greek-blue)] border-[var(--greek-blue)]"
+                  : "border-[rgba(197,161,72,0.6)] bg-white"
+              }`}
+            >
+              {isChecked && <CheckCircle className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
+            </button>
+            <span
+              className={isChecked ? "text-[var(--greek-blue)]/60 line-through" : "text-[var(--greek-blue)]"}
+              dangerouslySetInnerHTML={{ __html: renderLatexInHTML(item) }}
+            />
+          </label>
+        );
+      })}
+      {!allChecked && (
+        <p className="text-xs text-[var(--greek-blue)]/60 pt-1">
+          Coche chaque ligne une fois que tu sais le faire pour terminer le cours.
+        </p>
+      )}
+    </div>
+  );
 }
 
 interface InlineMiniExercisesProps {

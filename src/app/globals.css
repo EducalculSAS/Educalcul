@@ -1365,6 +1365,7 @@ main,
   margin: 1rem auto;
   max-width: 100%;
   text-align: center;
+  counter-increment: educalcul-figure;
 }
 .course-image img {
   max-width: 100%;
@@ -1373,13 +1374,18 @@ main,
   border: 1px solid rgba(197, 161, 72, 0.3);
 }
 .course-image figcaption {
-  font-size: 0.8rem;
-  color: #6b7280;
-  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--greek-blue, #10213d);
+  margin-top: 0.5rem;
+}
+.course-image figcaption::before {
+  content: "Figure " counter(educalcul-figure) " — ";
+  font-weight: 600;
 }
 .course-image-credit {
   font-size: 0.72rem;
   opacity: 0.8;
+  color: #6b7280;
 }
 
 /* Blocs dizaines/unités/centaines déterministes (grille HTML/CSS) — remplace
@@ -1394,6 +1400,7 @@ main,
   border-radius: 0.75rem;
   border: 1px solid rgba(197, 161, 72, 0.3);
   background: rgba(197, 161, 72, 0.06);
+  counter-increment: educalcul-figure;
 }
 .base-ten-group {
   display: flex;
@@ -1439,9 +1446,13 @@ main,
 .base-ten-blocks figcaption {
   flex-basis: 100%;
   text-align: center;
-  font-size: 0.8rem;
-  color: #6b7280;
-  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: var(--greek-blue, #10213d);
+  margin-top: 0.35rem;
+}
+.base-ten-blocks figcaption::before {
+  content: "Figure " counter(educalcul-figure) " — ";
+  font-weight: 600;
 }
 
 /* Une formule affichée (KaTeX displayMode) trop large pour sa colonne défile
