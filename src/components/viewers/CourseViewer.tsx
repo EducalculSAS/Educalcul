@@ -360,11 +360,15 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     if (popupRef.current) popupRef.current.style.display = "none";
     selectedTextRef.current = "";
     setSelectedText("");
-    // Réarmé à true : si la nouvelle leçon contient une checklist, le
-    // composant InteractiveChecklist le repassera à false via son callback
-    // dès son montage tant qu'elle n'est pas entièrement cochée.
-    setChecklistComplete(true);
-  }, [currentChapterIndex, currentLessonIndex]);
+    // Recalculé directement depuis le contenu de la leçon (pas un simple
+    // "true" par défaut) : les effets des enfants montés dans le même rendu
+    // s'exécutent AVANT celui-ci, donc un "true" ici écraserait à tort le
+    // "false" déjà posé par une checklist non cochée — c'est exactement le
+    // bug remonté (retour à une leçon précédente puis suivante réactivait
+    // "Terminer le cours" sans que la checklist soit cochée).
+    const hasChecklist = /class="[^"]*course-checklist[^"]*"/.test(currentLesson?.content || "");
+    setChecklistComplete(!hasChecklist);
+  }, [currentChapterIndex, currentLessonIndex, currentLesson]);
 
   // Scroll back to top when changing lesson/chapter
   useEffect(() => {
@@ -921,7 +925,7 @@ function renderLessonContentWithInlineExercises(
       checklistCount++;
       return (
         <InteractiveChecklist
-          key={`checklist-${idx}`}
+          key={`${lessonId}-checklist-${checklistCount}`}
           checklistId={`${lessonId}-checklist-${checklistCount}`}
           items={items}
           onStatusChange={onChecklistStatusChange}
