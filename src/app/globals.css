@@ -1359,6 +1359,29 @@ main,
   padding-top: 0.3rem;
 }
 
+/* Photo réelle (Wikimedia Commons, licence libre) résolue côté serveur —
+   voir commonsImages.ts et le bloc "image" dans compiler.ts. */
+.course-image {
+  margin: 1rem auto;
+  max-width: 100%;
+  text-align: center;
+}
+.course-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(197, 161, 72, 0.3);
+}
+.course-image figcaption {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.35rem;
+}
+.course-image-credit {
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
 /* Une formule affichée (KaTeX displayMode) trop large pour sa colonne défile
    horizontalement au lieu de déborder de la page. */
 .katex-display {

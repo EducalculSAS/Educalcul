@@ -11,6 +11,7 @@ import {
 import { normalizeStructuredCoursePedagogy } from "@/lib/ai/pedagogy";
 import { sanitizeStructuredResources } from "@/lib/ai/qualityGuard";
 import { compileStructuredCourseChapter } from "@/lib/ai/compiler";
+import { searchCommonsImage } from "@/lib/ai/commonsImages";
 
 export const maxDuration = 800;
 
@@ -113,8 +114,14 @@ async function handle(req: Request) {
   after(async () => {
     try {
       const { min, max } = parseLengthGuidance(item.length_guidance);
-      const adjustedMax = item.is_theme_summary ? Math.round(max * 1.45) : max;
-      const adjustedMin = item.is_theme_summary ? Math.round(min * 1.3) : min;
+      // L'utilisateur a demandé "environ le double" des longueurs indicatives
+      // du catalogue d'origine (retour après relecture du lot CP en admin :
+      // cours jugés trop courts / pas assez explicatifs). On double d'abord
+      // la fourchette catalogue, puis on applique le bonus bilan par-dessus.
+      const doubledMin = Math.round(min * 2);
+      const doubledMax = Math.round(max * 2);
+      const adjustedMax = item.is_theme_summary ? Math.round(doubledMax * 1.45) : doubledMax;
+      const adjustedMin = item.is_theme_summary ? Math.round(doubledMin * 1.3) : doubledMin;
       const durationPerLesson = item.is_theme_summary ? 20 : 12;
 
       const systemPrompt = `Tu es un professeur de mathématiques de l'Éducation nationale française qui rédige un micro-cours pour Educalcul.
@@ -134,13 +141,21 @@ ${COURSE_BLOCK_SCHEMA_PROMPT}
 • 1 seule leçon dans "lessons", avec exactement 1 exercice de vérification immédiate (type short_answer, très court : QCM formulé en texte, vrai/faux, calcul ou mini-question).
 • Interdits stricts : TODO, Lorem ipsum, contenu vide, texte répété artificiellement, notion hors-programme pour ce niveau.`;
 
-      const userPrompt = `Rédige ce micro-cours :
+      const userPrompt = item.is_theme_summary
+        ? `Rédige ce micro-cours :
 Titre : ${item.title}
 Mini-description éditoriale : ${item.mini_description || ""}
 ${item.chapter_focus ? `Focus du chapitre : ${item.chapter_focus}` : ""}
 ${item.chapter_description ? `Description du chapitre : ${item.chapter_description}` : ""}
 Le champ "title" du chapitre JSON doit être exactement : "${item.chapter_name || item.theme_name}".
-Le champ "title" de la leçon JSON doit être exactement : "${item.title}".`;
+Le champ "title" de la leçon JSON doit être exactement : "${item.title}".`
+        : `Rédige ce micro-cours :
+Sujet éditorial (fil conducteur du catalogue, à ne pas recopier tel quel) : ${item.title}
+Mini-description éditoriale : ${item.mini_description || ""}
+${item.chapter_focus ? `Focus du chapitre : ${item.chapter_focus}` : ""}
+${item.chapter_description ? `Description du chapitre : ${item.chapter_description}` : ""}
+Le champ "title" du chapitre JSON doit être exactement : "${item.chapter_name || item.theme_name}".
+Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qui reflète précisément CE que cette leçon enseigne concrètement (pas une simple reprise du type "Découvrir —"/"Comprendre —"/"Méthode —" suivi du nom du chapitre, et pas non plus une recopie littérale du sujet éditorial ci-dessus) : un élève doit comprendre en le lisant ce qu'il va apprendre dans CETTE leçon précisément, en quelques mots clairs.`;
 
       const contract = courseChapterSchema({
         lessonCount: 1,
@@ -157,7 +172,7 @@ Le champ "title" de la leçon JSON doit être exactement : "${item.title}".`;
       // sur 100% des tentatives). Plancher et facteur alignés sur celui du
       // pipeline lourd (courseGeneration.ts, ~2.45 caractères/token, plus la
       // marge JSON) plutôt que sur le nombre de mots utiles seul.
-      const maxTokens = Math.min(9000, Math.max(4000, Math.round(adjustedMax * 9) + 1000));
+      const maxTokens = Math.min(16000, Math.max(6000, Math.round(adjustedMax * 9) + 1500));
 
       const raw = await generate(userPrompt, systemPrompt, contract, 0.7, maxTokens, false);
 
@@ -170,7 +185,14 @@ Le champ "title" de la leçon JSON doit être exactement : "${item.title}".`;
         }),
       );
       chapter.title = item.chapter_name || item.theme_name;
-      if (chapter.lessons[0]) chapter.lessons[0].title = item.title;
+      // Pour un bilan, on garde le titre imposé "Bilan du thème — X" pour la
+      // cohérence de la validation/affichage. Pour les autres leçons, on
+      // laisse le titre spécifique rédigé par l'IA (demandé explicitement
+      // dans userPrompt) au lieu d'écraser avec le titre générique du
+      // catalogue ("Découvrir — X" répété sur toutes les leçons du chapitre).
+      if (chapter.lessons[0] && item.is_theme_summary) {
+        chapter.lessons[0].title = item.title;
+      }
 
       const sanitized = sanitizeStructuredResources(chapter);
       chapter = normalizeStructuredCoursePedagogy(sanitized.value);
@@ -178,18 +200,47 @@ Le champ "title" de la leçon JSON doit être exactement : "${item.title}".`;
       if (!chapter.lessons[0] || chapter.lessons[0].blocks.length === 0) {
         throw new Error("Leçon vide après normalisation.");
       }
+      if (chapter.lessons[0].exercises.length === 0) {
+        // Symptôme observé en prod sur cp-l008 : une réponse IA tronquée en
+        // fin de génération (le tableau "exercises" arrive après "blocks"
+        // dans le JSON) produit un chapitre avec des blocs valides mais
+        // aucun exercice. On refuse ce résultat plutôt que de l'enregistrer
+        // silencieusement : l'item repart en pending et sera régénéré.
+        throw new Error("Aucun exercice après normalisation (réponse IA probablement tronquée).");
+      }
+
+      // Résolution des blocs "image" : l'IA ne fournit qu'une requête de
+      // recherche + une légende, jamais d'URL. On cherche une vraie photo
+      // libre de droits sur Wikimedia Commons pour chaque bloc image avant
+      // compilation ; si rien de pertinent n'est trouvé, le bloc reste sans
+      // url et le compilateur ne rend rien pour lui (pas d'image cassée).
+      for (const lesson of chapter.lessons) {
+        for (const block of lesson.blocks) {
+          if (block.type === "image" && !block.url) {
+            const found = await searchCommonsImage(block.query);
+            if (found) {
+              block.url = found.url;
+              block.attribution = found.attribution;
+            }
+          }
+        }
+      }
 
       const compiled = compileStructuredCourseChapter(chapter, {
         chapterIndex: 0,
         durationPerLesson,
       });
 
+      const finalTitle = item.is_theme_summary
+        ? item.title
+        : compiled.lessons[0]?.title?.trim() || item.title;
+
       const { data: course, error: upsertError } = await supabaseAdmin
         .from("courses")
         .upsert(
           {
             slug: item.slug,
-            title: item.title,
+            title: finalTitle,
             description: item.mini_description,
             level: item.grade_level,
             subject: item.theme_name,

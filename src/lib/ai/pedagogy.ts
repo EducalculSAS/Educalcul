@@ -96,6 +96,8 @@ function blockWordCount(block: StructuredCourseBlock): number {
       );
     case "column_operation":
       return block.operands.length + 2;
+    case "image":
+      return block.caption.split(/\s+/).filter(Boolean).length;
     case "sign_table":
       return (
         richTextWordCount(block.expression) +

@@ -551,6 +551,8 @@ function blockPlainText(block: StructuredCourseBlock): string {
       ].join(" ");
     case "column_operation":
       return [...block.operands, block.operator, block.result].join(" ");
+    case "image":
+      return block.caption;
     case "sign_table":
       return [
         structuredRichTextToPlainText(block.expression),

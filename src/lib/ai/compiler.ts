@@ -678,6 +678,16 @@ function compileCourseBlock(
         block.result,
       )}</td></tr></tbody></table>`;
     }
+    case "image": {
+      // block.url est résolu côté serveur après la génération IA (voir
+      // resolveImageBlocks dans catalogue-advance/route.ts), pas par le
+      // modèle lui-même : il ne fournit qu'une requête de recherche. Un bloc
+      // non résolu (aucune image libre trouvée) ne s'affiche pas plutôt que
+      // de casser la mise en page avec une image manquante.
+      if (!block.url) return "";
+      const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}${block.attribution ? ` <span class="course-image-credit">— ${escapeHtml(block.attribution)}</span>` : ""}</figcaption>` : "";
+      return `<figure class="course-image"><img src="${escapeAttribute(block.url)}" alt="${escapeAttribute(block.caption || "")}" loading="lazy" />${caption}</figure>`;
+    }
     case "sign_table": {
       const boundaryHeaders = block.boundaries.map((boundary, index) => {
         const leftInterval = `<th>Intervalle ${index + 1}</th>`;

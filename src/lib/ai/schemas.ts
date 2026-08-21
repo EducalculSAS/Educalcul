@@ -174,6 +174,17 @@ const columnOperationBlock: JsonSchema = {
   ...noExtra,
 };
 
+const imageBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["image"] },
+    query: { type: "string", minLength: 1, maxLength: 200 },
+    caption: { type: "string", maxLength: 200 },
+  },
+  required: ["type", "query", "caption"],
+  ...noExtra,
+};
+
 const signValueSchema: JsonSchema = {
   type: "string",
   enum: ["negative", "zero", "positive", "undefined"],
@@ -804,6 +815,7 @@ const courseBlock: JsonSchema = {
     calloutBlock,
     tableBlock,
     columnOperationBlock,
+    imageBlock,
     signTableBlock,
     variationTableBlock,
     graphBlock,

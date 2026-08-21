@@ -202,6 +202,13 @@ export type StructuredCourseBlock =
       carries: string[];
     }
   | {
+      type: "image";
+      query: string;
+      caption: string;
+      url?: string;
+      attribution?: string;
+    }
+  | {
       type: "sign_table";
       expression: StructuredRichText;
       boundaries: StructuredRichText[];
@@ -454,6 +461,9 @@ Une démonstration de 3 étapes ou plus utilise ce bloc. Le champ title est touj
 13. Opération posée en colonnes (addition, soustraction, multiplication, division) :
 {"type":"column_operation","operator":"+","operands":["24","15"],"result":"39","carries":[]}
 Seul bloc autorisé pour un calcul posé en colonnes : jamais de \\begin{array}, jamais de tableau pour ça. operands va du haut vers le bas (2 à 4 nombres), carries contient les retenues au-dessus de chaque colonne si besoin, tableau vide sinon.
+14. Photo réelle :
+{"type":"image","query":"des billes de couleur sur une table, photo réaliste","caption":"Légende courte sans LaTeX"}
+Le serveur cherche et insère une vraie photo libre de droits correspondant à "query" (en français ou anglais, décris précisément ce qu'il faut voir) : jamais d'URL, jamais de balise img, jamais de description d'image qui n'est pas accompagnée de ce bloc. N'écris JAMAIS une phrase du type "regarde cette image" ou "observe ce dessin" sans placer ce bloc juste à côté : si tu mentionnes un visuel, il doit exister sous forme de bloc (image, figure, table...). Si aucune bonne photo n'est probable pour ce concept (notion abstraite, calcul...), décris en mots au lieu de demander une image.
 Ne crée aucun autre type de bloc.`;
 
 const ENTITY_MAP: Record<string, string> = {
@@ -1300,6 +1310,12 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
         ? raw.carries.map((entry) => stringValue(entry))
         : [];
       return { type: "column_operation", operator, operands, result, carries };
+    }
+    case "image": {
+      const query = stringValue(raw.query).slice(0, 200);
+      const caption = stringValue(raw.caption).slice(0, 200);
+      if (!query) return null;
+      return { type: "image", query, caption };
     }
     case "sign_table": {
       const boundaries = Array.isArray(raw.boundaries)
