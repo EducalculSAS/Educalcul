@@ -732,37 +732,49 @@ export function sanitizeStructuredResources<T>(
 }
 
 
+// \w de JS (utilisé par \b) ignore les lettres accentuées : dans "Piège",
+// "è" n'est pas un caractère de mot, donc \b voit une frontière entre "i" et
+// "è" et \bpi\b matche le "Pi" de "Piège" comme s'il était isolé (vu en
+// prod : "πège" partout à la place de "Piège"). Ce lookaround étend la
+// définition de "lettre" aux accentuées des deux côtés du mot LaTeX ciblé,
+// en plus du \b existant qui gère déjà chiffres/ponctuation/backslash.
+const ACCENTED = "A-Za-zÀ-ÖØ-öø-ÿ";
+function replaceMathWord(value: string, word: string, symbol: string, flags = ""): string {
+  const re = new RegExp(`(?<![${ACCENTED}])\\\\?\\b${word}\\b(?![${ACCENTED}])`, `g${flags}`);
+  return value.replace(re, symbol);
+}
+
 export function readableMathFallbackText(value: string): string {
   // \b seul en fin de motif ne protège pas le début : sans \b initial,
   // "leq?" matchait "le" à l'intérieur de n'importe quel mot français qui en
   // termine ainsi ("exponentielle" -> "exponentiel≤", "passage" -> "passa≥").
   // Un \b après le "\\?" optionnel encadre le mot des deux côtés, backslash
   // ou non.
-  return value
-    .replace(/\$/g, "")
-    .replace(/\\?\bmathbb\{R\}/gi, "ℝ")
-    .replace(/\\?\bmathbb\{N\}/gi, "ℕ")
-    .replace(/\\?\bmathbb\{Z\}/gi, "ℤ")
-    .replace(/\\?\bmathbb\{Q\}/gi, "ℚ")
-    .replace(/\\?\bDelta\b/g, "Δ")
-    .replace(/\\?\balpha\b/g, "α")
-    .replace(/\\?\bbeta\b/g, "β")
-    .replace(/\\?\blambda\b/g, "λ")
-    .replace(/\\?\binfty\b/gi, "∞")
-    // "2pi" n'a pas de \b entre le chiffre et "pi" (les deux sont des
-    // caractères de mot) : motif séparé avant le cas "pi" isolé.
-    .replace(/(\d)pi\b/gi, "$1π")
-    .replace(/\\?\bpi\b/gi, "π")
-    .replace(/\\?\bneq\b/g, "≠")
-    .replace(/\\?\bleq\b/g, "≤")
-    .replace(/\\?\bgeq\b/g, "≥")
-    .replace(/\\?\bcdot\b/g, "×")
-    .replace(/\\?\btimes\b/g, "×")
-    .replace(/\\?\bto\b/g, "→")
-    .replace(/\\?\bsetminus\b/g, "∖")
-    .replace(/\\?\bmid\b/g, "|")
-    .replace(/\\?\bnotin\b/g, "∉")
-    .replace(/\\?\bin\b/g, "∈")
+  let result = value.replace(/\$/g, "");
+  result = replaceMathWord(result, "mathbb\\{R\\}", "ℝ", "i");
+  result = replaceMathWord(result, "mathbb\\{N\\}", "ℕ", "i");
+  result = replaceMathWord(result, "mathbb\\{Z\\}", "ℤ", "i");
+  result = replaceMathWord(result, "mathbb\\{Q\\}", "ℚ", "i");
+  result = replaceMathWord(result, "Delta", "Δ");
+  result = replaceMathWord(result, "alpha", "α");
+  result = replaceMathWord(result, "beta", "β");
+  result = replaceMathWord(result, "lambda", "λ");
+  result = replaceMathWord(result, "infty", "∞", "i");
+  // "2pi" n'a pas de \b entre le chiffre et "pi" (les deux sont des
+  // caractères de mot) : motif séparé avant le cas "pi" isolé.
+  result = result.replace(/(\d)pi\b(?![A-Za-zÀ-ÖØ-öø-ÿ])/gi, "$1π");
+  result = replaceMathWord(result, "pi", "π", "i");
+  result = replaceMathWord(result, "neq", "≠");
+  result = replaceMathWord(result, "leq", "≤");
+  result = replaceMathWord(result, "geq", "≥");
+  result = replaceMathWord(result, "cdot", "×");
+  result = replaceMathWord(result, "times", "×");
+  result = replaceMathWord(result, "to", "→");
+  result = replaceMathWord(result, "setminus", "∖");
+  result = replaceMathWord(result, "mid", "|");
+  result = replaceMathWord(result, "notin", "∉");
+  result = replaceMathWord(result, "in", "∈");
+  return result
     // \left/\right dimensionnent un délimiteur ({, (, [, |) qui doit rester
     // affiché : sans ces règles, "\left\{...\right\}" perdait le mot mais
     // gardait un antislash orphelin devant l'accolade ("\{"), jamais nettoyé
