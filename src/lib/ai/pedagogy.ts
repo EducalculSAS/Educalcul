@@ -76,6 +76,7 @@ function blockWordCount(block: StructuredCourseBlock): number {
     case "display_math":
       return Math.max(1, mathToReadableText(block.latex).split(/\s+/).filter(Boolean).length);
     case "list":
+    case "checklist":
       return block.items.reduce((sum, item) => sum + richTextWordCount(item), 0);
     case "callout":
       return (
@@ -122,7 +123,40 @@ function blockWordCount(block: StructuredCourseBlock): number {
     case "venn_diagram":
     case "triangle_diagram":
     case "box_plot":
+    case "clock":
+    case "fraction":
+    case "coin_purse":
+    case "balance_scale":
+    case "grid_painter":
+    case "pattern_maker":
+    case "ruler_measurer":
+    case "tape_diagram":
+    case "fraction_strips":
+    case "place_value_chart":
+    case "ratio_mixer":
+    case "net_folder":
+    case "interactive_protractor":
+    case "compass_tool":
+    case "thermometer_axis":
+    case "area_decomposer":
+    case "pythagoras_visualizer":
+    case "scientific_notation_converter":
+    case "equation_balancer":
+    case "slope_triangle":
+    case "vector_addition_pad":
+    case "interval_builder":
+    case "tangent_scrubber":
+    case "sequence_cobweb":
+    case "integral_riemann_slider":
+    case "complex_plane_polar":
+    case "algo_sandbox":
       return block.caption.split(/\s+/).filter(Boolean).length;
+    case "definition":
+      return (
+        block.term.split(/\s+/).filter(Boolean).length +
+        richTextWordCount(block.definition) +
+        richTextWordCount(block.example)
+      );
     case "steps":
       return block.steps.reduce(
         (sum, step) =>
@@ -163,7 +197,34 @@ function isVisualBlock(block: StructuredCourseBlock): boolean {
     block.type === "probability_tree" ||
     block.type === "venn_diagram" ||
     block.type === "triangle_diagram" ||
-    block.type === "box_plot"
+    block.type === "box_plot" ||
+    block.type === "clock" ||
+    block.type === "fraction" ||
+    block.type === "coin_purse" ||
+    block.type === "balance_scale" ||
+    block.type === "grid_painter" ||
+    block.type === "pattern_maker" ||
+    block.type === "ruler_measurer" ||
+    block.type === "tape_diagram" ||
+    block.type === "fraction_strips" ||
+    block.type === "place_value_chart" ||
+    block.type === "ratio_mixer" ||
+    block.type === "net_folder" ||
+    block.type === "interactive_protractor" ||
+    block.type === "compass_tool" ||
+    block.type === "thermometer_axis" ||
+    block.type === "area_decomposer" ||
+    block.type === "pythagoras_visualizer" ||
+    block.type === "scientific_notation_converter" ||
+    block.type === "equation_balancer" ||
+    block.type === "slope_triangle" ||
+    block.type === "vector_addition_pad" ||
+    block.type === "interval_builder" ||
+    block.type === "tangent_scrubber" ||
+    block.type === "sequence_cobweb" ||
+    block.type === "integral_riemann_slider" ||
+    block.type === "complex_plane_polar" ||
+    block.type === "algo_sandbox"
   );
 }
 

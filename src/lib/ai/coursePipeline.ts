@@ -538,6 +538,7 @@ function blockPlainText(block: StructuredCourseBlock): string {
     case "display_math":
       return block.latex;
     case "list":
+    case "checklist":
       return block.items.map(structuredRichTextToPlainText).join(" ");
     case "callout":
       return [
@@ -577,7 +578,40 @@ function blockPlainText(block: StructuredCourseBlock): string {
     case "venn_diagram":
     case "triangle_diagram":
     case "box_plot":
+    case "clock":
+    case "fraction":
+    case "coin_purse":
+    case "balance_scale":
+    case "grid_painter":
+    case "pattern_maker":
+    case "ruler_measurer":
+    case "tape_diagram":
+    case "fraction_strips":
+    case "place_value_chart":
+    case "ratio_mixer":
+    case "net_folder":
+    case "interactive_protractor":
+    case "compass_tool":
+    case "thermometer_axis":
+    case "area_decomposer":
+    case "pythagoras_visualizer":
+    case "scientific_notation_converter":
+    case "equation_balancer":
+    case "slope_triangle":
+    case "vector_addition_pad":
+    case "interval_builder":
+    case "tangent_scrubber":
+    case "sequence_cobweb":
+    case "integral_riemann_slider":
+    case "complex_plane_polar":
+    case "algo_sandbox":
       return block.caption;
+    case "definition":
+      return [
+        block.term,
+        structuredRichTextToPlainText(block.definition),
+        block.example ? structuredRichTextToPlainText(block.example) : "",
+      ].join(" ");
     case "steps":
       return block.steps
         .flatMap((step) => [
