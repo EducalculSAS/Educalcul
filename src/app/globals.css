@@ -116,6 +116,26 @@ main,
     @apply font-semibold text-[var(--greek-blue)];
   }
 
+  .course-definition {
+    @apply my-6 rounded-2xl border-l-4 border-[var(--greek-gold,#c5a148)] bg-amber-50/60 px-5 py-4 shadow-sm;
+  }
+
+  .course-definition-badge {
+    @apply inline-block rounded-full bg-[var(--greek-gold,#c5a148)] px-3 py-0.5 text-xs font-semibold uppercase tracking-wide text-white;
+  }
+
+  .course-definition-term {
+    @apply mt-2 text-lg font-bold text-[var(--greek-blue)];
+  }
+
+  .course-definition-body {
+    @apply mt-1 text-slate-700;
+  }
+
+  .course-definition-example {
+    @apply mt-2 border-t border-amber-200 pt-2 text-sm italic text-slate-600;
+  }
+
   /* La numérotation des figures repart à 1 à chaque leçon. */
   .prose {
     counter-reset: educalcul-figure;
@@ -1602,6 +1622,318 @@ main,
   flex: 1;
   accent-color: var(--greek-gold, #c5a148);
   cursor: pointer;
+}
+
+/* Horloge (cadran statique + aiguilles déplaçables, cf. clockInteractive.ts) */
+.course-figure-clock .clock-svg {
+  max-width: 220px;
+}
+.course-figure-clock-interactive .clock-hour-hand,
+.course-figure-clock-interactive .clock-minute-hand {
+  touch-action: none;
+}
+.clock-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--greek-blue, #0f1e3a);
+}
+.clock-drag-hint {
+  border: 1px dashed var(--greek-gold, #c5a148);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  color: inherit;
+  cursor: default;
+}
+.clock-reading {
+  font-weight: 600;
+}
+
+/* Fraction (barre ou disque partagé, cf. renderFraction) */
+.course-figure-fraction svg {
+  max-width: 260px;
+}
+.fraction-label {
+  margin-top: 0.3rem;
+  font-weight: 600;
+  color: var(--greek-blue, #0f1e3a);
+}
+
+/* Porte-monnaie interactif (cf. coinPurseInteractive.ts) */
+.coin-purse-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+.coin-item {
+  cursor: pointer;
+  border-radius: 999px;
+  transition: transform 0.1s ease;
+}
+.coin-item:hover {
+  transform: translateY(-2px);
+}
+.coin-item-selected {
+  outline: 2px solid var(--greek-gold, #c5a148);
+  border-radius: 999px;
+}
+.coin-purse-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--greek-blue, #0f1e3a);
+}
+.coin-purse-total-match .coin-purse-total-value {
+  color: #16a34a;
+  font-weight: 700;
+}
+.coin-purse-reset {
+  border: 1px solid var(--greek-gold, #c5a148);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Balance de Roberval (cf. renderBalanceScale) */
+.course-figure-balance svg {
+  max-width: 240px;
+}
+
+/* Quadrillage interactif (cf. renderGridPainter) */
+.course-figure-grid-painter svg { max-width: 220px; }
+
+/* Suite logique (cf. newPluginsInteractive.ts) */
+.pattern-row, .pattern-options {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.3rem 0;
+}
+.pattern-item {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(15,30,58,0.15);
+  border-radius: 0.5rem;
+}
+.pattern-blank {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--greek-gold, #c5a148);
+  border-style: dashed;
+}
+.pattern-option {
+  width: 44px; height: 44px;
+  border: 1px solid var(--greek-gold, #c5a148);
+  border-radius: 0.5rem;
+  background: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.pattern-option-correct { outline: 2px solid #16a34a; }
+.pattern-option-wrong { outline: 2px solid #dc2626; opacity: 0.6; }
+
+/* Règle virtuelle (cf. renderRulerMeasurer) */
+.ruler-scroll { overflow-x: auto; }
+
+/* Réglettes de fractions (cf. renderFractionStrips) */
+.course-figure-fraction-strips svg { max-width: 320px; }
+
+/* Tableau de numération (cf. renderPlaceValueChart) */
+.course-figure-place-value table { margin: 0 auto; }
+
+/* Jauges de proportions (cf. renderRatioMixer) */
+.ratio-mixer-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-end;
+}
+.ratio-gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.ratio-gauge-track {
+  width: 28px;
+  height: 100px;
+  border: 1px solid var(--greek-blue, #0f1e3a);
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #fff;
+}
+.ratio-gauge-fill { width: 100%; }
+.ratio-gauge-label { font-size: 0.75rem; color: var(--greek-blue, #0f1e3a); }
+.ratio-gauge-value { font-size: 0.7rem; color: #64748b; }
+
+/* Patron 3D pliable (cf. newPluginsInteractive.ts) */
+.net-folder-3d-scene {
+  perspective: 700px;
+  margin: 1.5rem auto 2.5rem;
+  width: fit-content;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nf-cube {
+  position: relative;
+  transform-style: preserve-3d;
+}
+.nf-face {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(37, 99, 235, 0.18);
+  border: 1.5px solid var(--greek-blue, #0f1e3a);
+  font-size: 0.55rem;
+  color: var(--greek-blue, #0f1e3a);
+  backface-visibility: hidden;
+  transition: transform 0.15s linear;
+}
+.nf-front { transform: translateZ(0); }
+.nf-top { transform-origin: bottom center; transform: rotateX(calc(var(--fold, 0) * -90deg)); }
+.nf-bottom { transform-origin: top center; transform: rotateX(calc(var(--fold, 0) * 90deg)); }
+.nf-left { transform-origin: right center; transform: rotateY(calc(var(--fold, 0) * 90deg)); }
+.nf-right {
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transform: rotateY(calc(var(--fold, 0) * -90deg));
+}
+.nf-back { transform-origin: left center; transform: rotateY(calc(var(--fold, 0) * -90deg)); }
+.net-folder-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--greek-blue, #0f1e3a);
+}
+.net-folder-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.net-folder-slider { accent-color: var(--greek-gold, #c5a148); }
+
+/* Rapporteur (cf. newPluginsInteractive.ts) */
+.protractor-controls {
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  font-size: 0.85rem; margin-top: 0.2rem; color: var(--greek-blue, #0f1e3a);
+}
+.protractor-slider { accent-color: var(--greek-gold, #c5a148); }
+
+/* Compas (cf. renderCompassTool) */
+.course-figure-compass svg { max-width: 180px; }
+
+/* Thermomètre (cf. renderThermometerAxis) */
+.course-figure-thermometer svg { max-width: 160px; }
+
+/* Décomposeur d'aire (cf. renderAreaDecomposer) */
+.course-figure-area-decomposer svg { max-width: 100%; overflow-x: auto; }
+
+/* Pythagore (cf. renderPythagorasVisualizer) */
+.course-figure-pythagoras svg { max-width: 260px; }
+
+/* Notation scientifique (cf. renderScientificNotationConverter) */
+.course-figure-sci-notation svg { max-width: 280px; }
+
+/* Balance algébrique (cf. renderEquationBalancer) */
+.course-figure-equation-balancer svg { max-width: 240px; }
+
+/* Intervalle (cf. renderIntervalBuilder) */
+.course-figure-interval svg { max-width: 280px; }
+
+/* Plan complexe : bascule algébrique/polaire (cf. newPluginsInteractive.ts) */
+.complex-toggle {
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  margin-top: 0.3rem; font-size: 0.9rem; color: var(--greek-blue, #0f1e3a);
+}
+.complex-toggle-btn {
+  border: 1px solid var(--greek-gold, #c5a148);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.complex-toggle-value { font-weight: 600; }
+
+/* Bac à sable algorithmique, execution reelle via Pyodide (cf. pyodideInteractive.ts) */
+.algo-sandbox-code {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  background: #10213d;
+  color: #eef3fb;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+.algo-sandbox-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.4rem;
+}
+.algo-sandbox-run {
+  border: 1px solid var(--greek-gold, #c5a148);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--greek-blue, #0f1e3a);
+  cursor: pointer;
+}
+.algo-sandbox-run:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.algo-sandbox-readonly {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-style: italic;
+}
+.algo-sandbox-output {
+  margin-top: 0.5rem;
+  background: #0b1626;
+  color: #a5f3c0;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1rem;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.algo-sandbox-output-error {
+  color: #fca5a5;
+}
+
+.course-figure-error {
+  color: #dc2626;
+  font-style: italic;
+  font-size: 0.85rem;
 }
 
 /* Démonstrations révélées étape par étape (cf. courseSteps.ts) */

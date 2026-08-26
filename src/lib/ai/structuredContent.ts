@@ -183,6 +183,10 @@ export type StructuredCourseBlock =
       items: StructuredRichText[];
     }
   | {
+      type: "checklist";
+      items: StructuredRichText[];
+    }
+  | {
       type: "callout";
       variant: "note" | "warning";
       title?: StructuredRichText;
@@ -272,6 +276,191 @@ export type StructuredCourseBlock =
       type: "bar_chart";
       caption: string;
       bars: StructuredBar[];
+    }
+  | {
+      type: "clock";
+      caption: string;
+      hours: number;
+      minutes: number;
+      interactive: boolean;
+    }
+  | {
+      type: "fraction";
+      caption: string;
+      numerator: number;
+      denominator: number;
+      shape: "bar" | "circle";
+    }
+  | {
+      type: "definition";
+      term: string;
+      definition: StructuredRichText;
+      example?: StructuredRichText;
+    }
+  | {
+      type: "coin_purse";
+      caption: string;
+      coins: number[];
+      target: number;
+    }
+  | {
+      type: "balance_scale";
+      caption: string;
+      left: number[];
+      right: number[];
+    }
+  | {
+      type: "grid_painter";
+      caption: string;
+      rows: number;
+      cols: number;
+      highlighted: number;
+    }
+  | {
+      type: "pattern_maker";
+      caption: string;
+      sequence: string[];
+      options: string[];
+      answer: string;
+    }
+  | {
+      type: "ruler_measurer";
+      caption: string;
+      segmentLength: number;
+      unit: string;
+    }
+  | {
+      type: "tape_diagram";
+      caption: string;
+      parts: { label: string; value: number; tone: StructuredFigureTone }[];
+    }
+  | {
+      type: "fraction_strips";
+      caption: string;
+      fractions: { numerator: number; denominator: number }[];
+    }
+  | {
+      type: "place_value_chart";
+      caption: string;
+      number: number;
+    }
+  | {
+      type: "ratio_mixer";
+      caption: string;
+      ratios: { label: string; value: number; tone: StructuredFigureTone }[];
+    }
+  | {
+      type: "net_folder";
+      caption: string;
+      solid: "cube" | "pave";
+      width: number;
+      height: number;
+      depth: number;
+    }
+  | {
+      type: "interactive_protractor";
+      caption: string;
+      angleDeg: number;
+    }
+  | {
+      type: "compass_tool";
+      caption: string;
+      radius: number;
+      centerLabel: string;
+    }
+  | {
+      type: "thermometer_axis";
+      caption: string;
+      min: number;
+      max: number;
+      points: { value: number; label: string }[];
+    }
+  | {
+      type: "area_decomposer";
+      caption: string;
+      shapes: { width: number; height: number; label: string }[];
+    }
+  | {
+      type: "pythagoras_visualizer";
+      caption: string;
+      a: number;
+      b: number;
+      c: number;
+    }
+  | {
+      type: "scientific_notation_converter";
+      caption: string;
+      value: number;
+      exponent: number;
+    }
+  | {
+      type: "equation_balancer";
+      caption: string;
+      leftTerms: string[];
+      rightTerms: string[];
+    }
+  | {
+      type: "slope_triangle";
+      caption: string;
+      a: number;
+      b: number;
+      xMin: number;
+      xMax: number;
+    }
+  | {
+      type: "vector_addition_pad";
+      caption: string;
+      ux: number;
+      uy: number;
+      vx: number;
+      vy: number;
+    }
+  | {
+      type: "interval_builder";
+      caption: string;
+      min: number;
+      max: number;
+      lowerBound: number;
+      upperBound: number;
+      lowerOpen: boolean;
+      upperOpen: boolean;
+    }
+  | {
+      type: "tangent_scrubber";
+      caption: string;
+      expression: string;
+      x0: number;
+      xMin: number;
+      xMax: number;
+    }
+  | {
+      type: "sequence_cobweb";
+      caption: string;
+      expression: string;
+      u0: number;
+      iterations: number;
+      xMin: number;
+      xMax: number;
+    }
+  | {
+      type: "integral_riemann_slider";
+      caption: string;
+      expression: string;
+      xMin: number;
+      xMax: number;
+      rectangles: number;
+    }
+  | {
+      type: "complex_plane_polar";
+      caption: string;
+      re: number;
+      im: number;
+    }
+  | {
+      type: "algo_sandbox";
+      caption: string;
+      code: string;
+      language: string;
     }
   | {
       type: "probability_tree";
@@ -1225,7 +1414,7 @@ function normalizeVennSet(value: unknown): StructuredVennSet | null {
   return { label: label.slice(0, 30), tone: normalizeFigureTone(raw.tone) };
 }
 
-function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock | null {
+export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock | null {
   if (depth > 4) return null;
   const raw = asRecord(value);
   if (!raw) {
@@ -1264,6 +1453,12 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
         ordered: raw.ordered === true || stringValue(raw.style).toLowerCase() === "ordered",
         items,
       };
+    }
+    case "checklist": {
+      const items = Array.isArray(raw.items)
+        ? raw.items.map(normalizeStructuredRichText).filter((item) => item.parts.length > 0)
+        : [];
+      return { type: "checklist", items };
     }
     case "callout": {
       const paragraphsRaw = Array.isArray(raw.paragraphs)
@@ -1324,8 +1519,20 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
     case "image": {
       const query = stringValue(raw.query).slice(0, 200);
       const caption = stringValue(raw.caption).slice(0, 200);
-      if (!query) return null;
-      return { type: "image", query, caption };
+      // Un admin peut fournir directement une URL (lien colle ou upload) —
+      // dans ce cas le bloc s'affiche immediatement, sans passer par la
+      // resolution differee (catalogue-advance/route.ts) reservee aux
+      // requetes de recherche generees par l'IA sans URL connue.
+      const url = stringValue(raw.url).slice(0, 500);
+      const attribution = stringValue(raw.attribution).slice(0, 200);
+      if (!query && !url) return null;
+      return {
+        type: "image",
+        query,
+        caption,
+        url: url || undefined,
+        attribution: attribution || undefined,
+      };
     }
     case "base_ten_blocks": {
       const clamp = (value: unknown) => Math.min(9, Math.max(0, Math.trunc(finiteNumber(value, 0))));
@@ -1521,6 +1728,326 @@ function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock 
         type: "bar_chart",
         caption: sanitizeStructuredText(raw.caption),
         bars,
+      };
+    }
+    case "clock": {
+      const hours = Math.max(0, Math.min(23, Math.round(finiteNumber(raw.hours, 3))));
+      const minutes = Math.max(0, Math.min(59, Math.round(finiteNumber(raw.minutes, 0))));
+      return {
+        type: "clock",
+        caption: sanitizeStructuredText(raw.caption),
+        hours,
+        minutes,
+        interactive: raw.interactive !== false,
+      };
+    }
+    case "definition": {
+      const term = sanitizeStructuredText(raw.term);
+      const definition = normalizeStructuredRichText(raw.definition);
+      if (!term || definition.parts.length === 0) return null;
+      const example = raw.example !== undefined ? normalizeStructuredRichText(raw.example) : undefined;
+      return {
+        type: "definition",
+        term,
+        definition,
+        example: example && example.parts.length > 0 ? example : undefined,
+      };
+    }
+    case "coin_purse": {
+      const coins = Array.isArray(raw.coins)
+        ? raw.coins.map((c: unknown) => Math.round(finiteNumber(c, 0))).filter((c: number) => c > 0).slice(0, 12)
+        : [];
+      if (coins.length < 2) return null;
+      return {
+        type: "coin_purse",
+        caption: sanitizeStructuredText(raw.caption),
+        coins,
+        target: Math.max(1, Math.round(finiteNumber(raw.target, coins[0] ?? 100))),
+      };
+    }
+    case "balance_scale": {
+      const toNumArray = (v: unknown): number[] =>
+        Array.isArray(v)
+          ? v.map((n: unknown) => Math.round(finiteNumber(n, 0))).slice(0, 6)
+          : [];
+      const left = toNumArray(raw.left);
+      const right = toNumArray(raw.right);
+      if (left.length === 0 && right.length === 0) return null;
+      return {
+        type: "balance_scale",
+        caption: sanitizeStructuredText(raw.caption),
+        left,
+        right,
+      };
+    }
+    case "grid_painter": {
+      const rows = Math.max(1, Math.min(12, Math.round(finiteNumber(raw.rows, 3))));
+      const cols = Math.max(1, Math.min(12, Math.round(finiteNumber(raw.cols, 4))));
+      const highlighted = Math.max(0, Math.min(rows * cols, Math.round(finiteNumber(raw.highlighted, 0))));
+      return { type: "grid_painter", caption: sanitizeStructuredText(raw.caption), rows, cols, highlighted };
+    }
+    case "pattern_maker": {
+      const sequence = Array.isArray(raw.sequence)
+        ? raw.sequence.map((s: unknown) => sanitizeDiagramLabel(s)).filter(Boolean).slice(0, 8)
+        : [];
+      const options = Array.isArray(raw.options)
+        ? raw.options.map((s: unknown) => sanitizeDiagramLabel(s)).filter(Boolean).slice(0, 6)
+        : [];
+      const answer = sanitizeDiagramLabel(raw.answer);
+      if (sequence.length < 2 || options.length < 2 || !answer) return null;
+      return { type: "pattern_maker", caption: sanitizeStructuredText(raw.caption), sequence, options, answer };
+    }
+    case "ruler_measurer": {
+      const segmentLength = Math.max(1, finiteNumber(raw.segmentLength, 10));
+      return {
+        type: "ruler_measurer",
+        caption: sanitizeStructuredText(raw.caption),
+        segmentLength,
+        unit: sanitizeDiagramLabel(raw.unit) || "cm",
+      };
+    }
+    case "tape_diagram": {
+      const parts = Array.isArray(raw.parts)
+        ? raw.parts
+            .map((p: unknown) => {
+              const rec = asRecord(p);
+              if (!rec) return null;
+              const label = sanitizeDiagramLabel(rec.label);
+              const value = finiteNumber(rec.value, Number.NaN);
+              if (!label || !Number.isFinite(value) || value < 0) return null;
+              return { label: label.slice(0, 24), value, tone: normalizeFigureTone(rec.tone) };
+            })
+            .filter((p): p is { label: string; value: number; tone: StructuredFigureTone } => p !== null)
+            .slice(0, 6)
+        : [];
+      if (parts.length < 2) return null;
+      return { type: "tape_diagram", caption: sanitizeStructuredText(raw.caption), parts };
+    }
+    case "fraction_strips": {
+      const fractions = Array.isArray(raw.fractions)
+        ? raw.fractions
+            .map((f: unknown) => {
+              const rec = asRecord(f);
+              if (!rec) return null;
+              const denominator = Math.max(2, Math.min(12, Math.round(finiteNumber(rec.denominator, 4))));
+              const numerator = Math.max(0, Math.min(denominator, Math.round(finiteNumber(rec.numerator, 1))));
+              return { numerator, denominator };
+            })
+            .filter((f): f is { numerator: number; denominator: number } => f !== null)
+            .slice(0, 5)
+        : [];
+      if (fractions.length < 2) return null;
+      return { type: "fraction_strips", caption: sanitizeStructuredText(raw.caption), fractions };
+    }
+    case "place_value_chart": {
+      return {
+        type: "place_value_chart",
+        caption: sanitizeStructuredText(raw.caption),
+        number: finiteNumber(raw.number, 0),
+      };
+    }
+    case "ratio_mixer": {
+      const ratios = Array.isArray(raw.ratios)
+        ? raw.ratios
+            .map((r: unknown) => {
+              const rec = asRecord(r);
+              if (!rec) return null;
+              const label = sanitizeDiagramLabel(rec.label);
+              const value = finiteNumber(rec.value, Number.NaN);
+              if (!label || !Number.isFinite(value) || value < 0) return null;
+              return { label: label.slice(0, 24), value, tone: normalizeFigureTone(rec.tone) };
+            })
+            .filter((r): r is { label: string; value: number; tone: StructuredFigureTone } => r !== null)
+            .slice(0, 5)
+        : [];
+      if (ratios.length < 2) return null;
+      return { type: "ratio_mixer", caption: sanitizeStructuredText(raw.caption), ratios };
+    }
+    case "net_folder": {
+      return {
+        type: "net_folder",
+        caption: sanitizeStructuredText(raw.caption),
+        solid: raw.solid === "pave" ? "pave" : "cube",
+        width: Math.max(1, finiteNumber(raw.width, 4)),
+        height: Math.max(1, finiteNumber(raw.height, 4)),
+        depth: Math.max(1, finiteNumber(raw.depth, 4)),
+      };
+    }
+    case "interactive_protractor": {
+      return {
+        type: "interactive_protractor",
+        caption: sanitizeStructuredText(raw.caption),
+        angleDeg: Math.max(0, Math.min(180, finiteNumber(raw.angleDeg, 45))),
+      };
+    }
+    case "compass_tool": {
+      return {
+        type: "compass_tool",
+        caption: sanitizeStructuredText(raw.caption),
+        radius: Math.max(1, finiteNumber(raw.radius, 5)),
+        centerLabel: sanitizeDiagramLabel(raw.centerLabel) || "O",
+      };
+    }
+    case "thermometer_axis": {
+      const points = Array.isArray(raw.points)
+        ? raw.points
+            .map((p: unknown) => {
+              const rec = asRecord(p);
+              if (!rec) return null;
+              const label = sanitizeDiagramLabel(rec.label);
+              const value = finiteNumber(rec.value, Number.NaN);
+              if (!label || !Number.isFinite(value)) return null;
+              return { value, label: label.slice(0, 20) };
+            })
+            .filter((p): p is { value: number; label: string } => p !== null)
+            .slice(0, 6)
+        : [];
+      return {
+        type: "thermometer_axis",
+        caption: sanitizeStructuredText(raw.caption),
+        min: finiteNumber(raw.min, -10),
+        max: finiteNumber(raw.max, 10),
+        points,
+      };
+    }
+    case "area_decomposer": {
+      const shapes = Array.isArray(raw.shapes)
+        ? raw.shapes
+            .map((s: unknown) => {
+              const rec = asRecord(s);
+              if (!rec) return null;
+              const width = finiteNumber(rec.width, Number.NaN);
+              const height = finiteNumber(rec.height, Number.NaN);
+              if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return null;
+              return { width, height, label: sanitizeDiagramLabel(rec.label).slice(0, 20) };
+            })
+            .filter((s): s is { width: number; height: number; label: string } => s !== null)
+            .slice(0, 5)
+        : [];
+      if (shapes.length === 0) return null;
+      return { type: "area_decomposer", caption: sanitizeStructuredText(raw.caption), shapes };
+    }
+    case "pythagoras_visualizer": {
+      const a = Math.max(1, finiteNumber(raw.a, 3));
+      const b = Math.max(1, finiteNumber(raw.b, 4));
+      const c = Math.max(1, finiteNumber(raw.c, Math.sqrt(a * a + b * b)));
+      return { type: "pythagoras_visualizer", caption: sanitizeStructuredText(raw.caption), a, b, c };
+    }
+    case "scientific_notation_converter": {
+      return {
+        type: "scientific_notation_converter",
+        caption: sanitizeStructuredText(raw.caption),
+        value: finiteNumber(raw.value, 1),
+        exponent: Math.round(finiteNumber(raw.exponent, 0)),
+      };
+    }
+    case "equation_balancer": {
+      const leftTerms = Array.isArray(raw.leftTerms)
+        ? raw.leftTerms.map((t: unknown) => sanitizeDiagramLabel(t)).filter(Boolean).slice(0, 5)
+        : [];
+      const rightTerms = Array.isArray(raw.rightTerms)
+        ? raw.rightTerms.map((t: unknown) => sanitizeDiagramLabel(t)).filter(Boolean).slice(0, 5)
+        : [];
+      if (leftTerms.length === 0 || rightTerms.length === 0) return null;
+      return { type: "equation_balancer", caption: sanitizeStructuredText(raw.caption), leftTerms, rightTerms };
+    }
+    case "slope_triangle": {
+      return {
+        type: "slope_triangle",
+        caption: sanitizeStructuredText(raw.caption),
+        a: finiteNumber(raw.a, 1),
+        b: finiteNumber(raw.b, 0),
+        xMin: finiteNumber(raw.xMin, -5),
+        xMax: finiteNumber(raw.xMax, 5),
+      };
+    }
+    case "vector_addition_pad": {
+      return {
+        type: "vector_addition_pad",
+        caption: sanitizeStructuredText(raw.caption),
+        ux: finiteNumber(raw.ux, 2),
+        uy: finiteNumber(raw.uy, 1),
+        vx: finiteNumber(raw.vx, 1),
+        vy: finiteNumber(raw.vy, 2),
+      };
+    }
+    case "interval_builder": {
+      return {
+        type: "interval_builder",
+        caption: sanitizeStructuredText(raw.caption),
+        min: finiteNumber(raw.min, -5),
+        max: finiteNumber(raw.max, 5),
+        lowerBound: finiteNumber(raw.lowerBound, -2),
+        upperBound: finiteNumber(raw.upperBound, 2),
+        lowerOpen: raw.lowerOpen === true,
+        upperOpen: raw.upperOpen === true,
+      };
+    }
+    case "tangent_scrubber": {
+      const expression = sanitizeDiagramLabel(raw.expression);
+      if (!expression) return null;
+      return {
+        type: "tangent_scrubber",
+        caption: sanitizeStructuredText(raw.caption),
+        expression,
+        x0: finiteNumber(raw.x0, 0),
+        xMin: finiteNumber(raw.xMin, -5),
+        xMax: finiteNumber(raw.xMax, 5),
+      };
+    }
+    case "sequence_cobweb": {
+      const expression = sanitizeDiagramLabel(raw.expression);
+      if (!expression) return null;
+      return {
+        type: "sequence_cobweb",
+        caption: sanitizeStructuredText(raw.caption),
+        expression,
+        u0: finiteNumber(raw.u0, 1),
+        iterations: Math.max(1, Math.min(10, Math.round(finiteNumber(raw.iterations, 5)))),
+        xMin: finiteNumber(raw.xMin, 0),
+        xMax: finiteNumber(raw.xMax, 5),
+      };
+    }
+    case "integral_riemann_slider": {
+      const expression = sanitizeDiagramLabel(raw.expression);
+      if (!expression) return null;
+      return {
+        type: "integral_riemann_slider",
+        caption: sanitizeStructuredText(raw.caption),
+        expression,
+        xMin: finiteNumber(raw.xMin, 0),
+        xMax: finiteNumber(raw.xMax, 5),
+        rectangles: Math.max(2, Math.min(30, Math.round(finiteNumber(raw.rectangles, 8)))),
+      };
+    }
+    case "complex_plane_polar": {
+      return {
+        type: "complex_plane_polar",
+        caption: sanitizeStructuredText(raw.caption),
+        re: finiteNumber(raw.re, 1),
+        im: finiteNumber(raw.im, 1),
+      };
+    }
+    case "algo_sandbox": {
+      const code = typeof raw.code === "string" ? raw.code.slice(0, 2000) : "";
+      if (!code.trim()) return null;
+      return {
+        type: "algo_sandbox",
+        caption: sanitizeStructuredText(raw.caption),
+        code,
+        language: sanitizeDiagramLabel(raw.language) || "python",
+      };
+    }
+    case "fraction": {
+      const denominator = Math.max(2, Math.min(12, Math.round(finiteNumber(raw.denominator, 4))));
+      const numerator = Math.max(0, Math.min(denominator, Math.round(finiteNumber(raw.numerator, 1))));
+      const shape = raw.shape === "circle" ? "circle" : "bar";
+      return {
+        type: "fraction",
+        caption: sanitizeStructuredText(raw.caption),
+        numerator,
+        denominator,
+        shape,
       };
     }
     case "probability_tree": {

@@ -555,7 +555,7 @@ export default function AdminCoursesClient({
     return { ...course, content_json: full.content_json ?? [] };
   };
 
-  const handlePreview = async (course: Course) => {
+  const handlePreview = async (course: Course, win?: Window | null) => {
     const previewData = {
       title: course.title,
       description: course.description || "",
@@ -572,9 +572,18 @@ export default function AdminCoursesClient({
       body: JSON.stringify({ type: "course", payload: previewData }),
     });
     const data = await res.json();
-    if (!res.ok || !data.id) return;
+    if (!res.ok || !data.id) {
+      win?.close();
+      return;
+    }
 
-    window.open(`/child/cours/preview?pid=${data.id}`, "_blank");
+    const url = `/child/cours/preview?pid=${data.id}`;
+    // `win` doit avoir été ouvert de façon SYNCHRONE au clic (avant tout
+    // await) : Safari mobile bloque silencieusement un window.open() appelé
+    // après un await, car il n'est plus rattaché au geste utilisateur — vu et
+    // confirmé buggy sur iPhone (l'oeil ne faisait rien, aucune erreur).
+    if (win) win.location.href = url;
+    else window.open(url, "_blank");
   };
 
   const handleOpenModal = (mode: "create" | "edit", course?: Course) => {
@@ -1260,7 +1269,14 @@ export default function AdminCoursesClient({
                   <div className="flex items-center gap-1">
                     <GlassIconButton
                       icon={Eye}
-                      onClick={async () => handlePreview(await getFullCourse(course))}
+                      onClick={() => {
+                        // Ouverture synchrone AVANT tout await : voir handlePreview.
+                        const win = window.open("", "_blank");
+                        void (async () => {
+                          const full = await getFullCourse(course);
+                          await handlePreview(full, win);
+                        })();
+                      }}
                       color="navy"
                       size="sm"
                       aria-label="Prévisualiser"
@@ -1441,7 +1457,7 @@ export default function AdminCoursesClient({
                     </span>
                     Paramètres de publication
                   </h4>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">
                         Statut

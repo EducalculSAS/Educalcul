@@ -798,7 +798,7 @@ export default function AdminQuizzesClient({
     return { ...quiz, content_json: full.content_json ?? [] };
   };
 
-  const handlePreview = async (quiz: Quiz) => {
+  const handlePreview = async (quiz: Quiz, win?: Window | null) => {
     const previewData = {
       title: quiz.title,
       description: quiz.description || "",
@@ -822,8 +822,15 @@ export default function AdminQuizzesClient({
       body: JSON.stringify({ type: "quiz", payload: previewData }),
     });
     const data = await res.json();
-    if (!res.ok) return;
-    window.open(`/child/quiz/preview?pid=${data.id}`, "_blank");
+    if (!res.ok) {
+      win?.close();
+      return;
+    }
+    const url = `/child/quiz/preview?pid=${data.id}`;
+    // `win` ouvert de façon synchrone AVANT tout await, sinon Safari mobile
+    // bloque silencieusement le window.open (plus rattaché au geste utilisateur).
+    if (win) win.location.href = url;
+    else window.open(url, "_blank");
   };
 
   const handleOpenModal = (quiz: Quiz | null = null) => {
@@ -1250,7 +1257,13 @@ export default function AdminQuizzesClient({
                         icon={Eye}
                         size="sm"
                         color="navy"
-                        onClick={async () => handlePreview(await getFullQuiz(quiz))}
+                        onClick={() => {
+                          const win = window.open("", "_blank");
+                          void (async () => {
+                            const full = await getFullQuiz(quiz);
+                            await handlePreview(full, win);
+                          })();
+                        }}
                         aria-label="Prévisualiser le quiz"
                       />
                       <GlassIconButton
@@ -1719,24 +1732,27 @@ export default function AdminQuizzesClient({
                   size="sm"
                   variant="outline"
                   className="mr-auto"
-                  onClick={() => handlePreview({
-                    id: editingQuiz?.id || "",
-                    title: formData.title,
-                    description: formData.description,
-                    course_id: formData.course_id,
-                    folder_id: typeof formData.folder_id === "number" ? formData.folder_id : null,
-                    time_limit_minutes: formData.time_limit_minutes,
-                    min_score_percent: formData.min_score_percent,
-                    status: formData.status as any,
-                    type: formData.type,
-                    difficulty_level: formData.difficulty_level,
-                    level: formData.level,
-                    max_attempts: formData.max_attempts,
-                    grading_type: formData.grading_type,
-                    thumbnail_filename: formData.thumbnail_filename,
-                    content_json: formData.content_json,
-                    created_at: new Date().toISOString()
-                  })}
+                  onClick={() => {
+                    const win = window.open("", "_blank");
+                    void handlePreview({
+                      id: editingQuiz?.id || "",
+                      title: formData.title,
+                      description: formData.description,
+                      course_id: formData.course_id,
+                      folder_id: typeof formData.folder_id === "number" ? formData.folder_id : null,
+                      time_limit_minutes: formData.time_limit_minutes,
+                      min_score_percent: formData.min_score_percent,
+                      status: formData.status as any,
+                      type: formData.type,
+                      difficulty_level: formData.difficulty_level,
+                      level: formData.level,
+                      max_attempts: formData.max_attempts,
+                      grading_type: formData.grading_type,
+                      thumbnail_filename: formData.thumbnail_filename,
+                      content_json: formData.content_json,
+                      created_at: new Date().toISOString()
+                    }, win);
+                  }}
                 >
                   <Eye className="w-4 h-4" />
                   Prévisualiser

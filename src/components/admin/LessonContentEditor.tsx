@@ -12,6 +12,7 @@ import {
   Type,
   Upload,
   XCircle,
+  Sparkles,
 } from "lucide-react";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
@@ -19,6 +20,7 @@ import { migrateLessonToBlocks, deriveLegacyFields, LessonBlock } from "@/lib/le
 import type { Lesson, Exercise } from "./CourseBuilder";
 import TableEditorModal from "./TableEditorModal";
 import GraphEditorModal from "./GraphEditorModal";
+import SpecialBlockEditorModal from "./SpecialBlockEditorModal";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -29,6 +31,7 @@ const BLOCK_LABELS: Record<LessonBlock["type"], string> = {
   graph: "Graphique",
   image: "Image",
   exercise: "Mini-exercice",
+  special: "Bloc spécial",
 };
 
 const BLOCK_ICONS: Record<LessonBlock["type"], any> = {
@@ -37,6 +40,7 @@ const BLOCK_ICONS: Record<LessonBlock["type"], any> = {
   graph: LineChart,
   image: ImageIcon,
   exercise: PencilLine,
+  special: Sparkles,
 };
 
 export default function LessonContentEditor({
@@ -53,6 +57,7 @@ export default function LessonContentEditor({
   const [draggedBlock, setDraggedBlock] = useState<number | null>(null);
   const [tableModalFor, setTableModalFor] = useState<string | null>(null);
   const [graphModalFor, setGraphModalFor] = useState<string | null>(null);
+  const [specialModalFor, setSpecialModalFor] = useState<string | null>(null);
   useDragAutoScroll(draggedBlock !== null);
 
   // Lazily migrate legacy content/image_url/exercises into blocks on first render
@@ -92,6 +97,10 @@ export default function LessonContentEditor({
     }
     if (type === "graph") {
       setGraphModalFor("__new__");
+      return;
+    }
+    if (type === "special") {
+      setSpecialModalFor("__new__");
       return;
     }
     const newBlock: LessonBlock = { id: crypto.randomUUID(), type };
@@ -205,18 +214,52 @@ export default function LessonContentEditor({
                     />
                   </div>
                 ) : (
-                  <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-dashed border-[rgba(197,161,72,0.4)] rounded-lg text-xs text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors">
-                    <Upload size={14} />
-                    {uploadingLesson === block.id ? "Upload..." : "Choisir une image"}
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      disabled={uploadingLesson === block.id}
-                      onChange={(e) => onImageUpload(e, block.id)}
-                    />
-                  </label>
+                  <div className="flex flex-col gap-2">
+                    <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-dashed border-[rgba(197,161,72,0.4)] rounded-lg text-xs text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors w-fit">
+                      <Upload size={14} />
+                      {uploadingLesson === block.id ? "Upload..." : "Choisir une image"}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        disabled={uploadingLesson === block.id}
+                        onChange={(e) => onImageUpload(e, block.id)}
+                      />
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-400">ou</span>
+                      <input
+                        type="url"
+                        placeholder="Coller un lien d'image (https://...)"
+                        className="flex-1 text-xs px-2 py-1.5 border border-[rgba(197,161,72,0.25)] rounded-lg"
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            const value = (e.target as HTMLInputElement).value.trim();
+                            if (value) updateBlock(block.id, { image_url: value });
+                          }
+                        }}
+                        onBlur={(e) => {
+                          const value = e.target.value.trim();
+                          if (value) updateBlock(block.id, { image_url: value });
+                        }}
+                      />
+                    </div>
+                  </div>
                 )}
+              </div>
+            )}
+
+            {block.type === "special" && (
+              <div className="space-y-2">
+                <div
+                  className="latex-content border border-[rgba(197,161,72,0.15)] rounded-lg p-3 bg-gray-50 overflow-x-auto"
+                  dangerouslySetInnerHTML={{
+                    __html: renderLatexInHTML(renderMathGraphPlaceholders(block.content || "")),
+                  }}
+                />
+                <GlassButton size="sm" variant="ghost" onClick={() => setSpecialModalFor(block.id)}>
+                  Modifier
+                </GlassButton>
               </div>
             )}
 
@@ -271,6 +314,9 @@ export default function LessonContentEditor({
         <GlassButton size="sm" variant="outline" onClick={() => addBlock("exercise")}>
           <Plus size={14} /> Mini-exercice
         </GlassButton>
+        <GlassButton size="sm" variant="outline" onClick={() => addBlock("special")}>
+          <Plus size={14} /> Bloc spécial
+        </GlassButton>
       </div>
 
       {tableModalFor !== null && (
@@ -296,6 +342,26 @@ export default function LessonContentEditor({
               setBlocks([...blocks, { id: crypto.randomUUID(), type: "graph", content: html }]);
             } else {
               updateBlock(graphModalFor, { content: html });
+            }
+          }}
+        />
+      )}
+
+      {specialModalFor !== null && (
+        <SpecialBlockEditorModal
+          isOpen={true}
+          onClose={() => setSpecialModalFor(null)}
+          initialType={
+            specialModalFor !== "__new__" ? blocks.find((b) => b.id === specialModalFor)?.specialType : undefined
+          }
+          initialData={
+            specialModalFor !== "__new__" ? blocks.find((b) => b.id === specialModalFor)?.specialData : undefined
+          }
+          onInsert={(html, specialType, specialData) => {
+            if (specialModalFor === "__new__") {
+              setBlocks([...blocks, { id: crypto.randomUUID(), type: "special", content: html, specialType, specialData }]);
+            } else {
+              updateBlock(specialModalFor, { content: html, specialType, specialData });
             }
           }}
         />

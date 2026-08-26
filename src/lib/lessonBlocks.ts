@@ -2,10 +2,12 @@ import type { Exercise, Lesson } from "@/components/admin/CourseBuilder";
 
 export interface LessonBlock {
   id: string;
-  type: "text" | "table" | "graph" | "image" | "exercise";
-  content?: string; // text / table / graph: HTML
+  type: "text" | "table" | "graph" | "image" | "exercise" | "special";
+  content?: string; // text / table / graph / special: HTML
   image_url?: string; // image
   exercise?: Exercise; // exercise
+  specialType?: string; // special: le "type" du StructuredCourseBlock (ex: "clock", "fraction")
+  specialData?: Record<string, unknown>; // special: donnees brutes reeditables
 }
 
 export function migrateLessonToBlocks(lesson: Lesson): LessonBlock[] {
@@ -47,7 +49,7 @@ export function migrateLessonToBlocks(lesson: Lesson): LessonBlock[] {
 export function deriveLegacyFields(blocks: LessonBlock[]): Pick<Lesson, "content" | "image_url" | "exercises"> {
   const content = blocks
     .map((b) => {
-      if (b.type === "text" || b.type === "table" || b.type === "graph") return b.content || "";
+      if (b.type === "text" || b.type === "table" || b.type === "graph" || b.type === "special") return b.content || "";
       if (b.type === "exercise" && b.exercise) {
         return `<div class="lesson-exercise" data-exercise-id="${b.exercise.id}"></div>`;
       }

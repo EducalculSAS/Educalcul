@@ -11,6 +11,8 @@ import {
   type StructuredRichText,
   type StructuredLearningResource,
 } from "@/lib/ai/structuredContent";
+import { buildGraphSvg } from "@/lib/mathGraph";
+import { evaluate as evaluateMathExpr } from "mathjs";
 
 export type CompiledCourseExercise = {
   id: string;
@@ -260,6 +262,575 @@ function renderTrigCircle(
   const svg = `<svg class="tc-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">${grid}${axes}${circle}${markers}<g class="tc-live"></g></svg>`;
   const controls = `<div class="tc-controls"><input type="range" class="tc-angle-slider" min="0" max="360" step="1" value="45"/><span class="tc-angle-value">45°</span></div>`;
   return `<figure class="course-figure course-figure-trig-circle">${svg}${controls}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function formatCentimes(centimes: number): string {
+  if (centimes % 100 === 0) return `${centimes / 100} €`;
+  if (centimes >= 100) return `${(centimes / 100).toFixed(2).replace(".", ",")} €`;
+  return `${centimes} c`;
+}
+
+function renderCoinPurse(
+  block: Extract<StructuredCourseBlock, { type: "coin_purse" }>,
+): string {
+  const coinWidth = 56;
+  const items = block.coins
+    .map((value, i) => {
+      const isBill = value >= 500;
+      const shape = isBill
+        ? `<rect x="4" y="14" width="48" height="28" rx="4" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>`
+        : `<circle cx="28" cy="28" r="24" fill="#f6ecd2" stroke="#10213d" stroke-width="1.5"/>`;
+      const label = `<text x="28" y="32" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(formatCentimes(value))}</text>`;
+      return `<g class="coin-item" data-value="${value}" role="button" tabindex="0"><svg viewBox="0 0 56 56" width="${coinWidth}" height="${coinWidth}">${shape}${label}</svg></g>`;
+    })
+    .join("");
+  const purse = `<div class="coin-purse-zone"><div class="coin-purse-total" data-target="${block.target}">Total : <span class="coin-purse-total-value">0 c</span></div><button type="button" class="coin-purse-reset">Réinitialiser</button></div>`;
+  return `<figure class="course-figure course-figure-coin-purse"><div class="coin-purse-row">${items}</div>${purse}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderBalanceScale(
+  block: Extract<StructuredCourseBlock, { type: "balance_scale" }>,
+): string {
+  const leftSum = block.left.reduce((a, b) => a + b, 0);
+  const rightSum = block.right.reduce((a, b) => a + b, 0);
+  const diff = leftSum - rightSum;
+  const maxTilt = 12;
+  const tilt = Math.max(-maxTilt, Math.min(maxTilt, diff * 2));
+  const cx = 100;
+  const pivotY = 60;
+  const beamHalf = 70;
+  const rad = (tilt * Math.PI) / 180;
+  const leftX = cx - beamHalf * Math.cos(rad);
+  const leftY = pivotY - beamHalf * Math.sin(rad);
+  const rightX = cx + beamHalf * Math.cos(rad);
+  const rightY = pivotY + beamHalf * Math.sin(rad);
+  const pan = (x: number, y: number, values: number[]) => {
+    const items = values
+      .map((v, i) => `<text x="${num(x)}" y="${num(y + 24 + i * 14)}" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(String(v))}</text>`)
+      .join("");
+    return `<line x1="${num(x)}" y1="${num(y)}" x2="${num(x)}" y2="${num(y + 16)}" stroke="#10213d" stroke-width="1.5"/><rect x="${num(x - 26)}" y="${num(y + 16)}" width="52" height="10" rx="3" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>${items}`;
+  };
+  const beam = `<line x1="${num(leftX)}" y1="${num(leftY)}" x2="${num(rightX)}" y2="${num(rightY)}" stroke="#10213d" stroke-width="3"/>`;
+  const pivot = `<polygon points="${cx - 8},${pivotY + 40} ${cx + 8},${pivotY + 40} ${cx},${pivotY}" fill="#c5a148"/>`;
+  const svg = `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img">${pivot}${beam}${pan(leftX, leftY, block.left)}${pan(rightX, rightY, block.right)}</svg>`;
+  return `<figure class="course-figure course-figure-balance"><div class="balance-caption-row">${svg}</div><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function parseGraphMeta(svg: string) {
+  const num = (attr: string) => {
+    const m = svg.match(new RegExp(`data-${attr}="([^"]+)"`));
+    return m ? parseFloat(m[1]) : 0;
+  };
+  const xmin = num("xmin");
+  const xmax = num("xmax");
+  const ymin = num("ymin");
+  const ymax = num("ymax");
+  const padl = num("padl");
+  const padt = num("padt");
+  const plotw = num("plotw");
+  const ploth = num("ploth");
+  const sx = (x: number) => padl + ((x - xmin) / (xmax - xmin)) * plotw;
+  const sy = (y: number) => padt + ploth - ((y - ymin) / (ymax - ymin)) * ploth;
+  return { xmin, xmax, ymin, ymax, sx, sy };
+}
+
+function injectIntoSvg(svg: string, extra: string): string {
+  return svg.replace(/<\/svg>$/, `${extra}</svg>`);
+}
+
+function safeEval(expr: string, scope: Record<string, number>): number | null {
+  try {
+    const v = evaluateMathExpr(expr, scope);
+    return typeof v === "number" && isFinite(v) ? v : null;
+  } catch {
+    return null;
+  }
+}
+
+function renderGridPainter(
+  block: Extract<StructuredCourseBlock, { type: "grid_painter" }>,
+): string {
+  const cell = 28;
+  const cells: string[] = [];
+  for (let r = 0; r < block.rows; r++) {
+    for (let c = 0; c < block.cols; c++) {
+      const index = r * block.cols + c;
+      const filled = index < block.highlighted;
+      cells.push(
+        `<rect class="grid-cell${filled ? " grid-cell-filled" : ""}" data-index="${index}" x="${c * cell}" y="${r * cell}" width="${cell}" height="${cell}" fill="${filled ? "#2563eb" : "#fff"}" fill-opacity="${filled ? 0.8 : 1}" stroke="#10213d" stroke-width="1"/>`,
+      );
+    }
+  }
+  const svg = `<svg class="grid-painter-svg" viewBox="0 0 ${block.cols * cell} ${block.rows * cell}" xmlns="http://www.w3.org/2000/svg" role="img" data-rows="${block.rows}" data-cols="${block.cols}">${cells.join("")}</svg>`;
+  return `<figure class="course-figure course-figure-grid-painter">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+const SHAPE_ICONS: Record<string, string> = {
+  cercle: "circle", rond: "circle", carre: "square", carré: "square",
+  triangle: "triangle", etoile: "star", étoile: "star",
+};
+
+function shapeSvg(name: string): string {
+  const key = SHAPE_ICONS[name.toLowerCase()] ?? "circle";
+  if (key === "square") return `<rect x="6" y="6" width="28" height="28" fill="#2563eb"/>`;
+  if (key === "triangle") return `<polygon points="20,6 34,34 6,34" fill="#15803d"/>`;
+  if (key === "star") return `<polygon points="20,4 24,16 37,16 26,24 30,36 20,28 10,36 14,24 3,16 16,16" fill="#c89f36"/>`;
+  return `<circle cx="20" cy="20" r="15" fill="#dc2626"/>`;
+}
+
+function renderPatternMaker(
+  block: Extract<StructuredCourseBlock, { type: "pattern_maker" }>,
+): string {
+  const seq = block.sequence
+    .map((s) => `<div class="pattern-item"><svg viewBox="0 0 40 40" width="40" height="40">${shapeSvg(s)}</svg></div>`)
+    .join("");
+  const blank = `<div class="pattern-item pattern-blank">?</div>`;
+  const options = block.options
+    .map((o) => `<button type="button" class="pattern-option" data-answer="${escapeAttribute(o)}"><svg viewBox="0 0 40 40" width="36" height="36">${shapeSvg(o)}</svg></button>`)
+    .join("");
+  return `<figure class="course-figure course-figure-pattern-maker" data-correct="${escapeAttribute(block.answer)}"><div class="pattern-row">${seq}${blank}</div><div class="pattern-options">${options}</div><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderRulerMeasurer(
+  block: Extract<StructuredCourseBlock, { type: "ruler_measurer" }>,
+): string {
+  const scale = 18;
+  const width = block.segmentLength * scale + 40;
+  const ticks: string[] = [];
+  for (let i = 0; i <= block.segmentLength; i++) {
+    const x = 20 + i * scale;
+    const tall = i % 5 === 0;
+    ticks.push(`<line x1="${x}" y1="30" x2="${x}" y2="${tall ? 12 : 20}" stroke="#10213d" stroke-width="1"/>`);
+    if (tall) ticks.push(`<text x="${x}" y="46" font-size="10" text-anchor="middle" fill="#10213d">${i}</text>`);
+  }
+  const svg = `<svg viewBox="0 0 ${width} 55" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="20" y="24" width="${block.segmentLength * scale}" height="6" fill="#eef3fb" stroke="#10213d" stroke-width="1"/>${ticks.join("")}<line x1="20" y1="10" x2="${20 + block.segmentLength * scale}" y2="10" stroke="#2563eb" stroke-width="2"/></svg>`;
+  return `<figure class="course-figure course-figure-ruler"><div class="ruler-scroll">${svg}</div><figcaption>${escapeHtml(block.caption)} (${block.segmentLength} ${escapeHtml(block.unit)})</figcaption></figure>`;
+}
+
+function renderTapeDiagram(
+  block: Extract<StructuredCourseBlock, { type: "tape_diagram" }>,
+): string {
+  const total = block.parts.reduce((a, p) => a + p.value, 0) || 1;
+  const width = 260;
+  let x = 0;
+  const segments = block.parts
+    .map((p) => {
+      const w = (p.value / total) * width;
+      const seg = `<rect x="${num(x)}" y="0" width="${num(w)}" height="36" fill="${FIGURE_PALETTE[p.tone]}" fill-opacity="0.75" stroke="#fff" stroke-width="1.5"/><text x="${num(x + w / 2)}" y="22" font-size="10" text-anchor="middle" fill="#fff">${escapeHtml(p.label)}</text>`;
+      x += w;
+      return seg;
+    })
+    .join("");
+  const svg = `<svg viewBox="0 0 ${width} 36" xmlns="http://www.w3.org/2000/svg" role="img">${segments}</svg>`;
+  return `<figure class="course-figure course-figure-tape-diagram">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderFractionStrips(
+  block: Extract<StructuredCourseBlock, { type: "fraction_strips" }>,
+): string {
+  const width = 240;
+  const rowHeight = 32;
+  const rows = block.fractions
+    .map((f, i) => {
+      const cellW = width / f.denominator;
+      const cells = Array.from({ length: f.denominator }, (_, c) =>
+        `<rect x="${num(c * cellW)}" y="0" width="${num(cellW)}" height="24" fill="${c < f.numerator ? "#2563eb" : "#fff"}" fill-opacity="${c < f.numerator ? 0.8 : 1}" stroke="#10213d" stroke-width="1"/>`,
+      ).join("");
+      return `<g transform="translate(0,${i * rowHeight})">${cells}<text x="${width + 8}" y="17" font-size="11" fill="#10213d">${f.numerator}/${f.denominator}</text></g>`;
+    })
+    .join("");
+  const svg = `<svg viewBox="0 0 ${width + 40} ${block.fractions.length * rowHeight}" xmlns="http://www.w3.org/2000/svg" role="img">${rows}</svg>`;
+  return `<figure class="course-figure course-figure-fraction-strips">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderPlaceValueChart(
+  block: Extract<StructuredCourseBlock, { type: "place_value_chart" }>,
+): string {
+  const [intPart, decPart = ""] = Math.abs(block.number).toString().split(".");
+  const intDigits = intPart.split("");
+  const decDigits = decPart.split("");
+  const intLabels = ["unités", "dizaines", "centaines", "milliers"];
+  const decLabels = ["dixièmes", "centièmes", "millièmes"];
+  const intCells = intDigits
+    .slice()
+    .reverse()
+    .map((d, i) => `<th>${intLabels[i] ?? `10^${i}`}</th>`)
+    .reverse();
+  const decCells = decDigits.map((_, i) => `<th>${decLabels[i] ?? `10^-${i + 1}`}</th>`);
+  const intValues = intDigits.map((d) => `<td>${escapeHtml(d)}</td>`);
+  const decValues = decDigits.map((d) => `<td>${escapeHtml(d)}</td>`);
+  const sep = decDigits.length ? `<th>,</th>` : "";
+  const sepVal = decDigits.length ? `<td>,</td>` : "";
+  return `<figure class="course-figure course-figure-place-value"><table class="math-table"><thead><tr>${intCells.join("")}${sep}${decCells.join("")}</tr></thead><tbody><tr>${intValues.join("")}${sepVal}${decValues.join("")}</tr></tbody></table><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderRatioMixer(
+  block: Extract<StructuredCourseBlock, { type: "ratio_mixer" }>,
+): string {
+  const max = Math.max(...block.ratios.map((r) => r.value), 1);
+  const gauges = block.ratios
+    .map((r) => {
+      const h = (r.value / max) * 100;
+      return `<div class="ratio-gauge"><div class="ratio-gauge-track"><div class="ratio-gauge-fill" style="height:${h}%;background:${FIGURE_PALETTE[r.tone]}"></div></div><span class="ratio-gauge-label">${escapeHtml(r.label)}</span><span class="ratio-gauge-value">${r.value}</span></div>`;
+    })
+    .join("");
+  return `<figure class="course-figure course-figure-ratio-mixer"><div class="ratio-mixer-row">${gauges}</div><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderNetFolder(
+  block: Extract<StructuredCourseBlock, { type: "net_folder" }>,
+): string {
+  const w0 = block.solid === "cube" ? Math.max(block.width, block.height, block.depth) : block.width;
+  const h0 = block.solid === "cube" ? w0 : block.height;
+  const d0 = block.solid === "cube" ? w0 : block.depth;
+  // Echelle en pixels, plafonnee pour rester compact quelles que soient les dimensions saisies.
+  const maxDim = Math.max(w0, h0, d0);
+  const px = Math.min(28, 90 / maxDim);
+  const W = w0 * px, H = h0 * px, D = d0 * px;
+  const face = (cls: string, x: number, y: number, fw: number, fh: number, label: string) =>
+    `<div class="nf-face ${cls}" style="left:${num(x)}px;top:${num(y)}px;width:${num(fw)}px;height:${num(fh)}px;">${escapeHtml(label)}</div>`;
+  // Coordonnees decalees de (D, D) pour que rien ne soit negatif : le
+  // conteneur .nf-cube reçoit une largeur/hauteur explicites correspondant
+  // au patron en croix a plat, sinon (position absolue partout, aucune
+  // dimension propre) il s'effondrerait a 0x0 et les faces deborderaient
+  // sur les elements suivants (bouton de pliage, légende).
+  const inner =
+    face("nf-front", D, D, W, H, "avant") +
+    face("nf-top", D, 0, W, D, "dessus") +
+    face("nf-bottom", D, D + H, W, D, "dessous") +
+    face("nf-left", 0, D, D, H, "gauche") +
+    `<div class="nf-face nf-right" style="left:${num(D + W)}px;top:${num(D)}px;width:${num(D)}px;height:${num(H)}px;">droite${face("nf-back", D, 0, W, H, "arrière")}</div>`;
+  const cubeWidth = 2 * D + 2 * W;
+  const cubeHeight = H + 2 * D;
+  const scene = `<div class="net-folder-3d-scene"><div class="nf-cube" style="--fold:0;width:${num(cubeWidth)}px;height:${num(cubeHeight)}px;">${inner}</div></div>`;
+  const solidLabel = block.solid === "cube" ? `cube, arête ${w0}` : `pavé ${block.width}×${block.height}×${block.depth}`;
+  const controls = `<div class="net-folder-controls"><label>Plié <input type="range" class="net-folder-slider" min="0" max="1" step="0.01" value="0"/> Déplié</label></div>`;
+  return `<figure class="course-figure course-figure-net-folder">${scene}${controls}<figcaption>${escapeHtml(block.caption)} (${escapeHtml(solidLabel)})</figcaption></figure>`;
+}
+
+function renderInteractiveProtractor(
+  block: Extract<StructuredCourseBlock, { type: "interactive_protractor" }>,
+): string {
+  const cx = 100, cy = 100, r = 80;
+  const ticks: string[] = [];
+  for (let a = 0; a <= 180; a += 10) {
+    const outer = trigPoint(cx, cy, r, a);
+    const inner = trigPoint(cx, cy, r - (a % 30 === 0 ? 10 : 5), a);
+    ticks.push(`<line x1="${num(inner.x)}" y1="${num(inner.y)}" x2="${num(outer.x)}" y2="${num(outer.y)}" stroke="#10213d" stroke-width="1"/>`);
+  }
+  const arm = trigPoint(cx, cy, r - 15, block.angleDeg);
+  const base = `<path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}" fill="none" stroke="#10213d" stroke-width="1.5"/><line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="#10213d" stroke-width="1.5"/>`;
+  const armLine = `<line class="protractor-arm" x1="${cx}" y1="${cy}" x2="${num(arm.x)}" y2="${num(arm.y)}" stroke="#2563eb" stroke-width="2.5"/>`;
+  const svg = `<svg class="protractor-svg" viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg" role="img">${ticks.join("")}${base}${armLine}</svg>`;
+  const controls = `<div class="protractor-controls"><input type="range" class="protractor-slider" min="0" max="180" step="1" value="${block.angleDeg}"/><span class="protractor-value">${block.angleDeg}°</span></div>`;
+  return `<figure class="course-figure course-figure-protractor">${svg}${controls}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderCompassTool(
+  block: Extract<StructuredCourseBlock, { type: "compass_tool" }>,
+): string {
+  const cx = 90, cy = 90, r = Math.min(70, block.radius * 12);
+  const svg = `<svg class="compass-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" data-scale="${(r / block.radius).toFixed(3)}" data-max-r="70"><circle class="compass-circle" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#2563eb" stroke-width="1.5"/><circle cx="${cx}" cy="${cy}" r="2.5" fill="#10213d"/><text x="${cx + 4}" y="${cy - 6}" font-size="11" fill="#10213d">${escapeHtml(block.centerLabel)}</text><line class="compass-radius-line" x1="${cx}" y1="${cy}" x2="${num(cx + r)}" y2="${cy}" stroke="#c89f36" stroke-width="1.5" stroke-dasharray="4 3"/><circle class="compass-handle" cx="${num(cx + r)}" cy="${cy}" r="6" fill="#c89f36" role="button" tabindex="0"/><text class="compass-radius-label" x="${num(cx + r / 2)}" y="${cy - 6}" font-size="10" text-anchor="middle" fill="#c89f36">${block.radius}</text></svg>`;
+  return `<figure class="course-figure course-figure-compass">${svg}<figcaption>${escapeHtml(block.caption)} — fais glisser le point doré pour changer le rayon</figcaption></figure>`;
+}
+
+function renderThermometerAxis(
+  block: Extract<StructuredCourseBlock, { type: "thermometer_axis" }>,
+): string {
+  const height = 220;
+  const clamp = (v: number) => Math.max(block.min, Math.min(block.max, v));
+  const yFor = (v: number) => 20 + (1 - (clamp(v) - block.min) / (block.max - block.min)) * height;
+  const ticks: string[] = [];
+  const step = Math.max(1, Math.round((block.max - block.min) / 8));
+  for (let v = block.min; v <= block.max; v += step) {
+    const y = yFor(v);
+    ticks.push(`<line x1="30" y1="${num(y)}" x2="38" y2="${num(y)}" stroke="#10213d" stroke-width="1"/><text x="24" y="${num(y + 3)}" font-size="9" text-anchor="end" fill="#10213d">${v}</text>`);
+  }
+  const points = block.points
+    .map((p) => {
+      const y = yFor(p.value);
+      return `<circle cx="38" cy="${num(y)}" r="4" fill="#2563eb"/><text x="46" y="${num(y + 3)}" font-size="10" fill="#10213d">${escapeHtml(p.label)} (${p.value})</text>`;
+    })
+    .join("");
+  const zeroY = block.min <= 0 && block.max >= 0 ? yFor(0) : null;
+  const zeroLine = zeroY !== null ? `<line x1="30" y1="${num(zeroY)}" x2="120" y2="${num(zeroY)}" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 2"/>` : "";
+  const svg = `<svg viewBox="0 0 160 ${height + 40}" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="34" y1="20" x2="34" y2="${height + 20}" stroke="#10213d" stroke-width="2"/>${ticks.join("")}${zeroLine}${points}</svg>`;
+  return `<figure class="course-figure course-figure-thermometer">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderAreaDecomposer(
+  block: Extract<StructuredCourseBlock, { type: "area_decomposer" }>,
+): string {
+  const scale = 14;
+  let x = 0;
+  const total = block.shapes.reduce((a, s) => a + s.width * s.height, 0);
+  const shapes = block.shapes
+    .map((s) => {
+      const w = s.width * scale, h = s.height * scale;
+      const rect = `<rect x="${num(x)}" y="0" width="${num(w)}" height="${num(h)}" fill="#eef3fb" stroke="#2563eb" stroke-width="1.5"/><text x="${num(x + w / 2)}" y="${num(h / 2)}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(s.label)}</text><text x="${num(x + w / 2)}" y="${num(h + 14)}" font-size="9" text-anchor="middle" fill="#64748b">${s.width}×${s.height}</text>`;
+      x += w + 10;
+      return rect;
+    })
+    .join("");
+  const maxH = Math.max(...block.shapes.map((s) => s.height)) * scale;
+  const svg = `<svg viewBox="0 0 ${num(x)} ${num(maxH + 24)}" xmlns="http://www.w3.org/2000/svg" role="img">${shapes}</svg>`;
+  return `<figure class="course-figure course-figure-area-decomposer">${svg}<figcaption>${escapeHtml(block.caption)} (aire totale : ${total})</figcaption></figure>`;
+}
+
+function renderPythagorasVisualizer(
+  block: Extract<StructuredCourseBlock, { type: "pythagoras_visualizer" }>,
+): string {
+  const { a, b } = block;
+  const scale = 18;
+  const A = a * scale, B = b * scale;
+  const p1 = { x: 60, y: 60 + A };
+  const p2 = { x: 60, y: 60 };
+  const p3 = { x: 60 + B, y: 60 + A };
+  const triangle = `<polygon points="${p1.x},${p1.y} ${p2.x},${p2.y} ${p3.x},${p3.y}" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>`;
+  const squareA = `<rect x="${p1.x - A}" y="${p1.y}" width="${A}" height="${A}" fill="#2563eb" fill-opacity="0.35" stroke="#2563eb"/><text x="${p1.x - A / 2}" y="${p1.y + A / 2}" font-size="11" text-anchor="middle" fill="#10213d">a²</text>`;
+  const squareB = `<rect x="${p2.x}" y="${p2.y - B}" width="${B}" height="${B}" fill="#15803d" fill-opacity="0.35" stroke="#15803d"/><text x="${p2.x + B / 2}" y="${p2.y - B / 2}" font-size="11" text-anchor="middle" fill="#10213d">b²</text>`;
+  const hyp = Math.hypot(B, A);
+  const nx = A / hyp, ny = -B / hyp;
+  const hx1 = p2.x + nx * hyp, hy1 = p2.y + ny * hyp * 0;
+  const squareC = `<polygon points="${p2.x},${p2.y} ${p3.x},${p3.y} ${p3.x + A * (B / hyp) * 0 + nx * hyp},${p3.y + ny * hyp} ${p2.x + nx * hyp},${p2.y + ny * hyp}" fill="#dc2626" fill-opacity="0.3" stroke="#dc2626"/>`;
+  const svg = `<svg viewBox="0 0 ${num(60 + B + A + 20)} ${num(60 + A + B + 20)}" xmlns="http://www.w3.org/2000/svg" role="img">${squareA}${squareB}${squareC}${triangle}</svg>`;
+  return `<figure class="course-figure course-figure-pythagoras">${svg}<figcaption>${escapeHtml(block.caption)} ($a=${a}$, $b=${b}$, $c=${block.c.toFixed(2)}$)</figcaption></figure>`;
+}
+
+function renderScientificNotationConverter(
+  block: Extract<StructuredCourseBlock, { type: "scientific_notation_converter" }>,
+): string {
+  const notation = `${block.value} \\times 10^{${block.exponent}}`;
+  const width = 260;
+  const minExp = -6, maxExp = 6;
+  const clampedExp = Math.max(minExp, Math.min(maxExp, block.exponent));
+  const x = 20 + ((clampedExp - minExp) / (maxExp - minExp)) * (width - 40);
+  const ticks: string[] = [];
+  for (let e = minExp; e <= maxExp; e += 2) {
+    const tx = 20 + ((e - minExp) / (maxExp - minExp)) * (width - 40);
+    ticks.push(`<line x1="${num(tx)}" y1="30" x2="${num(tx)}" y2="38" stroke="#10213d" stroke-width="1"/><text x="${num(tx)}" y="50" font-size="9" text-anchor="middle" fill="#10213d">10^${e}</text>`);
+  }
+  const svg = `<svg class="sci-notation-svg" viewBox="0 0 ${width} 55" xmlns="http://www.w3.org/2000/svg" role="img" data-min-exp="${minExp}" data-max-exp="${maxExp}" data-width="${width}"><line x1="20" y1="34" x2="${width - 20}" y2="34" stroke="#10213d" stroke-width="1.5"/>${ticks.join("")}<circle class="sci-notation-handle" cx="${num(x)}" cy="34" r="7" fill="#dc2626" role="button" tabindex="0"/></svg>`;
+  const controls = `<div class="sci-notation-controls">Valeur : <span class="sci-notation-value">${block.value} × 10<sup class="sci-notation-exp">${block.exponent}</sup></span></div>`;
+  return `<figure class="course-figure course-figure-sci-notation" data-value="${block.value}">${svg}${controls}<figcaption>${escapeHtml(block.caption)} — fais glisser le point pour changer la puissance de 10</figcaption></figure>`;
+}
+
+function renderEquationBalancer(
+  block: Extract<StructuredCourseBlock, { type: "equation_balancer" }>,
+): string {
+  const cx = 100, pivotY = 60, beamHalf = 70;
+  const pan = (x: number, terms: string[]) => {
+    const items = terms
+      .map((t, i) => `<text x="${num(x)}" y="${num(pivotY + 26 + i * 14)}" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(t)}</text>`)
+      .join("");
+    return `<line x1="${num(x)}" y1="${pivotY}" x2="${num(x)}" y2="${pivotY + 16}" stroke="#10213d" stroke-width="1.5"/><rect x="${num(x - 30)}" y="${pivotY + 16}" width="60" height="10" rx="3" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>${items}`;
+  };
+  const beam = `<line x1="${cx - beamHalf}" y1="${pivotY}" x2="${cx + beamHalf}" y2="${pivotY}" stroke="#10213d" stroke-width="3"/>`;
+  const pivot = `<polygon points="${cx - 8},${pivotY + 40} ${cx + 8},${pivotY + 40} ${cx},${pivotY}" fill="#c5a148"/>`;
+  const svg = `<svg viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg" role="img">${pivot}${beam}${pan(cx - beamHalf, block.leftTerms)}${pan(cx + beamHalf, block.rightTerms)}</svg>`;
+  return `<figure class="course-figure course-figure-equation-balancer">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderSlopeTriangle(
+  block: Extract<StructuredCourseBlock, { type: "slope_triangle" }>,
+): string {
+  const { svg, error } = buildGraphSvg(`${block.a}*x+${block.b}`, block.xMin, block.xMax);
+  if (error) return `<p class="course-figure-error">${escapeHtml(error)}</p>`;
+  const meta = parseGraphMeta(svg);
+  const x1 = (meta.xmin + meta.xmax) / 2 - 1;
+  const x2 = x1 + 2;
+  const y1 = block.a * x1 + block.b;
+  const y2 = block.a * x2 + block.b;
+  const overlay = `<line x1="${num(meta.sx(x1))}" y1="${num(meta.sy(y1))}" x2="${num(meta.sx(x2))}" y2="${num(meta.sy(y1))}" stroke="#c89f36" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="${num(meta.sx(x2))}" y1="${num(meta.sy(y1))}" x2="${num(meta.sx(x2))}" y2="${num(meta.sy(y2))}" stroke="#c89f36" stroke-width="1.5" stroke-dasharray="4 3"/><text x="${num((meta.sx(x1) + meta.sx(x2)) / 2)}" y="${num(meta.sy(y1) + 14)}" font-size="10" fill="#c89f36">1</text><text x="${num(meta.sx(x2) + 6)}" y="${num((meta.sy(y1) + meta.sy(y2)) / 2)}" font-size="10" fill="#c89f36">${block.a}</text>`;
+  return `<figure class="course-figure course-figure-graph">${injectIntoSvg(svg, overlay)}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderVectorAdditionPad(
+  block: Extract<StructuredCourseBlock, { type: "vector_addition_pad" }>,
+): string {
+  const range = Math.max(Math.abs(block.ux) + Math.abs(block.vx), Math.abs(block.uy) + Math.abs(block.vy), 3) + 1;
+  const { svg, error } = buildGraphSvg("0*x", -range, range, 10, {}, [
+    { x: block.ux, y: block.uy, fromX: 0, fromY: 0, label: "u", tone: "blue" } as never,
+    { x: block.vx, y: block.vy, fromX: block.ux, fromY: block.uy, label: "v", tone: "green" } as never,
+    { x: block.ux + block.vx, y: block.uy + block.vy, fromX: 0, fromY: 0, label: "u+v", tone: "red" } as never,
+  ]);
+  if (error) return `<p class="course-figure-error">${escapeHtml(error)}</p>`;
+  return `<figure class="course-figure course-figure-graph">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderIntervalBuilder(
+  block: Extract<StructuredCourseBlock, { type: "interval_builder" }>,
+): string {
+  const width = 260;
+  const sx = (v: number) => 20 + ((v - block.min) / (block.max - block.min)) * (width - 40);
+  const x1 = sx(block.lowerBound), x2 = sx(block.upperBound);
+  const line = `<line x1="20" y1="30" x2="${width - 20}" y2="30" stroke="#10213d" stroke-width="1.5"/>`;
+  const highlight = `<line x1="${num(x1)}" y1="30" x2="${num(x2)}" y2="30" stroke="#2563eb" stroke-width="4"/>`;
+  const endpoint = (x: number, open: boolean) =>
+    `<circle cx="${num(x)}" cy="30" r="5" fill="${open ? "#fff" : "#2563eb"}" stroke="#2563eb" stroke-width="2"/>`;
+  const labels = `<text x="${num(x1)}" y="20" font-size="10" text-anchor="middle" fill="#10213d">${block.lowerBound}</text><text x="${num(x2)}" y="20" font-size="10" text-anchor="middle" fill="#10213d">${block.upperBound}</text>`;
+  const svg = `<svg viewBox="0 0 ${width} 40" xmlns="http://www.w3.org/2000/svg" role="img">${line}${highlight}${endpoint(x1, block.lowerOpen)}${endpoint(x2, block.upperOpen)}${labels}</svg>`;
+  return `<figure class="course-figure course-figure-interval">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderTangentScrubber(
+  block: Extract<StructuredCourseBlock, { type: "tangent_scrubber" }>,
+): string {
+  const { svg, error } = buildGraphSvg(block.expression, block.xMin, block.xMax);
+  if (error) return `<p class="course-figure-error">${escapeHtml(error)}</p>`;
+  const y0 = safeEval(block.expression, { x: block.x0 });
+  if (y0 === null) return `<figure class="course-figure course-figure-graph">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  const h = (block.xMax - block.xMin) / 1000;
+  const y0p = safeEval(block.expression, { x: block.x0 + h });
+  const slope = y0p !== null ? (y0p - y0) / h : 0;
+  const meta = parseGraphMeta(svg);
+  const dx = (block.xMax - block.xMin) * 0.15;
+  const tx1 = block.x0 - dx, tx2 = block.x0 + dx;
+  const ty1 = y0 - slope * dx, ty2 = y0 + slope * dx;
+  const overlay = `<line x1="${num(meta.sx(tx1))}" y1="${num(meta.sy(ty1))}" x2="${num(meta.sx(tx2))}" y2="${num(meta.sy(ty2))}" stroke="#dc2626" stroke-width="2"/><circle cx="${num(meta.sx(block.x0))}" cy="${num(meta.sy(y0))}" r="4" fill="#dc2626"/>`;
+  return `<figure class="course-figure course-figure-graph">${injectIntoSvg(svg, overlay)}<figcaption>${escapeHtml(block.caption)} ($f'(${block.x0}) \\approx ${slope.toFixed(2)}$)</figcaption></figure>`;
+}
+
+function renderSequenceCobweb(
+  block: Extract<StructuredCourseBlock, { type: "sequence_cobweb" }>,
+): string {
+  const { svg, error } = buildGraphSvg(block.expression, block.xMin, block.xMax);
+  if (error) return `<p class="course-figure-error">${escapeHtml(error)}</p>`;
+  const meta = parseGraphMeta(svg);
+  const diag = `<line x1="${num(meta.sx(meta.xmin))}" y1="${num(meta.sy(meta.xmin))}" x2="${num(meta.sx(meta.xmax))}" y2="${num(meta.sy(meta.xmax))}" stroke="#64748b" stroke-width="1" stroke-dasharray="4 3"/>`;
+  let u = block.u0;
+  const segs: string[] = [];
+  for (let i = 0; i < block.iterations; i++) {
+    const fu = safeEval(block.expression, { x: u });
+    if (fu === null) break;
+    segs.push(`<line x1="${num(meta.sx(u))}" y1="${num(meta.sy(u))}" x2="${num(meta.sx(u))}" y2="${num(meta.sy(fu))}" stroke="#c89f36" stroke-width="1.5"/>`);
+    segs.push(`<line x1="${num(meta.sx(u))}" y1="${num(meta.sy(fu))}" x2="${num(meta.sx(fu))}" y2="${num(meta.sy(fu))}" stroke="#c89f36" stroke-width="1.5"/>`);
+    u = fu;
+  }
+  return `<figure class="course-figure course-figure-graph">${injectIntoSvg(svg, diag + segs.join(""))}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderIntegralRiemannSlider(
+  block: Extract<StructuredCourseBlock, { type: "integral_riemann_slider" }>,
+): string {
+  const { svg, error } = buildGraphSvg(block.expression, block.xMin, block.xMax);
+  if (error) return `<p class="course-figure-error">${escapeHtml(error)}</p>`;
+  const meta = parseGraphMeta(svg);
+  const dx = (block.xMax - block.xMin) / block.rectangles;
+  const rects: string[] = [];
+  for (let i = 0; i < block.rectangles; i++) {
+    const x = block.xMin + i * dx;
+    const y = safeEval(block.expression, { x: x + dx / 2 });
+    if (y === null) continue;
+    const rectX = meta.sx(x), rectX2 = meta.sx(x + dx);
+    const rectY = meta.sy(Math.max(0, y)), baseY = meta.sy(0);
+    rects.push(`<rect x="${num(Math.min(rectX, rectX2))}" y="${num(Math.min(rectY, baseY))}" width="${num(Math.abs(rectX2 - rectX))}" height="${num(Math.abs(baseY - rectY))}" fill="#2563eb" fill-opacity="0.35" stroke="#2563eb" stroke-width="1"/>`);
+  }
+  return `<figure class="course-figure course-figure-graph">${injectIntoSvg(svg, rects.join(""))}<figcaption>${escapeHtml(block.caption)} (${block.rectangles} rectangles)</figcaption></figure>`;
+}
+
+function renderComplexPlanePolar(
+  block: Extract<StructuredCourseBlock, { type: "complex_plane_polar" }>,
+): string {
+  const modulus = Math.hypot(block.re, block.im);
+  const angle = (Math.atan2(block.im, block.re) * 180) / Math.PI;
+  const range = Math.max(Math.abs(block.re), Math.abs(block.im), 2) + 1;
+  const { svg, error } = buildGraphSvg("0*x", -range, range, 10, {}, [
+    { x: block.re, y: block.im, fromX: 0, fromY: 0, label: "z", tone: "blue" } as never,
+  ]);
+  if (error) return `<p class="course-figure-error">${escapeHtml(error)}</p>`;
+  const algebraic = `${block.re}${block.im >= 0 ? " + " : " − "}${Math.abs(block.im)}i`;
+  const polar = `${modulus.toFixed(2)} × (cos ${angle.toFixed(1)}° + i·sin ${angle.toFixed(1)}°)`;
+  const toggle = `<div class="complex-toggle" data-algebraic="${escapeAttribute(algebraic)}" data-polar="${escapeAttribute(polar)}"><button type="button" class="complex-toggle-btn">Basculer forme algébrique / exponentielle</button><span class="complex-toggle-value">${escapeHtml(algebraic)}</span></div>`;
+  return `<figure class="course-figure course-figure-graph">${svg}${toggle}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderAlgoSandbox(
+  block: Extract<StructuredCourseBlock, { type: "algo_sandbox" }>,
+): string {
+  const isPython = block.language.toLowerCase() === "python";
+  const runButton = isPython
+    ? `<button type="button" class="algo-sandbox-run">▶ Exécuter</button>`
+    : `<span class="algo-sandbox-readonly">(${escapeHtml(block.language)}, lecture seule)</span>`;
+  return `<figure class="course-figure course-figure-algo-sandbox"><textarea class="algo-sandbox-code" spellcheck="false" ${isPython ? "" : "readonly"}>${escapeHtml(block.code)}</textarea><div class="algo-sandbox-toolbar">${runButton}</div><pre class="algo-sandbox-output" hidden></pre><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderClock(
+  block: Extract<StructuredCourseBlock, { type: "clock" }>,
+): string {
+  const cx = 100;
+  const cy = 100;
+  const r = 82;
+  const ticks: string[] = [];
+  for (let i = 0; i < 12; i++) {
+    const angle = i * 30;
+    const outer = trigPoint(cx, cy, r, 90 - angle);
+    const inner = trigPoint(cx, cy, r - (i % 3 === 0 ? 12 : 6), 90 - angle);
+    const label = trigPoint(cx, cy, r - 20, 90 - angle);
+    ticks.push(
+      `<line x1="${num(inner.x)}" y1="${num(inner.y)}" x2="${num(outer.x)}" y2="${num(outer.y)}" stroke="#10213d" stroke-width="${i % 3 === 0 ? 2 : 1}"/>`,
+    );
+    const hourNumber = i === 0 ? 12 : i;
+    ticks.push(
+      `<text x="${num(label.x)}" y="${num(label.y)}" dy="4" font-size="${i % 3 === 0 ? 12 : 10}" text-anchor="middle" fill="#10213d">${hourNumber}</text>`,
+    );
+  }
+  const hourAngle = ((block.hours % 12) + block.minutes / 60) * 30;
+  const minuteAngle = block.minutes * 6;
+  const hourHand = trigPoint(cx, cy, r * 0.5, 90 - hourAngle);
+  const minuteHand = trigPoint(cx, cy, r * 0.78, 90 - minuteAngle);
+  const face = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" stroke="#10213d" stroke-width="1.5"/>`;
+  const hands = `<line class="clock-hour-hand" x1="${cx}" y1="${cy}" x2="${num(hourHand.x)}" y2="${num(hourHand.y)}" stroke="#10213d" stroke-width="4" stroke-linecap="round"/><line class="clock-minute-hand" x1="${cx}" y1="${cy}" x2="${num(minuteHand.x)}" y2="${num(minuteHand.y)}" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="4" fill="#10213d"/>`;
+  const svg = `<svg class="clock-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" data-hours="${block.hours}" data-minutes="${block.minutes}">${face}${ticks.join("")}<g class="clock-hands">${hands}</g></svg>`;
+  const controls = block.interactive
+    ? `<div class="clock-controls"><button type="button" class="clock-drag-hint">Fais glisser les aiguilles</button><span class="clock-reading"></span></div>`
+    : "";
+  const className = block.interactive
+    ? "course-figure course-figure-clock course-figure-clock-interactive"
+    : "course-figure course-figure-clock";
+  return `<figure class="${className}">${svg}${controls}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderFraction(
+  block: Extract<StructuredCourseBlock, { type: "fraction" }>,
+): string {
+  const { numerator, denominator } = block;
+  let svg: string;
+  if (block.shape === "circle") {
+    const cx = 80;
+    const cy = 80;
+    const r = 62;
+    let startAngle = -90;
+    const step = 360 / denominator;
+    const slices: string[] = [];
+    for (let i = 0; i < denominator; i++) {
+      const endAngle = startAngle + step;
+      const start = trigPoint(cx, cy, r, -startAngle);
+      const end = trigPoint(cx, cy, r, -endAngle);
+      const largeArc = step > 180 ? 1 : 0;
+      const filled = i < numerator;
+      const color = filled ? "#2563eb" : "#fff";
+      slices.push(
+        `<path d="M ${num(cx)} ${num(cy)} L ${num(start.x)} ${num(start.y)} A ${r} ${r} 0 ${largeArc} 1 ${num(end.x)} ${num(end.y)} Z" fill="${color}" fill-opacity="${filled ? 0.85 : 1}" stroke="#10213d" stroke-width="1.5"/>`,
+      );
+      startAngle = endAngle;
+    }
+    svg = `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img">${slices.join("")}</svg>`;
+  } else {
+    const width = 240;
+    const height = 60;
+    const cellWidth = width / denominator;
+    const cells: string[] = [];
+    for (let i = 0; i < denominator; i++) {
+      const filled = i < numerator;
+      cells.push(
+        `<rect x="${num(i * cellWidth)}" y="0" width="${num(cellWidth)}" height="${height}" fill="${filled ? "#2563eb" : "#fff"}" fill-opacity="${filled ? 0.85 : 1}" stroke="#10213d" stroke-width="1.5"/>`,
+      );
+    }
+    svg = `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img">${cells.join("")}</svg>`;
+  }
+  const label = `<div class="fraction-label">${numerator} / ${denominator}</div>`;
+  return `<figure class="course-figure course-figure-fraction">${svg}${label}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function renderPieChart(
@@ -605,7 +1176,7 @@ function compileDisplayMath(latex: string, fallbackText?: string): string {
   return fallback ? `<p>${escapeHtml(fallback)}</p>` : "";
 }
 
-function compileCourseBlock(
+export function compileCourseBlock(
   block: StructuredCourseBlock,
   exerciseIds: string[],
   usedExerciseIndexes: Set<number>,
@@ -626,6 +1197,14 @@ function compileCourseBlock(
         .join("");
       return items ? `<${tag}>${items}</${tag}>` : "";
     }
+    case "checklist": {
+      // Rendu par CourseViewer.tsx en checklist "Je sais faire" cochable qui
+      // gate le bouton "Terminer le cours" (voir InteractiveChecklist).
+      const items = block.items
+        .map((item) => `<li>${compileStructuredRichText(item)}</li>`)
+        .join("");
+      return items ? `<ul class="course-checklist">${items}</ul>` : "";
+    }
     case "callout": {
       const variant = block.variant === "warning" ? "warning" : "note";
       const title = block.title?.parts.length
@@ -635,6 +1214,12 @@ function compileCourseBlock(
         .map((paragraph) => `<p>${compileStructuredRichText(paragraph)}</p>`)
         .join("");
       return `<blockquote class="course-callout course-callout-${variant}">${title}${paragraphs}</blockquote>`;
+    }
+    case "definition": {
+      const example = block.example
+        ? `<p class="course-definition-example">${compileStructuredRichText(block.example)}</p>`
+        : "";
+      return `<div class="course-definition"><span class="course-definition-badge">Mot-clé</span><p class="course-definition-term">${escapeHtml(block.term)}</p><p class="course-definition-body">${compileStructuredRichText(block.definition)}</p>${example}</div>`;
     }
     case "table": {
       const headers = block.headers
@@ -812,6 +1397,60 @@ function compileCourseBlock(
       return renderNumberLine(block);
     case "bar_chart":
       return renderBarChart(block);
+    case "clock":
+      return renderClock(block);
+    case "fraction":
+      return renderFraction(block);
+    case "coin_purse":
+      return renderCoinPurse(block);
+    case "balance_scale":
+      return renderBalanceScale(block);
+    case "grid_painter":
+      return renderGridPainter(block);
+    case "pattern_maker":
+      return renderPatternMaker(block);
+    case "ruler_measurer":
+      return renderRulerMeasurer(block);
+    case "tape_diagram":
+      return renderTapeDiagram(block);
+    case "fraction_strips":
+      return renderFractionStrips(block);
+    case "place_value_chart":
+      return renderPlaceValueChart(block);
+    case "ratio_mixer":
+      return renderRatioMixer(block);
+    case "net_folder":
+      return renderNetFolder(block);
+    case "interactive_protractor":
+      return renderInteractiveProtractor(block);
+    case "compass_tool":
+      return renderCompassTool(block);
+    case "thermometer_axis":
+      return renderThermometerAxis(block);
+    case "area_decomposer":
+      return renderAreaDecomposer(block);
+    case "pythagoras_visualizer":
+      return renderPythagorasVisualizer(block);
+    case "scientific_notation_converter":
+      return renderScientificNotationConverter(block);
+    case "equation_balancer":
+      return renderEquationBalancer(block);
+    case "slope_triangle":
+      return renderSlopeTriangle(block);
+    case "vector_addition_pad":
+      return renderVectorAdditionPad(block);
+    case "interval_builder":
+      return renderIntervalBuilder(block);
+    case "tangent_scrubber":
+      return renderTangentScrubber(block);
+    case "sequence_cobweb":
+      return renderSequenceCobweb(block);
+    case "integral_riemann_slider":
+      return renderIntegralRiemannSlider(block);
+    case "complex_plane_polar":
+      return renderComplexPlanePolar(block);
+    case "algo_sandbox":
+      return renderAlgoSandbox(block);
     case "probability_tree":
       return renderProbabilityTree(block);
     case "venn_diagram":

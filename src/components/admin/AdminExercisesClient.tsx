@@ -712,7 +712,7 @@ export default function AdminExercisesClient({
     return { ...exercise, content_json: full.content_json ?? [] };
   };
 
-  const handlePreview = async (exercise: Exercise) => {
+  const handlePreview = async (exercise: Exercise, win?: Window | null) => {
     const previewData = {
       title: exercise.title,
       description: exercise.question || "",
@@ -738,8 +738,15 @@ export default function AdminExercisesClient({
       body: JSON.stringify({ type: "exercise", payload: previewData }),
     });
     const data = await res.json();
-    if (!res.ok) return;
-    window.open(`/child/exercises/preview?pid=${data.id}`, "_blank");
+    if (!res.ok) {
+      win?.close();
+      return;
+    }
+    const url = `/child/exercises/preview?pid=${data.id}`;
+    // `win` ouvert de façon synchrone AVANT tout await, sinon Safari mobile
+    // bloque silencieusement le window.open (plus rattaché au geste utilisateur).
+    if (win) win.location.href = url;
+    else window.open(url, "_blank");
   };
 
   // Génération en arrière-plan (même architecture que les cours) : ferme le
@@ -1257,7 +1264,13 @@ export default function AdminExercisesClient({
                     <div className="flex gap-1">
                       <GlassIconButton
                         icon={Eye}
-                        onClick={async () => handlePreview(await getFullExercise(exercise))}
+                        onClick={() => {
+                          const win = window.open("", "_blank");
+                          void (async () => {
+                            const full = await getFullExercise(exercise);
+                            await handlePreview(full, win);
+                          })();
+                        }}
                         color="gray"
                         size="sm"
                         aria-label="Prévisualiser"
