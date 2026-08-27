@@ -8,7 +8,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { resolveAuthDestination } from "@/lib/authRedirect";
 import { patchSignupSession } from "@/lib/signupSession";
-import { LogIn, Lock, AlertCircle, User, Eye, EyeOff, Fingerprint } from "lucide-react";
+import { LogIn, Lock, AlertCircle, User, Eye, EyeOff } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 /** Supabase Auth renvoie ses messages d'erreur en anglais quel que soit le
@@ -47,26 +47,25 @@ export default function ConnexionClient() {
   });
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [passkeyLoading, setPasskeyLoading] = useState(false);
-  const [passkeySupported, setPasskeySupported] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    setPasskeySupported(typeof window !== "undefined" && !!window.PublicKeyCredential);
-  }, []);
+  useEffect(() => { setMounted(true); }, []);
 
-  // Connexion par clé d'accès (empreinte/Face ID) — encore réservée aux
-  // comptes admin qui en ont enregistré une (voir AdminWebAuthnCard). Le
-  // reste de la logique (destination, bannissement...) suit exactement le
-  // même chemin que la connexion par mot de passe.
-  const handlePasskeyLogin = async () => {
-    setError(null);
-    const email = identifier.trim();
-    if (!email.includes("@")) {
-      setError("Utilise ton email (pas ton pseudo) pour te connecter par clé d'accès.");
-      return;
-    }
-    setPasskeyLoading(true);
+  // Vérifie la clé d'accès de ce compte APRÈS le mot de passe, AVANT la 2FA
+  // — ce n'est plus une alternative au mot de passe (pas de bouton dédié),
+  // mais un facteur supplémentaire pour les comptes qui en ont enregistré
+  // une (voir AdminWebAuthnCard). Ne fait rien si le compte n'en a aucune —
+  // la connexion continue alors normalement vers la 2FA / le tableau de
+  // bord, exactement comme avant l'ajout des clés d'accès.
+  const verifyPasskeyIfAny = async (email: string, accessToken: string): Promise<boolean> => {
+    if (typeof window === "undefined" || !window.PublicKeyCredential) return true;
+
+    const statusRes = await fetch("/api/auth/webauthn/status", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    if (!statusRes.ok) return true; // en cas de doute, ne bloque pas la connexion
+    const statusData = await statusRes.json();
+    if (!((statusData.credentials || []).length > 0)) return true;
+
     try {
       const optionsRes = await fetch("/api/auth/webauthn/login/options", {
         method: "POST",
@@ -85,28 +84,19 @@ export default function ConnexionClient() {
       });
       const verifyData = await verifyRes.json();
       if (!verifyRes.ok || !verifyData.verified) throw new Error(verifyData.error || "Vérification échouée.");
-
-      const { error: otpError } = await supabase.auth.verifyOtp({ token_hash: verifyData.tokenHash, type: "email" });
-      if (otpError) throw otpError;
-
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const dest = await resolveAuthDestination(supabase, user.id);
-        if (dest === "banned") { router.push("/auth/banned"); return; }
-        if (dest === "no_account" || dest === "incomplete") { router.push("/auth/inscription"); return; }
-        router.push(dest);
-      }
+      return true;
     } catch (err: any) {
-      // "NotAllowedError" couvre à la fois l'annulation volontaire (l'élève
-      // ferme la boîte de dialogue pour taper son mot de passe à la place)
-      // ET le vrai timeout/refus — le navigateur ne distingue pas les deux
-      // dans le message. Un choix délibéré de fermer la fenêtre n'est pas
-      // une erreur : on n'affiche donc rien dans ce cas, silencieusement.
-      if (err?.name !== "NotAllowedError") {
-        setError(err?.message || "Échec de la connexion par clé d'accès.");
-      }
-    } finally {
-      setPasskeyLoading(false);
+      // Le compte A une clé d'accès enregistrée : elle devient obligatoire à
+      // chaque connexion (comme un second facteur), on ne laisse donc pas
+      // passer même en cas d'annulation — on déconnecte pour éviter qu'une
+      // session mot-de-passe reste active sans avoir passé ce contrôle.
+      await supabase.auth.signOut();
+      setError(
+        err?.name === "NotAllowedError"
+          ? "Vérification par clé d'accès annulée — recommence et confirme avec ton empreinte/Face ID."
+          : (err?.message || "Échec de la vérification par clé d'accès.")
+      );
+      return false;
     }
   };
 
@@ -159,7 +149,10 @@ export default function ConnexionClient() {
         body: JSON.stringify({ email, success: !authError }),
       }).catch(() => {});
       if (authError) throw authError;
-      if (data.user) {
+      if (data.user && data.session) {
+        const passkeyOk = await verifyPasskeyIfAny(email, data.session.access_token);
+        if (!passkeyOk) return;
+
         const dest = await resolveAuthDestination(supabase, data.user.id);
         if (dest === "banned") { router.push("/auth/banned"); return; }
         if (dest === "no_account" || dest === "incomplete") { router.push("/auth/inscription"); return; }
@@ -282,21 +275,6 @@ export default function ConnexionClient() {
               <><LogIn className="w-4 h-4" /> Se connecter</>
             )}
           </GlassButton>
-
-          {passkeySupported && (
-            <GlassButton
-              onClick={handlePasskeyLogin}
-              variant="outline"
-              fullWidth
-              disabled={passkeyLoading}
-            >
-              {passkeyLoading ? (
-                <span className="animate-pulse">Vérification…</span>
-              ) : (
-                <><Fingerprint className="w-4 h-4" /> Empreinte / Face ID</>
-              )}
-            </GlassButton>
-          )}
         </form>
       </div>
 

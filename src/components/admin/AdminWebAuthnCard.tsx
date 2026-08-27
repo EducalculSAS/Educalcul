@@ -129,8 +129,9 @@ export default function AdminWebAuthnCard() {
         Clé d&apos;accès (empreinte / Face ID)
       </h2>
       <p className="text-sm text-gray-600 mb-4">
-        Connecte-toi sans mot de passe grâce à l&apos;empreinte digitale, la reconnaissance faciale ou le code de
-        cet appareil, comme une application native.
+        Une fois activée, ton mot de passe ne suffit plus : à chaque connexion, l&apos;empreinte digitale, la
+        reconnaissance faciale ou le code de cet appareil sera aussi demandé (avant la double authentification
+        si elle est active).
       </p>
 
       {!supported && (
