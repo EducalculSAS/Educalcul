@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
+import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { QUIZ_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import QuizGeneratorModal, { QuizGenParams } from "@/components/admin/QuizGeneratorModal";
@@ -1258,7 +1259,7 @@ export default function AdminQuizzesClient({
                         size="sm"
                         color="navy"
                         onClick={() => {
-                          const win = window.open("", "_blank");
+                          const win = openPreviewLoadingWindow();
                           void (async () => {
                             const full = await getFullQuiz(quiz);
                             await handlePreview(full, win);
@@ -1733,7 +1734,7 @@ export default function AdminQuizzesClient({
                   variant="outline"
                   className="mr-auto"
                   onClick={() => {
-                    const win = window.open("", "_blank");
+                    const win = openPreviewLoadingWindow();
                     void handlePreview({
                       id: editingQuiz?.id || "",
                       title: formData.title,

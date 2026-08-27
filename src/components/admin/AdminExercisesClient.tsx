@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { supabase } from "@/lib/supabaseClient";
+import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
 import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
@@ -1265,7 +1266,7 @@ export default function AdminExercisesClient({
                       <GlassIconButton
                         icon={Eye}
                         onClick={() => {
-                          const win = window.open("", "_blank");
+                          const win = openPreviewLoadingWindow();
                           void (async () => {
                             const full = await getFullExercise(exercise);
                             await handlePreview(full, win);

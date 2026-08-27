@@ -25,6 +25,7 @@ import {
   ShieldCheck,
   Flag,
   Gamepad2,
+  Keyboard,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -54,6 +55,7 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
     { name: "Cours", href: "/admin/courses", icon: BookOpen },
     { name: "Exercices", href: "/admin/exercises", icon: Calculator },
     { name: "Quiz", href: "/admin/quizzes", icon: Trophy },
+    { name: "Clavier", href: "/admin/clavier", icon: Keyboard },
     { name: "Mini-jeux", href: "/admin/minigames", icon: Gamepad2 },
     { name: "Rapports", href: "/admin/reports", icon: FileText },
     { name: "Forum", href: "/admin/forum", icon: MessageSquare },

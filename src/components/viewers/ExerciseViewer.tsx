@@ -26,6 +26,7 @@ import MathInput, { MathInputHandle } from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import "katex/dist/katex.min.css";
 
 // Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
@@ -854,39 +855,35 @@ export default function ExerciseViewer({
                   {block.type === "text_input" && (
                     <div className="flex flex-col gap-2">
                       {/* Mode Toggle */}
-                      <div className="flex justify-end gap-2 mb-1">
-                        <button
-                          onClick={() =>
+                      <div className="flex justify-end mb-1">
+                        <GlassSegmentedControl
+                          size="sm"
+                          options={[
+                            {
+                              id: "text",
+                              label: (
+                                <span className="flex items-center gap-1">
+                                  <Keyboard className="w-3 h-3" /> Clavier
+                                </span>
+                              ),
+                            },
+                            {
+                              id: "draw",
+                              label: (
+                                <span className="flex items-center gap-1">
+                                  <Pencil className="w-3 h-3" /> Dessin
+                                </span>
+                              ),
+                            },
+                          ]}
+                          value={blockModes[block.id] || "text"}
+                          onChange={(mode) =>
                             setBlockModes((prev) => ({
                               ...prev,
-                              [block.id]: "text",
+                              [block.id]: mode as "text" | "draw",
                             }))
                           }
-                          className={`p-1.5 rounded-lg flex items-center gap-1 text-xs font-bold transition-colors ${
-                            (blockModes[block.id] || "text") === "text"
-                              ? "bg-[var(--greek-blue)] text-white shadow-sm"
-                              : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                          }`}
-                          title="Mode Clavier"
-                        >
-                          <Keyboard className="w-3 h-3" /> Clavier
-                        </button>
-                        <button
-                          onClick={() =>
-                            setBlockModes((prev) => ({
-                              ...prev,
-                              [block.id]: "draw",
-                            }))
-                          }
-                          className={`p-1.5 rounded-lg flex items-center gap-1 text-xs font-bold transition-colors ${
-                            blockModes[block.id] === "draw"
-                              ? "bg-[var(--greek-blue)] text-white shadow-sm"
-                              : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                          }`}
-                          title="Mode Dessin"
-                        >
-                          <Pencil className="w-3 h-3" /> Dessin
-                        </button>
+                        />
                       </div>
 
                       {blockModes[block.id] === "draw" ? (
@@ -925,6 +922,7 @@ export default function ExerciseViewer({
                                   }`}
                                   placeholder="Tapez votre réponse"
                                   ariaLabel={block.title || "Réponse mathématique"}
+                                  level={exercise.level}
                                 />
                                 {exercise.grading_type === "ai" && !isSubmitted && (
                                   <div

@@ -64,6 +64,7 @@ import {
 } from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
+import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 
 export interface Course {
   id: string;
@@ -1271,7 +1272,7 @@ export default function AdminCoursesClient({
                       icon={Eye}
                       onClick={() => {
                         // Ouverture synchrone AVANT tout await : voir handlePreview.
-                        const win = window.open("", "_blank");
+                        const win = openPreviewLoadingWindow();
                         void (async () => {
                           const full = await getFullCourse(course);
                           await handlePreview(full, win);

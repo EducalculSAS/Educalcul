@@ -36,6 +36,7 @@ import { enhanceAlgoSandboxes } from "@/lib/pyodideInteractive";
 import MathInput from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
 // Helper to extract YouTube ID
@@ -1197,31 +1198,30 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
               {!isCorrect && !isRevealed && (
                 <div className="flex flex-col gap-2">
                   {/* Mode toggle */}
-                  <div className="flex justify-end gap-2 mb-1">
-                    <button
-                      type="button"
-                      onClick={() => updateState(ex.id, { mode: "text" })}
-                      className={`p-1.5 rounded-lg flex items-center gap-1 text-xs font-bold transition-colors ${
-                        s.mode !== "draw"
-                          ? "bg-[var(--greek-blue)] text-white shadow-sm"
-                          : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                      }`}
-                      title="Mode Clavier"
-                    >
-                      <Keyboard className="w-3 h-3" /> Clavier
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => updateState(ex.id, { mode: "draw" })}
-                      className={`p-1.5 rounded-lg flex items-center gap-1 text-xs font-bold transition-colors ${
-                        s.mode === "draw"
-                          ? "bg-[var(--greek-blue)] text-white shadow-sm"
-                          : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                      }`}
-                      title="Mode Dessin"
-                    >
-                      <Pencil className="w-3 h-3" /> Dessin
-                    </button>
+                  <div className="flex justify-end mb-1">
+                    <GlassSegmentedControl
+                      size="sm"
+                      options={[
+                        {
+                          id: "text",
+                          label: (
+                            <span className="flex items-center gap-1">
+                              <Keyboard className="w-3 h-3" /> Clavier
+                            </span>
+                          ),
+                        },
+                        {
+                          id: "draw",
+                          label: (
+                            <span className="flex items-center gap-1">
+                              <Pencil className="w-3 h-3" /> Dessin
+                            </span>
+                          ),
+                        },
+                      ]}
+                      value={s.mode === "draw" ? "draw" : "text"}
+                      onChange={(mode) => updateState(ex.id, { mode: mode as "text" | "draw" })}
+                    />
                   </div>
 
                   {s.mode === "draw" ? (
@@ -1237,6 +1237,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                       onChange={(latex) => updateState(ex.id, { input: latex })}
                       placeholder="Ta réponse..."
                       className="w-full min-h-[48px] px-2 border border-gray-200 bg-gray-50 rounded-xl focus-within:ring-2 focus-within:ring-[var(--greek-blue)]/30 focus-within:border-[var(--greek-blue)] transition-all text-gray-800"
+                      level={level}
                     />
                   )}
 
