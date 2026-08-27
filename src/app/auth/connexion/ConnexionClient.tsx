@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { startAuthentication } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { resolveAuthDestination } from "@/lib/authRedirect";
 import { patchSignupSession } from "@/lib/signupSession";
-import { LogIn, Lock, AlertCircle, User, Eye, EyeOff } from "lucide-react";
+import { LogIn, Lock, AlertCircle, User, Eye, EyeOff, Fingerprint } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 /** Supabase Auth renvoie ses messages d'erreur en anglais quel que soit le
@@ -46,8 +47,65 @@ export default function ConnexionClient() {
   });
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [passkeyLoading, setPasskeyLoading] = useState(false);
+  const [passkeySupported, setPasskeySupported] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    setPasskeySupported(typeof window !== "undefined" && !!window.PublicKeyCredential);
+  }, []);
+
+  // Connexion par clé d'accès (empreinte/Face ID) — encore réservée aux
+  // comptes admin qui en ont enregistré une (voir AdminWebAuthnCard). Le
+  // reste de la logique (destination, bannissement...) suit exactement le
+  // même chemin que la connexion par mot de passe.
+  const handlePasskeyLogin = async () => {
+    setError(null);
+    const email = identifier.trim();
+    if (!email.includes("@")) {
+      setError("Utilise ton email (pas ton pseudo) pour te connecter par clé d'accès.");
+      return;
+    }
+    setPasskeyLoading(true);
+    try {
+      const optionsRes = await fetch("/api/auth/webauthn/login/options", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const options = await optionsRes.json();
+      if (!optionsRes.ok) throw new Error(options.error || "Erreur");
+
+      const assertion = await startAuthentication({ optionsJSON: options });
+
+      const verifyRes = await fetch("/api/auth/webauthn/login/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, response: assertion }),
+      });
+      const verifyData = await verifyRes.json();
+      if (!verifyRes.ok || !verifyData.verified) throw new Error(verifyData.error || "Vérification échouée.");
+
+      const { error: otpError } = await supabase.auth.verifyOtp({ token_hash: verifyData.tokenHash, type: "email" });
+      if (otpError) throw otpError;
+
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const dest = await resolveAuthDestination(supabase, user.id);
+        if (dest === "banned") { router.push("/auth/banned"); return; }
+        if (dest === "no_account" || dest === "incomplete") { router.push("/auth/inscription"); return; }
+        router.push(dest);
+      }
+    } catch (err: any) {
+      setError(
+        err?.message === "The operation either timed out or was not allowed."
+          ? "Connexion par clé d'accès annulée, ou aucune clé enregistrée pour ce compte sur cet appareil."
+          : (err?.message || "Échec de la connexion par clé d'accès.")
+      );
+    } finally {
+      setPasskeyLoading(false);
+    }
+  };
 
   const handleGoogleLogin = async () => {
     await patchSignupSession({ mode: null, pendingRole: null, data: null, authIntent: "login" });
@@ -221,6 +279,21 @@ export default function ConnexionClient() {
               <><LogIn className="w-4 h-4" /> Se connecter</>
             )}
           </GlassButton>
+
+          {passkeySupported && (
+            <GlassButton
+              onClick={handlePasskeyLogin}
+              variant="outline"
+              fullWidth
+              disabled={passkeyLoading}
+            >
+              {passkeyLoading ? (
+                <span className="animate-pulse">Vérification…</span>
+              ) : (
+                <><Fingerprint className="w-4 h-4" /> Empreinte / Face ID</>
+              )}
+            </GlassButton>
+          )}
         </form>
       </div>
 

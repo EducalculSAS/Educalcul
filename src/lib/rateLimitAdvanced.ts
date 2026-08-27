@@ -59,6 +59,8 @@ export const RATE_LIMITS = {
   '2fa:verify': { maxAttempts: 8, windowMs: 15 * 60 * 1000, name: '2FA code verify' },
   '2fa:totp-setup': { maxAttempts: 5, windowMs: 15 * 60 * 1000, name: 'TOTP setup' },
   '2fa:totp-verify': { maxAttempts: 8, windowMs: 15 * 60 * 1000, name: 'TOTP verify' },
+  'webauthn:register': { maxAttempts: 8, windowMs: 15 * 60 * 1000, name: 'Passkey registration' },
+  'webauthn:login': { maxAttempts: 10, windowMs: 15 * 60 * 1000, name: 'Passkey login' },
   'data-export:request': { maxAttempts: 3, windowMs: 60 * 60 * 1000, name: 'Data export request' },
   'grade-promotion:run': { maxAttempts: 3, windowMs: 10 * 60 * 1000, name: 'Grade promotion run/undo' },
   'child-account:mutate': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Child account create/update' },

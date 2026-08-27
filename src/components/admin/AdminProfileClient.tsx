@@ -6,6 +6,7 @@ import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { User, Save, Eye, Crown, Shield, X } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminTotpCard from "@/components/admin/AdminTotpCard";
+import AdminWebAuthnCard from "@/components/admin/AdminWebAuthnCard";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
@@ -362,6 +363,10 @@ export default function AdminProfileClient({ initialFormData }: {
 
           <div className="mt-6">
             <AdminTotpCard />
+          </div>
+
+          <div className="mt-6">
+            <AdminWebAuthnCard />
           </div>
         </div>
 
