@@ -230,16 +230,16 @@ export default function CustomMathKeyboard({
                 ))}
           </div>
 
-          {/* Rangée d'actions commune à TOUS les onglets, ABC compris :
-             flèches, espace (large), et à droite une colonne effacer/entrée
-             l'une au-dessus de l'autre. */}
+          {/* Rangée d'actions commune à TOUS les onglets, ABC compris — même
+             taille compacte (h-11) que le reste du clavier : flèches, espace
+             (large), effacer, entrée. */}
           <div className="flex gap-1.5 pt-0.5">
             <button
               type="button"
               aria-label="Caractère précédent"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "←", cmd: "moveToPreviousChar" })}
-              className="flex-1 h-[92px] rounded-xl flex items-center justify-center"
+              className="flex-1 h-11 rounded-xl flex items-center justify-center"
               style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
             >
               <ArrowLeft className="w-4 h-4" />
@@ -249,7 +249,7 @@ export default function CustomMathKeyboard({
               aria-label="Caractère suivant"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "→", cmd: "moveToNextChar" })}
-              className="flex-1 h-[92px] rounded-xl flex items-center justify-center"
+              className="flex-1 h-11 rounded-xl flex items-center justify-center"
               style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
             >
               <ArrowRight className="w-4 h-4" />
@@ -258,33 +258,31 @@ export default function CustomMathKeyboard({
               type="button"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "espace", text: " " })}
-              className="flex-[3] h-[92px] rounded-xl text-sm font-semibold flex items-center justify-center"
+              className="flex-[3] h-11 rounded-xl text-sm font-semibold flex items-center justify-center"
               style={{ background: style.keyBg, color: style.keyText }}
             >
               espace
             </button>
-            <div className="flex-1 flex flex-col gap-1.5">
-              <button
-                type="button"
-                aria-label="Effacer"
-                onPointerDown={(e) => e.preventDefault()}
-                onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
-                className="flex-1 rounded-xl flex items-center justify-center"
-                style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
-              >
-                <Delete className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                aria-label="Retour à la ligne"
-                onPointerDown={(e) => e.preventDefault()}
-                onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
-                className="flex-1 rounded-xl flex items-center justify-center"
-                style={{ background: style.accent, color: "#fff" }}
-              >
-                <CornerDownLeft className="w-4 h-4" />
-              </button>
-            </div>
+            <button
+              type="button"
+              aria-label="Effacer"
+              onPointerDown={(e) => e.preventDefault()}
+              onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
+              className="flex-1 h-11 rounded-xl flex items-center justify-center"
+              style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
+            >
+              <Delete className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Retour à la ligne"
+              onPointerDown={(e) => e.preventDefault()}
+              onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
+              className="flex-1 h-11 rounded-xl flex items-center justify-center"
+              style={{ background: style.accent, color: "#fff" }}
+            >
+              <CornerDownLeft className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>

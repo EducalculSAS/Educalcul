@@ -10,6 +10,7 @@ import { renderLatexInHTML } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { subscribeMathKeyboardVisibility } from "@/lib/mathKeyboardBus";
 
 interface Message {
   role: "user" | "assistant";
@@ -75,6 +76,12 @@ export default function AITutor() {
   const [loading, setLoading] = useState(false);
   const [hasOpened, setHasOpened] = useState(false);
   const [authId, setAuthId] = useState<string | null>(null);
+  // Le clavier mathématique personnalisé (CustomMathKeyboard) occupe tout le
+  // bas de l'écran par-dessus la bulle : on l'efface le temps qu'il est
+  // ouvert plutôt que de la laisser flotter dessus ou à moitié cachée.
+  const [mathKeyboardOpen, setMathKeyboardOpen] = useState(false);
+
+  useEffect(() => subscribeMathKeyboardVisibility(setMathKeyboardOpen), []);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setAuthId(data.user?.id ?? null));
@@ -281,6 +288,7 @@ export default function AITutor() {
         className={`fixed bottom-[88px] right-4 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 select-none group
           ${open ? "scale-90" : "hover:scale-110 hover:-translate-y-1"}
           ${!isSupportMode && !hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}
+          ${mathKeyboardOpen ? "opacity-0 scale-75 pointer-events-none" : ""}
         `}
         style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}
       >
@@ -307,7 +315,7 @@ export default function AITutor() {
       </button>
 
       {/* ── Chat panel ── */}
-      {open && (
+      {open && !mathKeyboardOpen && (
         <div
           ref={chatPanelRef}
           className={`fixed bottom-[164px] right-4 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-[calc(100vw-1.5rem)]

@@ -4,6 +4,7 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "re
 import "mathlive";
 import type { MathfieldElement } from "mathlive";
 import { supabase } from "@/lib/supabaseClient";
+import { incrementMathKeyboardOpen, decrementMathKeyboardOpen } from "@/lib/mathKeyboardBus";
 import CustomMathKeyboard, {
   type MathKeyboardConfig,
   type MathKeyboardKey,
@@ -126,6 +127,15 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
   const [keyboardVisible, setKeyboardVisible] = useState(false);
   const [keyboardConfig, setKeyboardConfig] = useState<MathKeyboardConfig | null>(null);
 
+  // Prévient le bus partagé (mathKeyboardBus) tant que CE champ a son clavier
+  // ouvert, pour que la bulle Epsi/AITutor en bas à droite s'efface le temps
+  // que le clavier occupe le bas de l'écran.
+  useEffect(() => {
+    if (!keyboardVisible) return;
+    incrementMathKeyboardOpen();
+    return () => decrementMathKeyboardOpen();
+  }, [keyboardVisible]);
+
   useEffect(() => {
     let cancelled = false;
     loadKeyboardConfig(level || DEFAULT_LEVEL).then((config) => {
@@ -170,6 +180,16 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     mf.style.setProperty("--highlight-background-color", "rgba(197,161,72,0.25)");
     mf.style.setProperty("--primary-color", "var(--greek-gold)");
     mf.style.setProperty("--contains-highlight-background-color", "rgba(197,161,72,0.12)");
+    // Fond bleu persistant derrière tout texte "\text{...}" (unités, mots
+    // tapés au clavier ABC/physique) : c'est --text-highlight-background-color
+    // (règle .ML__focused .ML__text { background: ... } du CSS de MathLive),
+    // une variable distincte de --highlight-background-color qu'on avait
+    // ratée — jamais personnalisée, elle prend sa valeur par défaut basée sur
+    // --_hue (un bleu). Rien à voir avec la sélection/le curseur (les deux
+    // pistes essayées avant, sans effet, pour cette même raison). Neutralisée
+    // ici : le texte reste simplement sur le fond du champ, comme du texte
+    // normal.
+    mf.style.setProperty("--text-highlight-background-color", "transparent");
     if (ariaLabel) mf.setAttribute("aria-label", ariaLabel);
     container.appendChild(mf);
     mfRef.current = mf;
