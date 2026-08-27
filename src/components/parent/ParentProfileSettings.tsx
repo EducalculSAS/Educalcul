@@ -21,6 +21,7 @@ import { validatePassword } from "@/lib/validation";
 import Image from "next/image";
 import { avatarUrl } from "@/lib/avatarUrl";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
+import WebAuthnCard from "@/components/WebAuthnCard";
 import UserSessionsList from "@/components/UserSessionsList";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -543,6 +544,8 @@ export default function ParentProfileSettings({
           </div>
 
           <TwoFactorToggle />
+
+          <WebAuthnCard />
 
           <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
             <UserSessionsList />

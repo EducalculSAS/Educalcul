@@ -53,7 +53,7 @@ export default function ConnexionClient() {
   // Vérifie la clé d'accès de ce compte APRÈS le mot de passe, AVANT la 2FA
   // — ce n'est plus une alternative au mot de passe (pas de bouton dédié),
   // mais un facteur supplémentaire pour les comptes qui en ont enregistré
-  // une (voir AdminWebAuthnCard). Ne fait rien si le compte n'en a aucune —
+  // une (voir WebAuthnCard). Ne fait rien si le compte n'en a aucune —
   // la connexion continue alors normalement vers la 2FA / le tableau de
   // bord, exactement comme avant l'ajout des clés d'accès.
   const verifyPasskeyIfAny = async (email: string, accessToken: string): Promise<boolean> => {

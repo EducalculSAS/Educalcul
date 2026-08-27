@@ -20,7 +20,6 @@ export async function POST(req: Request) {
       .maybeSingle();
     if (!user) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
     if (user.status === "inactive" || user.ban_reason) return NextResponse.json({ error: "Compte suspendu" }, { status: 403 });
-    if (user.role !== "admin") return NextResponse.json({ error: "Réservé aux administrateurs" }, { status: 403 });
 
     const { response, deviceLabel } = await req.json();
     if (!response) return NextResponse.json({ error: "Réponse manquante" }, { status: 400 });

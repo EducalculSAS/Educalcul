@@ -19,6 +19,16 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Les comptes administrateur utilisent le TOTP (voir /api/auth/2fa/totp/*), pas ce commutateur." }, { status: 403 });
     }
 
+    // Un enfant dont un parent a imposé la 2FA (two_factor_locked_by_parent)
+    // ne peut pas la désactiver lui-même — vérifié ici, pas juste caché côté
+    // UI, sinon un appel direct à cette route la contournerait.
+    if (me.role === "child" && !enabled) {
+      const { data: child } = await supabaseAdmin.from("users").select("two_factor_locked_by_parent").eq("id", me.id).maybeSingle();
+      if (child?.two_factor_locked_by_parent) {
+        return NextResponse.json({ error: "Un parent a activé la double authentification sur ce compte, tu ne peux pas la désactiver toi-même." }, { status: 403 });
+      }
+    }
+
     const { error } = await supabaseAdmin.from("users").update({ two_factor_enabled: enabled }).eq("id", me.id);
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 

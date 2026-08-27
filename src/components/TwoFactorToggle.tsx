@@ -6,10 +6,14 @@ import { ShieldCheck, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucid
 import TwoFactorSessions from "@/components/TwoFactorSessions";
 import GlassButton from "@/components/ui/GlassButton";
 
-/** Section "Authentification à deux facteurs" — utilisée dans les 3 pages profil. */
+/** Section "Authentification à deux facteurs" — utilisée dans les 3 pages profil.
+ * `mandatory` verrouille pour les comptes admin (TOTP toujours actif) ; pour un
+ * compte enfant, le verrouillage vient plutôt de `two_factor_locked_by_parent`
+ * en base — lu automatiquement ici, pas besoin de le passer en prop. */
 export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boolean }) {
   const [loading, setLoading] = useState(true);
   const [enabled, setEnabled] = useState(false);
+  const [lockedByParent, setLockedByParent] = useState(false);
   const [step, setStep] = useState<"idle" | "code">("idle");
   const [pendingAction, setPendingAction] = useState<boolean | null>(null); // valeur cible (true = activer)
   const [code, setCode] = useState("");
@@ -22,11 +26,14 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
     (async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) { setLoading(false); return; }
-      const { data } = await supabase.from("users").select("two_factor_enabled, role").eq("auth_id", user.id).maybeSingle();
+      const { data } = await supabase.from("users").select("two_factor_enabled, role, two_factor_locked_by_parent").eq("auth_id", user.id).maybeSingle();
       setEnabled(mandatory || !!data?.two_factor_enabled);
+      setLockedByParent(!!data?.two_factor_locked_by_parent);
       setLoading(false);
     })();
   }, [mandatory]);
+
+  const locked = mandatory || lockedByParent;
 
   useEffect(() => {
     if (cooldown <= 0) return;
@@ -52,7 +59,7 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
   };
 
   const startFlow = (target: boolean) => {
-    if (mandatory) return;
+    if (locked) return;
     setPendingAction(target);
     setStep("code");
     setCode("");
@@ -115,7 +122,9 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
       <p className="text-sm text-gray-600 mb-4">
         {mandatory
           ? "Obligatoire pour les comptes administrateur : un code envoyé par email est requis à chaque nouvelle connexion (toutes les 4h)."
-          : "Ajoute un code envoyé par email à chaque nouvelle connexion, en plus du mot de passe."}
+          : lockedByParent
+            ? "Activée et imposée par un parent : un code envoyé par email est requis à chaque connexion. Seul un parent peut la désactiver, depuis la fiche de ton compte."
+            : "Ajoute un code envoyé par email à chaque nouvelle connexion, en plus du mot de passe."}
       </p>
 
       {message && (
@@ -130,8 +139,10 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
           <span className={`text-sm font-semibold ${enabled ? "text-green-700" : "text-gray-500"}`}>
             {enabled ? "Activée" : "Désactivée"}
           </span>
-          {mandatory ? (
-            <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-gray-100 text-gray-500">Toujours activée</span>
+          {locked ? (
+            <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-gray-100 text-gray-500">
+              {mandatory ? "Toujours activée" : "Activée par un parent"}
+            </span>
           ) : (
             <button
               type="button"

@@ -4,12 +4,21 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   ArrowLeft, UserCog, Save, Loader2, AlertCircle, CheckCircle, RotateCcw,
+  Fingerprint, Trash2,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
 import { AVATARS } from "@/lib/constants";
 import { isValidEmail } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
+
+interface WebauthnCredential {
+  id: string;
+  device_label: string | null;
+  created_at: string;
+  last_used_at: string | null;
+}
 
 interface InitialChild {
   id: string;
@@ -40,6 +49,13 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
   const [twoFACooldown, setTwoFACooldown] = useState(0);
   const [togglingTwoFA, setTogglingTwoFA] = useState(false);
   const [twoFAError, setTwoFAError] = useState<string | null>(null);
+
+  const [webauthnCreds, setWebauthnCreds] = useState<WebauthnCredential[]>([]);
+  const [webauthnLoading, setWebauthnLoading] = useState(true);
+  const [webauthnRegistering, setWebauthnRegistering] = useState(false);
+  const [webauthnRemovingId, setWebauthnRemovingId] = useState<string | null>(null);
+  const [webauthnError, setWebauthnError] = useState<string | null>(null);
+  const [webauthnSupported, setWebauthnSupported] = useState(true);
 
   const [formData, setFormData] = useState({
     firstName: initial.firstName,
@@ -146,6 +162,85 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
     const t = setTimeout(() => setTwoFACooldown((c) => c - 1), 1000);
     return () => clearTimeout(t);
   }, [twoFACooldown]);
+
+  const authHeader = async (): Promise<Record<string, string>> => {
+    const { data: { session } } = await supabase.auth.getSession();
+    return session ? { Authorization: `Bearer ${session.access_token}` } : {};
+  };
+
+  const refetchWebauthn = async () => {
+    const res = await fetch(`/api/parent/child-webauthn?childId=${childId}`, { headers: await authHeader() });
+    const data = await res.json();
+    if (res.ok) setWebauthnCreds(data.credentials || []);
+  };
+
+  useEffect(() => {
+    setWebauthnSupported(typeof window !== "undefined" && !!window.PublicKeyCredential);
+    refetchWebauthn().finally(() => setWebauthnLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Enregistre une clé d'accès pour l'enfant — la cérémonie s'exécute sur
+  // l'appareil qui tient cette page à cet instant : à faire depuis
+  // l'appareil que l'enfant utilise réellement pour se connecter.
+  const enableWebauthn = async () => {
+    setWebauthnError(null);
+    setWebauthnRegistering(true);
+    try {
+      const optionsRes = await fetch("/api/parent/child-webauthn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...(await authHeader()) },
+        body: JSON.stringify({ childId, action: "options" }),
+      });
+      const options = await optionsRes.json();
+      if (!optionsRes.ok) throw new Error(options.error || "Erreur");
+
+      const attResp = await startRegistration({ optionsJSON: options });
+
+      const deviceLabel =
+        typeof navigator !== "undefined" && /iphone|ipad/i.test(navigator.userAgent)
+          ? "iPhone/iPad"
+          : typeof navigator !== "undefined" && /android/i.test(navigator.userAgent)
+            ? "Android"
+            : typeof navigator !== "undefined" && /mac/i.test(navigator.userAgent)
+              ? "Mac"
+              : "Cet appareil";
+
+      const verifyRes = await fetch("/api/parent/child-webauthn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...(await authHeader()) },
+        body: JSON.stringify({ childId, action: "verify", response: attResp, deviceLabel }),
+      });
+      const verifyData = await verifyRes.json();
+      if (!verifyRes.ok || !verifyData.verified) throw new Error(verifyData.error || "Vérification échouée");
+
+      await refetchWebauthn();
+    } catch (err: any) {
+      if (err?.name !== "NotAllowedError") {
+        setWebauthnError(err?.message || "Une erreur est survenue.");
+      }
+    } finally {
+      setWebauthnRegistering(false);
+    }
+  };
+
+  const removeWebauthn = async (credentialId: string) => {
+    setWebauthnRemovingId(credentialId);
+    setWebauthnError(null);
+    try {
+      const res = await fetch("/api/parent/child-webauthn", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json", ...(await authHeader()) },
+        body: JSON.stringify({ childId, credentialId }),
+      });
+      if (!res.ok) throw new Error((await res.json()).error || "Erreur");
+      setWebauthnCreds((prev) => prev.filter((c) => c.id !== credentialId));
+    } catch (err: any) {
+      setWebauthnError(err?.message || "Une erreur est survenue.");
+    } finally {
+      setWebauthnRemovingId(null);
+    }
+  };
 
   const confirmTwoFAToggle = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -301,7 +396,9 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                   <div>
                     <p className="text-sm font-medium text-gray-700">Authentification à deux facteurs</p>
                     <p className="text-xs text-gray-500 mt-0.5">
-                      {twoFAEnabled ? "Activée" : "Désactivée"} — un code sera demandé par email à la connexion de l'enfant.
+                      {twoFAEnabled
+                        ? "Activée et imposée par toi — un code par email est requis à chaque connexion, et l'enfant ne peut pas la désactiver lui-même."
+                        : "Désactivée — l'enfant peut choisir de l'activer lui-même depuis son propre profil."}
                     </p>
                   </div>
                   <button
@@ -354,6 +451,65 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                 </div>
               )}
             </div>
+
+            {!webauthnLoading && (
+              <div className="p-4 border border-[rgba(197,161,72,0.25)] rounded-xl bg-gray-50">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-sm font-medium text-gray-700 flex items-center gap-1.5">
+                    <Fingerprint className="w-4 h-4" />
+                    Clé d&apos;accès (empreinte / Face ID)
+                  </p>
+                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${webauthnCreds.length > 0 ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-500"}`}>
+                    {webauthnCreds.length > 0 ? "Activée" : "Désactivée"}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500 mb-3">
+                  À faire depuis l&apos;appareil que {formData.firstName} utilise pour se connecter : clique sur
+                  « Ajouter », puis confirme avec l&apos;empreinte, Face ID ou le code de cet appareil.
+                </p>
+
+                {!webauthnSupported && (
+                  <p className="text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-2 mb-3">
+                    Cet appareil ou ce navigateur ne prend pas en charge les clés d&apos;accès.
+                  </p>
+                )}
+                {webauthnError && <p className="text-xs text-red-600 mb-2">{webauthnError}</p>}
+
+                {webauthnCreds.length > 0 && (
+                  <div className="space-y-2 mb-3">
+                    {webauthnCreds.map((c) => (
+                      <div key={c.id} className="flex items-center justify-between text-sm">
+                        <div>
+                          <p className="font-semibold text-gray-700">{c.device_label || "Appareil"}</p>
+                          <p className="text-xs text-gray-400">
+                            Ajoutée le {new Date(c.created_at).toLocaleDateString("fr-FR")}
+                            {c.last_used_at ? ` · utilisée le ${new Date(c.last_used_at).toLocaleDateString("fr-FR")}` : ""}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeWebauthn(c.id)}
+                          disabled={webauthnRemovingId === c.id}
+                          aria-label="Supprimer cette clé"
+                          className="text-gray-400 hover:text-red-600 disabled:opacity-50"
+                        >
+                          {webauthnRemovingId === c.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={enableWebauthn}
+                  disabled={!webauthnSupported || webauthnRegistering}
+                  className="text-xs font-semibold text-[var(--greek-blue)] hover:underline disabled:opacity-50"
+                >
+                  {webauthnRegistering ? <Loader2 className="w-3.5 h-3.5 animate-spin inline" /> : `+ Ajouter ${webauthnCreds.length > 0 ? "un autre appareil" : "une clé d'accès"}`}
+                </button>
+              </div>
+            )}
 
             <div className="pt-4 flex justify-end">
               <GlassButton

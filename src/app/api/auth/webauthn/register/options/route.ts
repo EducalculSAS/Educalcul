@@ -8,7 +8,8 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { getWebauthnRp } from "@/lib/webauthn";
 
 // Génère les options de la cérémonie d'enregistrement d'une clé d'accès
-// (empreinte/Face ID/clé de sécurité). Réservé aux admins, comme le TOTP.
+// (empreinte/Face ID/clé de sécurité). Ouvert à tous les rôles (admin,
+// parent, enfant) — chacun gère sa propre clé depuis son profil.
 export async function POST(req: Request) {
   try {
     const identity = await getAuthIdentityOnly(req);
@@ -21,7 +22,6 @@ export async function POST(req: Request) {
       .maybeSingle();
     if (!user) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
     if (user.status === "inactive" || user.ban_reason) return NextResponse.json({ error: "Compte suspendu" }, { status: 403 });
-    if (user.role !== "admin") return NextResponse.json({ error: "Réservé aux administrateurs" }, { status: 403 });
 
     const config = RATE_LIMITS["webauthn:register"];
     const rl = await rateLimitWithBackoff(`webauthn:register:${user.id}`, config.maxAttempts, config.windowMs);

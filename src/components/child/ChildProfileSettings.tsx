@@ -13,6 +13,8 @@ import { getSimpleLevelLabel } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import UserSessionsList from "@/components/UserSessionsList";
+import TwoFactorToggle from "@/components/TwoFactorToggle";
+import WebAuthnCard from "@/components/WebAuthnCard";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -233,6 +235,10 @@ export default function ChildProfileSettings({
             </div>
           </div>
         </div>
+
+        <TwoFactorToggle />
+
+        <WebAuthnCard />
 
         {/* ── Appareils connectés ── */}
         <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">

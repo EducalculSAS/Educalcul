@@ -12,10 +12,12 @@ interface Credential {
   last_used_at: string | null;
 }
 
-/** Carte "Clé d'accès" (empreinte/Face ID) du profil admin — même esprit que
- * AdminTotpCard : une bascule "Activée/Désactivée" pilotée par la présence
- * d'au moins une clé enregistrée, plus la liste des appareils enrôlés. */
-export default function AdminWebAuthnCard() {
+/** Carte "Clé d'accès" (empreinte/Face ID) — partagée par les 3 pages profil
+ * (admin/parent/enfant) : une bascule "Activée/Désactivée" pilotée par la
+ * présence d'au moins une clé enregistrée, plus la liste des appareils
+ * enrôlés. Self-service : la cérémonie WebAuthn s'exécute forcément sur
+ * l'appareil qui affiche cette carte, quel que soit le rôle du compte. */
+export default function WebAuthnCard() {
   const [loading, setLoading] = useState(true);
   const [credentials, setCredentials] = useState<Credential[]>([]);
   const [registering, setRegistering] = useState(false);
@@ -37,6 +39,7 @@ export default function AdminWebAuthnCard() {
   useEffect(() => {
     setSupported(typeof window !== "undefined" && !!window.PublicKeyCredential);
     refetch().finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const enable = async () => {

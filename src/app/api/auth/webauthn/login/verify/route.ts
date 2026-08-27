@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       .select("id, email, role, status, ban_reason")
       .eq("email", String(email).toLowerCase())
       .maybeSingle();
-    if (!user || user.role !== "admin" || user.status === "inactive" || user.ban_reason) {
+    if (!user || user.status === "inactive" || user.ban_reason) {
       return NextResponse.json({ error: "Échec de la vérification." }, { status: 400 });
     }
 

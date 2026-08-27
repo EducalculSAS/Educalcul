@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       .eq("email", email.toLowerCase())
       .maybeSingle();
 
-    if (user && user.role === "admin" && user.status !== "inactive" && !user.ban_reason) {
+    if (user && user.status !== "inactive" && !user.ban_reason) {
       const { data: creds } = await supabaseAdmin
         .from("webauthn_credentials")
         .select("credential_id, transports")
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
       return NextResponse.json(options);
     }
 
-    // Compte inexistant/non-admin/sans clé : options "vides" mais de forme
+    // Compte inexistant/suspendu/sans clé : options "vides" mais de forme
     // valide, pour ne pas laisser deviner si l'email existe.
     const options = await generateAuthenticationOptions({ rpID, allowCredentials: [], userVerification: "preferred" });
     return NextResponse.json(options);

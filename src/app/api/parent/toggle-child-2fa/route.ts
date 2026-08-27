@@ -46,7 +46,13 @@ export async function POST(req: Request) {
     if (!child) return NextResponse.json({ error: "Enfant introuvable" }, { status: 404 });
 
     const enabled = !child.two_factor_enabled;
-    const { error } = await supabaseAdmin.from("users").update({ two_factor_enabled: enabled }).eq("id", child.id);
+    // Activer verrouille la 2FA (l'enfant ne peut plus la désactiver seul,
+    // voir /api/auth/2fa/toggle) ; désactiver déverrouille et lui redonne la
+    // main pour gérer sa 2FA lui-même depuis son propre profil.
+    const { error } = await supabaseAdmin
+      .from("users")
+      .update({ two_factor_enabled: enabled, two_factor_locked_by_parent: enabled })
+      .eq("id", child.id);
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
     return NextResponse.json({ success: true, enabled });
