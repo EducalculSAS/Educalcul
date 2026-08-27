@@ -17,10 +17,9 @@ export type MathKeyboardTab = {
   id: string;
   label: string;
   rows: MathKeyboardKey[][];
-  /** Onglets à mise en page fixe, non pilotés par `rows` :
-   *  - "abc" : clavier de lettres complet façon iPhone (AZERTY).
-   *  - "raw" : zone pour taper/coller du LaTeX brut et l'insérer tel quel. */
-  special?: "abc" | "raw";
+  /** "abc" : onglet à mise en page fixe, non pilotée par `rows` — clavier de
+   * lettres complet façon iPhone (AZERTY). */
+  special?: "abc";
 };
 
 const AZERTY_ROWS = [
@@ -61,13 +60,6 @@ interface CustomMathKeyboardProps {
    * se coller en bas du vrai viewport (position fixed, comportement normal
    * côté élève). */
   embedded?: boolean;
-  /** LaTeX brut à insérer tel quel (onglet "LaTeX"), séparé de onKey car ce
-   * n'est pas une touche prédéfinie mais du texte libre tapé par l'élève. */
-  onInsertRaw?: (latex: string) => void;
-  /** Prévient le champ qu'on change d'onglet, pour basculer mathlive en mode
-   * texte sur "ABC" (sinon chaque lettre s'insère comme variable maths
-   * italique isolée) et repasser en mode maths ailleurs. */
-  onTabChange?: (tab: MathKeyboardTab) => void;
 }
 
 /** Clavier mathématique "liquid glass" façon Apple : flou + saturation
@@ -81,15 +73,12 @@ export default function CustomMathKeyboard({
   onKey,
   onClose,
   embedded,
-  onInsertRaw,
-  onTabChange,
 }: CustomMathKeyboardProps) {
   const style = { ...DEFAULT_STYLE, ...(config.style || {}) };
   const tabs = config.tabs?.length ? config.tabs : [{ id: "num", label: "123", rows: [] }];
   const [activeTabId, setActiveTabId] = useState(tabs[0]?.id);
   const [closing, setClosing] = useState(false);
   const [shiftOn, setShiftOn] = useState(false);
-  const [rawText, setRawText] = useState("");
 
   useEffect(() => {
     if (!tabs.find((t) => t.id === activeTabId)) setActiveTabId(tabs[0]?.id);
@@ -103,13 +92,6 @@ export default function CustomMathKeyboard({
   if (!visible && !closing) return null;
 
   const activeTab = tabs.find((t) => t.id === activeTabId) || tabs[0];
-
-  const handleTabChange = (id: string) => {
-    setActiveTabId(id);
-    setRawText("");
-    const tab = tabs.find((t) => t.id === id);
-    if (tab) onTabChange?.(tab);
-  };
 
   const handleClose = () => {
     setClosing(true);
@@ -143,16 +125,16 @@ export default function CustomMathKeyboard({
         />
 
         {/* Onglets — vrai slider "liquid glass" (même GlassSegmentedControl que
-           le toggle Clavier/Dessin), plus un bouton fermer à part. */}
-        <div className="flex items-center gap-2 px-2 pt-2 pb-1.5">
-          <div className="flex-1 min-w-0">
+           le toggle Clavier/Dessin), taille au contenu (pas étiré) + un
+           bouton fermer à part. */}
+        <div className="flex items-center justify-between gap-2 px-2 pt-2 pb-1.5">
+          <div className="min-w-0">
             <GlassSegmentedControl
               size="sm"
               nowrap
-              className="w-full"
               options={tabs.map((tab) => ({ id: tab.id, label: tab.label }))}
               value={activeTab?.id || tabs[0]?.id}
-              onChange={handleTabChange}
+              onChange={setActiveTabId}
             />
           </div>
           <button
@@ -169,32 +151,7 @@ export default function CustomMathKeyboard({
 
         {/* Touches */}
         <div className="px-2 pb-2 flex flex-col gap-1.5">
-          {activeTab?.special === "raw" ? (
-            <div className="flex flex-col gap-1.5">
-              <textarea
-                value={rawText}
-                onChange={(e) => setRawText(e.target.value)}
-                onPointerDown={(e) => e.stopPropagation()}
-                placeholder="Tape du LaTeX brut, ex: \\int_0^1 x^2 dx"
-                rows={2}
-                className="w-full rounded-xl px-3 py-2 text-sm font-mono resize-none outline-none"
-                style={{ background: style.keyBg, color: style.keyText }}
-              />
-              <button
-                type="button"
-                onPointerDown={(e) => e.preventDefault()}
-                onClick={() => {
-                  if (!rawText.trim()) return;
-                  onInsertRaw?.(rawText);
-                  setRawText("");
-                }}
-                className="h-10 rounded-xl text-sm font-bold flex items-center justify-center"
-                style={{ background: style.accent, color: "#fff" }}
-              >
-                Insérer le LaTeX
-              </button>
-            </div>
-          ) : activeTab?.special === "abc" ? (
+          {activeTab?.special === "abc" ? (
             <div className="flex flex-col gap-1.5">
               {AZERTY_ROWS.map((row, i) => (
                 <div key={i} className="flex gap-1.5">
@@ -300,6 +257,15 @@ export default function CustomMathKeyboard({
              ligne) — absente pour "ABC" qui a déjà ses propres touches. */}
           {activeTab?.special !== "abc" && (
             <div className="flex gap-1.5 pt-0.5">
+              <button
+                type="button"
+                onPointerDown={(e) => e.preventDefault()}
+                onClick={() => onKey({ label: "espace", text: " " })}
+                className="flex-[2] h-10 rounded-xl text-sm font-semibold flex items-center justify-center"
+                style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
+              >
+                espace
+              </button>
               <button
                 type="button"
                 aria-label="Caractère précédent"

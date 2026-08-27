@@ -294,31 +294,41 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     []
   );
 
-  const handleInsertRaw = (latex: string) => {
-    const mf = mfRef.current;
-    if (!mf || !latex.trim()) return;
-    mf.insert(latex, { focus: true, selectionMode: "after" } as any);
-  };
-
-  // Onglet "ABC" : bascule mathlive en mode texte pour que chaque lettre
-  // s'insère comme un caractère normal (pas une variable maths italique
-  // isolée), et repasse en mode maths sur tout autre onglet.
-  const handleTabChange = (tab: MathKeyboardConfig["tabs"][number]) => {
+  // Ajoute un fragment "\text{...}" TOUJOURS à la toute fin du contenu,
+  // fusionné avec un \text{...} déjà présent en fin de champ s'il y en a un.
+  // Utilisé pour les lettres (onglet ABC), l'espace et les unités : ce sont
+  // les seuls cas où mf.insert(...) s'est montré peu fiable ici — une fois
+  // le curseur "après" un \text{...} fraîchement inséré, MathLive le
+  // considère encore À L'INTÉRIEUR de la zone texte, donc l'insertion
+  // suivante y tape son "\text{...}" caractère par caractère au lieu de
+  // l'interpréter (d'où "t\text{e}\text{s}\text{t}" affiché tel quel, et le
+  // surlignage bleu qui restait dessus). Écrire directement le LaTeX final
+  // et replacer le curseur à la fin contourne complètement ce problème.
+  // Pour tout le reste (chiffres, opérateurs, \frac, \sqrt…) mf.insert()
+  // fonctionne très bien et respecte la position du curseur — on n'y touche
+  // pas, seul le texte a ce comportement d'accumulation en toutes lettres.
+  const appendText = (snippet: string) => {
     const mf = mfRef.current;
     if (!mf) return;
-    try {
-      mf.executeCommand(["switchMode", tab.special === "abc" ? "text" : "math"] as any);
-    } catch {
-      /* mode déjà correct ou commande indisponible selon la version */
-    }
+    const current = mf.value;
+    const trailing = current.match(/\\text\{([^{}]*)\}$/);
+    const incoming = snippet.match(/^\\text\{([^{}]*)\}$/);
+    const next =
+      trailing && incoming
+        ? current.slice(0, -trailing[0].length) + `\\text{${trailing[1]}${incoming[1]}}`
+        : current + snippet;
+    mf.value = next;
+    mf.executeCommand("moveToMathfieldEnd");
     mf.focus();
+    if (placeholderRef.current) placeholderRef.current.style.display = "none";
+    onChange(mf.value);
   };
 
   const handleKeyboardKey = (key: MathKeyboardKey) => {
     const mf = mfRef.current;
     if (!mf) return;
     if (key.text !== undefined) {
-      mf.insert(key.text, { focus: true, mode: "text", selectionMode: "after" } as any);
+      appendText(`\\text{${key.text}}`);
       return;
     }
     if (key.cmd === "insertMatrix") {
@@ -342,18 +352,19 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       return;
     }
     if (key.latex) {
-      // "placeholder" ne doit être utilisé QUE si le LaTeX inséré contient
-      // vraiment un \placeholder{} à sélectionner (ex: \frac{\placeholder{}}{...}).
-      // Sinon (ex: "\text{ cm}"), MathLive laisse la sélection sur tout le
-      // contenu inséré au lieu de placer le curseur après — l'insertion
-      // suivante remplace/atterrit alors À L'INTÉRIEUR de ce \text{...}, où le
-      // backslash d'un futur "\text{...}" est tapé comme un caractère littéral
-      // au lieu d'être interprété (d'où le LaTeX brut "cm\text{m}\text{km}…"
-      // et le surlignage bleu natif qui restait affiché). "after" place
-      // simplement le curseur juste après, comme sur un vrai clavier.
+      // Les touches "\text{...}" simples (unités : cm, km, €…) passent par
+      // appendText, pour la même raison que les lettres de l'onglet ABC
+      // ci-dessus (voir son commentaire) — tout le reste (chiffres,
+      // opérateurs, \frac, \sqrt, \placeholder…) garde mf.insert(), qui
+      // respecte correctement la position du curseur.
+      if (/^\\text\{[^{}]*\}$/.test(key.latex)) {
+        appendText(key.latex);
+        return;
+      }
       const hasPlaceholder = key.latex.includes("\\placeholder");
       mf.insert(key.latex, {
         focus: true,
+        format: "latex",
         selectionMode: hasPlaceholder ? "placeholder" : "after",
       } as any);
       return;
@@ -380,8 +391,6 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
           config={keyboardConfig}
           visible={keyboardVisible}
           onKey={handleKeyboardKey}
-          onInsertRaw={handleInsertRaw}
-          onTabChange={handleTabChange}
           onClose={() => {
             setKeyboardVisible(false);
             mfRef.current?.blur();
