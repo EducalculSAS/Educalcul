@@ -363,7 +363,13 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       mf.removeEventListener("keydown", matrixResetHandler);
       mf.removeEventListener("focus", focusHandler);
       mf.removeEventListener("blur", blurHandler);
-      container.removeChild(mf);
+      // "NotFoundError: The object can not be found here." observé en prod
+      // (Sentry) sur /child/cours/preview : removeChild() suppose que `mf`
+      // est toujours un enfant DIRECT de `container` au moment du nettoyage,
+      // ce qui n'est pas garanti (ex: MathLive a pu détacher/remplacer son
+      // propre élément en interne avant que ce cleanup ne s'exécute). On ne
+      // retire que si c'est encore vraiment le cas.
+      if (mf.parentNode === container) container.removeChild(mf);
       mfRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
