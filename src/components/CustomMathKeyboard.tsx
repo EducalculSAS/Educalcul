@@ -186,10 +186,16 @@ export default function CustomMathKeyboard({
       longPressTimerRef.current = null;
     }
     if (poppedRef.current) {
-      setAccentPopup((p) => {
-        if (p) commitLetter(p.options[p.index]);
-        return null;
-      });
+      // Le commit (onKey -> focus()) doit rester dans le fil synchrone du
+      // vrai geste utilisateur (pointerup) — l'appeler depuis le callback
+      // d'un setState (comme avant) le repousse après le rendu React, hors
+      // de ce fil, et certains navigateurs mobiles n'y considèrent alors
+      // plus le focus() qui suit comme un vrai geste utilisateur : le champ
+      // perdait le focus et le clavier se refermait tout seul au choix d'un
+      // accent. On lit donc accentPopup (capturé par la fermeture de ce
+      // rendu) directement, puis on commit AVANT de vider l'état.
+      if (accentPopup) commitLetter(accentPopup.options[accentPopup.index]);
+      setAccentPopup(null);
       // Le "click" natif qui suit ce pointerup doit être ignoré (déjà géré
       // ici) — voir handleLetterClick.
       return;

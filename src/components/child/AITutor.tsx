@@ -10,7 +10,7 @@ import { renderLatexInHTML } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
-import { subscribeMathKeyboardVisibility } from "@/lib/mathKeyboardBus";
+import { subscribeMathKeyboardVisibility } from "@/components/MathInput";
 
 interface Message {
   role: "user" | "assistant";

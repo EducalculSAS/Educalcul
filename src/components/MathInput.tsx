@@ -4,7 +4,6 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "re
 import "mathlive";
 import type { MathfieldElement } from "mathlive";
 import { supabase } from "@/lib/supabaseClient";
-import { incrementMathKeyboardOpen, decrementMathKeyboardOpen } from "@/lib/mathKeyboardBus";
 import CustomMathKeyboard, {
   type MathKeyboardConfig,
   type MathKeyboardKey,
@@ -41,6 +40,34 @@ function mergeTrailingText(current: string, incoming: string): string {
   return trailing && added
     ? current.slice(0, -trailing[0].length) + `\\text{${trailing[1]}${added[1]}}`
     : current + incoming;
+}
+
+// Bus partagé (petit, gardé ici plutôt que dans un fichier séparé) : signale
+// au reste de la page qu'un clavier mathématique est ouvert, pour que
+// d'autres éléments flottants (ex: la bulle Epsi/AITutor en bas à droite)
+// s'effacent tant qu'il occupe le bas de l'écran. Compteur, pas un simple
+// booléen : plusieurs champs MathInput peuvent exister sur une page, et le
+// focus peut passer directement de l'un à l'autre sans jamais repasser par
+// "aucun clavier ouvert" entre les deux.
+type MathKeyboardVisibilityListener = (visible: boolean) => void;
+const mathKeyboardListeners = new Set<MathKeyboardVisibilityListener>();
+let mathKeyboardOpenCount = 0;
+function incrementMathKeyboardOpen() {
+  mathKeyboardOpenCount += 1;
+  mathKeyboardListeners.forEach((l) => l(mathKeyboardOpenCount > 0));
+}
+function decrementMathKeyboardOpen() {
+  mathKeyboardOpenCount = Math.max(0, mathKeyboardOpenCount - 1);
+  mathKeyboardListeners.forEach((l) => l(mathKeyboardOpenCount > 0));
+}
+/** À utiliser hors de ce fichier (ex: AITutor.tsx) pour savoir si un clavier
+ * mathématique est actuellement ouvert quelque part sur la page. */
+export function subscribeMathKeyboardVisibility(listener: MathKeyboardVisibilityListener): () => void {
+  mathKeyboardListeners.add(listener);
+  listener(mathKeyboardOpenCount > 0);
+  return () => {
+    mathKeyboardListeners.delete(listener);
+  };
 }
 
 const DEFAULT_LEVEL = "6eme";
@@ -127,7 +154,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
   const [keyboardVisible, setKeyboardVisible] = useState(false);
   const [keyboardConfig, setKeyboardConfig] = useState<MathKeyboardConfig | null>(null);
 
-  // Prévient le bus partagé (mathKeyboardBus) tant que CE champ a son clavier
+  // Prévient le bus partagé ci-dessus tant que CE champ a son clavier
   // ouvert, pour que la bulle Epsi/AITutor en bas à droite s'efface le temps
   // que le clavier occupe le bas de l'écran.
   useEffect(() => {
