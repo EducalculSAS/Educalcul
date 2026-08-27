@@ -33,7 +33,7 @@ import { enhanceClocks } from "@/lib/clockInteractive";
 import { enhanceCoinPurses } from "@/lib/coinPurseInteractive";
 import { enhanceNewPlugins } from "@/lib/newPluginsInteractive";
 import { enhanceAlgoSandboxes } from "@/lib/pyodideInteractive";
-import MathInput from "@/components/MathInput";
+import MathInput, { subscribeMathKeyboardVisibility } from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -122,6 +122,12 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   const sessionStartRef = useRef<number>(Date.now());
   // Rempli par l'effet de chargement serveur ci-dessous (progress_json.timeSpent).
   const accumulatedSecondsRef = useRef(0);
+  // Tant qu'un clavier mathématique est ouvert (mini-exo dans la leçon), on
+  // ajoute de la place en bas du contenu défilable : sinon un mini-exo tout
+  // en bas de la leçon n'a nulle part où défiler pour dégager son champ de
+  // réponse au-dessus du clavier fixe. Revient à la normale à la fermeture.
+  const [mathKeyboardOpen, setMathKeyboardOpen] = useState(false);
+  useEffect(() => subscribeMathKeyboardVisibility(setMathKeyboardOpen), []);
 
   // Accumulated time from previous sessions + current
   const getAccumulatedSeconds = () => {
@@ -633,7 +639,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
         {/* Content Viewer */}
         <div ref={mainScrollRef} className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
-          <div className="max-w-4xl mx-auto px-6 py-10 md:px-12 md:py-16">
+          <div
+            className="max-w-4xl mx-auto px-6 py-10 md:px-12 md:py-16 transition-[padding-bottom] duration-200"
+            style={mathKeyboardOpen ? { paddingBottom: "380px" } : undefined}
+          >
             {currentLesson ? (
               <div className="animate-fade-bounce">
                 {/* Content Header */}

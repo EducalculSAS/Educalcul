@@ -180,7 +180,7 @@ export default function CustomMathKeyboard({
     });
   };
 
-  const handleLetterPointerUp = (letter: string) => (e: React.PointerEvent<HTMLButtonElement>) => {
+  const handleLetterPointerUp = () => {
     if (longPressTimerRef.current) {
       clearTimeout(longPressTimerRef.current);
       longPressTimerRef.current = null;
@@ -279,7 +279,7 @@ export default function CustomMathKeyboard({
                         aria-label="Majuscule"
                         onPointerDown={(e) => e.preventDefault()}
                         onClick={() => setShiftOn((v) => !v)}
-                        className="flex-[1.4] h-11 rounded-xl flex items-center justify-center"
+                        className="flex-[1.4] h-11 rounded-xl flex items-center justify-center transition-transform duration-100 active:scale-90"
                         style={{
                           background: shiftOn ? style.accent : "rgba(255,255,255,0.35)",
                           color: shiftOn ? "#fff" : style.keyText,
@@ -296,9 +296,9 @@ export default function CustomMathKeyboard({
                           type="button"
                           onPointerDown={handleLetterPointerDown(letter)}
                           onPointerMove={handleLetterPointerMove}
-                          onPointerUp={handleLetterPointerUp(letter)}
+                          onPointerUp={handleLetterPointerUp}
                           onClick={handleLetterClick(letter)}
-                          className="flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95 touch-none"
+                          className="flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform duration-100 active:scale-90 touch-none"
                           style={{
                             background: style.keyBg,
                             color: style.keyText,
@@ -318,7 +318,7 @@ export default function CustomMathKeyboard({
                         aria-label="Effacer"
                         onPointerDown={(e) => e.preventDefault()}
                         onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
-                        className="flex-[1.4] h-11 rounded-xl flex items-center justify-center"
+                        className="flex-[1.4] h-11 rounded-xl flex items-center justify-center transition-transform duration-100 active:scale-90"
                         style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
                       >
                         <Delete className="w-4 h-4" />
@@ -334,7 +334,7 @@ export default function CustomMathKeyboard({
                         type="button"
                         onPointerDown={(e) => e.preventDefault()}
                         onClick={() => onKey(key)}
-                        className={`flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95 ${key.wide ? "flex-[2]" : ""}`}
+                        className={`flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform duration-100 active:scale-90 ${key.wide ? "flex-[2]" : ""}`}
                         style={{
                           background: style.keyBg,
                           color: style.keyText,
@@ -359,7 +359,7 @@ export default function CustomMathKeyboard({
               aria-label="Caractère précédent"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "←", cmd: "moveToPreviousChar" })}
-              className="flex-1 h-11 rounded-xl flex items-center justify-center"
+              className="flex-1 h-11 rounded-xl flex items-center justify-center transition-transform duration-100 active:scale-90"
               style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
             >
               <ArrowLeft className="w-4 h-4" />
@@ -369,7 +369,7 @@ export default function CustomMathKeyboard({
               aria-label="Caractère suivant"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "→", cmd: "moveToNextChar" })}
-              className="flex-1 h-11 rounded-xl flex items-center justify-center"
+              className="flex-1 h-11 rounded-xl flex items-center justify-center transition-transform duration-100 active:scale-90"
               style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
             >
               <ArrowRight className="w-4 h-4" />
@@ -378,7 +378,7 @@ export default function CustomMathKeyboard({
               type="button"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "espace", text: " " })}
-              className={`h-11 rounded-xl text-sm font-semibold flex items-center justify-center ${
+              className={`h-11 rounded-xl text-sm font-semibold flex items-center justify-center transition-transform duration-100 active:scale-95 ${
                 activeTab?.special === "abc" ? "flex-[4]" : "flex-[3]"
               }`}
               style={{ background: style.keyBg, color: style.keyText }}
@@ -391,7 +391,7 @@ export default function CustomMathKeyboard({
                 aria-label="Effacer"
                 onPointerDown={(e) => e.preventDefault()}
                 onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
-                className="flex-1 h-11 rounded-xl flex items-center justify-center"
+                className="flex-1 h-11 rounded-xl flex items-center justify-center transition-transform duration-100 active:scale-90"
                 style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
               >
                 <Delete className="w-4 h-4" />
@@ -402,7 +402,7 @@ export default function CustomMathKeyboard({
               aria-label="Retour à la ligne"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
-              className="flex-1 h-11 rounded-xl flex items-center justify-center"
+              className="flex-1 h-11 rounded-xl flex items-center justify-center transition-transform duration-100 active:scale-90"
               style={{ background: style.accent, color: "#fff" }}
             >
               <CornerDownLeft className="w-4 h-4" />
