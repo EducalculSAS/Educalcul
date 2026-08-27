@@ -424,8 +424,20 @@ main,
   }
 }
 
+/* PAS de "forwards" : avec fill-mode forwards, le navigateur verrouille la
+   valeur INTERPOLÉE de transform après la fin de l'animation — même en
+   écrivant "transform: none" à 100% dans les keyframes, le style calculé qui
+   reste appliqué est une matrice identité (matrix(1,0,0,1,0,0)), jamais le
+   mot-clé "none" (vérifié en pratique). Or un transform ≠ none, même une
+   matrice identité, crée un nouveau bloc englobant pour tout descendant en
+   position fixed — ce qui cassait le clavier mathématique
+   (CustomMathKeyboard) et tout autre élément fixed dans le contenu d'une
+   leçon, bien après la fin de l'animation. Sans "forwards", l'élément
+   retombe simplement sur ses styles naturels une fois l'animation finie
+   (déjà opacity:1 / transform:none par défaut ici), sans rien changer
+   visuellement au rendu de l'animation elle-même. */
 .animate-fade-bounce {
-  animation: fade-bounce 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: fade-bounce 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* ── Test : effet "liquid glass" façon Apple (scope volontairement limité

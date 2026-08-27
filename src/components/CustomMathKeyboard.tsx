@@ -86,15 +86,15 @@ export default function CustomMathKeyboard({ config, visible, onKey, onClose, em
 
   return (
     <div
-      className={`${embedded ? "absolute" : "fixed"} inset-x-0 bottom-0 z-[1200] flex justify-center px-2 pb-2 pointer-events-none`}
-      style={embedded ? undefined : { paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
+      className={`${embedded ? "absolute" : "fixed"} inset-x-0 bottom-0 z-[1200] pointer-events-none`}
     >
       <div
-        className="w-full max-w-2xl rounded-2xl overflow-hidden pointer-events-auto backdrop-blur-[24px] backdrop-saturate-[1.4] border relative"
+        className="w-full overflow-hidden pointer-events-auto backdrop-blur-[24px] backdrop-saturate-[1.4] border-t relative"
         style={{
           background: style.bg,
           borderColor: "rgba(255,255,255,0.4)",
           boxShadow: "0 -8px 32px rgba(15,30,58,0.18), 0 1px 0 rgba(255,255,255,0.6) inset",
+          paddingBottom: embedded ? undefined : "max(0.5rem, env(safe-area-inset-bottom))",
           transform: visible && !closing ? "translateY(0)" : "translateY(110%)",
           transition: "transform 220ms cubic-bezier(0.34, 1.1, 0.64, 1)",
         }}
@@ -105,25 +105,30 @@ export default function CustomMathKeyboard({ config, visible, onKey, onClose, em
           style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent)" }}
         />
 
-        {/* Onglets */}
-        <div className="flex items-center gap-1 px-2 pt-2 pb-1 overflow-x-auto">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onPointerDown={(e) => e.preventDefault()}
-              onClick={() => setActiveTabId(tab.id)}
-              className="flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-bold font-[family-name:var(--font-display)] transition-colors"
-              style={
-                activeTab?.id === tab.id
-                  ? { background: style.accent, color: "#fff" }
-                  : { background: "rgba(255,255,255,0.35)", color: style.keyText }
-              }
-            >
-              {tab.label}
-            </button>
-          ))}
-          <div className="flex-1" />
+        {/* Onglets — même esprit "liquid glass" qu'un GlassSegmentedControl :
+           une piste translucide unique, l'onglet actif en pastille pleine. */}
+        <div className="flex items-center gap-2 px-2 pt-2 pb-1.5">
+          <div
+            className="flex items-center gap-0.5 p-1 rounded-full overflow-x-auto flex-1 backdrop-blur-[16px]"
+            style={{ background: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.5)" }}
+          >
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onPointerDown={(e) => e.preventDefault()}
+                onClick={() => setActiveTabId(tab.id)}
+                className="flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-bold font-[family-name:var(--font-display)] transition-all duration-200"
+                style={
+                  activeTab?.id === tab.id
+                    ? { background: style.accent, color: "#fff", boxShadow: "0 2px 8px rgba(15,30,58,0.25)" }
+                    : { background: "transparent", color: style.keyText }
+                }
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
           <button
             type="button"
             aria-label="Fermer le clavier"
