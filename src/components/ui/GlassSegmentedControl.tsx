@@ -38,12 +38,17 @@ export default function GlassSegmentedControl({
   onChange,
   size = "md",
   className = "",
+  nowrap = false,
 }: {
   options: Option[];
   value: string;
   onChange: (id: string) => void;
   size?: "sm" | "md";
   className?: string;
+  /** Défile horizontalement au lieu de passer à la ligne — utile quand
+   * beaucoup d'options doivent tenir sur une seule piste compacte (ex: les
+   * onglets du clavier mathématique). */
+  nowrap?: boolean;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const btnRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -203,7 +208,9 @@ export default function GlassSegmentedControl({
     <div
       ref={containerRef}
       onMouseLeave={handleContainerLeave}
-      className={`relative inline-flex flex-wrap justify-center gap-1 rounded-full overflow-hidden backdrop-blur-[20px] backdrop-saturate-[1.3] ${className}`}
+      className={`relative inline-flex gap-1 rounded-full backdrop-blur-[20px] backdrop-saturate-[1.3] ${
+        nowrap ? "flex-nowrap overflow-x-auto" : "flex-wrap justify-center overflow-hidden"
+      } ${className}`}
       style={{ background: "rgba(255,255,255,0.65)", border: "1px solid var(--greek-border)" }}
     >
       {rect && (

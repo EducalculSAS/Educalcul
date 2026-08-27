@@ -1196,7 +1196,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
 
               {/* Input + verify */}
               {!isCorrect && !isRevealed && (
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2" data-exercise-answer-block>
                   {/* Mode toggle */}
                   <div className="flex justify-end mb-1">
                     <GlassSegmentedControl

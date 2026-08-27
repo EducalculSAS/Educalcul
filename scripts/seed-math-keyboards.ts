@@ -9,8 +9,14 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
-type Key = { label: string; latex?: string; cmd?: string; wide?: boolean };
-type Tab = { id: string; label: string; rows: Key[][] };
+type Key = { label: string; latex?: string; text?: string; cmd?: string; wide?: boolean };
+type Tab = { id: string; label: string; rows: Key[][]; special?: "abc" | "raw" };
+
+// Communs à tous les niveaux : lettres façon clavier iPhone (AZERTY) pour
+// écrire des mots dans une réponse, et LaTeX brut pour tout ce que les
+// touches prédéfinies ne couvrent pas.
+const ABC_TAB: Tab = { id: "abc", label: "ABC", rows: [], special: "abc" };
+const RAW_TAB: Tab = { id: "raw", label: "LaTeX", rows: [], special: "raw" };
 
 const DEFAULT_STYLE = {
   bg: "rgba(250, 247, 242, 0.55)",
@@ -40,6 +46,8 @@ const PRIMAIRE_TABS: Tab[] = [
       [{ label: "€", latex: "\\text{ €}" }, { label: "h", latex: "\\text{ h}" }, { label: "min", latex: "\\text{ min}" }],
     ],
   },
+  ABC_TAB,
+  RAW_TAB,
 ];
 
 const COLLEGE_TABS: Tab[] = [
@@ -61,6 +69,8 @@ const COLLEGE_TABS: Tab[] = [
       [{ label: "∈", latex: "\\in " }, { label: "∉", latex: "\\notin " }, { label: "⊂", latex: "\\subset " }],
     ],
   },
+  ABC_TAB,
+  RAW_TAB,
 ];
 
 const LYCEE_TABS: Tab[] = [
@@ -92,6 +102,8 @@ const LYCEE_TABS: Tab[] = [
       [{ label: "α", latex: "\\alpha" }, { label: "β", latex: "\\beta" }, { label: "θ", latex: "\\theta" }, { label: "π", latex: "\\pi" }],
     ],
   },
+  ABC_TAB,
+  RAW_TAB,
 ];
 
 const LEVEL_TIERS: Record<string, Tab[]> = {

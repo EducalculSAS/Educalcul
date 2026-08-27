@@ -853,7 +853,7 @@ export default function ExerciseViewer({
                 {/* Interactive Elements */}
                 <div className="mt-4">
                   {block.type === "text_input" && (
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2" data-exercise-answer-block>
                       {/* Mode Toggle */}
                       <div className="flex justify-end mb-1">
                         <GlassSegmentedControl

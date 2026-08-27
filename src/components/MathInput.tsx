@@ -219,14 +219,21 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       isFocusedRef.current = true;
       updatePlaceholder();
       setKeyboardVisible(true);
-      // Fait remonter le champ au-dessus du clavier (utile quand un exo est
-      // tout en bas de la page, sinon le clavier cache ce qu'on écrit).
+      // Fait remonter le champ ET son bouton "Vérifier" au-dessus du clavier
+      // (utile quand un exo est tout en bas de la page, sinon le clavier
+      // cache ce qu'on écrit ET le bouton de validation qui suit le champ).
+      // On centre le bloc réponse ENTIER (data-exercise-answer-block, posé
+      // par CourseViewer/ExerciseViewer autour du champ + du bouton), pas
+      // seulement le champ — sinon le bouton juste en dessous reste caché
+      // sous le clavier même quand le champ, lui, est bien visible.
       setTimeout(() => {
         if (!isFocusedRef.current) return;
-        const rect = mf.getBoundingClientRect();
+        const target =
+          (mf.closest("[data-exercise-answer-block]") as HTMLElement | null) || mf;
+        const rect = target.getBoundingClientRect();
         const keyboardTop = window.innerHeight * 0.55;
         if (rect.bottom > keyboardTop) {
-          mf.scrollIntoView({ block: "center", behavior: "smooth" });
+          target.scrollIntoView({ block: "center", behavior: "smooth" });
         }
       }, 350);
     };
@@ -287,9 +294,33 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     []
   );
 
+  const handleInsertRaw = (latex: string) => {
+    const mf = mfRef.current;
+    if (!mf || !latex.trim()) return;
+    mf.insert(latex, { focus: true, selectionMode: "after" } as any);
+  };
+
+  // Onglet "ABC" : bascule mathlive en mode texte pour que chaque lettre
+  // s'insère comme un caractère normal (pas une variable maths italique
+  // isolée), et repasse en mode maths sur tout autre onglet.
+  const handleTabChange = (tab: MathKeyboardConfig["tabs"][number]) => {
+    const mf = mfRef.current;
+    if (!mf) return;
+    try {
+      mf.executeCommand(["switchMode", tab.special === "abc" ? "text" : "math"] as any);
+    } catch {
+      /* mode déjà correct ou commande indisponible selon la version */
+    }
+    mf.focus();
+  };
+
   const handleKeyboardKey = (key: MathKeyboardKey) => {
     const mf = mfRef.current;
     if (!mf) return;
+    if (key.text !== undefined) {
+      mf.insert(key.text, { focus: true, mode: "text", selectionMode: "after" } as any);
+      return;
+    }
     if (key.cmd === "insertMatrix") {
       matrixGrowing = true;
       if (matrixActive) {
@@ -311,7 +342,20 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       return;
     }
     if (key.latex) {
-      mf.insert(key.latex, { focus: true, selectionMode: "placeholder" } as any);
+      // "placeholder" ne doit être utilisé QUE si le LaTeX inséré contient
+      // vraiment un \placeholder{} à sélectionner (ex: \frac{\placeholder{}}{...}).
+      // Sinon (ex: "\text{ cm}"), MathLive laisse la sélection sur tout le
+      // contenu inséré au lieu de placer le curseur après — l'insertion
+      // suivante remplace/atterrit alors À L'INTÉRIEUR de ce \text{...}, où le
+      // backslash d'un futur "\text{...}" est tapé comme un caractère littéral
+      // au lieu d'être interprété (d'où le LaTeX brut "cm\text{m}\text{km}…"
+      // et le surlignage bleu natif qui restait affiché). "after" place
+      // simplement le curseur juste après, comme sur un vrai clavier.
+      const hasPlaceholder = key.latex.includes("\\placeholder");
+      mf.insert(key.latex, {
+        focus: true,
+        selectionMode: hasPlaceholder ? "placeholder" : "after",
+      } as any);
       return;
     }
     if (key.cmd) {
@@ -336,6 +380,8 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
           config={keyboardConfig}
           visible={keyboardVisible}
           onKey={handleKeyboardKey}
+          onInsertRaw={handleInsertRaw}
+          onTabChange={handleTabChange}
           onClose={() => {
             setKeyboardVisible(false);
             mfRef.current?.blur();
