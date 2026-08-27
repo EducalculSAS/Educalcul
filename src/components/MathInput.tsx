@@ -152,6 +152,10 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
 
     hideNativeToggles();
 
+    // Voir focusHandler/blurHandler plus bas : un délai avant de fermer le
+    // clavier au blur, annulé par un refocus rapide (frappe mobile rapide).
+    let blurTimer: ReturnType<typeof setTimeout> | null = null;
+
     const mf = document.createElement("math-field") as MathfieldElement;
     mf.value = value || "";
     // "manual" : mathlive ne montre JAMAIS son propre clavier virtuel — c'est
@@ -235,15 +239,18 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     };
     mf.addEventListener("keydown", keydownHandler, true);
 
-    // Une lettre tapée au clavier PHYSIQUE de l'ordinateur passe par défaut
-    // par le moteur maths de MathLive, qui en fait une variable isolée en
-    // italique (ex: "x", comportement voulu pour l'algèbre) — mais pour
-    // écrire un mot normal (une réponse en toutes lettres) on veut du texte
-    // droit, pas des variables. On l'intercepte donc et on route par le même
-    // mécanisme \text{...} que les lettres du clavier ABC personnalisé.
+    // Une lettre OU un chiffre tapé au clavier PHYSIQUE de l'ordinateur passe
+    // par défaut par le moteur maths de MathLive (variable italique isolée
+    // pour une lettre, chiffre dans un atome maths à la police différente du
+    // texte environnant) — mais pour écrire une réponse normale (mots et/ou
+    // nombres) on veut du texte droit, homogène. On l'intercepte donc et on
+    // route par le même mécanisme \text{...} que les touches du clavier ABC/
+    // 123 personnalisé (voir NUM_ROWS dans seed-math-keyboards.ts). Les
+    // opérateurs (+ - × ÷ =) ne sont PAS interceptés : ils restent de vrais
+    // symboles maths, y compris tapés au clavier physique.
     const letterKeydownHandler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (!/^[a-zA-ZÀ-ÿ]$/.test(e.key)) return;
+      if (!/^[a-zA-Z0-9À-ÿ,]$/.test(e.key)) return;
       e.preventDefault();
       e.stopPropagation();
       mf.value = mergeTrailingText(mf.value, `\\text{${e.key}}`);
@@ -270,6 +277,16 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     // Au focus, masque le placeholder (le contenu existant est conservé) et
     // ouvre notre clavier personnalisé (CustomMathKeyboard, rendu plus bas).
     const focusHandler = () => {
+      // Annule une fermeture de clavier en attente : notre réécriture
+      // directe de mf.value (mergeTrailingText, pour le texte/les chiffres)
+      // recrée le DOM interne du champ à chaque frappe, et en tapant vite
+      // sur mobile ce remontage peut déclencher un blur/focus fugace que le
+      // navigateur émet en deux temps — sans ce garde, le blur fermait le
+      // clavier avant même que le focus revienne.
+      if (blurTimer) {
+        clearTimeout(blurTimer);
+        blurTimer = null;
+      }
       isFocusedRef.current = true;
       updatePlaceholder();
       setKeyboardVisible(true);
@@ -295,7 +312,15 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       isFocusedRef.current = false;
       resetMatrixState();
       updatePlaceholder();
-      setKeyboardVisible(false);
+      // Petit délai avant de vraiment fermer le clavier : voir le commentaire
+      // dans focusHandler — un refocus dans la foulée (frappe rapide sur
+      // mobile) annule ce timer via clearTimeout au lieu de laisser le
+      // clavier se fermer puis se rouvrir (clignotement, voire fermeture
+      // définitive si le refocus arrive juste après le démontage).
+      blurTimer = setTimeout(() => {
+        blurTimer = null;
+        if (!isFocusedRef.current) setKeyboardVisible(false);
+      }, 150);
     };
     mf.addEventListener("focus", focusHandler);
     mf.addEventListener("blur", blurHandler);
@@ -303,6 +328,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     updatePlaceholder();
 
     return () => {
+      if (blurTimer) clearTimeout(blurTimer);
       mf.removeEventListener("input", handler);
       mf.removeEventListener("keydown", keydownHandler, true);
       mf.removeEventListener("keydown", letterKeydownHandler, true);

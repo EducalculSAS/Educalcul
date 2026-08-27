@@ -258,31 +258,36 @@ export default function CustomMathKeyboard({
               type="button"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "espace", text: " " })}
-              className="flex-[3] h-11 rounded-xl text-sm font-semibold flex items-center justify-center"
+              className="flex-[4] h-11 rounded-xl text-sm font-semibold flex items-center justify-center"
               style={{ background: style.keyBg, color: style.keyText }}
             >
               espace
             </button>
-            <button
-              type="button"
-              aria-label="Effacer"
-              onPointerDown={(e) => e.preventDefault()}
-              onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
-              className="flex-1 h-11 rounded-xl flex items-center justify-center"
-              style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
-            >
-              <Delete className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              aria-label="Retour à la ligne"
-              onPointerDown={(e) => e.preventDefault()}
-              onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
-              className="flex-1 h-11 rounded-xl flex items-center justify-center"
-              style={{ background: style.accent, color: "#fff" }}
-            >
-              <CornerDownLeft className="w-4 h-4" />
-            </button>
+            {/* Effacer/entrée empilés dans la même colonne (effacer dessus,
+               entrée dessous) plutôt que côte à côte — laisse plus de place
+               à "espace". */}
+            <div className="flex-1 flex flex-col gap-1">
+              <button
+                type="button"
+                aria-label="Effacer"
+                onPointerDown={(e) => e.preventDefault()}
+                onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
+                className="flex-1 rounded-lg flex items-center justify-center"
+                style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
+              >
+                <Delete className="w-3.5 h-3.5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Retour à la ligne"
+                onPointerDown={(e) => e.preventDefault()}
+                onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
+                className="flex-1 rounded-lg flex items-center justify-center"
+                style={{ background: style.accent, color: "#fff" }}
+              >
+                <CornerDownLeft className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

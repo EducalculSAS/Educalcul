@@ -26,11 +26,17 @@ const DEFAULT_STYLE = {
 };
 
 // Rangées de chiffres/opérations de base — communes à tous les niveaux.
+// Les CHIFFRES (et la virgule) passent en texte normal ("text", pas
+// "latex") comme les lettres de l'onglet ABC : insérés en LaTeX ils
+// atterrissaient dans un atome maths séparé, avec une police différente de
+// celle des mots tapés juste à côté (retour utilisateur : "les chiffres eux
+// sont en latek" alors que les lettres sont bien normales). Les opérateurs
+// (÷ × - = +) restent de vrais symboles maths.
 const NUM_ROWS: Key[][] = [
-  [{ label: "7", latex: "7" }, { label: "8", latex: "8" }, { label: "9", latex: "9" }, { label: "÷", latex: "\\div" }],
-  [{ label: "4", latex: "4" }, { label: "5", latex: "5" }, { label: "6", latex: "6" }, { label: "×", latex: "\\times" }],
-  [{ label: "1", latex: "1" }, { label: "2", latex: "2" }, { label: "3", latex: "3" }, { label: "-", latex: "-" }],
-  [{ label: "0", latex: "0" }, { label: ",", latex: "{,}" }, { label: "=", latex: "=" }, { label: "+", latex: "+" }],
+  [{ label: "7", text: "7" }, { label: "8", text: "8" }, { label: "9", text: "9" }, { label: "÷", latex: "\\div" }],
+  [{ label: "4", text: "4" }, { label: "5", text: "5" }, { label: "6", text: "6" }, { label: "×", latex: "\\times" }],
+  [{ label: "1", text: "1" }, { label: "2", text: "2" }, { label: "3", text: "3" }, { label: "-", latex: "-" }],
+  [{ label: "0", text: "0" }, { label: ",", text: "," }, { label: "=", latex: "=" }, { label: "+", latex: "+" }],
 ];
 
 const PRIMAIRE_TABS: Tab[] = [
