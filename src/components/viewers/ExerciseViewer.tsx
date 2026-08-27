@@ -22,7 +22,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
-import MathInput, { MathInputHandle } from "@/components/MathInput";
+import MathInput, { MathInputHandle, subscribeMathKeyboardVisibility } from "@/components/MathInput";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -519,6 +519,13 @@ export default function ExerciseViewer({
 
 
 
+  // Tant qu'un clavier mathématique est ouvert, on ajoute de la place en bas
+  // du contenu défilable — sinon une question tout en bas de la page n'a
+  // nulle part où défiler pour dégager son champ de réponse au-dessus du
+  // clavier fixe (même fix que CourseViewer, voir son commentaire).
+  const [mathKeyboardOpen, setMathKeyboardOpen] = useState(false);
+  useEffect(() => subscribeMathKeyboardVisibility(setMathKeyboardOpen), []);
+
   // Visibility control to prevent flicker
   const [contentVisible, setContentVisible] = useState(false);
   useEffect(() => {
@@ -801,7 +808,10 @@ export default function ExerciseViewer({
         ref={mainScrollRef}
         className={`flex-1 overflow-y-auto p-4 md:p-8 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}
       >
-        <div className="max-w-3xl mx-auto space-y-8 pb-20">
+        <div
+          className="max-w-3xl mx-auto space-y-8 pb-20 transition-[padding-bottom] duration-200"
+          style={mathKeyboardOpen ? { paddingBottom: "380px" } : undefined}
+        >
           {currentPage.title && (
             <h2 className="text-2xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-6 text-center">
               {currentPage.title}
