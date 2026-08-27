@@ -28,6 +28,12 @@ const AZERTY_ROWS = [
   ["w", "x", "c", "v", "b", "n"],
 ];
 
+// Hauteur fixe de la zone de touches (avant la rangée d'actions commune) —
+// calée sur le plus grand nombre de rangées parmi tous les onglets (4, pour
+// "123"), pour que le clavier fasse la même hauteur totale quel que soit
+// l'onglet actif (2, 3 ou 4 rangées). h-11 (44px) par touche + gap-1.5 (6px).
+const GRID_HEIGHT = 4 * 44 + 3 * 6;
+
 export type MathKeyboardStyle = {
   bg?: string;
   keyBg?: string;
@@ -151,37 +157,65 @@ export default function CustomMathKeyboard({
 
         {/* Touches */}
         <div className="px-2 pb-2 flex flex-col gap-1.5">
-          {activeTab?.special === "abc" ? (
-            <div className="flex flex-col gap-1.5">
-              {AZERTY_ROWS.map((row, i) => (
-                <div key={i} className="flex gap-1.5">
-                  {i === 2 && (
-                    <button
-                      type="button"
-                      aria-label="Majuscule"
-                      onPointerDown={(e) => e.preventDefault()}
-                      onClick={() => setShiftOn((v) => !v)}
-                      className="flex-[1.4] h-11 rounded-xl flex items-center justify-center"
-                      style={{
-                        background: shiftOn ? style.accent : "rgba(255,255,255,0.35)",
-                        color: shiftOn ? "#fff" : style.keyText,
-                      }}
-                    >
-                      <ArrowBigUp className="w-4 h-4" />
-                    </button>
-                  )}
-                  {row.map((letter) => {
-                    const char = shiftOn ? letter.toUpperCase() : letter;
-                    return (
+          {/* Zone des touches propres à l'onglet — hauteur fixe (le plus grand
+             nombre de rangées parmi tous les onglets, ici "123" avec 4
+             rangées) et centrée verticalement, pour que TOUS les onglets
+             (ABC compris) fassent exactement la même hauteur totale de
+             clavier, qu'ils aient 2, 3 ou 4 rangées de touches. */}
+          <div className="flex flex-col justify-center gap-1.5" style={{ minHeight: GRID_HEIGHT }}>
+            {activeTab?.special === "abc"
+              ? AZERTY_ROWS.map((row, i) => (
+                  <div key={i} className="flex gap-1.5">
+                    {i === 2 && (
                       <button
-                        key={letter}
+                        type="button"
+                        aria-label="Majuscule"
+                        onPointerDown={(e) => e.preventDefault()}
+                        onClick={() => setShiftOn((v) => !v)}
+                        className="flex-[1.4] h-11 rounded-xl flex items-center justify-center"
+                        style={{
+                          background: shiftOn ? style.accent : "rgba(255,255,255,0.35)",
+                          color: shiftOn ? "#fff" : style.keyText,
+                        }}
+                      >
+                        <ArrowBigUp className="w-4 h-4" />
+                      </button>
+                    )}
+                    {row.map((letter) => {
+                      const char = shiftOn ? letter.toUpperCase() : letter;
+                      return (
+                        <button
+                          key={letter}
+                          type="button"
+                          onPointerDown={(e) => e.preventDefault()}
+                          onClick={() => {
+                            onKey({ label: char, text: char });
+                            if (shiftOn) setShiftOn(false);
+                          }}
+                          className="flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95"
+                          style={{
+                            background: style.keyBg,
+                            color: style.keyText,
+                            boxShadow: "0 1px 2px rgba(15,30,58,0.08), 0 1px 0 rgba(255,255,255,0.7) inset",
+                            fontFamily: "var(--font-display)",
+                          }}
+                        >
+                          {char}
+                        </button>
+                      );
+                    })}
+                    {i === 2 && <div className="flex-[1.4]" />}
+                  </div>
+                ))
+              : (activeTab?.rows || []).map((row, i) => (
+                  <div key={i} className="flex gap-1.5">
+                    {row.map((key, j) => (
+                      <button
+                        key={j}
                         type="button"
                         onPointerDown={(e) => e.preventDefault()}
-                        onClick={() => {
-                          onKey({ label: char, text: char });
-                          if (shiftOn) setShiftOn(false);
-                        }}
-                        className="flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95"
+                        onClick={() => onKey(key)}
+                        className={`flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95 ${key.wide ? "flex-[2]" : ""}`}
                         style={{
                           background: style.keyBg,
                           color: style.keyText,
@@ -189,125 +223,69 @@ export default function CustomMathKeyboard({
                           fontFamily: "var(--font-display)",
                         }}
                       >
-                        {char}
+                        {key.label}
                       </button>
-                    );
-                  })}
-                  {i === 2 && (
-                    <button
-                      type="button"
-                      aria-label="Effacer"
-                      onPointerDown={(e) => e.preventDefault()}
-                      onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
-                      className="flex-[1.4] h-11 rounded-xl flex items-center justify-center"
-                      style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
-                    >
-                      <Delete className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
-              ))}
-              <div className="flex gap-1.5">
-                <button
-                  type="button"
-                  onPointerDown={(e) => e.preventDefault()}
-                  onClick={() => onKey({ label: "espace", text: " " })}
-                  className="flex-[4] h-11 rounded-xl text-sm font-semibold flex items-center justify-center"
-                  style={{ background: style.keyBg, color: style.keyText }}
-                >
-                  espace
-                </button>
-                <button
-                  type="button"
-                  aria-label="Retour à la ligne"
-                  onPointerDown={(e) => e.preventDefault()}
-                  onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
-                  className="flex-1 h-11 rounded-xl flex items-center justify-center"
-                  style={{ background: style.accent, color: "#fff" }}
-                >
-                  <CornerDownLeft className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          ) : (
-            (activeTab?.rows || []).map((row, i) => (
-              <div key={i} className="flex gap-1.5">
-                {row.map((key, j) => (
-                  <button
-                    key={j}
-                    type="button"
-                    onPointerDown={(e) => e.preventDefault()}
-                    onClick={() => onKey(key)}
-                    className={`flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95 ${key.wide ? "flex-[2]" : ""}`}
-                    style={{
-                      background: style.keyBg,
-                      color: style.keyText,
-                      boxShadow: "0 1px 2px rgba(15,30,58,0.08), 0 1px 0 rgba(255,255,255,0.7) inset",
-                      fontFamily: "var(--font-display)",
-                    }}
-                  >
-                    {key.label}
-                  </button>
+                    ))}
+                  </div>
                 ))}
-              </div>
-            ))
-          )}
+          </div>
 
-          {/* Rangée d'actions commune (déplacement, effacer, retour à la
-             ligne) — absente pour "ABC" qui a déjà ses propres touches. */}
-          {activeTab?.special !== "abc" && (
-            <div className="flex gap-1.5 pt-0.5">
+          {/* Rangée d'actions commune à TOUS les onglets, ABC compris :
+             flèches, espace (large), et à droite une colonne effacer/entrée
+             l'une au-dessus de l'autre. */}
+          <div className="flex gap-1.5 pt-0.5">
+            <button
+              type="button"
+              aria-label="Caractère précédent"
+              onPointerDown={(e) => e.preventDefault()}
+              onClick={() => onKey({ label: "←", cmd: "moveToPreviousChar" })}
+              className="flex-1 h-[92px] rounded-xl flex items-center justify-center"
+              style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Caractère suivant"
+              onPointerDown={(e) => e.preventDefault()}
+              onClick={() => onKey({ label: "→", cmd: "moveToNextChar" })}
+              className="flex-1 h-[92px] rounded-xl flex items-center justify-center"
+              style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onPointerDown={(e) => e.preventDefault()}
+              onClick={() => onKey({ label: "espace", text: " " })}
+              className="flex-[3] h-[92px] rounded-xl text-sm font-semibold flex items-center justify-center"
+              style={{ background: style.keyBg, color: style.keyText }}
+            >
+              espace
+            </button>
+            <div className="flex-1 flex flex-col gap-1.5">
               <button
                 type="button"
+                aria-label="Effacer"
                 onPointerDown={(e) => e.preventDefault()}
-                onClick={() => onKey({ label: "espace", text: " " })}
-                className="flex-[2] h-10 rounded-xl text-sm font-semibold flex items-center justify-center"
+                onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
+                className="flex-1 rounded-xl flex items-center justify-center"
                 style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
               >
-                espace
-              </button>
-              <button
-                type="button"
-                aria-label="Caractère précédent"
-                onPointerDown={(e) => e.preventDefault()}
-                onClick={() => onKey({ label: "←", cmd: "moveToPreviousChar" })}
-                className="flex-1 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
-              >
-                <ArrowLeft className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                aria-label="Caractère suivant"
-                onPointerDown={(e) => e.preventDefault()}
-                onClick={() => onKey({ label: "→", cmd: "moveToNextChar" })}
-                className="flex-1 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
-              >
-                <ArrowRight className="w-4 h-4" />
+                <Delete className="w-4 h-4" />
               </button>
               <button
                 type="button"
                 aria-label="Retour à la ligne"
                 onPointerDown={(e) => e.preventDefault()}
                 onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
-                className="flex-1 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
+                className="flex-1 rounded-xl flex items-center justify-center"
+                style={{ background: style.accent, color: "#fff" }}
               >
                 <CornerDownLeft className="w-4 h-4" />
               </button>
-              <button
-                type="button"
-                aria-label="Effacer"
-                onPointerDown={(e) => e.preventDefault()}
-                onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
-                className="flex-[2] h-10 rounded-xl flex items-center justify-center"
-                style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
-              >
-                <Delete className="w-4 h-4" />
-              </button>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

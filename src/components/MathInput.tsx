@@ -27,6 +27,21 @@ function buildMatrixLatex(n: number): string {
   return `\\begin{pmatrix}${rows}\\end{pmatrix}`;
 }
 
+/** Ajoute un fragment "\text{...}" (`incoming`) à la fin de `current`, fusionné
+ * avec un \text{...} déjà présent en toute fin de champ s'il y en a un — pour
+ * que taper plusieurs lettres à la suite (clavier ABC, ou lettres tapées au
+ * clavier physique) donne un seul mot "\text{bonjour}" au lieu d'imbriquer un
+ * \text{} dans un autre (MathLive tape alors le "\" suivant littéralement au
+ * lieu de l'interpréter, d'où le LaTeX brut affiché tel quel + le
+ * surlignage résiduel). */
+function mergeTrailingText(current: string, incoming: string): string {
+  const trailing = current.match(/\\text\{([^{}]*)\}$/);
+  const added = incoming.match(/^\\text\{([^{}]*)\}$/);
+  return trailing && added
+    ? current.slice(0, -trailing[0].length) + `\\text{${trailing[1]}${added[1]}}`
+    : current + incoming;
+}
+
 const DEFAULT_LEVEL = "6eme";
 
 // On ne montre plus jamais le clavier virtuel natif de mathlive (remplacé par
@@ -200,6 +215,25 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     };
     mf.addEventListener("keydown", keydownHandler, true);
 
+    // Une lettre tapée au clavier PHYSIQUE de l'ordinateur passe par défaut
+    // par le moteur maths de MathLive, qui en fait une variable isolée en
+    // italique (ex: "x", comportement voulu pour l'algèbre) — mais pour
+    // écrire un mot normal (une réponse en toutes lettres) on veut du texte
+    // droit, pas des variables. On l'intercepte donc et on route par le même
+    // mécanisme \text{...} que les lettres du clavier ABC personnalisé.
+    const letterKeydownHandler = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (!/^[a-zA-ZÀ-ÿ]$/.test(e.key)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      mf.value = mergeTrailingText(mf.value, `\\text{${e.key}}`);
+      mf.position = mf.lastOffset;
+      mf.focus();
+      onChange(mf.value);
+      updatePlaceholder();
+    };
+    mf.addEventListener("keydown", letterKeydownHandler, true);
+
     // Dès que l'utilisateur navigue (clic dans le champ ou flèches), on
     // considère qu'il sort de la matrice : le prochain appui repart d'une 2×2.
     const matrixResetHandler = (e: Event) => {
@@ -251,6 +285,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     return () => {
       mf.removeEventListener("input", handler);
       mf.removeEventListener("keydown", keydownHandler, true);
+      mf.removeEventListener("keydown", letterKeydownHandler, true);
       mf.removeEventListener("pointerdown", matrixResetHandler);
       mf.removeEventListener("keydown", matrixResetHandler);
       mf.removeEventListener("focus", focusHandler);
@@ -310,15 +345,12 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
   const appendText = (snippet: string) => {
     const mf = mfRef.current;
     if (!mf) return;
-    const current = mf.value;
-    const trailing = current.match(/\\text\{([^{}]*)\}$/);
-    const incoming = snippet.match(/^\\text\{([^{}]*)\}$/);
-    const next =
-      trailing && incoming
-        ? current.slice(0, -trailing[0].length) + `\\text{${trailing[1]}${incoming[1]}}`
-        : current + snippet;
-    mf.value = next;
-    mf.executeCommand("moveToMathfieldEnd");
+    mf.value = mergeTrailingText(mf.value, snippet);
+    // mf.position (et pas juste executeCommand("moveToMathfieldEnd")) : after
+    // avoir réassigné .value, un simple déplacement de curseur laissait tout
+    // le contenu visuellement sélectionné (surlignage bleu resté affiché) —
+    // repositionner le curseur via .position force une vraie sélection vide.
+    mf.position = mf.lastOffset;
     mf.focus();
     if (placeholderRef.current) placeholderRef.current.style.display = "none";
     onChange(mf.value);

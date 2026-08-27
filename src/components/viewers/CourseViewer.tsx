@@ -1246,7 +1246,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     disabled={!s.input.trim() || isGrading}
                     variant="navy"
                     size="sm"
-                    className="self-end min-w-[150px]"
+                    className="self-start min-w-[150px]"
                   >
                     {isGrading ? (
                       <>

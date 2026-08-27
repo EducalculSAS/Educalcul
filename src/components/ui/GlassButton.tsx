@@ -89,6 +89,12 @@ interface GlassButtonProps {
    * grisé, ni clic ni navigation ni effets liquid glass. Si `href` est fourni
    * en même temps, la navigation est ignorée tant que `disabled` est vrai. */
   disabled?: boolean;
+  /** Désactive l'étirement élastique vers le curseur (garde juste le rebond
+   * au clic). Utile pour un bouton isolé (pas de voisin liquid-glass pour le
+   * contraindre) où l'étirement peut grandir fort d'un côté et décaler la
+   * cible sous le curseur pile au moment de cliquer (ex: "Vérifier" sous un
+   * champ de réponse). */
+  noStretch?: boolean;
 }
 
 /** Bouton "verre liquide" universel — même comportement partout sur le site :
@@ -114,6 +120,7 @@ export default function GlassButton({
   rounded = "full",
   size = "md",
   disabled = false,
+  noStretch = false,
 }: GlassButtonProps) {
   const wrapperRef = useRef<HTMLSpanElement>(null);
   const elRef = useRef<HTMLElement | null>(null);
@@ -145,7 +152,7 @@ export default function GlassButton({
   useEffect(() => {
     const wrapper = wrapperRef.current;
     const el = elRef.current;
-    if (!wrapper || !el) return;
+    if (!wrapper || !el || noStretch) return;
 
     registry.add(wrapper);
 
