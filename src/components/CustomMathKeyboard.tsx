@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Delete, ArrowLeft, ArrowRight, ChevronDown, CornerDownLeft, ArrowBigUp } from "lucide-react";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
@@ -28,11 +28,28 @@ const AZERTY_ROWS = [
   ["w", "x", "c", "v", "b", "n"],
 ];
 
+// Variantes accentuées accessibles par appui long (façon clavier iPhone) —
+// la première valeur est toujours la lettre de base. Une lettre absente
+// d'ici n'a pas de popup : l'appui long ne fait alors rien de spécial.
+const ACCENTS: Record<string, string[]> = {
+  a: ["a", "à", "â", "ä"],
+  e: ["e", "é", "è", "ê", "ë"],
+  i: ["i", "î", "ï"],
+  o: ["o", "ô", "ö"],
+  u: ["u", "ù", "û", "ü"],
+  c: ["c", "ç"],
+  n: ["n", "ñ"],
+  y: ["y", "ÿ"],
+};
+
 // Hauteur fixe de la zone de touches (avant la rangée d'actions commune) —
 // calée sur le plus grand nombre de rangées parmi tous les onglets (4, pour
 // "123"), pour que le clavier fasse la même hauteur totale quel que soit
 // l'onglet actif (2, 3 ou 4 rangées). h-11 (44px) par touche + gap-1.5 (6px).
 const GRID_HEIGHT = 4 * 44 + 3 * 6;
+
+const ACCENT_BOX = 34; // largeur d'une pastille dans le popup d'accents
+const LONG_PRESS_MS = 350;
 
 export type MathKeyboardStyle = {
   bg?: string;
@@ -68,6 +85,14 @@ interface CustomMathKeyboardProps {
   embedded?: boolean;
 }
 
+interface AccentPopupState {
+  options: string[];
+  index: number;
+  /** Bord droit du popup (= bord droit de la touche pressée), en px viewport. */
+  anchorRight: number;
+  top: number;
+}
+
 /** Clavier mathématique "liquid glass" façon Apple : flou + saturation
  * derrière, léger surlignage spéculaire en haut, contenu configurable par
  * niveau (voir math_keyboards en base, éditable depuis l'admin). Remplace
@@ -85,6 +110,16 @@ export default function CustomMathKeyboard({
   const [activeTabId, setActiveTabId] = useState(tabs[0]?.id);
   const [closing, setClosing] = useState(false);
   const [shiftOn, setShiftOn] = useState(false);
+  const [accentPopup, setAccentPopup] = useState<AccentPopupState | null>(null);
+
+  // Appui long sur une lettre à variantes accentuées (façon iPhone) : on
+  // laisse la pression s'installer avant d'ouvrir le popup (longPressTimer),
+  // on retient si le popup a bien été ouvert pour CETTE pression
+  // (poppedRef — sinon le onClick qui suit ferait une double insertion), et
+  // startXRef sert à mesurer le glissé horizontal une fois le popup ouvert.
+  const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const poppedRef = useRef(false);
+  const startXRef = useRef(0);
 
   useEffect(() => {
     if (!tabs.find((t) => t.id === activeTabId)) setActiveTabId(tabs[0]?.id);
@@ -107,6 +142,72 @@ export default function CustomMathKeyboard({
       setClosing(false);
       onClose();
     }, 200);
+  };
+
+  const commitLetter = (char: string) => {
+    onKey({ label: char, text: char });
+    if (shiftOn) setShiftOn(false);
+  };
+
+  const handleLetterPointerDown = (letter: string) => (e: React.PointerEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    startXRef.current = e.clientX;
+    poppedRef.current = false;
+    const variants = ACCENTS[letter];
+    if (!variants || variants.length < 2) return;
+    // Garde le pointeur "capturé" par cette touche même si le doigt glisse
+    // ensuite hors de sa zone (vers le popup, à gauche) — sinon
+    // onPointerMove/onPointerUp arrêteraient de se déclencher dès que le
+    // doigt sort du bouton.
+    e.currentTarget.setPointerCapture(e.pointerId);
+    const rect = e.currentTarget.getBoundingClientRect();
+    longPressTimerRef.current = setTimeout(() => {
+      poppedRef.current = true;
+      const opts = shiftOn ? variants.map((v) => v.toUpperCase()) : variants;
+      setAccentPopup({ options: opts, index: 0, anchorRight: rect.right, top: rect.top });
+    }, LONG_PRESS_MS);
+  };
+
+  const handleLetterPointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!poppedRef.current) return;
+    setAccentPopup((p) => {
+      if (!p) return p;
+      // Glisser vers la GAUCHE (dx > 0) avance dans les variantes (index 0 =
+      // lettre de base, ancrée sous le point de départ du doigt).
+      const dx = startXRef.current - e.clientX;
+      const index = Math.max(0, Math.min(p.options.length - 1, Math.round(dx / ACCENT_BOX)));
+      return index === p.index ? p : { ...p, index };
+    });
+  };
+
+  const handleLetterPointerUp = (letter: string) => (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
+    if (poppedRef.current) {
+      setAccentPopup((p) => {
+        if (p) commitLetter(p.options[p.index]);
+        return null;
+      });
+      // Le "click" natif qui suit ce pointerup doit être ignoré (déjà géré
+      // ici) — voir handleLetterClick.
+      return;
+    }
+    // Pression courte sans popup : rien à faire ici, le "click" natif qui
+    // suit insère la lettre de base (voir handleLetterClick) — évite une
+    // double insertion si jamais pointerup ET click se déclenchaient tous
+    // les deux pour ce cas simple.
+  };
+
+  const handleLetterClick = (letter: string) => () => {
+    if (poppedRef.current) {
+      // Déjà géré par pointerup (sélection d'une variante) : on absorbe le
+      // click de suivi sans rien insérer de plus.
+      poppedRef.current = false;
+      return;
+    }
+    commitLetter(shiftOn ? letter.toUpperCase() : letter);
   };
 
   return (
@@ -156,7 +257,7 @@ export default function CustomMathKeyboard({
         </div>
 
         {/* Touches */}
-        <div className="px-2 pb-2 flex flex-col gap-1.5">
+        <div className="px-2 pb-2 flex flex-col gap-1">
           {/* Zone des touches propres à l'onglet — hauteur fixe (le plus grand
              nombre de rangées parmi tous les onglets, ici "123" avec 4
              rangées) et centrée verticalement, pour que TOUS les onglets
@@ -187,12 +288,11 @@ export default function CustomMathKeyboard({
                         <button
                           key={letter}
                           type="button"
-                          onPointerDown={(e) => e.preventDefault()}
-                          onClick={() => {
-                            onKey({ label: char, text: char });
-                            if (shiftOn) setShiftOn(false);
-                          }}
-                          className="flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95"
+                          onPointerDown={handleLetterPointerDown(letter)}
+                          onPointerMove={handleLetterPointerMove}
+                          onPointerUp={handleLetterPointerUp(letter)}
+                          onClick={handleLetterClick(letter)}
+                          className="flex-1 h-11 rounded-xl text-base font-semibold flex items-center justify-center transition-transform active:scale-95 touch-none"
                           style={{
                             background: style.keyBg,
                             color: style.keyText,
@@ -204,7 +304,20 @@ export default function CustomMathKeyboard({
                         </button>
                       );
                     })}
-                    {i === 2 && <div className="flex-[1.4]" />}
+                    {/* Effacer juste après la dernière lettre, comme Majuscule
+                       juste avant la première — même rangée, même hauteur. */}
+                    {i === 2 && (
+                      <button
+                        type="button"
+                        aria-label="Effacer"
+                        onPointerDown={(e) => e.preventDefault()}
+                        onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
+                        className="flex-[1.4] h-11 rounded-xl flex items-center justify-center"
+                        style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
+                      >
+                        <Delete className="w-4 h-4" />
+                      </button>
+                    )}
                   </div>
                 ))
               : (activeTab?.rows || []).map((row, i) => (
@@ -230,10 +343,11 @@ export default function CustomMathKeyboard({
                 ))}
           </div>
 
-          {/* Rangée d'actions commune à TOUS les onglets, ABC compris — même
-             taille compacte (h-11) que le reste du clavier : flèches, espace
-             (large), effacer, entrée. */}
-          <div className="flex gap-1.5 pt-0.5">
+          {/* Rangée d'actions commune, même hauteur (h-11) que le reste du
+             clavier pour tous les onglets : flèches, espace (large), entrée.
+             "Effacer" vit ici UNIQUEMENT pour les onglets non-ABC (pour ABC
+             il est déjà dans la rangée de lettres, à côté de la dernière). */}
+          <div className="flex gap-1.5">
             <button
               type="button"
               aria-label="Caractère précédent"
@@ -258,39 +372,69 @@ export default function CustomMathKeyboard({
               type="button"
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => onKey({ label: "espace", text: " " })}
-              className="flex-[4] h-11 rounded-xl text-sm font-semibold flex items-center justify-center"
+              className={`h-11 rounded-xl text-sm font-semibold flex items-center justify-center ${
+                activeTab?.special === "abc" ? "flex-[4]" : "flex-[3]"
+              }`}
               style={{ background: style.keyBg, color: style.keyText }}
             >
               espace
             </button>
-            {/* Effacer/entrée empilés dans la même colonne (effacer dessus,
-               entrée dessous) plutôt que côte à côte — laisse plus de place
-               à "espace". */}
-            <div className="flex-1 flex flex-col gap-1">
+            {activeTab?.special !== "abc" && (
               <button
                 type="button"
                 aria-label="Effacer"
                 onPointerDown={(e) => e.preventDefault()}
                 onClick={() => onKey({ label: "⌫", cmd: "deleteBackward" })}
-                className="flex-1 rounded-lg flex items-center justify-center"
+                className="flex-1 h-11 rounded-xl flex items-center justify-center"
                 style={{ background: "rgba(255,255,255,0.35)", color: style.keyText }}
               >
-                <Delete className="w-3.5 h-3.5" />
+                <Delete className="w-4 h-4" />
               </button>
-              <button
-                type="button"
-                aria-label="Retour à la ligne"
-                onPointerDown={(e) => e.preventDefault()}
-                onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
-                className="flex-1 rounded-lg flex items-center justify-center"
-                style={{ background: style.accent, color: "#fff" }}
-              >
-                <CornerDownLeft className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            )}
+            <button
+              type="button"
+              aria-label="Retour à la ligne"
+              onPointerDown={(e) => e.preventDefault()}
+              onClick={() => onKey({ label: "↵", cmd: "addRowAfter" })}
+              className="flex-1 h-11 rounded-xl flex items-center justify-center"
+              style={{ background: style.accent, color: "#fff" }}
+            >
+              <CornerDownLeft className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Popup d'accents (appui long sur une lettre) — pastilles alignées de
+         droite à gauche (row-reverse) : la première (lettre de base) reste
+         ancrée sous le doigt, glisser vers la gauche avance dans les
+         variantes suivantes. */}
+      {accentPopup && (
+        <div
+          className="fixed flex gap-0.5 pointer-events-none z-[1300]"
+          style={{
+            flexDirection: "row-reverse",
+            right: window.innerWidth - accentPopup.anchorRight,
+            top: accentPopup.top - 46,
+          }}
+        >
+          {accentPopup.options.map((opt, i) => (
+            <div
+              key={opt + i}
+              className="rounded-lg flex items-center justify-center text-base font-bold shadow-lg transition-colors"
+              style={{
+                width: ACCENT_BOX,
+                height: 40,
+                background: i === accentPopup.index ? style.accent : style.keyBg,
+                color: i === accentPopup.index ? "#fff" : style.keyText,
+                fontFamily: "var(--font-display)",
+              }}
+            >
+              {opt}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
