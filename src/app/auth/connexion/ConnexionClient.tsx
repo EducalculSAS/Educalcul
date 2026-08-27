@@ -97,11 +97,14 @@ export default function ConnexionClient() {
         router.push(dest);
       }
     } catch (err: any) {
-      setError(
-        err?.message === "The operation either timed out or was not allowed."
-          ? "Connexion par clé d'accès annulée, ou aucune clé enregistrée pour ce compte sur cet appareil."
-          : (err?.message || "Échec de la connexion par clé d'accès.")
-      );
+      // "NotAllowedError" couvre à la fois l'annulation volontaire (l'élève
+      // ferme la boîte de dialogue pour taper son mot de passe à la place)
+      // ET le vrai timeout/refus — le navigateur ne distingue pas les deux
+      // dans le message. Un choix délibéré de fermer la fenêtre n'est pas
+      // une erreur : on n'affiche donc rien dans ce cas, silencieusement.
+      if (err?.name !== "NotAllowedError") {
+        setError(err?.message || "Échec de la connexion par clé d'accès.");
+      }
     } finally {
       setPasskeyLoading(false);
     }

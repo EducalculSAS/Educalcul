@@ -74,9 +74,11 @@ export default function AdminWebAuthnCard() {
 
       await refetch();
     } catch (err: any) {
-      setError(err?.message === "The operation either timed out or was not allowed."
-        ? "Annulé, ou aucune empreinte/Face ID configurée sur cet appareil."
-        : (err?.message || "Une erreur est survenue."));
+      // Fermer la boîte de dialogue système est un choix, pas une erreur —
+      // voir le même commentaire dans ConnexionClient.tsx.
+      if (err?.name !== "NotAllowedError") {
+        setError(err?.message || "Une erreur est survenue.");
+      }
     } finally {
       setRegistering(false);
     }
