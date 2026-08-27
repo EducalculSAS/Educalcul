@@ -41,3 +41,4 @@ export function openPreviewLoadingWindow(): Window | null {
   }
   return win;
 }
+
