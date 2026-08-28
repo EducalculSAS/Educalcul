@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useCallback, useRef } from "react";
 import { AlertTriangle } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 interface ConfirmOptions {
   title?: string;
@@ -37,7 +38,7 @@ export function ConfirmProvider({ children }: { children: React.ReactNode }) {
       {children}
       {state && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[2000] p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md border border-[rgba(197,161,72,0.25)] overflow-hidden">
+          <div className="rounded-2xl shadow-2xl w-full max-w-md border border-[rgba(197,161,72,0.3)] overflow-hidden bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4]">
             <div className="p-6 flex flex-col items-center text-center">
               <div
                 className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${
@@ -55,22 +56,16 @@ export function ConfirmProvider({ children }: { children: React.ReactNode }) {
               <p className="text-sm text-gray-600">{state.description}</p>
             </div>
             <div className="flex gap-3 px-6 pb-6">
-              <button
-                onClick={() => close(false)}
-                className="flex-1 px-5 py-2.5 text-gray-600 font-bold rounded-xl border border-[rgba(197,161,72,0.25)] hover:bg-gray-50 transition-colors"
-              >
-                {state.cancelLabel || "Annuler"}
-              </button>
-              <button
-                onClick={() => close(true)}
-                className={`flex-1 px-5 py-2.5 text-white font-bold rounded-xl transition-colors ${
-                  state.danger === false
-                    ? "bg-[var(--greek-blue)] hover:bg-blue-900"
-                    : "bg-red-500 hover:bg-red-600"
-                }`}
-              >
-                {state.confirmLabel || "Confirmer"}
-              </button>
+              <div className="flex-1">
+                <GlassButton onClick={() => close(false)} variant="ghost" fullWidth>
+                  {state.cancelLabel || "Annuler"}
+                </GlassButton>
+              </div>
+              <div className="flex-1">
+                <GlassButton onClick={() => close(true)} variant={state.danger === false ? "navy" : "danger"} fullWidth>
+                  {state.confirmLabel || "Confirmer"}
+                </GlassButton>
+              </div>
             </div>
           </div>
         </div>

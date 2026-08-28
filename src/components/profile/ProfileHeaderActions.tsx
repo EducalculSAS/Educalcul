@@ -97,7 +97,7 @@ export default function ProfileHeaderActions({
                 value={reportReason}
                 onChange={(e) => setReportReason(e.target.value)}
                 aria-label="Raison du signalement"
-                className="h-36 w-full resize-none rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
+                className="h-36 w-full resize-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[var(--text-dark)] placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20"
                 placeholder="Ex : contenu inapproprié, usurpation, harcèlement..."
               />
               <div className="flex gap-3">

@@ -99,10 +99,10 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       !window.location.pathname.startsWith("/admin")
     ) {
       // Espace élève/parent : ne jamais déconnecter de force sur une simple
-      // session vieillissante — on laisse un composant applicatif (voir
-      // SessionStillHereModal) proposer de confirmer sa présence et de
-      // rafraîchir la session, sans interrompre l'action en cours.
-      window.dispatchEvent(new CustomEvent("edu:session-check-needed"));
+      // session vieillissante. On tente un rafraîchissement silencieux du
+      // jeton en arrière-plan (sans interrompre l'action). La déconnexion sur
+      // inactivité réelle est gérée séparément par SessionStillHereModal.
+      getPublicClient().auth.refreshSession().catch(() => {});
     }
     return response;
   }) as typeof fetch;

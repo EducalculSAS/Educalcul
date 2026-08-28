@@ -117,7 +117,7 @@ export default function ChildProfileSettings({
           </div>
 
           {avatarPickerOpen && (
-            <div className="w-full mt-1 grid grid-cols-4 sm:grid-cols-6 gap-2.5">
+            <div className="mt-2 flex flex-wrap justify-center gap-2.5 max-w-xs">
               {AVATARS.map((a) => (
                 <button
                   key={a}
@@ -128,9 +128,9 @@ export default function ChildProfileSettings({
                     const r = await updateMyProfile({ avatar: a });
                     setMessage(r.ok ? { type: "success", text: "Avatar mis à jour." } : { type: "error", text: r.error || "Échec." });
                   }}
-                  className={`rounded-full overflow-hidden border-2 transition-all ${(avatar === a || avatar === `/avatars/${a}`) ? "border-[var(--greek-gold)] scale-105" : "border-transparent hover:border-[var(--greek-blue)]/30"}`}
+                  className={`w-12 h-12 rounded-full overflow-hidden border-2 transition-all shrink-0 ${(avatar === a || avatar === `/avatars/${a}`) ? "border-[var(--greek-gold)] scale-110" : "border-transparent hover:border-[var(--greek-blue)]/40"}`}
                 >
-                  <Image src={`/avatars/${a}`} alt="" width={56} height={56} className="w-full h-full" />
+                  <Image src={`/avatars/${a}`} alt="" width={48} height={48} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
