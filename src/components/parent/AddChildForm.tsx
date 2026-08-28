@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { UserPlus, Save, Loader2, AlertCircle, CheckCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
 import { AVATARS, SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { validatePassword, isValidEmail } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
@@ -16,8 +15,8 @@ const SPECIALTY_LEVELS = new Set([
 ]);
 
 /** Formulaire de création d'un profil enfant : entièrement mutations, isolé
- * en client island. parentId arrive déjà vérifié côté serveur. */
-export default function AddChildForm({ parentId }: { parentId: number }) {
+ * en client island. Le rattachement au parent est fait côté serveur. */
+export default function AddChildForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,51 +53,25 @@ export default function AddChildForm({ parentId }: { parentId: number }) {
     }
 
     try {
-      if (formData.username) {
-        const { data: existingUser } = await supabase
-          .from("users")
-          .select("id")
-          .eq("child_username", formData.username)
-          .maybeSingle();
-
-        if (existingUser) {
-          setError("Ce nom d'utilisateur est déjà pris.");
-          setLoading(false);
-          return;
-        }
-      }
-
-      const email = formData.email;
-
+      // Tout est fait côté serveur (/api/create-child) : compte Auth + profil
+      // public.users, avec parent_id forcé au parent connecté et unicité du
+      // username vérifiée là-bas. Plus aucune écriture directe depuis le client.
       const response = await fetch("/api/create-child", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email,
+          email: formData.email,
           password: formData.password,
-          user_metadata: { role: "child", first_name: formData.firstName, last_name: formData.lastName },
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          username: formData.username || null,
+          gradeLevel: formData.gradeLevel,
+          avatar: formData.avatar,
         }),
       });
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Erreur lors de la création du compte.");
-
-      const newAuthId = data.user.id;
-
-      const { error: insertError } = await supabase.from("users").insert({
-        auth_id: newAuthId,
-        parent_id: parentId,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        email: formData.email,
-        child_username: formData.username || null,
-        grade_level: formData.gradeLevel,
-        avatar: formData.avatar,
-        role: "child",
-        status: "active",
-      });
-
-      if (insertError) throw insertError;
 
       setSuccess(`L'enfant ${formData.firstName} a été ajouté avec succès !`);
       setFormData({ firstName: "", lastName: "", email: "", username: "", password: "", passwordConfirm: "", gradeLevel: "cp", avatar: "avatar1.png" });

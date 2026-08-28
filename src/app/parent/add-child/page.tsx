@@ -7,5 +7,5 @@ export default async function AddChildPage() {
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "parent") redirect("/dashboard");
 
-  return <AddChildForm parentId={authUser.id} />;
+  return <AddChildForm />;
 }

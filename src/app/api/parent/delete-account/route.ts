@@ -3,30 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe } from "@/lib/stripe";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-
-/** Supprime un compte Supabase Auth, avec un retry puis un repli sur
- * admin_force_delete_auth_user (fonction SQL SECURITY DEFINER) si l'API
- * Admin échoue encore — elle peut renvoyer une erreur générique "Database
- * error deleting user" sans cause identifiable côté schéma applicatif. Un
- * compte "fantôme" (profil supprimé, connexion Auth orpheline) a déjà été
- * observé en prod pour cette raison. */
-async function deleteAuthUser(authId: string, label: string): Promise<boolean> {
-  let { error } = await supabaseAdmin.auth.admin.deleteUser(authId);
-  if (error) {
-    console.warn(`[delete-account] Auth deletion failed for ${label}, retrying:`, JSON.stringify(error));
-    await new Promise(r => setTimeout(r, 500));
-    ({ error } = await supabaseAdmin.auth.admin.deleteUser(authId));
-  }
-  if (error) {
-    console.warn(`[delete-account] Auth API still failing for ${label}, falling back to admin_force_delete_auth_user:`, JSON.stringify(error));
-    const { error: rpcError } = await supabaseAdmin.rpc("admin_force_delete_auth_user", { target_auth_id: authId });
-    if (rpcError) {
-      console.error(`[delete-account] Fallback deletion also failed for ${label}:`, JSON.stringify(rpcError));
-      return false;
-    }
-  }
-  return true;
-}
+import { deleteAuthUser } from "@/lib/deleteAuthUser";
 
 export async function DELETE(req: Request) {
   try {

@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { updateMyProfile } from "@/lib/updateMyProfile";
 import {
   BookOpen, Brain, Trophy, Calculator,
   ChevronRight, ChevronLeft, CheckCircle, MessageSquare,
@@ -93,7 +93,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
 
   const handleComplete = async () => {
     setSaving(true);
-    await supabase.from("users").update({ onboarding_completed: true }).eq("auth_id", authId);
+    await updateMyProfile({ onboarding_completed: true });
     setSaving(false);
     onComplete();
   };

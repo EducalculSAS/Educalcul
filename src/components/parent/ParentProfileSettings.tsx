@@ -18,6 +18,7 @@ import {
   Download,
 } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
+import { updateMyProfile } from "@/lib/updateMyProfile";
 import Image from "next/image";
 import { avatarUrl } from "@/lib/avatarUrl";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
@@ -575,10 +576,7 @@ export default function ParentProfileSettings({
                       onChange={async () => {
                         const updated = { ...notifications, [key]: !notifications[key] };
                         setNotifications(updated);
-                        const { data: { user: u } } = await supabase.auth.getUser();
-                        if (u) {
-                          supabase.from("users").update({ [key]: updated[key] }).eq("auth_id", u.id).then(() => {});
-                        }
+                        void updateMyProfile({ [key]: updated[key] });
                       }}
                     />
                     <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[rgba(197,161,72,0.25)] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>

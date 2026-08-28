@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { updateMyProfile } from "@/lib/updateMyProfile";
 import { CGU_SECTIONS, CGU_VERSION } from "@/lib/cgu";
 import {
   CheckCircle, ChevronRight, ChevronLeft,
@@ -62,10 +62,8 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
 
   const handleComplete = async () => {
     setSaving(true);
-    await supabase.from("users").update({
-      onboarding_completed: true,
-      cgu_accepted_at: new Date().toISOString(),
-    }).eq("auth_id", authId);
+    // cgu_accepted_at est horodaté côté serveur quand onboarding_completed passe à true.
+    await updateMyProfile({ onboarding_completed: true });
     setSaving(false);
     onComplete();
   };

@@ -8,6 +8,7 @@ import {
   Camera, Bell, Brain, Gamepad2,
 } from "lucide-react";
 import { getNameColor } from "@/lib/badgeStyles";
+import { updateMyProfile } from "@/lib/updateMyProfile";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getSimpleLevelLabel } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
@@ -69,8 +70,7 @@ export default function ChildProfileSettings({
       const d = await r.json();
       if (!r.ok) throw new Error(d.error);
       setAvatar(d.url);
-      const { data: { user: au } } = await supabase.auth.getUser();
-      if (au) await supabase.from("users").update({ avatar: d.url }).eq("auth_id", au.id);
+      await updateMyProfile({ avatar: d.url });
       setMessage({ type: "success", text: "Photo mise à jour." });
     } catch { setMessage({ type: "error", text: "Erreur lors de l'upload." }); }
     finally { setSaving(false); }
@@ -225,8 +225,7 @@ export default function ChildProfileSettings({
                       onChange={async () => {
                         const upd = { ...notifications, [key]: !notifications[key] };
                         setNotifications(upd);
-                        const { data: { user: au } } = await supabase.auth.getUser();
-                        if (au) supabase.from("users").update({ [key]: upd[key] }).eq("auth_id", au.id).then(() => {});
+                        void updateMyProfile({ [key]: upd[key] });
                       }} />
                     <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]" />
                   </label>

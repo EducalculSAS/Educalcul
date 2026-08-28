@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
-import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
@@ -28,12 +27,18 @@ export default function DeleteChildButton({ childId }: { childId: string }) {
 
     setDeleting(true);
     try {
-      const { error } = await supabase.from("users").delete().eq("id", childId);
-      if (error) throw error;
+      const res = await fetch("/api/parent/delete-child", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ childId }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Suppression impossible");
+      if (data.warning) alert(data.warning);
       router.refresh();
     } catch (error) {
       console.error("Error deleting child:", error);
-      alert("Une erreur est survenue lors de la suppression.");
+      alert(error instanceof Error ? error.message : "Une erreur est survenue lors de la suppression.");
       setDeleting(false);
     }
   };
