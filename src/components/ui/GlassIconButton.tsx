@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
+import { Loader2, type LucideIcon } from "lucide-react";
 import { clampGlassTranslate, isRectOffscreen, glassButtonRegistry } from "@/lib/liquidGlassBounds";
 import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
@@ -40,6 +40,8 @@ interface GlassIconButtonProps {
   size?: "sm" | "md";
   className?: string;
   disabled?: boolean;
+  /** Affiche un spinner à la place de l'icône et bloque le clic. */
+  loading?: boolean;
   "aria-label": string;
 }
 
@@ -62,8 +64,10 @@ export default function GlassIconButton({
   size = "md",
   className = "",
   disabled = false,
+  loading = false,
   "aria-label": ariaLabel,
 }: GlassIconButtonProps) {
+  const isDisabled = disabled || loading;
   const wrapperRef = useRef<HTMLSpanElement>(null);
   const elRef = useRef<HTMLElement | null>(null);
   const raf = useRef(0);
@@ -73,7 +77,7 @@ export default function GlassIconButton({
   useEffect(() => {
     const wrapper = wrapperRef.current;
     const el = elRef.current;
-    if (!wrapper || !el || disabled) return;
+    if (!wrapper || !el || isDisabled) return;
 
     glassButtonRegistry.add(wrapper);
 
@@ -214,11 +218,11 @@ export default function GlassIconButton({
       clearTimeout(revertTimer.current);
       glassButtonRegistry.delete(wrapper);
     };
-  }, [disabled]);
+  }, [isDisabled]);
 
   const sizeClasses = size === "sm" ? "w-7 h-7" : "w-9 h-9";
   const iconSize = size === "sm" ? "w-3.5 h-3.5" : "w-4 h-4";
-  const disabledClass = disabled ? "opacity-40 pointer-events-none" : "cursor-pointer";
+  const disabledClass = isDisabled ? "opacity-40 pointer-events-none" : "cursor-pointer";
   // Les classes de position (fixed/absolute/top-*/left-*/z-*...) vont sur le
   // <span> englobant, pas ici : cet élément est un descendant d'un ancêtre
   // animé par transform, qui devient son containing block dès que le survol
@@ -232,7 +236,7 @@ export default function GlassIconButton({
       className={`liquid-glass-wrap inline-block ${positionClasses}`}
       style={{ transition: DEFAULT_TRANSITION, willChange: "transform" }}
     >
-      {href && !disabled ? (
+      {href && !isDisabled ? (
         <Link
           ref={elRef as React.Ref<HTMLAnchorElement>}
           href={href}
@@ -240,20 +244,20 @@ export default function GlassIconButton({
           title={ariaLabel}
           className={combinedClassName}
         >
-          <Icon className={iconSize} strokeWidth={2.25} />
+          {loading ? <Loader2 className={`${iconSize} animate-spin`} /> : <Icon className={iconSize} strokeWidth={2.25} />}
         </Link>
       ) : (
         <button
           ref={elRef as React.Ref<HTMLButtonElement>}
           type="button"
-          onClick={disabled ? undefined : onClick}
-          disabled={disabled}
-          aria-disabled={disabled}
+          onClick={isDisabled ? undefined : onClick}
+          disabled={isDisabled}
+          aria-disabled={isDisabled}
           aria-label={ariaLabel}
           title={ariaLabel}
           className={combinedClassName}
         >
-          <Icon className={iconSize} strokeWidth={2.25} />
+          {loading ? <Loader2 className={`${iconSize} animate-spin`} /> : <Icon className={iconSize} strokeWidth={2.25} />}
         </button>
       )}
     </span>

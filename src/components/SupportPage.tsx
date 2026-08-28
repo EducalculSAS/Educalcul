@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { MessageCircle, Plus, CheckCircle, Clock, AlertCircle, X, Send, ChevronDown, ChevronUp } from "lucide-react";
+import { MessageCircle, Plus, CheckCircle, Clock, AlertCircle, Send, ChevronDown, ChevronUp } from "lucide-react";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: any }> = {
   "Ouvert":    { label: "Ouvert",    color: "bg-blue-100 text-blue-700",    icon: Clock },
@@ -147,7 +149,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
             <div className="flex items-center justify-between mb-5">
               <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouveau ticket</h2>
-              <button onClick={() => setShowForm(false)} aria-label="Fermer le formulaire" className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"><X size={16} aria-hidden="true" /></button>
+              <GlassCloseButton onClick={() => setShowForm(false)} variant="light" size="sm" />
             </div>
             <form onSubmit={submitTicket} className="space-y-4">
               <div>
@@ -255,11 +257,14 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                               rows={2}
                               className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-sm resize-none focus:outline-none focus:border-[var(--greek-blue)] bg-white"
                             />
-                            <button onClick={() => handleReply(ticket.id)}
-                              disabled={sending === ticket.id || !replyText[ticket.id]?.trim()}
-                              className="p-3 bg-[var(--greek-blue)] text-white rounded-xl hover:opacity-90 disabled:opacity-40 shrink-0">
-                              <Send className="w-5 h-5" />
-                            </button>
+                            <GlassIconButton
+                              icon={Send}
+                              onClick={() => handleReply(ticket.id)}
+                              disabled={!replyText[ticket.id]?.trim()}
+                              loading={sending === ticket.id}
+                              color="navy"
+                              aria-label="Envoyer la réponse"
+                            />
                           </div>
                         )}
                       </div>

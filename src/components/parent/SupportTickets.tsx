@@ -3,9 +3,10 @@
 import { useState, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { Send, Loader2, ChevronDown, ChevronUp, Mail, Plus } from "lucide-react";
+import { Send, ChevronDown, ChevronUp, Mail, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Reply {
   id: number;
@@ -230,10 +231,14 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
                             rows={2}
                             className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-sm resize-none focus:outline-none focus:border-[var(--greek-blue)] bg-white"
                           />
-                          <button onClick={() => handleReply(ticket.id)} disabled={sending === ticket.id || !replyText[ticket.id]?.trim()}
-                            className="p-3 bg-[var(--greek-blue)] text-white rounded-xl hover:opacity-90 disabled:opacity-40 shrink-0">
-                            {sending === ticket.id ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
-                          </button>
+                          <GlassIconButton
+                            icon={Send}
+                            onClick={() => handleReply(ticket.id)}
+                            disabled={!replyText[ticket.id]?.trim()}
+                            loading={sending === ticket.id}
+                            color="navy"
+                            aria-label="Envoyer la réponse"
+                          />
                         </div>
                       </div>
                     ) : (
