@@ -307,9 +307,9 @@ export default async function Home() {
             ))}
           </RevealGroup>
           <Reveal y={12} delay={0.15} className="text-center mt-8">
-            <Link href="/faq" className="text-sm font-bold underline underline-offset-4" style={{ color: "var(--greek-blue)" }}>
+            <GlassButton href="/faq" variant="outline" size="sm" rounded="xl">
               Voir toutes les questions
-            </Link>
+            </GlassButton>
           </Reveal>
         </div>
       </section>

@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { Calendar as CalendarIcon, Plus, ArrowRight } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 import CalendarView, { CalendarEventItem } from "./CalendarView";
 import EventModal from "./EventModal";
 import { getEventTypeMeta } from "@/lib/calendarEventTypes";
@@ -99,9 +100,9 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
           <CalendarIcon className="w-5 h-5 text-[var(--greek-gold)]" />
           <h2 className="text-xl font-bold text-[var(--greek-blue)]">{title}</h2>
         </div>
-        <Link href={fullCalendarHref} className="text-sm text-[var(--greek-blue)] font-bold hover:underline flex items-center gap-1">
+        <GlassButton href={fullCalendarHref} variant="outline" size="sm" rounded="xl">
           Voir tout <ArrowRight className="w-4 h-4" />
-        </Link>
+        </GlassButton>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">

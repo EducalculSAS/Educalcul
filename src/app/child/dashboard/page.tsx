@@ -198,9 +198,9 @@ export default async function ChildDashboard() {
               <Trophy className="w-5 h-5 text-[var(--greek-bronze)]" />
               <h2 className="text-xl font-bold text-[var(--greek-blue)]">Mes Trophées</h2>
             </div>
-            <Link href="/child/badges" className="text-sm text-[var(--greek-blue)] font-bold hover:underline">
+            <GlassButton href="/child/badges" variant="outline" size="sm" rounded="xl">
               Voir tout
-            </Link>
+            </GlassButton>
           </div>
 
           {earnedBadges.length === 0 ? (

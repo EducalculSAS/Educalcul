@@ -128,9 +128,9 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               <UserPlus size={17} className="text-[var(--greek-gold)]" />
               Derniers inscrits
             </h2>
-            <Link href="/admin/users" className="text-xs text-[var(--greek-blue)] hover:underline flex items-center gap-1">
+            <GlassButton href="/admin/users" variant="outline" size="sm" rounded="xl">
               Voir tout <ChevronRight size={12} />
-            </Link>
+            </GlassButton>
           </div>
           <div className="divide-y divide-gray-50">
             {recent.users.length === 0 && (
