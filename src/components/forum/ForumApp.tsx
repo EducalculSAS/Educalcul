@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import ForumCategories from "./ForumCategories";
 import ForumPosts from "./ForumPosts";
 import ForumThread from "./ForumThread";
@@ -33,12 +34,8 @@ export default function ForumApp({ role }: ForumAppProps) {
       if (data.session?.user) {
         const authId = data.session.user.id;
         setUserAuthId(authId);
-        const { data: userData } = await supabase
-          .from("users")
-          .select("id")
-          .eq("auth_id", authId)
-          .single();
-        if (userData) setUserDbId(userData.id);
+        const userData = await getMyProfile<{ id?: number }>();
+        if (userData?.id) setUserDbId(userData.id);
       }
       setLoading(false);
     }

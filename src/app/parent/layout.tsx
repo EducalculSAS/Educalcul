@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
+import { getMyProfile } from "@/lib/updateMyProfile";
 
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
@@ -44,13 +44,9 @@ export default function ParentLayout({
       }
 
       // Verify role
-      const { data: userData, error }: any = await supabase
-        .from("users")
-        .select(USER_SELECT_COLUMNS)
-        .eq("auth_id", session.user.id)
-        .maybeSingle();
+      const userData: any = await getMyProfile();
 
-      if (error || !userData || userData.role !== "parent") {
+      if (!userData || userData.role !== "parent") {
         router.push("/dashboard");
         return;
       }

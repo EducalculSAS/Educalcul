@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { User, Save, Eye, Crown, Shield, X } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminTotpCard from "@/components/admin/AdminTotpCard";
@@ -35,12 +35,8 @@ export default function AdminProfileClient({ initialFormData }: {
   const refetchProfile = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
-    const { data, error }: any = await supabase
-      .from("users")
-      .select(USER_SELECT_COLUMNS)
-      .eq("auth_id", session.user.id)
-      .single();
-    if (!error && data) {
+    const data: any = await getMyProfile();
+    if (data) {
       setFormData((prev) => ({
         ...prev,
         first_name: data.first_name || "",

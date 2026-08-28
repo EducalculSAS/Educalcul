@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import ChildOnboarding from "./ChildOnboarding";
 
 export default function ChildOnboardingWrapper() {
@@ -15,12 +16,7 @@ export default function ChildOnboardingWrapper() {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
 
-      const { data } = await supabase
-        .from("users")
-        .select("auth_id, first_name, grade_level, onboarding_completed, status, ban_reason")
-        .eq("auth_id", session.user.id)
-        .maybeSingle();
-
+      const data = await getMyProfile<any>();
       if (!data) return;
       if (data.status === "inactive" || data.ban_reason) {
         router.push("/auth/banned");

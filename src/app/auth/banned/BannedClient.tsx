@@ -19,15 +19,12 @@ export default function BannedPage() {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) { router.push('/auth/connexion'); return; }
 
-        const { data: userData } = await supabase
-          .from('users')
-          .select('status, first_name, last_name, ban_reason, ban_until')
-          .eq('auth_id', user.id)
-          .single();
+        const res = await fetch('/api/auth/ban-status');
+        const userData = res.ok ? await res.json() : null;
 
         if (!userData) { setError('Utilisateur non trouvé'); setLoading(false); return; }
 
-        if (userData.status === 'inactive' || userData.ban_reason) {
+        if (userData.banned) {
           setBanData({
             firstName: userData.first_name,
             lastName: userData.last_name,

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { User, Mail, Lock, AlertCircle, Loader2, CheckCircle } from "lucide-react";
 import PasswordStrength from "@/components/PasswordStrength";
 import { validatePassword } from "@/lib/validation";
@@ -28,9 +29,9 @@ export default function CompleteGoogleProfile() {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) { router.push("/auth/inscription"); return; }
 
-      // Compte déjà complet → dashboard
-      const { data: existing } = await supabase
-        .from("users").select("role, first_name").eq("auth_id", session.user.id).maybeSingle();
+      // Compte déjà complet → dashboard. (getMyProfile renvoie null si le profil
+      // public.users n'existe pas encore : on tombe alors sur le pré-remplissage.)
+      const existing = await getMyProfile<{ role?: string; first_name?: string }>();
       if (existing?.role && existing.role !== "user" && existing.first_name) {
         router.push("/dashboard"); return;
       }

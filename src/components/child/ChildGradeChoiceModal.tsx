@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { GraduationCap, Loader2, AlertCircle, X } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -25,11 +26,7 @@ export default function ChildGradeChoiceModal() {
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
-      const { data } = await supabase
-        .from("users")
-        .select("grade_level, needs_grade_choice")
-        .eq("auth_id", session.user.id)
-        .maybeSingle();
+      const data = await getMyProfile<{ grade_level?: string; needs_grade_choice?: boolean }>();
       if (data?.needs_grade_choice && data.grade_level === "2nde") {
         setNeedsChoice(true);
       }

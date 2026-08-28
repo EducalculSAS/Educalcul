@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 
 /**
  * Mise à jour des champs de profil que l'utilisateur peut modifier LUI-MÊME
@@ -12,9 +13,11 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
  * — impossible de toucher `role`, `parent_id`, `status`, `two_factor_enabled`,
  * `grade_level`, etc. depuis ici.
  */
-/** Champs du profil que l'utilisateur peut lire sur lui-même (jamais les
- * colonnes sensibles : parent_id, ban_reason, stripe ids, hash divers…). */
-const READABLE = "id, first_name, last_name, email, avatar, role, grade_level, child_username, onboarding_completed, two_factor_enabled, two_factor_locked_by_parent, notif_weekly_reports, notif_offers_news";
+/** Colonnes du profil que l'utilisateur peut lire sur SON PROPRE compte :
+ * la liste "safe" partagée (USER_SELECT_COLUMNS, sans les colonnes forensic)
+ * + deux flags 2FA/onboarding. Remplace tous les
+ * `supabase.from("users").select(...).eq("auth_id", …)` côté client. */
+const READABLE = `${USER_SELECT_COLUMNS}, two_factor_locked_by_parent, needs_grade_choice`;
 
 export async function GET(req: Request) {
   try {

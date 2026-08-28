@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
 import { Star, Zap, Trophy, BookOpen, CheckCircle, Crown, Flame } from "lucide-react";
 
 const ICON_MAP: Record<string, any> = {
@@ -26,10 +25,13 @@ export default function BadgeMinis({ badgeIds }: { badgeIds: number[] }) {
     const cached = ids.map(id => badgeCache[id]).filter(Boolean);
     if (cached.length === ids.length) { setBadges(cached); return; }
 
-    supabase.from("badges").select("id, name, icon, color").in("id", ids).then(({ data }) => {
-      (data || []).forEach(b => { badgeCache[b.id] = b; });
-      setBadges(ids.map(id => badgeCache[id]).filter(Boolean));
-    });
+    fetch(`/api/badges?ids=${ids.join(",")}`)
+      .then(r => (r.ok ? r.json() : []))
+      .then((data: any[]) => {
+        (data || []).forEach(b => { badgeCache[b.id] = b; });
+        setBadges(ids.map(id => badgeCache[id]).filter(Boolean));
+      })
+      .catch(() => {});
   }, [JSON.stringify(badgeIds)]);
 
   if (!badges.length) return null;

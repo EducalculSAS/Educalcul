@@ -3,7 +3,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import "mathlive";
 import type { MathfieldElement } from "mathlive";
-import { supabase } from "@/lib/supabaseClient";
 import CustomMathKeyboard, {
   type MathKeyboardConfig,
   type MathKeyboardKey,
@@ -102,22 +101,10 @@ async function loadKeyboardConfig(level: string): Promise<MathKeyboardConfig | n
   if (keyboardConfigPromises.has(level)) return keyboardConfigPromises.get(level)!;
 
   const promise = (async () => {
-    const { data } = await supabase
-      .from("math_keyboards")
-      .select("config")
-      .eq("level", level)
-      .maybeSingle();
-    let config = (data?.config as MathKeyboardConfig | undefined) ?? null;
-    if (!config && level !== DEFAULT_LEVEL) {
-      // Repli sur un niveau par défaut si ce niveau précis n'a pas encore de
-      // clavier configuré en base (ex: nouveau niveau ajouté ailleurs).
-      const { data: fallback } = await supabase
-        .from("math_keyboards")
-        .select("config")
-        .eq("level", DEFAULT_LEVEL)
-        .maybeSingle();
-      config = (fallback?.config as MathKeyboardConfig | undefined) ?? null;
-    }
+    // Le repli sur le niveau par défaut est géré côté serveur.
+    const res = await fetch(`/api/math-keyboard?level=${encodeURIComponent(level)}`);
+    const data = res.ok ? await res.json() : null;
+    const config = (data?.config as MathKeyboardConfig | undefined) ?? null;
     keyboardConfigCache.set(level, config);
     return config;
   })().catch(() => null);

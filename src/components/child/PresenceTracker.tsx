@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 
 export default function PresenceTracker() {
   const router = useRouter();
@@ -27,8 +28,7 @@ export default function PresenceTracker() {
     const checkBanAndTrack = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
-      const { data: user } = await supabase
-        .from("users").select("status, ban_reason").eq("auth_id", session.user.id).maybeSingle();
+      const user = await getMyProfile<{ status?: string; ban_reason?: string | null }>();
       if (user?.status === "inactive" || user?.ban_reason) { router.push("/auth/banned"); return; }
       ping(true);
     };

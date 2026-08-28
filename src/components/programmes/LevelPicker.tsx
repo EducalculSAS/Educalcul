@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GraduationCap } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { getClientCookie, setClientCookie } from "@/lib/clientCookie";
 
 export const GOTO_LEVEL_EVENT = "programmes:goto-level";
@@ -32,11 +33,7 @@ export default function LevelPicker() {
       try {
         const { data: { session } } = await supabase.auth.getSession();
         if (session?.user) {
-          const { data: userData } = await supabase
-            .from("users")
-            .select("grade_level")
-            .eq("auth_id", session.user.id)
-            .maybeSingle();
+          const userData = await getMyProfile<{ grade_level?: string }>();
           if (userData?.grade_level) {
             setMyLevel(userData.grade_level);
             announceLevel(userData.grade_level);

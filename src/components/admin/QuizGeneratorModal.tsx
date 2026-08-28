@@ -7,7 +7,6 @@ import {
   BrainCircuit,
 } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
-import { supabase } from "@/lib/supabaseClient";
 import { useSmoothPercent } from "./useSmoothPercent";
 import type { AIGenerateProgress } from "./ExerciseGeneratorModal";
 import GlassButton from "@/components/ui/GlassButton";
@@ -53,12 +52,16 @@ export default function QuizGeneratorModal({
 
   useEffect(() => {
     (async () => {
-      const { data } = await supabase
-        .from("courses")
-        .select("id, title")
-        .eq("status", "published")
-        .order("title");
-      if (data) setCourses(data as any);
+      const res = await fetch("/api/admin/courses?status=published");
+      if (!res.ok) return;
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setCourses(
+          [...data]
+            .map((c: any) => ({ id: c.id, title: c.title }))
+            .sort((a, b) => a.title.localeCompare(b.title)) as any,
+        );
+      }
     })();
   }, []);
 

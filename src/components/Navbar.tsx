@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { trackLogout } from "@/lib/trackLogout";
 import { getDashboardPath } from "@/lib/authRedirect";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
@@ -65,12 +66,8 @@ export default function Navbar() {
   }, [isOpen]);
 
   useEffect(() => {
-    const fetchUserData = async (authId: string) => {
-      const { data: userData } = await supabase
-        .from("users")
-        .select("role, first_name")
-        .eq("auth_id", authId)
-        .maybeSingle();
+    const fetchUserData = async () => {
+      const userData = await getMyProfile<{ role?: string; first_name?: string }>();
       setUserRole(userData?.role || null);
       setFirstName(userData?.first_name || null);
     };
@@ -78,7 +75,7 @@ export default function Navbar() {
     // Vérification initiale : getUser() authentifie l'identité auprès de Supabase Auth.
     supabase.auth.getUser().then(({ data: { user: authUser } }) => {
       setUser(authUser || null);
-      if (authUser) fetchUserData(authUser.id);
+      if (authUser) fetchUserData();
     });
 
     // onAuthStateChange signale le changement, puis getUser() revalide l'identité
@@ -92,7 +89,7 @@ export default function Navbar() {
       void supabase.auth.getUser().then(({ data: { user: authUser } }) => {
         setUser(authUser || null);
         if (authUser) {
-          fetchUserData(authUser.id);
+          fetchUserData();
         } else {
           setUserRole(null);
           setFirstName(null);
