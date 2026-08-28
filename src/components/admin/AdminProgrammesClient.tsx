@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { Upload, Trash2, FileText, CheckCircle, AlertTriangle, Loader2, BookOpen, X, GraduationCap, Download, Pencil, Save } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
-import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
@@ -50,27 +49,17 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
     if (!file) { showNotification("error", "Sélectionne un fichier PDF."); return; }
     setUploading(true);
     try {
-      const path = `${selectedLevel}/${Date.now()}_${file.name}`;
-      const { data: storageData, error: storageError } = await supabase.storage
-        .from("programmes")
-        .upload(path, file, { upsert: true });
-      if (storageError) throw new Error(storageError.message);
-
-      const { data: urlData } = supabase.storage.from("programmes").getPublicUrl(storageData.path);
-      const fileUrl = urlData.publicUrl;
       const levelLabel = SCHOOL_LEVELS.find(l => l.value === selectedLevel)?.label || selectedLevel;
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("level", selectedLevel);
+      fd.append("level_label", levelLabel);
 
-      const res = await fetch("/api/admin/programmes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          level: selectedLevel,
-          level_label: levelLabel,
-          file_url: fileUrl,
-          file_name: file.name,
-        }),
-      });
-      if (!res.ok) throw new Error("Erreur serveur");
+      const res = await fetch("/api/admin/programmes", { method: "POST", body: fd });
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        throw new Error(d.error || "Erreur serveur");
+      }
       showNotification("success", "Programme enregistré avec succès !");
       setFile(null);
       if (fileRef.current) fileRef.current.value = "";
