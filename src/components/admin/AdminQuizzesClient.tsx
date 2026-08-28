@@ -63,7 +63,6 @@ import {
 import QuizViewer from "@/components/viewers/QuizViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
-import ThemedSelect from "@/components/admin/ThemedSelect";
 import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
 
 const FOLDER_COLORS = [
@@ -979,39 +978,24 @@ export default function AdminQuizzesClient({
             />
           </div>
           <div className="flex gap-2 flex-wrap">
-            <ThemedSelect
-              value={statusFilter}
-              onChange={setStatusFilter}
-              options={[
-                { value: "all", label: "Tous les statuts" },
-                { value: "published", label: "Publié" },
-                { value: "draft", label: "Brouillon" },
-                { value: "archived", label: "Archivé" },
-              ]}
-              className="min-w-[160px]"
-            />
+            <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="min-w-[160px]">
+              <option value="all">Tous les statuts</option>
+              <option value="published">Publié</option>
+              <option value="draft">Brouillon</option>
+              <option value="archived">Archivé</option>
+            </select>
 
-            <ThemedSelect
-              value={difficultyFilter}
-              onChange={setDifficultyFilter}
-              options={[
-                { value: "all", label: "Toutes difficultés" },
-                { value: "easy", label: "Facile" },
-                { value: "medium", label: "Moyen" },
-                { value: "hard", label: "Difficile" },
-              ]}
-              className="min-w-[160px]"
-            />
+            <select value={difficultyFilter} onChange={(e) => setDifficultyFilter(e.target.value)} className="min-w-[160px]">
+              <option value="all">Toutes difficultés</option>
+              <option value="easy">Facile</option>
+              <option value="medium">Moyen</option>
+              <option value="hard">Difficile</option>
+            </select>
 
-            <ThemedSelect
-              value={courseFilter}
-              onChange={setCourseFilter}
-              options={[
-                { value: "all", label: "Tous les cours" },
-                ...courses.map((c) => ({ value: c.id, label: c.title })),
-              ]}
-              className="w-48 max-w-[12rem]"
-            />
+            <select value={courseFilter} onChange={(e) => setCourseFilter(e.target.value)} className="w-48 max-w-[12rem]">
+              <option value="all">Tous les cours</option>
+              {courses.map((c) => (<option key={c.id} value={c.id}>{c.title}</option>))}
+            </select>
           </div>
         </div>
       </div>

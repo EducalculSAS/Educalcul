@@ -14,7 +14,6 @@ import { avatarUrl } from "@/lib/avatarUrl";
 import { supabase } from "@/lib/supabaseClient";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { validatePassword } from "@/lib/validation";
-import ThemedSelect from "@/components/admin/ThemedSelect";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -854,11 +853,13 @@ export default function AdminUserDetailClient({
                 </select>
               </div>}
               {editForm.role === "child" && <div><label className={labelCls}>Niveau</label>
-                <ThemedSelect
+                <select
                   value={editForm.grade_level}
-                  onChange={(v) => setEditForm({ ...editForm, grade_level: v })}
-                  options={SCHOOL_LEVELS.map(l => ({ value: l.value, label: l.label }))}
-                />
+                  onChange={(e) => setEditForm({ ...editForm, grade_level: e.target.value })}
+                  className={inputCls}
+                >
+                  {SCHOOL_LEVELS.map(l => (<option key={l.value} value={l.value}>{l.label}</option>))}
+                </select>
               </div>}
               <div className="flex justify-end gap-3 pt-2">
                 <GlassButton size="sm" variant="ghost" onClick={() => setShowEditModal(false)}>Annuler</GlassButton>

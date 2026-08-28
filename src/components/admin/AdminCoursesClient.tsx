@@ -12,7 +12,6 @@ import {
   type ContentFolder,
 } from "@/lib/contentFoldersClient";
 import PageLoader from "@/components/PageLoader";
-import ThemedSelect from "@/components/admin/ThemedSelect";
 import {
   BookOpen,
   Search,
@@ -992,17 +991,12 @@ export default function AdminCoursesClient({
             />
           </div>
           <div className="flex gap-2 flex-wrap">
-            <ThemedSelect
-              value={statusFilter}
-              onChange={setStatusFilter}
-              options={[
-                { value: "all", label: "Tous les statuts" },
-                { value: "published", label: "Publié" },
-                { value: "draft", label: "Brouillon" },
-                { value: "archived", label: "Archivé" },
-              ]}
-              className="min-w-[160px]"
-            />
+            <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="min-w-[160px]">
+              <option value="all">Tous les statuts</option>
+              <option value="published">Publié</option>
+              <option value="draft">Brouillon</option>
+              <option value="archived">Archivé</option>
+            </select>
           </div>
         </div>
       </div>
